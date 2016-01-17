@@ -488,6 +488,11 @@ module Google
         # @return [String]
         attr_accessor :id_token
       
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
         # The local ID of the user.
         # Corresponds to the JSON property `localId`
         # @return [String]
@@ -532,12 +537,57 @@ module Google
           @email = args[:email] unless args[:email].nil?
           @email_verified = args[:email_verified] unless args[:email_verified].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?
+          @instance_id = args[:instance_id] unless args[:instance_id].nil?
           @local_id = args[:local_id] unless args[:local_id].nil?
           @oob_code = args[:oob_code] unless args[:oob_code].nil?
           @password = args[:password] unless args[:password].nil?
           @provider = args[:provider] unless args[:provider].nil?
           @upgrade_to_federated_login = args[:upgrade_to_federated_login] unless args[:upgrade_to_federated_login].nil?
           @valid_since = args[:valid_since] unless args[:valid_since].nil?
+        end
+      end
+      
+      # Request to sign out user.
+      class SignOutUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The local ID of the user.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] unless args[:instance_id].nil?
+          @local_id = args[:local_id] unless args[:local_id].nil?
+        end
+      end
+      
+      # Response of signing out user.
+      class SignOutUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # The local ID of the user.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_id = args[:local_id] unless args[:local_id].nil?
         end
       end
       
@@ -594,6 +644,11 @@ module Google
       class VerifyAssertionRequest
         include Google::Apis::Core::Hashable
       
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
         # The GITKit token for the non-trusted IDP pending to be confirmed by the user.
         # Corresponds to the JSON property `pendingIdToken`
         # @return [String]
@@ -627,11 +682,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_id = args[:instance_id] unless args[:instance_id].nil?
           @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
           @post_body = args[:post_body] unless args[:post_body].nil?
           @request_uri = args[:request_uri] unless args[:request_uri].nil?
           @return_refresh_token = args[:return_refresh_token] unless args[:return_refresh_token].nil?
           @session_id = args[:session_id] unless args[:session_id].nil?
+        end
+      end
+      
+      # Request to verify a custom token
+      class VerifyCustomTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The custom token to verify
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] unless args[:instance_id].nil?
+          @token = args[:token] unless args[:token].nil?
         end
       end
       
@@ -654,6 +735,11 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
         # The password inputed by the user.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -673,6 +759,7 @@ module Google
           @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
           @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
           @email = args[:email] unless args[:email].nil?
+          @instance_id = args[:instance_id] unless args[:instance_id].nil?
           @password = args[:password] unless args[:password].nil?
           @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
         end
@@ -1271,6 +1358,31 @@ module Google
           @provider_id = args[:provider_id] unless args[:provider_id].nil?
           @time_zone = args[:time_zone] unless args[:time_zone].nil?
           @verified_provider = args[:verified_provider] unless args[:verified_provider].nil?
+        end
+      end
+      
+      # Response from verifying a custom token
+      class VerifyCustomTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The GITKit token for authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # The fixed string "identitytoolkit#VerifyCustomTokenResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] unless args[:id_token].nil?
+          @kind = args[:kind] unless args[:kind].nil?
         end
       end
       

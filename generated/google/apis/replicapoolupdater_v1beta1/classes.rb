@@ -223,7 +223,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # [Output Only] Server defined URL for the resource.
+        # [Output Only] The fully qualified URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -425,8 +425,8 @@ module Google
         # @return [Array<Google::Apis::ReplicapoolupdaterV1beta1::Operation>]
         attr_accessor :items
       
-        # [Output Only] Type of resource. Always replicapoolupdater#operations for
-        # Operations resource.
+        # [Output Only] Type of resource. Always replicapoolupdater#operationList for
+        # OperationList resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -436,7 +436,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for this resource.
+        # [Output Only] The fully qualified URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link

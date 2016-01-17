@@ -979,6 +979,11 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Whether this product is free, free with in-app purchases, or paid.
+        # Corresponds to the JSON property `productPricing`
+        # @return [String]
+        attr_accessor :product_pricing
+      
         # Whether this app can only be installed on devices using the Android for Work
         # container app.
         # Corresponds to the JSON property `requiresContainerApp`
@@ -1010,6 +1015,7 @@ module Google
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
+          @product_pricing = args[:product_pricing] unless args[:product_pricing].nil?
           @requires_container_app = args[:requires_container_app] unless args[:requires_container_app].nil?
           @title = args[:title] unless args[:title].nil?
           @work_details_url = args[:work_details_url] unless args[:work_details_url].nil?

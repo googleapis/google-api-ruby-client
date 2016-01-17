@@ -73,6 +73,9 @@ def <%= api_method.generated_name %>(<% for param in api_method.required_paramet
   command.request_object = <%= api.schemas[api_method.request._ref].generated_name %>_object
 <% end -%>
 <% if api_method.response -%>
+<%   if api.force_alt_json? -%>
+  command.query['alt'] = 'json'
+<%   end -%>
   command.response_representation = <%= api.schemas[api_method.response._ref].generated_type %>::Representation
   command.response_class = <%= api.schemas[api_method.response._ref].generated_type %>
 <% end -%>

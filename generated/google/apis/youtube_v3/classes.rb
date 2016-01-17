@@ -1359,6 +1359,43 @@ module Google
       end
       
       # 
+      class ChannelProfileDetails
+        include Google::Apis::Core::Hashable
+      
+        # The YouTube channel ID.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # The channel's URL.
+        # Corresponds to the JSON property `channelUrl`
+        # @return [String]
+        attr_accessor :channel_url
+      
+        # The channel's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The channels's avatar URL.
+        # Corresponds to the JSON property `profileImageUrl`
+        # @return [String]
+        attr_accessor :profile_image_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] unless args[:channel_id].nil?
+          @channel_url = args[:channel_url] unless args[:channel_url].nil?
+          @display_name = args[:display_name] unless args[:display_name].nil?
+          @profile_image_url = args[:profile_image_url] unless args[:profile_image_url].nil?
+        end
+      end
+      
+      # 
       class ChannelSection
         include Google::Apis::Core::Hashable
       
@@ -2691,6 +2728,168 @@ module Google
         end
       end
       
+      # A fanFundingEvent resource represents a fan funding event on a YouTube channel.
+      # Fan funding events occur when a user gives one-time monetary support to the
+      # channel owner.
+      class FanFundingEvent
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the fan funding event.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # fanFundingEvent".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the fan funding event.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::FanFundingEventSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+      
+      # 
+      class FanFundingEventListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of fan funding events that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::FanFundingEvent>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # fanFundingEventListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # Stub token pagination template to suppress results.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::YoutubeV3::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @event_id = args[:event_id] unless args[:event_id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @page_info = args[:page_info] unless args[:page_info].nil?
+          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
+          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+        end
+      end
+      
+      # 
+      class FanFundingEventSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The amount of funding in micros of fund_currency. e.g., 1 is represented
+        # Corresponds to the JSON property `amountMicros`
+        # @return [String]
+        attr_accessor :amount_micros
+      
+        # Channel id where the funding event occurred.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # The text contents of the comment left by the user.
+        # Corresponds to the JSON property `commentText`
+        # @return [String]
+        attr_accessor :comment_text
+      
+        # The date and time when the funding occurred. The value is specified in ISO
+        # 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+        # Corresponds to the JSON property `createdAt`
+        # @return [DateTime]
+        attr_accessor :created_at
+      
+        # The currency in which the fund was made. ISO 4217.
+        # Corresponds to the JSON property `currency`
+        # @return [String]
+        attr_accessor :currency
+      
+        # A rendered string that displays the fund amount and currency (e.g., "$1.00").
+        # The string is rendered for the given language.
+        # Corresponds to the JSON property `displayString`
+        # @return [String]
+        attr_accessor :display_string
+      
+        # Details about the supporter. Only filled if the event was made public by the
+        # user.
+        # Corresponds to the JSON property `supporterDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :supporter_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_micros = args[:amount_micros] unless args[:amount_micros].nil?
+          @channel_id = args[:channel_id] unless args[:channel_id].nil?
+          @comment_text = args[:comment_text] unless args[:comment_text].nil?
+          @created_at = args[:created_at] unless args[:created_at].nil?
+          @currency = args[:currency] unless args[:currency].nil?
+          @display_string = args[:display_string] unless args[:display_string].nil?
+          @supporter_details = args[:supporter_details] unless args[:supporter_details].nil?
+        end
+      end
+      
       # Geographical coordinates of a point, in WGS84.
       class GeoPoint
         include Google::Apis::Core::Hashable
@@ -3516,9 +3715,16 @@ module Google
         # @return [String]
         attr_accessor :bound_stream_id
       
-        # This setting indicates whether closed captioning is enabled for this broadcast.
-        # The ingestion URL of the closed captions is returned through the liveStreams
-        # API.
+        # 
+        # Corresponds to the JSON property `closedCaptionsType`
+        # @return [String]
+        attr_accessor :closed_captions_type
+      
+        # This setting indicates whether HTTP POST closed captioning is enabled for this
+        # broadcast. The ingestion URL of the closed captions is returned through the
+        # liveStreams API. This is mutually exclusive with using the
+        # closed_captions_type property, and is equivalent to setting
+        # closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
         # Corresponds to the JSON property `enableClosedCaptions`
         # @return [Boolean]
         attr_accessor :enable_closed_captions
@@ -3591,6 +3797,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bound_stream_id = args[:bound_stream_id] unless args[:bound_stream_id].nil?
+          @closed_captions_type = args[:closed_captions_type] unless args[:closed_captions_type].nil?
           @enable_closed_captions = args[:enable_closed_captions] unless args[:enable_closed_captions].nil?
           @enable_content_encryption = args[:enable_content_encryption] unless args[:enable_content_encryption].nil?
           @enable_dvr = args[:enable_dvr] unless args[:enable_dvr].nil?
@@ -3917,6 +4124,531 @@ module Google
         def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @release_date = args[:release_date] unless args[:release_date].nil?
+        end
+      end
+      
+      # A liveChatBan resource represents a ban for a YouTube live chat.
+      class LiveChatBan
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the ban.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatBan".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the ban.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::LiveChatBanSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+      
+      # 
+      class LiveChatBanSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The duration of a ban, only filled if the ban has type TEMPORARY.
+        # Corresponds to the JSON property `banDurationSeconds`
+        # @return [String]
+        attr_accessor :ban_duration_seconds
+      
+        # 
+        # Corresponds to the JSON property `bannedUserDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :banned_user_details
+      
+        # The chat this ban is pertinent to.
+        # Corresponds to the JSON property `liveChatId`
+        # @return [String]
+        attr_accessor :live_chat_id
+      
+        # The type of ban.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ban_duration_seconds = args[:ban_duration_seconds] unless args[:ban_duration_seconds].nil?
+          @banned_user_details = args[:banned_user_details] unless args[:banned_user_details].nil?
+          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
+          @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # 
+      class LiveChatFanFundingEventDetails
+        include Google::Apis::Core::Hashable
+      
+        # A rendered string that displays the fund amount and currency to the user.
+        # Corresponds to the JSON property `amountDisplayString`
+        # @return [String]
+        attr_accessor :amount_display_string
+      
+        # The amount of the fund.
+        # Corresponds to the JSON property `amountMicros`
+        # @return [String]
+        attr_accessor :amount_micros
+      
+        # The currency in which the fund was made.
+        # Corresponds to the JSON property `currency`
+        # @return [String]
+        attr_accessor :currency
+      
+        # The comment added by the user to this fan funding event.
+        # Corresponds to the JSON property `userComment`
+        # @return [String]
+        attr_accessor :user_comment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_display_string = args[:amount_display_string] unless args[:amount_display_string].nil?
+          @amount_micros = args[:amount_micros] unless args[:amount_micros].nil?
+          @currency = args[:currency] unless args[:currency].nil?
+          @user_comment = args[:user_comment] unless args[:user_comment].nil?
+        end
+      end
+      
+      # A liveChatMessage resource represents a chat message in a YouTube Live Chat.
+      class LiveChatMessage
+        include Google::Apis::Core::Hashable
+      
+        # The authorDetails object contains basic details about the user that posted
+        # this message.
+        # Corresponds to the JSON property `authorDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageAuthorDetails]
+        attr_accessor :author_details
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the message.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatMessage".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the message.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_details = args[:author_details] unless args[:author_details].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+      
+      # 
+      class LiveChatMessageAuthorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The YouTube channel ID.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # The channel's URL.
+        # Corresponds to the JSON property `channelUrl`
+        # @return [String]
+        attr_accessor :channel_url
+      
+        # The channel's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the author is a moderator of the live chat.
+        # Corresponds to the JSON property `isChatModerator`
+        # @return [Boolean]
+        attr_accessor :is_chat_moderator
+        alias_method :is_chat_moderator?, :is_chat_moderator
+      
+        # Whether the author is the owner of the live chat.
+        # Corresponds to the JSON property `isChatOwner`
+        # @return [Boolean]
+        attr_accessor :is_chat_owner
+        alias_method :is_chat_owner?, :is_chat_owner
+      
+        # Whether the author is a sponsor of the live chat.
+        # Corresponds to the JSON property `isChatSponsor`
+        # @return [Boolean]
+        attr_accessor :is_chat_sponsor
+        alias_method :is_chat_sponsor?, :is_chat_sponsor
+      
+        # Whether the author's identity has been verified by YouTube.
+        # Corresponds to the JSON property `isVerified`
+        # @return [Boolean]
+        attr_accessor :is_verified
+        alias_method :is_verified?, :is_verified
+      
+        # The channels's avatar URL.
+        # Corresponds to the JSON property `profileImageUrl`
+        # @return [String]
+        attr_accessor :profile_image_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] unless args[:channel_id].nil?
+          @channel_url = args[:channel_url] unless args[:channel_url].nil?
+          @display_name = args[:display_name] unless args[:display_name].nil?
+          @is_chat_moderator = args[:is_chat_moderator] unless args[:is_chat_moderator].nil?
+          @is_chat_owner = args[:is_chat_owner] unless args[:is_chat_owner].nil?
+          @is_chat_sponsor = args[:is_chat_sponsor] unless args[:is_chat_sponsor].nil?
+          @is_verified = args[:is_verified] unless args[:is_verified].nil?
+          @profile_image_url = args[:profile_image_url] unless args[:profile_image_url].nil?
+        end
+      end
+      
+      # 
+      class LiveChatMessageListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of live chat messages.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::LiveChatMessage>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatMessageListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The date and time when the underlying stream went offline. The value is
+        # specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+        # Corresponds to the JSON property `offlineAt`
+        # @return [DateTime]
+        attr_accessor :offline_at
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # The amount of time the client should wait before polling again.
+        # Corresponds to the JSON property `pollingIntervalMillis`
+        # @return [Fixnum]
+        attr_accessor :polling_interval_millis
+      
+        # Stub token pagination template to suppress results.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::YoutubeV3::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @event_id = args[:event_id] unless args[:event_id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @offline_at = args[:offline_at] unless args[:offline_at].nil?
+          @page_info = args[:page_info] unless args[:page_info].nil?
+          @polling_interval_millis = args[:polling_interval_millis] unless args[:polling_interval_millis].nil?
+          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
+          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+        end
+      end
+      
+      # 
+      class LiveChatMessageSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the user that authored this message, this field is not always filled.
+        # textMessageEvent - the user that wrote the message fanFundingEvent - the user
+        # that funded the broadcast newSponsorEvent - the user that just became a
+        # sponsor
+        # Corresponds to the JSON property `authorChannelId`
+        # @return [String]
+        attr_accessor :author_channel_id
+      
+        # Contains a string that can be displayed to the user. If this field is not
+        # present the message is silent, at the moment only messages of type TOMBSTONE
+        # and CHAT_ENDED_EVENT are silent.
+        # Corresponds to the JSON property `displayMessage`
+        # @return [String]
+        attr_accessor :display_message
+      
+        # Details about the funding event, this is only set if the type is '
+        # fanFundingEvent'.
+        # Corresponds to the JSON property `fanFundingEventDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
+        attr_accessor :fan_funding_event_details
+      
+        # Whether the message has display content that should be displayed to users.
+        # Corresponds to the JSON property `hasDisplayContent`
+        # @return [Boolean]
+        attr_accessor :has_display_content
+        alias_method :has_display_content?, :has_display_content
+      
+        # 
+        # Corresponds to the JSON property `liveChatId`
+        # @return [String]
+        attr_accessor :live_chat_id
+      
+        # The date and time when the message was orignally published. The value is
+        # specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+        # Corresponds to the JSON property `publishedAt`
+        # @return [DateTime]
+        attr_accessor :published_at
+      
+        # Details about the text message, this is only set if the type is '
+        # textMessageEvent'.
+        # Corresponds to the JSON property `textMessageDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatTextMessageDetails]
+        attr_accessor :text_message_details
+      
+        # The type of message, this will always be present, it determines the contents
+        # of the message as well as which fields will be present.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_channel_id = args[:author_channel_id] unless args[:author_channel_id].nil?
+          @display_message = args[:display_message] unless args[:display_message].nil?
+          @fan_funding_event_details = args[:fan_funding_event_details] unless args[:fan_funding_event_details].nil?
+          @has_display_content = args[:has_display_content] unless args[:has_display_content].nil?
+          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
+          @published_at = args[:published_at] unless args[:published_at].nil?
+          @text_message_details = args[:text_message_details] unless args[:text_message_details].nil?
+          @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # A liveChatModerator resource represents a moderator for a YouTube live chat. A
+      # chat moderator has the ability to ban/unban users from a chat, remove message,
+      # etc.
+      class LiveChatModerator
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the moderator.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatModerator".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the moderator.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::LiveChatModeratorSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+      
+      # 
+      class LiveChatModeratorListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of moderators that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::LiveChatModerator>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatModeratorListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
+        # Corresponds to the JSON property `prevPageToken`
+        # @return [String]
+        attr_accessor :prev_page_token
+      
+        # Stub token pagination template to suppress results.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::YoutubeV3::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @event_id = args[:event_id] unless args[:event_id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @page_info = args[:page_info] unless args[:page_info].nil?
+          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
+          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
+          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+        end
+      end
+      
+      # 
+      class LiveChatModeratorSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the live chat this moderator can act on.
+        # Corresponds to the JSON property `liveChatId`
+        # @return [String]
+        attr_accessor :live_chat_id
+      
+        # Details about the moderator.
+        # Corresponds to the JSON property `moderatorDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :moderator_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
+          @moderator_details = args[:moderator_details] unless args[:moderator_details].nil?
+        end
+      end
+      
+      # 
+      class LiveChatTextMessageDetails
+        include Google::Apis::Core::Hashable
+      
+        # The user's message.
+        # Corresponds to the JSON property `messageText`
+        # @return [String]
+        attr_accessor :message_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_text = args[:message_text] unless args[:message_text].nil?
         end
       end
       
@@ -5248,6 +5980,141 @@ module Google
           @published_at = args[:published_at] unless args[:published_at].nil?
           @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
           @title = args[:title] unless args[:title].nil?
+        end
+      end
+      
+      # A sponsor resource represents a sponsor for a YouTube channel. A sponsor
+      # provides recurring monetary support to a creator and receives special benefits.
+      class Sponsor
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the sponsor.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # sponsor".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the sponsor.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::SponsorSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+      
+      # 
+      class SponsorListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of sponsors that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::Sponsor>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # sponsorListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # Stub token pagination template to suppress results.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::YoutubeV3::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @event_id = args[:event_id] unless args[:event_id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @page_info = args[:page_info] unless args[:page_info].nil?
+          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
+          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+        end
+      end
+      
+      # 
+      class SponsorSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The id of the channel being sponsored.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # Details about the sponsor.
+        # Corresponds to the JSON property `sponsorDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :sponsor_details
+      
+        # The date and time when the user became a sponsor. The value is specified in
+        # ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+        # Corresponds to the JSON property `sponsorSince`
+        # @return [DateTime]
+        attr_accessor :sponsor_since
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] unless args[:channel_id].nil?
+          @sponsor_details = args[:sponsor_details] unless args[:sponsor_details].nil?
+          @sponsor_since = args[:sponsor_since] unless args[:sponsor_since].nil?
         end
       end
       
@@ -6594,6 +7461,16 @@ module Google
       class VideoLiveStreamingDetails
         include Google::Apis::Core::Hashable
       
+        # The ID of the currently active live chat attached to this video. This field is
+        # filled only if the video is a currently live broadcast that has live chat.
+        # Once the broadcast transitions to complete this field will be removed and the
+        # live chat closed down. For persistent broadcasts that live chat id will no
+        # longer be tied to this video but rather to the new video being displayed at
+        # the persistent page.
+        # Corresponds to the JSON property `activeLiveChatId`
+        # @return [String]
+        attr_accessor :active_live_chat_id
+      
         # The time that the broadcast actually ended. The value is specified in ISO 8601
         # (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until the
         # broadcast is over.
@@ -6637,6 +7514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_live_chat_id = args[:active_live_chat_id] unless args[:active_live_chat_id].nil?
           @actual_end_time = args[:actual_end_time] unless args[:actual_end_time].nil?
           @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
           @concurrent_viewers = args[:concurrent_viewers] unless args[:concurrent_viewers].nil?

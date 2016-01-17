@@ -18,14 +18,14 @@ require 'google/apis/webmasters_v3/representations.rb'
 
 module Google
   module Apis
-    # Webmaster Tools API
+    # Search Console API
     #
-    # Lets you view Google Webmaster Tools data for your verified sites.
+    # Lets you view Google Search Console data for your verified sites.
     #
     # @see https://developers.google.com/webmaster-tools/
     module WebmastersV3
       VERSION = 'V3'
-      REVISION = '20151102'
+      REVISION = '20151229'
 
       # View and manage Search Console data for your verified sites
       AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'

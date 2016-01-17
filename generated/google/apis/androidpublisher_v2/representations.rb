@@ -166,6 +166,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class Prorate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Season
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -549,10 +553,22 @@ module Google
         end
       end
       
+      class Prorate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_price, as: 'defaultPrice', class: Google::Apis::AndroidpublisherV2::Price, decorator: Google::Apis::AndroidpublisherV2::Price::Representation
+      
+          property :start, as: 'start', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
+      
+        end
+      end
+      
       class Season
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end, as: 'end', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
+      
+          collection :prorations, as: 'prorations', class: Google::Apis::AndroidpublisherV2::Prorate, decorator: Google::Apis::AndroidpublisherV2::Prorate::Representation
       
           property :start, as: 'start', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
       

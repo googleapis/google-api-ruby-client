@@ -74,11 +74,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class SignOutUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SignOutUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class UploadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
       class VerifyAssertionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VerifyCustomTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -123,6 +135,10 @@ module Google
       end
       
       class VerifyAssertionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VerifyCustomTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -258,12 +274,28 @@ module Google
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
+          property :instance_id, as: 'instanceId'
           property :local_id, as: 'localId'
           property :oob_code, as: 'oobCode'
           property :password, as: 'password'
           collection :provider, as: 'provider'
           property :upgrade_to_federated_login, as: 'upgradeToFederatedLogin'
           property :valid_since, as: 'validSince'
+        end
+      end
+      
+      class SignOutUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :local_id, as: 'localId'
+        end
+      end
+      
+      class SignOutUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_id, as: 'localId'
         end
       end
       
@@ -283,11 +315,20 @@ module Google
       class VerifyAssertionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'
           property :request_uri, as: 'requestUri'
           property :return_refresh_token, as: 'returnRefreshToken'
           property :session_id, as: 'sessionId'
+        end
+      end
+      
+      class VerifyCustomTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :token, as: 'token'
         end
       end
       
@@ -297,6 +338,7 @@ module Google
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
           property :email, as: 'email'
+          property :instance_id, as: 'instanceId'
           property :password, as: 'password'
           property :pending_id_token, as: 'pendingIdToken'
         end
@@ -436,6 +478,14 @@ module Google
           property :provider_id, as: 'providerId'
           property :time_zone, as: 'timeZone'
           collection :verified_provider, as: 'verifiedProvider'
+        end
+      end
+      
+      class VerifyCustomTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :kind, as: 'kind'
         end
       end
       

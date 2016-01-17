@@ -150,6 +150,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ChannelProfileDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ChannelSection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -223,6 +227,18 @@ module Google
       end
       
       class ContentRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class FanFundingEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class FanFundingEventListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class FanFundingEventSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -327,6 +343,50 @@ module Google
       end
       
       class LiveBroadcastTopicSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatBan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatBanSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatFanFundingEventDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatMessageAuthorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatMessageListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatMessageSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatModerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatModeratorListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatModeratorSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveChatTextMessageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -447,6 +507,18 @@ module Google
       end
       
       class SearchResultSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Sponsor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SponsorListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SponsorSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -1008,6 +1080,16 @@ module Google
         end
       end
       
+      class ChannelProfileDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :channel_url, as: 'channelUrl'
+          property :display_name, as: 'displayName'
+          property :profile_image_url, as: 'profileImageUrl'
+        end
+      end
+      
       class ChannelSection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1313,6 +1395,49 @@ module Google
         end
       end
       
+      class FanFundingEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::FanFundingEventSnippet, decorator: Google::Apis::YoutubeV3::FanFundingEventSnippet::Representation
+      
+        end
+      end
+      
+      class FanFundingEventListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::FanFundingEvent, decorator: Google::Apis::YoutubeV3::FanFundingEvent::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class FanFundingEventSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_micros, as: 'amountMicros'
+          property :channel_id, as: 'channelId'
+          property :comment_text, as: 'commentText'
+          property :created_at, as: 'createdAt', type: DateTime
+      
+          property :currency, as: 'currency'
+          property :display_string, as: 'displayString'
+          property :supporter_details, as: 'supporterDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+        end
+      end
+      
       class GeoPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1536,6 +1661,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bound_stream_id, as: 'boundStreamId'
+          property :closed_captions_type, as: 'closedCaptionsType'
           property :enable_closed_captions, as: 'enableClosedCaptions'
           property :enable_content_encryption, as: 'enableContentEncryption'
           property :enable_dvr, as: 'enableDvr'
@@ -1630,6 +1756,147 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :release_date, as: 'releaseDate'
+        end
+      end
+      
+      class LiveChatBan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveChatBanSnippet, decorator: Google::Apis::YoutubeV3::LiveChatBanSnippet::Representation
+      
+        end
+      end
+      
+      class LiveChatBanSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ban_duration_seconds, as: 'banDurationSeconds'
+          property :banned_user_details, as: 'bannedUserDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+          property :live_chat_id, as: 'liveChatId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class LiveChatFanFundingEventDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_display_string, as: 'amountDisplayString'
+          property :amount_micros, as: 'amountMicros'
+          property :currency, as: 'currency'
+          property :user_comment, as: 'userComment'
+        end
+      end
+      
+      class LiveChatMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_details, as: 'authorDetails', class: Google::Apis::YoutubeV3::LiveChatMessageAuthorDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageAuthorDetails::Representation
+      
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveChatMessageSnippet, decorator: Google::Apis::YoutubeV3::LiveChatMessageSnippet::Representation
+      
+        end
+      end
+      
+      class LiveChatMessageAuthorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :channel_url, as: 'channelUrl'
+          property :display_name, as: 'displayName'
+          property :is_chat_moderator, as: 'isChatModerator'
+          property :is_chat_owner, as: 'isChatOwner'
+          property :is_chat_sponsor, as: 'isChatSponsor'
+          property :is_verified, as: 'isVerified'
+          property :profile_image_url, as: 'profileImageUrl'
+        end
+      end
+      
+      class LiveChatMessageListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::LiveChatMessage, decorator: Google::Apis::YoutubeV3::LiveChatMessage::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :offline_at, as: 'offlineAt', type: DateTime
+      
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :polling_interval_millis, as: 'pollingIntervalMillis'
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class LiveChatMessageSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_channel_id, as: 'authorChannelId'
+          property :display_message, as: 'displayMessage'
+          property :fan_funding_event_details, as: 'fanFundingEventDetails', class: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails, decorator: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails::Representation
+      
+          property :has_display_content, as: 'hasDisplayContent'
+          property :live_chat_id, as: 'liveChatId'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
+          property :text_message_details, as: 'textMessageDetails', class: Google::Apis::YoutubeV3::LiveChatTextMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatTextMessageDetails::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class LiveChatModerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveChatModeratorSnippet, decorator: Google::Apis::YoutubeV3::LiveChatModeratorSnippet::Representation
+      
+        end
+      end
+      
+      class LiveChatModeratorListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::LiveChatModerator, decorator: Google::Apis::YoutubeV3::LiveChatModerator::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :prev_page_token, as: 'prevPageToken'
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class LiveChatModeratorSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :live_chat_id, as: 'liveChatId'
+          property :moderator_details, as: 'moderatorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+        end
+      end
+      
+      class LiveChatTextMessageDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_text, as: 'messageText'
         end
       end
       
@@ -1987,6 +2254,45 @@ module Google
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
+        end
+      end
+      
+      class Sponsor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::SponsorSnippet, decorator: Google::Apis::YoutubeV3::SponsorSnippet::Representation
+      
+        end
+      end
+      
+      class SponsorListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::Sponsor, decorator: Google::Apis::YoutubeV3::Sponsor::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class SponsorSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :sponsor_details, as: 'sponsorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+          property :sponsor_since, as: 'sponsorSince', type: DateTime
+      
         end
       end
       
@@ -2358,6 +2664,7 @@ module Google
       class VideoLiveStreamingDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_live_chat_id, as: 'activeLiveChatId'
           property :actual_end_time, as: 'actualEndTime', type: DateTime
       
           property :actual_start_time, as: 'actualStartTime', type: DateTime

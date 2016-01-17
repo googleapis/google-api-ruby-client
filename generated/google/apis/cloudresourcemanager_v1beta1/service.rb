@@ -273,9 +273,9 @@ module Google
         # Returns the IAM access control policy for the specified Project. Permission is
         # denied if the policy or the resource does not exist.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. `resource` is
-        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
-        #   disk``. The format for the path specified in this value is resource specific
+        #   REQUIRED: The resource for which the policy is being requested. `resource` is
+        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
+        #   disk*`. The format for the path specified in this value is resource specific
         #   and is specified in the `getIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
@@ -321,9 +321,9 @@ module Google
         # understand how the service account is being used before removing or updating
         # its roles.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. `resource` is
-        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
-        #   disk``. The format for the path specified in this value is resource specific
+        #   REQUIRED: The resource for which the policy is being specified. `resource` is
+        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
+        #   disk*`. The format for the path specified in this value is resource specific
         #   and is specified in the `setIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
@@ -357,10 +357,10 @@ module Google
         
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. `resource`
-        #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
-        #   disks/`disk``. The format for the path specified in this value is resource
-        #   specific and is specified in the `testIamPermissions` documentation. rpc.
+        #   REQUIRED: The resource for which the policy detail is being requested. `
+        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
+        #   zone*/disks/*disk*`. The format for the path specified in this value is
+        #   resource specific and is specified in the `testIamPermissions` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -504,9 +504,9 @@ module Google
         # Sets the access control policy on an Organization resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. `resource` is
-        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
-        #   disk``. The format for the path specified in this value is resource specific
+        #   REQUIRED: The resource for which the policy is being specified. `resource` is
+        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
+        #   disk*`. The format for the path specified in this value is resource specific
         #   and is specified in the `setIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
@@ -541,9 +541,9 @@ module Google
         # Gets the access control policy for an Organization resource. May be empty if
         # no such policy or resource exists.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. `resource` is
-        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
-        #   disk``. The format for the path specified in this value is resource specific
+        #   REQUIRED: The resource for which the policy is being requested. `resource` is
+        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
+        #   disk*`. The format for the path specified in this value is resource specific
         #   and is specified in the `getIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
@@ -577,10 +577,10 @@ module Google
         
         # Returns permissions that a caller has on the specified Organization.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. `resource`
-        #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
-        #   disks/`disk``. The format for the path specified in this value is resource
-        #   specific and is specified in the `testIamPermissions` documentation. rpc.
+        #   REQUIRED: The resource for which the policy detail is being requested. `
+        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
+        #   zone*/disks/*disk*`. The format for the path specified in this value is
+        #   resource specific and is specified in the `testIamPermissions` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

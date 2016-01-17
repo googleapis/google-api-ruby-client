@@ -644,7 +644,8 @@ module Google
         attr_accessor :status
       
         # Subscription period, specified in ISO 8601 format. Acceptable values are "P1W"
-        # (one week), "P1M" (one month) and "P1Y" (one year).
+        # (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "
+        # P1Y" (one year).
         # Corresponds to the JSON property `subscriptionPeriod`
         # @return [String]
         attr_accessor :subscription_period
@@ -1131,6 +1132,34 @@ module Google
       end
       
       # 
+      class Prorate
+        include Google::Apis::Core::Hashable
+      
+        # Default price cannot be zero and must be less than the full subscription price.
+        # Default price is always in the developer's Checkout merchant currency.
+        # Targeted countries have their prices set automatically based on the
+        # default_price.
+        # Corresponds to the JSON property `defaultPrice`
+        # @return [Google::Apis::AndroidpublisherV2::Price]
+        attr_accessor :default_price
+      
+        # Defines the first day on which the price takes effect.
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::AndroidpublisherV2::MonthDay]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_price = args[:default_price] unless args[:default_price].nil?
+          @start = args[:start] unless args[:start].nil?
+        end
+      end
+      
+      # 
       class Season
         include Google::Apis::Core::Hashable
       
@@ -1138,6 +1167,13 @@ module Google
         # Corresponds to the JSON property `end`
         # @return [Google::Apis::AndroidpublisherV2::MonthDay]
         attr_accessor :end
+      
+        # Optionally present list of prorations for the season. Each proration is a one-
+        # off discounted entry into a subscription. Each proration contains the first
+        # date on which the discount is available and the new pricing information.
+        # Corresponds to the JSON property `prorations`
+        # @return [Array<Google::Apis::AndroidpublisherV2::Prorate>]
+        attr_accessor :prorations
       
         # Inclusive start date of the recurrence period.
         # Corresponds to the JSON property `start`
@@ -1151,6 +1187,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end = args[:end] unless args[:end].nil?
+          @prorations = args[:prorations] unless args[:prorations].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end

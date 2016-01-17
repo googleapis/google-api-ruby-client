@@ -90,6 +90,10 @@ module Google
           @path.reduce('') { |a, e| a + '/' + e }
         end
 
+        def option(opt_name)
+          @names[sprintf('%s?%s', key, opt_name)]
+        end
+
         private
 
         # For RPC style methods, pick a name based off the request objects.
@@ -184,6 +188,7 @@ module Google
                 value.constant = constantize_scope(key)
               end
             end
+            @rest_description.force_alt_json = @names.option('force_alt_json')
             @rest_description.parameters.reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
             annotate_parameters(@rest_description.parameters)
             annotate_resource(@rest_description.name, @rest_description)

@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module WebmastersV3
-      # Webmaster Tools API
+      # Search Console API
       #
-      # Lets you view Google Webmaster Tools data for your verified sites.
+      # Lets you view Google Search Console data for your verified sites.
       #
       # @example
       #    require 'google/apis/webmasters_v3'

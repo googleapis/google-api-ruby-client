@@ -3506,6 +3506,12 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # Indicates whether bot filtering is enabled for this view (profile).
+        # Corresponds to the JSON property `botFilteringEnabled`
+        # @return [Boolean]
+        attr_accessor :bot_filtering_enabled
+        alias_method :bot_filtering_enabled?, :bot_filtering_enabled
+      
         # Child link for this view (profile). Points to the list of goals for this view (
         # profile).
         # Corresponds to the JSON property `childLink`
@@ -3641,6 +3647,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
+          @bot_filtering_enabled = args[:bot_filtering_enabled] unless args[:bot_filtering_enabled].nil?
           @child_link = args[:child_link] unless args[:child_link].nil?
           @created = args[:created] unless args[:created].nil?
           @currency = args[:currency] unless args[:currency].nil?

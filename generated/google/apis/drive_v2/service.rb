@@ -1972,7 +1972,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a property to a file.
+        # Adds a property to a file, or updates it if it already exists.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV2::Property] property_object
@@ -2045,7 +2045,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a property. This method supports patch semantics.
+        # Updates a property, or adds it if it doesn't exist. This method supports patch
+        # semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
@@ -2089,7 +2090,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a property.
+        # Updates a property, or adds it if it doesn't exist.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key

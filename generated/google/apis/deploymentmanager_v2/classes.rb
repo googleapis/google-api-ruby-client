@@ -374,7 +374,8 @@ module Google
         attr_accessor :http_error_message
       
         # [Output Only] If the operation fails, this field contains the HTTP error
-        # message that was returned. For example, a 404 means the resource was not found.
+        # status code that was returned. For example, a 404 means the resource was not
+        # found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code
@@ -409,14 +410,14 @@ module Google
       
         # [Output Only] An optional progress indicator that ranges from 0 to 100. There
         # is no requirement that this be linear or support any granularity of operations.
-        # This should not be used to guess at when the operation will be complete. This
+        # This should not be used to guess when the operation will be complete. This
         # number should monotonically increase as the operation progresses.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
       
-        # [Output Only] URL of the region where the operation resides. Only applicable
-        # for regional resources.
+        # [Output Only] URL of the region where the operation resides. Only available
+        # when performing regional operations.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -466,7 +467,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Warning>]
         attr_accessor :warnings
       
-        # [Output Only] URL of the zone where the operation resides.
+        # [Output Only] URL of the zone where the operation resides. Only available when
+        # performing per-zone operations.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone

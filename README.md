@@ -15,7 +15,7 @@ migrate to the latest version.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'google-api-client', '0.9.pre4'
+gem 'google-api-client', '0.9.pre5'
 
 ```
 
@@ -204,6 +204,16 @@ translate.key = 'YOUR_API_KEY_HERE'
 result = translate.list_translations(source: 'en', target: 'es', q: 'Hello world!')
 puts result.translations.first.translated_text
 ```
+
+## Samples
+
+Samples for versions 0.9 and onward can be found in the `samples` directory.
+Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
+
+Samples for previous versions can be found in the
+[google-api-ruby-client-samples](https://github.com/google/google-api-ruby-client-samples)
+repository.
+
 
 ## Generating APIs
 

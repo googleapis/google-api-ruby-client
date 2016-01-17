@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/data-transfer/
     module AdminDatatransferV1
       VERSION = 'DatatransferV1'
-      REVISION = '20150917'
+      REVISION = '20151124'
 
       # View and manage data transfers between users in your organization
       AUTH_ADMIN_DATATRANSFER = 'https://www.googleapis.com/auth/admin.datatransfer'

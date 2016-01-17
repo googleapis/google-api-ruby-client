@@ -82,10 +82,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobConfigurationLink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class JobConfigurationLoad
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -399,8 +395,6 @@ module Google
           property :dry_run, as: 'dryRun'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobConfigurationExtract, decorator: Google::Apis::BigqueryV2::JobConfigurationExtract::Representation
       
-          property :link, as: 'link', class: Google::Apis::BigqueryV2::JobConfigurationLink, decorator: Google::Apis::BigqueryV2::JobConfigurationLink::Representation
-      
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobConfigurationLoad, decorator: Google::Apis::BigqueryV2::JobConfigurationLoad::Representation
       
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobConfigurationQuery, decorator: Google::Apis::BigqueryV2::JobConfigurationQuery::Representation
@@ -419,17 +413,6 @@ module Google
           property :print_header, as: 'printHeader'
           property :source_table, as: 'sourceTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
-        end
-      end
-      
-      class JobConfigurationLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_disposition, as: 'createDisposition'
-          property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
-      
-          collection :source_uri, as: 'sourceUri'
-          property :write_disposition, as: 'writeDisposition'
         end
       end
       
@@ -468,6 +451,7 @@ module Google
           property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :flatten_results, as: 'flattenResults'
+          property :maximum_billing_tier, as: 'maximumBillingTier'
           property :preserve_nulls, as: 'preserveNulls'
           property :priority, as: 'priority'
           property :query, as: 'query'

@@ -303,7 +303,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed.
+        # (such as '*' or 'storage.*') are not allowed. For more information see IAM
+        # Overview.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions

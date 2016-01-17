@@ -162,18 +162,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ItemScope
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class Moment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class MomentsFeed
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class PeopleFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -616,115 +604,6 @@ module Google
           property :kind, as: 'kind'
           property :next_link, as: 'nextLink'
           property :next_page_token, as: 'nextPageToken'
-          property :title, as: 'title'
-          property :updated, as: 'updated', type: DateTime
-      
-        end
-      end
-      
-      class ItemScope
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :about, as: 'about', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          collection :additional_name, as: 'additionalName'
-          property :address, as: 'address', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :address_country, as: 'addressCountry'
-          property :address_locality, as: 'addressLocality'
-          property :address_region, as: 'addressRegion'
-          collection :associated_media, as: 'associated_media', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :attendee_count, as: 'attendeeCount'
-          collection :attendees, as: 'attendees', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :audio, as: 'audio', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          collection :author, as: 'author', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :best_rating, as: 'bestRating'
-          property :birth_date, as: 'birthDate'
-          property :by_artist, as: 'byArtist', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :caption, as: 'caption'
-          property :content_size, as: 'contentSize'
-          property :content_url, as: 'contentUrl'
-          collection :contributor, as: 'contributor', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :date_created, as: 'dateCreated'
-          property :date_modified, as: 'dateModified'
-          property :date_published, as: 'datePublished'
-          property :description, as: 'description'
-          property :duration, as: 'duration'
-          property :embed_url, as: 'embedUrl'
-          property :end_date, as: 'endDate'
-          property :family_name, as: 'familyName'
-          property :gender, as: 'gender'
-          property :geo, as: 'geo', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :given_name, as: 'givenName'
-          property :height, as: 'height'
-          property :id, as: 'id'
-          property :image, as: 'image'
-          property :in_album, as: 'inAlbum', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :kind, as: 'kind'
-          property :latitude, as: 'latitude'
-          property :location, as: 'location', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :longitude, as: 'longitude'
-          property :name, as: 'name'
-          property :part_of_tv_series, as: 'partOfTVSeries', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          collection :performers, as: 'performers', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :player_type, as: 'playerType'
-          property :post_office_box_number, as: 'postOfficeBoxNumber'
-          property :postal_code, as: 'postalCode'
-          property :rating_value, as: 'ratingValue'
-          property :review_rating, as: 'reviewRating', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :start_date, as: 'startDate'
-          property :street_address, as: 'streetAddress'
-          property :text, as: 'text'
-          property :thumbnail, as: 'thumbnail', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :thumbnail_url, as: 'thumbnailUrl'
-          property :ticker_symbol, as: 'tickerSymbol'
-          property :type, as: 'type'
-          property :url, as: 'url'
-          property :width, as: 'width'
-          property :worst_rating, as: 'worstRating'
-        end
-      end
-      
-      class Moment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :object, as: 'object', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :result, as: 'result', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :start_date, as: 'startDate', type: DateTime
-      
-          property :target, as: 'target', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScope::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class MomentsFeed
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          collection :items, as: 'items', class: Google::Apis::PlusV1::Moment, decorator: Google::Apis::PlusV1::Moment::Representation
-      
-          property :kind, as: 'kind'
-          property :next_link, as: 'nextLink'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
           property :title, as: 'title'
           property :updated, as: 'updated', type: DateTime
       
