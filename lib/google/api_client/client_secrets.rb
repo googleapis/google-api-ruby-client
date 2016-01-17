@@ -80,30 +80,27 @@ module Google
       #
       # @param [Hash] options
       #   Parsed client secrets files
-      def initialize(options={})
+      def initialize(options = {})
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
-        fdata = options[@flow]
+
         # Make hash keys symbol
-        fdata = fdata.each_with_object({}) { |(k, v), memo| memo[k.to_sym] = v }
-        @client_id = fdata[:client_id]
-        @client_secret = fdata[:client_secret]
-        @redirect_uris = fdata[:redirect_uris]
-        @redirect_uris ||= [fdata[:redirect_uri]].compact
-        @javascript_origins = fdata[:javascript_origins]
-        @javascript_origins ||= [fdata[:javascript_origin]].compact
-        @authorization_uri = fdata[:auth_uri]
-        @authorization_uri ||= fdata[:authorization_uri]
-        @token_credential_uri = fdata[:token_uri]
-        @token_credential_uri ||= fdata[:token_credential_uri]
+        fdata = options[@flow].each_with_object({}) { |(k, v), memo| memo[k.to_sym] = v }
+
+        @authorization_uri    = fdata[:auth_uri] || fdata[:authorization_uri]
+        @client_id            = fdata[:client_id]
+        @client_secret        = fdata[:client_secret]
+        @javascript_origins   = fdata[:javascript_origins] || [fdata[:javascript_origin]].compact
+        @redirect_uris        = fdata[:redirect_uris] || [fdata[:redirect_uri]].compact
+        @token_credential_uri = fdata[:token_uri] || fdata[:token_credential_uri]
 
         # Associated token info
-        @access_token = fdata[:access_token]
+        @access_token  = fdata[:access_token]
+        @expires_at    = fdata[:expires_at]
+        @expires_in    = fdata[:expires_in]
+        @id_token      = fdata[:id_token]
+        @issued_at     = fdata[:issued_at]
         @refresh_token = fdata[:refresh_token]
-        @id_token = fdata[:id_token]
-        @expires_in = fdata[:expires_in]
-        @expires_at = fdata[:expires_at]
-        @issued_at = fdata[:issued_at]
       end
 
       attr_reader(
