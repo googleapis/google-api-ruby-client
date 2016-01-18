@@ -84,26 +84,27 @@ module Google
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
         fdata = options[@flow]
-        # Make hash keys symbol
-        fdata = fdata.each_with_object({}) { |i, memo| memo[i[0].to_sym] = i[1] }
-        @client_id = fdata[:client_id]
-        @client_secret = fdata[:client_secret]
-        @redirect_uris = fdata[:redirect_uris]
-        @redirect_uris ||= [fdata[:redirect_uri]].compact
-        @javascript_origins = fdata[:javascript_origins]
-        @javascript_origins ||= [fdata[:javascript_origin]].compact
-        @authorization_uri = fdata[:auth_uri]
+        @client_id = fdata[:client_id] || fdata["client_id"]
+        @client_secret = fdata[:client_secret] || fdata["client_secret"]
+        @redirect_uris = fdata[:redirect_uris] || fdata["redirect_uris"]
+        @redirect_uris ||= [fdata[:redirect_uri] || fdata["redirect_uri"]].compact
+        @javascript_origins = (
+          fdata[:javascript_origins] ||
+          fdata["javascript_origins"]
+        )
+        @javascript_origins ||= [fdata[:javascript_origin] || fdata["javascript_origin"]].compact
+        @authorization_uri = fdata[:auth_uri] || fdata["auth_uri"]
         @authorization_uri ||= fdata[:authorization_uri]
-        @token_credential_uri = fdata[:token_uri]
+        @token_credential_uri = fdata[:token_uri] || fdata["token_uri"]
         @token_credential_uri ||= fdata[:token_credential_uri]
 
         # Associated token info
-        @access_token = fdata[:access_token]
-        @refresh_token = fdata[:refresh_token]
-        @id_token = fdata[:id_token]
-        @expires_in = fdata[:expires_in]
-        @expires_at = fdata[:expires_at]
-        @issued_at = fdata[:issued_at]
+        @access_token = fdata[:access_token] || fdata["access_token"]
+        @refresh_token = fdata[:refresh_token] || fdata["refresh_token"]
+        @id_token = fdata[:id_token] || fdata["id_token"]
+        @expires_in = fdata[:expires_in] || fdata["expires_in"]
+        @expires_at = fdata[:expires_at] || fdata["expires_at"]
+        @issued_at = fdata[:issued_at] || fdata["issued_at"]
       end
 
       attr_reader(
