@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/ysksn/google-api-ruby-client/badge.svg?branch=master)](https://coveralls.io/github/ysksn/google-api-ruby-client?branch=master)
+
 # Google API Client
 
 ## Alpha
