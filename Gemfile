@@ -16,6 +16,11 @@ group :development do
   gem 'launchy', '~> 2.4'
   gem 'dotenv', '~> 2.0'
   gem 'fakefs', '~> 0.6', require: "fakefs/safe"
+  gem 'google-id-token', '~> 1.3'
+  gem 'os', '~> 0.9'
+  gem 'rmail', '~> 1.1'
+  gem 'sinatra', '~> 1.4'
+  gem 'redis', '~> 3.2'
 end
 
 platforms :jruby do
