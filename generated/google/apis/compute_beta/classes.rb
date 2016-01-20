@@ -955,15 +955,17 @@ module Google
         # @return [String]
         attr_accessor :group
       
-        # The max RPS of the group. Can be used with either balancing mode, but required
-        # if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.
+        # The max requests per second (RPS) of the group. Can be used with either
+        # balancing mode, but required if RATE mode. For RATE mode, either maxRate or
+        # maxRatePerInstance must be set.
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
       
-        # The max RPS that a single backed instance can handle. This is used to
-        # calculate the capacity of the group. Can be used in either balancing mode. For
-        # RATE mode, either maxRate or maxRatePerInstance must be set.
+        # The max requests per second (RPS) that a single backed instance can handle.
+        # This is used to calculate the capacity of the group. Can be used in either
+        # balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
+        # set.
         # Corresponds to the JSON property `maxRatePerInstance`
         # @return [Float]
         attr_accessor :max_rate_per_instance
@@ -991,7 +993,7 @@ module Google
       end
       
       # A BackendService resource. This resource defines a group of backend virtual
-      # machines together with their serving capacity.
+      # machines and their serving capacity.
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -1048,7 +1050,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated in favor of port name. The TCP port to connect on the backend. The
+        # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
@@ -1968,9 +1970,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # URL of the network resource for this firewall rule. This field is required for
-        # creating an instance but optional when creating a firewall rule. If not
-        # specified when creating a firewall rule, the default network is used:
+        # URL of the network resource for this firewall rule. If not specified when
+        # creating a firewall rule, the default network is used:
         # global/networks/default
         # If you choose to specify this property, you can specify the network as a full
         # or partial URL. For example, the following are all valid URLs:
@@ -2188,7 +2189,9 @@ module Google
         # The URL of the target resource to receive the matched traffic. For regional
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global
-        # TargetHttpProxy or TargetHttpsProxy resource.
+        # TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of
+        # a type appropriate to the target object. For example, TargetHttpProxy requires
+        # HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -3035,8 +3038,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3047,8 +3050,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
         attr_accessor :disks
       
-        # [Output Only] Unique identifier for the resource. This identifier is defined
-        # by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3097,12 +3100,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::Metadata]
         attr_accessor :metadata
       
-        # Name of the resource; provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # The name of the resource, provided by the client when initially creating the
+        # resource. The resource name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        # must be a lowercase letter, and all following characters must be a dash,
+        # lowercase letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3119,7 +3122,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
       
-        # [Output Only] Server defined URL for this resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -3203,12 +3206,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server defined URL for this resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -3293,6 +3300,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
+        # [Output Only] The URL of the subnetwork to which all instances in the instance
+        # group belong.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         # [Output Only] The URL of the zone where the instance group is located.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -3314,6 +3327,7 @@ module Google
           @network = args[:network] unless args[:network].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
           @size = args[:size] unless args[:size].nil?
+          @subnetwork = args[:subnetwork] unless args[:subnetwork].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
@@ -3558,7 +3572,9 @@ module Google
         attr_accessor :abandoning
       
         # [Output Only] The number of instances in the managed instance group that are
-        # scheduled to be created or are currently being created.
+        # scheduled to be created or are currently being created. If the group fails to
+        # create one of these instances, it tries again until it creates the instance
+        # successfully.
         # Corresponds to the JSON property `creating`
         # @return [Fixnum]
         attr_accessor :creating
@@ -4233,12 +4249,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server defined URL for this resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -4963,7 +4983,11 @@ module Google
         # for the instance. Possible values:
         # - NONE The instance is running, and the managed instance group does not have
         # any scheduled actions for this instance.
-        # - CREATING The managed instance group is creating this instance.
+        # - CREATING The managed instance group is creating this instance. If the group
+        # fails to create this instance, it will try again until it is successful.
+        # - CREATING_WITHOUT_RETRIES The managed instance group is attempting to create
+        # this instance only once. If the group fails to create this instance, it does
+        # not try again and the group's target_size value is decreased.
         # - RECREATING The managed instance group is recreating this instance.
         # - DELETING The managed instance group is permanently deleting this instance.
         # - ABANDONING The managed instance group is abandoning this instance. The
@@ -5191,8 +5215,8 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
-        # When set to true, the subnetwork is created in "auto subnet mode". When set to
-        # false, the subnetwork is in "custom subnet mode".
+        # When set to true, the network is created in "auto subnet mode". When set to
+        # false, the network is in "custom subnet mode".
         # In "auto subnet mode", a newly created network is assigned the default CIDR of
         # 10.128.0.0/9 and it automatically creates one subnetwork per region.
         # Corresponds to the JSON property `autoCreateSubnetworks`
@@ -5306,15 +5330,15 @@ module Google
         # @return [String]
         attr_accessor :network_ip
       
-        # URL of the subnetwork resource for this instance. This should not be provided
-        # if the network resource is in legacy mode. If the network is in auto subnet
-        # mode, providing the subnetwork is optional. If the network is in custom subnet
-        # mode then the field should be specified. If you specify this property, you can
-        # specify the subnetwork as a full or partial URL. For example, the following
-        # are all valid URLs:
+        # The URL of the Subnetwork resource for this instance. If the network resource
+        # is in legacy mode, do not provide this property. If the network is in auto
+        # subnet mode, providing the subnetwork is optional. If the network is in custom
+        # subnet mode, then this field should be specified. If you specify this property,
+        # you can specify the subnetwork as a full or partial URL. For example, the
+        # following are all valid URLs:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
         # subnetworks/subnetwork
-        # - projects/project/zones/zone/networks/network
+        # - zones/zone/subnetworks/subnetwork
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -5421,7 +5445,8 @@ module Google
         attr_accessor :http_error_message
       
         # [Output Only] If the operation fails, this field contains the HTTP error
-        # message that was returned. For example, a 404 means the resource was not found.
+        # status code that was returned. For example, a 404 means the resource was not
+        # found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code
@@ -5456,14 +5481,14 @@ module Google
       
         # [Output Only] An optional progress indicator that ranges from 0 to 100. There
         # is no requirement that this be linear or support any granularity of operations.
-        # This should not be used to guess at when the operation will be complete. This
+        # This should not be used to guess when the operation will be complete. This
         # number should monotonically increase as the operation progresses.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
       
-        # [Output Only] URL of the region where the operation resides. Only applicable
-        # for regional resources.
+        # [Output Only] URL of the region where the operation resides. Only available
+        # when performing regional operations.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -5513,7 +5538,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Operation::Warning>]
         attr_accessor :warnings
       
-        # [Output Only] URL of the zone where the operation resides.
+        # [Output Only] URL of the zone where the operation resides. Only available when
+        # performing per-zone operations.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -5861,8 +5887,14 @@ module Google
       class PathMatcher
         include Google::Apis::Core::Hashable
       
-        # The URL to the BackendService resource. This will be used if none of the
-        # pathRules defined by this PathMatcher is met by the URL's path portion.
+        # The full or partial URL to the BackendService resource. This will be used if
+        # none of the pathRules defined by this PathMatcher is matched by the URL's path
+        # portion. For example, the following are all valid URLs to a BackendService
+        # resource:
+        # - https://www.googleapis.com/compute/v1/projects/project/global/
+        # backendServices/backendService
+        # - compute/v1/projects/project/global/backendServices/backendService
+        # - global/backendServices/backendService
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -6178,7 +6210,7 @@ module Google
       
       # The route resource. A Route is a rule that specifies how certain packets
       # should be handled by the virtual network. Routes are associated with instances
-      # by tag and the set of Routes for a particular instance is called its routing
+      # by tags and the set of Routes for a particular instance is called its routing
       # table. For each packet leaving a instance, the system searches that instance's
       # routing table for a single best matching Route. Routes match packets by
       # destination IP address, preferring smaller or more specific ranges over larger
@@ -6234,15 +6266,15 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The URL to a gateway that should handle matching packets. Currently, this is
-        # only the internet gateway:  projects/<project-id>/global/gateways/default-
-        # internet-gateway
+        # The URL to a gateway that should handle matching packets. You can only specify
+        # the internet gateway using a full or partial valid URL:  projects/<project-id>/
+        # global/gateways/default-internet-gateway
         # Corresponds to the JSON property `nextHopGateway`
         # @return [String]
         attr_accessor :next_hop_gateway
       
-        # The fully-qualified URL to an instance that should handle matching packets.
-        # For example:
+        # The URL to an instance that should handle matching packets. You can specify
+        # this as a full or partial URL. For example:
         # https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         # Corresponds to the JSON property `nextHopInstance`
         # @return [String]
@@ -6263,9 +6295,10 @@ module Google
         # @return [String]
         attr_accessor :next_hop_vpn_tunnel
       
-        # Breaks ties between Routes of equal specificity. Routes with smaller values
-        # win when tied with routes with larger values. Default value is 1000. A valid
-        # range is between 0 and 65535.
+        # The priority of this route. Priority is used to break ties in cases where
+        # there is more than one matching route of equal prefix length. In the case of
+        # two routes with equal prefix length, the one with the lowest-numbered priority
+        # value wins. Default value is 1000. Valid range is 0 through 65535.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -6384,7 +6417,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A list of Route resources.
+        # [Output Only] A list of Route resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :items
@@ -6476,7 +6509,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Server defined URL for the resource.
+        # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -6575,7 +6608,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
-        # The source disk used to create this snapshot.
+        # [Output Only] The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -6644,7 +6677,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A list of Snapshot resources.
+        # [Output Only] A list of Snapshot resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeBeta::Snapshot>]
         attr_accessor :items
@@ -6683,8 +6716,8 @@ module Google
       end
       
       # An SslCertificate resource. This resource provides a mechanism to upload an
-      # SSL key and certificate to global HTTPS loadbalancer to serve secure
-      # connections.
+      # SSL key and certificate to the load balancer to serve secure connections from
+      # the user.
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -6812,47 +6845,50 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Gateway address for default routes to addresses outside this
-        # Subnetwork.
+        # [Output Only] The gateway address for default routes to reach destination
+        # addresses outside this subnetwork.
         # Corresponds to the JSON property `gatewayAddress`
         # @return [String]
         attr_accessor :gateway_address
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The range of internal addresses that are owned by this Subnetwork; provided by
-        # the client when the Subnetwork is created.
+        # The range of internal addresses that are owned by this subnetwork. Provide
+        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
+        # 168.0.0/16. Ranges must be unique and non-overlapping within a network.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork
+        # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # The name of the resource, provided by the client when initially creating the
+        # resource. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be
+        # a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # URL of the network to which this Subnetwork belongs; provided by the client
-        # when the Subnetwork is created. Only networks that are in the distributed mode
-        # can have Subnetworks.
+        # The URL of the network to which this subnetwork belongs, provided by the
+        # client when initially creating the subnetwork. Only networks that are in the
+        # distributed mode can have subnetworks.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -6890,22 +6926,28 @@ module Google
       class SubnetworkAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped Subnetwork lists.
+        # [Output] A map of scoped Subnetwork lists.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeBeta::SubnetworksScopedList>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#subnetworkAggregatedList for
+        # aggregated lists of subnetworks.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6933,7 +6975,8 @@ module Google
       class SubnetworkList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6943,12 +6986,17 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Subnetwork>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#subnetworkList for lists of
+        # subnetworks.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6976,13 +7024,12 @@ module Google
       class SubnetworksScopedList
         include Google::Apis::Core::Hashable
       
-        # List of Subnetworks contained in this scope.
+        # List of subnetworks contained in this scope.
         # Corresponds to the JSON property `subnetworks`
         # @return [Array<Google::Apis::ComputeBeta::Subnetwork>]
         attr_accessor :subnetworks
       
-        # Informational warning which replaces the list of addresses when the list is
-        # empty.
+        # An informational warning that appears when the list of addresses is empty.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::SubnetworksScopedList::Warning]
         attr_accessor :warning
@@ -6997,8 +7044,7 @@ module Google
           @warning = args[:warning] unless args[:warning].nil?
         end
         
-        # Informational warning which replaces the list of addresses when the list is
-        # empty.
+        # An informational warning that appears when the list of addresses is empty.
         class Warning
           include Google::Apis::Core::Hashable
         
@@ -7269,8 +7315,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # URLs to SslCertificate resources that are used to authenticate connections to
-        # Backends. Currently exactly one SSL certificate must be specified.
+        # URLs to SslCertificate resources that are used to authenticate connections
+        # between users and the load balancer. Currently exactly one SSL certificate
+        # must be specified.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -8636,8 +8683,9 @@ module Google
       
         # The name of an existing bucket in Cloud Storage where the usage report object
         # is stored. The Google Service Account is granted write access to this bucket.
-        # This is just the bucket name, with no gs:// or https://storage.googleapis.com/
-        # in front of it.
+        # This can either be the bucket name by itself, such as example-bucket, or the
+        # bucket name with gs:// or https://storage.googleapis.com/ in front of it, such
+        # as gs://example-bucket.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -8731,7 +8779,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Shared secret used to set the secure session between the GCE VPN gateway and
+        # Shared secret used to set the secure session between the Cloud VPN gateway and
         # the peer VPN gateway.
         # Corresponds to the JSON property `sharedSecret`
         # @return [String]

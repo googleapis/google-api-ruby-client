@@ -1554,6 +1554,7 @@ module Google
           property :network, as: 'network'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
+          property :subnetwork, as: 'subnetwork'
           property :zone, as: 'zone'
         end
       end

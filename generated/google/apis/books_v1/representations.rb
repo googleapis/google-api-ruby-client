@@ -992,9 +992,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body'
+          property :dont_show_notification, as: 'dont_show_notification'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
           property :notification_type, as: 'notification_type'
+          property :pcampaign_id, as: 'pcampaign_id'
           property :show_notification_settings_action, as: 'show_notification_settings_action'
           property :target_url, as: 'targetUrl'
           property :title, as: 'title'
@@ -1106,6 +1108,7 @@ module Google
             property :banner_image_url, as: 'bannerImageUrl'
             property :image_url, as: 'imageUrl'
             property :series_id, as: 'seriesId'
+            property :series_type, as: 'seriesType'
             property :title, as: 'title'
           end
         end
@@ -1323,10 +1326,15 @@ module Google
         class UserInfo
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :acquired_time, as: 'acquiredTime', type: DateTime
+        
             property :acquisition_type, as: 'acquisitionType'
             property :copy, as: 'copy', class: Google::Apis::BooksV1::Volume::UserInfo::Copy, decorator: Google::Apis::BooksV1::Volume::UserInfo::Copy::Representation
         
             property :entitlement_type, as: 'entitlementType'
+            property :is_family_shared_from_user, as: 'isFamilySharedFromUser'
+            property :is_family_shared_to_user, as: 'isFamilySharedToUser'
+            property :is_family_sharing_allowed, as: 'isFamilySharingAllowed'
             property :is_in_my_books, as: 'isInMyBooks'
             property :is_preordered, as: 'isPreordered'
             property :is_purchased, as: 'isPurchased'

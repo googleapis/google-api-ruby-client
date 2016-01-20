@@ -1996,6 +1996,12 @@ module Google
         attr_accessor :body
       
         # 
+        # Corresponds to the JSON property `dont_show_notification`
+        # @return [Boolean]
+        attr_accessor :dont_show_notification
+        alias_method :dont_show_notification?, :dont_show_notification
+      
+        # 
         # Corresponds to the JSON property `iconUrl`
         # @return [String]
         attr_accessor :icon_url
@@ -2009,6 +2015,11 @@ module Google
         # Corresponds to the JSON property `notification_type`
         # @return [String]
         attr_accessor :notification_type
+      
+        # 
+        # Corresponds to the JSON property `pcampaign_id`
+        # @return [String]
+        attr_accessor :pcampaign_id
       
         # 
         # Corresponds to the JSON property `show_notification_settings_action`
@@ -2033,9 +2044,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @body = args[:body] unless args[:body].nil?
+          @dont_show_notification = args[:dont_show_notification] unless args[:dont_show_notification].nil?
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @notification_type = args[:notification_type] unless args[:notification_type].nil?
+          @pcampaign_id = args[:pcampaign_id] unless args[:pcampaign_id].nil?
           @show_notification_settings_action = args[:show_notification_settings_action] unless args[:show_notification_settings_action].nil?
           @target_url = args[:target_url] unless args[:target_url].nil?
           @title = args[:title] unless args[:title].nil?
@@ -2411,6 +2424,11 @@ module Google
           attr_accessor :series_id
         
           # 
+          # Corresponds to the JSON property `seriesType`
+          # @return [String]
+          attr_accessor :series_type
+        
+          # 
           # Corresponds to the JSON property `title`
           # @return [String]
           attr_accessor :title
@@ -2424,6 +2442,7 @@ module Google
             @banner_image_url = args[:banner_image_url] unless args[:banner_image_url].nil?
             @image_url = args[:image_url] unless args[:image_url].nil?
             @series_id = args[:series_id] unless args[:series_id].nil?
+            @series_type = args[:series_type] unless args[:series_type].nil?
             @title = args[:title] unless args[:title].nil?
           end
         end
@@ -3144,6 +3163,13 @@ module Google
         class UserInfo
           include Google::Apis::Core::Hashable
         
+          # Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time
+          # format) Acquiring includes purchase, user upload, receiving family sharing,
+          # etc.
+          # Corresponds to the JSON property `acquiredTime`
+          # @return [DateTime]
+          attr_accessor :acquired_time
+        
           # How this volume was acquired.
           # Corresponds to the JSON property `acquisitionType`
           # @return [Fixnum]
@@ -3158,6 +3184,26 @@ module Google
           # Corresponds to the JSON property `entitlementType`
           # @return [Fixnum]
           attr_accessor :entitlement_type
+        
+          # Whether or not the user shared this volume with the family.
+          # Corresponds to the JSON property `isFamilySharedFromUser`
+          # @return [Boolean]
+          attr_accessor :is_family_shared_from_user
+          alias_method :is_family_shared_from_user?, :is_family_shared_from_user
+        
+          # Whether or not the user received this volume through family sharing.
+          # Corresponds to the JSON property `isFamilySharedToUser`
+          # @return [Boolean]
+          attr_accessor :is_family_shared_to_user
+          alias_method :is_family_shared_to_user?, :is_family_shared_to_user
+        
+          # Whether or not this volume can be shared with the family by the user. This
+          # includes sharing eligibility of both the volume and the user. If the value is
+          # true, the user can initiate a family sharing action.
+          # Corresponds to the JSON property `isFamilySharingAllowed`
+          # @return [Boolean]
+          attr_accessor :is_family_sharing_allowed
+          alias_method :is_family_sharing_allowed?, :is_family_sharing_allowed
         
           # Whether or not this volume is currently in "my books."
           # Corresponds to the JSON property `isInMyBooks`
@@ -3224,9 +3270,13 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @acquired_time = args[:acquired_time] unless args[:acquired_time].nil?
             @acquisition_type = args[:acquisition_type] unless args[:acquisition_type].nil?
             @copy = args[:copy] unless args[:copy].nil?
             @entitlement_type = args[:entitlement_type] unless args[:entitlement_type].nil?
+            @is_family_shared_from_user = args[:is_family_shared_from_user] unless args[:is_family_shared_from_user].nil?
+            @is_family_shared_to_user = args[:is_family_shared_to_user] unless args[:is_family_shared_to_user].nil?
+            @is_family_sharing_allowed = args[:is_family_sharing_allowed] unless args[:is_family_sharing_allowed].nil?
             @is_in_my_books = args[:is_in_my_books] unless args[:is_in_my_books].nil?
             @is_preordered = args[:is_preordered] unless args[:is_preordered].nil?
             @is_purchased = args[:is_purchased] unless args[:is_purchased].nil?

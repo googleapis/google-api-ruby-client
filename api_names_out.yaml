@@ -198,7 +198,7 @@
 "/androidpublisher:v2/ApksListResponse": list_apks_response
 "/androidpublisher:v2/EntitlementsListResponse": list_entitlements_response
 "/androidpublisher:v2/ExpansionFilesUploadResponse": upload_expansion_files_response
-"/androidpublisher:v2/ImagesDeleteAllResponse": images_delete_all_response
+"/androidpublisher:v2/ImagesDeleteAllResponse": delete_all_images_response
 "/androidpublisher:v2/ImagesListResponse": list_images_response
 "/androidpublisher:v2/ImagesUploadResponse": upload_images_response
 "/androidpublisher:v2/InappproductsBatchRequest": in_app_products_batch_request
@@ -2215,6 +2215,7 @@
 "/compute:beta/InstanceGroup/network": network
 "/compute:beta/InstanceGroup/selfLink": self_link
 "/compute:beta/InstanceGroup/size": size
+"/compute:beta/InstanceGroup/subnetwork": subnetwork
 "/compute:beta/InstanceGroup/zone": zone
 "/compute:beta/InstanceGroupAggregatedList": instance_group_aggregated_list
 "/compute:beta/InstanceGroupAggregatedList/id": id
@@ -7549,6 +7550,7 @@
 "/books:v1/books.myconfig.requestAccess/volumeId": volume_id
 "/books:v1/books.myconfig.syncVolumeLicenses/cpksver": cpksver
 "/books:v1/books.myconfig.syncVolumeLicenses/features": features
+"/books:v1/books.myconfig.syncVolumeLicenses/includeNonComicsSeries": include_non_comics_series
 "/books:v1/books.myconfig.syncVolumeLicenses/locale": locale
 "/books:v1/books.myconfig.syncVolumeLicenses/nonce": nonce
 "/books:v1/books.myconfig.syncVolumeLicenses/showPreorders": show_preorders
@@ -7612,6 +7614,7 @@
 "/books:v1/books.notification.get/locale": locale
 "/books:v1/books.notification.get/notification_id": notification_id
 "/books:v1/books.notification.get/source": source
+"/books:v1/books.notification.get/targetIds": target_ids
 "/books:v1/books.onboarding.listCategories/locale": locale
 "/books:v1/books.onboarding.listCategoryVolumes/categoryId": category_id
 "/books:v1/books.onboarding.listCategoryVolumes/locale": locale
@@ -7622,6 +7625,7 @@
 "/books:v1/books.personalizedstream.get/locale": locale
 "/books:v1/books.personalizedstream.get/maxAllowedMaturityRating": max_allowed_maturity_rating
 "/books:v1/books.personalizedstream.get/source": source
+"/books:v1/books.personalizedstream.get/targetIds": target_ids
 "/books:v1/books.promooffer.accept/androidId": android_id
 "/books:v1/books.promooffer.accept/device": device
 "/books:v1/books.promooffer.accept/manufacturer": manufacturer
@@ -7651,6 +7655,7 @@
 "/books:v1/books.series.membership.get/series_id": series_id
 "/books:v1/books.volumes.get": get_volume
 "/books:v1/books.volumes.get/country": country
+"/books:v1/books.volumes.get/includeNonComicsSeries": include_non_comics_series
 "/books:v1/books.volumes.get/partner": partner
 "/books:v1/books.volumes.get/projection": projection
 "/books:v1/books.volumes.get/source": source
@@ -7940,9 +7945,11 @@
 "/books:v1/Metadata/kind": kind
 "/books:v1/Notification": notification
 "/books:v1/Notification/body": body
+"/books:v1/Notification/dont_show_notification": dont_show_notification
 "/books:v1/Notification/iconUrl": icon_url
 "/books:v1/Notification/kind": kind
 "/books:v1/Notification/notification_type": notification_type
+"/books:v1/Notification/pcampaign_id": pcampaign_id
 "/books:v1/Notification/show_notification_settings_action": show_notification_settings_action
 "/books:v1/Notification/targetUrl": target_url
 "/books:v1/Notification/title": title
@@ -7995,6 +8002,7 @@
 "/books:v1/Series/series/series/bannerImageUrl": banner_image_url
 "/books:v1/Series/series/series/imageUrl": image_url
 "/books:v1/Series/series/series/seriesId": series_id
+"/books:v1/Series/series/series/seriesType": series_type
 "/books:v1/Series/series/series/title": title
 "/books:v1/Seriesmembership/kind": kind
 "/books:v1/Seriesmembership/member": member
@@ -8067,6 +8075,7 @@
 "/books:v1/Volume/searchInfo/textSnippet": text_snippet
 "/books:v1/Volume/selfLink": self_link
 "/books:v1/Volume/userInfo": user_info
+"/books:v1/Volume/userInfo/acquiredTime": acquired_time
 "/books:v1/Volume/userInfo/acquisitionType": acquisition_type
 "/books:v1/Volume/userInfo/copy": copy
 "/books:v1/Volume/userInfo/copy/allowedCharacterCount": allowed_character_count
@@ -8074,6 +8083,9 @@
 "/books:v1/Volume/userInfo/copy/remainingCharacterCount": remaining_character_count
 "/books:v1/Volume/userInfo/copy/updated": updated
 "/books:v1/Volume/userInfo/entitlementType": entitlement_type
+"/books:v1/Volume/userInfo/isFamilySharedFromUser": is_family_shared_from_user
+"/books:v1/Volume/userInfo/isFamilySharedToUser": is_family_shared_to_user
+"/books:v1/Volume/userInfo/isFamilySharingAllowed": is_family_sharing_allowed
 "/books:v1/Volume/userInfo/isInMyBooks": is_in_my_books
 "/books:v1/Volume/userInfo/isPreordered": is_preordered
 "/books:v1/Volume/userInfo/isPurchased": is_purchased
@@ -25189,6 +25201,7 @@
 "/youtube:v3/ContentRating/djctqRating": djctq_rating
 "/youtube:v3/ContentRating/djctqRatingReasons": djctq_rating_reasons
 "/youtube:v3/ContentRating/djctqRatingReasons/djctq_rating_reason": djctq_rating_reason
+"/youtube:v3/ContentRating/ecbmctRating": ecbmct_rating
 "/youtube:v3/ContentRating/eefilmRating": eefilm_rating
 "/youtube:v3/ContentRating/egfilmRating": egfilm_rating
 "/youtube:v3/ContentRating/eirinRating": eirin_rating
@@ -25729,7 +25742,6 @@
 "/youtube:v3/Video": video
 "/youtube:v3/Video/ageGating": age_gating
 "/youtube:v3/Video/contentDetails": content_details
-"/youtube:v3/Video/conversionPings": conversion_pings
 "/youtube:v3/Video/etag": etag
 "/youtube:v3/Video/fileDetails": file_details
 "/youtube:v3/Video/id": id
@@ -25808,12 +25820,6 @@
 "/youtube:v3/VideoContentDetailsRegionRestriction/allowed/allowed": allowed
 "/youtube:v3/VideoContentDetailsRegionRestriction/blocked": blocked
 "/youtube:v3/VideoContentDetailsRegionRestriction/blocked/blocked": blocked
-"/youtube:v3/VideoConversionPing": video_conversion_ping
-"/youtube:v3/VideoConversionPing/context": context
-"/youtube:v3/VideoConversionPing/conversionUrl": conversion_url
-"/youtube:v3/VideoConversionPings": video_conversion_pings
-"/youtube:v3/VideoConversionPings/pings": pings
-"/youtube:v3/VideoConversionPings/pings/ping": ping
 "/youtube:v3/VideoFileDetails": video_file_details
 "/youtube:v3/VideoFileDetails/audioStreams": audio_streams
 "/youtube:v3/VideoFileDetails/audioStreams/audio_stream": audio_stream

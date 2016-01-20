@@ -52,7 +52,7 @@ module Google
           super('https://www.googleapis.com/', 'compute/beta/projects/')
         end
         
-        # Retrieves the list of addresses grouped by scope.
+        # Retrieves an aggregated list of addresses.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -254,7 +254,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of address resources contained within the specified region.
+        # Retrieves a list of address resources contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -335,7 +335,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of autoscalers grouped by scope.
+        # Retrieves an aggregated list of autoscalers.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -537,7 +537,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of autoscaler resources contained within the specified zone.
+        # Retrieves a list of autoscaler resources contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -825,7 +825,9 @@ module Google
         end
         
         # Creates a BackendService resource in the specified project using the data
-        # included in the request.
+        # included in the request. There are several restrictions and guidelines to keep
+        # in mind when creating a backend service. Read  Restrictions and Guidelines for
+        # more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
@@ -942,7 +944,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the BackendService resource. This method supports
+        # Updates the entire content of the BackendService resource. There are several
+        # restrictions and guidelines to keep in mind when updating a backend service.
+        # Read  Restrictions and Guidelines for more information. This method supports
         # patch semantics.
         # @param [String] project
         #   Project ID for this request.
@@ -984,7 +988,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the BackendService resource.
+        # Updates the entire content of the BackendService resource. There are several
+        # restrictions and guidelines to keep in mind when updating a backend service.
+        # Read  Restrictions and Guidelines for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1025,7 +1031,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of disk type resources grouped by scope.
+        # Retrieves an aggregated list of disk type resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1144,7 +1150,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of disk type resources available to the specified project.
+        # Retrieves a list of disk type resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1225,7 +1231,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of persistent disks grouped by scope.
+        # Retrieves an aggregated list of persistent disks.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1476,7 +1482,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of persistent disks contained within the specified zone.
+        # Retrieves a list of persistent disks contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1877,7 +1883,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of forwarding rules grouped by scope.
+        # Retrieves an aggregated list of forwarding rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2079,7 +2085,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of ForwardingRule resources available to the specified
+        # Retrieves a list of ForwardingRule resources available to the specified
         # project and region.
         # @param [String] project
         #   Project ID for this request.
@@ -2321,7 +2327,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of global address resources.
+        # Retrieves a list of global address resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2514,7 +2520,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of ForwardingRule resources available to the specified
+        # Retrieves a list of ForwardingRule resources available to the specified
         # project.
         # @param [String] project
         #   Project ID for this request.
@@ -2635,7 +2641,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of all operations grouped by scope.
+        # Retrieves an aggregated list of all operations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2787,8 +2793,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Operation resources contained within the specified
-        # project.
+        # Retrieves a list of Operation resources contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3793,7 +3798,8 @@ module Google
         end
         
         # Deletes the specified managed instance group and all of the instances in that
-        # group.
+        # group. Note that the instance group must not belong to a backend service. Read
+        # Deleting an instance group for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4337,8 +4343,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a list of instances to the specified instance group. All of the instances
-        # in the instance group must be in the same network/subnetwork.
+        # Adds a list of instances to the specified instance group. Read  Adding
+        # instances for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4461,7 +4467,8 @@ module Google
         end
         
         # Deletes the specified instance group. The instances in the group are not
-        # deleted.
+        # deleted. Note that instance group must not belong to a backend service. Read
+        # Deleting an instance group for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4921,7 +4928,9 @@ module Google
         end
         
         # Creates an instance template in the specified project using the data that is
-        # included in the request.
+        # included in the request. If you are creating a new template to update an
+        # existing instance group, your new instance template must use the same network
+        # or, if applicable, the same subnetwork as the original template.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::InstanceTemplate] instance_template_object
@@ -5857,8 +5866,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This method starts an instance that was stopped using the using the instances()
-        # .stop method. For more information, see Restart an instance.
+        # Starts an instance that was stopped using the using the instances().stop
+        # method. For more information, see Restart an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5899,12 +5908,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This method stops a running instance, shutting it down cleanly, and allows you
-        # to restart the instance at a later time. Stopped instances do not incur per-
-        # minute, virtual machine usage charges while they are stopped, but any
-        # resources that the virtual machine is using, such as persistent disks and
-        # static IP addresses,will continue to be charged until they are deleted. For
-        # more information, see Stopping an instance.
+        # Stops a running instance, shutting it down cleanly, and allows you to restart
+        # the instance at a later time. Stopped instances do not incur per-minute,
+        # virtual machine usage charges while they are stopped, but any resources that
+        # the virtual machine is using, such as persistent disks and static IP addresses,
+        # will continue to be charged until they are deleted. For more information, see
+        # Stopping an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5983,7 +5992,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of machine type resources grouped by scope.
+        # Retrieves an aggregated list of machine type resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6102,8 +6111,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of machine type resources available to the specified
-        # project.
+        # Retrieves a list of machine type resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6572,7 +6580,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   Name of the zone scoping this request.
+        #   Name of the region scoping this request.
         # @param [String] operation
         #   Name of the Operations resource to return.
         # @param [String] fields
@@ -6609,8 +6617,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Operation resources contained within the specified
-        # region.
+        # Retrieves a list of Operation resources contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -7353,7 +7360,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Subnetworks grouped by scope.
+        # Retrieves an aggregated list of subnetworks.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -7431,7 +7438,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Subnetwork resource.
+        # Deletes the specified subnetwork.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -7472,7 +7479,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Subnetwork resource.
+        # Returns the specified subnetwork.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -7513,8 +7520,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Subnetwork resource in the specified project using the data included
-        # in the request.
+        # Creates a subnetwork in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -7555,7 +7562,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Subnetwork resources available to the specified project.
+        # Retrieves a list of subnetworks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8147,7 +8154,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of target instances grouped by scope.
+        # Retrieves an aggregated list of target instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -8349,7 +8356,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of TargetInstance resources available to the specified
+        # Retrieves a list of TargetInstance resources available to the specified
         # project and zone.
         # @param [String] project
         #   Project ID for this request.
@@ -8517,7 +8524,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of target pools grouped by scope.
+        # Retrieves an aggregated list of target pools.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -8678,7 +8685,7 @@ module Google
         end
         
         # Gets the most recent health check results for each IP for the given instance
-        # that is referenced by given TargetPool.
+        # that is referenced by the given TargetPool.
         # @param [String] project
         # @param [String] region
         #   Name of the region scoping this request.
@@ -8763,7 +8770,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of TargetPool resources available to the specified project
+        # Retrieves a list of TargetPool resources available to the specified project
         # and region.
         # @param [String] project
         #   Project ID for this request.
@@ -8978,7 +8985,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of target VPN gateways grouped by scope.
+        # Retrieves an aggregated list of target VPN gateways .
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -9180,7 +9187,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of TargetVpnGateway resources available to the specified
+        # Retrieves a list of TargetVpnGateway resources available to the specified
         # project and region.
         # @param [String] project
         #   Project ID for this request.
@@ -9455,7 +9462,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the UrlMap resource. This method supports patch
+        # Updates the entire content of the UrlMap resource. This method supports patch
         # semantics.
         # @param [String] project
         #   Project ID for this request.
@@ -9497,7 +9504,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the UrlMap resource.
+        # Updates the entire content of the UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -9538,8 +9545,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Run static validation for the UrlMap. In particular, the tests of the provided
-        # UrlMap will be run. Calling this method does NOT create the UrlMap.
+        # Runs static validation for the UrlMap. In particular, the tests of the
+        # provided UrlMap will be run. Calling this method does NOT create the UrlMap.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -9580,7 +9587,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of VPN tunnels grouped by scope.
+        # Retrieves an aggregated list of VPN tunnels.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -9782,8 +9789,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of VpnTunnel resources contained in the specified project
-        # and region.
+        # Retrieves a list of VpnTunnel resources contained in the specified project and
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9944,7 +9951,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Operation resources contained within the specified zone.
+        # Retrieves a list of Operation resources contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

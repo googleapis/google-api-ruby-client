@@ -606,14 +606,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class VideoConversionPing
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class VideoConversionPings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class VideoFileDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -1348,6 +1340,7 @@ module Google
           property :czfilm_rating, as: 'czfilmRating'
           property :djctq_rating, as: 'djctqRating'
           collection :djctq_rating_reasons, as: 'djctqRatingReasons'
+          property :ecbmct_rating, as: 'ecbmctRating'
           property :eefilm_rating, as: 'eefilmRating'
           property :egfilm_rating, as: 'egfilmRating'
           property :eirin_rating, as: 'eirinRating'
@@ -2415,8 +2408,6 @@ module Google
       
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoContentDetails, decorator: Google::Apis::YoutubeV3::VideoContentDetails::Representation
       
-          property :conversion_pings, as: 'conversionPings', class: Google::Apis::YoutubeV3::VideoConversionPings, decorator: Google::Apis::YoutubeV3::VideoConversionPings::Representation
-      
           property :etag, as: 'etag'
           property :file_details, as: 'fileDetails', class: Google::Apis::YoutubeV3::VideoFileDetails, decorator: Google::Apis::YoutubeV3::VideoFileDetails::Representation
       
@@ -2569,22 +2560,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed, as: 'allowed'
           collection :blocked, as: 'blocked'
-        end
-      end
-      
-      class VideoConversionPing
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
-          property :conversion_url, as: 'conversionUrl'
-        end
-      end
-      
-      class VideoConversionPings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :pings, as: 'pings', class: Google::Apis::YoutubeV3::VideoConversionPing, decorator: Google::Apis::YoutubeV3::VideoConversionPing::Representation
-      
         end
       end
       

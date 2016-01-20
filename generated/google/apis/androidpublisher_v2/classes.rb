@@ -534,7 +534,7 @@ module Google
       end
       
       # 
-      class ImagesDeleteAllResponse
+      class DeleteAllImagesResponse
         include Google::Apis::Core::Hashable
       
         # 

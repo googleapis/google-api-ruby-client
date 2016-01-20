@@ -1054,18 +1054,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse]
+        # @return [Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_all_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?

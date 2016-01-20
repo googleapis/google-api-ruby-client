@@ -1,3 +1,7 @@
+# 0.9.1
+* Add missing require for 'tempfile'
+* Update generated APIs
+
 # 0.9
 * Force the use of alt=json for the groups settings API
 * Small tweaks to some calendar API and licensing API method names

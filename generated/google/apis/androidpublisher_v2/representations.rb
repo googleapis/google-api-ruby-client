@@ -86,7 +86,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImagesDeleteAllResponse
+      class DeleteAllImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -359,7 +359,7 @@ module Google
         end
       end
       
-      class ImagesDeleteAllResponse
+      class DeleteAllImagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted, as: 'deleted', class: Google::Apis::AndroidpublisherV2::Image, decorator: Google::Apis::AndroidpublisherV2::Image::Representation

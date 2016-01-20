@@ -198,7 +198,7 @@
 "/androidpublisher:v2/ApksListResponse": list_apks_response
 "/androidpublisher:v2/EntitlementsListResponse": list_entitlements_response
 "/androidpublisher:v2/ExpansionFilesUploadResponse": upload_expansion_files_response
-"/androidpublisher:v2/ImagesDeleteAllResponse": images_delete_all_response
+"/androidpublisher:v2/ImagesDeleteAllResponse": delete_all_images_response
 "/androidpublisher:v2/ImagesListResponse": list_images_response
 "/androidpublisher:v2/ImagesUploadResponse": upload_images_response
 "/androidpublisher:v2/InappproductsBatchRequest": in_app_products_batch_request

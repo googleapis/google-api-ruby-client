@@ -824,6 +824,8 @@ module Google
         #   The device/version ID from which to release the restriction.
         # @param [Array<String>, String] features
         #   List of features supported by the client, i.e., 'RENTALS'
+        # @param [Boolean] include_non_comics_series
+        #   Set to true to include non-comics series. Defaults to false.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [Boolean] show_preorders
@@ -851,12 +853,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sync_volume_licenses(source, nonce, cpksver, features: nil, locale: nil, show_preorders: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def sync_volume_licenses(source, nonce, cpksver, features: nil, include_non_comics_series: nil, locale: nil, show_preorders: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'myconfig/syncVolumeLicenses', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['features'] = features unless features.nil?
+          command.query['includeNonComicsSeries'] = include_non_comics_series unless include_non_comics_series.nil?
           command.query['locale'] = locale unless locale.nil?
           command.query['nonce'] = nonce unless nonce.nil?
           command.query['showPreorders'] = show_preorders unless show_preorders.nil?
@@ -1523,6 +1526,8 @@ module Google
         #   generating notification title and body.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [Array<String>, String] target_ids
+        #   List of target ids used for experiments or user segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1544,13 +1549,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_notification(notification_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_notification(notification_id, locale: nil, source: nil, target_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'notification/get', options)
           command.response_representation = Google::Apis::BooksV1::Notification::Representation
           command.response_class = Google::Apis::BooksV1::Notification
           command.query['locale'] = locale unless locale.nil?
           command.query['notification_id'] = notification_id unless notification_id.nil?
           command.query['source'] = source unless source.nil?
+          command.query['targetIds'] = target_ids unless target_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1649,6 +1655,8 @@ module Google
         #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [Array<String>, String] target_ids
+        #   List of target ids used for experiments or user segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1670,13 +1678,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, target_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'personalizedstream/get', options)
           command.response_representation = Google::Apis::BooksV1::Discoveryclusters::Representation
           command.response_class = Google::Apis::BooksV1::Discoveryclusters
           command.query['locale'] = locale unless locale.nil?
           command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['source'] = source unless source.nil?
+          command.query['targetIds'] = target_ids unless target_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1918,6 +1927,8 @@ module Google
         #   ID of volume to retrieve.
         # @param [String] country
         #   ISO-3166-1 code to override the IP-based location.
+        # @param [Boolean] include_non_comics_series
+        #   Set to true to include non-comics series. Defaults to false.
         # @param [String] partner
         #   Brand results for partner ID.
         # @param [String] projection
@@ -1946,12 +1957,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_volume(volume_id, country: nil, partner: nil, projection: nil, source: nil, user_library_consistent_read: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_volume(volume_id, country: nil, include_non_comics_series: nil, partner: nil, projection: nil, source: nil, user_library_consistent_read: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'volumes/{volumeId}', options)
           command.response_representation = Google::Apis::BooksV1::Volume::Representation
           command.response_class = Google::Apis::BooksV1::Volume
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['country'] = country unless country.nil?
+          command.query['includeNonComicsSeries'] = include_non_comics_series unless include_non_comics_series.nil?
           command.query['partner'] = partner unless partner.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['source'] = source unless source.nil?

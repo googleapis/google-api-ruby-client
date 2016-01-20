@@ -2295,7 +2295,7 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 66
+      # NEXT_ID: 67
       class ContentRating
         include Google::Apis::Core::Hashable
       
@@ -2416,6 +2416,12 @@ module Google
         # Corresponds to the JSON property `djctqRatingReasons`
         # @return [Array<String>]
         attr_accessor :djctq_rating_reasons
+      
+        # Rating system in Turkey - Evaluation and Classification Board of the Ministry
+        # of Culture and Tourism
+        # Corresponds to the JSON property `ecbmctRating`
+        # @return [String]
+        attr_accessor :ecbmct_rating
       
         # The video's rating in Estonia.
         # Corresponds to the JSON property `eefilmRating`
@@ -2681,6 +2687,7 @@ module Google
           @czfilm_rating = args[:czfilm_rating] unless args[:czfilm_rating].nil?
           @djctq_rating = args[:djctq_rating] unless args[:djctq_rating].nil?
           @djctq_rating_reasons = args[:djctq_rating_reasons] unless args[:djctq_rating_reasons].nil?
+          @ecbmct_rating = args[:ecbmct_rating] unless args[:ecbmct_rating].nil?
           @eefilm_rating = args[:eefilm_rating] unless args[:eefilm_rating].nil?
           @egfilm_rating = args[:egfilm_rating] unless args[:egfilm_rating].nil?
           @eirin_rating = args[:eirin_rating] unless args[:eirin_rating].nil?
@@ -6516,12 +6523,6 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoContentDetails]
         attr_accessor :content_details
       
-        # The conversionPings object encapsulates information about url pings that need
-        # to be respected by the App in different video contexts.
-        # Corresponds to the JSON property `conversionPings`
-        # @return [Google::Apis::YoutubeV3::VideoConversionPings]
-        attr_accessor :conversion_pings
-      
         # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -6617,7 +6618,6 @@ module Google
         def update!(**args)
           @age_gating = args[:age_gating] unless args[:age_gating].nil?
           @content_details = args[:content_details] unless args[:content_details].nil?
-          @conversion_pings = args[:conversion_pings] unless args[:conversion_pings].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @file_details = args[:file_details] unless args[:file_details].nil?
           @id = args[:id] unless args[:id].nil?
@@ -7009,7 +7009,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 66
+        # NEXT_ID: 67
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating
@@ -7097,58 +7097,6 @@ module Google
         def update!(**args)
           @allowed = args[:allowed] unless args[:allowed].nil?
           @blocked = args[:blocked] unless args[:blocked].nil?
-        end
-      end
-      
-      # 
-      class VideoConversionPing
-        include Google::Apis::Core::Hashable
-      
-        # Defines the context of the ping.
-        # Corresponds to the JSON property `context`
-        # @return [String]
-        attr_accessor :context
-      
-        # The url (without the schema) that the app shall send the ping to. It's at
-        # caller's descretion to decide which schema to use (http vs https) Example of a
-        # returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/
-        # 962985656/?data=path%3DtHe_path%3Btype%3D like%3Butuid%
-        # 3DGISQtTNGYqaYl4sKxoVvKA%3Bytvid%3DUrIaJUvIQDg&labe=default The caller must
-        # append biscotti authentication (ms param in case of mobile, for example) to
-        # this ping.
-        # Corresponds to the JSON property `conversionUrl`
-        # @return [String]
-        attr_accessor :conversion_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context = args[:context] unless args[:context].nil?
-          @conversion_url = args[:conversion_url] unless args[:conversion_url].nil?
-        end
-      end
-      
-      # 
-      class VideoConversionPings
-        include Google::Apis::Core::Hashable
-      
-        # Pings that the app shall fire for a video (authenticated by biscotti cookie).
-        # Each ping has a context, in which the app must fire the ping, and a url
-        # identifying the ping.
-        # Corresponds to the JSON property `pings`
-        # @return [Array<Google::Apis::YoutubeV3::VideoConversionPing>]
-        attr_accessor :pings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pings = args[:pings] unless args[:pings].nil?
         end
       end
       
