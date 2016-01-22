@@ -139,7 +139,7 @@ to replace. For example:
 
 ```ruby
 file = {id: '123', title: 'My document', labels: { starred: true }}
-file = drive.insert_file(file) # Returns a Drive::File instance
+file = drive.create_file(file, {}) # Returns a Drive::File instance
 ```
 
 is equivalent to:
@@ -149,6 +149,15 @@ file = Drive::File.new(id: '123', title: 'My document')
 file.labels = Drive::File::Labels.new(starred: true)
 file = drive.update_file(file) # Returns a Drive::File instance
 ```
+
+IMPORTANT: Be careful when supplying hashes for request objects. If it is the last argument to a method, ruby will interpret the hash as keyword arguments. To prevent this, appending an empty hash as an extra parameter will avoid misinterpretation.
+
+```ruby
+file = {id: '123', title: 'My document', labels: { starred: true }}
+file = drive.create_file(file) # Raises ArgumentError: unknown keywords: id, title, labels
+file = drive.create_file(file, {}) # Returns a Drive::File instance
+```
+
 
 ## Authorization
 
