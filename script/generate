@@ -7,14 +7,14 @@ DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 APIS=(adexchangebuyer:v1.3 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
-  admin:datatransfer_v1 \
+	admin:datatransfer_v1 \
 	admin:reports_v1 \
 	adsense:v1.4 \
 	adsensehost:v4.1 \
 	analytics:v3 \
 	androidenterprise:v1 \
 	androidpublisher:v2 \
-  appengine:v1beta4 \
+	appengine:v1beta4 \
 	appsactivity:v1 \
 	appstate:v1 \
 	autoscaler:v1beta2 \
@@ -24,11 +24,11 @@ APIS=(adexchangebuyer:v1.3 \
 	calendar:v3 \
 	civicinfo:v2 \
 	classroom:v1 \
-  cloudbilling:v1 \
-  clouddebugger:v2 \
-  cloudmonitoring:v2beta2 \
+	cloudbilling:v1 \
+	clouddebugger:v2 \
+	cloudmonitoring:v2beta2 \
 	cloudresourcemanager:v1beta1 \
-  cloudtrace:v1 \
+	cloudtrace:v1 \
 	clouduseraccounts:beta \
 	compute:v1 \
 	compute:beta \
@@ -37,8 +37,8 @@ APIS=(adexchangebuyer:v1.3 \
 	coordinate:v1 \
 	customsearch:v1 \
 	datastore:v1beta2 \
-  deploymentmanager:v2 \
-	dfareporting:v2.1 \
+	deploymentmanager:v2 \
+	dfareporting:v2.3 \
 	discovery:v1 \
 	dns:v1 \
 	doubleclickbidmanager:v1 \
@@ -64,11 +64,11 @@ APIS=(adexchangebuyer:v1.3 \
 	mirror:v1 \
 	oauth2:v2 \
 	pagespeedonline:v2 \
-  partners:v2 \
+	partners:v2 \
 	plus:v1 \
 	plusDomains:v1 \
 	prediction:v1.6 \
-  proximitybeacon:v1beta1 \
+	proximitybeacon:v1beta1 \
 	pubsub:v1 \
 	qpxExpress:v1 \
 	replicapool:v1beta2 \

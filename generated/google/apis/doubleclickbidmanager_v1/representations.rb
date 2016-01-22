@@ -42,6 +42,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class Note
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class NotifyProposalChangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Parameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -138,6 +146,29 @@ module Google
           property :kind, as: 'kind'
           collection :reports, as: 'reports', class: Google::Apis::DoubleclickbidmanagerV1::Report, decorator: Google::Apis::DoubleclickbidmanagerV1::Report::Representation
       
+        end
+      end
+      
+      class Note
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :message, as: 'message'
+          property :source, as: 'source'
+          property :timestamp, as: 'timestamp'
+          property :username, as: 'username'
+        end
+      end
+      
+      class NotifyProposalChangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :href, as: 'href'
+          property :id, as: 'id'
+          collection :notes, as: 'notes', class: Google::Apis::DoubleclickbidmanagerV1::Note, decorator: Google::Apis::DoubleclickbidmanagerV1::Note::Representation
+      
+          property :token, as: 'token'
         end
       end
       

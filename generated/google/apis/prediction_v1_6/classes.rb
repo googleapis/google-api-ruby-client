@@ -674,7 +674,7 @@ module Google
       
         # The estimated regression value (Regression models only).
         # Corresponds to the JSON property `outputValue`
-        # @return [String]
+        # @return [Float]
         attr_accessor :output_value
       
         # A URL to re-request this resource.

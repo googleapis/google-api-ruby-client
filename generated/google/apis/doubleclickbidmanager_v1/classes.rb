@@ -158,6 +158,92 @@ module Google
         end
       end
       
+      # Publisher comment from Rubicon.
+      class Note
+        include Google::Apis::Core::Hashable
+      
+        # Note id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Message from publisher.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Equals "publisher" for notification from Rubicon.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Time when the note was added, e.g. "2015-12-16T17:25:35.000-08:00".
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Publisher user name.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] unless args[:id].nil?
+          @message = args[:message] unless args[:message].nil?
+          @source = args[:source] unless args[:source].nil?
+          @timestamp = args[:timestamp] unless args[:timestamp].nil?
+          @username = args[:username] unless args[:username].nil?
+        end
+      end
+      
+      # NotifyProposalChange request.
+      class NotifyProposalChangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Action taken by publisher. One of: Accept, Decline, Append
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # URL to access proposal detail.
+        # Corresponds to the JSON property `href`
+        # @return [String]
+        attr_accessor :href
+      
+        # Below are contents of notification from Rubicon. Proposal id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Notes from publisher
+        # Corresponds to the JSON property `notes`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1::Note>]
+        attr_accessor :notes
+      
+        # Deal token, available when proposal is accepted by publisher.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] unless args[:action].nil?
+          @href = args[:href] unless args[:href].nil?
+          @id = args[:id] unless args[:id].nil?
+          @notes = args[:notes] unless args[:notes].nil?
+          @token = args[:token] unless args[:token].nil?
+        end
+      end
+      
       # Parameters of a query or report.
       class Parameters
         include Google::Apis::Core::Hashable

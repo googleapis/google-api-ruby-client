@@ -218,7 +218,9 @@ module Google
         # @return [String]
         attr_accessor :quantity_millis
       
-        # The revenue amount of this TRANSACTION conversion, in micros.
+        # The revenue amount of this TRANSACTION conversion, in micros (value multiplied
+        # by 1000, no decimal). For example, to specify a revenue value of "10" enter "
+        # 10000" in your request.
         # Corresponds to the JSON property `revenueMicros`
         # @return [String]
         attr_accessor :revenue_micros
