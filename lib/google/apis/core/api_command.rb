@@ -127,7 +127,7 @@ module Google
         #   Updated header value
         def normalize_fields_param(fields)
           # TODO: Generate map of parameter names during code gen. Small possibility that camelization fails
-          fields.gsub(/:/, '').gsub(/[\w_]+/) { |str| ActiveSupport::Inflector.camelize(str, false) }
+          fields.gsub(/:/, '').gsub(/\w+/) { |str| ActiveSupport::Inflector.camelize(str, false) }
         end
       end
     end
