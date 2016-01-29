@@ -24,7 +24,7 @@ class <%= cls.generated_class_name %><% if cls.base_ref %> < <%= cls.base_ref.ge
   # Update properties of this object
   def update!(**args)
 <%   for property in cls.properties.values -%>
-    @<%= property.generated_name %> = args[:<%= property.generated_name %>] unless args[:<%= property.generated_name %>].nil?
+    @<%= property.generated_name %> = args[:<%= property.generated_name %>] if args.key?(:<%= property.generated_name %>)
 <%   end -%>
   end
 <%   for child_class in cls.properties.values -%>
