@@ -97,19 +97,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @custom_meta_data = args[:custom_meta_data] unless args[:custom_meta_data].nil?
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @locale = args[:locale] unless args[:locale].nil?
-          @name = args[:name] unless args[:name].nil?
-          @pages = args[:pages] unless args[:pages].nil?
-          @posts = args[:posts] unless args[:posts].nil?
-          @published = args[:published] unless args[:published].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @url = args[:url] unless args[:url].nil?
+          @custom_meta_data = args[:custom_meta_data] if args.key?(:custom_meta_data)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @locale = args[:locale] if args.key?(:locale)
+          @name = args[:name] if args.key?(:name)
+          @pages = args[:pages] if args.key?(:pages)
+          @posts = args[:posts] if args.key?(:posts)
+          @published = args[:published] if args.key?(:published)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @updated = args[:updated] if args.key?(:updated)
+          @url = args[:url] if args.key?(:url)
         end
         
         # The locale this Blog is set to.
@@ -137,9 +137,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @country = args[:country] unless args[:country].nil?
-            @language = args[:language] unless args[:language].nil?
-            @variant = args[:variant] unless args[:variant].nil?
+            @country = args[:country] if args.key?(:country)
+            @language = args[:language] if args.key?(:language)
+            @variant = args[:variant] if args.key?(:variant)
           end
         end
         
@@ -163,8 +163,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @self_link = args[:self_link] unless args[:self_link].nil?
-            @total_items = args[:total_items] unless args[:total_items].nil?
+            @self_link = args[:self_link] if args.key?(:self_link)
+            @total_items = args[:total_items] if args.key?(:total_items)
           end
         end
         
@@ -193,9 +193,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @items = args[:items] unless args[:items].nil?
-            @self_link = args[:self_link] unless args[:self_link].nil?
-            @total_items = args[:total_items] unless args[:total_items].nil?
+            @items = args[:items] if args.key?(:items)
+            @self_link = args[:self_link] if args.key?(:self_link)
+            @total_items = args[:total_items] if args.key?(:total_items)
           end
         end
       end
@@ -225,9 +225,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blog_user_infos = args[:blog_user_infos] unless args[:blog_user_infos].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @blog_user_infos = args[:blog_user_infos] if args.key?(:blog_user_infos)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -272,12 +272,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blog_id = args[:blog_id] unless args[:blog_id].nil?
-          @has_admin_access = args[:has_admin_access] unless args[:has_admin_access].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @photos_album_key = args[:photos_album_key] unless args[:photos_album_key].nil?
-          @role = args[:role] unless args[:role].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @blog_id = args[:blog_id] if args.key?(:blog_id)
+          @has_admin_access = args[:has_admin_access] if args.key?(:has_admin_access)
+          @kind = args[:kind] if args.key?(:kind)
+          @photos_album_key = args[:photos_album_key] if args.key?(:photos_album_key)
+          @role = args[:role] if args.key?(:role)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -306,9 +306,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blog = args[:blog] unless args[:blog].nil?
-          @blog_user_info = args[:blog_user_info] unless args[:blog_user_info].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @blog = args[:blog] if args.key?(:blog)
+          @blog_user_info = args[:blog_user_info] if args.key?(:blog_user_info)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -377,17 +377,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author = args[:author] unless args[:author].nil?
-          @blog = args[:blog] unless args[:blog].nil?
-          @content = args[:content] unless args[:content].nil?
-          @id = args[:id] unless args[:id].nil?
-          @in_reply_to = args[:in_reply_to] unless args[:in_reply_to].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @post = args[:post] unless args[:post].nil?
-          @published = args[:published] unless args[:published].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @author = args[:author] if args.key?(:author)
+          @blog = args[:blog] if args.key?(:blog)
+          @content = args[:content] if args.key?(:content)
+          @id = args[:id] if args.key?(:id)
+          @in_reply_to = args[:in_reply_to] if args.key?(:in_reply_to)
+          @kind = args[:kind] if args.key?(:kind)
+          @post = args[:post] if args.key?(:post)
+          @published = args[:published] if args.key?(:published)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @updated = args[:updated] if args.key?(:updated)
         end
         
         # The author of this Comment.
@@ -420,10 +420,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @id = args[:id] unless args[:id].nil?
-            @image = args[:image] unless args[:image].nil?
-            @url = args[:url] unless args[:url].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @id = args[:id] if args.key?(:id)
+            @image = args[:image] if args.key?(:image)
+            @url = args[:url] if args.key?(:url)
           end
           
           # The comment creator's avatar.
@@ -441,7 +441,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @url = args[:url] unless args[:url].nil?
+              @url = args[:url] if args.key?(:url)
             end
           end
         end
@@ -461,7 +461,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
+            @id = args[:id] if args.key?(:id)
           end
         end
         
@@ -480,7 +480,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
+            @id = args[:id] if args.key?(:id)
           end
         end
         
@@ -499,7 +499,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
+            @id = args[:id] if args.key?(:id)
           end
         end
       end
@@ -539,11 +539,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
         end
       end
       
@@ -618,18 +618,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author = args[:author] unless args[:author].nil?
-          @blog = args[:blog] unless args[:blog].nil?
-          @content = args[:content] unless args[:content].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @published = args[:published] unless args[:published].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
-          @title = args[:title] unless args[:title].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @url = args[:url] unless args[:url].nil?
+          @author = args[:author] if args.key?(:author)
+          @blog = args[:blog] if args.key?(:blog)
+          @content = args[:content] if args.key?(:content)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @published = args[:published] if args.key?(:published)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @title = args[:title] if args.key?(:title)
+          @updated = args[:updated] if args.key?(:updated)
+          @url = args[:url] if args.key?(:url)
         end
         
         # The author of this Page.
@@ -662,10 +662,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @id = args[:id] unless args[:id].nil?
-            @image = args[:image] unless args[:image].nil?
-            @url = args[:url] unless args[:url].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @id = args[:id] if args.key?(:id)
+            @image = args[:image] if args.key?(:image)
+            @url = args[:url] if args.key?(:url)
           end
           
           # The page author's avatar.
@@ -683,7 +683,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @url = args[:url] unless args[:url].nil?
+              @url = args[:url] if args.key?(:url)
             end
           end
         end
@@ -703,7 +703,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
+            @id = args[:id] if args.key?(:id)
           end
         end
       end
@@ -738,10 +738,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -770,9 +770,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blog_id = args[:blog_id] unless args[:blog_id].nil?
-          @counts = args[:counts] unless args[:counts].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @blog_id = args[:blog_id] if args.key?(:blog_id)
+          @counts = args[:counts] if args.key?(:counts)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # 
@@ -795,8 +795,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @count = args[:count] unless args[:count].nil?
-            @time_range = args[:time_range] unless args[:time_range].nil?
+            @count = args[:count] if args.key?(:count)
+            @time_range = args[:time_range] if args.key?(:time_range)
           end
         end
       end
@@ -906,25 +906,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author = args[:author] unless args[:author].nil?
-          @blog = args[:blog] unless args[:blog].nil?
-          @content = args[:content] unless args[:content].nil?
-          @custom_meta_data = args[:custom_meta_data] unless args[:custom_meta_data].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @images = args[:images] unless args[:images].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @location = args[:location] unless args[:location].nil?
-          @published = args[:published] unless args[:published].nil?
-          @reader_comments = args[:reader_comments] unless args[:reader_comments].nil?
-          @replies = args[:replies] unless args[:replies].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
-          @title = args[:title] unless args[:title].nil?
-          @title_link = args[:title_link] unless args[:title_link].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @url = args[:url] unless args[:url].nil?
+          @author = args[:author] if args.key?(:author)
+          @blog = args[:blog] if args.key?(:blog)
+          @content = args[:content] if args.key?(:content)
+          @custom_meta_data = args[:custom_meta_data] if args.key?(:custom_meta_data)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @images = args[:images] if args.key?(:images)
+          @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
+          @published = args[:published] if args.key?(:published)
+          @reader_comments = args[:reader_comments] if args.key?(:reader_comments)
+          @replies = args[:replies] if args.key?(:replies)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @title = args[:title] if args.key?(:title)
+          @title_link = args[:title_link] if args.key?(:title_link)
+          @updated = args[:updated] if args.key?(:updated)
+          @url = args[:url] if args.key?(:url)
         end
         
         # The author of this Post.
@@ -957,10 +957,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @id = args[:id] unless args[:id].nil?
-            @image = args[:image] unless args[:image].nil?
-            @url = args[:url] unless args[:url].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @id = args[:id] if args.key?(:id)
+            @image = args[:image] if args.key?(:image)
+            @url = args[:url] if args.key?(:url)
           end
           
           # The Post author's avatar.
@@ -978,7 +978,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @url = args[:url] unless args[:url].nil?
+              @url = args[:url] if args.key?(:url)
             end
           end
         end
@@ -998,7 +998,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
+            @id = args[:id] if args.key?(:id)
           end
         end
         
@@ -1017,7 +1017,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @url = args[:url] unless args[:url].nil?
+            @url = args[:url] if args.key?(:url)
           end
         end
         
@@ -1051,10 +1051,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @lat = args[:lat] unless args[:lat].nil?
-            @lng = args[:lng] unless args[:lng].nil?
-            @name = args[:name] unless args[:name].nil?
-            @span = args[:span] unless args[:span].nil?
+            @lat = args[:lat] if args.key?(:lat)
+            @lng = args[:lng] if args.key?(:lng)
+            @name = args[:name] if args.key?(:name)
+            @span = args[:span] if args.key?(:span)
           end
         end
         
@@ -1083,9 +1083,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @items = args[:items] unless args[:items].nil?
-            @self_link = args[:self_link] unless args[:self_link].nil?
-            @total_items = args[:total_items] unless args[:total_items].nil?
+            @items = args[:items] if args.key?(:items)
+            @self_link = args[:self_link] if args.key?(:self_link)
+            @total_items = args[:total_items] if args.key?(:total_items)
           end
         end
       end
@@ -1120,10 +1120,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1163,11 +1163,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blog_id = args[:blog_id] unless args[:blog_id].nil?
-          @has_edit_access = args[:has_edit_access] unless args[:has_edit_access].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @post_id = args[:post_id] unless args[:post_id].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @blog_id = args[:blog_id] if args.key?(:blog_id)
+          @has_edit_access = args[:has_edit_access] if args.key?(:has_edit_access)
+          @kind = args[:kind] if args.key?(:kind)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -1196,9 +1196,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @post = args[:post] unless args[:post].nil?
-          @post_user_info = args[:post_user_info] unless args[:post_user_info].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @post = args[:post] if args.key?(:post)
+          @post_user_info = args[:post_user_info] if args.key?(:post_user_info)
         end
       end
       
@@ -1227,9 +1227,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1288,15 +1288,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @about = args[:about] unless args[:about].nil?
-          @blogs = args[:blogs] unless args[:blogs].nil?
-          @created = args[:created] unless args[:created].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @locale = args[:locale] unless args[:locale].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @url = args[:url] unless args[:url].nil?
+          @about = args[:about] if args.key?(:about)
+          @blogs = args[:blogs] if args.key?(:blogs)
+          @created = args[:created] if args.key?(:created)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @locale = args[:locale] if args.key?(:locale)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @url = args[:url] if args.key?(:url)
         end
         
         # The container of blogs for this user.
@@ -1314,7 +1314,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @self_link = args[:self_link] unless args[:self_link].nil?
+            @self_link = args[:self_link] if args.key?(:self_link)
           end
         end
         
@@ -1343,9 +1343,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @country = args[:country] unless args[:country].nil?
-            @language = args[:language] unless args[:language].nil?
-            @variant = args[:variant] unless args[:variant].nil?
+            @country = args[:country] if args.key?(:country)
+            @language = args[:language] if args.key?(:language)
+            @variant = args[:variant] if args.key?(:variant)
           end
         end
       end

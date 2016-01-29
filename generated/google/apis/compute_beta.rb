@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/compute/docs/reference/latest/
     module ComputeBeta
       VERSION = 'Beta'
-      REVISION = '20160112'
+      REVISION = '20160120'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

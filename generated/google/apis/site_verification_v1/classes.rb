@@ -43,8 +43,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @site = args[:site] unless args[:site].nil?
-          @verification_method = args[:verification_method] unless args[:verification_method].nil?
+          @site = args[:site] if args.key?(:site)
+          @verification_method = args[:verification_method] if args.key?(:verification_method)
         end
         
         # The site for which a verification token will be generated.
@@ -68,8 +68,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @identifier = args[:identifier] unless args[:identifier].nil?
-            @type = args[:type] unless args[:type].nil?
+            @identifier = args[:identifier] if args.key?(:identifier)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -99,8 +99,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @verification_method = args[:verification_method] unless args[:verification_method].nil?
-          @token = args[:token] unless args[:token].nil?
+          @verification_method = args[:verification_method] if args.key?(:verification_method)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -119,7 +119,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
+          @items = args[:items] if args.key?(:items)
         end
       end
       
@@ -149,9 +149,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @owners = args[:owners] unless args[:owners].nil?
-          @site = args[:site] unless args[:site].nil?
+          @id = args[:id] if args.key?(:id)
+          @owners = args[:owners] if args.key?(:owners)
+          @site = args[:site] if args.key?(:site)
         end
         
         # The address and type of a site that is verified or will be verified.
@@ -175,8 +175,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @identifier = args[:identifier] unless args[:identifier].nil?
-            @type = args[:type] unless args[:type].nil?
+            @identifier = args[:identifier] if args.key?(:identifier)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end

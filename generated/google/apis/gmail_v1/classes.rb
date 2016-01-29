@@ -42,8 +42,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @message = args[:message] unless args[:message].nil?
+          @id = args[:id] if args.key?(:id)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -90,12 +90,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @labels_added = args[:labels_added] unless args[:labels_added].nil?
-          @labels_removed = args[:labels_removed] unless args[:labels_removed].nil?
-          @messages = args[:messages] unless args[:messages].nil?
-          @messages_added = args[:messages_added] unless args[:messages_added].nil?
-          @messages_deleted = args[:messages_deleted] unless args[:messages_deleted].nil?
+          @id = args[:id] if args.key?(:id)
+          @labels_added = args[:labels_added] if args.key?(:labels_added)
+          @labels_removed = args[:labels_removed] if args.key?(:labels_removed)
+          @messages = args[:messages] if args.key?(:messages)
+          @messages_added = args[:messages_added] if args.key?(:messages_added)
+          @messages_deleted = args[:messages_deleted] if args.key?(:messages_deleted)
         end
       end
       
@@ -119,8 +119,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @label_ids = args[:label_ids] unless args[:label_ids].nil?
-          @message = args[:message] unless args[:message].nil?
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -144,8 +144,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @label_ids = args[:label_ids] unless args[:label_ids].nil?
-          @message = args[:message] unless args[:message].nil?
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -164,7 +164,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message = args[:message] unless args[:message].nil?
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -183,7 +183,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message = args[:message] unless args[:message].nil?
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -249,15 +249,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @label_list_visibility = args[:label_list_visibility] unless args[:label_list_visibility].nil?
-          @message_list_visibility = args[:message_list_visibility] unless args[:message_list_visibility].nil?
-          @messages_total = args[:messages_total] unless args[:messages_total].nil?
-          @messages_unread = args[:messages_unread] unless args[:messages_unread].nil?
-          @name = args[:name] unless args[:name].nil?
-          @threads_total = args[:threads_total] unless args[:threads_total].nil?
-          @threads_unread = args[:threads_unread] unless args[:threads_unread].nil?
-          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] if args.key?(:id)
+          @label_list_visibility = args[:label_list_visibility] if args.key?(:label_list_visibility)
+          @message_list_visibility = args[:message_list_visibility] if args.key?(:message_list_visibility)
+          @messages_total = args[:messages_total] if args.key?(:messages_total)
+          @messages_unread = args[:messages_unread] if args.key?(:messages_unread)
+          @name = args[:name] if args.key?(:name)
+          @threads_total = args[:threads_total] if args.key?(:threads_total)
+          @threads_unread = args[:threads_unread] if args.key?(:threads_unread)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -286,9 +286,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @drafts = args[:drafts] unless args[:drafts].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
+          @drafts = args[:drafts] if args.key?(:drafts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result_size_estimate = args[:result_size_estimate] if args.key?(:result_size_estimate)
         end
       end
       
@@ -318,9 +318,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @history = args[:history] unless args[:history].nil?
-          @history_id = args[:history_id] unless args[:history_id].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @history = args[:history] if args.key?(:history)
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -339,7 +339,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @labels = args[:labels] unless args[:labels].nil?
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -368,9 +368,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @messages = args[:messages] unless args[:messages].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
+          @messages = args[:messages] if args.key?(:messages)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result_size_estimate = args[:result_size_estimate] if args.key?(:result_size_estimate)
         end
       end
       
@@ -399,9 +399,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
-          @threads = args[:threads] unless args[:threads].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result_size_estimate = args[:result_size_estimate] if args.key?(:result_size_estimate)
+          @threads = args[:threads] if args.key?(:threads)
         end
       end
       
@@ -472,15 +472,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @history_id = args[:history_id] unless args[:history_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_date = args[:internal_date] unless args[:internal_date].nil?
-          @label_ids = args[:label_ids] unless args[:label_ids].nil?
-          @payload = args[:payload] unless args[:payload].nil?
-          @raw = args[:raw] unless args[:raw].nil?
-          @size_estimate = args[:size_estimate] unless args[:size_estimate].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @thread_id = args[:thread_id] unless args[:thread_id].nil?
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @id = args[:id] if args.key?(:id)
+          @internal_date = args[:internal_date] if args.key?(:internal_date)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @payload = args[:payload] if args.key?(:payload)
+          @raw = args[:raw] if args.key?(:raw)
+          @size_estimate = args[:size_estimate] if args.key?(:size_estimate)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @thread_id = args[:thread_id] if args.key?(:thread_id)
         end
       end
       
@@ -530,12 +530,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @body = args[:body] unless args[:body].nil?
-          @filename = args[:filename] unless args[:filename].nil?
-          @headers = args[:headers] unless args[:headers].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @part_id = args[:part_id] unless args[:part_id].nil?
-          @parts = args[:parts] unless args[:parts].nil?
+          @body = args[:body] if args.key?(:body)
+          @filename = args[:filename] if args.key?(:filename)
+          @headers = args[:headers] if args.key?(:headers)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @part_id = args[:part_id] if args.key?(:part_id)
+          @parts = args[:parts] if args.key?(:parts)
         end
       end
       
@@ -569,9 +569,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachment_id = args[:attachment_id] unless args[:attachment_id].nil?
-          @data = args[:data] unless args[:data].nil?
-          @size = args[:size] unless args[:size].nil?
+          @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
+          @data = args[:data] if args.key?(:data)
+          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -596,8 +596,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @value = args[:value] unless args[:value].nil?
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -621,8 +621,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @add_label_ids = args[:add_label_ids] unless args[:add_label_ids].nil?
-          @remove_label_ids = args[:remove_label_ids] unless args[:remove_label_ids].nil?
+          @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
         end
       end
       
@@ -646,8 +646,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @add_label_ids = args[:add_label_ids] unless args[:add_label_ids].nil?
-          @remove_label_ids = args[:remove_label_ids] unless args[:remove_label_ids].nil?
+          @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
         end
       end
       
@@ -681,10 +681,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @history_id = args[:history_id] unless args[:history_id].nil?
-          @messages_total = args[:messages_total] unless args[:messages_total].nil?
-          @threads_total = args[:threads_total] unless args[:threads_total].nil?
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @messages_total = args[:messages_total] if args.key?(:messages_total)
+          @threads_total = args[:threads_total] if args.key?(:threads_total)
         end
       end
       
@@ -718,10 +718,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @history_id = args[:history_id] unless args[:history_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @messages = args[:messages] unless args[:messages].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @id = args[:id] if args.key?(:id)
+          @messages = args[:messages] if args.key?(:messages)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -758,9 +758,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @label_filter_action = args[:label_filter_action] unless args[:label_filter_action].nil?
-          @label_ids = args[:label_ids] unless args[:label_ids].nil?
-          @topic_name = args[:topic_name] unless args[:topic_name].nil?
+          @label_filter_action = args[:label_filter_action] if args.key?(:label_filter_action)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
       end
       
@@ -785,8 +785,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @expiration = args[:expiration] unless args[:expiration].nil?
-          @history_id = args[:history_id] unless args[:history_id].nil?
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @history_id = args[:history_id] if args.key?(:history_id)
         end
       end
     end

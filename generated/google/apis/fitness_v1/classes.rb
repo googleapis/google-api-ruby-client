@@ -64,12 +64,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @activity = args[:activity] unless args[:activity].nil?
-          @dataset = args[:dataset] unless args[:dataset].nil?
-          @end_time_millis = args[:end_time_millis] unless args[:end_time_millis].nil?
-          @session = args[:session] unless args[:session].nil?
-          @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
-          @type = args[:type] unless args[:type].nil?
+          @activity = args[:activity] if args.key?(:activity)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @end_time_millis = args[:end_time_millis] if args.key?(:end_time_millis)
+          @session = args[:session] if args.key?(:session)
+          @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -98,8 +98,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_source_id = args[:data_source_id] unless args[:data_source_id].nil?
-          @data_type_name = args[:data_type_name] unless args[:data_type_name].nil?
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @data_type_name = args[:data_type_name] if args.key?(:data_type_name)
         end
       end
       
@@ -163,13 +163,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aggregate_by = args[:aggregate_by] unless args[:aggregate_by].nil?
-          @bucket_by_activity_segment = args[:bucket_by_activity_segment] unless args[:bucket_by_activity_segment].nil?
-          @bucket_by_activity_type = args[:bucket_by_activity_type] unless args[:bucket_by_activity_type].nil?
-          @bucket_by_session = args[:bucket_by_session] unless args[:bucket_by_session].nil?
-          @bucket_by_time = args[:bucket_by_time] unless args[:bucket_by_time].nil?
-          @end_time_millis = args[:end_time_millis] unless args[:end_time_millis].nil?
-          @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
+          @aggregate_by = args[:aggregate_by] if args.key?(:aggregate_by)
+          @bucket_by_activity_segment = args[:bucket_by_activity_segment] if args.key?(:bucket_by_activity_segment)
+          @bucket_by_activity_type = args[:bucket_by_activity_type] if args.key?(:bucket_by_activity_type)
+          @bucket_by_session = args[:bucket_by_session] if args.key?(:bucket_by_session)
+          @bucket_by_time = args[:bucket_by_time] if args.key?(:bucket_by_time)
+          @end_time_millis = args[:end_time_millis] if args.key?(:end_time_millis)
+          @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
         end
       end
       
@@ -188,7 +188,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket = args[:bucket] unless args[:bucket].nil?
+          @bucket = args[:bucket] if args.key?(:bucket)
         end
       end
       
@@ -229,10 +229,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @details_url = args[:details_url] unless args[:details_url].nil?
-          @name = args[:name] unless args[:name].nil?
-          @package_name = args[:package_name] unless args[:package_name].nil?
-          @version = args[:version] unless args[:version].nil?
+          @details_url = args[:details_url] if args.key?(:details_url)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -258,8 +258,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @activity_data_source_id = args[:activity_data_source_id] unless args[:activity_data_source_id].nil?
-          @min_duration_millis = args[:min_duration_millis] unless args[:min_duration_millis].nil?
+          @activity_data_source_id = args[:activity_data_source_id] if args.key?(:activity_data_source_id)
+          @min_duration_millis = args[:min_duration_millis] if args.key?(:min_duration_millis)
         end
       end
       
@@ -279,7 +279,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @min_duration_millis = args[:min_duration_millis] unless args[:min_duration_millis].nil?
+          @min_duration_millis = args[:min_duration_millis] if args.key?(:min_duration_millis)
         end
       end
       
@@ -300,7 +300,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @duration_millis = args[:duration_millis] unless args[:duration_millis].nil?
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
         end
       end
       
@@ -373,14 +373,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @computation_time_millis = args[:computation_time_millis] unless args[:computation_time_millis].nil?
-          @data_type_name = args[:data_type_name] unless args[:data_type_name].nil?
-          @end_time_nanos = args[:end_time_nanos] unless args[:end_time_nanos].nil?
-          @modified_time_millis = args[:modified_time_millis] unless args[:modified_time_millis].nil?
-          @origin_data_source_id = args[:origin_data_source_id] unless args[:origin_data_source_id].nil?
-          @raw_timestamp_nanos = args[:raw_timestamp_nanos] unless args[:raw_timestamp_nanos].nil?
-          @start_time_nanos = args[:start_time_nanos] unless args[:start_time_nanos].nil?
-          @value = args[:value] unless args[:value].nil?
+          @computation_time_millis = args[:computation_time_millis] if args.key?(:computation_time_millis)
+          @data_type_name = args[:data_type_name] if args.key?(:data_type_name)
+          @end_time_nanos = args[:end_time_nanos] if args.key?(:end_time_nanos)
+          @modified_time_millis = args[:modified_time_millis] if args.key?(:modified_time_millis)
+          @origin_data_source_id = args[:origin_data_source_id] if args.key?(:origin_data_source_id)
+          @raw_timestamp_nanos = args[:raw_timestamp_nanos] if args.key?(:raw_timestamp_nanos)
+          @start_time_nanos = args[:start_time_nanos] if args.key?(:start_time_nanos)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -480,13 +480,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application = args[:application] unless args[:application].nil?
-          @data_stream_id = args[:data_stream_id] unless args[:data_stream_id].nil?
-          @data_stream_name = args[:data_stream_name] unless args[:data_stream_name].nil?
-          @data_type = args[:data_type] unless args[:data_type].nil?
-          @device = args[:device] unless args[:device].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
+          @application = args[:application] if args.key?(:application)
+          @data_stream_id = args[:data_stream_id] if args.key?(:data_stream_id)
+          @data_stream_name = args[:data_stream_name] if args.key?(:data_stream_name)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @device = args[:device] if args.key?(:device)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -511,8 +511,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @field = args[:field] unless args[:field].nil?
-          @name = args[:name] unless args[:name].nil?
+          @field = args[:field] if args.key?(:field)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -548,9 +548,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @format = args[:format] unless args[:format].nil?
-          @name = args[:name] unless args[:name].nil?
-          @optional = args[:optional] unless args[:optional].nil?
+          @format = args[:format] if args.key?(:format)
+          @name = args[:name] if args.key?(:name)
+          @optional = args[:optional] if args.key?(:optional)
         end
       end
       
@@ -601,11 +601,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_source_id = args[:data_source_id] unless args[:data_source_id].nil?
-          @max_end_time_ns = args[:max_end_time_ns] unless args[:max_end_time_ns].nil?
-          @min_start_time_ns = args[:min_start_time_ns] unless args[:min_start_time_ns].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @point = args[:point] unless args[:point].nil?
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @max_end_time_ns = args[:max_end_time_ns] if args.key?(:max_end_time_ns)
+          @min_start_time_ns = args[:min_start_time_ns] if args.key?(:min_start_time_ns)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @point = args[:point] if args.key?(:point)
         end
       end
       
@@ -657,11 +657,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @manufacturer = args[:manufacturer] unless args[:manufacturer].nil?
-          @model = args[:model] unless args[:model].nil?
-          @type = args[:type] unless args[:type].nil?
-          @uid = args[:uid] unless args[:uid].nil?
-          @version = args[:version] unless args[:version].nil?
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
+          @model = args[:model] if args.key?(:model)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -680,7 +680,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_source = args[:data_source] unless args[:data_source].nil?
+          @data_source = args[:data_source] if args.key?(:data_source)
         end
       end
       
@@ -712,9 +712,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @deleted_session = args[:deleted_session] unless args[:deleted_session].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @session = args[:session] unless args[:session].nil?
+          @deleted_session = args[:deleted_session] if args.key?(:deleted_session)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @session = args[:session] if args.key?(:session)
         end
       end
       
@@ -734,7 +734,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fp_val = args[:fp_val] unless args[:fp_val].nil?
+          @fp_val = args[:fp_val] if args.key?(:fp_val)
         end
       end
       
@@ -799,15 +799,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @active_time_millis = args[:active_time_millis] unless args[:active_time_millis].nil?
-          @activity_type = args[:activity_type] unless args[:activity_type].nil?
-          @application = args[:application] unless args[:application].nil?
-          @description = args[:description] unless args[:description].nil?
-          @end_time_millis = args[:end_time_millis] unless args[:end_time_millis].nil?
-          @id = args[:id] unless args[:id].nil?
-          @modified_time_millis = args[:modified_time_millis] unless args[:modified_time_millis].nil?
-          @name = args[:name] unless args[:name].nil?
-          @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
+          @active_time_millis = args[:active_time_millis] if args.key?(:active_time_millis)
+          @activity_type = args[:activity_type] if args.key?(:activity_type)
+          @application = args[:application] if args.key?(:application)
+          @description = args[:description] if args.key?(:description)
+          @end_time_millis = args[:end_time_millis] if args.key?(:end_time_millis)
+          @id = args[:id] if args.key?(:id)
+          @modified_time_millis = args[:modified_time_millis] if args.key?(:modified_time_millis)
+          @name = args[:name] if args.key?(:name)
+          @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
         end
       end
       
@@ -848,10 +848,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fp_val = args[:fp_val] unless args[:fp_val].nil?
-          @int_val = args[:int_val] unless args[:int_val].nil?
-          @map_val = args[:map_val] unless args[:map_val].nil?
-          @string_val = args[:string_val] unless args[:string_val].nil?
+          @fp_val = args[:fp_val] if args.key?(:fp_val)
+          @int_val = args[:int_val] if args.key?(:int_val)
+          @map_val = args[:map_val] if args.key?(:map_val)
+          @string_val = args[:string_val] if args.key?(:string_val)
         end
       end
       
@@ -876,8 +876,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end

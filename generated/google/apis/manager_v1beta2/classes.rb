@@ -49,9 +49,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @nat_ip = args[:nat_ip] unless args[:nat_ip].nil?
-          @type = args[:type] unless args[:type].nil?
+          @name = args[:name] if args.key?(:name)
+          @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -76,8 +76,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @commands = args[:commands] unless args[:commands].nil?
-          @timeout_ms = args[:timeout_ms] unless args[:timeout_ms].nil?
+          @commands = args[:commands] if args.key?(:commands)
+          @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
         end
       end
       
@@ -102,8 +102,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ip_protocol = args[:ip_protocol] unless args[:ip_protocol].nil?
-          @ports = args[:ports] unless args[:ports].nil?
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @ports = args[:ports] if args.key?(:ports)
         end
       end
       
@@ -152,13 +152,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cool_down_period_sec = args[:cool_down_period_sec] unless args[:cool_down_period_sec].nil?
-          @description = args[:description] unless args[:description].nil?
-          @max_num_replicas = args[:max_num_replicas] unless args[:max_num_replicas].nil?
-          @min_num_replicas = args[:min_num_replicas] unless args[:min_num_replicas].nil?
-          @signal_type = args[:signal_type] unless args[:signal_type].nil?
-          @target_module = args[:target_module] unless args[:target_module].nil?
-          @target_utilization = args[:target_utilization] unless args[:target_utilization].nil?
+          @cool_down_period_sec = args[:cool_down_period_sec] if args.key?(:cool_down_period_sec)
+          @description = args[:description] if args.key?(:description)
+          @max_num_replicas = args[:max_num_replicas] if args.key?(:max_num_replicas)
+          @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+          @target_module = args[:target_module] if args.key?(:target_module)
+          @target_utilization = args[:target_utilization] if args.key?(:target_utilization)
         end
       end
       
@@ -177,7 +177,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscaling_config_url = args[:autoscaling_config_url] unless args[:autoscaling_config_url].nil?
+          @autoscaling_config_url = args[:autoscaling_config_url] if args.key?(:autoscaling_config_url)
         end
       end
       
@@ -208,8 +208,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @details = args[:details] unless args[:details].nil?
-          @status = args[:status] unless args[:status].nil?
+          @details = args[:details] if args.key?(:details)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -260,13 +260,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @creation_date = args[:creation_date] unless args[:creation_date].nil?
-          @description = args[:description] unless args[:description].nil?
-          @modules = args[:modules] unless args[:modules].nil?
-          @name = args[:name] unless args[:name].nil?
-          @overrides = args[:overrides] unless args[:overrides].nil?
-          @state = args[:state] unless args[:state].nil?
-          @template_name = args[:template_name] unless args[:template_name].nil?
+          @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @description = args[:description] if args.key?(:description)
+          @modules = args[:modules] if args.key?(:modules)
+          @name = args[:name] if args.key?(:name)
+          @overrides = args[:overrides] if args.key?(:overrides)
+          @state = args[:state] if args.key?(:state)
+          @template_name = args[:template_name] if args.key?(:template_name)
         end
       end
       
@@ -290,8 +290,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @resources = args[:resources] unless args[:resources].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -316,8 +316,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @device_name = args[:device_name] unless args[:device_name].nil?
-          @index = args[:index] unless args[:index].nil?
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @index = args[:index] if args.key?(:index)
         end
       end
       
@@ -342,8 +342,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hidden = args[:hidden] unless args[:hidden].nil?
-          @value = args[:value] unless args[:value].nil?
+          @hidden = args[:hidden] if args.key?(:hidden)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -369,8 +369,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachment = args[:attachment] unless args[:attachment].nil?
-          @source = args[:source] unless args[:source].nil?
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -416,12 +416,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed = args[:allowed] unless args[:allowed].nil?
-          @description = args[:description] unless args[:description].nil?
-          @network = args[:network] unless args[:network].nil?
-          @source_ranges = args[:source_ranges] unless args[:source_ranges].nil?
-          @source_tags = args[:source_tags] unless args[:source_tags].nil?
-          @target_tags = args[:target_tags] unless args[:target_tags].nil?
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @description = args[:description] if args.key?(:description)
+          @network = args[:network] if args.key?(:network)
+          @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
+          @source_tags = args[:source_tags] if args.key?(:source_tags)
+          @target_tags = args[:target_tags] if args.key?(:target_tags)
         end
       end
       
@@ -440,7 +440,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @firewall_url = args[:firewall_url] unless args[:firewall_url].nil?
+          @firewall_url = args[:firewall_url] if args.key?(:firewall_url)
         end
       end
       
@@ -494,14 +494,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @check_interval_sec = args[:check_interval_sec] unless args[:check_interval_sec].nil?
-          @description = args[:description] unless args[:description].nil?
-          @healthy_threshold = args[:healthy_threshold] unless args[:healthy_threshold].nil?
-          @host = args[:host] unless args[:host].nil?
-          @path = args[:path] unless args[:path].nil?
-          @port = args[:port] unless args[:port].nil?
-          @timeout_sec = args[:timeout_sec] unless args[:timeout_sec].nil?
-          @unhealthy_threshold = args[:unhealthy_threshold] unless args[:unhealthy_threshold].nil?
+          @check_interval_sec = args[:check_interval_sec] if args.key?(:check_interval_sec)
+          @description = args[:description] if args.key?(:description)
+          @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
+          @host = args[:host] if args.key?(:host)
+          @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
+          @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @unhealthy_threshold = args[:unhealthy_threshold] if args.key?(:unhealthy_threshold)
         end
       end
       
@@ -520,7 +520,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @health_check_url = args[:health_check_url] unless args[:health_check_url].nil?
+          @health_check_url = args[:health_check_url] if args.key?(:health_check_url)
         end
       end
       
@@ -569,13 +569,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @health_checks = args[:health_checks] unless args[:health_checks].nil?
-          @ip_address = args[:ip_address] unless args[:ip_address].nil?
-          @ip_protocol = args[:ip_protocol] unless args[:ip_protocol].nil?
-          @port_range = args[:port_range] unless args[:port_range].nil?
-          @session_affinity = args[:session_affinity] unless args[:session_affinity].nil?
-          @target_modules = args[:target_modules] unless args[:target_modules].nil?
+          @description = args[:description] if args.key?(:description)
+          @health_checks = args[:health_checks] if args.key?(:health_checks)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @port_range = args[:port_range] if args.key?(:port_range)
+          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @target_modules = args[:target_modules] if args.key?(:target_modules)
         end
       end
       
@@ -599,8 +599,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @forwarding_rule_url = args[:forwarding_rule_url] unless args[:forwarding_rule_url].nil?
-          @target_pool_url = args[:target_pool_url] unless args[:target_pool_url].nil?
+          @forwarding_rule_url = args[:forwarding_rule_url] if args.key?(:forwarding_rule_url)
+          @target_pool_url = args[:target_pool_url] if args.key?(:target_pool_url)
         end
       end
       
@@ -625,8 +625,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @finger_print = args[:finger_print] unless args[:finger_print].nil?
-          @items = args[:items] unless args[:items].nil?
+          @finger_print = args[:finger_print] if args.key?(:finger_print)
+          @items = args[:items] if args.key?(:items)
         end
       end
       
@@ -651,8 +651,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -703,13 +703,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscaling_module = args[:autoscaling_module] unless args[:autoscaling_module].nil?
-          @firewall_module = args[:firewall_module] unless args[:firewall_module].nil?
-          @health_check_module = args[:health_check_module] unless args[:health_check_module].nil?
-          @lb_module = args[:lb_module] unless args[:lb_module].nil?
-          @network_module = args[:network_module] unless args[:network_module].nil?
-          @replica_pool_module = args[:replica_pool_module] unless args[:replica_pool_module].nil?
-          @type = args[:type] unless args[:type].nil?
+          @autoscaling_module = args[:autoscaling_module] if args.key?(:autoscaling_module)
+          @firewall_module = args[:firewall_module] if args.key?(:firewall_module)
+          @health_check_module = args[:health_check_module] if args.key?(:health_check_module)
+          @lb_module = args[:lb_module] if args.key?(:lb_module)
+          @network_module = args[:network_module] if args.key?(:network_module)
+          @replica_pool_module = args[:replica_pool_module] if args.key?(:replica_pool_module)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -763,14 +763,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscaling_module_status = args[:autoscaling_module_status] unless args[:autoscaling_module_status].nil?
-          @firewall_module_status = args[:firewall_module_status] unless args[:firewall_module_status].nil?
-          @health_check_module_status = args[:health_check_module_status] unless args[:health_check_module_status].nil?
-          @lb_module_status = args[:lb_module_status] unless args[:lb_module_status].nil?
-          @network_module_status = args[:network_module_status] unless args[:network_module_status].nil?
-          @replica_pool_module_status = args[:replica_pool_module_status] unless args[:replica_pool_module_status].nil?
-          @state = args[:state] unless args[:state].nil?
-          @type = args[:type] unless args[:type].nil?
+          @autoscaling_module_status = args[:autoscaling_module_status] if args.key?(:autoscaling_module_status)
+          @firewall_module_status = args[:firewall_module_status] if args.key?(:firewall_module_status)
+          @health_check_module_status = args[:health_check_module_status] if args.key?(:health_check_module_status)
+          @lb_module_status = args[:lb_module_status] if args.key?(:lb_module_status)
+          @network_module_status = args[:network_module_status] if args.key?(:network_module_status)
+          @replica_pool_module_status = args[:replica_pool_module_status] if args.key?(:replica_pool_module_status)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -808,10 +808,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_configs = args[:access_configs] unless args[:access_configs].nil?
-          @name = args[:name] unless args[:name].nil?
-          @network = args[:network] unless args[:network].nil?
-          @network_ip = args[:network_ip] unless args[:network_ip].nil?
+          @access_configs = args[:access_configs] if args.key?(:access_configs)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @network_ip = args[:network_ip] if args.key?(:network_ip)
         end
       end
       
@@ -844,9 +844,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @i_pv4_range = args[:i_pv4_range] unless args[:i_pv4_range].nil?
-          @description = args[:description] unless args[:description].nil?
-          @gateway_i_pv4 = args[:gateway_i_pv4] unless args[:gateway_i_pv4].nil?
+          @i_pv4_range = args[:i_pv4_range] if args.key?(:i_pv4_range)
+          @description = args[:description] if args.key?(:description)
+          @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
         end
       end
       
@@ -865,7 +865,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @network_url = args[:network_url] unless args[:network_url].nil?
+          @network_url = args[:network_url] if args.key?(:network_url)
         end
       end
       
@@ -903,10 +903,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachment = args[:attachment] unless args[:attachment].nil?
-          @auto_delete = args[:auto_delete] unless args[:auto_delete].nil?
-          @boot = args[:boot] unless args[:boot].nil?
-          @initialize_params = args[:initialize_params] unless args[:initialize_params].nil?
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @boot = args[:boot] if args.key?(:boot)
+          @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
         end
       end
       
@@ -936,9 +936,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @disk_size_gb = args[:disk_size_gb] unless args[:disk_size_gb].nil?
-          @disk_type = args[:disk_type] unless args[:disk_type].nil?
-          @source_image = args[:source_image] unless args[:source_image].nil?
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @source_image = args[:source_image] if args.key?(:source_image)
         end
       end
       
@@ -963,8 +963,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @path = args[:path] unless args[:path].nil?
-          @value = args[:value] unless args[:value].nil?
+          @path = args[:path] if args.key?(:path)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1006,11 +1006,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @env_variables = args[:env_variables] unless args[:env_variables].nil?
-          @health_checks = args[:health_checks] unless args[:health_checks].nil?
-          @num_replicas = args[:num_replicas] unless args[:num_replicas].nil?
-          @replica_pool_params = args[:replica_pool_params] unless args[:replica_pool_params].nil?
-          @resource_view = args[:resource_view] unless args[:resource_view].nil?
+          @env_variables = args[:env_variables] if args.key?(:env_variables)
+          @health_checks = args[:health_checks] if args.key?(:health_checks)
+          @num_replicas = args[:num_replicas] if args.key?(:num_replicas)
+          @replica_pool_params = args[:replica_pool_params] if args.key?(:replica_pool_params)
+          @resource_view = args[:resource_view] if args.key?(:resource_view)
         end
       end
       
@@ -1034,8 +1034,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @replica_pool_url = args[:replica_pool_url] unless args[:replica_pool_url].nil?
-          @resource_view_url = args[:resource_view_url] unless args[:resource_view_url].nil?
+          @replica_pool_url = args[:replica_pool_url] if args.key?(:replica_pool_url)
+          @resource_view_url = args[:resource_view_url] if args.key?(:resource_view_url)
         end
       end
       
@@ -1057,7 +1057,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @v1beta1 = args[:v1beta1] unless args[:v1beta1].nil?
+          @v1beta1 = args[:v1beta1] if args.key?(:v1beta1)
         end
       end
       
@@ -1152,20 +1152,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_restart = args[:auto_restart] unless args[:auto_restart].nil?
-          @base_instance_name = args[:base_instance_name] unless args[:base_instance_name].nil?
-          @can_ip_forward = args[:can_ip_forward] unless args[:can_ip_forward].nil?
-          @description = args[:description] unless args[:description].nil?
-          @disks_to_attach = args[:disks_to_attach] unless args[:disks_to_attach].nil?
-          @disks_to_create = args[:disks_to_create] unless args[:disks_to_create].nil?
-          @init_action = args[:init_action] unless args[:init_action].nil?
-          @machine_type = args[:machine_type] unless args[:machine_type].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
-          @network_interfaces = args[:network_interfaces] unless args[:network_interfaces].nil?
-          @on_host_maintenance = args[:on_host_maintenance] unless args[:on_host_maintenance].nil?
-          @service_accounts = args[:service_accounts] unless args[:service_accounts].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @zone = args[:zone] unless args[:zone].nil?
+          @auto_restart = args[:auto_restart] if args.key?(:auto_restart)
+          @base_instance_name = args[:base_instance_name] if args.key?(:base_instance_name)
+          @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
+          @description = args[:description] if args.key?(:description)
+          @disks_to_attach = args[:disks_to_attach] if args.key?(:disks_to_attach)
+          @disks_to_create = args[:disks_to_create] if args.key?(:disks_to_create)
+          @init_action = args[:init_action] if args.key?(:init_action)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
+          @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @tags = args[:tags] if args.key?(:tags)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1189,8 +1189,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @scopes = args[:scopes] unless args[:scopes].nil?
+          @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -1215,8 +1215,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @finger_print = args[:finger_print] unless args[:finger_print].nil?
-          @items = args[:items] unless args[:items].nil?
+          @finger_print = args[:finger_print] if args.key?(:finger_print)
+          @items = args[:items] if args.key?(:items)
         end
       end
       
@@ -1251,10 +1251,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @actions = args[:actions] unless args[:actions].nil?
-          @description = args[:description] unless args[:description].nil?
-          @modules = args[:modules] unless args[:modules].nil?
-          @name = args[:name] unless args[:name].nil?
+          @actions = args[:actions] if args.key?(:actions)
+          @description = args[:description] if args.key?(:description)
+          @modules = args[:modules] if args.key?(:modules)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1278,8 +1278,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @resources = args[:resources] unless args[:resources].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
     end

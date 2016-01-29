@@ -62,12 +62,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etags = args[:etags] unless args[:etags].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @sku_id = args[:sku_id] unless args[:sku_id].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @etags = args[:etags] if args.key?(:etags)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @sku_id = args[:sku_id] if args.key?(:sku_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -86,7 +86,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -121,10 +121,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

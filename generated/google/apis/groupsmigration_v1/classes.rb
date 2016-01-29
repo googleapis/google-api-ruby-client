@@ -42,8 +42,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @response_code = args[:response_code] unless args[:response_code].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @response_code = args[:response_code] if args.key?(:response_code)
         end
       end
     end

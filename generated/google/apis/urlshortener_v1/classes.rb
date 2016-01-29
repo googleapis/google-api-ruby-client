@@ -66,12 +66,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @browsers = args[:browsers] unless args[:browsers].nil?
-          @countries = args[:countries] unless args[:countries].nil?
-          @long_url_clicks = args[:long_url_clicks] unless args[:long_url_clicks].nil?
-          @platforms = args[:platforms] unless args[:platforms].nil?
-          @referrers = args[:referrers] unless args[:referrers].nil?
-          @short_url_clicks = args[:short_url_clicks] unless args[:short_url_clicks].nil?
+          @browsers = args[:browsers] if args.key?(:browsers)
+          @countries = args[:countries] if args.key?(:countries)
+          @long_url_clicks = args[:long_url_clicks] if args.key?(:long_url_clicks)
+          @platforms = args[:platforms] if args.key?(:platforms)
+          @referrers = args[:referrers] if args.key?(:referrers)
+          @short_url_clicks = args[:short_url_clicks] if args.key?(:short_url_clicks)
         end
       end
       
@@ -110,11 +110,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @all_time = args[:all_time] unless args[:all_time].nil?
-          @day = args[:day] unless args[:day].nil?
-          @month = args[:month] unless args[:month].nil?
-          @two_hours = args[:two_hours] unless args[:two_hours].nil?
-          @week = args[:week] unless args[:week].nil?
+          @all_time = args[:all_time] if args.key?(:all_time)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @two_hours = args[:two_hours] if args.key?(:two_hours)
+          @week = args[:week] if args.key?(:week)
         end
       end
       
@@ -139,8 +139,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @id = args[:id] unless args[:id].nil?
+          @count = args[:count] if args.key?(:count)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -189,12 +189,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @analytics = args[:analytics] unless args[:analytics].nil?
-          @created = args[:created] unless args[:created].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @long_url = args[:long_url] unless args[:long_url].nil?
-          @status = args[:status] unless args[:status].nil?
+          @analytics = args[:analytics] if args.key?(:analytics)
+          @created = args[:created] if args.key?(:created)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @long_url = args[:long_url] if args.key?(:long_url)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -234,11 +234,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_items = args[:total_items] if args.key?(:total_items)
         end
       end
     end

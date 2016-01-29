@@ -63,12 +63,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additions = args[:additions] unless args[:additions].nil?
-          @deletions = args[:deletions] unless args[:deletions].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
-          @status = args[:status] unless args[:status].nil?
+          @additions = args[:additions] if args.key?(:additions)
+          @deletions = args[:deletions] if args.key?(:deletions)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -105,9 +105,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @changes = args[:changes] unless args[:changes].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @changes = args[:changes] if args.key?(:changes)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -171,14 +171,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @description = args[:description] unless args[:description].nil?
-          @dns_name = args[:dns_name] unless args[:dns_name].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @name_server_set = args[:name_server_set] unless args[:name_server_set].nil?
-          @name_servers = args[:name_servers] unless args[:name_servers].nil?
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @description = args[:description] if args.key?(:description)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @name_server_set = args[:name_server_set] if args.key?(:name_server_set)
+          @name_servers = args[:name_servers] if args.key?(:name_servers)
         end
       end
       
@@ -215,9 +215,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @managed_zones = args[:managed_zones] unless args[:managed_zones].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -255,10 +255,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @number = args[:number] unless args[:number].nil?
-          @quota = args[:quota] unless args[:quota].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @number = args[:number] if args.key?(:number)
+          @quota = args[:quota] if args.key?(:quota)
         end
       end
       
@@ -308,13 +308,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @managed_zones = args[:managed_zones] unless args[:managed_zones].nil?
-          @resource_records_per_rrset = args[:resource_records_per_rrset] unless args[:resource_records_per_rrset].nil?
-          @rrset_additions_per_change = args[:rrset_additions_per_change] unless args[:rrset_additions_per_change].nil?
-          @rrset_deletions_per_change = args[:rrset_deletions_per_change] unless args[:rrset_deletions_per_change].nil?
-          @rrsets_per_managed_zone = args[:rrsets_per_managed_zone] unless args[:rrsets_per_managed_zone].nil?
-          @total_rrdata_size_per_change = args[:total_rrdata_size_per_change] unless args[:total_rrdata_size_per_change].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
+          @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
+          @rrset_additions_per_change = args[:rrset_additions_per_change] if args.key?(:rrset_additions_per_change)
+          @rrset_deletions_per_change = args[:rrset_deletions_per_change] if args.key?(:rrset_deletions_per_change)
+          @rrsets_per_managed_zone = args[:rrsets_per_managed_zone] if args.key?(:rrsets_per_managed_zone)
+          @total_rrdata_size_per_change = args[:total_rrdata_size_per_change] if args.key?(:total_rrdata_size_per_change)
         end
       end
       
@@ -355,11 +355,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @rrdatas = args[:rrdatas] unless args[:rrdatas].nil?
-          @ttl = args[:ttl] unless args[:ttl].nil?
-          @type = args[:type] unless args[:type].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -396,9 +396,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @rrsets = args[:rrsets] unless args[:rrsets].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rrsets = args[:rrsets] if args.key?(:rrsets)
         end
       end
     end

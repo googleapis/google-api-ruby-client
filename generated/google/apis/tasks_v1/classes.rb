@@ -119,21 +119,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @completed = args[:completed] unless args[:completed].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @due = args[:due] unless args[:due].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @hidden = args[:hidden] unless args[:hidden].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @links = args[:links] unless args[:links].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @parent = args[:parent] unless args[:parent].nil?
-          @position = args[:position] unless args[:position].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
-          @title = args[:title] unless args[:title].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @completed = args[:completed] if args.key?(:completed)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @due = args[:due] if args.key?(:due)
+          @etag = args[:etag] if args.key?(:etag)
+          @hidden = args[:hidden] if args.key?(:hidden)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @links = args[:links] if args.key?(:links)
+          @notes = args[:notes] if args.key?(:notes)
+          @parent = args[:parent] if args.key?(:parent)
+          @position = args[:position] if args.key?(:position)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @title = args[:title] if args.key?(:title)
+          @updated = args[:updated] if args.key?(:updated)
         end
         
         # 
@@ -161,9 +161,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @description = args[:description] unless args[:description].nil?
-            @link = args[:link] unless args[:link].nil?
-            @type = args[:type] unless args[:type].nil?
+            @description = args[:description] if args.key?(:description)
+            @link = args[:link] if args.key?(:link)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -209,12 +209,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @title = args[:title] unless args[:title].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @title = args[:title] if args.key?(:title)
+          @updated = args[:updated] if args.key?(:updated)
         end
       end
       
@@ -248,10 +248,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -285,10 +285,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

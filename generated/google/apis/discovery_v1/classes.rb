@@ -47,9 +47,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @discovery_version = args[:discovery_version] unless args[:discovery_version].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @discovery_version = args[:discovery_version] if args.key?(:discovery_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # 
@@ -123,18 +123,18 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @description = args[:description] unless args[:description].nil?
-            @discovery_link = args[:discovery_link] unless args[:discovery_link].nil?
-            @discovery_rest_url = args[:discovery_rest_url] unless args[:discovery_rest_url].nil?
-            @documentation_link = args[:documentation_link] unless args[:documentation_link].nil?
-            @icons = args[:icons] unless args[:icons].nil?
-            @id = args[:id] unless args[:id].nil?
-            @kind = args[:kind] unless args[:kind].nil?
-            @labels = args[:labels] unless args[:labels].nil?
-            @name = args[:name] unless args[:name].nil?
-            @preferred = args[:preferred] unless args[:preferred].nil?
-            @title = args[:title] unless args[:title].nil?
-            @version = args[:version] unless args[:version].nil?
+            @description = args[:description] if args.key?(:description)
+            @discovery_link = args[:discovery_link] if args.key?(:discovery_link)
+            @discovery_rest_url = args[:discovery_rest_url] if args.key?(:discovery_rest_url)
+            @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+            @icons = args[:icons] if args.key?(:icons)
+            @id = args[:id] if args.key?(:id)
+            @kind = args[:kind] if args.key?(:kind)
+            @labels = args[:labels] if args.key?(:labels)
+            @name = args[:name] if args.key?(:name)
+            @preferred = args[:preferred] if args.key?(:preferred)
+            @title = args[:title] if args.key?(:title)
+            @version = args[:version] if args.key?(:version)
           end
           
           # Links to 16x16 and 32x32 icons representing the API.
@@ -157,8 +157,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @x16 = args[:x16] unless args[:x16].nil?
-              @x32 = args[:x32] unless args[:x32].nil?
+              @x16 = args[:x16] if args.key?(:x16)
+              @x32 = args[:x32] if args.key?(:x32)
             end
           end
         end
@@ -290,26 +290,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @_ref = args[:_ref] unless args[:_ref].nil?
-          @additional_properties = args[:additional_properties] unless args[:additional_properties].nil?
-          @annotations = args[:annotations] unless args[:annotations].nil?
-          @default = args[:default] unless args[:default].nil?
-          @description = args[:description] unless args[:description].nil?
-          @enum = args[:enum] unless args[:enum].nil?
-          @enum_descriptions = args[:enum_descriptions] unless args[:enum_descriptions].nil?
-          @format = args[:format] unless args[:format].nil?
-          @id = args[:id] unless args[:id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @location = args[:location] unless args[:location].nil?
-          @maximum = args[:maximum] unless args[:maximum].nil?
-          @minimum = args[:minimum] unless args[:minimum].nil?
-          @pattern = args[:pattern] unless args[:pattern].nil?
-          @properties = args[:properties] unless args[:properties].nil?
-          @read_only = args[:read_only] unless args[:read_only].nil?
-          @repeated = args[:repeated] unless args[:repeated].nil?
-          @required = args[:required] unless args[:required].nil?
-          @type = args[:type] unless args[:type].nil?
-          @variant = args[:variant] unless args[:variant].nil?
+          @_ref = args[:_ref] if args.key?(:_ref)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @default = args[:default] if args.key?(:default)
+          @description = args[:description] if args.key?(:description)
+          @enum = args[:enum] if args.key?(:enum)
+          @enum_descriptions = args[:enum_descriptions] if args.key?(:enum_descriptions)
+          @format = args[:format] if args.key?(:format)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @location = args[:location] if args.key?(:location)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @properties = args[:properties] if args.key?(:properties)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @repeated = args[:repeated] if args.key?(:repeated)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
+          @variant = args[:variant] if args.key?(:variant)
         end
         
         # Additional information about this property.
@@ -327,7 +327,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @required = args[:required] unless args[:required].nil?
+            @required = args[:required] if args.key?(:required)
           end
         end
         
@@ -353,8 +353,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @discriminant = args[:discriminant] unless args[:discriminant].nil?
-            @map = args[:map] unless args[:map].nil?
+            @discriminant = args[:discriminant] if args.key?(:discriminant)
+            @map = args[:map] if args.key?(:map)
           end
           
           # 
@@ -377,8 +377,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @_ref = args[:_ref] unless args[:_ref].nil?
-              @type_value = args[:type_value] unless args[:type_value].nil?
+              @_ref = args[:_ref] if args.key?(:_ref)
+              @type_value = args[:type_value] if args.key?(:type_value)
             end
           end
         end
@@ -549,36 +549,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auth = args[:auth] unless args[:auth].nil?
-          @base_path = args[:base_path] unless args[:base_path].nil?
-          @base_url = args[:base_url] unless args[:base_url].nil?
-          @batch_path = args[:batch_path] unless args[:batch_path].nil?
-          @canonical_name = args[:canonical_name] unless args[:canonical_name].nil?
-          @description = args[:description] unless args[:description].nil?
-          @discovery_version = args[:discovery_version] unless args[:discovery_version].nil?
-          @documentation_link = args[:documentation_link] unless args[:documentation_link].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @exponential_backoff_default = args[:exponential_backoff_default] unless args[:exponential_backoff_default].nil?
-          @features = args[:features] unless args[:features].nil?
-          @icons = args[:icons] unless args[:icons].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @api_methods = args[:api_methods] unless args[:api_methods].nil?
-          @name = args[:name] unless args[:name].nil?
-          @owner_domain = args[:owner_domain] unless args[:owner_domain].nil?
-          @owner_name = args[:owner_name] unless args[:owner_name].nil?
-          @package_path = args[:package_path] unless args[:package_path].nil?
-          @parameters = args[:parameters] unless args[:parameters].nil?
-          @protocol = args[:protocol] unless args[:protocol].nil?
-          @resources = args[:resources] unless args[:resources].nil?
-          @revision = args[:revision] unless args[:revision].nil?
-          @root_url = args[:root_url] unless args[:root_url].nil?
-          @schemas = args[:schemas] unless args[:schemas].nil?
-          @service_path = args[:service_path] unless args[:service_path].nil?
-          @title = args[:title] unless args[:title].nil?
-          @version = args[:version] unless args[:version].nil?
-          @version_module = args[:version_module] unless args[:version_module].nil?
+          @auth = args[:auth] if args.key?(:auth)
+          @base_path = args[:base_path] if args.key?(:base_path)
+          @base_url = args[:base_url] if args.key?(:base_url)
+          @batch_path = args[:batch_path] if args.key?(:batch_path)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
+          @description = args[:description] if args.key?(:description)
+          @discovery_version = args[:discovery_version] if args.key?(:discovery_version)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @etag = args[:etag] if args.key?(:etag)
+          @exponential_backoff_default = args[:exponential_backoff_default] if args.key?(:exponential_backoff_default)
+          @features = args[:features] if args.key?(:features)
+          @icons = args[:icons] if args.key?(:icons)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @api_methods = args[:api_methods] if args.key?(:api_methods)
+          @name = args[:name] if args.key?(:name)
+          @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
+          @owner_name = args[:owner_name] if args.key?(:owner_name)
+          @package_path = args[:package_path] if args.key?(:package_path)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @resources = args[:resources] if args.key?(:resources)
+          @revision = args[:revision] if args.key?(:revision)
+          @root_url = args[:root_url] if args.key?(:root_url)
+          @schemas = args[:schemas] if args.key?(:schemas)
+          @service_path = args[:service_path] if args.key?(:service_path)
+          @title = args[:title] if args.key?(:title)
+          @version = args[:version] if args.key?(:version)
+          @version_module = args[:version_module] if args.key?(:version_module)
         end
         
         # Authentication information.
@@ -596,7 +596,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @oauth2 = args[:oauth2] unless args[:oauth2].nil?
+            @oauth2 = args[:oauth2] if args.key?(:oauth2)
           end
           
           # OAuth 2.0 authentication information.
@@ -614,7 +614,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @scopes = args[:scopes] unless args[:scopes].nil?
+              @scopes = args[:scopes] if args.key?(:scopes)
             end
             
             # The scope value.
@@ -632,7 +632,7 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @description = args[:description] unless args[:description].nil?
+                @description = args[:description] if args.key?(:description)
               end
             end
           end
@@ -658,8 +658,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @x16 = args[:x16] unless args[:x16].nil?
-            @x32 = args[:x32] unless args[:x32].nil?
+            @x16 = args[:x16] if args.key?(:x16)
+            @x32 = args[:x32] if args.key?(:x32)
           end
         end
       end
@@ -760,21 +760,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @etag_required = args[:etag_required] unless args[:etag_required].nil?
-          @http_method = args[:http_method] unless args[:http_method].nil?
-          @id = args[:id] unless args[:id].nil?
-          @media_upload = args[:media_upload] unless args[:media_upload].nil?
-          @parameter_order = args[:parameter_order] unless args[:parameter_order].nil?
-          @parameters = args[:parameters] unless args[:parameters].nil?
-          @path = args[:path] unless args[:path].nil?
-          @request = args[:request] unless args[:request].nil?
-          @response = args[:response] unless args[:response].nil?
-          @scopes = args[:scopes] unless args[:scopes].nil?
-          @supports_media_download = args[:supports_media_download] unless args[:supports_media_download].nil?
-          @supports_media_upload = args[:supports_media_upload] unless args[:supports_media_upload].nil?
-          @supports_subscription = args[:supports_subscription] unless args[:supports_subscription].nil?
-          @use_media_download_service = args[:use_media_download_service] unless args[:use_media_download_service].nil?
+          @description = args[:description] if args.key?(:description)
+          @etag_required = args[:etag_required] if args.key?(:etag_required)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @id = args[:id] if args.key?(:id)
+          @media_upload = args[:media_upload] if args.key?(:media_upload)
+          @parameter_order = args[:parameter_order] if args.key?(:parameter_order)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @path = args[:path] if args.key?(:path)
+          @request = args[:request] if args.key?(:request)
+          @response = args[:response] if args.key?(:response)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @supports_media_download = args[:supports_media_download] if args.key?(:supports_media_download)
+          @supports_media_upload = args[:supports_media_upload] if args.key?(:supports_media_upload)
+          @supports_subscription = args[:supports_subscription] if args.key?(:supports_subscription)
+          @use_media_download_service = args[:use_media_download_service] if args.key?(:use_media_download_service)
         end
         
         # Media upload parameters.
@@ -802,9 +802,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @accept = args[:accept] unless args[:accept].nil?
-            @max_size = args[:max_size] unless args[:max_size].nil?
-            @protocols = args[:protocols] unless args[:protocols].nil?
+            @accept = args[:accept] if args.key?(:accept)
+            @max_size = args[:max_size] if args.key?(:max_size)
+            @protocols = args[:protocols] if args.key?(:protocols)
           end
           
           # Supported upload protocols.
@@ -827,8 +827,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @resumable = args[:resumable] unless args[:resumable].nil?
-              @simple = args[:simple] unless args[:simple].nil?
+              @resumable = args[:resumable] if args.key?(:resumable)
+              @simple = args[:simple] if args.key?(:simple)
             end
             
             # Supports the Resumable Media Upload protocol.
@@ -853,8 +853,8 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @multipart = args[:multipart] unless args[:multipart].nil?
-                @path = args[:path] unless args[:path].nil?
+                @multipart = args[:multipart] if args.key?(:multipart)
+                @path = args[:path] if args.key?(:path)
               end
             end
             
@@ -880,8 +880,8 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @multipart = args[:multipart] unless args[:multipart].nil?
-                @path = args[:path] unless args[:path].nil?
+                @multipart = args[:multipart] if args.key?(:multipart)
+                @path = args[:path] if args.key?(:path)
               end
             end
           end
@@ -907,8 +907,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @_ref = args[:_ref] unless args[:_ref].nil?
-            @parameter_name = args[:parameter_name] unless args[:parameter_name].nil?
+            @_ref = args[:_ref] if args.key?(:_ref)
+            @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
           end
         end
         
@@ -927,7 +927,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @_ref = args[:_ref] unless args[:_ref].nil?
+            @_ref = args[:_ref] if args.key?(:_ref)
           end
         end
       end
@@ -952,8 +952,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @api_methods = args[:api_methods] unless args[:api_methods].nil?
-          @resources = args[:resources] unless args[:resources].nil?
+          @api_methods = args[:api_methods] if args.key?(:api_methods)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
     end

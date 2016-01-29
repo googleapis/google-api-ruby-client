@@ -52,10 +52,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @status = args[:status] unless args[:status].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -84,9 +84,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -128,11 +128,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @arc_opt_in = args[:arc_opt_in] unless args[:arc_opt_in].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_code = args[:product_code] unless args[:product_code].nil?
-          @supports_reporting = args[:supports_reporting] unless args[:supports_reporting].nil?
+          @arc_opt_in = args[:arc_opt_in] if args.key?(:arc_opt_in)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_code = args[:product_code] if args.key?(:product_code)
+          @supports_reporting = args[:supports_reporting] if args.key?(:supports_reporting)
         end
       end
       
@@ -167,10 +167,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -194,8 +194,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ad_code = args[:ad_code] unless args[:ad_code].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @ad_code = args[:ad_code] if args.key?(:ad_code)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -231,10 +231,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @colors = args[:colors] unless args[:colors].nil?
-          @corners = args[:corners] unless args[:corners].nil?
-          @font = args[:font] unless args[:font].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @colors = args[:colors] if args.key?(:colors)
+          @corners = args[:corners] if args.key?(:corners)
+          @font = args[:font] if args.key?(:font)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # The colors included in the style. These are represented as six hexadecimal
@@ -273,11 +273,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @background = args[:background] unless args[:background].nil?
-            @border = args[:border] unless args[:border].nil?
-            @text = args[:text] unless args[:text].nil?
-            @title = args[:title] unless args[:title].nil?
-            @url = args[:url] unless args[:url].nil?
+            @background = args[:background] if args.key?(:background)
+            @border = args[:border] if args.key?(:border)
+            @text = args[:text] if args.key?(:text)
+            @title = args[:title] if args.key?(:title)
+            @url = args[:url] if args.key?(:url)
           end
         end
         
@@ -303,8 +303,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @family = args[:family] unless args[:family].nil?
-            @size = args[:size] unless args[:size].nil?
+            @family = args[:family] if args.key?(:family)
+            @size = args[:size] if args.key?(:size)
           end
         end
       end
@@ -318,7 +318,8 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
+        # Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        # deprecated).
         # Corresponds to the JSON property `contentAdsSettings`
         # @return [Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings]
         attr_accessor :content_ads_settings
@@ -339,7 +340,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Settings specific to WAP mobile content ads (AFMC).
+        # Settings specific to WAP mobile content ads (AFMC - deprecated).
         # Corresponds to the JSON property `mobileContentAdsSettings`
         # @return [Google::Apis::AdsensehostV4_1::AdUnit::MobileContentAdsSettings]
         attr_accessor :mobile_content_ads_settings
@@ -366,17 +367,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @content_ads_settings = args[:content_ads_settings] unless args[:content_ads_settings].nil?
-          @custom_style = args[:custom_style] unless args[:custom_style].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @mobile_content_ads_settings = args[:mobile_content_ads_settings] unless args[:mobile_content_ads_settings].nil?
-          @name = args[:name] unless args[:name].nil?
-          @status = args[:status] unless args[:status].nil?
+          @code = args[:code] if args.key?(:code)
+          @content_ads_settings = args[:content_ads_settings] if args.key?(:content_ads_settings)
+          @custom_style = args[:custom_style] if args.key?(:custom_style)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @mobile_content_ads_settings = args[:mobile_content_ads_settings] if args.key?(:mobile_content_ads_settings)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
         end
         
-        # Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
+        # Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        # deprecated).
         class ContentAdsSettings
           include Google::Apis::Core::Hashable
         
@@ -401,9 +403,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @backup_option = args[:backup_option] unless args[:backup_option].nil?
-            @size = args[:size] unless args[:size].nil?
-            @type = args[:type] unless args[:type].nil?
+            @backup_option = args[:backup_option] if args.key?(:backup_option)
+            @size = args[:size] if args.key?(:size)
+            @type = args[:type] if args.key?(:type)
           end
           
           # The backup option to be used in instances where no ad is available.
@@ -433,14 +435,14 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @color = args[:color] unless args[:color].nil?
-              @type = args[:type] unless args[:type].nil?
-              @url = args[:url] unless args[:url].nil?
+              @color = args[:color] if args.key?(:color)
+              @type = args[:type] if args.key?(:type)
+              @url = args[:url] if args.key?(:url)
             end
           end
         end
         
-        # Settings specific to WAP mobile content ads (AFMC).
+        # Settings specific to WAP mobile content ads (AFMC - deprecated).
         class MobileContentAdsSettings
           include Google::Apis::Core::Hashable
         
@@ -470,10 +472,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @markup_language = args[:markup_language] unless args[:markup_language].nil?
-            @scripting_language = args[:scripting_language] unless args[:scripting_language].nil?
-            @size = args[:size] unless args[:size].nil?
-            @type = args[:type] unless args[:type].nil?
+            @markup_language = args[:markup_language] if args.key?(:markup_language)
+            @scripting_language = args[:scripting_language] if args.key?(:scripting_language)
+            @size = args[:size] if args.key?(:size)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -509,10 +511,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -536,7 +538,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The products to associate with the user. Options: AFC, AFF, AFS, AFMC
+        # The products to associate with the user. Options: AFC, AFG, AFV, AFS (
+        # deprecated), AFMC (deprecated)
         # Corresponds to the JSON property `productCodes`
         # @return [Array<String>]
         attr_accessor :product_codes
@@ -575,15 +578,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_codes = args[:product_codes] unless args[:product_codes].nil?
-          @redirect_url = args[:redirect_url] unless args[:redirect_url].nil?
-          @status = args[:status] unless args[:status].nil?
-          @user_locale = args[:user_locale] unless args[:user_locale].nil?
-          @website_locale = args[:website_locale] unless args[:website_locale].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_codes = args[:product_codes] if args.key?(:product_codes)
+          @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
+          @status = args[:status] if args.key?(:status)
+          @user_locale = args[:user_locale] if args.key?(:user_locale)
+          @website_locale = args[:website_locale] if args.key?(:website_locale)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       
@@ -618,10 +621,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @code = args[:code] if args.key?(:code)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -656,10 +659,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -716,13 +719,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @averages = args[:averages] unless args[:averages].nil?
-          @headers = args[:headers] unless args[:headers].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @total_matched_rows = args[:total_matched_rows] unless args[:total_matched_rows].nil?
-          @totals = args[:totals] unless args[:totals].nil?
-          @warnings = args[:warnings] unless args[:warnings].nil?
+          @averages = args[:averages] if args.key?(:averages)
+          @headers = args[:headers] if args.key?(:headers)
+          @kind = args[:kind] if args.key?(:kind)
+          @rows = args[:rows] if args.key?(:rows)
+          @total_matched_rows = args[:total_matched_rows] if args.key?(:total_matched_rows)
+          @totals = args[:totals] if args.key?(:totals)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
         
         # 
@@ -752,9 +755,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @currency = args[:currency] unless args[:currency].nil?
-            @name = args[:name] unless args[:name].nil?
-            @type = args[:type] unless args[:type].nil?
+            @currency = args[:currency] if args.key?(:currency)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -786,9 +789,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @url_pattern = args[:url_pattern] unless args[:url_pattern].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @url_pattern = args[:url_pattern] if args.key?(:url_pattern)
         end
       end
       
@@ -823,10 +826,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

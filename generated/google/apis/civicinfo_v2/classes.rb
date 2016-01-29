@@ -61,11 +61,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @election_administration_body = args[:election_administration_body] unless args[:election_administration_body].nil?
-          @id = args[:id] unless args[:id].nil?
-          @local_jurisdiction = args[:local_jurisdiction] unless args[:local_jurisdiction].nil?
-          @name = args[:name] unless args[:name].nil?
-          @sources = args[:sources] unless args[:sources].nil?
+          @election_administration_body = args[:election_administration_body] if args.key?(:election_administration_body)
+          @id = args[:id] if args.key?(:id)
+          @local_jurisdiction = args[:local_jurisdiction] if args.key?(:local_jurisdiction)
+          @name = args[:name] if args.key?(:name)
+          @sources = args[:sources] if args.key?(:sources)
         end
       end
       
@@ -150,19 +150,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @absentee_voting_info_url = args[:absentee_voting_info_url] unless args[:absentee_voting_info_url].nil?
-          @ballot_info_url = args[:ballot_info_url] unless args[:ballot_info_url].nil?
-          @correspondence_address = args[:correspondence_address] unless args[:correspondence_address].nil?
-          @election_info_url = args[:election_info_url] unless args[:election_info_url].nil?
-          @election_officials = args[:election_officials] unless args[:election_officials].nil?
-          @election_registration_confirmation_url = args[:election_registration_confirmation_url] unless args[:election_registration_confirmation_url].nil?
-          @election_registration_url = args[:election_registration_url] unless args[:election_registration_url].nil?
-          @election_rules_url = args[:election_rules_url] unless args[:election_rules_url].nil?
-          @hours_of_operation = args[:hours_of_operation] unless args[:hours_of_operation].nil?
-          @name = args[:name] unless args[:name].nil?
-          @physical_address = args[:physical_address] unless args[:physical_address].nil?
-          @voter_services = args[:voter_services] unless args[:voter_services].nil?
-          @voting_location_finder_url = args[:voting_location_finder_url] unless args[:voting_location_finder_url].nil?
+          @absentee_voting_info_url = args[:absentee_voting_info_url] if args.key?(:absentee_voting_info_url)
+          @ballot_info_url = args[:ballot_info_url] if args.key?(:ballot_info_url)
+          @correspondence_address = args[:correspondence_address] if args.key?(:correspondence_address)
+          @election_info_url = args[:election_info_url] if args.key?(:election_info_url)
+          @election_officials = args[:election_officials] if args.key?(:election_officials)
+          @election_registration_confirmation_url = args[:election_registration_confirmation_url] if args.key?(:election_registration_confirmation_url)
+          @election_registration_url = args[:election_registration_url] if args.key?(:election_registration_url)
+          @election_rules_url = args[:election_rules_url] if args.key?(:election_rules_url)
+          @hours_of_operation = args[:hours_of_operation] if args.key?(:hours_of_operation)
+          @name = args[:name] if args.key?(:name)
+          @physical_address = args[:physical_address] if args.key?(:physical_address)
+          @voter_services = args[:voter_services] if args.key?(:voter_services)
+          @voting_location_finder_url = args[:voting_location_finder_url] if args.key?(:voting_location_finder_url)
         end
       end
       
@@ -216,14 +216,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @candidate_url = args[:candidate_url] unless args[:candidate_url].nil?
-          @channels = args[:channels] unless args[:channels].nil?
-          @email = args[:email] unless args[:email].nil?
-          @name = args[:name] unless args[:name].nil?
-          @order_on_ballot = args[:order_on_ballot] unless args[:order_on_ballot].nil?
-          @party = args[:party] unless args[:party].nil?
-          @phone = args[:phone] unless args[:phone].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
+          @candidate_url = args[:candidate_url] if args.key?(:candidate_url)
+          @channels = args[:channels] if args.key?(:channels)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @order_on_ballot = args[:order_on_ballot] if args.key?(:order_on_ballot)
+          @party = args[:party] if args.key?(:party)
+          @phone = args[:phone] if args.key?(:phone)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
         end
       end
       
@@ -249,8 +249,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -408,30 +408,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ballot_placement = args[:ballot_placement] unless args[:ballot_placement].nil?
-          @candidates = args[:candidates] unless args[:candidates].nil?
-          @district = args[:district] unless args[:district].nil?
-          @electorate_specifications = args[:electorate_specifications] unless args[:electorate_specifications].nil?
-          @id = args[:id] unless args[:id].nil?
-          @level = args[:level] unless args[:level].nil?
-          @number_elected = args[:number_elected] unless args[:number_elected].nil?
-          @number_voting_for = args[:number_voting_for] unless args[:number_voting_for].nil?
-          @office = args[:office] unless args[:office].nil?
-          @primary_party = args[:primary_party] unless args[:primary_party].nil?
-          @referendum_ballot_responses = args[:referendum_ballot_responses] unless args[:referendum_ballot_responses].nil?
-          @referendum_brief = args[:referendum_brief] unless args[:referendum_brief].nil?
-          @referendum_con_statement = args[:referendum_con_statement] unless args[:referendum_con_statement].nil?
-          @referendum_effect_of_abstain = args[:referendum_effect_of_abstain] unless args[:referendum_effect_of_abstain].nil?
-          @referendum_passage_threshold = args[:referendum_passage_threshold] unless args[:referendum_passage_threshold].nil?
-          @referendum_pro_statement = args[:referendum_pro_statement] unless args[:referendum_pro_statement].nil?
-          @referendum_subtitle = args[:referendum_subtitle] unless args[:referendum_subtitle].nil?
-          @referendum_text = args[:referendum_text] unless args[:referendum_text].nil?
-          @referendum_title = args[:referendum_title] unless args[:referendum_title].nil?
-          @referendum_url = args[:referendum_url] unless args[:referendum_url].nil?
-          @roles = args[:roles] unless args[:roles].nil?
-          @sources = args[:sources] unless args[:sources].nil?
-          @special = args[:special] unless args[:special].nil?
-          @type = args[:type] unless args[:type].nil?
+          @ballot_placement = args[:ballot_placement] if args.key?(:ballot_placement)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @district = args[:district] if args.key?(:district)
+          @electorate_specifications = args[:electorate_specifications] if args.key?(:electorate_specifications)
+          @id = args[:id] if args.key?(:id)
+          @level = args[:level] if args.key?(:level)
+          @number_elected = args[:number_elected] if args.key?(:number_elected)
+          @number_voting_for = args[:number_voting_for] if args.key?(:number_voting_for)
+          @office = args[:office] if args.key?(:office)
+          @primary_party = args[:primary_party] if args.key?(:primary_party)
+          @referendum_ballot_responses = args[:referendum_ballot_responses] if args.key?(:referendum_ballot_responses)
+          @referendum_brief = args[:referendum_brief] if args.key?(:referendum_brief)
+          @referendum_con_statement = args[:referendum_con_statement] if args.key?(:referendum_con_statement)
+          @referendum_effect_of_abstain = args[:referendum_effect_of_abstain] if args.key?(:referendum_effect_of_abstain)
+          @referendum_passage_threshold = args[:referendum_passage_threshold] if args.key?(:referendum_passage_threshold)
+          @referendum_pro_statement = args[:referendum_pro_statement] if args.key?(:referendum_pro_statement)
+          @referendum_subtitle = args[:referendum_subtitle] if args.key?(:referendum_subtitle)
+          @referendum_text = args[:referendum_text] if args.key?(:referendum_text)
+          @referendum_title = args[:referendum_title] if args.key?(:referendum_title)
+          @referendum_url = args[:referendum_url] if args.key?(:referendum_url)
+          @roles = args[:roles] if args.key?(:roles)
+          @sources = args[:sources] if args.key?(:sources)
+          @special = args[:special] if args.key?(:special)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -456,8 +456,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @results = args[:results] unless args[:results].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -490,9 +490,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aliases = args[:aliases] unless args[:aliases].nil?
-          @name = args[:name] unless args[:name].nil?
-          @ocd_id = args[:ocd_id] unless args[:ocd_id].nil?
+          @aliases = args[:aliases] if args.key?(:aliases)
+          @name = args[:name] if args.key?(:name)
+          @ocd_id = args[:ocd_id] if args.key?(:ocd_id)
         end
       end
       
@@ -529,10 +529,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @election_day = args[:election_day] unless args[:election_day].nil?
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @ocd_division_id = args[:ocd_division_id] unless args[:ocd_division_id].nil?
+          @election_day = args[:election_day] if args.key?(:election_day)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @ocd_division_id = args[:ocd_division_id] if args.key?(:ocd_division_id)
         end
       end
       
@@ -571,11 +571,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @fax_number = args[:fax_number] unless args[:fax_number].nil?
-          @name = args[:name] unless args[:name].nil?
-          @office_phone_number = args[:office_phone_number] unless args[:office_phone_number].nil?
-          @title = args[:title] unless args[:title].nil?
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @fax_number = args[:fax_number] if args.key?(:fax_number)
+          @name = args[:name] if args.key?(:name)
+          @office_phone_number = args[:office_phone_number] if args.key?(:office_phone_number)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -600,8 +600,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @elections = args[:elections] unless args[:elections].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @elections = args[:elections] if args.key?(:elections)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -634,9 +634,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @scope = args[:scope] unless args[:scope].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -675,9 +675,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @also_known_as = args[:also_known_as] unless args[:also_known_as].nil?
-          @name = args[:name] unless args[:name].nil?
-          @office_indices = args[:office_indices] unless args[:office_indices].nil?
+          @also_known_as = args[:also_known_as] if args.key?(:also_known_as)
+          @name = args[:name] if args.key?(:name)
+          @office_indices = args[:office_indices] if args.key?(:office_indices)
         end
       end
       
@@ -730,12 +730,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @division_id = args[:division_id] unless args[:division_id].nil?
-          @levels = args[:levels] unless args[:levels].nil?
-          @name = args[:name] unless args[:name].nil?
-          @official_indices = args[:official_indices] unless args[:official_indices].nil?
-          @roles = args[:roles] unless args[:roles].nil?
-          @sources = args[:sources] unless args[:sources].nil?
+          @division_id = args[:division_id] if args.key?(:division_id)
+          @levels = args[:levels] if args.key?(:levels)
+          @name = args[:name] if args.key?(:name)
+          @official_indices = args[:official_indices] if args.key?(:official_indices)
+          @roles = args[:roles] if args.key?(:roles)
+          @sources = args[:sources] if args.key?(:sources)
         end
       end
       
@@ -789,14 +789,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @channels = args[:channels] unless args[:channels].nil?
-          @emails = args[:emails] unless args[:emails].nil?
-          @name = args[:name] unless args[:name].nil?
-          @party = args[:party] unless args[:party].nil?
-          @phones = args[:phones] unless args[:phones].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
-          @urls = args[:urls] unless args[:urls].nil?
+          @address = args[:address] if args.key?(:address)
+          @channels = args[:channels] if args.key?(:channels)
+          @emails = args[:emails] if args.key?(:emails)
+          @name = args[:name] if args.key?(:name)
+          @party = args[:party] if args.key?(:party)
+          @phones = args[:phones] if args.key?(:phones)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @urls = args[:urls] if args.key?(:urls)
         end
       end
       
@@ -863,15 +863,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @end_date = args[:end_date] unless args[:end_date].nil?
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @polling_hours = args[:polling_hours] unless args[:polling_hours].nil?
-          @sources = args[:sources] unless args[:sources].nil?
-          @start_date = args[:start_date] unless args[:start_date].nil?
-          @voter_services = args[:voter_services] unless args[:voter_services].nil?
+          @address = args[:address] if args.key?(:address)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @polling_hours = args[:polling_hours] if args.key?(:polling_hours)
+          @sources = args[:sources] if args.key?(:sources)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @voter_services = args[:voter_services] if args.key?(:voter_services)
         end
       end
       
@@ -902,9 +902,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @divisions = args[:divisions] unless args[:divisions].nil?
-          @offices = args[:offices] unless args[:offices].nil?
-          @officials = args[:officials] unless args[:officials].nil?
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @offices = args[:offices] if args.key?(:offices)
+          @officials = args[:officials] if args.key?(:officials)
         end
       end
       
@@ -946,11 +946,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @divisions = args[:divisions] unless args[:divisions].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @normalized_input = args[:normalized_input] unless args[:normalized_input].nil?
-          @offices = args[:offices] unless args[:offices].nil?
-          @officials = args[:officials] unless args[:officials].nil?
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @kind = args[:kind] if args.key?(:kind)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+          @offices = args[:offices] if args.key?(:offices)
+          @officials = args[:officials] if args.key?(:officials)
         end
       end
       
@@ -999,13 +999,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @city = args[:city] unless args[:city].nil?
-          @line1 = args[:line1] unless args[:line1].nil?
-          @line2 = args[:line2] unless args[:line2].nil?
-          @line3 = args[:line3] unless args[:line3].nil?
-          @location_name = args[:location_name] unless args[:location_name].nil?
-          @state = args[:state] unless args[:state].nil?
-          @zip = args[:zip] unless args[:zip].nil?
+          @city = args[:city] if args.key?(:city)
+          @line1 = args[:line1] if args.key?(:line1)
+          @line2 = args[:line2] if args.key?(:line2)
+          @line3 = args[:line3] if args.key?(:line3)
+          @location_name = args[:location_name] if args.key?(:location_name)
+          @state = args[:state] if args.key?(:state)
+          @zip = args[:zip] if args.key?(:zip)
         end
       end
       
@@ -1030,8 +1030,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @official = args[:official] unless args[:official].nil?
+          @name = args[:name] if args.key?(:name)
+          @official = args[:official] if args.key?(:official)
         end
       end
       
@@ -1109,17 +1109,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @contests = args[:contests] unless args[:contests].nil?
-          @drop_off_locations = args[:drop_off_locations] unless args[:drop_off_locations].nil?
-          @early_vote_sites = args[:early_vote_sites] unless args[:early_vote_sites].nil?
-          @election = args[:election] unless args[:election].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @mail_only = args[:mail_only] unless args[:mail_only].nil?
-          @normalized_input = args[:normalized_input] unless args[:normalized_input].nil?
-          @other_elections = args[:other_elections] unless args[:other_elections].nil?
-          @polling_locations = args[:polling_locations] unless args[:polling_locations].nil?
-          @precinct_id = args[:precinct_id] unless args[:precinct_id].nil?
-          @state = args[:state] unless args[:state].nil?
+          @contests = args[:contests] if args.key?(:contests)
+          @drop_off_locations = args[:drop_off_locations] if args.key?(:drop_off_locations)
+          @early_vote_sites = args[:early_vote_sites] if args.key?(:early_vote_sites)
+          @election = args[:election] if args.key?(:election)
+          @kind = args[:kind] if args.key?(:kind)
+          @mail_only = args[:mail_only] if args.key?(:mail_only)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+          @other_elections = args[:other_elections] if args.key?(:other_elections)
+          @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
+          @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
     end

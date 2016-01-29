@@ -68,13 +68,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @request_metadata = args[:request_metadata] unless args[:request_metadata].nil?
-          @event_action = args[:event_action] unless args[:event_action].nil?
-          @event_category = args[:event_category] unless args[:event_category].nil?
-          @event_scope = args[:event_scope] unless args[:event_scope].nil?
-          @event_datas = args[:event_datas] unless args[:event_datas].nil?
-          @url = args[:url] unless args[:url].nil?
-          @lead = args[:lead] unless args[:lead].nil?
+          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @event_action = args[:event_action] if args.key?(:event_action)
+          @event_category = args[:event_category] if args.key?(:event_category)
+          @event_scope = args[:event_scope] if args.key?(:event_scope)
+          @event_datas = args[:event_datas] if args.key?(:event_datas)
+          @url = args[:url] if args.key?(:url)
+          @lead = args[:lead] if args.key?(:lead)
         end
       end
       
@@ -114,11 +114,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @user_overrides = args[:user_overrides] unless args[:user_overrides].nil?
-          @locale = args[:locale] unless args[:locale].nil?
-          @partners_session_id = args[:partners_session_id] unless args[:partners_session_id].nil?
-          @experiment_ids = args[:experiment_ids] unless args[:experiment_ids].nil?
-          @traffic_source = args[:traffic_source] unless args[:traffic_source].nil?
+          @user_overrides = args[:user_overrides] if args.key?(:user_overrides)
+          @locale = args[:locale] if args.key?(:locale)
+          @partners_session_id = args[:partners_session_id] if args.key?(:partners_session_id)
+          @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
+          @traffic_source = args[:traffic_source] if args.key?(:traffic_source)
         end
       end
       
@@ -143,8 +143,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ip_address = args[:ip_address] unless args[:ip_address].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -171,8 +171,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @traffic_source_id = args[:traffic_source_id] unless args[:traffic_source_id].nil?
-          @traffic_sub_id = args[:traffic_sub_id] unless args[:traffic_sub_id].nil?
+          @traffic_source_id = args[:traffic_source_id] if args.key?(:traffic_source_id)
+          @traffic_sub_id = args[:traffic_sub_id] if args.key?(:traffic_sub_id)
         end
       end
       
@@ -196,8 +196,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @values = args[:values] unless args[:values].nil?
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -262,16 +262,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @type = args[:type] unless args[:type].nil?
-          @email = args[:email] unless args[:email].nil?
-          @given_name = args[:given_name] unless args[:given_name].nil?
-          @family_name = args[:family_name] unless args[:family_name].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
-          @phone_number = args[:phone_number] unless args[:phone_number].nil?
-          @comments = args[:comments] unless args[:comments].nil?
-          @gps_motivations = args[:gps_motivations] unless args[:gps_motivations].nil?
-          @min_monthly_budget = args[:min_monthly_budget] unless args[:min_monthly_budget].nil?
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+          @email = args[:email] if args.key?(:email)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @website_url = args[:website_url] if args.key?(:website_url)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @comments = args[:comments] if args.key?(:comments)
+          @gps_motivations = args[:gps_motivations] if args.key?(:gps_motivations)
+          @min_monthly_budget = args[:min_monthly_budget] if args.key?(:min_monthly_budget)
         end
       end
       
@@ -305,9 +305,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
-          @units = args[:units] unless args[:units].nil?
-          @nanos = args[:nanos] unless args[:nanos].nil?
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @units = args[:units] if args.key?(:units)
+          @nanos = args[:nanos] if args.key?(:nanos)
         end
       end
       
@@ -326,7 +326,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
         end
       end
       
@@ -345,7 +345,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @debug_info = args[:debug_info] unless args[:debug_info].nil?
+          @debug_info = args[:debug_info] if args.key?(:debug_info)
         end
       end
       
@@ -374,9 +374,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @server_info = args[:server_info] unless args[:server_info].nil?
-          @service_url = args[:service_url] unless args[:service_url].nil?
-          @server_trace_info = args[:server_trace_info] unless args[:server_trace_info].nil?
+          @server_info = args[:server_info] if args.key?(:server_info)
+          @service_url = args[:service_url] if args.key?(:service_url)
+          @server_trace_info = args[:server_trace_info] if args.key?(:server_trace_info)
         end
       end
       
@@ -410,10 +410,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @request_metadata = args[:request_metadata] unless args[:request_metadata].nil?
-          @level = args[:level] unless args[:level].nil?
-          @details = args[:details] unless args[:details].nil?
-          @client_info = args[:client_info] unless args[:client_info].nil?
+          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @level = args[:level] if args.key?(:level)
+          @details = args[:details] if args.key?(:details)
+          @client_info = args[:client_info] if args.key?(:client_info)
         end
       end
       
@@ -432,7 +432,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
         end
       end
       
@@ -456,8 +456,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
-          @user_states = args[:user_states] unless args[:user_states].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @user_states = args[:user_states] if args.key?(:user_states)
         end
       end
       
@@ -482,8 +482,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
-          @company = args[:company] unless args[:company].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @company = args[:company] if args.key?(:company)
         end
       end
       
@@ -558,18 +558,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @localized_infos = args[:localized_infos] unless args[:localized_infos].nil?
-          @locations = args[:locations] unless args[:locations].nil?
-          @converted_min_monthly_budget = args[:converted_min_monthly_budget] unless args[:converted_min_monthly_budget].nil?
-          @original_min_monthly_budget = args[:original_min_monthly_budget] unless args[:original_min_monthly_budget].nil?
-          @public_profile = args[:public_profile] unless args[:public_profile].nil?
-          @certification_statuses = args[:certification_statuses] unless args[:certification_statuses].nil?
-          @ranks = args[:ranks] unless args[:ranks].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
-          @industries = args[:industries] unless args[:industries].nil?
-          @services = args[:services] unless args[:services].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @localized_infos = args[:localized_infos] if args.key?(:localized_infos)
+          @locations = args[:locations] if args.key?(:locations)
+          @converted_min_monthly_budget = args[:converted_min_monthly_budget] if args.key?(:converted_min_monthly_budget)
+          @original_min_monthly_budget = args[:original_min_monthly_budget] if args.key?(:original_min_monthly_budget)
+          @public_profile = args[:public_profile] if args.key?(:public_profile)
+          @certification_statuses = args[:certification_statuses] if args.key?(:certification_statuses)
+          @ranks = args[:ranks] if args.key?(:ranks)
+          @website_url = args[:website_url] if args.key?(:website_url)
+          @industries = args[:industries] if args.key?(:industries)
+          @services = args[:services] if args.key?(:services)
         end
       end
       
@@ -604,10 +604,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @language_code = args[:language_code] unless args[:language_code].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @overview = args[:overview] unless args[:overview].nil?
-          @country_codes = args[:country_codes] unless args[:country_codes].nil?
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @overview = args[:overview] if args.key?(:overview)
+          @country_codes = args[:country_codes] if args.key?(:country_codes)
         end
       end
       
@@ -649,8 +649,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @lat_lng = args[:lat_lng] unless args[:lat_lng].nil?
+          @address = args[:address] if args.key?(:address)
+          @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
         end
       end
       
@@ -692,8 +692,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @latitude = args[:latitude] unless args[:latitude].nil?
-          @longitude = args[:longitude] unless args[:longitude].nil?
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
@@ -727,10 +727,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @url = args[:url] unless args[:url].nil?
-          @display_image_url = args[:display_image_url] unless args[:display_image_url].nil?
+          @id = args[:id] if args.key?(:id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @url = args[:url] if args.key?(:url)
+          @display_image_url = args[:display_image_url] if args.key?(:display_image_url)
         end
       end
       
@@ -760,9 +760,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @exam_statuses = args[:exam_statuses] unless args[:exam_statuses].nil?
-          @is_certified = args[:is_certified] unless args[:is_certified].nil?
+          @type = args[:type] if args.key?(:type)
+          @exam_statuses = args[:exam_statuses] if args.key?(:exam_statuses)
+          @is_certified = args[:is_certified] if args.key?(:is_certified)
         end
       end
       
@@ -786,8 +786,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @number_users_pass = args[:number_users_pass] unless args[:number_users_pass].nil?
+          @type = args[:type] if args.key?(:type)
+          @number_users_pass = args[:number_users_pass] if args.key?(:number_users_pass)
         end
       end
       
@@ -811,8 +811,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @value = args[:value] unless args[:value].nil?
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -843,9 +843,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
-          @companies = args[:companies] unless args[:companies].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @companies = args[:companies] if args.key?(:companies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -875,9 +875,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @request_metadata = args[:request_metadata] unless args[:request_metadata].nil?
-          @lead = args[:lead] unless args[:lead].nil?
-          @recaptcha_challenge = args[:recaptcha_challenge] unless args[:recaptcha_challenge].nil?
+          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @lead = args[:lead] if args.key?(:lead)
+          @recaptcha_challenge = args[:recaptcha_challenge] if args.key?(:recaptcha_challenge)
         end
       end
       
@@ -901,8 +901,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @response = args[:response] unless args[:response].nil?
+          @id = args[:id] if args.key?(:id)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -932,9 +932,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] unless args[:response_metadata].nil?
-          @lead = args[:lead] unless args[:lead].nil?
-          @recaptcha_status = args[:recaptcha_status] unless args[:recaptcha_status].nil?
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @lead = args[:lead] if args.key?(:lead)
+          @recaptcha_status = args[:recaptcha_status] if args.key?(:recaptcha_status)
         end
       end
     end

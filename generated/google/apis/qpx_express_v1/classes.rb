@@ -48,9 +48,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @code = args[:code] if args.key?(:code)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -87,10 +87,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @city = args[:city] unless args[:city].nil?
-          @code = args[:code] unless args[:code].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @city = args[:city] if args.key?(:city)
+          @code = args[:code] if args.key?(:code)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -130,11 +130,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @commercial_name = args[:commercial_name] unless args[:commercial_name].nil?
-          @count = args[:count] unless args[:count].nil?
-          @description = args[:description] unless args[:description].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @subcode = args[:subcode] unless args[:subcode].nil?
+          @commercial_name = args[:commercial_name] if args.key?(:commercial_name)
+          @count = args[:count] if args.key?(:count)
+          @description = args[:description] if args.key?(:description)
+          @kind = args[:kind] if args.key?(:kind)
+          @subcode = args[:subcode] if args.key?(:subcode)
         end
       end
       
@@ -166,9 +166,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @code = args[:code] if args.key?(:code)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -205,10 +205,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @country = args[:country] unless args[:country].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @code = args[:code] if args.key?(:code)
+          @country = args[:country] if args.key?(:country)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -255,12 +255,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aircraft = args[:aircraft] unless args[:aircraft].nil?
-          @airport = args[:airport] unless args[:airport].nil?
-          @carrier = args[:carrier] unless args[:carrier].nil?
-          @city = args[:city] unless args[:city].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @tax = args[:tax] unless args[:tax].nil?
+          @aircraft = args[:aircraft] if args.key?(:aircraft)
+          @airport = args[:airport] if args.key?(:airport)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @city = args[:city] if args.key?(:city)
+          @kind = args[:kind] if args.key?(:kind)
+          @tax = args[:tax] if args.key?(:tax)
         end
       end
       
@@ -315,13 +315,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @basis_code = args[:basis_code] unless args[:basis_code].nil?
-          @carrier = args[:carrier] unless args[:carrier].nil?
-          @destination = args[:destination] unless args[:destination].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @origin = args[:origin] unless args[:origin].nil?
-          @private = args[:private] unless args[:private].nil?
+          @basis_code = args[:basis_code] if args.key?(:basis_code)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @destination = args[:destination] if args.key?(:destination)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @origin = args[:origin] if args.key?(:origin)
+          @private = args[:private] if args.key?(:private)
         end
       end
       
@@ -351,8 +351,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @carrier = args[:carrier] unless args[:carrier].nil?
-          @number = args[:number] unless args[:number].nil?
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @number = args[:number] if args.key?(:number)
         end
       end
       
@@ -398,12 +398,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bag_descriptor = args[:bag_descriptor] unless args[:bag_descriptor].nil?
-          @kilos = args[:kilos] unless args[:kilos].nil?
-          @kilos_per_piece = args[:kilos_per_piece] unless args[:kilos_per_piece].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @pieces = args[:pieces] unless args[:pieces].nil?
-          @pounds = args[:pounds] unless args[:pounds].nil?
+          @bag_descriptor = args[:bag_descriptor] if args.key?(:bag_descriptor)
+          @kilos = args[:kilos] if args.key?(:kilos)
+          @kilos_per_piece = args[:kilos_per_piece] if args.key?(:kilos_per_piece)
+          @kind = args[:kind] if args.key?(:kind)
+          @pieces = args[:pieces] if args.key?(:pieces)
+          @pounds = args[:pounds] if args.key?(:pounds)
         end
       end
       
@@ -517,23 +517,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aircraft = args[:aircraft] unless args[:aircraft].nil?
-          @arrival_time = args[:arrival_time] unless args[:arrival_time].nil?
-          @change_plane = args[:change_plane] unless args[:change_plane].nil?
-          @connection_duration = args[:connection_duration] unless args[:connection_duration].nil?
-          @departure_time = args[:departure_time] unless args[:departure_time].nil?
-          @destination = args[:destination] unless args[:destination].nil?
-          @destination_terminal = args[:destination_terminal] unless args[:destination_terminal].nil?
-          @duration = args[:duration] unless args[:duration].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @meal = args[:meal] unless args[:meal].nil?
-          @mileage = args[:mileage] unless args[:mileage].nil?
-          @on_time_performance = args[:on_time_performance] unless args[:on_time_performance].nil?
-          @operating_disclosure = args[:operating_disclosure] unless args[:operating_disclosure].nil?
-          @origin = args[:origin] unless args[:origin].nil?
-          @origin_terminal = args[:origin_terminal] unless args[:origin_terminal].nil?
-          @secure = args[:secure] unless args[:secure].nil?
+          @aircraft = args[:aircraft] if args.key?(:aircraft)
+          @arrival_time = args[:arrival_time] if args.key?(:arrival_time)
+          @change_plane = args[:change_plane] if args.key?(:change_plane)
+          @connection_duration = args[:connection_duration] if args.key?(:connection_duration)
+          @departure_time = args[:departure_time] if args.key?(:departure_time)
+          @destination = args[:destination] if args.key?(:destination)
+          @destination_terminal = args[:destination_terminal] if args.key?(:destination_terminal)
+          @duration = args[:duration] if args.key?(:duration)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @meal = args[:meal] if args.key?(:meal)
+          @mileage = args[:mileage] if args.key?(:mileage)
+          @on_time_performance = args[:on_time_performance] if args.key?(:on_time_performance)
+          @operating_disclosure = args[:operating_disclosure] if args.key?(:operating_disclosure)
+          @origin = args[:origin] if args.key?(:origin)
+          @origin_terminal = args[:origin_terminal] if args.key?(:origin_terminal)
+          @secure = args[:secure] if args.key?(:secure)
         end
       end
       
@@ -580,12 +580,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @adult_count = args[:adult_count] unless args[:adult_count].nil?
-          @child_count = args[:child_count] unless args[:child_count].nil?
-          @infant_in_lap_count = args[:infant_in_lap_count] unless args[:infant_in_lap_count].nil?
-          @infant_in_seat_count = args[:infant_in_seat_count] unless args[:infant_in_seat_count].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @senior_count = args[:senior_count] unless args[:senior_count].nil?
+          @adult_count = args[:adult_count] if args.key?(:adult_count)
+          @child_count = args[:child_count] if args.key?(:child_count)
+          @infant_in_lap_count = args[:infant_in_lap_count] if args.key?(:infant_in_lap_count)
+          @infant_in_seat_count = args[:infant_in_seat_count] if args.key?(:infant_in_seat_count)
+          @kind = args[:kind] if args.key?(:kind)
+          @senior_count = args[:senior_count] if args.key?(:senior_count)
         end
       end
       
@@ -678,19 +678,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @base_fare_total = args[:base_fare_total] unless args[:base_fare_total].nil?
-          @fare = args[:fare] unless args[:fare].nil?
-          @fare_calculation = args[:fare_calculation] unless args[:fare_calculation].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @latest_ticketing_time = args[:latest_ticketing_time] unless args[:latest_ticketing_time].nil?
-          @passengers = args[:passengers] unless args[:passengers].nil?
-          @ptc = args[:ptc] unless args[:ptc].nil?
-          @refundable = args[:refundable] unless args[:refundable].nil?
-          @sale_fare_total = args[:sale_fare_total] unless args[:sale_fare_total].nil?
-          @sale_tax_total = args[:sale_tax_total] unless args[:sale_tax_total].nil?
-          @sale_total = args[:sale_total] unless args[:sale_total].nil?
-          @segment_pricing = args[:segment_pricing] unless args[:segment_pricing].nil?
-          @tax = args[:tax] unless args[:tax].nil?
+          @base_fare_total = args[:base_fare_total] if args.key?(:base_fare_total)
+          @fare = args[:fare] if args.key?(:fare)
+          @fare_calculation = args[:fare_calculation] if args.key?(:fare_calculation)
+          @kind = args[:kind] if args.key?(:kind)
+          @latest_ticketing_time = args[:latest_ticketing_time] if args.key?(:latest_ticketing_time)
+          @passengers = args[:passengers] if args.key?(:passengers)
+          @ptc = args[:ptc] if args.key?(:ptc)
+          @refundable = args[:refundable] if args.key?(:refundable)
+          @sale_fare_total = args[:sale_fare_total] if args.key?(:sale_fare_total)
+          @sale_tax_total = args[:sale_tax_total] if args.key?(:sale_tax_total)
+          @sale_total = args[:sale_total] if args.key?(:sale_total)
+          @segment_pricing = args[:segment_pricing] if args.key?(:segment_pricing)
+          @tax = args[:tax] if args.key?(:tax)
         end
       end
       
@@ -780,17 +780,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @booking_code = args[:booking_code] unless args[:booking_code].nil?
-          @booking_code_count = args[:booking_code_count] unless args[:booking_code_count].nil?
-          @cabin = args[:cabin] unless args[:cabin].nil?
-          @connection_duration = args[:connection_duration] unless args[:connection_duration].nil?
-          @duration = args[:duration] unless args[:duration].nil?
-          @flight = args[:flight] unless args[:flight].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @leg = args[:leg] unless args[:leg].nil?
-          @married_segment_group = args[:married_segment_group] unless args[:married_segment_group].nil?
-          @subject_to_government_approval = args[:subject_to_government_approval] unless args[:subject_to_government_approval].nil?
+          @booking_code = args[:booking_code] if args.key?(:booking_code)
+          @booking_code_count = args[:booking_code_count] if args.key?(:booking_code_count)
+          @cabin = args[:cabin] if args.key?(:cabin)
+          @connection_duration = args[:connection_duration] if args.key?(:connection_duration)
+          @duration = args[:duration] if args.key?(:duration)
+          @flight = args[:flight] if args.key?(:flight)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @leg = args[:leg] if args.key?(:leg)
+          @married_segment_group = args[:married_segment_group] if args.key?(:married_segment_group)
+          @subject_to_government_approval = args[:subject_to_government_approval] if args.key?(:subject_to_government_approval)
         end
       end
       
@@ -826,10 +826,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fare_id = args[:fare_id] unless args[:fare_id].nil?
-          @free_baggage_option = args[:free_baggage_option] unless args[:free_baggage_option].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @segment_id = args[:segment_id] unless args[:segment_id].nil?
+          @fare_id = args[:fare_id] if args.key?(:fare_id)
+          @free_baggage_option = args[:free_baggage_option] if args.key?(:free_baggage_option)
+          @kind = args[:kind] if args.key?(:kind)
+          @segment_id = args[:segment_id] if args.key?(:segment_id)
         end
       end
       
@@ -868,9 +868,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @duration = args[:duration] unless args[:duration].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @segment = args[:segment] unless args[:segment].nil?
+          @duration = args[:duration] if args.key?(:duration)
+          @kind = args[:kind] if args.key?(:kind)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -945,17 +945,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alliance = args[:alliance] unless args[:alliance].nil?
-          @date = args[:date] unless args[:date].nil?
-          @destination = args[:destination] unless args[:destination].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max_connection_duration = args[:max_connection_duration] unless args[:max_connection_duration].nil?
-          @max_stops = args[:max_stops] unless args[:max_stops].nil?
-          @origin = args[:origin] unless args[:origin].nil?
-          @permitted_carrier = args[:permitted_carrier] unless args[:permitted_carrier].nil?
-          @permitted_departure_time = args[:permitted_departure_time] unless args[:permitted_departure_time].nil?
-          @preferred_cabin = args[:preferred_cabin] unless args[:preferred_cabin].nil?
-          @prohibited_carrier = args[:prohibited_carrier] unless args[:prohibited_carrier].nil?
+          @alliance = args[:alliance] if args.key?(:alliance)
+          @date = args[:date] if args.key?(:date)
+          @destination = args[:destination] if args.key?(:destination)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_connection_duration = args[:max_connection_duration] if args.key?(:max_connection_duration)
+          @max_stops = args[:max_stops] if args.key?(:max_stops)
+          @origin = args[:origin] if args.key?(:origin)
+          @permitted_carrier = args[:permitted_carrier] if args.key?(:permitted_carrier)
+          @permitted_departure_time = args[:permitted_departure_time] if args.key?(:permitted_departure_time)
+          @preferred_cabin = args[:preferred_cabin] if args.key?(:preferred_cabin)
+          @prohibited_carrier = args[:prohibited_carrier] if args.key?(:prohibited_carrier)
         end
       end
       
@@ -985,9 +985,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1033,12 +1033,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @charge_type = args[:charge_type] unless args[:charge_type].nil?
-          @code = args[:code] unless args[:code].nil?
-          @country = args[:country] unless args[:country].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @sale_price = args[:sale_price] unless args[:sale_price].nil?
+          @charge_type = args[:charge_type] if args.key?(:charge_type)
+          @code = args[:code] if args.key?(:code)
+          @country = args[:country] if args.key?(:country)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @sale_price = args[:sale_price] if args.key?(:sale_price)
         end
       end
       
@@ -1069,9 +1069,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @earliest_time = args[:earliest_time] unless args[:earliest_time].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @latest_time = args[:latest_time] unless args[:latest_time].nil?
+          @earliest_time = args[:earliest_time] if args.key?(:earliest_time)
+          @kind = args[:kind] if args.key?(:kind)
+          @latest_time = args[:latest_time] if args.key?(:latest_time)
         end
       end
       
@@ -1112,11 +1112,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @pricing = args[:pricing] unless args[:pricing].nil?
-          @sale_total = args[:sale_total] unless args[:sale_total].nil?
-          @slice = args[:slice] unless args[:slice].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @pricing = args[:pricing] if args.key?(:pricing)
+          @sale_total = args[:sale_total] if args.key?(:sale_total)
+          @slice = args[:slice] if args.key?(:slice)
         end
       end
       
@@ -1171,12 +1171,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max_price = args[:max_price] unless args[:max_price].nil?
-          @passengers = args[:passengers] unless args[:passengers].nil?
-          @refundable = args[:refundable] unless args[:refundable].nil?
-          @sale_country = args[:sale_country] unless args[:sale_country].nil?
-          @slice = args[:slice] unless args[:slice].nil?
-          @solutions = args[:solutions] unless args[:solutions].nil?
+          @max_price = args[:max_price] if args.key?(:max_price)
+          @passengers = args[:passengers] if args.key?(:passengers)
+          @refundable = args[:refundable] if args.key?(:refundable)
+          @sale_country = args[:sale_country] if args.key?(:sale_country)
+          @slice = args[:slice] if args.key?(:slice)
+          @solutions = args[:solutions] if args.key?(:solutions)
         end
       end
       
@@ -1212,10 +1212,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @request_id = args[:request_id] unless args[:request_id].nil?
-          @trip_option = args[:trip_option] unless args[:trip_option].nil?
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @trip_option = args[:trip_option] if args.key?(:trip_option)
         end
       end
       
@@ -1234,7 +1234,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @request = args[:request] unless args[:request].nil?
+          @request = args[:request] if args.key?(:request)
         end
       end
       
@@ -1259,8 +1259,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @trips = args[:trips] unless args[:trips].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @trips = args[:trips] if args.key?(:trips)
         end
       end
     end

@@ -42,8 +42,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @facets = args[:facets] unless args[:facets].nil?
-          @title = args[:title] unless args[:title].nil?
+          @facets = args[:facets] if args.key?(:facets)
+          @title = args[:title] if args.key?(:title)
         end
         
         # 
@@ -71,9 +71,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @anchor = args[:anchor] unless args[:anchor].nil?
-            @label = args[:label] unless args[:label].nil?
-            @label_with_op = args[:label_with_op] unless args[:label_with_op].nil?
+            @anchor = args[:anchor] if args.key?(:anchor)
+            @label = args[:label] if args.key?(:label)
+            @label_with_op = args[:label_with_op] if args.key?(:label_with_op)
           end
         end
       end
@@ -118,12 +118,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @body_lines = args[:body_lines] unless args[:body_lines].nil?
-          @display_link = args[:display_link] unless args[:display_link].nil?
-          @html_title = args[:html_title] unless args[:html_title].nil?
-          @image = args[:image] unless args[:image].nil?
-          @link = args[:link] unless args[:link].nil?
-          @title = args[:title] unless args[:title].nil?
+          @body_lines = args[:body_lines] if args.key?(:body_lines)
+          @display_link = args[:display_link] if args.key?(:display_link)
+          @html_title = args[:html_title] if args.key?(:html_title)
+          @image = args[:image] if args.key?(:image)
+          @link = args[:link] if args.key?(:link)
+          @title = args[:title] if args.key?(:title)
         end
         
         # 
@@ -156,10 +156,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @html_title = args[:html_title] unless args[:html_title].nil?
-            @link = args[:link] unless args[:link].nil?
-            @title = args[:title] unless args[:title].nil?
-            @url = args[:url] unless args[:url].nil?
+            @html_title = args[:html_title] if args.key?(:html_title)
+            @link = args[:link] if args.key?(:link)
+            @title = args[:title] if args.key?(:title)
+            @url = args[:url] if args.key?(:url)
           end
         end
         
@@ -188,9 +188,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @height = args[:height] unless args[:height].nil?
-            @source = args[:source] unless args[:source].nil?
-            @width = args[:width] unless args[:width].nil?
+            @height = args[:height] if args.key?(:height)
+            @source = args[:source] if args.key?(:source)
+            @width = args[:width] if args.key?(:width)
           end
         end
       end
@@ -390,43 +390,43 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @cr = args[:cr] unless args[:cr].nil?
-          @cref = args[:cref] unless args[:cref].nil?
-          @cx = args[:cx] unless args[:cx].nil?
-          @date_restrict = args[:date_restrict] unless args[:date_restrict].nil?
-          @disable_cn_tw_translation = args[:disable_cn_tw_translation] unless args[:disable_cn_tw_translation].nil?
-          @exact_terms = args[:exact_terms] unless args[:exact_terms].nil?
-          @exclude_terms = args[:exclude_terms] unless args[:exclude_terms].nil?
-          @file_type = args[:file_type] unless args[:file_type].nil?
-          @filter = args[:filter] unless args[:filter].nil?
-          @gl = args[:gl] unless args[:gl].nil?
-          @google_host = args[:google_host] unless args[:google_host].nil?
-          @high_range = args[:high_range] unless args[:high_range].nil?
-          @hl = args[:hl] unless args[:hl].nil?
-          @hq = args[:hq] unless args[:hq].nil?
-          @img_color_type = args[:img_color_type] unless args[:img_color_type].nil?
-          @img_dominant_color = args[:img_dominant_color] unless args[:img_dominant_color].nil?
-          @img_size = args[:img_size] unless args[:img_size].nil?
-          @img_type = args[:img_type] unless args[:img_type].nil?
-          @input_encoding = args[:input_encoding] unless args[:input_encoding].nil?
-          @language = args[:language] unless args[:language].nil?
-          @link_site = args[:link_site] unless args[:link_site].nil?
-          @low_range = args[:low_range] unless args[:low_range].nil?
-          @or_terms = args[:or_terms] unless args[:or_terms].nil?
-          @output_encoding = args[:output_encoding] unless args[:output_encoding].nil?
-          @related_site = args[:related_site] unless args[:related_site].nil?
-          @rights = args[:rights] unless args[:rights].nil?
-          @safe = args[:safe] unless args[:safe].nil?
-          @search_terms = args[:search_terms] unless args[:search_terms].nil?
-          @search_type = args[:search_type] unless args[:search_type].nil?
-          @site_search = args[:site_search] unless args[:site_search].nil?
-          @site_search_filter = args[:site_search_filter] unless args[:site_search_filter].nil?
-          @sort = args[:sort] unless args[:sort].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @start_page = args[:start_page] unless args[:start_page].nil?
-          @title = args[:title] unless args[:title].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @count = args[:count] if args.key?(:count)
+          @cr = args[:cr] if args.key?(:cr)
+          @cref = args[:cref] if args.key?(:cref)
+          @cx = args[:cx] if args.key?(:cx)
+          @date_restrict = args[:date_restrict] if args.key?(:date_restrict)
+          @disable_cn_tw_translation = args[:disable_cn_tw_translation] if args.key?(:disable_cn_tw_translation)
+          @exact_terms = args[:exact_terms] if args.key?(:exact_terms)
+          @exclude_terms = args[:exclude_terms] if args.key?(:exclude_terms)
+          @file_type = args[:file_type] if args.key?(:file_type)
+          @filter = args[:filter] if args.key?(:filter)
+          @gl = args[:gl] if args.key?(:gl)
+          @google_host = args[:google_host] if args.key?(:google_host)
+          @high_range = args[:high_range] if args.key?(:high_range)
+          @hl = args[:hl] if args.key?(:hl)
+          @hq = args[:hq] if args.key?(:hq)
+          @img_color_type = args[:img_color_type] if args.key?(:img_color_type)
+          @img_dominant_color = args[:img_dominant_color] if args.key?(:img_dominant_color)
+          @img_size = args[:img_size] if args.key?(:img_size)
+          @img_type = args[:img_type] if args.key?(:img_type)
+          @input_encoding = args[:input_encoding] if args.key?(:input_encoding)
+          @language = args[:language] if args.key?(:language)
+          @link_site = args[:link_site] if args.key?(:link_site)
+          @low_range = args[:low_range] if args.key?(:low_range)
+          @or_terms = args[:or_terms] if args.key?(:or_terms)
+          @output_encoding = args[:output_encoding] if args.key?(:output_encoding)
+          @related_site = args[:related_site] if args.key?(:related_site)
+          @rights = args[:rights] if args.key?(:rights)
+          @safe = args[:safe] if args.key?(:safe)
+          @search_terms = args[:search_terms] if args.key?(:search_terms)
+          @search_type = args[:search_type] if args.key?(:search_type)
+          @site_search = args[:site_search] if args.key?(:site_search)
+          @site_search_filter = args[:site_search_filter] if args.key?(:site_search_filter)
+          @sort = args[:sort] if args.key?(:sort)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @start_page = args[:start_page] if args.key?(:start_page)
+          @title = args[:title] if args.key?(:title)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -515,21 +515,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cache_id = args[:cache_id] unless args[:cache_id].nil?
-          @display_link = args[:display_link] unless args[:display_link].nil?
-          @file_format = args[:file_format] unless args[:file_format].nil?
-          @formatted_url = args[:formatted_url] unless args[:formatted_url].nil?
-          @html_formatted_url = args[:html_formatted_url] unless args[:html_formatted_url].nil?
-          @html_snippet = args[:html_snippet] unless args[:html_snippet].nil?
-          @html_title = args[:html_title] unless args[:html_title].nil?
-          @image = args[:image] unless args[:image].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @link = args[:link] unless args[:link].nil?
-          @mime = args[:mime] unless args[:mime].nil?
-          @pagemap = args[:pagemap] unless args[:pagemap].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @title = args[:title] unless args[:title].nil?
+          @cache_id = args[:cache_id] if args.key?(:cache_id)
+          @display_link = args[:display_link] if args.key?(:display_link)
+          @file_format = args[:file_format] if args.key?(:file_format)
+          @formatted_url = args[:formatted_url] if args.key?(:formatted_url)
+          @html_formatted_url = args[:html_formatted_url] if args.key?(:html_formatted_url)
+          @html_snippet = args[:html_snippet] if args.key?(:html_snippet)
+          @html_title = args[:html_title] if args.key?(:html_title)
+          @image = args[:image] if args.key?(:image)
+          @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @link = args[:link] if args.key?(:link)
+          @mime = args[:mime] if args.key?(:mime)
+          @pagemap = args[:pagemap] if args.key?(:pagemap)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @title = args[:title] if args.key?(:title)
         end
         
         # 
@@ -577,13 +577,13 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @byte_size = args[:byte_size] unless args[:byte_size].nil?
-            @context_link = args[:context_link] unless args[:context_link].nil?
-            @height = args[:height] unless args[:height].nil?
-            @thumbnail_height = args[:thumbnail_height] unless args[:thumbnail_height].nil?
-            @thumbnail_link = args[:thumbnail_link] unless args[:thumbnail_link].nil?
-            @thumbnail_width = args[:thumbnail_width] unless args[:thumbnail_width].nil?
-            @width = args[:width] unless args[:width].nil?
+            @byte_size = args[:byte_size] if args.key?(:byte_size)
+            @context_link = args[:context_link] if args.key?(:context_link)
+            @height = args[:height] if args.key?(:height)
+            @thumbnail_height = args[:thumbnail_height] if args.key?(:thumbnail_height)
+            @thumbnail_link = args[:thumbnail_link] if args.key?(:thumbnail_link)
+            @thumbnail_width = args[:thumbnail_width] if args.key?(:thumbnail_width)
+            @width = args[:width] if args.key?(:width)
           end
         end
         
@@ -612,9 +612,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @label_with_op = args[:label_with_op] unless args[:label_with_op].nil?
-            @name = args[:name] unless args[:name].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @label_with_op = args[:label_with_op] if args.key?(:label_with_op)
+            @name = args[:name] if args.key?(:name)
           end
         end
       end
@@ -669,14 +669,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] unless args[:context].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @promotions = args[:promotions] unless args[:promotions].nil?
-          @queries = args[:queries] unless args[:queries].nil?
-          @search_information = args[:search_information] unless args[:search_information].nil?
-          @spelling = args[:spelling] unless args[:spelling].nil?
-          @url = args[:url] unless args[:url].nil?
+          @context = args[:context] if args.key?(:context)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @promotions = args[:promotions] if args.key?(:promotions)
+          @queries = args[:queries] if args.key?(:queries)
+          @search_information = args[:search_information] if args.key?(:search_information)
+          @spelling = args[:spelling] if args.key?(:spelling)
+          @url = args[:url] if args.key?(:url)
         end
         
         # 
@@ -709,10 +709,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @formatted_search_time = args[:formatted_search_time] unless args[:formatted_search_time].nil?
-            @formatted_total_results = args[:formatted_total_results] unless args[:formatted_total_results].nil?
-            @search_time = args[:search_time] unless args[:search_time].nil?
-            @total_results = args[:total_results] unless args[:total_results].nil?
+            @formatted_search_time = args[:formatted_search_time] if args.key?(:formatted_search_time)
+            @formatted_total_results = args[:formatted_total_results] if args.key?(:formatted_total_results)
+            @search_time = args[:search_time] if args.key?(:search_time)
+            @total_results = args[:total_results] if args.key?(:total_results)
           end
         end
         
@@ -736,8 +736,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @corrected_query = args[:corrected_query] unless args[:corrected_query].nil?
-            @html_corrected_query = args[:html_corrected_query] unless args[:html_corrected_query].nil?
+            @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
+            @html_corrected_query = args[:html_corrected_query] if args.key?(:html_corrected_query)
           end
         end
         
@@ -761,8 +761,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @template = args[:template] unless args[:template].nil?
-            @type = args[:type] unless args[:type].nil?
+            @template = args[:template] if args.key?(:template)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end

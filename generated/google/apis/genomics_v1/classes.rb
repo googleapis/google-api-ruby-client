@@ -44,8 +44,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @datasets = args[:datasets] unless args[:datasets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -81,10 +81,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
+          @id = args[:id] if args.key?(:id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @name = args[:name] if args.key?(:name)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -142,7 +142,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @policy = args[:policy] unless args[:policy].nil?
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -189,9 +189,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @version = args[:version] unless args[:version].nil?
-          @bindings = args[:bindings] unless args[:bindings].nil?
-          @etag = args[:etag] unless args[:etag].nil?
+          @version = args[:version] if args.key?(:version)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -227,8 +227,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @role = args[:role] unless args[:role].nil?
-          @members = args[:members] unless args[:members].nil?
+          @role = args[:role] if args.key?(:role)
+          @members = args[:members] if args.key?(:members)
         end
       end
       
@@ -264,7 +264,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -283,7 +283,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -360,11 +360,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
-          @done = args[:done] unless args[:done].nil?
-          @error = args[:error] unless args[:error].nil?
-          @response = args[:response] unless args[:response].nil?
+          @name = args[:name] if args.key?(:name)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -427,9 +427,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @message = args[:message] unless args[:message].nil?
-          @details = args[:details] unless args[:details].nil?
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -453,8 +453,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operations = args[:operations] unless args[:operations].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -507,10 +507,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
-          @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
-          @source_uris = args[:source_uris] unless args[:source_uris].nil?
-          @partition_strategy = args[:partition_strategy] unless args[:partition_strategy].nil?
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @source_uris = args[:source_uris] if args.key?(:source_uris)
+          @partition_strategy = args[:partition_strategy] if args.key?(:partition_strategy)
         end
       end
       
@@ -544,9 +544,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @export_uri = args[:export_uri] unless args[:export_uri].nil?
-          @reference_names = args[:reference_names] unless args[:reference_names].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @export_uri = args[:export_uri] if args.key?(:export_uri)
+          @reference_names = args[:reference_names] if args.key?(:reference_names)
         end
       end
       
@@ -585,10 +585,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dataset_ids = args[:dataset_ids] unless args[:dataset_ids].nil?
-          @name = args[:name] unless args[:name].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @dataset_ids = args[:dataset_ids] if args.key?(:dataset_ids)
+          @name = args[:name] if args.key?(:name)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -614,8 +614,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @read_group_sets = args[:read_group_sets] unless args[:read_group_sets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @read_group_sets = args[:read_group_sets] if args.key?(:read_group_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -672,13 +672,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
-          @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @filename = args[:filename] unless args[:filename].nil?
-          @read_groups = args[:read_groups] unless args[:read_groups].nil?
-          @info = args[:info] unless args[:info].nil?
+          @id = args[:id] if args.key?(:id)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @name = args[:name] if args.key?(:name)
+          @filename = args[:filename] if args.key?(:filename)
+          @read_groups = args[:read_groups] if args.key?(:read_groups)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -747,16 +747,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @description = args[:description] unless args[:description].nil?
-          @sample_id = args[:sample_id] unless args[:sample_id].nil?
-          @experiment = args[:experiment] unless args[:experiment].nil?
-          @predicted_insert_size = args[:predicted_insert_size] unless args[:predicted_insert_size].nil?
-          @programs = args[:programs] unless args[:programs].nil?
-          @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
-          @info = args[:info] unless args[:info].nil?
+          @id = args[:id] if args.key?(:id)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
+          @sample_id = args[:sample_id] if args.key?(:sample_id)
+          @experiment = args[:experiment] if args.key?(:experiment)
+          @predicted_insert_size = args[:predicted_insert_size] if args.key?(:predicted_insert_size)
+          @programs = args[:programs] if args.key?(:programs)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -796,10 +796,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @library_id = args[:library_id] unless args[:library_id].nil?
-          @platform_unit = args[:platform_unit] unless args[:platform_unit].nil?
-          @sequencing_center = args[:sequencing_center] unless args[:sequencing_center].nil?
-          @instrument_model = args[:instrument_model] unless args[:instrument_model].nil?
+          @library_id = args[:library_id] if args.key?(:library_id)
+          @platform_unit = args[:platform_unit] if args.key?(:platform_unit)
+          @sequencing_center = args[:sequencing_center] if args.key?(:sequencing_center)
+          @instrument_model = args[:instrument_model] if args.key?(:instrument_model)
         end
       end
       
@@ -840,11 +840,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @command_line = args[:command_line] unless args[:command_line].nil?
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @prev_program_id = args[:prev_program_id] unless args[:prev_program_id].nil?
-          @version = args[:version] unless args[:version].nil?
+          @command_line = args[:command_line] if args.key?(:command_line)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @prev_program_id = args[:prev_program_id] if args.key?(:prev_program_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -881,9 +881,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket_width = args[:bucket_width] unless args[:bucket_width].nil?
-          @coverage_buckets = args[:coverage_buckets] unless args[:coverage_buckets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @bucket_width = args[:bucket_width] if args.key?(:bucket_width)
+          @coverage_buckets = args[:coverage_buckets] if args.key?(:coverage_buckets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -909,8 +909,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @range = args[:range] unless args[:range].nil?
-          @mean_coverage = args[:mean_coverage] unless args[:mean_coverage].nil?
+          @range = args[:range] if args.key?(:range)
+          @mean_coverage = args[:mean_coverage] if args.key?(:mean_coverage)
         end
       end
       
@@ -939,9 +939,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
         end
       end
       
@@ -1002,13 +1002,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @read_group_set_ids = args[:read_group_set_ids] unless args[:read_group_set_ids].nil?
-          @read_group_ids = args[:read_group_ids] unless args[:read_group_ids].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @read_group_set_ids = args[:read_group_set_ids] if args.key?(:read_group_set_ids)
+          @read_group_ids = args[:read_group_ids] if args.key?(:read_group_ids)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -1037,8 +1037,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alignments = args[:alignments] unless args[:alignments].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @alignments = args[:alignments] if args.key?(:alignments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1213,23 +1213,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @read_group_id = args[:read_group_id] unless args[:read_group_id].nil?
-          @read_group_set_id = args[:read_group_set_id] unless args[:read_group_set_id].nil?
-          @fragment_name = args[:fragment_name] unless args[:fragment_name].nil?
-          @proper_placement = args[:proper_placement] unless args[:proper_placement].nil?
-          @duplicate_fragment = args[:duplicate_fragment] unless args[:duplicate_fragment].nil?
-          @fragment_length = args[:fragment_length] unless args[:fragment_length].nil?
-          @read_number = args[:read_number] unless args[:read_number].nil?
-          @number_reads = args[:number_reads] unless args[:number_reads].nil?
-          @failed_vendor_quality_checks = args[:failed_vendor_quality_checks] unless args[:failed_vendor_quality_checks].nil?
-          @alignment = args[:alignment] unless args[:alignment].nil?
-          @secondary_alignment = args[:secondary_alignment] unless args[:secondary_alignment].nil?
-          @supplementary_alignment = args[:supplementary_alignment] unless args[:supplementary_alignment].nil?
-          @aligned_sequence = args[:aligned_sequence] unless args[:aligned_sequence].nil?
-          @aligned_quality = args[:aligned_quality] unless args[:aligned_quality].nil?
-          @next_mate_position = args[:next_mate_position] unless args[:next_mate_position].nil?
-          @info = args[:info] unless args[:info].nil?
+          @id = args[:id] if args.key?(:id)
+          @read_group_id = args[:read_group_id] if args.key?(:read_group_id)
+          @read_group_set_id = args[:read_group_set_id] if args.key?(:read_group_set_id)
+          @fragment_name = args[:fragment_name] if args.key?(:fragment_name)
+          @proper_placement = args[:proper_placement] if args.key?(:proper_placement)
+          @duplicate_fragment = args[:duplicate_fragment] if args.key?(:duplicate_fragment)
+          @fragment_length = args[:fragment_length] if args.key?(:fragment_length)
+          @read_number = args[:read_number] if args.key?(:read_number)
+          @number_reads = args[:number_reads] if args.key?(:number_reads)
+          @failed_vendor_quality_checks = args[:failed_vendor_quality_checks] if args.key?(:failed_vendor_quality_checks)
+          @alignment = args[:alignment] if args.key?(:alignment)
+          @secondary_alignment = args[:secondary_alignment] if args.key?(:secondary_alignment)
+          @supplementary_alignment = args[:supplementary_alignment] if args.key?(:supplementary_alignment)
+          @aligned_sequence = args[:aligned_sequence] if args.key?(:aligned_sequence)
+          @aligned_quality = args[:aligned_quality] if args.key?(:aligned_quality)
+          @next_mate_position = args[:next_mate_position] if args.key?(:next_mate_position)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -1265,9 +1265,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @position = args[:position] unless args[:position].nil?
-          @mapping_quality = args[:mapping_quality] unless args[:mapping_quality].nil?
-          @cigar = args[:cigar] unless args[:cigar].nil?
+          @position = args[:position] if args.key?(:position)
+          @mapping_quality = args[:mapping_quality] if args.key?(:mapping_quality)
+          @cigar = args[:cigar] if args.key?(:cigar)
         end
       end
       
@@ -1301,9 +1301,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @position = args[:position] unless args[:position].nil?
-          @reverse_strand = args[:reverse_strand] unless args[:reverse_strand].nil?
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @position = args[:position] if args.key?(:position)
+          @reverse_strand = args[:reverse_strand] if args.key?(:reverse_strand)
         end
       end
       
@@ -1334,9 +1334,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operation = args[:operation] unless args[:operation].nil?
-          @operation_length = args[:operation_length] unless args[:operation_length].nil?
-          @reference_sequence = args[:reference_sequence] unless args[:reference_sequence].nil?
+          @operation = args[:operation] if args.key?(:operation)
+          @operation_length = args[:operation_length] if args.key?(:operation_length)
+          @reference_sequence = args[:reference_sequence] if args.key?(:reference_sequence)
         end
       end
       
@@ -1379,11 +1379,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @read_group_set_id = args[:read_group_set_id] unless args[:read_group_set_id].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @read_group_set_id = args[:read_group_set_id] if args.key?(:read_group_set_id)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
         end
       end
       
@@ -1402,7 +1402,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alignments = args[:alignments] unless args[:alignments].nil?
+          @alignments = args[:alignments] if args.key?(:alignments)
         end
       end
       
@@ -1447,11 +1447,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @md5checksums = args[:md5checksums] unless args[:md5checksums].nil?
-          @accessions = args[:accessions] unless args[:accessions].nil?
-          @assembly_id = args[:assembly_id] unless args[:assembly_id].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @md5checksums = args[:md5checksums] if args.key?(:md5checksums)
+          @accessions = args[:accessions] if args.key?(:accessions)
+          @assembly_id = args[:assembly_id] if args.key?(:assembly_id)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -1477,8 +1477,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reference_sets = args[:reference_sets] unless args[:reference_sets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @reference_sets = args[:reference_sets] if args.key?(:reference_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1548,14 +1548,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @reference_ids = args[:reference_ids] unless args[:reference_ids].nil?
-          @md5checksum = args[:md5checksum] unless args[:md5checksum].nil?
-          @ncbi_taxon_id = args[:ncbi_taxon_id] unless args[:ncbi_taxon_id].nil?
-          @description = args[:description] unless args[:description].nil?
-          @assembly_id = args[:assembly_id] unless args[:assembly_id].nil?
-          @source_uri = args[:source_uri] unless args[:source_uri].nil?
-          @source_accessions = args[:source_accessions] unless args[:source_accessions].nil?
+          @id = args[:id] if args.key?(:id)
+          @reference_ids = args[:reference_ids] if args.key?(:reference_ids)
+          @md5checksum = args[:md5checksum] if args.key?(:md5checksum)
+          @ncbi_taxon_id = args[:ncbi_taxon_id] if args.key?(:ncbi_taxon_id)
+          @description = args[:description] if args.key?(:description)
+          @assembly_id = args[:assembly_id] if args.key?(:assembly_id)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @source_accessions = args[:source_accessions] if args.key?(:source_accessions)
         end
       end
       
@@ -1599,11 +1599,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @md5checksums = args[:md5checksums] unless args[:md5checksums].nil?
-          @accessions = args[:accessions] unless args[:accessions].nil?
-          @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @md5checksums = args[:md5checksums] if args.key?(:md5checksums)
+          @accessions = args[:accessions] if args.key?(:accessions)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -1629,8 +1629,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @references = args[:references] unless args[:references].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @references = args[:references] if args.key?(:references)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1688,13 +1688,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @length = args[:length] unless args[:length].nil?
-          @md5checksum = args[:md5checksum] unless args[:md5checksum].nil?
-          @name = args[:name] unless args[:name].nil?
-          @source_uri = args[:source_uri] unless args[:source_uri].nil?
-          @source_accessions = args[:source_accessions] unless args[:source_accessions].nil?
-          @ncbi_taxon_id = args[:ncbi_taxon_id] unless args[:ncbi_taxon_id].nil?
+          @id = args[:id] if args.key?(:id)
+          @length = args[:length] if args.key?(:length)
+          @md5checksum = args[:md5checksum] if args.key?(:md5checksum)
+          @name = args[:name] if args.key?(:name)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @source_accessions = args[:source_accessions] if args.key?(:source_accessions)
+          @ncbi_taxon_id = args[:ncbi_taxon_id] if args.key?(:ncbi_taxon_id)
         end
       end
       
@@ -1726,9 +1726,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @offset = args[:offset] unless args[:offset].nil?
-          @sequence = args[:sequence] unless args[:sequence].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @offset = args[:offset] if args.key?(:offset)
+          @sequence = args[:sequence] if args.key?(:sequence)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1772,10 +1772,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variant_set_id = args[:variant_set_id] unless args[:variant_set_id].nil?
-          @source_uris = args[:source_uris] unless args[:source_uris].nil?
-          @format = args[:format] unless args[:format].nil?
-          @normalize_reference_names = args[:normalize_reference_names] unless args[:normalize_reference_names].nil?
+          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
+          @source_uris = args[:source_uris] if args.key?(:source_uris)
+          @format = args[:format] if args.key?(:format)
+          @normalize_reference_names = args[:normalize_reference_names] if args.key?(:normalize_reference_names)
         end
       end
       
@@ -1825,11 +1825,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
-          @reference_bounds = args[:reference_bounds] unless args[:reference_bounds].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @id = args[:id] if args.key?(:id)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @reference_bounds = args[:reference_bounds] if args.key?(:reference_bounds)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -1855,8 +1855,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
         end
       end
       
@@ -1911,13 +1911,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
-          @id = args[:id] unless args[:id].nil?
-          @type = args[:type] unless args[:type].nil?
-          @number = args[:number] unless args[:number].nil?
-          @description = args[:description] unless args[:description].nil?
-          @info = args[:info] unless args[:info].nil?
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+          @number = args[:number] if args.key?(:number)
+          @description = args[:description] if args.key?(:description)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -1961,11 +1961,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @format = args[:format] unless args[:format].nil?
-          @bigquery_dataset = args[:bigquery_dataset] unless args[:bigquery_dataset].nil?
-          @bigquery_table = args[:bigquery_table] unless args[:bigquery_table].nil?
+          @call_set_ids = args[:call_set_ids] if args.key?(:call_set_ids)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @format = args[:format] if args.key?(:format)
+          @bigquery_dataset = args[:bigquery_dataset] if args.key?(:bigquery_dataset)
+          @bigquery_table = args[:bigquery_table] if args.key?(:bigquery_table)
         end
       end
       
@@ -1998,9 +1998,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dataset_ids = args[:dataset_ids] unless args[:dataset_ids].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @dataset_ids = args[:dataset_ids] if args.key?(:dataset_ids)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -2026,8 +2026,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variant_sets = args[:variant_sets] unless args[:variant_sets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @variant_sets = args[:variant_sets] if args.key?(:variant_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2099,15 +2099,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
-          @variant_name = args[:variant_name] unless args[:variant_name].nil?
-          @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
-          @max_calls = args[:max_calls] unless args[:max_calls].nil?
+          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
+          @variant_name = args[:variant_name] if args.key?(:variant_name)
+          @call_set_ids = args[:call_set_ids] if args.key?(:call_set_ids)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @max_calls = args[:max_calls] if args.key?(:max_calls)
         end
       end
       
@@ -2133,8 +2133,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variants = args[:variants] unless args[:variants].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @variants = args[:variants] if args.key?(:variants)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2227,19 +2227,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variant_set_id = args[:variant_set_id] unless args[:variant_set_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @names = args[:names] unless args[:names].nil?
-          @created = args[:created] unless args[:created].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
-          @reference_bases = args[:reference_bases] unless args[:reference_bases].nil?
-          @alternate_bases = args[:alternate_bases] unless args[:alternate_bases].nil?
-          @quality = args[:quality] unless args[:quality].nil?
-          @filter = args[:filter] unless args[:filter].nil?
-          @info = args[:info] unless args[:info].nil?
-          @calls = args[:calls] unless args[:calls].nil?
+          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
+          @id = args[:id] if args.key?(:id)
+          @names = args[:names] if args.key?(:names)
+          @created = args[:created] if args.key?(:created)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @reference_bases = args[:reference_bases] if args.key?(:reference_bases)
+          @alternate_bases = args[:alternate_bases] if args.key?(:alternate_bases)
+          @quality = args[:quality] if args.key?(:quality)
+          @filter = args[:filter] if args.key?(:filter)
+          @info = args[:info] if args.key?(:info)
+          @calls = args[:calls] if args.key?(:calls)
         end
       end
       
@@ -2303,12 +2303,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @call_set_id = args[:call_set_id] unless args[:call_set_id].nil?
-          @call_set_name = args[:call_set_name] unless args[:call_set_name].nil?
-          @genotype = args[:genotype] unless args[:genotype].nil?
-          @phaseset = args[:phaseset] unless args[:phaseset].nil?
-          @genotype_likelihood = args[:genotype_likelihood] unless args[:genotype_likelihood].nil?
-          @info = args[:info] unless args[:info].nil?
+          @call_set_id = args[:call_set_id] if args.key?(:call_set_id)
+          @call_set_name = args[:call_set_name] if args.key?(:call_set_name)
+          @genotype = args[:genotype] if args.key?(:genotype)
+          @phaseset = args[:phaseset] if args.key?(:phaseset)
+          @genotype_likelihood = args[:genotype_likelihood] if args.key?(:genotype_likelihood)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -2346,10 +2346,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
-          @name = args[:name] unless args[:name].nil?
-          @page_token = args[:page_token] unless args[:page_token].nil?
-          @page_size = args[:page_size] unless args[:page_size].nil?
+          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
+          @name = args[:name] if args.key?(:name)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
         end
       end
       
@@ -2375,8 +2375,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @call_sets = args[:call_sets] unless args[:call_sets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @call_sets = args[:call_sets] if args.key?(:call_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2427,12 +2427,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @sample_id = args[:sample_id] unless args[:sample_id].nil?
-          @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
-          @created = args[:created] unless args[:created].nil?
-          @info = args[:info] unless args[:info].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @sample_id = args[:sample_id] if args.key?(:sample_id)
+          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
+          @created = args[:created] if args.key?(:created)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -2480,12 +2480,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @variant_set_id = args[:variant_set_id] unless args[:variant_set_id].nil?
-          @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-          @end = args[:end] unless args[:end].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
+          @call_set_ids = args[:call_set_ids] if args.key?(:call_set_ids)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
         end
       end
       
@@ -2504,7 +2504,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variants = args[:variants] unless args[:variants].nil?
+          @variants = args[:variants] if args.key?(:variants)
         end
       end
       
@@ -2523,7 +2523,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @read_group_set_ids = args[:read_group_set_ids] unless args[:read_group_set_ids].nil?
+          @read_group_set_ids = args[:read_group_set_ids] if args.key?(:read_group_set_ids)
         end
       end
       
@@ -2542,7 +2542,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
+          @call_set_ids = args[:call_set_ids] if args.key?(:call_set_ids)
         end
       end
       
@@ -2579,10 +2579,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
-          @request = args[:request] unless args[:request].nil?
-          @events = args[:events] unless args[:events].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @request = args[:request] if args.key?(:request)
+          @events = args[:events] if args.key?(:events)
         end
       end
       
@@ -2601,7 +2601,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
+          @description = args[:description] if args.key?(:description)
         end
       end
     end

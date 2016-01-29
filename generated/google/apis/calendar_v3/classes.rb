@@ -60,11 +60,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
         end
       end
       
@@ -112,11 +112,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @role = args[:role] unless args[:role].nil?
-          @scope = args[:scope] unless args[:scope].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @role = args[:role] if args.key?(:role)
+          @scope = args[:scope] if args.key?(:scope)
         end
         
         # The scope of the rule.
@@ -145,8 +145,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @type = args[:type] unless args[:type].nil?
-            @value = args[:value] unless args[:value].nil?
+            @type = args[:type] if args.key?(:type)
+            @value = args[:value] if args.key?(:value)
           end
         end
       end
@@ -198,13 +198,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @location = args[:location] unless args[:location].nil?
-          @summary = args[:summary] unless args[:summary].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
+          @summary = args[:summary] if args.key?(:summary)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -246,11 +246,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
         end
       end
       
@@ -380,24 +380,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_role = args[:access_role] unless args[:access_role].nil?
-          @background_color = args[:background_color] unless args[:background_color].nil?
-          @color_id = args[:color_id] unless args[:color_id].nil?
-          @default_reminders = args[:default_reminders] unless args[:default_reminders].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @description = args[:description] unless args[:description].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @foreground_color = args[:foreground_color] unless args[:foreground_color].nil?
-          @hidden = args[:hidden] unless args[:hidden].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @location = args[:location] unless args[:location].nil?
-          @notification_settings = args[:notification_settings] unless args[:notification_settings].nil?
-          @primary = args[:primary] unless args[:primary].nil?
-          @selected = args[:selected] unless args[:selected].nil?
-          @summary = args[:summary] unless args[:summary].nil?
-          @summary_override = args[:summary_override] unless args[:summary_override].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
+          @access_role = args[:access_role] if args.key?(:access_role)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @color_id = args[:color_id] if args.key?(:color_id)
+          @default_reminders = args[:default_reminders] if args.key?(:default_reminders)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
+          @hidden = args[:hidden] if args.key?(:hidden)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
+          @notification_settings = args[:notification_settings] if args.key?(:notification_settings)
+          @primary = args[:primary] if args.key?(:primary)
+          @selected = args[:selected] if args.key?(:selected)
+          @summary = args[:summary] if args.key?(:summary)
+          @summary_override = args[:summary_override] if args.key?(:summary_override)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
         
         # The notifications that the authenticated user is receiving for this calendar.
@@ -415,7 +415,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @notifications = args[:notifications] unless args[:notifications].nil?
+            @notifications = args[:notifications] if args.key?(:notifications)
           end
         end
       end
@@ -449,8 +449,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @delivery_method = args[:delivery_method] unless args[:delivery_method].nil?
-          @type = args[:type] unless args[:type].nil?
+          @delivery_method = args[:delivery_method] if args.key?(:delivery_method)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -519,16 +519,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @expiration = args[:expiration] unless args[:expiration].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @params = args[:params] unless args[:params].nil?
-          @payload = args[:payload] unless args[:payload].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @resource_uri = args[:resource_uri] unless args[:resource_uri].nil?
-          @token = args[:token] unless args[:token].nil?
-          @type = args[:type] unless args[:type].nil?
+          @address = args[:address] if args.key?(:address)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @params = args[:params] if args.key?(:params)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @token = args[:token] if args.key?(:token)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -553,8 +553,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @background = args[:background] unless args[:background].nil?
-          @foreground = args[:foreground] unless args[:foreground].nil?
+          @background = args[:background] if args.key?(:background)
+          @foreground = args[:foreground] if args.key?(:foreground)
         end
       end
       
@@ -593,10 +593,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @calendar = args[:calendar] unless args[:calendar].nil?
-          @event = args[:event] unless args[:event].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @calendar = args[:calendar] if args.key?(:calendar)
+          @event = args[:event] if args.key?(:event)
+          @kind = args[:kind] if args.key?(:kind)
+          @updated = args[:updated] if args.key?(:updated)
         end
       end
       
@@ -628,8 +628,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @domain = args[:domain] unless args[:domain].nil?
-          @reason = args[:reason] unless args[:reason].nil?
+          @domain = args[:domain] if args.key?(:domain)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -900,43 +900,43 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anyone_can_add_self = args[:anyone_can_add_self] unless args[:anyone_can_add_self].nil?
-          @attachments = args[:attachments] unless args[:attachments].nil?
-          @attendees = args[:attendees] unless args[:attendees].nil?
-          @attendees_omitted = args[:attendees_omitted] unless args[:attendees_omitted].nil?
-          @color_id = args[:color_id] unless args[:color_id].nil?
-          @created = args[:created] unless args[:created].nil?
-          @creator = args[:creator] unless args[:creator].nil?
-          @description = args[:description] unless args[:description].nil?
-          @end = args[:end] unless args[:end].nil?
-          @end_time_unspecified = args[:end_time_unspecified] unless args[:end_time_unspecified].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @extended_properties = args[:extended_properties] unless args[:extended_properties].nil?
-          @gadget = args[:gadget] unless args[:gadget].nil?
-          @guests_can_invite_others = args[:guests_can_invite_others] unless args[:guests_can_invite_others].nil?
-          @guests_can_modify = args[:guests_can_modify] unless args[:guests_can_modify].nil?
-          @guests_can_see_other_guests = args[:guests_can_see_other_guests] unless args[:guests_can_see_other_guests].nil?
-          @hangout_link = args[:hangout_link] unless args[:hangout_link].nil?
-          @html_link = args[:html_link] unless args[:html_link].nil?
-          @i_cal_uid = args[:i_cal_uid] unless args[:i_cal_uid].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @location = args[:location] unless args[:location].nil?
-          @locked = args[:locked] unless args[:locked].nil?
-          @organizer = args[:organizer] unless args[:organizer].nil?
-          @original_start_time = args[:original_start_time] unless args[:original_start_time].nil?
-          @private_copy = args[:private_copy] unless args[:private_copy].nil?
-          @recurrence = args[:recurrence] unless args[:recurrence].nil?
-          @recurring_event_id = args[:recurring_event_id] unless args[:recurring_event_id].nil?
-          @reminders = args[:reminders] unless args[:reminders].nil?
-          @sequence = args[:sequence] unless args[:sequence].nil?
-          @source = args[:source] unless args[:source].nil?
-          @start = args[:start] unless args[:start].nil?
-          @status = args[:status] unless args[:status].nil?
-          @summary = args[:summary] unless args[:summary].nil?
-          @transparency = args[:transparency] unless args[:transparency].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @anyone_can_add_self = args[:anyone_can_add_self] if args.key?(:anyone_can_add_self)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @attendees = args[:attendees] if args.key?(:attendees)
+          @attendees_omitted = args[:attendees_omitted] if args.key?(:attendees_omitted)
+          @color_id = args[:color_id] if args.key?(:color_id)
+          @created = args[:created] if args.key?(:created)
+          @creator = args[:creator] if args.key?(:creator)
+          @description = args[:description] if args.key?(:description)
+          @end = args[:end] if args.key?(:end)
+          @end_time_unspecified = args[:end_time_unspecified] if args.key?(:end_time_unspecified)
+          @etag = args[:etag] if args.key?(:etag)
+          @extended_properties = args[:extended_properties] if args.key?(:extended_properties)
+          @gadget = args[:gadget] if args.key?(:gadget)
+          @guests_can_invite_others = args[:guests_can_invite_others] if args.key?(:guests_can_invite_others)
+          @guests_can_modify = args[:guests_can_modify] if args.key?(:guests_can_modify)
+          @guests_can_see_other_guests = args[:guests_can_see_other_guests] if args.key?(:guests_can_see_other_guests)
+          @hangout_link = args[:hangout_link] if args.key?(:hangout_link)
+          @html_link = args[:html_link] if args.key?(:html_link)
+          @i_cal_uid = args[:i_cal_uid] if args.key?(:i_cal_uid)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
+          @locked = args[:locked] if args.key?(:locked)
+          @organizer = args[:organizer] if args.key?(:organizer)
+          @original_start_time = args[:original_start_time] if args.key?(:original_start_time)
+          @private_copy = args[:private_copy] if args.key?(:private_copy)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @recurring_event_id = args[:recurring_event_id] if args.key?(:recurring_event_id)
+          @reminders = args[:reminders] if args.key?(:reminders)
+          @sequence = args[:sequence] if args.key?(:sequence)
+          @source = args[:source] if args.key?(:source)
+          @start = args[:start] if args.key?(:start)
+          @status = args[:status] if args.key?(:status)
+          @summary = args[:summary] if args.key?(:summary)
+          @transparency = args[:transparency] if args.key?(:transparency)
+          @updated = args[:updated] if args.key?(:updated)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
         
         # The creator of the event. Read-only.
@@ -972,10 +972,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @email = args[:email] unless args[:email].nil?
-            @id = args[:id] unless args[:id].nil?
-            @self = args[:self] unless args[:self].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @email = args[:email] if args.key?(:email)
+            @id = args[:id] if args.key?(:id)
+            @self = args[:self] if args.key?(:self)
           end
         end
         
@@ -1001,8 +1001,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @private = args[:private] unless args[:private].nil?
-            @shared = args[:shared] unless args[:shared].nil?
+            @private = args[:private] if args.key?(:private)
+            @shared = args[:shared] if args.key?(:shared)
           end
         end
         
@@ -1060,14 +1060,14 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_mode = args[:display_mode] unless args[:display_mode].nil?
-            @height = args[:height] unless args[:height].nil?
-            @icon_link = args[:icon_link] unless args[:icon_link].nil?
-            @link = args[:link] unless args[:link].nil?
-            @preferences = args[:preferences] unless args[:preferences].nil?
-            @title = args[:title] unless args[:title].nil?
-            @type = args[:type] unless args[:type].nil?
-            @width = args[:width] unless args[:width].nil?
+            @display_mode = args[:display_mode] if args.key?(:display_mode)
+            @height = args[:height] if args.key?(:height)
+            @icon_link = args[:icon_link] if args.key?(:icon_link)
+            @link = args[:link] if args.key?(:link)
+            @preferences = args[:preferences] if args.key?(:preferences)
+            @title = args[:title] if args.key?(:title)
+            @type = args[:type] if args.key?(:type)
+            @width = args[:width] if args.key?(:width)
           end
         end
         
@@ -1108,10 +1108,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @email = args[:email] unless args[:email].nil?
-            @id = args[:id] unless args[:id].nil?
-            @self = args[:self] unless args[:self].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @email = args[:email] if args.key?(:email)
+            @id = args[:id] if args.key?(:id)
+            @self = args[:self] if args.key?(:self)
           end
         end
         
@@ -1138,8 +1138,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @overrides = args[:overrides] unless args[:overrides].nil?
-            @use_default = args[:use_default] unless args[:use_default].nil?
+            @overrides = args[:overrides] if args.key?(:overrides)
+            @use_default = args[:use_default] if args.key?(:use_default)
           end
         end
         
@@ -1165,8 +1165,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @title = args[:title] unless args[:title].nil?
-            @url = args[:url] unless args[:url].nil?
+            @title = args[:title] if args.key?(:title)
+            @url = args[:url] if args.key?(:url)
           end
         end
       end
@@ -1210,11 +1210,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @file_id = args[:file_id] unless args[:file_id].nil?
-          @file_url = args[:file_url] unless args[:file_url].nil?
-          @icon_link = args[:icon_link] unless args[:icon_link].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @title = args[:title] unless args[:title].nil?
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @file_url = args[:file_url] if args.key?(:file_url)
+          @icon_link = args[:icon_link] if args.key?(:icon_link)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1290,16 +1290,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_guests = args[:additional_guests] unless args[:additional_guests].nil?
-          @comment = args[:comment] unless args[:comment].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @id = args[:id] unless args[:id].nil?
-          @optional = args[:optional] unless args[:optional].nil?
-          @organizer = args[:organizer] unless args[:organizer].nil?
-          @resource = args[:resource] unless args[:resource].nil?
-          @response_status = args[:response_status] unless args[:response_status].nil?
-          @self = args[:self] unless args[:self].nil?
+          @additional_guests = args[:additional_guests] if args.key?(:additional_guests)
+          @comment = args[:comment] if args.key?(:comment)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @id = args[:id] if args.key?(:id)
+          @optional = args[:optional] if args.key?(:optional)
+          @organizer = args[:organizer] if args.key?(:organizer)
+          @resource = args[:resource] if args.key?(:resource)
+          @response_status = args[:response_status] if args.key?(:response_status)
+          @self = args[:self] if args.key?(:self)
         end
       end
       
@@ -1334,9 +1334,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @date = args[:date] unless args[:date].nil?
-          @date_time = args[:date_time] unless args[:date_time].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
+          @date = args[:date] if args.key?(:date)
+          @date_time = args[:date_time] if args.key?(:date_time)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -1366,8 +1366,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reminder_method = args[:reminder_method] unless args[:reminder_method].nil?
-          @minutes = args[:minutes] unless args[:minutes].nil?
+          @reminder_method = args[:reminder_method] if args.key?(:reminder_method)
+          @minutes = args[:minutes] if args.key?(:minutes)
         end
       end
       
@@ -1451,17 +1451,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_role = args[:access_role] unless args[:access_role].nil?
-          @default_reminders = args[:default_reminders] unless args[:default_reminders].nil?
-          @description = args[:description] unless args[:description].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
-          @summary = args[:summary] unless args[:summary].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @access_role = args[:access_role] if args.key?(:access_role)
+          @default_reminders = args[:default_reminders] if args.key?(:default_reminders)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
+          @summary = args[:summary] if args.key?(:summary)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @updated = args[:updated] if args.key?(:updated)
         end
       end
       
@@ -1485,8 +1485,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @busy = args[:busy] unless args[:busy].nil?
-          @errors = args[:errors] unless args[:errors].nil?
+          @busy = args[:busy] if args.key?(:busy)
+          @errors = args[:errors] if args.key?(:errors)
         end
       end
       
@@ -1510,8 +1510,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @calendars = args[:calendars] unless args[:calendars].nil?
-          @errors = args[:errors] unless args[:errors].nil?
+          @calendars = args[:calendars] if args.key?(:calendars)
+          @errors = args[:errors] if args.key?(:errors)
         end
       end
       
@@ -1558,12 +1558,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @calendar_expansion_max = args[:calendar_expansion_max] unless args[:calendar_expansion_max].nil?
-          @group_expansion_max = args[:group_expansion_max] unless args[:group_expansion_max].nil?
-          @items = args[:items] unless args[:items].nil?
-          @time_max = args[:time_max] unless args[:time_max].nil?
-          @time_min = args[:time_min] unless args[:time_min].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
+          @calendar_expansion_max = args[:calendar_expansion_max] if args.key?(:calendar_expansion_max)
+          @group_expansion_max = args[:group_expansion_max] if args.key?(:group_expansion_max)
+          @items = args[:items] if args.key?(:items)
+          @time_max = args[:time_max] if args.key?(:time_max)
+          @time_min = args[:time_min] if args.key?(:time_min)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -1582,7 +1582,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -1621,11 +1621,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @calendars = args[:calendars] unless args[:calendars].nil?
-          @groups = args[:groups] unless args[:groups].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @time_max = args[:time_max] unless args[:time_max].nil?
-          @time_min = args[:time_min] unless args[:time_min].nil?
+          @calendars = args[:calendars] if args.key?(:calendars)
+          @groups = args[:groups] if args.key?(:groups)
+          @kind = args[:kind] if args.key?(:kind)
+          @time_max = args[:time_max] if args.key?(:time_max)
+          @time_min = args[:time_min] if args.key?(:time_min)
         end
       end
       
@@ -1660,10 +1660,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @value = args[:value] unless args[:value].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1705,11 +1705,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
         end
       end
       
@@ -1733,8 +1733,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end = args[:end] unless args[:end].nil?
-          @start = args[:start] unless args[:start].nil?
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
         end
       end
     end

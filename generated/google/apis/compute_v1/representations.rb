@@ -390,6 +390,10 @@ module Google
         end
       end
       
+      class InstancesSetMachineTypeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class License
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -572,6 +576,30 @@ module Google
       
       class SslCertificateList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Subnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SubnetworkAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SubnetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SubnetworksScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
       end
       
       class Tags
@@ -1492,6 +1520,7 @@ module Google
           property :network, as: 'network'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
+          property :subnetwork, as: 'subnetwork'
           property :zone, as: 'zone'
         end
       end
@@ -1836,6 +1865,13 @@ module Google
         end
       end
       
+      class InstancesSetMachineTypeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
+        end
+      end
+      
       class License
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1994,6 +2030,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_pv4_range, as: 'IPv4Range'
+          property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :gateway_i_pv4, as: 'gatewayIPv4'
@@ -2001,6 +2038,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          collection :subnetworks, as: 'subnetworks'
         end
       end
       
@@ -2012,6 +2050,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -2362,6 +2401,74 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class Subnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :gateway_address, as: 'gatewayAddress'
+          property :id, as: 'id'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworkAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::SubnetworksScopedList, decorator: Google::Apis::ComputeV1::SubnetworksScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworkList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Subnetwork, decorator: Google::Apis::ComputeV1::Subnetwork::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworksScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeV1::Subnetwork, decorator: Google::Apis::ComputeV1::Subnetwork::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::SubnetworksScopedList::Warning, decorator: Google::Apis::ComputeV1::SubnetworksScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SubnetworksScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::SubnetworksScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -2788,6 +2895,7 @@ module Google
           property :id, as: 'id'
           property :ike_version, as: 'ikeVersion'
           property :kind, as: 'kind'
+          collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
           property :peer_ip, as: 'peerIp'
           property :region, as: 'region'

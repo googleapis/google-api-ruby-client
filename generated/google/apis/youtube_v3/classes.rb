@@ -45,8 +45,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed = args[:allowed] unless args[:allowed].nil?
-          @exception = args[:exception] unless args[:exception].nil?
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @exception = args[:exception] if args.key?(:exception)
         end
       end
       
@@ -94,11 +94,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -168,17 +168,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bulletin = args[:bulletin] unless args[:bulletin].nil?
-          @channel_item = args[:channel_item] unless args[:channel_item].nil?
-          @comment = args[:comment] unless args[:comment].nil?
-          @favorite = args[:favorite] unless args[:favorite].nil?
-          @like = args[:like] unless args[:like].nil?
-          @playlist_item = args[:playlist_item] unless args[:playlist_item].nil?
-          @promoted_item = args[:promoted_item] unless args[:promoted_item].nil?
-          @recommendation = args[:recommendation] unless args[:recommendation].nil?
-          @social = args[:social] unless args[:social].nil?
-          @subscription = args[:subscription] unless args[:subscription].nil?
-          @upload = args[:upload] unless args[:upload].nil?
+          @bulletin = args[:bulletin] if args.key?(:bulletin)
+          @channel_item = args[:channel_item] if args.key?(:channel_item)
+          @comment = args[:comment] if args.key?(:comment)
+          @favorite = args[:favorite] if args.key?(:favorite)
+          @like = args[:like] if args.key?(:like)
+          @playlist_item = args[:playlist_item] if args.key?(:playlist_item)
+          @promoted_item = args[:promoted_item] if args.key?(:promoted_item)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+          @social = args[:social] if args.key?(:social)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @upload = args[:upload] if args.key?(:upload)
         end
       end
       
@@ -197,7 +197,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -216,7 +216,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -235,7 +235,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -254,7 +254,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -273,7 +273,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -302,9 +302,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @playlist_id = args[:playlist_id] unless args[:playlist_id].nil?
-          @playlist_item_id = args[:playlist_item_id] unless args[:playlist_item_id].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
+          @playlist_item_id = args[:playlist_item_id] if args.key?(:playlist_item_id)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -376,16 +376,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ad_tag = args[:ad_tag] unless args[:ad_tag].nil?
-          @click_tracking_url = args[:click_tracking_url] unless args[:click_tracking_url].nil?
-          @creative_view_url = args[:creative_view_url] unless args[:creative_view_url].nil?
-          @cta_type = args[:cta_type] unless args[:cta_type].nil?
-          @custom_cta_button_text = args[:custom_cta_button_text] unless args[:custom_cta_button_text].nil?
-          @description_text = args[:description_text] unless args[:description_text].nil?
-          @destination_url = args[:destination_url] unless args[:destination_url].nil?
-          @forecasting_url = args[:forecasting_url] unless args[:forecasting_url].nil?
-          @impression_url = args[:impression_url] unless args[:impression_url].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @ad_tag = args[:ad_tag] if args.key?(:ad_tag)
+          @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
+          @creative_view_url = args[:creative_view_url] if args.key?(:creative_view_url)
+          @cta_type = args[:cta_type] if args.key?(:cta_type)
+          @custom_cta_button_text = args[:custom_cta_button_text] if args.key?(:custom_cta_button_text)
+          @description_text = args[:description_text] if args.key?(:description_text)
+          @destination_url = args[:destination_url] if args.key?(:destination_url)
+          @forecasting_url = args[:forecasting_url] if args.key?(:forecasting_url)
+          @impression_url = args[:impression_url] if args.key?(:impression_url)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -414,9 +414,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reason = args[:reason] unless args[:reason].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @seed_resource_id = args[:seed_resource_id] unless args[:seed_resource_id].nil?
+          @reason = args[:reason] if args.key?(:reason)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @seed_resource_id = args[:seed_resource_id] if args.key?(:seed_resource_id)
         end
       end
       
@@ -455,11 +455,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author = args[:author] unless args[:author].nil?
-          @image_url = args[:image_url] unless args[:image_url].nil?
-          @reference_url = args[:reference_url] unless args[:reference_url].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @type = args[:type] unless args[:type].nil?
+          @author = args[:author] if args.key?(:author)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @reference_url = args[:reference_url] if args.key?(:reference_url)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -478,7 +478,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
@@ -497,7 +497,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -560,15 +560,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -630,14 +630,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @description = args[:description] unless args[:description].nil?
-          @group_id = args[:group_id] unless args[:group_id].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
-          @type = args[:type] unless args[:type].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @description = args[:description] if args.key?(:description)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -673,10 +673,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -716,11 +716,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -818,19 +818,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audio_track_type = args[:audio_track_type] unless args[:audio_track_type].nil?
-          @failure_reason = args[:failure_reason] unless args[:failure_reason].nil?
-          @is_auto_synced = args[:is_auto_synced] unless args[:is_auto_synced].nil?
-          @is_cc = args[:is_cc] unless args[:is_cc].nil?
-          @is_draft = args[:is_draft] unless args[:is_draft].nil?
-          @is_easy_reader = args[:is_easy_reader] unless args[:is_easy_reader].nil?
-          @is_large = args[:is_large] unless args[:is_large].nil?
-          @language = args[:language] unless args[:language].nil?
-          @last_updated = args[:last_updated] unless args[:last_updated].nil?
-          @name = args[:name] unless args[:name].nil?
-          @status = args[:status] unless args[:status].nil?
-          @track_kind = args[:track_kind] unless args[:track_kind].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @audio_track_type = args[:audio_track_type] if args.key?(:audio_track_type)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @is_auto_synced = args[:is_auto_synced] if args.key?(:is_auto_synced)
+          @is_cc = args[:is_cc] if args.key?(:is_cc)
+          @is_draft = args[:is_draft] if args.key?(:is_draft)
+          @is_easy_reader = args[:is_easy_reader] if args.key?(:is_easy_reader)
+          @is_large = args[:is_large] if args.key?(:is_large)
+          @language = args[:language] if args.key?(:language)
+          @last_updated = args[:last_updated] if args.key?(:last_updated)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @track_kind = args[:track_kind] if args.key?(:track_kind)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -859,9 +859,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @format = args[:format] unless args[:format].nil?
-          @ingestion_info = args[:ingestion_info] unless args[:ingestion_info].nil?
-          @ingestion_type = args[:ingestion_type] unless args[:ingestion_type].nil?
+          @format = args[:format] if args.key?(:format)
+          @ingestion_info = args[:ingestion_info] if args.key?(:ingestion_info)
+          @ingestion_type = args[:ingestion_type] if args.key?(:ingestion_type)
         end
       end
       
@@ -951,20 +951,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audit_details = args[:audit_details] unless args[:audit_details].nil?
-          @branding_settings = args[:branding_settings] unless args[:branding_settings].nil?
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @content_owner_details = args[:content_owner_details] unless args[:content_owner_details].nil?
-          @conversion_pings = args[:conversion_pings] unless args[:conversion_pings].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @invideo_promotion = args[:invideo_promotion] unless args[:invideo_promotion].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @localizations = args[:localizations] unless args[:localizations].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @statistics = args[:statistics] unless args[:statistics].nil?
-          @status = args[:status] unless args[:status].nil?
-          @topic_details = args[:topic_details] unless args[:topic_details].nil?
+          @audit_details = args[:audit_details] if args.key?(:audit_details)
+          @branding_settings = args[:branding_settings] if args.key?(:branding_settings)
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @content_owner_details = args[:content_owner_details] if args.key?(:content_owner_details)
+          @conversion_pings = args[:conversion_pings] if args.key?(:conversion_pings)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @invideo_promotion = args[:invideo_promotion] if args.key?(:invideo_promotion)
+          @kind = args[:kind] if args.key?(:kind)
+          @localizations = args[:localizations] if args.key?(:localizations)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @statistics = args[:statistics] if args.key?(:statistics)
+          @status = args[:status] if args.key?(:status)
+          @topic_details = args[:topic_details] if args.key?(:topic_details)
         end
       end
       
@@ -1007,10 +1007,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @community_guidelines_good_standing = args[:community_guidelines_good_standing] unless args[:community_guidelines_good_standing].nil?
-          @content_id_claims_good_standing = args[:content_id_claims_good_standing] unless args[:content_id_claims_good_standing].nil?
-          @copyright_strikes_good_standing = args[:copyright_strikes_good_standing] unless args[:copyright_strikes_good_standing].nil?
-          @overall_good_standing = args[:overall_good_standing] unless args[:overall_good_standing].nil?
+          @community_guidelines_good_standing = args[:community_guidelines_good_standing] if args.key?(:community_guidelines_good_standing)
+          @content_id_claims_good_standing = args[:content_id_claims_good_standing] if args.key?(:content_id_claims_good_standing)
+          @copyright_strikes_good_standing = args[:copyright_strikes_good_standing] if args.key?(:copyright_strikes_good_standing)
+          @overall_good_standing = args[:overall_good_standing] if args.key?(:overall_good_standing)
         end
       end
       
@@ -1040,9 +1040,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @url = args[:url] unless args[:url].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1076,10 +1076,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel = args[:channel] unless args[:channel].nil?
-          @hints = args[:hints] unless args[:hints].nil?
-          @image = args[:image] unless args[:image].nil?
-          @watch = args[:watch] unless args[:watch].nil?
+          @channel = args[:channel] if args.key?(:channel)
+          @hints = args[:hints] if args.key?(:hints)
+          @image = args[:image] if args.key?(:image)
+          @watch = args[:watch] if args.key?(:watch)
         end
       end
       
@@ -1104,8 +1104,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @google_plus_user_id = args[:google_plus_user_id] unless args[:google_plus_user_id].nil?
-          @related_playlists = args[:related_playlists] unless args[:related_playlists].nil?
+          @google_plus_user_id = args[:google_plus_user_id] if args.key?(:google_plus_user_id)
+          @related_playlists = args[:related_playlists] if args.key?(:related_playlists)
         end
         
         # 
@@ -1153,11 +1153,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @favorites = args[:favorites] unless args[:favorites].nil?
-            @likes = args[:likes] unless args[:likes].nil?
-            @uploads = args[:uploads] unless args[:uploads].nil?
-            @watch_history = args[:watch_history] unless args[:watch_history].nil?
-            @watch_later = args[:watch_later] unless args[:watch_later].nil?
+            @favorites = args[:favorites] if args.key?(:favorites)
+            @likes = args[:likes] if args.key?(:likes)
+            @uploads = args[:uploads] if args.key?(:uploads)
+            @watch_history = args[:watch_history] if args.key?(:watch_history)
+            @watch_later = args[:watch_later] if args.key?(:watch_later)
           end
         end
       end
@@ -1184,8 +1184,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_owner = args[:content_owner] unless args[:content_owner].nil?
-          @time_linked = args[:time_linked] unless args[:time_linked].nil?
+          @content_owner = args[:content_owner] if args.key?(:content_owner)
+          @time_linked = args[:time_linked] if args.key?(:time_linked)
         end
       end
       
@@ -1216,8 +1216,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] unless args[:context].nil?
-          @conversion_url = args[:conversion_url] unless args[:conversion_url].nil?
+          @context = args[:context] if args.key?(:context)
+          @conversion_url = args[:conversion_url] if args.key?(:conversion_url)
         end
       end
       
@@ -1239,7 +1239,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @pings = args[:pings] unless args[:pings].nil?
+          @pings = args[:pings] if args.key?(:pings)
         end
       end
       
@@ -1258,7 +1258,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @value = args[:value] unless args[:value].nil?
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1321,15 +1321,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -1353,8 +1353,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @title = args[:title] unless args[:title].nil?
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1388,10 +1388,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_url = args[:channel_url] unless args[:channel_url].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @profile_image_url = args[:profile_image_url] unless args[:profile_image_url].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_url = args[:channel_url] if args.key?(:channel_url)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @profile_image_url = args[:profile_image_url] if args.key?(:profile_image_url)
         end
       end
       
@@ -1441,13 +1441,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @localizations = args[:localizations] unless args[:localizations].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @targeting = args[:targeting] unless args[:targeting].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @localizations = args[:localizations] if args.key?(:localizations)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @targeting = args[:targeting] if args.key?(:targeting)
         end
       end
       
@@ -1472,8 +1472,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channels = args[:channels] unless args[:channels].nil?
-          @playlists = args[:playlists] unless args[:playlists].nil?
+          @channels = args[:channels] if args.key?(:channels)
+          @playlists = args[:playlists] if args.key?(:playlists)
         end
       end
       
@@ -1513,11 +1513,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -1536,7 +1536,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @title = args[:title] unless args[:title].nil?
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1586,13 +1586,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @localized = args[:localized] unless args[:localized].nil?
-          @position = args[:position] unless args[:position].nil?
-          @style = args[:style] unless args[:style].nil?
-          @title = args[:title] unless args[:title].nil?
-          @type = args[:type] unless args[:type].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @localized = args[:localized] if args.key?(:localized)
+          @position = args[:position] if args.key?(:position)
+          @style = args[:style] if args.key?(:style)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1621,9 +1621,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @countries = args[:countries] unless args[:countries].nil?
-          @languages = args[:languages] unless args[:languages].nil?
-          @regions = args[:regions] unless args[:regions].nil?
+          @countries = args[:countries] if args.key?(:countries)
+          @languages = args[:languages] if args.key?(:languages)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       
@@ -1712,20 +1712,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @country = args[:country] unless args[:country].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @default_tab = args[:default_tab] unless args[:default_tab].nil?
-          @description = args[:description] unless args[:description].nil?
-          @featured_channels_title = args[:featured_channels_title] unless args[:featured_channels_title].nil?
-          @featured_channels_urls = args[:featured_channels_urls] unless args[:featured_channels_urls].nil?
-          @keywords = args[:keywords] unless args[:keywords].nil?
-          @moderate_comments = args[:moderate_comments] unless args[:moderate_comments].nil?
-          @profile_color = args[:profile_color] unless args[:profile_color].nil?
-          @show_browse_view = args[:show_browse_view] unless args[:show_browse_view].nil?
-          @show_related_channels = args[:show_related_channels] unless args[:show_related_channels].nil?
-          @title = args[:title] unless args[:title].nil?
-          @tracking_analytics_account_id = args[:tracking_analytics_account_id] unless args[:tracking_analytics_account_id].nil?
-          @unsubscribed_trailer = args[:unsubscribed_trailer] unless args[:unsubscribed_trailer].nil?
+          @country = args[:country] if args.key?(:country)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @default_tab = args[:default_tab] if args.key?(:default_tab)
+          @description = args[:description] if args.key?(:description)
+          @featured_channels_title = args[:featured_channels_title] if args.key?(:featured_channels_title)
+          @featured_channels_urls = args[:featured_channels_urls] if args.key?(:featured_channels_urls)
+          @keywords = args[:keywords] if args.key?(:keywords)
+          @moderate_comments = args[:moderate_comments] if args.key?(:moderate_comments)
+          @profile_color = args[:profile_color] if args.key?(:profile_color)
+          @show_browse_view = args[:show_browse_view] if args.key?(:show_browse_view)
+          @show_related_channels = args[:show_related_channels] if args.key?(:show_related_channels)
+          @title = args[:title] if args.key?(:title)
+          @tracking_analytics_account_id = args[:tracking_analytics_account_id] if args.key?(:tracking_analytics_account_id)
+          @unsubscribed_trailer = args[:unsubscribed_trailer] if args.key?(:unsubscribed_trailer)
         end
       end
       
@@ -1775,13 +1775,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @country = args[:country] unless args[:country].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @description = args[:description] unless args[:description].nil?
-          @localized = args[:localized] unless args[:localized].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @country = args[:country] if args.key?(:country)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @description = args[:description] if args.key?(:description)
+          @localized = args[:localized] if args.key?(:localized)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1822,11 +1822,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @comment_count = args[:comment_count] unless args[:comment_count].nil?
-          @hidden_subscriber_count = args[:hidden_subscriber_count] unless args[:hidden_subscriber_count].nil?
-          @subscriber_count = args[:subscriber_count] unless args[:subscriber_count].nil?
-          @video_count = args[:video_count] unless args[:video_count].nil?
-          @view_count = args[:view_count] unless args[:view_count].nil?
+          @comment_count = args[:comment_count] if args.key?(:comment_count)
+          @hidden_subscriber_count = args[:hidden_subscriber_count] if args.key?(:hidden_subscriber_count)
+          @subscriber_count = args[:subscriber_count] if args.key?(:subscriber_count)
+          @video_count = args[:video_count] if args.key?(:video_count)
+          @view_count = args[:view_count] if args.key?(:view_count)
         end
       end
       
@@ -1857,9 +1857,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @is_linked = args[:is_linked] unless args[:is_linked].nil?
-          @long_uploads_status = args[:long_uploads_status] unless args[:long_uploads_status].nil?
-          @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
+          @is_linked = args[:is_linked] if args.key?(:is_linked)
+          @long_uploads_status = args[:long_uploads_status] if args.key?(:long_uploads_status)
+          @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
         end
       end
       
@@ -1879,7 +1879,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @topic_ids = args[:topic_ids] unless args[:topic_ids].nil?
+          @topic_ids = args[:topic_ids] if args.key?(:topic_ids)
         end
       end
       
@@ -1914,10 +1914,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -1974,14 +1974,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -2088,22 +2088,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author_channel_id = args[:author_channel_id] unless args[:author_channel_id].nil?
-          @author_channel_url = args[:author_channel_url] unless args[:author_channel_url].nil?
-          @author_display_name = args[:author_display_name] unless args[:author_display_name].nil?
-          @author_googleplus_profile_url = args[:author_googleplus_profile_url] unless args[:author_googleplus_profile_url].nil?
-          @author_profile_image_url = args[:author_profile_image_url] unless args[:author_profile_image_url].nil?
-          @can_rate = args[:can_rate] unless args[:can_rate].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @like_count = args[:like_count] unless args[:like_count].nil?
-          @moderation_status = args[:moderation_status] unless args[:moderation_status].nil?
-          @parent_id = args[:parent_id] unless args[:parent_id].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @text_display = args[:text_display] unless args[:text_display].nil?
-          @text_original = args[:text_original] unless args[:text_original].nil?
-          @updated_at = args[:updated_at] unless args[:updated_at].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
-          @viewer_rating = args[:viewer_rating] unless args[:viewer_rating].nil?
+          @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
+          @author_channel_url = args[:author_channel_url] if args.key?(:author_channel_url)
+          @author_display_name = args[:author_display_name] if args.key?(:author_display_name)
+          @author_googleplus_profile_url = args[:author_googleplus_profile_url] if args.key?(:author_googleplus_profile_url)
+          @author_profile_image_url = args[:author_profile_image_url] if args.key?(:author_profile_image_url)
+          @can_rate = args[:can_rate] if args.key?(:can_rate)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @like_count = args[:like_count] if args.key?(:like_count)
+          @moderation_status = args[:moderation_status] if args.key?(:moderation_status)
+          @parent_id = args[:parent_id] if args.key?(:parent_id)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @text_display = args[:text_display] if args.key?(:text_display)
+          @text_original = args[:text_original] if args.key?(:text_original)
+          @updated_at = args[:updated_at] if args.key?(:updated_at)
+          @video_id = args[:video_id] if args.key?(:video_id)
+          @viewer_rating = args[:viewer_rating] if args.key?(:viewer_rating)
         end
       end
       
@@ -2145,11 +2145,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @replies = args[:replies] unless args[:replies].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @replies = args[:replies] if args.key?(:replies)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -2206,14 +2206,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -2234,7 +2234,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @comments = args[:comments] unless args[:comments].nil?
+          @comments = args[:comments] if args.key?(:comments)
         end
       end
       
@@ -2285,12 +2285,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @can_reply = args[:can_reply] unless args[:can_reply].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @is_public = args[:is_public] unless args[:is_public].nil?
-          @top_level_comment = args[:top_level_comment] unless args[:top_level_comment].nil?
-          @total_reply_count = args[:total_reply_count] unless args[:total_reply_count].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @can_reply = args[:can_reply] if args.key?(:can_reply)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @is_public = args[:is_public] if args.key?(:is_public)
+          @top_level_comment = args[:top_level_comment] if args.key?(:top_level_comment)
+          @total_reply_count = args[:total_reply_count] if args.key?(:total_reply_count)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -2666,72 +2666,72 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acb_rating = args[:acb_rating] unless args[:acb_rating].nil?
-          @agcom_rating = args[:agcom_rating] unless args[:agcom_rating].nil?
-          @anatel_rating = args[:anatel_rating] unless args[:anatel_rating].nil?
-          @bbfc_rating = args[:bbfc_rating] unless args[:bbfc_rating].nil?
-          @bfvc_rating = args[:bfvc_rating] unless args[:bfvc_rating].nil?
-          @bmukk_rating = args[:bmukk_rating] unless args[:bmukk_rating].nil?
-          @catv_rating = args[:catv_rating] unless args[:catv_rating].nil?
-          @catvfr_rating = args[:catvfr_rating] unless args[:catvfr_rating].nil?
-          @cbfc_rating = args[:cbfc_rating] unless args[:cbfc_rating].nil?
-          @ccc_rating = args[:ccc_rating] unless args[:ccc_rating].nil?
-          @cce_rating = args[:cce_rating] unless args[:cce_rating].nil?
-          @chfilm_rating = args[:chfilm_rating] unless args[:chfilm_rating].nil?
-          @chvrs_rating = args[:chvrs_rating] unless args[:chvrs_rating].nil?
-          @cicf_rating = args[:cicf_rating] unless args[:cicf_rating].nil?
-          @cna_rating = args[:cna_rating] unless args[:cna_rating].nil?
-          @cnc_rating = args[:cnc_rating] unless args[:cnc_rating].nil?
-          @csa_rating = args[:csa_rating] unless args[:csa_rating].nil?
-          @cscf_rating = args[:cscf_rating] unless args[:cscf_rating].nil?
-          @czfilm_rating = args[:czfilm_rating] unless args[:czfilm_rating].nil?
-          @djctq_rating = args[:djctq_rating] unless args[:djctq_rating].nil?
-          @djctq_rating_reasons = args[:djctq_rating_reasons] unless args[:djctq_rating_reasons].nil?
-          @ecbmct_rating = args[:ecbmct_rating] unless args[:ecbmct_rating].nil?
-          @eefilm_rating = args[:eefilm_rating] unless args[:eefilm_rating].nil?
-          @egfilm_rating = args[:egfilm_rating] unless args[:egfilm_rating].nil?
-          @eirin_rating = args[:eirin_rating] unless args[:eirin_rating].nil?
-          @fcbm_rating = args[:fcbm_rating] unless args[:fcbm_rating].nil?
-          @fco_rating = args[:fco_rating] unless args[:fco_rating].nil?
-          @fmoc_rating = args[:fmoc_rating] unless args[:fmoc_rating].nil?
-          @fpb_rating = args[:fpb_rating] unless args[:fpb_rating].nil?
-          @fsk_rating = args[:fsk_rating] unless args[:fsk_rating].nil?
-          @grfilm_rating = args[:grfilm_rating] unless args[:grfilm_rating].nil?
-          @icaa_rating = args[:icaa_rating] unless args[:icaa_rating].nil?
-          @ifco_rating = args[:ifco_rating] unless args[:ifco_rating].nil?
-          @ilfilm_rating = args[:ilfilm_rating] unless args[:ilfilm_rating].nil?
-          @incaa_rating = args[:incaa_rating] unless args[:incaa_rating].nil?
-          @kfcb_rating = args[:kfcb_rating] unless args[:kfcb_rating].nil?
-          @kijkwijzer_rating = args[:kijkwijzer_rating] unless args[:kijkwijzer_rating].nil?
-          @kmrb_rating = args[:kmrb_rating] unless args[:kmrb_rating].nil?
-          @lsf_rating = args[:lsf_rating] unless args[:lsf_rating].nil?
-          @mccaa_rating = args[:mccaa_rating] unless args[:mccaa_rating].nil?
-          @mccyp_rating = args[:mccyp_rating] unless args[:mccyp_rating].nil?
-          @mda_rating = args[:mda_rating] unless args[:mda_rating].nil?
-          @medietilsynet_rating = args[:medietilsynet_rating] unless args[:medietilsynet_rating].nil?
-          @meku_rating = args[:meku_rating] unless args[:meku_rating].nil?
-          @mibac_rating = args[:mibac_rating] unless args[:mibac_rating].nil?
-          @moc_rating = args[:moc_rating] unless args[:moc_rating].nil?
-          @moctw_rating = args[:moctw_rating] unless args[:moctw_rating].nil?
-          @mpaa_rating = args[:mpaa_rating] unless args[:mpaa_rating].nil?
-          @mtrcb_rating = args[:mtrcb_rating] unless args[:mtrcb_rating].nil?
-          @nbc_rating = args[:nbc_rating] unless args[:nbc_rating].nil?
-          @nbcpl_rating = args[:nbcpl_rating] unless args[:nbcpl_rating].nil?
-          @nfrc_rating = args[:nfrc_rating] unless args[:nfrc_rating].nil?
-          @nfvcb_rating = args[:nfvcb_rating] unless args[:nfvcb_rating].nil?
-          @nkclv_rating = args[:nkclv_rating] unless args[:nkclv_rating].nil?
-          @oflc_rating = args[:oflc_rating] unless args[:oflc_rating].nil?
-          @pefilm_rating = args[:pefilm_rating] unless args[:pefilm_rating].nil?
-          @rcnof_rating = args[:rcnof_rating] unless args[:rcnof_rating].nil?
-          @resorteviolencia_rating = args[:resorteviolencia_rating] unless args[:resorteviolencia_rating].nil?
-          @rtc_rating = args[:rtc_rating] unless args[:rtc_rating].nil?
-          @rte_rating = args[:rte_rating] unless args[:rte_rating].nil?
-          @russia_rating = args[:russia_rating] unless args[:russia_rating].nil?
-          @skfilm_rating = args[:skfilm_rating] unless args[:skfilm_rating].nil?
-          @smais_rating = args[:smais_rating] unless args[:smais_rating].nil?
-          @smsa_rating = args[:smsa_rating] unless args[:smsa_rating].nil?
-          @tvpg_rating = args[:tvpg_rating] unless args[:tvpg_rating].nil?
-          @yt_rating = args[:yt_rating] unless args[:yt_rating].nil?
+          @acb_rating = args[:acb_rating] if args.key?(:acb_rating)
+          @agcom_rating = args[:agcom_rating] if args.key?(:agcom_rating)
+          @anatel_rating = args[:anatel_rating] if args.key?(:anatel_rating)
+          @bbfc_rating = args[:bbfc_rating] if args.key?(:bbfc_rating)
+          @bfvc_rating = args[:bfvc_rating] if args.key?(:bfvc_rating)
+          @bmukk_rating = args[:bmukk_rating] if args.key?(:bmukk_rating)
+          @catv_rating = args[:catv_rating] if args.key?(:catv_rating)
+          @catvfr_rating = args[:catvfr_rating] if args.key?(:catvfr_rating)
+          @cbfc_rating = args[:cbfc_rating] if args.key?(:cbfc_rating)
+          @ccc_rating = args[:ccc_rating] if args.key?(:ccc_rating)
+          @cce_rating = args[:cce_rating] if args.key?(:cce_rating)
+          @chfilm_rating = args[:chfilm_rating] if args.key?(:chfilm_rating)
+          @chvrs_rating = args[:chvrs_rating] if args.key?(:chvrs_rating)
+          @cicf_rating = args[:cicf_rating] if args.key?(:cicf_rating)
+          @cna_rating = args[:cna_rating] if args.key?(:cna_rating)
+          @cnc_rating = args[:cnc_rating] if args.key?(:cnc_rating)
+          @csa_rating = args[:csa_rating] if args.key?(:csa_rating)
+          @cscf_rating = args[:cscf_rating] if args.key?(:cscf_rating)
+          @czfilm_rating = args[:czfilm_rating] if args.key?(:czfilm_rating)
+          @djctq_rating = args[:djctq_rating] if args.key?(:djctq_rating)
+          @djctq_rating_reasons = args[:djctq_rating_reasons] if args.key?(:djctq_rating_reasons)
+          @ecbmct_rating = args[:ecbmct_rating] if args.key?(:ecbmct_rating)
+          @eefilm_rating = args[:eefilm_rating] if args.key?(:eefilm_rating)
+          @egfilm_rating = args[:egfilm_rating] if args.key?(:egfilm_rating)
+          @eirin_rating = args[:eirin_rating] if args.key?(:eirin_rating)
+          @fcbm_rating = args[:fcbm_rating] if args.key?(:fcbm_rating)
+          @fco_rating = args[:fco_rating] if args.key?(:fco_rating)
+          @fmoc_rating = args[:fmoc_rating] if args.key?(:fmoc_rating)
+          @fpb_rating = args[:fpb_rating] if args.key?(:fpb_rating)
+          @fsk_rating = args[:fsk_rating] if args.key?(:fsk_rating)
+          @grfilm_rating = args[:grfilm_rating] if args.key?(:grfilm_rating)
+          @icaa_rating = args[:icaa_rating] if args.key?(:icaa_rating)
+          @ifco_rating = args[:ifco_rating] if args.key?(:ifco_rating)
+          @ilfilm_rating = args[:ilfilm_rating] if args.key?(:ilfilm_rating)
+          @incaa_rating = args[:incaa_rating] if args.key?(:incaa_rating)
+          @kfcb_rating = args[:kfcb_rating] if args.key?(:kfcb_rating)
+          @kijkwijzer_rating = args[:kijkwijzer_rating] if args.key?(:kijkwijzer_rating)
+          @kmrb_rating = args[:kmrb_rating] if args.key?(:kmrb_rating)
+          @lsf_rating = args[:lsf_rating] if args.key?(:lsf_rating)
+          @mccaa_rating = args[:mccaa_rating] if args.key?(:mccaa_rating)
+          @mccyp_rating = args[:mccyp_rating] if args.key?(:mccyp_rating)
+          @mda_rating = args[:mda_rating] if args.key?(:mda_rating)
+          @medietilsynet_rating = args[:medietilsynet_rating] if args.key?(:medietilsynet_rating)
+          @meku_rating = args[:meku_rating] if args.key?(:meku_rating)
+          @mibac_rating = args[:mibac_rating] if args.key?(:mibac_rating)
+          @moc_rating = args[:moc_rating] if args.key?(:moc_rating)
+          @moctw_rating = args[:moctw_rating] if args.key?(:moctw_rating)
+          @mpaa_rating = args[:mpaa_rating] if args.key?(:mpaa_rating)
+          @mtrcb_rating = args[:mtrcb_rating] if args.key?(:mtrcb_rating)
+          @nbc_rating = args[:nbc_rating] if args.key?(:nbc_rating)
+          @nbcpl_rating = args[:nbcpl_rating] if args.key?(:nbcpl_rating)
+          @nfrc_rating = args[:nfrc_rating] if args.key?(:nfrc_rating)
+          @nfvcb_rating = args[:nfvcb_rating] if args.key?(:nfvcb_rating)
+          @nkclv_rating = args[:nkclv_rating] if args.key?(:nkclv_rating)
+          @oflc_rating = args[:oflc_rating] if args.key?(:oflc_rating)
+          @pefilm_rating = args[:pefilm_rating] if args.key?(:pefilm_rating)
+          @rcnof_rating = args[:rcnof_rating] if args.key?(:rcnof_rating)
+          @resorteviolencia_rating = args[:resorteviolencia_rating] if args.key?(:resorteviolencia_rating)
+          @rtc_rating = args[:rtc_rating] if args.key?(:rtc_rating)
+          @rte_rating = args[:rte_rating] if args.key?(:rte_rating)
+          @russia_rating = args[:russia_rating] if args.key?(:russia_rating)
+          @skfilm_rating = args[:skfilm_rating] if args.key?(:skfilm_rating)
+          @smais_rating = args[:smais_rating] if args.key?(:smais_rating)
+          @smsa_rating = args[:smsa_rating] if args.key?(:smsa_rating)
+          @tvpg_rating = args[:tvpg_rating] if args.key?(:tvpg_rating)
+          @yt_rating = args[:yt_rating] if args.key?(:yt_rating)
         end
       end
       
@@ -2768,10 +2768,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -2828,14 +2828,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -2887,13 +2887,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @amount_micros = args[:amount_micros] unless args[:amount_micros].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @comment_text = args[:comment_text] unless args[:comment_text].nil?
-          @created_at = args[:created_at] unless args[:created_at].nil?
-          @currency = args[:currency] unless args[:currency].nil?
-          @display_string = args[:display_string] unless args[:display_string].nil?
-          @supporter_details = args[:supporter_details] unless args[:supporter_details].nil?
+          @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @comment_text = args[:comment_text] if args.key?(:comment_text)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @currency = args[:currency] if args.key?(:currency)
+          @display_string = args[:display_string] if args.key?(:display_string)
+          @supporter_details = args[:supporter_details] if args.key?(:supporter_details)
         end
       end
       
@@ -2922,9 +2922,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @altitude = args[:altitude] unless args[:altitude].nil?
-          @latitude = args[:latitude] unless args[:latitude].nil?
-          @longitude = args[:longitude] unless args[:longitude].nil?
+          @altitude = args[:altitude] if args.key?(:altitude)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
@@ -2963,10 +2963,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -3031,15 +3031,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -3063,8 +3063,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -3101,10 +3101,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -3145,11 +3145,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -3174,8 +3174,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hl = args[:hl] unless args[:hl].nil?
-          @name = args[:name] unless args[:name].nil?
+          @hl = args[:hl] if args.key?(:hl)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3211,10 +3211,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -3255,11 +3255,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -3284,8 +3284,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gl = args[:gl] unless args[:gl].nil?
-          @name = args[:name] unless args[:name].nil?
+          @gl = args[:gl] if args.key?(:gl)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3416,28 +3416,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @background_image_url = args[:background_image_url] unless args[:background_image_url].nil?
-          @banner_external_url = args[:banner_external_url] unless args[:banner_external_url].nil?
-          @banner_image_url = args[:banner_image_url] unless args[:banner_image_url].nil?
-          @banner_mobile_extra_hd_image_url = args[:banner_mobile_extra_hd_image_url] unless args[:banner_mobile_extra_hd_image_url].nil?
-          @banner_mobile_hd_image_url = args[:banner_mobile_hd_image_url] unless args[:banner_mobile_hd_image_url].nil?
-          @banner_mobile_image_url = args[:banner_mobile_image_url] unless args[:banner_mobile_image_url].nil?
-          @banner_mobile_low_image_url = args[:banner_mobile_low_image_url] unless args[:banner_mobile_low_image_url].nil?
-          @banner_mobile_medium_hd_image_url = args[:banner_mobile_medium_hd_image_url] unless args[:banner_mobile_medium_hd_image_url].nil?
-          @banner_tablet_extra_hd_image_url = args[:banner_tablet_extra_hd_image_url] unless args[:banner_tablet_extra_hd_image_url].nil?
-          @banner_tablet_hd_image_url = args[:banner_tablet_hd_image_url] unless args[:banner_tablet_hd_image_url].nil?
-          @banner_tablet_image_url = args[:banner_tablet_image_url] unless args[:banner_tablet_image_url].nil?
-          @banner_tablet_low_image_url = args[:banner_tablet_low_image_url] unless args[:banner_tablet_low_image_url].nil?
-          @banner_tv_high_image_url = args[:banner_tv_high_image_url] unless args[:banner_tv_high_image_url].nil?
-          @banner_tv_image_url = args[:banner_tv_image_url] unless args[:banner_tv_image_url].nil?
-          @banner_tv_low_image_url = args[:banner_tv_low_image_url] unless args[:banner_tv_low_image_url].nil?
-          @banner_tv_medium_image_url = args[:banner_tv_medium_image_url] unless args[:banner_tv_medium_image_url].nil?
-          @large_branded_banner_image_imap_script = args[:large_branded_banner_image_imap_script] unless args[:large_branded_banner_image_imap_script].nil?
-          @large_branded_banner_image_url = args[:large_branded_banner_image_url] unless args[:large_branded_banner_image_url].nil?
-          @small_branded_banner_image_imap_script = args[:small_branded_banner_image_imap_script] unless args[:small_branded_banner_image_imap_script].nil?
-          @small_branded_banner_image_url = args[:small_branded_banner_image_url] unless args[:small_branded_banner_image_url].nil?
-          @tracking_image_url = args[:tracking_image_url] unless args[:tracking_image_url].nil?
-          @watch_icon_image_url = args[:watch_icon_image_url] unless args[:watch_icon_image_url].nil?
+          @background_image_url = args[:background_image_url] if args.key?(:background_image_url)
+          @banner_external_url = args[:banner_external_url] if args.key?(:banner_external_url)
+          @banner_image_url = args[:banner_image_url] if args.key?(:banner_image_url)
+          @banner_mobile_extra_hd_image_url = args[:banner_mobile_extra_hd_image_url] if args.key?(:banner_mobile_extra_hd_image_url)
+          @banner_mobile_hd_image_url = args[:banner_mobile_hd_image_url] if args.key?(:banner_mobile_hd_image_url)
+          @banner_mobile_image_url = args[:banner_mobile_image_url] if args.key?(:banner_mobile_image_url)
+          @banner_mobile_low_image_url = args[:banner_mobile_low_image_url] if args.key?(:banner_mobile_low_image_url)
+          @banner_mobile_medium_hd_image_url = args[:banner_mobile_medium_hd_image_url] if args.key?(:banner_mobile_medium_hd_image_url)
+          @banner_tablet_extra_hd_image_url = args[:banner_tablet_extra_hd_image_url] if args.key?(:banner_tablet_extra_hd_image_url)
+          @banner_tablet_hd_image_url = args[:banner_tablet_hd_image_url] if args.key?(:banner_tablet_hd_image_url)
+          @banner_tablet_image_url = args[:banner_tablet_image_url] if args.key?(:banner_tablet_image_url)
+          @banner_tablet_low_image_url = args[:banner_tablet_low_image_url] if args.key?(:banner_tablet_low_image_url)
+          @banner_tv_high_image_url = args[:banner_tv_high_image_url] if args.key?(:banner_tv_high_image_url)
+          @banner_tv_image_url = args[:banner_tv_image_url] if args.key?(:banner_tv_image_url)
+          @banner_tv_low_image_url = args[:banner_tv_low_image_url] if args.key?(:banner_tv_low_image_url)
+          @banner_tv_medium_image_url = args[:banner_tv_medium_image_url] if args.key?(:banner_tv_medium_image_url)
+          @large_branded_banner_image_imap_script = args[:large_branded_banner_image_imap_script] if args.key?(:large_branded_banner_image_imap_script)
+          @large_branded_banner_image_url = args[:large_branded_banner_image_url] if args.key?(:large_branded_banner_image_url)
+          @small_branded_banner_image_imap_script = args[:small_branded_banner_image_imap_script] if args.key?(:small_branded_banner_image_imap_script)
+          @small_branded_banner_image_url = args[:small_branded_banner_image_url] if args.key?(:small_branded_banner_image_url)
+          @tracking_image_url = args[:tracking_image_url] if args.key?(:tracking_image_url)
+          @watch_icon_image_url = args[:watch_icon_image_url] if args.key?(:watch_icon_image_url)
         end
       end
       
@@ -3473,9 +3473,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @backup_ingestion_address = args[:backup_ingestion_address] unless args[:backup_ingestion_address].nil?
-          @ingestion_address = args[:ingestion_address] unless args[:ingestion_address].nil?
-          @stream_name = args[:stream_name] unless args[:stream_name].nil?
+          @backup_ingestion_address = args[:backup_ingestion_address] if args.key?(:backup_ingestion_address)
+          @ingestion_address = args[:ingestion_address] if args.key?(:ingestion_address)
+          @stream_name = args[:stream_name] if args.key?(:stream_name)
         end
       end
       
@@ -3515,11 +3515,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @image_bytes = args[:image_bytes] unless args[:image_bytes].nil?
-          @image_url = args[:image_url] unless args[:image_url].nil?
-          @position = args[:position] unless args[:position].nil?
-          @target_channel_id = args[:target_channel_id] unless args[:target_channel_id].nil?
-          @timing = args[:timing] unless args[:timing].nil?
+          @image_bytes = args[:image_bytes] if args.key?(:image_bytes)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @position = args[:position] if args.key?(:position)
+          @target_channel_id = args[:target_channel_id] if args.key?(:target_channel_id)
+          @timing = args[:timing] if args.key?(:timing)
         end
       end
       
@@ -3544,8 +3544,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @corner_position = args[:corner_position] unless args[:corner_position].nil?
-          @type = args[:type] unless args[:type].nil?
+          @corner_position = args[:corner_position] if args.key?(:corner_position)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3585,10 +3585,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_timing = args[:default_timing] unless args[:default_timing].nil?
-          @items = args[:items] unless args[:items].nil?
-          @position = args[:position] unless args[:position].nil?
-          @use_smart_timing = args[:use_smart_timing] unless args[:use_smart_timing].nil?
+          @default_timing = args[:default_timing] if args.key?(:default_timing)
+          @items = args[:items] if args.key?(:items)
+          @position = args[:position] if args.key?(:position)
+          @use_smart_timing = args[:use_smart_timing] if args.key?(:use_smart_timing)
         end
       end
       
@@ -3623,9 +3623,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @duration_ms = args[:duration_ms] unless args[:duration_ms].nil?
-          @offset_ms = args[:offset_ms] unless args[:offset_ms].nil?
-          @type = args[:type] unless args[:type].nil?
+          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
+          @offset_ms = args[:offset_ms] if args.key?(:offset_ms)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3644,7 +3644,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @value = args[:value] unless args[:value].nil?
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3702,14 +3702,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @statistics = args[:statistics] unless args[:statistics].nil?
-          @status = args[:status] unless args[:status].nil?
-          @topic_details = args[:topic_details] unless args[:topic_details].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @statistics = args[:statistics] if args.key?(:statistics)
+          @status = args[:status] if args.key?(:status)
+          @topic_details = args[:topic_details] if args.key?(:topic_details)
         end
       end
       
@@ -3803,16 +3803,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bound_stream_id = args[:bound_stream_id] unless args[:bound_stream_id].nil?
-          @closed_captions_type = args[:closed_captions_type] unless args[:closed_captions_type].nil?
-          @enable_closed_captions = args[:enable_closed_captions] unless args[:enable_closed_captions].nil?
-          @enable_content_encryption = args[:enable_content_encryption] unless args[:enable_content_encryption].nil?
-          @enable_dvr = args[:enable_dvr] unless args[:enable_dvr].nil?
-          @enable_embed = args[:enable_embed] unless args[:enable_embed].nil?
-          @enable_low_latency = args[:enable_low_latency] unless args[:enable_low_latency].nil?
-          @monitor_stream = args[:monitor_stream] unless args[:monitor_stream].nil?
-          @record_from_start = args[:record_from_start] unless args[:record_from_start].nil?
-          @start_with_slate = args[:start_with_slate] unless args[:start_with_slate].nil?
+          @bound_stream_id = args[:bound_stream_id] if args.key?(:bound_stream_id)
+          @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
+          @enable_closed_captions = args[:enable_closed_captions] if args.key?(:enable_closed_captions)
+          @enable_content_encryption = args[:enable_content_encryption] if args.key?(:enable_content_encryption)
+          @enable_dvr = args[:enable_dvr] if args.key?(:enable_dvr)
+          @enable_embed = args[:enable_embed] if args.key?(:enable_embed)
+          @enable_low_latency = args[:enable_low_latency] if args.key?(:enable_low_latency)
+          @monitor_stream = args[:monitor_stream] if args.key?(:monitor_stream)
+          @record_from_start = args[:record_from_start] if args.key?(:record_from_start)
+          @start_with_slate = args[:start_with_slate] if args.key?(:start_with_slate)
         end
       end
       
@@ -3875,15 +3875,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -3965,17 +3965,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @actual_end_time = args[:actual_end_time] unless args[:actual_end_time].nil?
-          @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @description = args[:description] unless args[:description].nil?
-          @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
-          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @scheduled_end_time = args[:scheduled_end_time] unless args[:scheduled_end_time].nil?
-          @scheduled_start_time = args[:scheduled_start_time] unless args[:scheduled_start_time].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
+          @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @description = args[:description] if args.key?(:description)
+          @is_default_broadcast = args[:is_default_broadcast] if args.key?(:is_default_broadcast)
+          @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @scheduled_end_time = args[:scheduled_end_time] if args.key?(:scheduled_end_time)
+          @scheduled_start_time = args[:scheduled_start_time] if args.key?(:scheduled_start_time)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -4010,8 +4010,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @concurrent_viewers = args[:concurrent_viewers] unless args[:concurrent_viewers].nil?
-          @total_chat_count = args[:total_chat_count] unless args[:total_chat_count].nil?
+          @concurrent_viewers = args[:concurrent_viewers] if args.key?(:concurrent_viewers)
+          @total_chat_count = args[:total_chat_count] if args.key?(:total_chat_count)
         end
       end
       
@@ -4050,10 +4050,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @life_cycle_status = args[:life_cycle_status] unless args[:life_cycle_status].nil?
-          @live_broadcast_priority = args[:live_broadcast_priority] unless args[:live_broadcast_priority].nil?
-          @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
-          @recording_status = args[:recording_status] unless args[:recording_status].nil?
+          @life_cycle_status = args[:life_cycle_status] if args.key?(:life_cycle_status)
+          @live_broadcast_priority = args[:live_broadcast_priority] if args.key?(:live_broadcast_priority)
+          @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
+          @recording_status = args[:recording_status] if args.key?(:recording_status)
         end
       end
       
@@ -4084,9 +4084,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @type = args[:type] unless args[:type].nil?
-          @unmatched = args[:unmatched] unless args[:unmatched].nil?
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @type = args[:type] if args.key?(:type)
+          @unmatched = args[:unmatched] if args.key?(:unmatched)
         end
       end
       
@@ -4105,7 +4105,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @topics = args[:topics] unless args[:topics].nil?
+          @topics = args[:topics] if args.key?(:topics)
         end
       end
       
@@ -4129,8 +4129,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @release_date = args[:release_date] unless args[:release_date].nil?
+          @name = args[:name] if args.key?(:name)
+          @release_date = args[:release_date] if args.key?(:release_date)
         end
       end
       
@@ -4165,10 +4165,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -4202,10 +4202,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ban_duration_seconds = args[:ban_duration_seconds] unless args[:ban_duration_seconds].nil?
-          @banned_user_details = args[:banned_user_details] unless args[:banned_user_details].nil?
-          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
-          @type = args[:type] unless args[:type].nil?
+          @ban_duration_seconds = args[:ban_duration_seconds] if args.key?(:ban_duration_seconds)
+          @banned_user_details = args[:banned_user_details] if args.key?(:banned_user_details)
+          @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4239,10 +4239,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @amount_display_string = args[:amount_display_string] unless args[:amount_display_string].nil?
-          @amount_micros = args[:amount_micros] unless args[:amount_micros].nil?
-          @currency = args[:currency] unless args[:currency].nil?
-          @user_comment = args[:user_comment] unless args[:user_comment].nil?
+          @amount_display_string = args[:amount_display_string] if args.key?(:amount_display_string)
+          @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
+          @currency = args[:currency] if args.key?(:currency)
+          @user_comment = args[:user_comment] if args.key?(:user_comment)
         end
       end
       
@@ -4283,11 +4283,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author_details = args[:author_details] unless args[:author_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @author_details = args[:author_details] if args.key?(:author_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -4345,14 +4345,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_url = args[:channel_url] unless args[:channel_url].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @is_chat_moderator = args[:is_chat_moderator] unless args[:is_chat_moderator].nil?
-          @is_chat_owner = args[:is_chat_owner] unless args[:is_chat_owner].nil?
-          @is_chat_sponsor = args[:is_chat_sponsor] unless args[:is_chat_sponsor].nil?
-          @is_verified = args[:is_verified] unless args[:is_verified].nil?
-          @profile_image_url = args[:profile_image_url] unless args[:profile_image_url].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_url = args[:channel_url] if args.key?(:channel_url)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_chat_moderator = args[:is_chat_moderator] if args.key?(:is_chat_moderator)
+          @is_chat_owner = args[:is_chat_owner] if args.key?(:is_chat_owner)
+          @is_chat_sponsor = args[:is_chat_sponsor] if args.key?(:is_chat_sponsor)
+          @is_verified = args[:is_verified] if args.key?(:is_verified)
+          @profile_image_url = args[:profile_image_url] if args.key?(:profile_image_url)
         end
       end
       
@@ -4420,16 +4420,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @offline_at = args[:offline_at] unless args[:offline_at].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @polling_interval_millis = args[:polling_interval_millis] unless args[:polling_interval_millis].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @offline_at = args[:offline_at] if args.key?(:offline_at)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @polling_interval_millis = args[:polling_interval_millis] if args.key?(:polling_interval_millis)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -4493,14 +4493,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author_channel_id = args[:author_channel_id] unless args[:author_channel_id].nil?
-          @display_message = args[:display_message] unless args[:display_message].nil?
-          @fan_funding_event_details = args[:fan_funding_event_details] unless args[:fan_funding_event_details].nil?
-          @has_display_content = args[:has_display_content] unless args[:has_display_content].nil?
-          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @text_message_details = args[:text_message_details] unless args[:text_message_details].nil?
-          @type = args[:type] unless args[:type].nil?
+          @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
+          @display_message = args[:display_message] if args.key?(:display_message)
+          @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
+          @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
+          @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @text_message_details = args[:text_message_details] if args.key?(:text_message_details)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4537,10 +4537,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -4603,15 +4603,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -4635,8 +4635,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
-          @moderator_details = args[:moderator_details] unless args[:moderator_details].nil?
+          @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @moderator_details = args[:moderator_details] if args.key?(:moderator_details)
         end
       end
       
@@ -4655,7 +4655,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message_text = args[:message_text] unless args[:message_text].nil?
+          @message_text = args[:message_text] if args.key?(:message_text)
         end
       end
       
@@ -4706,13 +4706,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cdn = args[:cdn] unless args[:cdn].nil?
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @status = args[:status] unless args[:status].nil?
+          @cdn = args[:cdn] if args.key?(:cdn)
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4746,10 +4746,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @reason = args[:reason] unless args[:reason].nil?
-          @severity = args[:severity] unless args[:severity].nil?
-          @type = args[:type] unless args[:type].nil?
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4786,8 +4786,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @closed_captions_ingestion_url = args[:closed_captions_ingestion_url] unless args[:closed_captions_ingestion_url].nil?
-          @is_reusable = args[:is_reusable] unless args[:is_reusable].nil?
+          @closed_captions_ingestion_url = args[:closed_captions_ingestion_url] if args.key?(:closed_captions_ingestion_url)
+          @is_reusable = args[:is_reusable] if args.key?(:is_reusable)
         end
       end
       
@@ -4816,9 +4816,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @configuration_issues = args[:configuration_issues] unless args[:configuration_issues].nil?
-          @last_update_time_seconds = args[:last_update_time_seconds] unless args[:last_update_time_seconds].nil?
-          @status = args[:status] unless args[:status].nil?
+          @configuration_issues = args[:configuration_issues] if args.key?(:configuration_issues)
+          @last_update_time_seconds = args[:last_update_time_seconds] if args.key?(:last_update_time_seconds)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4881,15 +4881,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -4931,11 +4931,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @description = args[:description] unless args[:description].nil?
-          @is_default_stream = args[:is_default_stream] unless args[:is_default_stream].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @description = args[:description] if args.key?(:description)
+          @is_default_stream = args[:is_default_stream] if args.key?(:is_default_stream)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -4959,8 +4959,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @health_status = args[:health_status] unless args[:health_status].nil?
-          @stream_status = args[:stream_status] unless args[:stream_status].nil?
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @stream_status = args[:stream_status] if args.key?(:stream_status)
         end
       end
       
@@ -4989,9 +4989,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default = args[:default] unless args[:default].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @localized = args[:localized] unless args[:localized].nil?
+          @default = args[:default] if args.key?(:default)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @localized = args[:localized] if args.key?(:localized)
         end
       end
       
@@ -5015,8 +5015,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @language = args[:language] unless args[:language].nil?
-          @value = args[:value] unless args[:value].nil?
+          @language = args[:language] if args.key?(:language)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -5055,9 +5055,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @broadcast_stream_delay_ms = args[:broadcast_stream_delay_ms] unless args[:broadcast_stream_delay_ms].nil?
-          @embed_html = args[:embed_html] unless args[:embed_html].nil?
-          @enable_monitor_stream = args[:enable_monitor_stream] unless args[:enable_monitor_stream].nil?
+          @broadcast_stream_delay_ms = args[:broadcast_stream_delay_ms] if args.key?(:broadcast_stream_delay_ms)
+          @embed_html = args[:embed_html] if args.key?(:embed_html)
+          @enable_monitor_stream = args[:enable_monitor_stream] if args.key?(:enable_monitor_stream)
         end
       end
       
@@ -5082,8 +5082,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @results_per_page = args[:results_per_page] unless args[:results_per_page].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @results_per_page = args[:results_per_page] if args.key?(:results_per_page)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -5156,14 +5156,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @localizations = args[:localizations] unless args[:localizations].nil?
-          @player = args[:player] unless args[:player].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @status = args[:status] unless args[:status].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @localizations = args[:localizations] if args.key?(:localizations)
+          @player = args[:player] if args.key?(:player)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -5182,7 +5182,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @item_count = args[:item_count] unless args[:item_count].nil?
+          @item_count = args[:item_count] if args.key?(:item_count)
         end
       end
       
@@ -5246,12 +5246,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @status = args[:status] unless args[:status].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -5292,10 +5292,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_at = args[:end_at] unless args[:end_at].nil?
-          @note = args[:note] unless args[:note].nil?
-          @start_at = args[:start_at] unless args[:start_at].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @end_at = args[:end_at] if args.key?(:end_at)
+          @note = args[:note] if args.key?(:note)
+          @start_at = args[:start_at] if args.key?(:start_at)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -5358,15 +5358,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -5430,15 +5430,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @description = args[:description] unless args[:description].nil?
-          @playlist_id = args[:playlist_id] unless args[:playlist_id].nil?
-          @position = args[:position] unless args[:position].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @description = args[:description] if args.key?(:description)
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
+          @position = args[:position] if args.key?(:position)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -5457,7 +5457,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
+          @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
         end
       end
       
@@ -5520,15 +5520,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -5552,8 +5552,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @title = args[:title] unless args[:title].nil?
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -5572,7 +5572,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @embed_html = args[:embed_html] unless args[:embed_html].nil?
+          @embed_html = args[:embed_html] if args.key?(:embed_html)
         end
       end
       
@@ -5633,15 +5633,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @description = args[:description] unless args[:description].nil?
-          @localized = args[:localized] unless args[:localized].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @description = args[:description] if args.key?(:description)
+          @localized = args[:localized] if args.key?(:localized)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @tags = args[:tags] if args.key?(:tags)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -5660,7 +5660,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
+          @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
         end
       end
       
@@ -5698,10 +5698,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @custom_message = args[:custom_message] unless args[:custom_message].nil?
-          @id = args[:id] unless args[:id].nil?
-          @promoted_by_content_owner = args[:promoted_by_content_owner] unless args[:promoted_by_content_owner].nil?
-          @timing = args[:timing] unless args[:timing].nil?
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+          @id = args[:id] if args.key?(:id)
+          @promoted_by_content_owner = args[:promoted_by_content_owner] if args.key?(:promoted_by_content_owner)
+          @timing = args[:timing] if args.key?(:timing)
         end
       end
       
@@ -5741,10 +5741,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @recently_uploaded_by = args[:recently_uploaded_by] unless args[:recently_uploaded_by].nil?
-          @type = args[:type] unless args[:type].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
+          @recently_uploaded_by = args[:recently_uploaded_by] if args.key?(:recently_uploaded_by)
+          @type = args[:type] if args.key?(:type)
+          @video_id = args[:video_id] if args.key?(:video_id)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       
@@ -5768,8 +5768,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @property = args[:property] unless args[:property].nil?
-          @value = args[:value] unless args[:value].nil?
+          @property = args[:property] if args.key?(:property)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -5809,10 +5809,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @playlist_id = args[:playlist_id] unless args[:playlist_id].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -5875,15 +5875,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -5922,10 +5922,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -5980,13 +5980,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @description = args[:description] unless args[:description].nil?
-          @live_broadcast_content = args[:live_broadcast_content] unless args[:live_broadcast_content].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @description = args[:description] if args.key?(:description)
+          @live_broadcast_content = args[:live_broadcast_content] if args.key?(:live_broadcast_content)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -6022,10 +6022,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -6082,14 +6082,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -6119,9 +6119,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @sponsor_details = args[:sponsor_details] unless args[:sponsor_details].nil?
-          @sponsor_since = args[:sponsor_since] unless args[:sponsor_since].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @sponsor_details = args[:sponsor_details] if args.key?(:sponsor_details)
+          @sponsor_since = args[:sponsor_since] if args.key?(:sponsor_since)
         end
       end
       
@@ -6171,12 +6171,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @subscriber_snippet = args[:subscriber_snippet] unless args[:subscriber_snippet].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @subscriber_snippet = args[:subscriber_snippet] if args.key?(:subscriber_snippet)
         end
       end
       
@@ -6205,9 +6205,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @activity_type = args[:activity_type] unless args[:activity_type].nil?
-          @new_item_count = args[:new_item_count] unless args[:new_item_count].nil?
-          @total_item_count = args[:total_item_count] unless args[:total_item_count].nil?
+          @activity_type = args[:activity_type] if args.key?(:activity_type)
+          @new_item_count = args[:new_item_count] if args.key?(:new_item_count)
+          @total_item_count = args[:total_item_count] if args.key?(:total_item_count)
         end
       end
       
@@ -6270,15 +6270,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -6329,13 +6329,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @description = args[:description] unless args[:description].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @description = args[:description] if args.key?(:description)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -6370,10 +6370,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @description = args[:description] unless args[:description].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @description = args[:description] if args.key?(:description)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -6402,9 +6402,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @height = args[:height] unless args[:height].nil?
-          @url = args[:url] unless args[:url].nil?
-          @width = args[:width] unless args[:width].nil?
+          @height = args[:height] if args.key?(:height)
+          @url = args[:url] if args.key?(:url)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -6443,11 +6443,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default = args[:default] unless args[:default].nil?
-          @high = args[:high] unless args[:high].nil?
-          @maxres = args[:maxres] unless args[:maxres].nil?
-          @medium = args[:medium] unless args[:medium].nil?
-          @standard = args[:standard] unless args[:standard].nil?
+          @default = args[:default] if args.key?(:default)
+          @high = args[:high] if args.key?(:high)
+          @maxres = args[:maxres] if args.key?(:maxres)
+          @medium = args[:medium] if args.key?(:medium)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
@@ -6487,11 +6487,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -6616,24 +6616,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @age_gating = args[:age_gating] unless args[:age_gating].nil?
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @file_details = args[:file_details] unless args[:file_details].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @live_streaming_details = args[:live_streaming_details] unless args[:live_streaming_details].nil?
-          @localizations = args[:localizations] unless args[:localizations].nil?
-          @monetization_details = args[:monetization_details] unless args[:monetization_details].nil?
-          @player = args[:player] unless args[:player].nil?
-          @processing_details = args[:processing_details] unless args[:processing_details].nil?
-          @project_details = args[:project_details] unless args[:project_details].nil?
-          @recording_details = args[:recording_details] unless args[:recording_details].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @statistics = args[:statistics] unless args[:statistics].nil?
-          @status = args[:status] unless args[:status].nil?
-          @suggestions = args[:suggestions] unless args[:suggestions].nil?
-          @topic_details = args[:topic_details] unless args[:topic_details].nil?
+          @age_gating = args[:age_gating] if args.key?(:age_gating)
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @file_details = args[:file_details] if args.key?(:file_details)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @live_streaming_details = args[:live_streaming_details] if args.key?(:live_streaming_details)
+          @localizations = args[:localizations] if args.key?(:localizations)
+          @monetization_details = args[:monetization_details] if args.key?(:monetization_details)
+          @player = args[:player] if args.key?(:player)
+          @processing_details = args[:processing_details] if args.key?(:processing_details)
+          @project_details = args[:project_details] if args.key?(:project_details)
+          @recording_details = args[:recording_details] if args.key?(:recording_details)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @statistics = args[:statistics] if args.key?(:statistics)
+          @status = args[:status] if args.key?(:status)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @topic_details = args[:topic_details] if args.key?(:topic_details)
         end
       end
       
@@ -6675,11 +6675,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @comments = args[:comments] unless args[:comments].nil?
-          @language = args[:language] unless args[:language].nil?
-          @reason_id = args[:reason_id] unless args[:reason_id].nil?
-          @secondary_reason_id = args[:secondary_reason_id] unless args[:secondary_reason_id].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @comments = args[:comments] if args.key?(:comments)
+          @language = args[:language] if args.key?(:language)
+          @reason_id = args[:reason_id] if args.key?(:reason_id)
+          @secondary_reason_id = args[:secondary_reason_id] if args.key?(:secondary_reason_id)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -6716,10 +6716,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -6759,11 +6759,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -6788,8 +6788,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @label = args[:label] unless args[:label].nil?
-          @secondary_reasons = args[:secondary_reasons] unless args[:secondary_reasons].nil?
+          @label = args[:label] if args.key?(:label)
+          @secondary_reasons = args[:secondary_reasons] if args.key?(:secondary_reasons)
         end
       end
       
@@ -6813,8 +6813,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @label = args[:label] unless args[:label].nil?
+          @id = args[:id] if args.key?(:id)
+          @label = args[:label] if args.key?(:label)
         end
       end
       
@@ -6849,9 +6849,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alcohol_content = args[:alcohol_content] unless args[:alcohol_content].nil?
-          @restricted = args[:restricted] unless args[:restricted].nil?
-          @video_game_rating = args[:video_game_rating] unless args[:video_game_rating].nil?
+          @alcohol_content = args[:alcohol_content] if args.key?(:alcohol_content)
+          @restricted = args[:restricted] if args.key?(:restricted)
+          @video_game_rating = args[:video_game_rating] if args.key?(:video_game_rating)
         end
       end
       
@@ -6887,10 +6887,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -6955,15 +6955,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -6993,9 +6993,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @assignable = args[:assignable] unless args[:assignable].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @title = args[:title] unless args[:title].nil?
+          @assignable = args[:assignable] if args.key?(:assignable)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -7058,14 +7058,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @caption = args[:caption] unless args[:caption].nil?
-          @content_rating = args[:content_rating] unless args[:content_rating].nil?
-          @country_restriction = args[:country_restriction] unless args[:country_restriction].nil?
-          @definition = args[:definition] unless args[:definition].nil?
-          @dimension = args[:dimension] unless args[:dimension].nil?
-          @duration = args[:duration] unless args[:duration].nil?
-          @licensed_content = args[:licensed_content] unless args[:licensed_content].nil?
-          @region_restriction = args[:region_restriction] unless args[:region_restriction].nil?
+          @caption = args[:caption] if args.key?(:caption)
+          @content_rating = args[:content_rating] if args.key?(:content_rating)
+          @country_restriction = args[:country_restriction] if args.key?(:country_restriction)
+          @definition = args[:definition] if args.key?(:definition)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @duration = args[:duration] if args.key?(:duration)
+          @licensed_content = args[:licensed_content] if args.key?(:licensed_content)
+          @region_restriction = args[:region_restriction] if args.key?(:region_restriction)
         end
       end
       
@@ -7095,8 +7095,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed = args[:allowed] unless args[:allowed].nil?
-          @blocked = args[:blocked] unless args[:blocked].nil?
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @blocked = args[:blocked] if args.key?(:blocked)
         end
       end
       
@@ -7174,16 +7174,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audio_streams = args[:audio_streams] unless args[:audio_streams].nil?
-          @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
-          @container = args[:container] unless args[:container].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @duration_ms = args[:duration_ms] unless args[:duration_ms].nil?
-          @file_name = args[:file_name] unless args[:file_name].nil?
-          @file_size = args[:file_size] unless args[:file_size].nil?
-          @file_type = args[:file_type] unless args[:file_type].nil?
-          @recording_location = args[:recording_location] unless args[:recording_location].nil?
-          @video_streams = args[:video_streams] unless args[:video_streams].nil?
+          @audio_streams = args[:audio_streams] if args.key?(:audio_streams)
+          @bitrate_bps = args[:bitrate_bps] if args.key?(:bitrate_bps)
+          @container = args[:container] if args.key?(:container)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @file_size = args[:file_size] if args.key?(:file_size)
+          @file_type = args[:file_type] if args.key?(:file_type)
+          @recording_location = args[:recording_location] if args.key?(:recording_location)
+          @video_streams = args[:video_streams] if args.key?(:video_streams)
         end
       end
       
@@ -7218,10 +7218,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
-          @channel_count = args[:channel_count] unless args[:channel_count].nil?
-          @codec = args[:codec] unless args[:codec].nil?
-          @vendor = args[:vendor] unless args[:vendor].nil?
+          @bitrate_bps = args[:bitrate_bps] if args.key?(:bitrate_bps)
+          @channel_count = args[:channel_count] if args.key?(:channel_count)
+          @codec = args[:codec] if args.key?(:codec)
+          @vendor = args[:vendor] if args.key?(:vendor)
         end
       end
       
@@ -7279,14 +7279,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aspect_ratio = args[:aspect_ratio] unless args[:aspect_ratio].nil?
-          @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
-          @codec = args[:codec] unless args[:codec].nil?
-          @frame_rate_fps = args[:frame_rate_fps] unless args[:frame_rate_fps].nil?
-          @height_pixels = args[:height_pixels] unless args[:height_pixels].nil?
-          @rotation = args[:rotation] unless args[:rotation].nil?
-          @vendor = args[:vendor] unless args[:vendor].nil?
-          @width_pixels = args[:width_pixels] unless args[:width_pixels].nil?
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @bitrate_bps = args[:bitrate_bps] if args.key?(:bitrate_bps)
+          @codec = args[:codec] if args.key?(:codec)
+          @frame_rate_fps = args[:frame_rate_fps] if args.key?(:frame_rate_fps)
+          @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
+          @rotation = args[:rotation] if args.key?(:rotation)
+          @vendor = args[:vendor] if args.key?(:vendor)
+          @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
         end
       end
       
@@ -7326,11 +7326,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -7393,15 +7393,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @page_info = args[:page_info] unless args[:page_info].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
-          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
-          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
@@ -7462,12 +7462,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @active_live_chat_id = args[:active_live_chat_id] unless args[:active_live_chat_id].nil?
-          @actual_end_time = args[:actual_end_time] unless args[:actual_end_time].nil?
-          @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
-          @concurrent_viewers = args[:concurrent_viewers] unless args[:concurrent_viewers].nil?
-          @scheduled_end_time = args[:scheduled_end_time] unless args[:scheduled_end_time].nil?
-          @scheduled_start_time = args[:scheduled_start_time] unless args[:scheduled_start_time].nil?
+          @active_live_chat_id = args[:active_live_chat_id] if args.key?(:active_live_chat_id)
+          @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
+          @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @concurrent_viewers = args[:concurrent_viewers] if args.key?(:concurrent_viewers)
+          @scheduled_end_time = args[:scheduled_end_time] if args.key?(:scheduled_end_time)
+          @scheduled_start_time = args[:scheduled_start_time] if args.key?(:scheduled_start_time)
         end
       end
       
@@ -7491,8 +7491,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @title = args[:title] unless args[:title].nil?
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -7511,7 +7511,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access = args[:access] unless args[:access].nil?
+          @access = args[:access] if args.key?(:access)
         end
       end
       
@@ -7530,7 +7530,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @embed_html = args[:embed_html] unless args[:embed_html].nil?
+          @embed_html = args[:embed_html] if args.key?(:embed_html)
         end
       end
       
@@ -7600,14 +7600,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @editor_suggestions_availability = args[:editor_suggestions_availability] unless args[:editor_suggestions_availability].nil?
-          @file_details_availability = args[:file_details_availability] unless args[:file_details_availability].nil?
-          @processing_failure_reason = args[:processing_failure_reason] unless args[:processing_failure_reason].nil?
-          @processing_issues_availability = args[:processing_issues_availability] unless args[:processing_issues_availability].nil?
-          @processing_progress = args[:processing_progress] unless args[:processing_progress].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @tag_suggestions_availability = args[:tag_suggestions_availability] unless args[:tag_suggestions_availability].nil?
-          @thumbnails_availability = args[:thumbnails_availability] unless args[:thumbnails_availability].nil?
+          @editor_suggestions_availability = args[:editor_suggestions_availability] if args.key?(:editor_suggestions_availability)
+          @file_details_availability = args[:file_details_availability] if args.key?(:file_details_availability)
+          @processing_failure_reason = args[:processing_failure_reason] if args.key?(:processing_failure_reason)
+          @processing_issues_availability = args[:processing_issues_availability] if args.key?(:processing_issues_availability)
+          @processing_progress = args[:processing_progress] if args.key?(:processing_progress)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @tag_suggestions_availability = args[:tag_suggestions_availability] if args.key?(:tag_suggestions_availability)
+          @thumbnails_availability = args[:thumbnails_availability] if args.key?(:thumbnails_availability)
         end
       end
       
@@ -7646,9 +7646,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @parts_processed = args[:parts_processed] unless args[:parts_processed].nil?
-          @parts_total = args[:parts_total] unless args[:parts_total].nil?
-          @time_left_ms = args[:time_left_ms] unless args[:time_left_ms].nil?
+          @parts_processed = args[:parts_processed] if args.key?(:parts_processed)
+          @parts_total = args[:parts_total] if args.key?(:parts_total)
+          @time_left_ms = args[:time_left_ms] if args.key?(:time_left_ms)
         end
       end
       
@@ -7667,7 +7667,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @tags = args[:tags] unless args[:tags].nil?
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -7691,8 +7691,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @rating = args[:rating] unless args[:rating].nil?
-          @video_id = args[:video_id] unless args[:video_id].nil?
+          @rating = args[:rating] if args.key?(:rating)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
@@ -7722,9 +7722,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @location = args[:location] unless args[:location].nil?
-          @location_description = args[:location_description] unless args[:location_description].nil?
-          @recording_date = args[:recording_date] unless args[:recording_date].nil?
+          @location = args[:location] if args.key?(:location)
+          @location_description = args[:location_description] if args.key?(:location_description)
+          @recording_date = args[:recording_date] if args.key?(:recording_date)
         end
       end
       
@@ -7803,18 +7803,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @category_id = args[:category_id] unless args[:category_id].nil?
-          @channel_id = args[:channel_id] unless args[:channel_id].nil?
-          @channel_title = args[:channel_title] unless args[:channel_title].nil?
-          @default_audio_language = args[:default_audio_language] unless args[:default_audio_language].nil?
-          @default_language = args[:default_language] unless args[:default_language].nil?
-          @description = args[:description] unless args[:description].nil?
-          @live_broadcast_content = args[:live_broadcast_content] unless args[:live_broadcast_content].nil?
-          @localized = args[:localized] unless args[:localized].nil?
-          @published_at = args[:published_at] unless args[:published_at].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
-          @title = args[:title] unless args[:title].nil?
+          @category_id = args[:category_id] if args.key?(:category_id)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_title = args[:channel_title] if args.key?(:channel_title)
+          @default_audio_language = args[:default_audio_language] if args.key?(:default_audio_language)
+          @default_language = args[:default_language] if args.key?(:default_language)
+          @description = args[:description] if args.key?(:description)
+          @live_broadcast_content = args[:live_broadcast_content] if args.key?(:live_broadcast_content)
+          @localized = args[:localized] if args.key?(:localized)
+          @published_at = args[:published_at] if args.key?(:published_at)
+          @tags = args[:tags] if args.key?(:tags)
+          @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -7856,11 +7856,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @comment_count = args[:comment_count] unless args[:comment_count].nil?
-          @dislike_count = args[:dislike_count] unless args[:dislike_count].nil?
-          @favorite_count = args[:favorite_count] unless args[:favorite_count].nil?
-          @like_count = args[:like_count] unless args[:like_count].nil?
-          @view_count = args[:view_count] unless args[:view_count].nil?
+          @comment_count = args[:comment_count] if args.key?(:comment_count)
+          @dislike_count = args[:dislike_count] if args.key?(:dislike_count)
+          @favorite_count = args[:favorite_count] if args.key?(:favorite_count)
+          @like_count = args[:like_count] if args.key?(:like_count)
+          @view_count = args[:view_count] if args.key?(:view_count)
         end
       end
       
@@ -7923,14 +7923,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @embeddable = args[:embeddable] unless args[:embeddable].nil?
-          @failure_reason = args[:failure_reason] unless args[:failure_reason].nil?
-          @license = args[:license] unless args[:license].nil?
-          @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
-          @public_stats_viewable = args[:public_stats_viewable] unless args[:public_stats_viewable].nil?
-          @publish_at = args[:publish_at] unless args[:publish_at].nil?
-          @rejection_reason = args[:rejection_reason] unless args[:rejection_reason].nil?
-          @upload_status = args[:upload_status] unless args[:upload_status].nil?
+          @embeddable = args[:embeddable] if args.key?(:embeddable)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @license = args[:license] if args.key?(:license)
+          @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
+          @public_stats_viewable = args[:public_stats_viewable] if args.key?(:public_stats_viewable)
+          @publish_at = args[:publish_at] if args.key?(:publish_at)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @upload_status = args[:upload_status] if args.key?(:upload_status)
         end
       end
       
@@ -7981,11 +7981,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @editor_suggestions = args[:editor_suggestions] unless args[:editor_suggestions].nil?
-          @processing_errors = args[:processing_errors] unless args[:processing_errors].nil?
-          @processing_hints = args[:processing_hints] unless args[:processing_hints].nil?
-          @processing_warnings = args[:processing_warnings] unless args[:processing_warnings].nil?
-          @tag_suggestions = args[:tag_suggestions] unless args[:tag_suggestions].nil?
+          @editor_suggestions = args[:editor_suggestions] if args.key?(:editor_suggestions)
+          @processing_errors = args[:processing_errors] if args.key?(:processing_errors)
+          @processing_hints = args[:processing_hints] if args.key?(:processing_hints)
+          @processing_warnings = args[:processing_warnings] if args.key?(:processing_warnings)
+          @tag_suggestions = args[:tag_suggestions] if args.key?(:tag_suggestions)
         end
       end
       
@@ -8013,8 +8013,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @category_restricts = args[:category_restricts] unless args[:category_restricts].nil?
-          @tag = args[:tag] unless args[:tag].nil?
+          @category_restricts = args[:category_restricts] if args.key?(:category_restricts)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       
@@ -8043,8 +8043,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @relevant_topic_ids = args[:relevant_topic_ids] unless args[:relevant_topic_ids].nil?
-          @topic_ids = args[:topic_ids] unless args[:topic_ids].nil?
+          @relevant_topic_ids = args[:relevant_topic_ids] if args.key?(:relevant_topic_ids)
+          @topic_ids = args[:topic_ids] if args.key?(:topic_ids)
         end
       end
       
@@ -8074,9 +8074,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @background_color = args[:background_color] unless args[:background_color].nil?
-          @featured_playlist_id = args[:featured_playlist_id] unless args[:featured_playlist_id].nil?
-          @text_color = args[:text_color] unless args[:text_color].nil?
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @featured_playlist_id = args[:featured_playlist_id] if args.key?(:featured_playlist_id)
+          @text_color = args[:text_color] if args.key?(:text_color)
         end
       end
     end

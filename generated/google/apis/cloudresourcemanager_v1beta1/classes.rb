@@ -82,13 +82,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_number = args[:project_number] unless args[:project_number].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @lifecycle_state = args[:lifecycle_state] unless args[:lifecycle_state].nil?
-          @name = args[:name] unless args[:name].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @parent = args[:parent] unless args[:parent].nil?
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @parent = args[:parent] if args.key?(:parent)
         end
       end
       
@@ -117,8 +117,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @id = args[:id] unless args[:id].nil?
+          @type = args[:type] if args.key?(:type)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -149,8 +149,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @projects = args[:projects] unless args[:projects].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @projects = args[:projects] if args.key?(:projects)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -227,9 +227,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @version = args[:version] unless args[:version].nil?
-          @bindings = args[:bindings] unless args[:bindings].nil?
-          @etag = args[:etag] unless args[:etag].nil?
+          @version = args[:version] if args.key?(:version)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -265,8 +265,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @role = args[:role] unless args[:role].nil?
-          @members = args[:members] unless args[:members].nil?
+          @role = args[:role] if args.key?(:role)
+          @members = args[:members] if args.key?(:members)
         end
       end
       
@@ -294,7 +294,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @policy = args[:policy] unless args[:policy].nil?
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -315,7 +315,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -334,7 +334,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -362,8 +362,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @organizations = args[:organizations] unless args[:organizations].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @organizations = args[:organizations] if args.key?(:organizations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -404,10 +404,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @organization_id = args[:organization_id] unless args[:organization_id].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @owner = args[:owner] unless args[:owner].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @owner = args[:owner] if args.key?(:owner)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
         end
       end
       
@@ -429,7 +429,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @directory_customer_id = args[:directory_customer_id] unless args[:directory_customer_id].nil?
+          @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
         end
       end
     end

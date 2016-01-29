@@ -43,8 +43,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @results = args[:results] unless args[:results].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -69,8 +69,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_ids = args[:achievement_ids] unless args[:achievement_ids].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @achievement_ids = args[:achievement_ids] if args.key?(:achievement_ids)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -111,10 +111,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_state = args[:current_state] unless args[:current_state].nil?
-          @definition_id = args[:definition_id] unless args[:definition_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @update_occurred = args[:update_occurred] unless args[:update_occurred].nil?
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @definition_id = args[:definition_id] if args.key?(:definition_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @update_occurred = args[:update_occurred] if args.key?(:update_occurred)
         end
       end
       
@@ -139,8 +139,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @event_ids = args[:event_ids] unless args[:event_ids].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @event_ids = args[:event_ids] if args.key?(:event_ids)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -167,8 +167,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matched = args[:auto_matched] unless args[:auto_matched].nil?
-          @time_millis = args[:time_millis] unless args[:time_millis].nil?
+          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
+          @time_millis = args[:time_millis] if args.key?(:time_millis)
         end
       end
       
@@ -202,10 +202,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_experience_points = args[:current_experience_points] unless args[:current_experience_points].nil?
-          @current_level = args[:current_level] unless args[:current_level].nil?
-          @last_level_up_timestamp_millis = args[:last_level_up_timestamp_millis] unless args[:last_level_up_timestamp_millis].nil?
-          @next_level = args[:next_level] unless args[:next_level].nil?
+          @current_experience_points = args[:current_experience_points] if args.key?(:current_experience_points)
+          @current_level = args[:current_level] if args.key?(:current_level)
+          @last_level_up_timestamp_millis = args[:last_level_up_timestamp_millis] if args.key?(:last_level_up_timestamp_millis)
+          @next_level = args[:next_level] if args.key?(:next_level)
         end
       end
       
@@ -234,9 +234,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @level = args[:level] unless args[:level].nil?
-          @max_experience_points = args[:max_experience_points] unless args[:max_experience_points].nil?
-          @min_experience_points = args[:min_experience_points] unless args[:min_experience_points].nil?
+          @level = args[:level] if args.key?(:level)
+          @max_experience_points = args[:max_experience_points] if args.key?(:max_experience_points)
+          @min_experience_points = args[:min_experience_points] if args.key?(:min_experience_points)
         end
       end
       
@@ -266,9 +266,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hidden_time_millis = args[:hidden_time_millis] unless args[:hidden_time_millis].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @player = args[:player] unless args[:player].nil?
+          @hidden_time_millis = args[:hidden_time_millis] if args.key?(:hidden_time_millis)
+          @kind = args[:kind] if args.key?(:kind)
+          @player = args[:player] if args.key?(:player)
         end
       end
       
@@ -298,9 +298,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -367,16 +367,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @avatar_image_url = args[:avatar_image_url] unless args[:avatar_image_url].nil?
-          @banner_url_landscape = args[:banner_url_landscape] unless args[:banner_url_landscape].nil?
-          @banner_url_portrait = args[:banner_url_portrait] unless args[:banner_url_portrait].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @experience_info = args[:experience_info] unless args[:experience_info].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_played_with = args[:last_played_with] unless args[:last_played_with].nil?
-          @name = args[:name] unless args[:name].nil?
-          @player_id = args[:player_id] unless args[:player_id].nil?
-          @title = args[:title] unless args[:title].nil?
+          @avatar_image_url = args[:avatar_image_url] if args.key?(:avatar_image_url)
+          @banner_url_landscape = args[:banner_url_landscape] if args.key?(:banner_url_landscape)
+          @banner_url_portrait = args[:banner_url_portrait] if args.key?(:banner_url_portrait)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @experience_info = args[:experience_info] if args.key?(:experience_info)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
+          @name = args[:name] if args.key?(:name)
+          @player_id = args[:player_id] if args.key?(:player_id)
+          @title = args[:title] if args.key?(:title)
         end
         
         # An object representation of the individual components of the player's name.
@@ -400,8 +400,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @family_name = args[:family_name] unless args[:family_name].nil?
-            @given_name = args[:given_name] unless args[:given_name].nil?
+            @family_name = args[:family_name] if args.key?(:family_name)
+            @given_name = args[:given_name] if args.key?(:given_name)
           end
         end
       end
@@ -427,8 +427,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @results = args[:results] unless args[:results].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -462,9 +462,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @definition_id = args[:definition_id] unless args[:definition_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @reset_score_time_spans = args[:reset_score_time_spans] unless args[:reset_score_time_spans].nil?
+          @definition_id = args[:definition_id] if args.key?(:definition_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @reset_score_time_spans = args[:reset_score_time_spans] if args.key?(:reset_score_time_spans)
         end
       end
       
@@ -489,8 +489,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @quest_ids = args[:quest_ids] unless args[:quest_ids].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @quest_ids = args[:quest_ids] if args.key?(:quest_ids)
         end
       end
       
@@ -515,8 +515,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @leaderboard_ids = args[:leaderboard_ids] unless args[:leaderboard_ids].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @leaderboard_ids = args[:leaderboard_ids] if args.key?(:leaderboard_ids)
         end
       end
     end

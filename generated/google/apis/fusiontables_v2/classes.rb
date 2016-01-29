@@ -65,12 +65,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @color = args[:color] unless args[:color].nil?
-          @icon = args[:icon] unless args[:icon].nil?
-          @max = args[:max] unless args[:max].nil?
-          @min = args[:min] unless args[:min].nil?
-          @opacity = args[:opacity] unless args[:opacity].nil?
-          @weight = args[:weight] unless args[:weight].nil?
+          @color = args[:color] if args.key?(:color)
+          @icon = args[:icon] if args.key?(:icon)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @opacity = args[:opacity] if args.key?(:opacity)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       
@@ -171,18 +171,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @base_column = args[:base_column] unless args[:base_column].nil?
-          @column_id = args[:column_id] unless args[:column_id].nil?
-          @column_json_schema = args[:column_json_schema] unless args[:column_json_schema].nil?
-          @column_properties_json = args[:column_properties_json] unless args[:column_properties_json].nil?
-          @description = args[:description] unless args[:description].nil?
-          @format_pattern = args[:format_pattern] unless args[:format_pattern].nil?
-          @graph_predicate = args[:graph_predicate] unless args[:graph_predicate].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
-          @valid_values = args[:valid_values] unless args[:valid_values].nil?
-          @validate_data = args[:validate_data] unless args[:validate_data].nil?
+          @base_column = args[:base_column] if args.key?(:base_column)
+          @column_id = args[:column_id] if args.key?(:column_id)
+          @column_json_schema = args[:column_json_schema] if args.key?(:column_json_schema)
+          @column_properties_json = args[:column_properties_json] if args.key?(:column_properties_json)
+          @description = args[:description] if args.key?(:description)
+          @format_pattern = args[:format_pattern] if args.key?(:format_pattern)
+          @graph_predicate = args[:graph_predicate] if args.key?(:graph_predicate)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @valid_values = args[:valid_values] if args.key?(:valid_values)
+          @validate_data = args[:validate_data] if args.key?(:validate_data)
         end
         
         # Identifier of the base column. If present, this column is derived from the
@@ -206,8 +206,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @column_id = args[:column_id] unless args[:column_id].nil?
-            @table_index = args[:table_index] unless args[:table_index].nil?
+            @column_id = args[:column_id] if args.key?(:column_id)
+            @table_index = args[:table_index] if args.key?(:table_index)
           end
         end
       end
@@ -244,10 +244,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_items = args[:total_items] if args.key?(:total_items)
         end
       end
       
@@ -276,9 +276,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @geometries = args[:geometries] unless args[:geometries].nil?
-          @geometry = args[:geometry] unless args[:geometry].nil?
-          @type = args[:type] unless args[:type].nil?
+          @geometries = args[:geometries] if args.key?(:geometries)
+          @geometry = args[:geometry] if args.key?(:geometry)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -302,8 +302,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @num_rows_received = args[:num_rows_received] unless args[:num_rows_received].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @num_rows_received = args[:num_rows_received] if args.key?(:num_rows_received)
         end
       end
       
@@ -327,8 +327,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -367,11 +367,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @stroke_color = args[:stroke_color] unless args[:stroke_color].nil?
-          @stroke_color_styler = args[:stroke_color_styler] unless args[:stroke_color_styler].nil?
-          @stroke_opacity = args[:stroke_opacity] unless args[:stroke_opacity].nil?
-          @stroke_weight = args[:stroke_weight] unless args[:stroke_weight].nil?
-          @stroke_weight_styler = args[:stroke_weight_styler] unless args[:stroke_weight_styler].nil?
+          @stroke_color = args[:stroke_color] if args.key?(:stroke_color)
+          @stroke_color_styler = args[:stroke_color_styler] if args.key?(:stroke_color_styler)
+          @stroke_opacity = args[:stroke_opacity] if args.key?(:stroke_opacity)
+          @stroke_weight = args[:stroke_weight] if args.key?(:stroke_weight)
+          @stroke_weight_styler = args[:stroke_weight_styler] if args.key?(:stroke_weight_styler)
         end
       end
       
@@ -395,8 +395,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -421,8 +421,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @icon_name = args[:icon_name] unless args[:icon_name].nil?
-          @icon_styler = args[:icon_styler] unless args[:icon_styler].nil?
+          @icon_name = args[:icon_name] if args.key?(:icon_name)
+          @icon_styler = args[:icon_styler] if args.key?(:icon_styler)
         end
       end
       
@@ -446,8 +446,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -501,14 +501,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fill_color = args[:fill_color] unless args[:fill_color].nil?
-          @fill_color_styler = args[:fill_color_styler] unless args[:fill_color_styler].nil?
-          @fill_opacity = args[:fill_opacity] unless args[:fill_opacity].nil?
-          @stroke_color = args[:stroke_color] unless args[:stroke_color].nil?
-          @stroke_color_styler = args[:stroke_color_styler] unless args[:stroke_color_styler].nil?
-          @stroke_opacity = args[:stroke_opacity] unless args[:stroke_opacity].nil?
-          @stroke_weight = args[:stroke_weight] unless args[:stroke_weight].nil?
-          @stroke_weight_styler = args[:stroke_weight_styler] unless args[:stroke_weight_styler].nil?
+          @fill_color = args[:fill_color] if args.key?(:fill_color)
+          @fill_color_styler = args[:fill_color_styler] if args.key?(:fill_color_styler)
+          @fill_opacity = args[:fill_opacity] if args.key?(:fill_opacity)
+          @stroke_color = args[:stroke_color] if args.key?(:stroke_color)
+          @stroke_color_styler = args[:stroke_color_styler] if args.key?(:stroke_color_styler)
+          @stroke_opacity = args[:stroke_opacity] if args.key?(:stroke_opacity)
+          @stroke_weight = args[:stroke_weight] if args.key?(:stroke_weight)
+          @stroke_weight_styler = args[:stroke_weight_styler] if args.key?(:stroke_weight_styler)
         end
       end
       
@@ -540,9 +540,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @columns = args[:columns] unless args[:columns].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @rows = args[:rows] unless args[:rows].nil?
+          @columns = args[:columns] if args.key?(:columns)
+          @kind = args[:kind] if args.key?(:kind)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -582,10 +582,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @buckets = args[:buckets] unless args[:buckets].nil?
-          @column_name = args[:column_name] unless args[:column_name].nil?
-          @gradient = args[:gradient] unless args[:gradient].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @column_name = args[:column_name] if args.key?(:column_name)
+          @gradient = args[:gradient] if args.key?(:gradient)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # Gradient function that interpolates a range of colors based on column value.
@@ -615,9 +615,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @colors = args[:colors] unless args[:colors].nil?
-            @max = args[:max] unless args[:max].nil?
-            @min = args[:min] unless args[:min].nil?
+            @colors = args[:colors] if args.key?(:colors)
+            @max = args[:max] if args.key?(:max)
+            @min = args[:min] if args.key?(:min)
           end
           
           # 
@@ -640,8 +640,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @color = args[:color] unless args[:color].nil?
-              @opacity = args[:opacity] unless args[:opacity].nil?
+              @color = args[:color] if args.key?(:color)
+              @opacity = args[:opacity] if args.key?(:opacity)
             end
           end
         end
@@ -695,13 +695,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @marker_options = args[:marker_options] unless args[:marker_options].nil?
-          @name = args[:name] unless args[:name].nil?
-          @polygon_options = args[:polygon_options] unless args[:polygon_options].nil?
-          @polyline_options = args[:polyline_options] unless args[:polyline_options].nil?
-          @style_id = args[:style_id] unless args[:style_id].nil?
-          @table_id = args[:table_id] unless args[:table_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @marker_options = args[:marker_options] if args.key?(:marker_options)
+          @name = args[:name] if args.key?(:name)
+          @polygon_options = args[:polygon_options] if args.key?(:polygon_options)
+          @polyline_options = args[:polyline_options] if args.key?(:polyline_options)
+          @style_id = args[:style_id] if args.key?(:style_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -737,10 +737,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_items = args[:total_items] if args.key?(:total_items)
         end
       end
       
@@ -820,19 +820,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attribution = args[:attribution] unless args[:attribution].nil?
-          @attribution_link = args[:attribution_link] unless args[:attribution_link].nil?
-          @base_table_ids = args[:base_table_ids] unless args[:base_table_ids].nil?
-          @column_properties_json_schema = args[:column_properties_json_schema] unless args[:column_properties_json_schema].nil?
-          @columns = args[:columns] unless args[:columns].nil?
-          @description = args[:description] unless args[:description].nil?
-          @is_exportable = args[:is_exportable] unless args[:is_exportable].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @sql = args[:sql] unless args[:sql].nil?
-          @table_id = args[:table_id] unless args[:table_id].nil?
-          @table_properties_json = args[:table_properties_json] unless args[:table_properties_json].nil?
-          @table_properties_json_schema = args[:table_properties_json_schema] unless args[:table_properties_json_schema].nil?
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @attribution_link = args[:attribution_link] if args.key?(:attribution_link)
+          @base_table_ids = args[:base_table_ids] if args.key?(:base_table_ids)
+          @column_properties_json_schema = args[:column_properties_json_schema] if args.key?(:column_properties_json_schema)
+          @columns = args[:columns] if args.key?(:columns)
+          @description = args[:description] if args.key?(:description)
+          @is_exportable = args[:is_exportable] if args.key?(:is_exportable)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @sql = args[:sql] if args.key?(:sql)
+          @table_id = args[:table_id] if args.key?(:table_id)
+          @table_properties_json = args[:table_properties_json] if args.key?(:table_properties_json)
+          @table_properties_json_schema = args[:table_properties_json_schema] if args.key?(:table_properties_json_schema)
         end
       end
       
@@ -863,9 +863,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -907,11 +907,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @progress = args[:progress] unless args[:progress].nil?
-          @started = args[:started] unless args[:started].nil?
-          @task_id = args[:task_id] unless args[:task_id].nil?
-          @type = args[:type] unless args[:type].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @progress = args[:progress] if args.key?(:progress)
+          @started = args[:started] if args.key?(:started)
+          @task_id = args[:task_id] if args.key?(:task_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -946,10 +946,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_items = args[:total_items] if args.key?(:total_items)
         end
       end
       
@@ -996,12 +996,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @automatic_column_names = args[:automatic_column_names] unless args[:automatic_column_names].nil?
-          @body = args[:body] unless args[:body].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @table_id = args[:table_id] unless args[:table_id].nil?
-          @template_id = args[:template_id] unless args[:template_id].nil?
+          @automatic_column_names = args[:automatic_column_names] if args.key?(:automatic_column_names)
+          @body = args[:body] if args.key?(:body)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @table_id = args[:table_id] if args.key?(:table_id)
+          @template_id = args[:template_id] if args.key?(:template_id)
         end
       end
       
@@ -1037,10 +1037,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_items = args[:total_items] if args.key?(:total_items)
         end
       end
     end

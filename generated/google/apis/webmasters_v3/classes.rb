@@ -57,11 +57,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @clicks = args[:clicks] unless args[:clicks].nil?
-          @ctr = args[:ctr] unless args[:ctr].nil?
-          @impressions = args[:impressions] unless args[:impressions].nil?
-          @keys = args[:keys] unless args[:keys].nil?
-          @position = args[:position] unless args[:position].nil?
+          @clicks = args[:clicks] if args.key?(:clicks)
+          @ctr = args[:ctr] if args.key?(:ctr)
+          @impressions = args[:impressions] if args.key?(:impressions)
+          @keys = args[:keys] if args.key?(:keys)
+          @position = args[:position] if args.key?(:position)
         end
       end
       
@@ -90,9 +90,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dimension = args[:dimension] unless args[:dimension].nil?
-          @expression = args[:expression] unless args[:expression].nil?
-          @operator = args[:operator] unless args[:operator].nil?
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @expression = args[:expression] if args.key?(:expression)
+          @operator = args[:operator] if args.key?(:operator)
         end
       end
       
@@ -116,8 +116,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @filters = args[:filters] unless args[:filters].nil?
-          @group_type = args[:group_type] unless args[:group_type].nil?
+          @filters = args[:filters] if args.key?(:filters)
+          @group_type = args[:group_type] if args.key?(:group_type)
         end
       end
       
@@ -187,13 +187,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aggregation_type = args[:aggregation_type] unless args[:aggregation_type].nil?
-          @dimension_filter_groups = args[:dimension_filter_groups] unless args[:dimension_filter_groups].nil?
-          @dimensions = args[:dimensions] unless args[:dimensions].nil?
-          @end_date = args[:end_date] unless args[:end_date].nil?
-          @row_limit = args[:row_limit] unless args[:row_limit].nil?
-          @search_type = args[:search_type] unless args[:search_type].nil?
-          @start_date = args[:start_date] unless args[:start_date].nil?
+          @aggregation_type = args[:aggregation_type] if args.key?(:aggregation_type)
+          @dimension_filter_groups = args[:dimension_filter_groups] if args.key?(:dimension_filter_groups)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @row_limit = args[:row_limit] if args.key?(:row_limit)
+          @search_type = args[:search_type] if args.key?(:search_type)
+          @start_date = args[:start_date] if args.key?(:start_date)
         end
       end
       
@@ -219,8 +219,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @response_aggregation_type = args[:response_aggregation_type] unless args[:response_aggregation_type].nil?
-          @rows = args[:rows] unless args[:rows].nil?
+          @response_aggregation_type = args[:response_aggregation_type] if args.key?(:response_aggregation_type)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -239,7 +239,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @sitemap = args[:sitemap] unless args[:sitemap].nil?
+          @sitemap = args[:sitemap] if args.key?(:sitemap)
         end
       end
       
@@ -259,7 +259,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @site_entry = args[:site_entry] unless args[:site_entry].nil?
+          @site_entry = args[:site_entry] if args.key?(:site_entry)
         end
       end
       
@@ -283,8 +283,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @timestamp = args[:timestamp] unless args[:timestamp].nil?
+          @count = args[:count] if args.key?(:count)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       
@@ -315,9 +315,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @category = args[:category] unless args[:category].nil?
-          @entries = args[:entries] unless args[:entries].nil?
-          @platform = args[:platform] unless args[:platform].nil?
+          @category = args[:category] if args.key?(:category)
+          @entries = args[:entries] if args.key?(:entries)
+          @platform = args[:platform] if args.key?(:platform)
         end
       end
       
@@ -338,7 +338,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count_per_types = args[:count_per_types] unless args[:count_per_types].nil?
+          @count_per_types = args[:count_per_types] if args.key?(:count_per_types)
         end
       end
       
@@ -377,11 +377,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @first_detected = args[:first_detected] unless args[:first_detected].nil?
-          @last_crawled = args[:last_crawled] unless args[:last_crawled].nil?
-          @page_url = args[:page_url] unless args[:page_url].nil?
-          @response_code = args[:response_code] unless args[:response_code].nil?
-          @url_details = args[:url_details] unless args[:url_details].nil?
+          @first_detected = args[:first_detected] if args.key?(:first_detected)
+          @last_crawled = args[:last_crawled] if args.key?(:last_crawled)
+          @page_url = args[:page_url] if args.key?(:page_url)
+          @response_code = args[:response_code] if args.key?(:response_code)
+          @url_details = args[:url_details] if args.key?(:url_details)
         end
       end
       
@@ -400,7 +400,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url_crawl_error_sample = args[:url_crawl_error_sample] unless args[:url_crawl_error_sample].nil?
+          @url_crawl_error_sample = args[:url_crawl_error_sample] if args.key?(:url_crawl_error_sample)
         end
       end
       
@@ -424,8 +424,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @containing_sitemaps = args[:containing_sitemaps] unless args[:containing_sitemaps].nil?
-          @linked_from_urls = args[:linked_from_urls] unless args[:linked_from_urls].nil?
+          @containing_sitemaps = args[:containing_sitemaps] if args.key?(:containing_sitemaps)
+          @linked_from_urls = args[:linked_from_urls] if args.key?(:linked_from_urls)
         end
       end
       
@@ -450,8 +450,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permission_level = args[:permission_level] unless args[:permission_level].nil?
-          @site_url = args[:site_url] unless args[:site_url].nil?
+          @permission_level = args[:permission_level] if args.key?(:permission_level)
+          @site_url = args[:site_url] if args.key?(:site_url)
         end
       end
       
@@ -516,15 +516,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @contents = args[:contents] unless args[:contents].nil?
-          @errors = args[:errors] unless args[:errors].nil?
-          @is_pending = args[:is_pending] unless args[:is_pending].nil?
-          @is_sitemaps_index = args[:is_sitemaps_index] unless args[:is_sitemaps_index].nil?
-          @last_downloaded = args[:last_downloaded] unless args[:last_downloaded].nil?
-          @last_submitted = args[:last_submitted] unless args[:last_submitted].nil?
-          @path = args[:path] unless args[:path].nil?
-          @type = args[:type] unless args[:type].nil?
-          @warnings = args[:warnings] unless args[:warnings].nil?
+          @contents = args[:contents] if args.key?(:contents)
+          @errors = args[:errors] if args.key?(:errors)
+          @is_pending = args[:is_pending] if args.key?(:is_pending)
+          @is_sitemaps_index = args[:is_sitemaps_index] if args.key?(:is_sitemaps_index)
+          @last_downloaded = args[:last_downloaded] if args.key?(:last_downloaded)
+          @last_submitted = args[:last_submitted] if args.key?(:last_submitted)
+          @path = args[:path] if args.key?(:path)
+          @type = args[:type] if args.key?(:type)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -553,9 +553,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @indexed = args[:indexed] unless args[:indexed].nil?
-          @submitted = args[:submitted] unless args[:submitted].nil?
-          @type = args[:type] unless args[:type].nil?
+          @indexed = args[:indexed] if args.key?(:indexed)
+          @submitted = args[:submitted] if args.key?(:submitted)
+          @type = args[:type] if args.key?(:type)
         end
       end
     end

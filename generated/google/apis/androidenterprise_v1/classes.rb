@@ -44,8 +44,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @restrictions = args[:restrictions] unless args[:restrictions].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
         end
       end
       
@@ -98,13 +98,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_value = args[:default_value] unless args[:default_value].nil?
-          @description = args[:description] unless args[:description].nil?
-          @entry = args[:entry] unless args[:entry].nil?
-          @entry_value = args[:entry_value] unless args[:entry_value].nil?
-          @key = args[:key] unless args[:key].nil?
-          @restriction_type = args[:restriction_type] unless args[:restriction_type].nil?
-          @title = args[:title] unless args[:title].nil?
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @description = args[:description] if args.key?(:description)
+          @entry = args[:entry] if args.key?(:entry)
+          @entry_value = args[:entry_value] if args.key?(:entry_value)
+          @key = args[:key] if args.key?(:key)
+          @restriction_type = args[:restriction_type] if args.key?(:restriction_type)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -144,11 +144,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @value_bool = args[:value_bool] unless args[:value_bool].nil?
-          @value_integer = args[:value_integer] unless args[:value_integer].nil?
-          @value_multiselect = args[:value_multiselect] unless args[:value_multiselect].nil?
-          @value_string = args[:value_string] unless args[:value_string].nil?
+          @type = args[:type] if args.key?(:type)
+          @value_bool = args[:value_bool] if args.key?(:value_bool)
+          @value_integer = args[:value_integer] if args.key?(:value_integer)
+          @value_multiselect = args[:value_multiselect] if args.key?(:value_multiselect)
+          @value_string = args[:value_string] if args.key?(:value_string)
         end
       end
       
@@ -174,8 +174,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @version_code = args[:version_code] unless args[:version_code].nil?
-          @version_string = args[:version_string] unless args[:version_string].nil?
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @version_string = args[:version_string] if args.key?(:version_string)
         end
       end
       
@@ -201,8 +201,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @approval_url = args[:approval_url] unless args[:approval_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @approval_url = args[:approval_url] if args.key?(:approval_url)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -259,11 +259,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @collection_id = args[:collection_id] unless args[:collection_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @collection_id = args[:collection_id] if args.key?(:collection_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -288,8 +288,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @user = args[:user] unless args[:user].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -315,8 +315,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @collection = args[:collection] unless args[:collection].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @collection = args[:collection] if args.key?(:collection)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -354,9 +354,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @android_id = args[:android_id] unless args[:android_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @management_type = args[:management_type] unless args[:management_type].nil?
+          @android_id = args[:android_id] if args.key?(:android_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @management_type = args[:management_type] if args.key?(:management_type)
         end
       end
       
@@ -385,8 +385,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_state = args[:account_state] unless args[:account_state].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @account_state = args[:account_state] if args.key?(:account_state)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -411,8 +411,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @device = args[:device] unless args[:device].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @device = args[:device] if args.key?(:device)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -470,10 +470,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @primary_domain = args[:primary_domain] unless args[:primary_domain].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
         end
       end
       
@@ -499,8 +499,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_email = args[:account_email] unless args[:account_email].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @account_email = args[:account_email] if args.key?(:account_email)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -525,8 +525,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enterprise = args[:enterprise] unless args[:enterprise].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @enterprise = args[:enterprise] if args.key?(:enterprise)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -551,8 +551,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message_id = args[:message_id] unless args[:message_id].nil?
-          @topic_name = args[:topic_name] unless args[:topic_name].nil?
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
       end
       
@@ -607,9 +607,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @reason = args[:reason] unless args[:reason].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -636,8 +636,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @entitlement = args[:entitlement] unless args[:entitlement].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @entitlement = args[:entitlement] if args.key?(:entitlement)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -708,12 +708,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acquisition_kind = args[:acquisition_kind] unless args[:acquisition_kind].nil?
-          @approval = args[:approval] unless args[:approval].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @num_provisioned = args[:num_provisioned] unless args[:num_provisioned].nil?
-          @num_purchased = args[:num_purchased] unless args[:num_purchased].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
+          @acquisition_kind = args[:acquisition_kind] if args.key?(:acquisition_kind)
+          @approval = args[:approval] if args.key?(:approval)
+          @kind = args[:kind] if args.key?(:kind)
+          @num_provisioned = args[:num_provisioned] if args.key?(:num_provisioned)
+          @num_purchased = args[:num_purchased] if args.key?(:num_purchased)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -738,8 +738,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @user = args[:user] unless args[:user].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -764,8 +764,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @group_license = args[:group_license] unless args[:group_license].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @group_license = args[:group_license] if args.key?(:group_license)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -823,10 +823,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @install_state = args[:install_state] unless args[:install_state].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @version_code = args[:version_code] unless args[:version_code].nil?
+          @install_state = args[:install_state] if args.key?(:install_state)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @version_code = args[:version_code] if args.key?(:version_code)
         end
       end
       
@@ -852,8 +852,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @install = args[:install] unless args[:install].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @install = args[:install] if args.key?(:install)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -877,8 +877,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @locale = args[:locale] unless args[:locale].nil?
-          @text = args[:text] unless args[:text].nil?
+          @locale = args[:locale] if args.key?(:locale)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -919,10 +919,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
+          @description = args[:description] if args.key?(:description)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
         end
       end
       
@@ -1008,17 +1008,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_version = args[:app_version] unless args[:app_version].nil?
-          @author_name = args[:author_name] unless args[:author_name].nil?
-          @details_url = args[:details_url] unless args[:details_url].nil?
-          @distribution_channel = args[:distribution_channel] unless args[:distribution_channel].nil?
-          @icon_url = args[:icon_url] unless args[:icon_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @product_pricing = args[:product_pricing] unless args[:product_pricing].nil?
-          @requires_container_app = args[:requires_container_app] unless args[:requires_container_app].nil?
-          @title = args[:title] unless args[:title].nil?
-          @work_details_url = args[:work_details_url] unless args[:work_details_url].nil?
+          @app_version = args[:app_version] if args.key?(:app_version)
+          @author_name = args[:author_name] if args.key?(:author_name)
+          @details_url = args[:details_url] if args.key?(:details_url)
+          @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_pricing = args[:product_pricing] if args.key?(:product_pricing)
+          @requires_container_app = args[:requires_container_app] if args.key?(:requires_container_app)
+          @title = args[:title] if args.key?(:title)
+          @work_details_url = args[:work_details_url] if args.key?(:work_details_url)
         end
       end
       
@@ -1045,8 +1045,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
-          @state = args[:state] unless args[:state].nil?
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1078,9 +1078,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @permission = args[:permission] unless args[:permission].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @permission = args[:permission] if args.key?(:permission)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -1105,8 +1105,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -1125,7 +1125,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @approval_url_info = args[:approval_url_info] unless args[:approval_url_info].nil?
+          @approval_url_info = args[:approval_url_info] if args.key?(:approval_url_info)
         end
       end
       
@@ -1151,7 +1151,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] unless args[:url].nil?
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1200,11 +1200,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @order_in_page = args[:order_in_page] unless args[:order_in_page].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @order_in_page = args[:order_in_page] if args.key?(:order_in_page)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -1235,8 +1235,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @homepage_id = args[:homepage_id] unless args[:homepage_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @homepage_id = args[:homepage_id] if args.key?(:homepage_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1261,8 +1261,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cluster = args[:cluster] unless args[:cluster].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1287,8 +1287,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @page = args[:page] unless args[:page].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @page = args[:page] if args.key?(:page)
         end
       end
       
@@ -1330,10 +1330,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @link = args[:link] unless args[:link].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @link = args[:link] if args.key?(:link)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1371,9 +1371,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @primary_email = args[:primary_email] unless args[:primary_email].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @primary_email = args[:primary_email] if args.key?(:primary_email)
         end
       end
       
@@ -1407,9 +1407,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @token = args[:token] unless args[:token].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @token = args[:token] if args.key?(:token)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -1434,8 +1434,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @user = args[:user] unless args[:user].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @user = args[:user] if args.key?(:user)
         end
       end
     end

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/drive/
     module DriveV2
       VERSION = 'V2'
-      REVISION = '20160114'
+      REVISION = '20160126'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

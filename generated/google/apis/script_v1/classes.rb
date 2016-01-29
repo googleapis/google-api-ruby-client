@@ -62,10 +62,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] unless args[:function].nil?
-          @parameters = args[:parameters] unless args[:parameters].nil?
-          @session_state = args[:session_state] unless args[:session_state].nil?
-          @dev_mode = args[:dev_mode] unless args[:dev_mode].nil?
+          @function = args[:function] if args.key?(:function)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @session_state = args[:session_state] if args.key?(:session_state)
+          @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
         end
       end
       
@@ -122,11 +122,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
-          @done = args[:done] unless args[:done].nil?
-          @error = args[:error] unless args[:error].nil?
-          @response = args[:response] unless args[:response].nil?
+          @name = args[:name] if args.key?(:name)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -160,9 +160,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @message = args[:message] unless args[:message].nil?
-          @details = args[:details] unless args[:details].nil?
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -198,9 +198,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @script_stack_trace_elements = args[:script_stack_trace_elements] unless args[:script_stack_trace_elements].nil?
-          @error_message = args[:error_message] unless args[:error_message].nil?
-          @error_type = args[:error_type] unless args[:error_type].nil?
+          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_type = args[:error_type] if args.key?(:error_type)
         end
       end
       
@@ -224,8 +224,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] unless args[:function].nil?
-          @line_number = args[:line_number] unless args[:line_number].nil?
+          @function = args[:function] if args.key?(:function)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -251,7 +251,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @result = args[:result] unless args[:result].nil?
+          @result = args[:result] if args.key?(:result)
         end
       end
     end

@@ -80,14 +80,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_type = args[:achievement_type] unless args[:achievement_type].nil?
-          @draft = args[:draft] unless args[:draft].nil?
-          @id = args[:id] unless args[:id].nil?
-          @initial_state = args[:initial_state] unless args[:initial_state].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @published = args[:published] unless args[:published].nil?
-          @steps_to_unlock = args[:steps_to_unlock] unless args[:steps_to_unlock].nil?
-          @token = args[:token] unless args[:token].nil?
+          @achievement_type = args[:achievement_type] if args.key?(:achievement_type)
+          @draft = args[:draft] if args.key?(:draft)
+          @id = args[:id] if args.key?(:id)
+          @initial_state = args[:initial_state] if args.key?(:initial_state)
+          @kind = args[:kind] if args.key?(:kind)
+          @published = args[:published] if args.key?(:published)
+          @steps_to_unlock = args[:steps_to_unlock] if args.key?(:steps_to_unlock)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -132,12 +132,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @icon_url = args[:icon_url] unless args[:icon_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @point_value = args[:point_value] unless args[:point_value].nil?
-          @sort_rank = args[:sort_rank] unless args[:sort_rank].nil?
+          @description = args[:description] if args.key?(:description)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @point_value = args[:point_value] if args.key?(:point_value)
+          @sort_rank = args[:sort_rank] if args.key?(:sort_rank)
         end
       end
       
@@ -167,9 +167,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -213,12 +213,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @few = args[:few] unless args[:few].nil?
-          @many = args[:many] unless args[:many].nil?
-          @one = args[:one] unless args[:one].nil?
-          @other = args[:other] unless args[:other].nil?
-          @two = args[:two] unless args[:two].nil?
-          @zero = args[:zero] unless args[:zero].nil?
+          @few = args[:few] if args.key?(:few)
+          @many = args[:many] if args.key?(:many)
+          @one = args[:one] if args.key?(:one)
+          @other = args[:other] if args.key?(:other)
+          @two = args[:two] if args.key?(:two)
+          @zero = args[:zero] if args.key?(:zero)
         end
       end
       
@@ -258,10 +258,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
-          @num_decimal_places = args[:num_decimal_places] unless args[:num_decimal_places].nil?
-          @number_format_type = args[:number_format_type] unless args[:number_format_type].nil?
-          @suffix = args[:suffix] unless args[:suffix].nil?
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @num_decimal_places = args[:num_decimal_places] if args.key?(:num_decimal_places)
+          @number_format_type = args[:number_format_type] if args.key?(:number_format_type)
+          @suffix = args[:suffix] if args.key?(:suffix)
         end
       end
       
@@ -296,10 +296,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @image_type = args[:image_type] unless args[:image_type].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @url = args[:url] unless args[:url].nil?
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -357,14 +357,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @draft = args[:draft] unless args[:draft].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @published = args[:published] unless args[:published].nil?
-          @score_max = args[:score_max] unless args[:score_max].nil?
-          @score_min = args[:score_min] unless args[:score_min].nil?
-          @score_order = args[:score_order] unless args[:score_order].nil?
-          @token = args[:token] unless args[:token].nil?
+          @draft = args[:draft] if args.key?(:draft)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @published = args[:published] if args.key?(:published)
+          @score_max = args[:score_max] if args.key?(:score_max)
+          @score_min = args[:score_min] if args.key?(:score_min)
+          @score_order = args[:score_order] if args.key?(:score_order)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -404,11 +404,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @icon_url = args[:icon_url] unless args[:icon_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @score_format = args[:score_format] unless args[:score_format].nil?
-          @sort_rank = args[:sort_rank] unless args[:sort_rank].nil?
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @score_format = args[:score_format] if args.key?(:score_format)
+          @sort_rank = args[:sort_rank] if args.key?(:sort_rank)
         end
       end
       
@@ -438,9 +438,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -470,9 +470,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @locale = args[:locale] unless args[:locale].nil?
-          @value = args[:value] unless args[:value].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @locale = args[:locale] if args.key?(:locale)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -497,8 +497,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @translations = args[:translations] unless args[:translations].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @translations = args[:translations] if args.key?(:translations)
         end
       end
     end

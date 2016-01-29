@@ -52,10 +52,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -104,13 +104,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @actor = args[:actor] unless args[:actor].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @events = args[:events] unless args[:events].nil?
-          @id = args[:id] unless args[:id].nil?
-          @ip_address = args[:ip_address] unless args[:ip_address].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @owner_domain = args[:owner_domain] unless args[:owner_domain].nil?
+          @actor = args[:actor] if args.key?(:actor)
+          @etag = args[:etag] if args.key?(:etag)
+          @events = args[:events] if args.key?(:events)
+          @id = args[:id] if args.key?(:id)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @kind = args[:kind] if args.key?(:kind)
+          @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
         end
         
         # User doing the action.
@@ -143,10 +143,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @caller_type = args[:caller_type] unless args[:caller_type].nil?
-            @email = args[:email] unless args[:email].nil?
-            @key = args[:key] unless args[:key].nil?
-            @profile_id = args[:profile_id] unless args[:profile_id].nil?
+            @caller_type = args[:caller_type] if args.key?(:caller_type)
+            @email = args[:email] if args.key?(:email)
+            @key = args[:key] if args.key?(:key)
+            @profile_id = args[:profile_id] if args.key?(:profile_id)
           end
         end
         
@@ -175,9 +175,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @name = args[:name] unless args[:name].nil?
-            @parameters = args[:parameters] unless args[:parameters].nil?
-            @type = args[:type] unless args[:type].nil?
+            @name = args[:name] if args.key?(:name)
+            @parameters = args[:parameters] if args.key?(:parameters)
+            @type = args[:type] if args.key?(:type)
           end
           
           # 
@@ -221,12 +221,12 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @bool_value = args[:bool_value] unless args[:bool_value].nil?
-              @int_value = args[:int_value] unless args[:int_value].nil?
-              @multi_int_value = args[:multi_int_value] unless args[:multi_int_value].nil?
-              @multi_value = args[:multi_value] unless args[:multi_value].nil?
-              @name = args[:name] unless args[:name].nil?
-              @value = args[:value] unless args[:value].nil?
+              @bool_value = args[:bool_value] if args.key?(:bool_value)
+              @int_value = args[:int_value] if args.key?(:int_value)
+              @multi_int_value = args[:multi_int_value] if args.key?(:multi_int_value)
+              @multi_value = args[:multi_value] if args.key?(:multi_value)
+              @name = args[:name] if args.key?(:name)
+              @value = args[:value] if args.key?(:value)
             end
           end
         end
@@ -261,10 +261,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @application_name = args[:application_name] unless args[:application_name].nil?
-            @customer_id = args[:customer_id] unless args[:customer_id].nil?
-            @time = args[:time] unless args[:time].nil?
-            @unique_qualifier = args[:unique_qualifier] unless args[:unique_qualifier].nil?
+            @application_name = args[:application_name] if args.key?(:application_name)
+            @customer_id = args[:customer_id] if args.key?(:customer_id)
+            @time = args[:time] if args.key?(:time)
+            @unique_qualifier = args[:unique_qualifier] if args.key?(:unique_qualifier)
           end
         end
       end
@@ -334,16 +334,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @expiration = args[:expiration] unless args[:expiration].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @params = args[:params] unless args[:params].nil?
-          @payload = args[:payload] unless args[:payload].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @resource_uri = args[:resource_uri] unless args[:resource_uri].nil?
-          @token = args[:token] unless args[:token].nil?
-          @type = args[:type] unless args[:type].nil?
+          @address = args[:address] if args.key?(:address)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @params = args[:params] if args.key?(:params)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @token = args[:token] if args.key?(:token)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -382,11 +382,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @date = args[:date] unless args[:date].nil?
-          @entity = args[:entity] unless args[:entity].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @parameters = args[:parameters] unless args[:parameters].nil?
+          @date = args[:date] if args.key?(:date)
+          @entity = args[:entity] if args.key?(:entity)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
         
         # Information about the type of the item.
@@ -419,10 +419,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @customer_id = args[:customer_id] unless args[:customer_id].nil?
-            @profile_id = args[:profile_id] unless args[:profile_id].nil?
-            @type = args[:type] unless args[:type].nil?
-            @user_email = args[:user_email] unless args[:user_email].nil?
+            @customer_id = args[:customer_id] if args.key?(:customer_id)
+            @profile_id = args[:profile_id] if args.key?(:profile_id)
+            @type = args[:type] if args.key?(:type)
+            @user_email = args[:user_email] if args.key?(:user_email)
           end
         end
         
@@ -467,12 +467,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @bool_value = args[:bool_value] unless args[:bool_value].nil?
-            @datetime_value = args[:datetime_value] unless args[:datetime_value].nil?
-            @int_value = args[:int_value] unless args[:int_value].nil?
-            @msg_value = args[:msg_value] unless args[:msg_value].nil?
-            @name = args[:name] unless args[:name].nil?
-            @string_value = args[:string_value] unless args[:string_value].nil?
+            @bool_value = args[:bool_value] if args.key?(:bool_value)
+            @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+            @int_value = args[:int_value] if args.key?(:int_value)
+            @msg_value = args[:msg_value] if args.key?(:msg_value)
+            @name = args[:name] if args.key?(:name)
+            @string_value = args[:string_value] if args.key?(:string_value)
           end
         end
       end
@@ -512,11 +512,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @usage_reports = args[:usage_reports] unless args[:usage_reports].nil?
-          @warnings = args[:warnings] unless args[:warnings].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @usage_reports = args[:usage_reports] if args.key?(:usage_reports)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
         
         # 
@@ -544,9 +544,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @code = args[:code] unless args[:code].nil?
-            @data = args[:data] unless args[:data].nil?
-            @message = args[:message] unless args[:message].nil?
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
           end
           
           # 
@@ -571,8 +571,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @key = args[:key] unless args[:key].nil?
-              @value = args[:value] unless args[:value].nil?
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
             end
           end
         end

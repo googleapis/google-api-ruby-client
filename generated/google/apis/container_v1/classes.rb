@@ -37,7 +37,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @clusters = args[:clusters] unless args[:clusters].nil?
+          @clusters = args[:clusters] if args.key?(:clusters)
         end
       end
       
@@ -188,27 +188,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @description = args[:description] unless args[:description].nil?
-          @initial_node_count = args[:initial_node_count] unless args[:initial_node_count].nil?
-          @node_config = args[:node_config] unless args[:node_config].nil?
-          @master_auth = args[:master_auth] unless args[:master_auth].nil?
-          @logging_service = args[:logging_service] unless args[:logging_service].nil?
-          @monitoring_service = args[:monitoring_service] unless args[:monitoring_service].nil?
-          @network = args[:network] unless args[:network].nil?
-          @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] unless args[:cluster_ipv4_cidr].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @zone = args[:zone] unless args[:zone].nil?
-          @endpoint = args[:endpoint] unless args[:endpoint].nil?
-          @initial_cluster_version = args[:initial_cluster_version] unless args[:initial_cluster_version].nil?
-          @current_master_version = args[:current_master_version] unless args[:current_master_version].nil?
-          @current_node_version = args[:current_node_version] unless args[:current_node_version].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
-          @status = args[:status] unless args[:status].nil?
-          @status_message = args[:status_message] unless args[:status_message].nil?
-          @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] unless args[:node_ipv4_cidr_size].nil?
-          @services_ipv4_cidr = args[:services_ipv4_cidr] unless args[:services_ipv4_cidr].nil?
-          @instance_group_urls = args[:instance_group_urls] unless args[:instance_group_urls].nil?
+          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
+          @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
+          @node_config = args[:node_config] if args.key?(:node_config)
+          @master_auth = args[:master_auth] if args.key?(:master_auth)
+          @logging_service = args[:logging_service] if args.key?(:logging_service)
+          @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
+          @network = args[:network] if args.key?(:network)
+          @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @zone = args[:zone] if args.key?(:zone)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
+          @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
+          @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @status = args[:status] if args.key?(:status)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
+          @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
         end
       end
       
@@ -245,9 +245,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @machine_type = args[:machine_type] unless args[:machine_type].nil?
-          @disk_size_gb = args[:disk_size_gb] unless args[:disk_size_gb].nil?
-          @oauth_scopes = args[:oauth_scopes] unless args[:oauth_scopes].nil?
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
         end
       end
       
@@ -293,11 +293,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @username = args[:username] unless args[:username].nil?
-          @password = args[:password] unless args[:password].nil?
-          @cluster_ca_certificate = args[:cluster_ca_certificate] unless args[:cluster_ca_certificate].nil?
-          @client_certificate = args[:client_certificate] unless args[:client_certificate].nil?
-          @client_key = args[:client_key] unless args[:client_key].nil?
+          @username = args[:username] if args.key?(:username)
+          @password = args[:password] if args.key?(:password)
+          @cluster_ca_certificate = args[:cluster_ca_certificate] if args.key?(:cluster_ca_certificate)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_key = args[:client_key] if args.key?(:client_key)
         end
       end
       
@@ -316,7 +316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cluster = args[:cluster] unless args[:cluster].nil?
+          @cluster = args[:cluster] if args.key?(:cluster)
         end
       end
       
@@ -366,13 +366,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @zone = args[:zone] unless args[:zone].nil?
-          @operation_type = args[:operation_type] unless args[:operation_type].nil?
-          @status = args[:status] unless args[:status].nil?
-          @status_message = args[:status_message] unless args[:status_message].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @target_link = args[:target_link] unless args[:target_link].nil?
+          @name = args[:name] if args.key?(:name)
+          @zone = args[:zone] if args.key?(:zone)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @status = args[:status] if args.key?(:status)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @target_link = args[:target_link] if args.key?(:target_link)
         end
       end
       
@@ -391,7 +391,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @update = args[:update] unless args[:update].nil?
+          @update = args[:update] if args.key?(:update)
         end
       end
       
@@ -411,7 +411,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @desired_node_version = args[:desired_node_version] unless args[:desired_node_version].nil?
+          @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
         end
       end
       
@@ -430,7 +430,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operations = args[:operations] unless args[:operations].nil?
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -454,8 +454,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_cluster_version = args[:default_cluster_version] unless args[:default_cluster_version].nil?
-          @valid_node_versions = args[:valid_node_versions] unless args[:valid_node_versions].nil?
+          @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
+          @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
         end
       end
     end

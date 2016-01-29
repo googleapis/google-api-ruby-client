@@ -232,7 +232,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -244,10 +245,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] page_token
         #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
         #   a previous list request to get the next page of results.
@@ -300,12 +301,12 @@ module Google
         # @param [Boolean] preview
         #   If set to true, updates the deployment and creates and updates the "shell"
         #   resources but does not actually alter or instantiate these resources. This
-        #   allows you to preview what your deployment looks like. You can use this intent
-        #   to preview how an update would affect your deployment. You must provide a
-        #   target.config with a configuration if this is set to true. After previewing a
-        #   deployment, you can deploy your resources by making a request with the update()
-        #   or you can cancelPreview() to remove the preview altogether. Note that the
-        #   deployment will still exist after you cancel the preview and you must
+        #   allows you to preview what your deployment will look like. You can use this
+        #   intent to preview how an update would affect your deployment. You must provide
+        #   a target.config with a configuration if this is set to true. After previewing
+        #   a deployment, you can deploy your resources by making a request with the
+        #   update() or you can cancelPreview() to remove the preview altogether. Note
+        #   that the deployment will still exist after you cancel the preview and you must
         #   separately delete this deployment if you want to remove it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -401,12 +402,12 @@ module Google
         # @param [Boolean] preview
         #   If set to true, updates the deployment and creates and updates the "shell"
         #   resources but does not actually alter or instantiate these resources. This
-        #   allows you to preview what your deployment looks like. You can use this intent
-        #   to preview how an update would affect your deployment. You must provide a
-        #   target.config with a configuration if this is set to true. After previewing a
-        #   deployment, you can deploy your resources by making a request with the update()
-        #   or you can cancelPreview() to remove the preview altogether. Note that the
-        #   deployment will still exist after you cancel the preview and you must
+        #   allows you to preview what your deployment will look like. You can use this
+        #   intent to preview how an update would affect your deployment. You must provide
+        #   a target.config with a configuration if this is set to true. After previewing
+        #   a deployment, you can deploy your resources by making a request with the
+        #   update() or you can cancelPreview() to remove the preview altogether. Note
+        #   that the deployment will still exist after you cancel the preview and you must
         #   separately delete this deployment if you want to remove it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -503,7 +504,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -515,10 +517,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] page_token
         #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
         #   a previous list request to get the next page of results.
@@ -610,7 +612,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -622,10 +625,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] page_token
         #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
         #   a previous list request to get the next page of results.
@@ -721,7 +724,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -733,10 +737,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] page_token
         #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
         #   a previous list request to get the next page of results.
@@ -790,7 +794,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -802,10 +807,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] page_token
         #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
         #   a previous list request to get the next page of results.

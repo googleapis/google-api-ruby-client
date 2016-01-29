@@ -62,12 +62,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_description = args[:data_description] unless args[:data_description].nil?
-          @errors = args[:errors] unless args[:errors].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @model_description = args[:model_description] unless args[:model_description].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @data_description = args[:data_description] if args.key?(:data_description)
+          @errors = args[:errors] if args.key?(:errors)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @model_description = args[:model_description] if args.key?(:model_description)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
         
         # Description of the data the model was trained on.
@@ -90,8 +90,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @features = args[:features] unless args[:features].nil?
-            @output_feature = args[:output_feature] unless args[:output_feature].nil?
+            @features = args[:features] if args.key?(:features)
+            @output_feature = args[:output_feature] if args.key?(:output_feature)
           end
           
           # 
@@ -124,10 +124,10 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @categorical = args[:categorical] unless args[:categorical].nil?
-              @index = args[:index] unless args[:index].nil?
-              @numeric = args[:numeric] unless args[:numeric].nil?
-              @text = args[:text] unless args[:text].nil?
+              @categorical = args[:categorical] if args.key?(:categorical)
+              @index = args[:index] if args.key?(:index)
+              @numeric = args[:numeric] if args.key?(:numeric)
+              @text = args[:text] if args.key?(:text)
             end
             
             # Description of the categorical values of this feature.
@@ -150,8 +150,8 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @count = args[:count] unless args[:count].nil?
-                @values = args[:values] unless args[:values].nil?
+                @count = args[:count] if args.key?(:count)
+                @values = args[:values] if args.key?(:values)
               end
               
               # 
@@ -174,8 +174,8 @@ module Google
               
                 # Update properties of this object
                 def update!(**args)
-                  @count = args[:count] unless args[:count].nil?
-                  @value = args[:value] unless args[:value].nil?
+                  @count = args[:count] if args.key?(:count)
+                  @value = args[:value] if args.key?(:value)
                 end
               end
             end
@@ -205,9 +205,9 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @count = args[:count] unless args[:count].nil?
-                @mean = args[:mean] unless args[:mean].nil?
-                @variance = args[:variance] unless args[:variance].nil?
+                @count = args[:count] if args.key?(:count)
+                @mean = args[:mean] if args.key?(:mean)
+                @variance = args[:variance] if args.key?(:variance)
               end
             end
             
@@ -226,7 +226,7 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @count = args[:count] unless args[:count].nil?
+                @count = args[:count] if args.key?(:count)
               end
             end
           end
@@ -251,8 +251,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @numeric = args[:numeric] unless args[:numeric].nil?
-              @text = args[:text] unless args[:text].nil?
+              @numeric = args[:numeric] if args.key?(:numeric)
+              @text = args[:text] if args.key?(:text)
             end
             
             # Description of the output values in the data set.
@@ -280,9 +280,9 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @count = args[:count] unless args[:count].nil?
-                @mean = args[:mean] unless args[:mean].nil?
-                @variance = args[:variance] unless args[:variance].nil?
+                @count = args[:count] if args.key?(:count)
+                @mean = args[:mean] if args.key?(:mean)
+                @variance = args[:variance] if args.key?(:variance)
               end
             end
             
@@ -306,8 +306,8 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @count = args[:count] unless args[:count].nil?
-                @value = args[:value] unless args[:value].nil?
+                @count = args[:count] if args.key?(:count)
+                @value = args[:value] if args.key?(:value)
               end
             end
           end
@@ -342,9 +342,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @confusion_matrix = args[:confusion_matrix] unless args[:confusion_matrix].nil?
-            @confusion_matrix_row_totals = args[:confusion_matrix_row_totals] unless args[:confusion_matrix_row_totals].nil?
-            @modelinfo = args[:modelinfo] unless args[:modelinfo].nil?
+            @confusion_matrix = args[:confusion_matrix] if args.key?(:confusion_matrix)
+            @confusion_matrix_row_totals = args[:confusion_matrix_row_totals] if args.key?(:confusion_matrix_row_totals)
+            @modelinfo = args[:modelinfo] if args.key?(:modelinfo)
           end
         end
       end
@@ -364,7 +364,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @input = args[:input] unless args[:input].nil?
+          @input = args[:input] if args.key?(:input)
         end
         
         # Input to the model for a prediction.
@@ -382,7 +382,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
+            @csv_instance = args[:csv_instance] if args.key?(:csv_instance)
           end
         end
       end
@@ -438,14 +438,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @model_type = args[:model_type] unless args[:model_type].nil?
-          @source_model = args[:source_model] unless args[:source_model].nil?
-          @storage_data_location = args[:storage_data_location] unless args[:storage_data_location].nil?
-          @storage_pmml_location = args[:storage_pmml_location] unless args[:storage_pmml_location].nil?
-          @storage_pmml_model_location = args[:storage_pmml_model_location] unless args[:storage_pmml_model_location].nil?
-          @training_instances = args[:training_instances] unless args[:training_instances].nil?
-          @utility = args[:utility] unless args[:utility].nil?
+          @id = args[:id] if args.key?(:id)
+          @model_type = args[:model_type] if args.key?(:model_type)
+          @source_model = args[:source_model] if args.key?(:source_model)
+          @storage_data_location = args[:storage_data_location] if args.key?(:storage_data_location)
+          @storage_pmml_location = args[:storage_pmml_location] if args.key?(:storage_pmml_location)
+          @storage_pmml_model_location = args[:storage_pmml_model_location] if args.key?(:storage_pmml_model_location)
+          @training_instances = args[:training_instances] if args.key?(:training_instances)
+          @utility = args[:utility] if args.key?(:utility)
         end
         
         # 
@@ -468,8 +468,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
-            @output = args[:output] unless args[:output].nil?
+            @csv_instance = args[:csv_instance] if args.key?(:csv_instance)
+            @output = args[:output] if args.key?(:output)
           end
         end
       end
@@ -540,17 +540,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @created = args[:created] unless args[:created].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @model_info = args[:model_info] unless args[:model_info].nil?
-          @model_type = args[:model_type] unless args[:model_type].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @storage_data_location = args[:storage_data_location] unless args[:storage_data_location].nil?
-          @storage_pmml_location = args[:storage_pmml_location] unless args[:storage_pmml_location].nil?
-          @storage_pmml_model_location = args[:storage_pmml_model_location] unless args[:storage_pmml_model_location].nil?
-          @training_complete = args[:training_complete] unless args[:training_complete].nil?
-          @training_status = args[:training_status] unless args[:training_status].nil?
+          @created = args[:created] if args.key?(:created)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @model_info = args[:model_info] if args.key?(:model_info)
+          @model_type = args[:model_type] if args.key?(:model_type)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @storage_data_location = args[:storage_data_location] if args.key?(:storage_data_location)
+          @storage_pmml_location = args[:storage_pmml_location] if args.key?(:storage_pmml_location)
+          @storage_pmml_model_location = args[:storage_pmml_model_location] if args.key?(:storage_pmml_model_location)
+          @training_complete = args[:training_complete] if args.key?(:training_complete)
+          @training_status = args[:training_status] if args.key?(:training_status)
         end
         
         # Model metadata.
@@ -600,12 +600,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @class_weighted_accuracy = args[:class_weighted_accuracy] unless args[:class_weighted_accuracy].nil?
-            @classification_accuracy = args[:classification_accuracy] unless args[:classification_accuracy].nil?
-            @mean_squared_error = args[:mean_squared_error] unless args[:mean_squared_error].nil?
-            @model_type = args[:model_type] unless args[:model_type].nil?
-            @number_instances = args[:number_instances] unless args[:number_instances].nil?
-            @number_labels = args[:number_labels] unless args[:number_labels].nil?
+            @class_weighted_accuracy = args[:class_weighted_accuracy] if args.key?(:class_weighted_accuracy)
+            @classification_accuracy = args[:classification_accuracy] if args.key?(:classification_accuracy)
+            @mean_squared_error = args[:mean_squared_error] if args.key?(:mean_squared_error)
+            @model_type = args[:model_type] if args.key?(:model_type)
+            @number_instances = args[:number_instances] if args.key?(:number_instances)
+            @number_labels = args[:number_labels] if args.key?(:number_labels)
           end
         end
       end
@@ -640,10 +640,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -688,12 +688,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @output_label = args[:output_label] unless args[:output_label].nil?
-          @output_multi = args[:output_multi] unless args[:output_multi].nil?
-          @output_value = args[:output_value] unless args[:output_value].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @output_label = args[:output_label] if args.key?(:output_label)
+          @output_multi = args[:output_multi] if args.key?(:output_multi)
+          @output_value = args[:output_value] if args.key?(:output_value)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
         
         # 
@@ -716,8 +716,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @label = args[:label] unless args[:label].nil?
-            @score = args[:score] unless args[:score].nil?
+            @label = args[:label] if args.key?(:label)
+            @score = args[:score] if args.key?(:score)
           end
         end
       end
@@ -742,8 +742,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
-          @output = args[:output] unless args[:output].nil?
+          @csv_instance = args[:csv_instance] if args.key?(:csv_instance)
+          @output = args[:output] if args.key?(:output)
         end
       end
     end

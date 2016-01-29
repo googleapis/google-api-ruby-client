@@ -47,9 +47,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -84,10 +84,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -129,11 +129,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @arc_opt_in = args[:arc_opt_in] unless args[:arc_opt_in].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @product_code = args[:product_code] unless args[:product_code].nil?
-          @supports_reporting = args[:supports_reporting] unless args[:supports_reporting].nil?
+          @arc_opt_in = args[:arc_opt_in] if args.key?(:arc_opt_in)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @product_code = args[:product_code] if args.key?(:product_code)
+          @supports_reporting = args[:supports_reporting] if args.key?(:supports_reporting)
         end
       end
       
@@ -168,10 +168,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -213,11 +213,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @message = args[:message] unless args[:message].nil?
-          @severity = args[:severity] unless args[:severity].nil?
-          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -241,8 +241,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -282,11 +282,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @targeting_info = args[:targeting_info] unless args[:targeting_info].nil?
+          @code = args[:code] if args.key?(:code)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @targeting_info = args[:targeting_info] if args.key?(:targeting_info)
         end
         
         # The targeting information of this custom channel, if activated.
@@ -323,10 +323,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @ads_appear_on = args[:ads_appear_on] unless args[:ads_appear_on].nil?
-            @description = args[:description] unless args[:description].nil?
-            @location = args[:location] unless args[:location].nil?
-            @site_language = args[:site_language] unless args[:site_language].nil?
+            @ads_appear_on = args[:ads_appear_on] if args.key?(:ads_appear_on)
+            @description = args[:description] if args.key?(:description)
+            @location = args[:location] if args.key?(:location)
+            @site_language = args[:site_language] if args.key?(:site_language)
           end
         end
       end
@@ -362,10 +362,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -389,8 +389,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -450,14 +450,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @advertiser_name = args[:advertiser_name] unless args[:advertiser_name].nil?
-          @buyer_network_name = args[:buyer_network_name] unless args[:buyer_network_name].nil?
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @fixed_cpm = args[:fixed_cpm] unless args[:fixed_cpm].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
+          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
+          @buyer_network_name = args[:buyer_network_name] if args.key?(:buyer_network_name)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @fixed_cpm = args[:fixed_cpm] if args.key?(:fixed_cpm)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -481,8 +481,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -539,13 +539,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @averages = args[:averages] unless args[:averages].nil?
-          @headers = args[:headers] unless args[:headers].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @total_matched_rows = args[:total_matched_rows] unless args[:total_matched_rows].nil?
-          @totals = args[:totals] unless args[:totals].nil?
-          @warnings = args[:warnings] unless args[:warnings].nil?
+          @averages = args[:averages] if args.key?(:averages)
+          @headers = args[:headers] if args.key?(:headers)
+          @kind = args[:kind] if args.key?(:kind)
+          @rows = args[:rows] if args.key?(:rows)
+          @total_matched_rows = args[:total_matched_rows] if args.key?(:total_matched_rows)
+          @totals = args[:totals] if args.key?(:totals)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
         
         # 
@@ -575,9 +575,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @currency = args[:currency] unless args[:currency].nil?
-            @name = args[:name] unless args[:name].nil?
-            @type = args[:type] unless args[:type].nil?
+            @currency = args[:currency] if args.key?(:currency)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -638,13 +638,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @compatible_dimensions = args[:compatible_dimensions] unless args[:compatible_dimensions].nil?
-          @compatible_metrics = args[:compatible_metrics] unless args[:compatible_metrics].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @required_dimensions = args[:required_dimensions] unless args[:required_dimensions].nil?
-          @required_metrics = args[:required_metrics] unless args[:required_metrics].nil?
-          @supported_products = args[:supported_products] unless args[:supported_products].nil?
+          @compatible_dimensions = args[:compatible_dimensions] if args.key?(:compatible_dimensions)
+          @compatible_metrics = args[:compatible_metrics] if args.key?(:compatible_metrics)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @required_dimensions = args[:required_dimensions] if args.key?(:required_dimensions)
+          @required_metrics = args[:required_metrics] if args.key?(:required_metrics)
+          @supported_products = args[:supported_products] if args.key?(:supported_products)
         end
       end
       
@@ -673,9 +673,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -710,10 +710,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -744,9 +744,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @url_pattern = args[:url_pattern] unless args[:url_pattern].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @url_pattern = args[:url_pattern] if args.key?(:url_pattern)
         end
       end
       
@@ -781,10 +781,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

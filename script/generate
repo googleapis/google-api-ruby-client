@@ -4,7 +4,7 @@
 
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
-APIS=(adexchangebuyer:v1.3 \
+APIS=(adexchangebuyer:v1.4 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
 	admin:datatransfer_v1 \
@@ -14,7 +14,7 @@ APIS=(adexchangebuyer:v1.3 \
 	analytics:v3 \
 	androidenterprise:v1 \
 	androidpublisher:v2 \
-	appengine:v1beta4 \
+	appengine:v1beta5 \
 	appsactivity:v1 \
 	appstate:v1 \
 	autoscaler:v1beta2 \
@@ -25,7 +25,9 @@ APIS=(adexchangebuyer:v1.3 \
 	civicinfo:v2 \
 	classroom:v1 \
 	cloudbilling:v1 \
+	cloudbuild:v1 \
 	clouddebugger:v2 \
+	cloudlatencytest:v2 \
 	cloudmonitoring:v2beta2 \
 	cloudresourcemanager:v1beta1 \
 	cloudtrace:v1 \
@@ -36,6 +38,7 @@ APIS=(adexchangebuyer:v1.3 \
 	content:v2 \
 	coordinate:v1 \
 	customsearch:v1 \
+	dataproc:v1 \
 	datastore:v1beta2 \
 	deploymentmanager:v2 \
 	dfareporting:v2.3 \
@@ -58,7 +61,7 @@ APIS=(adexchangebuyer:v1.3 \
 	identitytoolkit:v3 \
 	kgsearch:v1 \
 	licensing:v1 \
-	logging:v1beta3 \
+	logging:v2beta1 \
 	manager:v1beta2 \
 	mapsengine:v1 \
 	mirror:v1 \

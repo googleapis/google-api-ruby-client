@@ -37,7 +37,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @resource_name = args[:resource_name] unless args[:resource_name].nil?
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -63,8 +63,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @report_types = args[:report_types] unless args[:report_types].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @report_types = args[:report_types] if args.key?(:report_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -88,8 +88,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -124,10 +124,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @report_type_id = args[:report_type_id] unless args[:report_type_id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
+          @id = args[:id] if args.key?(:id)
+          @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
+          @name = args[:name] if args.key?(:name)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -153,8 +153,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @jobs = args[:jobs] unless args[:jobs].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -197,8 +197,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reports = args[:reports] unless args[:reports].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @reports = args[:reports] if args.key?(:reports)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -245,12 +245,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @job_id = args[:job_id] unless args[:job_id].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
-          @download_url = args[:download_url] unless args[:download_url].nil?
+          @id = args[:id] if args.key?(:id)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @download_url = args[:download_url] if args.key?(:download_url)
         end
       end
     end

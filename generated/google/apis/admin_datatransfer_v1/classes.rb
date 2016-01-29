@@ -59,11 +59,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @transfer_params = args[:transfer_params] unless args[:transfer_params].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @transfer_params = args[:transfer_params] if args.key?(:transfer_params)
         end
       end
       
@@ -93,9 +93,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_id = args[:application_id] unless args[:application_id].nil?
-          @application_transfer_params = args[:application_transfer_params] unless args[:application_transfer_params].nil?
-          @application_transfer_status = args[:application_transfer_status] unless args[:application_transfer_status].nil?
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @application_transfer_params = args[:application_transfer_params] if args.key?(:application_transfer_params)
+          @application_transfer_status = args[:application_transfer_status] if args.key?(:application_transfer_status)
         end
       end
       
@@ -119,8 +119,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -155,10 +155,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @applications = args[:applications] unless args[:applications].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @applications = args[:applications] if args.key?(:applications)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -215,14 +215,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_data_transfers = args[:application_data_transfers] unless args[:application_data_transfers].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @new_owner_user_id = args[:new_owner_user_id] unless args[:new_owner_user_id].nil?
-          @old_owner_user_id = args[:old_owner_user_id] unless args[:old_owner_user_id].nil?
-          @overall_transfer_status_code = args[:overall_transfer_status_code] unless args[:overall_transfer_status_code].nil?
-          @request_time = args[:request_time] unless args[:request_time].nil?
+          @application_data_transfers = args[:application_data_transfers] if args.key?(:application_data_transfers)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @new_owner_user_id = args[:new_owner_user_id] if args.key?(:new_owner_user_id)
+          @old_owner_user_id = args[:old_owner_user_id] if args.key?(:old_owner_user_id)
+          @overall_transfer_status_code = args[:overall_transfer_status_code] if args.key?(:overall_transfer_status_code)
+          @request_time = args[:request_time] if args.key?(:request_time)
         end
       end
       
@@ -256,10 +256,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_transfers = args[:data_transfers] unless args[:data_transfers].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @data_transfers = args[:data_transfers] if args.key?(:data_transfers)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

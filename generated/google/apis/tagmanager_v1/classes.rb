@@ -54,10 +54,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @name = args[:name] unless args[:name].nil?
-          @share_data = args[:share_data] unless args[:share_data].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @share_data = args[:share_data] if args.key?(:share_data)
         end
       end
       
@@ -76,7 +76,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permission = args[:permission] unless args[:permission].nil?
+          @permission = args[:permission] if args.key?(:permission)
         end
       end
       
@@ -109,8 +109,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @parameter = args[:parameter] unless args[:parameter].nil?
-          @type = args[:type] unless args[:type].nil?
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -186,17 +186,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @domain_name = args[:domain_name] unless args[:domain_name].nil?
-          @enabled_built_in_variable = args[:enabled_built_in_variable] unless args[:enabled_built_in_variable].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @public_id = args[:public_id] unless args[:public_id].nil?
-          @time_zone_country_id = args[:time_zone_country_id] unless args[:time_zone_country_id].nil?
-          @time_zone_id = args[:time_zone_id] unless args[:time_zone_id].nil?
-          @usage_context = args[:usage_context] unless args[:usage_context].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @enabled_built_in_variable = args[:enabled_built_in_variable] if args.key?(:enabled_built_in_variable)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @public_id = args[:public_id] if args.key?(:public_id)
+          @time_zone_country_id = args[:time_zone_country_id] if args.key?(:time_zone_country_id)
+          @time_zone_id = args[:time_zone_id] if args.key?(:time_zone_id)
+          @usage_context = args[:usage_context] if args.key?(:usage_context)
         end
       end
       
@@ -221,8 +221,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @permission = args[:permission] unless args[:permission].nil?
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @permission = args[:permission] if args.key?(:permission)
         end
       end
       
@@ -308,20 +308,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container = args[:container] unless args[:container].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @container_version_id = args[:container_version_id] unless args[:container_version_id].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @folder = args[:folder] unless args[:folder].nil?
-          @macro = args[:macro] unless args[:macro].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @rule = args[:rule] unless args[:rule].nil?
-          @tag = args[:tag] unless args[:tag].nil?
-          @trigger = args[:trigger] unless args[:trigger].nil?
-          @variable = args[:variable] unless args[:variable].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container = args[:container] if args.key?(:container)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @folder = args[:folder] if args.key?(:folder)
+          @macro = args[:macro] if args.key?(:macro)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @rule = args[:rule] if args.key?(:rule)
+          @tag = args[:tag] if args.key?(:tag)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @variable = args[:variable] if args.key?(:variable)
         end
       end
       
@@ -386,16 +386,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @container_version_id = args[:container_version_id] unless args[:container_version_id].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @name = args[:name] unless args[:name].nil?
-          @num_macros = args[:num_macros] unless args[:num_macros].nil?
-          @num_rules = args[:num_rules] unless args[:num_rules].nil?
-          @num_tags = args[:num_tags] unless args[:num_tags].nil?
-          @num_triggers = args[:num_triggers] unless args[:num_triggers].nil?
-          @num_variables = args[:num_variables] unless args[:num_variables].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @name = args[:name] if args.key?(:name)
+          @num_macros = args[:num_macros] if args.key?(:num_macros)
+          @num_rules = args[:num_rules] if args.key?(:num_rules)
+          @num_tags = args[:num_tags] if args.key?(:num_tags)
+          @num_triggers = args[:num_triggers] if args.key?(:num_triggers)
+          @num_variables = args[:num_variables] if args.key?(:num_variables)
         end
       end
       
@@ -425,9 +425,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @quick_preview = args[:quick_preview] unless args[:quick_preview].nil?
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @quick_preview = args[:quick_preview] if args.key?(:quick_preview)
         end
       end
       
@@ -452,8 +452,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @compiler_error = args[:compiler_error] unless args[:compiler_error].nil?
-          @container_version = args[:container_version] unless args[:container_version].nil?
+          @compiler_error = args[:compiler_error] if args.key?(:compiler_error)
+          @container_version = args[:container_version] if args.key?(:container_version)
         end
       end
       
@@ -493,11 +493,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @folder_id = args[:folder_id] unless args[:folder_id].nil?
-          @name = args[:name] unless args[:name].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @folder_id = args[:folder_id] if args.key?(:folder_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -526,9 +526,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @tag = args[:tag] unless args[:tag].nil?
-          @trigger = args[:trigger] unless args[:trigger].nil?
-          @variable = args[:variable] unless args[:variable].nil?
+          @tag = args[:tag] if args.key?(:tag)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @variable = args[:variable] if args.key?(:variable)
         end
       end
       
@@ -547,7 +547,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @user_access = args[:user_access] unless args[:user_access].nil?
+          @user_access = args[:user_access] if args.key?(:user_access)
         end
       end
       
@@ -566,7 +566,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @accounts = args[:accounts] unless args[:accounts].nil?
+          @accounts = args[:accounts] if args.key?(:accounts)
         end
       end
       
@@ -590,8 +590,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @container_version = args[:container_version] unless args[:container_version].nil?
-          @container_version_header = args[:container_version_header] unless args[:container_version_header].nil?
+          @container_version = args[:container_version] if args.key?(:container_version)
+          @container_version_header = args[:container_version_header] if args.key?(:container_version_header)
         end
       end
       
@@ -610,7 +610,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @containers = args[:containers] unless args[:containers].nil?
+          @containers = args[:containers] if args.key?(:containers)
         end
       end
       
@@ -629,7 +629,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @folders = args[:folders] unless args[:folders].nil?
+          @folders = args[:folders] if args.key?(:folders)
         end
       end
       
@@ -648,7 +648,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @tags = args[:tags] unless args[:tags].nil?
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -667,7 +667,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @triggers = args[:triggers] unless args[:triggers].nil?
+          @triggers = args[:triggers] if args.key?(:triggers)
         end
       end
       
@@ -686,7 +686,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @variables = args[:variables] unless args[:variables].nil?
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
       
@@ -770,19 +770,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @disabling_rule_id = args[:disabling_rule_id] unless args[:disabling_rule_id].nil?
-          @enabling_rule_id = args[:enabling_rule_id] unless args[:enabling_rule_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @macro_id = args[:macro_id] unless args[:macro_id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @parameter = args[:parameter] unless args[:parameter].nil?
-          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
-          @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
-          @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
-          @type = args[:type] unless args[:type].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @disabling_rule_id = args[:disabling_rule_id] if args.key?(:disabling_rule_id)
+          @enabling_rule_id = args[:enabling_rule_id] if args.key?(:enabling_rule_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @macro_id = args[:macro_id] if args.key?(:macro_id)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
+          @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -829,11 +829,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @list = args[:list] unless args[:list].nil?
-          @map = args[:map] unless args[:map].nil?
-          @type = args[:type] unless args[:type].nil?
-          @value = args[:value] unless args[:value].nil?
+          @key = args[:key] if args.key?(:key)
+          @list = args[:list] if args.key?(:list)
+          @map = args[:map] if args.key?(:map)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -858,8 +858,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @compiler_error = args[:compiler_error] unless args[:compiler_error].nil?
-          @container_version = args[:container_version] unless args[:container_version].nil?
+          @compiler_error = args[:compiler_error] if args.key?(:compiler_error)
+          @container_version = args[:container_version] if args.key?(:container_version)
         end
       end
       
@@ -909,13 +909,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @condition = args[:condition] unless args[:condition].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @rule_id = args[:rule_id] unless args[:rule_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @condition = args[:condition] if args.key?(:condition)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
       end
       
@@ -941,8 +941,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @stop_on_setup_failure = args[:stop_on_setup_failure] unless args[:stop_on_setup_failure].nil?
-          @tag_name = args[:tag_name] unless args[:tag_name].nil?
+          @stop_on_setup_failure = args[:stop_on_setup_failure] if args.key?(:stop_on_setup_failure)
+          @tag_name = args[:tag_name] if args.key?(:tag_name)
         end
       end
       
@@ -1063,26 +1063,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @blocking_rule_id = args[:blocking_rule_id] unless args[:blocking_rule_id].nil?
-          @blocking_trigger_id = args[:blocking_trigger_id] unless args[:blocking_trigger_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @firing_rule_id = args[:firing_rule_id] unless args[:firing_rule_id].nil?
-          @firing_trigger_id = args[:firing_trigger_id] unless args[:firing_trigger_id].nil?
-          @live_only = args[:live_only] unless args[:live_only].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @parameter = args[:parameter] unless args[:parameter].nil?
-          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
-          @priority = args[:priority] unless args[:priority].nil?
-          @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
-          @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
-          @setup_tag = args[:setup_tag] unless args[:setup_tag].nil?
-          @tag_firing_option = args[:tag_firing_option] unless args[:tag_firing_option].nil?
-          @tag_id = args[:tag_id] unless args[:tag_id].nil?
-          @teardown_tag = args[:teardown_tag] unless args[:teardown_tag].nil?
-          @type = args[:type] unless args[:type].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @blocking_rule_id = args[:blocking_rule_id] if args.key?(:blocking_rule_id)
+          @blocking_trigger_id = args[:blocking_trigger_id] if args.key?(:blocking_trigger_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
+          @firing_trigger_id = args[:firing_trigger_id] if args.key?(:firing_trigger_id)
+          @live_only = args[:live_only] if args.key?(:live_only)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @priority = args[:priority] if args.key?(:priority)
+          @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
+          @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)
+          @setup_tag = args[:setup_tag] if args.key?(:setup_tag)
+          @tag_firing_option = args[:tag_firing_option] if args.key?(:tag_firing_option)
+          @tag_id = args[:tag_id] if args.key?(:tag_id)
+          @teardown_tag = args[:teardown_tag] if args.key?(:teardown_tag)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1108,8 +1108,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @stop_teardown_on_failure = args[:stop_teardown_on_failure] unless args[:stop_teardown_on_failure].nil?
-          @tag_name = args[:tag_name] unless args[:tag_name].nil?
+          @stop_teardown_on_failure = args[:stop_teardown_on_failure] if args.key?(:stop_teardown_on_failure)
+          @tag_name = args[:tag_name] if args.key?(:tag_name)
         end
       end
       
@@ -1219,25 +1219,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @auto_event_filter = args[:auto_event_filter] unless args[:auto_event_filter].nil?
-          @check_validation = args[:check_validation] unless args[:check_validation].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @custom_event_filter = args[:custom_event_filter] unless args[:custom_event_filter].nil?
-          @enable_all_videos = args[:enable_all_videos] unless args[:enable_all_videos].nil?
-          @event_name = args[:event_name] unless args[:event_name].nil?
-          @filter = args[:filter] unless args[:filter].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @interval = args[:interval] unless args[:interval].nil?
-          @limit = args[:limit] unless args[:limit].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
-          @trigger_id = args[:trigger_id] unless args[:trigger_id].nil?
-          @type = args[:type] unless args[:type].nil?
-          @unique_trigger_id = args[:unique_trigger_id] unless args[:unique_trigger_id].nil?
-          @video_percentage_list = args[:video_percentage_list] unless args[:video_percentage_list].nil?
-          @wait_for_tags = args[:wait_for_tags] unless args[:wait_for_tags].nil?
-          @wait_for_tags_timeout = args[:wait_for_tags_timeout] unless args[:wait_for_tags_timeout].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @auto_event_filter = args[:auto_event_filter] if args.key?(:auto_event_filter)
+          @check_validation = args[:check_validation] if args.key?(:check_validation)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @custom_event_filter = args[:custom_event_filter] if args.key?(:custom_event_filter)
+          @enable_all_videos = args[:enable_all_videos] if args.key?(:enable_all_videos)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @filter = args[:filter] if args.key?(:filter)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @interval = args[:interval] if args.key?(:interval)
+          @limit = args[:limit] if args.key?(:limit)
+          @name = args[:name] if args.key?(:name)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+          @type = args[:type] if args.key?(:type)
+          @unique_trigger_id = args[:unique_trigger_id] if args.key?(:unique_trigger_id)
+          @video_percentage_list = args[:video_percentage_list] if args.key?(:video_percentage_list)
+          @wait_for_tags = args[:wait_for_tags] if args.key?(:wait_for_tags)
+          @wait_for_tags_timeout = args[:wait_for_tags_timeout] if args.key?(:wait_for_tags_timeout)
         end
       end
       
@@ -1276,11 +1276,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_access = args[:account_access] unless args[:account_access].nil?
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_access = args[:container_access] unless args[:container_access].nil?
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
+          @account_access = args[:account_access] if args.key?(:account_access)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_access = args[:container_access] if args.key?(:container_access)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
         end
       end
       
@@ -1364,19 +1364,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @container_id = args[:container_id] unless args[:container_id].nil?
-          @disabling_trigger_id = args[:disabling_trigger_id] unless args[:disabling_trigger_id].nil?
-          @enabling_trigger_id = args[:enabling_trigger_id] unless args[:enabling_trigger_id].nil?
-          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notes = args[:notes] unless args[:notes].nil?
-          @parameter = args[:parameter] unless args[:parameter].nil?
-          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
-          @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
-          @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
-          @type = args[:type] unless args[:type].nil?
-          @variable_id = args[:variable_id] unless args[:variable_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @disabling_trigger_id = args[:disabling_trigger_id] if args.key?(:disabling_trigger_id)
+          @enabling_trigger_id = args[:enabling_trigger_id] if args.key?(:enabling_trigger_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
+          @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)
+          @type = args[:type] if args.key?(:type)
+          @variable_id = args[:variable_id] if args.key?(:variable_id)
         end
       end
     end

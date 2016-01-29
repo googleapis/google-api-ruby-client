@@ -163,30 +163,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_role_info = args[:additional_role_info] unless args[:additional_role_info].nil?
-          @domain_sharing_policy = args[:domain_sharing_policy] unless args[:domain_sharing_policy].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @export_formats = args[:export_formats] unless args[:export_formats].nil?
-          @features = args[:features] unless args[:features].nil?
-          @folder_color_palette = args[:folder_color_palette] unless args[:folder_color_palette].nil?
-          @import_formats = args[:import_formats] unless args[:import_formats].nil?
-          @is_current_app_installed = args[:is_current_app_installed] unless args[:is_current_app_installed].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @language_code = args[:language_code] unless args[:language_code].nil?
-          @largest_change_id = args[:largest_change_id] unless args[:largest_change_id].nil?
-          @max_upload_sizes = args[:max_upload_sizes] unless args[:max_upload_sizes].nil?
-          @name = args[:name] unless args[:name].nil?
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
-          @quota_bytes_by_service = args[:quota_bytes_by_service] unless args[:quota_bytes_by_service].nil?
-          @quota_bytes_total = args[:quota_bytes_total] unless args[:quota_bytes_total].nil?
-          @quota_bytes_used = args[:quota_bytes_used] unless args[:quota_bytes_used].nil?
-          @quota_bytes_used_aggregate = args[:quota_bytes_used_aggregate] unless args[:quota_bytes_used_aggregate].nil?
-          @quota_bytes_used_in_trash = args[:quota_bytes_used_in_trash] unless args[:quota_bytes_used_in_trash].nil?
-          @quota_type = args[:quota_type] unless args[:quota_type].nil?
-          @remaining_change_ids = args[:remaining_change_ids] unless args[:remaining_change_ids].nil?
-          @root_folder_id = args[:root_folder_id] unless args[:root_folder_id].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @user = args[:user] unless args[:user].nil?
+          @additional_role_info = args[:additional_role_info] if args.key?(:additional_role_info)
+          @domain_sharing_policy = args[:domain_sharing_policy] if args.key?(:domain_sharing_policy)
+          @etag = args[:etag] if args.key?(:etag)
+          @export_formats = args[:export_formats] if args.key?(:export_formats)
+          @features = args[:features] if args.key?(:features)
+          @folder_color_palette = args[:folder_color_palette] if args.key?(:folder_color_palette)
+          @import_formats = args[:import_formats] if args.key?(:import_formats)
+          @is_current_app_installed = args[:is_current_app_installed] if args.key?(:is_current_app_installed)
+          @kind = args[:kind] if args.key?(:kind)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @largest_change_id = args[:largest_change_id] if args.key?(:largest_change_id)
+          @max_upload_sizes = args[:max_upload_sizes] if args.key?(:max_upload_sizes)
+          @name = args[:name] if args.key?(:name)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
+          @quota_bytes_by_service = args[:quota_bytes_by_service] if args.key?(:quota_bytes_by_service)
+          @quota_bytes_total = args[:quota_bytes_total] if args.key?(:quota_bytes_total)
+          @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)
+          @quota_bytes_used_aggregate = args[:quota_bytes_used_aggregate] if args.key?(:quota_bytes_used_aggregate)
+          @quota_bytes_used_in_trash = args[:quota_bytes_used_in_trash] if args.key?(:quota_bytes_used_in_trash)
+          @quota_type = args[:quota_type] if args.key?(:quota_type)
+          @remaining_change_ids = args[:remaining_change_ids] if args.key?(:remaining_change_ids)
+          @root_folder_id = args[:root_folder_id] if args.key?(:root_folder_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @user = args[:user] if args.key?(:user)
         end
         
         # 
@@ -209,8 +209,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @role_sets = args[:role_sets] unless args[:role_sets].nil?
-            @type = args[:type] unless args[:type].nil?
+            @role_sets = args[:role_sets] if args.key?(:role_sets)
+            @type = args[:type] if args.key?(:type)
           end
           
           # 
@@ -233,8 +233,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @additional_roles = args[:additional_roles] unless args[:additional_roles].nil?
-              @primary_role = args[:primary_role] unless args[:primary_role].nil?
+              @additional_roles = args[:additional_roles] if args.key?(:additional_roles)
+              @primary_role = args[:primary_role] if args.key?(:primary_role)
             end
           end
         end
@@ -259,8 +259,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @source = args[:source] unless args[:source].nil?
-            @targets = args[:targets] unless args[:targets].nil?
+            @source = args[:source] if args.key?(:source)
+            @targets = args[:targets] if args.key?(:targets)
           end
         end
         
@@ -284,8 +284,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @feature_name = args[:feature_name] unless args[:feature_name].nil?
-            @feature_rate = args[:feature_rate] unless args[:feature_rate].nil?
+            @feature_name = args[:feature_name] if args.key?(:feature_name)
+            @feature_rate = args[:feature_rate] if args.key?(:feature_rate)
           end
         end
         
@@ -309,8 +309,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @source = args[:source] unless args[:source].nil?
-            @targets = args[:targets] unless args[:targets].nil?
+            @source = args[:source] if args.key?(:source)
+            @targets = args[:targets] if args.key?(:targets)
           end
         end
         
@@ -334,8 +334,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @size = args[:size] unless args[:size].nil?
-            @type = args[:type] unless args[:type].nil?
+            @size = args[:size] if args.key?(:size)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -359,8 +359,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @bytes_used = args[:bytes_used] unless args[:bytes_used].nil?
-            @service_name = args[:service_name] unless args[:service_name].nil?
+            @bytes_used = args[:bytes_used] if args.key?(:bytes_used)
+            @service_name = args[:service_name] if args.key?(:service_name)
           end
         end
       end
@@ -511,30 +511,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authorized = args[:authorized] unless args[:authorized].nil?
-          @create_in_folder_template = args[:create_in_folder_template] unless args[:create_in_folder_template].nil?
-          @create_url = args[:create_url] unless args[:create_url].nil?
-          @has_drive_wide_scope = args[:has_drive_wide_scope] unless args[:has_drive_wide_scope].nil?
-          @icons = args[:icons] unless args[:icons].nil?
-          @id = args[:id] unless args[:id].nil?
-          @installed = args[:installed] unless args[:installed].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @long_description = args[:long_description] unless args[:long_description].nil?
-          @name = args[:name] unless args[:name].nil?
-          @object_type = args[:object_type] unless args[:object_type].nil?
-          @open_url_template = args[:open_url_template] unless args[:open_url_template].nil?
-          @primary_file_extensions = args[:primary_file_extensions] unless args[:primary_file_extensions].nil?
-          @primary_mime_types = args[:primary_mime_types] unless args[:primary_mime_types].nil?
-          @product_id = args[:product_id] unless args[:product_id].nil?
-          @product_url = args[:product_url] unless args[:product_url].nil?
-          @secondary_file_extensions = args[:secondary_file_extensions] unless args[:secondary_file_extensions].nil?
-          @secondary_mime_types = args[:secondary_mime_types] unless args[:secondary_mime_types].nil?
-          @short_description = args[:short_description] unless args[:short_description].nil?
-          @supports_create = args[:supports_create] unless args[:supports_create].nil?
-          @supports_import = args[:supports_import] unless args[:supports_import].nil?
-          @supports_multi_open = args[:supports_multi_open] unless args[:supports_multi_open].nil?
-          @supports_offline_create = args[:supports_offline_create] unless args[:supports_offline_create].nil?
-          @use_by_default = args[:use_by_default] unless args[:use_by_default].nil?
+          @authorized = args[:authorized] if args.key?(:authorized)
+          @create_in_folder_template = args[:create_in_folder_template] if args.key?(:create_in_folder_template)
+          @create_url = args[:create_url] if args.key?(:create_url)
+          @has_drive_wide_scope = args[:has_drive_wide_scope] if args.key?(:has_drive_wide_scope)
+          @icons = args[:icons] if args.key?(:icons)
+          @id = args[:id] if args.key?(:id)
+          @installed = args[:installed] if args.key?(:installed)
+          @kind = args[:kind] if args.key?(:kind)
+          @long_description = args[:long_description] if args.key?(:long_description)
+          @name = args[:name] if args.key?(:name)
+          @object_type = args[:object_type] if args.key?(:object_type)
+          @open_url_template = args[:open_url_template] if args.key?(:open_url_template)
+          @primary_file_extensions = args[:primary_file_extensions] if args.key?(:primary_file_extensions)
+          @primary_mime_types = args[:primary_mime_types] if args.key?(:primary_mime_types)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_url = args[:product_url] if args.key?(:product_url)
+          @secondary_file_extensions = args[:secondary_file_extensions] if args.key?(:secondary_file_extensions)
+          @secondary_mime_types = args[:secondary_mime_types] if args.key?(:secondary_mime_types)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @supports_create = args[:supports_create] if args.key?(:supports_create)
+          @supports_import = args[:supports_import] if args.key?(:supports_import)
+          @supports_multi_open = args[:supports_multi_open] if args.key?(:supports_multi_open)
+          @supports_offline_create = args[:supports_offline_create] if args.key?(:supports_offline_create)
+          @use_by_default = args[:use_by_default] if args.key?(:use_by_default)
         end
         
         # 
@@ -565,9 +565,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @category = args[:category] unless args[:category].nil?
-            @icon_url = args[:icon_url] unless args[:icon_url].nil?
-            @size = args[:size] unless args[:size].nil?
+            @category = args[:category] if args.key?(:category)
+            @icon_url = args[:icon_url] if args.key?(:icon_url)
+            @size = args[:size] if args.key?(:size)
           end
         end
       end
@@ -609,11 +609,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_app_ids = args[:default_app_ids] unless args[:default_app_ids].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @default_app_ids = args[:default_app_ids] if args.key?(:default_app_ids)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -663,13 +663,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @file = args[:file] unless args[:file].nil?
-          @file_id = args[:file_id] unless args[:file_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @modification_date = args[:modification_date] unless args[:modification_date].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @file = args[:file] if args.key?(:file)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @modification_date = args[:modification_date] if args.key?(:modification_date)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -718,13 +718,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @largest_change_id = args[:largest_change_id] unless args[:largest_change_id].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @largest_change_id = args[:largest_change_id] if args.key?(:largest_change_id)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -793,16 +793,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @expiration = args[:expiration] unless args[:expiration].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @params = args[:params] unless args[:params].nil?
-          @payload = args[:payload] unless args[:payload].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @resource_uri = args[:resource_uri] unless args[:resource_uri].nil?
-          @token = args[:token] unless args[:token].nil?
-          @type = args[:type] unless args[:type].nil?
+          @address = args[:address] if args.key?(:address)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @params = args[:params] if args.key?(:params)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @token = args[:token] if args.key?(:token)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -846,12 +846,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -885,10 +885,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @child_link = args[:child_link] unless args[:child_link].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @child_link = args[:child_link] if args.key?(:child_link)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -985,21 +985,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anchor = args[:anchor] unless args[:anchor].nil?
-          @author = args[:author] unless args[:author].nil?
-          @comment_id = args[:comment_id] unless args[:comment_id].nil?
-          @content = args[:content] unless args[:content].nil?
-          @context = args[:context] unless args[:context].nil?
-          @created_date = args[:created_date] unless args[:created_date].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @file_id = args[:file_id] unless args[:file_id].nil?
-          @file_title = args[:file_title] unless args[:file_title].nil?
-          @html_content = args[:html_content] unless args[:html_content].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @modified_date = args[:modified_date] unless args[:modified_date].nil?
-          @replies = args[:replies] unless args[:replies].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @status = args[:status] unless args[:status].nil?
+          @anchor = args[:anchor] if args.key?(:anchor)
+          @author = args[:author] if args.key?(:author)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @content = args[:content] if args.key?(:content)
+          @context = args[:context] if args.key?(:context)
+          @created_date = args[:created_date] if args.key?(:created_date)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @file_title = args[:file_title] if args.key?(:file_title)
+          @html_content = args[:html_content] if args.key?(:html_content)
+          @kind = args[:kind] if args.key?(:kind)
+          @modified_date = args[:modified_date] if args.key?(:modified_date)
+          @replies = args[:replies] if args.key?(:replies)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
         end
         
         # The context of the file which is being commented on.
@@ -1024,8 +1024,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @type = args[:type] unless args[:type].nil?
-            @value = args[:value] unless args[:value].nil?
+            @type = args[:type] if args.key?(:type)
+            @value = args[:value] if args.key?(:value)
           end
         end
       end
@@ -1065,11 +1065,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -1136,15 +1136,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author = args[:author] unless args[:author].nil?
-          @content = args[:content] unless args[:content].nil?
-          @created_date = args[:created_date] unless args[:created_date].nil?
-          @deleted = args[:deleted] unless args[:deleted].nil?
-          @html_content = args[:html_content] unless args[:html_content].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @modified_date = args[:modified_date] unless args[:modified_date].nil?
-          @reply_id = args[:reply_id] unless args[:reply_id].nil?
-          @verb = args[:verb] unless args[:verb].nil?
+          @author = args[:author] if args.key?(:author)
+          @content = args[:content] if args.key?(:content)
+          @created_date = args[:created_date] if args.key?(:created_date)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @html_content = args[:html_content] if args.key?(:html_content)
+          @kind = args[:kind] if args.key?(:kind)
+          @modified_date = args[:modified_date] if args.key?(:modified_date)
+          @reply_id = args[:reply_id] if args.key?(:reply_id)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
@@ -1183,11 +1183,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -1529,62 +1529,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alternate_link = args[:alternate_link] unless args[:alternate_link].nil?
-          @app_data_contents = args[:app_data_contents] unless args[:app_data_contents].nil?
-          @can_comment = args[:can_comment] unless args[:can_comment].nil?
-          @copyable = args[:copyable] unless args[:copyable].nil?
-          @created_date = args[:created_date] unless args[:created_date].nil?
-          @default_open_with_link = args[:default_open_with_link] unless args[:default_open_with_link].nil?
-          @description = args[:description] unless args[:description].nil?
-          @download_url = args[:download_url] unless args[:download_url].nil?
-          @editable = args[:editable] unless args[:editable].nil?
-          @embed_link = args[:embed_link] unless args[:embed_link].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @explicitly_trashed = args[:explicitly_trashed] unless args[:explicitly_trashed].nil?
-          @export_links = args[:export_links] unless args[:export_links].nil?
-          @file_extension = args[:file_extension] unless args[:file_extension].nil?
-          @file_size = args[:file_size] unless args[:file_size].nil?
-          @folder_color_rgb = args[:folder_color_rgb] unless args[:folder_color_rgb].nil?
-          @full_file_extension = args[:full_file_extension] unless args[:full_file_extension].nil?
-          @head_revision_id = args[:head_revision_id] unless args[:head_revision_id].nil?
-          @icon_link = args[:icon_link] unless args[:icon_link].nil?
-          @id = args[:id] unless args[:id].nil?
-          @image_media_metadata = args[:image_media_metadata] unless args[:image_media_metadata].nil?
-          @indexable_text = args[:indexable_text] unless args[:indexable_text].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @last_modifying_user = args[:last_modifying_user] unless args[:last_modifying_user].nil?
-          @last_modifying_user_name = args[:last_modifying_user_name] unless args[:last_modifying_user_name].nil?
-          @last_viewed_by_me_date = args[:last_viewed_by_me_date] unless args[:last_viewed_by_me_date].nil?
-          @marked_viewed_by_me_date = args[:marked_viewed_by_me_date] unless args[:marked_viewed_by_me_date].nil?
-          @md5_checksum = args[:md5_checksum] unless args[:md5_checksum].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @modified_by_me_date = args[:modified_by_me_date] unless args[:modified_by_me_date].nil?
-          @modified_date = args[:modified_date] unless args[:modified_date].nil?
-          @open_with_links = args[:open_with_links] unless args[:open_with_links].nil?
-          @original_filename = args[:original_filename] unless args[:original_filename].nil?
-          @owned_by_me = args[:owned_by_me] unless args[:owned_by_me].nil?
-          @owner_names = args[:owner_names] unless args[:owner_names].nil?
-          @owners = args[:owners] unless args[:owners].nil?
-          @parents = args[:parents] unless args[:parents].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @properties = args[:properties] unless args[:properties].nil?
-          @quota_bytes_used = args[:quota_bytes_used] unless args[:quota_bytes_used].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @shareable = args[:shareable] unless args[:shareable].nil?
-          @shared = args[:shared] unless args[:shared].nil?
-          @shared_with_me_date = args[:shared_with_me_date] unless args[:shared_with_me_date].nil?
-          @sharing_user = args[:sharing_user] unless args[:sharing_user].nil?
-          @spaces = args[:spaces] unless args[:spaces].nil?
-          @thumbnail = args[:thumbnail] unless args[:thumbnail].nil?
-          @thumbnail_link = args[:thumbnail_link] unless args[:thumbnail_link].nil?
-          @title = args[:title] unless args[:title].nil?
-          @user_permission = args[:user_permission] unless args[:user_permission].nil?
-          @version = args[:version] unless args[:version].nil?
-          @video_media_metadata = args[:video_media_metadata] unless args[:video_media_metadata].nil?
-          @web_content_link = args[:web_content_link] unless args[:web_content_link].nil?
-          @web_view_link = args[:web_view_link] unless args[:web_view_link].nil?
-          @writers_can_share = args[:writers_can_share] unless args[:writers_can_share].nil?
+          @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
+          @app_data_contents = args[:app_data_contents] if args.key?(:app_data_contents)
+          @can_comment = args[:can_comment] if args.key?(:can_comment)
+          @copyable = args[:copyable] if args.key?(:copyable)
+          @created_date = args[:created_date] if args.key?(:created_date)
+          @default_open_with_link = args[:default_open_with_link] if args.key?(:default_open_with_link)
+          @description = args[:description] if args.key?(:description)
+          @download_url = args[:download_url] if args.key?(:download_url)
+          @editable = args[:editable] if args.key?(:editable)
+          @embed_link = args[:embed_link] if args.key?(:embed_link)
+          @etag = args[:etag] if args.key?(:etag)
+          @explicitly_trashed = args[:explicitly_trashed] if args.key?(:explicitly_trashed)
+          @export_links = args[:export_links] if args.key?(:export_links)
+          @file_extension = args[:file_extension] if args.key?(:file_extension)
+          @file_size = args[:file_size] if args.key?(:file_size)
+          @folder_color_rgb = args[:folder_color_rgb] if args.key?(:folder_color_rgb)
+          @full_file_extension = args[:full_file_extension] if args.key?(:full_file_extension)
+          @head_revision_id = args[:head_revision_id] if args.key?(:head_revision_id)
+          @icon_link = args[:icon_link] if args.key?(:icon_link)
+          @id = args[:id] if args.key?(:id)
+          @image_media_metadata = args[:image_media_metadata] if args.key?(:image_media_metadata)
+          @indexable_text = args[:indexable_text] if args.key?(:indexable_text)
+          @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
+          @last_modifying_user_name = args[:last_modifying_user_name] if args.key?(:last_modifying_user_name)
+          @last_viewed_by_me_date = args[:last_viewed_by_me_date] if args.key?(:last_viewed_by_me_date)
+          @marked_viewed_by_me_date = args[:marked_viewed_by_me_date] if args.key?(:marked_viewed_by_me_date)
+          @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @modified_by_me_date = args[:modified_by_me_date] if args.key?(:modified_by_me_date)
+          @modified_date = args[:modified_date] if args.key?(:modified_date)
+          @open_with_links = args[:open_with_links] if args.key?(:open_with_links)
+          @original_filename = args[:original_filename] if args.key?(:original_filename)
+          @owned_by_me = args[:owned_by_me] if args.key?(:owned_by_me)
+          @owner_names = args[:owner_names] if args.key?(:owner_names)
+          @owners = args[:owners] if args.key?(:owners)
+          @parents = args[:parents] if args.key?(:parents)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @properties = args[:properties] if args.key?(:properties)
+          @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @shareable = args[:shareable] if args.key?(:shareable)
+          @shared = args[:shared] if args.key?(:shared)
+          @shared_with_me_date = args[:shared_with_me_date] if args.key?(:shared_with_me_date)
+          @sharing_user = args[:sharing_user] if args.key?(:sharing_user)
+          @spaces = args[:spaces] if args.key?(:spaces)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @thumbnail_link = args[:thumbnail_link] if args.key?(:thumbnail_link)
+          @title = args[:title] if args.key?(:title)
+          @user_permission = args[:user_permission] if args.key?(:user_permission)
+          @version = args[:version] if args.key?(:version)
+          @video_media_metadata = args[:video_media_metadata] if args.key?(:video_media_metadata)
+          @web_content_link = args[:web_content_link] if args.key?(:web_content_link)
+          @web_view_link = args[:web_view_link] if args.key?(:web_view_link)
+          @writers_can_share = args[:writers_can_share] if args.key?(:writers_can_share)
         end
         
         # Metadata about image media. This will only be present for image types, and its
@@ -1705,27 +1705,27 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @aperture = args[:aperture] unless args[:aperture].nil?
-            @camera_make = args[:camera_make] unless args[:camera_make].nil?
-            @camera_model = args[:camera_model] unless args[:camera_model].nil?
-            @color_space = args[:color_space] unless args[:color_space].nil?
-            @date = args[:date] unless args[:date].nil?
-            @exposure_bias = args[:exposure_bias] unless args[:exposure_bias].nil?
-            @exposure_mode = args[:exposure_mode] unless args[:exposure_mode].nil?
-            @exposure_time = args[:exposure_time] unless args[:exposure_time].nil?
-            @flash_used = args[:flash_used] unless args[:flash_used].nil?
-            @focal_length = args[:focal_length] unless args[:focal_length].nil?
-            @height = args[:height] unless args[:height].nil?
-            @iso_speed = args[:iso_speed] unless args[:iso_speed].nil?
-            @lens = args[:lens] unless args[:lens].nil?
-            @location = args[:location] unless args[:location].nil?
-            @max_aperture_value = args[:max_aperture_value] unless args[:max_aperture_value].nil?
-            @metering_mode = args[:metering_mode] unless args[:metering_mode].nil?
-            @rotation = args[:rotation] unless args[:rotation].nil?
-            @sensor = args[:sensor] unless args[:sensor].nil?
-            @subject_distance = args[:subject_distance] unless args[:subject_distance].nil?
-            @white_balance = args[:white_balance] unless args[:white_balance].nil?
-            @width = args[:width] unless args[:width].nil?
+            @aperture = args[:aperture] if args.key?(:aperture)
+            @camera_make = args[:camera_make] if args.key?(:camera_make)
+            @camera_model = args[:camera_model] if args.key?(:camera_model)
+            @color_space = args[:color_space] if args.key?(:color_space)
+            @date = args[:date] if args.key?(:date)
+            @exposure_bias = args[:exposure_bias] if args.key?(:exposure_bias)
+            @exposure_mode = args[:exposure_mode] if args.key?(:exposure_mode)
+            @exposure_time = args[:exposure_time] if args.key?(:exposure_time)
+            @flash_used = args[:flash_used] if args.key?(:flash_used)
+            @focal_length = args[:focal_length] if args.key?(:focal_length)
+            @height = args[:height] if args.key?(:height)
+            @iso_speed = args[:iso_speed] if args.key?(:iso_speed)
+            @lens = args[:lens] if args.key?(:lens)
+            @location = args[:location] if args.key?(:location)
+            @max_aperture_value = args[:max_aperture_value] if args.key?(:max_aperture_value)
+            @metering_mode = args[:metering_mode] if args.key?(:metering_mode)
+            @rotation = args[:rotation] if args.key?(:rotation)
+            @sensor = args[:sensor] if args.key?(:sensor)
+            @subject_distance = args[:subject_distance] if args.key?(:subject_distance)
+            @white_balance = args[:white_balance] if args.key?(:white_balance)
+            @width = args[:width] if args.key?(:width)
           end
           
           # Geographic location information stored in the image.
@@ -1753,9 +1753,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @altitude = args[:altitude] unless args[:altitude].nil?
-              @latitude = args[:latitude] unless args[:latitude].nil?
-              @longitude = args[:longitude] unless args[:longitude].nil?
+              @altitude = args[:altitude] if args.key?(:altitude)
+              @latitude = args[:latitude] if args.key?(:latitude)
+              @longitude = args[:longitude] if args.key?(:longitude)
             end
           end
         end
@@ -1775,7 +1775,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @text = args[:text] unless args[:text].nil?
+            @text = args[:text] if args.key?(:text)
           end
         end
         
@@ -1821,11 +1821,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @hidden = args[:hidden] unless args[:hidden].nil?
-            @restricted = args[:restricted] unless args[:restricted].nil?
-            @starred = args[:starred] unless args[:starred].nil?
-            @trashed = args[:trashed] unless args[:trashed].nil?
-            @viewed = args[:viewed] unless args[:viewed].nil?
+            @hidden = args[:hidden] if args.key?(:hidden)
+            @restricted = args[:restricted] if args.key?(:restricted)
+            @starred = args[:starred] if args.key?(:starred)
+            @trashed = args[:trashed] if args.key?(:trashed)
+            @viewed = args[:viewed] if args.key?(:viewed)
           end
         end
         
@@ -1851,8 +1851,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @image = args[:image] unless args[:image].nil?
-            @mime_type = args[:mime_type] unless args[:mime_type].nil?
+            @image = args[:image] if args.key?(:image)
+            @mime_type = args[:mime_type] if args.key?(:mime_type)
           end
         end
         
@@ -1881,9 +1881,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @duration_millis = args[:duration_millis] unless args[:duration_millis].nil?
-            @height = args[:height] unless args[:height].nil?
-            @width = args[:width] unless args[:width].nil?
+            @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+            @height = args[:height] if args.key?(:height)
+            @width = args[:width] if args.key?(:width)
           end
         end
       end
@@ -1928,12 +1928,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -1962,9 +1962,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ids = args[:ids] unless args[:ids].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @space = args[:space] unless args[:space].nil?
+          @ids = args[:ids] if args.key?(:ids)
+          @kind = args[:kind] if args.key?(:kind)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -1998,10 +1998,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2041,11 +2041,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @is_root = args[:is_root] unless args[:is_root].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @id = args[:id] if args.key?(:id)
+          @is_root = args[:is_root] if args.key?(:is_root)
+          @kind = args[:kind] if args.key?(:kind)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2143,20 +2143,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_roles = args[:additional_roles] unless args[:additional_roles].nil?
-          @auth_key = args[:auth_key] unless args[:auth_key].nil?
-          @domain = args[:domain] unless args[:domain].nil?
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @photo_link = args[:photo_link] unless args[:photo_link].nil?
-          @role = args[:role] unless args[:role].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @value = args[:value] unless args[:value].nil?
-          @with_link = args[:with_link] unless args[:with_link].nil?
+          @additional_roles = args[:additional_roles] if args.key?(:additional_roles)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
+          @domain = args[:domain] if args.key?(:domain)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @photo_link = args[:photo_link] if args.key?(:photo_link)
+          @role = args[:role] if args.key?(:role)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+          @with_link = args[:with_link] if args.key?(:with_link)
         end
       end
       
@@ -2180,8 +2180,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -2215,10 +2215,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2269,12 +2269,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @key = args[:key] unless args[:key].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @value = args[:value] unless args[:value].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @key = args[:key] if args.key?(:key)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @value = args[:value] if args.key?(:value)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -2309,10 +2309,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2430,24 +2430,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @download_url = args[:download_url] unless args[:download_url].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @export_links = args[:export_links] unless args[:export_links].nil?
-          @file_size = args[:file_size] unless args[:file_size].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_modifying_user = args[:last_modifying_user] unless args[:last_modifying_user].nil?
-          @last_modifying_user_name = args[:last_modifying_user_name] unless args[:last_modifying_user_name].nil?
-          @md5_checksum = args[:md5_checksum] unless args[:md5_checksum].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @modified_date = args[:modified_date] unless args[:modified_date].nil?
-          @original_filename = args[:original_filename] unless args[:original_filename].nil?
-          @pinned = args[:pinned] unless args[:pinned].nil?
-          @publish_auto = args[:publish_auto] unless args[:publish_auto].nil?
-          @published = args[:published] unless args[:published].nil?
-          @published_link = args[:published_link] unless args[:published_link].nil?
-          @published_outside_domain = args[:published_outside_domain] unless args[:published_outside_domain].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @download_url = args[:download_url] if args.key?(:download_url)
+          @etag = args[:etag] if args.key?(:etag)
+          @export_links = args[:export_links] if args.key?(:export_links)
+          @file_size = args[:file_size] if args.key?(:file_size)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
+          @last_modifying_user_name = args[:last_modifying_user_name] if args.key?(:last_modifying_user_name)
+          @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @modified_date = args[:modified_date] if args.key?(:modified_date)
+          @original_filename = args[:original_filename] if args.key?(:original_filename)
+          @pinned = args[:pinned] if args.key?(:pinned)
+          @publish_auto = args[:publish_auto] if args.key?(:publish_auto)
+          @published = args[:published] if args.key?(:published)
+          @published_link = args[:published_link] if args.key?(:published_link)
+          @published_outside_domain = args[:published_outside_domain] if args.key?(:published_outside_domain)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2481,10 +2481,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -2530,12 +2530,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @is_authenticated_user = args[:is_authenticated_user] unless args[:is_authenticated_user].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
-          @picture = args[:picture] unless args[:picture].nil?
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @is_authenticated_user = args[:is_authenticated_user] if args.key?(:is_authenticated_user)
+          @kind = args[:kind] if args.key?(:kind)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
+          @picture = args[:picture] if args.key?(:picture)
         end
         
         # The user's profile picture.
@@ -2553,7 +2553,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @url = args[:url] unless args[:url].nil?
+            @url = args[:url] if args.key?(:url)
           end
         end
       end

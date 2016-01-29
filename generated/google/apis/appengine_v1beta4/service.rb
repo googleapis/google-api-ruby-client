@@ -53,8 +53,9 @@ module Google
         # @param [Boolean] ensure_resources_exist
         #   Certain resources associated with an application are created on-demand.
         #   Controls whether these resources should be created when performing the `GET`
-        #   operation. If specified and any resources cloud not be created, the request
-        #   will fail with an error code.
+        #   operation. If specified and any resources could not be created, the request
+        #   will fail with an error code. Additionally, this parameter can cause the
+        #   request to take longer to complete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

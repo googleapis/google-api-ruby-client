@@ -109,19 +109,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_type = args[:achievement_type] unless args[:achievement_type].nil?
-          @description = args[:description] unless args[:description].nil?
-          @experience_points = args[:experience_points] unless args[:experience_points].nil?
-          @formatted_total_steps = args[:formatted_total_steps] unless args[:formatted_total_steps].nil?
-          @id = args[:id] unless args[:id].nil?
-          @initial_state = args[:initial_state] unless args[:initial_state].nil?
-          @is_revealed_icon_url_default = args[:is_revealed_icon_url_default] unless args[:is_revealed_icon_url_default].nil?
-          @is_unlocked_icon_url_default = args[:is_unlocked_icon_url_default] unless args[:is_unlocked_icon_url_default].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @revealed_icon_url = args[:revealed_icon_url] unless args[:revealed_icon_url].nil?
-          @total_steps = args[:total_steps] unless args[:total_steps].nil?
-          @unlocked_icon_url = args[:unlocked_icon_url] unless args[:unlocked_icon_url].nil?
+          @achievement_type = args[:achievement_type] if args.key?(:achievement_type)
+          @description = args[:description] if args.key?(:description)
+          @experience_points = args[:experience_points] if args.key?(:experience_points)
+          @formatted_total_steps = args[:formatted_total_steps] if args.key?(:formatted_total_steps)
+          @id = args[:id] if args.key?(:id)
+          @initial_state = args[:initial_state] if args.key?(:initial_state)
+          @is_revealed_icon_url_default = args[:is_revealed_icon_url_default] if args.key?(:is_revealed_icon_url_default)
+          @is_unlocked_icon_url_default = args[:is_unlocked_icon_url_default] if args.key?(:is_unlocked_icon_url_default)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @revealed_icon_url = args[:revealed_icon_url] if args.key?(:revealed_icon_url)
+          @total_steps = args[:total_steps] if args.key?(:total_steps)
+          @unlocked_icon_url = args[:unlocked_icon_url] if args.key?(:unlocked_icon_url)
         end
       end
       
@@ -151,9 +151,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -185,9 +185,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_steps = args[:current_steps] unless args[:current_steps].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @newly_unlocked = args[:newly_unlocked] unless args[:newly_unlocked].nil?
+          @current_steps = args[:current_steps] if args.key?(:current_steps)
+          @kind = args[:kind] if args.key?(:kind)
+          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
         end
       end
       
@@ -216,8 +216,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_state = args[:current_state] unless args[:current_state].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -249,9 +249,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_steps = args[:current_steps] unless args[:current_steps].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @newly_unlocked = args[:newly_unlocked] unless args[:newly_unlocked].nil?
+          @current_steps = args[:current_steps] if args.key?(:current_steps)
+          @kind = args[:kind] if args.key?(:kind)
+          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
         end
       end
       
@@ -278,8 +278,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @newly_unlocked = args[:newly_unlocked] unless args[:newly_unlocked].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
         end
       end
       
@@ -304,8 +304,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @updates = args[:updates] unless args[:updates].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @updates = args[:updates] if args.key?(:updates)
         end
       end
       
@@ -330,8 +330,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @updated_achievements = args[:updated_achievements] unless args[:updated_achievements].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @updated_achievements = args[:updated_achievements] if args.key?(:updated_achievements)
         end
       end
       
@@ -377,11 +377,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_id = args[:achievement_id] unless args[:achievement_id].nil?
-          @increment_payload = args[:increment_payload] unless args[:increment_payload].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @set_steps_at_least_payload = args[:set_steps_at_least_payload] unless args[:set_steps_at_least_payload].nil?
-          @update_type = args[:update_type] unless args[:update_type].nil?
+          @achievement_id = args[:achievement_id] if args.key?(:achievement_id)
+          @increment_payload = args[:increment_payload] if args.key?(:increment_payload)
+          @kind = args[:kind] if args.key?(:kind)
+          @set_steps_at_least_payload = args[:set_steps_at_least_payload] if args.key?(:set_steps_at_least_payload)
+          @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
       
@@ -433,12 +433,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_id = args[:achievement_id] unless args[:achievement_id].nil?
-          @current_state = args[:current_state] unless args[:current_state].nil?
-          @current_steps = args[:current_steps] unless args[:current_steps].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @newly_unlocked = args[:newly_unlocked] unless args[:newly_unlocked].nil?
-          @update_occurred = args[:update_occurred] unless args[:update_occurred].nil?
+          @achievement_id = args[:achievement_id] if args.key?(:achievement_id)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @current_steps = args[:current_steps] if args.key?(:current_steps)
+          @kind = args[:kind] if args.key?(:kind)
+          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
+          @update_occurred = args[:update_occurred] if args.key?(:update_occurred)
         end
       end
       
@@ -478,11 +478,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max = args[:max] unless args[:max].nil?
-          @min = args[:min] unless args[:min].nil?
-          @sum = args[:sum] unless args[:sum].nil?
+          @count = args[:count] if args.key?(:count)
+          @kind = args[:kind] if args.key?(:kind)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @sum = args[:sum] if args.key?(:sum)
         end
       end
       
@@ -512,9 +512,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @avatar_image_url = args[:avatar_image_url] unless args[:avatar_image_url].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @avatar_image_url = args[:avatar_image_url] if args.key?(:avatar_image_url)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -597,19 +597,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_count = args[:achievement_count] unless args[:achievement_count].nil?
-          @assets = args[:assets] unless args[:assets].nil?
-          @author = args[:author] unless args[:author].nil?
-          @category = args[:category] unless args[:category].nil?
-          @description = args[:description] unless args[:description].nil?
-          @enabled_features = args[:enabled_features] unless args[:enabled_features].nil?
-          @id = args[:id] unless args[:id].nil?
-          @instances = args[:instances] unless args[:instances].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_updated_timestamp = args[:last_updated_timestamp] unless args[:last_updated_timestamp].nil?
-          @leaderboard_count = args[:leaderboard_count] unless args[:leaderboard_count].nil?
-          @name = args[:name] unless args[:name].nil?
-          @theme_color = args[:theme_color] unless args[:theme_color].nil?
+          @achievement_count = args[:achievement_count] if args.key?(:achievement_count)
+          @assets = args[:assets] if args.key?(:assets)
+          @author = args[:author] if args.key?(:author)
+          @category = args[:category] if args.key?(:category)
+          @description = args[:description] if args.key?(:description)
+          @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
+          @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
+          @leaderboard_count = args[:leaderboard_count] if args.key?(:leaderboard_count)
+          @name = args[:name] if args.key?(:name)
+          @theme_color = args[:theme_color] if args.key?(:theme_color)
         end
       end
       
@@ -639,9 +639,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @primary = args[:primary] unless args[:primary].nil?
-          @secondary = args[:secondary] unless args[:secondary].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @primary = args[:primary] if args.key?(:primary)
+          @secondary = args[:secondary] if args.key?(:secondary)
         end
       end
       
@@ -667,8 +667,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @player_id = args[:player_id] unless args[:player_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @player_id = args[:player_id] if args.key?(:player_id)
         end
       end
       
@@ -698,9 +698,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @category = args[:category] unless args[:category].nil?
-          @experience_points = args[:experience_points] unless args[:experience_points].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @category = args[:category] if args.key?(:category)
+          @experience_points = args[:experience_points] if args.key?(:experience_points)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -730,9 +730,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -773,9 +773,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @failure_cause = args[:failure_cause] unless args[:failure_cause].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @range = args[:range] unless args[:range].nil?
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @kind = args[:kind] if args.key?(:kind)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -800,8 +800,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @child_id = args[:child_id] unless args[:child_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @child_id = args[:child_id] if args.key?(:child_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -862,14 +862,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @child_events = args[:child_events] unless args[:child_events].nil?
-          @description = args[:description] unless args[:description].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @id = args[:id] unless args[:id].nil?
-          @image_url = args[:image_url] unless args[:image_url].nil?
-          @is_default_image_url = args[:is_default_image_url] unless args[:is_default_image_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @child_events = args[:child_events] if args.key?(:child_events)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @is_default_image_url = args[:is_default_image_url] if args.key?(:is_default_image_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -899,9 +899,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -932,9 +932,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @period_end_millis = args[:period_end_millis] unless args[:period_end_millis].nil?
-          @period_start_millis = args[:period_start_millis] unless args[:period_start_millis].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @period_end_millis = args[:period_end_millis] if args.key?(:period_end_millis)
+          @period_start_millis = args[:period_start_millis] if args.key?(:period_start_millis)
         end
       end
       
@@ -964,9 +964,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @time_period = args[:time_period] unless args[:time_period].nil?
-          @updates = args[:updates] unless args[:updates].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @time_period = args[:time_period] if args.key?(:time_period)
+          @updates = args[:updates] if args.key?(:updates)
         end
       end
       
@@ -1000,9 +1000,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @failure_cause = args[:failure_cause] unless args[:failure_cause].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1038,10 +1038,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_time_millis = args[:current_time_millis] unless args[:current_time_millis].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @request_id = args[:request_id] unless args[:request_id].nil?
-          @time_periods = args[:time_periods] unless args[:time_periods].nil?
+          @current_time_millis = args[:current_time_millis] if args.key?(:current_time_millis)
+          @kind = args[:kind] if args.key?(:kind)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @time_periods = args[:time_periods] if args.key?(:time_periods)
         end
       end
       
@@ -1071,9 +1071,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @definition_id = args[:definition_id] unless args[:definition_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @update_count = args[:update_count] unless args[:update_count].nil?
+          @definition_id = args[:definition_id] if args.key?(:definition_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @update_count = args[:update_count] if args.key?(:update_count)
         end
       end
       
@@ -1108,10 +1108,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @batch_failures = args[:batch_failures] unless args[:batch_failures].nil?
-          @event_failures = args[:event_failures] unless args[:event_failures].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @player_events = args[:player_events] unless args[:player_events].nil?
+          @batch_failures = args[:batch_failures] if args.key?(:batch_failures)
+          @event_failures = args[:event_failures] if args.key?(:event_failures)
+          @kind = args[:kind] if args.key?(:kind)
+          @player_events = args[:player_events] if args.key?(:player_events)
         end
       end
       
@@ -1141,9 +1141,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @request_id = args[:request_id] unless args[:request_id].nil?
-          @steps = args[:steps] unless args[:steps].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @steps = args[:steps] if args.key?(:steps)
         end
       end
       
@@ -1168,8 +1168,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @steps = args[:steps] unless args[:steps].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @steps = args[:steps] if args.key?(:steps)
         end
       end
       
@@ -1209,11 +1209,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @height = args[:height] unless args[:height].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @url = args[:url] unless args[:url].nil?
-          @width = args[:width] unless args[:width].nil?
+          @height = args[:height] if args.key?(:height)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @url = args[:url] if args.key?(:url)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -1279,15 +1279,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acquisition_uri = args[:acquisition_uri] unless args[:acquisition_uri].nil?
-          @android_instance = args[:android_instance] unless args[:android_instance].nil?
-          @ios_instance = args[:ios_instance] unless args[:ios_instance].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @platform_type = args[:platform_type] unless args[:platform_type].nil?
-          @realtime_play = args[:realtime_play] unless args[:realtime_play].nil?
-          @turn_based_play = args[:turn_based_play] unless args[:turn_based_play].nil?
-          @web_instance = args[:web_instance] unless args[:web_instance].nil?
+          @acquisition_uri = args[:acquisition_uri] if args.key?(:acquisition_uri)
+          @android_instance = args[:android_instance] if args.key?(:android_instance)
+          @ios_instance = args[:ios_instance] if args.key?(:ios_instance)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @realtime_play = args[:realtime_play] if args.key?(:realtime_play)
+          @turn_based_play = args[:turn_based_play] if args.key?(:turn_based_play)
+          @web_instance = args[:web_instance] if args.key?(:web_instance)
         end
       end
       
@@ -1324,10 +1324,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_piracy_check = args[:enable_piracy_check] unless args[:enable_piracy_check].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @package_name = args[:package_name] unless args[:package_name].nil?
-          @preferred = args[:preferred] unless args[:preferred].nil?
+          @enable_piracy_check = args[:enable_piracy_check] if args.key?(:enable_piracy_check)
+          @kind = args[:kind] if args.key?(:kind)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @preferred = args[:preferred] if args.key?(:preferred)
         end
       end
       
@@ -1383,13 +1383,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bundle_identifier = args[:bundle_identifier] unless args[:bundle_identifier].nil?
-          @itunes_app_id = args[:itunes_app_id] unless args[:itunes_app_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @preferred_for_ipad = args[:preferred_for_ipad] unless args[:preferred_for_ipad].nil?
-          @preferred_for_iphone = args[:preferred_for_iphone] unless args[:preferred_for_iphone].nil?
-          @support_ipad = args[:support_ipad] unless args[:support_ipad].nil?
-          @support_iphone = args[:support_iphone] unless args[:support_iphone].nil?
+          @bundle_identifier = args[:bundle_identifier] if args.key?(:bundle_identifier)
+          @itunes_app_id = args[:itunes_app_id] if args.key?(:itunes_app_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @preferred_for_ipad = args[:preferred_for_ipad] if args.key?(:preferred_for_ipad)
+          @preferred_for_iphone = args[:preferred_for_iphone] if args.key?(:preferred_for_iphone)
+          @support_ipad = args[:support_ipad] if args.key?(:support_ipad)
+          @support_iphone = args[:support_iphone] if args.key?(:support_iphone)
         end
       end
       
@@ -1420,9 +1420,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @launch_url = args[:launch_url] unless args[:launch_url].nil?
-          @preferred = args[:preferred] unless args[:preferred].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @launch_url = args[:launch_url] if args.key?(:launch_url)
+          @preferred = args[:preferred] if args.key?(:preferred)
         end
       end
       
@@ -1474,12 +1474,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @icon_url = args[:icon_url] unless args[:icon_url].nil?
-          @id = args[:id] unless args[:id].nil?
-          @is_icon_url_default = args[:is_icon_url_default] unless args[:is_icon_url_default].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @order = args[:order] unless args[:order].nil?
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @id = args[:id] if args.key?(:id)
+          @is_icon_url_default = args[:is_icon_url_default] if args.key?(:is_icon_url_default)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @order = args[:order] if args.key?(:order)
         end
       end
       
@@ -1545,15 +1545,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @formatted_score = args[:formatted_score] unless args[:formatted_score].nil?
-          @formatted_score_rank = args[:formatted_score_rank] unless args[:formatted_score_rank].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @player = args[:player] unless args[:player].nil?
-          @score_rank = args[:score_rank] unless args[:score_rank].nil?
-          @score_tag = args[:score_tag] unless args[:score_tag].nil?
-          @score_value = args[:score_value] unless args[:score_value].nil?
-          @time_span = args[:time_span] unless args[:time_span].nil?
-          @write_timestamp_millis = args[:write_timestamp_millis] unless args[:write_timestamp_millis].nil?
+          @formatted_score = args[:formatted_score] if args.key?(:formatted_score)
+          @formatted_score_rank = args[:formatted_score_rank] if args.key?(:formatted_score_rank)
+          @kind = args[:kind] if args.key?(:kind)
+          @player = args[:player] if args.key?(:player)
+          @score_rank = args[:score_rank] if args.key?(:score_rank)
+          @score_tag = args[:score_tag] if args.key?(:score_tag)
+          @score_value = args[:score_value] if args.key?(:score_value)
+          @time_span = args[:time_span] if args.key?(:time_span)
+          @write_timestamp_millis = args[:write_timestamp_millis] if args.key?(:write_timestamp_millis)
         end
       end
       
@@ -1583,9 +1583,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1625,11 +1625,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @formatted_num_scores = args[:formatted_num_scores] unless args[:formatted_num_scores].nil?
-          @formatted_rank = args[:formatted_rank] unless args[:formatted_rank].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @num_scores = args[:num_scores] unless args[:num_scores].nil?
-          @rank = args[:rank] unless args[:rank].nil?
+          @formatted_num_scores = args[:formatted_num_scores] if args.key?(:formatted_num_scores)
+          @formatted_rank = args[:formatted_rank] if args.key?(:formatted_rank)
+          @kind = args[:kind] if args.key?(:kind)
+          @num_scores = args[:num_scores] if args.key?(:num_scores)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -1674,12 +1674,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @num_scores = args[:num_scores] unless args[:num_scores].nil?
-          @player_score = args[:player_score] unless args[:player_score].nil?
-          @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @num_scores = args[:num_scores] if args.key?(:num_scores)
+          @player_score = args[:player_score] if args.key?(:player_score)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
         end
       end
       
@@ -1710,9 +1710,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_version = args[:current_version] unless args[:current_version].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @player_levels = args[:player_levels] unless args[:player_levels].nil?
+          @current_version = args[:current_version] if args.key?(:current_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @player_levels = args[:player_levels] if args.key?(:player_levels)
         end
       end
       
@@ -1770,13 +1770,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @android_network_subtype = args[:android_network_subtype] unless args[:android_network_subtype].nil?
-          @android_network_type = args[:android_network_type] unless args[:android_network_type].nil?
-          @ios_network_type = args[:ios_network_type] unless args[:ios_network_type].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @network_operator_code = args[:network_operator_code] unless args[:network_operator_code].nil?
-          @network_operator_name = args[:network_operator_name] unless args[:network_operator_name].nil?
-          @registration_latency_millis = args[:registration_latency_millis] unless args[:registration_latency_millis].nil?
+          @android_network_subtype = args[:android_network_subtype] if args.key?(:android_network_subtype)
+          @android_network_type = args[:android_network_type] if args.key?(:android_network_type)
+          @ios_network_type = args[:ios_network_type] if args.key?(:ios_network_type)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_operator_code = args[:network_operator_code] if args.key?(:network_operator_code)
+          @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
+          @registration_latency_millis = args[:registration_latency_millis] if args.key?(:registration_latency_millis)
         end
       end
       
@@ -1823,10 +1823,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @participant_id = args[:participant_id] unless args[:participant_id].nil?
-          @placing = args[:placing] unless args[:placing].nil?
-          @result = args[:result] unless args[:result].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
+          @placing = args[:placing] if args.key?(:placing)
+          @result = args[:result] if args.key?(:result)
         end
       end
       
@@ -1881,14 +1881,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bytes_received = args[:bytes_received] unless args[:bytes_received].nil?
-          @bytes_sent = args[:bytes_sent] unless args[:bytes_sent].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @num_messages_lost = args[:num_messages_lost] unless args[:num_messages_lost].nil?
-          @num_messages_received = args[:num_messages_received] unless args[:num_messages_received].nil?
-          @num_messages_sent = args[:num_messages_sent] unless args[:num_messages_sent].nil?
-          @num_send_failures = args[:num_send_failures] unless args[:num_send_failures].nil?
-          @roundtrip_latency_millis = args[:roundtrip_latency_millis] unless args[:roundtrip_latency_millis].nil?
+          @bytes_received = args[:bytes_received] if args.key?(:bytes_received)
+          @bytes_sent = args[:bytes_sent] if args.key?(:bytes_sent)
+          @kind = args[:kind] if args.key?(:kind)
+          @num_messages_lost = args[:num_messages_lost] if args.key?(:num_messages_lost)
+          @num_messages_received = args[:num_messages_received] if args.key?(:num_messages_received)
+          @num_messages_sent = args[:num_messages_sent] if args.key?(:num_messages_sent)
+          @num_send_failures = args[:num_send_failures] if args.key?(:num_send_failures)
+          @roundtrip_latency_millis = args[:roundtrip_latency_millis] if args.key?(:roundtrip_latency_millis)
         end
       end
       
@@ -1928,11 +1928,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @connected_timestamp_millis = args[:connected_timestamp_millis] unless args[:connected_timestamp_millis].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @participant_id = args[:participant_id] unless args[:participant_id].nil?
-          @reliable_channel = args[:reliable_channel] unless args[:reliable_channel].nil?
-          @unreliable_channel = args[:unreliable_channel] unless args[:unreliable_channel].nil?
+          @connected_timestamp_millis = args[:connected_timestamp_millis] if args.key?(:connected_timestamp_millis)
+          @kind = args[:kind] if args.key?(:kind)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
+          @reliable_channel = args[:reliable_channel] if args.key?(:reliable_channel)
+          @unreliable_channel = args[:unreliable_channel] if args.key?(:unreliable_channel)
         end
       end
       
@@ -1965,9 +1965,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matched = args[:auto_matched] unless args[:auto_matched].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @time_millis = args[:time_millis] unless args[:time_millis].nil?
+          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
+          @kind = args[:kind] if args.key?(:kind)
+          @time_millis = args[:time_millis] if args.key?(:time_millis)
         end
       end
       
@@ -2034,16 +2034,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @avatar_image_url = args[:avatar_image_url] unless args[:avatar_image_url].nil?
-          @banner_url_landscape = args[:banner_url_landscape] unless args[:banner_url_landscape].nil?
-          @banner_url_portrait = args[:banner_url_portrait] unless args[:banner_url_portrait].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @experience_info = args[:experience_info] unless args[:experience_info].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_played_with = args[:last_played_with] unless args[:last_played_with].nil?
-          @name = args[:name] unless args[:name].nil?
-          @player_id = args[:player_id] unless args[:player_id].nil?
-          @title = args[:title] unless args[:title].nil?
+          @avatar_image_url = args[:avatar_image_url] if args.key?(:avatar_image_url)
+          @banner_url_landscape = args[:banner_url_landscape] if args.key?(:banner_url_landscape)
+          @banner_url_portrait = args[:banner_url_portrait] if args.key?(:banner_url_portrait)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @experience_info = args[:experience_info] if args.key?(:experience_info)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
+          @name = args[:name] if args.key?(:name)
+          @player_id = args[:player_id] if args.key?(:player_id)
+          @title = args[:title] if args.key?(:title)
         end
         
         # An object representation of the individual components of the player's name.
@@ -2067,8 +2067,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @family_name = args[:family_name] unless args[:family_name].nil?
-            @given_name = args[:given_name] unless args[:given_name].nil?
+            @family_name = args[:family_name] if args.key?(:family_name)
+            @given_name = args[:given_name] if args.key?(:given_name)
           end
         end
       end
@@ -2125,13 +2125,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @achievement_state = args[:achievement_state] unless args[:achievement_state].nil?
-          @current_steps = args[:current_steps] unless args[:current_steps].nil?
-          @experience_points = args[:experience_points] unless args[:experience_points].nil?
-          @formatted_current_steps_string = args[:formatted_current_steps_string] unless args[:formatted_current_steps_string].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_updated_timestamp = args[:last_updated_timestamp] unless args[:last_updated_timestamp].nil?
+          @achievement_state = args[:achievement_state] if args.key?(:achievement_state)
+          @current_steps = args[:current_steps] if args.key?(:current_steps)
+          @experience_points = args[:experience_points] if args.key?(:experience_points)
+          @formatted_current_steps_string = args[:formatted_current_steps_string] if args.key?(:formatted_current_steps_string)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
         end
       end
       
@@ -2161,9 +2161,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2205,11 +2205,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @definition_id = args[:definition_id] unless args[:definition_id].nil?
-          @formatted_num_events = args[:formatted_num_events] unless args[:formatted_num_events].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @num_events = args[:num_events] unless args[:num_events].nil?
-          @player_id = args[:player_id] unless args[:player_id].nil?
+          @definition_id = args[:definition_id] if args.key?(:definition_id)
+          @formatted_num_events = args[:formatted_num_events] if args.key?(:formatted_num_events)
+          @kind = args[:kind] if args.key?(:kind)
+          @num_events = args[:num_events] if args.key?(:num_events)
+          @player_id = args[:player_id] if args.key?(:player_id)
         end
       end
       
@@ -2239,9 +2239,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2281,11 +2281,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_experience_points = args[:current_experience_points] unless args[:current_experience_points].nil?
-          @current_level = args[:current_level] unless args[:current_level].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_level_up_timestamp_millis = args[:last_level_up_timestamp_millis] unless args[:last_level_up_timestamp_millis].nil?
-          @next_level = args[:next_level] unless args[:next_level].nil?
+          @current_experience_points = args[:current_experience_points] if args.key?(:current_experience_points)
+          @current_level = args[:current_level] if args.key?(:current_level)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_level_up_timestamp_millis = args[:last_level_up_timestamp_millis] if args.key?(:last_level_up_timestamp_millis)
+          @next_level = args[:next_level] if args.key?(:next_level)
         end
       end
       
@@ -2351,15 +2351,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @leaderboard_id = args[:leaderboard_id] unless args[:leaderboard_id].nil?
-          @public_rank = args[:public_rank] unless args[:public_rank].nil?
-          @score_string = args[:score_string] unless args[:score_string].nil?
-          @score_tag = args[:score_tag] unless args[:score_tag].nil?
-          @score_value = args[:score_value] unless args[:score_value].nil?
-          @social_rank = args[:social_rank] unless args[:social_rank].nil?
-          @time_span = args[:time_span] unless args[:time_span].nil?
-          @write_timestamp = args[:write_timestamp] unless args[:write_timestamp].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @leaderboard_id = args[:leaderboard_id] if args.key?(:leaderboard_id)
+          @public_rank = args[:public_rank] if args.key?(:public_rank)
+          @score_string = args[:score_string] if args.key?(:score_string)
+          @score_tag = args[:score_tag] if args.key?(:score_tag)
+          @score_value = args[:score_value] if args.key?(:score_value)
+          @social_rank = args[:social_rank] if args.key?(:social_rank)
+          @time_span = args[:time_span] if args.key?(:time_span)
+          @write_timestamp = args[:write_timestamp] if args.key?(:write_timestamp)
         end
       end
       
@@ -2394,10 +2394,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @player = args[:player] unless args[:player].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @player = args[:player] if args.key?(:player)
         end
       end
       
@@ -2432,10 +2432,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @level = args[:level] unless args[:level].nil?
-          @max_experience_points = args[:max_experience_points] unless args[:max_experience_points].nil?
-          @min_experience_points = args[:min_experience_points] unless args[:min_experience_points].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @level = args[:level] if args.key?(:level)
+          @max_experience_points = args[:max_experience_points] if args.key?(:max_experience_points)
+          @min_experience_points = args[:min_experience_points] if args.key?(:min_experience_points)
         end
       end
       
@@ -2465,9 +2465,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2512,11 +2512,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @formatted_score = args[:formatted_score] unless args[:formatted_score].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @score = args[:score] unless args[:score].nil?
-          @score_tag = args[:score_tag] unless args[:score_tag].nil?
-          @time_span = args[:time_span] unless args[:time_span].nil?
+          @formatted_score = args[:formatted_score] if args.key?(:formatted_score)
+          @kind = args[:kind] if args.key?(:kind)
+          @score = args[:score] if args.key?(:score)
+          @score_tag = args[:score_tag] if args.key?(:score_tag)
+          @time_span = args[:time_span] if args.key?(:time_span)
         end
       end
       
@@ -2541,8 +2541,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @submitted_scores = args[:submitted_scores] unless args[:submitted_scores].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @submitted_scores = args[:submitted_scores] if args.key?(:submitted_scores)
         end
       end
       
@@ -2595,12 +2595,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @beaten_score_time_spans = args[:beaten_score_time_spans] unless args[:beaten_score_time_spans].nil?
-          @formatted_score = args[:formatted_score] unless args[:formatted_score].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @leaderboard_id = args[:leaderboard_id] unless args[:leaderboard_id].nil?
-          @score_tag = args[:score_tag] unless args[:score_tag].nil?
-          @unbeaten_scores = args[:unbeaten_scores] unless args[:unbeaten_scores].nil?
+          @beaten_score_time_spans = args[:beaten_score_time_spans] if args.key?(:beaten_score_time_spans)
+          @formatted_score = args[:formatted_score] if args.key?(:formatted_score)
+          @kind = args[:kind] if args.key?(:kind)
+          @leaderboard_id = args[:leaderboard_id] if args.key?(:leaderboard_id)
+          @score_tag = args[:score_tag] if args.key?(:score_tag)
+          @unbeaten_scores = args[:unbeaten_scores] if args.key?(:unbeaten_scores)
         end
       end
       
@@ -2625,8 +2625,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @scores = args[:scores] unless args[:scores].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @scores = args[:scores] if args.key?(:scores)
         end
       end
       
@@ -2665,10 +2665,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_revision = args[:client_revision] unless args[:client_revision].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @language = args[:language] unless args[:language].nil?
+          @client_revision = args[:client_revision] if args.key?(:client_revision)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @language = args[:language] if args.key?(:language)
         end
       end
       
@@ -2693,8 +2693,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ios = args[:ios] unless args[:ios].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @ios = args[:ios] if args.key?(:ios)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # A push token ID for iOS devices.
@@ -2719,8 +2719,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @apns_device_token = args[:apns_device_token] unless args[:apns_device_token].nil?
-            @apns_environment = args[:apns_environment] unless args[:apns_environment].nil?
+            @apns_device_token = args[:apns_device_token] if args.key?(:apns_device_token)
+            @apns_environment = args[:apns_environment] if args.key?(:apns_environment)
           end
         end
       end
@@ -2835,22 +2835,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @accepted_timestamp_millis = args[:accepted_timestamp_millis] unless args[:accepted_timestamp_millis].nil?
-          @application_id = args[:application_id] unless args[:application_id].nil?
-          @banner_url = args[:banner_url] unless args[:banner_url].nil?
-          @description = args[:description] unless args[:description].nil?
-          @end_timestamp_millis = args[:end_timestamp_millis] unless args[:end_timestamp_millis].nil?
-          @icon_url = args[:icon_url] unless args[:icon_url].nil?
-          @id = args[:id] unless args[:id].nil?
-          @is_default_banner_url = args[:is_default_banner_url] unless args[:is_default_banner_url].nil?
-          @is_default_icon_url = args[:is_default_icon_url] unless args[:is_default_icon_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] unless args[:last_updated_timestamp_millis].nil?
-          @milestones = args[:milestones] unless args[:milestones].nil?
-          @name = args[:name] unless args[:name].nil?
-          @notify_timestamp_millis = args[:notify_timestamp_millis] unless args[:notify_timestamp_millis].nil?
-          @start_timestamp_millis = args[:start_timestamp_millis] unless args[:start_timestamp_millis].nil?
-          @state = args[:state] unless args[:state].nil?
+          @accepted_timestamp_millis = args[:accepted_timestamp_millis] if args.key?(:accepted_timestamp_millis)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @banner_url = args[:banner_url] if args.key?(:banner_url)
+          @description = args[:description] if args.key?(:description)
+          @end_timestamp_millis = args[:end_timestamp_millis] if args.key?(:end_timestamp_millis)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @id = args[:id] if args.key?(:id)
+          @is_default_banner_url = args[:is_default_banner_url] if args.key?(:is_default_banner_url)
+          @is_default_icon_url = args[:is_default_icon_url] if args.key?(:is_default_icon_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)
+          @milestones = args[:milestones] if args.key?(:milestones)
+          @name = args[:name] if args.key?(:name)
+          @notify_timestamp_millis = args[:notify_timestamp_millis] if args.key?(:notify_timestamp_millis)
+          @start_timestamp_millis = args[:start_timestamp_millis] if args.key?(:start_timestamp_millis)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2882,9 +2882,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @formatted_value = args[:formatted_value] unless args[:formatted_value].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @value = args[:value] unless args[:value].nil?
+          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
+          @kind = args[:kind] if args.key?(:kind)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2924,11 +2924,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @completion_contribution = args[:completion_contribution] unless args[:completion_contribution].nil?
-          @current_contribution = args[:current_contribution] unless args[:current_contribution].nil?
-          @event_id = args[:event_id] unless args[:event_id].nil?
-          @initial_player_progress = args[:initial_player_progress] unless args[:initial_player_progress].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @completion_contribution = args[:completion_contribution] if args.key?(:completion_contribution)
+          @current_contribution = args[:current_contribution] if args.key?(:current_contribution)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @initial_player_progress = args[:initial_player_progress] if args.key?(:initial_player_progress)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -2958,9 +2958,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -3008,11 +3008,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @completion_reward_data = args[:completion_reward_data] unless args[:completion_reward_data].nil?
-          @criteria = args[:criteria] unless args[:criteria].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @state = args[:state] unless args[:state].nil?
+          @completion_reward_data = args[:completion_reward_data] if args.key?(:completion_reward_data)
+          @criteria = args[:criteria] if args.key?(:criteria)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3048,9 +3048,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @api_version = args[:api_version] unless args[:api_version].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @revision_status = args[:revision_status] unless args[:revision_status].nil?
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @revision_status = args[:revision_status] if args.key?(:revision_status)
         end
       end
       
@@ -3145,19 +3145,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_id = args[:application_id] unless args[:application_id].nil?
-          @auto_matching_criteria = args[:auto_matching_criteria] unless args[:auto_matching_criteria].nil?
-          @auto_matching_status = args[:auto_matching_status] unless args[:auto_matching_status].nil?
-          @creation_details = args[:creation_details] unless args[:creation_details].nil?
-          @description = args[:description] unless args[:description].nil?
-          @inviter_id = args[:inviter_id] unless args[:inviter_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_update_details = args[:last_update_details] unless args[:last_update_details].nil?
-          @participants = args[:participants] unless args[:participants].nil?
-          @room_id = args[:room_id] unless args[:room_id].nil?
-          @room_status_version = args[:room_status_version] unless args[:room_status_version].nil?
-          @status = args[:status] unless args[:status].nil?
-          @variant = args[:variant] unless args[:variant].nil?
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
+          @auto_matching_status = args[:auto_matching_status] if args.key?(:auto_matching_status)
+          @creation_details = args[:creation_details] if args.key?(:creation_details)
+          @description = args[:description] if args.key?(:description)
+          @inviter_id = args[:inviter_id] if args.key?(:inviter_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_update_details = args[:last_update_details] if args.key?(:last_update_details)
+          @participants = args[:participants] if args.key?(:participants)
+          @room_id = args[:room_id] if args.key?(:room_id)
+          @room_status_version = args[:room_status_version] if args.key?(:room_status_version)
+          @status = args[:status] if args.key?(:status)
+          @variant = args[:variant] if args.key?(:variant)
         end
       end
       
@@ -3183,8 +3183,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @wait_estimate_seconds = args[:wait_estimate_seconds] unless args[:wait_estimate_seconds].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @wait_estimate_seconds = args[:wait_estimate_seconds] if args.key?(:wait_estimate_seconds)
         end
       end
       
@@ -3223,10 +3223,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exclusive_bitmask = args[:exclusive_bitmask] unless args[:exclusive_bitmask].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max_auto_matching_players = args[:max_auto_matching_players] unless args[:max_auto_matching_players].nil?
-          @min_auto_matching_players = args[:min_auto_matching_players] unless args[:min_auto_matching_players].nil?
+          @exclusive_bitmask = args[:exclusive_bitmask] if args.key?(:exclusive_bitmask)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_auto_matching_players = args[:max_auto_matching_players] if args.key?(:max_auto_matching_players)
+          @min_auto_matching_players = args[:min_auto_matching_players] if args.key?(:min_auto_matching_players)
         end
       end
       
@@ -3251,8 +3251,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @xmpp_address = args[:xmpp_address] unless args[:xmpp_address].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @xmpp_address = args[:xmpp_address] if args.key?(:xmpp_address)
         end
       end
       
@@ -3310,14 +3310,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matching_criteria = args[:auto_matching_criteria] unless args[:auto_matching_criteria].nil?
-          @capabilities = args[:capabilities] unless args[:capabilities].nil?
-          @client_address = args[:client_address] unless args[:client_address].nil?
-          @invited_player_ids = args[:invited_player_ids] unless args[:invited_player_ids].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @network_diagnostics = args[:network_diagnostics] unless args[:network_diagnostics].nil?
-          @request_id = args[:request_id] unless args[:request_id].nil?
-          @variant = args[:variant] unless args[:variant].nil?
+          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client_address = args[:client_address] if args.key?(:client_address)
+          @invited_player_ids = args[:invited_player_ids] if args.key?(:invited_player_ids)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_diagnostics = args[:network_diagnostics] if args.key?(:network_diagnostics)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @variant = args[:variant] if args.key?(:variant)
         end
       end
       
@@ -3352,10 +3352,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @capabilities = args[:capabilities] unless args[:capabilities].nil?
-          @client_address = args[:client_address] unless args[:client_address].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @network_diagnostics = args[:network_diagnostics] unless args[:network_diagnostics].nil?
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client_address = args[:client_address] if args.key?(:client_address)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_diagnostics = args[:network_diagnostics] if args.key?(:network_diagnostics)
         end
       end
       
@@ -3420,14 +3420,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @android_network_subtype = args[:android_network_subtype] unless args[:android_network_subtype].nil?
-          @android_network_type = args[:android_network_type] unless args[:android_network_type].nil?
-          @ios_network_type = args[:ios_network_type] unless args[:ios_network_type].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @network_operator_code = args[:network_operator_code] unless args[:network_operator_code].nil?
-          @network_operator_name = args[:network_operator_name] unless args[:network_operator_name].nil?
-          @peer_session = args[:peer_session] unless args[:peer_session].nil?
-          @sockets_used = args[:sockets_used] unless args[:sockets_used].nil?
+          @android_network_subtype = args[:android_network_subtype] if args.key?(:android_network_subtype)
+          @android_network_type = args[:android_network_type] if args.key?(:android_network_type)
+          @ios_network_type = args[:ios_network_type] if args.key?(:ios_network_type)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_operator_code = args[:network_operator_code] if args.key?(:network_operator_code)
+          @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
+          @peer_session = args[:peer_session] if args.key?(:peer_session)
+          @sockets_used = args[:sockets_used] if args.key?(:sockets_used)
         end
       end
       
@@ -3478,9 +3478,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @leave_diagnostics = args[:leave_diagnostics] unless args[:leave_diagnostics].nil?
-          @reason = args[:reason] unless args[:reason].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @leave_diagnostics = args[:leave_diagnostics] if args.key?(:leave_diagnostics)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -3510,9 +3510,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -3543,9 +3543,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @modified_timestamp_millis = args[:modified_timestamp_millis] unless args[:modified_timestamp_millis].nil?
-          @participant_id = args[:participant_id] unless args[:participant_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @modified_timestamp_millis = args[:modified_timestamp_millis] if args.key?(:modified_timestamp_millis)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
         end
       end
       
@@ -3609,13 +3609,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @connection_setup_latency_millis = args[:connection_setup_latency_millis] unless args[:connection_setup_latency_millis].nil?
-          @error = args[:error] unless args[:error].nil?
-          @error_reason = args[:error_reason] unless args[:error_reason].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @participant_id = args[:participant_id] unless args[:participant_id].nil?
-          @status = args[:status] unless args[:status].nil?
-          @unreliable_roundtrip_latency_millis = args[:unreliable_roundtrip_latency_millis] unless args[:unreliable_roundtrip_latency_millis].nil?
+          @connection_setup_latency_millis = args[:connection_setup_latency_millis] if args.key?(:connection_setup_latency_millis)
+          @error = args[:error] if args.key?(:error)
+          @error_reason = args[:error_reason] if args.key?(:error_reason)
+          @kind = args[:kind] if args.key?(:kind)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
+          @status = args[:status] if args.key?(:status)
+          @unreliable_roundtrip_latency_millis = args[:unreliable_roundtrip_latency_millis] if args.key?(:unreliable_roundtrip_latency_millis)
         end
       end
       
@@ -3640,8 +3640,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @updates = args[:updates] unless args[:updates].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @updates = args[:updates] if args.key?(:updates)
         end
       end
       
@@ -3730,16 +3730,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matched = args[:auto_matched] unless args[:auto_matched].nil?
-          @auto_matched_player = args[:auto_matched_player] unless args[:auto_matched_player].nil?
-          @capabilities = args[:capabilities] unless args[:capabilities].nil?
-          @client_address = args[:client_address] unless args[:client_address].nil?
-          @connected = args[:connected] unless args[:connected].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @leave_reason = args[:leave_reason] unless args[:leave_reason].nil?
-          @player = args[:player] unless args[:player].nil?
-          @status = args[:status] unless args[:status].nil?
+          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
+          @auto_matched_player = args[:auto_matched_player] if args.key?(:auto_matched_player)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client_address = args[:client_address] if args.key?(:client_address)
+          @connected = args[:connected] if args.key?(:connected)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @leave_reason = args[:leave_reason] if args.key?(:leave_reason)
+          @player = args[:player] if args.key?(:player)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3793,12 +3793,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matching_status = args[:auto_matching_status] unless args[:auto_matching_status].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @participants = args[:participants] unless args[:participants].nil?
-          @room_id = args[:room_id] unless args[:room_id].nil?
-          @status = args[:status] unless args[:status].nil?
-          @status_version = args[:status_version] unless args[:status_version].nil?
+          @auto_matching_status = args[:auto_matching_status] if args.key?(:auto_matching_status)
+          @kind = args[:kind] if args.key?(:kind)
+          @participants = args[:participants] if args.key?(:participants)
+          @room_id = args[:room_id] if args.key?(:room_id)
+          @status = args[:status] if args.key?(:status)
+          @status_version = args[:status_version] if args.key?(:status_version)
         end
       end
       
@@ -3840,11 +3840,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @leaderboard_id = args[:leaderboard_id] unless args[:leaderboard_id].nil?
-          @score = args[:score] unless args[:score].nil?
-          @score_tag = args[:score_tag] unless args[:score_tag].nil?
-          @signature = args[:signature] unless args[:signature].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @leaderboard_id = args[:leaderboard_id] if args.key?(:leaderboard_id)
+          @score = args[:score] if args.key?(:score)
+          @score_tag = args[:score_tag] if args.key?(:score_tag)
+          @signature = args[:signature] if args.key?(:signature)
         end
       end
       
@@ -3919,17 +3919,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cover_image = args[:cover_image] unless args[:cover_image].nil?
-          @description = args[:description] unless args[:description].nil?
-          @drive_id = args[:drive_id] unless args[:drive_id].nil?
-          @duration_millis = args[:duration_millis] unless args[:duration_millis].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_modified_millis = args[:last_modified_millis] unless args[:last_modified_millis].nil?
-          @progress_value = args[:progress_value] unless args[:progress_value].nil?
-          @title = args[:title] unless args[:title].nil?
-          @type = args[:type] unless args[:type].nil?
-          @unique_name = args[:unique_name] unless args[:unique_name].nil?
+          @cover_image = args[:cover_image] if args.key?(:cover_image)
+          @description = args[:description] if args.key?(:description)
+          @drive_id = args[:drive_id] if args.key?(:drive_id)
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_modified_millis = args[:last_modified_millis] if args.key?(:last_modified_millis)
+          @progress_value = args[:progress_value] if args.key?(:progress_value)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
+          @unique_name = args[:unique_name] if args.key?(:unique_name)
         end
       end
       
@@ -3970,11 +3970,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @height = args[:height] unless args[:height].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @url = args[:url] unless args[:url].nil?
-          @width = args[:width] unless args[:width].nil?
+          @height = args[:height] if args.key?(:height)
+          @kind = args[:kind] if args.key?(:kind)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @url = args[:url] if args.key?(:url)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -4005,9 +4005,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -4046,10 +4046,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exclusive_bitmask = args[:exclusive_bitmask] unless args[:exclusive_bitmask].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max_auto_matching_players = args[:max_auto_matching_players] unless args[:max_auto_matching_players].nil?
-          @min_auto_matching_players = args[:min_auto_matching_players] unless args[:min_auto_matching_players].nil?
+          @exclusive_bitmask = args[:exclusive_bitmask] if args.key?(:exclusive_bitmask)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_auto_matching_players = args[:max_auto_matching_players] if args.key?(:max_auto_matching_players)
+          @min_auto_matching_players = args[:min_auto_matching_players] if args.key?(:min_auto_matching_players)
         end
       end
       
@@ -4191,26 +4191,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_id = args[:application_id] unless args[:application_id].nil?
-          @auto_matching_criteria = args[:auto_matching_criteria] unless args[:auto_matching_criteria].nil?
-          @creation_details = args[:creation_details] unless args[:creation_details].nil?
-          @data = args[:data] unless args[:data].nil?
-          @description = args[:description] unless args[:description].nil?
-          @inviter_id = args[:inviter_id] unless args[:inviter_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @last_update_details = args[:last_update_details] unless args[:last_update_details].nil?
-          @match_id = args[:match_id] unless args[:match_id].nil?
-          @match_number = args[:match_number] unless args[:match_number].nil?
-          @match_version = args[:match_version] unless args[:match_version].nil?
-          @participants = args[:participants] unless args[:participants].nil?
-          @pending_participant_id = args[:pending_participant_id] unless args[:pending_participant_id].nil?
-          @previous_match_data = args[:previous_match_data] unless args[:previous_match_data].nil?
-          @rematch_id = args[:rematch_id] unless args[:rematch_id].nil?
-          @results = args[:results] unless args[:results].nil?
-          @status = args[:status] unless args[:status].nil?
-          @user_match_status = args[:user_match_status] unless args[:user_match_status].nil?
-          @variant = args[:variant] unless args[:variant].nil?
-          @with_participant_id = args[:with_participant_id] unless args[:with_participant_id].nil?
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
+          @creation_details = args[:creation_details] if args.key?(:creation_details)
+          @data = args[:data] if args.key?(:data)
+          @description = args[:description] if args.key?(:description)
+          @inviter_id = args[:inviter_id] if args.key?(:inviter_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @last_update_details = args[:last_update_details] if args.key?(:last_update_details)
+          @match_id = args[:match_id] if args.key?(:match_id)
+          @match_number = args[:match_number] if args.key?(:match_number)
+          @match_version = args[:match_version] if args.key?(:match_version)
+          @participants = args[:participants] if args.key?(:participants)
+          @pending_participant_id = args[:pending_participant_id] if args.key?(:pending_participant_id)
+          @previous_match_data = args[:previous_match_data] if args.key?(:previous_match_data)
+          @rematch_id = args[:rematch_id] if args.key?(:rematch_id)
+          @results = args[:results] if args.key?(:results)
+          @status = args[:status] if args.key?(:status)
+          @user_match_status = args[:user_match_status] if args.key?(:user_match_status)
+          @variant = args[:variant] if args.key?(:variant)
+          @with_participant_id = args[:with_participant_id] if args.key?(:with_participant_id)
         end
       end
       
@@ -4253,11 +4253,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matching_criteria = args[:auto_matching_criteria] unless args[:auto_matching_criteria].nil?
-          @invited_player_ids = args[:invited_player_ids] unless args[:invited_player_ids].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @request_id = args[:request_id] unless args[:request_id].nil?
-          @variant = args[:variant] unless args[:variant].nil?
+          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
+          @invited_player_ids = args[:invited_player_ids] if args.key?(:invited_player_ids)
+          @kind = args[:kind] if args.key?(:kind)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @variant = args[:variant] if args.key?(:variant)
         end
       end
       
@@ -4290,9 +4290,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @data_available = args[:data_available] unless args[:data_available].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @data = args[:data] if args.key?(:data)
+          @data_available = args[:data_available] if args.key?(:data_available)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -4318,8 +4318,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -4349,9 +4349,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -4382,9 +4382,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @modified_timestamp_millis = args[:modified_timestamp_millis] unless args[:modified_timestamp_millis].nil?
-          @participant_id = args[:participant_id] unless args[:participant_id].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @modified_timestamp_millis = args[:modified_timestamp_millis] if args.key?(:modified_timestamp_millis)
+          @participant_id = args[:participant_id] if args.key?(:participant_id)
         end
       end
       
@@ -4445,12 +4445,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_matched = args[:auto_matched] unless args[:auto_matched].nil?
-          @auto_matched_player = args[:auto_matched_player] unless args[:auto_matched_player].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @player = args[:player] unless args[:player].nil?
-          @status = args[:status] unless args[:status].nil?
+          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
+          @auto_matched_player = args[:auto_matched_player] if args.key?(:auto_matched_player)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @player = args[:player] if args.key?(:player)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4480,9 +4480,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @previous_match = args[:previous_match] unless args[:previous_match].nil?
-          @rematch = args[:rematch] unless args[:rematch].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @previous_match = args[:previous_match] if args.key?(:previous_match)
+          @rematch = args[:rematch] if args.key?(:rematch)
         end
       end
       
@@ -4517,10 +4517,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @match_version = args[:match_version] unless args[:match_version].nil?
-          @results = args[:results] unless args[:results].nil?
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
+          @match_version = args[:match_version] if args.key?(:match_version)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -4557,10 +4557,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @more_available = args[:more_available] unless args[:more_available].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @more_available = args[:more_available] if args.key?(:more_available)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -4605,11 +4605,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @match_version = args[:match_version] unless args[:match_version].nil?
-          @pending_participant_id = args[:pending_participant_id] unless args[:pending_participant_id].nil?
-          @results = args[:results] unless args[:results].nil?
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
+          @match_version = args[:match_version] if args.key?(:match_version)
+          @pending_participant_id = args[:pending_participant_id] if args.key?(:pending_participant_id)
+          @results = args[:results] if args.key?(:results)
         end
       end
     end

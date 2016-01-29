@@ -41,7 +41,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @debuggee = args[:debuggee] unless args[:debuggee].nil?
+          @debuggee = args[:debuggee] if args.key?(:debuggee)
         end
       end
       
@@ -133,17 +133,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @project = args[:project] unless args[:project].nil?
-          @uniquifier = args[:uniquifier] unless args[:uniquifier].nil?
-          @description = args[:description] unless args[:description].nil?
-          @is_inactive = args[:is_inactive] unless args[:is_inactive].nil?
-          @agent_version = args[:agent_version] unless args[:agent_version].nil?
-          @is_disabled = args[:is_disabled] unless args[:is_disabled].nil?
-          @status = args[:status] unless args[:status].nil?
-          @source_contexts = args[:source_contexts] unless args[:source_contexts].nil?
-          @ext_source_contexts = args[:ext_source_contexts] unless args[:ext_source_contexts].nil?
-          @labels = args[:labels] unless args[:labels].nil?
+          @id = args[:id] if args.key?(:id)
+          @project = args[:project] if args.key?(:project)
+          @uniquifier = args[:uniquifier] if args.key?(:uniquifier)
+          @description = args[:description] if args.key?(:description)
+          @is_inactive = args[:is_inactive] if args.key?(:is_inactive)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
+          @status = args[:status] if args.key?(:status)
+          @source_contexts = args[:source_contexts] if args.key?(:source_contexts)
+          @ext_source_contexts = args[:ext_source_contexts] if args.key?(:ext_source_contexts)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -176,9 +176,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @is_error = args[:is_error] unless args[:is_error].nil?
-          @refers_to = args[:refers_to] unless args[:refers_to].nil?
-          @description = args[:description] unless args[:description].nil?
+          @is_error = args[:is_error] if args.key?(:is_error)
+          @refers_to = args[:refers_to] if args.key?(:refers_to)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -206,8 +206,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @format = args[:format] unless args[:format].nil?
-          @parameters = args[:parameters] unless args[:parameters].nil?
+          @format = args[:format] if args.key?(:format)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
@@ -244,10 +244,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cloud_repo = args[:cloud_repo] unless args[:cloud_repo].nil?
-          @cloud_workspace = args[:cloud_workspace] unless args[:cloud_workspace].nil?
-          @gerrit = args[:gerrit] unless args[:gerrit].nil?
-          @git = args[:git] unless args[:git].nil?
+          @cloud_repo = args[:cloud_repo] if args.key?(:cloud_repo)
+          @cloud_workspace = args[:cloud_workspace] if args.key?(:cloud_workspace)
+          @gerrit = args[:gerrit] if args.key?(:gerrit)
+          @git = args[:git] if args.key?(:git)
         end
       end
       
@@ -282,10 +282,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @repo_id = args[:repo_id] unless args[:repo_id].nil?
-          @revision_id = args[:revision_id] unless args[:revision_id].nil?
-          @alias_name = args[:alias_name] unless args[:alias_name].nil?
-          @alias_context = args[:alias_context] unless args[:alias_context].nil?
+          @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @alias_name = args[:alias_name] if args.key?(:alias_name)
+          @alias_context = args[:alias_context] if args.key?(:alias_context)
         end
       end
       
@@ -310,8 +310,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_repo_id = args[:project_repo_id] unless args[:project_repo_id].nil?
-          @uid = args[:uid] unless args[:uid].nil?
+          @project_repo_id = args[:project_repo_id] if args.key?(:project_repo_id)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -336,8 +336,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @repo_name = args[:repo_name] unless args[:repo_name].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @repo_name = args[:repo_name] if args.key?(:repo_name)
         end
       end
       
@@ -361,8 +361,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -389,8 +389,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @workspace_id = args[:workspace_id] unless args[:workspace_id].nil?
-          @snapshot_id = args[:snapshot_id] unless args[:snapshot_id].nil?
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+          @snapshot_id = args[:snapshot_id] if args.key?(:snapshot_id)
         end
       end
       
@@ -417,8 +417,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @repo_id = args[:repo_id] unless args[:repo_id].nil?
-          @name = args[:name] unless args[:name].nil?
+          @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -458,11 +458,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @host_uri = args[:host_uri] unless args[:host_uri].nil?
-          @gerrit_project = args[:gerrit_project] unless args[:gerrit_project].nil?
-          @revision_id = args[:revision_id] unless args[:revision_id].nil?
-          @alias_name = args[:alias_name] unless args[:alias_name].nil?
-          @alias_context = args[:alias_context] unless args[:alias_context].nil?
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @gerrit_project = args[:gerrit_project] if args.key?(:gerrit_project)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @alias_name = args[:alias_name] if args.key?(:alias_name)
+          @alias_context = args[:alias_context] if args.key?(:alias_context)
         end
       end
       
@@ -487,8 +487,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] unless args[:url].nil?
-          @revision_id = args[:revision_id] unless args[:revision_id].nil?
+          @url = args[:url] if args.key?(:url)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       
@@ -514,8 +514,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] unless args[:context].nil?
-          @labels = args[:labels] unless args[:labels].nil?
+          @context = args[:context] if args.key?(:context)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -538,7 +538,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @debuggee = args[:debuggee] unless args[:debuggee].nil?
+          @debuggee = args[:debuggee] if args.key?(:debuggee)
         end
       end
       
@@ -571,9 +571,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @breakpoints = args[:breakpoints] unless args[:breakpoints].nil?
-          @next_wait_token = args[:next_wait_token] unless args[:next_wait_token].nil?
-          @wait_expired = args[:wait_expired] unless args[:wait_expired].nil?
+          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
+          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
+          @wait_expired = args[:wait_expired] if args.key?(:wait_expired)
         end
       end
       
@@ -692,21 +692,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @action = args[:action] unless args[:action].nil?
-          @location = args[:location] unless args[:location].nil?
-          @condition = args[:condition] unless args[:condition].nil?
-          @expressions = args[:expressions] unless args[:expressions].nil?
-          @log_message_format = args[:log_message_format] unless args[:log_message_format].nil?
-          @log_level = args[:log_level] unless args[:log_level].nil?
-          @is_final_state = args[:is_final_state] unless args[:is_final_state].nil?
-          @create_time = args[:create_time] unless args[:create_time].nil?
-          @final_time = args[:final_time] unless args[:final_time].nil?
-          @user_email = args[:user_email] unless args[:user_email].nil?
-          @status = args[:status] unless args[:status].nil?
-          @stack_frames = args[:stack_frames] unless args[:stack_frames].nil?
-          @evaluated_expressions = args[:evaluated_expressions] unless args[:evaluated_expressions].nil?
-          @variable_table = args[:variable_table] unless args[:variable_table].nil?
+          @id = args[:id] if args.key?(:id)
+          @action = args[:action] if args.key?(:action)
+          @location = args[:location] if args.key?(:location)
+          @condition = args[:condition] if args.key?(:condition)
+          @expressions = args[:expressions] if args.key?(:expressions)
+          @log_message_format = args[:log_message_format] if args.key?(:log_message_format)
+          @log_level = args[:log_level] if args.key?(:log_level)
+          @is_final_state = args[:is_final_state] if args.key?(:is_final_state)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @final_time = args[:final_time] if args.key?(:final_time)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @status = args[:status] if args.key?(:status)
+          @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
+          @evaluated_expressions = args[:evaluated_expressions] if args.key?(:evaluated_expressions)
+          @variable_table = args[:variable_table] if args.key?(:variable_table)
         end
       end
       
@@ -730,8 +730,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @path = args[:path] unless args[:path].nil?
-          @line = args[:line] unless args[:line].nil?
+          @path = args[:path] if args.key?(:path)
+          @line = args[:line] if args.key?(:line)
         end
       end
       
@@ -767,10 +767,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] unless args[:function].nil?
-          @location = args[:location] unless args[:location].nil?
-          @arguments = args[:arguments] unless args[:arguments].nil?
-          @locals = args[:locals] unless args[:locals].nil?
+          @function = args[:function] if args.key?(:function)
+          @location = args[:location] if args.key?(:location)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @locals = args[:locals] if args.key?(:locals)
         end
       end
       
@@ -854,12 +854,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @value = args[:value] unless args[:value].nil?
-          @type = args[:type] unless args[:type].nil?
-          @members = args[:members] unless args[:members].nil?
-          @var_table_index = args[:var_table_index] unless args[:var_table_index].nil?
-          @status = args[:status] unless args[:status].nil?
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+          @type = args[:type] if args.key?(:type)
+          @members = args[:members] if args.key?(:members)
+          @var_table_index = args[:var_table_index] if args.key?(:var_table_index)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -878,7 +878,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @breakpoint = args[:breakpoint] unless args[:breakpoint].nil?
+          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
         end
       end
       
@@ -911,7 +911,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @breakpoint = args[:breakpoint] unless args[:breakpoint].nil?
+          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
         end
       end
       
@@ -930,7 +930,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @breakpoint = args[:breakpoint] unless args[:breakpoint].nil?
+          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
         end
       end
       
@@ -973,8 +973,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @breakpoints = args[:breakpoints] unless args[:breakpoints].nil?
-          @next_wait_token = args[:next_wait_token] unless args[:next_wait_token].nil?
+          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
+          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
         end
       end
       
@@ -996,7 +996,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @debuggees = args[:debuggees] unless args[:debuggees].nil?
+          @debuggees = args[:debuggees] if args.key?(:debuggees)
         end
       end
     end

@@ -64,12 +64,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @outputs = args[:outputs] unless args[:outputs].nil?
-          @report_id = args[:report_id] unless args[:report_id].nil?
-          @time_span = args[:time_span] unless args[:time_span].nil?
-          @time_updated = args[:time_updated] unless args[:time_updated].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @outputs = args[:outputs] if args.key?(:outputs)
+          @report_id = args[:report_id] if args.key?(:report_id)
+          @time_span = args[:time_span] if args.key?(:time_span)
+          @time_updated = args[:time_updated] if args.key?(:time_updated)
         end
         
         # 
@@ -97,9 +97,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @download_url = args[:download_url] unless args[:download_url].nil?
-            @format = args[:format] unless args[:format].nil?
-            @type = args[:type] unless args[:type].nil?
+            @download_url = args[:download_url] if args.key?(:download_url)
+            @format = args[:format] if args.key?(:format)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -125,8 +125,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @end_time = args[:end_time] unless args[:end_time].nil?
-            @start_time = args[:start_time] unless args[:start_time].nil?
+            @end_time = args[:end_time] if args.key?(:end_time)
+            @start_time = args[:start_time] if args.key?(:start_time)
           end
         end
       end
@@ -168,11 +168,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @status = args[:status] unless args[:status].nil?
-          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -199,8 +199,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -226,8 +226,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -266,11 +266,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_details = args[:content_details] unless args[:content_details].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
         end
         
         # 
@@ -293,8 +293,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @item_count = args[:item_count] unless args[:item_count].nil?
-            @item_type = args[:item_type] unless args[:item_type].nil?
+            @item_count = args[:item_count] if args.key?(:item_count)
+            @item_type = args[:item_type] if args.key?(:item_type)
           end
         end
         
@@ -318,8 +318,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @published_at = args[:published_at] unless args[:published_at].nil?
-            @title = args[:title] unless args[:title].nil?
+            @published_at = args[:published_at] if args.key?(:published_at)
+            @title = args[:title] if args.key?(:title)
           end
         end
       end
@@ -359,11 +359,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @group_id = args[:group_id] unless args[:group_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @resource = args[:resource] unless args[:resource].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource = args[:resource] if args.key?(:resource)
         end
         
         # 
@@ -386,8 +386,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @id = args[:id] unless args[:id].nil?
-            @kind = args[:kind] unless args[:kind].nil?
+            @id = args[:id] if args.key?(:id)
+            @kind = args[:kind] if args.key?(:kind)
           end
         end
       end
@@ -418,9 +418,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -455,10 +455,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -505,9 +505,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_headers = args[:column_headers] unless args[:column_headers].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @rows = args[:rows] unless args[:rows].nil?
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @kind = args[:kind] if args.key?(:kind)
+          @rows = args[:rows] if args.key?(:rows)
         end
         
         # 
@@ -535,9 +535,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @column_type = args[:column_type] unless args[:column_type].nil?
-            @data_type = args[:data_type] unless args[:data_type].nil?
-            @name = args[:name] unless args[:name].nil?
+            @column_type = args[:column_type] if args.key?(:column_type)
+            @data_type = args[:data_type] if args.key?(:data_type)
+            @name = args[:name] if args.key?(:name)
           end
         end
       end

@@ -112,18 +112,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @section = args[:section] unless args[:section].nil?
-          @description_heading = args[:description_heading] unless args[:description_heading].nil?
-          @description = args[:description] unless args[:description].nil?
-          @room = args[:room] unless args[:room].nil?
-          @owner_id = args[:owner_id] unless args[:owner_id].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @update_time = args[:update_time] unless args[:update_time].nil?
-          @enrollment_code = args[:enrollment_code] unless args[:enrollment_code].nil?
-          @course_state = args[:course_state] unless args[:course_state].nil?
-          @alternate_link = args[:alternate_link] unless args[:alternate_link].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @section = args[:section] if args.key?(:section)
+          @description_heading = args[:description_heading] if args.key?(:description_heading)
+          @description = args[:description] if args.key?(:description)
+          @room = args[:room] if args.key?(:room)
+          @owner_id = args[:owner_id] if args.key?(:owner_id)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @enrollment_code = args[:enrollment_code] if args.key?(:enrollment_code)
+          @course_state = args[:course_state] if args.key?(:course_state)
+          @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
         end
       end
       
@@ -165,8 +165,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @courses = args[:courses] unless args[:courses].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @courses = args[:courses] if args.key?(:courses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -198,7 +198,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alias = args[:alias] unless args[:alias].nil?
+          @alias = args[:alias] if args.key?(:alias)
         end
       end
       
@@ -223,8 +223,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aliases = args[:aliases] unless args[:aliases].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @aliases = args[:aliases] if args.key?(:aliases)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -261,10 +261,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
-          @course_id = args[:course_id] unless args[:course_id].nil?
-          @role = args[:role] unless args[:role].nil?
+          @id = args[:id] if args.key?(:id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
@@ -289,8 +289,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @invitations = args[:invitations] unless args[:invitations].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @invitations = args[:invitations] if args.key?(:invitations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -329,11 +329,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @email_address = args[:email_address] unless args[:email_address].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -363,9 +363,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @given_name = args[:given_name] unless args[:given_name].nil?
-          @family_name = args[:family_name] unless args[:family_name].nil?
-          @full_name = args[:full_name] unless args[:full_name].nil?
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
         end
       end
       
@@ -384,7 +384,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permission = args[:permission] unless args[:permission].nil?
+          @permission = args[:permission] if args.key?(:permission)
         end
       end
       
@@ -416,9 +416,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @course_id = args[:course_id] unless args[:course_id].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
-          @profile = args[:profile] unless args[:profile].nil?
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @profile = args[:profile] if args.key?(:profile)
         end
       end
       
@@ -443,8 +443,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @teachers = args[:teachers] unless args[:teachers].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @teachers = args[:teachers] if args.key?(:teachers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -476,9 +476,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @course_id = args[:course_id] unless args[:course_id].nil?
-          @user_id = args[:user_id] unless args[:user_id].nil?
-          @profile = args[:profile] unless args[:profile].nil?
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @profile = args[:profile] if args.key?(:profile)
         end
       end
       
@@ -503,8 +503,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @students = args[:students] unless args[:students].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @students = args[:students] if args.key?(:students)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

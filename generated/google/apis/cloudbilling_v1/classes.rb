@@ -55,9 +55,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @open = args[:open] unless args[:open].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
+          @name = args[:name] if args.key?(:name)
+          @open = args[:open] if args.key?(:open)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -83,8 +83,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @billing_accounts = args[:billing_accounts] unless args[:billing_accounts].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @billing_accounts = args[:billing_accounts] if args.key?(:billing_accounts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -111,8 +111,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_billing_info = args[:project_billing_info] unless args[:project_billing_info].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @project_billing_info = args[:project_billing_info] if args.key?(:project_billing_info)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -158,10 +158,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @billing_account_name = args[:billing_account_name] unless args[:billing_account_name].nil?
-          @billing_enabled = args[:billing_enabled] unless args[:billing_enabled].nil?
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @billing_account_name = args[:billing_account_name] if args.key?(:billing_account_name)
+          @billing_enabled = args[:billing_enabled] if args.key?(:billing_enabled)
         end
       end
     end

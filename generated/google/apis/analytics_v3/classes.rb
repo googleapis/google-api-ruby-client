@@ -73,14 +73,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @child_link = args[:child_link] unless args[:child_link].nil?
-          @created = args[:created] unless args[:created].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @child_link = args[:child_link] if args.key?(:child_link)
+          @created = args[:created] if args.key?(:created)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @updated = args[:updated] if args.key?(:updated)
         end
         
         # Child link for an account entry. Points to the list of web properties for this
@@ -104,8 +104,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -125,7 +125,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @effective = args[:effective] unless args[:effective].nil?
+            @effective = args[:effective] if args.key?(:effective)
           end
         end
       end
@@ -160,10 +160,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @href = args[:href] unless args[:href].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @href = args[:href] if args.key?(:href)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -224,14 +224,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -266,10 +266,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @web_properties = args[:web_properties] unless args[:web_properties].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @web_properties = args[:web_properties] if args.key?(:web_properties)
         end
       end
       
@@ -315,12 +315,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account = args[:account] unless args[:account].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @profile = args[:profile] unless args[:profile].nil?
-          @redirect_uri = args[:redirect_uri] unless args[:redirect_uri].nil?
-          @webproperty = args[:webproperty] unless args[:webproperty].nil?
+          @account = args[:account] if args.key?(:account)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile = args[:profile] if args.key?(:profile)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @webproperty = args[:webproperty] if args.key?(:webproperty)
         end
       end
       
@@ -382,14 +382,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -420,9 +420,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_tagging_enabled = args[:auto_tagging_enabled] unless args[:auto_tagging_enabled].nil?
-          @customer_id = args[:customer_id] unless args[:customer_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @auto_tagging_enabled = args[:auto_tagging_enabled] if args.key?(:auto_tagging_enabled)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -441,7 +441,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @custom_data_import_uids = args[:custom_data_import_uids] unless args[:custom_data_import_uids].nil?
+          @custom_data_import_uids = args[:custom_data_import_uids] if args.key?(:custom_data_import_uids)
         end
       end
       
@@ -470,9 +470,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] unless args[:attributes].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -512,11 +512,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attribute_names = args[:attribute_names] unless args[:attribute_names].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @attribute_names = args[:attribute_names] if args.key?(:attribute_names)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -607,21 +607,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @child_link = args[:child_link] unless args[:child_link].nil?
-          @created = args[:created] unless args[:created].nil?
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @import_behavior = args[:import_behavior] unless args[:import_behavior].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @profiles_linked = args[:profiles_linked] unless args[:profiles_linked].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @upload_type = args[:upload_type] unless args[:upload_type].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @child_link = args[:child_link] if args.key?(:child_link)
+          @created = args[:created] if args.key?(:created)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @import_behavior = args[:import_behavior] if args.key?(:import_behavior)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @profiles_linked = args[:profiles_linked] if args.key?(:profiles_linked)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
+          @upload_type = args[:upload_type] if args.key?(:upload_type)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
         # 
@@ -645,8 +645,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -671,8 +671,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -734,14 +734,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -818,18 +818,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @active = args[:active] unless args[:active].nil?
-          @created = args[:created] unless args[:created].nil?
-          @id = args[:id] unless args[:id].nil?
-          @index = args[:index] unless args[:index].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @scope = args[:scope] unless args[:scope].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @active = args[:active] if args.key?(:active)
+          @created = args[:created] if args.key?(:created)
+          @id = args[:id] if args.key?(:id)
+          @index = args[:index] if args.key?(:index)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @scope = args[:scope] if args.key?(:scope)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @updated = args[:updated] if args.key?(:updated)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
         # Parent link for the custom dimension. Points to the property to which the
@@ -853,8 +853,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -916,14 +916,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -1015,21 +1015,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @active = args[:active] unless args[:active].nil?
-          @created = args[:created] unless args[:created].nil?
-          @id = args[:id] unless args[:id].nil?
-          @index = args[:index] unless args[:index].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max_value = args[:max_value] unless args[:max_value].nil?
-          @min_value = args[:min_value] unless args[:min_value].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @scope = args[:scope] unless args[:scope].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @active = args[:active] if args.key?(:active)
+          @created = args[:created] if args.key?(:created)
+          @id = args[:id] if args.key?(:id)
+          @index = args[:index] if args.key?(:index)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @scope = args[:scope] if args.key?(:scope)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
         # Parent link for the custom metric. Points to the property to which the custom
@@ -1053,8 +1053,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -1116,14 +1116,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -1173,13 +1173,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ad_words_accounts = args[:ad_words_accounts] unless args[:ad_words_accounts].nil?
-          @entity = args[:entity] unless args[:entity].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @profile_ids = args[:profile_ids] unless args[:profile_ids].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @ad_words_accounts = args[:ad_words_accounts] if args.key?(:ad_words_accounts)
+          @entity = args[:entity] if args.key?(:entity)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @profile_ids = args[:profile_ids] if args.key?(:profile_ids)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
         
         # Web property being linked.
@@ -1197,7 +1197,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @web_property_ref = args[:web_property_ref] unless args[:web_property_ref].nil?
+            @web_property_ref = args[:web_property_ref] if args.key?(:web_property_ref)
           end
         end
       end
@@ -1253,13 +1253,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -1305,12 +1305,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @entity = args[:entity] unless args[:entity].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @user_ref = args[:user_ref] unless args[:user_ref].nil?
+          @entity = args[:entity] if args.key?(:entity)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @user_ref = args[:user_ref] if args.key?(:user_ref)
         end
         
         # Entity for this link. It can be an account, a web property, or a view (profile)
@@ -1339,9 +1339,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @account_ref = args[:account_ref] unless args[:account_ref].nil?
-            @profile_ref = args[:profile_ref] unless args[:profile_ref].nil?
-            @web_property_ref = args[:web_property_ref] unless args[:web_property_ref].nil?
+            @account_ref = args[:account_ref] if args.key?(:account_ref)
+            @profile_ref = args[:profile_ref] if args.key?(:profile_ref)
+            @web_property_ref = args[:web_property_ref] if args.key?(:web_property_ref)
           end
         end
         
@@ -1369,8 +1369,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @effective = args[:effective] unless args[:effective].nil?
-            @local = args[:local] unless args[:local].nil?
+            @effective = args[:effective] if args.key?(:effective)
+            @local = args[:local] if args.key?(:local)
           end
         end
       end
@@ -1426,13 +1426,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -1636,34 +1636,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @created = args[:created] unless args[:created].nil?
-          @description = args[:description] unless args[:description].nil?
-          @editable_in_ga_ui = args[:editable_in_ga_ui] unless args[:editable_in_ga_ui].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @equal_weighting = args[:equal_weighting] unless args[:equal_weighting].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @minimum_experiment_length_in_days = args[:minimum_experiment_length_in_days] unless args[:minimum_experiment_length_in_days].nil?
-          @name = args[:name] unless args[:name].nil?
-          @objective_metric = args[:objective_metric] unless args[:objective_metric].nil?
-          @optimization_type = args[:optimization_type] unless args[:optimization_type].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @profile_id = args[:profile_id] unless args[:profile_id].nil?
-          @reason_experiment_ended = args[:reason_experiment_ended] unless args[:reason_experiment_ended].nil?
-          @rewrite_variation_urls_as_original = args[:rewrite_variation_urls_as_original] unless args[:rewrite_variation_urls_as_original].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @serving_framework = args[:serving_framework] unless args[:serving_framework].nil?
-          @snippet = args[:snippet] unless args[:snippet].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
-          @status = args[:status] unless args[:status].nil?
-          @traffic_coverage = args[:traffic_coverage] unless args[:traffic_coverage].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @variations = args[:variations] unless args[:variations].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
-          @winner_confidence_level = args[:winner_confidence_level] unless args[:winner_confidence_level].nil?
-          @winner_found = args[:winner_found] unless args[:winner_found].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @created = args[:created] if args.key?(:created)
+          @description = args[:description] if args.key?(:description)
+          @editable_in_ga_ui = args[:editable_in_ga_ui] if args.key?(:editable_in_ga_ui)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @equal_weighting = args[:equal_weighting] if args.key?(:equal_weighting)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @minimum_experiment_length_in_days = args[:minimum_experiment_length_in_days] if args.key?(:minimum_experiment_length_in_days)
+          @name = args[:name] if args.key?(:name)
+          @objective_metric = args[:objective_metric] if args.key?(:objective_metric)
+          @optimization_type = args[:optimization_type] if args.key?(:optimization_type)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @reason_experiment_ended = args[:reason_experiment_ended] if args.key?(:reason_experiment_ended)
+          @rewrite_variation_urls_as_original = args[:rewrite_variation_urls_as_original] if args.key?(:rewrite_variation_urls_as_original)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @serving_framework = args[:serving_framework] if args.key?(:serving_framework)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
+          @traffic_coverage = args[:traffic_coverage] if args.key?(:traffic_coverage)
+          @updated = args[:updated] if args.key?(:updated)
+          @variations = args[:variations] if args.key?(:variations)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+          @winner_confidence_level = args[:winner_confidence_level] if args.key?(:winner_confidence_level)
+          @winner_found = args[:winner_found] if args.key?(:winner_found)
         end
         
         # Parent link for an experiment. Points to the view (profile) to which this
@@ -1688,8 +1688,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -1735,11 +1735,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @name = args[:name] unless args[:name].nil?
-            @status = args[:status] unless args[:status].nil?
-            @url = args[:url] unless args[:url].nil?
-            @weight = args[:weight] unless args[:weight].nil?
-            @won = args[:won] unless args[:won].nil?
+            @name = args[:name] if args.key?(:name)
+            @status = args[:status] if args.key?(:status)
+            @url = args[:url] if args.key?(:url)
+            @weight = args[:weight] if args.key?(:weight)
+            @won = args[:won] if args.key?(:won)
           end
         end
       end
@@ -1801,14 +1801,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -1899,21 +1899,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @advanced_details = args[:advanced_details] unless args[:advanced_details].nil?
-          @created = args[:created] unless args[:created].nil?
-          @exclude_details = args[:exclude_details] unless args[:exclude_details].nil?
-          @id = args[:id] unless args[:id].nil?
-          @include_details = args[:include_details] unless args[:include_details].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @lowercase_details = args[:lowercase_details] unless args[:lowercase_details].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @search_and_replace_details = args[:search_and_replace_details] unless args[:search_and_replace_details].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @uppercase_details = args[:uppercase_details] unless args[:uppercase_details].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @advanced_details = args[:advanced_details] if args.key?(:advanced_details)
+          @created = args[:created] if args.key?(:created)
+          @exclude_details = args[:exclude_details] if args.key?(:exclude_details)
+          @id = args[:id] if args.key?(:id)
+          @include_details = args[:include_details] if args.key?(:include_details)
+          @kind = args[:kind] if args.key?(:kind)
+          @lowercase_details = args[:lowercase_details] if args.key?(:lowercase_details)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @search_and_replace_details = args[:search_and_replace_details] if args.key?(:search_and_replace_details)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
+          @uppercase_details = args[:uppercase_details] if args.key?(:uppercase_details)
         end
         
         # Details for the filter of the type ADVANCED.
@@ -1996,19 +1996,19 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
-            @extract_a = args[:extract_a] unless args[:extract_a].nil?
-            @extract_b = args[:extract_b] unless args[:extract_b].nil?
-            @field_a = args[:field_a] unless args[:field_a].nil?
-            @field_a_index = args[:field_a_index] unless args[:field_a_index].nil?
-            @field_a_required = args[:field_a_required] unless args[:field_a_required].nil?
-            @field_b = args[:field_b] unless args[:field_b].nil?
-            @field_b_index = args[:field_b_index] unless args[:field_b_index].nil?
-            @field_b_required = args[:field_b_required] unless args[:field_b_required].nil?
-            @output_constructor = args[:output_constructor] unless args[:output_constructor].nil?
-            @output_to_field = args[:output_to_field] unless args[:output_to_field].nil?
-            @output_to_field_index = args[:output_to_field_index] unless args[:output_to_field_index].nil?
-            @override_output_field = args[:override_output_field] unless args[:override_output_field].nil?
+            @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+            @extract_a = args[:extract_a] if args.key?(:extract_a)
+            @extract_b = args[:extract_b] if args.key?(:extract_b)
+            @field_a = args[:field_a] if args.key?(:field_a)
+            @field_a_index = args[:field_a_index] if args.key?(:field_a_index)
+            @field_a_required = args[:field_a_required] if args.key?(:field_a_required)
+            @field_b = args[:field_b] if args.key?(:field_b)
+            @field_b_index = args[:field_b_index] if args.key?(:field_b_index)
+            @field_b_required = args[:field_b_required] if args.key?(:field_b_required)
+            @output_constructor = args[:output_constructor] if args.key?(:output_constructor)
+            @output_to_field = args[:output_to_field] if args.key?(:output_to_field)
+            @output_to_field_index = args[:output_to_field_index] if args.key?(:output_to_field_index)
+            @override_output_field = args[:override_output_field] if args.key?(:override_output_field)
           end
         end
         
@@ -2032,8 +2032,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @field = args[:field] unless args[:field].nil?
-            @field_index = args[:field_index] unless args[:field_index].nil?
+            @field = args[:field] if args.key?(:field)
+            @field_index = args[:field_index] if args.key?(:field_index)
           end
         end
         
@@ -2058,8 +2058,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -2099,11 +2099,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
-            @field = args[:field] unless args[:field].nil?
-            @field_index = args[:field_index] unless args[:field_index].nil?
-            @replace_string = args[:replace_string] unless args[:replace_string].nil?
-            @search_string = args[:search_string] unless args[:search_string].nil?
+            @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+            @field = args[:field] if args.key?(:field)
+            @field_index = args[:field_index] if args.key?(:field_index)
+            @replace_string = args[:replace_string] if args.key?(:replace_string)
+            @search_string = args[:search_string] if args.key?(:search_string)
           end
         end
         
@@ -2127,8 +2127,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @field = args[:field] unless args[:field].nil?
-            @field_index = args[:field_index] unless args[:field_index].nil?
+            @field = args[:field] if args.key?(:field)
+            @field_index = args[:field_index] if args.key?(:field_index)
           end
         end
       end
@@ -2264,12 +2264,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
-          @expression_value = args[:expression_value] unless args[:expression_value].nil?
-          @field = args[:field] unless args[:field].nil?
-          @field_index = args[:field_index] unless args[:field_index].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @match_type = args[:match_type] unless args[:match_type].nil?
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @expression_value = args[:expression_value] if args.key?(:expression_value)
+          @field = args[:field] if args.key?(:field)
+          @field_index = args[:field_index] if args.key?(:field_index)
+          @kind = args[:kind] if args.key?(:kind)
+          @match_type = args[:match_type] if args.key?(:match_type)
         end
       end
       
@@ -2308,11 +2308,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @href = args[:href] unless args[:href].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @href = args[:href] if args.key?(:href)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2372,14 +2372,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -2482,22 +2482,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_headers = args[:column_headers] unless args[:column_headers].nil?
-          @contains_sampled_data = args[:contains_sampled_data] unless args[:contains_sampled_data].nil?
-          @data_table = args[:data_table] unless args[:data_table].nil?
-          @id = args[:id] unless args[:id].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @profile_info = args[:profile_info] unless args[:profile_info].nil?
-          @query = args[:query] unless args[:query].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @sample_size = args[:sample_size] unless args[:sample_size].nil?
-          @sample_space = args[:sample_space] unless args[:sample_space].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @contains_sampled_data = args[:contains_sampled_data] if args.key?(:contains_sampled_data)
+          @data_table = args[:data_table] if args.key?(:data_table)
+          @id = args[:id] if args.key?(:id)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @profile_info = args[:profile_info] if args.key?(:profile_info)
+          @query = args[:query] if args.key?(:query)
+          @rows = args[:rows] if args.key?(:rows)
+          @sample_size = args[:sample_size] if args.key?(:sample_size)
+          @sample_space = args[:sample_space] if args.key?(:sample_space)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @totals_for_all_results = args[:totals_for_all_results] if args.key?(:totals_for_all_results)
         end
         
         # 
@@ -2527,9 +2527,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @column_type = args[:column_type] unless args[:column_type].nil?
-            @data_type = args[:data_type] unless args[:data_type].nil?
-            @name = args[:name] unless args[:name].nil?
+            @column_type = args[:column_type] if args.key?(:column_type)
+            @data_type = args[:data_type] if args.key?(:data_type)
+            @name = args[:name] if args.key?(:name)
           end
         end
         
@@ -2553,8 +2553,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @cols = args[:cols] unless args[:cols].nil?
-            @rows = args[:rows] unless args[:rows].nil?
+            @cols = args[:cols] if args.key?(:cols)
+            @rows = args[:rows] if args.key?(:rows)
           end
           
           # 
@@ -2582,9 +2582,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @id = args[:id] unless args[:id].nil?
-              @label = args[:label] unless args[:label].nil?
-              @type = args[:type] unless args[:type].nil?
+              @id = args[:id] if args.key?(:id)
+              @label = args[:label] if args.key?(:label)
+              @type = args[:type] if args.key?(:type)
             end
           end
           
@@ -2603,7 +2603,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @c = args[:c] unless args[:c].nil?
+              @c = args[:c] if args.key?(:c)
             end
             
             # 
@@ -2621,7 +2621,7 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @v = args[:v] unless args[:v].nil?
+                @v = args[:v] if args.key?(:v)
               end
             end
           end
@@ -2667,12 +2667,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @account_id = args[:account_id] unless args[:account_id].nil?
-            @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-            @profile_id = args[:profile_id] unless args[:profile_id].nil?
-            @profile_name = args[:profile_name] unless args[:profile_name].nil?
-            @table_id = args[:table_id] unless args[:table_id].nil?
-            @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+            @account_id = args[:account_id] if args.key?(:account_id)
+            @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+            @profile_id = args[:profile_id] if args.key?(:profile_id)
+            @profile_name = args[:profile_name] if args.key?(:profile_name)
+            @table_id = args[:table_id] if args.key?(:table_id)
+            @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
           end
         end
         
@@ -2741,17 +2741,17 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @dimensions = args[:dimensions] unless args[:dimensions].nil?
-            @end_date = args[:end_date] unless args[:end_date].nil?
-            @filters = args[:filters] unless args[:filters].nil?
-            @ids = args[:ids] unless args[:ids].nil?
-            @max_results = args[:max_results] unless args[:max_results].nil?
-            @metrics = args[:metrics] unless args[:metrics].nil?
-            @sampling_level = args[:sampling_level] unless args[:sampling_level].nil?
-            @segment = args[:segment] unless args[:segment].nil?
-            @sort = args[:sort] unless args[:sort].nil?
-            @start_date = args[:start_date] unless args[:start_date].nil?
-            @start_index = args[:start_index] unless args[:start_index].nil?
+            @dimensions = args[:dimensions] if args.key?(:dimensions)
+            @end_date = args[:end_date] if args.key?(:end_date)
+            @filters = args[:filters] if args.key?(:filters)
+            @ids = args[:ids] if args.key?(:ids)
+            @max_results = args[:max_results] if args.key?(:max_results)
+            @metrics = args[:metrics] if args.key?(:metrics)
+            @sampling_level = args[:sampling_level] if args.key?(:sampling_level)
+            @segment = args[:segment] if args.key?(:segment)
+            @sort = args[:sort] if args.key?(:sort)
+            @start_date = args[:start_date] if args.key?(:start_date)
+            @start_index = args[:start_index] if args.key?(:start_index)
           end
         end
       end
@@ -2860,24 +2860,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @active = args[:active] unless args[:active].nil?
-          @created = args[:created] unless args[:created].nil?
-          @event_details = args[:event_details] unless args[:event_details].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @profile_id = args[:profile_id] unless args[:profile_id].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @url_destination_details = args[:url_destination_details] unless args[:url_destination_details].nil?
-          @value = args[:value] unless args[:value].nil?
-          @visit_num_pages_details = args[:visit_num_pages_details] unless args[:visit_num_pages_details].nil?
-          @visit_time_on_site_details = args[:visit_time_on_site_details] unless args[:visit_time_on_site_details].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @active = args[:active] if args.key?(:active)
+          @created = args[:created] if args.key?(:created)
+          @event_details = args[:event_details] if args.key?(:event_details)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
+          @url_destination_details = args[:url_destination_details] if args.key?(:url_destination_details)
+          @value = args[:value] if args.key?(:value)
+          @visit_num_pages_details = args[:visit_num_pages_details] if args.key?(:visit_num_pages_details)
+          @visit_time_on_site_details = args[:visit_time_on_site_details] if args.key?(:visit_time_on_site_details)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
         # Details for the goal of the type EVENT.
@@ -2901,8 +2901,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @event_conditions = args[:event_conditions] unless args[:event_conditions].nil?
-            @use_event_value = args[:use_event_value] unless args[:use_event_value].nil?
+            @event_conditions = args[:event_conditions] if args.key?(:event_conditions)
+            @use_event_value = args[:use_event_value] if args.key?(:use_event_value)
           end
           
           # 
@@ -2942,11 +2942,11 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
-              @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
-              @expression = args[:expression] unless args[:expression].nil?
-              @match_type = args[:match_type] unless args[:match_type].nil?
-              @type = args[:type] unless args[:type].nil?
+              @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
+              @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
+              @expression = args[:expression] if args.key?(:expression)
+              @match_type = args[:match_type] if args.key?(:match_type)
+              @type = args[:type] if args.key?(:type)
             end
           end
         end
@@ -2972,8 +2972,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -3015,11 +3015,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
-            @first_step_required = args[:first_step_required] unless args[:first_step_required].nil?
-            @match_type = args[:match_type] unless args[:match_type].nil?
-            @steps = args[:steps] unless args[:steps].nil?
-            @url = args[:url] unless args[:url].nil?
+            @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+            @first_step_required = args[:first_step_required] if args.key?(:first_step_required)
+            @match_type = args[:match_type] if args.key?(:match_type)
+            @steps = args[:steps] if args.key?(:steps)
+            @url = args[:url] if args.key?(:url)
           end
           
           # 
@@ -3047,9 +3047,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @name = args[:name] unless args[:name].nil?
-              @number = args[:number] unless args[:number].nil?
-              @url = args[:url] unless args[:url].nil?
+              @name = args[:name] if args.key?(:name)
+              @number = args[:number] if args.key?(:number)
+              @url = args[:url] if args.key?(:url)
             end
           end
         end
@@ -3074,8 +3074,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
-            @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
+            @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
+            @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
           end
         end
         
@@ -3099,8 +3099,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
-            @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
+            @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
+            @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
           end
         end
       end
@@ -3162,14 +3162,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -3267,21 +3267,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_headers = args[:column_headers] unless args[:column_headers].nil?
-          @contains_sampled_data = args[:contains_sampled_data] unless args[:contains_sampled_data].nil?
-          @id = args[:id] unless args[:id].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @profile_info = args[:profile_info] unless args[:profile_info].nil?
-          @query = args[:query] unless args[:query].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @sample_size = args[:sample_size] unless args[:sample_size].nil?
-          @sample_space = args[:sample_space] unless args[:sample_space].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @contains_sampled_data = args[:contains_sampled_data] if args.key?(:contains_sampled_data)
+          @id = args[:id] if args.key?(:id)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @profile_info = args[:profile_info] if args.key?(:profile_info)
+          @query = args[:query] if args.key?(:query)
+          @rows = args[:rows] if args.key?(:rows)
+          @sample_size = args[:sample_size] if args.key?(:sample_size)
+          @sample_space = args[:sample_space] if args.key?(:sample_space)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @totals_for_all_results = args[:totals_for_all_results] if args.key?(:totals_for_all_results)
         end
         
         # 
@@ -3310,9 +3310,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @column_type = args[:column_type] unless args[:column_type].nil?
-            @data_type = args[:data_type] unless args[:data_type].nil?
-            @name = args[:name] unless args[:name].nil?
+            @column_type = args[:column_type] if args.key?(:column_type)
+            @data_type = args[:data_type] if args.key?(:data_type)
+            @name = args[:name] if args.key?(:name)
           end
         end
         
@@ -3356,12 +3356,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @account_id = args[:account_id] unless args[:account_id].nil?
-            @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-            @profile_id = args[:profile_id] unless args[:profile_id].nil?
-            @profile_name = args[:profile_name] unless args[:profile_name].nil?
-            @table_id = args[:table_id] unless args[:table_id].nil?
-            @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+            @account_id = args[:account_id] if args.key?(:account_id)
+            @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+            @profile_id = args[:profile_id] if args.key?(:profile_id)
+            @profile_name = args[:profile_name] if args.key?(:profile_name)
+            @table_id = args[:table_id] if args.key?(:table_id)
+            @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
           end
         end
         
@@ -3430,17 +3430,17 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @dimensions = args[:dimensions] unless args[:dimensions].nil?
-            @end_date = args[:end_date] unless args[:end_date].nil?
-            @filters = args[:filters] unless args[:filters].nil?
-            @ids = args[:ids] unless args[:ids].nil?
-            @max_results = args[:max_results] unless args[:max_results].nil?
-            @metrics = args[:metrics] unless args[:metrics].nil?
-            @sampling_level = args[:sampling_level] unless args[:sampling_level].nil?
-            @segment = args[:segment] unless args[:segment].nil?
-            @sort = args[:sort] unless args[:sort].nil?
-            @start_date = args[:start_date] unless args[:start_date].nil?
-            @start_index = args[:start_index] unless args[:start_index].nil?
+            @dimensions = args[:dimensions] if args.key?(:dimensions)
+            @end_date = args[:end_date] if args.key?(:end_date)
+            @filters = args[:filters] if args.key?(:filters)
+            @ids = args[:ids] if args.key?(:ids)
+            @max_results = args[:max_results] if args.key?(:max_results)
+            @metrics = args[:metrics] if args.key?(:metrics)
+            @sampling_level = args[:sampling_level] if args.key?(:sampling_level)
+            @segment = args[:segment] if args.key?(:segment)
+            @sort = args[:sort] if args.key?(:sort)
+            @start_date = args[:start_date] if args.key?(:start_date)
+            @start_index = args[:start_index] if args.key?(:start_index)
           end
         end
         
@@ -3466,8 +3466,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @conversion_path_value = args[:conversion_path_value] unless args[:conversion_path_value].nil?
-            @primitive_value = args[:primitive_value] unless args[:primitive_value].nil?
+            @conversion_path_value = args[:conversion_path_value] if args.key?(:conversion_path_value)
+            @primitive_value = args[:primitive_value] if args.key?(:primitive_value)
           end
           
           # 
@@ -3490,8 +3490,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @interaction_type = args[:interaction_type] unless args[:interaction_type].nil?
-              @node_value = args[:node_value] unless args[:node_value].nil?
+              @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+              @node_value = args[:node_value] if args.key?(:node_value)
             end
           end
         end
@@ -3646,31 +3646,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @bot_filtering_enabled = args[:bot_filtering_enabled] unless args[:bot_filtering_enabled].nil?
-          @child_link = args[:child_link] unless args[:child_link].nil?
-          @created = args[:created] unless args[:created].nil?
-          @currency = args[:currency] unless args[:currency].nil?
-          @default_page = args[:default_page] unless args[:default_page].nil?
-          @e_commerce_tracking = args[:e_commerce_tracking] unless args[:e_commerce_tracking].nil?
-          @enhanced_e_commerce_tracking = args[:enhanced_e_commerce_tracking] unless args[:enhanced_e_commerce_tracking].nil?
-          @exclude_query_parameters = args[:exclude_query_parameters] unless args[:exclude_query_parameters].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @site_search_category_parameters = args[:site_search_category_parameters] unless args[:site_search_category_parameters].nil?
-          @site_search_query_parameters = args[:site_search_query_parameters] unless args[:site_search_query_parameters].nil?
-          @strip_site_search_category_parameters = args[:strip_site_search_category_parameters] unless args[:strip_site_search_category_parameters].nil?
-          @strip_site_search_query_parameters = args[:strip_site_search_query_parameters] unless args[:strip_site_search_query_parameters].nil?
-          @timezone = args[:timezone] unless args[:timezone].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @bot_filtering_enabled = args[:bot_filtering_enabled] if args.key?(:bot_filtering_enabled)
+          @child_link = args[:child_link] if args.key?(:child_link)
+          @created = args[:created] if args.key?(:created)
+          @currency = args[:currency] if args.key?(:currency)
+          @default_page = args[:default_page] if args.key?(:default_page)
+          @e_commerce_tracking = args[:e_commerce_tracking] if args.key?(:e_commerce_tracking)
+          @enhanced_e_commerce_tracking = args[:enhanced_e_commerce_tracking] if args.key?(:enhanced_e_commerce_tracking)
+          @exclude_query_parameters = args[:exclude_query_parameters] if args.key?(:exclude_query_parameters)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @site_search_category_parameters = args[:site_search_category_parameters] if args.key?(:site_search_category_parameters)
+          @site_search_query_parameters = args[:site_search_query_parameters] if args.key?(:site_search_query_parameters)
+          @strip_site_search_category_parameters = args[:strip_site_search_category_parameters] if args.key?(:strip_site_search_category_parameters)
+          @strip_site_search_query_parameters = args[:strip_site_search_query_parameters] if args.key?(:strip_site_search_query_parameters)
+          @timezone = args[:timezone] if args.key?(:timezone)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
         
         # Child link for this view (profile). Points to the list of goals for this view (
@@ -3694,8 +3694,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -3720,8 +3720,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -3742,7 +3742,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @effective = args[:effective] unless args[:effective].nil?
+            @effective = args[:effective] if args.key?(:effective)
           end
         end
       end
@@ -3797,12 +3797,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @filter_ref = args[:filter_ref] unless args[:filter_ref].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @profile_ref = args[:profile_ref] unless args[:profile_ref].nil?
-          @rank = args[:rank] unless args[:rank].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @filter_ref = args[:filter_ref] if args.key?(:filter_ref)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile_ref = args[:profile_ref] if args.key?(:profile_ref)
+          @rank = args[:rank] if args.key?(:rank)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -3863,14 +3863,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -3919,13 +3919,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @href = args[:href] unless args[:href].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @href = args[:href] if args.key?(:href)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
       end
       
@@ -3960,10 +3960,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4024,14 +4024,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -4096,15 +4096,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_headers = args[:column_headers] unless args[:column_headers].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @profile_info = args[:profile_info] unless args[:profile_info].nil?
-          @query = args[:query] unless args[:query].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile_info = args[:profile_info] if args.key?(:profile_info)
+          @query = args[:query] if args.key?(:query)
+          @rows = args[:rows] if args.key?(:rows)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @totals_for_all_results = args[:totals_for_all_results] if args.key?(:totals_for_all_results)
         end
         
         # 
@@ -4134,9 +4134,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @column_type = args[:column_type] unless args[:column_type].nil?
-            @data_type = args[:data_type] unless args[:data_type].nil?
-            @name = args[:name] unless args[:name].nil?
+            @column_type = args[:column_type] if args.key?(:column_type)
+            @data_type = args[:data_type] if args.key?(:data_type)
+            @name = args[:name] if args.key?(:name)
           end
         end
         
@@ -4180,12 +4180,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @account_id = args[:account_id] unless args[:account_id].nil?
-            @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-            @profile_id = args[:profile_id] unless args[:profile_id].nil?
-            @profile_name = args[:profile_name] unless args[:profile_name].nil?
-            @table_id = args[:table_id] unless args[:table_id].nil?
-            @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+            @account_id = args[:account_id] if args.key?(:account_id)
+            @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+            @profile_id = args[:profile_id] if args.key?(:profile_id)
+            @profile_name = args[:profile_name] if args.key?(:profile_name)
+            @table_id = args[:table_id] if args.key?(:table_id)
+            @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
           end
         end
         
@@ -4229,12 +4229,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @dimensions = args[:dimensions] unless args[:dimensions].nil?
-            @filters = args[:filters] unless args[:filters].nil?
-            @ids = args[:ids] unless args[:ids].nil?
-            @max_results = args[:max_results] unless args[:max_results].nil?
-            @metrics = args[:metrics] unless args[:metrics].nil?
-            @sort = args[:sort] unless args[:sort].nil?
+            @dimensions = args[:dimensions] if args.key?(:dimensions)
+            @filters = args[:filters] if args.key?(:filters)
+            @ids = args[:ids] if args.key?(:ids)
+            @max_results = args[:max_results] if args.key?(:max_results)
+            @metrics = args[:metrics] if args.key?(:metrics)
+            @sort = args[:sort] if args.key?(:sort)
           end
         end
       end
@@ -4294,15 +4294,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @created = args[:created] unless args[:created].nil?
-          @definition = args[:definition] unless args[:definition].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @segment_id = args[:segment_id] unless args[:segment_id].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @type = args[:type] unless args[:type].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @created = args[:created] if args.key?(:created)
+          @definition = args[:definition] if args.key?(:definition)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @segment_id = args[:segment_id] if args.key?(:segment_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @updated = args[:updated] if args.key?(:updated)
         end
       end
       
@@ -4362,14 +4362,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -4480,25 +4480,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @cloud_storage_download_details = args[:cloud_storage_download_details] unless args[:cloud_storage_download_details].nil?
-          @created = args[:created] unless args[:created].nil?
-          @dimensions = args[:dimensions] unless args[:dimensions].nil?
-          @download_type = args[:download_type] unless args[:download_type].nil?
-          @drive_download_details = args[:drive_download_details] unless args[:drive_download_details].nil?
-          @end_date = args[:end_date] unless args[:end_date].nil?
-          @filters = args[:filters] unless args[:filters].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @metrics = args[:metrics] unless args[:metrics].nil?
-          @profile_id = args[:profile_id] unless args[:profile_id].nil?
-          @segment = args[:segment] unless args[:segment].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @start_date = args[:start_date] unless args[:start_date].nil?
-          @status = args[:status] unless args[:status].nil?
-          @title = args[:title] unless args[:title].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @cloud_storage_download_details = args[:cloud_storage_download_details] if args.key?(:cloud_storage_download_details)
+          @created = args[:created] if args.key?(:created)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @download_type = args[:download_type] if args.key?(:download_type)
+          @drive_download_details = args[:drive_download_details] if args.key?(:drive_download_details)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @filters = args[:filters] if args.key?(:filters)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @segment = args[:segment] if args.key?(:segment)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @status = args[:status] if args.key?(:status)
+          @title = args[:title] if args.key?(:title)
+          @updated = args[:updated] if args.key?(:updated)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
         # Download details for a file stored in Google Cloud Storage.
@@ -4521,8 +4521,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @bucket_id = args[:bucket_id] unless args[:bucket_id].nil?
-            @obj_id = args[:obj_id] unless args[:obj_id].nil?
+            @bucket_id = args[:bucket_id] if args.key?(:bucket_id)
+            @obj_id = args[:obj_id] if args.key?(:obj_id)
           end
         end
         
@@ -4541,7 +4541,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @document_id = args[:document_id] unless args[:document_id].nil?
+            @document_id = args[:document_id] if args.key?(:document_id)
           end
         end
       end
@@ -4604,14 +4604,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -4655,12 +4655,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @custom_data_source_id = args[:custom_data_source_id] unless args[:custom_data_source_id].nil?
-          @errors = args[:errors] unless args[:errors].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @status = args[:status] unless args[:status].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @custom_data_source_id = args[:custom_data_source_id] if args.key?(:custom_data_source_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4716,13 +4716,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
       
@@ -4751,9 +4751,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @email = args[:email] if args.key?(:email)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -4797,12 +4797,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @href = args[:href] unless args[:href].nil?
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @href = args[:href] if args.key?(:href)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4852,13 +4852,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @level = args[:level] unless args[:level].nil?
-          @name = args[:name] unless args[:name].nil?
-          @profiles = args[:profiles] unless args[:profiles].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @level = args[:level] if args.key?(:level)
+          @name = args[:name] if args.key?(:name)
+          @profiles = args[:profiles] if args.key?(:profiles)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       
@@ -4919,14 +4919,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_link = args[:next_link] unless args[:next_link].nil?
-          @previous_link = args[:previous_link] unless args[:previous_link].nil?
-          @start_index = args[:start_index] unless args[:start_index].nil?
-          @total_results = args[:total_results] unless args[:total_results].nil?
-          @username = args[:username] unless args[:username].nil?
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -5022,22 +5022,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @child_link = args[:child_link] unless args[:child_link].nil?
-          @created = args[:created] unless args[:created].nil?
-          @default_profile_id = args[:default_profile_id] unless args[:default_profile_id].nil?
-          @id = args[:id] unless args[:id].nil?
-          @industry_vertical = args[:industry_vertical] unless args[:industry_vertical].nil?
-          @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @level = args[:level] unless args[:level].nil?
-          @name = args[:name] unless args[:name].nil?
-          @parent_link = args[:parent_link] unless args[:parent_link].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @profile_count = args[:profile_count] unless args[:profile_count].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @website_url = args[:website_url] unless args[:website_url].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @child_link = args[:child_link] if args.key?(:child_link)
+          @created = args[:created] if args.key?(:created)
+          @default_profile_id = args[:default_profile_id] if args.key?(:default_profile_id)
+          @id = args[:id] if args.key?(:id)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @level = args[:level] if args.key?(:level)
+          @name = args[:name] if args.key?(:name)
+          @parent_link = args[:parent_link] if args.key?(:parent_link)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @profile_count = args[:profile_count] if args.key?(:profile_count)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @updated = args[:updated] if args.key?(:updated)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
         
         # Child link for this web property. Points to the list of views (profiles) for
@@ -5061,8 +5061,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -5087,8 +5087,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @href = args[:href] unless args[:href].nil?
-            @type = args[:type] unless args[:type].nil?
+            @href = args[:href] if args.key?(:href)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -5109,7 +5109,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @effective = args[:effective] unless args[:effective].nil?
+            @effective = args[:effective] if args.key?(:effective)
           end
         end
       end

@@ -49,9 +49,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] unless args[:context].nil?
-          @type = args[:type] unless args[:type].nil?
-          @item_list_element = args[:item_list_element] unless args[:item_list_element].nil?
+          @context = args[:context] if args.key?(:context)
+          @type = args[:type] if args.key?(:type)
+          @item_list_element = args[:item_list_element] if args.key?(:item_list_element)
         end
       end
     end

@@ -37,7 +37,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @detections = args[:detections] unless args[:detections].nil?
+          @detections = args[:detections] if args.key?(:detections)
         end
       end
       
@@ -67,9 +67,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @confidence = args[:confidence] unless args[:confidence].nil?
-          @is_reliable = args[:is_reliable] unless args[:is_reliable].nil?
-          @language = args[:language] unless args[:language].nil?
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @is_reliable = args[:is_reliable] if args.key?(:is_reliable)
+          @language = args[:language] if args.key?(:language)
         end
       end
       
@@ -91,7 +91,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @languages = args[:languages] unless args[:languages].nil?
+          @languages = args[:languages] if args.key?(:languages)
         end
       end
       
@@ -115,8 +115,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @language = args[:language] unless args[:language].nil?
-          @name = args[:name] unless args[:name].nil?
+          @language = args[:language] if args.key?(:language)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -135,7 +135,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @translations = args[:translations] unless args[:translations].nil?
+          @translations = args[:translations] if args.key?(:translations)
         end
       end
       
@@ -159,8 +159,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @detected_source_language = args[:detected_source_language] unless args[:detected_source_language].nil?
-          @translated_text = args[:translated_text] unless args[:translated_text].nil?
+          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
+          @translated_text = args[:translated_text] if args.key?(:translated_text)
         end
       end
     end

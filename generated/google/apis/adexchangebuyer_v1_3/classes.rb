@@ -77,14 +77,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bidder_location = args[:bidder_location] unless args[:bidder_location].nil?
-          @cookie_matching_nid = args[:cookie_matching_nid] unless args[:cookie_matching_nid].nil?
-          @cookie_matching_url = args[:cookie_matching_url] unless args[:cookie_matching_url].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @maximum_active_creatives = args[:maximum_active_creatives] unless args[:maximum_active_creatives].nil?
-          @maximum_total_qps = args[:maximum_total_qps] unless args[:maximum_total_qps].nil?
-          @number_active_creatives = args[:number_active_creatives] unless args[:number_active_creatives].nil?
+          @bidder_location = args[:bidder_location] if args.key?(:bidder_location)
+          @cookie_matching_nid = args[:cookie_matching_nid] if args.key?(:cookie_matching_nid)
+          @cookie_matching_url = args[:cookie_matching_url] if args.key?(:cookie_matching_url)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @maximum_active_creatives = args[:maximum_active_creatives] if args.key?(:maximum_active_creatives)
+          @maximum_total_qps = args[:maximum_total_qps] if args.key?(:maximum_total_qps)
+          @number_active_creatives = args[:number_active_creatives] if args.key?(:number_active_creatives)
         end
         
         # 
@@ -118,9 +118,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @maximum_qps = args[:maximum_qps] unless args[:maximum_qps].nil?
-            @region = args[:region] unless args[:region].nil?
-            @url = args[:url] unless args[:url].nil?
+            @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
+            @region = args[:region] if args.key?(:region)
+            @url = args[:url] if args.key?(:url)
           end
         end
       end
@@ -146,8 +146,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -183,10 +183,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @account_name = args[:account_name] unless args[:account_name].nil?
-          @billing_id = args[:billing_id] unless args[:billing_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @account_name = args[:account_name] if args.key?(:account_name)
+          @billing_id = args[:billing_id] if args.key?(:billing_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -211,8 +211,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -258,12 +258,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @billing_id = args[:billing_id] unless args[:billing_id].nil?
-          @budget_amount = args[:budget_amount] unless args[:budget_amount].nil?
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @billing_id = args[:billing_id] if args.key?(:billing_id)
+          @budget_amount = args[:budget_amount] if args.key?(:budget_amount)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -410,30 +410,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @html_snippet = args[:html_snippet] unless args[:html_snippet].nil?
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
-          @advertiser_name = args[:advertiser_name] unless args[:advertiser_name].nil?
-          @agency_id = args[:agency_id] unless args[:agency_id].nil?
-          @api_upload_timestamp = args[:api_upload_timestamp] unless args[:api_upload_timestamp].nil?
-          @attribute = args[:attribute] unless args[:attribute].nil?
-          @buyer_creative_id = args[:buyer_creative_id] unless args[:buyer_creative_id].nil?
-          @click_through_url = args[:click_through_url] unless args[:click_through_url].nil?
-          @corrections = args[:corrections] unless args[:corrections].nil?
-          @disapproval_reasons = args[:disapproval_reasons] unless args[:disapproval_reasons].nil?
-          @filtering_reasons = args[:filtering_reasons] unless args[:filtering_reasons].nil?
-          @height = args[:height] unless args[:height].nil?
-          @impression_tracking_url = args[:impression_tracking_url] unless args[:impression_tracking_url].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @native_ad = args[:native_ad] unless args[:native_ad].nil?
-          @product_categories = args[:product_categories] unless args[:product_categories].nil?
-          @restricted_categories = args[:restricted_categories] unless args[:restricted_categories].nil?
-          @sensitive_categories = args[:sensitive_categories] unless args[:sensitive_categories].nil?
-          @status = args[:status] unless args[:status].nil?
-          @vendor_type = args[:vendor_type] unless args[:vendor_type].nil?
-          @version = args[:version] unless args[:version].nil?
-          @video_url = args[:video_url] unless args[:video_url].nil?
-          @width = args[:width] unless args[:width].nil?
+          @html_snippet = args[:html_snippet] if args.key?(:html_snippet)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
+          @agency_id = args[:agency_id] if args.key?(:agency_id)
+          @api_upload_timestamp = args[:api_upload_timestamp] if args.key?(:api_upload_timestamp)
+          @attribute = args[:attribute] if args.key?(:attribute)
+          @buyer_creative_id = args[:buyer_creative_id] if args.key?(:buyer_creative_id)
+          @click_through_url = args[:click_through_url] if args.key?(:click_through_url)
+          @corrections = args[:corrections] if args.key?(:corrections)
+          @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
+          @filtering_reasons = args[:filtering_reasons] if args.key?(:filtering_reasons)
+          @height = args[:height] if args.key?(:height)
+          @impression_tracking_url = args[:impression_tracking_url] if args.key?(:impression_tracking_url)
+          @kind = args[:kind] if args.key?(:kind)
+          @native_ad = args[:native_ad] if args.key?(:native_ad)
+          @product_categories = args[:product_categories] if args.key?(:product_categories)
+          @restricted_categories = args[:restricted_categories] if args.key?(:restricted_categories)
+          @sensitive_categories = args[:sensitive_categories] if args.key?(:sensitive_categories)
+          @status = args[:status] if args.key?(:status)
+          @vendor_type = args[:vendor_type] if args.key?(:vendor_type)
+          @version = args[:version] if args.key?(:version)
+          @video_url = args[:video_url] if args.key?(:video_url)
+          @width = args[:width] if args.key?(:width)
         end
         
         # 
@@ -456,8 +456,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @details = args[:details] unless args[:details].nil?
-            @reason = args[:reason] unless args[:reason].nil?
+            @details = args[:details] if args.key?(:details)
+            @reason = args[:reason] if args.key?(:reason)
           end
         end
         
@@ -481,8 +481,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @details = args[:details] unless args[:details].nil?
-            @reason = args[:reason] unless args[:reason].nil?
+            @details = args[:details] if args.key?(:details)
+            @reason = args[:reason] if args.key?(:reason)
           end
         end
         
@@ -508,8 +508,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @date = args[:date] unless args[:date].nil?
-            @reasons = args[:reasons] unless args[:reasons].nil?
+            @date = args[:date] if args.key?(:date)
+            @reasons = args[:reasons] if args.key?(:reasons)
           end
           
           # 
@@ -534,8 +534,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @filtering_count = args[:filtering_count] unless args[:filtering_count].nil?
-              @filtering_status = args[:filtering_status] unless args[:filtering_status].nil?
+              @filtering_count = args[:filtering_count] if args.key?(:filtering_count)
+              @filtering_status = args[:filtering_status] if args.key?(:filtering_status)
             end
           end
         end
@@ -610,18 +610,18 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @advertiser = args[:advertiser] unless args[:advertiser].nil?
-            @app_icon = args[:app_icon] unless args[:app_icon].nil?
-            @body = args[:body] unless args[:body].nil?
-            @call_to_action = args[:call_to_action] unless args[:call_to_action].nil?
-            @click_tracking_url = args[:click_tracking_url] unless args[:click_tracking_url].nil?
-            @headline = args[:headline] unless args[:headline].nil?
-            @image = args[:image] unless args[:image].nil?
-            @impression_tracking_url = args[:impression_tracking_url] unless args[:impression_tracking_url].nil?
-            @logo = args[:logo] unless args[:logo].nil?
-            @price = args[:price] unless args[:price].nil?
-            @star_rating = args[:star_rating] unless args[:star_rating].nil?
-            @store = args[:store] unless args[:store].nil?
+            @advertiser = args[:advertiser] if args.key?(:advertiser)
+            @app_icon = args[:app_icon] if args.key?(:app_icon)
+            @body = args[:body] if args.key?(:body)
+            @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+            @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
+            @headline = args[:headline] if args.key?(:headline)
+            @image = args[:image] if args.key?(:image)
+            @impression_tracking_url = args[:impression_tracking_url] if args.key?(:impression_tracking_url)
+            @logo = args[:logo] if args.key?(:logo)
+            @price = args[:price] if args.key?(:price)
+            @star_rating = args[:star_rating] if args.key?(:star_rating)
+            @store = args[:store] if args.key?(:store)
           end
           
           # The app icon, for app download ads.
@@ -649,9 +649,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @height = args[:height] unless args[:height].nil?
-              @url = args[:url] unless args[:url].nil?
-              @width = args[:width] unless args[:width].nil?
+              @height = args[:height] if args.key?(:height)
+              @url = args[:url] if args.key?(:url)
+              @width = args[:width] if args.key?(:width)
             end
           end
           
@@ -680,9 +680,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @height = args[:height] unless args[:height].nil?
-              @url = args[:url] unless args[:url].nil?
-              @width = args[:width] unless args[:width].nil?
+              @height = args[:height] if args.key?(:height)
+              @url = args[:url] if args.key?(:url)
+              @width = args[:width] if args.key?(:width)
             end
           end
           
@@ -711,9 +711,9 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @height = args[:height] unless args[:height].nil?
-              @url = args[:url] unless args[:url].nil?
-              @width = args[:width] unless args[:width].nil?
+              @height = args[:height] if args.key?(:height)
+              @url = args[:url] if args.key?(:url)
+              @width = args[:width] if args.key?(:width)
             end
           end
         end
@@ -747,9 +747,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -837,19 +837,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] unless args[:account_id].nil?
-          @advertiser = args[:advertiser] unless args[:advertiser].nil?
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
-          @deal_tier = args[:deal_tier] unless args[:deal_tier].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @fixed_cpm = args[:fixed_cpm] unless args[:fixed_cpm].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @private_exchange_min_cpm = args[:private_exchange_min_cpm] unless args[:private_exchange_min_cpm].nil?
-          @publisher_blocks_overriden = args[:publisher_blocks_overriden] unless args[:publisher_blocks_overriden].nil?
-          @seller_network = args[:seller_network] unless args[:seller_network].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @advertiser = args[:advertiser] if args.key?(:advertiser)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @deal_tier = args[:deal_tier] if args.key?(:deal_tier)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @fixed_cpm = args[:fixed_cpm] if args.key?(:fixed_cpm)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @private_exchange_min_cpm = args[:private_exchange_min_cpm] if args.key?(:private_exchange_min_cpm)
+          @publisher_blocks_overriden = args[:publisher_blocks_overriden] if args.key?(:publisher_blocks_overriden)
+          @seller_network = args[:seller_network] if args.key?(:seller_network)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -875,8 +875,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @direct_deals = args[:direct_deals] unless args[:direct_deals].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @direct_deals = args[:direct_deals] if args.key?(:direct_deals)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1008,28 +1008,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bid_rate = args[:bid_rate] unless args[:bid_rate].nil?
-          @bid_request_rate = args[:bid_request_rate] unless args[:bid_request_rate].nil?
-          @callout_status_rate = args[:callout_status_rate] unless args[:callout_status_rate].nil?
-          @cookie_matcher_status_rate = args[:cookie_matcher_status_rate] unless args[:cookie_matcher_status_rate].nil?
-          @creative_status_rate = args[:creative_status_rate] unless args[:creative_status_rate].nil?
-          @filtered_bid_rate = args[:filtered_bid_rate] unless args[:filtered_bid_rate].nil?
-          @hosted_match_status_rate = args[:hosted_match_status_rate] unless args[:hosted_match_status_rate].nil?
-          @inventory_match_rate = args[:inventory_match_rate] unless args[:inventory_match_rate].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @latency_50th_percentile = args[:latency_50th_percentile] unless args[:latency_50th_percentile].nil?
-          @latency_85th_percentile = args[:latency_85th_percentile] unless args[:latency_85th_percentile].nil?
-          @latency_95th_percentile = args[:latency_95th_percentile] unless args[:latency_95th_percentile].nil?
-          @no_quota_in_region = args[:no_quota_in_region] unless args[:no_quota_in_region].nil?
-          @out_of_quota = args[:out_of_quota] unless args[:out_of_quota].nil?
-          @pixel_match_requests = args[:pixel_match_requests] unless args[:pixel_match_requests].nil?
-          @pixel_match_responses = args[:pixel_match_responses] unless args[:pixel_match_responses].nil?
-          @quota_configured_limit = args[:quota_configured_limit] unless args[:quota_configured_limit].nil?
-          @quota_throttled_limit = args[:quota_throttled_limit] unless args[:quota_throttled_limit].nil?
-          @region = args[:region] unless args[:region].nil?
-          @successful_request_rate = args[:successful_request_rate] unless args[:successful_request_rate].nil?
-          @timestamp = args[:timestamp] unless args[:timestamp].nil?
-          @unsuccessful_request_rate = args[:unsuccessful_request_rate] unless args[:unsuccessful_request_rate].nil?
+          @bid_rate = args[:bid_rate] if args.key?(:bid_rate)
+          @bid_request_rate = args[:bid_request_rate] if args.key?(:bid_request_rate)
+          @callout_status_rate = args[:callout_status_rate] if args.key?(:callout_status_rate)
+          @cookie_matcher_status_rate = args[:cookie_matcher_status_rate] if args.key?(:cookie_matcher_status_rate)
+          @creative_status_rate = args[:creative_status_rate] if args.key?(:creative_status_rate)
+          @filtered_bid_rate = args[:filtered_bid_rate] if args.key?(:filtered_bid_rate)
+          @hosted_match_status_rate = args[:hosted_match_status_rate] if args.key?(:hosted_match_status_rate)
+          @inventory_match_rate = args[:inventory_match_rate] if args.key?(:inventory_match_rate)
+          @kind = args[:kind] if args.key?(:kind)
+          @latency_50th_percentile = args[:latency_50th_percentile] if args.key?(:latency_50th_percentile)
+          @latency_85th_percentile = args[:latency_85th_percentile] if args.key?(:latency_85th_percentile)
+          @latency_95th_percentile = args[:latency_95th_percentile] if args.key?(:latency_95th_percentile)
+          @no_quota_in_region = args[:no_quota_in_region] if args.key?(:no_quota_in_region)
+          @out_of_quota = args[:out_of_quota] if args.key?(:out_of_quota)
+          @pixel_match_requests = args[:pixel_match_requests] if args.key?(:pixel_match_requests)
+          @pixel_match_responses = args[:pixel_match_responses] if args.key?(:pixel_match_responses)
+          @quota_configured_limit = args[:quota_configured_limit] if args.key?(:quota_configured_limit)
+          @quota_throttled_limit = args[:quota_throttled_limit] if args.key?(:quota_throttled_limit)
+          @region = args[:region] if args.key?(:region)
+          @successful_request_rate = args[:successful_request_rate] if args.key?(:successful_request_rate)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @unsuccessful_request_rate = args[:unsuccessful_request_rate] if args.key?(:unsuccessful_request_rate)
         end
       end
       
@@ -1056,8 +1056,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @performance_report = args[:performance_report] unless args[:performance_report].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @performance_report = args[:performance_report] if args.key?(:performance_report)
         end
       end
       
@@ -1201,29 +1201,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @billing_id = args[:billing_id] unless args[:billing_id].nil?
-          @config_id = args[:config_id] unless args[:config_id].nil?
-          @config_name = args[:config_name] unless args[:config_name].nil?
-          @creative_type = args[:creative_type] unless args[:creative_type].nil?
-          @dimensions = args[:dimensions] unless args[:dimensions].nil?
-          @excluded_content_labels = args[:excluded_content_labels] unless args[:excluded_content_labels].nil?
-          @excluded_geo_criteria_ids = args[:excluded_geo_criteria_ids] unless args[:excluded_geo_criteria_ids].nil?
-          @excluded_placements = args[:excluded_placements] unless args[:excluded_placements].nil?
-          @excluded_user_lists = args[:excluded_user_lists] unless args[:excluded_user_lists].nil?
-          @excluded_verticals = args[:excluded_verticals] unless args[:excluded_verticals].nil?
-          @geo_criteria_ids = args[:geo_criteria_ids] unless args[:geo_criteria_ids].nil?
-          @is_active = args[:is_active] unless args[:is_active].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @languages = args[:languages] unless args[:languages].nil?
-          @mobile_carriers = args[:mobile_carriers] unless args[:mobile_carriers].nil?
-          @mobile_devices = args[:mobile_devices] unless args[:mobile_devices].nil?
-          @mobile_operating_system_versions = args[:mobile_operating_system_versions] unless args[:mobile_operating_system_versions].nil?
-          @placements = args[:placements] unless args[:placements].nil?
-          @platforms = args[:platforms] unless args[:platforms].nil?
-          @supported_creative_attributes = args[:supported_creative_attributes] unless args[:supported_creative_attributes].nil?
-          @user_lists = args[:user_lists] unless args[:user_lists].nil?
-          @vendor_types = args[:vendor_types] unless args[:vendor_types].nil?
-          @verticals = args[:verticals] unless args[:verticals].nil?
+          @billing_id = args[:billing_id] if args.key?(:billing_id)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @config_name = args[:config_name] if args.key?(:config_name)
+          @creative_type = args[:creative_type] if args.key?(:creative_type)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @excluded_content_labels = args[:excluded_content_labels] if args.key?(:excluded_content_labels)
+          @excluded_geo_criteria_ids = args[:excluded_geo_criteria_ids] if args.key?(:excluded_geo_criteria_ids)
+          @excluded_placements = args[:excluded_placements] if args.key?(:excluded_placements)
+          @excluded_user_lists = args[:excluded_user_lists] if args.key?(:excluded_user_lists)
+          @excluded_verticals = args[:excluded_verticals] if args.key?(:excluded_verticals)
+          @geo_criteria_ids = args[:geo_criteria_ids] if args.key?(:geo_criteria_ids)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @kind = args[:kind] if args.key?(:kind)
+          @languages = args[:languages] if args.key?(:languages)
+          @mobile_carriers = args[:mobile_carriers] if args.key?(:mobile_carriers)
+          @mobile_devices = args[:mobile_devices] if args.key?(:mobile_devices)
+          @mobile_operating_system_versions = args[:mobile_operating_system_versions] if args.key?(:mobile_operating_system_versions)
+          @placements = args[:placements] if args.key?(:placements)
+          @platforms = args[:platforms] if args.key?(:platforms)
+          @supported_creative_attributes = args[:supported_creative_attributes] if args.key?(:supported_creative_attributes)
+          @user_lists = args[:user_lists] if args.key?(:user_lists)
+          @vendor_types = args[:vendor_types] if args.key?(:vendor_types)
+          @verticals = args[:verticals] if args.key?(:verticals)
         end
         
         # 
@@ -1246,8 +1246,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @height = args[:height] unless args[:height].nil?
-            @width = args[:width] unless args[:width].nil?
+            @height = args[:height] if args.key?(:height)
+            @width = args[:width] if args.key?(:width)
           end
         end
         
@@ -1273,8 +1273,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @token = args[:token] unless args[:token].nil?
-            @type = args[:type] unless args[:type].nil?
+            @token = args[:token] if args.key?(:token)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -1300,8 +1300,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @token = args[:token] unless args[:token].nil?
-            @type = args[:type] unless args[:type].nil?
+            @token = args[:token] if args.key?(:token)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end
@@ -1326,8 +1326,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
     end

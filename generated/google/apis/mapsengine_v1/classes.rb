@@ -75,9 +75,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end = args[:end] unless args[:end].nil?
-          @precision = args[:precision] unless args[:precision].nil?
-          @start = args[:start] unless args[:start].nil?
+          @end = args[:end] if args.key?(:end)
+          @precision = args[:precision] if args.key?(:precision)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -175,20 +175,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @description = args[:description] unless args[:description].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @resource = args[:resource] unless args[:resource].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @type = args[:type] unless args[:type].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @resource = args[:resource] if args.key?(:resource)
+          @tags = args[:tags] if args.key?(:tags)
+          @type = args[:type] if args.key?(:type)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -212,8 +212,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @assets = args[:assets] unless args[:assets].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @assets = args[:assets] if args.key?(:assets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -242,9 +242,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @color = args[:color] unless args[:color].nil?
-          @opacity = args[:opacity] unless args[:opacity].nil?
-          @width = args[:width] unless args[:width].nil?
+          @color = args[:color] if args.key?(:color)
+          @opacity = args[:opacity] if args.key?(:opacity)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -268,8 +268,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @color = args[:color] unless args[:color].nil?
-          @opacity = args[:opacity] unless args[:opacity].nil?
+          @color = args[:color] if args.key?(:color)
+          @opacity = args[:opacity] if args.key?(:opacity)
         end
       end
       
@@ -288,7 +288,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -334,12 +334,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @filters = args[:filters] unless args[:filters].nil?
-          @line_options = args[:line_options] unless args[:line_options].nil?
-          @name = args[:name] unless args[:name].nil?
-          @point_options = args[:point_options] unless args[:point_options].nil?
-          @polygon_options = args[:polygon_options] unless args[:polygon_options].nil?
-          @zoom_levels = args[:zoom_levels] unless args[:zoom_levels].nil?
+          @filters = args[:filters] if args.key?(:filters)
+          @line_options = args[:line_options] if args.key?(:line_options)
+          @name = args[:name] if args.key?(:name)
+          @point_options = args[:point_options] if args.key?(:point_options)
+          @polygon_options = args[:polygon_options] if args.key?(:polygon_options)
+          @zoom_levels = args[:zoom_levels] if args.key?(:zoom_levels)
         end
       end
       
@@ -368,9 +368,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @geometry = args[:geometry] unless args[:geometry].nil?
-          @properties = args[:properties] unless args[:properties].nil?
-          @type = args[:type] unless args[:type].nil?
+          @geometry = args[:geometry] if args.key?(:geometry)
+          @properties = args[:properties] if args.key?(:properties)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -390,7 +390,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content = args[:content] unless args[:content].nil?
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -414,8 +414,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gx_ids = args[:gx_ids] unless args[:gx_ids].nil?
-          @primary_keys = args[:primary_keys] unless args[:primary_keys].nil?
+          @gx_ids = args[:gx_ids] if args.key?(:gx_ids)
+          @primary_keys = args[:primary_keys] if args.key?(:primary_keys)
         end
       end
       
@@ -444,8 +444,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @features = args[:features] unless args[:features].nil?
-          @normalize_geometries = args[:normalize_geometries] unless args[:normalize_geometries].nil?
+          @features = args[:features] if args.key?(:features)
+          @normalize_geometries = args[:normalize_geometries] if args.key?(:normalize_geometries)
         end
       end
       
@@ -474,8 +474,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @features = args[:features] unless args[:features].nil?
-          @normalize_geometries = args[:normalize_geometries] unless args[:normalize_geometries].nil?
+          @features = args[:features] if args.key?(:features)
+          @normalize_geometries = args[:normalize_geometries] if args.key?(:normalize_geometries)
         end
       end
       
@@ -516,11 +516,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_queries_per_second = args[:allowed_queries_per_second] unless args[:allowed_queries_per_second].nil?
-          @features = args[:features] unless args[:features].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @schema = args[:schema] unless args[:schema].nil?
-          @type = args[:type] unless args[:type].nil?
+          @allowed_queries_per_second = args[:allowed_queries_per_second] if args.key?(:allowed_queries_per_second)
+          @features = args[:features] if args.key?(:features)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schema = args[:schema] if args.key?(:schema)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -549,9 +549,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @filename = args[:filename] unless args[:filename].nil?
-          @size = args[:size] unless args[:size].nil?
-          @upload_status = args[:upload_status] unless args[:upload_status].nil?
+          @filename = args[:filename] if args.key?(:filename)
+          @size = args[:size] if args.key?(:size)
+          @upload_status = args[:upload_status] if args.key?(:upload_status)
         end
       end
       
@@ -580,9 +580,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column = args[:column] unless args[:column].nil?
-          @operator = args[:operator] unless args[:operator].nil?
-          @value = args[:value] unless args[:value].nil?
+          @column = args[:column] if args.key?(:column)
+          @operator = args[:operator] if args.key?(:operator)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -608,8 +608,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @geometries = args[:geometries] unless args[:geometries].nil?
-          @type = args[:type] unless args[:type].nil?
+          @geometries = args[:geometries] if args.key?(:geometries)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -634,8 +634,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -660,8 +660,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -686,8 +686,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -712,8 +712,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -741,8 +741,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -771,8 +771,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @coordinates = args[:coordinates] unless args[:coordinates].nil?
-          @type = args[:type] unless args[:type].nil?
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -801,9 +801,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -839,10 +839,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @scaled_shape = args[:scaled_shape] unless args[:scaled_shape].nil?
-          @scaling_function = args[:scaling_function] unless args[:scaling_function].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @scaled_shape = args[:scaled_shape] if args.key?(:scaled_shape)
+          @scaling_function = args[:scaling_function] if args.key?(:scaling_function)
         end
       end
       
@@ -866,8 +866,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @icons = args[:icons] unless args[:icons].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @icons = args[:icons] if args.key?(:icons)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -917,13 +917,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @color = args[:color] unless args[:color].nil?
-          @column = args[:column] unless args[:column].nil?
-          @font_style = args[:font_style] unless args[:font_style].nil?
-          @font_weight = args[:font_weight] unless args[:font_weight].nil?
-          @opacity = args[:opacity] unless args[:opacity].nil?
-          @outline = args[:outline] unless args[:outline].nil?
-          @size = args[:size] unless args[:size].nil?
+          @color = args[:color] if args.key?(:color)
+          @column = args[:column] if args.key?(:column)
+          @font_style = args[:font_style] if args.key?(:font_style)
+          @font_weight = args[:font_weight] if args.key?(:font_weight)
+          @opacity = args[:opacity] if args.key?(:opacity)
+          @outline = args[:outline] if args.key?(:outline)
+          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -1068,26 +1068,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @datasource_type = args[:datasource_type] unless args[:datasource_type].nil?
-          @datasources = args[:datasources] unless args[:datasources].nil?
-          @description = args[:description] unless args[:description].nil?
-          @draft_access_list = args[:draft_access_list] unless args[:draft_access_list].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @layer_type = args[:layer_type] unless args[:layer_type].nil?
-          @name = args[:name] unless args[:name].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @published_access_list = args[:published_access_list] unless args[:published_access_list].nil?
-          @publishing_status = args[:publishing_status] unless args[:publishing_status].nil?
-          @style = args[:style] unless args[:style].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @datasource_type = args[:datasource_type] if args.key?(:datasource_type)
+          @datasources = args[:datasources] if args.key?(:datasources)
+          @description = args[:description] if args.key?(:description)
+          @draft_access_list = args[:draft_access_list] if args.key?(:draft_access_list)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @layer_type = args[:layer_type] if args.key?(:layer_type)
+          @name = args[:name] if args.key?(:name)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @published_access_list = args[:published_access_list] if args.key?(:published_access_list)
+          @publishing_status = args[:publishing_status] if args.key?(:publishing_status)
+          @style = args[:style] if args.key?(:style)
+          @tags = args[:tags] if args.key?(:tags)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -1114,8 +1114,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @layers = args[:layers] unless args[:layers].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @layers = args[:layers] if args.key?(:layers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1151,10 +1151,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @border = args[:border] unless args[:border].nil?
-          @dash = args[:dash] unless args[:dash].nil?
-          @label = args[:label] unless args[:label].nil?
-          @stroke = args[:stroke] unless args[:stroke].nil?
+          @border = args[:border] if args.key?(:border)
+          @dash = args[:dash] if args.key?(:dash)
+          @label = args[:label] if args.key?(:label)
+          @stroke = args[:stroke] if args.key?(:stroke)
         end
         
         # Stroke of the line.
@@ -1183,9 +1183,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @color = args[:color] unless args[:color].nil?
-            @opacity = args[:opacity] unless args[:opacity].nil?
-            @width = args[:width] unless args[:width].nil?
+            @color = args[:color] if args.key?(:color)
+            @opacity = args[:opacity] if args.key?(:opacity)
+            @width = args[:width] if args.key?(:width)
           end
         end
       end
@@ -1320,25 +1320,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @contents = args[:contents] unless args[:contents].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
-          @description = args[:description] unless args[:description].nil?
-          @draft_access_list = args[:draft_access_list] unless args[:draft_access_list].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @name = args[:name] unless args[:name].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @published_access_list = args[:published_access_list] unless args[:published_access_list].nil?
-          @publishing_status = args[:publishing_status] unless args[:publishing_status].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @versions = args[:versions] unless args[:versions].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @contents = args[:contents] if args.key?(:contents)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @default_viewport = args[:default_viewport] if args.key?(:default_viewport)
+          @description = args[:description] if args.key?(:description)
+          @draft_access_list = args[:draft_access_list] if args.key?(:draft_access_list)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @name = args[:name] if args.key?(:name)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @published_access_list = args[:published_access_list] if args.key?(:published_access_list)
+          @publishing_status = args[:publishing_status] if args.key?(:publishing_status)
+          @tags = args[:tags] if args.key?(:tags)
+          @versions = args[:versions] if args.key?(:versions)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -1392,13 +1392,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @contents = args[:contents] unless args[:contents].nil?
-          @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
-          @expandable = args[:expandable] unless args[:expandable].nil?
-          @key = args[:key] unless args[:key].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @contents = args[:contents] if args.key?(:contents)
+          @default_viewport = args[:default_viewport] if args.key?(:default_viewport)
+          @expandable = args[:expandable] if args.key?(:expandable)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -1440,11 +1440,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
-          @kml_url = args[:kml_url] unless args[:kml_url].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @default_viewport = args[:default_viewport] if args.key?(:default_viewport)
+          @kml_url = args[:kml_url] if args.key?(:kml_url)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -1492,12 +1492,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
-          @id = args[:id] unless args[:id].nil?
-          @key = args[:key] unless args[:key].nil?
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
-          @visibility = args[:visibility] unless args[:visibility].nil?
+          @default_viewport = args[:default_viewport] if args.key?(:default_viewport)
+          @id = args[:id] if args.key?(:id)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -1521,8 +1521,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @maps = args[:maps] unless args[:maps].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @maps = args[:maps] if args.key?(:maps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1541,7 +1541,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -1565,8 +1565,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @parents = args[:parents] unless args[:parents].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @parents = args[:parents] if args.key?(:parents)
         end
       end
       
@@ -1606,10 +1606,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @discoverable = args[:discoverable] unless args[:discoverable].nil?
-          @id = args[:id] unless args[:id].nil?
-          @role = args[:role] unless args[:role].nil?
-          @type = args[:type] unless args[:type].nil?
+          @discoverable = args[:discoverable] if args.key?(:discoverable)
+          @id = args[:id] if args.key?(:id)
+          @role = args[:role] if args.key?(:role)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1630,7 +1630,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ids = args[:ids] unless args[:ids].nil?
+          @ids = args[:ids] if args.key?(:ids)
         end
       end
       
@@ -1662,7 +1662,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -1694,7 +1694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -1718,8 +1718,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @icon = args[:icon] unless args[:icon].nil?
-          @label = args[:label] unless args[:label].nil?
+          @icon = args[:icon] if args.key?(:icon)
+          @label = args[:label] if args.key?(:label)
         end
       end
       
@@ -1748,9 +1748,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fill = args[:fill] unless args[:fill].nil?
-          @label = args[:label] unless args[:label].nil?
-          @stroke = args[:stroke] unless args[:stroke].nil?
+          @fill = args[:fill] if args.key?(:fill)
+          @label = args[:label] if args.key?(:label)
+          @stroke = args[:stroke] if args.key?(:stroke)
         end
       end
       
@@ -1787,8 +1787,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1807,7 +1807,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @projects = args[:projects] unless args[:projects].nil?
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -1861,11 +1861,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @layer_type = args[:layer_type] unless args[:layer_type].nil?
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @layer_type = args[:layer_type] if args.key?(:layer_type)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -1889,8 +1889,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @layers = args[:layers] unless args[:layers].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @layers = args[:layers] if args.key?(:layers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1934,12 +1934,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @contents = args[:contents] unless args[:contents].nil?
-          @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
+          @contents = args[:contents] if args.key?(:contents)
+          @default_viewport = args[:default_viewport] if args.key?(:default_viewport)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -1963,8 +1963,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @maps = args[:maps] unless args[:maps].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @maps = args[:maps] if args.key?(:maps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2087,25 +2087,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acquisition_time = args[:acquisition_time] unless args[:acquisition_time].nil?
-          @attribution = args[:attribution] unless args[:attribution].nil?
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @description = args[:description] unless args[:description].nil?
-          @draft_access_list = args[:draft_access_list] unless args[:draft_access_list].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @files = args[:files] unless args[:files].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @mask_type = args[:mask_type] unless args[:mask_type].nil?
-          @name = args[:name] unless args[:name].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @raster_type = args[:raster_type] unless args[:raster_type].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @acquisition_time = args[:acquisition_time] if args.key?(:acquisition_time)
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @description = args[:description] if args.key?(:description)
+          @draft_access_list = args[:draft_access_list] if args.key?(:draft_access_list)
+          @etag = args[:etag] if args.key?(:etag)
+          @files = args[:files] if args.key?(:files)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @mask_type = args[:mask_type] if args.key?(:mask_type)
+          @name = args[:name] if args.key?(:name)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @raster_type = args[:raster_type] if args.key?(:raster_type)
+          @tags = args[:tags] if args.key?(:tags)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -2222,23 +2222,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attribution = args[:attribution] unless args[:attribution].nil?
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @description = args[:description] unless args[:description].nil?
-          @draft_access_list = args[:draft_access_list] unless args[:draft_access_list].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @mosaic = args[:mosaic] unless args[:mosaic].nil?
-          @name = args[:name] unless args[:name].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @raster_type = args[:raster_type] unless args[:raster_type].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @description = args[:description] if args.key?(:description)
+          @draft_access_list = args[:draft_access_list] if args.key?(:draft_access_list)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @mosaic = args[:mosaic] if args.key?(:mosaic)
+          @name = args[:name] if args.key?(:name)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @raster_type = args[:raster_type] if args.key?(:raster_type)
+          @tags = args[:tags] if args.key?(:tags)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -2266,8 +2266,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @raster_collections = args[:raster_collections] unless args[:raster_collections].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @raster_collections = args[:raster_collections] if args.key?(:raster_collections)
         end
       end
       
@@ -2330,15 +2330,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @description = args[:description] unless args[:description].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @raster_type = args[:raster_type] unless args[:raster_type].nil?
-          @tags = args[:tags] unless args[:tags].nil?
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @raster_type = args[:raster_type] if args.key?(:raster_type)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2357,7 +2357,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ids = args[:ids] unless args[:ids].nil?
+          @ids = args[:ids] if args.key?(:ids)
         end
       end
       
@@ -2389,7 +2389,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ids = args[:ids] unless args[:ids].nil?
+          @ids = args[:ids] if args.key?(:ids)
         end
       end
       
@@ -2426,8 +2426,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @rasters = args[:rasters] unless args[:rasters].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rasters = args[:rasters] if args.key?(:rasters)
         end
       end
       
@@ -2451,8 +2451,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @rasters = args[:rasters] unless args[:rasters].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rasters = args[:rasters] if args.key?(:rasters)
         end
       end
       
@@ -2481,9 +2481,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @border = args[:border] unless args[:border].nil?
-          @fill = args[:fill] unless args[:fill].nil?
-          @shape = args[:shape] unless args[:shape].nil?
+          @border = args[:border] if args.key?(:border)
+          @fill = args[:fill] if args.key?(:fill)
+          @shape = args[:shape] if args.key?(:shape)
         end
       end
       
@@ -2519,10 +2519,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column = args[:column] unless args[:column].nil?
-          @scaling_type = args[:scaling_type] unless args[:scaling_type].nil?
-          @size_range = args[:size_range] unless args[:size_range].nil?
-          @value_range = args[:value_range] unless args[:value_range].nil?
+          @column = args[:column] if args.key?(:column)
+          @scaling_type = args[:scaling_type] if args.key?(:scaling_type)
+          @size_range = args[:size_range] if args.key?(:size_range)
+          @value_range = args[:value_range] if args.key?(:value_range)
         end
       end
       
@@ -2556,9 +2556,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @columns = args[:columns] unless args[:columns].nil?
-          @primary_geometry = args[:primary_geometry] unless args[:primary_geometry].nil?
-          @primary_key = args[:primary_key] unless args[:primary_key].nil?
+          @columns = args[:columns] if args.key?(:columns)
+          @primary_geometry = args[:primary_geometry] if args.key?(:primary_geometry)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
         end
       end
       
@@ -2582,8 +2582,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max = args[:max] unless args[:max].nil?
-          @min = args[:min] unless args[:min].nil?
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -2713,24 +2713,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bbox = args[:bbox] unless args[:bbox].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @creator_email = args[:creator_email] unless args[:creator_email].nil?
-          @description = args[:description] unless args[:description].nil?
-          @draft_access_list = args[:draft_access_list] unless args[:draft_access_list].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @files = args[:files] unless args[:files].nil?
-          @id = args[:id] unless args[:id].nil?
-          @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
-          @last_modifier_email = args[:last_modifier_email] unless args[:last_modifier_email].nil?
-          @name = args[:name] unless args[:name].nil?
-          @processing_status = args[:processing_status] unless args[:processing_status].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @published_access_list = args[:published_access_list] unless args[:published_access_list].nil?
-          @schema = args[:schema] unless args[:schema].nil?
-          @source_encoding = args[:source_encoding] unless args[:source_encoding].nil?
-          @tags = args[:tags] unless args[:tags].nil?
-          @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
+          @bbox = args[:bbox] if args.key?(:bbox)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @description = args[:description] if args.key?(:description)
+          @draft_access_list = args[:draft_access_list] if args.key?(:draft_access_list)
+          @etag = args[:etag] if args.key?(:etag)
+          @files = args[:files] if args.key?(:files)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @name = args[:name] if args.key?(:name)
+          @processing_status = args[:processing_status] if args.key?(:processing_status)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @published_access_list = args[:published_access_list] if args.key?(:published_access_list)
+          @schema = args[:schema] if args.key?(:schema)
+          @source_encoding = args[:source_encoding] if args.key?(:source_encoding)
+          @tags = args[:tags] if args.key?(:tags)
+          @writers_can_edit_permissions = args[:writers_can_edit_permissions] if args.key?(:writers_can_edit_permissions)
         end
       end
       
@@ -2754,8 +2754,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @type = args[:type] unless args[:type].nil?
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2782,8 +2782,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @tables = args[:tables] unless args[:tables].nil?
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tables = args[:tables] if args.key?(:tables)
         end
       end
       
@@ -2808,8 +2808,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max = args[:max] unless args[:max].nil?
-          @min = args[:min] unless args[:min].nil?
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -2838,9 +2838,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @display_rules = args[:display_rules] unless args[:display_rules].nil?
-          @feature_info = args[:feature_info] unless args[:feature_info].nil?
-          @type = args[:type] unless args[:type].nil?
+          @display_rules = args[:display_rules] if args.key?(:display_rules)
+          @feature_info = args[:feature_info] if args.key?(:feature_info)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2864,8 +2864,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max = args[:max] unless args[:max].nil?
-          @min = args[:min] unless args[:min].nil?
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
     end

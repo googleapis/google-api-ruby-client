@@ -38,7 +38,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -58,7 +58,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -90,9 +90,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @metrics = args[:metrics] unless args[:metrics].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -112,7 +112,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -154,11 +154,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @oldest = args[:oldest] unless args[:oldest].nil?
-          @timeseries = args[:timeseries] unless args[:timeseries].nil?
-          @youngest = args[:youngest] unless args[:youngest].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @oldest = args[:oldest] if args.key?(:oldest)
+          @timeseries = args[:timeseries] if args.key?(:timeseries)
+          @youngest = args[:youngest] if args.key?(:youngest)
         end
       end
       
@@ -178,7 +178,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -221,11 +221,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @oldest = args[:oldest] unless args[:oldest].nil?
-          @timeseries = args[:timeseries] unless args[:timeseries].nil?
-          @youngest = args[:youngest] unless args[:youngest].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @oldest = args[:oldest] if args.key?(:oldest)
+          @timeseries = args[:timeseries] if args.key?(:timeseries)
+          @youngest = args[:youngest] if args.key?(:youngest)
         end
       end
       
@@ -266,11 +266,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @labels = args[:labels] unless args[:labels].nil?
-          @name = args[:name] unless args[:name].nil?
-          @project = args[:project] unless args[:project].nil?
-          @type_descriptor = args[:type_descriptor] unless args[:type_descriptor].nil?
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
+          @type_descriptor = args[:type_descriptor] if args.key?(:type_descriptor)
         end
       end
       
@@ -295,8 +295,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @key = args[:key] unless args[:key].nil?
+          @description = args[:description] if args.key?(:description)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -322,8 +322,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @metric_type = args[:metric_type] unless args[:metric_type].nil?
-          @value_type = args[:value_type] unless args[:value_type].nil?
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -385,13 +385,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bool_value = args[:bool_value] unless args[:bool_value].nil?
-          @distribution_value = args[:distribution_value] unless args[:distribution_value].nil?
-          @double_value = args[:double_value] unless args[:double_value].nil?
-          @end = args[:end] unless args[:end].nil?
-          @int64_value = args[:int64_value] unless args[:int64_value].nil?
-          @start = args[:start] unless args[:start].nil?
-          @string_value = args[:string_value] unless args[:string_value].nil?
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @end = args[:end] if args.key?(:end)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @start = args[:start] if args.key?(:start)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
@@ -425,9 +425,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @buckets = args[:buckets] unless args[:buckets].nil?
-          @overflow_bucket = args[:overflow_bucket] unless args[:overflow_bucket].nil?
-          @underflow_bucket = args[:underflow_bucket] unless args[:underflow_bucket].nil?
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @overflow_bucket = args[:overflow_bucket] if args.key?(:overflow_bucket)
+          @underflow_bucket = args[:underflow_bucket] if args.key?(:underflow_bucket)
         end
       end
       
@@ -458,9 +458,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @lower_bound = args[:lower_bound] unless args[:lower_bound].nil?
-          @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
+          @count = args[:count] if args.key?(:count)
+          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
         end
       end
       
@@ -485,8 +485,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @lower_bound = args[:lower_bound] unless args[:lower_bound].nil?
+          @count = args[:count] if args.key?(:count)
+          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
         end
       end
       
@@ -511,8 +511,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] unless args[:count].nil?
-          @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
+          @count = args[:count] if args.key?(:count)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
         end
       end
       
@@ -540,8 +540,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @points = args[:points] unless args[:points].nil?
-          @timeseries_desc = args[:timeseries_desc] unless args[:timeseries_desc].nil?
+          @points = args[:points] if args.key?(:points)
+          @timeseries_desc = args[:timeseries_desc] if args.key?(:timeseries_desc)
         end
       end
       
@@ -570,9 +570,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @labels = args[:labels] unless args[:labels].nil?
-          @metric = args[:metric] unless args[:metric].nil?
-          @project = args[:project] unless args[:project].nil?
+          @labels = args[:labels] if args.key?(:labels)
+          @metric = args[:metric] if args.key?(:metric)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
@@ -596,8 +596,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -623,8 +623,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @point = args[:point] unless args[:point].nil?
-          @timeseries_desc = args[:timeseries_desc] unless args[:timeseries_desc].nil?
+          @point = args[:point] if args.key?(:point)
+          @timeseries_desc = args[:timeseries_desc] if args.key?(:timeseries_desc)
         end
       end
       
@@ -650,8 +650,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @common_labels = args[:common_labels] unless args[:common_labels].nil?
-          @timeseries = args[:timeseries] unless args[:timeseries].nil?
+          @common_labels = args[:common_labels] if args.key?(:common_labels)
+          @timeseries = args[:timeseries] if args.key?(:timeseries)
         end
       end
       
@@ -671,7 +671,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
     end

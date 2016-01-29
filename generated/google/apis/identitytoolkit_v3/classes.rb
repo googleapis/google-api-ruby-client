@@ -75,14 +75,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @all_providers = args[:all_providers] unless args[:all_providers].nil?
-          @auth_uri = args[:auth_uri] unless args[:auth_uri].nil?
-          @captcha_required = args[:captcha_required] unless args[:captcha_required].nil?
-          @for_existing_provider = args[:for_existing_provider] unless args[:for_existing_provider].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @provider_id = args[:provider_id] unless args[:provider_id].nil?
-          @registered = args[:registered] unless args[:registered].nil?
-          @session_id = args[:session_id] unless args[:session_id].nil?
+          @all_providers = args[:all_providers] if args.key?(:all_providers)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @captcha_required = args[:captcha_required] if args.key?(:captcha_required)
+          @for_existing_provider = args[:for_existing_provider] if args.key?(:for_existing_provider)
+          @kind = args[:kind] if args.key?(:kind)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @registered = args[:registered] if args.key?(:registered)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -101,7 +101,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -131,9 +131,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @users = args[:users] unless args[:users].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -157,8 +157,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @users = args[:users] unless args[:users].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -188,9 +188,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @oob_code = args[:oob_code] unless args[:oob_code].nil?
+          @email = args[:email] if args.key?(:email)
+          @kind = args[:kind] if args.key?(:kind)
+          @oob_code = args[:oob_code] if args.key?(:oob_code)
         end
       end
       
@@ -219,9 +219,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @recaptcha_site_key = args[:recaptcha_site_key] unless args[:recaptcha_site_key].nil?
-          @recaptcha_stoken = args[:recaptcha_stoken] unless args[:recaptcha_stoken].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @recaptcha_site_key = args[:recaptcha_site_key] if args.key?(:recaptcha_site_key)
+          @recaptcha_stoken = args[:recaptcha_stoken] if args.key?(:recaptcha_stoken)
         end
       end
       
@@ -290,22 +290,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_id = args[:app_id] unless args[:app_id].nil?
-          @client_id = args[:client_id] unless args[:client_id].nil?
-          @context = args[:context] unless args[:context].nil?
-          @continue_uri = args[:continue_uri] unless args[:continue_uri].nil?
-          @identifier = args[:identifier] unless args[:identifier].nil?
-          @oauth_consumer_key = args[:oauth_consumer_key] unless args[:oauth_consumer_key].nil?
-          @oauth_scope = args[:oauth_scope] unless args[:oauth_scope].nil?
-          @openid_realm = args[:openid_realm] unless args[:openid_realm].nil?
-          @ota_app = args[:ota_app] unless args[:ota_app].nil?
-          @provider_id = args[:provider_id] unless args[:provider_id].nil?
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @context = args[:context] if args.key?(:context)
+          @continue_uri = args[:continue_uri] if args.key?(:continue_uri)
+          @identifier = args[:identifier] if args.key?(:identifier)
+          @oauth_consumer_key = args[:oauth_consumer_key] if args.key?(:oauth_consumer_key)
+          @oauth_scope = args[:oauth_scope] if args.key?(:oauth_scope)
+          @openid_realm = args[:openid_realm] if args.key?(:openid_realm)
+          @ota_app = args[:ota_app] if args.key?(:ota_app)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
         end
       end
       
       # Request to delete account.
       class DeleteAccountRequest
         include Google::Apis::Core::Hashable
+      
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
       
         # The local ID of the user.
         # Corresponds to the JSON property `localId`
@@ -318,13 +324,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @local_id = args[:local_id] unless args[:local_id].nil?
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @local_id = args[:local_id] if args.key?(:local_id)
         end
       end
       
       # Request to download user account in batch.
       class DownloadAccountRequest
         include Google::Apis::Core::Hashable
+      
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
       
         # The max number of results to return in the response.
         # Corresponds to the JSON property `maxResults`
@@ -342,8 +355,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max_results = args[:max_results] unless args[:max_results].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @max_results = args[:max_results] if args.key?(:max_results)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -372,9 +386,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @local_id = args[:local_id] if args.key?(:local_id)
         end
       end
       
@@ -409,10 +423,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_password_user = args[:allow_password_user] unless args[:allow_password_user].nil?
-          @api_key = args[:api_key] unless args[:api_key].nil?
-          @idp_config = args[:idp_config] unless args[:idp_config].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
+          @allow_password_user = args[:allow_password_user] if args.key?(:allow_password_user)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -446,10 +460,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @new_password = args[:new_password] unless args[:new_password].nil?
-          @old_password = args[:old_password] unless args[:old_password].nil?
-          @oob_code = args[:oob_code] unless args[:oob_code].nil?
+          @email = args[:email] if args.key?(:email)
+          @new_password = args[:new_password] if args.key?(:new_password)
+          @old_password = args[:old_password] if args.key?(:old_password)
+          @oob_code = args[:oob_code] if args.key?(:oob_code)
         end
       end
       
@@ -542,21 +556,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
-          @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
-          @delegated_project_number = args[:delegated_project_number] unless args[:delegated_project_number].nil?
-          @disable_user = args[:disable_user] unless args[:disable_user].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @email_verified = args[:email_verified] unless args[:email_verified].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @instance_id = args[:instance_id] unless args[:instance_id].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
-          @oob_code = args[:oob_code] unless args[:oob_code].nil?
-          @password = args[:password] unless args[:password].nil?
-          @provider = args[:provider] unless args[:provider].nil?
-          @upgrade_to_federated_login = args[:upgrade_to_federated_login] unless args[:upgrade_to_federated_login].nil?
-          @valid_since = args[:valid_since] unless args[:valid_since].nil?
+          @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
+          @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @disable_user = args[:disable_user] if args.key?(:disable_user)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @oob_code = args[:oob_code] if args.key?(:oob_code)
+          @password = args[:password] if args.key?(:password)
+          @provider = args[:provider] if args.key?(:provider)
+          @upgrade_to_federated_login = args[:upgrade_to_federated_login] if args.key?(:upgrade_to_federated_login)
+          @valid_since = args[:valid_since] if args.key?(:valid_since)
         end
       end
       
@@ -580,8 +594,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @instance_id = args[:instance_id] unless args[:instance_id].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @local_id = args[:local_id] if args.key?(:local_id)
         end
       end
       
@@ -600,13 +614,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @local_id = args[:local_id] unless args[:local_id].nil?
+          @local_id = args[:local_id] if args.key?(:local_id)
         end
       end
       
       # Request to upload user account in batch.
       class UploadAccountRequest
         include Google::Apis::Core::Hashable
+      
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
       
         # The password hash algorithm.
         # Corresponds to the JSON property `hashAlgorithm`
@@ -644,18 +664,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hash_algorithm = args[:hash_algorithm] unless args[:hash_algorithm].nil?
-          @memory_cost = args[:memory_cost] unless args[:memory_cost].nil?
-          @rounds = args[:rounds] unless args[:rounds].nil?
-          @salt_separator = args[:salt_separator] unless args[:salt_separator].nil?
-          @signer_key = args[:signer_key] unless args[:signer_key].nil?
-          @users = args[:users] unless args[:users].nil?
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @hash_algorithm = args[:hash_algorithm] if args.key?(:hash_algorithm)
+          @memory_cost = args[:memory_cost] if args.key?(:memory_cost)
+          @rounds = args[:rounds] if args.key?(:rounds)
+          @salt_separator = args[:salt_separator] if args.key?(:salt_separator)
+          @signer_key = args[:signer_key] if args.key?(:signer_key)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
       # Request to verify the IDP assertion.
       class VerifyAssertionRequest
         include Google::Apis::Core::Hashable
+      
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
       
         # Instance id token of the app.
         # Corresponds to the JSON property `instanceId`
@@ -695,12 +722,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @instance_id = args[:instance_id] unless args[:instance_id].nil?
-          @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
-          @post_body = args[:post_body] unless args[:post_body].nil?
-          @request_uri = args[:request_uri] unless args[:request_uri].nil?
-          @return_refresh_token = args[:return_refresh_token] unless args[:return_refresh_token].nil?
-          @session_id = args[:session_id] unless args[:session_id].nil?
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
+          @post_body = args[:post_body] if args.key?(:post_body)
+          @request_uri = args[:request_uri] if args.key?(:request_uri)
+          @return_refresh_token = args[:return_refresh_token] if args.key?(:return_refresh_token)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -724,8 +752,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @instance_id = args[:instance_id] unless args[:instance_id].nil?
-          @token = args[:token] unless args[:token].nil?
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -775,13 +803,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
-          @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
-          @delegated_project_number = args[:delegated_project_number] unless args[:delegated_project_number].nil?
-          @email = args[:email] unless args[:email].nil?
-          @instance_id = args[:instance_id] unless args[:instance_id].nil?
-          @password = args[:password] unless args[:password].nil?
-          @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
+          @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
+          @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @email = args[:email] if args.key?(:email)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @password = args[:password] if args.key?(:password)
+          @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
         end
       end
       
@@ -816,10 +844,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_id = args[:client_id] unless args[:client_id].nil?
-          @enabled = args[:enabled] unless args[:enabled].nil?
-          @experiment_percent = args[:experiment_percent] unless args[:experiment_percent].nil?
-          @provider = args[:provider] unless args[:provider].nil?
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @experiment_percent = args[:experiment_percent] if args.key?(:experiment_percent)
+          @provider = args[:provider] if args.key?(:provider)
         end
       end
       
@@ -874,14 +902,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @captcha_resp = args[:captcha_resp] unless args[:captcha_resp].nil?
-          @challenge = args[:challenge] unless args[:challenge].nil?
-          @email = args[:email] unless args[:email].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @new_email = args[:new_email] unless args[:new_email].nil?
-          @request_type = args[:request_type] unless args[:request_type].nil?
-          @user_ip = args[:user_ip] unless args[:user_ip].nil?
+          @captcha_resp = args[:captcha_resp] if args.key?(:captcha_resp)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @kind = args[:kind] if args.key?(:kind)
+          @new_email = args[:new_email] if args.key?(:new_email)
+          @request_type = args[:request_type] if args.key?(:request_type)
+          @user_ip = args[:user_ip] if args.key?(:user_ip)
         end
       end
       
@@ -905,8 +933,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] unless args[:email].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @email = args[:email] if args.key?(:email)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -950,12 +978,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @new_email = args[:new_email] unless args[:new_email].nil?
-          @provider_user_info = args[:provider_user_info] unless args[:provider_user_info].nil?
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @kind = args[:kind] if args.key?(:kind)
+          @new_email = args[:new_email] if args.key?(:new_email)
+          @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
         end
         
         # 
@@ -984,9 +1012,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @photo_url = args[:photo_url] unless args[:photo_url].nil?
-            @provider_id = args[:provider_id] unless args[:provider_id].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @photo_url = args[:photo_url] if args.key?(:photo_url)
+            @provider_id = args[:provider_id] if args.key?(:provider_id)
           end
         end
       end
@@ -1011,8 +1039,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @error = args[:error] unless args[:error].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @error = args[:error] if args.key?(:error)
+          @kind = args[:kind] if args.key?(:kind)
         end
         
         # 
@@ -1035,8 +1063,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @index = args[:index] unless args[:index].nil?
-            @message = args[:message] unless args[:message].nil?
+            @index = args[:index] if args.key?(:index)
+            @message = args[:message] if args.key?(:message)
           end
         end
       end
@@ -1113,18 +1141,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @disabled = args[:disabled] unless args[:disabled].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @email_verified = args[:email_verified] unless args[:email_verified].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
-          @password_hash = args[:password_hash] unless args[:password_hash].nil?
-          @password_updated_at = args[:password_updated_at] unless args[:password_updated_at].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
-          @provider_user_info = args[:provider_user_info] unless args[:provider_user_info].nil?
-          @salt = args[:salt] unless args[:salt].nil?
-          @valid_since = args[:valid_since] unless args[:valid_since].nil?
-          @version = args[:version] unless args[:version].nil?
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @password_hash = args[:password_hash] if args.key?(:password_hash)
+          @password_updated_at = args[:password_updated_at] if args.key?(:password_updated_at)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
+          @salt = args[:salt] if args.key?(:salt)
+          @valid_since = args[:valid_since] if args.key?(:valid_since)
+          @version = args[:version] if args.key?(:version)
         end
         
         # 
@@ -1158,10 +1186,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_name = args[:display_name] unless args[:display_name].nil?
-            @federated_id = args[:federated_id] unless args[:federated_id].nil?
-            @photo_url = args[:photo_url] unless args[:photo_url].nil?
-            @provider_id = args[:provider_id] unless args[:provider_id].nil?
+            @display_name = args[:display_name] if args.key?(:display_name)
+            @federated_id = args[:federated_id] if args.key?(:federated_id)
+            @photo_url = args[:photo_url] if args.key?(:photo_url)
+            @provider_id = args[:provider_id] if args.key?(:provider_id)
           end
         end
       end
@@ -1347,37 +1375,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @action = args[:action] unless args[:action].nil?
-          @app_installation_url = args[:app_installation_url] unless args[:app_installation_url].nil?
-          @app_scheme = args[:app_scheme] unless args[:app_scheme].nil?
-          @context = args[:context] unless args[:context].nil?
-          @date_of_birth = args[:date_of_birth] unless args[:date_of_birth].nil?
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @email_recycled = args[:email_recycled] unless args[:email_recycled].nil?
-          @email_verified = args[:email_verified] unless args[:email_verified].nil?
-          @federated_id = args[:federated_id] unless args[:federated_id].nil?
-          @first_name = args[:first_name] unless args[:first_name].nil?
-          @full_name = args[:full_name] unless args[:full_name].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @input_email = args[:input_email] unless args[:input_email].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @language = args[:language] unless args[:language].nil?
-          @last_name = args[:last_name] unless args[:last_name].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
-          @need_confirmation = args[:need_confirmation] unless args[:need_confirmation].nil?
-          @need_email = args[:need_email] unless args[:need_email].nil?
-          @nick_name = args[:nick_name] unless args[:nick_name].nil?
-          @oauth_access_token = args[:oauth_access_token] unless args[:oauth_access_token].nil?
-          @oauth_authorization_code = args[:oauth_authorization_code] unless args[:oauth_authorization_code].nil?
-          @oauth_expire_in = args[:oauth_expire_in] unless args[:oauth_expire_in].nil?
-          @oauth_request_token = args[:oauth_request_token] unless args[:oauth_request_token].nil?
-          @oauth_scope = args[:oauth_scope] unless args[:oauth_scope].nil?
-          @original_email = args[:original_email] unless args[:original_email].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
-          @provider_id = args[:provider_id] unless args[:provider_id].nil?
-          @time_zone = args[:time_zone] unless args[:time_zone].nil?
-          @verified_provider = args[:verified_provider] unless args[:verified_provider].nil?
+          @action = args[:action] if args.key?(:action)
+          @app_installation_url = args[:app_installation_url] if args.key?(:app_installation_url)
+          @app_scheme = args[:app_scheme] if args.key?(:app_scheme)
+          @context = args[:context] if args.key?(:context)
+          @date_of_birth = args[:date_of_birth] if args.key?(:date_of_birth)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @email_recycled = args[:email_recycled] if args.key?(:email_recycled)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @federated_id = args[:federated_id] if args.key?(:federated_id)
+          @first_name = args[:first_name] if args.key?(:first_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @input_email = args[:input_email] if args.key?(:input_email)
+          @kind = args[:kind] if args.key?(:kind)
+          @language = args[:language] if args.key?(:language)
+          @last_name = args[:last_name] if args.key?(:last_name)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @need_confirmation = args[:need_confirmation] if args.key?(:need_confirmation)
+          @need_email = args[:need_email] if args.key?(:need_email)
+          @nick_name = args[:nick_name] if args.key?(:nick_name)
+          @oauth_access_token = args[:oauth_access_token] if args.key?(:oauth_access_token)
+          @oauth_authorization_code = args[:oauth_authorization_code] if args.key?(:oauth_authorization_code)
+          @oauth_expire_in = args[:oauth_expire_in] if args.key?(:oauth_expire_in)
+          @oauth_request_token = args[:oauth_request_token] if args.key?(:oauth_request_token)
+          @oauth_scope = args[:oauth_scope] if args.key?(:oauth_scope)
+          @original_email = args[:original_email] if args.key?(:original_email)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @verified_provider = args[:verified_provider] if args.key?(:verified_provider)
         end
       end
       
@@ -1401,8 +1429,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1469,16 +1497,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @display_name = args[:display_name] unless args[:display_name].nil?
-          @email = args[:email] unless args[:email].nil?
-          @id_token = args[:id_token] unless args[:id_token].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @local_id = args[:local_id] unless args[:local_id].nil?
-          @oauth_access_token = args[:oauth_access_token] unless args[:oauth_access_token].nil?
-          @oauth_authorization_code = args[:oauth_authorization_code] unless args[:oauth_authorization_code].nil?
-          @oauth_expire_in = args[:oauth_expire_in] unless args[:oauth_expire_in].nil?
-          @photo_url = args[:photo_url] unless args[:photo_url].nil?
-          @registered = args[:registered] unless args[:registered].nil?
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @kind = args[:kind] if args.key?(:kind)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @oauth_access_token = args[:oauth_access_token] if args.key?(:oauth_access_token)
+          @oauth_authorization_code = args[:oauth_authorization_code] if args.key?(:oauth_authorization_code)
+          @oauth_expire_in = args[:oauth_expire_in] if args.key?(:oauth_expire_in)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @registered = args[:registered] if args.key?(:registered)
         end
       end
     end

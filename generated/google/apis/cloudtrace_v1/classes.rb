@@ -44,8 +44,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @traces = args[:traces] unless args[:traces].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @traces = args[:traces] if args.key?(:traces)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -77,9 +77,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @trace_id = args[:trace_id] unless args[:trace_id].nil?
-          @spans = args[:spans] unless args[:spans].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @trace_id = args[:trace_id] if args.key?(:trace_id)
+          @spans = args[:spans] if args.key?(:spans)
         end
       end
       
@@ -138,13 +138,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @span_id = args[:span_id] unless args[:span_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @parent_span_id = args[:parent_span_id] unless args[:parent_span_id].nil?
-          @labels = args[:labels] unless args[:labels].nil?
+          @span_id = args[:span_id] if args.key?(:span_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -163,7 +163,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @traces = args[:traces] unless args[:traces].nil?
+          @traces = args[:traces] if args.key?(:traces)
         end
       end
       

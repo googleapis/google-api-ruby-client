@@ -46,7 +46,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @policy = args[:policy] unless args[:policy].nil?
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -86,9 +86,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @version = args[:version] unless args[:version].nil?
-          @bindings = args[:bindings] unless args[:bindings].nil?
-          @etag = args[:etag] unless args[:etag].nil?
+          @version = args[:version] if args.key?(:version)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -124,8 +124,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @role = args[:role] unless args[:role].nil?
-          @members = args[:members] unless args[:members].nil?
+          @role = args[:role] if args.key?(:role)
+          @members = args[:members] if args.key?(:members)
         end
       end
       
@@ -145,7 +145,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -164,7 +164,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] unless args[:permissions].nil?
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -187,7 +187,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -206,7 +206,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @messages = args[:messages] unless args[:messages].nil?
+          @messages = args[:messages] if args.key?(:messages)
         end
       end
       
@@ -247,10 +247,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @attributes = args[:attributes] unless args[:attributes].nil?
-          @message_id = args[:message_id] unless args[:message_id].nil?
-          @publish_time = args[:publish_time] unless args[:publish_time].nil?
+          @data = args[:data] if args.key?(:data)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
         end
       end
       
@@ -270,7 +270,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message_ids = args[:message_ids] unless args[:message_ids].nil?
+          @message_ids = args[:message_ids] if args.key?(:message_ids)
         end
       end
       
@@ -295,8 +295,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @topics = args[:topics] unless args[:topics].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @topics = args[:topics] if args.key?(:topics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -322,8 +322,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -390,10 +390,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @topic = args[:topic] unless args[:topic].nil?
-          @push_config = args[:push_config] unless args[:push_config].nil?
-          @ack_deadline_seconds = args[:ack_deadline_seconds] unless args[:ack_deadline_seconds].nil?
+          @name = args[:name] if args.key?(:name)
+          @topic = args[:topic] if args.key?(:topic)
+          @push_config = args[:push_config] if args.key?(:push_config)
+          @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
         end
       end
       
@@ -431,8 +431,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @push_endpoint = args[:push_endpoint] unless args[:push_endpoint].nil?
-          @attributes = args[:attributes] unless args[:attributes].nil?
+          @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
+          @attributes = args[:attributes] if args.key?(:attributes)
         end
       end
       
@@ -458,8 +458,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -487,8 +487,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_ids = args[:ack_ids] unless args[:ack_ids].nil?
-          @ack_deadline_seconds = args[:ack_deadline_seconds] unless args[:ack_deadline_seconds].nil?
+          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
+          @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
         end
       end
       
@@ -508,7 +508,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_ids = args[:ack_ids] unless args[:ack_ids].nil?
+          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
         end
       end
       
@@ -538,8 +538,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @return_immediately = args[:return_immediately] unless args[:return_immediately].nil?
-          @max_messages = args[:max_messages] unless args[:max_messages].nil?
+          @return_immediately = args[:return_immediately] if args.key?(:return_immediately)
+          @max_messages = args[:max_messages] if args.key?(:max_messages)
         end
       end
       
@@ -561,7 +561,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @received_messages = args[:received_messages] unless args[:received_messages].nil?
+          @received_messages = args[:received_messages] if args.key?(:received_messages)
         end
       end
       
@@ -586,8 +586,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_id = args[:ack_id] unless args[:ack_id].nil?
-          @message = args[:message] unless args[:message].nil?
+          @ack_id = args[:ack_id] if args.key?(:ack_id)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -606,7 +606,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @push_config = args[:push_config] unless args[:push_config].nil?
+          @push_config = args[:push_config] if args.key?(:push_config)
         end
       end
     end

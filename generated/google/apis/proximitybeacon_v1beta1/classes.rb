@@ -105,15 +105,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @beacon_name = args[:beacon_name] unless args[:beacon_name].nil?
-          @advertised_id = args[:advertised_id] unless args[:advertised_id].nil?
-          @status = args[:status] unless args[:status].nil?
-          @place_id = args[:place_id] unless args[:place_id].nil?
-          @lat_lng = args[:lat_lng] unless args[:lat_lng].nil?
-          @indoor_level = args[:indoor_level] unless args[:indoor_level].nil?
-          @expected_stability = args[:expected_stability] unless args[:expected_stability].nil?
-          @description = args[:description] unless args[:description].nil?
-          @properties = args[:properties] unless args[:properties].nil?
+          @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
+          @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
+          @status = args[:status] if args.key?(:status)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
+          @indoor_level = args[:indoor_level] if args.key?(:indoor_level)
+          @expected_stability = args[:expected_stability] if args.key?(:expected_stability)
+          @description = args[:description] if args.key?(:description)
+          @properties = args[:properties] if args.key?(:properties)
         end
       end
       
@@ -141,8 +141,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] unless args[:type].nil?
-          @id = args[:id] unless args[:id].nil?
+          @type = args[:type] if args.key?(:type)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -184,8 +184,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @latitude = args[:latitude] unless args[:latitude].nil?
-          @longitude = args[:longitude] unless args[:longitude].nil?
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
@@ -205,7 +205,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -253,9 +253,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @beacons = args[:beacons] unless args[:beacons].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_count = args[:total_count] unless args[:total_count].nil?
+          @beacons = args[:beacons] if args.key?(:beacons)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_count = args[:total_count] if args.key?(:total_count)
         end
       end
       
@@ -290,9 +290,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachment_name = args[:attachment_name] unless args[:attachment_name].nil?
-          @namespaced_type = args[:namespaced_type] unless args[:namespaced_type].nil?
-          @data = args[:data] unless args[:data].nil?
+          @attachment_name = args[:attachment_name] if args.key?(:attachment_name)
+          @namespaced_type = args[:namespaced_type] if args.key?(:namespaced_type)
+          @data = args[:data] if args.key?(:data)
         end
       end
       
@@ -311,7 +311,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachments = args[:attachments] unless args[:attachments].nil?
+          @attachments = args[:attachments] if args.key?(:attachments)
         end
       end
       
@@ -330,7 +330,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @num_deleted = args[:num_deleted] unless args[:num_deleted].nil?
+          @num_deleted = args[:num_deleted] if args.key?(:num_deleted)
         end
       end
       
@@ -349,7 +349,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @namespaces = args[:namespaces] unless args[:namespaces].nil?
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
         end
       end
       
@@ -377,8 +377,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @namespace_name = args[:namespace_name] unless args[:namespace_name].nil?
-          @serving_visibility = args[:serving_visibility] unless args[:serving_visibility].nil?
+          @namespace_name = args[:namespace_name] if args.key?(:namespace_name)
+          @serving_visibility = args[:serving_visibility] if args.key?(:serving_visibility)
         end
       end
       
@@ -403,8 +403,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @diagnostics = args[:diagnostics] unless args[:diagnostics].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -439,9 +439,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @beacon_name = args[:beacon_name] unless args[:beacon_name].nil?
-          @estimated_low_battery_date = args[:estimated_low_battery_date] unless args[:estimated_low_battery_date].nil?
-          @alerts = args[:alerts] unless args[:alerts].nil?
+          @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
+          @estimated_low_battery_date = args[:estimated_low_battery_date] if args.key?(:estimated_low_battery_date)
+          @alerts = args[:alerts] if args.key?(:alerts)
         end
       end
       
@@ -478,9 +478,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @year = args[:year] unless args[:year].nil?
-          @month = args[:month] unless args[:month].nil?
-          @day = args[:day] unless args[:day].nil?
+          @year = args[:year] if args.key?(:year)
+          @month = args[:month] if args.key?(:month)
+          @day = args[:day] if args.key?(:day)
         end
       end
       
@@ -508,8 +508,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @observations = args[:observations] unless args[:observations].nil?
-          @namespaced_types = args[:namespaced_types] unless args[:namespaced_types].nil?
+          @observations = args[:observations] if args.key?(:observations)
+          @namespaced_types = args[:namespaced_types] if args.key?(:namespaced_types)
         end
       end
       
@@ -541,9 +541,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @advertised_id = args[:advertised_id] unless args[:advertised_id].nil?
-          @telemetry = args[:telemetry] unless args[:telemetry].nil?
-          @timestamp_ms = args[:timestamp_ms] unless args[:timestamp_ms].nil?
+          @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
+          @telemetry = args[:telemetry] if args.key?(:telemetry)
+          @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
         end
       end
       
@@ -563,7 +563,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @beacons = args[:beacons] unless args[:beacons].nil?
+          @beacons = args[:beacons] if args.key?(:beacons)
         end
       end
       
@@ -600,10 +600,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @advertised_id = args[:advertised_id] unless args[:advertised_id].nil?
-          @beacon_name = args[:beacon_name] unless args[:beacon_name].nil?
-          @description = args[:description] unless args[:description].nil?
-          @attachments = args[:attachments] unless args[:attachments].nil?
+          @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
+          @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
+          @description = args[:description] if args.key?(:description)
+          @attachments = args[:attachments] if args.key?(:attachments)
         end
       end
       
@@ -630,8 +630,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @namespaced_type = args[:namespaced_type] unless args[:namespaced_type].nil?
-          @data = args[:data] unless args[:data].nil?
+          @namespaced_type = args[:namespaced_type] if args.key?(:namespaced_type)
+          @data = args[:data] if args.key?(:data)
         end
       end
     end

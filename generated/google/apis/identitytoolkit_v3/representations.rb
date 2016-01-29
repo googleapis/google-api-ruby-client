@@ -223,6 +223,7 @@ module Google
       class DeleteAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           property :local_id, as: 'localId'
         end
       end
@@ -230,6 +231,7 @@ module Google
       class DownloadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
         end
@@ -304,6 +306,7 @@ module Google
       class UploadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
           property :rounds, as: 'rounds'
@@ -317,6 +320,7 @@ module Google
       class VerifyAssertionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           property :instance_id, as: 'instanceId'
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'

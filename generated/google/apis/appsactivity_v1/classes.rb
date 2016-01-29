@@ -44,8 +44,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @combined_event = args[:combined_event] unless args[:combined_event].nil?
-          @single_events = args[:single_events] unless args[:single_events].nil?
+          @combined_event = args[:combined_event] if args.key?(:combined_event)
+          @single_events = args[:single_events] if args.key?(:single_events)
         end
       end
       
@@ -109,15 +109,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_event_types = args[:additional_event_types] unless args[:additional_event_types].nil?
-          @event_time_millis = args[:event_time_millis] unless args[:event_time_millis].nil?
-          @from_user_deletion = args[:from_user_deletion] unless args[:from_user_deletion].nil?
-          @move = args[:move] unless args[:move].nil?
-          @permission_changes = args[:permission_changes] unless args[:permission_changes].nil?
-          @primary_event_type = args[:primary_event_type] unless args[:primary_event_type].nil?
-          @rename = args[:rename] unless args[:rename].nil?
-          @target = args[:target] unless args[:target].nil?
-          @user = args[:user] unless args[:user].nil?
+          @additional_event_types = args[:additional_event_types] if args.key?(:additional_event_types)
+          @event_time_millis = args[:event_time_millis] if args.key?(:event_time_millis)
+          @from_user_deletion = args[:from_user_deletion] if args.key?(:from_user_deletion)
+          @move = args[:move] if args.key?(:move)
+          @permission_changes = args[:permission_changes] if args.key?(:permission_changes)
+          @primary_event_type = args[:primary_event_type] if args.key?(:primary_event_type)
+          @rename = args[:rename] if args.key?(:rename)
+          @target = args[:target] if args.key?(:target)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -142,8 +142,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @activities = args[:activities] unless args[:activities].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @activities = args[:activities] if args.key?(:activities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -168,8 +168,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @added_parents = args[:added_parents] unless args[:added_parents].nil?
-          @removed_parents = args[:removed_parents] unless args[:removed_parents].nil?
+          @added_parents = args[:added_parents] if args.key?(:added_parents)
+          @removed_parents = args[:removed_parents] if args.key?(:removed_parents)
         end
       end
       
@@ -200,9 +200,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @is_root = args[:is_root] unless args[:is_root].nil?
-          @title = args[:title] unless args[:title].nil?
+          @id = args[:id] if args.key?(:id)
+          @is_root = args[:is_root] if args.key?(:is_root)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -251,12 +251,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @permission_id = args[:permission_id] unless args[:permission_id].nil?
-          @role = args[:role] unless args[:role].nil?
-          @type = args[:type] unless args[:type].nil?
-          @user = args[:user] unless args[:user].nil?
-          @with_link = args[:with_link] unless args[:with_link].nil?
+          @name = args[:name] if args.key?(:name)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
+          @role = args[:role] if args.key?(:role)
+          @type = args[:type] if args.key?(:type)
+          @user = args[:user] if args.key?(:user)
+          @with_link = args[:with_link] if args.key?(:with_link)
         end
       end
       
@@ -281,8 +281,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @added_permissions = args[:added_permissions] unless args[:added_permissions].nil?
-          @removed_permissions = args[:removed_permissions] unless args[:removed_permissions].nil?
+          @added_permissions = args[:added_permissions] if args.key?(:added_permissions)
+          @removed_permissions = args[:removed_permissions] if args.key?(:removed_permissions)
         end
       end
       
@@ -301,7 +301,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] unless args[:url].nil?
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -325,8 +325,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @new_title = args[:new_title] unless args[:new_title].nil?
-          @old_title = args[:old_title] unless args[:old_title].nil?
+          @new_title = args[:new_title] if args.key?(:new_title)
+          @old_title = args[:old_title] if args.key?(:old_title)
         end
       end
       
@@ -357,9 +357,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -383,8 +383,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @photo = args[:photo] unless args[:photo].nil?
+          @name = args[:name] if args.key?(:name)
+          @photo = args[:photo] if args.key?(:photo)
         end
       end
     end

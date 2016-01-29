@@ -134,25 +134,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acl = args[:acl] unless args[:acl].nil?
-          @cors_configurations = args[:cors_configurations] unless args[:cors_configurations].nil?
-          @default_object_acl = args[:default_object_acl] unless args[:default_object_acl].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @lifecycle = args[:lifecycle] unless args[:lifecycle].nil?
-          @location = args[:location] unless args[:location].nil?
-          @logging = args[:logging] unless args[:logging].nil?
-          @metageneration = args[:metageneration] unless args[:metageneration].nil?
-          @name = args[:name] unless args[:name].nil?
-          @owner = args[:owner] unless args[:owner].nil?
-          @project_number = args[:project_number] unless args[:project_number].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @storage_class = args[:storage_class] unless args[:storage_class].nil?
-          @time_created = args[:time_created] unless args[:time_created].nil?
-          @updated = args[:updated] unless args[:updated].nil?
-          @versioning = args[:versioning] unless args[:versioning].nil?
-          @website = args[:website] unless args[:website].nil?
+          @acl = args[:acl] if args.key?(:acl)
+          @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
+          @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @lifecycle = args[:lifecycle] if args.key?(:lifecycle)
+          @location = args[:location] if args.key?(:location)
+          @logging = args[:logging] if args.key?(:logging)
+          @metageneration = args[:metageneration] if args.key?(:metageneration)
+          @name = args[:name] if args.key?(:name)
+          @owner = args[:owner] if args.key?(:owner)
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
+          @time_created = args[:time_created] if args.key?(:time_created)
+          @updated = args[:updated] if args.key?(:updated)
+          @versioning = args[:versioning] if args.key?(:versioning)
+          @website = args[:website] if args.key?(:website)
         end
         
         # 
@@ -190,10 +190,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @max_age_seconds = args[:max_age_seconds] unless args[:max_age_seconds].nil?
-            @http_method = args[:http_method] unless args[:http_method].nil?
-            @origin = args[:origin] unless args[:origin].nil?
-            @response_header = args[:response_header] unless args[:response_header].nil?
+            @max_age_seconds = args[:max_age_seconds] if args.key?(:max_age_seconds)
+            @http_method = args[:http_method] if args.key?(:http_method)
+            @origin = args[:origin] if args.key?(:origin)
+            @response_header = args[:response_header] if args.key?(:response_header)
           end
         end
         
@@ -214,7 +214,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @rule = args[:rule] unless args[:rule].nil?
+            @rule = args[:rule] if args.key?(:rule)
           end
           
           # 
@@ -237,8 +237,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @action = args[:action] unless args[:action].nil?
-              @condition = args[:condition] unless args[:condition].nil?
+              @action = args[:action] if args.key?(:action)
+              @condition = args[:condition] if args.key?(:condition)
             end
             
             # The action to take.
@@ -256,7 +256,7 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @type = args[:type] unless args[:type].nil?
+                @type = args[:type] if args.key?(:type)
               end
             end
             
@@ -297,10 +297,10 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @age = args[:age] unless args[:age].nil?
-                @created_before = args[:created_before] unless args[:created_before].nil?
-                @is_live = args[:is_live] unless args[:is_live].nil?
-                @num_newer_versions = args[:num_newer_versions] unless args[:num_newer_versions].nil?
+                @age = args[:age] if args.key?(:age)
+                @created_before = args[:created_before] if args.key?(:created_before)
+                @is_live = args[:is_live] if args.key?(:is_live)
+                @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
               end
             end
           end
@@ -327,8 +327,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @log_bucket = args[:log_bucket] unless args[:log_bucket].nil?
-            @log_object_prefix = args[:log_object_prefix] unless args[:log_object_prefix].nil?
+            @log_bucket = args[:log_bucket] if args.key?(:log_bucket)
+            @log_object_prefix = args[:log_object_prefix] if args.key?(:log_object_prefix)
           end
         end
         
@@ -352,8 +352,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @entity = args[:entity] unless args[:entity].nil?
-            @entity_id = args[:entity_id] unless args[:entity_id].nil?
+            @entity = args[:entity] if args.key?(:entity)
+            @entity_id = args[:entity_id] if args.key?(:entity_id)
           end
         end
         
@@ -373,7 +373,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @enabled = args[:enabled] unless args[:enabled].nil?
+            @enabled = args[:enabled] if args.key?(:enabled)
           end
         end
         
@@ -398,8 +398,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @main_page_suffix = args[:main_page_suffix] unless args[:main_page_suffix].nil?
-            @not_found_page = args[:not_found_page] unless args[:not_found_page].nil?
+            @main_page_suffix = args[:main_page_suffix] if args.key?(:main_page_suffix)
+            @not_found_page = args[:not_found_page] if args.key?(:not_found_page)
           end
         end
       end
@@ -482,17 +482,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket = args[:bucket] unless args[:bucket].nil?
-          @domain = args[:domain] unless args[:domain].nil?
-          @email = args[:email] unless args[:email].nil?
-          @entity = args[:entity] unless args[:entity].nil?
-          @entity_id = args[:entity_id] unless args[:entity_id].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @project_team = args[:project_team] unless args[:project_team].nil?
-          @role = args[:role] unless args[:role].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @domain = args[:domain] if args.key?(:domain)
+          @email = args[:email] if args.key?(:email)
+          @entity = args[:entity] if args.key?(:entity)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @project_team = args[:project_team] if args.key?(:project_team)
+          @role = args[:role] if args.key?(:role)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
         
         # The project team associated with the entity, if any.
@@ -515,8 +515,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @project_number = args[:project_number] unless args[:project_number].nil?
-            @team = args[:team] unless args[:team].nil?
+            @project_number = args[:project_number] if args.key?(:project_number)
+            @team = args[:team] if args.key?(:team)
           end
         end
       end
@@ -542,8 +542,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -573,9 +573,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -644,16 +644,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address = args[:address] unless args[:address].nil?
-          @expiration = args[:expiration] unless args[:expiration].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @params = args[:params] unless args[:params].nil?
-          @payload = args[:payload] unless args[:payload].nil?
-          @resource_id = args[:resource_id] unless args[:resource_id].nil?
-          @resource_uri = args[:resource_uri] unless args[:resource_uri].nil?
-          @token = args[:token] unless args[:token].nil?
-          @type = args[:type] unless args[:type].nil?
+          @address = args[:address] if args.key?(:address)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @params = args[:params] if args.key?(:params)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @token = args[:token] if args.key?(:token)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -682,9 +682,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @destination = args[:destination] unless args[:destination].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @source_objects = args[:source_objects] unless args[:source_objects].nil?
+          @destination = args[:destination] if args.key?(:destination)
+          @kind = args[:kind] if args.key?(:kind)
+          @source_objects = args[:source_objects] if args.key?(:source_objects)
         end
         
         # 
@@ -713,9 +713,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @generation = args[:generation] unless args[:generation].nil?
-            @name = args[:name] unless args[:name].nil?
-            @object_preconditions = args[:object_preconditions] unless args[:object_preconditions].nil?
+            @generation = args[:generation] if args.key?(:generation)
+            @name = args[:name] if args.key?(:name)
+            @object_preconditions = args[:object_preconditions] if args.key?(:object_preconditions)
           end
           
           # Conditions that must be met for this operation to execute.
@@ -735,7 +735,7 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @if_generation_match = args[:if_generation_match] unless args[:if_generation_match].nil?
+              @if_generation_match = args[:if_generation_match] if args.key?(:if_generation_match)
             end
           end
         end
@@ -890,32 +890,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acl = args[:acl] unless args[:acl].nil?
-          @bucket = args[:bucket] unless args[:bucket].nil?
-          @cache_control = args[:cache_control] unless args[:cache_control].nil?
-          @component_count = args[:component_count] unless args[:component_count].nil?
-          @content_disposition = args[:content_disposition] unless args[:content_disposition].nil?
-          @content_encoding = args[:content_encoding] unless args[:content_encoding].nil?
-          @content_language = args[:content_language] unless args[:content_language].nil?
-          @content_type = args[:content_type] unless args[:content_type].nil?
-          @crc32c = args[:crc32c] unless args[:crc32c].nil?
-          @customer_encryption = args[:customer_encryption] unless args[:customer_encryption].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @generation = args[:generation] unless args[:generation].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @md5_hash = args[:md5_hash] unless args[:md5_hash].nil?
-          @media_link = args[:media_link] unless args[:media_link].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
-          @metageneration = args[:metageneration] unless args[:metageneration].nil?
-          @name = args[:name] unless args[:name].nil?
-          @owner = args[:owner] unless args[:owner].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
-          @size = args[:size] unless args[:size].nil?
-          @storage_class = args[:storage_class] unless args[:storage_class].nil?
-          @time_created = args[:time_created] unless args[:time_created].nil?
-          @time_deleted = args[:time_deleted] unless args[:time_deleted].nil?
-          @updated = args[:updated] unless args[:updated].nil?
+          @acl = args[:acl] if args.key?(:acl)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @cache_control = args[:cache_control] if args.key?(:cache_control)
+          @component_count = args[:component_count] if args.key?(:component_count)
+          @content_disposition = args[:content_disposition] if args.key?(:content_disposition)
+          @content_encoding = args[:content_encoding] if args.key?(:content_encoding)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @crc32c = args[:crc32c] if args.key?(:crc32c)
+          @customer_encryption = args[:customer_encryption] if args.key?(:customer_encryption)
+          @etag = args[:etag] if args.key?(:etag)
+          @generation = args[:generation] if args.key?(:generation)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @md5_hash = args[:md5_hash] if args.key?(:md5_hash)
+          @media_link = args[:media_link] if args.key?(:media_link)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metageneration = args[:metageneration] if args.key?(:metageneration)
+          @name = args[:name] if args.key?(:name)
+          @owner = args[:owner] if args.key?(:owner)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @size = args[:size] if args.key?(:size)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
+          @time_created = args[:time_created] if args.key?(:time_created)
+          @time_deleted = args[:time_deleted] if args.key?(:time_deleted)
+          @updated = args[:updated] if args.key?(:updated)
         end
         
         # Metadata of customer-supplied encryption key, if the object is encrypted by
@@ -939,8 +939,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @encryption_algorithm = args[:encryption_algorithm] unless args[:encryption_algorithm].nil?
-            @key_sha256 = args[:key_sha256] unless args[:key_sha256].nil?
+            @encryption_algorithm = args[:encryption_algorithm] if args.key?(:encryption_algorithm)
+            @key_sha256 = args[:key_sha256] if args.key?(:key_sha256)
           end
         end
         
@@ -964,8 +964,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @entity = args[:entity] unless args[:entity].nil?
-            @entity_id = args[:entity_id] unless args[:entity_id].nil?
+            @entity = args[:entity] if args.key?(:entity)
+            @entity_id = args[:entity_id] if args.key?(:entity_id)
           end
         end
       end
@@ -1058,19 +1058,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket = args[:bucket] unless args[:bucket].nil?
-          @domain = args[:domain] unless args[:domain].nil?
-          @email = args[:email] unless args[:email].nil?
-          @entity = args[:entity] unless args[:entity].nil?
-          @entity_id = args[:entity_id] unless args[:entity_id].nil?
-          @etag = args[:etag] unless args[:etag].nil?
-          @generation = args[:generation] unless args[:generation].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @object = args[:object] unless args[:object].nil?
-          @project_team = args[:project_team] unless args[:project_team].nil?
-          @role = args[:role] unless args[:role].nil?
-          @self_link = args[:self_link] unless args[:self_link].nil?
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @domain = args[:domain] if args.key?(:domain)
+          @email = args[:email] if args.key?(:email)
+          @entity = args[:entity] if args.key?(:entity)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @generation = args[:generation] if args.key?(:generation)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @object = args[:object] if args.key?(:object)
+          @project_team = args[:project_team] if args.key?(:project_team)
+          @role = args[:role] if args.key?(:role)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
         
         # The project team associated with the entity, if any.
@@ -1093,8 +1093,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @project_number = args[:project_number] unless args[:project_number].nil?
-            @team = args[:team] unless args[:team].nil?
+            @project_number = args[:project_number] if args.key?(:project_number)
+            @team = args[:team] if args.key?(:team)
           end
         end
       end
@@ -1120,8 +1120,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1157,10 +1157,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @prefixes = args[:prefixes] unless args[:prefixes].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prefixes = args[:prefixes] if args.key?(:prefixes)
         end
       end
       
@@ -1209,12 +1209,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] unless args[:done].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @object_size = args[:object_size] unless args[:object_size].nil?
-          @resource = args[:resource] unless args[:resource].nil?
-          @rewrite_token = args[:rewrite_token] unless args[:rewrite_token].nil?
-          @total_bytes_rewritten = args[:total_bytes_rewritten] unless args[:total_bytes_rewritten].nil?
+          @done = args[:done] if args.key?(:done)
+          @kind = args[:kind] if args.key?(:kind)
+          @object_size = args[:object_size] if args.key?(:object_size)
+          @resource = args[:resource] if args.key?(:resource)
+          @rewrite_token = args[:rewrite_token] if args.key?(:rewrite_token)
+          @total_bytes_rewritten = args[:total_bytes_rewritten] if args.key?(:total_bytes_rewritten)
         end
       end
     end

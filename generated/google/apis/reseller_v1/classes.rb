@@ -85,16 +85,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @address_line1 = args[:address_line1] unless args[:address_line1].nil?
-          @address_line2 = args[:address_line2] unless args[:address_line2].nil?
-          @address_line3 = args[:address_line3] unless args[:address_line3].nil?
-          @contact_name = args[:contact_name] unless args[:contact_name].nil?
-          @country_code = args[:country_code] unless args[:country_code].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @locality = args[:locality] unless args[:locality].nil?
-          @organization_name = args[:organization_name] unless args[:organization_name].nil?
-          @postal_code = args[:postal_code] unless args[:postal_code].nil?
-          @region = args[:region] unless args[:region].nil?
+          @address_line1 = args[:address_line1] if args.key?(:address_line1)
+          @address_line2 = args[:address_line2] if args.key?(:address_line2)
+          @address_line3 = args[:address_line3] if args.key?(:address_line3)
+          @contact_name = args[:contact_name] if args.key?(:contact_name)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @kind = args[:kind] if args.key?(:kind)
+          @locality = args[:locality] if args.key?(:locality)
+          @organization_name = args[:organization_name] if args.key?(:organization_name)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -128,10 +128,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @plan_name = args[:plan_name] unless args[:plan_name].nil?
-          @purchase_order_id = args[:purchase_order_id] unless args[:purchase_order_id].nil?
-          @seats = args[:seats] unless args[:seats].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @plan_name = args[:plan_name] if args.key?(:plan_name)
+          @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
+          @seats = args[:seats] if args.key?(:seats)
         end
       end
       
@@ -186,14 +186,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alternate_email = args[:alternate_email] unless args[:alternate_email].nil?
-          @customer_domain = args[:customer_domain] unless args[:customer_domain].nil?
-          @customer_domain_verified = args[:customer_domain_verified] unless args[:customer_domain_verified].nil?
-          @customer_id = args[:customer_id] unless args[:customer_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @phone_number = args[:phone_number] unless args[:phone_number].nil?
-          @postal_address = args[:postal_address] unless args[:postal_address].nil?
-          @resource_ui_url = args[:resource_ui_url] unless args[:resource_ui_url].nil?
+          @alternate_email = args[:alternate_email] if args.key?(:alternate_email)
+          @customer_domain = args[:customer_domain] if args.key?(:customer_domain)
+          @customer_domain_verified = args[:customer_domain_verified] if args.key?(:customer_domain_verified)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @postal_address = args[:postal_address] if args.key?(:postal_address)
+          @resource_ui_url = args[:resource_ui_url] if args.key?(:resource_ui_url)
         end
       end
       
@@ -217,8 +217,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @renewal_type = args[:renewal_type] unless args[:renewal_type].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @renewal_type = args[:renewal_type] if args.key?(:renewal_type)
         end
       end
       
@@ -255,10 +255,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @licensed_number_of_seats = args[:licensed_number_of_seats] unless args[:licensed_number_of_seats].nil?
-          @maximum_number_of_seats = args[:maximum_number_of_seats] unless args[:maximum_number_of_seats].nil?
-          @number_of_seats = args[:number_of_seats] unless args[:number_of_seats].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @licensed_number_of_seats = args[:licensed_number_of_seats] if args.key?(:licensed_number_of_seats)
+          @maximum_number_of_seats = args[:maximum_number_of_seats] if args.key?(:maximum_number_of_seats)
+          @number_of_seats = args[:number_of_seats] if args.key?(:number_of_seats)
         end
       end
       
@@ -358,21 +358,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @billing_method = args[:billing_method] unless args[:billing_method].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @customer_id = args[:customer_id] unless args[:customer_id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @plan = args[:plan] unless args[:plan].nil?
-          @purchase_order_id = args[:purchase_order_id] unless args[:purchase_order_id].nil?
-          @renewal_settings = args[:renewal_settings] unless args[:renewal_settings].nil?
-          @resource_ui_url = args[:resource_ui_url] unless args[:resource_ui_url].nil?
-          @seats = args[:seats] unless args[:seats].nil?
-          @sku_id = args[:sku_id] unless args[:sku_id].nil?
-          @status = args[:status] unless args[:status].nil?
-          @subscription_id = args[:subscription_id] unless args[:subscription_id].nil?
-          @suspension_reasons = args[:suspension_reasons] unless args[:suspension_reasons].nil?
-          @transfer_info = args[:transfer_info] unless args[:transfer_info].nil?
-          @trial_settings = args[:trial_settings] unless args[:trial_settings].nil?
+          @billing_method = args[:billing_method] if args.key?(:billing_method)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @plan = args[:plan] if args.key?(:plan)
+          @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
+          @renewal_settings = args[:renewal_settings] if args.key?(:renewal_settings)
+          @resource_ui_url = args[:resource_ui_url] if args.key?(:resource_ui_url)
+          @seats = args[:seats] if args.key?(:seats)
+          @sku_id = args[:sku_id] if args.key?(:sku_id)
+          @status = args[:status] if args.key?(:status)
+          @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
+          @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
+          @transfer_info = args[:transfer_info] if args.key?(:transfer_info)
+          @trial_settings = args[:trial_settings] if args.key?(:trial_settings)
         end
         
         # Plan details of the subscription
@@ -401,9 +401,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @commitment_interval = args[:commitment_interval] unless args[:commitment_interval].nil?
-            @is_commitment_plan = args[:is_commitment_plan] unless args[:is_commitment_plan].nil?
-            @plan_name = args[:plan_name] unless args[:plan_name].nil?
+            @commitment_interval = args[:commitment_interval] if args.key?(:commitment_interval)
+            @is_commitment_plan = args[:is_commitment_plan] if args.key?(:is_commitment_plan)
+            @plan_name = args[:plan_name] if args.key?(:plan_name)
           end
           
           # Interval of the commitment if it is a commitment plan.
@@ -426,8 +426,8 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @end_time = args[:end_time] unless args[:end_time].nil?
-              @start_time = args[:start_time] unless args[:start_time].nil?
+              @end_time = args[:end_time] if args.key?(:end_time)
+              @start_time = args[:start_time] if args.key?(:start_time)
             end
           end
         end
@@ -452,8 +452,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @minimum_transferable_seats = args[:minimum_transferable_seats] unless args[:minimum_transferable_seats].nil?
-            @transferability_expiration_time = args[:transferability_expiration_time] unless args[:transferability_expiration_time].nil?
+            @minimum_transferable_seats = args[:minimum_transferable_seats] if args.key?(:minimum_transferable_seats)
+            @transferability_expiration_time = args[:transferability_expiration_time] if args.key?(:transferability_expiration_time)
           end
         end
         
@@ -478,8 +478,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @is_in_trial = args[:is_in_trial] unless args[:is_in_trial].nil?
-            @trial_end_time = args[:trial_end_time] unless args[:trial_end_time].nil?
+            @is_in_trial = args[:is_in_trial] if args.key?(:is_in_trial)
+            @trial_end_time = args[:trial_end_time] if args.key?(:trial_end_time)
           end
         end
       end
@@ -510,9 +510,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
         end
       end
     end

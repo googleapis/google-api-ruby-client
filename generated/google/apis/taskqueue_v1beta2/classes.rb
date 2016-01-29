@@ -74,14 +74,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enqueue_timestamp = args[:enqueue_timestamp] unless args[:enqueue_timestamp].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @lease_timestamp = args[:lease_timestamp] unless args[:lease_timestamp].nil?
-          @payload_base64 = args[:payload_base64] unless args[:payload_base64].nil?
-          @queue_name = args[:queue_name] unless args[:queue_name].nil?
-          @retry_count = args[:retry_count] unless args[:retry_count].nil?
-          @tag = args[:tag] unless args[:tag].nil?
+          @enqueue_timestamp = args[:enqueue_timestamp] if args.key?(:enqueue_timestamp)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @lease_timestamp = args[:lease_timestamp] if args.key?(:lease_timestamp)
+          @payload_base64 = args[:payload_base64] if args.key?(:payload_base64)
+          @queue_name = args[:queue_name] if args.key?(:queue_name)
+          @retry_count = args[:retry_count] if args.key?(:retry_count)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       
@@ -121,11 +121,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @acl = args[:acl] unless args[:acl].nil?
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @max_leases = args[:max_leases] unless args[:max_leases].nil?
-          @stats = args[:stats] unless args[:stats].nil?
+          @acl = args[:acl] if args.key?(:acl)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_leases = args[:max_leases] if args.key?(:max_leases)
+          @stats = args[:stats] if args.key?(:stats)
         end
         
         # ACLs that are applicable to this TaskQueue object.
@@ -156,9 +156,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @admin_emails = args[:admin_emails] unless args[:admin_emails].nil?
-            @consumer_emails = args[:consumer_emails] unless args[:consumer_emails].nil?
-            @producer_emails = args[:producer_emails] unless args[:producer_emails].nil?
+            @admin_emails = args[:admin_emails] if args.key?(:admin_emails)
+            @consumer_emails = args[:consumer_emails] if args.key?(:consumer_emails)
+            @producer_emails = args[:producer_emails] if args.key?(:producer_emails)
           end
         end
         
@@ -192,10 +192,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @leased_last_hour = args[:leased_last_hour] unless args[:leased_last_hour].nil?
-            @leased_last_minute = args[:leased_last_minute] unless args[:leased_last_minute].nil?
-            @oldest_task = args[:oldest_task] unless args[:oldest_task].nil?
-            @total_tasks = args[:total_tasks] unless args[:total_tasks].nil?
+            @leased_last_hour = args[:leased_last_hour] if args.key?(:leased_last_hour)
+            @leased_last_minute = args[:leased_last_minute] if args.key?(:leased_last_minute)
+            @oldest_task = args[:oldest_task] if args.key?(:oldest_task)
+            @total_tasks = args[:total_tasks] if args.key?(:total_tasks)
           end
         end
       end
@@ -220,8 +220,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -245,8 +245,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
     end

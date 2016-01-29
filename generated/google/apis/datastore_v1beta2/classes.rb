@@ -38,7 +38,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @keys = args[:keys] unless args[:keys].nil?
+          @keys = args[:keys] if args.key?(:keys)
         end
       end
       
@@ -63,8 +63,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] unless args[:header].nil?
-          @keys = args[:keys] unless args[:keys].nil?
+          @header = args[:header] if args.key?(:header)
+          @keys = args[:keys] if args.key?(:keys)
         end
       end
       
@@ -88,7 +88,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @isolation_level = args[:isolation_level] unless args[:isolation_level].nil?
+          @isolation_level = args[:isolation_level] if args.key?(:isolation_level)
         end
       end
       
@@ -112,8 +112,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] unless args[:header].nil?
-          @transaction = args[:transaction] unless args[:transaction].nil?
+          @header = args[:header] if args.key?(:header)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -149,10 +149,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ignore_read_only = args[:ignore_read_only] unless args[:ignore_read_only].nil?
-          @mode = args[:mode] unless args[:mode].nil?
-          @mutation = args[:mutation] unless args[:mutation].nil?
-          @transaction = args[:transaction] unless args[:transaction].nil?
+          @ignore_read_only = args[:ignore_read_only] if args.key?(:ignore_read_only)
+          @mode = args[:mode] if args.key?(:mode)
+          @mutation = args[:mutation] if args.key?(:mutation)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -176,8 +176,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] unless args[:header].nil?
-          @mutation_result = args[:mutation_result] unless args[:mutation_result].nil?
+          @header = args[:header] if args.key?(:header)
+          @mutation_result = args[:mutation_result] if args.key?(:mutation_result)
         end
       end
       
@@ -201,8 +201,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @filters = args[:filters] unless args[:filters].nil?
-          @operator = args[:operator] unless args[:operator].nil?
+          @filters = args[:filters] if args.key?(:filters)
+          @operator = args[:operator] if args.key?(:operator)
         end
       end
       
@@ -226,8 +226,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] unless args[:key].nil?
-          @properties = args[:properties] unless args[:properties].nil?
+          @key = args[:key] if args.key?(:key)
+          @properties = args[:properties] if args.key?(:properties)
         end
       end
       
@@ -246,7 +246,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @entity = args[:entity] unless args[:entity].nil?
+          @entity = args[:entity] if args.key?(:entity)
         end
       end
       
@@ -270,8 +270,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @composite_filter = args[:composite_filter] unless args[:composite_filter].nil?
-          @property_filter = args[:property_filter] unless args[:property_filter].nil?
+          @composite_filter = args[:composite_filter] if args.key?(:composite_filter)
+          @property_filter = args[:property_filter] if args.key?(:property_filter)
         end
       end
       
@@ -312,10 +312,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_literal = args[:allow_literal] unless args[:allow_literal].nil?
-          @name_args = args[:name_args] unless args[:name_args].nil?
-          @number_args = args[:number_args] unless args[:number_args].nil?
-          @query_string = args[:query_string] unless args[:query_string].nil?
+          @allow_literal = args[:allow_literal] if args.key?(:allow_literal)
+          @name_args = args[:name_args] if args.key?(:name_args)
+          @number_args = args[:number_args] if args.key?(:number_args)
+          @query_string = args[:query_string] if args.key?(:query_string)
         end
       end
       
@@ -346,9 +346,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cursor = args[:cursor] unless args[:cursor].nil?
-          @name = args[:name] unless args[:name].nil?
-          @value = args[:value] unless args[:value].nil?
+          @cursor = args[:cursor] if args.key?(:cursor)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -383,8 +383,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @partition_id = args[:partition_id] unless args[:partition_id].nil?
-          @path = args[:path] unless args[:path].nil?
+          @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -418,9 +418,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] unless args[:id].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -439,7 +439,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -463,8 +463,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @keys = args[:keys] unless args[:keys].nil?
-          @read_options = args[:read_options] unless args[:read_options].nil?
+          @keys = args[:keys] if args.key?(:keys)
+          @read_options = args[:read_options] if args.key?(:read_options)
         end
       end
       
@@ -498,10 +498,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @deferred = args[:deferred] unless args[:deferred].nil?
-          @found = args[:found] unless args[:found].nil?
-          @header = args[:header] unless args[:header].nil?
-          @missing = args[:missing] unless args[:missing].nil?
+          @deferred = args[:deferred] if args.key?(:deferred)
+          @found = args[:found] if args.key?(:found)
+          @header = args[:header] if args.key?(:header)
+          @missing = args[:missing] if args.key?(:missing)
         end
       end
       
@@ -551,12 +551,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @delete = args[:delete] unless args[:delete].nil?
-          @force = args[:force] unless args[:force].nil?
-          @insert = args[:insert] unless args[:insert].nil?
-          @insert_auto_id = args[:insert_auto_id] unless args[:insert_auto_id].nil?
-          @update = args[:update] unless args[:update].nil?
-          @upsert = args[:upsert] unless args[:upsert].nil?
+          @delete = args[:delete] if args.key?(:delete)
+          @force = args[:force] if args.key?(:force)
+          @insert = args[:insert] if args.key?(:insert)
+          @insert_auto_id = args[:insert_auto_id] if args.key?(:insert_auto_id)
+          @update = args[:update] if args.key?(:update)
+          @upsert = args[:upsert] if args.key?(:upsert)
         end
       end
       
@@ -581,8 +581,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @index_updates = args[:index_updates] unless args[:index_updates].nil?
-          @insert_auto_id_keys = args[:insert_auto_id_keys] unless args[:insert_auto_id_keys].nil?
+          @index_updates = args[:index_updates] if args.key?(:index_updates)
+          @insert_auto_id_keys = args[:insert_auto_id_keys] if args.key?(:insert_auto_id_keys)
         end
       end
       
@@ -608,8 +608,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
-          @namespace = args[:namespace] unless args[:namespace].nil?
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @namespace = args[:namespace] if args.key?(:namespace)
         end
       end
       
@@ -694,18 +694,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blob_key_value = args[:blob_key_value] unless args[:blob_key_value].nil?
-          @blob_value = args[:blob_value] unless args[:blob_value].nil?
-          @boolean_value = args[:boolean_value] unless args[:boolean_value].nil?
-          @date_time_value = args[:date_time_value] unless args[:date_time_value].nil?
-          @double_value = args[:double_value] unless args[:double_value].nil?
-          @entity_value = args[:entity_value] unless args[:entity_value].nil?
-          @indexed = args[:indexed] unless args[:indexed].nil?
-          @integer_value = args[:integer_value] unless args[:integer_value].nil?
-          @key_value = args[:key_value] unless args[:key_value].nil?
-          @list_value = args[:list_value] unless args[:list_value].nil?
-          @meaning = args[:meaning] unless args[:meaning].nil?
-          @string_value = args[:string_value] unless args[:string_value].nil?
+          @blob_key_value = args[:blob_key_value] if args.key?(:blob_key_value)
+          @blob_value = args[:blob_value] if args.key?(:blob_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
+          @date_time_value = args[:date_time_value] if args.key?(:date_time_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @entity_value = args[:entity_value] if args.key?(:entity_value)
+          @indexed = args[:indexed] if args.key?(:indexed)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
+          @key_value = args[:key_value] if args.key?(:key_value)
+          @list_value = args[:list_value] if args.key?(:list_value)
+          @meaning = args[:meaning] if args.key?(:meaning)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
@@ -732,8 +732,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aggregation_function = args[:aggregation_function] unless args[:aggregation_function].nil?
-          @property = args[:property] unless args[:property].nil?
+          @aggregation_function = args[:aggregation_function] if args.key?(:aggregation_function)
+          @property = args[:property] if args.key?(:property)
         end
       end
       
@@ -764,9 +764,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operator = args[:operator] unless args[:operator].nil?
-          @property = args[:property] unless args[:property].nil?
-          @value = args[:value] unless args[:value].nil?
+          @operator = args[:operator] if args.key?(:operator)
+          @property = args[:property] if args.key?(:property)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -791,8 +791,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @direction = args[:direction] unless args[:direction].nil?
-          @property = args[:property] unless args[:property].nil?
+          @direction = args[:direction] if args.key?(:direction)
+          @property = args[:property] if args.key?(:property)
         end
       end
       
@@ -811,7 +811,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -875,15 +875,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_cursor = args[:end_cursor] unless args[:end_cursor].nil?
-          @filter = args[:filter] unless args[:filter].nil?
-          @group_by = args[:group_by] unless args[:group_by].nil?
-          @kinds = args[:kinds] unless args[:kinds].nil?
-          @limit = args[:limit] unless args[:limit].nil?
-          @offset = args[:offset] unless args[:offset].nil?
-          @order = args[:order] unless args[:order].nil?
-          @projection = args[:projection] unless args[:projection].nil?
-          @start_cursor = args[:start_cursor] unless args[:start_cursor].nil?
+          @end_cursor = args[:end_cursor] if args.key?(:end_cursor)
+          @filter = args[:filter] if args.key?(:filter)
+          @group_by = args[:group_by] if args.key?(:group_by)
+          @kinds = args[:kinds] if args.key?(:kinds)
+          @limit = args[:limit] if args.key?(:limit)
+          @offset = args[:offset] if args.key?(:offset)
+          @order = args[:order] if args.key?(:order)
+          @projection = args[:projection] if args.key?(:projection)
+          @start_cursor = args[:start_cursor] if args.key?(:start_cursor)
         end
       end
       
@@ -927,11 +927,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_cursor = args[:end_cursor] unless args[:end_cursor].nil?
-          @entity_result_type = args[:entity_result_type] unless args[:entity_result_type].nil?
-          @entity_results = args[:entity_results] unless args[:entity_results].nil?
-          @more_results = args[:more_results] unless args[:more_results].nil?
-          @skipped_results = args[:skipped_results] unless args[:skipped_results].nil?
+          @end_cursor = args[:end_cursor] if args.key?(:end_cursor)
+          @entity_result_type = args[:entity_result_type] if args.key?(:entity_result_type)
+          @entity_results = args[:entity_results] if args.key?(:entity_results)
+          @more_results = args[:more_results] if args.key?(:more_results)
+          @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
         end
       end
       
@@ -958,8 +958,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @read_consistency = args[:read_consistency] unless args[:read_consistency].nil?
-          @transaction = args[:transaction] unless args[:transaction].nil?
+          @read_consistency = args[:read_consistency] if args.key?(:read_consistency)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -979,7 +979,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kind = args[:kind] unless args[:kind].nil?
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -998,7 +998,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @transaction = args[:transaction] unless args[:transaction].nil?
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -1017,7 +1017,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @header = args[:header] unless args[:header].nil?
+          @header = args[:header] if args.key?(:header)
         end
       end
       
@@ -1053,10 +1053,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gql_query = args[:gql_query] unless args[:gql_query].nil?
-          @partition_id = args[:partition_id] unless args[:partition_id].nil?
-          @query = args[:query] unless args[:query].nil?
-          @read_options = args[:read_options] unless args[:read_options].nil?
+          @gql_query = args[:gql_query] if args.key?(:gql_query)
+          @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @query = args[:query] if args.key?(:query)
+          @read_options = args[:read_options] if args.key?(:read_options)
         end
       end
       
@@ -1080,8 +1080,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @batch = args[:batch] unless args[:batch].nil?
-          @header = args[:header] unless args[:header].nil?
+          @batch = args[:batch] if args.key?(:batch)
+          @header = args[:header] if args.key?(:header)
         end
       end
       
@@ -1167,18 +1167,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @blob_key_value = args[:blob_key_value] unless args[:blob_key_value].nil?
-          @blob_value = args[:blob_value] unless args[:blob_value].nil?
-          @boolean_value = args[:boolean_value] unless args[:boolean_value].nil?
-          @date_time_value = args[:date_time_value] unless args[:date_time_value].nil?
-          @double_value = args[:double_value] unless args[:double_value].nil?
-          @entity_value = args[:entity_value] unless args[:entity_value].nil?
-          @indexed = args[:indexed] unless args[:indexed].nil?
-          @integer_value = args[:integer_value] unless args[:integer_value].nil?
-          @key_value = args[:key_value] unless args[:key_value].nil?
-          @list_value = args[:list_value] unless args[:list_value].nil?
-          @meaning = args[:meaning] unless args[:meaning].nil?
-          @string_value = args[:string_value] unless args[:string_value].nil?
+          @blob_key_value = args[:blob_key_value] if args.key?(:blob_key_value)
+          @blob_value = args[:blob_value] if args.key?(:blob_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
+          @date_time_value = args[:date_time_value] if args.key?(:date_time_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @entity_value = args[:entity_value] if args.key?(:entity_value)
+          @indexed = args[:indexed] if args.key?(:indexed)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
+          @key_value = args[:key_value] if args.key?(:key_value)
+          @list_value = args[:list_value] if args.key?(:list_value)
+          @meaning = args[:meaning] if args.key?(:meaning)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
     end

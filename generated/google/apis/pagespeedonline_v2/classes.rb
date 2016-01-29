@@ -45,8 +45,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @args = args[:args] unless args[:args].nil?
-          @format = args[:format] unless args[:format].nil?
+          @args = args[:args] if args.key?(:args)
+          @format = args[:format] if args.key?(:format)
         end
         
         # 
@@ -89,11 +89,11 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @key = args[:key] unless args[:key].nil?
-            @rects = args[:rects] unless args[:rects].nil?
-            @secondary_rects = args[:secondary_rects] unless args[:secondary_rects].nil?
-            @type = args[:type] unless args[:type].nil?
-            @value = args[:value] unless args[:value].nil?
+            @key = args[:key] if args.key?(:key)
+            @rects = args[:rects] if args.key?(:rects)
+            @secondary_rects = args[:secondary_rects] if args.key?(:secondary_rects)
+            @type = args[:type] if args.key?(:type)
+            @value = args[:value] if args.key?(:value)
           end
           
           # 
@@ -126,10 +126,10 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @height = args[:height] unless args[:height].nil?
-              @left = args[:left] unless args[:left].nil?
-              @top = args[:top] unless args[:top].nil?
-              @width = args[:width] unless args[:width].nil?
+              @height = args[:height] if args.key?(:height)
+              @left = args[:left] if args.key?(:left)
+              @top = args[:top] if args.key?(:top)
+              @width = args[:width] if args.key?(:width)
             end
           end
           
@@ -163,10 +163,10 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @height = args[:height] unless args[:height].nil?
-              @left = args[:left] unless args[:left].nil?
-              @top = args[:top] unless args[:top].nil?
-              @width = args[:width] unless args[:width].nil?
+              @height = args[:height] if args.key?(:height)
+              @left = args[:left] if args.key?(:left)
+              @top = args[:top] if args.key?(:top)
+              @width = args[:width] if args.key?(:width)
             end
           end
         end
@@ -213,12 +213,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @height = args[:height] unless args[:height].nil?
-          @key = args[:key] unless args[:key].nil?
-          @mime_type = args[:mime_type] unless args[:mime_type].nil?
-          @page_rect = args[:page_rect] unless args[:page_rect].nil?
-          @width = args[:width] unless args[:width].nil?
+          @data = args[:data] if args.key?(:data)
+          @height = args[:height] if args.key?(:height)
+          @key = args[:key] if args.key?(:key)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @page_rect = args[:page_rect] if args.key?(:page_rect)
+          @width = args[:width] if args.key?(:width)
         end
         
         # The region of the page that is captured by this image, with dimensions
@@ -252,10 +252,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @height = args[:height] unless args[:height].nil?
-            @left = args[:left] unless args[:left].nil?
-            @top = args[:top] unless args[:top].nil?
-            @width = args[:width] unless args[:width].nil?
+            @height = args[:height] if args.key?(:height)
+            @left = args[:left] if args.key?(:left)
+            @top = args[:top] if args.key?(:top)
+            @width = args[:width] if args.key?(:width)
           end
         end
       end
@@ -325,16 +325,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @formatted_results = args[:formatted_results] unless args[:formatted_results].nil?
-          @id = args[:id] unless args[:id].nil?
-          @invalid_rules = args[:invalid_rules] unless args[:invalid_rules].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @page_stats = args[:page_stats] unless args[:page_stats].nil?
-          @response_code = args[:response_code] unless args[:response_code].nil?
-          @rule_groups = args[:rule_groups] unless args[:rule_groups].nil?
-          @screenshot = args[:screenshot] unless args[:screenshot].nil?
-          @title = args[:title] unless args[:title].nil?
-          @version = args[:version] unless args[:version].nil?
+          @formatted_results = args[:formatted_results] if args.key?(:formatted_results)
+          @id = args[:id] if args.key?(:id)
+          @invalid_rules = args[:invalid_rules] if args.key?(:invalid_rules)
+          @kind = args[:kind] if args.key?(:kind)
+          @page_stats = args[:page_stats] if args.key?(:page_stats)
+          @response_code = args[:response_code] if args.key?(:response_code)
+          @rule_groups = args[:rule_groups] if args.key?(:rule_groups)
+          @screenshot = args[:screenshot] if args.key?(:screenshot)
+          @title = args[:title] if args.key?(:title)
+          @version = args[:version] if args.key?(:version)
         end
         
         # Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
@@ -359,8 +359,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @locale = args[:locale] unless args[:locale].nil?
-            @rule_results = args[:rule_results] unless args[:rule_results].nil?
+            @locale = args[:locale] if args.key?(:locale)
+            @rule_results = args[:rule_results] if args.key?(:rule_results)
           end
           
           # The enum-like identifier for this rule. For instance "EnableKeepAlive" or "
@@ -408,11 +408,11 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @groups = args[:groups] unless args[:groups].nil?
-              @localized_rule_name = args[:localized_rule_name] unless args[:localized_rule_name].nil?
-              @rule_impact = args[:rule_impact] unless args[:rule_impact].nil?
-              @summary = args[:summary] unless args[:summary].nil?
-              @url_blocks = args[:url_blocks] unless args[:url_blocks].nil?
+              @groups = args[:groups] if args.key?(:groups)
+              @localized_rule_name = args[:localized_rule_name] if args.key?(:localized_rule_name)
+              @rule_impact = args[:rule_impact] if args.key?(:rule_impact)
+              @summary = args[:summary] if args.key?(:summary)
+              @url_blocks = args[:url_blocks] if args.key?(:url_blocks)
             end
             
             # 
@@ -435,8 +435,8 @@ module Google
             
               # Update properties of this object
               def update!(**args)
-                @header = args[:header] unless args[:header].nil?
-                @urls = args[:urls] unless args[:urls].nil?
+                @header = args[:header] if args.key?(:header)
+                @urls = args[:urls] if args.key?(:urls)
               end
               
               # 
@@ -460,8 +460,8 @@ module Google
               
                 # Update properties of this object
                 def update!(**args)
-                  @details = args[:details] unless args[:details].nil?
-                  @result = args[:result] unless args[:result].nil?
+                  @details = args[:details] if args.key?(:details)
+                  @result = args[:result] if args.key?(:result)
                 end
               end
             end
@@ -546,19 +546,19 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @css_response_bytes = args[:css_response_bytes] unless args[:css_response_bytes].nil?
-            @flash_response_bytes = args[:flash_response_bytes] unless args[:flash_response_bytes].nil?
-            @html_response_bytes = args[:html_response_bytes] unless args[:html_response_bytes].nil?
-            @image_response_bytes = args[:image_response_bytes] unless args[:image_response_bytes].nil?
-            @javascript_response_bytes = args[:javascript_response_bytes] unless args[:javascript_response_bytes].nil?
-            @number_css_resources = args[:number_css_resources] unless args[:number_css_resources].nil?
-            @number_hosts = args[:number_hosts] unless args[:number_hosts].nil?
-            @number_js_resources = args[:number_js_resources] unless args[:number_js_resources].nil?
-            @number_resources = args[:number_resources] unless args[:number_resources].nil?
-            @number_static_resources = args[:number_static_resources] unless args[:number_static_resources].nil?
-            @other_response_bytes = args[:other_response_bytes] unless args[:other_response_bytes].nil?
-            @text_response_bytes = args[:text_response_bytes] unless args[:text_response_bytes].nil?
-            @total_request_bytes = args[:total_request_bytes] unless args[:total_request_bytes].nil?
+            @css_response_bytes = args[:css_response_bytes] if args.key?(:css_response_bytes)
+            @flash_response_bytes = args[:flash_response_bytes] if args.key?(:flash_response_bytes)
+            @html_response_bytes = args[:html_response_bytes] if args.key?(:html_response_bytes)
+            @image_response_bytes = args[:image_response_bytes] if args.key?(:image_response_bytes)
+            @javascript_response_bytes = args[:javascript_response_bytes] if args.key?(:javascript_response_bytes)
+            @number_css_resources = args[:number_css_resources] if args.key?(:number_css_resources)
+            @number_hosts = args[:number_hosts] if args.key?(:number_hosts)
+            @number_js_resources = args[:number_js_resources] if args.key?(:number_js_resources)
+            @number_resources = args[:number_resources] if args.key?(:number_resources)
+            @number_static_resources = args[:number_static_resources] if args.key?(:number_static_resources)
+            @other_response_bytes = args[:other_response_bytes] if args.key?(:other_response_bytes)
+            @text_response_bytes = args[:text_response_bytes] if args.key?(:text_response_bytes)
+            @total_request_bytes = args[:total_request_bytes] if args.key?(:total_request_bytes)
           end
         end
         
@@ -580,7 +580,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @score = args[:score] unless args[:score].nil?
+            @score = args[:score] if args.key?(:score)
           end
         end
         
@@ -604,8 +604,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @major = args[:major] unless args[:major].nil?
-            @minor = args[:minor] unless args[:minor].nil?
+            @major = args[:major] if args.key?(:major)
+            @minor = args[:minor] if args.key?(:minor)
           end
         end
       end

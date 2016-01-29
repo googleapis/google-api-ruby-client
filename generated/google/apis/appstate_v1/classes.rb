@@ -53,10 +53,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_state_version = args[:current_state_version] unless args[:current_state_version].nil?
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @state_key = args[:state_key] unless args[:state_key].nil?
+          @current_state_version = args[:current_state_version] if args.key?(:current_state_version)
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
+          @state_key = args[:state_key] if args.key?(:state_key)
         end
       end
       
@@ -86,9 +86,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @maximum_key_count = args[:maximum_key_count] unless args[:maximum_key_count].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @maximum_key_count = args[:maximum_key_count] if args.key?(:maximum_key_count)
         end
       end
       
@@ -113,8 +113,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] unless args[:data].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @data = args[:data] if args.key?(:data)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -144,9 +144,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @current_state_version = args[:current_state_version] unless args[:current_state_version].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @state_key = args[:state_key] unless args[:state_key].nil?
+          @current_state_version = args[:current_state_version] if args.key?(:current_state_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @state_key = args[:state_key] if args.key?(:state_key)
         end
       end
     end

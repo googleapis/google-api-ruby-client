@@ -154,6 +154,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class OperationMetadataV1Beta5
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -163,6 +167,7 @@ module Google
       
           property :location, as: 'location'
           property :code_bucket, as: 'codeBucket'
+          property :default_bucket, as: 'defaultBucket'
         end
       end
       
@@ -519,6 +524,17 @@ module Google
           property :user, as: 'user'
           property :target, as: 'target'
           property :method_prop, as: 'method'
+        end
+      end
+      
+      class OperationMetadataV1Beta5
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
         end
       end
     end

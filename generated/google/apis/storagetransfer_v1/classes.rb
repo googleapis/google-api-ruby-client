@@ -37,7 +37,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_email = args[:account_email] unless args[:account_email].nil?
+          @account_email = args[:account_email] if args.key?(:account_email)
         end
       end
       
@@ -104,15 +104,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @description = args[:description] unless args[:description].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @transfer_spec = args[:transfer_spec] unless args[:transfer_spec].nil?
-          @schedule = args[:schedule] unless args[:schedule].nil?
-          @status = args[:status] unless args[:status].nil?
-          @creation_time = args[:creation_time] unless args[:creation_time].nil?
-          @last_modification_time = args[:last_modification_time] unless args[:last_modification_time].nil?
-          @deletion_time = args[:deletion_time] unless args[:deletion_time].nil?
+          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @status = args[:status] if args.key?(:status)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
+          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
         end
       end
       
@@ -179,12 +179,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gcs_data_source = args[:gcs_data_source] unless args[:gcs_data_source].nil?
-          @aws_s3_data_source = args[:aws_s3_data_source] unless args[:aws_s3_data_source].nil?
-          @http_data_source = args[:http_data_source] unless args[:http_data_source].nil?
-          @gcs_data_sink = args[:gcs_data_sink] unless args[:gcs_data_sink].nil?
-          @object_conditions = args[:object_conditions] unless args[:object_conditions].nil?
-          @transfer_options = args[:transfer_options] unless args[:transfer_options].nil?
+          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+          @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
+          @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
+          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
+          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
       
@@ -206,7 +206,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket_name = args[:bucket_name] unless args[:bucket_name].nil?
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
         end
       end
       
@@ -233,8 +233,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket_name = args[:bucket_name] unless args[:bucket_name].nil?
-          @aws_access_key = args[:aws_access_key] unless args[:aws_access_key].nil?
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
         end
       end
       
@@ -259,8 +259,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_key_id = args[:access_key_id] unless args[:access_key_id].nil?
-          @secret_access_key = args[:secret_access_key] unless args[:secret_access_key].nil?
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
         end
       end
       
@@ -298,7 +298,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @list_url = args[:list_url] unless args[:list_url].nil?
+          @list_url = args[:list_url] if args.key?(:list_url)
         end
       end
       
@@ -354,10 +354,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] unless args[:min_time_elapsed_since_last_modification].nil?
-          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] unless args[:max_time_elapsed_since_last_modification].nil?
-          @include_prefixes = args[:include_prefixes] unless args[:include_prefixes].nil?
-          @exclude_prefixes = args[:exclude_prefixes] unless args[:exclude_prefixes].nil?
+          @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
+          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
+          @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
+          @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
         end
       end
       
@@ -391,9 +391,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] unless args[:overwrite_objects_already_existing_in_sink].nil?
-          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] unless args[:delete_objects_unique_in_sink].nil?
-          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] unless args[:delete_objects_from_source_after_transfer].nil?
+          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
+          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
+          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
         end
       end
       
@@ -436,9 +436,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @schedule_start_date = args[:schedule_start_date] unless args[:schedule_start_date].nil?
-          @schedule_end_date = args[:schedule_end_date] unless args[:schedule_end_date].nil?
-          @start_time_of_day = args[:start_time_of_day] unless args[:start_time_of_day].nil?
+          @schedule_start_date = args[:schedule_start_date] if args.key?(:schedule_start_date)
+          @schedule_end_date = args[:schedule_end_date] if args.key?(:schedule_end_date)
+          @start_time_of_day = args[:start_time_of_day] if args.key?(:start_time_of_day)
         end
       end
       
@@ -475,9 +475,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @year = args[:year] unless args[:year].nil?
-          @month = args[:month] unless args[:month].nil?
-          @day = args[:day] unless args[:day].nil?
+          @year = args[:year] if args.key?(:year)
+          @month = args[:month] if args.key?(:month)
+          @day = args[:day] if args.key?(:day)
         end
       end
       
@@ -515,10 +515,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hours = args[:hours] unless args[:hours].nil?
-          @minutes = args[:minutes] unless args[:minutes].nil?
-          @seconds = args[:seconds] unless args[:seconds].nil?
-          @nanos = args[:nanos] unless args[:nanos].nil?
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @nanos = args[:nanos] if args.key?(:nanos)
         end
       end
       
@@ -553,9 +553,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @transfer_job = args[:transfer_job] unless args[:transfer_job].nil?
-          @update_transfer_job_field_mask = args[:update_transfer_job_field_mask] unless args[:update_transfer_job_field_mask].nil?
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @transfer_job = args[:transfer_job] if args.key?(:transfer_job)
+          @update_transfer_job_field_mask = args[:update_transfer_job_field_mask] if args.key?(:update_transfer_job_field_mask)
         end
       end
       
@@ -579,8 +579,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @transfer_jobs = args[:transfer_jobs] unless args[:transfer_jobs].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @transfer_jobs = args[:transfer_jobs] if args.key?(:transfer_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -704,11 +704,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @metadata = args[:metadata] unless args[:metadata].nil?
-          @done = args[:done] unless args[:done].nil?
-          @error = args[:error] unless args[:error].nil?
-          @response = args[:response] unless args[:response].nil?
+          @name = args[:name] if args.key?(:name)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -772,9 +772,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] unless args[:code].nil?
-          @message = args[:message] unless args[:message].nil?
-          @details = args[:details] unless args[:details].nil?
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -799,8 +799,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operations = args[:operations] unless args[:operations].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -860,15 +860,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] unless args[:name].nil?
-          @project_id = args[:project_id] unless args[:project_id].nil?
-          @transfer_spec = args[:transfer_spec] unless args[:transfer_spec].nil?
-          @start_time = args[:start_time] unless args[:start_time].nil?
-          @end_time = args[:end_time] unless args[:end_time].nil?
-          @status = args[:status] unless args[:status].nil?
-          @counters = args[:counters] unless args[:counters].nil?
-          @error_breakdowns = args[:error_breakdowns] unless args[:error_breakdowns].nil?
-          @transfer_job_name = args[:transfer_job_name] unless args[:transfer_job_name].nil?
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status = args[:status] if args.key?(:status)
+          @counters = args[:counters] if args.key?(:counters)
+          @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
+          @transfer_job_name = args[:transfer_job_name] if args.key?(:transfer_job_name)
         end
       end
       
@@ -966,22 +966,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @objects_found_from_source = args[:objects_found_from_source] unless args[:objects_found_from_source].nil?
-          @bytes_found_from_source = args[:bytes_found_from_source] unless args[:bytes_found_from_source].nil?
-          @objects_found_only_from_sink = args[:objects_found_only_from_sink] unless args[:objects_found_only_from_sink].nil?
-          @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] unless args[:bytes_found_only_from_sink].nil?
-          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] unless args[:objects_from_source_skipped_by_sync].nil?
-          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] unless args[:bytes_from_source_skipped_by_sync].nil?
-          @objects_copied_to_sink = args[:objects_copied_to_sink] unless args[:objects_copied_to_sink].nil?
-          @bytes_copied_to_sink = args[:bytes_copied_to_sink] unless args[:bytes_copied_to_sink].nil?
-          @objects_deleted_from_source = args[:objects_deleted_from_source] unless args[:objects_deleted_from_source].nil?
-          @bytes_deleted_from_source = args[:bytes_deleted_from_source] unless args[:bytes_deleted_from_source].nil?
-          @objects_deleted_from_sink = args[:objects_deleted_from_sink] unless args[:objects_deleted_from_sink].nil?
-          @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] unless args[:bytes_deleted_from_sink].nil?
-          @objects_from_source_failed = args[:objects_from_source_failed] unless args[:objects_from_source_failed].nil?
-          @bytes_from_source_failed = args[:bytes_from_source_failed] unless args[:bytes_from_source_failed].nil?
-          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] unless args[:objects_failed_to_delete_from_sink].nil?
-          @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] unless args[:bytes_failed_to_delete_from_sink].nil?
+          @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
+          @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
+          @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
+          @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
+          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
+          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
+          @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
+          @bytes_copied_to_sink = args[:bytes_copied_to_sink] if args.key?(:bytes_copied_to_sink)
+          @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
+          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
+          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
+          @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] if args.key?(:bytes_deleted_from_sink)
+          @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
+          @bytes_from_source_failed = args[:bytes_from_source_failed] if args.key?(:bytes_from_source_failed)
+          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
+          @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] if args.key?(:bytes_failed_to_delete_from_sink)
         end
       end
       
@@ -1010,9 +1010,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @error_code = args[:error_code] unless args[:error_code].nil?
-          @error_count = args[:error_count] unless args[:error_count].nil?
-          @error_log_entries = args[:error_log_entries] unless args[:error_log_entries].nil?
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_log_entries = args[:error_log_entries] if args.key?(:error_log_entries)
         end
       end
       
@@ -1037,8 +1037,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] unless args[:url].nil?
-          @error_details = args[:error_details] unless args[:error_details].nil?
+          @url = args[:url] if args.key?(:url)
+          @error_details = args[:error_details] if args.key?(:error_details)
         end
       end
     end

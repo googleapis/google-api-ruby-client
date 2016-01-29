@@ -145,27 +145,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_publisher_created_links = args[:allow_publisher_created_links] unless args[:allow_publisher_created_links].nil?
-          @category = args[:category] unless args[:category].nil?
-          @commission_duration = args[:commission_duration] unless args[:commission_duration].nil?
-          @contact_email = args[:contact_email] unless args[:contact_email].nil?
-          @contact_phone = args[:contact_phone] unless args[:contact_phone].nil?
-          @default_link_id = args[:default_link_id] unless args[:default_link_id].nil?
-          @description = args[:description] unless args[:description].nil?
-          @epc_ninety_day_average = args[:epc_ninety_day_average] unless args[:epc_ninety_day_average].nil?
-          @epc_seven_day_average = args[:epc_seven_day_average] unless args[:epc_seven_day_average].nil?
-          @id = args[:id] unless args[:id].nil?
-          @item = args[:item] unless args[:item].nil?
-          @join_date = args[:join_date] unless args[:join_date].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @logo_url = args[:logo_url] unless args[:logo_url].nil?
-          @merchant_center_ids = args[:merchant_center_ids] unless args[:merchant_center_ids].nil?
-          @name = args[:name] unless args[:name].nil?
-          @payout_rank = args[:payout_rank] unless args[:payout_rank].nil?
-          @product_feeds_enabled = args[:product_feeds_enabled] unless args[:product_feeds_enabled].nil?
-          @redirect_domains = args[:redirect_domains] unless args[:redirect_domains].nil?
-          @site_url = args[:site_url] unless args[:site_url].nil?
-          @status = args[:status] unless args[:status].nil?
+          @allow_publisher_created_links = args[:allow_publisher_created_links] if args.key?(:allow_publisher_created_links)
+          @category = args[:category] if args.key?(:category)
+          @commission_duration = args[:commission_duration] if args.key?(:commission_duration)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @contact_phone = args[:contact_phone] if args.key?(:contact_phone)
+          @default_link_id = args[:default_link_id] if args.key?(:default_link_id)
+          @description = args[:description] if args.key?(:description)
+          @epc_ninety_day_average = args[:epc_ninety_day_average] if args.key?(:epc_ninety_day_average)
+          @epc_seven_day_average = args[:epc_seven_day_average] if args.key?(:epc_seven_day_average)
+          @id = args[:id] if args.key?(:id)
+          @item = args[:item] if args.key?(:item)
+          @join_date = args[:join_date] if args.key?(:join_date)
+          @kind = args[:kind] if args.key?(:kind)
+          @logo_url = args[:logo_url] if args.key?(:logo_url)
+          @merchant_center_ids = args[:merchant_center_ids] if args.key?(:merchant_center_ids)
+          @name = args[:name] if args.key?(:name)
+          @payout_rank = args[:payout_rank] if args.key?(:payout_rank)
+          @product_feeds_enabled = args[:product_feeds_enabled] if args.key?(:product_feeds_enabled)
+          @redirect_domains = args[:redirect_domains] if args.key?(:redirect_domains)
+          @site_url = args[:site_url] if args.key?(:site_url)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -195,9 +195,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -559,69 +559,69 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_card_benefits = args[:additional_card_benefits] unless args[:additional_card_benefits].nil?
-          @additional_card_holder_fee = args[:additional_card_holder_fee] unless args[:additional_card_holder_fee].nil?
-          @age_minimum = args[:age_minimum] unless args[:age_minimum].nil?
-          @age_minimum_details = args[:age_minimum_details] unless args[:age_minimum_details].nil?
-          @annual_fee = args[:annual_fee] unless args[:annual_fee].nil?
-          @annual_fee_display = args[:annual_fee_display] unless args[:annual_fee_display].nil?
-          @annual_reward_maximum = args[:annual_reward_maximum] unless args[:annual_reward_maximum].nil?
-          @approved_categories = args[:approved_categories] unless args[:approved_categories].nil?
-          @apr_display = args[:apr_display] unless args[:apr_display].nil?
-          @balance_computation_method = args[:balance_computation_method] unless args[:balance_computation_method].nil?
-          @balance_transfer_terms = args[:balance_transfer_terms] unless args[:balance_transfer_terms].nil?
-          @bonus_rewards = args[:bonus_rewards] unless args[:bonus_rewards].nil?
-          @car_rental_insurance = args[:car_rental_insurance] unless args[:car_rental_insurance].nil?
-          @card_benefits = args[:card_benefits] unless args[:card_benefits].nil?
-          @card_name = args[:card_name] unless args[:card_name].nil?
-          @card_type = args[:card_type] unless args[:card_type].nil?
-          @cash_advance_terms = args[:cash_advance_terms] unless args[:cash_advance_terms].nil?
-          @credit_limit_max = args[:credit_limit_max] unless args[:credit_limit_max].nil?
-          @credit_limit_min = args[:credit_limit_min] unless args[:credit_limit_min].nil?
-          @credit_rating_display = args[:credit_rating_display] unless args[:credit_rating_display].nil?
-          @default_fees = args[:default_fees] unless args[:default_fees].nil?
-          @disclaimer = args[:disclaimer] unless args[:disclaimer].nil?
-          @emergency_insurance = args[:emergency_insurance] unless args[:emergency_insurance].nil?
-          @existing_customer_only = args[:existing_customer_only] unless args[:existing_customer_only].nil?
-          @extended_warranty = args[:extended_warranty] unless args[:extended_warranty].nil?
-          @first_year_annual_fee = args[:first_year_annual_fee] unless args[:first_year_annual_fee].nil?
-          @flight_accident_insurance = args[:flight_accident_insurance] unless args[:flight_accident_insurance].nil?
-          @foreign_currency_transaction_fee = args[:foreign_currency_transaction_fee] unless args[:foreign_currency_transaction_fee].nil?
-          @fraud_liability = args[:fraud_liability] unless args[:fraud_liability].nil?
-          @grace_period_display = args[:grace_period_display] unless args[:grace_period_display].nil?
-          @image_url = args[:image_url] unless args[:image_url].nil?
-          @initial_setup_and_processing_fee = args[:initial_setup_and_processing_fee] unless args[:initial_setup_and_processing_fee].nil?
-          @intro_balance_transfer_terms = args[:intro_balance_transfer_terms] unless args[:intro_balance_transfer_terms].nil?
-          @intro_cash_advance_terms = args[:intro_cash_advance_terms] unless args[:intro_cash_advance_terms].nil?
-          @intro_purchase_terms = args[:intro_purchase_terms] unless args[:intro_purchase_terms].nil?
-          @issuer = args[:issuer] unless args[:issuer].nil?
-          @issuer_id = args[:issuer_id] unless args[:issuer_id].nil?
-          @issuer_website = args[:issuer_website] unless args[:issuer_website].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @landing_page_url = args[:landing_page_url] unless args[:landing_page_url].nil?
-          @late_payment_fee = args[:late_payment_fee] unless args[:late_payment_fee].nil?
-          @luggage_insurance = args[:luggage_insurance] unless args[:luggage_insurance].nil?
-          @max_purchase_rate = args[:max_purchase_rate] unless args[:max_purchase_rate].nil?
-          @min_purchase_rate = args[:min_purchase_rate] unless args[:min_purchase_rate].nil?
-          @minimum_finance_charge = args[:minimum_finance_charge] unless args[:minimum_finance_charge].nil?
-          @network = args[:network] unless args[:network].nil?
-          @offer_id = args[:offer_id] unless args[:offer_id].nil?
-          @offers_immediate_cash_reward = args[:offers_immediate_cash_reward] unless args[:offers_immediate_cash_reward].nil?
-          @over_limit_fee = args[:over_limit_fee] unless args[:over_limit_fee].nil?
-          @prohibited_categories = args[:prohibited_categories] unless args[:prohibited_categories].nil?
-          @purchase_rate_additional_details = args[:purchase_rate_additional_details] unless args[:purchase_rate_additional_details].nil?
-          @purchase_rate_type = args[:purchase_rate_type] unless args[:purchase_rate_type].nil?
-          @returned_payment_fee = args[:returned_payment_fee] unless args[:returned_payment_fee].nil?
-          @reward_partner = args[:reward_partner] unless args[:reward_partner].nil?
-          @reward_unit = args[:reward_unit] unless args[:reward_unit].nil?
-          @rewards = args[:rewards] unless args[:rewards].nil?
-          @rewards_expire = args[:rewards_expire] unless args[:rewards_expire].nil?
-          @rewards_have_blackout_dates = args[:rewards_have_blackout_dates] unless args[:rewards_have_blackout_dates].nil?
-          @statement_copy_fee = args[:statement_copy_fee] unless args[:statement_copy_fee].nil?
-          @tracking_url = args[:tracking_url] unless args[:tracking_url].nil?
-          @travel_insurance = args[:travel_insurance] unless args[:travel_insurance].nil?
-          @variable_rates_last_updated = args[:variable_rates_last_updated] unless args[:variable_rates_last_updated].nil?
-          @variable_rates_update_frequency = args[:variable_rates_update_frequency] unless args[:variable_rates_update_frequency].nil?
+          @additional_card_benefits = args[:additional_card_benefits] if args.key?(:additional_card_benefits)
+          @additional_card_holder_fee = args[:additional_card_holder_fee] if args.key?(:additional_card_holder_fee)
+          @age_minimum = args[:age_minimum] if args.key?(:age_minimum)
+          @age_minimum_details = args[:age_minimum_details] if args.key?(:age_minimum_details)
+          @annual_fee = args[:annual_fee] if args.key?(:annual_fee)
+          @annual_fee_display = args[:annual_fee_display] if args.key?(:annual_fee_display)
+          @annual_reward_maximum = args[:annual_reward_maximum] if args.key?(:annual_reward_maximum)
+          @approved_categories = args[:approved_categories] if args.key?(:approved_categories)
+          @apr_display = args[:apr_display] if args.key?(:apr_display)
+          @balance_computation_method = args[:balance_computation_method] if args.key?(:balance_computation_method)
+          @balance_transfer_terms = args[:balance_transfer_terms] if args.key?(:balance_transfer_terms)
+          @bonus_rewards = args[:bonus_rewards] if args.key?(:bonus_rewards)
+          @car_rental_insurance = args[:car_rental_insurance] if args.key?(:car_rental_insurance)
+          @card_benefits = args[:card_benefits] if args.key?(:card_benefits)
+          @card_name = args[:card_name] if args.key?(:card_name)
+          @card_type = args[:card_type] if args.key?(:card_type)
+          @cash_advance_terms = args[:cash_advance_terms] if args.key?(:cash_advance_terms)
+          @credit_limit_max = args[:credit_limit_max] if args.key?(:credit_limit_max)
+          @credit_limit_min = args[:credit_limit_min] if args.key?(:credit_limit_min)
+          @credit_rating_display = args[:credit_rating_display] if args.key?(:credit_rating_display)
+          @default_fees = args[:default_fees] if args.key?(:default_fees)
+          @disclaimer = args[:disclaimer] if args.key?(:disclaimer)
+          @emergency_insurance = args[:emergency_insurance] if args.key?(:emergency_insurance)
+          @existing_customer_only = args[:existing_customer_only] if args.key?(:existing_customer_only)
+          @extended_warranty = args[:extended_warranty] if args.key?(:extended_warranty)
+          @first_year_annual_fee = args[:first_year_annual_fee] if args.key?(:first_year_annual_fee)
+          @flight_accident_insurance = args[:flight_accident_insurance] if args.key?(:flight_accident_insurance)
+          @foreign_currency_transaction_fee = args[:foreign_currency_transaction_fee] if args.key?(:foreign_currency_transaction_fee)
+          @fraud_liability = args[:fraud_liability] if args.key?(:fraud_liability)
+          @grace_period_display = args[:grace_period_display] if args.key?(:grace_period_display)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @initial_setup_and_processing_fee = args[:initial_setup_and_processing_fee] if args.key?(:initial_setup_and_processing_fee)
+          @intro_balance_transfer_terms = args[:intro_balance_transfer_terms] if args.key?(:intro_balance_transfer_terms)
+          @intro_cash_advance_terms = args[:intro_cash_advance_terms] if args.key?(:intro_cash_advance_terms)
+          @intro_purchase_terms = args[:intro_purchase_terms] if args.key?(:intro_purchase_terms)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @issuer_id = args[:issuer_id] if args.key?(:issuer_id)
+          @issuer_website = args[:issuer_website] if args.key?(:issuer_website)
+          @kind = args[:kind] if args.key?(:kind)
+          @landing_page_url = args[:landing_page_url] if args.key?(:landing_page_url)
+          @late_payment_fee = args[:late_payment_fee] if args.key?(:late_payment_fee)
+          @luggage_insurance = args[:luggage_insurance] if args.key?(:luggage_insurance)
+          @max_purchase_rate = args[:max_purchase_rate] if args.key?(:max_purchase_rate)
+          @min_purchase_rate = args[:min_purchase_rate] if args.key?(:min_purchase_rate)
+          @minimum_finance_charge = args[:minimum_finance_charge] if args.key?(:minimum_finance_charge)
+          @network = args[:network] if args.key?(:network)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offers_immediate_cash_reward = args[:offers_immediate_cash_reward] if args.key?(:offers_immediate_cash_reward)
+          @over_limit_fee = args[:over_limit_fee] if args.key?(:over_limit_fee)
+          @prohibited_categories = args[:prohibited_categories] if args.key?(:prohibited_categories)
+          @purchase_rate_additional_details = args[:purchase_rate_additional_details] if args.key?(:purchase_rate_additional_details)
+          @purchase_rate_type = args[:purchase_rate_type] if args.key?(:purchase_rate_type)
+          @returned_payment_fee = args[:returned_payment_fee] if args.key?(:returned_payment_fee)
+          @reward_partner = args[:reward_partner] if args.key?(:reward_partner)
+          @reward_unit = args[:reward_unit] if args.key?(:reward_unit)
+          @rewards = args[:rewards] if args.key?(:rewards)
+          @rewards_expire = args[:rewards_expire] if args.key?(:rewards_expire)
+          @rewards_have_blackout_dates = args[:rewards_have_blackout_dates] if args.key?(:rewards_have_blackout_dates)
+          @statement_copy_fee = args[:statement_copy_fee] if args.key?(:statement_copy_fee)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @travel_insurance = args[:travel_insurance] if args.key?(:travel_insurance)
+          @variable_rates_last_updated = args[:variable_rates_last_updated] if args.key?(:variable_rates_last_updated)
+          @variable_rates_update_frequency = args[:variable_rates_update_frequency] if args.key?(:variable_rates_update_frequency)
         end
         
         # 
@@ -645,8 +645,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @amount = args[:amount] unless args[:amount].nil?
-            @details = args[:details] unless args[:details].nil?
+            @amount = args[:amount] if args.key?(:amount)
+            @details = args[:details] if args.key?(:details)
           end
         end
         
@@ -682,10 +682,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @category = args[:category] unless args[:category].nil?
-            @max_rate = args[:max_rate] unless args[:max_rate].nil?
-            @min_rate = args[:min_rate] unless args[:min_rate].nil?
-            @rate_type = args[:rate_type] unless args[:rate_type].nil?
+            @category = args[:category] if args.key?(:category)
+            @max_rate = args[:max_rate] if args.key?(:max_rate)
+            @min_rate = args[:min_rate] if args.key?(:min_rate)
+            @rate_type = args[:rate_type] if args.key?(:rate_type)
           end
         end
         
@@ -730,12 +730,12 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @additional_details = args[:additional_details] unless args[:additional_details].nil?
-            @amount = args[:amount] unless args[:amount].nil?
-            @category = args[:category] unless args[:category].nil?
-            @expiration_months = args[:expiration_months] unless args[:expiration_months].nil?
-            @max_reward_tier = args[:max_reward_tier] unless args[:max_reward_tier].nil?
-            @min_reward_tier = args[:min_reward_tier] unless args[:min_reward_tier].nil?
+            @additional_details = args[:additional_details] if args.key?(:additional_details)
+            @amount = args[:amount] if args.key?(:amount)
+            @category = args[:category] if args.key?(:category)
+            @expiration_months = args[:expiration_months] if args.key?(:expiration_months)
+            @max_reward_tier = args[:max_reward_tier] if args.key?(:max_reward_tier)
+            @min_reward_tier = args[:min_reward_tier] if args.key?(:min_reward_tier)
           end
         end
       end
@@ -760,8 +760,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -868,24 +868,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
-          @advertiser_name = args[:advertiser_name] unless args[:advertiser_name].nil?
-          @charge_id = args[:charge_id] unless args[:charge_id].nil?
-          @charge_type = args[:charge_type] unless args[:charge_type].nil?
-          @commissionable_sales = args[:commissionable_sales] unless args[:commissionable_sales].nil?
-          @earnings = args[:earnings] unless args[:earnings].nil?
-          @event_date = args[:event_date] unless args[:event_date].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @member_id = args[:member_id] unless args[:member_id].nil?
-          @modify_date = args[:modify_date] unless args[:modify_date].nil?
-          @network_fee = args[:network_fee] unless args[:network_fee].nil?
-          @order_id = args[:order_id] unless args[:order_id].nil?
-          @products = args[:products] unless args[:products].nil?
-          @publisher_fee = args[:publisher_fee] unless args[:publisher_fee].nil?
-          @publisher_id = args[:publisher_id] unless args[:publisher_id].nil?
-          @publisher_name = args[:publisher_name] unless args[:publisher_name].nil?
-          @status = args[:status] unless args[:status].nil?
-          @type = args[:type] unless args[:type].nil?
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
+          @charge_id = args[:charge_id] if args.key?(:charge_id)
+          @charge_type = args[:charge_type] if args.key?(:charge_type)
+          @commissionable_sales = args[:commissionable_sales] if args.key?(:commissionable_sales)
+          @earnings = args[:earnings] if args.key?(:earnings)
+          @event_date = args[:event_date] if args.key?(:event_date)
+          @kind = args[:kind] if args.key?(:kind)
+          @member_id = args[:member_id] if args.key?(:member_id)
+          @modify_date = args[:modify_date] if args.key?(:modify_date)
+          @network_fee = args[:network_fee] if args.key?(:network_fee)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @products = args[:products] if args.key?(:products)
+          @publisher_fee = args[:publisher_fee] if args.key?(:publisher_fee)
+          @publisher_id = args[:publisher_id] if args.key?(:publisher_id)
+          @publisher_name = args[:publisher_name] if args.key?(:publisher_name)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
         end
         
         # 
@@ -943,15 +943,15 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @category_id = args[:category_id] unless args[:category_id].nil?
-            @category_name = args[:category_name] unless args[:category_name].nil?
-            @earnings = args[:earnings] unless args[:earnings].nil?
-            @network_fee = args[:network_fee] unless args[:network_fee].nil?
-            @publisher_fee = args[:publisher_fee] unless args[:publisher_fee].nil?
-            @quantity = args[:quantity] unless args[:quantity].nil?
-            @sku = args[:sku] unless args[:sku].nil?
-            @sku_name = args[:sku_name] unless args[:sku_name].nil?
-            @unit_price = args[:unit_price] unless args[:unit_price].nil?
+            @category_id = args[:category_id] if args.key?(:category_id)
+            @category_name = args[:category_name] if args.key?(:category_name)
+            @earnings = args[:earnings] if args.key?(:earnings)
+            @network_fee = args[:network_fee] if args.key?(:network_fee)
+            @publisher_fee = args[:publisher_fee] if args.key?(:publisher_fee)
+            @quantity = args[:quantity] if args.key?(:quantity)
+            @sku = args[:sku] if args.key?(:sku)
+            @sku_name = args[:sku_name] if args.key?(:sku_name)
+            @unit_price = args[:unit_price] if args.key?(:unit_price)
           end
         end
       end
@@ -982,9 +982,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1104,27 +1104,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
-          @authorship = args[:authorship] unless args[:authorship].nil?
-          @availability = args[:availability] unless args[:availability].nil?
-          @click_tracking_url = args[:click_tracking_url] unless args[:click_tracking_url].nil?
-          @create_date = args[:create_date] unless args[:create_date].nil?
-          @description = args[:description] unless args[:description].nil?
-          @destination_url = args[:destination_url] unless args[:destination_url].nil?
-          @duration = args[:duration] unless args[:duration].nil?
-          @end_date = args[:end_date] unless args[:end_date].nil?
-          @epc_ninety_day_average = args[:epc_ninety_day_average] unless args[:epc_ninety_day_average].nil?
-          @epc_seven_day_average = args[:epc_seven_day_average] unless args[:epc_seven_day_average].nil?
-          @id = args[:id] unless args[:id].nil?
-          @image_alt_text = args[:image_alt_text] unless args[:image_alt_text].nil?
-          @impression_tracking_url = args[:impression_tracking_url] unless args[:impression_tracking_url].nil?
-          @is_active = args[:is_active] unless args[:is_active].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @link_type = args[:link_type] unless args[:link_type].nil?
-          @name = args[:name] unless args[:name].nil?
-          @promotion_type = args[:promotion_type] unless args[:promotion_type].nil?
-          @special_offers = args[:special_offers] unless args[:special_offers].nil?
-          @start_date = args[:start_date] unless args[:start_date].nil?
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @authorship = args[:authorship] if args.key?(:authorship)
+          @availability = args[:availability] if args.key?(:availability)
+          @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
+          @create_date = args[:create_date] if args.key?(:create_date)
+          @description = args[:description] if args.key?(:description)
+          @destination_url = args[:destination_url] if args.key?(:destination_url)
+          @duration = args[:duration] if args.key?(:duration)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @epc_ninety_day_average = args[:epc_ninety_day_average] if args.key?(:epc_ninety_day_average)
+          @epc_seven_day_average = args[:epc_seven_day_average] if args.key?(:epc_seven_day_average)
+          @id = args[:id] if args.key?(:id)
+          @image_alt_text = args[:image_alt_text] if args.key?(:image_alt_text)
+          @impression_tracking_url = args[:impression_tracking_url] if args.key?(:impression_tracking_url)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @kind = args[:kind] if args.key?(:kind)
+          @link_type = args[:link_type] if args.key?(:link_type)
+          @name = args[:name] if args.key?(:name)
+          @promotion_type = args[:promotion_type] if args.key?(:promotion_type)
+          @special_offers = args[:special_offers] if args.key?(:special_offers)
+          @start_date = args[:start_date] if args.key?(:start_date)
         end
         
         # Special offers on the link.
@@ -1179,14 +1179,14 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @free_gift = args[:free_gift] unless args[:free_gift].nil?
-            @free_shipping = args[:free_shipping] unless args[:free_shipping].nil?
-            @free_shipping_min = args[:free_shipping_min] unless args[:free_shipping_min].nil?
-            @percent_off = args[:percent_off] unless args[:percent_off].nil?
-            @percent_off_min = args[:percent_off_min] unless args[:percent_off_min].nil?
-            @price_cut = args[:price_cut] unless args[:price_cut].nil?
-            @price_cut_min = args[:price_cut_min] unless args[:price_cut_min].nil?
-            @promotion_codes = args[:promotion_codes] unless args[:promotion_codes].nil?
+            @free_gift = args[:free_gift] if args.key?(:free_gift)
+            @free_shipping = args[:free_shipping] if args.key?(:free_shipping)
+            @free_shipping_min = args[:free_shipping_min] if args.key?(:free_shipping_min)
+            @percent_off = args[:percent_off] if args.key?(:percent_off)
+            @percent_off_min = args[:percent_off_min] if args.key?(:percent_off_min)
+            @price_cut = args[:price_cut] if args.key?(:price_cut)
+            @price_cut_min = args[:price_cut_min] if args.key?(:price_cut_min)
+            @promotion_codes = args[:promotion_codes] if args.key?(:promotion_codes)
           end
         end
       end
@@ -1216,9 +1216,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1242,8 +1242,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @amount = args[:amount] unless args[:amount].nil?
-          @currency_code = args[:currency_code] unless args[:currency_code].nil?
+          @amount = args[:amount] if args.key?(:amount)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
         end
       end
       
@@ -1316,17 +1316,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @classification = args[:classification] unless args[:classification].nil?
-          @epc_ninety_day_average = args[:epc_ninety_day_average] unless args[:epc_ninety_day_average].nil?
-          @epc_seven_day_average = args[:epc_seven_day_average] unless args[:epc_seven_day_average].nil?
-          @id = args[:id] unless args[:id].nil?
-          @item = args[:item] unless args[:item].nil?
-          @join_date = args[:join_date] unless args[:join_date].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @name = args[:name] unless args[:name].nil?
-          @payout_rank = args[:payout_rank] unless args[:payout_rank].nil?
-          @sites = args[:sites] unless args[:sites].nil?
-          @status = args[:status] unless args[:status].nil?
+          @classification = args[:classification] if args.key?(:classification)
+          @epc_ninety_day_average = args[:epc_ninety_day_average] if args.key?(:epc_ninety_day_average)
+          @epc_seven_day_average = args[:epc_seven_day_average] if args.key?(:epc_seven_day_average)
+          @id = args[:id] if args.key?(:id)
+          @item = args[:item] if args.key?(:item)
+          @join_date = args[:join_date] if args.key?(:join_date)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @payout_rank = args[:payout_rank] if args.key?(:payout_rank)
+          @sites = args[:sites] if args.key?(:sites)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1356,9 +1356,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @items = args[:items] unless args[:items].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1413,14 +1413,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_names = args[:column_names] unless args[:column_names].nil?
-          @end_date = args[:end_date] unless args[:end_date].nil?
-          @kind = args[:kind] unless args[:kind].nil?
-          @matching_row_count = args[:matching_row_count] unless args[:matching_row_count].nil?
-          @rows = args[:rows] unless args[:rows].nil?
-          @start_date = args[:start_date] unless args[:start_date].nil?
-          @totals_rows = args[:totals_rows] unless args[:totals_rows].nil?
-          @type = args[:type] unless args[:type].nil?
+          @column_names = args[:column_names] if args.key?(:column_names)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @kind = args[:kind] if args.key?(:kind)
+          @matching_row_count = args[:matching_row_count] if args.key?(:matching_row_count)
+          @rows = args[:rows] if args.key?(:rows)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @totals_rows = args[:totals_rows] if args.key?(:totals_rows)
+          @type = args[:type] if args.key?(:type)
         end
       end
     end
