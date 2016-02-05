@@ -271,7 +271,6 @@ module Google
             request_header = header.dup
             apply_request_options(request_header)
 
-            puts "Q=#{query}"
             http_res = client.request(method.to_s.upcase,
                                       url.to_s,
                                       query: nil,

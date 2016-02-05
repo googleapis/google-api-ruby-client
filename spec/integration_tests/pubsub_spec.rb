@@ -13,6 +13,8 @@ RSpec.describe Google::Apis::PubsubV1, :if => run_integration_tests? do
     @subscription_name = "projects/#{project}/subscriptions/test"
 
     @pubsub = Pubsub::PubsubService.new
+    @pubsub.client.debug_dev = STDOUT
+
     @pubsub.authorization = Google::Auth.get_application_default([Pubsub::AUTH_PUBSUB])
     @pubsub.create_topic(@topic_name)
     @pubsub.create_subscription(@subscription_name, Pubsub::Subscription.new(topic: @topic_name))

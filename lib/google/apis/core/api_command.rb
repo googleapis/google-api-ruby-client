@@ -50,9 +50,13 @@ module Google
         # @return [void]
         def prepare!
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
-          if request_representation && request_object
+          if request_representation
             header['Content-Type'] ||= JSON_CONTENT_TYPE
-            self.body = request_representation.new(request_object).to_json(skip_undefined: true)
+            if request_object
+              self.body = request_representation.new(request_object).to_json(skip_undefined: true)
+            else
+              self.body = ''
+            end
           end
           super
         end

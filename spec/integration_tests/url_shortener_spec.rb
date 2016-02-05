@@ -23,6 +23,7 @@ RSpec.describe Google::Apis::UrlshortenerV1, :if => run_integration_tests? do
   before(:context) do
     WebMock.allow_net_connect!
     @shortener = Urlshortener::UrlshortenerService.new
+    @shortener.client.debug_dev = STDOUT
     @shortener.authorization = Google::Auth.get_application_default([Urlshortener::AUTH_URLSHORTENER])
   end
 
