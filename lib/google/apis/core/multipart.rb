@@ -55,7 +55,7 @@ module Google
         def initialize(io, header = {})
           @io = io
           @header = header
-          @length = io.respond_to?(:length) ? io.length : nil
+          @length = io.respond_to?(:size) ? io.size : nil
         end
 
         def to_io(boundary)

@@ -104,10 +104,6 @@ module Google
           multipart.add_upload(upload_io, content_type: upload_content_type)
           self.body = multipart.assemble
           header['Content-Type'] = multipart.content_type
-
-#          self.body = [{ 'Content-Type' => 'application/json', :content => body },
-#                       { 'Content-Type' => upload_content_type, :content => upload_io }]
-#          header['Content-Type'] = MULTIPART_RELATED
           header[UPLOAD_PROTOCOL_HEADER] = MULTIPART_PROTOCOL
         end
       end
@@ -142,7 +138,7 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
-        # @param [Hurley::Header] header
+        # @param [HTTP::Message::Headers] header
         #   Response headers
         # @param [String, #read] body
         #  Response body
@@ -180,7 +176,7 @@ module Google
           apply_request_options(request_header)
           request_header[UPLOAD_PROTOCOL_HEADER] = RESUMABLE
           request_header[UPLOAD_COMMAND_HEADER] = START_COMMAND
-          request_header[UPLOAD_CONTENT_LENGTH] = upload_io.length.to_s
+          request_header[UPLOAD_CONTENT_LENGTH] = upload_io.size.to_s
           request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
 
           client.request(method.to_s.upcase,

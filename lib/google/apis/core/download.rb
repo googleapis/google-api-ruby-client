@@ -74,7 +74,12 @@ module Google
             request_header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
           end
 
-          http_res = client.get(url.to_s, query, body, request_header) do |chunk|
+          # TODO: Bug in HTTPClient where following redirects prevents
+          # capturing the body on errors.
+          http_res = client.get(url.to_s,
+                                query: query,
+                                header: request_header,
+                                follow_redirect: true) do |chunk|
             logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
             @offset += chunk.length
             @download_io.write(chunk)
@@ -83,6 +88,8 @@ module Google
 
           logger.debug { http_res.status }
           logger.debug { http_res.inspect }
+
+          check_status(http_res.status.to_i, http_res.header, http_res.body)
 
           if @close_io_on_finish
             result = nil

@@ -10,6 +10,7 @@ RSpec.describe Google::Apis::DriveV2, :if => run_integration_tests? do
   before(:context) do
     WebMock.allow_net_connect!
     @drive = Drive::DriveService.new
+    @drive.client.debug_dev = STDOUT
     @drive.authorization = Google::Auth.get_application_default([Drive::AUTH_DRIVE])
   end
 
@@ -21,7 +22,10 @@ RSpec.describe Google::Apis::DriveV2, :if => run_integration_tests? do
 
     # Read it back
     tmp = @drive.get_file(file.id, download_dest: Tempfile.new('drive'))
-
+    puts "T=#{tmp.size}"
+    tmp.rewind
+    puts tmp.read()
+    tmp.rewind
     # Delete it
     @drive.delete_file(file.id)
     puts "File deleted"

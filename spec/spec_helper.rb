@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'dotenv'
+
 SPEC_DIR = File.expand_path(File.dirname(__FILE__))
 ROOT_DIR = File.expand_path(File.join(SPEC_DIR, '..'))
 LIB_DIR = File.expand_path(File.join(ROOT_DIR, 'lib'))
 GENERATED_DIR = File.expand_path(File.join(ROOT_DIR, 'generated'))
 THIRD_PARTY_DIR = File.expand_path(File.join(ROOT_DIR, 'third_party'))
 FIXTURES_DIR = File.expand_path(File.join(SPEC_DIR, 'fixtures'))
+
+Dotenv.load
 
 $LOAD_PATH.uniq!
 
