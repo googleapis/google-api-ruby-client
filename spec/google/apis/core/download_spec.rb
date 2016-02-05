@@ -15,7 +15,6 @@
 require 'spec_helper'
 require 'google/apis/core/download'
 require 'google/apis/core/json_representation'
-require 'hurley/test'
 require 'tempfile'
 require 'tmpdir'
 

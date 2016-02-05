@@ -14,7 +14,6 @@
 
 require 'spec_helper'
 require 'google/apis/core/http_command'
-require 'hurley/test'
 
 RSpec.describe Google::Apis::Core::HttpCommand do
   include TestHelpers

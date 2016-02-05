@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/core/multipart'
 require 'google/apis/core/api_command'
 require 'google/apis/errors'
 require 'addressable/uri'
@@ -22,7 +21,7 @@ module Google
     module Core
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
-        RANGE_HEADER = 'range'
+        RANGE_HEADER = 'Range'
 
         # File or IO to write content to
         # @return [String, File, #write]
@@ -57,7 +56,7 @@ module Google
         # of file content.
         #
         # @private
-        # @param [Hurley::Client] client
+        # @param [HTTPClient] client
         #   HTTP client
         # @yield [result, err] Result or error if block supplied
         # @return [Object]
@@ -65,20 +64,26 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_once(client, &block)
-          client.get(@download_url || url) do |req|
-            apply_request_options(req)
-            if @offset > 0
-              logger.debug { sprintf('Resuming download from offset %d', @offset) }
-              req.header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
-            end
-            req.on_body(200, 201) do |res, chunk|
-              check_status(res.status_code, chunk) unless res.status_code.nil?
-              logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
-              @offset += chunk.length
-              @download_io.write(chunk)
-              @download_io.flush
-            end
+          logger.debug { sprintf('Sending HTTP %s %s', method, url) }
+
+          request_header = header.dup
+          apply_request_options(request_header)
+
+          if @offset > 0
+            logger.debug { sprintf('Resuming download from offset %d', @offset) }
+            request_header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
           end
+
+          http_res = client.get(url.to_s, query, body, request_header) do |chunk|
+            logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
+            @offset += chunk.length
+            @download_io.write(chunk)
+            @download_io.flush
+          end
+
+          logger.debug { http_res.status }
+          logger.debug { http_res.inspect }
+
           if @close_io_on_finish
             result = nil
           else
