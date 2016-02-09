@@ -71,10 +71,10 @@ module Google
       def initialize(options)
         @port = options[:port] || 9292
         @authorization = Signet::OAuth2::Client.new({
-          :authorization_uri => 'https://accounts.google.com/o/oauth2/auth',
-          :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-          :redirect_uri => "http://localhost:#{@port}/"}.update(options)
-        )
+          authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+          token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+          redirect_uri: "http://localhost:#{@port}/" }.update(options)
+                                                   )
       end
 
       ##
@@ -86,23 +86,21 @@ module Google
       #
       # @return [Signet::OAuth2::Client]
       #  Authorization instance, nil if user cancelled.
-      def authorize(storage=nil, options={})
+      def authorize(storage = nil, options = {})
         auth = @authorization
 
         server = WEBrick::HTTPServer.new(
-          :Port => @port,
-          :BindAddress =>"localhost",
-          :Logger => WEBrick::Log.new(STDOUT, 0),
-          :AccessLog => []
+          Port: @port,
+          BindAddress: 'localhost',
+          Logger: WEBrick::Log.new(STDOUT, 0),
+          AccessLog: []
         )
         begin
-          trap("INT") { server.shutdown }
+          trap('INT') { server.shutdown }
 
           server.mount_proc '/' do |req, res|
             auth.code = req.query['code']
-            if auth.code
-              auth.fetch_access_token!
-            end
+            auth.fetch_access_token! if auth.code
             res.status = WEBrick::HTTPStatus::RC_ACCEPTED
             res.body = RESPONSE_BODY
             server.stop

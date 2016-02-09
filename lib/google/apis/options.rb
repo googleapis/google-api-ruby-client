@@ -74,7 +74,7 @@ module Google
         new_options
       end
     end
-    
+
     ClientOptions.default.use_net_http = false
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'

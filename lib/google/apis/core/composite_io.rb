@@ -44,7 +44,8 @@ module Google
         def read(length = nil, buf = nil)
           buf = buf ? buf.replace('') : ''
 
-          begin
+          loop do
+            break if @index >= @ios.length
             io = @ios[@index]
             break if io.nil?
             result = io.read(length)
@@ -56,7 +57,7 @@ module Google
               end
             end
             @index += 1
-          end while @index < @ios.length
+          end
           buf.length > 0 ? buf : nil
         end
 
@@ -66,15 +67,13 @@ module Google
 
         alias_method :length, :size
 
-        def pos
-          @pos
-        end
+        attr_reader :pos
 
         def pos=(pos)
-          fail ArgumentError, "Position can not be negative" if pos < 0
+          fail ArgumentError, 'Position can not be negative' if pos < 0
           @pos = pos
           new_index = nil
-          @ios.each_with_index do |io,idx|
+          @ios.each_with_index do |io, idx|
             size = io.size
             if pos <= size
               new_index ||= idx

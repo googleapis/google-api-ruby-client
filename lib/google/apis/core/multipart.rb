@@ -113,7 +113,7 @@ module Google
         # @return [self]
         def add_upload(upload_io, content_type: nil, content_id: nil)
           header = {
-              'Content-Type' => content_type || 'application/octet-stream'
+            'Content-Type' => content_type || 'application/octet-stream'
           }
           header['Content-Id'] = content_id unless content_id.nil?
           @parts << Google::Apis::Core::FilePart.new(upload_io,
@@ -126,7 +126,7 @@ module Google
         # @return [IO]
         #  IO stream
         def assemble
-          @parts <<  StringIO.new("--#{@boundary}--\r\n\r\n")
+          @parts << StringIO.new("--#{@boundary}--\r\n\r\n")
           Google::Apis::Core::CompositeIO.new(*@parts)
         end
       end

@@ -50,7 +50,7 @@ module Google
       # @return [OpenSSL::PKey] The private key for signing assertions.
       #
       def self.load_from_pem(keyfile, passphrase)
-        load_key(keyfile, passphrase) do | content, pass_phrase|
+        load_key(keyfile, passphrase) do |content, pass_phrase|
           OpenSSL::PKey::RSA.new(content, pass_phrase)
         end
       end
@@ -79,15 +79,13 @@ module Google
       # @return [OpenSSL::PKey] The private key for signing assertions.
       def self.load_key(keyfile, passphrase, &block)
         begin
-          begin
-            content = File.open(keyfile, 'rb') { |io| io.read }
-          rescue
-            content = keyfile
-          end
-          block.call(content, passphrase)
-        rescue OpenSSL::OpenSSLError
-          raise ArgumentError.new("Invalid keyfile or passphrase")
+          content = File.open(keyfile, 'rb', &:read)
+        rescue
+          content = keyfile
         end
+        block.call(content, passphrase)
+      rescue OpenSSL::OpenSSLError
+        raise ArgumentError.new('Invalid keyfile or passphrase')
       end
     end
   end

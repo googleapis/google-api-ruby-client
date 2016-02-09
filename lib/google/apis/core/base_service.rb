@@ -291,7 +291,6 @@ module Google
         # Create a new HTTP client
         # @return [HTTPClient]
         def new_client
-
           client = ::HTTPClient.new
 
           client.transparent_gzip_decompression = true

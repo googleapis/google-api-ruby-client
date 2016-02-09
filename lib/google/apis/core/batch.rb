@@ -111,7 +111,7 @@ module Google
           multipart = Multipart.new(content_type: MULTIPART_MIXED)
 
           @calls.each_index do |index|
-            call, _ = @calls[index]
+            call, = @calls[index]
             content_id = id_to_header(index)
             io = serializer.to_part(call)
             multipart.add_upload(io, content_type: 'application/http', content_id: content_id)
@@ -130,13 +130,13 @@ module Google
         end
 
         def id_to_header(call_id)
-          return sprintf('<%s+%i>', @base_id, call_id)
+          sprintf('<%s+%i>', @base_id, call_id)
         end
 
         def header_to_id(content_id)
           match = /<response-.*\+(\d+)>/.match(content_id)
           return match[1].to_i if match
-          return nil
+          nil
         end
 
       end

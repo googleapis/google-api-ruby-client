@@ -18,7 +18,7 @@ require 'google/apis/core/multipart'
 require 'google/apis/errors'
 require 'addressable/uri'
 require 'mime-types'
-require "tempfile"
+require 'tempfile'
 
 module Google
   module Apis
@@ -181,9 +181,9 @@ module Google
 
           client.request(method.to_s.upcase,
                          url.to_s, query: nil,
-                         body: body,
-                         header: request_header,
-                         follow_redirect: true)
+                                   body: body,
+                                   header: request_header,
+                                   follow_redirect: true)
         rescue => e
           raise Google::Apis::ServerError, e.message
         end

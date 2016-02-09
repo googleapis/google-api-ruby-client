@@ -108,10 +108,10 @@ module Google
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
           return nil unless name == verb || name.start_with?(verb + '_')
-          if !parts.empty?
+          unless parts.empty?
             resource_name = ActiveSupport::Inflector.singularize(parts.pop)
             resource_name = ActiveSupport::Inflector.underscore(resource_name)
-            if !name.include?(resource_name)
+            unless name.include?(resource_name)
               name = name.split('_').insert(1, resource_name).join('_')
             end
           end
@@ -283,7 +283,7 @@ module Google
           if @all_methods.include?(m.generated_name)
             logger.error do
               sprintf('Duplicate method %s generated, path %s',
-                m.generated_name, @names.key)
+                      m.generated_name, @names.key)
             end
             fail 'Duplicate name generated'
           end

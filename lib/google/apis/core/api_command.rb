@@ -99,10 +99,10 @@ module Google
             error = parse_error(body)
             if error
               message = sprintf('%s: %s', error['reason'], error['message'])
-              raise Google::Apis::RateLimitError.new(message,
-                                                     status_code: status,
-                                                     header: header,
-                                                     body: body) if RATE_LIMIT_ERRORS.include?(error['reason'])
+              fail Google::Apis::RateLimitError.new(message,
+                                                    status_code: status,
+                                                    header: header,
+                                                    body: body) if RATE_LIMIT_ERRORS.include?(error['reason'])
             end
             super(status, header, body, message)
           else

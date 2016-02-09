@@ -68,7 +68,7 @@ module Google
             say sprintf('Loading %s, version %s from %s', api.name, api.version, api.discovery_rest_url)
             generate_from_url(api.discovery_rest_url)
           else
-            say sprintf('Ignoring disoverable API %s', api.id)
+            say sprintf('Ignoring discoverable API %s', api.id)
           end
         end
       end

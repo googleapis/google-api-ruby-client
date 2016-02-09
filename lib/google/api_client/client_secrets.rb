@@ -54,25 +54,25 @@ module Google
       #
       # @return [Google::APIClient::ClientSecrets]
       #   OAuth client settings
-      def self.load(filename=nil)
+      def self.load(filename = nil)
         if filename && File.directory?(filename)
           search_path = File.expand_path(filename)
           filename = nil
         end
-        while filename == nil
+        while filename.nil?
           search_path ||= File.expand_path('.')
-          if File.exists?(File.join(search_path, 'client_secrets.json'))
+          if File.exist?(File.join(search_path, 'client_secrets.json'))
             filename = File.join(search_path, 'client_secrets.json')
           elsif search_path == '/' || search_path =~ /[a-zA-Z]:[\/\\]/
-            raise ArgumentError,
-              'No client_secrets.json filename supplied ' +
-              'and/or could not be found in search path.'
+            fail ArgumentError,
+                 'No client_secrets.json filename supplied '\
+                 'and/or could not be found in search path.'
           else
             search_path = File.expand_path(File.join(search_path, '..'))
           end
         end
         data = File.open(filename, 'r') { |file| MultiJson.load(file.read) }
-        return self.new(data)
+        self.new(data)
       end
 
       ##
@@ -80,31 +80,31 @@ module Google
       #
       # @param [Hash] options
       #   Parsed client secrets files
-      def initialize(options={})
+      def initialize(options = {})
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
         fdata = options[@flow]
-        @client_id = fdata[:client_id] || fdata["client_id"]
-        @client_secret = fdata[:client_secret] || fdata["client_secret"]
-        @redirect_uris = fdata[:redirect_uris] || fdata["redirect_uris"]
-        @redirect_uris ||= [fdata[:redirect_uri] || fdata["redirect_uri"]].compact
+        @client_id = fdata[:client_id] || fdata['client_id']
+        @client_secret = fdata[:client_secret] || fdata['client_secret']
+        @redirect_uris = fdata[:redirect_uris] || fdata['redirect_uris']
+        @redirect_uris ||= [fdata[:redirect_uri] || fdata['redirect_uri']].compact
         @javascript_origins = (
           fdata[:javascript_origins] ||
-          fdata["javascript_origins"]
+          fdata['javascript_origins']
         )
-        @javascript_origins ||= [fdata[:javascript_origin] || fdata["javascript_origin"]].compact
-        @authorization_uri = fdata[:auth_uri] || fdata["auth_uri"]
+        @javascript_origins ||= [fdata[:javascript_origin] || fdata['javascript_origin']].compact
+        @authorization_uri = fdata[:auth_uri] || fdata['auth_uri']
         @authorization_uri ||= fdata[:authorization_uri]
-        @token_credential_uri = fdata[:token_uri] || fdata["token_uri"]
+        @token_credential_uri = fdata[:token_uri] || fdata['token_uri']
         @token_credential_uri ||= fdata[:token_credential_uri]
 
         # Associated token info
-        @access_token = fdata[:access_token] || fdata["access_token"]
-        @refresh_token = fdata[:refresh_token] || fdata["refresh_token"]
-        @id_token = fdata[:id_token] || fdata["id_token"]
-        @expires_in = fdata[:expires_in] || fdata["expires_in"]
-        @expires_at = fdata[:expires_at] || fdata["expires_at"]
-        @issued_at = fdata[:issued_at] || fdata["issued_at"]
+        @access_token = fdata[:access_token] || fdata['access_token']
+        @refresh_token = fdata[:refresh_token] || fdata['refresh_token']
+        @id_token = fdata[:id_token] || fdata['id_token']
+        @expires_in = fdata[:expires_in] || fdata['expires_in']
+        @expires_at = fdata[:expires_at] || fdata['expires_at']
+        @issued_at = fdata[:issued_at] || fdata['issued_at']
       end
 
       attr_reader(
@@ -119,7 +119,7 @@ module Google
       # @return [String]
       #   JSON
       def to_json
-        return MultiJson.dump(to_hash)
+        MultiJson.dump(to_hash)
       end
 
       def to_hash
@@ -139,9 +139,7 @@ module Google
             'issued_at' => self.issued_at
           }).inject({}) do |accu, (k, v)|
             # Prunes empty values from JSON output.
-            unless v == nil || (v.respond_to?(:empty?) && v.empty?)
-              accu[k] = v
-            end
+            accu[k] = v unless v.nil? || (v.respond_to?(:empty?) && v.empty?)
             accu
           end
         }
@@ -171,7 +169,7 @@ module Google
         new_authorization.expires_in = self.expires_in
         new_authorization.issued_at = self.issued_at if self.issued_at
         new_authorization.expires_at = self.expires_at if self.expires_at
-        return new_authorization
+        new_authorization
       end
     end
   end

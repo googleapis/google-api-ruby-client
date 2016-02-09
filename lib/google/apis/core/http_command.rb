@@ -73,7 +73,7 @@ module Google
           self.url = url
           self.url = Addressable::Template.new(url) if url.is_a?(String)
           self.method = method
-          self.header = Hash.new
+          self.header = {}
           self.body = body
           self.query = {}
           self.params = {}
@@ -103,9 +103,7 @@ module Google
                                   on: [Google::Apis::AuthorizationError],
                                   on_retry: proc { |*| refresh_authorization } do
                 execute_once(client).tap do |result|
-                  if block_given?
-                    yield result, nil
-                  end
+                  yield result, nil if block_given?
                 end
               end
             end
@@ -191,20 +189,20 @@ module Google
             nil
           when 301, 302, 303, 307
             message ||= sprintf('Redirect to %s', header['Location'])
-            raise Google::Apis::RedirectError.new(message, status_code: status, header: header, body: body)
+            fail Google::Apis::RedirectError.new(message, status_code: status, header: header, body: body)
           when 401
             message ||= 'Unauthorized'
-            raise Google::Apis::AuthorizationError.new(message, status_code: status, header: header, body: body)
+            fail Google::Apis::AuthorizationError.new(message, status_code: status, header: header, body: body)
           when 304, 400, 402...500
             message ||= 'Invalid request'
-            raise Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)
+            fail Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)
           when 500...600
             message ||= 'Server error'
-            raise Google::Apis::ServerError.new(message, status_code: status, header: header, body: body)
+            fail Google::Apis::ServerError.new(message, status_code: status, header: header, body: body)
           else
             logger.warn(sprintf('Encountered unexpected status code %s', status))
             message ||= 'Unknown error'
-            raise Google::Apis::TransmissionError.new(message, status_code: status, header: header, body: body)
+            fail Google::Apis::TransmissionError.new(message, status_code: status, header: header, body: body)
           end
         end
 
