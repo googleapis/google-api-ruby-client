@@ -112,6 +112,14 @@ module Google
         # - "37" for PLN
         # - "39" for INR
         # - "40" for THB
+        # - "41" for IDR
+        # - "42" for CZK
+        # - "43" for RON
+        # - "44" for HUF
+        # - "45" for RUB
+        # - "46" for AED
+        # - "47" for BGN
+        # - "48" for HRK
         # Corresponds to the JSON property `currencyId`
         # @return [String]
         attr_accessor :currency_id
@@ -4384,6 +4392,14 @@ module Google
         # - "37" for PLN
         # - "39" for INR
         # - "40" for THB
+        # - "41" for IDR
+        # - "42" for CZK
+        # - "43" for RON
+        # - "44" for HUF
+        # - "45" for RUB
+        # - "46" for AED
+        # - "47" for BGN
+        # - "48" for HRK
         # Corresponds to the JSON property `currencyId`
         # @return [String]
         attr_accessor :currency_id

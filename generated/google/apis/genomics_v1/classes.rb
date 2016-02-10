@@ -171,6 +171,11 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Binding>]
         attr_accessor :bindings
       
+        # 
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::GenomicsV1::Rule>]
+        attr_accessor :rules
+      
         # `etag` is used for optimistic concurrency control as a way to help prevent
         # simultaneous updates of a policy from overwriting each other. It is strongly
         # suggested that systems make use of the `etag` in the read-modify-write cycle
@@ -191,6 +196,7 @@ module Google
         def update!(**args)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
+          @rules = args[:rules] if args.key?(:rules)
           @etag = args[:etag] if args.key?(:etag)
         end
       end
@@ -229,6 +235,209 @@ module Google
         def update!(**args)
           @role = args[:role] if args.key?(:role)
           @members = args[:members] if args.key?(:members)
+        end
+      end
+      
+      # A rule to be applied in a Policy.
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
+        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
+        # *') matches all verbs.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        # Required
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.
+        # Corresponds to the JSON property `in`
+        # @return [Array<String>]
+        attr_accessor :in
+      
+        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
+        # entries. The format for in and not_in entries is the same as for members in a
+        # Binding (see google/iam/v1/policy.proto).
+        # Corresponds to the JSON property `notIn`
+        # @return [Array<String>]
+        attr_accessor :not_in
+      
+        # Additional restrictions that must be met
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GenomicsV1::Condition>]
+        attr_accessor :conditions
+      
+        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+        # that match the LOG action.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Array<Google::Apis::GenomicsV1::LogConfig>]
+        attr_accessor :log_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @action = args[:action] if args.key?(:action)
+          @in = args[:in] if args.key?(:in)
+          @not_in = args[:not_in] if args.key?(:not_in)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @log_config = args[:log_config] if args.key?(:log_config)
+        end
+      end
+      
+      # A condition to be met.
+      class Condition
+        include Google::Apis::Core::Hashable
+      
+        # Trusted attributes supplied by the IAM system.
+        # Corresponds to the JSON property `iam`
+        # @return [String]
+        attr_accessor :iam
+      
+        # Trusted attributes supplied by any service that owns resources and uses the
+        # IAM system for access control.
+        # Corresponds to the JSON property `sys`
+        # @return [String]
+        attr_accessor :sys
+      
+        # Trusted attributes discharged by the service.
+        # Corresponds to the JSON property `svc`
+        # @return [String]
+        attr_accessor :svc
+      
+        # An operator to apply the subject with.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # The object of the condition. Exactly one of these must be set.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The objects of the condition. This is mutually exclusive with 'value'.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam = args[:iam] if args.key?(:iam)
+          @sys = args[:sys] if args.key?(:sys)
+          @svc = args[:svc] if args.key?(:svc)
+          @op = args[:op] if args.key?(:op)
+          @value = args[:value] if args.key?(:value)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Specifies what kind of log the caller must write Increment a streamz counter
+      # with the specified metric and field names. Metric names should start with a '/'
+      # , generally be lowercase-only, and end in "_count". Field names should not
+      # contain an initial slash. The actual exported metric names will have "/iam/
+      # policy" prepended. Field names correspond to IAM request parameters and field
+      # values are their respective values. At present only "iam_principal",
+      # corresponding to IAMContext.principal, is supported. Examples: counter `
+      # metric: "/debug_access_count" field: "iam_principal" ` ==> increment counter /
+      # iam/policy/backend_debug_access_count `iam_principal=[value of IAMContext.
+      # principal]` At this time we do not support: * multiple field names (though
+      # this may be supported in the future) * decrementing the counter * incrementing
+      # it by anything other than 1
+      class LogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Options for counters
+        # Corresponds to the JSON property `counter`
+        # @return [Google::Apis::GenomicsV1::CounterOptions]
+        attr_accessor :counter
+      
+        # Write a Data Access (Gin) log
+        # Corresponds to the JSON property `dataAccess`
+        # @return [Google::Apis::GenomicsV1::DataAccessOptions]
+        attr_accessor :data_access
+      
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::GenomicsV1::CloudAuditOptions]
+        attr_accessor :cloud_audit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @counter = args[:counter] if args.key?(:counter)
+          @data_access = args[:data_access] if args.key?(:data_access)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
+        end
+      end
+      
+      # Options for counters
+      class CounterOptions
+        include Google::Apis::Core::Hashable
+      
+        # The metric to update.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The field value to attribute.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Write a Data Access (Gin) log
+      class DataAccessOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Write a Cloud Audit log
+      class CloudAuditOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1838,7 +2047,7 @@ module Google
       class ReferenceBound
         include Google::Apis::Core::Hashable
       
-        # The name of the reference associated with this ReferenceBound.
+        # The name of the reference associated with this reference bound.
         # Corresponds to the JSON property `referenceName`
         # @return [String]
         attr_accessor :reference_name
@@ -2086,9 +2295,9 @@ module Google
         attr_accessor :page_size
       
         # The maximum number of calls to return in a single page. Note that this limit
-        # may be exceeded; at least one variant is always returned per page, even if it
-        # has more calls than this limit. If unspecified, defaults to 5000. The maximum
-        # value is 10000.
+        # may be exceeded in the event that a matching variant contains more calls than
+        # the requested maximum. If unspecified, defaults to 5000. The maximum value is
+        # 10000.
         # Corresponds to the JSON property `maxCalls`
         # @return [Fixnum]
         attr_accessor :max_calls

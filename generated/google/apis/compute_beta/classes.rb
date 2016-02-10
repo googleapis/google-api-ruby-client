@@ -196,7 +196,7 @@ module Google
         end
       end
       
-      # Contains a list of address resources.
+      # Contains a list of addresses.
       class AddressList
         include Google::Apis::Core::Hashable
       
@@ -206,7 +206,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Address resources.
+        # [Output Only] A list of addresses.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeBeta::Address>]
         attr_accessor :items
@@ -387,9 +387,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::AttachedDiskInitializeParams]
         attr_accessor :initialize_params
       
-        # Specifies the disk interface to use for attaching this disk, either SCSI or
-        # NVME. The default is SCSI. For performance characteristics of SCSI over NVMe,
-        # see Local SSD performance.
+        # Specifies the disk interface to use for attaching this disk, which is either
+        # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
+        # the request will fail if you attempt to attach a persistent disk in any other
+        # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
+        # characteristics of SCSI over NVMe, see Local SSD performance.
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -923,8 +925,8 @@ module Google
       class Backend
         include Google::Apis::Core::Hashable
       
-        # Specifies the balancing mode for this backend. The default is UTILIZATION but
-        # available values are UTILIZATION and RATE.
+        # Specifies the balancing mode for this backend. For global HTTP(S) load
+        # balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -955,14 +957,14 @@ module Google
         # @return [String]
         attr_accessor :group
       
-        # The max requests per second (RPS) of the group. Can be used with either
-        # balancing mode, but required if RATE mode. For RATE mode, either maxRate or
-        # maxRatePerInstance must be set.
+        # The max requests per second (RPS) of the group. Can be used with either RATE
+        # or UTILIZATION balancing modes, but required if RATE mode. For RATE mode,
+        # either maxRate or maxRatePerInstance must be set.
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
       
-        # The max requests per second (RPS) that a single backed instance can handle.
+        # The max requests per second (RPS) that a single backend instance can handle.
         # This is used to calculate the capacity of the group. Can be used in either
         # balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
         # set.
@@ -1056,13 +1058,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # Name of backend port. The same name should appear in the resource views
+        # Name of backend port. The same name should appear in the instance groups
         # referenced by this service. Required.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # 
+        # The protocol this BackendService uses to communicate with backends.
+        # Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -1073,7 +1076,7 @@ module Google
         attr_accessor :self_link
       
         # How many seconds to wait for the backend before considering it a failed
-        # request. Default is 30 seconds. Valid range is [1, 86400].
+        # request. Default is 30 seconds.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -1308,7 +1311,7 @@ module Google
         # @return [String]
         attr_accessor :last_detach_timestamp
       
-        # Any applicable publicly visible licenses.
+        # [Output Only] Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -1356,6 +1359,13 @@ module Google
         # projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
         # where vYYYYMMDD is the image version. The fully-qualified URL will also work
         # in both cases.
+        # You can also specify the latest image for a private image family by replacing
+        # the image name suffix with family/family-name. For example:
+        # global/images/family/my-private-family
+        # Or you can specify an image family from a publicly-available project. For
+        # example, to use the latest Debian 7 from the debian-cloud project, make sure
+        # to include the project in the URL:
+        # projects/debian-cloud/global/images/family/debian-7
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1365,11 +1375,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
-        # The ID value of the image used to create this disk. This value identifies the
-        # exact image that was used to create this persistent disk. For example, if you
-        # created the persistent disk from an image that was later deleted and recreated
-        # under the same name, the source image ID would identify the exact version of
-        # the image that was used.
+        # [Output Only] The ID value of the image used to create this disk. This value
+        # identifies the exact image that was used to create this persistent disk. For
+        # example, if you created the persistent disk from an image that was later
+        # deleted and recreated under the same name, the source image ID would identify
+        # the exact version of the image that was used.
         # Corresponds to the JSON property `sourceImageId`
         # @return [String]
         attr_accessor :source_image_id
@@ -1411,13 +1421,13 @@ module Google
         attr_accessor :storage_type
       
         # URL of the disk type resource describing which disk type to use to create the
-        # disk; provided by the client when the disk is created.
+        # disk. Provide this when creating the disk.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Links to the users of the disk (attached instances) in form: project/zones/
-        # zone/instances/instance
+        # [Output Only] Links to the users of the disk (attached instances) in form:
+        # project/zones/zone/instances/instance
         # Corresponds to the JSON property `users`
         # @return [Array<String>]
         attr_accessor :users
@@ -1556,7 +1566,7 @@ module Google
         end
       end
       
-      # A disk type resource.
+      # A DiskType resource.
       class DiskType
         include Google::Apis::Core::Hashable
       
@@ -1679,7 +1689,7 @@ module Google
         end
       end
       
-      # Contains a list of disk type resources.
+      # Contains a list of disk types.
       class DiskTypeList
         include Google::Apis::Core::Hashable
       
@@ -1928,7 +1938,7 @@ module Google
         end
       end
       
-      # A Firewall resource.
+      # Represents a Firewall resource.
       class Firewall
         include Google::Apis::Core::Hashable
       
@@ -2038,9 +2048,9 @@ module Google
           include Google::Apis::Core::Hashable
         
           # The IP protocol that is allowed for this rule. The protocol type is required
-          # when creating a firewall. This value can either be one of the following well
-          # known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP protocol
-          # number.
+          # when creating a firewall rule. This value can either be one of the following
+          # well known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP
+          # protocol number.
           # Corresponds to the JSON property `IPProtocol`
           # @return [String]
           attr_accessor :ip_protocol
@@ -2065,7 +2075,7 @@ module Google
         end
       end
       
-      # Contains a list of Firewall resources.
+      # Contains a list of firewalls.
       class FirewallList
         include Google::Apis::Core::Hashable
       
@@ -2231,7 +2241,8 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeBeta::ForwardingRulesScopedList>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#forwardingRuleAggregatedList
+        # for lists of forwarding rules.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2402,7 +2413,12 @@ module Google
         end
       end
       
-      # 
+      # A full or valid partial URL to a health check. For example, the following are
+      # valid URLs:
+      # - https://www.googleapis.com/compute/beta/projects/project-id/global/
+      # httpHealthChecks/health-check
+      # - projects/project-id/global/httpHealthChecks/health-check
+      # - global/httpHealthChecks/health-check
       class HealthCheckReference
         include Google::Apis::Core::Hashable
       
@@ -2534,7 +2550,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP
+        # health checks.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2554,7 +2571,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # The request path of the HTTP health check request. The default value is "/".
+        # The request path of the HTTP health check request. The default value is /.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -2829,6 +2846,12 @@ module Google
         # @return [String]
         attr_accessor :disk_size_gb
       
+        # Image family for the resource; provided by the client when the resource is
+        # created.
+        # Corresponds to the JSON property `family`
+        # @return [String]
+        attr_accessor :family
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -2918,6 +2941,7 @@ module Google
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @family = args[:family] if args.key?(:family)
           @id = args[:id] if args.key?(:id)
           @image_encryption_key = args[:image_encryption_key] if args.key?(:image_encryption_key)
           @kind = args[:kind] if args.key?(:kind)
@@ -2968,7 +2992,7 @@ module Google
         end
       end
       
-      # Contains a list of Image resources.
+      # Contains a list of images.
       class ImageList
         include Google::Apis::Core::Hashable
       
@@ -3079,7 +3103,7 @@ module Google
         attr_accessor :labels
       
         # Full or partial URL of the machine type resource to use for this instance, in
-        # the format: zones/zone/machineTypes/ machine-type. This is provided by the
+        # the format: zones/zone/machineTypes/machine-type. This is provided by the
         # client when the instance is created. For example, the following is a valid
         # partial url to a predefined machine type:
         # zones/us-central1-f/machineTypes/n1-standard-1
@@ -3284,8 +3308,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
-        # [Output Only] The URL of the network to which all instances in the instance
-        # group belong.
+        # The URL of the network to which all instances in the instance group belong.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3300,8 +3323,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # [Output Only] The URL of the subnetwork to which all instances in the instance
-        # group belong.
+        # The URL of the subnetwork to which all instances in the instance group belong.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -3430,8 +3452,7 @@ module Google
         end
       end
       
-      # InstanceGroupManagers
-      # Next available tag: 20
+      # 
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -4228,7 +4249,7 @@ module Google
         end
       end
       
-      # Contains a list of instance resources.
+      # Contains a list of instances.
       class InstanceList
         include Google::Apis::Core::Hashable
       
@@ -4238,7 +4259,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Instance resources.
+        # [Output Only] A list of instances.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeBeta::Instance>]
         attr_accessor :items
@@ -4835,7 +4856,7 @@ module Google
         end
       end
       
-      # Contains a list of Machine Type resources.
+      # Contains a list of machine types.
       class MachineTypeList
         include Google::Apis::Core::Hashable
       
@@ -5204,7 +5225,8 @@ module Google
         end
       end
       
-      # A network resource.
+      # Represents a Network resource. Read Networks and Firewalls for more
+      # information.
       class Network
         include Google::Apis::Core::Hashable
       
@@ -5357,7 +5379,7 @@ module Google
         end
       end
       
-      # Contains a list of Network resources.
+      # Contains a list of networks.
       class NetworkList
         include Google::Apis::Core::Hashable
       
@@ -5410,7 +5432,7 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique client ID generated by the server.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -5474,7 +5496,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] The type of operation, which can be insert, update, or delete.
+        # [Output Only] The type of operation, such as insert, update, or delete, and so
+        # on.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -5487,8 +5510,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :progress
       
-        # [Output Only] URL of the region where the operation resides. Only available
-        # when performing regional operations.
+        # [Output Only] The URL of the region where the operation resides. Only
+        # available when performing regional operations.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -5522,7 +5545,7 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] The URL of the resource that the operation is modifying.
+        # [Output Only] The URL of the resource that the operation modifies.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -5538,8 +5561,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Operation::Warning>]
         attr_accessor :warnings
       
-        # [Output Only] URL of the zone where the operation resides. Only available when
-        # performing per-zone operations.
+        # [Output Only] The URL of the zone where the operation resides. Only available
+        # when performing per-zone operations.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -5751,7 +5774,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] The Operation resources.
+        # [Output Only] A list of Operation resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeBeta::Operation>]
         attr_accessor :items
@@ -5957,7 +5980,7 @@ module Google
         end
       end
       
-      # A Project resource. Projects can only be created in the Google Developers
+      # A Project resource. Projects can only be created in the Google Cloud Platform
       # Console. Unless marked otherwise, values can only be modified in the console.
       class Project
         include Google::Apis::Core::Hashable
@@ -6208,19 +6231,20 @@ module Google
         end
       end
       
-      # The route resource. A Route is a rule that specifies how certain packets
-      # should be handled by the virtual network. Routes are associated with instances
-      # by tags and the set of Routes for a particular instance is called its routing
-      # table. For each packet leaving a instance, the system searches that instance's
-      # routing table for a single best matching Route. Routes match packets by
+      # Represents a Routes resource. A route specifies how certain packets should be
+      # handled by the network. Routes are associated with instances by tags and the
+      # set of routes for a particular instance is called its routing table.
+      # For each packet leaving a instance, the system searches that instance's
+      # routing table for a single best matching route. Routes match packets by
       # destination IP address, preferring smaller or more specific ranges over larger
-      # ones. If there is a tie, the system selects the Route with the smallest
+      # ones. If there is a tie, the system selects the route with the smallest
       # priority value. If there is still a tie, it uses the layer three and four
       # packet headers to select just one of the remaining matching Routes. The packet
-      # is then forwarded as specified by the nextHop field of the winning Route --
+      # is then forwarded as specified by the nextHop field of the winning route -
       # either to another instance destination, a instance gateway or a Google Compute
-      # Engien-operated gateway. Packets that do not match any Route in the sending
-      # instance's routing table are dropped.
+      # Engine-operated gateway.
+      # Packets that do not match any route in the sending instance's routing table
+      # are dropped.
       class Route
         include Google::Apis::Core::Hashable
       
@@ -6471,7 +6495,7 @@ module Google
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
         # only possible behavior is TERMINATE. For more information, see Setting
-        # maintenance behavior.
+        # Instance Scheduling Options.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
@@ -6583,7 +6607,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Public visible licenses.
+        # [Output Only] A list of public visible licenses that apply to this snapshot.
+        # This can be because the original image had licenses attached (such as a
+        # Windows image).
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -6625,7 +6651,8 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # [Output Only] The status of the snapshot.
+        # [Output Only] The status of the snapshot. This can be CREATING, DELETING,
+        # FAILED, READY, or UPLOADING.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -6638,7 +6665,9 @@ module Google
         attr_accessor :storage_bytes
       
         # [Output Only] An indicator whether storageBytes is in a stable state or it is
-        # being adjusted as a result of shared storage reallocation.
+        # being adjusted as a result of shared storage reallocation. This status can
+        # either be UPDATING, meaning the size of the snapshot is being updated, or
+        # UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         # Corresponds to the JSON property `storageBytesStatus`
         # @return [String]
         attr_accessor :storage_bytes_status
@@ -7219,7 +7248,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::TargetHttpProxy>]
         attr_accessor :items
       
-        # Type of resource. Always compute#targetHttpProxyList for lists of Target HTTP
+        # Type of resource. Always compute#targetHttpProxyList for lists of target HTTP
         # proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -7258,7 +7287,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # New set of URLs to SslCertificate resources to associate with this
-        # TargetHttpProxy. Currently exactly one ssl certificate must be specified.
+        # TargetHttpProxy. Currently exactly one SSL certificate must be specified.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -7316,14 +7345,18 @@ module Google
         attr_accessor :self_link
       
         # URLs to SslCertificate resources that are used to authenticate connections
-        # between users and the load balancer. Currently exactly one SSL certificate
+        # between users and the load balancer. Currently, exactly one SSL certificate
         # must be specified.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
-        # URL to the UrlMap resource that defines the mapping from URL to the
-        # BackendService.
+        # A fully-qualified or valid partial URL to the UrlMap resource that defines the
+        # mapping from URL to the BackendService. For example, the following are all
+        # valid URLs for specifying a URL map:
+        # - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map
+        # - projects/project/global/urlMaps/url-map
+        # - global/urlMaps/url-map
         # Corresponds to the JSON property `urlMap`
         # @return [String]
         attr_accessor :url_map
@@ -7415,7 +7448,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The URL to the instance that terminates the relevant traffic.
+        # A URL to the virtual machine instance that handles traffic for this target
+        # instance. When creating a target instance, you can provide the fully-qualified
+        # URL or a valid partial URL to the desired virtual machine. For example, the
+        # following are all valid URLs:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        # instance
+        # - projects/project/zones/zone/instances/instance
+        # - zones/zone/instances/instance
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -7657,7 +7697,7 @@ module Google
       end
       
       # A TargetPool resource. This resource defines a pool of instances, associated
-      # HttpHealthCheck resources, and the fallback TargetPool.
+      # HttpHealthCheck resources, and the fallback target pool.
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -7716,8 +7756,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A list of resource URLs to the member virtual machines serving this pool. They
-        # must live in zones contained in the same region as this pool.
+        # A list of resource URLs to the virtual machine instances serving this pool.
+        # They must live in zones contained in the same region as this pool.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -7787,12 +7827,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped target pool lists.
+        # [Output Only] A map of scoped target pool lists.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeBeta::TargetPoolsScopedList>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#targetPoolAggregatedList for
+        # aggregated lists of target pools.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7834,7 +7875,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::HealthStatus>]
         attr_accessor :health_status
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#targetPoolInstanceHealth when
+        # checking the health of an instance.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7864,7 +7906,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::TargetPool>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#targetPoolList for lists of
+        # target pools.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7901,7 +7944,7 @@ module Google
       class AddTargetPoolsHealthCheckRequest
         include Google::Apis::Core::Hashable
       
-        # Health check URLs to be added to targetPool.
+        # A list of HttpHealthCheck resources to add to the target pool.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<Google::Apis::ComputeBeta::HealthCheckReference>]
         attr_accessor :health_checks
@@ -7920,7 +7963,12 @@ module Google
       class AddTargetPoolsInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # URLs of the instances to be added to targetPool.
+        # A full or partial URL to an instance to add to this target pool. This can be a
+        # full or partial URL. For example, the following are valid URLs:
+        # - https://www.googleapis.com/compute/v1/projects/project-id/zones/zone/
+        # instances/instance-name
+        # - projects/project-id/zones/zone/instances/instance-name
+        # - zones/zone/instances/instance-name
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::ComputeBeta::InstanceReference>]
         attr_accessor :instances
@@ -7939,7 +7987,12 @@ module Google
       class RemoveTargetPoolsHealthCheckRequest
         include Google::Apis::Core::Hashable
       
-        # Health check URLs to be removed from targetPool.
+        # Health check URL to be removed. This can be a full or valid partial URL. For
+        # example, the following are valid URLs:
+        # - https://www.googleapis.com/compute/beta/projects/project/global/
+        # httpHealthChecks/health-check
+        # - projects/project/global/httpHealthChecks/health-check
+        # - global/httpHealthChecks/health-check
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<Google::Apis::ComputeBeta::HealthCheckReference>]
         attr_accessor :health_checks
@@ -7958,7 +8011,7 @@ module Google
       class RemoveTargetPoolsInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # URLs of the instances to be removed from targetPool.
+        # URLs of the instances to be removed from target pool.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::ComputeBeta::InstanceReference>]
         attr_accessor :instances
@@ -8083,7 +8136,7 @@ module Google
         end
       end
       
-      # 
+      # Represents a Target VPN gateway resource.
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -8149,7 +8202,7 @@ module Google
         attr_accessor :status
       
         # [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
-        # using compute.vpntunnels.insert and associated to a VPN gateway.
+        # using compute.vpntunnels.insert method and associated to a VPN gateway.
         # Corresponds to the JSON property `tunnels`
         # @return [Array<String>]
         attr_accessor :tunnels

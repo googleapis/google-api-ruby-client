@@ -1457,6 +1457,7 @@ module Google
       
           property :description, as: 'description'
           property :disk_size_gb, as: 'diskSizeGb'
+          property :family, as: 'family'
           property :id, as: 'id'
           property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       

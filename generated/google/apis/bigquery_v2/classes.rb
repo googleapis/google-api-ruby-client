@@ -1131,10 +1131,10 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # [Experimental] If querying an external data source outside of BigQuery,
-        # describes the data format, location and other properties of the data source.
-        # By defining these properties, the data source can then be queried as if it
-        # were a standard BigQuery table.
+        # [Optional] If querying an external data source outside of BigQuery, describes
+        # the data format, location and other properties of the data source. By defining
+        # these properties, the data source can then be queried as if it were a standard
+        # BigQuery table.
         # Corresponds to the JSON property `tableDefinitions`
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
@@ -1908,7 +1908,7 @@ module Google
         # @return [String]
         attr_accessor :expiration_time
       
-        # [Experimental] Describes the data format, location, and other properties of a
+        # [Optional] Describes the data format, location, and other properties of a
         # table stored outside of BigQuery. By defining these properties, the data
         # source can then be queried as if it were a standard BigQuery table.
         # Corresponds to the JSON property `externalDataConfiguration`
@@ -2065,11 +2065,12 @@ module Google
         attr_accessor :skip_invalid_rows
         alias_method :skip_invalid_rows?, :skip_invalid_rows
       
-        # [Optional] If specified, treats the destination table as a base template, and
-        # inserts the rows into an instance table named "`destination``templateSuffix`".
-        # BigQuery will manage creation of the instance table, using the schema of the
-        # base template table. See https://cloud.google.com/bigquery/streaming-data-into-
-        # bigquery#template-tables for considerations when working with templates tables.
+        # [Experimental] If specified, treats the destination table as a base template,
+        # and inserts the rows into an instance table named "`destination``
+        # templateSuffix`". BigQuery will manage creation of the instance table, using
+        # the schema of the base template table. See https://cloud.google.com/bigquery/
+        # streaming-data-into-bigquery#template-tables for considerations when working
+        # with templates tables.
         # Corresponds to the JSON property `templateSuffix`
         # @return [String]
         attr_accessor :template_suffix

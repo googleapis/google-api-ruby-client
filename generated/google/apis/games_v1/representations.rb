@@ -934,6 +934,7 @@ module Google
       
           property :name, as: 'name', class: Google::Apis::GamesV1::Player::Name, decorator: Google::Apis::GamesV1::Player::Name::Representation
       
+          property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
           property :title, as: 'title'
         end

@@ -73,6 +73,15 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # Map of labels; provided by the client when the resource is created or updated.
+        # Specifically: Label keys must be between 1 and 63 characters long and must
+        # conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label
+        # values must be between 0 and 63 characters long and must conform to the
+        # regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry>]
+        attr_accessor :labels
+      
         # [Output Only] URL of the manifest representing the last manifest that was
         # successfully deployed.
         # Corresponds to the JSON property `manifest`
@@ -114,6 +123,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @labels = args[:labels] if args.key?(:labels)
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @operation = args[:operation] if args.key?(:operation)
@@ -123,8 +133,42 @@ module Google
       end
       
       # 
+      class DeploymentLabelEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
       class DeploymentUpdate
         include Google::Apis::Core::Hashable
+      
+        # [Output Only] Map of labels; provided by the client when the resource is
+        # created or updated. Specifically: Label keys must be between 1 and 63
+        # characters long and must conform to the following regular expression: [a-z]([-
+        # a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and
+        # must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry>]
+        attr_accessor :labels
       
         # [Output Only] URL of the manifest representing the update configuration of
         # this deployment.
@@ -138,7 +182,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @manifest = args[:manifest] if args.key?(:manifest)
+        end
+      end
+      
+      # 
+      class DeploymentUpdateLabelEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

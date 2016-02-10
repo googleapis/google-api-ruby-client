@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/doubleclick-advertisers/reporting/
     module DfareportingV2_3
       VERSION = 'V2_3'
-      REVISION = '20151109'
+      REVISION = '20160128'
 
       # View and manage DoubleClick for Advertisers reports
       AUTH_DFAREPORTING = 'https://www.googleapis.com/auth/dfareporting'

@@ -896,6 +896,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports a Google Doc to the requested MIME type and returns the exported
+        # content.
+        # @param [String] file_id
+        #   The ID of the file.
+        # @param [String] mime_type
+        #   The MIME type of the format requested for this export.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_file(file_id, mime_type, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command =  make_simple_command(:get, 'files/{fileId}/export', options)
+          else
+            command = make_download_command(:get, 'files/{fileId}/export', options)
+            command.download_dest = download_dest
+          end
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.query['mimeType'] = mime_type unless mime_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a set of file IDs which can be provided in insert requests.
         # @param [Fixnum] max_results
         #   Maximum number of IDs to return.

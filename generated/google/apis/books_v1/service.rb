@@ -1526,8 +1526,6 @@ module Google
         #   generating notification title and body.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [Array<String>, String] target_ids
-        #   List of target ids used for experiments or user segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1549,14 +1547,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_notification(notification_id, locale: nil, source: nil, target_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_notification(notification_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'notification/get', options)
           command.response_representation = Google::Apis::BooksV1::Notification::Representation
           command.response_class = Google::Apis::BooksV1::Notification
           command.query['locale'] = locale unless locale.nil?
           command.query['notification_id'] = notification_id unless notification_id.nil?
           command.query['source'] = source unless source.nil?
-          command.query['targetIds'] = target_ids unless target_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1655,8 +1652,6 @@ module Google
         #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [Array<String>, String] target_ids
-        #   List of target ids used for experiments or user segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1678,14 +1673,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, target_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'personalizedstream/get', options)
           command.response_representation = Google::Apis::BooksV1::Discoveryclusters::Representation
           command.response_class = Google::Apis::BooksV1::Discoveryclusters
           command.query['locale'] = locale unless locale.nil?
           command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['source'] = source unless source.nil?
-          command.query['targetIds'] = target_ids unless target_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2155,8 +2149,6 @@ module Google
         #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [Array<String>, String] target_ids
-        #   List of target ids used for experiments or user segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2178,14 +2170,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_recommended_volumes(locale: nil, max_allowed_maturity_rating: nil, source: nil, target_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_recommended_volumes(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'volumes/recommended', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['locale'] = locale unless locale.nil?
           command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['source'] = source unless source.nil?
-          command.query['targetIds'] = target_ids unless target_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

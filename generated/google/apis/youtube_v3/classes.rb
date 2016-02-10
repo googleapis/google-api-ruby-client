@@ -1244,25 +1244,6 @@ module Google
       end
       
       # 
-      class ChannelId
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # 
       class ListChannelsResponse
         include Google::Apis::Core::Hashable
       
@@ -1991,7 +1972,7 @@ module Google
       
         # The id of the author's YouTube channel, if any.
         # Corresponds to the JSON property `authorChannelId`
-        # @return [Google::Apis::YoutubeV3::ChannelId]
+        # @return [Object]
         attr_accessor :author_channel_id
       
         # Link to the author's YouTube channel, if any.
@@ -5859,6 +5840,11 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
+        # 
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
@@ -5882,6 +5868,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @page_info = args[:page_info] if args.key?(:page_info)
           @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+          @region_code = args[:region_code] if args.key?(:region_code)
           @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end

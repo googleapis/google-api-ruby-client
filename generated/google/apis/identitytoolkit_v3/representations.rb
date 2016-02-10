@@ -282,6 +282,7 @@ module Google
           property :local_id, as: 'localId'
           property :oob_code, as: 'oobCode'
           property :password, as: 'password'
+          property :photo_url, as: 'photoUrl'
           collection :provider, as: 'provider'
           property :upgrade_to_federated_login, as: 'upgradeToFederatedLogin'
           property :valid_since, as: 'validSince'
@@ -391,6 +392,7 @@ module Google
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :new_email, as: 'newEmail'
+          property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo::Representation
       
         end
@@ -444,6 +446,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
+            property :email, as: 'email'
             property :federated_id, as: 'federatedId'
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'

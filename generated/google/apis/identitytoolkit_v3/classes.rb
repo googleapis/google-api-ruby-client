@@ -534,6 +534,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # The photo url of the user.
+        # Corresponds to the JSON property `photoUrl`
+        # @return [String]
+        attr_accessor :photo_url
+      
         # The associated IDPs of the user.
         # Corresponds to the JSON property `provider`
         # @return [Array<String>]
@@ -568,6 +573,7 @@ module Google
           @local_id = args[:local_id] if args.key?(:local_id)
           @oob_code = args[:oob_code] if args.key?(:oob_code)
           @password = args[:password] if args.key?(:password)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider = args[:provider] if args.key?(:provider)
           @upgrade_to_federated_login = args[:upgrade_to_federated_login] if args.key?(:upgrade_to_federated_login)
           @valid_since = args[:valid_since] if args.key?(:valid_since)
@@ -967,6 +973,11 @@ module Google
         # @return [String]
         attr_accessor :new_email
       
+        # The photo url of the user.
+        # Corresponds to the JSON property `photoUrl`
+        # @return [String]
+        attr_accessor :photo_url
+      
         # The user's profiles at the associated IdPs.
         # Corresponds to the JSON property `providerUserInfo`
         # @return [Array<Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo>]
@@ -983,6 +994,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
           @new_email = args[:new_email] if args.key?(:new_email)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
         end
         
@@ -1164,6 +1176,11 @@ module Google
           # @return [String]
           attr_accessor :display_name
         
+          # User's email at IDP.
+          # Corresponds to the JSON property `email`
+          # @return [String]
+          attr_accessor :email
+        
           # User's identifier at IDP.
           # Corresponds to the JSON property `federatedId`
           # @return [String]
@@ -1187,6 +1204,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @display_name = args[:display_name] if args.key?(:display_name)
+            @email = args[:email] if args.key?(:email)
             @federated_id = args[:federated_id] if args.key?(:federated_id)
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)

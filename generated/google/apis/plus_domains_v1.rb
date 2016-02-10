@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/+/domains/
     module PlusDomainsV1
       VERSION = 'V1'
-      REVISION = '20160126'
+      REVISION = '20160208'
 
       # View your circles and the people and pages in them
       AUTH_PLUS_CIRCLES_READ = 'https://www.googleapis.com/auth/plus.circles.read'
@@ -33,7 +33,7 @@ module Google
       # Manage your circles and add people and pages. People and pages you add to your circles will be notified. Others may see this information publicly. People you add to circles can use Hangouts with you.
       AUTH_PLUS_CIRCLES_WRITE = 'https://www.googleapis.com/auth/plus.circles.write'
 
-      # Know your basic profile info and list of people in your circles.
+      # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
 
       # Know who you are on Google

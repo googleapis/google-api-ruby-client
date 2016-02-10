@@ -91,7 +91,7 @@ module Google
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
         #   An auth token needed for inserting a customer for which domain already exists.
-        #   Can be generated at https://www.google.com/a/cpanel//TransferToken. Optional.
+        #   Can be generated at https://admin.google.com/TransferToken. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

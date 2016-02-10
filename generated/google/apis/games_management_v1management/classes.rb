@@ -351,6 +351,14 @@ module Google
         # @return [Google::Apis::GamesManagementV1management::Player::Name]
         attr_accessor :name
       
+        # The player ID that was used for this player the first time they signed into
+        # the game in question. This is only populated for calls to player.get for the
+        # requesting player, only if the player ID has subsequently changed, and only to
+        # clients that support remapping player IDs.
+        # Corresponds to the JSON property `originalPlayerId`
+        # @return [String]
+        attr_accessor :original_player_id
+      
         # The ID of the player.
         # Corresponds to the JSON property `playerId`
         # @return [String]
@@ -375,6 +383,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
           @name = args[:name] if args.key?(:name)
+          @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
           @title = args[:title] if args.key?(:title)
         end

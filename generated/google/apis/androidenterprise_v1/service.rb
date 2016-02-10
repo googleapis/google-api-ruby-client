@@ -668,7 +668,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the binding between the MDM and enterprise. This is now deprecated;
+        # Deletes the binding between the EMM and enterprise. This is now deprecated;
         # use this to unenroll customers that were previously enrolled with the 'insert'
         # call, then enroll them again with the 'enroll' call.
         # @param [String] enterprise_id
@@ -703,9 +703,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enrolls an enterprise with the calling MDM.
+        # Enrolls an enterprise with the calling EMM.
         # @param [String] token
-        #   The token provided by the enterprise to register the MDM.
+        #   The token provided by the enterprise to register the EMM.
         # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -811,10 +811,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Establishes the binding between the MDM and an enterprise. This is now
+        # Establishes the binding between the EMM and an enterprise. This is now
         # deprecated; use enroll instead.
         # @param [String] token
-        #   The token provided by the enterprise to register the MDM.
+        #   The token provided by the enterprise to register the EMM.
         # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -885,7 +885,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a test push notification to validate the MDM integration with the Google
+        # Sends a test push notification to validate the EMM integration with the Google
         # Cloud Pub/Sub service for this enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -997,7 +997,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unenrolls an enterprise from the calling MDM.
+        # Unenrolls an enterprise from the calling EMM.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -2361,6 +2361,7 @@ module Google
         
         # Generates a token (activation code) to allow this user to configure their work
         # account in the Android Setup Wizard. Revokes any previously generated token.
+        # This call only works with Google managed accounts.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2474,7 +2475,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a user by email address. This only works for Google managed users.
+        # Looks up a user by their primary email address.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] email

@@ -27,7 +27,7 @@ module Google
       VERSION = 'V2'
       REVISION = '20160122'
 
-      # Know your basic profile info and list of people in your circles.
+      # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
 
       # Know who you are on Google

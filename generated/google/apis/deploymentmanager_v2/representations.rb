@@ -30,7 +30,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class DeploymentLabelEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class DeploymentUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DeploymentUpdateLabelEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -144,6 +152,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, as: 'id'
           property :insert_time, as: 'insertTime'
+          collection :labels, as: 'labels', class: Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry, decorator: Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry::Representation
+      
           property :manifest, as: 'manifest'
           property :name, as: 'name'
           property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerV2::Operation, decorator: Google::Apis::DeploymentmanagerV2::Operation::Representation
@@ -155,10 +165,28 @@ module Google
         end
       end
       
+      class DeploymentLabelEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class DeploymentUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels', class: Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry, decorator: Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry::Representation
+      
           property :manifest, as: 'manifest'
+        end
+      end
+      
+      class DeploymentUpdateLabelEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       

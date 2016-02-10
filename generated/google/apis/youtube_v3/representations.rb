@@ -138,10 +138,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ChannelId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -1039,13 +1035,6 @@ module Google
         end
       end
       
-      class ChannelId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-        end
-      end
-      
       class ListChannelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1243,8 +1232,7 @@ module Google
       class CommentSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :author_channel_id, as: 'authorChannelId', class: Google::Apis::YoutubeV3::ChannelId, decorator: Google::Apis::YoutubeV3::ChannelId::Representation
-      
+          property :author_channel_id, as: 'authorChannelId'
           property :author_channel_url, as: 'authorChannelUrl'
           property :author_display_name, as: 'authorDisplayName'
           property :author_googleplus_profile_url, as: 'authorGoogleplusProfileUrl'
@@ -2217,6 +2205,7 @@ module Google
           property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
       
           property :prev_page_token, as: 'prevPageToken'
+          property :region_code, as: 'regionCode'
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
       
           property :visitor_id, as: 'visitorId'

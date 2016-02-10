@@ -66,7 +66,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -78,10 +79,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -254,7 +255,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of address resources contained within the specified region.
+        # Retrieves a list of addresses contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -270,7 +271,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -282,10 +284,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -349,7 +351,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -361,10 +364,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -553,7 +556,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -565,10 +569,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -880,7 +884,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -892,10 +897,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1031,7 +1036,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of disk type resources.
+        # Retrieves an aggregated list of disk types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1045,7 +1050,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1057,10 +1063,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1109,13 +1115,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified disk type resource.
+        # Returns the specified disk type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] disk_type
-        #   Name of the disk type resource to return.
+        #   Name of the disk type to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1150,7 +1156,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of disk type resources available to the specified project.
+        # Retrieves a list of disk types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1166,7 +1172,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1178,10 +1185,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1245,7 +1252,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1257,10 +1265,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1437,8 +1445,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a persistent disk in the specified project using the data included in
-        # the request.
+        # Creates a persistent disk in the specified project using the data in the
+        # request. You can create a disk with a sourceImage, a sourceSnapshot, or create
+        # an empty 200 GB data disk by omitting all properties. You can also create a
+        # disk that is larger than the default size by specifying the sizeGb property.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1498,7 +1508,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1510,10 +1521,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1607,11 +1618,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified firewall resource.
+        # Deletes the specified firewall.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
-        #   Name of the firewall resource to delete.
+        #   Name of the firewall rule to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1645,11 +1656,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified firewall resource.
+        # Returns the specified firewall.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
-        #   Name of the firewall resource to return.
+        #   Name of the firewall rule to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1683,8 +1694,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a firewall resource in the specified project using the data included
-        # in the request.
+        # Creates a firewall rule in the specified project using the data included in
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
@@ -1722,7 +1733,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of firewall resources available to the specified project.
+        # Retrieves the list of firewall rules available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1736,7 +1747,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1748,10 +1760,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1800,12 +1812,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified firewall resource with the data included in the request.
+        # Updates the specified firewall rule with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
-        #   Name of the firewall resource to update.
+        #   Name of the firewall rule to update.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1842,11 +1854,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified firewall resource with the data included in the request.
+        # Updates the specified firewall rule with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
-        #   Name of the firewall resource to update.
+        #   Name of the firewall rule to update.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1897,7 +1909,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -1909,10 +1922,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2102,7 +2115,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -2114,10 +2128,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2327,7 +2341,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of global address resources.
+        # Retrieves a list of global addresses.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2341,7 +2355,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -2353,10 +2368,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2535,7 +2550,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -2547,10 +2563,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2655,7 +2671,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -2667,10 +2684,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2807,7 +2824,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -2819,10 +2837,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3001,7 +3019,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -3013,10 +3032,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3279,7 +3298,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -3291,10 +3311,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3427,7 +3447,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified image resource.
+        # Deletes the specified image.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -3507,7 +3527,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified image resource.
+        # Returns the specified image.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -3545,8 +3565,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an image resource in the specified project using the data included in
-        # the request.
+        # Returns the latest undeprecated image for an image family.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] family
+        #   Name of the image resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Image] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Image]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_image_from_family(project, family, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/images/family/{family}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Image::Representation
+          command.response_class = Google::Apis::ComputeBeta::Image
+          command.params['project'] = project unless project.nil?
+          command.params['family'] = family unless family.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an image in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Image] image_object
@@ -3604,7 +3662,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -3616,10 +3675,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3733,7 +3792,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -3745,10 +3805,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3994,7 +4054,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -4006,10 +4067,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4343,7 +4404,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a list of instances to the specified instance group. Read  Adding
+        # Adds a list of instances to the specified instance group. All of the instances
+        # in the instance group must be in the same network/subnetwork. Read  Adding
         # instances for more information.
         # @param [String] project
         #   Project ID for this request.
@@ -4402,7 +4464,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -4414,10 +4477,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4609,7 +4672,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -4621,10 +4685,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4694,7 +4758,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -4706,10 +4771,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4851,7 +4916,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified instance template.
+        # Deletes the specified instance template. If you delete an instance template
+        # that is being referenced from another instance group, the instance group will
+        # not be able to create or recreate virtual machine instances. Deleting an
+        # instance template is permanent and cannot be undone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -4983,7 +5051,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -4995,10 +5064,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5094,7 +5163,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves aggregated list of instance resources.
+        # Retrieves aggregated list of instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -5108,7 +5177,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -5120,10 +5190,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5178,7 +5248,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   Instance name.
+        #   The instance name for this request.
         # @param [Google::Apis::ComputeBeta::AttachedDisk] attached_disk_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5349,7 +5419,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance resource.
+        # Returns the specified Instance resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5476,7 +5546,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of instance resources contained within the specified zone.
+        # Retrieves the list of instances contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5492,7 +5562,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -5504,10 +5575,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5958,7 +6029,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
-        #   Name of the license resource to return.
+        #   Name of the License resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5992,7 +6063,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of machine type resources.
+        # Retrieves an aggregated list of machine types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6006,7 +6077,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6018,10 +6090,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6070,13 +6142,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type resource.
+        # Returns the specified machine type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] machine_type
-        #   Name of the machine type resource to return.
+        #   Name of the machine type to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6111,7 +6183,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of machine type resources available to the specified project.
+        # Retrieves a list of machine types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6127,7 +6199,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6139,10 +6212,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6192,11 +6265,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified network resource.
+        # Deletes the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
-        #   Name of the network resource to delete.
+        #   Name of the network to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6230,11 +6303,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network resource.
+        # Returns the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
-        #   Name of the network resource to return.
+        #   Name of the network to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6268,8 +6341,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a network resource in the specified project using the data included in
-        # the request.
+        # Creates a network in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Network] network_object
@@ -6307,7 +6380,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of network resources available to the specified project.
+        # Retrieves the list of networks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6321,7 +6394,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6333,10 +6407,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6503,7 +6577,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   Name of the region scoping this request.
+        #   Name of the region for this request.
         # @param [String] operation
         #   Name of the Operations resource to delete.
         # @param [String] fields
@@ -6542,7 +6616,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   Name of the region scoping this request.
+        #   Name of the region for this request.
         # @param [String] operation
         #   Name of the Operations resource to return.
         # @param [String] fields
@@ -6583,7 +6657,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   Name of the region scoping this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -6595,7 +6669,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6607,10 +6682,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6712,7 +6787,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6724,10 +6800,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6905,7 +6981,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -6917,10 +6994,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7064,7 +7141,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7076,10 +7154,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7258,7 +7336,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7270,10 +7349,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7336,7 +7415,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7348,10 +7428,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7540,7 +7620,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7552,10 +7633,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7735,7 +7816,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7747,10 +7829,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7803,7 +7885,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
-        #   Name of the TargetHttpProxy resource whose URL map is to be set.
+        #   The name of the TargetHttpProxy resource to set a URL map for.
         # @param [Google::Apis::ComputeBeta::UrlMapReference] url_map_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7970,7 +8052,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -7982,10 +8065,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8038,7 +8121,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
-        #   Name of the TargetHttpsProxy resource whose SSLCertificate is to be set.
+        #   Name of the TargetHttpsProxy resource to set an SSL certificate for.
         # @param [Google::Apis::ComputeBeta::TargetHttpsProxiesSetSslCertificatesRequest] target_https_proxies_set_ssl_certificates_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8130,7 +8213,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -8142,10 +8226,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8335,7 +8419,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -8347,10 +8432,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8400,12 +8485,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds health check URL to targetPool.
+        # Adds health check URLs to a target pool.
         # @param [String] project
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
-        #   Name of the TargetPool resource to which health_check_url is to be added.
+        #   Name of the target pool to add a health check to.
         # @param [Google::Apis::ComputeBeta::AddTargetPoolsHealthCheckRequest] add_target_pools_health_check_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8443,12 +8529,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds instance URL to targetPool.
+        # Adds an instance to a target pool.
         # @param [String] project
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
-        #   Name of the TargetPool resource to which instance_url is to be added.
+        #   Name of the TargetPool resource to add instances to.
         # @param [Google::Apis::ComputeBeta::AddTargetPoolsInstanceRequest] add_target_pools_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8500,7 +8587,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -8512,10 +8600,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8564,7 +8652,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetPool resource.
+        # Deletes the specified target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8605,7 +8693,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetPool resource.
+        # Returns the specified target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8646,9 +8734,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the most recent health check results for each IP for the given instance
-        # that is referenced by the given TargetPool.
+        # Gets the most recent health check results for each IP for the instance that is
+        # referenced by the given target pool.
         # @param [String] project
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
@@ -8690,8 +8779,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a TargetPool resource in the specified project and region using the
-        # data included in the request.
+        # Creates a target pool in the specified project and region using the data
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8732,8 +8821,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of TargetPool resources available to the specified project
-        # and region.
+        # Retrieves a list of target pools available to the specified project and region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8749,7 +8837,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -8761,10 +8850,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8814,12 +8903,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes health check URL from targetPool.
+        # Removes health check URL from a target pool.
         # @param [String] project
+        #   Project ID for this request.
         # @param [String] region
-        #   Name of the region scoping this request.
+        #   Name of the region for this request.
         # @param [String] target_pool
-        #   Name of the TargetPool resource to which health_check_url is to be removed.
+        #   Name of the target pool to remove health checks from.
         # @param [Google::Apis::ComputeBeta::RemoveTargetPoolsHealthCheckRequest] remove_target_pools_health_check_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8857,12 +8947,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes instance URL from targetPool.
+        # Removes instance URL from a target pool.
         # @param [String] project
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
-        #   Name of the TargetPool resource to which instance_url is to be removed.
+        #   Name of the TargetPool resource to remove instances from.
         # @param [Google::Apis::ComputeBeta::RemoveTargetPoolsInstanceRequest] remove_target_pools_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8900,16 +8991,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes backup pool configurations.
+        # Changes a backup target pool's configurations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
-        #   Name of the TargetPool resource for which the backup is to be set.
+        #   Name of the TargetPool resource to set a backup pool for.
         # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
         # @param [Float] failover_ratio
-        #   New failoverRatio value for the containing target pool.
+        #   New failoverRatio value for the target pool.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8947,7 +9038,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target VPN gateways .
+        # Retrieves an aggregated list of target VPN gateways.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -8961,7 +9052,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -8973,10 +9065,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9025,13 +9117,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetVpnGateway resource.
+        # Deletes the specified target VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] target_vpn_gateway
-        #   Name of the TargetVpnGateway resource to delete.
+        #   Name of the target VPN gateway to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9066,13 +9158,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetVpnGateway resource.
+        # Returns the specified target VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] target_vpn_gateway
-        #   Name of the TargetVpnGateway resource to return.
+        #   Name of the target VPN gateway to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9107,8 +9199,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a TargetVpnGateway resource in the specified project and region using
-        # the data included in the request.
+        # Creates a target VPN gateway in the specified project and region using the
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9149,8 +9241,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of TargetVpnGateway resources available to the specified
-        # project and region.
+        # Retrieves a list of target VPN gateways available to the specified project and
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9166,7 +9258,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -9178,10 +9271,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9360,7 +9453,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -9372,10 +9466,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9563,7 +9657,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -9575,10 +9670,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9768,7 +9863,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -9780,10 +9876,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9837,7 +9933,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] operation
         #   Name of the Operations resource to delete.
         # @param [String] fields
@@ -9876,7 +9972,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] operation
         #   Name of the Operations resource to return.
         # @param [String] fields
@@ -9917,7 +10013,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -9929,7 +10025,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -9941,10 +10038,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10046,7 +10143,8 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, filter=name ne example-instance.
+        #   For example, to filter for instances whose name is not equal to example-
+        #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
         #   have set the scheduling.automaticRestart field to true. In particular, use
@@ -10058,10 +10156,10 @@ module Google
         #   treated as AND expressions meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page that Compute Engine should return. If
-        #   the number of available results is larger than maxResults, Compute Engine
-        #   returns a nextPageToken that can be used to get the next page of results in
-        #   subsequent list requests.
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.

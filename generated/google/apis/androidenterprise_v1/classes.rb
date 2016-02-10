@@ -320,7 +320,7 @@ module Google
         end
       end
       
-      # A device resource represents a mobile device managed by the MDM and belonging
+      # A device resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
       # This collection cannot be modified via the API; it is automatically populated
       # as devices are set up to be managed.
@@ -339,10 +339,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The mechanism by which this device is managed by the MDM. "managedDevice"
-        # means that the MDM's app is a device owner. "managedProfile" means that the
-        # MDM's app is the profile owner (and there is a separate personal profile which
-        # is not managed). "containerApp" means that the MDM's app is managing the
+        # The mechanism by which this device is managed by the EMM. "managedDevice"
+        # means that the EMM's app is a device owner. "managedProfile" means that the
+        # EMM's app is the profile owner (and there is a separate personal profile which
+        # is not managed). "containerApp" means that the EMM's app is managing the
         # Android for Work container app on the device.
         # Corresponds to the JSON property `managementType`
         # @return [String]
@@ -417,21 +417,21 @@ module Google
       end
       
       # An enterprise resource represents a binding between an organisation and their
-      # MDM.
+      # EMM.
       # To create an enterprise, an admin of the enterprise must first go through a
       # Play for Work sign-up flow. At the end of this the admin will be presented
       # with a token (a short opaque alphanumeric string). They must then present this
-      # to the MDM, who then supplies it to the enroll method. Until this is done the
-      # MDM will not have any access to the enterprise.
-      # After calling enroll the MDM should call setAccount to specify the service
+      # to the EMM, who then supplies it to the enroll method. Until this is done the
+      # EMM will not have any access to the enterprise.
+      # After calling enroll the EMM should call setAccount to specify the service
       # account that will be allowed to act on behalf of the enterprise, which will be
       # required for access to the enterprise's data through this API. Only one call
       # of setAccount is allowed for a given enterprise; the only way to change the
       # account later is to unenroll the enterprise and enroll it again (obtaining a
       # new token).
-      # The MDM can unenroll an enterprise in order to sever the binding between them.
+      # The EMM can unenroll an enterprise in order to sever the binding between them.
       # Re-enrolling an enterprise is possible, but requires a new token to be
-      # retrieved. Enterprises.unenroll requires the MDM's credentials (as enroll does)
+      # retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll does)
       # , not the enterprise's. Enterprises.unenroll can only be used for enterprises
       # that were previously enrolled with the enroll call. Any enterprises that were
       # enrolled using the (deprecated) Enterprises.insert call must be unenrolled
@@ -563,7 +563,7 @@ module Google
       # It should always be true that a user has an app installed on one of their
       # devices only if they have an entitlement to it. So if an entitlement is
       # deleted, the app will be uninstalled from all devices. Similarly if the user
-      # installs an app (and is permitted to do so), or the MDM triggers an install of
+      # installs an app (and is permitted to do so), or the EMM triggers an install of
       # the app, an entitlement to that app is automatically created. If this is
       # impossible - e.g. the enterprise has not purchased sufficient licenses - then
       # installation fails.
@@ -887,7 +887,7 @@ module Google
       # permissions on behalf of their users before an entitlement for the app can be
       # created.
       # The permissions collection is read-only. The information provided for each
-      # permission (localized name and description) is intended to be used in the MDM
+      # permission (localized name and description) is intended to be used in the EMM
       # user interface when obtaining consent from the enterprise.
       class Permission
         include Google::Apis::Core::Hashable
@@ -932,7 +932,7 @@ module Google
       # enterprise.)
       # The information provided for each product (localized name, icon, link to the
       # full Google Play details page) is intended to allow a basic representation of
-      # the product within an MDM user interface.
+      # the product within an EMM user interface.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -1340,9 +1340,9 @@ module Google
       # A user resource represents an individual user within the enterprise's domain.
       # Note that each user is associated with a Google account based on the user's
       # corporate email address (which must be in one of the enterprise's domains). As
-      # part of installing an MDM app to manage a device the Google account must be
-      # provisioned to the device, and so the user resource must be created before
-      # that. This can be done using the Google Admin SDK Directory API.
+      # part of installing the EMM's DPC app to manage a device the Google account
+      # must be provisioned to the device, and so the user resource must be created
+      # before that. This can be done using the Google Admin SDK Directory API.
       # The ID for a user is an opaque string. It can be retrieved using the list
       # method queried by the user's primary email address.
       class User
@@ -1379,7 +1379,7 @@ module Google
       
       # A UserToken is used by a user when setting up a managed device or profile with
       # their work account on a device. When the user enters their email address and
-      # token (activation code) the appropriate MDM app can be automatically
+      # token (activation code) the appropriate EMM app can be automatically
       # downloaded.
       class UserToken
         include Google::Apis::Core::Hashable

@@ -338,6 +338,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class OrderPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class OrderPromotionBenefit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class OrderRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -1352,6 +1360,8 @@ module Google
       
           property :payment_status, as: 'paymentStatus'
           property :placed_date, as: 'placedDate'
+          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2::OrderPromotion, decorator: Google::Apis::ContentV2::OrderPromotion::Representation
+      
           collection :refunds, as: 'refunds', class: Google::Apis::ContentV2::OrderRefund, decorator: Google::Apis::ContentV2::OrderRefund::Representation
       
           collection :shipments, as: 'shipments', class: Google::Apis::ContentV2::OrderShipment, decorator: Google::Apis::ContentV2::OrderShipment::Representation
@@ -1504,6 +1514,33 @@ module Google
           property :expiration_year, as: 'expirationYear'
           property :last_four_digits, as: 'lastFourDigits'
           property :phone_number, as: 'phoneNumber'
+          property :type, as: 'type'
+        end
+      end
+      
+      class OrderPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :benefits, as: 'benefits', class: Google::Apis::ContentV2::OrderPromotionBenefit, decorator: Google::Apis::ContentV2::OrderPromotionBenefit::Representation
+      
+          property :effective_dates, as: 'effectiveDates'
+          property :generic_redemption_code, as: 'genericRedemptionCode'
+          property :id, as: 'id'
+          property :long_title, as: 'longTitle'
+          property :product_applicability, as: 'productApplicability'
+          property :redemption_channel, as: 'redemptionChannel'
+        end
+      end
+      
+      class OrderPromotionBenefit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discount, as: 'discount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          collection :offer_ids, as: 'offerIds'
+          property :sub_type, as: 'subType'
+          property :tax_impact, as: 'taxImpact', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1935,6 +1972,7 @@ module Google
           property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :product_type, as: 'productType'
+          collection :promotion_ids, as: 'promotionIds'
           property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :sale_price_effective_date, as: 'salePriceEffectiveDate'
@@ -2212,6 +2250,8 @@ module Google
           property :payment_method, as: 'paymentMethod', class: Google::Apis::ContentV2::TestOrderPaymentMethod, decorator: Google::Apis::ContentV2::TestOrderPaymentMethod::Representation
       
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
+          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2::OrderPromotion, decorator: Google::Apis::ContentV2::OrderPromotion::Representation
+      
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :shipping_cost_tax, as: 'shippingCostTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation

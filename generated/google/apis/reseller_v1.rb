@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/reseller/
     module ResellerV1
       VERSION = 'V1'
-      REVISION = '20151110'
+      REVISION = '20160202'
 
       # Manage users on your domain
       AUTH_APPS_ORDER = 'https://www.googleapis.com/auth/apps.order'

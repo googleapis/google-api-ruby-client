@@ -180,6 +180,7 @@ module Google
       
           property :name, as: 'name', class: Google::Apis::GamesManagementV1management::Player::Name, decorator: Google::Apis::GamesManagementV1management::Player::Name::Representation
       
+          property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
           property :title, as: 'title'
         end

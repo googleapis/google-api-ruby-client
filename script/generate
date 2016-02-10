@@ -68,7 +68,8 @@ APIS=(adexchangebuyer:v1.4 \
 	oauth2:v2 \
 	pagespeedonline:v2 \
 	partners:v2 \
-	plus:v1 \
+	people:v1 \
+        plus:v1 \
 	plusDomains:v1 \
 	prediction:v1.6 \
 	proximitybeacon:v1beta1 \
