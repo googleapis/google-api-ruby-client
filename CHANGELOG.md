@@ -1,3 +1,7 @@
+# 0.9.2
+* Allow nil values to be used in `new` and `update!` for generated classes
+* Update generated APIs
+
 # 0.9.1
 * Add missing require for 'tempfile'
 * Update generated APIs
