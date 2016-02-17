@@ -220,8 +220,8 @@ Samples for versions 0.9 and onward can be found in the `samples` directory.
 Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
 
 Samples for previous versions can be found in the
-[google-api-ruby-client-samples](https://github.com/google/google-api-ruby-client-samples)
-repository.
+[samples](samples)
+folder.
 
 
 ## Generating APIs
