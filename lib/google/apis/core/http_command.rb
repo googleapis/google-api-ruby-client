@@ -292,6 +292,7 @@ module Google
           end
           req.header.update(header)
           req.options.timeout = options.timeout_sec
+          req.options.open_timeout = options.open_timeout_sec
         end
 
         private
