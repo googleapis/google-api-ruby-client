@@ -15,7 +15,7 @@
 require 'logger'
 require 'erb'
 require 'yaml'
-require 'multi_json'
+require 'json'
 require 'active_support/inflector'
 require 'google/apis/core/logging'
 require 'google/apis/generator/template'
