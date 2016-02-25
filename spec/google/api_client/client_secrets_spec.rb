@@ -23,7 +23,7 @@ FIXTURES_PATH = File.expand_path('../../../fixtures', __FILE__)
 RSpec.describe Google::APIClient::ClientSecrets do
   describe '::new' do
     let(:filename) { File.join(FIXTURES_PATH, 'files', 'client_secrets.json') }
-    let(:data) { File.open(filename, 'r') { |file| MultiJson.load(file.read) } }
+    let(:data) { File.open(filename, 'r') { |file| JSON.load(file.read) } }
 
     context 'without options' do
       subject { Google::APIClient::ClientSecrets.new(data) }
@@ -367,7 +367,7 @@ RSpec.describe Google::APIClient::ClientSecrets do
   context 'with invalid JSON file' do
     it 'should raise exception' do
       file = File.join(FIXTURES_PATH, 'files', 'invalid.json')
-      expect { Google::APIClient::ClientSecrets.load(file) }.to raise_exception(MultiJson::ParseError)
+      expect { Google::APIClient::ClientSecrets.load(file) }.to raise_exception(JSON::ParserError)
     end
   end
 

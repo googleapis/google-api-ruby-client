@@ -6,7 +6,6 @@ require 'thor'
 require 'open-uri'
 require 'google/apis/discovery_v1'
 require 'google/apis/generator'
-require 'multi_json'
 require 'logger'
 
 module Google

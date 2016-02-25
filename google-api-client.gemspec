@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib', 'generated', 'third_party']
 
   spec.add_runtime_dependency 'representable', '~> 2.3.0'
-  spec.add_runtime_dependency 'multi_json', '~> 1.11'
   spec.add_runtime_dependency 'retriable', '~> 2.0'
   spec.add_runtime_dependency 'activesupport', '>= 3.2'
   spec.add_runtime_dependency 'addressable', '~> 2.3'
