@@ -21,6 +21,7 @@ group :development do
   gem 'rmail', '~> 1.1'
   gem 'sinatra', '~> 1.4'
   gem 'redis', '~> 3.2'
+  gem 'activesupport', '>= 3.2'
 end
 
 platforms :jruby do

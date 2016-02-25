@@ -103,7 +103,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   context('with a field parameter') do
     let(:command) do
       command = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      command.query['fields'] = ':items(:id, :long_name)'
+      command.query['fields'] = ':items(:id, :long_name, :a_really_long_name), shouldBeLeftAlone '
       command
     end
 
@@ -115,7 +115,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     it 'should normalize fields params' do
       command.execute(client)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .with(query: { 'fields' => 'items(id, longName)' })) .to have_been_made
+        .with(query: { 'fields' => 'items(id, longName, aReallyLongName), shouldBeLeftAlone ' })) .to have_been_made
     end
   end
 

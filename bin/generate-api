@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 
-# TODO - Repeated params
-
 require 'thor'
 require 'open-uri'
 require 'google/apis/discovery_v1'
-require 'google/apis/generator'
 require 'logger'
 
 module Google
   class ApiGenerator < Thor
+
+    def self.exit_on_failure?
+      true
+    end
+
     include Thor::Actions
 
     Google::Apis::ClientOptions.default.application_name = "generate-api"
@@ -23,6 +25,9 @@ module Google
                    names_out: :string
     method_option :preferred_only, default: true
     def gen(dir)
+      ensure_active_support
+      require 'google/apis/generator'
+
       self.destination_root = dir
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
       generate_from_url(options[:url]) if options[:url]
@@ -85,6 +90,16 @@ module Google
 
       def generator
         @generator ||= Google::Apis::Generator.new(api_names: options[:names])
+      end
+
+      def ensure_active_support
+        begin
+          require 'active_support/inflector'
+        rescue LoadError => e
+          error 'ActiveSupport is required, please run:'
+          error 'gem install activesupport'
+          exit 1
+        end
       end
     end
   end
