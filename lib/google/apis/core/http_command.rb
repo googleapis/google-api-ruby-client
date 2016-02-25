@@ -145,6 +145,15 @@ module Google
           header.update(options.header) if options && options.header
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
+
+          if [:post, :put].include?(method)  && body.nil?
+            @form_encoded = true
+            self.body = Addressable::URI.form_encode(url.query_values(Array))
+            self.header['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+            self.url.query_values = {}
+          else
+            @form_encoded = false
+          end
         end
 
         # Release any resources used by this command
@@ -263,9 +272,11 @@ module Google
             response = client.send(method, url, body) do |req|
               # Temporary workaround for Hurley bug where the connection preference
               # is ignored and it uses nested anyway
-              req.url.query_class = Hurley::Query::Flat
-              query.each do | k, v|
-                req.url.query[k] = normalize_query_value(v)
+              unless form_encoded?
+                req.url.query_class = Hurley::Query::Flat
+                query.each do | k, v|
+                 req.url.query[k] = normalize_query_value(v)
+                end
               end
               # End workaround
               apply_request_options(req)
@@ -295,6 +306,10 @@ module Google
         end
 
         private
+
+        def form_encoded?
+          @form_encoded
+        end
 
         def normalize_query_value(v)
           case v
