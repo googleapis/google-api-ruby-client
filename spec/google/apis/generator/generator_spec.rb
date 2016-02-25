@@ -120,6 +120,58 @@ RSpec.describe Google::Apis::Generator do
         it 'should define subresource methods' do
           expect(service.method(:list_thing_subthings)).to_not be_nil
         end
+
+        context 'With the from_json method' do
+          let(:json) do
+            <<EOF
+{
+  "name" : "A thing",
+  "properties": {
+    "prop_a" : "value_a"
+  },
+  "photo": {
+    "filename": "image.jpg"
+  },
+  "hat": {
+    "type": "topHat",
+    "height": 100
+  }
+}
+EOF
+          end
+
+          let(:thing) { Google::Apis::TestV1::Thing.from_json(json) }
+
+          it 'should return a thing' do
+            expect(thing).to be_instance_of(Google::Apis::TestV1::Thing)
+          end
+
+          it 'should parse properties' do
+            expect(thing.name).to eq 'A thing'
+          end
+
+          it 'should parse subtypes' do
+            expect(thing.photo.filename).to eq "image.jpg"
+          end
+        end
+
+        context 'With the to_json method' do
+          let(:thing) do
+            Google::Apis::TestV1::Thing.new(
+                name: "A thing",
+                properties: {
+                    prop_a: "value_a"
+                },
+                photo: {
+                    filename: "image.jpg"
+                },
+                hat: {
+                    type: "topHat",
+                    height: 100
+                }
+            )
+          end
+        end
       end
 
       context 'with the get_thing method' do

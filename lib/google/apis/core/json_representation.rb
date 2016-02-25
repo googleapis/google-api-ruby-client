@@ -122,6 +122,24 @@ module Google
         include Representable::JSON
         feature JsonRepresentationSupport
       end
+
+      module JsonObjectSupport
+        def self.included(base)
+          base.extend(ClassMethods)
+        end
+
+        module ClassMethods
+          def from_json(json)
+            representation = self.const_get(:Representation)
+            representation.new(self.new).from_json(json, unwrap: self)
+          end
+        end
+
+        def to_json
+          representation = self.class.const_get(:Representation)
+          representation.new(self).to_json(skip_undefined: true)
+        end
+      end
     end
   end
 end
