@@ -38,8 +38,8 @@ module Google
           def getter_fn(name)
             ivar_name = "@#{name}".to_sym
             lambda do |_|
-              if respond_to?(:[])
-                self[name] || instance_variable_get(ivar_name)
+              if respond_to?(:fetch)
+                fetch(name, instance_variable_get(ivar_name))
               else
                 instance_variable_get(ivar_name)
               end
