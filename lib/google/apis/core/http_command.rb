@@ -251,7 +251,7 @@ module Google
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
           logger.debug { sprintf('Error - %s', PP.pp(err, '')) }
-          err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError)
+          err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError) || err.is_a?(SocketError)
           block.call(nil, err) if block_given?
           fail err if rethrow || block.nil?
         end

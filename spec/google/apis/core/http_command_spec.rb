@@ -294,4 +294,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.execute(client)
   end
 
+  it 'should raise transmission error instead of socket error' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(SocketError)
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+  end
 end
