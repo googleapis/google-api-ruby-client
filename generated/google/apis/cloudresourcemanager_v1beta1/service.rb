@@ -243,6 +243,7 @@ module Google
         # caller must have modify permissions for this Project.
         # @param [String] project_id
         #   The project ID (for example, `foo-bar-123`). Required.
+        # @param [Google::Apis::CloudresourcemanagerV1beta1::UndeleteProjectRequest] undelete_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -260,8 +261,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def undelete_project(project_id, fields: nil, quota_user: nil, options: nil, &block)
+        def undelete_project(project_id, undelete_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:undelete', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::UndeleteProjectRequest::Representation
+          command.request_object = undelete_project_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Empty::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::Empty
           command.params['projectId'] = project_id unless project_id.nil?

@@ -2233,11 +2233,11 @@ module Google
         
         # Gets a view (profile) to which the user has access.
         # @param [String] account_id
-        #   Account ID to retrieve the goal for.
+        #   Account ID to retrieve the view (profile) for.
         # @param [String] web_property_id
-        #   Web property ID to retrieve the goal for.
+        #   Web property ID to retrieve the view (profile) for.
         # @param [String] profile_id
-        #   View (Profile) ID to retrieve the goal for.
+        #   View (Profile) ID to retrieve the view (profile) for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

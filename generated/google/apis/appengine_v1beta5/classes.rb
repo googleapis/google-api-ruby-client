@@ -211,7 +211,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The relative name/path of the application. Example: "myapp". @OutputOnly
+        # The relative name/path of the application. Example: "myapp".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -221,6 +221,13 @@ module Google
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1beta5::UrlDispatchRule>]
         attr_accessor :dispatch_rules
+      
+        # If set, only users from the specified Google Apps authentication domain may
+        # access the application. If not set, any Google Account may access the
+        # application.
+        # Corresponds to the JSON property `authDomain`
+        # @return [String]
+        attr_accessor :auth_domain
       
         # The location from which the application will be run. Choices are "us" for
         # United States and "eu" for European Union. Application instances will run out
@@ -237,6 +244,17 @@ module Google
         # @return [String]
         attr_accessor :code_bucket
       
+        # Determines the cookie expiration policy for the application.
+        # Corresponds to the JSON property `defaultCookieExpiration`
+        # @return [String]
+        attr_accessor :default_cookie_expiration
+      
+        # The hostname used to reach the application, as resolved by App Engine. @
+        # OutputOnly
+        # Corresponds to the JSON property `defaultHostname`
+        # @return [String]
+        attr_accessor :default_hostname
+      
         # A Google Cloud Storage bucket which can be used by the application to store
         # content. @OutputOnly
         # Corresponds to the JSON property `defaultBucket`
@@ -252,8 +270,11 @@ module Google
           @name = args[:name] if args.key?(:name)
           @id = args[:id] if args.key?(:id)
           @dispatch_rules = args[:dispatch_rules] if args.key?(:dispatch_rules)
+          @auth_domain = args[:auth_domain] if args.key?(:auth_domain)
           @location = args[:location] if args.key?(:location)
           @code_bucket = args[:code_bucket] if args.key?(:code_bucket)
+          @default_cookie_expiration = args[:default_cookie_expiration] if args.key?(:default_cookie_expiration)
+          @default_hostname = args[:default_hostname] if args.key?(:default_hostname)
           @default_bucket = args[:default_bucket] if args.key?(:default_bucket)
         end
       end

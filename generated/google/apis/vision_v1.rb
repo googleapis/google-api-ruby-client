@@ -12,21 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudbuild_v1/service.rb'
-require 'google/apis/cloudbuild_v1/classes.rb'
-require 'google/apis/cloudbuild_v1/representations.rb'
+require 'google/apis/vision_v1/service.rb'
+require 'google/apis/vision_v1/classes.rb'
+require 'google/apis/vision_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Container Builder API
+    # Cloud Vision API
     #
-    # The Google Cloud Container Builder API lets you build container images in the
-    # cloud.
+    # The Google Cloud Vision API allows developers to easily integrate Google
+    # vision features, including image labeling, face, logo, and landmark detection,
+    # optical character recognition (OCR), and detection of explicit content, into
+    # applications.
     #
-    # @see https://cloud.google.com/container-builder/docs/
-    module CloudbuildV1
+    # @see https://cloud.google.com/vision/
+    module VisionV1
       VERSION = 'V1'
-      REVISION = '20160225'
+      REVISION = '20160223'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

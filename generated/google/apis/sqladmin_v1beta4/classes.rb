@@ -370,13 +370,24 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # The current disk usage of the instance in bytes.
+        # FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container.
+        # SECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.
+        # EXTERNAL: A MySQL server that is not managed by Google.
+        # Corresponds to the JSON property `backendType`
+        # @return [String]
+        attr_accessor :backend_type
+      
+        # The current disk usage of the instance in bytes. This property has been
+        # deprecated. Users should use the "cloudsql.googleapis.com/database/disk/
+        # bytes_used" metric in Cloud Monitoring API instead. Please see https://groups.
+        # google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for
+        # details.
         # Corresponds to the JSON property `currentDiskSize`
         # @return [String]
         attr_accessor :current_disk_size
       
         # The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults
-        # to MYSQL_5_5. The databaseVersion can not be changed after instance creation.
+        # to MYSQL_5_6. The databaseVersion can not be changed after instance creation.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -386,8 +397,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The name and status of the failover replica. Only applies to Second Generation
-        # instances.
+        # The name and status of the failover replica. This property is applicable only
+        # to Second Generation instances.
         # Corresponds to the JSON property `failoverReplica`
         # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
         attr_accessor :failover_replica
@@ -405,7 +416,8 @@ module Google
         # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
-        # The IPv6 address assigned to the instance.
+        # The IPv6 address assigned to the instance. This property is applicable only to
+        # First Generation instances.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -441,8 +453,10 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The geographical region. Can be us-central, asia-east1 or europe-west1.
-        # Defaults to us-central. The region can not be changed after instance creation.
+        # The geographical region. Can be us-central (FIRST_GEN instances only), us-
+        # central1 (SECOND_GEN instances only), asia-east1 or europe-west1. Defaults to
+        # us-central or us-central1 depending on the instance type (First Generation or
+        # Second Generation). The region can not be changed after instance creation.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -467,7 +481,8 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
       
-        # The service account email address assigned to the instance.
+        # The service account email address assigned to the instance. This property is
+        # applicable only to Second Generation instances.
         # Corresponds to the JSON property `serviceAccountEmailAddress`
         # @return [String]
         attr_accessor :service_account_email_address
@@ -490,12 +505,18 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # If the instance state is SUSPENDED, the reason for the suspension.
+        # Corresponds to the JSON property `suspensionReason`
+        # @return [Array<String>]
+        attr_accessor :suspension_reason
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @backend_type = args[:backend_type] if args.key?(:backend_type)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
           @database_version = args[:database_version] if args.key?(:database_version)
           @etag = args[:etag] if args.key?(:etag)
@@ -517,20 +538,23 @@ module Google
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)
           @settings = args[:settings] if args.key?(:settings)
           @state = args[:state] if args.key?(:state)
+          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
         end
         
-        # The name and status of the failover replica. Only applies to Second Generation
-        # instances.
+        # The name and status of the failover replica. This property is applicable only
+        # to Second Generation instances.
         class FailoverReplica
           include Google::Apis::Core::Hashable
         
-          # 
+          # The availability status of the failover replica. A false status indicates that
+          # the failover replica is out of sync. The master can only failover to the
+          # falover replica when the status is true.
           # Corresponds to the JSON property `available`
           # @return [Boolean]
           attr_accessor :available
           alias_method :available?, :available
         
-          # 
+          # The name of the failover replica.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -1521,12 +1545,14 @@ module Google
         # This can be one of the following.
         # ALWAYS: The instance should always be active.
         # NEVER: The instance should never be activated.
-        # ON_DEMAND: The instance is activated upon receiving requests.
+        # ON_DEMAND: The instance is activated upon receiving requests; only applicable
+        # to First Generation instances.
         # Corresponds to the JSON property `activationPolicy`
         # @return [String]
         attr_accessor :activation_policy
       
-        # The App Engine app IDs that can access this instance.
+        # The App Engine app IDs that can access this instance. This property is only
+        # applicable to First Generation instances.
         # Corresponds to the JSON property `authorizedGaeApplications`
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
@@ -1537,20 +1563,22 @@ module Google
         attr_accessor :backup_configuration
       
         # Configuration specific to read replica instances. Indicates whether database
-        # flags for crash-safe replication are enabled.
+        # flags for crash-safe replication are enabled. This property is only applicable
+        # to First Generation instances.
         # Corresponds to the JSON property `crashSafeReplicationEnabled`
         # @return [Boolean]
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
-        # The size of data disk, in GB. Only supported for 2nd Generation instances. The
-        # data disk size minimum is 10GB.
+        # The size of data disk, in GB. The data disk size minimum is 10GB. This
+        # property is only applicable to Second Generation instances.
         # Corresponds to the JSON property `dataDiskSizeGb`
         # @return [String]
         attr_accessor :data_disk_size_gb
       
-        # The type of data disk. Only supported for 2nd Generation instances. The
-        # default type is SSD.
+        # The type of data disk. Only supported for Second Generation instances. The
+        # default type is PD_SSD. This property is only applicable to Second Generation
+        # instances.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
         attr_accessor :data_disk_type
@@ -1593,12 +1621,13 @@ module Google
         attr_accessor :maintenance_window
       
         # The pricing plan for this instance. This can be either PER_USE or PACKAGE.
+        # Only PER_USE is supported for Second Generation instances.
         # Corresponds to the JSON property `pricingPlan`
         # @return [String]
         attr_accessor :pricing_plan
       
         # The type of replication this instance uses. This can be either ASYNCHRONOUS or
-        # SYNCHRONOUS.
+        # SYNCHRONOUS. This property is only applicable to First Generation instances.
         # Corresponds to the JSON property `replicationType`
         # @return [String]
         attr_accessor :replication_type
@@ -1914,7 +1943,7 @@ module Google
       
         # The host name from which the user can connect. For insert operations, host
         # defaults to an empty string. For update operations, host is specified as part
-        # of the request URL. The host name is not mutable with this API.
+        # of the request URL. The host name cannot be updated after insertion.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host

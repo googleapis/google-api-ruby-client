@@ -24,6 +24,8 @@ module Google
       
       class Acl
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Activity
@@ -37,20 +39,32 @@ module Google
             
             class YoutubeActorInfo
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Image
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Name
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Verification
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Object
@@ -64,16 +78,26 @@ module Google
               
               class YoutubeActorInfo
                 class Representation < Google::Apis::Core::JsonRepresentation; end
+              
+                include Google::Apis::Core::JsonObjectSupport
               end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Image
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Verification
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Attachment
@@ -81,14 +105,20 @@ module Google
             
             class Embed
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class FullImage
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Image
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Thumbnail
@@ -96,30 +126,50 @@ module Google
               
               class Image
                 class Representation < Google::Apis::Core::JsonRepresentation; end
+              
+                include Google::Apis::Core::JsonObjectSupport
               end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Plusoners
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Replies
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Resharers
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Provider
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ActivityFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Comment
@@ -133,37 +183,59 @@ module Google
             
             class YoutubeActorInfo
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Image
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Verification
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class InReplyTo
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Object
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Plusoners
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CommentFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PeopleFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Person
@@ -171,6 +243,8 @@ module Google
         
         class AgeRange
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Cover
@@ -178,36 +252,56 @@ module Google
           
           class CoverInfo
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class CoverPhoto
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Email
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Image
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Name
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Organization
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class PlacesLived
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Url
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Place
@@ -215,15 +309,23 @@ module Google
         
         class Address
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Position
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PlusAclentryResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Acl

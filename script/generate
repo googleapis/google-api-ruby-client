@@ -69,7 +69,7 @@ APIS=(adexchangebuyer:v1.4 \
 	pagespeedonline:v2 \
 	partners:v2 \
 	people:v1 \
-        plus:v1 \
+    plus:v1 \
 	plusDomains:v1 \
 	prediction:v1.6 \
 	proximitybeacon:v1beta1 \
@@ -89,6 +89,7 @@ APIS=(adexchangebuyer:v1.4 \
 	tasks:v1 \
 	translate:v2 \
 	urlshortener:v1 \
+    vision:v1 \
 	webmasters:v3 \
 	youtube:v3 \
 	youtubeAnalytics:v1 \

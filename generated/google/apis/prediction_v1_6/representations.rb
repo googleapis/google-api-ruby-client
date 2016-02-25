@@ -36,16 +36,26 @@ module Google
               
               class Value
                 class Representation < Google::Apis::Core::JsonRepresentation; end
+              
+                include Google::Apis::Core::JsonObjectSupport
               end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Numeric
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Text
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class OutputFeature
@@ -53,17 +63,29 @@ module Google
             
             class Numeric
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Text
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class ModelDescription
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Input
@@ -71,7 +93,11 @@ module Google
         
         class Input
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Insert
@@ -79,7 +105,11 @@ module Google
         
         class TrainingInstance
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Insert2
@@ -87,11 +117,17 @@ module Google
         
         class ModelInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class List
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Output
@@ -99,11 +135,17 @@ module Google
         
         class OutputMulti
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Update
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Analyze

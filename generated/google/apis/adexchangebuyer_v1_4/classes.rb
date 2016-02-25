@@ -91,6 +91,18 @@ module Google
         class BidderLocation
           include Google::Apis::Core::Hashable
         
+          # The protocol that the bidder endpoint is using. By default, OpenRTB protocols
+          # use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses
+          # protobuf encoding over the latest OpenRTB protocol version, which is 2.3 right
+          # now. Allowed values:
+          # - PROTOCOL_ADX
+          # - PROTOCOL_OPENRTB_2_2
+          # - PROTOCOL_OPENRTB_2_3
+          # - PROTOCOL_OPENRTB_PROTOBUF
+          # Corresponds to the JSON property `bidProtocol`
+          # @return [String]
+          attr_accessor :bid_protocol
+        
           # The maximum queries per second the Ad Exchange will send.
           # Corresponds to the JSON property `maximumQps`
           # @return [Fixnum]
@@ -118,6 +130,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @bid_protocol = args[:bid_protocol] if args.key?(:bid_protocol)
             @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
             @region = args[:region] if args.key?(:region)
             @url = args[:url] if args.key?(:url)
@@ -1025,6 +1038,54 @@ module Google
       end
       
       # 
+      class DealServingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Tracks which parties (if any) have paused a deal. The deal is considered
+        # paused if has_buyer_paused || has_seller_paused.
+        # Corresponds to the JSON property `dealPauseStatus`
+        # @return [Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus]
+        attr_accessor :deal_pause_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deal_pause_status = args[:deal_pause_status] if args.key?(:deal_pause_status)
+        end
+      end
+      
+      # Tracks which parties (if any) have paused a deal. The deal is considered
+      # paused if has_buyer_paused || has_seller_paused.
+      class DealServingMetadataDealPauseStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `hasBuyerPaused`
+        # @return [Boolean]
+        attr_accessor :has_buyer_paused
+        alias_method :has_buyer_paused?, :has_buyer_paused
+      
+        # 
+        # Corresponds to the JSON property `hasSellerPaused`
+        # @return [Boolean]
+        attr_accessor :has_seller_paused
+        alias_method :has_seller_paused?, :has_seller_paused
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_buyer_paused = args[:has_buyer_paused] if args.key?(:has_buyer_paused)
+          @has_seller_paused = args[:has_seller_paused] if args.key?(:has_seller_paused)
+        end
+      end
+      
+      # 
       class DealTerms
         include Google::Apis::Core::Hashable
       
@@ -1117,10 +1178,12 @@ module Google
       class DealTermsNonGuaranteedAuctionTerms
         include Google::Apis::Core::Hashable
       
-        # Id of the corresponding private auction.
-        # Corresponds to the JSON property `privateAuctionId`
-        # @return [String]
-        attr_accessor :private_auction_id
+        # True if open auction buyers are allowed to compete with invited buyers in this
+        # private auction (buyer-readonly).
+        # Corresponds to the JSON property `autoOptimizePrivateAuction`
+        # @return [Boolean]
+        attr_accessor :auto_optimize_private_auction
+        alias_method :auto_optimize_private_auction?, :auto_optimize_private_auction
       
         # Reserve price for the specified buyer.
         # Corresponds to the JSON property `reservePricePerBuyers`
@@ -1133,7 +1196,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
+          @auto_optimize_private_auction = args[:auto_optimize_private_auction] if args.key?(:auto_optimize_private_auction)
           @reserve_price_per_buyers = args[:reserve_price_per_buyers] if args.key?(:reserve_price_per_buyers)
         end
       end
@@ -1337,6 +1400,11 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
       
+        # The latest revision number after the update has been applied.
+        # Corresponds to the JSON property `orderRevisionNumber`
+        # @return [String]
+        attr_accessor :order_revision_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1344,6 +1412,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
+          @order_revision_number = args[:order_revision_number] if args.key?(:order_revision_number)
         end
       end
       
@@ -1423,6 +1492,25 @@ module Google
         end
       end
       
+      # 
+      class GetPublisherProfilesByAccountIdResponse
+        include Google::Apis::Core::Hashable
+      
+        # Profiles for the requested publisher
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<Google::Apis::AdexchangebuyerV1_4::PublisherProfileApiProto>]
+        attr_accessor :profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profiles = args[:profiles] if args.key?(:profiles)
+        end
+      end
+      
       # A proposal can contain multiple deals. A deal contains the terms and targeting
       # information that is used for serving.
       class MarketplaceDeal
@@ -1443,10 +1531,21 @@ module Google
         # @return [String]
         attr_accessor :creative_pre_approval_policy
       
+        # Specifies whether the creative is safeFrame compatible (buyer-readonly)
+        # Corresponds to the JSON property `creativeSafeFrameCompatibility`
+        # @return [String]
+        attr_accessor :creative_safe_frame_compatibility
+      
         # A unique deal=id for the deal (readonly).
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
+      
+        # Metadata about the serving status of this deal (readonly, writes via custom
+        # actions)
+        # Corresponds to the JSON property `dealServingMetadata`
+        # @return [Google::Apis::AdexchangebuyerV1_4::DealServingMetadata]
+        attr_accessor :deal_serving_metadata
       
         # The set of fields around delivery control that are interesting for a buyer to
         # see but are non-negotiable. These are set by the publisher. This message is
@@ -1506,6 +1605,13 @@ module Google
         # @return [String]
         attr_accessor :product_revision_number
       
+        # Specifies the creative source for programmatic deals, PUBLISHER means creative
+        # is provided by seller and ADVERTISR means creative is provided by buyer. (
+        # buyer-readonly)
+        # Corresponds to the JSON property `programmaticCreativeSource`
+        # @return [String]
+        attr_accessor :programmatic_creative_source
+      
         # 
         # Corresponds to the JSON property `proposalId`
         # @return [String]
@@ -1516,7 +1622,8 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :seller_contacts
       
-        # The shared targeting visible to buyers and sellers. (updatable)
+        # The shared targeting visible to buyers and sellers. Each shared targeting
+        # entity is AND'd together. (updatable)
         # Corresponds to the JSON property `sharedTargetings`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::SharedTargeting>]
         attr_accessor :shared_targetings
@@ -1545,7 +1652,9 @@ module Google
           @buyer_private_data = args[:buyer_private_data] if args.key?(:buyer_private_data)
           @creation_time_ms = args[:creation_time_ms] if args.key?(:creation_time_ms)
           @creative_pre_approval_policy = args[:creative_pre_approval_policy] if args.key?(:creative_pre_approval_policy)
+          @creative_safe_frame_compatibility = args[:creative_safe_frame_compatibility] if args.key?(:creative_safe_frame_compatibility)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
+          @deal_serving_metadata = args[:deal_serving_metadata] if args.key?(:deal_serving_metadata)
           @delivery_control = args[:delivery_control] if args.key?(:delivery_control)
           @external_deal_id = args[:external_deal_id] if args.key?(:external_deal_id)
           @flight_end_time_ms = args[:flight_end_time_ms] if args.key?(:flight_end_time_ms)
@@ -1556,6 +1665,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_revision_number = args[:product_revision_number] if args.key?(:product_revision_number)
+          @programmatic_creative_source = args[:programmatic_creative_source] if args.key?(:programmatic_creative_source)
           @proposal_id = args[:proposal_id] if args.key?(:proposal_id)
           @seller_contacts = args[:seller_contacts] if args.key?(:seller_contacts)
           @shared_targetings = args[:shared_targetings] if args.key?(:shared_targetings)
@@ -2291,6 +2401,14 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :creator_contacts
       
+        # The set of fields around delivery control that are interesting for a buyer to
+        # see but are non-negotiable. These are set by the publisher. This message is
+        # assigned an id of 100 since some day we would want to model this as a protobuf
+        # extension.
+        # Corresponds to the JSON property `deliveryControl`
+        # @return [Google::Apis::AdexchangebuyerV1_4::DeliveryControl]
+        attr_accessor :delivery_control
+      
         # The proposed end time for the deal (ms since epoch) (buyer-readonly)
         # Corresponds to the JSON property `flightEndTimeMs`
         # @return [String]
@@ -2332,10 +2450,20 @@ module Google
         # @return [String]
         attr_accessor :last_update_time_ms
       
+        # Optional legacy offer id if this offer is a preferred deal offer.
+        # Corresponds to the JSON property `legacyOfferId`
+        # @return [String]
+        attr_accessor :legacy_offer_id
+      
         # The name for this product as set by the seller. (buyer-readonly)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional private auction id if this offer is a private auction offer.
+        # Corresponds to the JSON property `privateAuctionId`
+        # @return [String]
+        attr_accessor :private_auction_id
       
         # The unique id for the product (readonly)
         # Corresponds to the JSON property `productId`
@@ -2388,6 +2516,7 @@ module Google
         def update!(**args)
           @creation_time_ms = args[:creation_time_ms] if args.key?(:creation_time_ms)
           @creator_contacts = args[:creator_contacts] if args.key?(:creator_contacts)
+          @delivery_control = args[:delivery_control] if args.key?(:delivery_control)
           @flight_end_time_ms = args[:flight_end_time_ms] if args.key?(:flight_end_time_ms)
           @flight_start_time_ms = args[:flight_start_time_ms] if args.key?(:flight_start_time_ms)
           @has_creator_signed_off = args[:has_creator_signed_off] if args.key?(:has_creator_signed_off)
@@ -2395,7 +2524,9 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @last_update_time_ms = args[:last_update_time_ms] if args.key?(:last_update_time_ms)
+          @legacy_offer_id = args[:legacy_offer_id] if args.key?(:legacy_offer_id)
           @name = args[:name] if args.key?(:name)
+          @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @revision_number = args[:revision_number] if args.key?(:revision_number)
           @seller = args[:seller] if args.key?(:seller)
@@ -2464,7 +2595,8 @@ module Google
         attr_accessor :is_renegotiating
         alias_method :is_renegotiating?, :is_renegotiating
       
-        # True, if the buyside inventory setup is complete for this proposal. (readonly)
+        # True, if the buyside inventory setup is complete for this proposal. (readonly,
+        # except via OrderSetupCompleted action)
         # Corresponds to the JSON property `isSetupComplete`
         # @return [Boolean]
         attr_accessor :is_setup_complete
@@ -2497,10 +2629,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional negotiation id if this proposal is a preferred deal proposal.
+        # Corresponds to the JSON property `negotiationId`
+        # @return [String]
+        attr_accessor :negotiation_id
+      
         # Indicates whether the buyer/seller created the proposal.(readonly)
         # Corresponds to the JSON property `originatorRole`
         # @return [String]
         attr_accessor :originator_role
+      
+        # Optional private auction id if this proposal is a private auction proposal.
+        # Corresponds to the JSON property `privateAuctionId`
+        # @return [String]
+        attr_accessor :private_auction_id
       
         # The unique id of the proposal. (readonly).
         # Corresponds to the JSON property `proposalId`
@@ -2552,13 +2694,110 @@ module Google
           @last_updater_or_commentor_role = args[:last_updater_or_commentor_role] if args.key?(:last_updater_or_commentor_role)
           @last_updater_role = args[:last_updater_role] if args.key?(:last_updater_role)
           @name = args[:name] if args.key?(:name)
+          @negotiation_id = args[:negotiation_id] if args.key?(:negotiation_id)
           @originator_role = args[:originator_role] if args.key?(:originator_role)
+          @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
           @proposal_id = args[:proposal_id] if args.key?(:proposal_id)
           @proposal_state = args[:proposal_state] if args.key?(:proposal_state)
           @revision_number = args[:revision_number] if args.key?(:revision_number)
           @revision_time_ms = args[:revision_time_ms] if args.key?(:revision_time_ms)
           @seller = args[:seller] if args.key?(:seller)
           @seller_contacts = args[:seller_contacts] if args.key?(:seller_contacts)
+        end
+      end
+      
+      # 
+      class PublisherProfileApiProto
+        include Google::Apis::Core::Hashable
+      
+        # A pitch statement for the buyer
+        # Corresponds to the JSON property `buyerPitchStatement`
+        # @return [String]
+        attr_accessor :buyer_pitch_statement
+      
+        # Link to publisher's Google+ page.
+        # Corresponds to the JSON property `googlePlusLink`
+        # @return [String]
+        attr_accessor :google_plus_link
+      
+        # True, if this is the parent profile, which represents all domains owned by the
+        # publisher.
+        # Corresponds to the JSON property `isParent`
+        # @return [Boolean]
+        attr_accessor :is_parent
+        alias_method :is_parent?, :is_parent
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # adexchangebuyer#publisherProfileApiProto".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The url to the logo for the publisher.
+        # Corresponds to the JSON property `logoUrl`
+        # @return [String]
+        attr_accessor :logo_url
+      
+        # The url for additional marketing and sales materials.
+        # Corresponds to the JSON property `mediaKitLink`
+        # @return [String]
+        attr_accessor :media_kit_link
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Publisher provided overview.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        # Unique id for the publisher profile
+        # Corresponds to the JSON property `profileId`
+        # @return [Fixnum]
+        attr_accessor :profile_id
+      
+        # The list of domains represented in this publisher profile. Empty if this is a
+        # parent profile.
+        # Corresponds to the JSON property `publisherDomains`
+        # @return [Array<String>]
+        attr_accessor :publisher_domains
+      
+        # Link to publisher rate card
+        # Corresponds to the JSON property `rateCardInfoLink`
+        # @return [String]
+        attr_accessor :rate_card_info_link
+      
+        # Link for a sample content page.
+        # Corresponds to the JSON property `samplePageLink`
+        # @return [String]
+        attr_accessor :sample_page_link
+      
+        # Publisher provided key metrics and rankings.
+        # Corresponds to the JSON property `topHeadlines`
+        # @return [Array<String>]
+        attr_accessor :top_headlines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buyer_pitch_statement = args[:buyer_pitch_statement] if args.key?(:buyer_pitch_statement)
+          @google_plus_link = args[:google_plus_link] if args.key?(:google_plus_link)
+          @is_parent = args[:is_parent] if args.key?(:is_parent)
+          @kind = args[:kind] if args.key?(:kind)
+          @logo_url = args[:logo_url] if args.key?(:logo_url)
+          @media_kit_link = args[:media_kit_link] if args.key?(:media_kit_link)
+          @name = args[:name] if args.key?(:name)
+          @overview = args[:overview] if args.key?(:overview)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @publisher_domains = args[:publisher_domains] if args.key?(:publisher_domains)
+          @rate_card_info_link = args[:rate_card_info_link] if args.key?(:rate_card_info_link)
+          @sample_page_link = args[:sample_page_link] if args.key?(:sample_page_link)
+          @top_headlines = args[:top_headlines] if args.key?(:top_headlines)
         end
       end
       
@@ -2592,12 +2831,13 @@ module Google
       class SharedTargeting
         include Google::Apis::Core::Hashable
       
-        # The list of values to exclude from targeting.
+        # The list of values to exclude from targeting. Each value is AND'd together.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValue>]
         attr_accessor :exclusions
       
-        # The list of value to include as part of the targeting.
+        # The list of value to include as part of the targeting. Each value is OR'd
+        # together.
         # Corresponds to the JSON property `inclusions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValue>]
         attr_accessor :inclusions

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Admin Data Transfer API
     #
-    # Admin Data Transfer API lets you transfer user data from one user to another.
+    # Transfers user data from one user to another.
     #
     # @see https://developers.google.com/admin-sdk/data-transfer/
     module AdminDatatransferV1
       VERSION = 'DatatransferV1'
-      REVISION = '20151124'
+      REVISION = '20160223'
 
       # View and manage data transfers between users in your organization
       AUTH_ADMIN_DATATRANSFER = 'https://www.googleapis.com/auth/admin.datatransfer'

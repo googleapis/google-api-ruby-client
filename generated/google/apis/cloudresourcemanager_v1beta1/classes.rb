@@ -171,6 +171,19 @@ module Google
         end
       end
       
+      # The request sent to the UndeleteProject method.
+      class UndeleteProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -191,7 +204,7 @@ module Google
       # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
       # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
       # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-      # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+      # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
       # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
       # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
@@ -281,7 +294,7 @@ module Google
         # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
         # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
         # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+        # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
         # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
         # IAM developer's guide](https://cloud.google.com/iam).
         # Corresponds to the JSON property `policy`

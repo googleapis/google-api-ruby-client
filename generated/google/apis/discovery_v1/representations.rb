@@ -30,8 +30,14 @@ module Google
           
           class Icons
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class JsonSchema
@@ -39,6 +45,8 @@ module Google
         
         class Annotations
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Variant
@@ -46,8 +54,14 @@ module Google
           
           class Map
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class RestDescription
@@ -61,13 +75,23 @@ module Google
             
             class Scope
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Icons
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class RestMethod
@@ -81,25 +105,41 @@ module Google
             
             class Resumable
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
             
             class Simple
               class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
             end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Request
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Response
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class RestResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DirectoryList

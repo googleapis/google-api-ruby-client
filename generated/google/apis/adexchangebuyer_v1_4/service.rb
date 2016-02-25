@@ -1318,6 +1318,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update the given proposal to indicate that setup has been completed.
+        # @param [String] proposal_id
+        #   The proposal id for which the setup is complete
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def proposal_setup_complete(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'proposals/{proposalId}/setupcomplete', options)
+          command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update the given proposal
         # @param [String] proposal_id
         #   The proposal id to update.
@@ -1359,6 +1392,41 @@ module Google
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
           command.params['revisionNumber'] = revision_number unless revision_number.nil?
           command.params['updateAction'] = update_action unless update_action.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the requested publisher profile(s) by publisher accountId.
+        # @param [Fixnum] account_id
+        #   The accountId of the publisher to get profiles for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_pub_profiles(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'publisher/{accountId}/profiles', options)
+          command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse::Representation
+          command.response_class = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse
+          command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

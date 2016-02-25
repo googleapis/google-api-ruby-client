@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/translate/v2/using_rest
     module TranslateV2
       VERSION = 'V2'
-      REVISION = '20141123'
+      REVISION = '20160217'
     end
   end
 end

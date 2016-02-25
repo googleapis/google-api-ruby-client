@@ -624,6 +624,61 @@ module Google
         end
       end
       
+      # Request to signup new user, create anonymous user or anonymous user reauth.
+      class SignupNewUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # The captcha challenge.
+        # Corresponds to the JSON property `captchaChallenge`
+        # @return [String]
+        attr_accessor :captcha_challenge
+      
+        # Response to the captcha.
+        # Corresponds to the JSON property `captchaResponse`
+        # @return [String]
+        attr_accessor :captcha_response
+      
+        # The name of the user.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The email of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The GITKit token of the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Instance id token of the app.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The new password of the user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
+          @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @password = args[:password] if args.key?(:password)
+        end
+      end
+      
       # Request to upload user account in batch.
       class UploadAccountRequest
         include Google::Apis::Core::Hashable
@@ -690,6 +745,11 @@ module Google
         # @return [String]
         attr_accessor :delegated_project_number
       
+        # The GITKit token of the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
         # Instance id token of the app.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
@@ -729,6 +789,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
           @post_body = args[:post_body] if args.key?(:post_body)
@@ -788,6 +849,11 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # The GITKit token of the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
         # Instance id token of the app.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
@@ -813,6 +879,7 @@ module Google
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
@@ -1028,6 +1095,44 @@ module Google
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
           end
+        end
+      end
+      
+      # Response of signing up new user, creating anonymous user or anonymous user
+      # reauth.
+      class SignupNewUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the user.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The email of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The Gitkit id token to login the newly sign up user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # The fixed string "identitytoolkit#SignupNewUserResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       

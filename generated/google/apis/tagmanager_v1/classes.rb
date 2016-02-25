@@ -457,6 +457,97 @@ module Google
         end
       end
       
+      # Represents a Google Tag Manager Environment. Note that a user can create,
+      # delete and update environments of type USER, but can only update the
+      # enable_debug and url fields of environments of other types.
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # The environment authorization code.
+        # Corresponds to the JSON property `authorizationCode`
+        # @return [String]
+        attr_accessor :authorization_code
+      
+        # The last update time-stamp for the authorization code.
+        # Corresponds to the JSON property `authorizationTimestampMs`
+        # @return [String]
+        attr_accessor :authorization_timestamp_ms
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # 
+        # Corresponds to the JSON property `containerVersionId`
+        # @return [String]
+        attr_accessor :container_version_id
+      
+        # The environment description. Can be set or changed only on USER type
+        # environments.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether or not to enable debug by default on for the environment.
+        # Corresponds to the JSON property `enableDebug`
+        # @return [Boolean]
+        attr_accessor :enable_debug
+        alias_method :enable_debug?, :enable_debug
+      
+        # GTM Environment ID uniquely identifies the GTM Environment.
+        # Corresponds to the JSON property `environmentId`
+        # @return [String]
+        attr_accessor :environment_id
+      
+        # The fingerprint of the GTM environment as computed at storage time. This value
+        # is recomputed whenever the environment is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The environment display name. Can be set or changed only on USER type
+        # environments.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of this environment.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Default preview page url for the environment.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @authorization_code = args[:authorization_code] if args.key?(:authorization_code)
+          @authorization_timestamp_ms = args[:authorization_timestamp_ms] if args.key?(:authorization_timestamp_ms)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
+          @description = args[:description] if args.key?(:description)
+          @enable_debug = args[:enable_debug] if args.key?(:enable_debug)
+          @environment_id = args[:environment_id] if args.key?(:environment_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Represents a Google Tag Manager Folder.
       class Folder
         include Google::Apis::Core::Hashable
@@ -611,6 +702,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @containers = args[:containers] if args.key?(:containers)
+        end
+      end
+      
+      # List Environments Response.
+      class ListEnvironmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All Environments of a GTM Container.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::TagmanagerV1::Environment>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
         end
       end
       

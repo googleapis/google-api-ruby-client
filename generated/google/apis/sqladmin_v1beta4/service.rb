@@ -181,8 +181,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a resource containing information about a database inside a Cloud SQL
-        # instance.
+        # Deletes a database from a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -467,7 +466,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Cloud SQL instance as a clone of the source instance.
+        # Creates a Cloud SQL instance as a clone of the source instance. The API is not
+        # ready for Second Generation instances yet.
         # @param [String] project
         #   Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance

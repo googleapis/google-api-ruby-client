@@ -1212,6 +1212,12 @@ module Google
         attr_accessor :can_comment
         alias_method :can_comment?, :can_comment
       
+        # Whether the current user has read access to the Revisions resource of the file.
+        # Corresponds to the JSON property `canReadRevisions`
+        # @return [Boolean]
+        attr_accessor :can_read_revisions
+        alias_method :can_read_revisions?, :can_read_revisions
+      
         # Whether the file can be copied by the current user.
         # Corresponds to the JSON property `copyable`
         # @return [Boolean]
@@ -1532,6 +1538,7 @@ module Google
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
           @app_data_contents = args[:app_data_contents] if args.key?(:app_data_contents)
           @can_comment = args[:can_comment] if args.key?(:can_comment)
+          @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
           @copyable = args[:copyable] if args.key?(:copyable)
           @created_date = args[:created_date] if args.key?(:created_date)
           @default_open_with_link = args[:default_open_with_link] if args.key?(:default_open_with_link)

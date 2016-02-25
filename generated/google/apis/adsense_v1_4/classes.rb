@@ -126,12 +126,6 @@ module Google
         attr_accessor :arc_opt_in
         alias_method :arc_opt_in?, :arc_opt_in
       
-        # ARC review mode this ad client is in. Empty if the client is not opted in to
-        # ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW.
-        # Corresponds to the JSON property `arcReviewMode`
-        # @return [String]
-        attr_accessor :arc_review_mode
-      
         # Unique identifier of this ad client.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -161,7 +155,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @arc_opt_in = args[:arc_opt_in] if args.key?(:arc_opt_in)
-          @arc_review_mode = args[:arc_review_mode] if args.key?(:arc_review_mode)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @product_code = args[:product_code] if args.key?(:product_code)

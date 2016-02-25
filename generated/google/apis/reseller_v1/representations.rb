@@ -24,22 +24,32 @@ module Google
       
       class Address
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ChangePlanRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Customer
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class RenewalSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Seats
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Subscription
@@ -50,20 +60,32 @@ module Google
           
           class CommitmentInterval
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class TransferInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class TrialSettings
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Subscriptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Address
@@ -131,6 +153,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_method, as: 'billingMethod'
           property :creation_time, as: 'creationTime'
+          property :customer_domain, as: 'customerDomain'
           property :customer_id, as: 'customerId'
           property :kind, as: 'kind'
           property :plan, as: 'plan', class: Google::Apis::ResellerV1::Subscription::Plan, decorator: Google::Apis::ResellerV1::Subscription::Plan::Representation

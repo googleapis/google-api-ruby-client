@@ -22,7 +22,7 @@ module Google
     module AdminDatatransferV1
       # Admin Data Transfer API
       #
-      # Admin Data Transfer API lets you transfer user data from one user to another.
+      # Transfers user data from one user to another.
       #
       # @example
       #    require 'google/apis/admin_datatransfer_v1'

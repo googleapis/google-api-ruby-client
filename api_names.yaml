@@ -6,6 +6,8 @@
 "/adexchangebuyer:v1.4/PerformanceReport/latency85thPercentile": latency_85th_percentile
 "/adexchangebuyer:v1.4/PerformanceReport/latency95thPercentile": latency_95th_percentile
 "/adexchangeseller:v2.0/adexchangeseller.accounts.adclients.list": list_account_ad_clients
+"/adexchangebuyer:v1.4/adexchangebuyer.proposals.setupcomplete": proposal_setup_complete
+"/adexchangebuyer:v1.4/adexchangebuyer.pubprofiles.list": list_pub_profiles
 "/adexchangeseller:v2.0/adexchangeseller.accounts.customchannels.get": get_account_custom_channel
 "/adexchangeseller:v2.0/adexchangeseller.accounts.customchannels.list": list_account_custom_channels
 "/adexchangeseller:v2.0/adexchangeseller.accounts.metadata.dimensions.list": list_account_metadata_dimensions
@@ -380,6 +382,8 @@
 "/compute:beta/compute.projects.moveDisk": move_disk
 "/compute:beta/compute.projects.moveInstance": move_instance
 "/compute:beta/compute.projects.setCommonInstanceMetadata": set_common_instance_metadata
+"/compute:beta/compute.routers.getRouterStatus": get_router_status
+"/compute:beta/compute.routers.aggregatedList": list_aggregated_routers
 "/compute:beta/compute.subnetworks.aggregatedList": list_aggregated_subnetworks
 "/compute:beta/compute.projects.setUsageExportBucket": set_usage_export_bucket
 "/compute:beta/compute.targetHttpProxies.setUrlMap": set_target_http_proxy_url_map
@@ -601,6 +605,18 @@
 "/coordinate:v1/LocationListResponse": list_location_response
 "/coordinate:v1/TeamListResponse": list_team_response
 "/coordinate:v1/WorkerListResponse": list_worker_response
+"/dataproc:v1/dataproc.projects.regions.clusters.create": create_cluster
+"/dataproc:v1/dataproc.projects.regions.clusters.patch": patch_cluster
+"/dataproc:v1/dataproc.projects.regions.clusters.delete": delete_cluster
+"/dataproc:v1/dataproc.projects.regions.clusters.get": get_cluster
+"/dataproc:v1/dataproc.projects.regions.clusters.list": list_clusters
+"/dataproc:v1/dataproc.projects.regions.jobs.get": get_job
+"/dataproc:v1/dataproc.projects.regions.jobs.list": list_jobs
+"/dataproc:v1/dataproc.projects.regions.jobs.delete": delete_job
+"/dataproc:v1/dataproc.projects.regions.operations.get": get_operation
+"/dataproc:v1/dataproc.projects.regions.operations.list": list_operations
+"/dataproc:v1/dataproc.projects.regions.operations.cancel": cancel_operation
+"/dataproc:v1/dataproc.projects.regions.operations.delete": delete_operation
 "/datastore:v1beta2/AllocateIdsRequest": allocate_ids_request
 "/datastore:v1beta2/AllocateIdsResponse": allocate_ids_response
 "/datastore:v1beta2/BeginTransactionRequest": begin_transaction_request
@@ -869,6 +885,9 @@
 "/identitytoolkit:v3/identitytoolkit.relyingparty.uploadAccount": upload_account
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyAssertion": verify_assertion
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyPassword": verify_password
+"/identitytoolkit:v3/identitytoolkit.relyingparty.getProjectConfig": get_project_config
+"/identitytoolkit:v3/identitytoolkit.relyingparty.signupNewUser": signup_new_user
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignupNewUserRequest": signup_new_user_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyGetProjectConfigResponse": get_project_config_response
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserRequest": sign_out_user_request
 "/identitytoolkit:v3/identitytoolkit.relyingparty.signOutUser": sign_out_user

@@ -782,6 +782,12 @@ module Google
           attr_accessor :can_edit
           alias_method :can_edit?, :can_edit
         
+          # Whether the current user has read access to the Revisions resource of the file.
+          # Corresponds to the JSON property `canReadRevisions`
+          # @return [Boolean]
+          attr_accessor :can_read_revisions
+          alias_method :can_read_revisions?, :can_read_revisions
+        
           # Whether the user can modify the file's permissions and sharing settings.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
@@ -797,6 +803,7 @@ module Google
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_edit = args[:can_edit] if args.key?(:can_edit)
+            @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
             @can_share = args[:can_share] if args.key?(:can_share)
           end
         end

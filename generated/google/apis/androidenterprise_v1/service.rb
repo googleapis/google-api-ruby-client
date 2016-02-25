@@ -1841,8 +1841,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the set of Android app permissions for this app that have been
-        # accepted by the enterprise.
+        # This method has been deprecated. To programmatically approve applications, you
+        # must use the iframe mechanism via the  generateApprovalUrl and  approve
+        # methods of the Products resource. For more information, see the  Play EMM API
+        # usage requirements.
+        # The updatePermissions method (deprecated) updates the set of Android app
+        # permissions for this app that have been accepted by the enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id

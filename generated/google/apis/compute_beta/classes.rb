@@ -6479,6 +6479,512 @@ module Google
         end
       end
       
+      # Router resource.
+      class Router
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bgp`
+        # @return [Google::Apis::ComputeBeta::RouterBgp]
+        attr_accessor :bgp
+      
+        # 
+        # Corresponds to the JSON property `bgpPeers`
+        # @return [Array<Google::Apis::ComputeBeta::RouterBgpPeer>]
+        attr_accessor :bgp_peers
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `interfaces`
+        # @return [Array<Google::Apis::ComputeBeta::RouterInterface>]
+        attr_accessor :interfaces
+      
+        # [Output Only] Type of resource. Always compute#router for routers.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long and comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # URI of the network to which this router belongs.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # [Output Only] URI of the region where the router resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bgp = args[:bgp] if args.key?(:bgp)
+          @bgp_peers = args[:bgp_peers] if args.key?(:bgp_peers)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @interfaces = args[:interfaces] if args.key?(:interfaces)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Contains a list of RoutersScopedList.
+      class RouterAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A map of scoped Router lists.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::RoutersScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class RouterBgp
+        include Google::Apis::Core::Hashable
+      
+        # Local BGP Autonomous System Number (ASN) Can be a constant public ASN value
+        # for google, or a customer-specified private ASN. In either case, the value
+        # will be fixed for this router resource. All VPN tunnels that link to this
+        # router will have the same local ASN.
+        # Corresponds to the JSON property `asn`
+        # @return [Fixnum]
+        attr_accessor :asn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asn = args[:asn] if args.key?(:asn)
+        end
+      end
+      
+      # BGP information that needs to be configured into the routing stack to
+      # establish the BGP peering. It must specify peer ASN and either interface name,
+      # IP, or peer IP. Reference: https://tools.ietf.org/html/rfc4273
+      class RouterBgpPeer
+        include Google::Apis::Core::Hashable
+      
+        # The priority of routes advertised to this BGP peer. In the case where there is
+        # more than one matching route of maximum length, the routes with lowest
+        # priority value win.
+        # Corresponds to the JSON property `advertisedRoutePriority`
+        # @return [Fixnum]
+        attr_accessor :advertised_route_priority
+      
+        # Name of the interface it is associated with.
+        # Corresponds to the JSON property `interfaceName`
+        # @return [String]
+        attr_accessor :interface_name
+      
+        # IP address of the interface inside Google cloud.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Name of this BGP Peer. The name must be 1-63 characters long and comply with
+        # RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Peer BGP Autonomous System Number (ASN). For VPN use case, this value can be
+        # different for every tunnel.
+        # Corresponds to the JSON property `peerAsn`
+        # @return [Fixnum]
+        attr_accessor :peer_asn
+      
+        # IP address of the BGP interface outside Google cloud.
+        # Corresponds to the JSON property `peerIpAddress`
+        # @return [String]
+        attr_accessor :peer_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
+          @interface_name = args[:interface_name] if args.key?(:interface_name)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @name = args[:name] if args.key?(:name)
+          @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
+          @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+        end
+      end
+      
+      # Router interfaces. Each interface requires either one linked resource (e.g.
+      # linked_vpn_tunnel) or IP address + range (specified in ip_range).
+      class RouterInterface
+        include Google::Apis::Core::Hashable
+      
+        # IP address and range of the interface. The value should be a CIDR formatted
+        # string, for example: 169.254.0.1/30. NOTE: Do NOT trucate address, as it
+        # represents IP address of interface.
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        # URI of linked VPN tunnel. It must be in the same region as the router. Each
+        # interface can have at most one linked resource.
+        # Corresponds to the JSON property `linkedVpnTunnel`
+        # @return [String]
+        attr_accessor :linked_vpn_tunnel
+      
+        # Name of this interface entry. The name must be 1-63 characters long and comply
+        # with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Contains a list of Router resources.
+      class RouterList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Router resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::Router>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#router for routers.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class RouterStatus
+        include Google::Apis::Core::Hashable
+      
+        # Best routes for this Router.
+        # Corresponds to the JSON property `bestRoutes`
+        # @return [Array<Google::Apis::ComputeBeta::Route>]
+        attr_accessor :best_routes
+      
+        # 
+        # Corresponds to the JSON property `bgpPeerStatus`
+        # @return [Array<Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus>]
+        attr_accessor :bgp_peer_status
+      
+        # URI of the network to which this router belongs.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @best_routes = args[:best_routes] if args.key?(:best_routes)
+          @bgp_peer_status = args[:bgp_peer_status] if args.key?(:bgp_peer_status)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # 
+      class RouterStatusBgpPeerStatus
+        include Google::Apis::Core::Hashable
+      
+        # Routes that were advertised to the remote BgpPeer
+        # Corresponds to the JSON property `advertisedRoutes`
+        # @return [Array<Google::Apis::ComputeBeta::Route>]
+        attr_accessor :advertised_routes
+      
+        # IP address of the local BGP interface.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # URL of the VPN tunnel that this BgpPeer controls.
+        # Corresponds to the JSON property `linkedVpnTunnel`
+        # @return [String]
+        attr_accessor :linked_vpn_tunnel
+      
+        # Name of this BgpPeer which is unique within the Router resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Number of routes learned from the remote BGP Peer.
+        # Corresponds to the JSON property `numLearnedRoutes`
+        # @return [Fixnum]
+        attr_accessor :num_learned_routes
+      
+        # IP address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpAddress`
+        # @return [String]
+        attr_accessor :peer_ip_address
+      
+        # BGP state as specified in RFC-1771.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Status of the BgpPeer: `UP, DOWN`
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Time this session has been up. Format: 1 second < uptime < 1 day = "23:59:59"
+        # 1 day <= uptime < 1 week = "6d:23h:59m" 1 week <= uptime = "123w:6d:23h"
+        # Corresponds to the JSON property `uptime`
+        # @return [String]
+        attr_accessor :uptime
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @name = args[:name] if args.key?(:name)
+          @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
+          @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+          @uptime = args[:uptime] if args.key?(:uptime)
+        end
+      end
+      
+      # 
+      class RouterStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeBeta::RouterStatus]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class RoutersScopedList
+        include Google::Apis::Core::Hashable
+      
+        # List of Routers contained in this scope.
+        # Corresponds to the JSON property `routers`
+        # @return [Array<Google::Apis::ComputeBeta::Router>]
+        attr_accessor :routers
+      
+        # Informational warning which replaces the list of routers when the list is
+        # empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::RoutersScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @routers = args[:routers] if args.key?(:routers)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of routers when the list is
+        # empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::RoutersScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Sets the scheduling options for an Instance.
       class Scheduling
         include Google::Apis::Core::Hashable
@@ -8827,6 +9333,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # URL of Router resource to be used for dynamic routing.
+        # Corresponds to the JSON property `router`
+        # @return [String]
+        attr_accessor :router
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -8870,6 +9381,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @region = args[:region] if args.key?(:region)
+          @router = args[:router] if args.key?(:router)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
           @shared_secret_hash = args[:shared_secret_hash] if args.key?(:shared_secret_hash)

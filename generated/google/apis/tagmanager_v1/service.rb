@@ -353,6 +353,261 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a GTM Environment.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Environment] environment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_container_environment(account_id, container_id, environment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/environments', options)
+          command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.request_object = environment_object
+          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.response_class = Google::Apis::TagmanagerV1::Environment
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GTM Environment.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] environment_id
+        #   The GTM Environment ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.params['environmentId'] = environment_id unless environment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GTM Environment.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] environment_id
+        #   The GTM Environment ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.response_class = Google::Apis::TagmanagerV1::Environment
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.params['environmentId'] = environment_id unless environment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GTM Environments of a GTM Container.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::ListEnvironmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::ListEnvironmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_container_environments(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/environments', options)
+          command.response_representation = Google::Apis::TagmanagerV1::ListEnvironmentsResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV1::ListEnvironmentsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Environment. This method supports patch semantics.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] environment_id
+        #   The GTM Environment ID.
+        # @param [Google::Apis::TagmanagerV1::Environment] environment_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the environment
+        #   in storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_container_environment(account_id, container_id, environment_id, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+          command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.request_object = environment_object
+          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.response_class = Google::Apis::TagmanagerV1::Environment
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.params['environmentId'] = environment_id unless environment_id.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Environment.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] environment_id
+        #   The GTM Environment ID.
+        # @param [Google::Apis::TagmanagerV1::Environment] environment_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the environment
+        #   in storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_environment(account_id, container_id, environment_id, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+          command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.request_object = environment_object
+          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.response_class = Google::Apis::TagmanagerV1::Environment
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.params['environmentId'] = environment_id unless environment_id.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -608,6 +863,7 @@ module Google
         #   The GTM Container ID.
         # @param [String] folder_id
         #   The GTM Folder ID.
+        # @param [Google::Apis::TagmanagerV1::Folder] folder_object
         # @param [Array<String>, String] tag_id
         #   The tags to be moved to the folder.
         # @param [Array<String>, String] trigger_id
@@ -635,14 +891,60 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_move_folder(account_id, container_id, folder_id, tag_id: nil, trigger_id: nil, variable_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_move_folder(account_id, container_id, folder_id, folder_object = nil, tag_id: nil, trigger_id: nil, variable_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', options)
+          command.request_representation = Google::Apis::TagmanagerV1::Folder::Representation
+          command.request_object = folder_object
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['tagId'] = tag_id unless tag_id.nil?
           command.query['triggerId'] = trigger_id unless trigger_id.nil?
           command.query['variableId'] = variable_id unless variable_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Re-generates the authorization code for a GTM Environment.
+        # @param [String] account_id
+        #   The GTM Account ID.
+        # @param [String] container_id
+        #   The GTM Container ID.
+        # @param [String] environment_id
+        #   The GTM Environment ID.
+        # @param [Google::Apis::TagmanagerV1::Environment] environment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_reauthorize_environment(account_id, container_id, environment_id, environment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', options)
+          command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.request_object = environment_object
+          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
+          command.response_class = Google::Apis::TagmanagerV1::Environment
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['containerId'] = container_id unless container_id.nil?
+          command.params['environmentId'] = environment_id unless environment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -24,90 +24,140 @@ module Google
       
       class CreateAuthUriResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeleteAccountResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DownloadAccountResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetAccountInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetOobConfirmationCodeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetRecaptchaParamResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateAuthUriRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeleteAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DownloadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetAccountInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetProjectConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ResetPasswordRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SetAccountInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SignOutUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SignOutUserResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignupNewUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UploadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyAssertionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyCustomTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyPasswordRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class IdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Relyingparty
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ResetPasswordResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SetAccountInfoResponse
@@ -115,7 +165,17 @@ module Google
         
         class ProviderUserInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignupNewUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UploadAccountResponse
@@ -123,7 +183,11 @@ module Google
         
         class Error
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UserInfo
@@ -131,19 +195,29 @@ module Google
         
         class ProviderUserInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyAssertionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyCustomTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class VerifyPasswordResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateAuthUriResponse
@@ -304,6 +378,19 @@ module Google
         end
       end
       
+      class SignupNewUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :captcha_challenge, as: 'captchaChallenge'
+          property :captcha_response, as: 'captchaResponse'
+          property :display_name, as: 'displayName'
+          property :email, as: 'email'
+          property :id_token, as: 'idToken'
+          property :instance_id, as: 'instanceId'
+          property :password, as: 'password'
+        end
+      end
+      
       class UploadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -322,6 +409,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'
@@ -346,6 +434,7 @@ module Google
           property :captcha_response, as: 'captchaResponse'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :email, as: 'email'
+          property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
           property :pending_id_token, as: 'pendingIdToken'
@@ -404,6 +493,16 @@ module Google
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
           end
+        end
+      end
+      
+      class SignupNewUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :email, as: 'email'
+          property :id_token, as: 'idToken'
+          property :kind, as: 'kind'
         end
       end
       

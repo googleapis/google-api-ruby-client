@@ -1139,6 +1139,17 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
+        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
+        # query. The default value is true. If set to false, the query will use BigQuery'
+        # s updated SQL dialect with improved standards compliance. When using BigQuery'
+        # s updated SQL, the values of allowLargeResults and flattenResults are ignored.
+        # Queries with useLegacySql set to false will be run as if allowLargeResults is
+        # true and flattenResults is false.
+        # Corresponds to the JSON property `useLegacySql`
+        # @return [Boolean]
+        attr_accessor :use_legacy_sql
+        alias_method :use_legacy_sql?, :use_legacy_sql
+      
         # [Optional] Whether to look for the result in the query cache. The query cache
         # is a best-effort cache that will be flushed whenever tables in the query are
         # modified. Moreover, the query cache is only available when a query does not
@@ -1181,6 +1192,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
+          @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
@@ -1456,6 +1468,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
       
+        # [Output-only, Experimental] Referenced tables for the job. Queries that
+        # reference more than 50 tables will not have a complete list.
+        # Corresponds to the JSON property `referencedTables`
+        # @return [Array<Google::Apis::BigqueryV2::TableReference>]
+        attr_accessor :referenced_tables
+      
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [String]
@@ -1475,6 +1493,7 @@ module Google
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
+          @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
         end
@@ -1736,6 +1755,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_ms
       
+        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
+        # query. The default value is true. If set to false, the query will use BigQuery'
+        # s updated SQL dialect with improved standards compliance. When using BigQuery'
+        # s updated SQL, the values of allowLargeResults and flattenResults are ignored.
+        # Queries with useLegacySql set to false will be run as if allowLargeResults is
+        # true and flattenResults is false.
+        # Corresponds to the JSON property `useLegacySql`
+        # @return [Boolean]
+        attr_accessor :use_legacy_sql
+        alias_method :use_legacy_sql?, :use_legacy_sql
+      
         # [Optional] Whether to look for the result in the query cache. The query cache
         # is a best-effort cache that will be flushed whenever tables in the query are
         # modified. The default value is true.
@@ -1757,6 +1787,7 @@ module Google
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
+          @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
         end
       end

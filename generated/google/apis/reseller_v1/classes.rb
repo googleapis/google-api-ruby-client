@@ -276,6 +276,11 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
+        # Primary domain name of the customer
+        # Corresponds to the JSON property `customerDomain`
+        # @return [String]
+        attr_accessor :customer_domain
+      
         # The id of the customer to whom the subscription belongs.
         # Corresponds to the JSON property `customerId`
         # @return [String]
@@ -360,6 +365,7 @@ module Google
         def update!(**args)
           @billing_method = args[:billing_method] if args.key?(:billing_method)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @customer_domain = args[:customer_domain] if args.key?(:customer_domain)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @kind = args[:kind] if args.key?(:kind)
           @plan = args[:plan] if args.key?(:plan)

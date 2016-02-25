@@ -46,8 +46,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The time that this operation was started by the server. This is in RFC3339
-        # text format.
+        # The time that this operation was started by the server (output only). This is
+        # in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

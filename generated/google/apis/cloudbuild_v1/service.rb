@@ -29,10 +29,10 @@ module Google
       #    require 'google/apis/cloudbuild_v1'
       #
       #    Cloudbuild = Google::Apis::CloudbuildV1 # Alias the module
-      #    service = Cloudbuild::CloudbuildService.new
+      #    service = Cloudbuild::CloudBuildService.new
       #
       # @see https://cloud.google.com/container-builder/docs/
-      class CloudbuildService < Google::Apis::Core::BaseService
+      class CloudBuildService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

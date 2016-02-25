@@ -27,55 +27,83 @@ module Google
         
         class BidderLocation
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AccountsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AddOrderDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AddOrderDealsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AddOrderNotesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AddOrderNotesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class BillingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class BillingInfoList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Budget
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Buyer
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ContactInformation
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateOrdersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Creative
@@ -83,6 +111,8 @@ module Google
         
         class Correction
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class FilteringReasons
@@ -90,7 +120,11 @@ module Google
           
           class Reason
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class NativeAd
@@ -98,15 +132,23 @@ module Google
           
           class AppIcon
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Image
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class Logo
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class ServingRestriction
@@ -114,96 +156,164 @@ module Google
           
           class Context
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
           
           class DisapprovalReason
             class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreativesList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DealServingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DealServingMetadataDealPauseStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DealTerms
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DealTermsGuaranteedFixedPriceTerms
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DealTermsNonGuaranteedAuctionTerms
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DealTermsNonGuaranteedFixedPriceTerms
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeleteOrderDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeleteOrderDealsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeliveryControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DeliveryControlFrequencyCap
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class EditAllOrderDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class EditAllOrderDealsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetOffersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetOrderDealsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetOrderNotesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetPublisherProfilesByAccountIdResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class MarketplaceDeal
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class MarketplaceDealParty
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class MarketplaceLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class MarketplaceNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PerformanceReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PerformanceReportList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PretargetingConfig
@@ -211,71 +321,113 @@ module Google
         
         class Dimension
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class ExcludedPlacement
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class Placement
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
         
         class VideoPlayerSize
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PretargetingConfigList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Price
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PricePerBuyer
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PrivateData
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Product
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Proposal
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublisherProfileApiProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Seller
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SharedTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TargetingValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TargetingValueCreativeSize
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TargetingValueDayPartTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TargetingValueDayPartTargetingDayPart
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TargetingValueSize
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Account
@@ -295,6 +447,7 @@ module Google
         class BidderLocation
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :bid_protocol, as: 'bidProtocol'
             property :maximum_qps, as: 'maximumQps'
             property :region, as: 'region'
             property :url, as: 'url'
@@ -557,6 +710,22 @@ module Google
         end
       end
       
+      class DealServingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deal_pause_status, as: 'dealPauseStatus', class: Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus, decorator: Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus::Representation
+      
+        end
+      end
+      
+      class DealServingMetadataDealPauseStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_buyer_paused, as: 'hasBuyerPaused'
+          property :has_seller_paused, as: 'hasSellerPaused'
+        end
+      end
+      
       class DealTerms
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -587,7 +756,7 @@ module Google
       class DealTermsNonGuaranteedAuctionTerms
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :private_auction_id, as: 'privateAuctionId'
+          property :auto_optimize_private_auction, as: 'autoOptimizePrivateAuction'
           collection :reserve_price_per_buyers, as: 'reservePricePerBuyers', class: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer, decorator: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer::Representation
       
         end
@@ -655,6 +824,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deals, as: 'deals', class: Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal, decorator: Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal::Representation
       
+          property :order_revision_number, as: 'orderRevisionNumber'
         end
       end
       
@@ -690,6 +860,14 @@ module Google
         end
       end
       
+      class GetPublisherProfilesByAccountIdResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :profiles, as: 'profiles', class: Google::Apis::AdexchangebuyerV1_4::PublisherProfileApiProto, decorator: Google::Apis::AdexchangebuyerV1_4::PublisherProfileApiProto::Representation
+      
+        end
+      end
+      
       class MarketplaceDeal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -697,7 +875,10 @@ module Google
       
           property :creation_time_ms, as: 'creationTimeMs'
           property :creative_pre_approval_policy, as: 'creativePreApprovalPolicy'
+          property :creative_safe_frame_compatibility, as: 'creativeSafeFrameCompatibility'
           property :deal_id, as: 'dealId'
+          property :deal_serving_metadata, as: 'dealServingMetadata', class: Google::Apis::AdexchangebuyerV1_4::DealServingMetadata, decorator: Google::Apis::AdexchangebuyerV1_4::DealServingMetadata::Representation
+      
           property :delivery_control, as: 'deliveryControl', class: Google::Apis::AdexchangebuyerV1_4::DeliveryControl, decorator: Google::Apis::AdexchangebuyerV1_4::DeliveryControl::Representation
       
           property :external_deal_id, as: 'externalDealId'
@@ -709,6 +890,7 @@ module Google
           property :name, as: 'name'
           property :product_id, as: 'productId'
           property :product_revision_number, as: 'productRevisionNumber'
+          property :programmatic_creative_source, as: 'programmaticCreativeSource'
           property :proposal_id, as: 'proposalId'
           collection :seller_contacts, as: 'sellerContacts', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
       
@@ -902,6 +1084,8 @@ module Google
           property :creation_time_ms, as: 'creationTimeMs'
           collection :creator_contacts, as: 'creatorContacts', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
       
+          property :delivery_control, as: 'deliveryControl', class: Google::Apis::AdexchangebuyerV1_4::DeliveryControl, decorator: Google::Apis::AdexchangebuyerV1_4::DeliveryControl::Representation
+      
           property :flight_end_time_ms, as: 'flightEndTimeMs'
           property :flight_start_time_ms, as: 'flightStartTimeMs'
           property :has_creator_signed_off, as: 'hasCreatorSignedOff'
@@ -910,7 +1094,9 @@ module Google
           collection :labels, as: 'labels', class: Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel, decorator: Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel::Representation
       
           property :last_update_time_ms, as: 'lastUpdateTimeMs'
+          property :legacy_offer_id, as: 'legacyOfferId'
           property :name, as: 'name'
+          property :private_auction_id, as: 'privateAuctionId'
           property :product_id, as: 'productId'
           property :revision_number, as: 'revisionNumber'
           property :seller, as: 'seller', class: Google::Apis::AdexchangebuyerV1_4::Seller, decorator: Google::Apis::AdexchangebuyerV1_4::Seller::Representation
@@ -947,7 +1133,9 @@ module Google
           property :last_updater_or_commentor_role, as: 'lastUpdaterOrCommentorRole'
           property :last_updater_role, as: 'lastUpdaterRole'
           property :name, as: 'name'
+          property :negotiation_id, as: 'negotiationId'
           property :originator_role, as: 'originatorRole'
+          property :private_auction_id, as: 'privateAuctionId'
           property :proposal_id, as: 'proposalId'
           property :proposal_state, as: 'proposalState'
           property :revision_number, as: 'revisionNumber'
@@ -956,6 +1144,25 @@ module Google
       
           collection :seller_contacts, as: 'sellerContacts', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
       
+        end
+      end
+      
+      class PublisherProfileApiProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_pitch_statement, as: 'buyerPitchStatement'
+          property :google_plus_link, as: 'googlePlusLink'
+          property :is_parent, as: 'isParent'
+          property :kind, as: 'kind'
+          property :logo_url, as: 'logoUrl'
+          property :media_kit_link, as: 'mediaKitLink'
+          property :name, as: 'name'
+          property :overview, as: 'overview'
+          property :profile_id, as: 'profileId'
+          collection :publisher_domains, as: 'publisherDomains'
+          property :rate_card_info_link, as: 'rateCardInfoLink'
+          property :sample_page_link, as: 'samplePageLink'
+          collection :top_headlines, as: 'topHeadlines'
         end
       end
       
