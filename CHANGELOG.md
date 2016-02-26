@@ -1,3 +1,12 @@
+# 0.9.3
+* Drop ActiveSupport an MultiJson as dependencies. Active support is still included in the Gemfile
+  and is needed to run the code generator.
+* Allow falsey values in hash representations of objects
+* Added `from_json` and `to_json` helpers to model classes
+* Correctly propagate `open_timeout` in options
+* Add the Cloud Vision API
+* Update generated APIs
+
 # 0.9.2
 * Allow nil values to be used in `new` and `update!` for generated classes
 * Update generated APIs
