@@ -90,7 +90,7 @@ of retries is exceeded, an exception is thrown.
 
 ### Callbacks
 
-A block an be specified when making calls. If present, the block will be called with the result or error, rather than
+A block can be specified when making calls. If present, the block will be called with the result or error, rather than
 returning the result from the call or raising the error. Example:
 
 ```ruby
