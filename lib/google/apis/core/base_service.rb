@@ -28,6 +28,43 @@ require 'hurley/addressable'
 module Google
   module Apis
     module Core
+      # Helper class for enumerating over a result set requiring multiple fetches
+      class PagedResults
+        include Enumerable
+
+        attr_reader :last_result
+
+        # @param [BaseService] service
+        #   Current service instance
+        # @param [Fixnum] max
+        #   Maximum number of items to iterate over. Nil if no limit
+        # @param [Symbol] items
+        #   Name of the field in the result containing the items. Defaults to :items
+        def initialize(service, max: nil, items: :items, &block)
+          @service = service
+          @block = block
+          @max = max
+          @items_field = items
+        end
+
+        # Iterates over result set, fetching additional pages as needed
+        def each
+          page_token = nil
+          item_count = 0
+          loop do
+            @last_result = @block.call(page_token, @service)
+            for item in @last_result.send(@items_field)
+              item_count = item_count + 1
+              break if @max && item_count > @max
+              yield item
+            end
+            break if @max && item_count >= @max
+            break if @last_result.next_page_token.nil? || @last_result.next_page_token == page_token
+            page_token = @last_result.next_page_token
+          end
+        end
+      end
+
       # Base service for all APIs. Not to be used directly.
       #
       class BaseService
@@ -90,12 +127,12 @@ module Google
         # request to the server.
         #
         # @example
-        #   service.batch do |service|
-        #     service.get_item(id1) do |res, err|
+        #   service.batch do |s|
+        #     s.get_item(id1) do |res, err|
         #       # process response for 1st call
         #     end
         #     # ...
-        #     service.get_item(idN) do |res, err|
+        #     s.get_item(idN) do |res, err|
         #       # process response for Nth call
         #     end
         #   end
@@ -122,12 +159,12 @@ module Google
         # files, use single requests which use a resumable upload protocol.
         #
         # @example
-        #   service.batch do |service|
-        #     service.insert_item(upload_source: 'file1.txt') do |res, err|
+        #   service.batch do |s|
+        #     s.insert_item(upload_source: 'file1.txt') do |res, err|
         #       # process response for 1st call
         #     end
         #     # ...
-        #     service.insert_item(upload_source: 'fileN.txt') do |res, err|
+        #     s.insert_item(upload_source: 'fileN.txt') do |res, err|
         #       # process response for Nth call
         #     end
         #   end
@@ -189,6 +226,34 @@ module Google
           apply_command_defaults(command)
           command.query.merge(Hash(params))
           execute_or_queue_command(command, &block)
+        end
+
+        # Executes a given query with paging, automatically retrieving
+        # additional pages as necessary. Requires a block that returns the
+        # result set of a page. The current page token is supplied as an argument
+        # to the block.
+        #
+        # Note: The returned enumerable also contains a `last_result` field
+        # containing the full result of the last query executed.
+        #
+        # @param [Fixnum] max
+        #   Maximum number of items to iterate over. Defaults to nil -- no upper bound.
+        # @param [Symbol] items
+        #   Name of the field in the result containing the items. Defaults to :items
+        # @return [Enumerble]
+        # @yield [token, service]
+        #   Current page token & service instance
+        # @yieldparam [String] token
+        #   Current page token to be used in the query
+        # @yieldparm [service]
+        #   Current service instance
+        #
+        # @example Retrieve files,
+        #   file_list = service.fetch_all { |token, s| s.list_files(page_token: token) }
+        #   file_list.each { |f| ... }
+        def fetch_all(max: nil, items: :items, &block)
+          fail "fetch_all may no be used inside a batch" if batch?
+          return PagedResults.new(self, max: max, items: items, &block)
         end
 
         protected

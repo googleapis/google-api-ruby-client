@@ -17,6 +17,7 @@ require 'google/apis/options'
 require 'google/apis/core/base_service'
 require 'google/apis/core/json_representation'
 require 'hurley/test'
+require 'ostruct'
 
 RSpec.describe Google::Apis::Core::BaseService do
   include TestHelpers
@@ -242,6 +243,44 @@ EOF
           service.send(:execute_or_queue_command, command, &b)
         end
       end.to raise_error(Google::Apis::ClientError)
+    end
+
+    context 'with fetch_all' do
+      let(:responses) do
+        data = {}
+        data[nil] = OpenStruct.new(next_page_token: 'p1', items: ['a', 'b', 'c'], alt_items: [1, 2 , 3])
+        data['p1'] = OpenStruct.new(next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6])
+        data['p2'] = OpenStruct.new(next_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7,8, 9])
+        data
+      end
+
+      let(:items) { service.fetch_all { |token| responses[token] } }
+
+      it 'should fetch pages until next page token is nil' do
+        expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+      end
+
+      it 'should stop on repeated page token' do
+        responses['p2'].next_page_token = 'p2'
+        expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+      end
+
+      it 'should allow selecting another field for items' do
+        expect(service.fetch_all(items: :alt_items) { |token| responses[token] } ).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
+      end
+
+      it 'should allow limiting the number of items to fetch' do
+        expect(service.fetch_all(max: 5) { |token| responses[token] } ).to contain_exactly('a', 'b', 'c', 'd', 'e')
+      end
+
+      it 'should yield the next token' do
+        expect do |b|
+          service.fetch_all do |token|
+            b.to_proc.call(token)
+            responses[token]
+          end.count
+        end.to yield_successive_args(nil, 'p1', 'p2')
+      end
     end
   end
 end
