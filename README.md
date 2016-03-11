@@ -38,7 +38,7 @@ require 'google/apis/drive_v2'
 
 Drive = Google::Apis::DriveV2 # Alias the module
 drive = Drive::DriveService.new
-drive.authorization = authorization # See Googleauth or Signet libraries
+drive.authorization = ... # See Googleauth or Signet libraries
 
 # Search for files in Drive (first page only)
 files = drive.list_files(q: "title contains 'finances'")
@@ -106,6 +106,32 @@ end
 
 This calling style is required when making batch requests as responses are not available until the entire batch
 is complete.
+
+### Paging
+
+To fetch multiple pages of data, use the `fetch_all` method to wrap the paged query. This returns an
+`Enumerable` that automatically fetches additional pages as needed.
+
+```ruby
+# List all calendar events
+now = Time.now.iso8601
+items = calendar.fetch_all do |token|
+  calendar.list_events('primary',
+                        single_events: true,
+                        order_by: 'startTime',
+                        time_min: now,
+                        page_token: token)
+end
+items.each { |event| puts event.summary }
+```
+
+For APIs that use a field other than `items` to contain the results, an alternate field name can be supplied.
+
+```ruby
+# List all files in Drive
+items = drive.fetch_all(items: :files) { |token| drive.list_files(page_token: token) }
+items.each { |file| puts file.name }
+```
 
 ### Batches
 
@@ -240,7 +266,6 @@ A URL can also be specified:
 ## TODO
 
 *  ETag support (if-not-modified)
-*  Auto-paging results (maybe)
 *  Caching
 *  Model validations
 

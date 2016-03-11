@@ -1,3 +1,8 @@
+# 0.9.4
+* Add `service.fetch_all` helper for automatically retrieving paged results
+* Add IAM v1 & Cloud Resource Manager v1 APIs
+* Update generated APIs
+
 # 0.9.3
 * Drop ActiveSupport an MultiJson as dependencies. Active support is still included in the Gemfile
   and is needed to run the code generator.
