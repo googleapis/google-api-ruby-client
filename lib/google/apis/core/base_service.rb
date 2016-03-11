@@ -38,13 +38,23 @@ module Google
         #   Current service instance
         # @param [Fixnum] max
         #   Maximum number of items to iterate over. Nil if no limit
+        # @param [Boolean] cache
+        #  True (default) if results should be cached so multiple iterations can be used.
         # @param [Symbol] items
         #   Name of the field in the result containing the items. Defaults to :items
-        def initialize(service, max: nil, items: :items, &block)
+        def initialize(service, max: nil, items: :items, cache: true, &block)
           @service = service
           @block = block
           @max = max
           @items_field = items
+          if cache
+            @result_cache = Hash.new do |h, k|
+              h[k] = @block.call(k, @service)
+            end
+            @fetch_proc = Proc.new { |token| @result_cache[token] }
+          else
+            @fetch_proc = Proc.new { |token| @block.call(token, @service) }
+          end
         end
 
         # Iterates over result set, fetching additional pages as needed
@@ -52,7 +62,7 @@ module Google
           page_token = nil
           item_count = 0
           loop do
-            @last_result = @block.call(page_token, @service)
+            @last_result = @fetch_proc.call(page_token)
             for item in @last_result.send(@items_field)
               item_count = item_count + 1
               break if @max && item_count > @max
@@ -240,6 +250,8 @@ module Google
         #   Maximum number of items to iterate over. Defaults to nil -- no upper bound.
         # @param [Symbol] items
         #   Name of the field in the result containing the items. Defaults to :items
+        # @param [Boolean] cache
+        #  True (default) if results should be cached so multiple iterations can be used.
         # @return [Enumerble]
         # @yield [token, service]
         #   Current page token & service instance
@@ -247,13 +259,14 @@ module Google
         #   Current page token to be used in the query
         # @yieldparm [service]
         #   Current service instance
+        # @since 0.9.4
         #
-        # @example Retrieve files,
+        # @example Retrieve all files,
         #   file_list = service.fetch_all { |token, s| s.list_files(page_token: token) }
         #   file_list.each { |f| ... }
-        def fetch_all(max: nil, items: :items, &block)
-          fail "fetch_all may no be used inside a batch" if batch?
-          return PagedResults.new(self, max: max, items: items, &block)
+        def fetch_all(max: nil, items: :items, cache: true,  &block)
+          fail "fetch_all may not be used inside a batch" if batch?
+          return PagedResults.new(self, max: max, items: items, cache: cache, &block)
         end
 
         protected

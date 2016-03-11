@@ -281,6 +281,33 @@ EOF
           end.count
         end.to yield_successive_args(nil, 'p1', 'p2')
       end
+
+      it 'should cache results' do
+        count = 0
+        items = service.fetch_all do |token|
+          count = count + 1
+          responses[token]
+        end
+
+        items.each{ |i| puts i }
+        items.each{ |i| puts i }
+
+        expect(count).to eq 3
+      end
+
+      it 'should allow disabling caching' do
+        count = 0
+        items = service.fetch_all(cache: false) do |token|
+          count = count + 1
+          responses[token]
+        end
+
+        items.each{ |i| puts i }
+        items.each{ |i| puts i }
+
+        expect(count).to eq 6
+      end
+
     end
   end
 end
