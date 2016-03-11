@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Cloud Container Builder API
     #
-    # The Google Cloud Container Builder API lets you build container images in the
-    # cloud.
+    # Builds container images in the cloud.
     #
     # @see https://cloud.google.com/container-builder/docs/
     module CloudbuildV1
       VERSION = 'V1'
-      REVISION = '20160225'
+      REVISION = '20160310'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

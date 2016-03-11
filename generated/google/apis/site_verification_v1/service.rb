@@ -22,7 +22,7 @@ module Google
     module SiteVerificationV1
       # Google Site Verification API
       #
-      # Lets you programatically verify ownership of websites or domains with Google.
+      # Verifies ownership of websites or domains with Google.
       #
       # @example
       #    require 'google/apis/site_verification_v1'

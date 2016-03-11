@@ -20,12 +20,12 @@ module Google
   module Apis
     # Gmail API
     #
-    # The Gmail REST API.
+    # Access Gmail mailboxes including sending user email.
     #
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20151214'
+      REVISION = '20160301'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'

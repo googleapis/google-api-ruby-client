@@ -22,7 +22,7 @@ module Google
     module PagespeedonlineV2
       # PageSpeed Insights API
       #
-      # Lets you analyze the performance of a web page and get tailored suggestions to
+      # Analyzes the performance of a web page and provides tailored suggestions to
       #  make that page faster.
       #
       # @example

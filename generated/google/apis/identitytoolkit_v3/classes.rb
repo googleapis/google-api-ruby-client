@@ -137,6 +137,55 @@ module Google
         end
       end
       
+      # Template for an email template.
+      class EmailTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Email body.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Email body format.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # From address of the email.
+        # Corresponds to the JSON property `from`
+        # @return [String]
+        attr_accessor :from
+      
+        # From display name.
+        # Corresponds to the JSON property `fromDisplayName`
+        # @return [String]
+        attr_accessor :from_display_name
+      
+        # Reply-to address.
+        # Corresponds to the JSON property `replyTo`
+        # @return [String]
+        attr_accessor :reply_to
+      
+        # Subject of the email.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @format = args[:format] if args.key?(:format)
+          @from = args[:from] if args.key?(:from)
+          @from_display_name = args[:from_display_name] if args.key?(:from_display_name)
+          @reply_to = args[:reply_to] if args.key?(:reply_to)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
       # Response of getting account information.
       class GetAccountInfoResponse
         include Google::Apis::Core::Hashable
@@ -313,6 +362,11 @@ module Google
         # @return [String]
         attr_accessor :delegated_project_number
       
+        # The GITKit token or STS id token of the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
         # The local ID of the user.
         # Corresponds to the JSON property `localId`
         # @return [String]
@@ -325,6 +379,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @id_token = args[:id_token] if args.key?(:id_token)
           @local_id = args[:local_id] if args.key?(:local_id)
         end
       end
@@ -365,6 +420,12 @@ module Google
       class GetAccountInfoRequest
         include Google::Apis::Core::Hashable
       
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
+      
         # The list of emails of the users to inquiry.
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
@@ -386,6 +447,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @email = args[:email] if args.key?(:email)
           @id_token = args[:id_token] if args.key?(:id_token)
           @local_id = args[:local_id] if args.key?(:local_id)
@@ -407,6 +469,16 @@ module Google
         # @return [String]
         attr_accessor :api_key
       
+        # Authorized domains.
+        # Corresponds to the JSON property `authorizedDomains`
+        # @return [Array<String>]
+        attr_accessor :authorized_domains
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `changeEmailTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :change_email_template
+      
         # OAuth2 provider configuration.
         # Corresponds to the JSON property `idpConfig`
         # @return [Array<Google::Apis::IdentitytoolkitV3::IdpConfig>]
@@ -417,6 +489,22 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Template for an email template.
+        # Corresponds to the JSON property `resetPasswordTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :reset_password_template
+      
+        # Whether to use email sending provided by Firebear.
+        # Corresponds to the JSON property `useEmailSending`
+        # @return [Boolean]
+        attr_accessor :use_email_sending
+        alias_method :use_email_sending?, :use_email_sending
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `verifyEmailTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :verify_email_template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -425,8 +513,13 @@ module Google
         def update!(**args)
           @allow_password_user = args[:allow_password_user] if args.key?(:allow_password_user)
           @api_key = args[:api_key] if args.key?(:api_key)
+          @authorized_domains = args[:authorized_domains] if args.key?(:authorized_domains)
+          @change_email_template = args[:change_email_template] if args.key?(:change_email_template)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @reset_password_template = args[:reset_password_template] if args.key?(:reset_password_template)
+          @use_email_sending = args[:use_email_sending] if args.key?(:use_email_sending)
+          @verify_email_template = args[:verify_email_template] if args.key?(:verify_email_template)
         end
       end
       
@@ -487,6 +580,16 @@ module Google
         # @return [String]
         attr_accessor :delegated_project_number
       
+        # The attributes users request to delete.
+        # Corresponds to the JSON property `deleteAttribute`
+        # @return [Array<String>]
+        attr_accessor :delete_attribute
+      
+        # The IDPs the user request to delete.
+        # Corresponds to the JSON property `deleteProvider`
+        # @return [Array<String>]
+        attr_accessor :delete_provider
+      
         # Whether to disable the user.
         # Corresponds to the JSON property `disableUser`
         # @return [Boolean]
@@ -544,6 +647,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :provider
       
+        # Whether return sts id token and refresh token instead of gitkit token.
+        # Corresponds to the JSON property `returnSecureToken`
+        # @return [Boolean]
+        attr_accessor :return_secure_token
+        alias_method :return_secure_token?, :return_secure_token
+      
         # Mark the user to upgrade to federated login.
         # Corresponds to the JSON property `upgradeToFederatedLogin`
         # @return [Boolean]
@@ -564,6 +673,8 @@ module Google
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @delete_attribute = args[:delete_attribute] if args.key?(:delete_attribute)
+          @delete_provider = args[:delete_provider] if args.key?(:delete_provider)
           @disable_user = args[:disable_user] if args.key?(:disable_user)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
@@ -575,8 +686,92 @@ module Google
           @password = args[:password] if args.key?(:password)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider = args[:provider] if args.key?(:provider)
+          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @upgrade_to_federated_login = args[:upgrade_to_federated_login] if args.key?(:upgrade_to_federated_login)
           @valid_since = args[:valid_since] if args.key?(:valid_since)
+        end
+      end
+      
+      # Request to set the project configuration.
+      class SetProjectConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to allow password user sign in or sign up.
+        # Corresponds to the JSON property `allowPasswordUser`
+        # @return [Boolean]
+        attr_accessor :allow_password_user
+        alias_method :allow_password_user?, :allow_password_user
+      
+        # Browser API key, needed when making http request to Apiary.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `changeEmailTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :change_email_template
+      
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
+      
+        # Oauth2 provider configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Array<Google::Apis::IdentitytoolkitV3::IdpConfig>]
+        attr_accessor :idp_config
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `resetPasswordTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :reset_password_template
+      
+        # Whether to use email sending provided by Firebear.
+        # Corresponds to the JSON property `useEmailSending`
+        # @return [Boolean]
+        attr_accessor :use_email_sending
+        alias_method :use_email_sending?, :use_email_sending
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `verifyEmailTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :verify_email_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_password_user = args[:allow_password_user] if args.key?(:allow_password_user)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @change_email_template = args[:change_email_template] if args.key?(:change_email_template)
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @reset_password_template = args[:reset_password_template] if args.key?(:reset_password_template)
+          @use_email_sending = args[:use_email_sending] if args.key?(:use_email_sending)
+          @verify_email_template = args[:verify_email_template] if args.key?(:verify_email_template)
+        end
+      end
+      
+      # Response of setting the project configuration.
+      class IdentitytoolkitRelyingpartySetProjectConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Project ID of the relying party.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -663,6 +858,12 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Whether return sts id token and refresh token instead of gitkit token.
+        # Corresponds to the JSON property `returnSecureToken`
+        # @return [Boolean]
+        attr_accessor :return_secure_token
+        alias_method :return_secure_token?, :return_secure_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -676,6 +877,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
+          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
         end
       end
       
@@ -777,6 +979,12 @@ module Google
         attr_accessor :return_refresh_token
         alias_method :return_refresh_token?, :return_refresh_token
       
+        # Whether return sts id token and refresh token instead of gitkit token.
+        # Corresponds to the JSON property `returnSecureToken`
+        # @return [Boolean]
+        attr_accessor :return_secure_token
+        alias_method :return_secure_token?, :return_secure_token
+      
         # Session ID, which should match the one in previous createAuthUri request.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
@@ -795,6 +1003,7 @@ module Google
           @post_body = args[:post_body] if args.key?(:post_body)
           @request_uri = args[:request_uri] if args.key?(:request_uri)
           @return_refresh_token = args[:return_refresh_token] if args.key?(:return_refresh_token)
+          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
@@ -808,6 +1017,12 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
+        # Whether return sts id token and refresh token instead of gitkit token.
+        # Corresponds to the JSON property `returnSecureToken`
+        # @return [Boolean]
+        attr_accessor :return_secure_token
+        alias_method :return_secure_token?, :return_secure_token
+      
         # The custom token to verify
         # Corresponds to the JSON property `token`
         # @return [String]
@@ -820,6 +1035,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @token = args[:token] if args.key?(:token)
         end
       end
@@ -869,6 +1085,12 @@ module Google
         # @return [String]
         attr_accessor :pending_id_token
       
+        # Whether return sts id token and refresh token instead of gitkit token.
+        # Corresponds to the JSON property `returnSecureToken`
+        # @return [Boolean]
+        attr_accessor :return_secure_token
+        alias_method :return_secure_token?, :return_secure_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -883,6 +1105,7 @@ module Google
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
+          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
         end
       end
       
@@ -1025,6 +1248,12 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # If idToken is STS id token, then this field will be expiration time of STS id
+        # token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
+      
         # The Gitkit id token to login the newly sign up user.
         # Corresponds to the JSON property `idToken`
         # @return [String]
@@ -1050,6 +1279,11 @@ module Google
         # @return [Array<Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo>]
         attr_accessor :provider_user_info
       
+        # If idToken is STS id token, then this field will be refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1058,11 +1292,13 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
           @new_email = args[:new_email] if args.key?(:new_email)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
         
         # 
@@ -1113,6 +1349,12 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # If idToken is STS id token, then this field will be expiration time of STS id
+        # token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
+      
         # The Gitkit id token to login the newly sign up user.
         # Corresponds to the JSON property `idToken`
         # @return [String]
@@ -1123,6 +1365,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The RP local ID of the user.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # If idToken is STS id token, then this field will be refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1131,8 +1383,11 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
       
@@ -1302,6 +1557,11 @@ module Google
           # @return [String]
           attr_accessor :provider_id
         
+          # User's raw identifier directly returned from IDP.
+          # Corresponds to the JSON property `rawId`
+          # @return [String]
+          attr_accessor :raw_id
+        
           def initialize(**args)
              update!(**args)
           end
@@ -1313,6 +1573,7 @@ module Google
             @federated_id = args[:federated_id] if args.key?(:federated_id)
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
+            @raw_id = args[:raw_id] if args.key?(:raw_id)
           end
         end
       end
@@ -1370,6 +1631,12 @@ module Google
         # @return [Boolean]
         attr_accessor :email_verified
         alias_method :email_verified?, :email_verified
+      
+        # If idToken is STS id token, then this field will be expiration time of STS id
+        # token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
       
         # The unique ID identifies the IdP account.
         # Corresponds to the JSON property `federatedId`
@@ -1462,6 +1729,11 @@ module Google
         # @return [String]
         attr_accessor :oauth_scope
       
+        # The OAuth1 access token secret.
+        # Corresponds to the JSON property `oauthTokenSecret`
+        # @return [String]
+        attr_accessor :oauth_token_secret
+      
         # The original email stored in the mapping storage. It's returned when the
         # federated ID is associated to a different email.
         # Corresponds to the JSON property `originalEmail`
@@ -1481,6 +1753,11 @@ module Google
         # Corresponds to the JSON property `providerId`
         # @return [String]
         attr_accessor :provider_id
+      
+        # If idToken is STS id token, then this field will be refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
       
         # The timezone of the user.
         # Corresponds to the JSON property `timeZone`
@@ -1507,6 +1784,7 @@ module Google
           @email = args[:email] if args.key?(:email)
           @email_recycled = args[:email_recycled] if args.key?(:email_recycled)
           @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @federated_id = args[:federated_id] if args.key?(:federated_id)
           @first_name = args[:first_name] if args.key?(:first_name)
           @full_name = args[:full_name] if args.key?(:full_name)
@@ -1524,9 +1802,11 @@ module Google
           @oauth_expire_in = args[:oauth_expire_in] if args.key?(:oauth_expire_in)
           @oauth_request_token = args[:oauth_request_token] if args.key?(:oauth_request_token)
           @oauth_scope = args[:oauth_scope] if args.key?(:oauth_scope)
+          @oauth_token_secret = args[:oauth_token_secret] if args.key?(:oauth_token_secret)
           @original_email = args[:original_email] if args.key?(:original_email)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @verified_provider = args[:verified_provider] if args.key?(:verified_provider)
         end
@@ -1535,6 +1815,12 @@ module Google
       # Response from verifying a custom token
       class VerifyCustomTokenResponse
         include Google::Apis::Core::Hashable
+      
+        # If idToken is STS id token, then this field will be expiration time of STS id
+        # token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
       
         # The GITKit token for authenticated user.
         # Corresponds to the JSON property `idToken`
@@ -1546,14 +1832,21 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # If idToken is STS id token, then this field will be refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
       
@@ -1571,6 +1864,12 @@ module Google
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
+      
+        # If idToken is STS id token, then this field will be expiration time of STS id
+        # token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
       
         # The GITKit token for authenticated user.
         # Corresponds to the JSON property `idToken`
@@ -1608,6 +1907,11 @@ module Google
         # @return [String]
         attr_accessor :photo_url
       
+        # If idToken is STS id token, then this field will be refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
         # Whether the email is registered.
         # Corresponds to the JSON property `registered`
         # @return [Boolean]
@@ -1622,6 +1926,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
           @local_id = args[:local_id] if args.key?(:local_id)
@@ -1629,6 +1934,7 @@ module Google
           @oauth_authorization_code = args[:oauth_authorization_code] if args.key?(:oauth_authorization_code)
           @oauth_expire_in = args[:oauth_expire_in] if args.key?(:oauth_expire_in)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @registered = args[:registered] if args.key?(:registered)
         end
       end

@@ -23,6 +23,169 @@ module Google
     module BigqueryV2
       
       # 
+      class BigtableColumn
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The encoding of the values when the type is not STRING. Acceptable
+        # encoding values are: TEXT - indicates values are alphanumeric text strings.
+        # BINARY - indicates values are encoded using HBase Bytes.toBytes family of
+        # functions. 'encoding' can also be set at the column family level. However, the
+        # setting at this level takes precedence if 'encoding' is set at both levels.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # [Optional] If the qualifier is not a valid BigQuery field identifier i.e. does
+        # not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the
+        # column field name and is used as field name in queries.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # [Optional] If this is set, only the latest version of value in this column are
+        # exposed. 'onlyReadLatest' can also be set at the column family level. However,
+        # the setting at this level takes precedence if 'onlyReadLatest' is set at both
+        # levels.
+        # Corresponds to the JSON property `onlyReadLatest`
+        # @return [Boolean]
+        attr_accessor :only_read_latest
+        alias_method :only_read_latest?, :only_read_latest
+      
+        # [Required] Qualifier of the column. Columns in the parent column family that
+        # has this exact qualifier are exposed as . field. If the qualifier is valid UTF-
+        # 8 string, it can be specified in the qualifier_string field. Otherwise, a base-
+        # 64 encoded value must be set to qualifier_encoded. The column field name is
+        # the same as the column qualifier. However, if the qualifier is not a valid
+        # BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid
+        # identifier must be provided as field_name.
+        # Corresponds to the JSON property `qualifierEncoded`
+        # @return [String]
+        attr_accessor :qualifier_encoded
+      
+        # 
+        # Corresponds to the JSON property `qualifierString`
+        # @return [String]
+        attr_accessor :qualifier_string
+      
+        # [Optional] The type to convert the value in cells of this column. The values
+        # are expected to be encoded using HBase Bytes.toBytes function when using the
+        # BINARY encoding value. Following BigQuery types are allowed (case-sensitive) -
+        # BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. 'type' can also be
+        # set at the column family level. However, the setting at this level takes
+        # precedence if 'type' is set at both levels.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @only_read_latest = args[:only_read_latest] if args.key?(:only_read_latest)
+          @qualifier_encoded = args[:qualifier_encoded] if args.key?(:qualifier_encoded)
+          @qualifier_string = args[:qualifier_string] if args.key?(:qualifier_string)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class BigtableColumnFamily
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] Lists of columns that should be exposed as individual fields as
+        # opposed to a list of (column name, value) pairs. All columns whose qualifier
+        # matches a qualifier in this list can be accessed as .. Other columns can be
+        # accessed as a list through .Column field.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::BigqueryV2::BigtableColumn>]
+        attr_accessor :columns
+      
+        # [Optional] The encoding of the values when the type is not STRING. Acceptable
+        # encoding values are: TEXT - indicates values are alphanumeric text strings.
+        # BINARY - indicates values are encoded using HBase Bytes.toBytes family of
+        # functions. This can be overridden for a specific column by listing that column
+        # in 'columns' and specifying an encoding for it.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Identifier of the column family.
+        # Corresponds to the JSON property `familyId`
+        # @return [String]
+        attr_accessor :family_id
+      
+        # [Optional] If this is set only the latest version of value are exposed for all
+        # columns in this column family. This can be overridden for a specific column by
+        # listing that column in 'columns' and specifying a different setting for that
+        # column.
+        # Corresponds to the JSON property `onlyReadLatest`
+        # @return [Boolean]
+        attr_accessor :only_read_latest
+        alias_method :only_read_latest?, :only_read_latest
+      
+        # [Optional] The type to convert the value in cells of this column family. The
+        # values are expected to be encoded using HBase Bytes.toBytes function when
+        # using the BINARY encoding value. Following BigQuery types are allowed (case-
+        # sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. This can
+        # be overridden for a specific column by listing that column in 'columns' and
+        # specifying a type for it.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @family_id = args[:family_id] if args.key?(:family_id)
+          @only_read_latest = args[:only_read_latest] if args.key?(:only_read_latest)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class BigtableOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] List of column families to expose in the table schema along with
+        # their types. This list restricts the column families that can be referenced in
+        # queries and specifies their value types. You can use this list to do type
+        # conversions - see the 'type' field for more details. If you leave this list
+        # empty, all column families are present in the table schema and their values
+        # are read as BYTES. During a query only the column families referenced in that
+        # query are read from Bigtable.
+        # Corresponds to the JSON property `columnFamilies`
+        # @return [Array<Google::Apis::BigqueryV2::BigtableColumnFamily>]
+        attr_accessor :column_families
+      
+        # [Optional] If field is true, then the column families that are not specified
+        # in columnFamilies list are not exposed in the table schema. Otherwise, they
+        # are read with BYTES type values. The default value is false.
+        # Corresponds to the JSON property `ignoreUnspecifiedColumnFamilies`
+        # @return [Boolean]
+        attr_accessor :ignore_unspecified_column_families
+        alias_method :ignore_unspecified_column_families?, :ignore_unspecified_column_families
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_families = args[:column_families] if args.key?(:column_families)
+          @ignore_unspecified_column_families = args[:ignore_unspecified_column_families] if args.key?(:ignore_unspecified_column_families)
+        end
+      end
+      
+      # 
       class CsvOptions
         include Google::Apis::Core::Hashable
       
@@ -527,9 +690,21 @@ module Google
       class ExternalDataConfiguration
         include Google::Apis::Core::Hashable
       
+        # [Experimental] Try to detect schema and format options automatically. Any
+        # option specified explicitly will be honored.
+        # Corresponds to the JSON property `autodetect`
+        # @return [Boolean]
+        attr_accessor :autodetect
+        alias_method :autodetect?, :autodetect
+      
+        # [Optional] Additional options if sourceFormat is set to BIGTABLE.
+        # Corresponds to the JSON property `bigtableOptions`
+        # @return [Google::Apis::BigqueryV2::BigtableOptions]
+        attr_accessor :bigtable_options
+      
         # [Optional] The compression type of the data source. Possible values include
         # GZIP and NONE. The default value is NONE. This setting is ignored for Google
-        # Cloud Datastore backups.
+        # Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         # Corresponds to the JSON property `compression`
         # @return [String]
         attr_accessor :compression
@@ -545,7 +720,9 @@ module Google
         # too many bad records, an invalid error is returned in the job result. The
         # default value is false. The sourceFormat property determines what BigQuery
         # treats as an extra value: CSV: Trailing columns JSON: Named values that don't
-        # match any column names Google Cloud Datastore backups: This setting is ignored.
+        # match any column names Google Cloud Bigtable: This setting is ignored. Google
+        # Cloud Datastore backups: This setting is ignored. Avro: This setting is
+        # ignored.
         # Corresponds to the JSON property `ignoreUnknownValues`
         # @return [Boolean]
         attr_accessor :ignore_unknown_values
@@ -554,31 +731,39 @@ module Google
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # reading data. If the number of bad records exceeds this value, an invalid
         # error is returned in the job result. The default value is 0, which requires
-        # that all records are valid. This setting is ignored for Google Cloud Datastore
-        # backups.
+        # that all records are valid. This setting is ignored for Google Cloud Bigtable,
+        # Google Cloud Datastore backups and Avro formats.
         # Corresponds to the JSON property `maxBadRecords`
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
         # [Optional] The schema for the data. Schema is required for CSV and JSON
-        # formats. Schema is disallowed for Google Cloud Datastore backups.
+        # formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore
+        # backups, and Avro formats.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
         # [Required] The data format. For CSV files, specify "CSV". For newline-
-        # delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Google Cloud Datastore
-        # backups, specify "DATASTORE_BACKUP".
+        # delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "
+        # AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [
+        # Experimental] For Google Cloud Bigtable, specify "BIGTABLE". Please note that
+        # reading from Google Cloud Bigtable is experimental and has to be enabled for
+        # your project. Please contact Google Cloud Support to enable this for your
+        # project.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
       
-        # [Required] The fully-qualified URIs that point to your data in Google Cloud
-        # Storage. Each URI can contain one '*' wildcard character and it must come
-        # after the 'bucket' name. Size limits related to load jobs apply to external
-        # data sources, plus an additional limit of 10 GB maximum size across all URIs.
-        # For Google Cloud Datastore backups, exactly one URI can be specified, and it
-        # must end with '.backup_info'. Also, the '*' wildcard character is not allowed.
+        # [Required] The fully-qualified URIs that point to your data in Google Cloud.
+        # For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+        # and it must come after the 'bucket' name. Size limits related to load jobs
+        # apply to external data sources, plus an additional limit of 10 GB maximum size
+        # across all URIs. For Google Cloud Bigtable URIs: Exactly one URI can be
+        # specified and it has be a fully specified and valid HTTPS URL for a Google
+        # Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can
+        # be specified, and it must end with '.backup_info'. Also, the '*' wildcard
+        # character is not allowed.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
@@ -589,6 +774,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autodetect = args[:autodetect] if args.key?(:autodetect)
+          @bigtable_options = args[:bigtable_options] if args.key?(:bigtable_options)
           @compression = args[:compression] if args.key?(:compression)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)

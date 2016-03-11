@@ -367,10 +367,24 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
+        # A boolean which indicates whether the specified User was deleted. If true,
+        # name, photo and permission_id will be omitted.
+        # Corresponds to the JSON property `isDeleted`
+        # @return [Boolean]
+        attr_accessor :is_deleted
+        alias_method :is_deleted?, :is_deleted
+      
         # The displayable name of the user.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The permission ID associated with this user. Equivalent to the Drive API's
+        # permission ID for this user, returned as part of the Drive Permissions
+        # resource.
+        # Corresponds to the JSON property `permissionId`
+        # @return [String]
+        attr_accessor :permission_id
       
         # Photo information for a user.
         # Corresponds to the JSON property `photo`
@@ -383,7 +397,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @is_deleted = args[:is_deleted] if args.key?(:is_deleted)
           @name = args[:name] if args.key?(:name)
+          @permission_id = args[:permission_id] if args.key?(:permission_id)
           @photo = args[:photo] if args.key?(:photo)
         end
       end

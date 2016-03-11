@@ -107,8 +107,7 @@ module Google
         # @return [String]
         attr_accessor :report_type_id
       
-        # The name of the job (max. 100 characters). TODO(lanthaler) Clarify what this
-        # will actually be used for
+        # The name of the job (max. 100 characters).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

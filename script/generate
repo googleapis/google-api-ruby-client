@@ -30,6 +30,7 @@ APIS=(adexchangebuyer:v1.4 \
 	cloudlatencytest:v2 \
 	cloudmonitoring:v2beta2 \
 	cloudresourcemanager:v1beta1 \
+	cloudresourcemanager:v1 \
 	cloudtrace:v1 \
 	clouduseraccounts:beta \
 	compute:v1 \
@@ -58,6 +59,7 @@ APIS=(adexchangebuyer:v1.4 \
 	gmail:v1 \
 	groupsmigration:v1 \
 	groupssettings:v1 \
+	iam:v1 \
 	identitytoolkit:v3 \
 	kgsearch:v1 \
 	licensing:v1 \

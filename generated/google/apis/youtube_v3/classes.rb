@@ -925,6 +925,7 @@ module Google
         attr_accessor :localizations
       
         # Basic details about a channel, including title, description and thumbnails.
+        # Next available id: 15.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ChannelSnippet]
         attr_accessor :snippet
@@ -1711,6 +1712,7 @@ module Google
       end
       
       # Basic details about a channel, including title, description and thumbnails.
+      # Next available id: 15.
       class ChannelSnippet
         include Google::Apis::Core::Hashable
       
@@ -1718,6 +1720,11 @@ module Google
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
+      
+        # The custom url of the channel.
+        # Corresponds to the JSON property `customUrl`
+        # @return [String]
+        attr_accessor :custom_url
       
         # The language of the channel's default title and description.
         # Corresponds to the JSON property `defaultLanguage`
@@ -1757,6 +1764,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @custom_url = args[:custom_url] if args.key?(:custom_url)
           @default_language = args[:default_language] if args.key?(:default_language)
           @description = args[:description] if args.key?(:description)
           @localized = args[:localized] if args.key?(:localized)

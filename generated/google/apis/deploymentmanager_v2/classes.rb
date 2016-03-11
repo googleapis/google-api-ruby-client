@@ -462,7 +462,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -603,7 +603,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -666,7 +666,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -841,7 +841,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -954,7 +954,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -1017,7 +1017,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).

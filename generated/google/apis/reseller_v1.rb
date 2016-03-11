@@ -20,12 +20,12 @@ module Google
   module Apis
     # Enterprise Apps Reseller API
     #
-    # Lets you create and manage your customers and their subscriptions.
+    # Creates and manages your customers and their subscriptions.
     #
     # @see https://developers.google.com/google-apps/reseller/
     module ResellerV1
       VERSION = 'V1'
-      REVISION = '20160218'
+      REVISION = '20160229'
 
       # Manage users on your domain
       AUTH_APPS_ORDER = 'https://www.googleapis.com/auth/apps.order'

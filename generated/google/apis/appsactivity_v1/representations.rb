@@ -196,7 +196,9 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_deleted, as: 'isDeleted'
           property :name, as: 'name'
+          property :permission_id, as: 'permissionId'
           property :photo, as: 'photo', class: Google::Apis::AppsactivityV1::Photo, decorator: Google::Apis::AppsactivityV1::Photo::Representation
       
         end

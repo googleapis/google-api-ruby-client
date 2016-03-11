@@ -20,13 +20,13 @@ module Google
   module Apis
     # Google Cloud Debugger API
     #
-    # Lets you examine the stack and variables of your running application without
+    # Examines the call stack and variables of a running application without
     # stopping or slowing it down.
     #
     # @see https://cloud.google.com/tools/cloud-debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20151123'
+      REVISION = '20160309'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

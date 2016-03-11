@@ -599,6 +599,7 @@ module Google
           property :permissions, as: 'permissions', class: Google::Apis::AnalyticsV3::Account::Permissions, decorator: Google::Apis::AnalyticsV3::Account::Permissions::Representation
       
           property :self_link, as: 'selfLink'
+          property :starred, as: 'starred'
           property :updated, as: 'updated', type: DateTime
       
         end
@@ -650,6 +651,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :starred, as: 'starred'
           collection :web_properties, as: 'webProperties', class: Google::Apis::AnalyticsV3::WebPropertySummary, decorator: Google::Apis::AnalyticsV3::WebPropertySummary::Representation
       
         end
@@ -1473,6 +1475,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :site_search_category_parameters, as: 'siteSearchCategoryParameters'
           property :site_search_query_parameters, as: 'siteSearchQueryParameters'
+          property :starred, as: 'starred'
           property :strip_site_search_category_parameters, as: 'stripSiteSearchCategoryParameters'
           property :strip_site_search_query_parameters, as: 'stripSiteSearchQueryParameters'
           property :timezone, as: 'timezone'
@@ -1555,6 +1558,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :starred, as: 'starred'
           property :type, as: 'type'
         end
       end
@@ -1777,6 +1781,7 @@ module Google
           property :name, as: 'name'
           collection :profiles, as: 'profiles', class: Google::Apis::AnalyticsV3::ProfileSummary, decorator: Google::Apis::AnalyticsV3::ProfileSummary::Representation
       
+          property :starred, as: 'starred'
           property :website_url, as: 'websiteUrl'
         end
       end
@@ -1817,6 +1822,7 @@ module Google
       
           property :profile_count, as: 'profileCount'
           property :self_link, as: 'selfLink'
+          property :starred, as: 'starred'
           property :updated, as: 'updated', type: DateTime
       
           property :website_url, as: 'websiteUrl'

@@ -862,6 +862,7 @@
 "/genomics:v1/genomics.referencesets.search": search_reference_sets
 "/gmail:v1/gmail.users.getProfile": get_user_profile
 "/groupssettings:v1?force_alt_json" : true
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySetProjectConfigRequest": set_project_config_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyCreateAuthUriRequest": create_auth_uri_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDeleteAccountRequest": delete_account_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDownloadAccountRequest": download_account_request

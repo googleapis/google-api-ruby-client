@@ -95,7 +95,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -310,7 +310,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -501,7 +501,10 @@ module Google
         end
       end
       
-      # 
+      # Represents an Autoscaler resource. Autoscalers allow you to automatically
+      # scale virtual machine instances in managed instance groups according to an
+      # autoscaling policy that you define. For more information, read Autoscaling
+      # Groups of Instances.
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -527,7 +530,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -547,8 +550,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # URL of Instance Group Manager or Replica Pool which will be controlled by
-        # Autoscaler.
+        # URL of the managed instance group that this autoscaler will scale.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -591,7 +593,8 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeV1::AutoscalersScopedList>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#autoscalerAggregatedList for
+        # aggregated lists of autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -624,7 +627,7 @@ module Google
         end
       end
       
-      # Contains a list of persistent autoscaler resources.
+      # Contains a list of Autoscaler resources.
       class AutoscalerList
         include Google::Apis::Core::Hashable
       
@@ -639,7 +642,8 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Autoscaler>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#autoscalerList for lists of
+        # autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -676,13 +680,13 @@ module Google
       class AutoscalersScopedList
         include Google::Apis::Core::Hashable
       
-        # List of autoscalers contained in this scope.
+        # [Output Only] List of autoscalers contained in this scope.
         # Corresponds to the JSON property `autoscalers`
         # @return [Array<Google::Apis::ComputeV1::Autoscaler>]
         attr_accessor :autoscalers
       
-        # Informational warning which replaces the list of autoscalers when the list is
-        # empty.
+        # [Output Only] Informational warning which replaces the list of autoscalers
+        # when the list is empty.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::AutoscalersScopedList::Warning]
         attr_accessor :warning
@@ -697,8 +701,8 @@ module Google
           @warning = args[:warning] if args.key?(:warning)
         end
         
-        # Informational warning which replaces the list of autoscalers when the list is
-        # empty.
+        # [Output Only] Informational warning which replaces the list of autoscalers
+        # when the list is empty.
         class Warning
           include Google::Apis::Core::Hashable
         
@@ -737,7 +741,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -767,11 +771,14 @@ module Google
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of seconds that the Autoscaler should wait between two succeeding
-        # changes to the number of virtual machines. You should define an interval that
-        # is at least as long as the initialization time of a virtual machine and the
-        # time it may take for replica pool to create the virtual machine. The default
-        # is 60 seconds.
+        # The number of seconds that the autoscaler should wait before it starts
+        # collecting information from a new instance. This prevents the autoscaler from
+        # collecting information when the instance is initializing, during which the
+        # collected usage would not be reliable. The default time autoscaler waits is 60
+        # seconds.
+        # Virtual machine initialization times might vary because of numerous factors.
+        # We recommend that you test how long an instance may take to initialize. To do
+        # this, create an instance and time the startup process.
         # Corresponds to the JSON property `coolDownPeriodSec`
         # @return [Fixnum]
         attr_accessor :cool_down_period_sec
@@ -781,27 +788,26 @@ module Google
         # @return [Google::Apis::ComputeV1::AutoscalingPolicyCpuUtilization]
         attr_accessor :cpu_utilization
       
-        # Configuration parameters of autoscaling based on custom metric.
+        # Configuration parameters of autoscaling based on a custom metric.
         # Corresponds to the JSON property `customMetricUtilizations`
         # @return [Array<Google::Apis::ComputeV1::AutoscalingPolicyCustomMetricUtilization>]
         attr_accessor :custom_metric_utilizations
       
-        # Load balancing utilization policy.
+        # Configuration parameters of autoscaling based on load balancing.
         # Corresponds to the JSON property `loadBalancingUtilization`
         # @return [Google::Apis::ComputeV1::AutoscalingPolicyLoadBalancingUtilization]
         attr_accessor :load_balancing_utilization
       
-        # The maximum number of replicas that the Autoscaler can scale up to. This field
-        # is required for config to be effective. Maximum number of replicas should be
-        # not lower than minimal number of replicas. Absolute limit for this value is
-        # defined in Autoscaler backend.
+        # The maximum number of instances that the autoscaler can scale up to. This is
+        # required when creating or updating an autoscaler. The maximum number of
+        # replicas should not be lower than minimal number of replicas.
         # Corresponds to the JSON property `maxNumReplicas`
         # @return [Fixnum]
         attr_accessor :max_num_replicas
       
-        # The minimum number of replicas that the Autoscaler can scale down to. Can't be
-        # less than 0. If not provided Autoscaler will choose default value depending on
-        # maximal number of replicas.
+        # The minimum number of replicas that the autoscaler can scale down to. This
+        # cannot be less than 0. If not provided, autoscaler will choose a default value
+        # depending on maximum number of instances allowed.
         # Corresponds to the JSON property `minNumReplicas`
         # @return [Fixnum]
         attr_accessor :min_num_replicas
@@ -825,10 +831,15 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
-        # The target utilization that the Autoscaler should maintain. It is represented
-        # as a fraction of used cores. For example: 6 cores used in 8-core VM are
-        # represented here as 0.75. Must be a float value between (0, 1]. If not defined,
-        # the default is 0.8.
+        # The target CPU utilization that the autoscaler should maintain. Must be a
+        # float value in the range (0, 1]. If not specified, the default is 0.8.
+        # If the CPU level is below the target utilization, the autoscaler scales down
+        # the number of instances until it reaches the minimum number of instances you
+        # specified or until the average CPU of your instances reaches the target
+        # utilization.
+        # If the average CPU is above the target utilization, the autoscaler scales up
+        # until it reaches the maximum number of instances you specified or until the
+        # average utilization reaches the target utilization.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -847,22 +858,30 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
-        # Identifier of the metric. It should be a Cloud Monitoring metric. The metric
-        # can not have negative values. The metric should be an utilization metric (
-        # increasing number of VMs handling requests x times should reduce average value
-        # of the metric roughly x times). For example you could use: compute.googleapis.
-        # com/instance/network/received_bytes_count.
+        # The identifier of the Cloud Monitoring metric. The metric cannot have negative
+        # values and should be a utilization metric, which means that the number of
+        # virtual machines handling requests should increase or decrease proportionally
+        # to the metric. The metric must also have a label of compute.googleapis.com/
+        # resource_id with the value of the instance's unique ID, although this alone
+        # does not guarantee that the metric is valid.
+        # For example, the following is a valid metric:
+        # compute.googleapis.com/instance/network/received_bytes_count
+        # The following is not a valid metric because it does not increase or decrease
+        # based on usage:
+        # compute.googleapis.com/instance/cpu/reserved_cores
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # Target value of the metric which Autoscaler should maintain. Must be a
+        # Target value of the metric which autoscaler should maintain. Must be a
         # positive value.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
       
-        # Defines type in which utilization_target is expressed.
+        # Defines how target utilization value is expressed for a Cloud Monitoring
+        # metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified,
+        # the default is GAUGE.
         # Corresponds to the JSON property `utilizationTargetType`
         # @return [String]
         attr_accessor :utilization_target_type
@@ -879,16 +898,13 @@ module Google
         end
       end
       
-      # Load balancing utilization policy.
+      # Configuration parameters of autoscaling based on load balancing.
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
       
-        # Fraction of backend capacity utilization (set in HTTP load balancing
-        # configuration) that Autoscaler should maintain. Must be a positive float value.
-        # If not defined, the default is 0.8. For example if your maxRatePerInstance
-        # capacity (in HTTP Load Balancing configuration) is set at 10 and you would
-        # like to keep number of instances such that each instance receives 7 QPS on
-        # average, set this to 0.7.
+        # Fraction of backend capacity utilization (set in HTTP(s) load balancing
+        # configuration) that autoscaler should maintain. Must be a positive float value.
+        # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -1253,7 +1269,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -1753,7 +1769,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -1844,7 +1860,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -2319,7 +2335,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -3778,7 +3794,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4032,7 +4048,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4477,7 +4493,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4848,7 +4864,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4985,7 +5001,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -5363,7 +5379,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -5504,7 +5520,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -5567,7 +5583,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -5756,7 +5772,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -6109,7 +6125,7 @@ module Google
         end
       end
       
-      # Represents a Routes resource. A route specifies how certain packets should be
+      # Represents a Route resource. A route specifies how certain packets should be
       # handled by the network. Routes are associated with instances by tags and the
       # set of routes for a particular instance is called its routing table.
       # For each packet leaving a instance, the system searches that instance's
@@ -6117,7 +6133,7 @@ module Google
       # destination IP address, preferring smaller or more specific ranges over larger
       # ones. If there is a tie, the system selects the route with the smallest
       # priority value. If there is still a tie, it uses the layer three and four
-      # packet headers to select just one of the remaining matching Routes. The packet
+      # packet headers to select just one of the remaining matching routes. The packet
       # is then forwarded as specified by the nextHop field of the winning route -
       # either to another instance destination, a instance gateway or a Google Compute
       # Engine-operated gateway.
@@ -6153,7 +6169,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -6284,7 +6300,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -6310,7 +6326,7 @@ module Google
         end
       end
       
-      # Contains a list of route resources.
+      # Contains a list of Route resources.
       class RouteList
         include Google::Apis::Core::Hashable
       
@@ -6978,7 +6994,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -7062,7 +7078,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -7152,8 +7168,8 @@ module Google
       class TargetHttpsProxiesSetSslCertificatesRequest
         include Google::Apis::Core::Hashable
       
-        # New set of URLs to SslCertificate resources to associate with this
-        # TargetHttpProxy. Currently exactly one SSL certificate must be specified.
+        # New set of SslCertificate resources to associate with this TargetHttpsProxy
+        # resource. Currently exactly one SslCertificate resource must be specified.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -7189,7 +7205,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of the resource. Always compute#targetHttpsProxy for target
+        # [Output Only] Type of resource. Always compute#targetHttpsProxy for target
         # HTTPS proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -7259,7 +7275,8 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::TargetHttpsProxy>]
         attr_accessor :items
       
-        # Type of resource.
+        # Type of resource. Always compute#targetHttpsProxyList for lists of target
+        # HTTPS proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7536,7 +7553,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -7957,7 +7974,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -8036,7 +8053,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -8256,7 +8273,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -8673,7 +8690,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -8714,8 +8731,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # URL of the VPN gateway to which this VPN tunnel is associated. Provided by the
-        # client when the VPN tunnel is created.
+        # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
+        # the client when the VPN tunnel is created.
         # Corresponds to the JSON property `targetVpnGateway`
         # @return [String]
         attr_accessor :target_vpn_gateway
@@ -8905,7 +8922,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).

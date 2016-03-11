@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Analytics API
     #
-    # View and manage your Google Analytics data
+    # Views and manages your Google Analytics data.
     #
     # @see https://developers.google.com/analytics/
     module AnalyticsV3
       VERSION = 'V3'
-      REVISION = '20160223'
+      REVISION = '20160308'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'

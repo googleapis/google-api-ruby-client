@@ -20,12 +20,12 @@ module Google
   module Apis
     # Cloud Storage JSON API
     #
-    # Lets you store and retrieve potentially-large, immutable data objects.
+    # Stores and retrieves potentially large, immutable data objects.
     #
     # @see https://developers.google.com/storage/docs/json_api/
     module StorageV1
       VERSION = 'V1'
-      REVISION = '20160210'
+      REVISION = '20160304'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

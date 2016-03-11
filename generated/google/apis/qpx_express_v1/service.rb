@@ -22,7 +22,7 @@ module Google
     module QpxExpressV1
       # QPX Express API
       #
-      # Lets you find the least expensive flights between an origin and a destination.
+      # Finds the least expensive flights between an origin and a destination.
       #
       # @example
       #    require 'google/apis/qpx_express_v1'

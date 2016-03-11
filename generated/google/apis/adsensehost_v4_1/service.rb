@@ -22,8 +22,8 @@ module Google
     module AdsensehostV4_1
       # AdSense Host API
       #
-      # Gives AdSense Hosts access to report generation, ad code generation, and
-      #  publisher management capabilities.
+      # Generates performance reports, generates ad codes, and provides publisher
+      #  management capabilities for AdSense Hosts.
       #
       # @example
       #    require 'google/apis/adsensehost_v4_1'

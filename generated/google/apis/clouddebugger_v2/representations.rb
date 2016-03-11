@@ -369,6 +369,7 @@ module Google
       
           collection :variable_table, as: 'variableTable', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
+          hash :labels, as: 'labels'
         end
       end
       

@@ -20,13 +20,13 @@ module Google
   module Apis
     # YouTube Reporting API
     #
-    # An API to schedule reporting jobs and download the resulting bulk data reports
-    # about YouTube channels, videos etc. in the form of CSV files.
+    # Schedules reporting jobs and downloads the resulting bulk data reports about
+    # YouTube channels, videos, etc. in the form of CSV files.
     #
     # @see https://developers.google.com/youtube/reporting/v1/reports/
     module YoutubereportingV1
       VERSION = 'V1'
-      REVISION = '20151026'
+      REVISION = '20160301'
 
       # View monetary and non-monetary YouTube Analytics reports for your YouTube content
       AUTH_YT_ANALYTICS_MONETARY_READONLY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'

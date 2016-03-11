@@ -66,7 +66,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -76,7 +76,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -125,7 +125,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] address
         #   Name of the address resource to delete.
         # @param [String] fields
@@ -166,7 +166,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] address
         #   Name of the address resource to return.
         # @param [String] fields
@@ -208,7 +208,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeV1::Address] address_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -249,7 +249,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -261,7 +261,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -271,7 +271,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -331,7 +331,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -341,7 +341,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -386,13 +386,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified autoscaler resource.
+        # Deletes the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the persistent autoscaler resource to delete.
+        #   Name of the autoscaler to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -427,13 +427,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified autoscaler resource.
+        # Returns the specified autoscaler resource. Get a list of available autoscalers
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the persistent autoscaler resource to return.
+        #   Name of the autoscaler to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -468,12 +469,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an autoscaler resource in the specified project using the data
-        # included in the request.
+        # Creates an autoscaler in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -510,11 +511,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of autoscaler resources contained within the specified zone.
+        # Retrieves a list of autoscalers contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -526,7 +527,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -536,7 +537,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -582,14 +583,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an autoscaler resource in the specified project using the data
-        # included in the request. This method supports patch semantics.
+        # Updates an autoscaler in the specified project using the data included in the
+        # request. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the autoscaler resource to update.
+        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -627,15 +628,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an autoscaler resource in the specified project using the data
-        # included in the request.
+        # Updates an autoscaler in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
         # @param [String] autoscaler
-        #   Name of the autoscaler resource to update.
+        #   Name of the autoscaler to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -710,7 +711,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified BackendService resource.
+        # Returns the specified BackendService resource. Get a list of available backend
+        # services by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -844,7 +846,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -854,7 +856,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1000,7 +1002,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1010,7 +1012,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1055,7 +1057,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified disk type.
+        # Returns the specified disk type. Get a list of available disk types by making
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1112,7 +1115,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1122,7 +1125,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1182,7 +1185,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1192,7 +1195,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1324,7 +1327,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a specified persistent disk.
+        # Returns a specified persistent disk. Get a list of available persistent disks
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1428,7 +1432,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1438,7 +1442,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1613,7 +1617,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1623,7 +1627,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1765,7 +1769,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1775,7 +1779,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1961,7 +1965,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1971,7 +1975,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2100,7 +2104,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified address resource.
+        # Returns the specified address resource. Get a list of available addresses by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] address
@@ -2191,7 +2196,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2201,7 +2206,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2284,7 +2289,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified ForwardingRule resource.
+        # Returns the specified ForwardingRule resource. Get a list of available
+        # forwarding rules by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -2376,7 +2382,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2386,7 +2392,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2487,7 +2493,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2497,7 +2503,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2578,7 +2584,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified Operations resource.
+        # Retrieves the specified Operations resource. Get a list of operations by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -2630,7 +2637,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2640,7 +2647,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2723,7 +2730,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpHealthCheck resource.
+        # Returns the specified HttpHealthCheck resource. Get a list of available HTTP
+        # health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -2815,7 +2823,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2825,7 +2833,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2992,7 +3000,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpsHealthCheck resource.
+        # Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS
+        # health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -3084,7 +3093,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3094,7 +3103,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3303,7 +3312,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified image.
+        # Returns the specified image. Get a list of available images by making a list()
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -3400,7 +3410,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3410,7 +3420,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3520,7 +3530,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3530,7 +3540,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3668,7 +3678,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group.
+        # Returns all of the details about the specified managed instance group. Get a
+        # list of available managed instance groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -3772,7 +3783,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3782,7 +3793,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4128,7 +4139,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4138,7 +4149,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4226,7 +4237,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance group resource.
+        # Returns the specified instance group. Get a list of available instance groups
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4326,7 +4338,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4336,7 +4348,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4402,7 +4414,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4412,7 +4424,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4591,7 +4603,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template resource.
+        # Returns the specified instance template. Get a list of available instance
+        # templates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -4685,7 +4698,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4695,7 +4708,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4801,7 +4814,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4811,7 +4824,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5033,7 +5046,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Instance resource.
+        # Returns the specified Instance resource. Get a list of available instances by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5176,7 +5190,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5186,7 +5200,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5585,7 +5599,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified license resource.
+        # Returns the specified License resource. Get a list of available licenses by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -5637,7 +5652,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5647,7 +5662,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5692,7 +5707,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type.
+        # Returns the specified machine type. Get a list of available machine types by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5749,7 +5765,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5759,7 +5775,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5843,7 +5859,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network.
+        # Returns the specified network. Get a list of available networks by making a
+        # list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -5934,7 +5951,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5944,7 +5961,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5989,7 +6006,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified project resource.
+        # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -6275,7 +6292,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6285,7 +6302,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6331,7 +6348,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified region resource.
+        # Returns the specified Region resource. Get a list of available regions by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -6383,7 +6401,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6393,7 +6411,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6438,11 +6456,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified route resource.
+        # Deletes the specified Route resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
-        #   Name of the route resource to delete.
+        #   Name of the Route resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6476,11 +6494,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified route resource.
+        # Returns the specified Route resource. Get a list of available routes by making
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
-        #   Name of the route resource to return.
+        #   Name of the Route resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6514,7 +6533,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a route resource in the specified project using the data included in
+        # Creates a Route resource in the specified project using the data included in
         # the request.
         # @param [String] project
         #   Project ID for this request.
@@ -6553,7 +6572,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of route resources available to the specified project.
+        # Retrieves the list of Route resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6567,7 +6586,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6577,7 +6596,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6664,7 +6683,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Snapshot resource.
+        # Returns the specified Snapshot resource. Get a list of available snapshots by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -6717,7 +6737,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6727,7 +6747,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6810,7 +6830,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified SslCertificate resource.
+        # Returns the specified SslCertificate resource. Get a list of available SSL
+        # certificates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_certificate
@@ -6902,7 +6923,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6912,7 +6933,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6971,7 +6992,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6981,7 +7002,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7067,7 +7088,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified subnetwork.
+        # Returns the specified subnetwork. Get a list of available subnetworks by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -7166,7 +7188,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7176,7 +7198,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7260,7 +7282,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpProxy resource.
+        # Returns the specified TargetHttpProxy resource. Get a list of available target
+        # HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -7352,7 +7375,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7362,7 +7385,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7411,7 +7434,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
-        #   The name of the TargetHttpProxy resource to set a URL map for.
+        #   Name of the TargetHttpProxy to set a URL map for.
         # @param [Google::Apis::ComputeV1::UrlMapReference] url_map_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7486,7 +7509,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpsProxy resource.
+        # Returns the specified TargetHttpsProxy resource. Get a list of available
+        # target HTTPS proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -7578,7 +7602,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7588,7 +7612,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7637,7 +7661,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
-        #   Name of the TargetHttpsProxy resource to set an SSL certificate for.
+        #   Name of the TargetHttpsProxy resource to set an SslCertificates resource for.
         # @param [Google::Apis::ComputeV1::TargetHttpsProxiesSetSslCertificatesRequest] target_https_proxies_set_ssl_certificates_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7729,7 +7753,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7739,7 +7763,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7825,7 +7849,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetInstance resource.
+        # Returns the specified TargetInstance resource. Get a list of available target
+        # instances by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7925,7 +7950,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7935,7 +7960,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8083,7 +8108,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8093,7 +8118,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8179,7 +8204,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target pool.
+        # Returns the specified target pool. Get a list of available target pools by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8323,7 +8349,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8333,7 +8359,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8528,7 +8554,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8538,7 +8564,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8587,7 +8613,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] target_vpn_gateway
         #   Name of the target VPN gateway to delete.
         # @param [String] fields
@@ -8624,11 +8650,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target VPN gateway.
+        # Returns the specified target VPN gateway. Get a list of available target VPN
+        # gateways by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] target_vpn_gateway
         #   Name of the target VPN gateway to return.
         # @param [String] fields
@@ -8670,7 +8697,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeV1::TargetVpnGateway] target_vpn_gateway_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8712,7 +8739,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -8724,7 +8751,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8734,7 +8761,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8818,7 +8845,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified UrlMap resource.
+        # Returns the specified UrlMap resource. Get a list of available URL maps by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -8909,7 +8937,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8919,7 +8947,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9103,7 +9131,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9113,7 +9141,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9162,7 +9190,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] vpn_tunnel
         #   Name of the VpnTunnel resource to delete.
         # @param [String] fields
@@ -9199,11 +9227,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified VpnTunnel resource.
+        # Returns the specified VpnTunnel resource. Get a list of available VPN tunnels
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] vpn_tunnel
         #   Name of the VpnTunnel resource to return.
         # @param [String] fields
@@ -9245,7 +9274,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeV1::VpnTunnel] vpn_tunnel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9287,7 +9316,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -9299,7 +9328,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9309,7 +9338,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9451,7 +9480,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9461,7 +9490,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9507,7 +9536,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified zone resource.
+        # Returns the specified Zone resource. Get a list of available zones by making a
+        # list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9545,7 +9575,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of zone resources available to the specified project.
+        # Retrieves the list of Zone resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -9559,7 +9589,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9569,7 +9599,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number

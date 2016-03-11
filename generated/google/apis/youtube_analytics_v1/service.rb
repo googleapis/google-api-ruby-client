@@ -22,7 +22,7 @@ module Google
     module YoutubeAnalyticsV1
       # YouTube Analytics API
       #
-      # Retrieve your YouTube Analytics reports.
+      # Retrieves your YouTube Analytics reports.
       #
       # @example
       #    require 'google/apis/youtube_analytics_v1'

@@ -20,13 +20,12 @@ module Google
   module Apis
     # AdSense Management API
     #
-    # Gives AdSense publishers access to their inventory and the ability to generate
-    # reports
+    # Accesses AdSense publishers' inventory and generates performance reports.
     #
     # @see https://developers.google.com/adsense/management/
     module AdsenseV1_4
       VERSION = 'V1_4'
-      REVISION = '20160223'
+      REVISION = '20160309'
 
       # View and manage your AdSense data
       AUTH_ADSENSE = 'https://www.googleapis.com/auth/adsense'

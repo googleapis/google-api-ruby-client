@@ -680,11 +680,17 @@ module Google
         # variables then would hold only a reference to it. The variable `
         # var_table_index` field is an index into this repeated field. The stored
         # objects are nameless and get their name from the referencing variable. The
-        # effective variable is a merge of the referencing veariable and the referenced
+        # effective variable is a merge of the referencing variable and the referenced
         # variable.
         # Corresponds to the JSON property `variableTable`
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :variable_table
+      
+        # A set of custom breakpoint properties, populated by the agent, to be displayed
+        # to the user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         def initialize(**args)
            update!(**args)
@@ -707,6 +713,7 @@ module Google
           @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
           @evaluated_expressions = args[:evaluated_expressions] if args.key?(:evaluated_expressions)
           @variable_table = args[:variable_table] if args.key?(:variable_table)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       

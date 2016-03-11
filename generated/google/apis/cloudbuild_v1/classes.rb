@@ -265,6 +265,12 @@ module Google
       class StorageSource
         include Google::Apis::Core::Hashable
       
+        # Google Cloud Storage generation for the object. If the generation is
+        # omitted, the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [String]
+        attr_accessor :generation
+      
         # Google Cloud Storage bucket containing source (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
@@ -286,6 +292,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generation = args[:generation] if args.key?(:generation)
           @bucket = args[:bucket] if args.key?(:bucket)
           @object = args[:object] if args.key?(:object)
         end

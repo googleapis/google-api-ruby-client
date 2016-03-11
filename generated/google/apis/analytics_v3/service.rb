@@ -22,7 +22,7 @@ module Google
     module AnalyticsV3
       # Google Analytics API
       #
-      # View and manage your Google Analytics data
+      # Views and manages your Google Analytics data.
       #
       # @example
       #    require 'google/apis/analytics_v3'
@@ -1638,7 +1638,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing view (profile). This method supports patch semantics.
+        # Updates an existing goal. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to update the goal.
         # @param [String] web_property_id
@@ -1685,7 +1685,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing view (profile).
+        # Updates an existing goal.
         # @param [String] account_id
         #   Account ID to update the goal.
         # @param [String] web_property_id

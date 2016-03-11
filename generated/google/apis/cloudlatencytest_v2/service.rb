@@ -22,7 +22,7 @@ module Google
     module CloudlatencytestV2
       # Google Cloud Network Performance Monitoring API
       #
-      # A Test API to report latency data.
+      # Reports latency data.
       #
       # @example
       #    require 'google/apis/cloudlatencytest_v2'

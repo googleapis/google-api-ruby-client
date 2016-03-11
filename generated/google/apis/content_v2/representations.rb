@@ -1366,6 +1366,7 @@ module Google
           property :day_of_month, as: 'dayOfMonth'
           property :fetch_url, as: 'fetchUrl'
           property :hour, as: 'hour'
+          property :minute_of_hour, as: 'minuteOfHour'
           property :password, as: 'password'
           property :time_zone, as: 'timeZone'
           property :username, as: 'username'

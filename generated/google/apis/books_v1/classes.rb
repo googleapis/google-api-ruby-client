@@ -2022,6 +2022,11 @@ module Google
         attr_accessor :pcampaign_id
       
         # 
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # 
         # Corresponds to the JSON property `show_notification_settings_action`
         # @return [Boolean]
         attr_accessor :show_notification_settings_action
@@ -2049,6 +2054,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @notification_type = args[:notification_type] if args.key?(:notification_type)
           @pcampaign_id = args[:pcampaign_id] if args.key?(:pcampaign_id)
+          @reason = args[:reason] if args.key?(:reason)
           @show_notification_settings_action = args[:show_notification_settings_action] if args.key?(:show_notification_settings_action)
           @target_url = args[:target_url] if args.key?(:target_url)
           @title = args[:title] if args.key?(:title)

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmailTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetAccountInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,18 @@ module Google
       end
       
       class SetAccountInfoRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetProjectConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitytoolkitRelyingpartySetProjectConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +269,18 @@ module Google
         end
       end
       
+      class EmailTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body'
+          property :format, as: 'format'
+          property :from, as: 'from'
+          property :from_display_name, as: 'fromDisplayName'
+          property :reply_to, as: 'replyTo'
+          property :subject, as: 'subject'
+        end
+      end
+      
       class GetAccountInfoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -298,6 +328,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :id_token, as: 'idToken'
           property :local_id, as: 'localId'
         end
       end
@@ -314,6 +345,7 @@ module Google
       class GetAccountInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           collection :email, as: 'email'
           property :id_token, as: 'idToken'
           collection :local_id, as: 'localId'
@@ -325,9 +357,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_password_user, as: 'allowPasswordUser'
           property :api_key, as: 'apiKey'
+          collection :authorized_domains, as: 'authorizedDomains'
+          property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
       
           property :project_id, as: 'projectId'
+          property :reset_password_template, as: 'resetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
+          property :use_email_sending, as: 'useEmailSending'
+          property :verify_email_template, as: 'verifyEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
         end
       end
       
@@ -347,6 +387,8 @@ module Google
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
           property :delegated_project_number, as: 'delegatedProjectNumber'
+          collection :delete_attribute, as: 'deleteAttribute'
+          collection :delete_provider, as: 'deleteProvider'
           property :disable_user, as: 'disableUser'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
@@ -358,8 +400,34 @@ module Google
           property :password, as: 'password'
           property :photo_url, as: 'photoUrl'
           collection :provider, as: 'provider'
+          property :return_secure_token, as: 'returnSecureToken'
           property :upgrade_to_federated_login, as: 'upgradeToFederatedLogin'
           property :valid_since, as: 'validSince'
+        end
+      end
+      
+      class SetProjectConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_password_user, as: 'allowPasswordUser'
+          property :api_key, as: 'apiKey'
+          property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
+          property :delegated_project_number, as: 'delegatedProjectNumber'
+          collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
+      
+          property :reset_password_template, as: 'resetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
+          property :use_email_sending, as: 'useEmailSending'
+          property :verify_email_template, as: 'verifyEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
+      
+        end
+      end
+      
+      class IdentitytoolkitRelyingpartySetProjectConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -388,6 +456,7 @@ module Google
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
+          property :return_secure_token, as: 'returnSecureToken'
         end
       end
       
@@ -415,6 +484,7 @@ module Google
           property :post_body, as: 'postBody'
           property :request_uri, as: 'requestUri'
           property :return_refresh_token, as: 'returnRefreshToken'
+          property :return_secure_token, as: 'returnSecureToken'
           property :session_id, as: 'sessionId'
         end
       end
@@ -423,6 +493,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_id, as: 'instanceId'
+          property :return_secure_token, as: 'returnSecureToken'
           property :token, as: 'token'
         end
       end
@@ -438,6 +509,7 @@ module Google
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
           property :pending_id_token, as: 'pendingIdToken'
+          property :return_secure_token, as: 'returnSecureToken'
         end
       end
       
@@ -478,12 +550,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :new_email, as: 'newEmail'
           property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo::Representation
       
+          property :refresh_token, as: 'refreshToken'
         end
         
         class ProviderUserInfo
@@ -501,8 +575,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
+          property :local_id, as: 'localId'
+          property :refresh_token, as: 'refreshToken'
         end
       end
       
@@ -549,6 +626,7 @@ module Google
             property :federated_id, as: 'federatedId'
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
+            property :raw_id, as: 'rawId'
           end
         end
       end
@@ -565,6 +643,7 @@ module Google
           property :email, as: 'email'
           property :email_recycled, as: 'emailRecycled'
           property :email_verified, as: 'emailVerified'
+          property :expires_in, as: 'expiresIn'
           property :federated_id, as: 'federatedId'
           property :first_name, as: 'firstName'
           property :full_name, as: 'fullName'
@@ -582,9 +661,11 @@ module Google
           property :oauth_expire_in, as: 'oauthExpireIn'
           property :oauth_request_token, as: 'oauthRequestToken'
           property :oauth_scope, as: 'oauthScope'
+          property :oauth_token_secret, as: 'oauthTokenSecret'
           property :original_email, as: 'originalEmail'
           property :photo_url, as: 'photoUrl'
           property :provider_id, as: 'providerId'
+          property :refresh_token, as: 'refreshToken'
           property :time_zone, as: 'timeZone'
           collection :verified_provider, as: 'verifiedProvider'
         end
@@ -593,8 +674,10 @@ module Google
       class VerifyCustomTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
+          property :refresh_token, as: 'refreshToken'
         end
       end
       
@@ -603,6 +686,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :local_id, as: 'localId'
@@ -610,6 +694,7 @@ module Google
           property :oauth_authorization_code, as: 'oauthAuthorizationCode'
           property :oauth_expire_in, as: 'oauthExpireIn'
           property :photo_url, as: 'photoUrl'
+          property :refresh_token, as: 'refreshToken'
           property :registered, as: 'registered'
         end
       end

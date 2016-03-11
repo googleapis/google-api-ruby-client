@@ -776,6 +776,7 @@ module Google
       class ApplicationVerifyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate_player_id, as: 'alternate_player_id'
           property :kind, as: 'kind'
           property :player_id, as: 'player_id'
         end

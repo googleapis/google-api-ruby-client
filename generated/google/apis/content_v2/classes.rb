@@ -1611,6 +1611,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :hour
       
+        # The minute of the hour the feed file should be fetched (0-59). Read-only.
+        # Corresponds to the JSON property `minuteOfHour`
+        # @return [Fixnum]
+        attr_accessor :minute_of_hour
+      
         # An optional password for fetch_url.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -1640,6 +1645,7 @@ module Google
           @day_of_month = args[:day_of_month] if args.key?(:day_of_month)
           @fetch_url = args[:fetch_url] if args.key?(:fetch_url)
           @hour = args[:hour] if args.key?(:hour)
+          @minute_of_hour = args[:minute_of_hour] if args.key?(:minute_of_hour)
           @password = args[:password] if args.key?(:password)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @username = args[:username] if args.key?(:username)

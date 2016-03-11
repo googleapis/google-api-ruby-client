@@ -348,8 +348,7 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] An optional identifier specified by the client when the mutation
-        # was initiated. Must be unique for all Operation resources in the project.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -359,8 +358,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] The time that this operation was completed. This is in RFC3339
-        # text format.
+        # [Output Only] A textual description of the operation, which is set when the
+        # operation is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The time that this operation was completed. This value is in
+        # RFC3339 text format.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -378,23 +383,25 @@ module Google
         attr_accessor :http_error_message
       
         # [Output Only] If the operation fails, this field contains the HTTP error
-        # message that was returned, such as 404.
+        # status code that was returned. For example, a 404 means the resource was not
+        # found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] The time that this operation was requested. This is in RFC3339
-        # text format.
+        # [Output Only] The time that this operation was requested. This value is in
+        # RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -405,22 +412,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Type of the operation, such as insert, compute.instanceGroups.
-        # update, or compute.instanceGroups.delete.
+        # [Output Only] The type of operation, such as insert, update, or delete, and so
+        # on.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
       
         # [Output Only] An optional progress indicator that ranges from 0 to 100. There
         # is no requirement that this be linear or support any granularity of operations.
-        # This should not be used to guess at when the operation will be complete. This
+        # This should not be used to guess when the operation will be complete. This
         # number should monotonically increase as the operation progresses.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
       
-        # [Output Only] URL of the region where the operation resides. Only applicable
-        # for regional resources.
+        # [Output Only] The URL of the region where the operation resides. Only
+        # available when performing regional operations.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -430,14 +437,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The time that this operation was started by the server. This is
-        # in RFC3339 text format.
+        # [Output Only] The time that this operation was started by the server. This
+        # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # [Output Only] Status of the operation. Can be one of the following: PENDING,
-        # RUNNING, or DONE.
+        # [Output Only] The status of the operation, which can be one of the following:
+        # PENDING, RUNNING, or DONE.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -448,13 +455,13 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # [Output Only] Unique target ID which identifies a particular incarnation of
-        # the target.
+        # [Output Only] The unique target ID, which identifies a specific incarnation of
+        # the target resource.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] URL of the resource the operation is mutating.
+        # [Output Only] The URL of the resource that the operation modifies.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -470,7 +477,8 @@ module Google
         # @return [Array<Google::Apis::ClouduseraccountsBeta::Operation::Warning>]
         attr_accessor :warnings
       
-        # [Output Only] URL of the zone where the operation resides.
+        # [Output Only] The URL of the zone where the operation resides. Only available
+        # when performing per-zone operations.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -483,6 +491,7 @@ module Google
         def update!(**args)
           @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
@@ -533,7 +542,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -561,17 +570,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ClouduseraccountsBeta::Operation::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -591,7 +602,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -618,12 +635,13 @@ module Google
       class OperationList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] The Operation resources.
+        # [Output Only] A list of Operation resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ClouduseraccountsBeta::Operation>]
         attr_accessor :items
@@ -634,7 +652,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncate.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

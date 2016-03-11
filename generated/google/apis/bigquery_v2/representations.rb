@@ -22,6 +22,24 @@ module Google
   module Apis
     module BigqueryV2
       
+      class BigtableColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigtableColumnFamily
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigtableOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CsvOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +322,39 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigtableColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :field_name, as: 'fieldName'
+          property :only_read_latest, as: 'onlyReadLatest'
+          property :qualifier_encoded, :base64 => true, as: 'qualifierEncoded'
+          property :qualifier_string, as: 'qualifierString'
+          property :type, as: 'type'
+        end
+      end
+      
+      class BigtableColumnFamily
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::BigqueryV2::BigtableColumn, decorator: Google::Apis::BigqueryV2::BigtableColumn::Representation
+      
+          property :encoding, as: 'encoding'
+          property :family_id, as: 'familyId'
+          property :only_read_latest, as: 'onlyReadLatest'
+          property :type, as: 'type'
+        end
+      end
+      
+      class BigtableOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_families, as: 'columnFamilies', class: Google::Apis::BigqueryV2::BigtableColumnFamily, decorator: Google::Apis::BigqueryV2::BigtableColumnFamily::Representation
+      
+          property :ignore_unspecified_column_families, as: 'ignoreUnspecifiedColumnFamilies'
+        end
+      end
+      
       class CsvOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -420,6 +471,9 @@ module Google
       class ExternalDataConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autodetect, as: 'autodetect'
+          property :bigtable_options, as: 'bigtableOptions', class: Google::Apis::BigqueryV2::BigtableOptions, decorator: Google::Apis::BigqueryV2::BigtableOptions::Representation
+      
           property :compression, as: 'compression'
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       

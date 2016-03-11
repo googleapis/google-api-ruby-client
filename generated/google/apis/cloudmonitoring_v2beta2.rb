@@ -20,12 +20,12 @@ module Google
   module Apis
     # Cloud Monitoring API
     #
-    # API for accessing Google Cloud and API monitoring data.
+    # Accesses Google Cloud Monitoring data.
     #
     # @see https://cloud.google.com/monitoring/v2beta2/
     module CloudmonitoringV2beta2
       VERSION = 'V2beta2'
-      REVISION = '20160221'
+      REVISION = '20160228'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

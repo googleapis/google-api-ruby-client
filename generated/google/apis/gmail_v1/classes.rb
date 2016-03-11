@@ -22,6 +22,25 @@ module Google
   module Apis
     module GmailV1
       
+      # 
+      class BatchDeleteMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The IDs of the messages to delete.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ids = args[:ids] if args.key?(:ids)
+        end
+      end
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable

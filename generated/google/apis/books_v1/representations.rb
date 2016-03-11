@@ -1193,6 +1193,7 @@ module Google
           property :kind, as: 'kind'
           property :notification_type, as: 'notification_type'
           property :pcampaign_id, as: 'pcampaign_id'
+          property :reason, as: 'reason'
           property :show_notification_settings_action, as: 'show_notification_settings_action'
           property :target_url, as: 'targetUrl'
           property :title, as: 'title'

@@ -20,13 +20,13 @@ module Google
   module Apis
     # AdSense Host API
     #
-    # Gives AdSense Hosts access to report generation, ad code generation, and
-    # publisher management capabilities.
+    # Generates performance reports, generates ad codes, and provides publisher
+    # management capabilities for AdSense Hosts.
     #
     # @see https://developers.google.com/adsense/host/
     module AdsensehostV4_1
       VERSION = 'V4_1'
-      REVISION = '20160223'
+      REVISION = '20160309'
 
       # View and manage your AdSense host data and associated accounts
       AUTH_ADSENSEHOST = 'https://www.googleapis.com/auth/adsensehost'

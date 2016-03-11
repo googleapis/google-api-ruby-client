@@ -172,8 +172,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Whether the the current steps for the achievement has reached the number of
-        # steps required to unlock.
+        # Whether the current steps for the achievement has reached the number of steps
+        # required to unlock.
         # Corresponds to the JSON property `newlyUnlocked`
         # @return [Boolean]
         attr_accessor :newly_unlocked
@@ -650,6 +650,12 @@ module Google
       class ApplicationVerifyResponse
         include Google::Apis::Core::Hashable
       
+        # An alternate ID that was once used for the player that was issued the auth
+        # token used in this request. (This field is not normally populated.)
+        # Corresponds to the JSON property `alternate_player_id`
+        # @return [String]
+        attr_accessor :alternate_player_id
+      
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string games#applicationVerifyResponse.
         # Corresponds to the JSON property `kind`
@@ -667,6 +673,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternate_player_id = args[:alternate_player_id] if args.key?(:alternate_player_id)
           @kind = args[:kind] if args.key?(:kind)
           @player_id = args[:player_id] if args.key?(:player_id)
         end

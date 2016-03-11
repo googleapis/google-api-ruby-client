@@ -22,6 +22,12 @@ module Google
   module Apis
     module GmailV1
       
+      class BatchDeleteMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Draft
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -152,6 +158,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+        end
       end
       
       class Draft

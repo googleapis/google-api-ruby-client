@@ -22,8 +22,7 @@ module Google
     module AdsenseV1_4
       # AdSense Management API
       #
-      # Gives AdSense publishers access to their inventory and the ability to generate
-      #  reports
+      # Accesses AdSense publishers' inventory and generates performance reports.
       #
       # @example
       #    require 'google/apis/adsense_v1_4'

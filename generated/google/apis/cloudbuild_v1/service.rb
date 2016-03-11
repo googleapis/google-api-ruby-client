@@ -22,8 +22,7 @@ module Google
     module CloudbuildV1
       # Google Cloud Container Builder API
       #
-      # The Google Cloud Container Builder API lets you build container images in the
-      #  cloud.
+      # Builds container images in the cloud.
       #
       # @example
       #    require 'google/apis/cloudbuild_v1'

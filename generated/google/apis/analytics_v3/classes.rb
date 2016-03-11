@@ -62,6 +62,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Indicates whether this account is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # Time the account was last modified.
         # Corresponds to the JSON property `updated`
         # @return [DateTime]
@@ -80,6 +86,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @permissions = args[:permissions] if args.key?(:permissions)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @starred = args[:starred] if args.key?(:starred)
           @updated = args[:updated] if args.key?(:updated)
         end
         
@@ -255,6 +262,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Indicates whether this account is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # List of web properties under this account.
         # Corresponds to the JSON property `webProperties`
         # @return [Array<Google::Apis::AnalyticsV3::WebPropertySummary>]
@@ -269,6 +282,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @starred = args[:starred] if args.key?(:starred)
           @web_properties = args[:web_properties] if args.key?(:web_properties)
         end
       end
@@ -3600,6 +3614,12 @@ module Google
         # @return [String]
         attr_accessor :site_search_query_parameters
       
+        # Indicates whether this view (profile) is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # Whether or not Analytics will strip search category parameters from the URLs
         # in your reports.
         # Corresponds to the JSON property `stripSiteSearchCategoryParameters`
@@ -3664,6 +3684,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @site_search_category_parameters = args[:site_search_category_parameters] if args.key?(:site_search_category_parameters)
           @site_search_query_parameters = args[:site_search_query_parameters] if args.key?(:site_search_query_parameters)
+          @starred = args[:starred] if args.key?(:starred)
           @strip_site_search_category_parameters = args[:strip_site_search_category_parameters] if args.key?(:strip_site_search_category_parameters)
           @strip_site_search_query_parameters = args[:strip_site_search_query_parameters] if args.key?(:strip_site_search_query_parameters)
           @timezone = args[:timezone] if args.key?(:timezone)
@@ -3949,6 +3970,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Indicates whether this view (profile) is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # View (Profile) type. Supported types: WEB or APP.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3963,6 +3990,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @starred = args[:starred] if args.key?(:starred)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4841,6 +4869,12 @@ module Google
         # @return [Array<Google::Apis::AnalyticsV3::ProfileSummary>]
         attr_accessor :profiles
       
+        # Indicates whether this web property is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # Website url for this web property.
         # Corresponds to the JSON property `websiteUrl`
         # @return [String]
@@ -4858,6 +4892,7 @@ module Google
           @level = args[:level] if args.key?(:level)
           @name = args[:name] if args.key?(:name)
           @profiles = args[:profiles] if args.key?(:profiles)
+          @starred = args[:starred] if args.key?(:starred)
           @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
@@ -5006,6 +5041,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Indicates whether this web property is starred or not.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
         # Time this web property was last modified.
         # Corresponds to the JSON property `updated`
         # @return [DateTime]
@@ -5036,6 +5077,7 @@ module Google
           @permissions = args[:permissions] if args.key?(:permissions)
           @profile_count = args[:profile_count] if args.key?(:profile_count)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @starred = args[:starred] if args.key?(:starred)
           @updated = args[:updated] if args.key?(:updated)
           @website_url = args[:website_url] if args.key?(:website_url)
         end

@@ -20,13 +20,13 @@ module Google
   module Apis
     # DoubleClick Search API
     #
-    # Report and modify your advertising data in DoubleClick Search (for example,
+    # Reports and modifies your advertising data in DoubleClick Search (for example,
     # campaigns, ad groups, keywords, and conversions).
     #
     # @see https://developers.google.com/doubleclick-search/
     module DoubleclicksearchV2
       VERSION = 'V2'
-      REVISION = '20160217'
+      REVISION = '20160302'
 
       # View and manage your advertising data in DoubleClick Search
       AUTH_DOUBLECLICKSEARCH = 'https://www.googleapis.com/auth/doubleclicksearch'

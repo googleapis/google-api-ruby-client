@@ -22,7 +22,7 @@ module Google
     module DoubleclicksearchV2
       # DoubleClick Search API
       #
-      # Report and modify your advertising data in DoubleClick Search (for example,
+      # Reports and modifies your advertising data in DoubleClick Search (for example,
       #  campaigns, ad groups, keywords, and conversions).
       #
       # @example

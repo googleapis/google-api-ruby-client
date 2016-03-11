@@ -22,7 +22,7 @@ module Google
     module StorageV1
       # Cloud Storage JSON API
       #
-      # Lets you store and retrieve potentially-large, immutable data objects.
+      # Stores and retrieves potentially large, immutable data objects.
       #
       # @example
       #    require 'google/apis/storage_v1'

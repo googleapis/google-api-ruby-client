@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CacheInvalidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -300,6 +306,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1162,6 +1174,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,6 +1283,12 @@ module Google
       end
       
       class ZoneList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1501,6 +1531,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
           property :id, as: 'id'
@@ -1535,6 +1566,13 @@ module Google
         end
       end
       
+      class CacheInvalidationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1564,6 +1602,8 @@ module Google
       
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :last_attach_timestamp, as: 'lastAttachTimestamp'
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :licenses, as: 'licenses'
@@ -1822,6 +1862,14 @@ module Google
         end
       end
       
+      class GlobalSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+        end
+      end
+      
       class HealthCheckReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1924,6 +1972,8 @@ module Google
           property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
@@ -2714,6 +2764,7 @@ module Google
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_service_account, as: 'defaultServiceAccount'
           property :description, as: 'description'
           collection :enabled_features, as: 'enabledFeatures'
           property :id, as: 'id'
@@ -2922,6 +2973,7 @@ module Google
           property :state, as: 'state'
           property :status, as: 'status'
           property :uptime, as: 'uptime'
+          property :uptime_seconds, as: 'uptimeSeconds'
         end
       end
       
@@ -2976,7 +3028,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contents, as: 'contents'
           property :kind, as: 'kind'
+          property :next, as: 'next'
           property :self_link, as: 'selfLink'
+          property :start, as: 'start'
         end
       end
       
@@ -2996,6 +3050,8 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -3447,6 +3503,20 @@ module Google
         end
       end
       
+      class TestPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
       class UrlMap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3642,6 +3712,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ZoneSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
         end
       end
     end

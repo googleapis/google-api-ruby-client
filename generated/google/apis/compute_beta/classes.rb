@@ -95,7 +95,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -310,7 +310,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -465,7 +465,7 @@ module Google
         # @return [String]
         attr_accessor :disk_size_gb
       
-        # Storage type of the disk.
+        # [Deprecated] Storage type of the disk.
         # Corresponds to the JSON property `diskStorageType`
         # @return [String]
         attr_accessor :disk_storage_type
@@ -519,7 +519,10 @@ module Google
         end
       end
       
-      # 
+      # Represents an Autoscaler resource. Autoscalers allow you to automatically
+      # scale virtual machine instances in managed instance groups according to an
+      # autoscaling policy that you define. For more information, read Autoscaling
+      # Groups of Instances.
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -545,7 +548,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -565,8 +568,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # URL of Instance Group Manager or Replica Pool which will be controlled by
-        # Autoscaler.
+        # URL of the managed instance group that this autoscaler will scale.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -609,7 +611,8 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeBeta::AutoscalersScopedList>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#autoscalerAggregatedList for
+        # aggregated lists of autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -642,7 +645,7 @@ module Google
         end
       end
       
-      # Contains a list of persistent autoscaler resources.
+      # Contains a list of Autoscaler resources.
       class AutoscalerList
         include Google::Apis::Core::Hashable
       
@@ -657,7 +660,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Autoscaler>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] Type of resource. Always compute#autoscalerList for lists of
+        # autoscalers.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -694,13 +698,13 @@ module Google
       class AutoscalersScopedList
         include Google::Apis::Core::Hashable
       
-        # List of autoscalers contained in this scope.
+        # [Output Only] List of autoscalers contained in this scope.
         # Corresponds to the JSON property `autoscalers`
         # @return [Array<Google::Apis::ComputeBeta::Autoscaler>]
         attr_accessor :autoscalers
       
-        # Informational warning which replaces the list of autoscalers when the list is
-        # empty.
+        # [Output Only] Informational warning which replaces the list of autoscalers
+        # when the list is empty.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::AutoscalersScopedList::Warning]
         attr_accessor :warning
@@ -715,8 +719,8 @@ module Google
           @warning = args[:warning] if args.key?(:warning)
         end
         
-        # Informational warning which replaces the list of autoscalers when the list is
-        # empty.
+        # [Output Only] Informational warning which replaces the list of autoscalers
+        # when the list is empty.
         class Warning
           include Google::Apis::Core::Hashable
         
@@ -755,7 +759,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -785,11 +789,14 @@ module Google
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of seconds that the Autoscaler should wait between two succeeding
-        # changes to the number of virtual machines. You should define an interval that
-        # is at least as long as the initialization time of a virtual machine and the
-        # time it may take for replica pool to create the virtual machine. The default
-        # is 60 seconds.
+        # The number of seconds that the autoscaler should wait before it starts
+        # collecting information from a new instance. This prevents the autoscaler from
+        # collecting information when the instance is initializing, during which the
+        # collected usage would not be reliable. The default time autoscaler waits is 60
+        # seconds.
+        # Virtual machine initialization times might vary because of numerous factors.
+        # We recommend that you test how long an instance may take to initialize. To do
+        # this, create an instance and time the startup process.
         # Corresponds to the JSON property `coolDownPeriodSec`
         # @return [Fixnum]
         attr_accessor :cool_down_period_sec
@@ -799,27 +806,26 @@ module Google
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyCpuUtilization]
         attr_accessor :cpu_utilization
       
-        # Configuration parameters of autoscaling based on custom metric.
+        # Configuration parameters of autoscaling based on a custom metric.
         # Corresponds to the JSON property `customMetricUtilizations`
         # @return [Array<Google::Apis::ComputeBeta::AutoscalingPolicyCustomMetricUtilization>]
         attr_accessor :custom_metric_utilizations
       
-        # Load balancing utilization policy.
+        # Configuration parameters of autoscaling based on load balancing.
         # Corresponds to the JSON property `loadBalancingUtilization`
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyLoadBalancingUtilization]
         attr_accessor :load_balancing_utilization
       
-        # The maximum number of replicas that the Autoscaler can scale up to. This field
-        # is required for config to be effective. Maximum number of replicas should be
-        # not lower than minimal number of replicas. Absolute limit for this value is
-        # defined in Autoscaler backend.
+        # The maximum number of instances that the autoscaler can scale up to. This is
+        # required when creating or updating an autoscaler. The maximum number of
+        # replicas should not be lower than minimal number of replicas.
         # Corresponds to the JSON property `maxNumReplicas`
         # @return [Fixnum]
         attr_accessor :max_num_replicas
       
-        # The minimum number of replicas that the Autoscaler can scale down to. Can't be
-        # less than 0. If not provided Autoscaler will choose default value depending on
-        # maximal number of replicas.
+        # The minimum number of replicas that the autoscaler can scale down to. This
+        # cannot be less than 0. If not provided, autoscaler will choose a default value
+        # depending on maximum number of instances allowed.
         # Corresponds to the JSON property `minNumReplicas`
         # @return [Fixnum]
         attr_accessor :min_num_replicas
@@ -843,10 +849,15 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
-        # The target utilization that the Autoscaler should maintain. It is represented
-        # as a fraction of used cores. For example: 6 cores used in 8-core VM are
-        # represented here as 0.75. Must be a float value between (0, 1]. If not defined,
-        # the default is 0.8.
+        # The target CPU utilization that the autoscaler should maintain. Must be a
+        # float value in the range (0, 1]. If not specified, the default is 0.8.
+        # If the CPU level is below the target utilization, the autoscaler scales down
+        # the number of instances until it reaches the minimum number of instances you
+        # specified or until the average CPU of your instances reaches the target
+        # utilization.
+        # If the average CPU is above the target utilization, the autoscaler scales up
+        # until it reaches the maximum number of instances you specified or until the
+        # average utilization reaches the target utilization.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -865,22 +876,30 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
-        # Identifier of the metric. It should be a Cloud Monitoring metric. The metric
-        # can not have negative values. The metric should be an utilization metric (
-        # increasing number of VMs handling requests x times should reduce average value
-        # of the metric roughly x times). For example you could use: compute.googleapis.
-        # com/instance/network/received_bytes_count.
+        # The identifier of the Cloud Monitoring metric. The metric cannot have negative
+        # values and should be a utilization metric, which means that the number of
+        # virtual machines handling requests should increase or decrease proportionally
+        # to the metric. The metric must also have a label of compute.googleapis.com/
+        # resource_id with the value of the instance's unique ID, although this alone
+        # does not guarantee that the metric is valid.
+        # For example, the following is a valid metric:
+        # compute.googleapis.com/instance/network/received_bytes_count
+        # The following is not a valid metric because it does not increase or decrease
+        # based on usage:
+        # compute.googleapis.com/instance/cpu/reserved_cores
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # Target value of the metric which Autoscaler should maintain. Must be a
+        # Target value of the metric which autoscaler should maintain. Must be a
         # positive value.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
       
-        # Defines type in which utilization_target is expressed.
+        # Defines how target utilization value is expressed for a Cloud Monitoring
+        # metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified,
+        # the default is GAUGE.
         # Corresponds to the JSON property `utilizationTargetType`
         # @return [String]
         attr_accessor :utilization_target_type
@@ -897,16 +916,13 @@ module Google
         end
       end
       
-      # Load balancing utilization policy.
+      # Configuration parameters of autoscaling based on load balancing.
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
       
-        # Fraction of backend capacity utilization (set in HTTP load balancing
-        # configuration) that Autoscaler should maintain. Must be a positive float value.
-        # If not defined, the default is 0.8. For example if your maxRatePerInstance
-        # capacity (in HTTP Load Balancing configuration) is set at 10 and you would
-        # like to keep number of instances such that each instance receives 7 QPS on
-        # average, set this to 0.7.
+        # Fraction of backend capacity utilization (set in HTTP(s) load balancing
+        # configuration) that autoscaler should maintain. Must be a positive float value.
+        # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -1015,6 +1031,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # If true, enable Cloud CDN for this BackendService.
+        # Corresponds to the JSON property `enableCDN`
+        # @return [Boolean]
+        attr_accessor :enable_cdn
+        alias_method :enable_cdn?, :enable_cdn
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a BackendService. An up-to-date fingerprint must be provided in
@@ -1090,6 +1112,7 @@ module Google
           @backends = args[:backends] if args.key?(:backends)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @id = args[:id] if args.key?(:id)
@@ -1175,6 +1198,25 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class CacheInvalidationRule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -1301,6 +1343,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this disk, which is essentially
+        # a hash of the labels set used for optimistic locking. The fingerprint is
+        # initially generated by Compute Engine and changes after every request to
+        # modify or update metadata. You must always provide an up-to-date fingerprint
+        # hash in order to update or change labels.
+        # To see the latest fingerprint, make get() request to the disk.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this disk. These can be later modified by the setLabels
+        # method. Each label key & value must comply with RFC1035. Label values may be
+        # empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output Only] Last attach timestamp in RFC3339 text format.
         # Corresponds to the JSON property `lastAttachTimestamp`
         # @return [String]
@@ -1316,7 +1375,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -1448,6 +1507,8 @@ module Google
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @last_attach_timestamp = args[:last_attach_timestamp] if args.key?(:last_attach_timestamp)
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
           @licenses = args[:licenses] if args.key?(:licenses)
@@ -1802,7 +1863,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -1912,7 +1973,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -2387,7 +2448,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -2410,6 +2471,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class GlobalSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of the previous set of labels for this resource, used to detect
+        # conflicts.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # The new labels for the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -2868,6 +2955,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this image, which is essentially
+        # a hash of the labels set used for optimistic locking. The fingerprint is
+        # initially generated by Compute Engine and changes after every request to
+        # modify or update metadata. You must always provide an up-to-date fingerprint
+        # hash in order to update or change labels.
+        # To see the latest fingerprint, make get() request to retrieve the image.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this image. These can be later modified by the setLabels
+        # method. Each label key & value must comply with RFC1035. Label values may be
+        # empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -2945,6 +3049,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @image_encryption_key = args[:image_encryption_key] if args.key?(:image_encryption_key)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
@@ -3920,7 +4026,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4193,7 +4299,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4604,7 +4710,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -4970,7 +5076,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -5107,7 +5213,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -5485,7 +5591,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -5626,7 +5732,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -5689,7 +5795,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -5878,7 +5984,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -5995,6 +6101,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # [Output Only] Default service account used by VMs running in this project.
+        # Corresponds to the JSON property `defaultServiceAccount`
+        # @return [String]
+        attr_accessor :default_service_account
+      
         # An optional textual description of the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -6047,6 +6158,7 @@ module Google
         def update!(**args)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_service_account = args[:default_service_account] if args.key?(:default_service_account)
           @description = args[:description] if args.key?(:description)
           @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
           @id = args[:id] if args.key?(:id)
@@ -6231,7 +6343,7 @@ module Google
         end
       end
       
-      # Represents a Routes resource. A route specifies how certain packets should be
+      # Represents a Route resource. A route specifies how certain packets should be
       # handled by the network. Routes are associated with instances by tags and the
       # set of routes for a particular instance is called its routing table.
       # For each packet leaving a instance, the system searches that instance's
@@ -6239,7 +6351,7 @@ module Google
       # destination IP address, preferring smaller or more specific ranges over larger
       # ones. If there is a tie, the system selects the route with the smallest
       # priority value. If there is still a tie, it uses the layer three and four
-      # packet headers to select just one of the remaining matching Routes. The packet
+      # packet headers to select just one of the remaining matching routes. The packet
       # is then forwarded as specified by the nextHop field of the winning route -
       # either to another instance destination, a instance gateway or a Google Compute
       # Engine-operated gateway.
@@ -6275,7 +6387,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -6406,7 +6518,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -6432,7 +6544,7 @@ module Google
         end
       end
       
-      # Contains a list of route resources.
+      # Contains a list of Route resources.
       class RouteList
         include Google::Apis::Core::Hashable
       
@@ -6521,7 +6633,11 @@ module Google
         attr_accessor :kind
       
         # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long and comply with RFC1035.
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6561,7 +6677,7 @@ module Google
         end
       end
       
-      # Contains a list of RoutersScopedList.
+      # Contains a list of routers.
       class RouterAggregatedList
         include Google::Apis::Core::Hashable
       
@@ -6571,7 +6687,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped Router lists.
+        # A map of scoped router lists.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeBeta::RoutersScopedList>]
         attr_accessor :items
@@ -6613,8 +6729,8 @@ module Google
       class RouterBgp
         include Google::Apis::Core::Hashable
       
-        # Local BGP Autonomous System Number (ASN) Can be a constant public ASN value
-        # for google, or a customer-specified private ASN. In either case, the value
+        # Local BGP Autonomous System Number (ASN). Can be a constant public ASN value
+        # for Google, or a customer-specified private ASN. In either case, the value
         # will be fixed for this router resource. All VPN tunnels that link to this
         # router will have the same local ASN.
         # Corresponds to the JSON property `asn`
@@ -6644,17 +6760,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertised_route_priority
       
-        # Name of the interface it is associated with.
+        # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
         attr_accessor :interface_name
       
-        # IP address of the interface inside Google cloud.
+        # IP address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # Name of this BGP Peer. The name must be 1-63 characters long and comply with
+        # Name of this BGP peer. The name must be 1-63 characters long and comply with
         # RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6691,8 +6807,8 @@ module Google
       class RouterInterface
         include Google::Apis::Core::Hashable
       
-        # IP address and range of the interface. The value should be a CIDR formatted
-        # string, for example: 169.254.0.1/30. NOTE: Do NOT trucate address, as it
+        # IP address and range of the interface. The value should be a CIDR-formatted
+        # string, for example: 169.254.0.1/30. NOTE: Do NOT truncate address, as it
         # represents IP address of interface.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
@@ -6774,7 +6890,7 @@ module Google
       class RouterStatus
         include Google::Apis::Core::Hashable
       
-        # Best routes for this Router.
+        # Best routes for this router.
         # Corresponds to the JSON property `bestRoutes`
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :best_routes
@@ -6805,7 +6921,7 @@ module Google
       class RouterStatusBgpPeerStatus
         include Google::Apis::Core::Hashable
       
-        # Routes that were advertised to the remote BgpPeer
+        # Routes that were advertised to the remote BGP peer
         # Corresponds to the JSON property `advertisedRoutes`
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :advertised_routes
@@ -6815,12 +6931,12 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # URL of the VPN tunnel that this BgpPeer controls.
+        # URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
-        # Name of this BgpPeer which is unique within the Router resource.
+        # Name of this BGP peer. Unique within the routes resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6835,21 +6951,26 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
-        # BGP state as specified in RFC-1771.
+        # BGP state as specified in RFC1771.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Status of the BgpPeer: `UP, DOWN`
+        # Status of the BGP peer: `UP, DOWN`
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # Time this session has been up. Format: 1 second < uptime < 1 day = "23:59:59"
-        # 1 day <= uptime < 1 week = "6d:23h:59m" 1 week <= uptime = "123w:6d:23h"
+        # Time this session has been up. Format: 14 years, 51 weeks, 6 days, 23 hours,
+        # 59 minutes, 59 seconds
         # Corresponds to the JSON property `uptime`
         # @return [String]
         attr_accessor :uptime
+      
+        # Time this session has been up, in seconds. Format: 145
+        # Corresponds to the JSON property `uptimeSeconds`
+        # @return [String]
+        attr_accessor :uptime_seconds
       
         def initialize(**args)
            update!(**args)
@@ -6866,6 +6987,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @uptime = args[:uptime] if args.key?(:uptime)
+          @uptime_seconds = args[:uptime_seconds] if args.key?(:uptime_seconds)
         end
       end
       
@@ -6898,7 +7020,7 @@ module Google
       class RoutersScopedList
         include Google::Apis::Core::Hashable
       
-        # List of Routers contained in this scope.
+        # List of routers contained in this scope.
         # Corresponds to the JSON property `routers`
         # @return [Array<Google::Apis::ComputeBeta::Router>]
         attr_accessor :routers
@@ -6959,7 +7081,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -7039,10 +7161,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] The position of the next byte of content from the serial console
+        # output. Use this value in the next request as the start parameter.
+        # Corresponds to the JSON property `next`
+        # @return [String]
+        attr_accessor :next
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output Only] The starting byte position of the output that was returned. This
+        # should match the start parameter sent with the request. If the serial console
+        # output exceeds the size of the buffer, older output will be overwritten by
+        # newer content and the start values will be mismatched.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
       
         def initialize(**args)
            update!(**args)
@@ -7052,7 +7188,9 @@ module Google
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
           @kind = args[:kind] if args.key?(:kind)
+          @next = args[:next] if args.key?(:next)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -7112,6 +7250,23 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this snapshot, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update metadata. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make get() request to the snapshot.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this snapshot. These can be later modified by the setLabels
+        # method. Each label key & value must comply with RFC1035. Label values may be
+        # empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # [Output Only] A list of public visible licenses that apply to this snapshot.
         # This can be because the original image had licenses attached (such as a
@@ -7189,6 +7344,8 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -7618,7 +7775,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -7702,7 +7859,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -7792,8 +7949,8 @@ module Google
       class TargetHttpsProxiesSetSslCertificatesRequest
         include Google::Apis::Core::Hashable
       
-        # New set of URLs to SslCertificate resources to associate with this
-        # TargetHttpProxy. Currently exactly one SSL certificate must be specified.
+        # New set of SslCertificate resources to associate with this TargetHttpsProxy
+        # resource. Currently exactly one SslCertificate resource must be specified.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -7829,7 +7986,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of the resource. Always compute#targetHttpsProxy for target
+        # [Output Only] Type of resource. Always compute#targetHttpsProxy for target
         # HTTPS proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -7899,7 +8056,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::TargetHttpsProxy>]
         attr_accessor :items
       
-        # Type of resource.
+        # Type of resource. Always compute#targetHttpsProxyList for lists of target
+        # HTTPS proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8176,7 +8334,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -8597,7 +8755,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -8676,7 +8834,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -8896,7 +9054,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -8956,6 +9114,45 @@ module Google
           @expected_service = args[:expected_service] if args.key?(:expected_service)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # 
+      class TestPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the 'resource'. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # 
+      class TestPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -9313,7 +9510,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
       
-        # Name of the resource; provided by the client when the resource is created. The
+        # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -9333,7 +9530,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # URL of Router resource to be used for dynamic routing.
+        # URL of router resource to be used for dynamic routing.
         # Corresponds to the JSON property `router`
         # @return [String]
         attr_accessor :router
@@ -9359,8 +9556,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # URL of the VPN gateway to which this VPN tunnel is associated. Provided by the
-        # client when the VPN tunnel is created.
+        # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
+        # the client when the VPN tunnel is created.
         # Corresponds to the JSON property `targetVpnGateway`
         # @return [String]
         attr_accessor :target_vpn_gateway
@@ -9551,7 +9748,7 @@ module Google
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource, and a
+            # name. Other examples might be a key indicating a deprecated resource and a
             # suggested replacement, or a warning about invalid network settings (for
             # example, if an instance attempts to perform IP forwarding but is not enabled
             # for IP forwarding).
@@ -9734,6 +9931,32 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class ZoneSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of the previous set of labels for this resource, used to detect
+        # conflicts.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # The new labels for the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
     end

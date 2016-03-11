@@ -1373,6 +1373,30 @@ module Google
         # @return [String]
         attr_accessor :end
       
+        # Restricts results to a shard containing approximately `1/totalShards` of the
+        # normal response payload for this query. Results from a sharded request are
+        # disjoint from those returned by all queries which differ only in their shard
+        # parameter. A shard may yield 0 results; this is especially likely for large
+        # values of `totalShards`. Valid values are `[0, totalShards)`.
+        # Corresponds to the JSON property `shard`
+        # @return [Fixnum]
+        attr_accessor :shard
+      
+        # Specifying `totalShards` causes a disjoint subset of the normal response
+        # payload to be returned for each query with a unique `shard` parameter
+        # specified. A best effort is made to yield equally sized shards. Sharding can
+        # be used to distribute processing amongst workers, where each worker is
+        # assigned a unique `shard` number and all workers specify the same `totalShards`
+        # number. The union of reads returned for all sharded queries `[0, totalShards)`
+        # is equal to those returned by a single unsharded query. Queries for different
+        # values of `totalShards` with common divisors will share shard boundaries. For
+        # example, streaming `shard` 2 of 5 `totalShards` yields the same results as
+        # streaming `shard`s 4 and 5 of 10 `totalShards`. This property can be leveraged
+        # for adaptive retries.
+        # Corresponds to the JSON property `totalShards`
+        # @return [Fixnum]
+        attr_accessor :total_shards
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1384,6 +1408,8 @@ module Google
           @reference_name = args[:reference_name] if args.key?(:reference_name)
           @start = args[:start] if args.key?(:start)
           @end = args[:end] if args.key?(:end)
+          @shard = args[:shard] if args.key?(:shard)
+          @total_shards = args[:total_shards] if args.key?(:total_shards)
         end
       end
       
@@ -2309,6 +2335,31 @@ module Google
           @phaseset = args[:phaseset] if args.key?(:phaseset)
           @genotype_likelihood = args[:genotype_likelihood] if args.key?(:genotype_likelihood)
           @info = args[:info] if args.key?(:info)
+        end
+      end
+      
+      # 
+      class MergeVariantsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The destination variant set.
+        # Corresponds to the JSON property `variantSetId`
+        # @return [String]
+        attr_accessor :variant_set_id
+      
+        # The variants to be merged with existing variants.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<Google::Apis::GenomicsV1::Variant>]
+        attr_accessor :variants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
+          @variants = args[:variants] if args.key?(:variants)
         end
       end
       

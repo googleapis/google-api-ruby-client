@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MergeVariantsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchCallSetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -710,6 +716,8 @@ module Google
           property :reference_name, as: 'referenceName'
           property :start, as: 'start'
           property :end, as: 'end'
+          property :shard, as: 'shard'
+          property :total_shards, as: 'totalShards'
         end
       end
       
@@ -934,6 +942,15 @@ module Google
         include Representable::JSON::Collection
         items
       end
+      
+        end
+      end
+      
+      class MergeVariantsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :variant_set_id, as: 'variantSetId'
+          collection :variants, as: 'variants', class: Google::Apis::GenomicsV1::Variant, decorator: Google::Apis::GenomicsV1::Variant::Representation
       
         end
       end

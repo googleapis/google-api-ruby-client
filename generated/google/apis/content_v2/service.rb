@@ -22,7 +22,7 @@ module Google
     module ContentV2
       # Content API for Shopping
       #
-      # Manage product items, inventory, and Merchant Center accounts for Google
+      # Manages product items, inventory, and Merchant Center accounts for Google
       #  Shopping.
       #
       # @example

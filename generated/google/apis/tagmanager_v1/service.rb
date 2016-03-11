@@ -22,7 +22,7 @@ module Google
     module TagmanagerV1
       # Tag Manager API
       #
-      # API for accessing Tag Manager accounts and containers.
+      # Accesses Tag Manager accounts and containers.
       #
       # @example
       #    require 'google/apis/tagmanager_v1'

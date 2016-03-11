@@ -20,12 +20,13 @@ module Google
   module Apis
     # Cloud User Accounts API
     #
-    # API for the Google Cloud User Accounts service.
+    # Creates and manages users and groups for accessing Google Compute Engine
+    # virtual machines.
     #
     # @see https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     module ClouduseraccountsBeta
       VERSION = 'Beta'
-      REVISION = '20150924'
+      REVISION = '20160301'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -22,7 +22,7 @@ module Google
     module CloudmonitoringV2beta2
       # Cloud Monitoring API
       #
-      # API for accessing Google Cloud and API monitoring data.
+      # Accesses Google Cloud Monitoring data.
       #
       # @example
       #    require 'google/apis/cloudmonitoring_v2beta2'

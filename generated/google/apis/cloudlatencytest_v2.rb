@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Cloud Network Performance Monitoring API
     #
-    # A Test API to report latency data.
+    # Reports latency data.
     #
     # @see 
     module CloudlatencytestV2
       VERSION = 'V2'
-      REVISION = '20150508'
+      REVISION = '20160309'
 
       # View monitoring data for all of your Google Cloud and API projects
       AUTH_MONITORING_READONLY = 'https://www.googleapis.com/auth/monitoring.readonly'

@@ -20,12 +20,12 @@ module Google
   module Apis
     # QPX Express API
     #
-    # Lets you find the least expensive flights between an origin and a destination.
+    # Finds the least expensive flights between an origin and a destination.
     #
     # @see http://developers.google.com/qpx-express
     module QpxExpressV1
       VERSION = 'V1'
-      REVISION = '20140321'
+      REVISION = '20160307'
     end
   end
 end

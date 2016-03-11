@@ -66,7 +66,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -76,7 +76,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -135,7 +135,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] address
         #   Name of the address resource to delete.
         # @param [String] fields
@@ -176,7 +176,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] address
         #   Name of the address resource to return.
         # @param [String] fields
@@ -218,7 +218,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::Address] address_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -259,7 +259,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -271,7 +271,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -281,7 +281,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -337,6 +337,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_address_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of autoscalers.
         # @param [String] project
         #   Project ID for this request.
@@ -351,7 +395,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -361,7 +405,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -416,13 +460,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified autoscaler resource.
+        # Deletes the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the persistent autoscaler resource to delete.
+        #   Name of the autoscaler to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -457,13 +501,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified autoscaler resource.
+        # Returns the specified autoscaler resource. Get a list of available autoscalers
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the persistent autoscaler resource to return.
+        #   Name of the autoscaler to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -498,12 +543,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an autoscaler resource in the specified project using the data
-        # included in the request.
+        # Creates an autoscaler in the specified project using the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -540,11 +585,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of autoscaler resources contained within the specified zone.
+        # Retrieves a list of autoscalers contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -556,7 +601,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -566,7 +611,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -622,14 +667,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an autoscaler resource in the specified project using the data
-        # included in the request. This method supports patch semantics.
+        # Updates an autoscaler in the specified project using the data included in the
+        # request. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   Name of the zone for this request.
         # @param [String] autoscaler
-        #   Name of the autoscaler resource to update.
+        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -667,15 +712,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an autoscaler resource in the specified project using the data
-        # included in the request.
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   Name of the zone scoping this request.
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_autoscaler_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/autoscalers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an autoscaler in the specified project using the data included in the
+        # request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] autoscaler
-        #   Name of the autoscaler resource to update.
+        #   Name of the autoscaler to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -750,7 +839,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified BackendService resource.
+        # Returns the specified BackendService resource. Get a list of available backend
+        # services by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -884,7 +974,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -894,7 +984,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -993,6 +1083,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_backend_service_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/backendServices/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the entire content of the BackendService resource. There are several
         # restrictions and guidelines to keep in mind when updating a backend service.
         # Read  Restrictions and Guidelines for more information.
@@ -1050,7 +1181,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1060,7 +1191,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1115,7 +1246,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified disk type.
+        # Returns the specified disk type. Get a list of available disk types by making
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1172,7 +1304,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1182,7 +1314,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1252,7 +1384,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1262,7 +1394,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1404,7 +1536,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a specified persistent disk.
+        # Returns a specified persistent disk. Get a list of available persistent disks
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1508,7 +1641,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1518,7 +1651,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1612,6 +1745,94 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['disk'] = disk unless disk.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on the target disk.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::ZoneSetLabelsRequest] zone_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_disk_labels(project, zone, resource, zone_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::ZoneSetLabelsRequest::Representation
+          command.request_object = zone_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_disk_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1747,7 +1968,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1757,7 +1978,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -1854,6 +2075,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_firewall_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/firewalls/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the specified firewall rule with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -1909,7 +2171,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -1919,7 +2181,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2115,7 +2377,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2125,7 +2387,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2226,6 +2488,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_forwarding_rule_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified address resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2264,7 +2570,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified address resource.
+        # Returns the specified address resource. Get a list of available addresses by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] address
@@ -2355,7 +2662,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2365,7 +2672,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2420,6 +2727,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_global_address_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/addresses/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2458,7 +2806,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified ForwardingRule resource.
+        # Returns the specified ForwardingRule resource. Get a list of available
+        # forwarding rules by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -2550,7 +2899,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2560,7 +2909,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2657,6 +3006,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_global_forwarding_rule_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/forwardingRules/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of all operations.
         # @param [String] project
         #   Project ID for this request.
@@ -2671,7 +3061,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2681,7 +3071,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2772,7 +3162,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified Operations resource.
+        # Retrieves the specified Operations resource. Get a list of operations by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -2824,7 +3215,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -2834,7 +3225,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -2927,7 +3318,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpHealthCheck resource.
+        # Returns the specified HttpHealthCheck resource. Get a list of available HTTP
+        # health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -3019,7 +3411,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3029,7 +3421,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3126,6 +3518,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_http_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/httpHealthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -3206,7 +3639,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpsHealthCheck resource.
+        # Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS
+        # health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -3298,7 +3732,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3308,7 +3742,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3399,6 +3833,47 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpsHealthCheck'] = https_health_check unless https_health_check.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_https_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/httpsHealthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3527,7 +4002,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified image.
+        # Returns the specified image. Get a list of available images by making a list()
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -3662,7 +4138,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3672,7 +4148,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3721,6 +4197,88 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on the target image.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_image_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/images/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_image_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/images/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3792,7 +4350,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -3802,7 +4360,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -3950,7 +4508,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group.
+        # Returns all of the details about the specified managed instance group. Get a
+        # list of available managed instance groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4054,7 +4613,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4064,7 +4623,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4269,7 +4828,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   The URL of the zone where the managed instance group is located.
+        #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersSetAutoHealingRequest] instance_group_managers_set_auto_healing_request_object
@@ -4404,6 +4963,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_instance_group_manager_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds a list of instances to the specified instance group. All of the instances
         # in the instance group must be in the same network/subnetwork. Read  Adding
         # instances for more information.
@@ -4464,7 +5067,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4474,7 +5077,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4572,7 +5175,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance group resource.
+        # Returns the specified instance group. Get a list of available instance groups
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4672,7 +5276,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4682,7 +5286,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4758,7 +5362,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -4768,7 +5372,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -4916,6 +5520,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_instance_group_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified instance template. If you delete an instance template
         # that is being referenced from another instance group, the instance group will
         # not be able to create or recreate virtual machine instances. Deleting an
@@ -4957,7 +5605,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template resource.
+        # Returns the specified instance template. Get a list of available instance
+        # templates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -5051,7 +5700,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5061,7 +5710,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5110,6 +5759,47 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_instance_template_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/instanceTemplates/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5177,7 +5867,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5187,7 +5877,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -5419,7 +6109,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Instance resource.
+        # Returns the specified Instance resource. Get a list of available instances by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5469,6 +6160,10 @@ module Google
         #   Name of the instance scoping this request.
         # @param [Fixnum] port
         #   Specifies which COM or serial port to retrieve data from.
+        # @param [String] start
+        #   For the initial request, leave this field unspecified. For subsequent calls,
+        #   this field should be set to the next value that was returned in the previous
+        #   call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5490,7 +6185,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance_serial_port_output(project, zone, instance, port: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance_serial_port_output(project, zone, instance, port: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/serialPort', options)
           command.response_representation = Google::Apis::ComputeBeta::SerialPortOutput::Representation
           command.response_class = Google::Apis::ComputeBeta::SerialPortOutput
@@ -5498,6 +6193,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['port'] = port unless port.nil?
+          command.query['start'] = start unless start.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5562,7 +6258,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -5572,7 +6268,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6025,7 +6721,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified license resource.
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_instance_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified License resource. Get a list of available licenses by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -6077,7 +6818,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6087,7 +6828,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6142,7 +6883,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type.
+        # Returns the specified machine type. Get a list of available machine types by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6199,7 +6941,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6209,7 +6951,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6303,7 +7045,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network.
+        # Returns the specified network. Get a list of available networks by making a
+        # list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -6394,7 +7137,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6404,7 +7147,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6459,7 +7202,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified project resource.
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_network_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/networks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -6669,7 +7453,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6679,7 +7463,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6735,7 +7519,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified region resource.
+        # Returns the specified Region resource. Get a list of available regions by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -6787,7 +7572,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6797,7 +7582,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6852,7 +7637,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of Routers.
+        # Retrieves an aggregated list of routers.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6866,7 +7651,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -6876,7 +7661,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -6935,7 +7720,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to delete.
         # @param [String] fields
@@ -6972,11 +7757,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Router resource.
+        # Returns the specified Router resource. Get a list of available routers by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to return.
         # @param [String] fields
@@ -7013,11 +7799,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves runtime information of the specified Router.
+        # Retrieves runtime information of the specified router.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to query.
         # @param [String] fields
@@ -7059,7 +7845,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::Router] router_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7100,7 +7886,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -7112,7 +7898,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7122,7 +7908,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7178,12 +7964,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the Router resource. This method supports patch
+        # Updates the entire content of the Router resource. This method supports patch
         # semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to update.
         # @param [Google::Apis::ComputeBeta::Router] router_object
@@ -7223,11 +8009,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the Router resource.
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_router_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/routers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the entire content of the Router resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to update.
         # @param [Google::Apis::ComputeBeta::Router] router_object
@@ -7267,11 +8097,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified route resource.
+        # Deletes the specified Route resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
-        #   Name of the route resource to delete.
+        #   Name of the Route resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7305,11 +8135,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified route resource.
+        # Returns the specified Route resource. Get a list of available routes by making
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
-        #   Name of the route resource to return.
+        #   Name of the Route resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7343,7 +8174,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a route resource in the specified project using the data included in
+        # Creates a Route resource in the specified project using the data included in
         # the request.
         # @param [String] project
         #   Project ID for this request.
@@ -7382,7 +8213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of route resources available to the specified project.
+        # Retrieves the list of Route resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -7396,7 +8227,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7406,7 +8237,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7461,6 +8292,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_route_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/routes/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified Snapshot resource. Keep in mind that deleting a single
         # snapshot might not necessarily delete all the data on that snapshot. If any
         # data on the snapshot that is marked for deletion is needed for subsequent
@@ -7503,7 +8375,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Snapshot resource.
+        # Returns the specified Snapshot resource. Get a list of available snapshots by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -7556,7 +8429,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7566,7 +8439,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7621,6 +8494,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on the target snapshot.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_snapshot_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_snapshot_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified SslCertificate resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7659,7 +8614,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified SslCertificate resource.
+        # Returns the specified SslCertificate resource. Get a list of available SSL
+        # certificates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_certificate
@@ -7751,7 +8707,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7761,7 +8717,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7816,6 +8772,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_ssl_certificate_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/sslCertificates/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of subnetworks.
         # @param [String] project
         #   Project ID for this request.
@@ -7830,7 +8827,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -7840,7 +8837,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -7936,7 +8933,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified subnetwork.
+        # Returns the specified subnetwork. Get a list of available subnetworks by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8035,7 +9033,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8045,7 +9043,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8101,6 +9099,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_subnetwork_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified TargetHttpProxy resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8139,7 +9181,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpProxy resource.
+        # Returns the specified TargetHttpProxy resource. Get a list of available target
+        # HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -8231,7 +9274,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8241,7 +9284,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8300,7 +9343,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
-        #   The name of the TargetHttpProxy resource to set a URL map for.
+        #   Name of the TargetHttpProxy to set a URL map for.
         # @param [Google::Apis::ComputeBeta::UrlMapReference] url_map_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8331,6 +9374,47 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpProxy'] = target_http_proxy unless target_http_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_http_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetHttpProxies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8375,7 +9459,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpsProxy resource.
+        # Returns the specified TargetHttpsProxy resource. Get a list of available
+        # target HTTPS proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -8467,7 +9552,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8477,7 +9562,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8536,7 +9621,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
-        #   Name of the TargetHttpsProxy resource to set an SSL certificate for.
+        #   Name of the TargetHttpsProxy resource to set an SslCertificates resource for.
         # @param [Google::Apis::ComputeBeta::TargetHttpsProxiesSetSslCertificatesRequest] target_https_proxies_set_ssl_certificates_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8614,6 +9699,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_https_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetHttpsProxies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of target instances.
         # @param [String] project
         #   Project ID for this request.
@@ -8628,7 +9754,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8638,7 +9764,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8734,7 +9860,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetInstance resource.
+        # Returns the specified TargetInstance resource. Get a list of available target
+        # instances by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8834,7 +9961,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -8844,7 +9971,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -8894,6 +10021,50 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_instance_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/targetInstances/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9002,7 +10173,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9012,7 +10183,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9108,7 +10279,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target pool.
+        # Returns the specified target pool. Get a list of available target pools by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9252,7 +10424,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9262,7 +10434,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9453,6 +10625,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_pool_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of target VPN gateways.
         # @param [String] project
         #   Project ID for this request.
@@ -9467,7 +10683,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9477,7 +10693,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9536,7 +10752,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] target_vpn_gateway
         #   Name of the target VPN gateway to delete.
         # @param [String] fields
@@ -9573,11 +10789,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target VPN gateway.
+        # Returns the specified target VPN gateway. Get a list of available target VPN
+        # gateways by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] target_vpn_gateway
         #   Name of the target VPN gateway to return.
         # @param [String] fields
@@ -9619,7 +10836,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::TargetVpnGateway] target_vpn_gateway_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9661,7 +10878,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -9673,7 +10890,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9683,7 +10900,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9739,6 +10956,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_vpn_gateway_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9777,7 +11038,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified UrlMap resource.
+        # Returns the specified UrlMap resource. Get a list of available URL maps by
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -9854,6 +11116,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Initiates a cache invalidation operation, invalidating the specified path,
+        # scoped to the specified UrlMap.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] url_map
+        #   Name of the UrlMap scoping this request.
+        # @param [Google::Apis::ComputeBeta::CacheInvalidationRule] cache_invalidation_rule_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def invalidate_url_map_cache(project, url_map, cache_invalidation_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/invalidateCache', options)
+          command.request_representation = Google::Apis::ComputeBeta::CacheInvalidationRule::Representation
+          command.request_object = cache_invalidation_rule_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the list of UrlMap resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -9868,7 +11172,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -9878,7 +11182,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -9969,6 +11273,47 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_url_map_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/urlMaps/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10072,7 +11417,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -10082,7 +11427,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -10141,7 +11486,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] vpn_tunnel
         #   Name of the VpnTunnel resource to delete.
         # @param [String] fields
@@ -10178,11 +11523,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified VpnTunnel resource.
+        # Returns the specified VpnTunnel resource. Get a list of available VPN tunnels
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] vpn_tunnel
         #   Name of the VpnTunnel resource to return.
         # @param [String] fields
@@ -10224,7 +11570,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::VpnTunnel] vpn_tunnel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10266,7 +11612,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   The name of the region for this request.
+        #   Name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
         #   expression`. Your `expression` must be in the format: field_name
@@ -10278,7 +11624,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -10288,7 +11634,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -10338,6 +11684,50 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_vpn_tunnel_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/vpnTunnels/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10440,7 +11830,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -10450,7 +11840,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
@@ -10506,7 +11896,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified zone resource.
+        # Returns the specified Zone resource. Get a list of available zones by making a
+        # list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10544,7 +11935,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of zone resources available to the specified project.
+        # Retrieves the list of Zone resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10558,7 +11949,7 @@ module Google
         #   filtering by (string, number, boolean). For string fields, the literal value
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
-        #   For example, to filter for instances whose name is not equal to example-
+        #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
         #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
         #   also filter on nested fields. For example, you could filter on instances that
@@ -10568,7 +11959,7 @@ module Google
         #   The Beta API also supports filtering on multiple expressions by providing each
         #   separate expression within parentheses. For example, (scheduling.
         #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions meaning that resources must match all expressions
+        #   treated as AND expressions, meaning that resources must match all expressions
         #   to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number

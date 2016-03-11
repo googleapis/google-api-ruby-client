@@ -1494,6 +1494,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :custom_url, as: 'customUrl'
           property :default_language, as: 'defaultLanguage'
           property :description, as: 'description'
           property :localized, as: 'localized', class: Google::Apis::YoutubeV3::ChannelLocalization, decorator: Google::Apis::YoutubeV3::ChannelLocalization::Representation

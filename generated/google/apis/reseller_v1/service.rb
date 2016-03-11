@@ -22,7 +22,7 @@ module Google
     module ResellerV1
       # Enterprise Apps Reseller API
       #
-      # Lets you create and manage your customers and their subscriptions.
+      # Creates and manages your customers and their subscriptions.
       #
       # @example
       #    require 'google/apis/reseller_v1'

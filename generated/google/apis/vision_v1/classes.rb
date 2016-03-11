@@ -757,7 +757,7 @@ module Google
         # @return [Google::Apis::VisionV1::BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The location information for the recognized entity. Multiple
+        # The location information for the detected entity. Multiple
         # <code>LocationInfo</code> elements can be present since one location may
         # indicate the location of the scene in the query image, and another the
         # location of the place where the query image was taken. Location information
@@ -766,7 +766,7 @@ module Google
         # @return [Array<Google::Apis::VisionV1::LocationInfo>]
         attr_accessor :locations
       
-        # The accuracy of the entity recognition in an image.
+        # The accuracy of the entity detection in an image.
         # For example, for an image containing 'Eiffel Tower,' this field represents
         # the confidence that there is a tower in the query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`

@@ -22,8 +22,7 @@ module Google
     module ReplicapoolupdaterV1beta1
       # Google Compute Engine Instance Group Updater API
       #
-      # The Google Compute Engine Instance Group Updater API provides services for
-      #  updating groups of Compute Engine Instances.
+      # Updates groups of Compute Engine instances.
       #
       # @example
       #    require 'google/apis/replicapoolupdater_v1beta1'

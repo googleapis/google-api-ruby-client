@@ -22,10 +22,9 @@ module Google
     module GenomicsV1
       # Genomics API
       #
-      # An API to store, process, explore, and share genomic data. It supports
-      #  reference-based alignments, genetic variants, and reference genomes. This API
-      #  provides an implementation of the Global Alliance for Genomics and Health (
-      #  GA4GH) v0.5.1 API as well as several extensions.
+      # Stores, processes, explores and shares genomic data. This API implements the
+      #  Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
+      #  extensions.
       #
       # @example
       #    require 'google/apis/genomics_v1'
@@ -1254,6 +1253,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Merges the given variants with existing variants. For the definitions of
+        # variants and other genomics resources, see [Fundamentals of Google Genomics](
+        # https://cloud.google.com/genomics/fundamentals-of-google-genomics) Each
+        # variant will be merged with an existing variant that matches its reference
+        # sequence, start, end, reference bases, and alternative bases. If no such
+        # variant exists, a new one will be created. When variants are merged, the call
+        # information from the new variant is added to the existing variant, and other
+        # fields (such as key/value pairs) are discarded.
+        # @param [Google::Apis::GenomicsV1::MergeVariantsRequest] merge_variants_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def merge_variants(merge_variants_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/variants:merge', options)
+          command.request_representation = Google::Apis::GenomicsV1::MergeVariantsRequest::Representation
+          command.request_object = merge_variants_request_object
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a stream of all the variants matching the search request, ordered by
         # reference name, position, and ID.
         # @param [Google::Apis::GenomicsV1::StreamVariantsRequest] stream_variants_request_object
@@ -1421,10 +1457,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the contents of a variant set. The variant set object is not deleted.
-        # For the definitions of variant sets and other genomics resources, see [
-        # Fundamentals of Google Genomics](https://cloud.google.com/genomics/
-        # fundamentals-of-google-genomics)
+        # Deletes a variant set including all variants, call sets, and calls within.
+        # This is not reversible. For the definitions of variant sets and other genomics
+        # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
+        # genomics/fundamentals-of-google-genomics)
         # @param [String] variant_set_id
         #   The ID of the variant set to be deleted.
         # @param [String] fields

@@ -228,6 +228,10 @@ module Google
         end
         
         # Get project configuration.
+        # @param [String] delegated_project_number
+        #   Delegated GCP project number of the request.
+        # @param [String] project_number
+        #   GCP project number of the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -249,10 +253,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_config(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_project_config(delegated_project_number: nil, project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'getProjectConfig', options)
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse
+          command.query['delegatedProjectNumber'] = delegated_project_number unless delegated_project_number.nil?
+          command.query['projectNumber'] = project_number unless project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -387,6 +393,41 @@ module Google
           command.request_object = set_account_info_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set project configuration.
+        # @param [Google::Apis::IdentitytoolkitV3::SetProjectConfigRequest] set_project_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_relyingparty_project_config(set_project_config_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'setProjectConfig', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SetProjectConfigRequest::Representation
+          command.request_object = set_project_config_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

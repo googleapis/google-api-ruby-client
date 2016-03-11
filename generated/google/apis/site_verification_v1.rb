@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Site Verification API
     #
-    # Lets you programatically verify ownership of websites or domains with Google.
+    # Verifies ownership of websites or domains with Google.
     #
     # @see https://developers.google.com/site-verification/
     module SiteVerificationV1
       VERSION = 'V1'
-      REVISION = '20151007'
+      REVISION = '20160228'
 
       # Manage the list of sites and domains you control
       AUTH_SITEVERIFICATION = 'https://www.googleapis.com/auth/siteverification'

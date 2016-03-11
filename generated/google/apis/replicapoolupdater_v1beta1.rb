@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Compute Engine Instance Group Updater API
     #
-    # The Google Compute Engine Instance Group Updater API provides services for
-    # updating groups of Compute Engine Instances.
+    # Updates groups of Compute Engine instances.
     #
     # @see https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
     module ReplicapoolupdaterV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20160107'
+      REVISION = '20160229'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

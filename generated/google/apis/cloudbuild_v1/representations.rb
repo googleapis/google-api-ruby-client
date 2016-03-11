@@ -142,6 +142,7 @@ module Google
       class StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation, as: 'generation'
           property :bucket, as: 'bucket'
           property :object, as: 'object'
         end

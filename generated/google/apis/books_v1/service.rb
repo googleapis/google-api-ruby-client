@@ -2091,6 +2091,8 @@ module Google
         # Return a list of books in My Library.
         # @param [Array<String>, String] acquire_method
         #   How the book was aquired
+        # @param [String] country
+        #   ISO-3166-1 code to override the IP-based location.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for
         #   generating recommendations.
@@ -2124,11 +2126,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_my_books(acquire_method: nil, locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_my_books(acquire_method: nil, country: nil, locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'volumes/mybooks', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['acquireMethod'] = acquire_method unless acquire_method.nil?
+          command.query['country'] = country unless country.nil?
           command.query['locale'] = locale unless locale.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['processingState'] = processing_state unless processing_state.nil?

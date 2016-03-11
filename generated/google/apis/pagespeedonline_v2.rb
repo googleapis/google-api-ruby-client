@@ -20,13 +20,13 @@ module Google
   module Apis
     # PageSpeed Insights API
     #
-    # Lets you analyze the performance of a web page and get tailored suggestions to
+    # Analyzes the performance of a web page and provides tailored suggestions to
     # make that page faster.
     #
     # @see https://developers.google.com/speed/docs/insights/v2/getting-started
     module PagespeedonlineV2
       VERSION = 'V2'
-      REVISION = '20150317'
+      REVISION = '20160306'
     end
   end
 end
