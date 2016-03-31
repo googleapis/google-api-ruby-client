@@ -17,6 +17,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib', 'generated', 'third_party']
 
+  spec.required_ruby_version = '~> 2.0'
+
   spec.add_runtime_dependency 'representable', '~> 2.3.0'
   spec.add_runtime_dependency 'retriable', '~> 2.0'
   spec.add_runtime_dependency 'addressable', '~> 2.3'
