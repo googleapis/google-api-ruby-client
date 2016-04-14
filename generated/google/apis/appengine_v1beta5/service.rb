@@ -22,8 +22,7 @@ module Google
     module AppengineV1beta5
       # Google App Engine Admin API
       #
-      # The Google App Engine Admin API enables developers to provision and manage
-      #  their App Engine applications.
+      # Provisions and manages App Engine applications.
       #
       # @example
       #    require 'google/apis/appengine_v1beta5'
@@ -486,10 +485,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1beta5::Version] parsed result object
+        # @yieldparam result [Google::Apis::AppengineV1beta5::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AppengineV1beta5::Version]
+        # @return [Google::Apis::AppengineV1beta5::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -498,12 +497,55 @@ module Google
           command =  make_simple_command(:patch, 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.request_representation = Google::Apis::AppengineV1beta5::Version::Representation
           command.request_object = version_object
-          command.response_representation = Google::Apis::AppengineV1beta5::Version::Representation
-          command.response_class = Google::Apis::AppengineV1beta5::Version
+          command.response_representation = Google::Apis::AppengineV1beta5::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta5::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
           command.query['mask'] = mask unless mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the instances of a version.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
+        #   services/default/versions/v1".
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta5::ListInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta5::ListInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_service_version_instances(apps_id, services_id, versions_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', options)
+          command.response_representation = Google::Apis::AppengineV1beta5::ListInstancesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1beta5::ListInstancesResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -20,12 +20,12 @@ module Google
   module Apis
     # DCM/DFA Reporting And Trafficking API
     #
-    # Manage your DoubleClick Campaign Manager ad campaigns and reports.
+    # Manages your DoubleClick Campaign Manager ad campaigns and reports.
     #
     # @see https://developers.google.com/doubleclick-advertisers/reporting/
     module DfareportingV2_3
       VERSION = 'V2_3'
-      REVISION = '20160128'
+      REVISION = '20160323'
 
       # View and manage DoubleClick for Advertisers reports
       AUTH_DFAREPORTING = 'https://www.googleapis.com/auth/dfareporting'

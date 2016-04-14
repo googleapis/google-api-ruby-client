@@ -22,7 +22,7 @@ module Google
     module DatastoreV1beta2
       # Google Cloud Datastore API
       #
-      # API for accessing Google Cloud Datastore.
+      # Stores and queries data in Google Cloud Datastore.
       #
       # @example
       #    require 'google/apis/datastore_v1beta2'

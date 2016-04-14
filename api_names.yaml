@@ -8,6 +8,7 @@
 "/adexchangeseller:v2.0/adexchangeseller.accounts.adclients.list": list_account_ad_clients
 "/adexchangebuyer:v1.4/adexchangebuyer.proposals.setupcomplete": proposal_setup_complete
 "/adexchangebuyer:v1.4/adexchangebuyer.pubprofiles.list": list_pub_profiles
+"/adexchangebuyer:v1.4/adexchangebuyer.marketplaceprivateauction.updateproposal": update_marketplace_private_auction_proposal
 "/adexchangeseller:v2.0/adexchangeseller.accounts.customchannels.get": get_account_custom_channel
 "/adexchangeseller:v2.0/adexchangeseller.accounts.customchannels.list": list_account_custom_channels
 "/adexchangeseller:v2.0/adexchangeseller.accounts.metadata.dimensions.list": list_account_metadata_dimensions
@@ -837,6 +838,8 @@
 "/genomics:v1beta2/genomics.references.bases.list/start": start_position
 "/genomics:v1beta2/genomics.referencesets.get": get_reference_set
 "/genomics:v1beta2/genomics.streamingReadstore.streamreads": stream_reads
+"/genomics:v1/genomics.annotationsets.create": create_annotation_set
+"/genomics:v1/genomics.annotationsets.get": get_annotation_set
 "/genomics:v1/genomics.callsets.create": create_call_set
 "/genomics:v1/genomics.callsets.delete": delete_call_set
 "/genomics:v1/genomics.callsets.get": get_call_set

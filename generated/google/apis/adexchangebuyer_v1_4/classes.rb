@@ -1126,6 +1126,12 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms]
         attr_accessor :non_guaranteed_fixed_price_terms
       
+        # For deals with Cost Per Day billing, defines the timezone used to mark the
+        # boundaries of a day (buyer-readonly)
+        # Corresponds to the JSON property `sellerTimeZone`
+        # @return [String]
+        attr_accessor :seller_time_zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1139,6 +1145,7 @@ module Google
           @guaranteed_fixed_price_terms = args[:guaranteed_fixed_price_terms] if args.key?(:guaranteed_fixed_price_terms)
           @non_guaranteed_auction_terms = args[:non_guaranteed_auction_terms] if args.key?(:non_guaranteed_auction_terms)
           @non_guaranteed_fixed_price_terms = args[:non_guaranteed_fixed_price_terms] if args.key?(:non_guaranteed_fixed_price_terms)
+          @seller_time_zone = args[:seller_time_zone] if args.key?(:seller_time_zone)
         end
       end
       
@@ -1335,6 +1342,58 @@ module Google
           @max_impressions = args[:max_impressions] if args.key?(:max_impressions)
           @num_time_units = args[:num_time_units] if args.key?(:num_time_units)
           @time_unit_type = args[:time_unit_type] if args.key?(:time_unit_type)
+        end
+      end
+      
+      # This message carries publisher provided breakdown. E.g. `dimension_type: '
+      # COUNTRY', [`dimension_value: `id: 1, name: 'US'``, `dimension_value: `id: 2,
+      # name: 'UK'``]`
+      class Dimension
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dimensionType`
+        # @return [String]
+        attr_accessor :dimension_type
+      
+        # 
+        # Corresponds to the JSON property `dimensionValues`
+        # @return [Array<Google::Apis::AdexchangebuyerV1_4::DimensionDimensionValue>]
+        attr_accessor :dimension_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_type = args[:dimension_type] if args.key?(:dimension_type)
+          @dimension_values = args[:dimension_values] if args.key?(:dimension_values)
+        end
+      end
+      
+      # Value of the dimension.
+      class DimensionDimensionValue
+        include Google::Apis::Core::Hashable
+      
+        # Id of the dimension.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Name of the dimension mainly for debugging purposes.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1956,10 +2015,7 @@ module Google
         end
       end
       
-      # The configuration data for an Ad Exchange performance report list. https://
-      # sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/
-      # rtb-api-release https://cs.corp.google.com/#piper///depot/google3/contentads/
-      # adx/tools/rtb_api/adxrtb.py
+      # The configuration data for an Ad Exchange performance report list.
       class PerformanceReportList
         include Google::Apis::Core::Hashable
       
@@ -2470,6 +2526,14 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Id of the publisher profile for a given seller. A (seller.account_id,
+        # publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can
+        # call the PublisherProfiles::List endpoint to get a list of publisher profiles
+        # for a given seller.
+        # Corresponds to the JSON property `publisherProfileId`
+        # @return [String]
+        attr_accessor :publisher_profile_id
+      
         # The revision number of the product. (readonly)
         # Corresponds to the JSON property `revisionNumber`
         # @return [String]
@@ -2503,7 +2567,8 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTerms]
         attr_accessor :terms
       
-        # 
+        # The web property code for the seller. This field is meant to be copied over as
+        # is when creating deals.
         # Corresponds to the JSON property `webPropertyCode`
         # @return [String]
         attr_accessor :web_property_code
@@ -2528,6 +2593,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @publisher_profile_id = args[:publisher_profile_id] if args.key?(:publisher_profile_id)
           @revision_number = args[:revision_number] if args.key?(:revision_number)
           @seller = args[:seller] if args.key?(:seller)
           @shared_targetings = args[:shared_targetings] if args.key?(:shared_targetings)
@@ -2710,10 +2776,30 @@ module Google
       class PublisherProfileApiProto
         include Google::Apis::Core::Hashable
       
+        # The account id of the seller.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Publisher provided info on its audience.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
         # A pitch statement for the buyer
         # Corresponds to the JSON property `buyerPitchStatement`
         # @return [String]
         attr_accessor :buyer_pitch_statement
+      
+        # Direct contact for the publisher profile.
+        # Corresponds to the JSON property `directContact`
+        # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
+        attr_accessor :direct_contact
+      
+        # Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
+        # Corresponds to the JSON property `exchange`
+        # @return [String]
+        attr_accessor :exchange
       
         # Link to publisher's Google+ page.
         # Corresponds to the JSON property `googlePlusLink`
@@ -2726,6 +2812,12 @@ module Google
         # @return [Boolean]
         attr_accessor :is_parent
         alias_method :is_parent?, :is_parent
+      
+        # True, if this profile is published. Deprecated for state.
+        # Corresponds to the JSON property `isPublished`
+        # @return [Boolean]
+        attr_accessor :is_published
+        alias_method :is_published?, :is_published
       
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#publisherProfileApiProto".
@@ -2753,16 +2845,32 @@ module Google
         # @return [String]
         attr_accessor :overview
       
-        # Unique id for the publisher profile
+        # The pair of (seller.account_id, profile_id) uniquely identifies a publisher
+        # profile for a given publisher.
         # Corresponds to the JSON property `profileId`
         # @return [Fixnum]
         attr_accessor :profile_id
+      
+        # Programmatic contact for the publisher profile.
+        # Corresponds to the JSON property `programmaticContact`
+        # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
+        attr_accessor :programmatic_contact
       
         # The list of domains represented in this publisher profile. Empty if this is a
         # parent profile.
         # Corresponds to the JSON property `publisherDomains`
         # @return [Array<String>]
         attr_accessor :publisher_domains
+      
+        # Unique Id for publisher profile.
+        # Corresponds to the JSON property `publisherProfileId`
+        # @return [String]
+        attr_accessor :publisher_profile_id
+      
+        # This message carries publisher provided forecasting information.
+        # Corresponds to the JSON property `publisherProvidedForecast`
+        # @return [Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast]
+        attr_accessor :publisher_provided_forecast
       
         # Link to publisher rate card
         # Corresponds to the JSON property `rateCardInfoLink`
@@ -2773,6 +2881,16 @@ module Google
         # Corresponds to the JSON property `samplePageLink`
         # @return [String]
         attr_accessor :sample_page_link
+      
+        # Seller of the publisher profile.
+        # Corresponds to the JSON property `seller`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
+        attr_accessor :seller
+      
+        # State of the publisher profile.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         # Publisher provided key metrics and rankings.
         # Corresponds to the JSON property `topHeadlines`
@@ -2785,19 +2903,60 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @audience = args[:audience] if args.key?(:audience)
           @buyer_pitch_statement = args[:buyer_pitch_statement] if args.key?(:buyer_pitch_statement)
+          @direct_contact = args[:direct_contact] if args.key?(:direct_contact)
+          @exchange = args[:exchange] if args.key?(:exchange)
           @google_plus_link = args[:google_plus_link] if args.key?(:google_plus_link)
           @is_parent = args[:is_parent] if args.key?(:is_parent)
+          @is_published = args[:is_published] if args.key?(:is_published)
           @kind = args[:kind] if args.key?(:kind)
           @logo_url = args[:logo_url] if args.key?(:logo_url)
           @media_kit_link = args[:media_kit_link] if args.key?(:media_kit_link)
           @name = args[:name] if args.key?(:name)
           @overview = args[:overview] if args.key?(:overview)
           @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @programmatic_contact = args[:programmatic_contact] if args.key?(:programmatic_contact)
           @publisher_domains = args[:publisher_domains] if args.key?(:publisher_domains)
+          @publisher_profile_id = args[:publisher_profile_id] if args.key?(:publisher_profile_id)
+          @publisher_provided_forecast = args[:publisher_provided_forecast] if args.key?(:publisher_provided_forecast)
           @rate_card_info_link = args[:rate_card_info_link] if args.key?(:rate_card_info_link)
           @sample_page_link = args[:sample_page_link] if args.key?(:sample_page_link)
+          @seller = args[:seller] if args.key?(:seller)
+          @state = args[:state] if args.key?(:state)
           @top_headlines = args[:top_headlines] if args.key?(:top_headlines)
+        end
+      end
+      
+      # This message carries publisher provided forecasting information.
+      class PublisherProvidedForecast
+        include Google::Apis::Core::Hashable
+      
+        # Publisher provided dimensions. E.g. geo, sizes etc...
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AdexchangebuyerV1_4::Dimension>]
+        attr_accessor :dimensions
+      
+        # Publisher provided weekly impressions.
+        # Corresponds to the JSON property `weeklyImpressions`
+        # @return [String]
+        attr_accessor :weekly_impressions
+      
+        # Publisher provided weekly uniques.
+        # Corresponds to the JSON property `weeklyUniques`
+        # @return [String]
+        attr_accessor :weekly_uniques
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @weekly_impressions = args[:weekly_impressions] if args.key?(:weekly_impressions)
+          @weekly_uniques = args[:weekly_uniques] if args.key?(:weekly_uniques)
         end
       end
       
@@ -3018,6 +3177,44 @@ module Google
         def update!(**args)
           @height = args[:height] if args.key?(:height)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # 
+      class UpdatePrivateAuctionProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        # The externalDealId of the deal to be updated.
+        # Corresponds to the JSON property `externalDealId`
+        # @return [String]
+        attr_accessor :external_deal_id
+      
+        # A proposal is associated with a bunch of notes which may optionally be
+        # associated with a deal and/or revision number.
+        # Corresponds to the JSON property `note`
+        # @return [Google::Apis::AdexchangebuyerV1_4::MarketplaceNote]
+        attr_accessor :note
+      
+        # The current revision number of the proposal to be updated.
+        # Corresponds to the JSON property `proposalRevisionNumber`
+        # @return [String]
+        attr_accessor :proposal_revision_number
+      
+        # The proposed action on the private auction proposal.
+        # Corresponds to the JSON property `updateAction`
+        # @return [String]
+        attr_accessor :update_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_deal_id = args[:external_deal_id] if args.key?(:external_deal_id)
+          @note = args[:note] if args.key?(:note)
+          @proposal_revision_number = args[:proposal_revision_number] if args.key?(:proposal_revision_number)
+          @update_action = args[:update_action] if args.key?(:update_action)
         end
       end
     end

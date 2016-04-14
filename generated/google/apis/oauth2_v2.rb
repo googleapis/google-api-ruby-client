@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google OAuth2 API
     #
-    # Lets you access OAuth2 protocol related APIs.
+    # Obtains end-user authorization grants for use with other Google APIs.
     #
     # @see https://developers.google.com/accounts/docs/OAuth2
     module Oauth2V2
       VERSION = 'V2'
-      REVISION = '20160217'
+      REVISION = '20160330'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'

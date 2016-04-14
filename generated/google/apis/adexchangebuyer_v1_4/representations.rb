@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Dimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DimensionDimensionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EditAllOrderDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublisherProvidedForecast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Seller
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +443,12 @@ module Google
       end
       
       class TargetingValueSize
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdatePrivateAuctionProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -740,6 +764,7 @@ module Google
       
           property :non_guaranteed_fixed_price_terms, as: 'nonGuaranteedFixedPriceTerms', class: Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms, decorator: Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms::Representation
       
+          property :seller_time_zone, as: 'sellerTimeZone'
         end
       end
       
@@ -804,6 +829,23 @@ module Google
           property :max_impressions, as: 'maxImpressions'
           property :num_time_units, as: 'numTimeUnits'
           property :time_unit_type, as: 'timeUnitType'
+        end
+      end
+      
+      class Dimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_type, as: 'dimensionType'
+          collection :dimension_values, as: 'dimensionValues', class: Google::Apis::AdexchangebuyerV1_4::DimensionDimensionValue, decorator: Google::Apis::AdexchangebuyerV1_4::DimensionDimensionValue::Representation
+      
+        end
+      end
+      
+      class DimensionDimensionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
         end
       end
       
@@ -1098,6 +1140,7 @@ module Google
           property :name, as: 'name'
           property :private_auction_id, as: 'privateAuctionId'
           property :product_id, as: 'productId'
+          property :publisher_profile_id, as: 'publisherProfileId'
           property :revision_number, as: 'revisionNumber'
           property :seller, as: 'seller', class: Google::Apis::AdexchangebuyerV1_4::Seller, decorator: Google::Apis::AdexchangebuyerV1_4::Seller::Representation
       
@@ -1150,19 +1193,43 @@ module Google
       class PublisherProfileApiProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :audience, as: 'audience'
           property :buyer_pitch_statement, as: 'buyerPitchStatement'
+          property :direct_contact, as: 'directContact', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
+      
+          property :exchange, as: 'exchange'
           property :google_plus_link, as: 'googlePlusLink'
           property :is_parent, as: 'isParent'
+          property :is_published, as: 'isPublished'
           property :kind, as: 'kind'
           property :logo_url, as: 'logoUrl'
           property :media_kit_link, as: 'mediaKitLink'
           property :name, as: 'name'
           property :overview, as: 'overview'
           property :profile_id, as: 'profileId'
+          property :programmatic_contact, as: 'programmaticContact', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
+      
           collection :publisher_domains, as: 'publisherDomains'
+          property :publisher_profile_id, as: 'publisherProfileId'
+          property :publisher_provided_forecast, as: 'publisherProvidedForecast', class: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast, decorator: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast::Representation
+      
           property :rate_card_info_link, as: 'rateCardInfoLink'
           property :sample_page_link, as: 'samplePageLink'
+          property :seller, as: 'seller', class: Google::Apis::AdexchangebuyerV1_4::Seller, decorator: Google::Apis::AdexchangebuyerV1_4::Seller::Representation
+      
+          property :state, as: 'state'
           collection :top_headlines, as: 'topHeadlines'
+        end
+      end
+      
+      class PublisherProvidedForecast
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AdexchangebuyerV1_4::Dimension, decorator: Google::Apis::AdexchangebuyerV1_4::Dimension::Representation
+      
+          property :weekly_impressions, as: 'weeklyImpressions'
+          property :weekly_uniques, as: 'weeklyUniques'
         end
       end
       
@@ -1233,6 +1300,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :width, as: 'width'
+        end
+      end
+      
+      class UpdatePrivateAuctionProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_deal_id, as: 'externalDealId'
+          property :note, as: 'note', class: Google::Apis::AdexchangebuyerV1_4::MarketplaceNote, decorator: Google::Apis::AdexchangebuyerV1_4::MarketplaceNote::Representation
+      
+          property :proposal_revision_number, as: 'proposalRevisionNumber'
+          property :update_action, as: 'updateAction'
         end
       end
     end

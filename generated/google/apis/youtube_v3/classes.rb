@@ -1066,7 +1066,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::ImageSettings]
         attr_accessor :image
       
-        # Branding properties for the watch.
+        # Branding properties for the watch. All deprecated.
         # Corresponds to the JSON property `watch`
         # @return [Google::Apis::YoutubeV3::WatchSettings]
         attr_accessor :watch
@@ -3711,6 +3711,12 @@ module Google
         # @return [String]
         attr_accessor :bound_stream_id
       
+        # The date and time that the live stream referenced by boundStreamId was last
+        # updated.
+        # Corresponds to the JSON property `boundStreamLastUpdateTimeMs`
+        # @return [DateTime]
+        attr_accessor :bound_stream_last_update_time_ms
+      
         # 
         # Corresponds to the JSON property `closedCaptionsType`
         # @return [String]
@@ -3793,6 +3799,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bound_stream_id = args[:bound_stream_id] if args.key?(:bound_stream_id)
+          @bound_stream_last_update_time_ms = args[:bound_stream_last_update_time_ms] if args.key?(:bound_stream_last_update_time_ms)
           @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
           @enable_closed_captions = args[:enable_closed_captions] if args.key?(:enable_closed_captions)
           @enable_content_encryption = args[:enable_content_encryption] if args.key?(:enable_content_encryption)
@@ -4346,6 +4353,25 @@ module Google
       end
       
       # 
+      class LiveChatMessageDeletedDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deletedMessageId`
+        # @return [String]
+        attr_accessor :deleted_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_message_id = args[:deleted_message_id] if args.key?(:deleted_message_id)
+        end
+      end
+      
+      # 
       class LiveChatMessageListResponse
         include Google::Apis::Core::Hashable
       
@@ -4423,13 +4449,34 @@ module Google
       end
       
       # 
+      class LiveChatMessageRetractedDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `retractedMessageId`
+        # @return [String]
+        attr_accessor :retracted_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retracted_message_id = args[:retracted_message_id] if args.key?(:retracted_message_id)
+        end
+      end
+      
+      # 
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
         # The ID of the user that authored this message, this field is not always filled.
         # textMessageEvent - the user that wrote the message fanFundingEvent - the user
         # that funded the broadcast newSponsorEvent - the user that just became a
-        # sponsor
+        # sponsor messageDeletedEvent - the moderator that took the action
+        # messageRetractedEvent - the author that retracted their message
+        # userBannedEvent - the moderator that took the action
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
@@ -4458,6 +4505,16 @@ module Google
         # @return [String]
         attr_accessor :live_chat_id
       
+        # 
+        # Corresponds to the JSON property `messageDeletedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails]
+        attr_accessor :message_deleted_details
+      
+        # 
+        # Corresponds to the JSON property `messageRetractedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails]
+        attr_accessor :message_retracted_details
+      
         # The date and time when the message was orignally published. The value is
         # specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
         # Corresponds to the JSON property `publishedAt`
@@ -4476,6 +4533,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # 
+        # Corresponds to the JSON property `userBannedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatUserBannedMessageDetails]
+        attr_accessor :user_banned_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4487,9 +4549,12 @@ module Google
           @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
           @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @message_deleted_details = args[:message_deleted_details] if args.key?(:message_deleted_details)
+          @message_retracted_details = args[:message_retracted_details] if args.key?(:message_retracted_details)
           @published_at = args[:published_at] if args.key?(:published_at)
           @text_message_details = args[:text_message_details] if args.key?(:text_message_details)
           @type = args[:type] if args.key?(:type)
+          @user_banned_details = args[:user_banned_details] if args.key?(:user_banned_details)
         end
       end
       
@@ -4645,6 +4710,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message_text = args[:message_text] if args.key?(:message_text)
+        end
+      end
+      
+      # 
+      class LiveChatUserBannedMessageDetails
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the ban. This property is only present if the banType is
+        # temporary.
+        # Corresponds to the JSON property `banDurationSeconds`
+        # @return [String]
+        attr_accessor :ban_duration_seconds
+      
+        # The type of ban.
+        # Corresponds to the JSON property `banType`
+        # @return [String]
+        attr_accessor :ban_type
+      
+        # The details of the user that was banned.
+        # Corresponds to the JSON property `bannedUserDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :banned_user_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ban_duration_seconds = args[:ban_duration_seconds] if args.key?(:ban_duration_seconds)
+          @ban_type = args[:ban_type] if args.key?(:ban_type)
+          @banned_user_details = args[:banned_user_details] if args.key?(:banned_user_details)
         end
       end
       
@@ -8043,7 +8140,7 @@ module Google
         end
       end
       
-      # Branding properties for the watch.
+      # Branding properties for the watch. All deprecated.
       class WatchSettings
         include Google::Apis::Core::Hashable
       

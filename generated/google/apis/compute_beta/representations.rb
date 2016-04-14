@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersResizeAdvancedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1272,12 +1278,6 @@ module Google
       
       class Zone
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class MaintenanceWindow
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1540,6 +1540,7 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :protocol, as: 'protocol'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :timeout_sec, as: 'timeoutSec'
         end
@@ -2126,6 +2127,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abandoning, as: 'abandoning'
           property :creating, as: 'creating'
+          property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
           property :none, as: 'none'
           property :recreating, as: 'recreating'
@@ -2192,6 +2194,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersResizeAdvancedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_creation_retries, as: 'noCreationRetries'
+          property :target_size, as: 'targetSize'
         end
       end
       
@@ -3684,22 +3694,10 @@ module Google
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ComputeBeta::Zone::MaintenanceWindow, decorator: Google::Apis::ComputeBeta::Zone::MaintenanceWindow::Representation
-      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-        end
-        
-        class MaintenanceWindow
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :begin_time, as: 'beginTime'
-            property :description, as: 'description'
-            property :end_time, as: 'endTime'
-            property :name, as: 'name'
-          end
         end
       end
       

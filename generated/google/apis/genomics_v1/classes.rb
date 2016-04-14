@@ -22,6 +22,761 @@ module Google
   module Apis
     module GenomicsV1
       
+      # An annotation set is a logical grouping of annotations that share consistent
+      # type information and provenance. Examples of annotation sets include 'all
+      # genes from refseq', and 'all variant annotations from ClinVar'.
+      class AnnotationSet
+        include Google::Apis::Core::Hashable
+      
+        # The server-generated annotation set ID, unique across all annotation sets.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The dataset to which this annotation set belongs.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The ID of the reference set that defines the coordinate space for this set's
+        # annotations.
+        # Corresponds to the JSON property `referenceSetId`
+        # @return [String]
+        attr_accessor :reference_set_id
+      
+        # The display name for this annotation set.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The source URI describing the file from which this annotation set was
+        # generated, if any.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
+        # The type of annotations contained within this set.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A map of additional read alignment information. This must be of the form map (
+        # string key mapping to a list of string values).
+        # Corresponds to the JSON property `info`
+        # @return [Hash<String,Array<Object>>]
+        attr_accessor :info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @name = args[:name] if args.key?(:name)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @type = args[:type] if args.key?(:type)
+          @info = args[:info] if args.key?(:info)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class SearchAnnotationSetsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The dataset IDs to search within. Caller must have `READ` access to
+        # these datasets.
+        # Corresponds to the JSON property `datasetIds`
+        # @return [Array<String>]
+        attr_accessor :dataset_ids
+      
+        # If specified, only annotation sets associated with the given reference set are
+        # returned.
+        # Corresponds to the JSON property `referenceSetId`
+        # @return [String]
+        attr_accessor :reference_set_id
+      
+        # Only return annotations sets for which a substring of the name matches this
+        # string (case insensitive).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If specified, only annotation sets that have any of these types are returned.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        # The continuation token, which is used to page through large result sets. To
+        # get the next page of results, set this parameter to the value of `
+        # nextPageToken` from the previous response.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The maximum number of results to return in a single page. If unspecified,
+        # defaults to 128. The maximum value is 1024.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_ids = args[:dataset_ids] if args.key?(:dataset_ids)
+          @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @name = args[:name] if args.key?(:name)
+          @types = args[:types] if args.key?(:types)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+        end
+      end
+      
+      # 
+      class SearchAnnotationSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The matching annotation sets.
+        # Corresponds to the JSON property `annotationSets`
+        # @return [Array<Google::Apis::GenomicsV1::AnnotationSet>]
+        attr_accessor :annotation_sets
+      
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of results.
+        # This field will be empty if there aren't any additional results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_sets = args[:annotation_sets] if args.key?(:annotation_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # An annotation describes a region of reference genome. The value of an
+      # annotation may be one of several canonical types, supplemented by arbitrary
+      # info tags. An annotation is not inherently associated with a specific sample
+      # or individual (though a client could choose to use annotations in this way).
+      # Example canonical annotation types are `GENE` and `VARIANT`.
+      class Annotation
+        include Google::Apis::Core::Hashable
+      
+        # The server-generated annotation ID, unique across all annotations.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The annotation set to which this annotation belongs.
+        # Corresponds to the JSON property `annotationSetId`
+        # @return [String]
+        attr_accessor :annotation_set_id
+      
+        # The display name of this annotation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the Google Genomics reference associated with this range.
+        # Corresponds to the JSON property `referenceId`
+        # @return [String]
+        attr_accessor :reference_id
+      
+        # The display name corresponding to the reference specified by `referenceId`,
+        # for example `chr1`, `1`, or `chrX`.
+        # Corresponds to the JSON property `referenceName`
+        # @return [String]
+        attr_accessor :reference_name
+      
+        # The start position of the range on the reference, 0-based inclusive.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        # The end position of the range on the reference, 0-based exclusive.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # Whether this range refers to the reverse strand, as opposed to the forward
+        # strand. Note that regardless of this field, the start/end position of the
+        # range always refer to the forward strand.
+        # Corresponds to the JSON property `reverseStrand`
+        # @return [Boolean]
+        attr_accessor :reverse_strand
+        alias_method :reverse_strand?, :reverse_strand
+      
+        # The data type for this annotation. Must match the containing annotation set's
+        # type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A variant annotation, which describes the effect of a variant on the genome,
+        # the coding sequence, and/or higher level consequences at the organism level e.
+        # g. pathogenicity. This field is only set for annotations of type `VARIANT`.
+        # Corresponds to the JSON property `variant`
+        # @return [Google::Apis::GenomicsV1::VariantAnnotation]
+        attr_accessor :variant
+      
+        # A transcript represents the assertion that a particular region of the
+        # reference genome may be transcribed as RNA.
+        # Corresponds to the JSON property `transcript`
+        # @return [Google::Apis::GenomicsV1::Transcript]
+        attr_accessor :transcript
+      
+        # A map of additional read alignment information. This must be of the form map (
+        # string key mapping to a list of string values).
+        # Corresponds to the JSON property `info`
+        # @return [Hash<String,Array<Object>>]
+        attr_accessor :info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @annotation_set_id = args[:annotation_set_id] if args.key?(:annotation_set_id)
+          @name = args[:name] if args.key?(:name)
+          @reference_id = args[:reference_id] if args.key?(:reference_id)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @reverse_strand = args[:reverse_strand] if args.key?(:reverse_strand)
+          @type = args[:type] if args.key?(:type)
+          @variant = args[:variant] if args.key?(:variant)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @info = args[:info] if args.key?(:info)
+        end
+      end
+      
+      # 
+      class VariantAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Type has been adapted from ClinVar's list of variant types.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Effect of the variant on the coding sequence.
+        # Corresponds to the JSON property `effect`
+        # @return [String]
+        attr_accessor :effect
+      
+        # The alternate allele for this variant. If multiple alternate alleles exist at
+        # this location, create a separate variant for each one, as they may represent
+        # distinct conditions.
+        # Corresponds to the JSON property `alternateBases`
+        # @return [String]
+        attr_accessor :alternate_bases
+      
+        # Google annotation ID of the gene affected by this variant. This should be
+        # provided when the variant is created.
+        # Corresponds to the JSON property `geneId`
+        # @return [String]
+        attr_accessor :gene_id
+      
+        # Google annotation IDs of the transcripts affected by this variant. These
+        # should be provided when the variant is created.
+        # Corresponds to the JSON property `transcriptIds`
+        # @return [Array<String>]
+        attr_accessor :transcript_ids
+      
+        # The set of conditions associated with this variant. A condition describes the
+        # way a variant influences human health.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GenomicsV1::ClinicalCondition>]
+        attr_accessor :conditions
+      
+        # Describes the clinical significance of a variant. It is adapted from the
+        # ClinVar controlled vocabulary for clinical significance described at: http://
+        # www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+        # Corresponds to the JSON property `clinicalSignificance`
+        # @return [String]
+        attr_accessor :clinical_significance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @effect = args[:effect] if args.key?(:effect)
+          @alternate_bases = args[:alternate_bases] if args.key?(:alternate_bases)
+          @gene_id = args[:gene_id] if args.key?(:gene_id)
+          @transcript_ids = args[:transcript_ids] if args.key?(:transcript_ids)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @clinical_significance = args[:clinical_significance] if args.key?(:clinical_significance)
+        end
+      end
+      
+      # 
+      class ClinicalCondition
+        include Google::Apis::Core::Hashable
+      
+        # A set of names for the condition.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # The set of external IDs for this condition.
+        # Corresponds to the JSON property `externalIds`
+        # @return [Array<Google::Apis::GenomicsV1::ExternalId>]
+        attr_accessor :external_ids
+      
+        # The MedGen concept id associated with this gene. Search for these IDs at http:/
+        # /www.ncbi.nlm.nih.gov/medgen/
+        # Corresponds to the JSON property `conceptId`
+        # @return [String]
+        attr_accessor :concept_id
+      
+        # The OMIM id for this condition. Search for these IDs at http://omim.org/
+        # Corresponds to the JSON property `omimId`
+        # @return [String]
+        attr_accessor :omim_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+          @external_ids = args[:external_ids] if args.key?(:external_ids)
+          @concept_id = args[:concept_id] if args.key?(:concept_id)
+          @omim_id = args[:omim_id] if args.key?(:omim_id)
+        end
+      end
+      
+      # 
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # The name of the source of this data.
+        # Corresponds to the JSON property `sourceName`
+        # @return [String]
+        attr_accessor :source_name
+      
+        # The id used by the source of this data.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_name = args[:source_name] if args.key?(:source_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # A transcript represents the assertion that a particular region of the
+      # reference genome may be transcribed as RNA.
+      class Transcript
+        include Google::Apis::Core::Hashable
+      
+        # The annotation ID of the gene from which this transcript is transcribed.
+        # Corresponds to the JSON property `geneId`
+        # @return [String]
+        attr_accessor :gene_id
+      
+        # The exons that compose this transcript. This field should be unset for genomes
+        # where transcript splicing does not occur, for example prokaryotes. Introns are
+        # regions of the transcript that are not included in the spliced RNA product.
+        # Though not explicitly modeled here, intron ranges can be deduced; all regions
+        # of this transcript that are not exons are introns. Exonic sequences do not
+        # necessarily code for a translational product (amino acids). Only the regions
+        # of exons bounded by the codingSequence correspond to coding DNA sequence.
+        # Exons are ordered by start position and may not overlap.
+        # Corresponds to the JSON property `exons`
+        # @return [Array<Google::Apis::GenomicsV1::Exon>]
+        attr_accessor :exons
+      
+        # The range of the coding sequence for this transcript, if any. To determine the
+        # exact ranges of coding sequence, intersect this range with those of the exons,
+        # if any. If there are any exons, the codingSequence must start and end within
+        # them. Note that in some cases, the reference genome will not exactly match the
+        # observed mRNA transcript e.g. due to variance in the source genome from
+        # reference. In these cases, exon.frame will not necessarily match the expected
+        # reference reading frame and coding exon reference bases cannot necessarily be
+        # concatenated to produce the original transcript mRNA.
+        # Corresponds to the JSON property `codingSequence`
+        # @return [Google::Apis::GenomicsV1::CodingSequence]
+        attr_accessor :coding_sequence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gene_id = args[:gene_id] if args.key?(:gene_id)
+          @exons = args[:exons] if args.key?(:exons)
+          @coding_sequence = args[:coding_sequence] if args.key?(:coding_sequence)
+        end
+      end
+      
+      # 
+      class Exon
+        include Google::Apis::Core::Hashable
+      
+        # The start position of the exon on this annotation's reference sequence, 0-
+        # based inclusive. Note that this is relative to the reference start, and **not**
+        # the containing annotation start.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        # The end position of the exon on this annotation's reference sequence, 0-based
+        # exclusive. Note that this is relative to the reference start, and *not* the
+        # containing annotation start.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
+        # offset of the first coding base of the exon within the reading frame of the
+        # coding DNA sequence, if any. This field is dependent on the strandedness of
+        # this annotation (see Annotation.reverse_strand). For forward stranded
+        # annotations, this offset is relative to the exon.start. For reverse strand
+        # annotations, this offset is relative to the exon.end `- 1`. Unset if this exon
+        # does not intersect the coding sequence. Upon creation of a transcript, the
+        # frame must be populated for all or none of the coding exons.
+        # Corresponds to the JSON property `frame`
+        # @return [Fixnum]
+        attr_accessor :frame
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @frame = args[:frame] if args.key?(:frame)
+        end
+      end
+      
+      # 
+      class CodingSequence
+        include Google::Apis::Core::Hashable
+      
+        # The start of the coding sequence on this annotation's reference sequence, 0-
+        # based inclusive. Note that this position is relative to the reference start,
+        # and *not* the containing annotation start.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        # The end of the coding sequence on this annotation's reference sequence, 0-
+        # based exclusive. Note that this position is relative to the reference start,
+        # and *not* the containing annotation start.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+        end
+      end
+      
+      # 
+      class BatchCreateAnnotationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The annotations to be created. At most 4096 can be specified in a single
+        # request.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::GenomicsV1::Annotation>]
+        attr_accessor :annotations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+        end
+      end
+      
+      # 
+      class BatchCreateAnnotationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting per-annotation entries, ordered consistently with the original
+        # request.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::GenomicsV1::Entry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # 
+      class Entry
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
+        # use and understand for most users - Flexible enough to meet unexpected needs #
+        # Overview The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of google.
+        # rpc.Code, but it may accept additional error codes if needed. The error
+        # message should be a developer-facing English message that helps developers *
+        # understand* and *resolve* the error. If a localized user-facing error message
+        # is needed, put the localized message in the error details or localize it in
+        # the client. The optional error details may contain arbitrary information about
+        # the error. There is a predefined set of error detail types in the package `
+        # google.rpc` which can be used for common error conditions. # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C. # Other uses The
+        # error model and the `Status` message can be used in a variety of environments,
+        # either with or without APIs, to provide a consistent developer experience
+        # across different environments. Example uses of this error model include: -
+        # Partial errors. If a service needs to return partial errors to the client, it
+        # may embed the `Status` in the normal response to indicate the partial errors. -
+        # Workflow errors. A typical workflow has multiple steps. Each step may have a `
+        # Status` message for error reporting purpose. - Batch operations. If a client
+        # uses batch request and batch response, the `Status` message should be used
+        # directly inside batch response, one for each error sub-response. -
+        # Asynchronous operations. If an API call embeds asynchronous operation results
+        # in its response, the status of those operations should be represented directly
+        # using the `Status` message. - Logging. If some API errors are stored in logs,
+        # the message `Status` could be used directly after any stripping needed for
+        # security/privacy reasons.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::GenomicsV1::Status]
+        attr_accessor :status
+      
+        # An annotation describes a region of reference genome. The value of an
+        # annotation may be one of several canonical types, supplemented by arbitrary
+        # info tags. An annotation is not inherently associated with a specific sample
+        # or individual (though a client could choose to use annotations in this way).
+        # Example canonical annotation types are `GENE` and `VARIANT`.
+        # Corresponds to the JSON property `annotation`
+        # @return [Google::Apis::GenomicsV1::Annotation]
+        attr_accessor :annotation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @annotation = args[:annotation] if args.key?(:annotation)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
+      # use and understand for most users - Flexible enough to meet unexpected needs #
+      # Overview The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of google.
+      # rpc.Code, but it may accept additional error codes if needed. The error
+      # message should be a developer-facing English message that helps developers *
+      # understand* and *resolve* the error. If a localized user-facing error message
+      # is needed, put the localized message in the error details or localize it in
+      # the client. The optional error details may contain arbitrary information about
+      # the error. There is a predefined set of error detail types in the package `
+      # google.rpc` which can be used for common error conditions. # Language mapping
+      # The `Status` message is the logical representation of the error model, but it
+      # is not necessarily the actual wire format. When the `Status` message is
+      # exposed in different client libraries and different wire protocols, it can be
+      # mapped differently. For example, it will likely be mapped to some exceptions
+      # in Java, but more likely mapped to some error codes in C. # Other uses The
+      # error model and the `Status` message can be used in a variety of environments,
+      # either with or without APIs, to provide a consistent developer experience
+      # across different environments. Example uses of this error model include: -
+      # Partial errors. If a service needs to return partial errors to the client, it
+      # may embed the `Status` in the normal response to indicate the partial errors. -
+      # Workflow errors. A typical workflow has multiple steps. Each step may have a `
+      # Status` message for error reporting purpose. - Batch operations. If a client
+      # uses batch request and batch response, the `Status` message should be used
+      # directly inside batch response, one for each error sub-response. -
+      # Asynchronous operations. If an API call embeds asynchronous operation results
+      # in its response, the status of those operations should be represented directly
+      # using the `Status` message. - Logging. If some API errors are stored in logs,
+      # the message `Status` could be used directly after any stripping needed for
+      # security/privacy reasons.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A list of messages that carry the error details. There will be a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # 
+      class SearchAnnotationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The annotation sets to search within. The caller must have `READ`
+        # access to these annotation sets. All queried annotation sets must have the
+        # same type.
+        # Corresponds to the JSON property `annotationSetIds`
+        # @return [Array<String>]
+        attr_accessor :annotation_set_ids
+      
+        # The ID of the reference to query.
+        # Corresponds to the JSON property `referenceId`
+        # @return [String]
+        attr_accessor :reference_id
+      
+        # The name of the reference to query, within the reference set associated with
+        # this query.
+        # Corresponds to the JSON property `referenceName`
+        # @return [String]
+        attr_accessor :reference_name
+      
+        # The start position of the range on the reference, 0-based inclusive. If
+        # specified, referenceId or referenceName must be specified. Defaults to 0.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        # The end position of the range on the reference, 0-based exclusive. If
+        # referenceId or referenceName must be specified, Defaults to the length of the
+        # reference.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # The continuation token, which is used to page through large result sets. To
+        # get the next page of results, set this parameter to the value of `
+        # nextPageToken` from the previous response.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The maximum number of results to return in a single page. If unspecified,
+        # defaults to 256. The maximum value is 2048.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_set_ids = args[:annotation_set_ids] if args.key?(:annotation_set_ids)
+          @reference_id = args[:reference_id] if args.key?(:reference_id)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
+          @end = args[:end] if args.key?(:end)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+        end
+      end
+      
+      # 
+      class SearchAnnotationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The matching annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::GenomicsV1::Annotation>]
+        attr_accessor :annotations
+      
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of results.
+        # This field will be empty if there aren't any additional results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The dataset list response.
       class ListDatasetsResponse
         include Google::Apis::Core::Hashable
@@ -85,23 +840,6 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @name = args[:name] if args.key?(:name)
           @create_time = args[:create_time] if args.key?(:create_time)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -365,71 +1103,6 @@ module Google
           @done = args[:done] if args.key?(:done)
           @error = args[:error] if args.key?(:error)
           @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
-      # use and understand for most users - Flexible enough to meet unexpected needs #
-      # Overview The `Status` message contains three pieces of data: error code, error
-      # message, and error details. The error code should be an enum value of google.
-      # rpc.Code, but it may accept additional error codes if needed. The error
-      # message should be a developer-facing English message that helps developers *
-      # understand* and *resolve* the error. If a localized user-facing error message
-      # is needed, put the localized message in the error details or localize it in
-      # the client. The optional error details may contain arbitrary information about
-      # the error. There is a predefined set of error detail types in the package `
-      # google.rpc` which can be used for common error conditions. # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C. # Other uses The
-      # error model and the `Status` message can be used in a variety of environments,
-      # either with or without APIs, to provide a consistent developer experience
-      # across different environments. Example uses of this error model include: -
-      # Partial errors. If a service needs to return partial errors to the client, it
-      # may embed the `Status` in the normal response to indicate the partial errors. -
-      # Workflow errors. A typical workflow has multiple steps. Each step may have a `
-      # Status` message for error reporting purpose. - Batch operations. If a client
-      # uses batch request and batch response, the `Status` message should be used
-      # directly inside batch response, one for each error sub-response. -
-      # Asynchronous operations. If an API call embeds asynchronous operation results
-      # in its response, the status of those operations should be represented directly
-      # using the `Status` message. - Logging. If some API errors are stored in logs,
-      # the message `Status` could be used directly after any stripping needed for
-      # security/privacy reasons.
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the google.rpc.Status.details
-        # field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # A list of messages that carry the error details. There will be a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -1792,6 +2465,13 @@ module Google
         attr_accessor :normalize_reference_names
         alias_method :normalize_reference_names?, :normalize_reference_names
       
+        # A mapping between info field keys and the InfoMergeOperations to be performed
+        # on them. This is plumbed down to the MergeVariantRequests generated by the
+        # resulting import job.
+        # Corresponds to the JSON property `infoMergeConfig`
+        # @return [Hash<String,String>]
+        attr_accessor :info_merge_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1802,6 +2482,7 @@ module Google
           @source_uris = args[:source_uris] if args.key?(:source_uris)
           @format = args[:format] if args.key?(:format)
           @normalize_reference_names = args[:normalize_reference_names] if args.key?(:normalize_reference_names)
+          @info_merge_config = args[:info_merge_config] if args.key?(:info_merge_config)
         end
       end
       
@@ -2352,6 +3033,12 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Variant>]
         attr_accessor :variants
       
+        # A mapping between info field keys and the InfoMergeOperations to be performed
+        # on them.
+        # Corresponds to the JSON property `infoMergeConfig`
+        # @return [Hash<String,String>]
+        attr_accessor :info_merge_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2360,6 +3047,7 @@ module Google
         def update!(**args)
           @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
           @variants = args[:variants] if args.key?(:variants)
+          @info_merge_config = args[:info_merge_config] if args.key?(:info_merge_config)
         end
       end
       

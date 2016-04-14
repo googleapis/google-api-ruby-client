@@ -532,7 +532,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatMessageDeletedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatMessageListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatMessageRetractedDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -563,6 +575,12 @@ module Google
       end
       
       class LiveChatTextMessageDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatUserBannedMessageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1975,6 +1993,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bound_stream_id, as: 'boundStreamId'
+          property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs', type: DateTime
+      
           property :closed_captions_type, as: 'closedCaptionsType'
           property :enable_closed_captions, as: 'enableClosedCaptions'
           property :enable_content_encryption, as: 'enableContentEncryption'
@@ -2132,6 +2152,13 @@ module Google
         end
       end
       
+      class LiveChatMessageDeletedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_message_id, as: 'deletedMessageId'
+        end
+      end
+      
       class LiveChatMessageListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2152,6 +2179,13 @@ module Google
         end
       end
       
+      class LiveChatMessageRetractedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retracted_message_id, as: 'retractedMessageId'
+        end
+      end
+      
       class LiveChatMessageSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2161,11 +2195,17 @@ module Google
       
           property :has_display_content, as: 'hasDisplayContent'
           property :live_chat_id, as: 'liveChatId'
+          property :message_deleted_details, as: 'messageDeletedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails::Representation
+      
+          property :message_retracted_details, as: 'messageRetractedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails::Representation
+      
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :text_message_details, as: 'textMessageDetails', class: Google::Apis::YoutubeV3::LiveChatTextMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatTextMessageDetails::Representation
       
           property :type, as: 'type'
+          property :user_banned_details, as: 'userBannedDetails', class: Google::Apis::YoutubeV3::LiveChatUserBannedMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatUserBannedMessageDetails::Representation
+      
         end
       end
       
@@ -2211,6 +2251,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message_text, as: 'messageText'
+        end
+      end
+      
+      class LiveChatUserBannedMessageDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ban_duration_seconds, as: 'banDurationSeconds'
+          property :ban_type, as: 'banType'
+          property :banned_user_details, as: 'bannedUserDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
         end
       end
       

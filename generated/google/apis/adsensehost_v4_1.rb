@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/adsense/host/
     module AdsensehostV4_1
       VERSION = 'V4_1'
-      REVISION = '20160309'
+      REVISION = '20160411'
 
       # View and manage your AdSense host data and associated accounts
       AUTH_ADSENSEHOST = 'https://www.googleapis.com/auth/adsensehost'

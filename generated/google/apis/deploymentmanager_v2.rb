@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Cloud Deployment Manager API
     #
-    # The Deployment Manager API allows users to declaratively configure, deploy and
-    # run complex solutions on the Google Cloud Platform.
+    # Declares, configures, and deploys complex solutions on Google Cloud Platform.
     #
     # @see https://cloud.google.com/deployment-manager/
     module DeploymentmanagerV2
       VERSION = 'V2'
-      REVISION = '20160301'
+      REVISION = '20160406'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

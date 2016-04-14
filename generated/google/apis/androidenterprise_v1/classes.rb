@@ -416,7 +416,7 @@ module Google
         end
       end
       
-      # An enterprise resource represents a binding between an organisation and their
+      # An enterprise resource represents a binding between an organization and their
       # EMM.
       # To create an enterprise, an admin of the enterprise must first go through a
       # Play for Work sign-up flow. At the end of this the admin will be presented
@@ -962,7 +962,8 @@ module Google
         # @return [String]
         attr_accessor :distribution_channel
       
-        # A link to an image that can be used as an icon for the product.
+        # A link to an image that can be used as an icon for the product. This image is
+        # suitable for use at up to 512px x 512px.
         # Corresponds to the JSON property `iconUrl`
         # @return [String]
         attr_accessor :icon_url
@@ -991,6 +992,12 @@ module Google
         attr_accessor :requires_container_app
         alias_method :requires_container_app?, :requires_container_app
       
+        # A link to a smaller image that can be used as an icon for the product. This
+        # image is suitable for use at up to 128px x 128px.
+        # Corresponds to the JSON property `smallIconUrl`
+        # @return [String]
+        attr_accessor :small_icon_url
+      
         # The name of the product.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -1017,6 +1024,7 @@ module Google
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_pricing = args[:product_pricing] if args.key?(:product_pricing)
           @requires_container_app = args[:requires_container_app] if args.key?(:requires_container_app)
+          @small_icon_url = args[:small_icon_url] if args.key?(:small_icon_url)
           @title = args[:title] if args.key?(:title)
           @work_details_url = args[:work_details_url] if args.key?(:work_details_url)
         end
@@ -1359,8 +1367,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The user's primary email, e.g. "jsmith@example.com". Will always be set for
-        # Google managed users and not set for EMM managed users.
+        # The user's primary email, e.g. "jsmith@example.com".
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email

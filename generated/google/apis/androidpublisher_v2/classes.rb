@@ -1232,6 +1232,27 @@ module Google
         attr_accessor :auto_renewing
         alias_method :auto_renewing?, :auto_renewing
       
+        # The cancel reason of the subscription, if the subscription is not auto
+        # renewing. Possible values are:
+        # - User cancelled the subscription
+        # - Subscription was cancelled by the system, for example because of a billing
+        # problem
+        # Corresponds to the JSON property `cancelReason`
+        # @return [Fixnum]
+        attr_accessor :cancel_reason
+      
+        # ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+        # subscription was granted.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # A developer-specified string that contains supplemental information about an
+        # order.
+        # Corresponds to the JSON property `developerPayload`
+        # @return [String]
+        attr_accessor :developer_payload
+      
         # Time at which the subscription will expire, in milliseconds since Epoch.
         # Corresponds to the JSON property `expiryTimeMillis`
         # @return [String]
@@ -1242,6 +1263,26 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The payment state of the subscription. Possible values are:
+        # - Payment pending
+        # - Payment received
+        # Corresponds to the JSON property `paymentState`
+        # @return [Fixnum]
+        attr_accessor :payment_state
+      
+        # Price of the subscription, not including tax. Price is expressed in micro-
+        # units, where 1,000,000 micro-units equal one unit of the currency. For example,
+        # if the subscription price is €1.99, price_amount_micros is 1990000.
+        # Corresponds to the JSON property `priceAmountMicros`
+        # @return [String]
+        attr_accessor :price_amount_micros
+      
+        # ISO 4217 currency code for the subscription price. For example, if the price
+        # is specified in British pounds sterling, price_currency_code is "GBP".
+        # Corresponds to the JSON property `priceCurrencyCode`
+        # @return [String]
+        attr_accessor :price_currency_code
       
         # Time at which the subscription was granted, in milliseconds since Epoch.
         # Corresponds to the JSON property `startTimeMillis`
@@ -1255,8 +1296,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renewing = args[:auto_renewing] if args.key?(:auto_renewing)
+          @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
           @kind = args[:kind] if args.key?(:kind)
+          @payment_state = args[:payment_state] if args.key?(:payment_state)
+          @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
+          @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
         end
       end

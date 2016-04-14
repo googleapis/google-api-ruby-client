@@ -7290,7 +7290,7 @@ module Google
       
         # Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on
         # desktop or on mobile devices for regular or interstitial ads, respectively.
-        # APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO
+        # APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO
         # refers to rendering in in-stream video ads developed with the VAST standard.
         # This field is required on insertion.
         # Corresponds to the JSON property `compatibility`

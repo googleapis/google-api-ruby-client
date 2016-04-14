@@ -216,6 +216,7 @@ module Google
           property :name, as: 'name'
           property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerV2::Operation, decorator: Google::Apis::DeploymentmanagerV2::Operation::Representation
       
+          property :self_link, as: 'selfLink'
           property :target, as: 'target', class: Google::Apis::DeploymentmanagerV2::TargetConfiguration, decorator: Google::Apis::DeploymentmanagerV2::TargetConfiguration::Representation
       
           property :update, as: 'update', class: Google::Apis::DeploymentmanagerV2::DeploymentUpdate, decorator: Google::Apis::DeploymentmanagerV2::DeploymentUpdate::Representation

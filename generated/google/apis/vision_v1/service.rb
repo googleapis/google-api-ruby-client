@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VisionV1
-      # Cloud Vision API
+      # Google Cloud Vision API
       #
       # The Google Cloud Vision API allows developers to easily integrate Google
       #  vision features, including image labeling, face, logo, and landmark detection,

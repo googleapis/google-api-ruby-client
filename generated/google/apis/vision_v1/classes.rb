@@ -22,12 +22,12 @@ module Google
   module Apis
     module VisionV1
       
-      # External image source (i.e. Google Cloud Storage image location).
+      # External image source (Google Cloud Storage image location).
       class ImageSource
         include Google::Apis::Core::Hashable
       
         # Google Cloud Storage image URI. It must be in the following form:
-        # "gs://bucket_name/object_name". For more
+        # `gs://bucket_name/object_name`. For more
         # details, please see: https://cloud.google.com/storage/docs/reference-uris.
         # NOTE: Cloud Storage object versioning is not supported!
         # Corresponds to the JSON property `gcsImageUri`
@@ -44,12 +44,12 @@ module Google
         end
       end
       
-      # Request for performing Vision tasks over a user-provided image, with
-      # user-requested features.
+      # Request for performing Google Cloud Vision API tasks over a user-provided
+      # image, with user-requested features.
       class AnnotateImageRequest
         include Google::Apis::Core::Hashable
       
-        # Client image to perform Vision tasks over.
+        # Client image to perform Google Cloud Vision API tasks over.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::VisionV1::Image]
         attr_accessor :image
@@ -342,7 +342,7 @@ module Google
         end
       end
       
-      # A face annotation contains the results of face detection.
+      # A face annotation object contains the results of face detection.
       class FaceAnnotation
         include Google::Apis::Core::Hashable
       
@@ -1053,11 +1053,11 @@ module Google
         end
       end
       
-      # Client image to perform Vision tasks over.
+      # Client image to perform Google Cloud Vision API tasks over.
       class Image
         include Google::Apis::Core::Hashable
       
-        # External image source (i.e. Google Cloud Storage image location).
+        # External image source (Google Cloud Storage image location).
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::VisionV1::ImageSource]
         attr_accessor :source
@@ -1098,9 +1098,9 @@ module Google
       end
       
       # The <em>Feature</em> indicates what type of image detection task to perform.
-      # Users describe the type of Vision tasks to perform over images by
-      # using <em>Feature</em>s. Features encode the Vision vertical to operate on
-      # and the number of top-scoring results to return.
+      # Users describe the type of Google Cloud Vision API tasks to perform over
+      # images by using <em>Feature</em>s. Features encode the Cloud Vision API
+      # vertical to operate on and the number of top-scoring results to return.
       class Feature
         include Google::Apis::Core::Hashable
       

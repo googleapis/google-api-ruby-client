@@ -32,7 +32,7 @@ module Google
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
       generate_from_url(options[:url]) if options[:url]
       generate_from_file(options[:file]) if options[:file]
-      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] ) if options[:from_discovery]
+      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] ) if options[:id] || options[:from_discovery]
       create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 

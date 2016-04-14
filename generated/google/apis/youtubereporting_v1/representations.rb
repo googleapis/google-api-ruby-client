@@ -91,6 +91,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+          property :system_managed, as: 'systemManaged'
         end
       end
       
@@ -101,6 +102,7 @@ module Google
           property :report_type_id, as: 'reportTypeId'
           property :name, as: 'name'
           property :create_time, as: 'createTime'
+          property :system_managed, as: 'systemManaged'
         end
       end
       

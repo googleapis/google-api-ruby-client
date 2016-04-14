@@ -386,8 +386,9 @@ module Google
         # @return [String]
         attr_accessor :current_disk_size
       
-        # The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults
-        # to MYSQL_5_6. The databaseVersion can not be changed after instance creation.
+        # The database engine type and version. The databaseVersion can not be changed
+        # after instance creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7. Defaults to
+        # MYSQL_5_6. MYSQL_5_7 is applicable only to Second Generation instances.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -736,7 +737,7 @@ module Google
         attr_accessor :allowed_string_values
       
         # The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or
-        # both.
+        # MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances.
         # Corresponds to the JSON property `appliesTo`
         # @return [Array<String>]
         attr_accessor :applies_to

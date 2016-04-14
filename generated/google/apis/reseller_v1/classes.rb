@@ -102,6 +102,12 @@ module Google
       class ChangePlanRequest
         include Google::Apis::Core::Hashable
       
+        # External name of the deal code applicable for the subscription. This field is
+        # optional. If missing, the deal price plan won't be used.
+        # Corresponds to the JSON property `dealCode`
+        # @return [String]
+        attr_accessor :deal_code
+      
         # Identifies the resource as a subscription change plan request.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -128,6 +134,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deal_code = args[:deal_code] if args.key?(:deal_code)
           @kind = args[:kind] if args.key?(:kind)
           @plan_name = args[:plan_name] if args.key?(:plan_name)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
@@ -286,6 +293,12 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
+        # External name of the deal, if this subscription was provisioned under one.
+        # Otherwise this field will be empty.
+        # Corresponds to the JSON property `dealCode`
+        # @return [String]
+        attr_accessor :deal_code
+      
         # Identifies the resource as a Subscription.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -331,17 +344,17 @@ module Google
         # @return [String]
         attr_accessor :subscription_id
       
-        # field listing all current reasons the subscription is suspended. It is
-        # possible for a subscription to have multiple suspension reasons. A
-        # subscription's status is SUSPENDED until all pending suspensions are removed.
-        # Possible options include:
-        # - PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted the
+        # Read-only field containing an enumerable of all the current suspension reasons
+        # for a subscription. It is possible for a subscription to have many concurrent,
+        # overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all
+        # pending suspensions are removed. Possible options include:
+        # - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the
         # Google Apps Resold Terms of Services.
-        # - RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and their service
+        # - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service
         # was cancelled at the end of their term.
-        # - RESELLER_INITIATED — A manual suspension invoked by a Reseller.
-        # - TRIAL_ENDED — The customer's trial expired without a plan selected.
-        # - OTHER — The customer is suspended for an internal Google reason (e.g. abuse
+        # - RESELLER_INITIATED - A manual suspension invoked by a Reseller.
+        # - TRIAL_ENDED - The customer's trial expired without a plan selected.
+        # - OTHER - The customer is suspended for an internal Google reason (e.g. abuse
         # or otherwise).
         # Corresponds to the JSON property `suspensionReasons`
         # @return [Array<String>]
@@ -367,6 +380,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @customer_domain = args[:customer_domain] if args.key?(:customer_domain)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @deal_code = args[:deal_code] if args.key?(:deal_code)
           @kind = args[:kind] if args.key?(:kind)
           @plan = args[:plan] if args.key?(:plan)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)

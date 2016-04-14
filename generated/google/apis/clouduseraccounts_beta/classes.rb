@@ -401,7 +401,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for operation
+        # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]

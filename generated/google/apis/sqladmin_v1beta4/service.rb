@@ -22,7 +22,8 @@ module Google
     module SqladminV1beta4
       # Cloud SQL Administration API
       #
-      # API for Cloud SQL database instance management.
+      # Creates and configures Cloud SQL instances, which provide fully-managed MySQL
+      #  databases.
       #
       # @example
       #    require 'google/apis/sqladmin_v1beta4'

@@ -22,7 +22,7 @@ module Google
     module CalendarV3
       # Calendar API
       #
-      # Lets you manipulate events and other calendar data.
+      # Manipulates events and other calendar data.
       #
       # @example
       #    require 'google/apis/calendar_v3'

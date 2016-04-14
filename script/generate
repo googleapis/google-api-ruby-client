@@ -4,7 +4,7 @@
 
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
-APIS=(adexchangebuyer:v1.4 \
+API_IDS=(adexchangebuyer:v1.4 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
 	admin:datatransfer_v1 \
@@ -98,5 +98,8 @@ APIS=(adexchangebuyer:v1.4 \
 	youtubereporting:v1 \
 )
 
+URLS=(https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
+      https://content.googleapis.com/discovery/v1/apis/compute/beta/rest \
+)
 
-echo 'a' | bundle exec bin/generate-api gen generated --from-discovery=true --names_out=$DIR/api_names_out.yaml --url='https://content.googleapis.com/discovery/v1/apis/compute/beta/rest'  --id=${APIS[*]}
+echo 'a' | bundle exec bin/generate-api gen generated --from-discovery=true --names_out=$DIR/api_names_out.yaml --url=${URLS[*]}  --id=${API_IDS[*]}

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Calendar API
     #
-    # Lets you manipulate events and other calendar data.
+    # Manipulates events and other calendar data.
     #
     # @see https://developers.google.com/google-apps/calendar/firstapp
     module CalendarV3
       VERSION = 'V3'
-      REVISION = '20160306'
+      REVISION = '20160410'
 
       # Manage your calendars
       AUTH_CALENDAR = 'https://www.googleapis.com/auth/calendar'

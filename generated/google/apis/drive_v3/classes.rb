@@ -525,6 +525,12 @@ module Google
         # @return [Google::Apis::DriveV3::File::ImageMediaMetadata]
         attr_accessor :image_media_metadata
       
+        # Whether the file was created or opened by the requesting app.
+        # Corresponds to the JSON property `isAppAuthorized`
+        # @return [Boolean]
+        attr_accessor :is_app_authorized
+        alias_method :is_app_authorized?, :is_app_authorized
+      
         # This is always drive#file.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -728,6 +734,7 @@ module Google
           @icon_link = args[:icon_link] if args.key?(:icon_link)
           @id = args[:id] if args.key?(:id)
           @image_media_metadata = args[:image_media_metadata] if args.key?(:image_media_metadata)
+          @is_app_authorized = args[:is_app_authorized] if args.key?(:is_app_authorized)
           @kind = args[:kind] if args.key?(:kind)
           @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
           @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)

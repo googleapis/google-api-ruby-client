@@ -679,8 +679,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renewing, as: 'autoRenewing'
+          property :cancel_reason, as: 'cancelReason'
+          property :country_code, as: 'countryCode'
+          property :developer_payload, as: 'developerPayload'
           property :expiry_time_millis, as: 'expiryTimeMillis'
           property :kind, as: 'kind'
+          property :payment_state, as: 'paymentState'
+          property :price_amount_micros, as: 'priceAmountMicros'
+          property :price_currency_code, as: 'priceCurrencyCode'
           property :start_time_millis, as: 'startTimeMillis'
         end
       end

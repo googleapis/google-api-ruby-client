@@ -29,10 +29,10 @@ module Google
       #    require 'google/apis/cloudresourcemanager_v1'
       #
       #    Cloudresourcemanager = Google::Apis::CloudresourcemanagerV1 # Alias the module
-      #    service = Cloudresourcemanager::CloudresourcemanagerService.new
+      #    service = Cloudresourcemanager::CloudResourceManagerService.new
       #
       # @see https://cloud.google.com/resource-manager
-      class CloudresourcemanagerService < Google::Apis::Core::BaseService
+      class CloudResourceManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

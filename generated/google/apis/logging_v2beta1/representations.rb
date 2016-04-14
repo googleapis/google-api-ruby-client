@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMonitoredResourceDescriptorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -157,6 +163,7 @@ module Google
           hash :labels, as: 'labels'
           collection :entries, as: 'entries', class: Google::Apis::LoggingV2beta1::LogEntry, decorator: Google::Apis::LoggingV2beta1::LogEntry::Representation
       
+          property :partial_success, as: 'partialSuccess'
         end
       end
       
@@ -199,8 +206,10 @@ module Google
           property :user_agent, as: 'userAgent'
           property :remote_ip, as: 'remoteIp'
           property :referer, as: 'referer'
+          property :cache_lookup, as: 'cacheLookup'
           property :cache_hit, as: 'cacheHit'
-          property :validated_with_origin_server, as: 'validatedWithOriginServer'
+          property :cache_validated_with_origin_server, as: 'cacheValidatedWithOriginServer'
+          property :cache_fill_bytes, as: 'cacheFillBytes'
         end
       end
       
@@ -228,6 +237,7 @@ module Google
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          property :partial_success, as: 'partialSuccess'
         end
       end
       
@@ -237,6 +247,17 @@ module Google
           collection :entries, as: 'entries', class: Google::Apis::LoggingV2beta1::LogEntry, decorator: Google::Apis::LoggingV2beta1::LogEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          hash :project_id_errors, as: 'projectIdErrors', class: Google::Apis::LoggingV2beta1::Status, decorator: Google::Apis::LoggingV2beta1::Status::Representation
+      
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+          collection :details, as: 'details'
         end
       end
       
@@ -252,6 +273,7 @@ module Google
       class MonitoredResourceDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :type, as: 'type'
           property :display_name, as: 'displayName'
           property :description, as: 'description'
@@ -335,6 +357,7 @@ module Google
           property :pending_time, as: 'pendingTime'
           property :instance_index, as: 'instanceIndex'
           property :finished, as: 'finished'
+          property :first, as: 'first'
           property :instance_id, as: 'instanceId'
           collection :line, as: 'line', class: Google::Apis::LoggingV2beta1::LogLine, decorator: Google::Apis::LoggingV2beta1::LogLine::Representation
       

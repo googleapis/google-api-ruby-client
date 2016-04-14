@@ -24,10 +24,10 @@ module Google
     # Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
     # extensions.
     #
-    # @see 
+    # @see https://cloud.google.com/genomics/
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20160309'
+      REVISION = '20160411'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

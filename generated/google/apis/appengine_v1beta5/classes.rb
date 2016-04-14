@@ -28,8 +28,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping above, the `name`
-        # should have the format of `operations/some/unique/name`.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # have the format of `operations/some/unique/name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -217,7 +217,7 @@ module Google
         attr_accessor :id
       
         # HTTP path dispatch rules for requests to the app that do not explicitly target
-        # a service or version. The rules are order-dependent.
+        # a service or version. The rules are order-dependent. @OutputOnly
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1beta5::UrlDispatchRule>]
         attr_accessor :dispatch_rules
@@ -229,10 +229,11 @@ module Google
         # @return [String]
         attr_accessor :auth_domain
       
-        # The location from which the application will be run. Choices are "us" for
-        # United States and "eu" for European Union. Application instances will run out
-        # of data centers in the chosen location and all of the application's End User
-        # Content will be stored at rest in the chosen location. The default is "us".
+        # The location from which the application will be run. Application instances
+        # will run out of data centers in the chosen location and all of the application'
+        # s End User Content will be stored at rest. The default is "us-central".
+        # Choices are: "us-central" - Central US "europe-west" - Western Europe "us-
+        # east1" - Eastern US
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -244,7 +245,7 @@ module Google
         # @return [String]
         attr_accessor :code_bucket
       
-        # Determines the cookie expiration policy for the application.
+        # Determines the cookie expiration policy for the application. @OutputOnly
         # Corresponds to the JSON property `defaultCookieExpiration`
         # @return [String]
         attr_accessor :default_cookie_expiration
@@ -1438,6 +1439,140 @@ module Google
         def update!(**args)
           @services = args[:services] if args.key?(:services)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for `Instances.ListInstances`.
+      class ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The instances belonging to the requested version.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AppengineV1beta5::Instance>]
+        attr_accessor :instances
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Instances are the computing units that App Engine uses to automatically scale
+      # an application.
+      class Instance
+        include Google::Apis::Core::Hashable
+      
+        # The full path to the Instance resource in the API. Example: "apps/myapp/
+        # services/default/versions/v1/instances/instance-1" @OutputOnly
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The relative name/path of the instance within the version. Example: "instance-
+        # 1" @OutputOnly
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The App Engine release the instance is running on. @OutputOnly
+        # Corresponds to the JSON property `appEngineRelease`
+        # @return [String]
+        attr_accessor :app_engine_release
+      
+        # Availability of instance. @OutputOnly
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # For VMEngines instances, the name of GCE VM where the instance lives. @
+        # OutputOnly
+        # Corresponds to the JSON property `vmName`
+        # @return [String]
+        attr_accessor :vm_name
+      
+        # For VMEngines instances, the zone where the GCE VM is located. @OutputOnly
+        # Corresponds to the JSON property `vmZoneName`
+        # @return [String]
+        attr_accessor :vm_zone_name
+      
+        # For VMEngines instances, the GCE VM ID of the instance. @OutputOnly
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        # Time when instance was started. @OutputOnly
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [String]
+        attr_accessor :start_timestamp
+      
+        # Number of requests (since the clone was started). @OutputOnly
+        # Corresponds to the JSON property `requests`
+        # @return [Fixnum]
+        attr_accessor :requests
+      
+        # Number of errors since the instance was started. @OutputOnly
+        # Corresponds to the JSON property `errors`
+        # @return [Fixnum]
+        attr_accessor :errors
+      
+        # QPS for this instance (averaged over the last minute). @OutputOnly
+        # Corresponds to the JSON property `qps`
+        # @return [Float]
+        attr_accessor :qps
+      
+        # Latency in milliseconds (averaged over the last minute). @OutputOnly
+        # Corresponds to the JSON property `averageLatency`
+        # @return [Fixnum]
+        attr_accessor :average_latency
+      
+        # Memory usage (in bytes). @OutputOnly
+        # Corresponds to the JSON property `memoryUsage`
+        # @return [String]
+        attr_accessor :memory_usage
+      
+        # For VMEngines instances, the status of GCE VM where the instance lives. @
+        # OutputOnly
+        # Corresponds to the JSON property `vmStatus`
+        # @return [String]
+        attr_accessor :vm_status
+      
+        # For VMEngines instances, whether the instance has been unlocked. @OutputOnly
+        # Corresponds to the JSON property `vmUnlocked`
+        # @return [Boolean]
+        attr_accessor :vm_unlocked
+        alias_method :vm_unlocked?, :vm_unlocked
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @id = args[:id] if args.key?(:id)
+          @app_engine_release = args[:app_engine_release] if args.key?(:app_engine_release)
+          @availability = args[:availability] if args.key?(:availability)
+          @vm_name = args[:vm_name] if args.key?(:vm_name)
+          @vm_zone_name = args[:vm_zone_name] if args.key?(:vm_zone_name)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @requests = args[:requests] if args.key?(:requests)
+          @errors = args[:errors] if args.key?(:errors)
+          @qps = args[:qps] if args.key?(:qps)
+          @average_latency = args[:average_latency] if args.key?(:average_latency)
+          @memory_usage = args[:memory_usage] if args.key?(:memory_usage)
+          @vm_status = args[:vm_status] if args.key?(:vm_status)
+          @vm_unlocked = args[:vm_unlocked] if args.key?(:vm_unlocked)
         end
       end
       

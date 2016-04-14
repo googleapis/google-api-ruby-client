@@ -158,6 +158,7 @@ module Google
           property :row_limit, as: 'rowLimit'
           property :search_type, as: 'searchType'
           property :start_date, as: 'startDate'
+          property :start_row, as: 'startRow'
         end
       end
       

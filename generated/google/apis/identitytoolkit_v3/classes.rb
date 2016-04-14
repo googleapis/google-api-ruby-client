@@ -479,10 +479,21 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
         attr_accessor :change_email_template
       
+        # Whether anonymous user is enabled.
+        # Corresponds to the JSON property `enableAnonymousUser`
+        # @return [Boolean]
+        attr_accessor :enable_anonymous_user
+        alias_method :enable_anonymous_user?, :enable_anonymous_user
+      
         # OAuth2 provider configuration.
         # Corresponds to the JSON property `idpConfig`
         # @return [Array<Google::Apis::IdentitytoolkitV3::IdpConfig>]
         attr_accessor :idp_config
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `legacyResetPasswordTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :legacy_reset_password_template
       
         # Project ID of the relying party.
         # Corresponds to the JSON property `projectId`
@@ -515,7 +526,9 @@ module Google
           @api_key = args[:api_key] if args.key?(:api_key)
           @authorized_domains = args[:authorized_domains] if args.key?(:authorized_domains)
           @change_email_template = args[:change_email_template] if args.key?(:change_email_template)
+          @enable_anonymous_user = args[:enable_anonymous_user] if args.key?(:enable_anonymous_user)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @legacy_reset_password_template = args[:legacy_reset_password_template] if args.key?(:legacy_reset_password_template)
           @project_id = args[:project_id] if args.key?(:project_id)
           @reset_password_template = args[:reset_password_template] if args.key?(:reset_password_template)
           @use_email_sending = args[:use_email_sending] if args.key?(:use_email_sending)
@@ -707,6 +720,11 @@ module Google
         # @return [String]
         attr_accessor :api_key
       
+        # Authorized domains for widget redirect.
+        # Corresponds to the JSON property `authorizedDomains`
+        # @return [Array<String>]
+        attr_accessor :authorized_domains
+      
         # Template for an email template.
         # Corresponds to the JSON property `changeEmailTemplate`
         # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
@@ -718,10 +736,21 @@ module Google
         # @return [String]
         attr_accessor :delegated_project_number
       
+        # Whether to enable anonymous user.
+        # Corresponds to the JSON property `enableAnonymousUser`
+        # @return [Boolean]
+        attr_accessor :enable_anonymous_user
+        alias_method :enable_anonymous_user?, :enable_anonymous_user
+      
         # Oauth2 provider configuration.
         # Corresponds to the JSON property `idpConfig`
         # @return [Array<Google::Apis::IdentitytoolkitV3::IdpConfig>]
         attr_accessor :idp_config
+      
+        # Template for an email template.
+        # Corresponds to the JSON property `legacyResetPasswordTemplate`
+        # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
+        attr_accessor :legacy_reset_password_template
       
         # Template for an email template.
         # Corresponds to the JSON property `resetPasswordTemplate`
@@ -747,9 +776,12 @@ module Google
         def update!(**args)
           @allow_password_user = args[:allow_password_user] if args.key?(:allow_password_user)
           @api_key = args[:api_key] if args.key?(:api_key)
+          @authorized_domains = args[:authorized_domains] if args.key?(:authorized_domains)
           @change_email_template = args[:change_email_template] if args.key?(:change_email_template)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @enable_anonymous_user = args[:enable_anonymous_user] if args.key?(:enable_anonymous_user)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @legacy_reset_password_template = args[:legacy_reset_password_template] if args.key?(:legacy_reset_password_template)
           @reset_password_template = args[:reset_password_template] if args.key?(:reset_password_template)
           @use_email_sending = args[:use_email_sending] if args.key?(:use_email_sending)
           @verify_email_template = args[:verify_email_template] if args.key?(:verify_email_template)
@@ -1134,6 +1166,11 @@ module Google
         # @return [String]
         attr_accessor :provider
       
+        # OAuth2 client secret.
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1144,6 +1181,7 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @experiment_percent = args[:experiment_percent] if args.key?(:experiment_percent)
           @provider = args[:provider] if args.key?(:provider)
+          @secret = args[:secret] if args.key?(:secret)
         end
       end
       
@@ -1269,6 +1307,11 @@ module Google
         # @return [String]
         attr_accessor :new_email
       
+        # The user's hashed password.
+        # Corresponds to the JSON property `passwordHash`
+        # @return [String]
+        attr_accessor :password_hash
+      
         # The photo url of the user.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
@@ -1296,6 +1339,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
           @new_email = args[:new_email] if args.key?(:new_email)
+          @password_hash = args[:password_hash] if args.key?(:password_hash)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
@@ -1719,6 +1763,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :oauth_expire_in
       
+        # The OIDC id token.
+        # Corresponds to the JSON property `oauthIdToken`
+        # @return [String]
+        attr_accessor :oauth_id_token
+      
         # The user approved request token for the OpenID OAuth extension.
         # Corresponds to the JSON property `oauthRequestToken`
         # @return [String]
@@ -1800,6 +1849,7 @@ module Google
           @oauth_access_token = args[:oauth_access_token] if args.key?(:oauth_access_token)
           @oauth_authorization_code = args[:oauth_authorization_code] if args.key?(:oauth_authorization_code)
           @oauth_expire_in = args[:oauth_expire_in] if args.key?(:oauth_expire_in)
+          @oauth_id_token = args[:oauth_id_token] if args.key?(:oauth_id_token)
           @oauth_request_token = args[:oauth_request_token] if args.key?(:oauth_request_token)
           @oauth_scope = args[:oauth_scope] if args.key?(:oauth_scope)
           @oauth_token_secret = args[:oauth_token_secret] if args.key?(:oauth_token_secret)

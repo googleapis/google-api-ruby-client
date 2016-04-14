@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20160301'
+      REVISION = '20160316'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'

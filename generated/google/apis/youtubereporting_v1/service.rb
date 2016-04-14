@@ -97,6 +97,10 @@ module Google
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of ListReportTypesResponse.next_page_token returned in
         #   response to the previous call to the `ListReportTypes` method.
+        # @param [Boolean] include_system_managed
+        #   If set to true, also system-managed report types will be returned; otherwise
+        #   only the report types that can be used to create new reporting jobs will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,13 +118,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_report_types(on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_report_types(on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, include_system_managed: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/reportTypes', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -171,6 +176,10 @@ module Google
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of ListReportTypesResponse.next_page_token returned in
         #   response to the previous call to the `ListJobs` method.
+        # @param [Boolean] include_system_managed
+        #   If set to true, also system-managed jobs will be returned; otherwise only user-
+        #   created jobs will be returned. System-managed jobs can neither be modified nor
+        #   deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -188,13 +197,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_jobs(on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, include_system_managed: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/jobs', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListJobsResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -284,6 +294,12 @@ module Google
         #   to the previous call to the `ListReports` method.
         # @param [String] created_after
         #   If set, only reports created after the specified date/time are returned.
+        # @param [String] start_time_at_or_after
+        #   If set, only reports whose start time is greater than or equal the specified
+        #   date/time are returned.
+        # @param [String] start_time_before
+        #   If set, only reports whose start time is smaller than the specified date/time
+        #   are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -301,7 +317,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_job_reports(job_id, on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, created_after: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_job_reports(job_id, on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, created_after: nil, start_time_at_or_after: nil, start_time_before: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/jobs/{jobId}/reports', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportsResponse
@@ -310,6 +326,8 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
+          command.query['startTimeAtOrAfter'] = start_time_at_or_after unless start_time_at_or_after.nil?
+          command.query['startTimeBefore'] = start_time_before unless start_time_before.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

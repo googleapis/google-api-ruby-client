@@ -308,6 +308,7 @@ module Google
           property :id, as: 'id'
           property :image_media_metadata, as: 'imageMediaMetadata', class: Google::Apis::DriveV3::File::ImageMediaMetadata, decorator: Google::Apis::DriveV3::File::ImageMediaMetadata::Representation
       
+          property :is_app_authorized, as: 'isAppAuthorized'
           property :kind, as: 'kind'
           property :last_modifying_user, as: 'lastModifyingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       

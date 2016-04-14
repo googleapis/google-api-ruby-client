@@ -20,12 +20,13 @@ module Google
   module Apis
     # YouTube Data API
     #
-    # Programmatic access to YouTube features.
+    # Supports core YouTube features, such as uploading videos, creating and
+    # managing playlists, searching for content, and much more.
     #
     # @see https://developers.google.com/youtube/v3
     module YoutubeV3
       VERSION = 'V3'
-      REVISION = '20160222'
+      REVISION = '20160406'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

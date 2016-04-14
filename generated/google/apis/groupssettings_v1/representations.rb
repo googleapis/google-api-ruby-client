@@ -52,6 +52,7 @@ module Google
           property :send_message_deny_notification, as: 'sendMessageDenyNotification'
           property :show_in_group_directory, as: 'showInGroupDirectory'
           property :spam_moderation_level, as: 'spamModerationLevel'
+          property :who_can_add, as: 'whoCanAdd'
           property :who_can_contact_owner, as: 'whoCanContactOwner'
           property :who_can_invite, as: 'whoCanInvite'
           property :who_can_join, as: 'whoCanJoin'

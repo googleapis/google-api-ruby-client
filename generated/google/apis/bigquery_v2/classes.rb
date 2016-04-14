@@ -283,16 +283,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dataset_reference
       
-        # [Experimental] The default lifetime of all tables in the dataset, in
-        # milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this
-        # property is set, all newly-created tables in the dataset will have an
-        # expirationTime property set to the creation time plus the value in this
-        # property, and changing the value will only affect new tables, not existing
-        # ones. When the expirationTime for a given table is reached, that table will be
-        # deleted automatically. If a table's expirationTime is modified or removed
-        # before the table expires, or if you provide an explicit expirationTime when
-        # creating a table, that value takes precedence over the default expiration time
-        # indicated by this property.
+        # [Optional] The default lifetime of all tables in the dataset, in milliseconds.
+        # The minimum value is 3600000 milliseconds (one hour). Once this property is
+        # set, all newly-created tables in the dataset will have an expirationTime
+        # property set to the creation time plus the value in this property, and
+        # changing the value will only affect new tables, not existing ones. When the
+        # expirationTime for a given table is reached, that table will be deleted
+        # automatically. If a table's expirationTime is modified or removed before the
+        # table expires, or if you provide an explicit expirationTime when creating a
+        # table, that value takes precedence over the default expiration time indicated
+        # by this property.
         # Corresponds to the JSON property `defaultTableExpirationMs`
         # @return [String]
         attr_accessor :default_table_expiration_ms
@@ -880,6 +880,31 @@ module Google
       end
       
       # 
+      class IntervalPartitionConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `expirationMs`
+        # @return [String]
+        attr_accessor :expiration_ms
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
       class Job
         include Google::Apis::Core::Hashable
       
@@ -1204,7 +1229,8 @@ module Google
       
         # [Optional] The format of the data files. For CSV files, specify "CSV". For
         # datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
-        # specify "NEWLINE_DELIMITED_JSON". The default value is CSV.
+        # specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". The default value
+        # is CSV.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -2172,6 +2198,13 @@ module Google
         # @return [String]
         attr_accessor :num_rows
       
+        # [Experimental] List of partition configurations for this table. Currently only
+        # one configuration can be specified and it can only be an interval partition
+        # with type daily.
+        # Corresponds to the JSON property `partitionConfigurations`
+        # @return [Array<Google::Apis::BigqueryV2::TablePartitionConfiguration>]
+        attr_accessor :partition_configurations
+      
         # [Optional] Describes the schema of this table.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
@@ -2225,6 +2258,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
           @num_rows = args[:num_rows] if args.key?(:num_rows)
+          @partition_configurations = args[:partition_configurations] if args.key?(:partition_configurations)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @streaming_buffer = args[:streaming_buffer] if args.key?(:streaming_buffer)
@@ -2456,9 +2490,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Required] The field data type. Possible values include STRING, INTEGER, FLOAT,
-        # BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains
-        # a nested schema).
+        # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
+        # FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field
+        # contains a nested schema).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2560,6 +2594,26 @@ module Google
             @table_reference = args[:table_reference] if args.key?(:table_reference)
             @type = args[:type] if args.key?(:type)
           end
+        end
+      end
+      
+      # [Required] A partition configuration. Only one type of partition should be
+      # configured.
+      class TablePartitionConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # [Pick one] Configures an interval partition.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::BigqueryV2::IntervalPartitionConfiguration]
+        attr_accessor :interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
         end
       end
       

@@ -46,6 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddonsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpLoadBalancing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HorizontalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -87,6 +105,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :clusters, as: 'clusters', class: Google::Apis::ContainerV1::Cluster, decorator: Google::Apis::ContainerV1::Cluster::Representation
       
+          collection :missing_zones, as: 'missingZones'
         end
       end
       
@@ -104,6 +123,9 @@ module Google
           property :monitoring_service, as: 'monitoringService'
           property :network, as: 'network'
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :subnetwork, as: 'subnetwork'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
           property :endpoint, as: 'endpoint'
@@ -116,6 +138,7 @@ module Google
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           collection :instance_group_urls, as: 'instanceGroupUrls'
+          property :current_node_count, as: 'currentNodeCount'
         end
       end
       
@@ -125,6 +148,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :disk_size_gb, as: 'diskSizeGb'
           collection :oauth_scopes, as: 'oauthScopes'
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -136,6 +160,30 @@ module Google
           property :cluster_ca_certificate, as: 'clusterCaCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+        end
+      end
+      
+      class AddonsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
+      
+          property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
+      
+        end
+      end
+      
+      class HttpLoadBalancing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
+      class HorizontalPodAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
         end
       end
       
@@ -154,6 +202,7 @@ module Google
           property :zone, as: 'zone'
           property :operation_type, as: 'operationType'
           property :status, as: 'status'
+          property :detail, as: 'detail'
           property :status_message, as: 'statusMessage'
           property :self_link, as: 'selfLink'
           property :target_link, as: 'targetLink'
@@ -172,6 +221,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_monitoring_service, as: 'desiredMonitoringService'
+          property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :desired_master_version, as: 'desiredMasterVersion'
         end
       end
       
@@ -180,6 +233,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :operations, as: 'operations', class: Google::Apis::ContainerV1::Operation, decorator: Google::Apis::ContainerV1::Operation::Representation
       
+          collection :missing_zones, as: 'missingZones'
         end
       end
       

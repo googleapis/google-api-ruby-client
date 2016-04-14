@@ -520,6 +520,12 @@ module Google
             include Google::Apis::Core::JsonObjectSupport
           end
           
+          class FamilySharing
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
           class RentalPeriod
             class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -1188,6 +1194,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body'
+          collection :crm_experiment_ids, as: 'crmExperimentIds'
+          property :doc_id, as: 'doc_id'
+          property :doc_type, as: 'doc_type'
           property :dont_show_notification, as: 'dont_show_notification'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
@@ -1529,9 +1538,12 @@ module Google
             property :copy, as: 'copy', class: Google::Apis::BooksV1::Volume::UserInfo::Copy, decorator: Google::Apis::BooksV1::Volume::UserInfo::Copy::Representation
         
             property :entitlement_type, as: 'entitlementType'
+            property :family_sharing, as: 'familySharing', class: Google::Apis::BooksV1::Volume::UserInfo::FamilySharing, decorator: Google::Apis::BooksV1::Volume::UserInfo::FamilySharing::Representation
+        
             property :is_family_shared_from_user, as: 'isFamilySharedFromUser'
             property :is_family_shared_to_user, as: 'isFamilySharedToUser'
             property :is_family_sharing_allowed, as: 'isFamilySharingAllowed'
+            property :is_family_sharing_disabled_by_fop, as: 'isFamilySharingDisabledByFop'
             property :is_in_my_books, as: 'isInMyBooks'
             property :is_preordered, as: 'isPreordered'
             property :is_purchased, as: 'isPurchased'
@@ -1557,6 +1569,15 @@ module Google
               property :remaining_character_count, as: 'remainingCharacterCount'
               property :updated, as: 'updated', type: DateTime
           
+            end
+          end
+          
+          class FamilySharing
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :family_role, as: 'familyRole'
+              property :is_sharing_allowed, as: 'isSharingAllowed'
+              property :is_sharing_disabled_by_fop, as: 'isSharingDisabledByFop'
             end
           end
           

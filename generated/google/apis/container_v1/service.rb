@@ -22,8 +22,8 @@ module Google
     module ContainerV1
       # Google Container Engine API
       #
-      # The Google Container Engine API is used for building and managing container
-      #  based applications, powered by the open source Kubernetes technology.
+      # Builds and manages clusters that run container-based applications, powered by
+      #  open source Kubernetes technology.
       #
       # @example
       #    require 'google/apis/container_v1'
@@ -49,11 +49,11 @@ module Google
         
         # Returns configuration info about the Container Engine service.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-        #   return operations for, or "-" for all zones.
+        #   return operations for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -85,8 +85,8 @@ module Google
         # Lists all clusters owned by a project in either the specified zone or all
         # zones.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides, or "-" for all zones.
@@ -118,10 +118,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a specific cluster.
+        # Gets the details of a specific cluster.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides.
@@ -157,16 +157,15 @@ module Google
         end
         
         # Creates a cluster, consisting of the specified number and type of Google
-        # Compute Engine instances, plus a Kubernetes master endpoint. By default, the
-        # cluster is created in the project's [default network](/compute/docs/networking#
-        # networks_1). One firewall is added for the cluster. After cluster creation,
-        # the cluster creates routes for each node to allow the containers on that node
-        # to communicate with all other instances in the cluster. Finally, an entry is
-        # added to the project's global metadata indicating which CIDR range is being
-        # used by the cluster.
+        # Compute Engine instances. By default, the cluster is created in the project's [
+        # default network](/compute/docs/networks-and-firewalls#networks). One firewall
+        # is added for the cluster. After cluster creation, the cluster creates routes
+        # for each node to allow the containers on that node to communicate with all
+        # other instances in the cluster. Finally, an entry is added to the project's
+        # global metadata indicating which CIDR range is being used by the cluster.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides.
@@ -201,10 +200,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update settings of a specific cluster.
+        # Updates the settings of a specific cluster.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides.
@@ -244,10 +243,12 @@ module Google
         
         # Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
         # Firewalls and routes that were configured during cluster creation are also
-        # deleted.
+        # deleted. Other Google Compute Engine resources that might be in use by the
+        # cluster (e.g. load balancer resources) will not be deleted if they weren't
+        # present at the initial create time.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides.
@@ -284,11 +285,11 @@ module Google
         
         # Lists all operations in a project in a specific zone or all zones.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-        #   return operations for, or "-" for all zones.
+        #   return operations for, or `-` for all zones.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -319,8 +320,8 @@ module Google
         
         # Gets the specified operation.
         # @param [String] project_id
-        #   The Google Developers Console [project ID or project number](https://
-        #   developers.google.com/console/help/new/#projectnumber).
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
         # @param [String] zone
         #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
         #   which the cluster resides.

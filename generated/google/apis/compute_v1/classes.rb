@@ -474,16 +474,21 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # A source image used to create the disk. You can provide a private (custom)
-        # image, and Compute Engine will use the corresponding image from your project.
-        # For example:
+        # The source image used to create this disk. If the source image is deleted,
+        # this field will not be set.
+        # To create a disk with one of the public operating system images, specify the
+        # image by its family name. For example, specify family/debian-8 to use the
+        # latest Debian 8 image:
+        # projects/debian-cloud/global/images/family/debian-8
+        # Alternatively, use a specific version of a public operating system image:
+        # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
+        # To create a disk with a private image that you created, specify the image name
+        # in the following format:
         # global/images/my-private-image
-        # Or you can provide an image from a publicly-available project. For example, to
-        # use a Debian image from the debian-cloud project, make sure to include the
-        # project in the URL:
-        # projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
-        # where vYYYYMMDD is the image version. The fully-qualified URL will also work
-        # in both cases.
+        # You can also specify a private image by its image family, which returns the
+        # latest version of the image in that family. Replace the image name with family/
+        # family-name:
+        # global/images/family/my-private-family
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1068,6 +1073,12 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
+        # [Output Only] URL of the region where the regional backend service resides.
+        # This field is not applicable to global backend services.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1096,6 +1107,7 @@ module Google
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
           @protocol = args[:protocol] if args.key?(:protocol)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
@@ -1299,26 +1311,21 @@ module Google
         # @return [String]
         attr_accessor :size_gb
       
-        # The source image used to create this disk. If the source image is deleted from
-        # the system, this field will not be set, even if an image with the same name
-        # has been re-created.
-        # When creating a disk, you can provide a private (custom) image using the
-        # following input, and Compute Engine will use the corresponding image from your
-        # project. For example:
+        # The source image used to create this disk. If the source image is deleted,
+        # this field will not be set.
+        # To create a disk with one of the public operating system images, specify the
+        # image by its family name. For example, specify family/debian-8 to use the
+        # latest Debian 8 image:
+        # projects/debian-cloud/global/images/family/debian-8
+        # Alternatively, use a specific version of a public operating system image:
+        # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
+        # To create a disk with a private image that you created, specify the image name
+        # in the following format:
         # global/images/my-private-image
-        # Or you can provide an image from a publicly-available project. For example, to
-        # use a Debian image from the debian-cloud project, make sure to include the
-        # project in the URL:
-        # projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
-        # where vYYYYMMDD is the image version. The fully-qualified URL will also work
-        # in both cases.
-        # You can also specify the latest image for a private image family by replacing
-        # the image name suffix with family/family-name. For example:
+        # You can also specify a private image by its image family, which returns the
+        # latest version of the image in that family. Replace the image name with family/
+        # family-name:
         # global/images/family/my-private-family
-        # Or you can specify an image family from a publicly-available project. For
-        # example, to use the latest Debian 7 from the debian-cloud project, make sure
-        # to include the project in the URL:
-        # projects/debian-cloud/global/images/family/debian-7
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1792,6 +1799,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class DisksResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The new size of the persistent disk, which is specified in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [String]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
       
@@ -5379,7 +5405,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for operation
+        # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -6804,7 +6830,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] URL of the region where the Subnetwork resides.
+        # URL of the region where the Subnetwork resides.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -8978,13 +9004,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Any scheduled maintenance windows for this zone. When the zone
-        # is in a maintenance window, all resources which reside in the zone will be
-        # unavailable. For more information, see Maintenance Windows
-        # Corresponds to the JSON property `maintenanceWindows`
-        # @return [Array<Google::Apis::ComputeV1::Zone::MaintenanceWindow>]
-        attr_accessor :maintenance_windows
-      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -9016,48 +9035,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
-        end
-        
-        # 
-        class MaintenanceWindow
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] Starting time of the maintenance window, in RFC3339 format.
-          # Corresponds to the JSON property `beginTime`
-          # @return [String]
-          attr_accessor :begin_time
-        
-          # [Output Only] Textual description of the maintenance window.
-          # Corresponds to the JSON property `description`
-          # @return [String]
-          attr_accessor :description
-        
-          # [Output Only] Ending time of the maintenance window, in RFC3339 format.
-          # Corresponds to the JSON property `endTime`
-          # @return [String]
-          attr_accessor :end_time
-        
-          # [Output Only] Name of the maintenance window.
-          # Corresponds to the JSON property `name`
-          # @return [String]
-          attr_accessor :name
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @begin_time = args[:begin_time] if args.key?(:begin_time)
-            @description = args[:description] if args.key?(:description)
-            @end_time = args[:end_time] if args.key?(:end_time)
-            @name = args[:name] if args.key?(:name)
-          end
         end
       end
       

@@ -22,7 +22,8 @@ module Google
     module YoutubeV3
       # YouTube Data API
       #
-      # Programmatic access to YouTube features.
+      # Supports core YouTube features, such as uploading videos, creating and
+      #  managing playlists, searching for content, and much more.
       #
       # @example
       #    require 'google/apis/youtube_v3'

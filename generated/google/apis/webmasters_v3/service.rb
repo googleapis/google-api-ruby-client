@@ -22,7 +22,7 @@ module Google
     module WebmastersV3
       # Search Console API
       #
-      # Lets you view Google Search Console data for your verified sites.
+      # View Google Search Console data for your verified sites.
       #
       # @example
       #    require 'google/apis/webmasters_v3'

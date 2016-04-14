@@ -22,7 +22,7 @@ module Google
     module DfareportingV2_3
       # DCM/DFA Reporting And Trafficking API
       #
-      # Manage your DoubleClick Campaign Manager ad campaigns and reports.
+      # Manages your DoubleClick Campaign Manager ad campaigns and reports.
       #
       # @example
       #    require 'google/apis/dfareporting_v2_3'
@@ -6197,7 +6197,7 @@ module Google
         #   Select only placements that are associated with these compatibilities. WEB and
         #   WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for
         #   regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for
-        #   rendering in mobile apps.IN_STREAM_VIDEO refers to rendering in in-stream
+        #   rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream
         #   video ads developed with the VAST standard.
         # @param [Array<String>, String] content_category_ids
         #   Select only placements that are associated with these content categories.

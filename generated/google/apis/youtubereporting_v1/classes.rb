@@ -82,6 +82,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # True if this a system-managed report type; otherwise false. Reporting jobs for
+        # system-managed report types are created automatically and can thus not be used
+        # in the `CreateJob` method.
+        # Corresponds to the JSON property `systemManaged`
+        # @return [Boolean]
+        attr_accessor :system_managed
+        alias_method :system_managed?, :system_managed
+      
         def initialize(**args)
            update!(**args)
         end
@@ -90,6 +98,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @system_managed = args[:system_managed] if args.key?(:system_managed)
         end
       end
       
@@ -117,6 +126,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # True if this a system-managed job that cannot be modified by the user;
+        # otherwise false.
+        # Corresponds to the JSON property `systemManaged`
+        # @return [Boolean]
+        attr_accessor :system_managed
+        alias_method :system_managed?, :system_managed
+      
         def initialize(**args)
            update!(**args)
         end
@@ -127,6 +143,7 @@ module Google
           @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
           @name = args[:name] if args.key?(:name)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @system_managed = args[:system_managed] if args.key?(:system_managed)
         end
       end
       

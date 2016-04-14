@@ -1332,6 +1332,12 @@ module Google
         # @return [Google::Apis::DriveV2::File::IndexableText]
         attr_accessor :indexable_text
       
+        # Whether the file was created or opened by the requesting app.
+        # Corresponds to the JSON property `isAppAuthorized`
+        # @return [Boolean]
+        attr_accessor :is_app_authorized
+        alias_method :is_app_authorized?, :is_app_authorized
+      
         # The type of file. This is always drive#file.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1395,10 +1401,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :open_with_links
       
-        # The original filename if the file was uploaded manually, or the original title
-        # if the file was inserted through the API. Note that renames of the title will
-        # not change the original filename. This field is only populated for files with
-        # content stored in Drive; it is not populated for Google Docs or shortcut files.
+        # The original filename of the uploaded content if available, or else the
+        # original value of the title field. This is only available for files with
+        # binary content in Drive.
         # Corresponds to the JSON property `originalFilename`
         # @return [String]
         attr_accessor :original_filename
@@ -1558,6 +1563,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @image_media_metadata = args[:image_media_metadata] if args.key?(:image_media_metadata)
           @indexable_text = args[:indexable_text] if args.key?(:indexable_text)
+          @is_app_authorized = args[:is_app_authorized] if args.key?(:is_app_authorized)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)

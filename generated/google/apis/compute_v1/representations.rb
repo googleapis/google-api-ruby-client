@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisksResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisksScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1164,12 +1170,6 @@ module Google
       
       class Zone
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class MaintenanceWindow
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1420,6 +1420,7 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :protocol, as: 'protocol'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :timeout_sec, as: 'timeoutSec'
         end
@@ -1580,6 +1581,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DisksResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, as: 'sizeGb'
         end
       end
       
@@ -3354,22 +3362,10 @@ module Google
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ComputeV1::Zone::MaintenanceWindow, decorator: Google::Apis::ComputeV1::Zone::MaintenanceWindow::Representation
-      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-        end
-        
-        class MaintenanceWindow
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :begin_time, as: 'beginTime'
-            property :description, as: 'description'
-            property :end_time, as: 'endTime'
-            property :name, as: 'name'
-          end
         end
       end
       

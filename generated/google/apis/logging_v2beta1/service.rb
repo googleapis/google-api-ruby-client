@@ -22,8 +22,7 @@ module Google
     module LoggingV2beta1
       # Google Cloud Logging API
       #
-      # The Google Cloud Logging API lets you write log entries and manage your logs,
-      #  log sinks and logs-based metrics.
+      # Writes log entries and manages your logs, log sinks, and logs-based metrics.
       #
       # @example
       #    require 'google/apis/logging_v2beta1'
@@ -82,19 +81,17 @@ module Google
         # Lists sinks.
         # @param [String] project_name
         #   Required. The resource name of the project containing the sinks. Example: `"
-        #   projects/my-logging-project"`, `"projects/01234567890"`.
+        #   projects/my-logging-project"`.
         # @param [String] page_token
-        #   Optional. If the `pageToken` request parameter is supplied, then the next page
-        #   of results in the set are retrieved. The `pageToken` parameter must be set
-        #   with the value of the `nextPageToken` result parameter from the previous
-        #   request. The value of `projectName` must be the same as in the previous
-        #   request.
+        #   Optional. If the `pageToken` parameter is supplied, then the next page of
+        #   results is retrieved. The `pageToken` parameter must be set to the value of
+        #   the `nextPageToken` from the previous response. The value of `projectName`
+        #   must be the same as in the previous request.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Fewer
-        #   results might be returned. You must check for the `nextPageToken` result to
-        #   determine if additional results are available, which you can retrieve by
-        #   passing the `nextPageToken` value in the `pageToken` parameter to the next
-        #   request.
+        #   Optional. The maximum number of results to return from this request. You must
+        #   check for presence of `nextPageToken` to determine if additional results are
+        #   available, which you can retrieve by passing the `nextPageToken` value as the `
+        #   pageToken` parameter in the next request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -261,17 +258,15 @@ module Google
         #   Required. The resource name of the project containing the metrics. Example: `"
         #   projects/my-project-id"`.
         # @param [String] page_token
-        #   Optional. If the `pageToken` request parameter is supplied, then the next page
-        #   of results in the set are retrieved. The `pageToken` parameter must be set
-        #   with the value of the `nextPageToken` result parameter from the previous
-        #   request. The value of `projectName` must be the same as in the previous
-        #   request.
+        #   Optional. If the `pageToken` parameter is supplied, then the next page of
+        #   results is retrieved. The `pageToken` parameter must be set to the value of
+        #   the `nextPageToken` from the previous response. The value of `projectName`
+        #   must be the same as in the previous request.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Fewer
-        #   results might be returned. You must check for the `nextPageToken` result to
-        #   determine if additional results are available, which you can retrieve by
-        #   passing the `nextPageToken` value in the `pageToken` parameter to the next
-        #   request.
+        #   Optional. The maximum number of results to return from this request. You must
+        #   check for presence of `nextPageToken` to determine if additional results are
+        #   available, which you can retrieve by passing the `nextPageToken` value as the `
+        #   pageToken` parameter in the next request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -497,16 +492,14 @@ module Google
         
         # Lists monitored resource descriptors that are used by Cloud Logging.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Fewer
-        #   results might be returned. You must check for the `nextPageToken` result to
-        #   determine if additional results are available, which you can retrieve by
-        #   passing the `nextPageToken` value in the `pageToken` parameter to the next
-        #   request.
+        #   Optional. The maximum number of results to return from this request. You must
+        #   check for presence of `nextPageToken` to determine if additional results are
+        #   available, which you can retrieve by passing the `nextPageToken` value as the `
+        #   pageToken` parameter in the next request.
         # @param [String] page_token
-        #   Optional. If the `pageToken` request parameter is supplied, then the next page
-        #   of results in the set are retrieved. The `pageToken` parameter must be set
-        #   with the value of the `nextPageToken` result parameter from the previous
-        #   request.
+        #   Optional. If the `pageToken` parameter is supplied, then the next page of
+        #   results is retrieved. The `pageToken` parameter must be set to the value of
+        #   the `nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

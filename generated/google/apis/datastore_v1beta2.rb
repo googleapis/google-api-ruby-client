@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Cloud Datastore API
     #
-    # API for accessing Google Cloud Datastore.
+    # Stores and queries data in Google Cloud Datastore.
     #
     # @see https://developers.google.com/datastore/
     module DatastoreV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20151008'
+      REVISION = '20160314'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

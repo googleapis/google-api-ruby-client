@@ -20,12 +20,12 @@ module Google
   module Apis
     # Search Console API
     #
-    # Lets you view Google Search Console data for your verified sites.
+    # View Google Search Console data for your verified sites.
     #
     # @see https://developers.google.com/webmaster-tools/
     module WebmastersV3
       VERSION = 'V3'
-      REVISION = '20151229'
+      REVISION = '20160317'
 
       # View and manage Search Console data for your verified sites
       AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'

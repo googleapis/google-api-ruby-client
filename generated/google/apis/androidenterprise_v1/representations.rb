@@ -488,6 +488,7 @@ module Google
           property :product_id, as: 'productId'
           property :product_pricing, as: 'productPricing'
           property :requires_container_app, as: 'requiresContainerApp'
+          property :small_icon_url, as: 'smallIconUrl'
           property :title, as: 'title'
           property :work_details_url, as: 'workDetailsUrl'
         end

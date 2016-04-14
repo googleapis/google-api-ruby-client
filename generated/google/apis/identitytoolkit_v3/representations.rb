@@ -360,7 +360,10 @@ module Google
           collection :authorized_domains, as: 'authorizedDomains'
           property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
+          property :enable_anonymous_user, as: 'enableAnonymousUser'
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
+      
+          property :legacy_reset_password_template, as: 'legacyResetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
           property :project_id, as: 'projectId'
           property :reset_password_template, as: 'resetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
@@ -411,10 +414,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_password_user, as: 'allowPasswordUser'
           property :api_key, as: 'apiKey'
+          collection :authorized_domains, as: 'authorizedDomains'
           property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
           property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :enable_anonymous_user, as: 'enableAnonymousUser'
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
+      
+          property :legacy_reset_password_template, as: 'legacyResetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
           property :reset_password_template, as: 'resetPasswordTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
@@ -520,6 +527,7 @@ module Google
           property :enabled, as: 'enabled'
           property :experiment_percent, as: 'experimentPercent'
           property :provider, as: 'provider'
+          property :secret, as: 'secret'
         end
       end
       
@@ -554,6 +562,7 @@ module Google
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :new_email, as: 'newEmail'
+          property :password_hash, :base64 => true, as: 'passwordHash'
           property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo::Representation
       
@@ -659,6 +668,7 @@ module Google
           property :oauth_access_token, as: 'oauthAccessToken'
           property :oauth_authorization_code, as: 'oauthAuthorizationCode'
           property :oauth_expire_in, as: 'oauthExpireIn'
+          property :oauth_id_token, as: 'oauthIdToken'
           property :oauth_request_token, as: 'oauthRequestToken'
           property :oauth_scope, as: 'oauthScope'
           property :oauth_token_secret, as: 'oauthTokenSecret'

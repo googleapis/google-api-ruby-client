@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntervalPartitionConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -288,6 +294,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TablePartitionConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -504,6 +516,14 @@ module Google
       
           property :total_bytes_processed, as: 'totalBytesProcessed'
           property :total_rows, as: 'totalRows'
+        end
+      end
+      
+      class IntervalPartitionConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_ms, as: 'expirationMs'
+          property :type, as: 'type'
         end
       end
       
@@ -816,6 +836,8 @@ module Google
           property :location, as: 'location'
           property :num_bytes, as: 'numBytes'
           property :num_rows, as: 'numRows'
+          collection :partition_configurations, as: 'partitionConfigurations', class: Google::Apis::BigqueryV2::TablePartitionConfiguration, decorator: Google::Apis::BigqueryV2::TablePartitionConfiguration::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
@@ -919,6 +941,14 @@ module Google
         
             property :type, as: 'type'
           end
+        end
+      end
+      
+      class TablePartitionConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::BigqueryV2::IntervalPartitionConfiguration, decorator: Google::Apis::BigqueryV2::IntervalPartitionConfiguration::Representation
+      
         end
       end
       

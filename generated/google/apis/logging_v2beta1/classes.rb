@@ -50,7 +50,16 @@ module Google
         # @return [String]
         attr_accessor :log_name
       
-        # A specific monitored resource or a group of monitored resources.
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The `type` field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the `labels` field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"`
+        # and `"zone"`: ` "type": "gce_instance", "labels": ` "instance_id": "my-
+        # instance", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2beta1::MonitoredResource]
         attr_accessor :resource
@@ -68,6 +77,16 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
         attr_accessor :entries
       
+        # Optional. Whether valid entries should be written even if some other entries
+        # fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not
+        # written, the response status will be the error associated with one of the
+        # failed entries and include error details in the form of
+        # WriteLogEntriesPartialErrors.
+        # Corresponds to the JSON property `partialSuccess`
+        # @return [Boolean]
+        attr_accessor :partial_success
+        alias_method :partial_success?, :partial_success
+      
         def initialize(**args)
            update!(**args)
         end
@@ -78,25 +97,33 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @labels = args[:labels] if args.key?(:labels)
           @entries = args[:entries] if args.key?(:entries)
+          @partial_success = args[:partial_success] if args.key?(:partial_success)
         end
       end
       
-      # A specific monitored resource or a group of monitored resources.
+      # An object representing a resource that can be used for monitoring, logging,
+      # billing, or other purposes. Examples include virtual machine instances,
+      # databases, and storage devices such as disks. The `type` field identifies a
+      # MonitoredResourceDescriptor object that describes the resource's schema.
+      # Information in the `labels` field identifies the actual resource and its
+      # attributes according to the schema. For example, a particular Compute Engine
+      # VM instance could be represented by the following object, because the
+      # MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"`
+      # and `"zone"`: ` "type": "gce_instance", "labels": ` "instance_id": "my-
+      # instance", "zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
-        # The type of monitored resource. This field must match the value of the `type`
-        # field in a MonitoredResourceDescriptor object. For example, `"
-        # cloudsql_database"` represents Cloud SQL databases.
+        # Required. The monitored resource type. This field must match the `type` field
+        # of a MonitoredResourceDescriptor object. For example, the type of a Cloud SQL
+        # database is `"cloudsql_database"`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Values for some or all of the labels listed in the associated monitored
-        # resource descriptor. For example, specify a specific Cloud SQL database by
-        # supplying values for both the `"database_id"` and `"zone"` labels. Specify the
-        # set of all Cloud SQL databases in a particular location by supplying a value
-        # for only the `"zone"` label.
+        # Required. Values for all of the labels listed in the associated monitored
+        # resource descriptor. For example, Cloud SQL databases use the labels `"
+        # database_id"` and `"zone"`.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -117,18 +144,27 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The resource name of the log to which this log entry belongs. The
-        # format of the name is `projects/<project-id>/logs/<log-id%gt;`. Examples: `"
-        # projects/my-projectid/logs/syslog"`, `"projects/1234567890/logs/library.
-        # googleapis.com%2Fbook_log"`. The log ID part of resource name must be less
-        # than 512 characters long and can only include the following characters: upper
-        # and lower case alphanumeric characters: [A-Za-z0-9]; and punctuation
-        # characters: forward-slash, underscore, hyphen, and period. Forward-slash (`/`)
-        # characters in the log ID must be URL-encoded.
+        # format of the name is `"projects/
+        # /logs/"`. Examples: `"projects/my-projectid/logs/syslog"`, `"projects/
+        # 1234567890/logs/library.googleapis.com%2Fbook_log"`. The log ID part of
+        # resource name must be less than 512 characters long and can only include the
+        # following characters: upper and lower case alphanumeric characters: [A-Za-z0-9]
+        # ; and punctuation characters: forward-slash, underscore, hyphen, and period.
+        # Forward-slash (`/`) characters in the log ID must be URL-encoded.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
       
-        # A specific monitored resource or a group of monitored resources.
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The `type` field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the `labels` field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"`
+        # and `"zone"`: ` "type": "gce_instance", "labels": ` "instance_id": "my-
+        # instance", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2beta1::MonitoredResource]
         attr_accessor :resource
@@ -257,6 +293,12 @@ module Google
         # @return [String]
         attr_accessor :referer
       
+        # Whether or not a cache lookup was attempted.
+        # Corresponds to the JSON property `cacheLookup`
+        # @return [Boolean]
+        attr_accessor :cache_lookup
+        alias_method :cache_lookup?, :cache_lookup
+      
         # Whether or not an entity was served from cache (with or without validation).
         # Corresponds to the JSON property `cacheHit`
         # @return [Boolean]
@@ -265,10 +307,16 @@ module Google
       
         # Whether or not the response was validated with the origin server before being
         # served from cache. This field is only meaningful if `cache_hit` is True.
-        # Corresponds to the JSON property `validatedWithOriginServer`
+        # Corresponds to the JSON property `cacheValidatedWithOriginServer`
         # @return [Boolean]
-        attr_accessor :validated_with_origin_server
-        alias_method :validated_with_origin_server?, :validated_with_origin_server
+        attr_accessor :cache_validated_with_origin_server
+        alias_method :cache_validated_with_origin_server?, :cache_validated_with_origin_server
+      
+        # The number of HTTP response bytes inserted into cache. Set only when a cache
+        # fill was attempted.
+        # Corresponds to the JSON property `cacheFillBytes`
+        # @return [String]
+        attr_accessor :cache_fill_bytes
       
         def initialize(**args)
            update!(**args)
@@ -284,8 +332,10 @@ module Google
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @remote_ip = args[:remote_ip] if args.key?(:remote_ip)
           @referer = args[:referer] if args.key?(:referer)
+          @cache_lookup = args[:cache_lookup] if args.key?(:cache_lookup)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
-          @validated_with_origin_server = args[:validated_with_origin_server] if args.key?(:validated_with_origin_server)
+          @cache_validated_with_origin_server = args[:cache_validated_with_origin_server] if args.key?(:cache_validated_with_origin_server)
+          @cache_fill_bytes = args[:cache_fill_bytes] if args.key?(:cache_fill_bytes)
         end
       end
       
@@ -364,32 +414,38 @@ module Google
         attr_accessor :filter
       
         # Optional. How the results should be sorted. Presently, the only permitted
-        # values are `"timestamp"` (default) and `"timestamp desc"`. The first option
-        # returns entries in order of increasing values of `LogEntry.timestamp` (oldest
-        # first), and the second option returns entries in order of decreasing
+        # values are `"timestamp asc"` (default) and `"timestamp desc"`. The first
+        # option returns entries in order of increasing values of `LogEntry.timestamp` (
+        # oldest first), and the second option returns entries in order of decreasing
         # timestamps (newest first). Entries with equal timestamps are returned in order
         # of `LogEntry.insertId`.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
       
-        # Optional. The maximum number of results to return from this request. Fewer
-        # results might be returned. You must check for the `nextPageToken` result to
-        # determine if additional results are available, which you can retrieve by
-        # passing the `nextPageToken` value in the `pageToken` parameter to the next
-        # request.
+        # Optional. The maximum number of results to return from this request. You must
+        # check for presence of `nextPageToken` to determine if additional results are
+        # available, which you can retrieve by passing the `nextPageToken` value as the `
+        # pageToken` parameter in the next request.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional. If the `pageToken` request parameter is supplied, then the next page
-        # of results in the set are retrieved. The `pageToken` parameter must be set
-        # with the value of the `nextPageToken` result parameter from the previous
-        # request. The values of `projectIds`, `filter`, and `orderBy` must be the same
-        # as in the previous request.
+        # Optional. If the `pageToken` parameter is supplied, then the next page of
+        # results is retrieved. The `pageToken` parameter must be set to the value of
+        # the `nextPageToken` from the previous response. The values of `projectIds`, `
+        # filter`, and `orderBy` must be the same as in the previous request.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
+      
+        # Optional. If true, read access to all projects is not required and results
+        # will be returned for the subset of projects for which read access is permitted
+        # (empty subset is permitted).
+        # Corresponds to the JSON property `partialSuccess`
+        # @return [Boolean]
+        attr_accessor :partial_success
+        alias_method :partial_success?, :partial_success
       
         def initialize(**args)
            update!(**args)
@@ -402,6 +458,7 @@ module Google
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @partial_success = args[:partial_success] if args.key?(:partial_success)
         end
       end
       
@@ -414,12 +471,18 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
         attr_accessor :entries
       
-        # If there are more results than were returned, then `nextPageToken` is given a
-        # value in the response. To get the next batch of results, call this method
-        # again using the value of `nextPageToken` as `pageToken`.
+        # If there are more results than were returned, then `nextPageToken` is included
+        # in the response. To get the next set of results, call this method again using
+        # the value of `nextPageToken` as `pageToken`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # If partial_success is true, contains the project ids that had errors and the
+        # associated errors.
+        # Corresponds to the JSON property `projectIdErrors`
+        # @return [Hash<String,Google::Apis::LoggingV2beta1::Status>]
+        attr_accessor :project_id_errors
       
         def initialize(**args)
            update!(**args)
@@ -429,6 +492,72 @@ module Google
         def update!(**args)
           @entries = args[:entries] if args.key?(:entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @project_id_errors = args[:project_id_errors] if args.key?(:project_id_errors)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
+      # use and understand for most users - Flexible enough to meet unexpected needs #
+      # Overview The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of google.
+      # rpc.Code, but it may accept additional error codes if needed. The error
+      # message should be a developer-facing English message that helps developers *
+      # understand* and *resolve* the error. If a localized user-facing error message
+      # is needed, put the localized message in the error details or localize it in
+      # the client. The optional error details may contain arbitrary information about
+      # the error. There is a predefined set of error detail types in the package `
+      # google.rpc` which can be used for common error conditions. # Language mapping
+      # The `Status` message is the logical representation of the error model, but it
+      # is not necessarily the actual wire format. When the `Status` message is
+      # exposed in different client libraries and different wire protocols, it can be
+      # mapped differently. For example, it will likely be mapped to some exceptions
+      # in Java, but more likely mapped to some error codes in C. # Other uses The
+      # error model and the `Status` message can be used in a variety of environments,
+      # either with or without APIs, to provide a consistent developer experience
+      # across different environments. Example uses of this error model include: -
+      # Partial errors. If a service needs to return partial errors to the client, it
+      # may embed the `Status` in the normal response to indicate the partial errors. -
+      # Workflow errors. A typical workflow has multiple steps. Each step may have a `
+      # Status` message for error reporting purpose. - Batch operations. If a client
+      # uses batch request and batch response, the `Status` message should be used
+      # directly inside batch response, one for each error sub-response. -
+      # Asynchronous operations. If an API call embeds asynchronous operation results
+      # in its response, the status of those operations should be represented directly
+      # using the `Status` message. - Logging. If some API errors are stored in logs,
+      # the message `Status` could be used directly after any stripping needed for
+      # security/privacy reasons.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A list of messages that carry the error details. There will be a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -441,9 +570,9 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::MonitoredResourceDescriptor>]
         attr_accessor :resource_descriptors
       
-        # If there are more results than were returned, then `nextPageToken` is returned
-        # in the response. To get the next batch of results, call this method again
-        # using the value of `nextPageToken` as `pageToken`.
+        # If there are more results than were returned, then `nextPageToken` is included
+        # in the response. To get the next set of results, call this method again using
+        # the value of `nextPageToken` as `pageToken`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -459,31 +588,47 @@ module Google
         end
       end
       
-      # A description of a type of monitored resource.
+      # An object that describes the schema of a MonitoredResource object using a type
+      # name and a set of labels. For example, the monitored resource descriptor for
+      # Google Compute Engine VM instances has a type of `"gce_instance"` and
+      # specifies the use of the labels `"instance_id"` and `"zone"` to identify
+      # particular VM instances. Different APIs can support different monitored
+      # resource types. APIs generally provide a `list` method that returns the
+      # monitored resource descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
-        # The monitored resource type. For example, the type `"cloudsql_database"`
-        # represents databases in Google Cloud SQL.
+        # Optional. The resource name of the monitored resource descriptor: `"projects/`
+        # project_id`/monitoredResourceDescriptors/`type`"` where `type` is the value of
+        # the `type` field in this object and `project_id` is a project ID that provides
+        # API-specific context for accessing the type. APIs that do not use project
+        # information can use the resource name format `"monitoredResourceDescriptors/`
+        # type`"`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The monitored resource type. For example, the type `"
+        # cloudsql_database"` represents databases in Google Cloud SQL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # A concise name for the monitored resource type, which is displayed in user
-        # interfaces. For example, `"Cloud SQL Database"`.
+        # Optional. A concise name for the monitored resource type that might be
+        # displayed in user interfaces. For example, `"Google Cloud SQL Database"`.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # A detailed description of the monitored resource type, which is used in
-        # documentation.
+        # Optional. A detailed description of the monitored resource type that might be
+        # used in documentation.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # A set of labels that can be used to describe instances of this monitored
-        # resource type. For example, Cloud SQL databases can be labeled with their `"
-        # database_id"` and their `"zone"`.
+        # Required. A set of labels used to describe instances of this monitored
+        # resource type. For example, an individual Google Cloud SQL database is
+        # identified by values for the labels `"database_id"` and `"zone"`.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::LoggingV2beta1::LabelDescriptor>]
         attr_accessor :labels
@@ -494,6 +639,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @description = args[:description] if args.key?(:description)
@@ -541,9 +687,9 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::LogSink>]
         attr_accessor :sinks
       
-        # If there are more results than were returned, then `nextPageToken` is given a
-        # value in the response. To get the next batch of results, call this method
-        # again using the value of `nextPageToken` as `pageToken`.
+        # If there are more results than were returned, then `nextPageToken` is included
+        # in the response. To get the next set of results, call this method again using
+        # the value of `nextPageToken` as `pageToken`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -578,16 +724,17 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # An [advanced logs filter](/logging/docs/view/advanced_filters) that defines
-        # the log entries to be exported. The filter must be consistent with the log
-        # entry format designed by the `outputVersionFormat` parameter, regardless of
-        # the format of the log entry that was originally written to Cloud Logging.
-        # Example: `"logName:syslog AND severity>=ERROR"`.
+        # An [advanced logs filter](/logging/docs/view/advanced_filters). Only log
+        # entries matching that filter are exported. The filter must be consistent with
+        # the log entry format specified by the `outputVersionFormat` parameter,
+        # regardless of the format of the log entry that was originally written to Cloud
+        # Logging. Example (V2 format): `"logName=projects/my-projectid/logs/syslog AND
+        # severity>=ERROR"`.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # The log entry version used when exporting log entries from this sink. This
+        # The log entry version to use for this sink's exported log entries. This
         # version does not have to correspond to the version of the log entry when it
         # was written to Cloud Logging.
         # Corresponds to the JSON property `outputVersionFormat`
@@ -616,9 +763,9 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::LogMetric>]
         attr_accessor :metrics
       
-        # If there are more results than were returned, then `nextPageToken` is given a
-        # value in the response. To get the next batch of results, call this method
-        # again using the value of `nextPageToken` as `pageToken`.
+        # If there are more results than were returned, then `nextPageToken` is included
+        # in the response. To get the next set of results, call this method again using
+        # the value of `nextPageToken` as `pageToken`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -818,6 +965,14 @@ module Google
         attr_accessor :finished
         alias_method :finished?, :finished
       
+        # Whether this is the first RequestLog entry for this request. If an active
+        # request has several RequestLog entries written to Cloud Logging, this field
+        # will be set for one of them.
+        # Corresponds to the JSON property `first`
+        # @return [Boolean]
+        attr_accessor :first
+        alias_method :first?, :first
+      
         # An identifier for the instance that handled the request.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
@@ -877,6 +1032,7 @@ module Google
           @pending_time = args[:pending_time] if args.key?(:pending_time)
           @instance_index = args[:instance_index] if args.key?(:instance_index)
           @finished = args[:finished] if args.key?(:finished)
+          @first = args[:first] if args.key?(:first)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @line = args[:line] if args.key?(:line)
           @app_engine_release = args[:app_engine_release] if args.key?(:app_engine_release)

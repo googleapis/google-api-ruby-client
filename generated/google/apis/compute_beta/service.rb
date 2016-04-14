@@ -1580,7 +1580,7 @@ module Google
         
         # Creates a persistent disk in the specified project using the data in the
         # request. You can create a disk with a sourceImage, a sourceSnapshot, or create
-        # an empty 200 GB data disk by omitting all properties. You can also create a
+        # an empty 500 GB data disk by omitting all properties. You can also create a
         # disk that is larger than the default size by specifying the sizeGb property.
         # @param [String] project
         #   Project ID for this request.
@@ -4041,7 +4041,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the latest undeprecated image for an image family.
+        # Returns the latest image that is part of an image family and is not deprecated.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] family
@@ -4818,6 +4818,56 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['size'] = size unless size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resizes the managed instance group. If you increase the size, the group
+        # creates new instances using the current instance template. If you decrease the
+        # size, the group deletes instances. The resize operation is marked DONE when
+        # the resize actions are scheduled even if the group has not yet added or
+        # deleted any instances. You must separately verify the status of the creating
+        # or deleting actions with the listmanagedinstances method. This method is an
+        # extended version of Resize and it supports more advanced options.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManagersResizeAdvancedRequest] instance_group_managers_resize_advanced_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resize_instance_group_manager_advanced(project, zone, instance_group_manager, instance_group_managers_resize_advanced_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeAdvanced', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersResizeAdvancedRequest::Representation
+          command.request_object = instance_group_managers_resize_advanced_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

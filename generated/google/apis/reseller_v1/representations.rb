@@ -107,6 +107,7 @@ module Google
       class ChangePlanRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deal_code, as: 'dealCode'
           property :kind, as: 'kind'
           property :plan_name, as: 'planName'
           property :purchase_order_id, as: 'purchaseOrderId'
@@ -155,6 +156,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :customer_domain, as: 'customerDomain'
           property :customer_id, as: 'customerId'
+          property :deal_code, as: 'dealCode'
           property :kind, as: 'kind'
           property :plan, as: 'plan', class: Google::Apis::ResellerV1::Subscription::Plan, decorator: Google::Apis::ResellerV1::Subscription::Plan::Representation
       

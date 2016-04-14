@@ -22,7 +22,7 @@ module Google
     module Oauth2V2
       # Google OAuth2 API
       #
-      # Lets you access OAuth2 protocol related APIs.
+      # Obtains end-user authorization grants for use with other Google APIs.
       #
       # @example
       #    require 'google/apis/oauth2_v2'

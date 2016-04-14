@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     module ClouduseraccountsBeta
       VERSION = 'Beta'
-      REVISION = '20160301'
+      REVISION = '20160316'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

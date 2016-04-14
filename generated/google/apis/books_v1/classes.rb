@@ -1995,6 +1995,21 @@ module Google
         # @return [String]
         attr_accessor :body
       
+        # The list of crm experiment ids.
+        # Corresponds to the JSON property `crmExperimentIds`
+        # @return [Array<String>]
+        attr_accessor :crm_experiment_ids
+      
+        # 
+        # Corresponds to the JSON property `doc_id`
+        # @return [String]
+        attr_accessor :doc_id
+      
+        # 
+        # Corresponds to the JSON property `doc_type`
+        # @return [String]
+        attr_accessor :doc_type
+      
         # 
         # Corresponds to the JSON property `dont_show_notification`
         # @return [Boolean]
@@ -2049,6 +2064,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @body = args[:body] if args.key?(:body)
+          @crm_experiment_ids = args[:crm_experiment_ids] if args.key?(:crm_experiment_ids)
+          @doc_id = args[:doc_id] if args.key?(:doc_id)
+          @doc_type = args[:doc_type] if args.key?(:doc_type)
           @dont_show_notification = args[:dont_show_notification] if args.key?(:dont_show_notification)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @kind = args[:kind] if args.key?(:kind)
@@ -3191,6 +3209,11 @@ module Google
           # @return [Fixnum]
           attr_accessor :entitlement_type
         
+          # Information on the ability to share with the family.
+          # Corresponds to the JSON property `familySharing`
+          # @return [Google::Apis::BooksV1::Volume::UserInfo::FamilySharing]
+          attr_accessor :family_sharing
+        
           # Whether or not the user shared this volume with the family.
           # Corresponds to the JSON property `isFamilySharedFromUser`
           # @return [Boolean]
@@ -3203,13 +3226,17 @@ module Google
           attr_accessor :is_family_shared_to_user
           alias_method :is_family_shared_to_user?, :is_family_shared_to_user
         
-          # Whether or not this volume can be shared with the family by the user. This
-          # includes sharing eligibility of both the volume and the user. If the value is
-          # true, the user can initiate a family sharing action.
+          # Deprecated: Replaced by familySharing.
           # Corresponds to the JSON property `isFamilySharingAllowed`
           # @return [Boolean]
           attr_accessor :is_family_sharing_allowed
           alias_method :is_family_sharing_allowed?, :is_family_sharing_allowed
+        
+          # Deprecated: Replaced by familySharing.
+          # Corresponds to the JSON property `isFamilySharingDisabledByFop`
+          # @return [Boolean]
+          attr_accessor :is_family_sharing_disabled_by_fop
+          alias_method :is_family_sharing_disabled_by_fop?, :is_family_sharing_disabled_by_fop
         
           # Whether or not this volume is currently in "my books."
           # Corresponds to the JSON property `isInMyBooks`
@@ -3280,9 +3307,11 @@ module Google
             @acquisition_type = args[:acquisition_type] if args.key?(:acquisition_type)
             @copy = args[:copy] if args.key?(:copy)
             @entitlement_type = args[:entitlement_type] if args.key?(:entitlement_type)
+            @family_sharing = args[:family_sharing] if args.key?(:family_sharing)
             @is_family_shared_from_user = args[:is_family_shared_from_user] if args.key?(:is_family_shared_from_user)
             @is_family_shared_to_user = args[:is_family_shared_to_user] if args.key?(:is_family_shared_to_user)
             @is_family_sharing_allowed = args[:is_family_sharing_allowed] if args.key?(:is_family_sharing_allowed)
+            @is_family_sharing_disabled_by_fop = args[:is_family_sharing_disabled_by_fop] if args.key?(:is_family_sharing_disabled_by_fop)
             @is_in_my_books = args[:is_in_my_books] if args.key?(:is_in_my_books)
             @is_preordered = args[:is_preordered] if args.key?(:is_preordered)
             @is_purchased = args[:is_purchased] if args.key?(:is_purchased)
@@ -3329,6 +3358,42 @@ module Google
               @limit_type = args[:limit_type] if args.key?(:limit_type)
               @remaining_character_count = args[:remaining_character_count] if args.key?(:remaining_character_count)
               @updated = args[:updated] if args.key?(:updated)
+            end
+          end
+          
+          # Information on the ability to share with the family.
+          class FamilySharing
+            include Google::Apis::Core::Hashable
+          
+            # The role of the user in the family.
+            # Corresponds to the JSON property `familyRole`
+            # @return [String]
+            attr_accessor :family_role
+          
+            # Whether or not this volume can be shared with the family by the user. This
+            # includes sharing eligibility of both the volume and the user. If the value is
+            # true, the user can initiate a family sharing action.
+            # Corresponds to the JSON property `isSharingAllowed`
+            # @return [Boolean]
+            attr_accessor :is_sharing_allowed
+            alias_method :is_sharing_allowed?, :is_sharing_allowed
+          
+            # Whether or not sharing this volume is temporarily disabled due to issues with
+            # the Family Wallet.
+            # Corresponds to the JSON property `isSharingDisabledByFop`
+            # @return [Boolean]
+            attr_accessor :is_sharing_disabled_by_fop
+            alias_method :is_sharing_disabled_by_fop?, :is_sharing_disabled_by_fop
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @family_role = args[:family_role] if args.key?(:family_role)
+              @is_sharing_allowed = args[:is_sharing_allowed] if args.key?(:is_sharing_allowed)
+              @is_sharing_disabled_by_fop = args[:is_sharing_disabled_by_fop] if args.key?(:is_sharing_disabled_by_fop)
             end
           end
           

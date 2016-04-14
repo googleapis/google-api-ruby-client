@@ -22,8 +22,7 @@ module Google
     module AndroidenterpriseV1
       # Google Play EMM API
       #
-      # Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
-      #  for Work users.
+      # Manages the deployment of apps to Android for Work users.
       #
       # @example
       #    require 'google/apis/androidenterprise_v1'
@@ -1036,7 +1035,7 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
-        #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        #   The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1075,7 +1074,7 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
-        #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        #   The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1155,7 +1154,7 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
-        #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        #   The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm".
         # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_object
         # @param [Boolean] install
         #   Set to true to also install the product on all the user's devices where
@@ -1205,7 +1204,7 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
-        #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        #   The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm".
         # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_object
         # @param [Boolean] install
         #   Set to true to also install the product on all the user's devices where

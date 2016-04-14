@@ -136,15 +136,21 @@ module Google
         # @return [String]
         attr_accessor :spam_moderation_level
       
-        # Permission to contact owner of the group via web UI. Possbile values are:
+        # Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
+        # ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
+        # Corresponds to the JSON property `whoCanAdd`
+        # @return [String]
+        attr_accessor :who_can_add
+      
+        # Permission to contact owner of the group via web UI. Possible values are:
         # ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
         # ALL_MANAGERS_CAN_CONTACT
         # Corresponds to the JSON property `whoCanContactOwner`
         # @return [String]
         attr_accessor :who_can_contact_owner
       
-        # Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
-        # ALL_MANAGERS_CAN_INVITE
+        # Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
+        # ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
         # Corresponds to the JSON property `whoCanInvite`
         # @return [String]
         attr_accessor :who_can_invite
@@ -156,7 +162,7 @@ module Google
         attr_accessor :who_can_join
       
         # Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-        # ALL_MEMBERS_CAN_LEAVE
+        # ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
         # Corresponds to the JSON property `whoCanLeaveGroup`
         # @return [String]
         attr_accessor :who_can_leave_group
@@ -168,13 +174,13 @@ module Google
         # @return [String]
         attr_accessor :who_can_post_message
       
-        # Permissions to view group. Possbile values are: ANYONE_CAN_VIEW
+        # Permissions to view group. Possible values are: ANYONE_CAN_VIEW
         # ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
         # Corresponds to the JSON property `whoCanViewGroup`
         # @return [String]
         attr_accessor :who_can_view_group
       
-        # Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW
+        # Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW
         # ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
         # Corresponds to the JSON property `whoCanViewMembership`
         # @return [String]
@@ -207,6 +213,7 @@ module Google
           @send_message_deny_notification = args[:send_message_deny_notification] if args.key?(:send_message_deny_notification)
           @show_in_group_directory = args[:show_in_group_directory] if args.key?(:show_in_group_directory)
           @spam_moderation_level = args[:spam_moderation_level] if args.key?(:spam_moderation_level)
+          @who_can_add = args[:who_can_add] if args.key?(:who_can_add)
           @who_can_contact_owner = args[:who_can_contact_owner] if args.key?(:who_can_contact_owner)
           @who_can_invite = args[:who_can_invite] if args.key?(:who_can_invite)
           @who_can_join = args[:who_can_join] if args.key?(:who_can_join)

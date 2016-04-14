@@ -103,6 +103,11 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
       
+        # [Output Only] Self link for the deployment.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
         # 
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::DeploymentmanagerV2::TargetConfiguration]
@@ -127,6 +132,7 @@ module Google
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @operation = args[:operation] if args.key?(:operation)
+          @self_link = args[:self_link] if args.key?(:self_link)
           @target = args[:target] if args.key?(:target)
           @update = args[:update] if args.key?(:update)
         end
@@ -462,7 +468,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#operation for operation
+        # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]

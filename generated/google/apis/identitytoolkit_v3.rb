@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/identity-toolkit/v3/
     module IdentitytoolkitV3
       VERSION = 'V3'
-      REVISION = '20160304'
+      REVISION = '20160407'
     end
   end
 end

@@ -587,6 +587,7 @@ module Google
       
           property :indexable_text, as: 'indexableText', class: Google::Apis::DriveV2::File::IndexableText, decorator: Google::Apis::DriveV2::File::IndexableText::Representation
       
+          property :is_app_authorized, as: 'isAppAuthorized'
           property :kind, as: 'kind'
           property :labels, as: 'labels', class: Google::Apis::DriveV2::File::Labels, decorator: Google::Apis::DriveV2::File::Labels::Representation
       

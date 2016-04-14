@@ -33,7 +33,7 @@ module Google
         # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
         # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
         # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+        # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
         # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
         # IAM developer's guide](https://cloud.google.com/iam).
         # Corresponds to the JSON property `policy`
@@ -57,7 +57,7 @@ module Google
       # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
       # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
       # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-      # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+      # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
       # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
       # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
@@ -75,7 +75,14 @@ module Google
         # @return [Array<Google::Apis::PubsubV1::Binding>]
         attr_accessor :bindings
       
-        # Can be used to perform a read-modify-write.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. If no `etag` is provided in the
+        # call to `setIamPolicy`, then the existing policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -103,7 +110,7 @@ module Google
         attr_accessor :role
       
         # Specifies the identities requesting access for a Cloud Platform resource. `
-        # members` can have the following formats: * `allUsers`: A special identifier
+        # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
         # anyone who is authenticated with a Google account or a service account. * `
@@ -134,7 +141,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed.
+        # (such as '*' or 'storage.*') are not allowed. For more information see IAM
+        # Overview.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -373,13 +381,13 @@ module Google
         # the subscriber should acknowledge the message. After message delivery but
         # before the ack deadline expires and before the message is acknowledged, it is
         # an outstanding message and will not be delivered again during that time (on a
-        # best-effort basis). For pull delivery this value is used as the initial value
-        # for the ack deadline. To override this value for a given message, call `
-        # ModifyAckDeadline` with the corresponding `ack_id`. For push delivery, this
-        # value is also used to set the request timeout for the call to the push
-        # endpoint. If the subscriber never acknowledges the message, the Pub/Sub system
-        # will eventually redeliver the message. If this parameter is not set, the
-        # default value of 10 seconds is used.
+        # best-effort basis). For pull subscriptions, this value is used as the initial
+        # value for the ack deadline. To override this value for a given message, call `
+        # ModifyAckDeadline` with the corresponding `ack_id` if using pull. For push
+        # delivery, this value is also used to set the request timeout for the call to
+        # the push endpoint. If the subscriber never acknowledges the message, the Pub/
+        # Sub system will eventually redeliver the message. If this parameter is not set,
+        # the default value of 10 seconds is used.
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds

@@ -208,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,6 +576,36 @@ module Google
           collection :services, as: 'services', class: Google::Apis::AppengineV1beta5::Service, decorator: Google::Apis::AppengineV1beta5::Service::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AppengineV1beta5::Instance, decorator: Google::Apis::AppengineV1beta5::Instance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :id, as: 'id'
+          property :app_engine_release, as: 'appEngineRelease'
+          property :availability, as: 'availability'
+          property :vm_name, as: 'vmName'
+          property :vm_zone_name, as: 'vmZoneName'
+          property :vm_id, as: 'vmId'
+          property :start_timestamp, as: 'startTimestamp'
+          property :requests, as: 'requests'
+          property :errors, as: 'errors'
+          property :qps, as: 'qps'
+          property :average_latency, as: 'averageLatency'
+          property :memory_usage, as: 'memoryUsage'
+          property :vm_status, as: 'vmStatus'
+          property :vm_unlocked, as: 'vmUnlocked'
         end
       end
       

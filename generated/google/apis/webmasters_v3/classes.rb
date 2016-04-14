@@ -181,6 +181,12 @@ module Google
         # @return [String]
         attr_accessor :start_date
       
+        # [Optional; Default is 0] Zero-based index of the first row in the response.
+        # Must be a non-negative number.
+        # Corresponds to the JSON property `startRow`
+        # @return [Fixnum]
+        attr_accessor :start_row
+      
         def initialize(**args)
            update!(**args)
         end
@@ -194,6 +200,7 @@ module Google
           @row_limit = args[:row_limit] if args.key?(:row_limit)
           @search_type = args[:search_type] if args.key?(:search_type)
           @start_date = args[:start_date] if args.key?(:start_date)
+          @start_row = args[:start_row] if args.key?(:start_row)
         end
       end
       
