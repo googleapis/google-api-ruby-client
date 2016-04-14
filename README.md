@@ -252,6 +252,28 @@ GOOGLE_CLIENT_EMAIL="YOUR GOOGLE DEVELOPER EMAIL"
 GOOGLE_PRIVATE_KEY="YOUR GOOGLE DEVELOPER API KEY"
 ```
 
+## Logging
+
+The client includes a `Logger` instance that can be used to capture debugging information.
+
+To set the logging level for the client:
+
+```ruby
+Google::Apis.logger.level = Logger::DEBUG
+```
+
+When running in a Rails environment, the client will default to using `::Rails.logger`. If you
+prefer to use a separate logger instance for API calls, this can be changed via one of two ways.
+
+The first is to provide a new logger instance:
+
+```ruby
+Google::Apis.logger = Logger.new(STDERR)
+```
+
+The second is to set the environment variable `GOOGLE_API_USE_RAILS_LOGGER` to any value other than `'true'`
+
+
 ## Samples
 
 Samples for versions 0.9 and onward can be found in the `samples` directory.

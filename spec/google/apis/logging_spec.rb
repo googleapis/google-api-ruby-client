@@ -16,6 +16,7 @@ require 'spec_helper'
 require 'google/apis'
 require 'google/apis/core/logging'
 
+
 RSpec.describe Google::Apis do
   it 'should have a default logger' do
     expect(Google::Apis.logger).to be_an_instance_of(Logger)
@@ -40,6 +41,60 @@ RSpec.describe Google::Apis do
       Google::Apis.logger = Logger.new(STDERR)
       expect(service.logger).to be Google::Apis.logger
     end
+  end
 
+  context 'with Rails' do
+
+    before(:example) do
+      Google::Apis.logger = nil
+      Kernel.const_set('Rails', Module.new) unless defined?(::Rails)
+    end
+
+    let(:logger) { Logger.new(STDERR) }
+
+    let(:service) do
+      Class.new do
+        include Google::Apis::Core::Logging
+      end.new
+    end
+
+    context 'with logger present' do
+      before(:example) do
+        allow(::Rails).to receive(:logger).and_return(logger)
+      end
+
+      it 'should use the Rails logger' do
+        expect(service.logger).to be Rails.logger
+      end
+    end
+
+    context 'with ENV bypass' do
+      before(:example) do
+        allow(::Rails).to receive(:logger).and_return(logger)
+        allow(::ENV).to receive(:fetch).and_return('false')
+      end
+
+      it 'should use own logger' do
+        expect(service.logger).not_to be Rails.logger
+      end
+
+      it 'should have a logger' do
+        expect(service.logger).to be_an_instance_of(Logger)
+      end
+    end
+
+    context 'with logger not present' do
+      before(:example) do
+        allow(::Rails).to receive(:logger).and_return(nil)
+      end
+
+      it 'should use own logger' do
+        expect(service.logger).not_to be Rails.logger
+      end
+
+      it 'should have a logger' do
+        expect(service.logger).to be_an_instance_of(Logger)
+      end
+    end
   end
 end

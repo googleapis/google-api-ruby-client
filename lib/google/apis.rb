@@ -39,10 +39,20 @@ module Google
       logger
     end
 
-    # Check to see if client is being used in a Rails environment and ge the logger if present
+    # Check to see if client is being used in a Rails environment and get the logger if present.
+    # Setting the ENV variable 'GOOGLE_API_USE_RAILS_LOGGER' to false will force the client
+    # to use its own logger.
+    #
     # @return [Logger]
     def self.rails_logger
-      ::Rails.logger if defined?(::Rails) && ::Rails.respond_to?(:logger) && ::Rails.logger
+      if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
+          defined?(::Rails) &&
+          ::Rails.respond_to?(:logger) &&
+          !::Rails.logger.nil?
+        ::Rails.logger
+      else
+        nil
+      end
     end
   end
 end
