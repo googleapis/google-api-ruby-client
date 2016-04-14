@@ -1,3 +1,8 @@
+# 0.9.5
+* Add youtube partner API
+* Allow bypassing the use of rails logger via `GOOGLE_API_USE_RAILS_LOGGER` ENV variable
+* Update generated APIs
+
 # 0.9.4
 * Add `service.fetch_all` helper for automatically retrieving paged results
 * Add IAM v1 & Cloud Resource Manager v1 APIs
