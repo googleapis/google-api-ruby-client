@@ -67,12 +67,21 @@ module Google
         def execute_once(client, &block)
           client.get(@download_url || url) do |req|
             apply_request_options(req)
+            check_if_rewind_needed = false
             if @offset > 0
               logger.debug { sprintf('Resuming download from offset %d', @offset) }
               req.header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
+              check_if_rewind_needed = true
             end
-            req.on_body(200, 201) do |res, chunk|
+            req.on_body(200, 201, 206) do |res, chunk|
               check_status(res.status_code, chunk) unless res.status_code.nil?
+              if check_if_rewind_needed && res.status_code != 206
+                # Oh no! Requested a chunk, but received the entire content
+                # Attempt to rewind the stream
+                @download_io.rewind
+                check_if_rewind_needed = false
+              end
+
               logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
               @offset += chunk.length
               @download_io.write(chunk)

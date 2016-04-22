@@ -52,7 +52,19 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
       before(:example) do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals')
           .to_return(body: ['Hello ', Timeout::Error])
-          .to_return(body: 'world')
+          .to_return(status: [206, 'Partial content'], body: 'world')
+      end
+
+      it 'should receive entire content' do
+        expect(received).to eql('Hello world')
+      end
+    end
+
+    context 'with disconnects and no partial response' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .to_return(body: ['Hello ', Timeout::Error])
+            .to_return(body: 'Hello world')
       end
 
       it 'should receive entire content' do
