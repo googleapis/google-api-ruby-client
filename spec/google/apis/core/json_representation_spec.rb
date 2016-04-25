@@ -31,6 +31,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       attr_accessor :boolean_value_true
       attr_accessor :boolean_value_false
       attr_accessor :date_value
+      attr_accessor :nil_date_value
       attr_accessor :bytes_value
       attr_accessor :items
       attr_accessor :child
@@ -48,6 +49,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       property :boolean_value_true, as: 'booleanValueTrue'
       property :boolean_value_false, as: 'booleanValueFalse'
       property :date_value, as: 'dateValue', type: DateTime
+      property :nil_date_value, as: 'nullDateValue', type: DateTime
       property :bytes_value, as: 'bytesValue', base64: true
       property :items
       property :child, class: klass do
@@ -85,6 +87,10 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       expect(json).to be_json_eql(%("2015-05-01T12:00:00.000+00:00")).at_path('dateValue')
     end
 
+    it 'allows nil date values' do
+      expect(json).to be_json_eql(%(null)).at_path('nullDateValue')
+    end
+
     it 'serializes byte values to base64' do
       expect(json).to be_json_eql(%("SGVsbG8gd29ybGQ=")).at_path('bytesValue')
     end
@@ -117,10 +123,12 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       model.child = child_class.new
       model.child.value = 'child'
       model.children = [model.child]
+      model.nil_date_value = nil
       model
     end
 
     include_examples 'it serializes'
+
   end
 
   context 'with hash' do
@@ -131,6 +139,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
         string_value: 'test',
         numeric_value: 123,
         date_value: DateTime.new(2015, 5, 1, 12),
+        nil_date_value: nil,
         boolean_value_true: true,
         boolean_value_false: false,
         bytes_value: 'Hello world',

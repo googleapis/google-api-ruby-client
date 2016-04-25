@@ -69,11 +69,11 @@ module Google
 
           def set_default_options(name, options)
             if options[:base64]
-              options[:render_filter] = ->(value, _doc, *_args) { Base64.urlsafe_encode64(value) }
+              options[:render_filter] = ->(value, _doc, *_args) { value.nil? ? nil : Base64.urlsafe_encode64(value) }
               options[:parse_filter] = ->(fragment, _doc, *_args) { Base64.urlsafe_decode64(fragment) }
             end
             if options[:type] == DateTime
-              options[:render_filter] = ->(value, _doc, *_args) { value.is_a?(DateTime) ? value.rfc3339(3) : value.to_s }
+              options[:render_filter] = ->(value, _doc, *_args) { value.nil? ? nil : value.is_a?(DateTime) ? value.rfc3339(3) : value.to_s }
               options[:parse_filter] = ->(fragment, _doc, *_args) { DateTime.parse(fragment) }
             end
 
