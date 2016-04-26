@@ -215,7 +215,7 @@ RSpec.describe Google::APIClient::ClientSecrets do
 
       context 'option keys are symbol' do
         let(:symbol_options) do
-          { 'samples' =>
+          { samples:
             {
               access_token:         'sample_access_token',
               auth_uri:             'sample_auth_uri',
