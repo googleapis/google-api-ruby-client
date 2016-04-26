@@ -82,7 +82,7 @@ module Google
       def initialize(options={})
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
-        fdata = options[@flow]
+        fdata = options[@flow.to_sym] || options[@flow]
         @client_id = fdata[:client_id] || fdata["client_id"]
         @client_secret = fdata[:client_secret] || fdata["client_secret"]
         @redirect_uris = fdata[:redirect_uris] || fdata["redirect_uris"]
