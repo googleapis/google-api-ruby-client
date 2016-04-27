@@ -1,3 +1,8 @@
+# 0.9.6
+* Rewind output stream if server unable to honor range request when resuming a download
+* Fix web sample
+* Allow nil dates to be passed in request bodies
+
 # 0.9.5
 * Add youtube partner API
 * Allow bypassing the use of rails logger via `GOOGLE_API_USE_RAILS_LOGGER` ENV variable

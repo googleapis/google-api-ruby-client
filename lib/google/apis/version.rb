@@ -15,7 +15,7 @@
 module Google
   module Apis
     # Client library version
-    VERSION = '0.9.5'
+    VERSION = '0.9.6'
 
     # Current operating system
     # @private
