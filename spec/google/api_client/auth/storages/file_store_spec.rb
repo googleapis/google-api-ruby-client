@@ -40,4 +40,11 @@ describe Google::APIClient::FileStore do
     expect(subject).to receive(:open).and_return(io_stub)
     subject.write_credentials(credentials_hash)
   end
+
+  context 'when file does not exist' do
+    it 'rescues with nil' do
+      subject.path = 'some_fake_path'
+      expect(subject.load_credentials).to be_nil
+    end
+  end
 end
