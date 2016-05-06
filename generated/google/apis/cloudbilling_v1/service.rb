@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://cloudbilling.googleapis.com/', '')
         end
-        
+
         # Gets information about a billing account. The current authenticated user must
         # be an [owner of the billing account](https://support.google.com/cloud/answer/
         # 4430947).
@@ -79,7 +79,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the billing accounts that the current authenticated user [owns](https://
         # support.google.com/cloud/answer/4430947).
         # @param [Fixnum] page_size
@@ -115,7 +115,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the projects associated with a billing account. The current
         # authenticated user must be an [owner of the billing account](https://support.
         # google.com/cloud/answer/4430947).
@@ -156,7 +156,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the billing information for a project. The current authenticated user
         # must have [permission to view the project](https://cloud.google.com/docs/
         # permissions-overview#h.bgs0oxofvnoo ).
@@ -189,7 +189,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets or updates the billing account associated with a project. You specify the
         # new billing account by setting the `billing_account_name` in the `
         # ProjectBillingInfo` resource to the resource name of a billing account.

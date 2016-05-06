@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'genomics/v1beta2/')
         end
-        
+
         # Creates a new annotation set. Caller must have WRITE permission for the
         # associated dataset.
         # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set_object
@@ -88,7 +88,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation set. Caller must have WRITE permission for the
         # associated annotation set.
         # @param [String] annotation_set_id
@@ -123,7 +123,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation set. Caller must have READ permission for the associated
         # dataset.
         # @param [String] annotation_set_id
@@ -160,7 +160,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation set. The update must respect all mutability restrictions
         # and other invariants described on the annotation set resource. Caller must
         # have WRITE permission for the associated dataset. This method supports patch
@@ -202,7 +202,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotation sets that match the given criteria. Results are
         # returned in a deterministic order. Caller must have READ permission for the
         # queried datasets.
@@ -240,7 +240,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation set. The update must respect all mutability restrictions
         # and other invariants described on the annotation set resource. Caller must
         # have WRITE permission for the associated dataset.
@@ -281,7 +281,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates one or more new annotations atomically. All annotations must belong to
         # the same annotation set. Caller must have WRITE permission for this annotation
         # set. For optimal performance, batch positionally adjacent annotations together.
@@ -324,7 +324,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new annotation. Caller must have WRITE permission for the associated
         # annotation set.
         # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation_object
@@ -361,7 +361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation. Caller must have WRITE permission for the associated
         # annotation set.
         # @param [String] annotation_id
@@ -396,7 +396,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation. Caller must have READ permission for the associated
         # annotation set.
         # @param [String] annotation_id
@@ -433,7 +433,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation. The update must respect all mutability restrictions and
         # other invariants described on the annotation resource. Caller must have WRITE
         # permission for the associated dataset. This method supports patch semantics.
@@ -474,7 +474,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotations that match the given criteria. Results are returned
         # ordered by start position. Annotations that have matching start positions are
         # ordered deterministically. Caller must have READ permission for the queried
@@ -513,7 +513,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation. The update must respect all mutability restrictions and
         # other invariants described on the annotation resource. Caller must have WRITE
         # permission for the associated dataset.
@@ -554,7 +554,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new call set.
         # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set_object
         # @param [String] fields
@@ -590,7 +590,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a call set.
         # @param [String] call_set_id
         #   The ID of the call set to be deleted.
@@ -624,7 +624,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a call set by ID.
         # @param [String] call_set_id
         #   The ID of the call set.
@@ -660,7 +660,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a call set. This method supports patch semantics.
         # @param [String] call_set_id
         #   The ID of the call set to be updated.
@@ -699,7 +699,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of call sets matching the criteria.
         # Implements GlobalAllianceApi.searchCallSets.
         # @param [Google::Apis::GenomicsV1beta2::SearchCallSetsRequest] search_call_sets_request_object
@@ -736,7 +736,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a call set.
         # @param [String] call_set_id
         #   The ID of the call set to be updated.
@@ -775,7 +775,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new dataset.
         # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset_object
         # @param [String] fields
@@ -811,7 +811,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a dataset.
         # @param [String] dataset_id
         #   The ID of the dataset to be deleted.
@@ -845,7 +845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a dataset by ID.
         # @param [String] dataset_id
         #   The ID of the dataset.
@@ -881,7 +881,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists datasets within a project.
         # @param [Fixnum] page_size
         #   The maximum number of results returned by this request. If unspecified,
@@ -926,7 +926,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a dataset. This method supports patch semantics.
         # @param [String] dataset_id
         #   The ID of the dataset to be updated.
@@ -965,7 +965,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undeletes a dataset by restoring a dataset which was deleted via this API.
         # This operation is only possible for a week after the deletion occurred.
         # @param [String] dataset_id
@@ -1002,7 +1002,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a dataset.
         # @param [String] dataset_id
         #   The ID of the dataset to be updated.
@@ -1041,7 +1041,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates and asynchronously runs an ad-hoc job. This is an experimental call
         # and may be removed or changed at any time.
         # @param [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobRequest] experimental_create_job_request_object
@@ -1078,7 +1078,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a job by ID. Note that it is possible for partial results to be
         # generated and stored for cancelled jobs.
         # @param [String] job_id
@@ -1113,7 +1113,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a job by ID.
         # @param [String] job_id
         #   Required. The ID of the job.
@@ -1149,7 +1149,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of jobs matching the criteria.
         # @param [Google::Apis::GenomicsV1beta2::SearchJobsRequest] search_jobs_request_object
         # @param [String] fields
@@ -1185,7 +1185,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Aligns read data from existing read group sets or files from Google Cloud
         # Storage. See the  alignment and variant calling documentation for more details.
         # @param [Google::Apis::GenomicsV1beta2::AlignReadGroupSetsRequest] align_read_group_sets_request_object
@@ -1222,7 +1222,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Calls variants on read data from existing read group sets or files from Google
         # Cloud Storage. See the  alignment and variant calling documentation for more
         # details.
@@ -1260,7 +1260,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a read group set.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be deleted. The caller must have WRITE
@@ -1295,7 +1295,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports read group sets to a BAM file in Google Cloud Storage.
         # Note that currently there may be some differences between exported BAM files
         # and the original BAM file at the time of import. In particular, comments in
@@ -1336,7 +1336,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a read group set by ID.
         # @param [String] read_group_set_id
         #   The ID of the read group set.
@@ -1372,7 +1372,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates read group sets by asynchronously importing the provided information.
         # Note that currently comments in the input file header are not imported and
         # some custom tags will be converted to strings, rather than preserving tag
@@ -1411,7 +1411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a read group set. This method supports patch semantics.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be updated. The caller must have WRITE
@@ -1451,7 +1451,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for read group sets matching the criteria.
         # Implements GlobalAllianceApi.searchReadGroupSets.
         # @param [Google::Apis::GenomicsV1beta2::SearchReadGroupSetsRequest] search_read_group_sets_request_object
@@ -1488,7 +1488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a read group set.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be updated. The caller must have WRITE
@@ -1528,7 +1528,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists fixed width coverage buckets for a read group set, each of which
         # correspond to a range of a reference sequence. Each bucket summarizes coverage
         # information across its corresponding genomic range.
@@ -1598,7 +1598,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of reads for one or more read group sets. Reads search operates
         # over a genomic coordinate space of reference sequence & position defined over
         # the reference sequences to which the requested read group sets are aligned.
@@ -1644,7 +1644,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference.
         # Implements GlobalAllianceApi.getReference.
         # @param [String] reference_id
@@ -1681,7 +1681,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for references which match the given criteria.
         # Implements GlobalAllianceApi.searchReferences.
         # @param [Google::Apis::GenomicsV1beta2::SearchReferencesRequest] search_references_request_object
@@ -1718,7 +1718,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the bases in a reference, optionally restricted to a range.
         # Implements GlobalAllianceApi.getReferenceBases.
         # @param [String] reference_id
@@ -1770,7 +1770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference set.
         # Implements GlobalAllianceApi.getReferenceSet.
         # @param [String] reference_set_id
@@ -1807,7 +1807,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for reference sets which match the given criteria.
         # Implements GlobalAllianceApi.searchReferenceSets.
         # @param [Google::Apis::GenomicsV1beta2::SearchReferenceSetsRequest] search_reference_sets_request_object
@@ -1844,7 +1844,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant.
         # @param [Google::Apis::GenomicsV1beta2::Variant] variant_object
         # @param [String] fields
@@ -1880,7 +1880,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a variant.
         # @param [String] variant_id
         #   The ID of the variant to be deleted.
@@ -1914,7 +1914,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant by ID.
         # @param [String] variant_id
         #   The ID of the variant.
@@ -1950,7 +1950,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of variants matching the criteria.
         # Implements GlobalAllianceApi.searchVariants.
         # @param [Google::Apis::GenomicsV1beta2::SearchVariantsRequest] search_variants_request_object
@@ -1987,7 +1987,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant's names and info fields. All other modifications are
         # silently ignored. Returns the modified variant without its calls.
         # @param [String] variant_id
@@ -2027,7 +2027,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant set (only necessary in v1).
         # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set_object
         # @param [String] fields
@@ -2063,7 +2063,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the contents of a variant set. The variant set object is not deleted.
         # @param [String] variant_set_id
         #   The ID of the variant set to be deleted.
@@ -2097,7 +2097,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports variant set data to an external destination.
         # @param [String] variant_set_id
         #   Required. The ID of the variant set that contains variant data which should be
@@ -2137,7 +2137,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant set by ID.
         # @param [String] variant_set_id
         #   Required. The ID of the variant set.
@@ -2173,7 +2173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates variant data by asynchronously importing the provided information.
         # The variants for import will be merged with any existing data and each other
         # according to the behavior of mergeVariants. In particular, this means for
@@ -2219,7 +2219,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Merges the given variants with existing variants. Each variant will be merged
         # with an existing variant that matches its reference sequence, start, end,
         # reference bases, and alternative bases. If no such variant exists, a new one
@@ -2262,7 +2262,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # This method supports patch semantics.
         # @param [String] variant_set_id
@@ -2302,7 +2302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of all variant sets matching search criteria.
         # Implements GlobalAllianceApi.searchVariantSets.
         # @param [Google::Apis::GenomicsV1beta2::SearchVariantSetsRequest] search_variant_sets_request_object
@@ -2339,7 +2339,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # @param [String] variant_set_id
         #   The ID of the variant to be updated (must already exist).

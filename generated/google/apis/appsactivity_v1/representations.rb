@@ -21,83 +21,83 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppsactivityV1
-      
+
       class Activity
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Event
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Move
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Parent
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class PermissionChange
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Photo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Rename
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Target
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Activity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :combined_event, as: 'combinedEvent', class: Google::Apis::AppsactivityV1::Event, decorator: Google::Apis::AppsactivityV1::Event::Representation
-      
+
           collection :single_events, as: 'singleEvents', class: Google::Apis::AppsactivityV1::Event, decorator: Google::Apis::AppsactivityV1::Event::Representation
-      
+
         end
       end
-      
+
       class Event
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -105,38 +105,38 @@ module Google
           property :event_time_millis, as: 'eventTimeMillis'
           property :from_user_deletion, as: 'fromUserDeletion'
           property :move, as: 'move', class: Google::Apis::AppsactivityV1::Move, decorator: Google::Apis::AppsactivityV1::Move::Representation
-      
+
           collection :permission_changes, as: 'permissionChanges', class: Google::Apis::AppsactivityV1::PermissionChange, decorator: Google::Apis::AppsactivityV1::PermissionChange::Representation
-      
+
           property :primary_event_type, as: 'primaryEventType'
           property :rename, as: 'rename', class: Google::Apis::AppsactivityV1::Rename, decorator: Google::Apis::AppsactivityV1::Rename::Representation
-      
+
           property :target, as: 'target', class: Google::Apis::AppsactivityV1::Target, decorator: Google::Apis::AppsactivityV1::Target::Representation
-      
+
           property :user, as: 'user', class: Google::Apis::AppsactivityV1::User, decorator: Google::Apis::AppsactivityV1::User::Representation
-      
+
         end
       end
-      
+
       class ListActivitiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :activities, as: 'activities', class: Google::Apis::AppsactivityV1::Activity, decorator: Google::Apis::AppsactivityV1::Activity::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Move
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :added_parents, as: 'addedParents', class: Google::Apis::AppsactivityV1::Parent, decorator: Google::Apis::AppsactivityV1::Parent::Representation
-      
+
           collection :removed_parents, as: 'removedParents', class: Google::Apis::AppsactivityV1::Parent, decorator: Google::Apis::AppsactivityV1::Parent::Representation
-      
+
         end
       end
-      
+
       class Parent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -145,7 +145,7 @@ module Google
           property :title, as: 'title'
         end
       end
-      
+
       class Permission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -154,28 +154,28 @@ module Google
           property :role, as: 'role'
           property :type, as: 'type'
           property :user, as: 'user', class: Google::Apis::AppsactivityV1::User, decorator: Google::Apis::AppsactivityV1::User::Representation
-      
+
           property :with_link, as: 'withLink'
         end
       end
-      
+
       class PermissionChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :added_permissions, as: 'addedPermissions', class: Google::Apis::AppsactivityV1::Permission, decorator: Google::Apis::AppsactivityV1::Permission::Representation
-      
+
           collection :removed_permissions, as: 'removedPermissions', class: Google::Apis::AppsactivityV1::Permission, decorator: Google::Apis::AppsactivityV1::Permission::Representation
-      
+
         end
       end
-      
+
       class Photo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
         end
       end
-      
+
       class Rename
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -183,7 +183,7 @@ module Google
           property :old_title, as: 'oldTitle'
         end
       end
-      
+
       class Target
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -192,7 +192,7 @@ module Google
           property :name, as: 'name'
         end
       end
-      
+
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -200,7 +200,7 @@ module Google
           property :name, as: 'name'
           property :permission_id, as: 'permissionId'
           property :photo, as: 'photo', class: Google::Apis::AppsactivityV1::Photo, decorator: Google::Apis::AppsactivityV1::Photo::Representation
-      
+
         end
       end
     end

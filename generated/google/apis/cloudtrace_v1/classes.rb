@@ -21,60 +21,60 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudtraceV1
-      
+
       # The response message for the `ListTraces` method.
       class ListTracesResponse
         include Google::Apis::Core::Hashable
-      
+
         # List of trace records returned.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces
-      
+
         # If defined, indicates that there are more traces that match the request and
         # that this value should be passed to the next request to continue retrieving
         # additional traces.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @traces = args[:traces] if args.key?(:traces)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # A trace describes how long it takes for an application to perform an operation.
       # It consists of a set of spans, each of which represent a single timed event
       # within the operation.
       class Trace
         include Google::Apis::Core::Hashable
-      
+
         # Project ID of the Cloud project where the trace data is stored.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # Globally unique identifier for the trace. This identifier is a 128-bit numeric
         # value formatted as a 32-byte hex string.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
-      
+
         # Collection of spans in the trace.
         # Corresponds to the JSON property `spans`
         # @return [Array<Google::Apis::CloudtraceV1::TraceSpan>]
         attr_accessor :spans
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -82,7 +82,7 @@ module Google
           @spans = args[:spans] if args.key?(:spans)
         end
       end
-      
+
       # A span represents a single timed event within a trace. Spans can be nested and
       # form a trace tree. Often, a trace contains a root span that describes the end-
       # to-end latency of an operation and, optionally, one or more subspans for its
@@ -90,19 +90,19 @@ module Google
       # spans in a trace.
       class TraceSpan
         include Google::Apis::Core::Hashable
-      
+
         # Identifier for the span. This identifier must be unique within a trace.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
-      
+
         # Distinguishes between spans generated in a particular context. For example,
         # two spans with the same name may be distinguished using `RPC_CLIENT` and `
         # RPC_SERVER` to identify queueing latency associated with the span.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Name of the trace. The trace name is sanitized and displayed in the Cloud
         # Trace tool in the Google Developers Console. The name may be a method name or
         # some other per-call site name. For the same executable and the same call point,
@@ -111,31 +111,31 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Start time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
-      
+
         # End time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # ID of the parent span, if any. Optional.
         # Corresponds to the JSON property `parentSpanId`
         # @return [String]
         attr_accessor :parent_span_id
-      
+
         # Collection of labels associated with the span.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @span_id = args[:span_id] if args.key?(:span_id)
@@ -147,26 +147,26 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
         end
       end
-      
+
       # List of new or updated traces.
       class Traces
         include Google::Apis::Core::Hashable
-      
+
         # List of traces.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @traces = args[:traces] if args.key?(:traces)
         end
       end
-      
+
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -174,11 +174,11 @@ module Google
       # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
         end

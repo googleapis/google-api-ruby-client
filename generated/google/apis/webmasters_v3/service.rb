@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'webmasters/v3/')
         end
-        
+
         # Query your data with filters and parameters that you define. Returns zero or
         # more rows grouped by the row keys that you define. You must define a date
         # range of one or more days.
@@ -95,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sitemap from this site.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: http://www.example.com/
@@ -131,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about a specific sitemap.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: http://www.example.com/
@@ -169,7 +169,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the sitemaps-entries submitted for this site, or included in the sitemap
         # index file (if sitemapIndex is specified in the request).
         # @param [String] site_url
@@ -209,7 +209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submits a sitemap for a site.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: http://www.example.com/
@@ -245,7 +245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a site to the set of the user's sites in Search Console.
         # @param [String] site_url
         #   The URL of the site to add.
@@ -278,7 +278,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a site from the set of the user's Search Console sites.
         # @param [String] site_url
         #   The URI of the property as defined in Search Console. Examples: http://www.
@@ -312,7 +312,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about specific site.
         # @param [String] site_url
         #   The URI of the property as defined in Search Console. Examples: http://www.
@@ -348,7 +348,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the user's Search Console sites.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -380,7 +380,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a time series of the number of URL crawl errors per error category
         # and platform.
         # @param [String] site_url
@@ -427,7 +427,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details about crawl errors for a site's sample URL.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: http://www.example.com/
@@ -473,7 +473,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a site's sample URLs for the specified crawl error category and platform.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: http://www.example.com/
@@ -514,7 +514,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks the provided site's sample URL as fixed, and removes it from the samples
         # list.
         # @param [String] site_url

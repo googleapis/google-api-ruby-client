@@ -21,13 +21,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module KgsearchV1
-      
+
       class SearchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class SearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

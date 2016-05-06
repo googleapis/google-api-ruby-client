@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/')
         end
-        
+
         # Creates the URI used by the IdP to authenticate the user.
         # @param [Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest] create_auth_uri_request_object
         # @param [String] fields
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete user account.
         # @param [Google::Apis::IdentitytoolkitV3::DeleteAccountRequest] delete_account_request_object
         # @param [String] fields
@@ -121,7 +121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Batch download user accounts.
         # @param [Google::Apis::IdentitytoolkitV3::DownloadAccountRequest] download_account_request_object
         # @param [String] fields
@@ -156,7 +156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the account info.
         # @param [Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest] get_account_info_request_object
         # @param [String] fields
@@ -191,7 +191,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a code for user action confirmation.
         # @param [Google::Apis::IdentitytoolkitV3::Relyingparty] relyingparty_object
         # @param [String] fields
@@ -226,7 +226,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get project configuration.
         # @param [String] delegated_project_number
         #   Delegated GCP project number of the request.
@@ -264,7 +264,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get token signing public key.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -296,7 +296,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get recaptcha secure param.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -328,7 +328,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Reset password for a user.
         # @param [Google::Apis::IdentitytoolkitV3::ResetPasswordRequest] reset_password_request_object
         # @param [String] fields
@@ -363,7 +363,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Set account info for a user.
         # @param [Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest] set_account_info_request_object
         # @param [String] fields
@@ -398,7 +398,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Set project configuration.
         # @param [Google::Apis::IdentitytoolkitV3::SetProjectConfigRequest] set_project_config_request_object
         # @param [String] fields
@@ -433,7 +433,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sign out user.
         # @param [Google::Apis::IdentitytoolkitV3::SignOutUserRequest] sign_out_user_request_object
         # @param [String] fields
@@ -468,7 +468,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Signup new user.
         # @param [Google::Apis::IdentitytoolkitV3::SignupNewUserRequest] signup_new_user_request_object
         # @param [String] fields
@@ -503,7 +503,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Batch upload existing user accounts.
         # @param [Google::Apis::IdentitytoolkitV3::UploadAccountRequest] upload_account_request_object
         # @param [String] fields
@@ -538,7 +538,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Verifies the assertion returned by the IdP.
         # @param [Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest] verify_assertion_request_object
         # @param [String] fields
@@ -573,7 +573,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Verifies the developer asserted ID token.
         # @param [Google::Apis::IdentitytoolkitV3::VerifyCustomTokenRequest] verify_custom_token_request_object
         # @param [String] fields
@@ -608,7 +608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Verifies the user entered password.
         # @param [Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest] verify_password_request_object
         # @param [String] fields

@@ -21,11 +21,11 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ProximitybeaconV1beta1
-      
+
       # Details of a beacon device.
       class Beacon
         include Google::Apis::Core::Hashable
-      
+
         # Resource name of this beacon. A beacon name has the format "beacons/N!beaconId"
         # where the beaconId is the base16 ID broadcast by the beacon and N is a code
         # for the beacon's type. Possible values are `3` for Eddystone, `1` for iBeacon,
@@ -34,24 +34,24 @@ module Google
         # Corresponds to the JSON property `beaconName`
         # @return [String]
         attr_accessor :beacon_name
-      
+
         # Defines a unique identifier of a beacon as broadcast by the device.
         # Corresponds to the JSON property `advertisedId`
         # @return [Google::Apis::ProximitybeaconV1beta1::AdvertisedId]
         attr_accessor :advertised_id
-      
+
         # Current status of the beacon. Required.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
-      
+
         # The [Google Places API](/places/place-id) Place ID of the place where the
         # beacon is deployed. This is given when the beacon is registered or updated,
         # not automatically detected in any way. Optional.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
-      
+
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
@@ -74,35 +74,35 @@ module Google
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::ProximitybeaconV1beta1::LatLng]
         attr_accessor :lat_lng
-      
+
         # Indoor level, a human-readable string as returned by Google Maps APIs, useful
         # to indicate which floor of a building a beacon is located on.
         # Corresponds to the JSON property `indoorLevel`
         # @return [Google::Apis::ProximitybeaconV1beta1::IndoorLevel]
         attr_accessor :indoor_level
-      
+
         # Expected location stability. This is set when the beacon is registered or
         # updated, not automatically detected in any way. Optional.
         # Corresponds to the JSON property `expectedStability`
         # @return [String]
         attr_accessor :expected_stability
-      
+
         # Free text used to identify and describe the beacon. Maximum length 140
         # characters. Optional.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # Properties of the beacon device, for example battery type or firmware version.
         # Optional.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
@@ -116,16 +116,16 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
         end
       end
-      
+
       # Defines a unique identifier of a beacon as broadcast by the device.
       class AdvertisedId
         include Google::Apis::Core::Hashable
-      
+
         # Specifies the identifier type. Required.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
+
         # The actual beacon identifier, as broadcast by the beacon hardware. Must be [
         # base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP requests,
         # and will be so encoded (with padding) in responses. The base64 encoding
@@ -134,18 +134,18 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @id = args[:id] if args.key?(:id)
         end
       end
-      
+
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
       # specified otherwise, this must conform to the WGS84 standard. Values must be
@@ -167,48 +167,48 @@ module Google
       # 0) assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
       class LatLng
         include Google::Apis::Core::Hashable
-      
+
         # The latitude in degrees. It must be in the range [-90.0, +90.0].
         # Corresponds to the JSON property `latitude`
         # @return [Float]
         attr_accessor :latitude
-      
+
         # The longitude in degrees. It must be in the range [-180.0, +180.0].
         # Corresponds to the JSON property `longitude`
         # @return [Float]
         attr_accessor :longitude
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
-      
+
       # Indoor level, a human-readable string as returned by Google Maps APIs, useful
       # to indicate which floor of a building a beacon is located on.
       class IndoorLevel
         include Google::Apis::Core::Hashable
-      
+
         # The name of this level.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
+
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -216,41 +216,41 @@ module Google
       # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
         end
       end
-      
+
       # Response that contains list beacon results and pagination help.
       class ListBeaconsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The beacons that matched the search criteria.
         # Corresponds to the JSON property `beacons`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::Beacon>]
         attr_accessor :beacons
-      
+
         # An opaque pagination token that the client may provide in their next request
         # to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # Estimate of the total number of beacons matched by the query. Higher values
         # may be less accurate.
         # Corresponds to the JSON property `totalCount`
         # @return [String]
         attr_accessor :total_count
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @beacons = args[:beacons] if args.key?(:beacons)
@@ -258,17 +258,17 @@ module Google
           @total_count = args[:total_count] if args.key?(:total_count)
         end
       end
-      
+
       # Project-specific data associated with a beacon.
       class BeaconAttachment
         include Google::Apis::Core::Hashable
-      
+
         # Resource name of this attachment. Attachment names have the format: beacons/
         # beacon_id/attachments/attachment_id. Leave this empty on creation.
         # Corresponds to the JSON property `attachmentName`
         # @return [String]
         attr_accessor :attachment_name
-      
+
         # Specifies what kind of attachment this is. Tells a client how to interpret the
         # `data` field. Format is namespace/type. Namespace provides type separation
         # between clients. Type describes the type of `data`, for use by the client when
@@ -276,18 +276,18 @@ module Google
         # Corresponds to the JSON property `namespacedType`
         # @return [String]
         attr_accessor :namespaced_type
-      
+
         # An opaque data container for client-provided data. Must be [base64](http://
         # tools.ietf.org/html/rfc4648#section-4) encoded in HTTP requests, and will be
         # so encoded (with padding) in responses. Required.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @attachment_name = args[:attachment_name] if args.key?(:attachment_name)
@@ -295,128 +295,128 @@ module Google
           @data = args[:data] if args.key?(:data)
         end
       end
-      
+
       # Response to ListBeaconAttachments that contains the requested attachments.
       class ListBeaconAttachmentsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The attachments that corresponded to the request params.
         # Corresponds to the JSON property `attachments`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::BeaconAttachment>]
         attr_accessor :attachments
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @attachments = args[:attachments] if args.key?(:attachments)
         end
       end
-      
+
       # Response for a request to delete attachments.
       class DeleteAttachmentsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The number of attachments that were deleted.
         # Corresponds to the JSON property `numDeleted`
         # @return [Fixnum]
         attr_accessor :num_deleted
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @num_deleted = args[:num_deleted] if args.key?(:num_deleted)
         end
       end
-      
+
       # Response to ListNamespacesRequest that contains all the project's namespaces.
       class ListNamespacesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The attachments that corresponded to the request params.
         # Corresponds to the JSON property `namespaces`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::Namespace>]
         attr_accessor :namespaces
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @namespaces = args[:namespaces] if args.key?(:namespaces)
         end
       end
-      
+
       # An attachment namespace defines read and write access for all the attachments
       # created under it. Each namespace is globally unique, and owned by one project
       # which is the only project that can create attachments under it.
       class Namespace
         include Google::Apis::Core::Hashable
-      
+
         # Resource name of this namespace. Namespaces names have the format: namespaces/
         # namespace.
         # Corresponds to the JSON property `namespaceName`
         # @return [String]
         attr_accessor :namespace_name
-      
+
         # Specifies what clients may receive attachments under this namespace via `
         # beaconinfo.getforobserved`.
         # Corresponds to the JSON property `servingVisibility`
         # @return [String]
         attr_accessor :serving_visibility
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @namespace_name = args[:namespace_name] if args.key?(:namespace_name)
           @serving_visibility = args[:serving_visibility] if args.key?(:serving_visibility)
         end
       end
-      
+
       # Response that contains the requested diagnostics.
       class ListDiagnosticsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The diagnostics matching the given request.
         # Corresponds to the JSON property `diagnostics`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::Diagnostics>]
         attr_accessor :diagnostics
-      
+
         # Token that can be used for pagination. Returned only if the request matches
         # more beacons than can be returned in this response.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # Diagnostics for a single beacon.
       class Diagnostics
         include Google::Apis::Core::Hashable
-      
+
         # Resource name of the beacon.
         # Corresponds to the JSON property `beaconName`
         # @return [String]
         attr_accessor :beacon_name
-      
+
         # Represents a whole calendar date, e.g. date of birth. The time of day and time
         # zone are either specified elsewhere or are not significant. The date is
         # relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
@@ -427,16 +427,16 @@ module Google
         # Corresponds to the JSON property `estimatedLowBatteryDate`
         # @return [Google::Apis::ProximitybeaconV1beta1::Date]
         attr_accessor :estimated_low_battery_date
-      
+
         # An unordered list of Alerts that the beacon has.
         # Corresponds to the JSON property `alerts`
         # @return [Array<String>]
         attr_accessor :alerts
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
@@ -444,7 +444,7 @@ module Google
           @alerts = args[:alerts] if args.key?(:alerts)
         end
       end
-      
+
       # Represents a whole calendar date, e.g. date of birth. The time of day and time
       # zone are either specified elsewhere or are not significant. The date is
       # relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
@@ -454,28 +454,28 @@ module Google
       # protobuf.Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
-      
+
         # Year of date. Must be from 1 to 9,999, or 0 if specifying a date without a
         # year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
-      
+
         # Month of year of date. Must be from 1 to 12.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
-      
+
         # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
         # specifying a year/month where the day is not sigificant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @year = args[:year] if args.key?(:year)
@@ -483,17 +483,17 @@ module Google
           @day = args[:day] if args.key?(:day)
         end
       end
-      
+
       # Request for beacon and attachment information about beacons that a mobile
       # client has encountered "in the wild".
       class GetInfoForObservedBeaconsRequest
         include Google::Apis::Core::Hashable
-      
+
         # The beacons that the client has encountered. At least one must be given.
         # Corresponds to the JSON property `observations`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::Observation>]
         attr_accessor :observations
-      
+
         # Specifies what kind of attachments to include in the response. When given, the
         # response will include only attachments of the given types. When empty, no
         # attachments will be returned. Must be in the format namespace/type. Accepts `*`
@@ -501,44 +501,44 @@ module Google
         # Corresponds to the JSON property `namespacedTypes`
         # @return [Array<String>]
         attr_accessor :namespaced_types
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @observations = args[:observations] if args.key?(:observations)
           @namespaced_types = args[:namespaced_types] if args.key?(:namespaced_types)
         end
       end
-      
+
       # Represents one beacon observed once.
       class Observation
         include Google::Apis::Core::Hashable
-      
+
         # Defines a unique identifier of a beacon as broadcast by the device.
         # Corresponds to the JSON property `advertisedId`
         # @return [Google::Apis::ProximitybeaconV1beta1::AdvertisedId]
         attr_accessor :advertised_id
-      
+
         # The array of telemetry bytes received from the beacon. The server is
         # responsible for parsing it. This field may frequently be empty, as with a
         # beacon that transmits telemetry only occasionally.
         # Corresponds to the JSON property `telemetry`
         # @return [String]
         attr_accessor :telemetry
-      
+
         # Time when the beacon was observed. Being sourced from a mobile device, this
         # time may be suspect.
         # Corresponds to the JSON property `timestampMs`
         # @return [String]
         attr_accessor :timestamp_ms
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
@@ -546,58 +546,58 @@ module Google
           @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
         end
       end
-      
+
       # Information about the requested beacons, optionally including attachment data.
       class GetInfoForObservedBeaconsResponse
         include Google::Apis::Core::Hashable
-      
+
         # Public information about beacons. May be empty if the request matched no
         # beacons.
         # Corresponds to the JSON property `beacons`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::BeaconInfo>]
         attr_accessor :beacons
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @beacons = args[:beacons] if args.key?(:beacons)
         end
       end
-      
+
       # A subset of beacon information served via the `beaconinfo.getforobserved`
       # method, which you call when users of your app encounter your beacons.
       class BeaconInfo
         include Google::Apis::Core::Hashable
-      
+
         # Defines a unique identifier of a beacon as broadcast by the device.
         # Corresponds to the JSON property `advertisedId`
         # @return [Google::Apis::ProximitybeaconV1beta1::AdvertisedId]
         attr_accessor :advertised_id
-      
+
         # The name under which the beacon is registered.
         # Corresponds to the JSON property `beaconName`
         # @return [String]
         attr_accessor :beacon_name
-      
+
         # Free text used to identify or describe the beacon in a registered
         # establishment. For example: "entrance", "room 101", etc. May be empty.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # Attachments matching the type(s) requested. May be empty if no attachment
         # types were requested, or if none matched.
         # Corresponds to the JSON property `attachments`
         # @return [Array<Google::Apis::ProximitybeaconV1beta1::AttachmentInfo>]
         attr_accessor :attachments
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
@@ -606,28 +606,28 @@ module Google
           @attachments = args[:attachments] if args.key?(:attachments)
         end
       end
-      
+
       # A subset of attachment information served via the `beaconinfo.getforobserved`
       # method, used when your users encounter your beacons.
       class AttachmentInfo
         include Google::Apis::Core::Hashable
-      
+
         # Specifies what kind of attachment this is. Tells a client how to interpret the
         # `data` field. Format is namespace/type, for example scrupulous-wombat-12345/
         # welcome-message
         # Corresponds to the JSON property `namespacedType`
         # @return [String]
         attr_accessor :namespaced_type
-      
+
         # An opaque data container for client-provided data.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @namespaced_type = args[:namespaced_type] if args.key?(:namespaced_type)

@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'plus/v1/')
         end
-        
+
         # Get an activity.
         # @param [String] activity_id
         #   The ID of the activity to get.
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the activities in the specified collection for a particular user.
         # @param [String] user_id
         #   The ID of the user to get activities for. The special value "me" can be used
@@ -135,7 +135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search public activities.
         # @param [String] query
         #   Full-text search query string.
@@ -187,7 +187,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a comment.
         # @param [String] comment_id
         #   The ID of the comment to get.
@@ -222,7 +222,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the comments for an activity.
         # @param [String] activity_id
         #   The ID of the activity to get comments for.
@@ -270,7 +270,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a person's profile. If your app uses scope https://www.googleapis.com/auth/
         # plus.login, this method is guaranteed to return ageRange and language.
         # @param [String] user_id
@@ -307,7 +307,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection.
         # @param [String] user_id
         #   Get the collection of people for the person identified. Use "me" to indicate
@@ -359,7 +359,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection for a particular activity.
         # @param [String] activity_id
         #   The ID of the activity to get the list of people for.
@@ -407,7 +407,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search all public profiles.
         # @param [String] query
         #   Specify a query string for full text search of public text in all profiles.

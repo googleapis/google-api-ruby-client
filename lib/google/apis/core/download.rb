@@ -22,7 +22,7 @@ module Google
     module Core
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
-        RANGE_HEADER = 'range'
+        RANGE_HEADER = 'range'.freeze
 
         # File or IO to write content to
         # @return [String, File, #write]

@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://proximitybeacon.googleapis.com/', '')
         end
-        
+
         # Registers a previously unregistered beacon given its `advertisedId`. These IDs
         # are unique within the system. An ID can be registered only once.
         # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
@@ -76,7 +76,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Decommissions the specified beacon in the service. This beacon will no longer
         # be returned from `beaconinfo.getforobserved`. This operation is permanent --
         # you will not be able to re-register a beacon with this ID again.
@@ -108,7 +108,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns detailed information about the specified beacon.
         # @param [String] beacon_name
         #   Beacon that is requested.
@@ -138,7 +138,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches the beacon registry for beacons that match the given search criteria.
         # Only those beacons that the client has permission to list will be returned.
         # @param [String] q
@@ -215,7 +215,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the information about the specified beacon. **Any field that you do
         # not populate in the submitted beacon will be permanently erased**, so you
         # should follow the "read, modify, write" pattern to avoid inadvertently
@@ -257,7 +257,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # (Re)activates a beacon. A beacon that is active will return information and
         # attachment data when queried via `beaconinfo.getforobserved`. Calling this
         # method on an already active beacon will do nothing (but will return a
@@ -290,7 +290,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deactivates a beacon. Once deactivated, the API will not return information
         # nor attachment data for the beacon when queried via `beaconinfo.getforobserved`
         # . Calling this method on an already inactive beacon will do nothing (but will
@@ -323,7 +323,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Associates the given data with the specified beacon. Attachment data must
         # contain two parts:
         # - A namespaced type.
@@ -363,7 +363,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the attachments for the specified beacon that match the specified
         # namespaced-type pattern. To control which namespaced types are returned, you
         # add the `namespacedType` query parameter to the request. You must either use `*
@@ -401,7 +401,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified attachment for the given beacon. Each attachment has a
         # unique attachment name (`attachmentName`) which is returned when you fetch the
         # attachment data via this API. You specify this with the delete request to
@@ -436,7 +436,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes multiple attachments on a given beacon. This operation is permanent
         # and cannot be undone. You can optionally specify `namespacedType` to choose
         # which attachments should be deleted. If you do not specify `namespacedType`,
@@ -474,7 +474,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the diagnostics for a single beacon. You can also list diagnostics for
         # all the beacons owned by your Google Developers Console project by using the
         # beacon name `beacons/-`.
@@ -518,7 +518,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all attachment namespaces owned by your Google Developers Console
         # project. Attachment data associated with a beacon must include a namespaced
         # type, and the namespace must be owned by your project.
@@ -547,7 +547,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Given one or more beacon observations, returns any beacon information and
         # attachments accessible to your application.
         # @param [Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsRequest] get_info_for_observed_beacons_request_object

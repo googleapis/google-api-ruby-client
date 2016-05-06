@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://container.googleapis.com/', '')
         end
-        
+
         # Returns configuration info about the Container Engine service.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.
@@ -81,7 +81,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all clusters owned by a project in either the specified zone or all
         # zones.
         # @param [String] project_id
@@ -117,7 +117,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the details of a specific cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.
@@ -155,7 +155,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a cluster, consisting of the specified number and type of Google
         # Compute Engine instances. By default, the cluster is created in the project's [
         # default network](/compute/docs/networks-and-firewalls#networks). One firewall
@@ -199,7 +199,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the settings of a specific cluster.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.
@@ -240,7 +240,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
         # Firewalls and routes that were configured during cluster creation are also
         # deleted. Other Google Compute Engine resources that might be in use by the
@@ -282,7 +282,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all operations in a project in a specific zone or all zones.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.
@@ -317,7 +317,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified operation.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.

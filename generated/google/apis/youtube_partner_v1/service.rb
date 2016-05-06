@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'youtube/partner/v1/')
         end
-        
+
         # Insert an asset label for an owner.
         # @param [Google::Apis::YoutubePartnerV1::AssetLabel] asset_label_object
         # @param [String] on_behalf_of_content_owner
@@ -91,7 +91,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of all asset labels for an owner.
         # @param [String] label_prefix
         #   The labelPrefix parameter identifies the prefix of asset labels to retrieve.
@@ -135,7 +135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the match policy assigned to the specified asset by the content
         # owner associated with the authenticated user. This information is only
         # accessible to an owner of the asset.
@@ -178,7 +178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the asset's match policy. If an asset has multiple owners, each owner
         # may set its own match policy for the asset. YouTube then computes the match
         # policy that is actually applied for the asset based on the territories where
@@ -225,7 +225,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the asset's match policy. If an asset has multiple owners, each owner
         # may set its own match policy for the asset. YouTube then computes the match
         # policy that is actually applied for the asset based on the territories where
@@ -272,7 +272,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a relationship between two assets.
         # @param [String] asset_relationship_id
         #   The assetRelationshipId parameter specifies a value that uniquely identifies
@@ -311,7 +311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a relationship that links two assets.
         # @param [Google::Apis::YoutubePartnerV1::AssetRelationship] asset_relationship_object
         # @param [String] on_behalf_of_content_owner
@@ -351,7 +351,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of relationships for a given asset. The list contains
         # relationships where the specified asset is either the parent (embedding) or
         # child (embedded) asset in the relationship.
@@ -399,7 +399,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for assets based on asset metadata. The method can retrieve all
         # assets or only assets owned by the content owner. This method mimics the
         # functionality of the advanced search feature on the Assets page in CMS.
@@ -498,7 +498,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata for the specified asset. Note that if the request
         # identifies an asset that has been merged with another asset, meaning that
         # YouTube identified the requested asset as a duplicate, then the request
@@ -561,7 +561,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts an asset with the specified metadata. After inserting an asset, you
         # can set its ownership data and match policy.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
@@ -602,7 +602,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of assets based on asset metadata. The method can retrieve
         # all assets or only assets owned by the content owner.
         # Note that in cases where duplicate assets have been merged, the API response
@@ -673,7 +673,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the metadata for the specified asset. This method supports patch
         # semantics.
         # @param [String] asset_id
@@ -718,7 +718,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the metadata for the specified asset.
         # @param [String] asset_id
         #   The assetId parameter specifies the YouTube asset ID of the asset being
@@ -762,7 +762,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a specified campaign for an owner.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -801,7 +801,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a particular campaign for an owner.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -842,7 +842,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new campaign for an owner using the specified campaign data.
         # @param [Google::Apis::YoutubePartnerV1::Campaign] campaign_object
         # @param [String] on_behalf_of_content_owner
@@ -882,7 +882,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of campaigns for an owner.
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the
@@ -925,7 +925,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data for a specific campaign. This method supports patch semantics.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -969,7 +969,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data for a specific campaign.
         # @param [String] campaign_id
         #   The campaignId parameter specifies the YouTube campaign ID of the campaign
@@ -1013,7 +1013,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the claim history for a specified claim.
         # @param [String] claim_id
         #   The claimId parameter specifies the YouTube claim ID of the claim for which
@@ -1054,7 +1054,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of claims that match the search criteria. You can search for
         # claims that are associated with a specific asset or video or that match a
         # specified query string.
@@ -1156,7 +1156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific claim by ID.
         # @param [String] claim_id
         #   The claimId parameter specifies the claim ID of the claim being retrieved.
@@ -1196,7 +1196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a claim. The video being claimed must have been uploaded to a channel
         # associated with the same content owner as the API user sending the request.
         # You can set the claim's policy in any of the following ways:
@@ -1244,7 +1244,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of claims administered by the content owner associated with
         # the currently authenticated user. Results are sorted in descending order of
         # creation time.
@@ -1311,7 +1311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing claim by either changing its policy or its status. You can
         # update a claim's status from active to inactive to effectively release the
         # claim. This method supports patch semantics.
@@ -1356,7 +1356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing claim by either changing its policy or its status. You can
         # update a claim's status from active to inactive to effectively release the
         # claim.
@@ -1401,7 +1401,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves advertising options for the content owner associated with the
         # authenticated user.
         # @param [String] on_behalf_of_content_owner
@@ -1439,7 +1439,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates advertising options for the content owner associated with the
         # authenticated API user. This method supports patch semantics.
         # @param [Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption] content_owner_advertising_option_object
@@ -1480,7 +1480,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates advertising options for the content owner associated with the
         # authenticated API user.
         # @param [Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption] content_owner_advertising_option_object
@@ -1521,7 +1521,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified content owner.
         # @param [String] content_owner_id
         #   The contentOwnerId parameter specifies a value that uniquely identifies the
@@ -1562,7 +1562,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of content owners that match the request criteria.
         # @param [Boolean] fetch_mine
         #   The fetchMine parameter restricts the result set to content owners associated
@@ -1607,7 +1607,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a cuepoint into a live broadcast.
         # @param [String] channel_id
         #   The channelId parameter identifies the channel that owns the broadcast into
@@ -1653,7 +1653,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of all metadata provided for an asset, regardless of which
         # content owner provided the data.
         # @param [String] asset_id
@@ -1695,7 +1695,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an order, which moves orders to inactive state and removes any
         # associated video.
         # @param [String] order_id
@@ -1732,7 +1732,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the details of an existing order.
         # @param [String] order_id
         #   The id of the order.
@@ -1770,7 +1770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new basic order entry in the YouTube premium asset order management
         # system. You must supply at least a country and channel in the new order.
         # @param [Google::Apis::YoutubePartnerV1::Order] order_object
@@ -1809,7 +1809,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of orders, filtered by the parameters below, may return more
         # than a single page of results.
         # @param [String] channel_id
@@ -1885,7 +1885,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the values in an existing order. This method supports patch semantics.
         # @param [String] order_id
         #   The id of the order.
@@ -1926,7 +1926,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the values in an existing order.
         # @param [String] order_id
         #   The id of the order.
@@ -1967,7 +1967,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the ownership data provided for the specified asset by the content
         # owner associated with the authenticated user.
         # @param [String] asset_id
@@ -2009,7 +2009,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides new ownership information for the specified asset. Note that YouTube
         # may receive ownership information from multiple sources. For example, if an
         # asset has multiple owners, each owner might send ownership data for the asset.
@@ -2059,7 +2059,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides new ownership information for the specified asset. Note that YouTube
         # may receive ownership information from multiple sources. For example, if an
         # asset has multiple owners, each owner might send ownership data for the asset.
@@ -2108,7 +2108,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the ownership data for an asset, regardless of which
         # content owner provided the data. The list only includes the most recent
         # ownership data for each content owner. However, if the content owner has
@@ -2154,7 +2154,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified saved policy.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2195,7 +2195,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a saved policy.
         # @param [Google::Apis::YoutubePartnerV1::Policy] policy_object
         # @param [String] on_behalf_of_content_owner
@@ -2235,7 +2235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the content owner's saved policies.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of saved policy IDs to
@@ -2280,7 +2280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified saved policy. This method supports patch semantics.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2324,7 +2324,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified saved policy.
         # @param [String] policy_id
         #   The policyId parameter specifies a value that uniquely identifies the policy
@@ -2368,7 +2368,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified publisher.
         # @param [String] publisher_id
         #   The publisherId parameter specifies a publisher ID that uniquely identifies
@@ -2409,7 +2409,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of publishers that match the request criteria. This method is
         # analogous to a publisher search function.
         # @param [String] cae_number
@@ -2472,7 +2472,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified reference conflict.
         # @param [String] reference_conflict_id
         #   The referenceConflictId parameter specifies the YouTube reference conflict ID
@@ -2513,7 +2513,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of unresolved reference conflicts.
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the
@@ -2555,7 +2555,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves information about the specified reference.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2596,7 +2596,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a reference in one of the following ways:
         # - If your request is uploading a reference file, YouTube creates the reference
         # from the provided content. You can provide either a video/audio file or a pre-
@@ -2659,7 +2659,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of references by ID or the list of references for the
         # specified asset.
         # @param [String] asset_id
@@ -2710,7 +2710,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a reference. This method supports patch semantics.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2760,7 +2760,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a reference.
         # @param [String] reference_id
         #   The referenceId parameter specifies the YouTube reference ID of the reference
@@ -2810,7 +2810,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves advertising settings for the specified video.
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which
@@ -2851,7 +2851,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details about the types of allowed ads for a specified partner- or
         # user-uploaded video.
         # @param [String] video_id
@@ -2893,7 +2893,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the advertising settings for the specified video. This method supports
         # patch semantics.
         # @param [String] video_id
@@ -2938,7 +2938,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the advertising settings for the specified video.
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which
@@ -2982,7 +2982,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a whitelisted channel for a content owner.
         # @param [String] id
         #   The id parameter specifies the YouTube channel ID of the channel being removed
@@ -3021,7 +3021,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific whitelisted channel by ID.
         # @param [String] id
         #   The id parameter specifies the YouTube channel ID of the whitelisted channel
@@ -3062,7 +3062,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Whitelist a YouTube channel for your content owner. Whitelisted channels are
         # channels that are not owned or managed by you, but you would like to whitelist
         # so that no claims from your assets are placed on videos uploaded to these
@@ -3105,7 +3105,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of whitelisted channels for a content owner.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of YouTube channel IDs that

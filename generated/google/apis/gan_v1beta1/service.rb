@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'gan/v1beta1/')
         end
-        
+
         # Retrieves data about a single advertiser if that the requesting advertiser/
         # publisher has access to it. Only publishers can lookup advertisers.
         # Advertisers can request information about themselves by omitting the
@@ -95,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves data about all advertisers that the requesting advertiser/publisher
         # has access to.
         # @param [String] role
@@ -165,7 +165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves credit card offers for the given publisher.
         # @param [String] publisher
         #   The ID of the publisher in question.
@@ -207,7 +207,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves event data for a given advertiser/publisher.
         # @param [String] role
         #   The role of the requester. Valid values: 'advertisers' or 'publishers'.
@@ -310,7 +310,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves data about a single link if the requesting advertiser/publisher has
         # access to it. Advertisers can look up their own links. Publishers can look up
         # visible links or links belonging to advertisers they are in a relationship
@@ -354,7 +354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new link.
         # @param [String] role
         #   The role of the requester. Valid values: 'advertisers' or 'publishers'.
@@ -395,7 +395,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves all links that match the query parameters.
         # @param [String] role
         #   The role of the requester. Valid values: 'advertisers' or 'publishers'.
@@ -473,7 +473,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves data about a single advertiser if that the requesting advertiser/
         # publisher has access to it. Only advertisers can look up publishers.
         # Publishers can request information about themselves by omitting the
@@ -517,7 +517,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves data about all publishers that the requesting advertiser/publisher
         # has access to.
         # @param [String] role
@@ -587,7 +587,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report of the specified type.
         # @param [String] role
         #   The role of the requester. Valid values: 'advertisers' or 'publishers'.

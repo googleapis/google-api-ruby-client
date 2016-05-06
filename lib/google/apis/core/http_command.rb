@@ -146,7 +146,7 @@ module Google
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
-          if [:post, :put].include?(method)  && body.nil?
+          if [:post, :put].include?(method) && body.nil?
             @form_encoded = true
             self.body = Addressable::URI.form_encode(url.query_values(Array))
             self.header['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -253,7 +253,7 @@ module Google
           logger.debug { sprintf('Error - %s', PP.pp(err, '')) }
           err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError) || err.is_a?(SocketError)
           block.call(nil, err) if block_given?
-          fail err if rethrow || block.nil?
+          raise err if rethrow || block.nil?
         end
 
         # Execute the command once.
@@ -274,8 +274,8 @@ module Google
               # is ignored and it uses nested anyway
               unless form_encoded?
                 req.url.query_class = Hurley::Query::Flat
-                query.each do | k, v|
-                 req.url.query[k] = normalize_query_value(v)
+                query.each do |key, val|
+                  req.url.query[key] = normalize_query_value(val)
                 end
               end
               # End workaround

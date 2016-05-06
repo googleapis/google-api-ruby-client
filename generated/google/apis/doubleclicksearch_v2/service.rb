@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
         end
-        
+
         # Retrieves a list of conversions from a DoubleClick Search engine account.
         # @param [String] agency_id
         #   Numeric ID of the agency.
@@ -117,7 +117,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a batch of new conversions into DoubleClick Search.
         # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
@@ -152,7 +152,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
         # @param [String] advertiser_id
@@ -209,7 +209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a batch of conversions in DoubleClick Search.
         # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
@@ -244,7 +244,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the availabilities of a batch of floodlight activities in DoubleClick
         # Search.
         # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request_object
@@ -280,7 +280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates and returns a report immediately.
         # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
@@ -315,7 +315,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Polls for the status of a report request.
         # @param [String] report_id
         #   ID of the report request being polled.
@@ -350,7 +350,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Downloads a report file encoded in UTF-8.
         # @param [String] report_id
         #   ID of the report.
@@ -393,7 +393,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a report request into the reporting system.
         # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
@@ -428,7 +428,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the list of saved columns for a specified advertiser.
         # @param [String] agency_id
         #   DS ID of the agency.

@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'appstate/v1/')
         end
-        
+
         # Clears (sets to empty) the data for the passed key if and only if the passed
         # version matches the currently stored version. This method results in a
         # conflict error on version mismatch.
@@ -92,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a key and the data associated with it. The key is removed and no
         # longer counts against the key quota. Note that since this method is not safe
         # in the face of concurrent modifications, it should only be used for
@@ -129,7 +129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the data corresponding to the passed key. If the key does not exist
         # on the server, an HTTP 404 will be returned.
         # @param [Fixnum] state_key
@@ -165,7 +165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the states keys, and optionally the state data.
         # @param [Boolean] include_data
         #   Whether to include the full data in addition to the version number
@@ -200,7 +200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the data associated with the input key if and only if the passed
         # version matches the currently stored version. This method is safe in the face
         # of concurrent writes. Maximum per-key size is 128KB.

@@ -21,63 +21,63 @@ require 'google/apis/errors'
 module Google
   module Apis
     module Oauth2V2
-      
-      # 
+
+      #
       class Jwk
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::Oauth2V2::Jwk::Key>]
         attr_accessor :keys
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @keys = args[:keys] if args.key?(:keys)
         end
-        
-        # 
+
+        #
         class Key
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `alg`
           # @return [String]
           attr_accessor :alg
-        
-          # 
+
+          #
           # Corresponds to the JSON property `e`
           # @return [String]
           attr_accessor :e
-        
-          # 
+
+          #
           # Corresponds to the JSON property `kid`
           # @return [String]
           attr_accessor :kid
-        
-          # 
+
+          #
           # Corresponds to the JSON property `kty`
           # @return [String]
           attr_accessor :kty
-        
-          # 
+
+          #
           # Corresponds to the JSON property `n`
           # @return [String]
           attr_accessor :n
-        
-          # 
+
+          #
           # Corresponds to the JSON property `use`
           # @return [String]
           attr_accessor :use
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @alg = args[:alg] if args.key?(:alg)
@@ -89,63 +89,63 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Tokeninfo
         include Google::Apis::Core::Hashable
-      
+
         # The access type granted with this token. It can be offline or online.
         # Corresponds to the JSON property `access_type`
         # @return [String]
         attr_accessor :access_type
-      
+
         # Who is the intended audience for this token. In general the same as issued_to.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
-      
+
         # The email address of the user. Present only if the email scope is present in
         # the request.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
-      
+
         # The expiry time of the token, as number of seconds left until expiry.
         # Corresponds to the JSON property `expires_in`
         # @return [Fixnum]
         attr_accessor :expires_in
-      
+
         # To whom was the token issued to. In general the same as audience.
         # Corresponds to the JSON property `issued_to`
         # @return [String]
         attr_accessor :issued_to
-      
+
         # The space separated list of scopes granted to this token.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
-      
+
         # The token handle associated with this token.
         # Corresponds to the JSON property `token_handle`
         # @return [String]
         attr_accessor :token_handle
-      
+
         # The obfuscated user id.
         # Corresponds to the JSON property `user_id`
         # @return [String]
         attr_accessor :user_id
-      
+
         # Boolean flag which is true if the email address is verified. Present only if
         # the email scope is present in the request.
         # Corresponds to the JSON property `verified_email`
         # @return [Boolean]
         attr_accessor :verified_email
         alias_method :verified_email?, :verified_email
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @access_type = args[:access_type] if args.key?(:access_type)
@@ -159,72 +159,72 @@ module Google
           @verified_email = args[:verified_email] if args.key?(:verified_email)
         end
       end
-      
-      # 
+
+      #
       class Userinfoplus
         include Google::Apis::Core::Hashable
-      
+
         # The user's email address.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
-      
+
         # The user's last name.
         # Corresponds to the JSON property `family_name`
         # @return [String]
         attr_accessor :family_name
-      
+
         # The user's gender.
         # Corresponds to the JSON property `gender`
         # @return [String]
         attr_accessor :gender
-      
+
         # The user's first name.
         # Corresponds to the JSON property `given_name`
         # @return [String]
         attr_accessor :given_name
-      
+
         # The hosted domain e.g. example.com if the user is Google apps user.
         # Corresponds to the JSON property `hd`
         # @return [String]
         attr_accessor :hd
-      
+
         # The obfuscated ID of the user.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # URL of the profile page.
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
-      
+
         # The user's preferred locale.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
-      
+
         # The user's full name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # URL of the user's picture image.
         # Corresponds to the JSON property `picture`
         # @return [String]
         attr_accessor :picture
-      
+
         # Boolean flag which is true if the email address is verified. Always verified
         # because we only return the user's primary email address.
         # Corresponds to the JSON property `verified_email`
         # @return [Boolean]
         attr_accessor :verified_email
         alias_method :verified_email?, :verified_email
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)

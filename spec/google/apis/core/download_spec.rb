@@ -63,8 +63,8 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     context 'with disconnects and no partial response' do
       before(:example) do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-            .to_return(body: ['Hello ', Timeout::Error])
-            .to_return(body: 'Hello world')
+          .to_return(body: ['Hello ', Timeout::Error])
+          .to_return(body: 'Hello world')
       end
 
       it 'should receive entire content' do

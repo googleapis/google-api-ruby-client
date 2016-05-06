@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://cloudresourcemanager.googleapis.com/', '')
         end
-        
+
         # Creates a Project resource. Initially, the Project resource is owned by its
         # creator exclusively. The creator can later grant permission to others to read
         # or update the Project. Several APIs are activated automatically for the
@@ -79,7 +79,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Projects that are visible to the user and satisfy the specified filter.
         # This method returns Projects in an unspecified order. New Projects do not
         # necessarily appear at the end of the list.
@@ -128,7 +128,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the Project identified by the specified `project_id` (for example, `
         # my-project-123`). The caller must have read permissions for this Project.
         # @param [String] project_id
@@ -159,7 +159,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the attributes of the Project identified by the specified `project_id`
         # (for example, `my-project-123`). The caller must have modify permissions for
         # this Project.
@@ -194,7 +194,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks the Project identified by the specified `project_id` (for example, `my-
         # project-123`) for deletion. This method will only affect the Project if the
         # following criteria are met: + The Project does not have a billing account
@@ -235,7 +235,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores the Project identified by the specified `project_id` (for example, `
         # my-project-123`). You can only use this method for a Project that has a
         # lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by a
@@ -272,7 +272,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the IAM access control policy for the specified Project. Permission is
         # denied if the policy or the resource does not exist.
         # @param [String] resource
@@ -309,7 +309,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the IAM access control policy for the specified Project. Replaces any
         # existing policy. The following constraints apply when using `setIamPolicy()`: +
         # Project currently supports only `user:`emailid`` and `serviceAccount:`emailid`
@@ -357,7 +357,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
@@ -393,7 +393,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Organization resources that are visible to the user and satisfy the
         # specified filter. This method returns Organizations in an unspecified order.
         # New Organizations do not necessarily appear at the end of the list.
@@ -439,7 +439,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches an Organization resource identified by the specified `organization_id`.
         # @param [String] organization_id
         #   The id of the Organization resource to fetch.
@@ -469,7 +469,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an Organization resource identified by the specified `organization_id`.
         # @param [String] organization_id
         #   An immutable id for the Organization that is assigned on creation. This should
@@ -503,7 +503,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on an Organization resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -540,7 +540,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for an Organization resource. May be empty if
         # no such policy or resource exists.
         # @param [String] resource
@@ -577,7 +577,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified Organization.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `

@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'youtube/v3/')
         end
-        
+
         # Posts a bulletin for a specific channel. (The user submitting the request must
         # be authorized to act on the channel's behalf.)
         # Note: Even though an activity resource can contain information about actions
@@ -98,7 +98,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of channel activity events that match the request criteria. For
         # example, you can retrieve events associated with a particular channel, events
         # associated with the user's subscriptions and Google+ friends, or the YouTube
@@ -184,7 +184,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a specified caption track.
         # @param [String] id
         #   The id parameter identifies the caption track that is being deleted. The value
@@ -232,7 +232,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Downloads a caption track. The caption track is returned in its original
         # format unless the request specifies a value for the tfmt parameter and in its
         # original language unless the request specifies a value for the tlang parameter.
@@ -302,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a caption track.
         # @param [String] part
         #   The part parameter specifies the caption resource parts that the API response
@@ -374,7 +374,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of caption tracks that are associated with a specified video.
         # Note that the API response does not contain the actual captions and that the
         # captions.download method provides the ability to retrieve a caption track.
@@ -436,7 +436,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a caption track. When updating a caption track, you can change the
         # track's draft status, upload a new caption file for the track, or both.
         # @param [String] part
@@ -510,7 +510,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a channel banner image to YouTube. This method represents the first
         # two steps in a three-step process to update the banner image for a channel:
         # - Call the channelBanners.insert method to upload the binary image data to
@@ -575,7 +575,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a channelSection.
         # @param [String] id
         #   The id parameter specifies the YouTube channelSection ID for the resource that
@@ -621,7 +621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a channelSection for the authenticated user's channel.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -691,7 +691,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns channelSection resources that match the API request criteria.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more
@@ -768,7 +768,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a channelSection.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -821,7 +821,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of zero or more channel resources that match the request
         # criteria.
         # @param [String] part
@@ -915,7 +915,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a channel's metadata. Note that this method currently only supports
         # updates to the channel resource's brandingSettings and invideoPromotion
         # objects and their child properties.
@@ -972,7 +972,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new top-level comment. To add a reply to an existing comment, use
         # the comments.insert method instead.
         # @param [String] part
@@ -1013,7 +1013,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of comment threads that match the API request parameters.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more
@@ -1103,7 +1103,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the top-level comment in a comment thread.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of commentThread resource
@@ -1144,7 +1144,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a comment.
         # @param [String] id
         #   The id parameter specifies the comment ID for the resource that is being
@@ -1178,7 +1178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a reply to an existing comment. Note: To create a top-level comment,
         # use the commentThreads.insert method.
         # @param [String] part
@@ -1219,7 +1219,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of comments that match the API request parameters.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more comment
@@ -1283,7 +1283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Expresses the caller's opinion that one or more comments should be flagged as
         # spam.
         # @param [String] id
@@ -1318,7 +1318,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the moderation status of one or more comments. The API request must be
         # authorized by the owner of the channel or video associated with the comments.
         # @param [String] id
@@ -1363,7 +1363,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies a comment.
         # @param [String] part
         #   The part parameter identifies the properties that the API response will
@@ -1403,7 +1403,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists fan funding events for a channel.
         # @param [String] part
         #   The part parameter specifies the fanFundingEvent resource parts that the API
@@ -1458,7 +1458,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of categories that can be associated with YouTube channels.
         # @param [String] part
         #   The part parameter specifies the guideCategory resource properties that the
@@ -1509,7 +1509,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of application languages that the YouTube website supports.
         # @param [String] part
         #   The part parameter specifies the i18nLanguage resource properties that the API
@@ -1549,7 +1549,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of content regions that the YouTube website supports.
         # @param [String] part
         #   The part parameter specifies the i18nRegion resource properties that the API
@@ -1589,7 +1589,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Binds a YouTube broadcast to a stream or removes an existing binding between a
         # broadcast and a stream. A broadcast can only be bound to one video stream,
         # though a video stream may be bound to more than one broadcast.
@@ -1666,7 +1666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Controls the settings for a slate that can be displayed in the broadcast
         # stream.
         # @param [String] id
@@ -1758,7 +1758,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a broadcast.
         # @param [String] id
         #   The id parameter specifies the YouTube live broadcast ID for the resource that
@@ -1820,7 +1820,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a broadcast.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -1890,7 +1890,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of YouTube broadcasts that match the API request parameters.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more
@@ -1984,7 +1984,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the status of a YouTube live broadcast and initiates any processes
         # associated with the new status. For example, when you transition a broadcast's
         # status to testing, YouTube starts to transmit video to that broadcast's
@@ -2065,7 +2065,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a broadcast. For example, you could modify the broadcast settings
         # defined in the liveBroadcast resource's contentDetails object.
         # @param [String] part
@@ -2144,7 +2144,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a chat ban.
         # @param [String] id
         #   The id parameter identifies the chat ban to remove. The value uniquely
@@ -2178,7 +2178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new ban to the chat.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -2218,7 +2218,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a chat message.
         # @param [String] id
         #   The id parameter specifies the YouTube chat message ID of the resource that is
@@ -2252,7 +2252,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a message to a live chat.
         # @param [String] part
         #   The part parameter serves two purposes. It identifies the properties that the
@@ -2292,7 +2292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists live chat messages for a specific chat.
         # @param [String] live_chat_id
         #   The liveChatId parameter specifies the ID of the chat whose messages will be
@@ -2355,7 +2355,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a chat moderator.
         # @param [String] id
         #   The id parameter identifies the chat moderator to remove. The value uniquely
@@ -2389,7 +2389,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new moderator for the chat.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -2429,7 +2429,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists moderators for a live chat.
         # @param [String] live_chat_id
         #   The liveChatId parameter specifies the YouTube live chat for which the API
@@ -2478,7 +2478,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a video stream.
         # @param [String] id
         #   The id parameter specifies the YouTube live stream ID for the resource that is
@@ -2540,7 +2540,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a video stream. The stream enables you to send your video to YouTube,
         # which can then broadcast the video to your audience.
         # @param [String] part
@@ -2611,7 +2611,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of video streams that match the API request parameters.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more liveStream
@@ -2695,7 +2695,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a video stream. If the properties that you want to change cannot be
         # updated, then you need to create a new stream with the proper settings.
         # @param [String] part
@@ -2770,7 +2770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a playlist item.
         # @param [String] id
         #   The id parameter specifies the YouTube playlist item ID for the playlist item
@@ -2805,7 +2805,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a resource to a playlist.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -2856,7 +2856,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of playlist items that match the API request parameters.
         # You can retrieve all of the playlist items in a specified playlist or retrieve
         # one or more playlist items by their unique IDs.
@@ -2934,7 +2934,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies a playlist item. For example, you could update the item's position in
         # the playlist.
         # @param [String] part
@@ -2985,7 +2985,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a playlist.
         # @param [String] id
         #   The id parameter specifies the YouTube playlist ID for the playlist that is
@@ -3031,7 +3031,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a playlist.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -3099,7 +3099,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of playlists that match the API request parameters. For
         # example, you can retrieve all playlists that the authenticated user owns, or
         # you can retrieve one or more playlists by their unique IDs.
@@ -3196,7 +3196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies a playlist. For example, you could change a playlist's title,
         # description, or privacy status.
         # @param [String] part
@@ -3254,7 +3254,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of search results that match the query parameters
         # specified in the API request. By default, a search result set identifies
         # matching video, channel, and playlist resources, but you can also configure
@@ -3473,7 +3473,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sponsors for a channel.
         # @param [String] part
         #   The part parameter specifies the sponsor resource parts that the API response
@@ -3521,7 +3521,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a subscription.
         # @param [String] id
         #   The id parameter specifies the YouTube subscription ID for the resource that
@@ -3556,7 +3556,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a subscription for the authenticated user's channel.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -3596,7 +3596,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns subscription resources that match the API request criteria.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more
@@ -3699,7 +3699,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a custom video thumbnail to YouTube and sets it for a video.
         # @param [String] video_id
         #   The videoId parameter specifies a YouTube video ID for which the custom video
@@ -3756,7 +3756,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of abuse reasons that can be used for reporting abusive videos.
         # @param [String] part
         #   The part parameter specifies the videoCategory resource parts that the API
@@ -3796,7 +3796,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of categories that can be associated with YouTube videos.
         # @param [String] part
         #   The part parameter specifies the videoCategory resource properties that the
@@ -3845,7 +3845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a YouTube video.
         # @param [String] id
         #   The id parameter specifies the YouTube video ID for the resource that is being
@@ -3890,7 +3890,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the ratings that the authorized user gave to a list of specified
         # videos.
         # @param [String] id
@@ -3939,7 +3939,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a video to YouTube and optionally sets the video's metadata.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -4038,7 +4038,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of videos that match the API request parameters.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more video
@@ -4141,7 +4141,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a like or dislike rating to a video or remove a rating from a video.
         # @param [String] id
         #   The id parameter specifies the YouTube video ID of the video that is being
@@ -4178,7 +4178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Report abuse for a video.
         # @param [Google::Apis::YoutubeV3::VideoAbuseReport] video_abuse_report_object
         # @param [String] on_behalf_of_content_owner
@@ -4222,7 +4222,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a video's metadata.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -4287,7 +4287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a watermark image to YouTube and sets it for a channel.
         # @param [String] channel_id
         #   The channelId parameter specifies the YouTube channel ID for which the
@@ -4345,7 +4345,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a channel's watermark image.
         # @param [String] channel_id
         #   The channelId parameter specifies the YouTube channel ID for which the

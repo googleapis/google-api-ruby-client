@@ -34,8 +34,8 @@ module Samples
       metadata  = {
         name: options[:name] || file
       }
-      result = drive.create_file(metadata, upload_source: file)
-      say "Upload complete"
+      drive.create_file(metadata, upload_source: file)
+      say 'Upload complete'
     end
 
     desc 'download FILE_ID', 'Download a file from Google Drive'

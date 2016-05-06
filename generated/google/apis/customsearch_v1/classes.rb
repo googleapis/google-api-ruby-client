@@ -21,54 +21,54 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CustomsearchV1
-      
-      # 
+
+      #
       class Context
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `facets`
         # @return [Array<Array<Google::Apis::CustomsearchV1::Context::Facet>>]
         attr_accessor :facets
-      
-        # 
+
+        #
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @facets = args[:facets] if args.key?(:facets)
           @title = args[:title] if args.key?(:title)
         end
-        
-        # 
+
+        #
         class Facet
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `anchor`
           # @return [String]
           attr_accessor :anchor
-        
-          # 
+
+          #
           # Corresponds to the JSON property `label`
           # @return [String]
           attr_accessor :label
-        
-          # 
+
+          #
           # Corresponds to the JSON property `label_with_op`
           # @return [String]
           attr_accessor :label_with_op
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @anchor = args[:anchor] if args.key?(:anchor)
@@ -77,45 +77,45 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Promotion
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `bodyLines`
         # @return [Array<Google::Apis::CustomsearchV1::Promotion::BodyLine>]
         attr_accessor :body_lines
-      
-        # 
+
+        #
         # Corresponds to the JSON property `displayLink`
         # @return [String]
         attr_accessor :display_link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `htmlTitle`
         # @return [String]
         attr_accessor :html_title
-      
-        # 
+
+        #
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::CustomsearchV1::Promotion::Image]
         attr_accessor :image
-      
-        # 
+
+        #
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @body_lines = args[:body_lines] if args.key?(:body_lines)
@@ -125,35 +125,35 @@ module Google
           @link = args[:link] if args.key?(:link)
           @title = args[:title] if args.key?(:title)
         end
-        
-        # 
+
+        #
         class BodyLine
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `htmlTitle`
           # @return [String]
           attr_accessor :html_title
-        
-          # 
+
+          #
           # Corresponds to the JSON property `link`
           # @return [String]
           attr_accessor :link
-        
-          # 
+
+          #
           # Corresponds to the JSON property `title`
           # @return [String]
           attr_accessor :title
-        
-          # 
+
+          #
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @html_title = args[:html_title] if args.key?(:html_title)
@@ -162,30 +162,30 @@ module Google
             @url = args[:url] if args.key?(:url)
           end
         end
-        
-        # 
+
+        #
         class Image
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
-        
-          # 
+
+          #
           # Corresponds to the JSON property `source`
           # @return [String]
           attr_accessor :source
-        
-          # 
+
+          #
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @height = args[:height] if args.key?(:height)
@@ -194,200 +194,200 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Query
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
-      
-        # 
+
+        #
         # Corresponds to the JSON property `cr`
         # @return [String]
         attr_accessor :cr
-      
-        # 
+
+        #
         # Corresponds to the JSON property `cref`
         # @return [String]
         attr_accessor :cref
-      
-        # 
+
+        #
         # Corresponds to the JSON property `cx`
         # @return [String]
         attr_accessor :cx
-      
-        # 
+
+        #
         # Corresponds to the JSON property `dateRestrict`
         # @return [String]
         attr_accessor :date_restrict
-      
-        # 
+
+        #
         # Corresponds to the JSON property `disableCnTwTranslation`
         # @return [String]
         attr_accessor :disable_cn_tw_translation
-      
-        # 
+
+        #
         # Corresponds to the JSON property `exactTerms`
         # @return [String]
         attr_accessor :exact_terms
-      
-        # 
+
+        #
         # Corresponds to the JSON property `excludeTerms`
         # @return [String]
         attr_accessor :exclude_terms
-      
-        # 
+
+        #
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
-      
-        # 
+
+        #
         # Corresponds to the JSON property `gl`
         # @return [String]
         attr_accessor :gl
-      
-        # 
+
+        #
         # Corresponds to the JSON property `googleHost`
         # @return [String]
         attr_accessor :google_host
-      
-        # 
+
+        #
         # Corresponds to the JSON property `highRange`
         # @return [String]
         attr_accessor :high_range
-      
-        # 
+
+        #
         # Corresponds to the JSON property `hl`
         # @return [String]
         attr_accessor :hl
-      
-        # 
+
+        #
         # Corresponds to the JSON property `hq`
         # @return [String]
         attr_accessor :hq
-      
-        # 
+
+        #
         # Corresponds to the JSON property `imgColorType`
         # @return [String]
         attr_accessor :img_color_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `imgDominantColor`
         # @return [String]
         attr_accessor :img_dominant_color
-      
-        # 
+
+        #
         # Corresponds to the JSON property `imgSize`
         # @return [String]
         attr_accessor :img_size
-      
-        # 
+
+        #
         # Corresponds to the JSON property `imgType`
         # @return [String]
         attr_accessor :img_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `inputEncoding`
         # @return [String]
         attr_accessor :input_encoding
-      
-        # 
+
+        #
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
-      
-        # 
+
+        #
         # Corresponds to the JSON property `linkSite`
         # @return [String]
         attr_accessor :link_site
-      
-        # 
+
+        #
         # Corresponds to the JSON property `lowRange`
         # @return [String]
         attr_accessor :low_range
-      
-        # 
+
+        #
         # Corresponds to the JSON property `orTerms`
         # @return [String]
         attr_accessor :or_terms
-      
-        # 
+
+        #
         # Corresponds to the JSON property `outputEncoding`
         # @return [String]
         attr_accessor :output_encoding
-      
-        # 
+
+        #
         # Corresponds to the JSON property `relatedSite`
         # @return [String]
         attr_accessor :related_site
-      
-        # 
+
+        #
         # Corresponds to the JSON property `rights`
         # @return [String]
         attr_accessor :rights
-      
-        # 
+
+        #
         # Corresponds to the JSON property `safe`
         # @return [String]
         attr_accessor :safe
-      
-        # 
+
+        #
         # Corresponds to the JSON property `searchTerms`
         # @return [String]
         attr_accessor :search_terms
-      
-        # 
+
+        #
         # Corresponds to the JSON property `searchType`
         # @return [String]
         attr_accessor :search_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `siteSearch`
         # @return [String]
         attr_accessor :site_search
-      
-        # 
+
+        #
         # Corresponds to the JSON property `siteSearchFilter`
         # @return [String]
         attr_accessor :site_search_filter
-      
-        # 
+
+        #
         # Corresponds to the JSON property `sort`
         # @return [String]
         attr_accessor :sort
-      
-        # 
+
+        #
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
-      
-        # 
+
+        #
         # Corresponds to the JSON property `startPage`
         # @return [Fixnum]
         attr_accessor :start_page
-      
-        # 
+
+        #
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
-      
-        # 
+
+        #
         # Corresponds to the JSON property `totalResults`
         # @return [String]
         attr_accessor :total_results
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
@@ -429,90 +429,90 @@ module Google
           @total_results = args[:total_results] if args.key?(:total_results)
         end
       end
-      
-      # 
+
+      #
       class Result
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `cacheId`
         # @return [String]
         attr_accessor :cache_id
-      
-        # 
+
+        #
         # Corresponds to the JSON property `displayLink`
         # @return [String]
         attr_accessor :display_link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `fileFormat`
         # @return [String]
         attr_accessor :file_format
-      
-        # 
+
+        #
         # Corresponds to the JSON property `formattedUrl`
         # @return [String]
         attr_accessor :formatted_url
-      
-        # 
+
+        #
         # Corresponds to the JSON property `htmlFormattedUrl`
         # @return [String]
         attr_accessor :html_formatted_url
-      
-        # 
+
+        #
         # Corresponds to the JSON property `htmlSnippet`
         # @return [String]
         attr_accessor :html_snippet
-      
-        # 
+
+        #
         # Corresponds to the JSON property `htmlTitle`
         # @return [String]
         attr_accessor :html_title
-      
-        # 
+
+        #
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::CustomsearchV1::Result::Image]
         attr_accessor :image
-      
-        # 
+
+        #
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # 
+
+        #
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::CustomsearchV1::Result::Label>]
         attr_accessor :labels
-      
-        # 
+
+        #
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `mime`
         # @return [String]
         attr_accessor :mime
-      
-        # 
+
+        #
         # Corresponds to the JSON property `pagemap`
         # @return [Hash<String,Array<Hash<String,Object>>>]
         attr_accessor :pagemap
-      
-        # 
+
+        #
         # Corresponds to the JSON property `snippet`
         # @return [String]
         attr_accessor :snippet
-      
-        # 
+
+        #
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @cache_id = args[:cache_id] if args.key?(:cache_id)
@@ -531,50 +531,50 @@ module Google
           @snippet = args[:snippet] if args.key?(:snippet)
           @title = args[:title] if args.key?(:title)
         end
-        
-        # 
+
+        #
         class Image
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `byteSize`
           # @return [Fixnum]
           attr_accessor :byte_size
-        
-          # 
+
+          #
           # Corresponds to the JSON property `contextLink`
           # @return [String]
           attr_accessor :context_link
-        
-          # 
+
+          #
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
-        
-          # 
+
+          #
           # Corresponds to the JSON property `thumbnailHeight`
           # @return [Fixnum]
           attr_accessor :thumbnail_height
-        
-          # 
+
+          #
           # Corresponds to the JSON property `thumbnailLink`
           # @return [String]
           attr_accessor :thumbnail_link
-        
-          # 
+
+          #
           # Corresponds to the JSON property `thumbnailWidth`
           # @return [Fixnum]
           attr_accessor :thumbnail_width
-        
-          # 
+
+          #
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @byte_size = args[:byte_size] if args.key?(:byte_size)
@@ -586,30 +586,30 @@ module Google
             @width = args[:width] if args.key?(:width)
           end
         end
-        
-        # 
+
+        #
         class Label
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `displayName`
           # @return [String]
           attr_accessor :display_name
-        
-          # 
+
+          #
           # Corresponds to the JSON property `label_with_op`
           # @return [String]
           attr_accessor :label_with_op
-        
-          # 
+
+          #
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @display_name = args[:display_name] if args.key?(:display_name)
@@ -618,55 +618,55 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Search
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::CustomsearchV1::Context]
         attr_accessor :context
-      
-        # 
+
+        #
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::CustomsearchV1::Result>]
         attr_accessor :items
-      
-        # 
+
+        #
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # 
+
+        #
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::CustomsearchV1::Promotion>]
         attr_accessor :promotions
-      
-        # 
+
+        #
         # Corresponds to the JSON property `queries`
         # @return [Hash<String,Array<Google::Apis::CustomsearchV1::Query>>]
         attr_accessor :queries
-      
-        # 
+
+        #
         # Corresponds to the JSON property `searchInformation`
         # @return [Google::Apis::CustomsearchV1::Search::SearchInformation]
         attr_accessor :search_information
-      
-        # 
+
+        #
         # Corresponds to the JSON property `spelling`
         # @return [Google::Apis::CustomsearchV1::Search::Spelling]
         attr_accessor :spelling
-      
-        # 
+
+        #
         # Corresponds to the JSON property `url`
         # @return [Google::Apis::CustomsearchV1::Search::Url]
         attr_accessor :url
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @context = args[:context] if args.key?(:context)
@@ -678,35 +678,35 @@ module Google
           @spelling = args[:spelling] if args.key?(:spelling)
           @url = args[:url] if args.key?(:url)
         end
-        
-        # 
+
+        #
         class SearchInformation
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `formattedSearchTime`
           # @return [String]
           attr_accessor :formatted_search_time
-        
-          # 
+
+          #
           # Corresponds to the JSON property `formattedTotalResults`
           # @return [String]
           attr_accessor :formatted_total_results
-        
-          # 
+
+          #
           # Corresponds to the JSON property `searchTime`
           # @return [Float]
           attr_accessor :search_time
-        
-          # 
+
+          #
           # Corresponds to the JSON property `totalResults`
           # @return [String]
           attr_accessor :total_results
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @formatted_search_time = args[:formatted_search_time] if args.key?(:formatted_search_time)
@@ -715,50 +715,50 @@ module Google
             @total_results = args[:total_results] if args.key?(:total_results)
           end
         end
-        
-        # 
+
+        #
         class Spelling
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `correctedQuery`
           # @return [String]
           attr_accessor :corrected_query
-        
-          # 
+
+          #
           # Corresponds to the JSON property `htmlCorrectedQuery`
           # @return [String]
           attr_accessor :html_corrected_query
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
             @html_corrected_query = args[:html_corrected_query] if args.key?(:html_corrected_query)
           end
         end
-        
-        # 
+
+        #
         class Url
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `template`
           # @return [String]
           attr_accessor :template
-        
-          # 
+
+          #
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @template = args[:template] if args.key?(:template)

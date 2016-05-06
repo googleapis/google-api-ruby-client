@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://appengine.googleapis.com/', '')
         end
-        
+
         # Gets information about an application.
         # @param [String] apps_id
         #   Part of `name`. Name of the application to get. For example: "apps/myapp".
@@ -83,7 +83,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] apps_id
@@ -117,7 +117,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
         # binding below allows API services to override the binding to use different
@@ -159,7 +159,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a service and all enclosed versions.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
@@ -193,7 +193,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the current configuration of the service.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
@@ -227,7 +227,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the services in the application.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp".
@@ -263,7 +263,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the configuration of the specified service.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. For example: "apps/myapp/
@@ -307,7 +307,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deploys new code and resource files to a version.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. For example: "apps/myapp/
@@ -344,7 +344,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing version.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
@@ -381,7 +381,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets application deployment information.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
@@ -421,7 +421,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the versions of a service.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/
@@ -464,7 +464,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing version. Note: UNIMPLEMENTED.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. For example: "apps/myapp/
@@ -507,7 +507,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the instances of a version.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. For example: "apps/myapp/

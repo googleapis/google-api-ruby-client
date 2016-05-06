@@ -21,13 +21,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupsmigrationV1
-      
+
       class Groups
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Groups
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

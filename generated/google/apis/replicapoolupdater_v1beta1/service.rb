@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'replicapoolupdater/v1beta1/projects/')
         end
-        
+
         # Cancels an update. The update must be PAUSED before it can be cancelled. This
         # has no effect if the update is already CANCELLED.
         # @param [String] project
@@ -93,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns information about an update.
         # @param [String] project
         #   The Google Developers Console project name.
@@ -134,7 +134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts and starts a new update.
         # @param [String] project
         #   The Google Developers Console project name.
@@ -175,7 +175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists recent updates for a given managed instance group, in reverse
         # chronological order and paginated format.
         # @param [String] project
@@ -225,7 +225,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the current status for each instance within a given update.
         # @param [String] project
         #   The Google Developers Console project name.
@@ -277,7 +277,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Pauses the update in state from ROLLING_FORWARD or ROLLING_BACK. Has no effect
         # if invoked when the state of the update is PAUSED.
         # @param [String] project
@@ -319,7 +319,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Continues an update in PAUSED state. Has no effect if invoked when the state
         # of the update is ROLLED_OUT.
         # @param [String] project
@@ -361,7 +361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Rolls back the update in state from ROLLING_FORWARD or PAUSED. Has no effect
         # if invoked when the state of the update is ROLLED_BACK.
         # @param [String] project
@@ -403,7 +403,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -444,7 +444,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of Operation resources contained within the specified zone.
         # @param [String] project
         #   Name of the project scoping this request.

@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://youtubereporting.googleapis.com/', '')
         end
-        
+
         # Method for media download. Download is supported on the URI `/v1/media/`+name`?
         # alt=media`.
         # @param [String] resource_name
@@ -85,7 +85,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists report types.
         # @param [String] on_behalf_of_content_owner
         #   The content owner's external ID on which behalf the user is acting on. If not
@@ -130,7 +130,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a job and returns it.
         # @param [Google::Apis::YoutubereportingV1::Job] job_object
         # @param [String] on_behalf_of_content_owner
@@ -164,7 +164,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists jobs.
         # @param [String] on_behalf_of_content_owner
         #   The content owner's external ID on which behalf the user is acting on. If not
@@ -209,7 +209,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a job.
         # @param [String] job_id
         #   The ID of the job to retrieve.
@@ -243,7 +243,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a job.
         # @param [String] job_id
         #   The ID of the job to delete.
@@ -277,7 +277,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists reports created by a specific job. Returns NOT_FOUND if the job does not
         # exist.
         # @param [String] job_id
@@ -332,7 +332,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the metadata of a specific report.
         # @param [String] job_id
         #   The ID of the job.

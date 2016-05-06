@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://people.googleapis.com/', '')
         end
-        
+
         # Provides information about a person resource for a resource name. Use `people/
         # me` to indicate the authenticated user.
         # @param [String] resource_name
@@ -86,7 +86,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides information about a list of specific people by specifying a list of
         # requested resource names. Use `people/me` to indicate the authenticated user.
         # @param [Array<String>, String] resource_names
@@ -125,7 +125,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Provides a list of the authenticated user's contacts merged with any linked
         # profiles.
         # @param [String] resource_name

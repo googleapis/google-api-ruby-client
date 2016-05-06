@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'resourceviews/v1beta2/projects/')
         end
-        
+
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -93,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -142,7 +142,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add resources to the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -186,7 +186,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -227,7 +227,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the information of a zonal resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -268,7 +268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the service information of a resource view or a resource.
         # @param [String] project
         #   The project name of the resource view.
@@ -313,7 +313,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -354,7 +354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List resource views.
         # @param [String] project
         #   The project name of the resource view.
@@ -400,7 +400,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the resources of the resource view.
         # @param [String] project
         #   The project name of the resource view.
@@ -461,7 +461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove resources from the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -505,7 +505,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the service information of a resource view or a resource.
         # @param [String] project
         #   The project name of the resource view.

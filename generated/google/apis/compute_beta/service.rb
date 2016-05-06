@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'compute/beta/projects/')
         end
-        
+
         # Retrieves an aggregated list of addresses.
         # @param [String] project
         #   Project ID for this request.
@@ -130,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified address resource.
         # @param [String] project
         #   Project ID for this request.
@@ -171,7 +171,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified address resource.
         # @param [String] project
         #   Project ID for this request.
@@ -212,7 +212,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an address resource in the specified project using the data included
         # in the request.
         # @param [String] project
@@ -254,7 +254,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of addresses contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
@@ -336,7 +336,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -380,7 +380,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of autoscalers.
         # @param [String] project
         #   Project ID for this request.
@@ -459,7 +459,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
@@ -500,7 +500,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified autoscaler resource. Get a list of available autoscalers
         # by making a list() request.
         # @param [String] project
@@ -542,7 +542,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an autoscaler in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -584,7 +584,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of autoscalers contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -666,7 +666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an autoscaler in the specified project using the data included in the
         # request. This method supports patch semantics.
         # @param [String] project
@@ -711,7 +711,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -755,7 +755,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an autoscaler in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -800,7 +800,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified BackendService resource.
         # @param [String] project
         #   Project ID for this request.
@@ -838,7 +838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified BackendService resource. Get a list of available backend
         # services by making a list() request.
         # @param [String] project
@@ -877,7 +877,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the most recent health check results for this BackendService.
         # @param [String] project
         # @param [String] backend_service
@@ -917,7 +917,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a BackendService resource in the specified project using the data
         # included in the request. There are several restrictions and guidelines to keep
         # in mind when creating a backend service. Read  Restrictions and Guidelines for
@@ -958,7 +958,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of BackendService resources available to the specified
         # project.
         # @param [String] project
@@ -1038,7 +1038,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the BackendService resource. There are several
         # restrictions and guidelines to keep in mind when updating a backend service.
         # Read  Restrictions and Guidelines for more information. This method supports
@@ -1082,7 +1082,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -1123,7 +1123,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the BackendService resource. There are several
         # restrictions and guidelines to keep in mind when updating a backend service.
         # Read  Restrictions and Guidelines for more information.
@@ -1166,7 +1166,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of disk types.
         # @param [String] project
         #   Project ID for this request.
@@ -1245,7 +1245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified disk type. Get a list of available disk types by making
         # a list() request.
         # @param [String] project
@@ -1287,7 +1287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of disk types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -1369,7 +1369,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of persistent disks.
         # @param [String] project
         #   Project ID for this request.
@@ -1448,7 +1448,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a snapshot of a specified persistent disk.
         # @param [String] project
         #   Project ID for this request.
@@ -1492,7 +1492,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified persistent disk. Deleting a disk removes its data
         # permanently and is irreversible. However, deleting a disk does not delete any
         # snapshots previously made from the disk. You must separately delete snapshots.
@@ -1535,7 +1535,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a specified persistent disk. Get a list of available persistent disks
         # by making a list() request.
         # @param [String] project
@@ -1577,7 +1577,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a persistent disk in the specified project using the data in the
         # request. You can create a disk with a sourceImage, a sourceSnapshot, or create
         # an empty 500 GB data disk by omitting all properties. You can also create a
@@ -1624,7 +1624,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of persistent disks contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -1706,7 +1706,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resizes the specified persistent disk.
         # @param [String] project
         #   Project ID for this request.
@@ -1750,7 +1750,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the labels on the target disk.
         # @param [String] project
         #   Project ID for this request.
@@ -1794,7 +1794,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -1838,7 +1838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified firewall.
         # @param [String] project
         #   Project ID for this request.
@@ -1876,7 +1876,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified firewall.
         # @param [String] project
         #   Project ID for this request.
@@ -1914,7 +1914,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a firewall rule in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -1953,7 +1953,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of firewall rules available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -2032,7 +2032,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified firewall rule with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
@@ -2074,7 +2074,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2115,7 +2115,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified firewall rule with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -2156,7 +2156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of forwarding rules.
         # @param [String] project
         #   Project ID for this request.
@@ -2235,7 +2235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2276,7 +2276,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2317,7 +2317,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
         # @param [String] project
@@ -2359,7 +2359,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of ForwardingRule resources available to the specified
         # project and region.
         # @param [String] project
@@ -2442,7 +2442,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes target URL for forwarding rule. The new target should be of the same
         # type as the old target.
         # @param [String] project
@@ -2487,7 +2487,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2531,7 +2531,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified address resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2569,7 +2569,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified address resource. Get a list of available addresses by
         # making a list() request.
         # @param [String] project
@@ -2608,7 +2608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an address resource in the specified project using the data included
         # in the request.
         # @param [String] project
@@ -2647,7 +2647,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of global addresses.
         # @param [String] project
         #   Project ID for this request.
@@ -2726,7 +2726,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2767,7 +2767,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
@@ -2805,7 +2805,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified ForwardingRule resource. Get a list of available
         # forwarding rules by making a list() request.
         # @param [String] project
@@ -2844,7 +2844,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
         # @param [String] project
@@ -2883,7 +2883,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of ForwardingRule resources available to the specified
         # project.
         # @param [String] project
@@ -2963,7 +2963,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes target URL for forwarding rule. The new target should be of the same
         # type as the old target.
         # @param [String] project
@@ -3005,7 +3005,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3046,7 +3046,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of all operations.
         # @param [String] project
         #   Project ID for this request.
@@ -3125,7 +3125,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3161,7 +3161,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified Operations resource. Get a list of operations by
         # making a list() request.
         # @param [String] project
@@ -3200,7 +3200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of Operation resources contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -3279,7 +3279,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified HttpHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3317,7 +3317,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified HttpHealthCheck resource. Get a list of available HTTP
         # health checks by making a list() request.
         # @param [String] project
@@ -3356,7 +3356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -3395,7 +3395,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of HttpHealthCheck resources available to the specified
         # project.
         # @param [String] project
@@ -3475,7 +3475,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request. This method supports patch semantics.
         # @param [String] project
@@ -3517,7 +3517,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3558,7 +3558,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -3600,7 +3600,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified HttpsHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3638,7 +3638,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS
         # health checks by making a list() request.
         # @param [String] project
@@ -3677,7 +3677,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a HttpsHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -3716,7 +3716,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of HttpsHealthCheck resources available to the specified
         # project.
         # @param [String] project
@@ -3796,7 +3796,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a HttpsHealthCheck resource in the specified project using the data
         # included in the request. This method supports patch semantics.
         # @param [String] project
@@ -3838,7 +3838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3879,7 +3879,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a HttpsHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -3921,7 +3921,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified image.
         # @param [String] project
         #   Project ID for this request.
@@ -3959,7 +3959,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the deprecation status of an image.
         # If an empty request body is given, clears the deprecation status instead.
         # @param [String] project
@@ -4001,7 +4001,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified image. Get a list of available images by making a list()
         # request.
         # @param [String] project
@@ -4040,7 +4040,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the latest image that is part of an image family and is not deprecated.
         # @param [String] project
         #   Project ID for this request.
@@ -4078,7 +4078,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an image in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -4117,7 +4117,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of private images available to the specified project.
         # Private images are images you create that belong to your project. This method
         # does not get any images that belong to other projects, including publicly-
@@ -4202,7 +4202,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the labels on the target image.
         # @param [String] project
         #   Project ID for this request.
@@ -4243,7 +4243,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -4284,7 +4284,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Schedules a group action to remove the specified instances from the managed
         # instance group. Abandoning an instance does not delete the instance, but it
         # does remove the instance from any target pools that are applied by the managed
@@ -4335,7 +4335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of managed instance groups and groups them by zone.
         # @param [String] project
         #   Project ID for this request.
@@ -4414,7 +4414,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified managed instance group and all of the instances in that
         # group. Note that the instance group must not belong to a backend service. Read
         # Deleting an instance group for more information.
@@ -4457,7 +4457,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Schedules a group action to delete the specified instances in the managed
         # instance group. The instances are also removed from any target pools of which
         # they were a member. This method reduces the targetSize of the managed instance
@@ -4507,7 +4507,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all of the details about the specified managed instance group. Get a
         # list of available managed instance groups by making a list() request.
         # @param [String] project
@@ -4549,7 +4549,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a managed instance group using the information that you specify in the
         # request. After the group is created, it schedules an action to create
         # instances in the group using the specified instance template. This operation
@@ -4595,7 +4595,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of managed instance groups that are contained within the
         # specified project and zone.
         # @param [String] project
@@ -4678,7 +4678,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all of the instances in the managed instance group. Each instance in the
         # list has a currentAction, which indicates the action that the managed instance
         # group is performing on the instance. For example, if the group is still
@@ -4723,7 +4723,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Schedules a group action to recreate the specified instances in the managed
         # instance group. The instances are deleted and recreated using the current
         # instance template for the managed instance group. This operation is marked as
@@ -4772,7 +4772,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resizes the managed instance group. If you increase the size, the group
         # creates new instances using the current instance template. If you decrease the
         # size, the group deletes instances. The resize operation is marked DONE when
@@ -4823,7 +4823,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resizes the managed instance group. If you increase the size, the group
         # creates new instances using the current instance template. If you decrease the
         # size, the group deletes instances. The resize operation is marked DONE when
@@ -4873,7 +4873,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the autohealing policies.
         # @param [String] project
         #   Project ID for this request.
@@ -4917,7 +4917,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Specifies the instance template to use when creating new instances in this
         # group. The templates for existing instances in the group do not change unless
         # you recreate them.
@@ -4963,7 +4963,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the target pools to which all instances in this managed instance
         # group are assigned. The target pools automatically apply to all of the
         # instances in the managed instance group. This operation is marked DONE when
@@ -5012,7 +5012,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -5056,7 +5056,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a list of instances to the specified instance group. All of the instances
         # in the instance group must be in the same network/subnetwork. Read  Adding
         # instances for more information.
@@ -5102,7 +5102,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of instance groups and sorts them by zone.
         # @param [String] project
         #   Project ID for this request.
@@ -5181,7 +5181,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified instance group. The instances in the group are not
         # deleted. Note that instance group must not belong to a backend service. Read
         # Deleting an instance group for more information.
@@ -5224,7 +5224,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified instance group. Get a list of available instance groups
         # by making a list() request.
         # @param [String] project
@@ -5266,7 +5266,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an instance group in the specified project using the parameters that
         # are included in the request.
         # @param [String] project
@@ -5308,7 +5308,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of instance groups that are located in the specified
         # project and zone.
         # @param [String] project
@@ -5391,7 +5391,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the instances in the specified instance group.
         # @param [String] project
         #   Project ID for this request.
@@ -5480,7 +5480,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes one or more instances from the specified instance group, but does not
         # delete those instances.
         # @param [String] project
@@ -5525,7 +5525,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the named ports for the specified instance group.
         # @param [String] project
         #   Project ID for this request.
@@ -5569,7 +5569,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -5613,7 +5613,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified instance template. If you delete an instance template
         # that is being referenced from another instance group, the instance group will
         # not be able to create or recreate virtual machine instances. Deleting an
@@ -5654,7 +5654,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified instance template. Get a list of available instance
         # templates by making a list() request.
         # @param [String] project
@@ -5693,7 +5693,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an instance template in the specified project using the data that is
         # included in the request. If you are creating a new template to update an
         # existing instance group, your new instance template must use the same network
@@ -5734,7 +5734,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of instance templates that are contained within the specified
         # project and zone.
         # @param [String] project
@@ -5814,7 +5814,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -5855,7 +5855,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds an access config to an instance's network interface.
         # @param [String] project
         #   Project ID for this request.
@@ -5902,7 +5902,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves aggregated list of instances.
         # @param [String] project
         #   Project ID for this request.
@@ -5981,7 +5981,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Attaches a Disk resource to an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -6025,7 +6025,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Instance resource. For more information, see Stopping or
         # Deleting an Instance.
         # @param [String] project
@@ -6067,7 +6067,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an access config from an instance's network interface.
         # @param [String] project
         #   Project ID for this request.
@@ -6114,7 +6114,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Detaches a disk from an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -6158,7 +6158,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Instance resource. Get a list of available instances by
         # making a list() request.
         # @param [String] project
@@ -6200,7 +6200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified instance's serial port output.
         # @param [String] project
         #   Project ID for this request.
@@ -6249,7 +6249,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an instance resource in the specified project using the data included
         # in the request.
         # @param [String] project
@@ -6291,7 +6291,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of instances contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -6373,7 +6373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Performs a hard reset on the instance.
         # @param [String] project
         #   Project ID for this request.
@@ -6414,7 +6414,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the auto-delete flag for a disk attached to an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -6461,7 +6461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets labels for the specified instance to the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -6505,7 +6505,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the machine type for a stopped instance to the machine type specified
         # in the request.
         # @param [String] project
@@ -6550,7 +6550,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets metadata for the specified instance to the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -6594,7 +6594,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets an instance's scheduling options.
         # @param [String] project
         #   Project ID for this request.
@@ -6638,7 +6638,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets tags for the specified instance to the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -6682,7 +6682,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts an instance that was stopped using the using the instances().stop
         # method. For more information, see Restart an instance.
         # @param [String] project
@@ -6724,7 +6724,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stops a running instance, shutting it down cleanly, and allows you to restart
         # the instance at a later time. Stopped instances do not incur per-minute,
         # virtual machine usage charges while they are stopped, but any resources that
@@ -6770,7 +6770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -6814,7 +6814,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified License resource. Get a list of available licenses by
         # making a list() request.
         # @param [String] project
@@ -6853,7 +6853,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of machine types.
         # @param [String] project
         #   Project ID for this request.
@@ -6932,7 +6932,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified machine type. Get a list of available machine types by
         # making a list() request.
         # @param [String] project
@@ -6974,7 +6974,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of machine types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -7056,7 +7056,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified network.
         # @param [String] project
         #   Project ID for this request.
@@ -7094,7 +7094,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified network. Get a list of available networks by making a
         # list() request.
         # @param [String] project
@@ -7133,7 +7133,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a network in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -7172,7 +7172,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of networks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -7251,7 +7251,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7292,7 +7292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7327,7 +7327,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets metadata common to all instances within the specified project using the
         # data included in the request.
         # @param [String] project
@@ -7366,7 +7366,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enables the usage export feature and sets the usage export bucket where
         # reports are stored. If you provide an empty request body using this method,
         # the usage export feature will be disabled.
@@ -7406,7 +7406,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7445,7 +7445,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7486,7 +7486,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of Operation resources contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
@@ -7568,7 +7568,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Region resource. Get a list of available regions by
         # making a list() request.
         # @param [String] project
@@ -7607,7 +7607,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of region resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -7686,7 +7686,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of routers.
         # @param [String] project
         #   Project ID for this request.
@@ -7765,7 +7765,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Router resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7806,7 +7806,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Router resource. Get a list of available routers by
         # making a list() request.
         # @param [String] project
@@ -7848,7 +7848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves runtime information of the specified router.
         # @param [String] project
         #   Project ID for this request.
@@ -7889,7 +7889,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Router resource in the specified project and region using the data
         # included in the request.
         # @param [String] project
@@ -7931,7 +7931,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of Router resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -8013,7 +8013,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the Router resource. This method supports patch
         # semantics.
         # @param [String] project
@@ -8058,7 +8058,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8102,7 +8102,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the Router resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8146,7 +8146,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Route resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8184,7 +8184,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Route resource. Get a list of available routes by making
         # a list() request.
         # @param [String] project
@@ -8223,7 +8223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Route resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -8262,7 +8262,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of Route resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -8341,7 +8341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8382,7 +8382,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Snapshot resource. Keep in mind that deleting a single
         # snapshot might not necessarily delete all the data on that snapshot. If any
         # data on the snapshot that is marked for deletion is needed for subsequent
@@ -8424,7 +8424,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Snapshot resource. Get a list of available snapshots by
         # making a list() request.
         # @param [String] project
@@ -8463,7 +8463,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of Snapshot resources contained within the specified
         # project.
         # @param [String] project
@@ -8543,7 +8543,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the labels on the target snapshot.
         # @param [String] project
         #   Project ID for this request.
@@ -8584,7 +8584,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8625,7 +8625,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified SslCertificate resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8663,7 +8663,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified SslCertificate resource. Get a list of available SSL
         # certificates by making a list() request.
         # @param [String] project
@@ -8702,7 +8702,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a SslCertificate resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -8741,7 +8741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of SslCertificate resources available to the specified
         # project.
         # @param [String] project
@@ -8821,7 +8821,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8862,7 +8862,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of subnetworks.
         # @param [String] project
         #   Project ID for this request.
@@ -8941,7 +8941,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified subnetwork.
         # @param [String] project
         #   Project ID for this request.
@@ -8982,7 +8982,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified subnetwork. Get a list of available subnetworks by
         # making a list() request.
         # @param [String] project
@@ -9024,7 +9024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a subnetwork in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -9066,7 +9066,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of subnetworks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -9148,7 +9148,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9192,7 +9192,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified TargetHttpProxy resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9230,7 +9230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified TargetHttpProxy resource. Get a list of available target
         # HTTP proxies by making a list() request.
         # @param [String] project
@@ -9269,7 +9269,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a TargetHttpProxy resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -9308,7 +9308,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of TargetHttpProxy resources available to the specified
         # project.
         # @param [String] project
@@ -9388,7 +9388,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the URL map for TargetHttpProxy.
         # @param [String] project
         #   Project ID for this request.
@@ -9429,7 +9429,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9470,7 +9470,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified TargetHttpsProxy resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9508,7 +9508,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified TargetHttpsProxy resource. Get a list of available
         # target HTTPS proxies by making a list() request.
         # @param [String] project
@@ -9547,7 +9547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a TargetHttpsProxy resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -9586,7 +9586,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of TargetHttpsProxy resources available to the specified
         # project.
         # @param [String] project
@@ -9666,7 +9666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replaces SslCertificates for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
@@ -9707,7 +9707,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the URL map for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
@@ -9748,7 +9748,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9789,7 +9789,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of target instances.
         # @param [String] project
         #   Project ID for this request.
@@ -9868,7 +9868,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified TargetInstance resource.
         # @param [String] project
         #   Project ID for this request.
@@ -9909,7 +9909,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified TargetInstance resource. Get a list of available target
         # instances by making a list() request.
         # @param [String] project
@@ -9951,7 +9951,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a TargetInstance resource in the specified project and zone using the
         # data included in the request.
         # @param [String] project
@@ -9993,7 +9993,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of TargetInstance resources available to the specified
         # project and zone.
         # @param [String] project
@@ -10076,7 +10076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -10120,7 +10120,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds health check URLs to a target pool.
         # @param [String] project
         #   Project ID for this request.
@@ -10164,7 +10164,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds an instance to a target pool.
         # @param [String] project
         #   Project ID for this request.
@@ -10208,7 +10208,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of target pools.
         # @param [String] project
         #   Project ID for this request.
@@ -10287,7 +10287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified target pool.
         # @param [String] project
         #   Project ID for this request.
@@ -10328,7 +10328,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified target pool. Get a list of available target pools by
         # making a list() request.
         # @param [String] project
@@ -10370,7 +10370,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the most recent health check results for each IP for the instance that is
         # referenced by the given target pool.
         # @param [String] project
@@ -10415,7 +10415,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a target pool in the specified project and region using the data
         # included in the request.
         # @param [String] project
@@ -10457,7 +10457,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of target pools available to the specified project and region.
         # @param [String] project
         #   Project ID for this request.
@@ -10539,7 +10539,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes health check URL from a target pool.
         # @param [String] project
         #   Project ID for this request.
@@ -10583,7 +10583,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes instance URL from a target pool.
         # @param [String] project
         #   Project ID for this request.
@@ -10627,7 +10627,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes a backup target pool's configurations.
         # @param [String] project
         #   Project ID for this request.
@@ -10674,7 +10674,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -10718,7 +10718,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of target VPN gateways.
         # @param [String] project
         #   Project ID for this request.
@@ -10797,7 +10797,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified target VPN gateway.
         # @param [String] project
         #   Project ID for this request.
@@ -10838,7 +10838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified target VPN gateway. Get a list of available target VPN
         # gateways by making a list() request.
         # @param [String] project
@@ -10880,7 +10880,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a target VPN gateway in the specified project and region using the
         # data included in the request.
         # @param [String] project
@@ -10922,7 +10922,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of target VPN gateways available to the specified project and
         # region.
         # @param [String] project
@@ -11005,7 +11005,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11049,7 +11049,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11087,7 +11087,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified UrlMap resource. Get a list of available URL maps by
         # making a list() request.
         # @param [String] project
@@ -11126,7 +11126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a UrlMap resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -11165,7 +11165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
         # @param [String] project
@@ -11207,7 +11207,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of UrlMap resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -11286,7 +11286,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the UrlMap resource. This method supports patch
         # semantics.
         # @param [String] project
@@ -11328,7 +11328,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11369,7 +11369,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the entire content of the UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11410,7 +11410,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs static validation for the UrlMap. In particular, the tests of the
         # provided UrlMap will be run. Calling this method does NOT create the UrlMap.
         # @param [String] project
@@ -11452,7 +11452,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an aggregated list of VPN tunnels.
         # @param [String] project
         #   Project ID for this request.
@@ -11531,7 +11531,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified VpnTunnel resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11572,7 +11572,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified VpnTunnel resource. Get a list of available VPN tunnels
         # by making a list() request.
         # @param [String] project
@@ -11614,7 +11614,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a VpnTunnel resource in the specified project and region using the
         # data included in the request.
         # @param [String] project
@@ -11656,7 +11656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of VpnTunnel resources contained in the specified project and
         # region.
         # @param [String] project
@@ -11739,7 +11739,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11783,7 +11783,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11822,7 +11822,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -11863,7 +11863,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of Operation resources contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -11945,7 +11945,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Zone resource. Get a list of available zones by making a
         # list() request.
         # @param [String] project
@@ -11984,7 +11984,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of Zone resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.

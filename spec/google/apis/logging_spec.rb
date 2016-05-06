@@ -44,7 +44,6 @@ RSpec.describe Google::Apis do
   end
 
   context 'with Rails' do
-
     before(:example) do
       Google::Apis.logger = nil
       Kernel.const_set('Rails', Module.new) unless defined?(::Rails)

@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'content/v2/')
         end
-        
+
         # Returns information about the authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -84,7 +84,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)
         # accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountsRequest] batch_accounts_request_object
@@ -123,7 +123,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Merchant Center sub-account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -162,7 +162,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -200,7 +200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Merchant Center sub-account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -241,7 +241,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the sub-accounts in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -282,7 +282,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Merchant Center account. This method supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -326,7 +326,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -370,7 +370,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves and updates the shipping settings of multiple accounts in a single
         # request.
         # @param [Google::Apis::ContentV2::BatchAccountShippingRequest] batch_account_shipping_request_object
@@ -409,7 +409,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the shipping settings of the account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -447,7 +447,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the shipping settings of the sub-accounts in your Merchant Center
         # account.
         # @param [String] merchant_id
@@ -490,7 +490,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the shipping settings of the account. This method supports patch
         # semantics.
         # @param [String] merchant_id
@@ -535,7 +535,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the shipping settings of the account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -579,8 +579,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchAccountStatusesRequest] batch_account_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -614,7 +614,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the status of a Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -652,7 +652,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the sub-accounts in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -694,7 +694,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves and updates tax settings of multiple accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountTaxRequest] batch_account_tax_request_object
         # @param [Boolean] dry_run
@@ -732,7 +732,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the tax settings of the account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -770,7 +770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the tax settings of the sub-accounts in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -811,7 +811,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the tax settings of the account. This method supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -855,7 +855,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the tax settings of the account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -899,8 +899,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchDatafeedsRequest] batch_datafeeds_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -937,7 +937,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a datafeed from your Merchant Center account.
         # @param [String] merchant_id
         # @param [String] datafeed_id
@@ -974,7 +974,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a datafeed from your Merchant Center account.
         # @param [String] merchant_id
         # @param [String] datafeed_id
@@ -1010,7 +1010,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Registers a datafeed with your Merchant Center account.
         # @param [String] merchant_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -1050,7 +1050,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the datafeeds in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1091,7 +1091,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a datafeed of your Merchant Center account. This method supports patch
         # semantics.
         # @param [String] merchant_id
@@ -1134,7 +1134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a datafeed of your Merchant Center account.
         # @param [String] merchant_id
         # @param [String] datafeed_id
@@ -1176,8 +1176,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::ContentV2::BatchDatafeedStatusesRequest] batch_datafeed_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1211,7 +1211,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the status of a datafeed from your Merchant Center account.
         # @param [String] merchant_id
         # @param [String] datafeed_id
@@ -1247,7 +1247,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the datafeeds in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1288,7 +1288,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates price and availability for multiple products or stores in a single
         # request. This operation does not update the expiration date of the products.
         # @param [Google::Apis::ContentV2::BatchInventoryRequest] batch_inventory_request_object
@@ -1327,7 +1327,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates price and availability of a product in your Merchant Center account.
         # This operation does not update the expiration date of the product.
         # @param [String] merchant_id
@@ -1376,7 +1376,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks an order as acknowledged.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1417,7 +1417,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Moves a test order from state "inProgress" to state "
         # pendingShipment".
         # @param [String] merchant_id
@@ -1456,7 +1456,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels all line items in an order.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1497,7 +1497,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a line item.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1538,7 +1538,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Creates a test order.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1576,7 +1576,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves or modifies multiple orders in a single request.
         # @param [Google::Apis::ContentV2::OrdersCustomBatchRequest] orders_custom_batch_request_object
         # @param [String] fields
@@ -1611,7 +1611,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an order from your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1649,7 +1649,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an order using merchant order id.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1687,7 +1687,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sandbox only. Retrieves an order template that can be used to quickly create a
         # new order in sandbox.
         # @param [String] merchant_id
@@ -1726,7 +1726,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the orders in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1799,7 +1799,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Refund a portion of the order, up to the full amount paid.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1840,7 +1840,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a line item.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1881,7 +1881,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks line item(s) as shipped.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1922,7 +1922,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the merchant order ID for a given order.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -1963,7 +1963,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a shipment's status, carrier, and/or tracking ID.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2004,7 +2004,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves, inserts, and deletes multiple products in a single request.
         # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
         # @param [Boolean] dry_run
@@ -2042,7 +2042,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a product from your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2081,7 +2081,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a product from your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2119,7 +2119,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a product to your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2160,7 +2160,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the products in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2205,7 +2205,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the statuses of multiple products in a single request.
         # @param [Google::Apis::ContentV2::BatchProductStatusesRequest] batch_product_statuses_request_object
         # @param [String] fields
@@ -2240,7 +2240,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the status of a product from your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.
@@ -2278,7 +2278,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the statuses of the products in your Merchant Center account.
         # @param [String] merchant_id
         #   The ID of the managing account.

@@ -32,7 +32,7 @@ module Google
       # @param [String] path
       #    Path to the credentials file.
       def initialize(path)
-        @path= path
+        @path = path
       end
 
       ##

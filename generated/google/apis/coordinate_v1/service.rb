@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'coordinate/v1/')
         end
-        
+
         # Retrieves a list of custom field definitions for a team.
         # @param [String] team_id
         #   Team ID
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a job, including all the changes made to the job.
         # @param [String] team_id
         #   Team ID
@@ -124,7 +124,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new job. Only the state field of the job should be set.
         # @param [String] team_id
         #   Team ID
@@ -194,7 +194,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves jobs created or modified since the given timestamp.
         # @param [String] team_id
         #   Team ID
@@ -241,7 +241,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a job. Fields that are set in the job state will be updated. This
         # method supports patch semantics.
         # @param [String] team_id
@@ -318,7 +318,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a job. Fields that are set in the job state will be updated.
         # @param [String] team_id
         #   Team ID
@@ -394,7 +394,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of locations for a worker.
         # @param [String] team_id
         #   Team ID
@@ -441,7 +441,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the schedule for a job.
         # @param [String] team_id
         #   Team ID
@@ -479,7 +479,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replaces the schedule of a job with the provided schedule. This method
         # supports patch semantics.
         # @param [String] team_id
@@ -534,7 +534,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replaces the schedule of a job with the provided schedule.
         # @param [String] team_id
         #   Team ID
@@ -588,7 +588,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of teams for a user.
         # @param [Boolean] admin
         #   Whether to include teams for which the user has the Admin role.
@@ -629,7 +629,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of workers in a team.
         # @param [String] team_id
         #   Team ID

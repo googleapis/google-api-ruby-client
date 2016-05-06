@@ -21,41 +21,41 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudresourcemanagerV1
-      
+
       # A Project is a high-level Google Cloud Platform entity. It is a container for
       # ACLs, APIs, AppEngine Apps, VMs, and other Google Cloud Platform resources.
       class Project
         include Google::Apis::Core::Hashable
-      
+
         # The number uniquely identifying the project. Example: 415104041262 Read-only.
         # Corresponds to the JSON property `projectNumber`
         # @return [String]
         attr_accessor :project_number
-      
+
         # The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase
         # letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
         # prohibited. Example: tokyo-rain-123 Read-only after creation.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
-      
+
         # The Project lifecycle state. Read-only.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
-      
+
         # The user-assigned name of the Project. It must be 4 to 30 characters. Allowed
         # characters are: lowercase and uppercase letters, numbers, hyphen, single-quote,
         # double-quote, space, and exclamation point. Example: My Project Read-write.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Creation time. Read-only.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
-      
+
         # The labels associated with this Project. Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: \[a-z\](\
         # [-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long
@@ -67,7 +67,7 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
+
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
         # interact with through one of our API's. Some examples are an AppEngine app, a
@@ -75,11 +75,11 @@ module Google
         # Corresponds to the JSON property `parent`
         # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
         attr_accessor :parent
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @project_number = args[:project_number] if args.key?(:project_number)
@@ -91,48 +91,48 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
         end
       end
-      
+
       # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
       # interact with through one of our API's. Some examples are an AppEngine app, a
       # Compute Engine instance, a Cloud SQL database, and so on.
       class ResourceId
         include Google::Apis::Core::Hashable
-      
+
         # Required field representing the resource type this id is for. At present, the
         # only valid type is "organization".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
+
         # Required field for the type-specific id. This should correspond to the id used
         # in the type-specific API's.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @id = args[:id] if args.key?(:id)
         end
       end
-      
+
       # A page of the response received from the ListProjects method. A paginated
       # response where more pages are available has `next_page_token` set. This token
       # can be used in a subsequent request to retrieve the next request page.
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
-      
+
         # The list of Projects that matched the list filter. This list can be paginated.
         # Corresponds to the JSON property `projects`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
         attr_accessor :projects
-      
+
         # Pagination token. If the result set is too large to fit in a single response,
         # this token is returned. It encodes the position of the current result cursor.
         # Feeding this value into a new list request with the `page_token` parameter
@@ -142,18 +142,18 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @projects = args[:projects] if args.key?(:projects)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -161,42 +161,42 @@ module Google
       # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
         end
       end
-      
+
       # The request sent to the UndeleteProject method.
       class UndeleteProjectRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
         end
       end
-      
+
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
         end
       end
-      
+
       # Defines an Identity and Access Management (IAM) policy. It is used to specify
       # access control policies for Cloud Platform resources. A `Policy` consists of a
       # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
@@ -209,19 +209,19 @@ module Google
       # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
         include Google::Apis::Core::Hashable
-      
+
         # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
-      
+
         # Associates a list of `members` to a `role`. Multiple `bindings` must not be
         # specified for the same `role`. `bindings` with no members will result in an
         # error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Binding>]
         attr_accessor :bindings
-      
+
         # `etag` is used for optimistic concurrency control as a way to help prevent
         # simultaneous updates of a policy from overwriting each other. It is strongly
         # suggested that systems make use of the `etag` in the read-modify-write cycle
@@ -233,11 +233,11 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
@@ -245,17 +245,17 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
         end
       end
-      
+
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
-      
+
         # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
         # , or `roles/owner`. Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
-      
+
         # Specifies the identities requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
@@ -271,22 +271,22 @@ module Google
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @role = args[:role] if args.key?(:role)
           @members = args[:members] if args.key?(:members)
         end
       end
-      
+
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
-      
+
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
         # access control policies for Cloud Platform resources. A `Policy` consists of a
         # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
@@ -300,51 +300,51 @@ module Google
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudresourcemanagerV1::Policy]
         attr_accessor :policy
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
         end
       end
-      
+
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
-      
+
         # The set of permissions to check for the `resource`. Permissions with wildcards
         # (such as '*' or 'storage.*') are not allowed. For more information see IAM
         # Overview.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
-      
+
       # Response message for `TestIamPermissions` method.
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
-      
+
         # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)

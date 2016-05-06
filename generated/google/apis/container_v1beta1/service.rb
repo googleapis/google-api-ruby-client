@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'container/v1beta1/projects/')
         end
-        
+
         # Lists all clusters owned by a project across all zones.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -88,7 +88,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all operations in a project, across all zones.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -124,7 +124,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a cluster, consisting of the specified number and type of Google
         # Compute Engine instances, plus a Kubernetes master instance.
         # The cluster is created in the project's default network.
@@ -173,7 +173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the cluster, including the Kubernetes master and all worker nodes.
         # Firewalls and routes that were configured at cluster creation are also deleted.
         # @param [String] project_id
@@ -216,7 +216,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific cluster.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -258,7 +258,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all clusters owned by a project in the specified zone.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -297,7 +297,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified operation.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -341,7 +341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all operations in a project in a specific zone.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.

@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'apps/reseller/v1/')
         end
-        
+
         # Gets a customer resource if one exists and is owned by the reseller.
         # @param [String] customer_id
         #   Id of the Customer
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a customer resource if one does not already exist.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
@@ -125,7 +125,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a customer resource if one it exists and is owned by the reseller. This
         # method supports patch semantics.
         # @param [String] customer_id
@@ -164,7 +164,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a customer resource if one it exists and is owned by the reseller.
         # @param [String] customer_id
         #   Id of the Customer
@@ -202,7 +202,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Activates a subscription previously suspended by the reseller
         # @param [String] customer_id
         #   Id of the Customer
@@ -240,7 +240,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the plan of a subscription
         # @param [String] customer_id
         #   Id of the Customer
@@ -281,7 +281,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the renewal settings of a subscription
         # @param [String] customer_id
         #   Id of the Customer
@@ -322,7 +322,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Changes the seats configuration of a subscription
         # @param [String] customer_id
         #   Id of the Customer
@@ -363,7 +363,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels/Downgrades a subscription.
         # @param [String] customer_id
         #   Id of the Customer
@@ -402,7 +402,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a subscription of the customer.
         # @param [String] customer_id
         #   Id of the Customer
@@ -440,7 +440,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates/Transfers a subscription for the customer.
         # @param [String] customer_id
         #   Id of the Customer
@@ -482,7 +482,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists subscriptions of a reseller, optionally filtered by a customer name
         # prefix.
         # @param [String] customer_auth_token
@@ -533,7 +533,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts paid service of a trial subscription
         # @param [String] customer_id
         #   Id of the Customer
@@ -571,7 +571,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Suspends an active subscription
         # @param [String] customer_id
         #   Id of the Customer

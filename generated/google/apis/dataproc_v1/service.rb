@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://dataproc.googleapis.com/', '')
         end
-        
+
         # Method for media upload. Upload is supported on the URI `/upload/v1/media/`+
         # name``.
         # @param [String] resource_name
@@ -90,7 +90,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Method for media download. Download is supported on the URI `/v1/media/`+name`?
         # alt=media`.
         # @param [String] resource_name
@@ -129,7 +129,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a cluster in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the cluster
@@ -166,7 +166,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a cluster in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project the cluster belongs to.
@@ -213,7 +213,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a cluster in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the cluster
@@ -250,7 +250,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the resource representation for a cluster in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the cluster
@@ -287,7 +287,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all regions/`region`/clusters in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the cluster
@@ -327,7 +327,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets cluster diagnostic information. After the operation completes, the
         # Operation.response field contains `DiagnoseClusterOutputLocation`.
         # @param [String] project_id
@@ -368,7 +368,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submits a job to a cluster.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the job belongs to.
@@ -404,7 +404,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the resource representation for a job in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the job belongs to.
@@ -440,7 +440,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists regions/`region`/jobs in a project.
         # @param [String] project_id
         #   [Required] The ID of the Google Cloud Platform project that the job belongs to.
@@ -487,7 +487,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts a job cancellation request. To access the job resource after
         # cancellation, call [regions/`region`/jobs.list](/dataproc/reference/rest/v1/
         # projects.regions.jobs/list) or [regions/`region`/jobs.get](/dataproc/reference/
@@ -529,7 +529,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the job from the project. If the job is active, the delete fails, and
         # the response returns `FAILED_PRECONDITION`.
         # @param [String] project_id
@@ -566,7 +566,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -597,7 +597,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
         # binding below allows API services to override the binding to use different
@@ -639,7 +639,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -673,7 +673,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a long-running operation. This method indicates that the client is no
         # longer interested in the operation result. It does not cancel the operation.
         # If the server doesn't support this method, it returns `google.rpc.Code.

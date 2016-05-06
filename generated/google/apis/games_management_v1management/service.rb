@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'games/v1management/')
         end
-        
+
         # Resets the achievement with the given ID for the currently authenticated
         # player. This method is only accessible to whitelisted tester accounts for your
         # application.
@@ -88,7 +88,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all achievements for the currently authenticated player for your
         # application. This method is only accessible to whitelisted tester accounts for
         # your application.
@@ -122,7 +122,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all draft achievements for all players. This method is only available
         # to user accounts for your developer console.
         # @param [String] fields
@@ -153,7 +153,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets the achievement with the given ID for all players. This method is only
         # available to user accounts for your developer console. Only draft achievements
         # can be reset.
@@ -188,7 +188,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets achievements with the given IDs for all players. This method is only
         # available to user accounts for your developer console. Only draft achievements
         # may be reset.
@@ -223,7 +223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the list of players hidden from the given application. This method is only
         # available to user accounts for your developer console.
         # @param [String] application_id
@@ -267,7 +267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all player progress on the event with the given ID for the currently
         # authenticated player. This method is only accessible to whitelisted tester
         # accounts for your application. All quests for this player that use the event
@@ -303,7 +303,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all player progress on all events for the currently authenticated
         # player. This method is only accessible to whitelisted tester accounts for your
         # application. All quests for this player will also be reset.
@@ -335,7 +335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all draft events for all players. This method is only available to user
         # accounts for your developer console. All quests that use any of these events
         # will also be reset.
@@ -367,7 +367,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets the event with the given ID for all players. This method is only
         # available to user accounts for your developer console. Only draft events can
         # be reset. All quests that use the event will also be reset.
@@ -402,7 +402,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets events with the given IDs for all players. This method is only
         # available to user accounts for your developer console. Only draft events may
         # be reset. All quests that use any of the events will also be reset.
@@ -437,7 +437,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Hide the given player's leaderboard scores from the given application. This
         # method is only available to user accounts for your developer console.
         # @param [String] application_id
@@ -475,7 +475,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Unhide the given player's leaderboard scores from the given application. This
         # method is only available to user accounts for your developer console.
         # @param [String] application_id
@@ -513,7 +513,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all player progress on the quest with the given ID for the currently
         # authenticated player. This method is only accessible to whitelisted tester
         # accounts for your application.
@@ -548,7 +548,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all player progress on all quests for the currently authenticated
         # player. This method is only accessible to whitelisted tester accounts for your
         # application.
@@ -580,7 +580,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all draft quests for all players. This method is only available to user
         # accounts for your developer console.
         # @param [String] fields
@@ -611,7 +611,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all player progress on the quest with the given ID for all players.
         # This method is only available to user accounts for your developer console.
         # Only draft quests can be reset.
@@ -646,7 +646,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets quests with the given IDs for all players. This method is only
         # available to user accounts for your developer console. Only draft quests may
         # be reset.
@@ -681,7 +681,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Reset all rooms for the currently authenticated player for your application.
         # This method is only accessible to whitelisted tester accounts for your
         # application.
@@ -713,7 +713,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes rooms where the only room participants are from whitelisted tester
         # accounts for your application. This method is only available to user accounts
         # for your developer console.
@@ -745,7 +745,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets scores for the leaderboard with the given ID for the currently
         # authenticated player. This method is only accessible to whitelisted tester
         # accounts for your application.
@@ -782,7 +782,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets all scores for all leaderboards for the currently authenticated players.
         # This method is only accessible to whitelisted tester accounts for your
         # application.
@@ -816,7 +816,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets scores for all draft leaderboards for all players. This method is only
         # available to user accounts for your developer console.
         # @param [String] fields
@@ -847,7 +847,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets scores for the leaderboard with the given ID for all players. This
         # method is only available to user accounts for your developer console. Only
         # draft leaderboards can be reset.
@@ -882,7 +882,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resets scores for the leaderboards with the given IDs for all players. This
         # method is only available to user accounts for your developer console. Only
         # draft leaderboards may be reset.
@@ -917,7 +917,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Reset all turn-based match data for a user. This method is only accessible to
         # whitelisted tester accounts for your application.
         # @param [String] fields
@@ -948,7 +948,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes turn-based matches where the only match participants are from
         # whitelisted tester accounts for your application. This method is only
         # available to user accounts for your developer console.

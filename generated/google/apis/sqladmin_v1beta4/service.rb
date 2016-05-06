@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'sql/v1beta4/')
         end
-        
+
         # Deletes the backup taken by a backup run.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -94,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a resource containing information about a backup run.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -135,7 +135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all backup runs associated with a given instance and configuration in
         # the reverse chronological order of the enqueued time.
         # @param [String] project
@@ -181,7 +181,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a database from a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -222,7 +222,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a resource containing information about a database inside a Cloud
         # SQL instance.
         # @param [String] project
@@ -264,7 +264,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a resource containing information about a database inside a Cloud SQL
         # instance.
         # @param [String] project
@@ -306,7 +306,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists databases in the specified Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
@@ -344,7 +344,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance. This method supports patch semantics.
         # @param [String] project
@@ -389,7 +389,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance.
         # @param [String] project
@@ -434,7 +434,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all available database flags for Google Cloud SQL instances.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -466,7 +466,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Cloud SQL instance as a clone of the source instance. The API is not
         # ready for Second Generation instances yet.
         # @param [String] project
@@ -509,7 +509,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance to be deleted.
@@ -547,7 +547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a
         # MySQL dump file.
         # @param [String] project
@@ -589,7 +589,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Failover the instance to its failover replica instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
@@ -630,7 +630,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a resource containing information about a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -668,7 +668,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud
         # Storage.
         # @param [String] project
@@ -710,7 +710,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project to which the newly created Cloud SQL instances
@@ -749,7 +749,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists instances under a given project in the alphabetical order of the
         # instance name.
         # @param [String] project
@@ -792,7 +792,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.. This method supports patch semantics.
@@ -835,7 +835,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Promotes the read replica instance to be a stand-alone Cloud SQL instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
@@ -873,7 +873,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all client certificates and generates a new server SSL certificate for
         # the instance. The changes will not take effect until the instance is restarted.
         # Existing instances without a server certificate will need to call this once
@@ -914,7 +914,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restarts a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance to be restarted.
@@ -952,7 +952,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores a backup of a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -993,7 +993,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts the replication in the read replica instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
@@ -1031,7 +1031,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stops the replication in the read replica instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
@@ -1069,7 +1069,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.
@@ -1112,7 +1112,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an instance operation that has been performed on an instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1150,7 +1150,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all instance operations that have been performed on the given Cloud SQL
         # instance in the reverse chronological order of the start time.
         # @param [String] project
@@ -1196,7 +1196,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a short-lived X509 certificate containing the provided public key
         # and signed by a private key specific to the target instance. Users may use the
         # certificate to authenticate as themselves when connecting to the database.
@@ -1239,7 +1239,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the SSL certificate. The change will not take effect until the
         # instance is restarted.
         # @param [String] project
@@ -1281,7 +1281,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a particular SSL certificate. Does not include the private key (
         # required for usage). The private key must be saved from the response to
         # initial creation.
@@ -1324,7 +1324,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an SSL certificate and returns it along with the private key and
         # server certificate authority. The new certificate will not be usable until the
         # instance is restarted.
@@ -1368,7 +1368,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all of the current SSL certificates for the instance.
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
@@ -1406,7 +1406,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all available service tiers for Google Cloud SQL, for example D1, D2.
         # For related information, see Pricing.
         # @param [String] project
@@ -1442,7 +1442,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a user from a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1486,7 +1486,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new user in a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1527,7 +1527,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists users in the specified Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1565,7 +1565,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing user in a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.

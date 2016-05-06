@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'drive/v2/')
         end
-        
+
         # Gets the information about the current user along with Drive API settings
         # @param [Boolean] include_subscribed
         #   When calculating the number of remaining change IDs, whether to include public
@@ -96,7 +96,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific app.
         # @param [String] app_id
         #   The ID of the app.
@@ -131,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a user's installed apps.
         # @param [String] app_filter_extensions
         #   A comma-separated list of file extensions for open with filtering. All apps
@@ -179,7 +179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific change.
         # @param [String] change_id
         #   The ID of the change.
@@ -214,7 +214,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the changes for a user.
         # @param [Boolean] include_deleted
         #   Whether to include deleted items.
@@ -267,7 +267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Subscribe to changes for a user.
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [Boolean] include_deleted
@@ -323,7 +323,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [String] fields
@@ -356,7 +356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a child from a folder.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -392,7 +392,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific child reference.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -430,7 +430,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a file into a folder.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -468,7 +468,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a folder's children.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -521,7 +521,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -557,7 +557,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a comment by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -599,7 +599,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new comment on the given file.
         # @param [String] file_id
         #   The ID of the file.
@@ -637,7 +637,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's comments.
         # @param [String] file_id
         #   The ID of the file.
@@ -688,7 +688,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing comment. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -729,7 +729,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -770,7 +770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a copy of the specified file.
         # @param [String] file_id
         #   The ID of the file to copy.
@@ -831,7 +831,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes a file by ID. Skips the trash. The currently authenticated
         # user must own the file.
         # @param [String] file_id
@@ -865,7 +865,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Permanently deletes all of the user's trashed files.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -895,7 +895,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports a Google Doc to the requested MIME type and returns the exported
         # content.
         # @param [String] file_id
@@ -939,7 +939,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a set of file IDs which can be provided in insert requests.
         # @param [Fixnum] max_results
         #   Maximum number of IDs to return.
@@ -978,7 +978,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a file's metadata by ID.
         # @param [String] file_id
         #   The ID for the file in question.
@@ -1035,7 +1035,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new file.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
@@ -1106,7 +1106,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the user's files.
         # @param [String] corpus
         #   The body of items (files/documents) to which the query applies.
@@ -1166,7 +1166,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates file metadata and/or content. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file to update.
@@ -1250,7 +1250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Set the file's updated time to the current server time.
         # @param [String] file_id
         #   The ID of the file to update.
@@ -1285,7 +1285,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves a file to the trash. The currently authenticated user must own the file.
         # @param [String] file_id
         #   The ID of the file to trash.
@@ -1320,7 +1320,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores a file from the trash.
         # @param [String] file_id
         #   The ID of the file to untrash.
@@ -1355,7 +1355,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates file metadata and/or content.
         # @param [String] file_id
         #   The ID of the file to update.
@@ -1449,7 +1449,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Subscribe to changes on a file
         # @param [String] file_id
         #   The ID for the file in question.
@@ -1509,7 +1509,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a parent from a file.
         # @param [String] file_id
         #   The ID of the file.
@@ -1545,7 +1545,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific parent reference.
         # @param [String] file_id
         #   The ID of the file.
@@ -1583,7 +1583,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a parent folder for a file.
         # @param [String] file_id
         #   The ID of the file.
@@ -1621,7 +1621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's parents.
         # @param [String] file_id
         #   The ID of the file.
@@ -1656,7 +1656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a permission from a file.
         # @param [String] file_id
         #   The ID for the file.
@@ -1692,7 +1692,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a permission by ID.
         # @param [String] file_id
         #   The ID for the file.
@@ -1730,7 +1730,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the permission ID for an email address.
         # @param [String] email
         #   The email address for which to return a permission ID
@@ -1765,7 +1765,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a permission for a file.
         # @param [String] file_id
         #   The ID for the file.
@@ -1810,7 +1810,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's permissions.
         # @param [String] file_id
         #   The ID for the file.
@@ -1845,7 +1845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a permission using patch semantics.
         # @param [String] file_id
         #   The ID for the file.
@@ -1890,7 +1890,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a permission.
         # @param [String] file_id
         #   The ID for the file.
@@ -1935,7 +1935,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a property.
         # @param [String] file_id
         #   The ID of the file.
@@ -1974,7 +1974,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a property by its key.
         # @param [String] file_id
         #   The ID of the file.
@@ -2015,7 +2015,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a property to a file, or updates it if it already exists.
         # @param [String] file_id
         #   The ID of the file.
@@ -2053,7 +2053,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's properties.
         # @param [String] file_id
         #   The ID of the file.
@@ -2088,7 +2088,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a property, or adds it if it doesn't exist. This method supports patch
         # semantics.
         # @param [String] file_id
@@ -2133,7 +2133,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a property, or adds it if it doesn't exist.
         # @param [String] file_id
         #   The ID of the file.
@@ -2177,7 +2177,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports the contents of the Realtime API data model associated with this file
         # as JSON.
         # @param [String] file_id
@@ -2223,7 +2223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Overwrites the Realtime API data model associated with this file with the
         # provided JSON data model.
         # @param [String] file_id
@@ -2273,7 +2273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -2312,7 +2312,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -2356,7 +2356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new reply to the given comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -2397,7 +2397,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all of the replies to a comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -2447,7 +2447,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing reply. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -2491,7 +2491,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -2535,7 +2535,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a revision.
         # @param [String] file_id
         #   The ID of the file.
@@ -2571,7 +2571,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific revision.
         # @param [String] file_id
         #   The ID of the file.
@@ -2609,7 +2609,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists a file's revisions.
         # @param [String] file_id
         #   The ID of the file.
@@ -2644,7 +2644,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a revision. This method supports patch semantics.
         # @param [String] file_id
         #   The ID for the file.
@@ -2685,7 +2685,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a revision.
         # @param [String] file_id
         #   The ID for the file.

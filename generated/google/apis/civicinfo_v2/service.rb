@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'civicinfo/v2/')
         end
-        
+
         # Searches for political divisions by their natural name or OCD ID.
         # @param [String] query
         #   The search query. Queries can cover any parts of a OCD ID or a human readable
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List of available elections to query.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,7 +121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Looks up information relevant to a voter based on the voter's registered
         # address.
         # @param [String] address
@@ -164,7 +164,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Looks up political geography and representative information for a single
         # address.
         # @param [String] address
@@ -215,7 +215,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Looks up representative information for a single geographic division.
         # @param [String] ocd_id
         #   The Open Civic Data division identifier of the division to look up.

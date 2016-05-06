@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'urlshortener/v1/')
         end
-        
+
         # Expands a short URL or gets creation time and analytics.
         # @param [String] short_url
         #   The short URL, including the protocol.
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new short URL.
         # @param [Google::Apis::UrlshortenerV1::Url] url_object
         # @param [String] fields
@@ -124,7 +124,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of URLs shortened by a user.
         # @param [String] projection
         #   Additional information to return.

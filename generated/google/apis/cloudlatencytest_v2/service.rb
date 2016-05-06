@@ -30,7 +30,7 @@ module Google
       #    Cloudlatencytest = Google::Apis::CloudlatencytestV2 # Alias the module
       #    service = Cloudlatencytest::CloudlatencytestService.new
       #
-      # @see 
+      # @see
       class CloudlatencytestService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://cloudlatencytest-pa.googleapis.com/', 'v2/statscollection/')
         end
-        
+
         # RPC to update the new TCP stats.
         # @param [Google::Apis::CloudlatencytestV2::AggregatedStats] aggregated_stats_object
         # @param [String] fields
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # RPC to update the new TCP stats.
         # @param [Google::Apis::CloudlatencytestV2::Stats] stats_object
         # @param [String] fields

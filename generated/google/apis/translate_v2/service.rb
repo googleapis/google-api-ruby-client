@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'language/translate/')
         end
-        
+
         # Detect the language of text.
         # @param [Array<String>, String] q
         #   The text to detect
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the source/target languages supported by the API
         # @param [String] target
         #   the language and collation in which the localized results should be returned
@@ -121,7 +121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns text translations from one language to another.
         # @param [Array<String>, String] q
         #   The text to translate

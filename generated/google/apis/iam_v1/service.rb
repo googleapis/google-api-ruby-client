@@ -47,7 +47,7 @@ module Google
         def initialize
           super('https://iam.googleapis.com/', '')
         end
-        
+
         # Lists service accounts for a project.
         # @param [String] name
         #   Required. The resource name of the project associated with the service
@@ -87,7 +87,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a ServiceAccount
         # @param [String] name
         #   The resource name of the service account in the format "projects/`project`/
@@ -120,7 +120,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a service account and returns it.
         # @param [String] name
         #   Required. The resource name of the project associated with the service
@@ -154,7 +154,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a service account. Currently, only the following fields are updatable:
         # 'display_name' . The 'etag' is mandatory.
         # @param [String] name
@@ -193,7 +193,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a service acount.
         # @param [String] name
         #   The resource name of the service account in the format "projects/`project`/
@@ -226,7 +226,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Signs a blob using a service account.
         # @param [String] name
         #   The resource name of the service account in the format "projects/`project`/
@@ -262,7 +262,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the IAM access control policy for specified IAM resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
@@ -295,7 +295,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the IAM access control policy for the specified IAM resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
@@ -331,7 +331,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Tests the specified permissions against the IAM access control policy for the
         # specified IAM resource.
         # @param [String] resource
@@ -368,7 +368,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists service account keys
         # @param [String] name
         #   The resource name of the service account in the format "projects/`project`/
@@ -405,7 +405,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the ServiceAccountKey by key id.
         # @param [String] name
         #   The resource name of the service account key in the format "projects/`project`/
@@ -438,7 +438,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a service account key and returns it.
         # @param [String] name
         #   The resource name of the service account in the format "projects/`project`/
@@ -474,7 +474,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a service account key.
         # @param [String] name
         #   The resource name of the service account key in the format "projects/`project`/

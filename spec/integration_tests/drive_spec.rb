@@ -5,8 +5,7 @@ require 'fileutils'
 
 Drive = Google::Apis::DriveV2
 
-RSpec.describe Google::Apis::DriveV2, :if => run_integration_tests? do
-
+RSpec.describe Google::Apis::DriveV2, if: run_integration_tests? do
   before(:context) do
     WebMock.allow_net_connect!
     @drive = Drive::DriveService.new
@@ -16,7 +15,7 @@ RSpec.describe Google::Apis::DriveV2, :if => run_integration_tests? do
   it 'should upload and download files' do
     # Insert a file
     content_path = File.join(FIXTURES_DIR, 'files', 'test_api.json')
-    file = @drive.insert_file({title: 'test_file.txt'}, upload_source: content_path)
+    file = @drive.insert_file({ title: 'test_file.txt' }, upload_source: content_path)
     puts "Created file #{file.title} (#{file.id})"
 
     # Read it back
@@ -24,7 +23,7 @@ RSpec.describe Google::Apis::DriveV2, :if => run_integration_tests? do
 
     # Delete it
     @drive.delete_file(file.id)
-    puts "File deleted"
+    puts 'File deleted'
 
     expect(FileUtils.compare_file(content_path, tmp)).to be_truthy
   end

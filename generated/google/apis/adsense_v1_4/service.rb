@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adsense/v1.4/')
         end
-        
+
         # Get information about the selected AdSense account.
         # @param [String] account_id
         #   Account to get information about.
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all accounts available to this AdSense account.
         # @param [Fixnum] max_results
         #   The maximum number of accounts to include in the response, used for paging.
@@ -128,7 +128,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad clients in the specified account.
         # @param [String] account_id
         #   Account for which to list ad clients.
@@ -171,7 +171,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified ad unit in the specified ad client for the specified
         # account.
         # @param [String] account_id
@@ -213,7 +213,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get ad code for the specified ad unit.
         # @param [String] account_id
         #   Account which contains the ad client.
@@ -254,7 +254,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad units in the specified ad client for the specified account.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -302,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all custom channels which the specified ad unit belongs to.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -352,7 +352,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Dismiss (delete) the specified alert from the specified publisher AdSense
         # account.
         # @param [String] account_id
@@ -389,7 +389,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the alerts for the specified AdSense account.
         # @param [String] account_id
         #   Account for which to retrieve the alerts.
@@ -429,7 +429,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the specified custom channel from the specified ad client for the
         # specified account.
         # @param [String] account_id
@@ -471,7 +471,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all custom channels in the specified ad client for the specified account.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -518,7 +518,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad units in the specified custom channel.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -569,7 +569,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the payments for the specified AdSense account.
         # @param [String] account_id
         #   Account for which to retrieve the payments.
@@ -604,7 +604,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -686,7 +686,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the saved report ID sent in the query
         # parameters.
         # @param [String] account_id
@@ -735,7 +735,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all saved reports in the specified AdSense account.
         # @param [String] account_id
         #   Account to which the saved reports belong.
@@ -779,7 +779,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List a specific saved ad style for the specified account.
         # @param [String] account_id
         #   Account for which to get the saved ad style.
@@ -817,7 +817,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all saved ad styles in the specified account.
         # @param [String] account_id
         #   Account for which to list saved ad styles.
@@ -861,7 +861,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all URL channels in the specified ad client for the specified account.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -907,7 +907,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad clients in this AdSense account.
         # @param [Fixnum] max_results
         #   The maximum number of ad clients to include in the response, used for paging.
@@ -947,7 +947,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified ad unit in the specified ad client.
         # @param [String] ad_client_id
         #   Ad client for which to get the ad unit.
@@ -985,7 +985,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get ad code for the specified ad unit.
         # @param [String] ad_client_id
         #   Ad client with contains the ad unit.
@@ -1023,7 +1023,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad units in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list ad units.
@@ -1068,7 +1068,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all custom channels which the specified ad unit belongs to.
         # @param [String] ad_client_id
         #   Ad client which contains the ad unit.
@@ -1115,7 +1115,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Dismiss (delete) the specified alert from the publisher's AdSense account.
         # @param [String] alert_id
         #   Alert to delete.
@@ -1148,7 +1148,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the alerts for this AdSense account.
         # @param [String] locale
         #   The locale to use for translating alert messages. The account locale will be
@@ -1185,7 +1185,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the specified custom channel from the specified ad client.
         # @param [String] ad_client_id
         #   Ad client which contains the custom channel.
@@ -1223,7 +1223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all custom channels in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list custom channels.
@@ -1267,7 +1267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad units in the specified custom channel.
         # @param [String] ad_client_id
         #   Ad client which contains the custom channel.
@@ -1315,7 +1315,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the metadata for the dimensions available to this AdSense account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1347,7 +1347,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the metadata for the metrics available to this AdSense account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1379,7 +1379,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the payments for this AdSense account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1411,7 +1411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -1493,7 +1493,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the saved report ID sent in the query
         # parameters.
         # @param [String] saved_report_id
@@ -1539,7 +1539,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all saved reports in this AdSense account.
         # @param [Fixnum] max_results
         #   The maximum number of saved reports to include in the response, used for
@@ -1580,7 +1580,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a specific saved ad style from the user's account.
         # @param [String] saved_ad_style_id
         #   Saved ad style to retrieve.
@@ -1615,7 +1615,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all saved ad styles in the user's account.
         # @param [Fixnum] max_results
         #   The maximum number of saved ad styles to include in the response, used for
@@ -1656,7 +1656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all URL channels in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list URL channels.

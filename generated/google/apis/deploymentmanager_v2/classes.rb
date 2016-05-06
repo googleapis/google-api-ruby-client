@@ -21,35 +21,35 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DeploymentmanagerV2
-      
-      # 
+
+      #
       class ConfigFile
         include Google::Apis::Core::Hashable
-      
+
         # The contents of the file.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
         end
       end
-      
-      # 
+
+      #
       class Deployment
         include Google::Apis::Core::Hashable
-      
+
         # An optional user-provided description of the deployment.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # Provides a fingerprint to use in requests to modify a deployment, such as
         # update(), stop(), and cancelPreview() requests. A fingerprint is a randomly
         # generated value that must be provided with update(), stop(), and cancelPreview(
@@ -61,18 +61,18 @@ module Google
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
-      
+
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # [Output Only] Timestamp when the deployment was created, in RFC3339 text
         # format .
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # Map of labels; provided by the client when the resource is created or updated.
         # Specifically: Label keys must be between 1 and 63 characters long and must
         # conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label
@@ -81,13 +81,13 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry>]
         attr_accessor :labels
-      
+
         # [Output Only] URL of the manifest representing the last manifest that was
         # successfully deployed.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
-      
+
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -97,31 +97,31 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # An Operation resource, used to manage asynchronous API requests.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
-      
+
         # [Output Only] Self link for the deployment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::DeploymentmanagerV2::TargetConfiguration]
         attr_accessor :target
-      
-        # 
+
+        #
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DeploymentmanagerV2::DeploymentUpdate]
         attr_accessor :update
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
@@ -137,36 +137,36 @@ module Google
           @update = args[:update] if args.key?(:update)
         end
       end
-      
-      # 
+
+      #
       class DeploymentLabelEntry
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
-        # 
+
+        #
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
-      # 
+
+      #
       class DeploymentUpdate
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] Map of labels; provided by the client when the resource is
         # created or updated. Specifically: Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: [a-z]([-
@@ -175,53 +175,53 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry>]
         attr_accessor :labels
-      
+
         # [Output Only] URL of the manifest representing the update configuration of
         # this deployment.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @manifest = args[:manifest] if args.key?(:manifest)
         end
       end
-      
-      # 
+
+      #
       class DeploymentUpdateLabelEntry
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
-        # 
+
+        #
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
         end
       end
-      
-      # 
+
+      #
       class DeploymentsCancelPreviewRequest
         include Google::Apis::Core::Hashable
-      
+
         # Specifies a fingerprint for cancelPreview() requests. A fingerprint is a
         # randomly generated value that must be provided in cancelPreview() requests to
         # perform optimistic locking. This ensures optimistic concurrency so that the
@@ -234,47 +234,47 @@ module Google
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
         end
       end
-      
+
       # A response containing a partial list of deployments and a page token used to
       # build the next request if the request has been truncated.
       class ListDeploymentsResponse
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] The deployments contained in this response.
         # Corresponds to the JSON property `deployments`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Deployment>]
         attr_accessor :deployments
-      
+
         # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deployments = args[:deployments] if args.key?(:deployments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
-      # 
+
+      #
       class DeploymentsStopRequest
         include Google::Apis::Core::Hashable
-      
+
         # Specifies a fingerprint for stop() requests. A fingerprint is a randomly
         # generated value that must be provided in stop() requests to perform optimistic
         # locking. This ensures optimistic concurrency so that the deployment does not
@@ -287,91 +287,91 @@ module Google
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
         end
       end
-      
-      # 
+
+      #
       class ImportFile
         include Google::Apis::Core::Hashable
-      
+
         # The contents of the file.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
-      
+
         # The name of the file.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
-      # 
+
+      #
       class Manifest
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DeploymentmanagerV2::ConfigFile]
         attr_accessor :config
-      
+
         # [Output Only] The fully-expanded configuration file, including any templates
         # and references.
         # Corresponds to the JSON property `expandedConfig`
         # @return [String]
         attr_accessor :expanded_config
-      
+
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # [Output Only] The imported files for this manifest.
         # Corresponds to the JSON property `imports`
         # @return [Array<Google::Apis::DeploymentmanagerV2::ImportFile>]
         attr_accessor :imports
-      
+
         # [Output Only] Timestamp when the manifest was created, in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # [Output Only] The YAML layout for this manifest.
         # Corresponds to the JSON property `layout`
         # @return [String]
         attr_accessor :layout
-      
+
         # [Output Only] The name of the manifest.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # [Output Only] Self link for the manifest.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
@@ -384,107 +384,107 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
-      
+
       # A response containing a partial list of manifests and a page token used to
       # build the next request if the request has been truncated.
       class ListManifestsResponse
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] Manifests contained in this list response.
         # Corresponds to the JSON property `manifests`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Manifest>]
         attr_accessor :manifests
-      
+
         # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @manifests = args[:manifests] if args.key?(:manifests)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
+
       # An Operation resource, used to manage asynchronous API requests.
       class Operation
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
-      
+
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
-      
+
         # [Output Only] A textual description of the operation, which is set when the
         # operation is created.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # [Output Only] The time that this operation was completed. This value is in
         # RFC3339 text format.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
+
         # [Output Only] If errors are generated during processing of the operation, this
         # field will be populated.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DeploymentmanagerV2::Operation::Error]
         attr_accessor :error
-      
+
         # [Output Only] If the operation fails, this field contains the HTTP error
         # message that was returned, such as NOT FOUND.
         # Corresponds to the JSON property `httpErrorMessage`
         # @return [String]
         attr_accessor :http_error_message
-      
+
         # [Output Only] If the operation fails, this field contains the HTTP error
         # status code that was returned. For example, a 404 means the resource was not
         # found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code
-      
+
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # [Output Only] The time that this operation was requested. This value is in
         # RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # [Output Only] The type of operation, such as insert, update, or delete, and so
         # on.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
-      
+
         # [Output Only] An optional progress indicator that ranges from 0 to 100. There
         # is no requirement that this be linear or support any granularity of operations.
         # This should not be used to guess when the operation will be complete. This
@@ -492,68 +492,68 @@ module Google
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
-      
+
         # [Output Only] The URL of the region where the operation resides. Only
         # available when performing regional operations.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
-      
+
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         # [Output Only] The time that this operation was started by the server. This
         # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
-      
+
         # [Output Only] The status of the operation, which can be one of the following:
         # PENDING, RUNNING, or DONE.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
-      
+
         # [Output Only] An optional textual description of the current status of the
         # operation.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
-      
+
         # [Output Only] The unique target ID, which identifies a specific incarnation of
         # the target resource.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
-      
+
         # [Output Only] The URL of the resource that the operation modifies.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
-      
+
         # [Output Only] User who requested the operation, for example: user@example.com.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
-      
+
         # [Output Only] If warning messages are generated during processing of the
         # operation, this field will be populated.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Warning>]
         attr_accessor :warnings
-      
+
         # [Output Only] The URL of the zone where the operation resides. Only available
         # when performing per-zone operations.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
@@ -580,50 +580,50 @@ module Google
           @warnings = args[:warnings] if args.key?(:warnings)
           @zone = args[:zone] if args.key?(:zone)
         end
-        
+
         # [Output Only] If errors are generated during processing of the operation, this
         # field will be populated.
         class Error
           include Google::Apis::Core::Hashable
-        
+
           # [Output Only] The array of errors encountered while processing this operation.
           # Corresponds to the JSON property `errors`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Error::Error>]
           attr_accessor :errors
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @errors = args[:errors] if args.key?(:errors)
           end
-          
-          # 
+
+          #
           class Error
             include Google::Apis::Core::Hashable
-          
+
             # [Output Only] The error type identifier for this error.
             # Corresponds to the JSON property `code`
             # @return [String]
             attr_accessor :code
-          
+
             # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
             attr_accessor :location
-          
+
             # [Output Only] An optional, human-readable error message.
             # Corresponds to the JSON property `message`
             # @return [String]
             attr_accessor :message
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @code = args[:code] if args.key?(:code)
@@ -632,43 +632,43 @@ module Google
             end
           end
         end
-        
-        # 
+
+        #
         class Warning
           include Google::Apis::Core::Hashable
-        
+
           # [Output Only] A warning code, if applicable. For example, Compute Engine
           # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
-        
+
           # [Output Only] Metadata about this warning in key: value format. For example:
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Warning::Datum>]
           attr_accessor :data
-        
+
           # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @code = args[:code] if args.key?(:code)
             @data = args[:data] if args.key?(:data)
             @message = args[:message] if args.key?(:message)
           end
-          
-          # 
+
+          #
           class Datum
             include Google::Apis::Core::Hashable
-          
+
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
@@ -679,16 +679,16 @@ module Google
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
-          
+
             # [Output Only] A warning data value corresponding to the key.
             # Corresponds to the JSON property `value`
             # @return [String]
             attr_accessor :value
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @key = args[:key] if args.key?(:key)
@@ -697,102 +697,102 @@ module Google
           end
         end
       end
-      
+
       # A response containing a partial list of operations and a page token used to
       # build the next request if the request has been truncated.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # [Output Only] Operations contained in this list response.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Operation>]
         attr_accessor :operations
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
         end
       end
-      
-      # 
+
+      #
       class Resource
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] The evaluated properties of the resource with references
         # expanded. Returned as serialized YAML.
         # Corresponds to the JSON property `finalProperties`
         # @return [String]
         attr_accessor :final_properties
-      
+
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # [Output Only] Timestamp when the resource was created or acquired, in RFC3339
         # text format .
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # [Output Only] URL of the manifest representing the current configuration of
         # this resource.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
-      
+
         # [Output Only] The name of the resource as it appears in the YAML config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # [Output Only] The current properties of the resource before any references
         # have been filled in. Returned as serialized YAML.
         # Corresponds to the JSON property `properties`
         # @return [String]
         attr_accessor :properties
-      
+
         # [Output Only] The type of the resource, for example compute.v1.instance, or
         # replicaPools.v1beta2.instanceGroupManager.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DeploymentmanagerV2::ResourceUpdate]
         attr_accessor :update
-      
+
         # [Output Only] Timestamp when the resource was updated, in RFC3339 text format .
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
-      
+
         # [Output Only] The URL of the actual resource.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
-      
+
         # [Output Only] If warning messages are generated during processing of this
         # resource, this field will be populated.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Resource::Warning>]
         attr_accessor :warnings
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @final_properties = args[:final_properties] if args.key?(:final_properties)
@@ -807,43 +807,43 @@ module Google
           @url = args[:url] if args.key?(:url)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
-        
-        # 
+
+        #
         class Warning
           include Google::Apis::Core::Hashable
-        
+
           # [Output Only] A warning code, if applicable. For example, Compute Engine
           # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
-        
+
           # [Output Only] Metadata about this warning in key: value format. For example:
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Resource::Warning::Datum>]
           attr_accessor :data
-        
+
           # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @code = args[:code] if args.key?(:code)
             @data = args[:data] if args.key?(:data)
             @message = args[:message] if args.key?(:message)
           end
-          
-          # 
+
+          #
           class Datum
             include Google::Apis::Core::Hashable
-          
+
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
@@ -854,16 +854,16 @@ module Google
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
-          
+
             # [Output Only] A warning data value corresponding to the key.
             # Corresponds to the JSON property `value`
             # @return [String]
             attr_accessor :value
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @key = args[:key] if args.key?(:key)
@@ -872,55 +872,55 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class ResourceUpdate
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] If errors are generated during update of the resource, this
         # field will be populated.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DeploymentmanagerV2::ResourceUpdate::Error]
         attr_accessor :error
-      
+
         # [Output Only] The expanded properties of the resource with reference values
         # expanded. Returned as serialized YAML.
         # Corresponds to the JSON property `finalProperties`
         # @return [String]
         attr_accessor :final_properties
-      
+
         # [Output Only] The intent of the resource: PREVIEW, UPDATE, or CANCEL.
         # Corresponds to the JSON property `intent`
         # @return [String]
         attr_accessor :intent
-      
+
         # [Output Only] URL of the manifest representing the update configuration of
         # this resource.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
-      
+
         # [Output Only] The set of updated properties for this resource, before
         # references are expanded. Returned as serialized YAML.
         # Corresponds to the JSON property `properties`
         # @return [String]
         attr_accessor :properties
-      
+
         # [Output Only] The state of the resource.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
+
         # [Output Only] If warning messages are generated during processing of this
         # resource, this field will be populated.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Warning>]
         attr_accessor :warnings
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
@@ -931,50 +931,50 @@ module Google
           @state = args[:state] if args.key?(:state)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
-        
+
         # [Output Only] If errors are generated during update of the resource, this
         # field will be populated.
         class Error
           include Google::Apis::Core::Hashable
-        
+
           # [Output Only] The array of errors encountered while processing this operation.
           # Corresponds to the JSON property `errors`
           # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Error::Error>]
           attr_accessor :errors
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @errors = args[:errors] if args.key?(:errors)
           end
-          
-          # 
+
+          #
           class Error
             include Google::Apis::Core::Hashable
-          
+
             # [Output Only] The error type identifier for this error.
             # Corresponds to the JSON property `code`
             # @return [String]
             attr_accessor :code
-          
+
             # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
             attr_accessor :location
-          
+
             # [Output Only] An optional, human-readable error message.
             # Corresponds to the JSON property `message`
             # @return [String]
             attr_accessor :message
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @code = args[:code] if args.key?(:code)
@@ -983,43 +983,43 @@ module Google
             end
           end
         end
-        
-        # 
+
+        #
         class Warning
           include Google::Apis::Core::Hashable
-        
+
           # [Output Only] A warning code, if applicable. For example, Compute Engine
           # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
-        
+
           # [Output Only] Metadata about this warning in key: value format. For example:
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Warning::Datum>]
           attr_accessor :data
-        
+
           # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @code = args[:code] if args.key?(:code)
             @data = args[:data] if args.key?(:data)
             @message = args[:message] if args.key?(:message)
           end
-          
-          # 
+
+          #
           class Datum
             include Google::Apis::Core::Hashable
-          
+
             # [Output Only] A key that provides more detail on the warning being returned.
             # For example, for warnings where there are no results in a list request for a
             # particular zone, this key might be scope and the key value might be the zone
@@ -1030,16 +1030,16 @@ module Google
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
-          
+
             # [Output Only] A warning data value corresponding to the key.
             # Corresponds to the JSON property `value`
             # @return [String]
             attr_accessor :value
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @key = args[:key] if args.key?(:key)
@@ -1048,88 +1048,88 @@ module Google
           end
         end
       end
-      
+
       # A response containing a partial list of resources and a page token used to
       # build the next request if the request has been truncated.
       class ListResourcesResponse
         include Google::Apis::Core::Hashable
-      
+
         # A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # Resources contained in this list response.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Resource>]
         attr_accessor :resources
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
-      
-      # 
+
+      #
       class TargetConfiguration
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DeploymentmanagerV2::ConfigFile]
         attr_accessor :config
-      
+
         # Specifies any files to import for this configuration. This can be used to
         # import templates or other files. For example, you might import a text file in
         # order to use the file in a template.
         # Corresponds to the JSON property `imports`
         # @return [Array<Google::Apis::DeploymentmanagerV2::ImportFile>]
         attr_accessor :imports
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @imports = args[:imports] if args.key?(:imports)
         end
       end
-      
+
       # A resource type supported by Deployment Manager.
       class Type
         include Google::Apis::Core::Hashable
-      
+
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # [Output Only] Timestamp when the type was created, in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
-      
+
         # Name of the type.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # [Output Only] Self link for the type.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
@@ -1138,25 +1138,25 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
-      
+
       # A response that returns all Types supported by Deployment Manager
       class ListTypesResponse
         include Google::Apis::Core::Hashable
-      
+
         # A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # [Output Only] A list of resource types supported by Deployment Manager.
         # Corresponds to the JSON property `types`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Type>]
         attr_accessor :types
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)

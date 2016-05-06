@@ -21,47 +21,47 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ContainerV1beta1
-      
+
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class ListAggregatedClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class ListAggregatedOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-      
+
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -74,11 +74,11 @@ module Google
           property :endpoint, as: 'endpoint'
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1beta1::MasterAuth, decorator: Google::Apis::ContainerV1beta1::MasterAuth::Representation
-      
+
           property :name, as: 'name'
           property :network, as: 'network'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
-      
+
           property :node_routing_prefix_size, as: 'nodeRoutingPrefixSize'
           property :num_nodes, as: 'numNodes'
           property :self_link, as: 'selfLink'
@@ -88,47 +88,47 @@ module Google
           property :zone, as: 'zone'
         end
       end
-      
+
       class CreateClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::Cluster::Representation
-      
+
         end
       end
-      
+
       class ListAggregatedClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :clusters, as: 'clusters', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::Cluster::Representation
-      
+
         end
       end
-      
+
       class ListAggregatedOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :operations, as: 'operations', class: Google::Apis::ContainerV1beta1::Operation, decorator: Google::Apis::ContainerV1beta1::Operation::Representation
-      
+
         end
       end
-      
+
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :clusters, as: 'clusters', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::Cluster::Representation
-      
+
         end
       end
-      
+
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :operations, as: 'operations', class: Google::Apis::ContainerV1beta1::Operation, decorator: Google::Apis::ContainerV1beta1::Operation::Representation
-      
+
         end
       end
-      
+
       class MasterAuth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -140,17 +140,17 @@ module Google
           property :user, as: 'user'
         end
       end
-      
+
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ContainerV1beta1::ServiceAccount, decorator: Google::Apis::ContainerV1beta1::ServiceAccount::Representation
-      
+
           property :source_image, as: 'sourceImage'
         end
       end
-      
+
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -164,7 +164,7 @@ module Google
           property :zone, as: 'zone'
         end
       end
-      
+
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

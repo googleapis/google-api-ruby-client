@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'admin/directory/v1/')
         end
-        
+
         # Delete an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -128,7 +128,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the ASPs issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -164,7 +164,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] fields
@@ -197,7 +197,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Chrome OS Device
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -238,7 +238,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Chrome OS Devices of a customer (paginated)
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -293,7 +293,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Chrome OS Device. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -337,7 +337,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Chrome OS Device
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -381,7 +381,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrives a customer.
         # @param [String] customer_key
         #   Id of the customer to be retrieved
@@ -416,7 +416,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a customer. This method supports patch semantics.
         # @param [String] customer_key
         #   Id of the customer to be updated
@@ -454,7 +454,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a customer.
         # @param [String] customer_key
         #   Id of the customer to be updated
@@ -492,7 +492,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Domain Alias of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -528,7 +528,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a domain alias of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -566,7 +566,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a Domain alias of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -604,7 +604,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the domain aliases of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -642,7 +642,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a domain of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -678,7 +678,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrives a domain of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -716,7 +716,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a domain of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -754,7 +754,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the domains of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -789,7 +789,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete Group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -822,7 +822,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -857,7 +857,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create Group
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
@@ -892,7 +892,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all groups in a domain (paginated)
         # @param [String] customer
         #   Immutable id of the Google Apps account. In case of multi-domain, to fetch all
@@ -942,7 +942,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Group. This method supports patch semantics.
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -981,7 +981,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Group
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -1020,7 +1020,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove a alias for the group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1056,7 +1056,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a alias for the group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1094,7 +1094,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all aliases for a group
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1129,7 +1129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove membership.
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1165,7 +1165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Group Member
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1203,7 +1203,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add user to the specified group.
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1241,7 +1241,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all members in a group (paginated)
         # @param [String] group_key
         #   Email or immutable Id of the group
@@ -1285,7 +1285,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update membership of a user in the specified group. This method supports patch
         # semantics.
         # @param [String] group_key
@@ -1329,7 +1329,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update membership of a user in the specified group.
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
@@ -1372,7 +1372,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Take action on Mobile Device
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1411,7 +1411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete Mobile Device
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1447,7 +1447,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Mobile Device
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1488,7 +1488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Mobile Devices of a customer (paginated)
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1543,7 +1543,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a notification
         # @param [String] customer
         #   The unique ID for the customer's Google account. The customerId is also
@@ -1580,7 +1580,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a notification.
         # @param [String] customer
         #   The unique ID for the customer's Google account. The customerId is also
@@ -1619,7 +1619,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of notifications.
         # @param [String] customer
         #   The unique ID for the customer's Google account.
@@ -1664,7 +1664,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a notification. This method supports patch semantics.
         # @param [String] customer
         #   The unique ID for the customer's Google account.
@@ -1705,7 +1705,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a notification.
         # @param [String] customer
         #   The unique ID for the customer's Google account.
@@ -1746,7 +1746,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove Organization Unit
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1782,7 +1782,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve Organization Unit
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1820,7 +1820,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add Organization Unit
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1858,7 +1858,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all Organization Units
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1899,7 +1899,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Organization Unit. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1940,7 +1940,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update Organization Unit
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -1981,7 +1981,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all privileges for a customer.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2016,7 +2016,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2053,7 +2053,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2092,7 +2092,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2131,7 +2131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of calendar resources for an account.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2173,7 +2173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a calendar resource. This method supports patch semantics.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2215,7 +2215,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's Google account. As an account administrator,
@@ -2257,7 +2257,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a role assignment.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2293,7 +2293,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a role assignment.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2331,7 +2331,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a role assignment.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2369,7 +2369,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all roleAssignments.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2418,7 +2418,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a role.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2454,7 +2454,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a role.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2492,7 +2492,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a role.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2530,7 +2530,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a paginated list of all the roles in a domain.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
@@ -2571,7 +2571,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a role. This method supports patch semantics.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2612,7 +2612,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a role.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
@@ -2653,7 +2653,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete schema
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2689,7 +2689,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve schema
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2727,7 +2727,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create schema.
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2765,7 +2765,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve all schemas for a customer
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2800,7 +2800,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update schema. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2841,7 +2841,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update schema
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
@@ -2882,7 +2882,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete all access tokens issued by a user for an application.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -2919,7 +2919,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about an access token issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -2958,7 +2958,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the set of tokens specified user has issued to 3rd party applications.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
@@ -2994,7 +2994,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3027,7 +3027,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # retrieve user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3072,7 +3072,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # create user.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
@@ -3107,7 +3107,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve either deleted users or all users in a domain (paginated)
         # @param [String] custom_field_mask
         #   Comma-separated list of schema names. All fields from these schemas are
@@ -3179,7 +3179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # change admin status of a user
         # @param [String] user_key
         #   Email or immutable Id of the user as admin
@@ -3215,7 +3215,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # update user. This method supports patch semantics.
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
@@ -3254,7 +3254,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undelete a deleted user
         # @param [String] user_key
         #   The immutable id of the user
@@ -3290,7 +3290,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # update user
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
@@ -3329,7 +3329,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes in users list
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] custom_field_mask
@@ -3404,7 +3404,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove a alias for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3440,7 +3440,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a alias for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3478,7 +3478,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all aliases for a user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3516,7 +3516,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes in user aliases list
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3557,7 +3557,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove photos for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3590,7 +3590,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve photo of a user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3625,7 +3625,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a photo for the user. This method supports patch semantics.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3663,7 +3663,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a photo for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3701,7 +3701,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate new backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3734,7 +3734,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Invalidate the current backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable Id of the user
@@ -3767,7 +3767,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the current set of valid backup verification codes for the specified
         # user.
         # @param [String] user_key

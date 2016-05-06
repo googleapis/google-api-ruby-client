@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'admin/datatransfer/v1/')
         end
-        
+
         # Retrieves information about an application for the given application ID.
         # @param [String] application_id
         #   ID of the application resource to be retrieved.
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the applications available for data transfer for a customer.
         # @param [String] customer_id
         #   Immutable ID of the Google Apps account.
@@ -127,7 +127,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a data transfer request by its resource ID.
         # @param [String] data_transfer_id
         #   ID of the resource to be retrieved. This is returned in the response from the
@@ -163,7 +163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a data transfer request.
         # @param [Google::Apis::AdminDatatransferV1::DataTransfer] data_transfer_object
         # @param [String] fields
@@ -198,7 +198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the transfers for a customer by source user, destination user, or status.
         # @param [String] customer_id
         #   Immutable ID of the Google Apps account.

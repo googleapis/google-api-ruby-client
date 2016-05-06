@@ -109,7 +109,7 @@ module Google
 
         DEFAULT_TR_ENCODING = 'binary'.freeze
         FOOT = "\r\n".freeze
-        CID_FORMAT = "Content-ID: %s\r\n"
+        CID_FORMAT = "Content-ID: %s\r\n".freeze
         HEAD_FORMAT = <<-END
 --%s\r
 Content-Length: %d\r
@@ -121,8 +121,8 @@ Content-Transfer-Encoding: %s\r
 
       # Helper for building multipart requests
       class Multipart
-        MULTIPART_RELATED = 'multipart/related'
-        DEFAULT_BOUNDARY = 'RubyApiClientMultiPart'
+        MULTIPART_RELATED = 'multipart/related'.freeze
+        DEFAULT_BOUNDARY = 'RubyApiClientMultiPart'.freeze
 
         # @return [String]
         #  Content type header
@@ -147,7 +147,7 @@ Content-Transfer-Encoding: %s\r
         #   Optional unique ID of this part
         # @return [self]
         def add_json(body, content_id: nil)
-          header = { :content_id => content_id }
+          header = { content_id: content_id }
           @parts << Google::Apis::Core::JsonPart.new(@boundary, body, header)
           self
         end
@@ -160,7 +160,7 @@ Content-Transfer-Encoding: %s\r
         #   Optional unique ID of this part
         # @return [self]
         def add_upload(upload_io, content_id: nil)
-          header = { :content_id => content_id }
+          header = { content_id: content_id }
           @parts << Google::Apis::Core::FilePart.new(@boundary,
                                                      upload_io,
                                                      header)

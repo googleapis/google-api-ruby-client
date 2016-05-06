@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://classroom.googleapis.com/', '')
         end
-        
+
         # Creates a course. The user specified in `ownerId` is the owner of the created
         # course and added as a teacher. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to create courses
@@ -81,7 +81,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a course. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to access the
         # requested course or for access errors. * `NOT_FOUND` if no course exists with
@@ -115,7 +115,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a course. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to modify the
         # requested course or for access errors. * `NOT_FOUND` if no course exists with
@@ -153,7 +153,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates one or more fields in a course. This method returns the following
         # error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
         # modify the requested course or for access errors. * `NOT_FOUND` if no course
@@ -199,7 +199,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a course. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to delete the
         # requested course or for access errors. * `NOT_FOUND` if no course exists with
@@ -233,7 +233,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of courses that the requesting user is permitted to view,
         # restricted to those that match the request. This method returns the following
         # error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if
@@ -286,7 +286,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an alias for a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to create the
         # alias or for access errors. * `NOT_FOUND` if the course does not exist. * `
@@ -323,7 +323,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an alias of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to remove the
         # alias or for access errors. * `NOT_FOUND` if the alias does not exist.
@@ -359,7 +359,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of aliases for a course. This method returns the following
         # error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
         # access the course or for access errors. * `NOT_FOUND` if the course does not
@@ -403,7 +403,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a teacher of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to create
         # teachers in this course or for access errors. * `NOT_FOUND` if the requested
@@ -444,7 +444,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a teacher of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to view teachers
         # of this course or for access errors. * `NOT_FOUND` if no teacher of this
@@ -483,7 +483,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a teacher of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to delete
         # teachers of this course or for access errors. * `NOT_FOUND` if no teacher of
@@ -524,7 +524,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of teachers of this course that the requester is permitted to
         # view. This method returns the following error codes: * `NOT_FOUND` if the
         # course does not exist. * `PERMISSION_DENIED` for access errors.
@@ -566,7 +566,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a user as a student of a course. This method returns the following error
         # codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create
         # students in this course or for access errors. * `NOT_FOUND` if the requested
@@ -612,7 +612,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a student of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to view students
         # of this course or for access errors. * `NOT_FOUND` if no student of this
@@ -651,7 +651,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a student of a course. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to delete
         # students of this course or for access errors. * `NOT_FOUND` if no student of
@@ -690,7 +690,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of students of this course that the requester is permitted to
         # view. This method returns the following error codes: * `NOT_FOUND` if the
         # course does not exist. * `PERMISSION_DENIED` for access errors.
@@ -732,7 +732,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an invitation. Only one invitation for a user and course may exist at
         # a time. Delete and re-create an invitation to make changes. This method
         # returns the following error codes: * `PERMISSION_DENIED` if the requesting
@@ -770,7 +770,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns an invitation. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to view the
         # requested invitation or for access errors. * `NOT_FOUND` if no invitation
@@ -803,7 +803,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an invitation. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to delete the
         # requested invitation or for access errors. * `NOT_FOUND` if no invitation
@@ -836,7 +836,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of invitations that the requesting user is permitted to view,
         # restricted to those that match the list request. *Note:* At least one of `
         # user_id` or `course_id` must be supplied. Both fields can be supplied. This
@@ -886,7 +886,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Accepts an invitation, removing it and adding the invited user to the teachers
         # or students (as appropriate) of the specified course. Only the invited user
         # may accept an invitation. This method returns the following error codes: * `
@@ -923,7 +923,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a user profile. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to access this user
         # profile or if no profile exists with the requested ID or for access errors.

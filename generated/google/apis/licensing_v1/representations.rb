@@ -21,25 +21,25 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LicensingV1
-      
+
       class LicenseAssignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class LicenseAssignmentInsert
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class LicenseAssignmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class LicenseAssignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -51,20 +51,20 @@ module Google
           property :user_id, as: 'userId'
         end
       end
-      
+
       class LicenseAssignmentInsert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_id, as: 'userId'
         end
       end
-      
+
       class LicenseAssignmentList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::LicensingV1::LicenseAssignment, decorator: Google::Apis::LicensingV1::LicenseAssignment::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end

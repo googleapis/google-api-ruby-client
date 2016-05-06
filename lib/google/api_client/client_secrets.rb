@@ -53,7 +53,7 @@ module Google
       #
       # @return [Google::APIClient::ClientSecrets]
       #   OAuth client settings
-      def self.load(filename=nil)
+      def self.load(filename = nil)
         if filename && File.directory?(filename)
           search_path = File.expand_path(filename)
           filename = nil
@@ -71,7 +71,7 @@ module Google
           end
         end
         data = File.open(filename, 'r') { |file| JSON.load(file.read) }
-        return self.new(data)
+        self.new(data)
       end
 
       ##
@@ -83,27 +83,27 @@ module Google
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
         fdata = options[@flow.to_sym] || options[@flow]
-        @client_id = fdata[:client_id] || fdata["client_id"]
-        @client_secret = fdata[:client_secret] || fdata["client_secret"]
-        @redirect_uris = fdata[:redirect_uris] || fdata["redirect_uris"]
-        @redirect_uris ||= [fdata[:redirect_uri] || fdata["redirect_uri"]].compact
+        @client_id = fdata[:client_id] || fdata['client_id']
+        @client_secret = fdata[:client_secret] || fdata['client_secret']
+        @redirect_uris = fdata[:redirect_uris] || fdata['redirect_uris']
+        @redirect_uris ||= [fdata[:redirect_uri] || fdata['redirect_uri']].compact
         @javascript_origins = (
           fdata[:javascript_origins] ||
-          fdata["javascript_origins"]
+          fdata['javascript_origins']
         )
-        @javascript_origins ||= [fdata[:javascript_origin] || fdata["javascript_origin"]].compact
-        @authorization_uri = fdata[:auth_uri] || fdata["auth_uri"]
+        @javascript_origins ||= [fdata[:javascript_origin] || fdata['javascript_origin']].compact
+        @authorization_uri = fdata[:auth_uri] || fdata['auth_uri']
         @authorization_uri ||= fdata[:authorization_uri]
-        @token_credential_uri = fdata[:token_uri] || fdata["token_uri"]
+        @token_credential_uri = fdata[:token_uri] || fdata['token_uri']
         @token_credential_uri ||= fdata[:token_credential_uri]
 
         # Associated token info
-        @access_token = fdata[:access_token] || fdata["access_token"]
-        @refresh_token = fdata[:refresh_token] || fdata["refresh_token"]
-        @id_token = fdata[:id_token] || fdata["id_token"]
-        @expires_in = fdata[:expires_in] || fdata["expires_in"]
-        @expires_at = fdata[:expires_at] || fdata["expires_at"]
-        @issued_at = fdata[:issued_at] || fdata["issued_at"]
+        @access_token = fdata[:access_token] || fdata['access_token']
+        @refresh_token = fdata[:refresh_token] || fdata['refresh_token']
+        @id_token = fdata[:id_token] || fdata['id_token']
+        @expires_in = fdata[:expires_in] || fdata['expires_in']
+        @expires_at = fdata[:expires_at] || fdata['expires_at']
+        @issued_at = fdata[:issued_at] || fdata['issued_at']
       end
 
       attr_reader(
@@ -123,7 +123,7 @@ module Google
 
       def to_hash
         {
-          self.flow => ({
+          self.flow => {
             'client_id' => self.client_id,
             'client_secret' => self.client_secret,
             'redirect_uris' => self.redirect_uris,
@@ -136,7 +136,7 @@ module Google
             'expires_in' => self.expires_in,
             'expires_at' => self.expires_at,
             'issued_at' => self.issued_at
-          }).inject({}) do |accu, (k, v)|
+          }.inject({}) do |accu, (k, v)|
             # Prunes empty values from JSON output.
             unless v == nil || (v.respond_to?(:empty?) && v.empty?)
               accu[k] = v

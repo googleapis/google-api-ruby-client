@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'games/v1/')
         end
-        
+
         # Lists all the achievement definitions for your application.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -94,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Increments the steps of the achievement with the given ID for the currently
         # authenticated player.
         # @param [String] achievement_id
@@ -138,7 +138,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the progress for all your application's achievements for the currently
         # authenticated player.
         # @param [String] player_id
@@ -190,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the state of the achievement with the given ID to REVEALED for the
         # currently authenticated player.
         # @param [String] achievement_id
@@ -226,7 +226,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the steps for the currently authenticated player towards unlocking an
         # achievement. If the steps parameter is less than the current number of steps
         # that the player already gained for the achievement, the achievement is not
@@ -267,7 +267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Unlocks this achievement for the currently authenticated player.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -302,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates multiple achievements for the currently authenticated player.
         # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request_object
         # @param [String] fields
@@ -337,7 +337,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the application with the given ID. If the requested
         # application is not available for the specified platformType, the returned
         # response will not include any instance data.
@@ -380,7 +380,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Indicate that the the currently authenticated user is playing your application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -410,7 +410,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Verifies the auth token provided with this request is for the application with
         # the specified ID, and returns the ID of the player it was granted for.
         # @param [String] application_id
@@ -446,7 +446,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list showing the current progress on events in this application for
         # the currently authenticated user.
         # @param [String] language
@@ -490,7 +490,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of the event definitions in this application.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -533,7 +533,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Records a batch of changes to the number of times events have occurred for the
         # currently authenticated user of this application.
         # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request_object
@@ -572,7 +572,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the leaderboard with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -610,7 +610,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the leaderboard metadata for your application.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -653,7 +653,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return the metagame configuration data for the calling application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -685,7 +685,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List play data aggregated per category for the player corresponding to
         # playerId.
         # @param [String] player_id
@@ -736,7 +736,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the Player resource with the given ID. To retrieve the player for
         # the currently authenticated user, set playerId to me.
         # @param [String] player_id
@@ -776,7 +776,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the collection of players for the currently authenticated user.
         # @param [String] collection
         #   Collection of players being retrieved
@@ -822,7 +822,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a push token for the current user and application. Removing a non-
         # existent push token will report success.
         # @param [Google::Apis::GamesV1::PushTokenId] push_token_id_object
@@ -856,7 +856,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Registers a push token for the current user and application.
         # @param [Google::Apis::GamesV1::PushToken] push_token_object
         # @param [String] fields
@@ -889,7 +889,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Report that a reward for the milestone corresponding to milestoneId for the
         # quest corresponding to questId has been claimed by the currently authorized
         # user.
@@ -931,7 +931,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Indicates that the currently authorized user will participate in the quest.
         # @param [String] quest_id
         #   The ID of the quest.
@@ -969,7 +969,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a list of quests for your application and the currently authenticated
         # player.
         # @param [String] player_id
@@ -1018,12 +1018,12 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Checks whether the games client is out of date.
         # @param [String] client_revision
         #   The revision of the client SDK used by your application. Format:
         #   [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of PLATFORM_TYPE are:
-        #   
+        #
         #   - "ANDROID" - Client is running the Android SDK.
         #   - "IOS" - Client is running the iOS SDK.
         #   - "WEB_APP" - Client is running as a Web App.
@@ -1058,7 +1058,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [Google::Apis::GamesV1::CreateRoomRequest] create_room_request_object
@@ -1097,7 +1097,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Decline an invitation to join a room. For internal use by the Games SDK only.
         # Calling this method directly is unsupported.
         # @param [String] room_id
@@ -1136,7 +1136,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Dismiss an invitation to join a room. For internal use by the Games SDK only.
         # Calling this method directly is unsupported.
         # @param [String] room_id
@@ -1170,7 +1170,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the data for a room.
         # @param [String] room_id
         #   The ID of the room.
@@ -1208,7 +1208,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Join a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [String] room_id
@@ -1250,7 +1250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Leave a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [String] room_id
@@ -1292,7 +1292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns invitations to join rooms.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1335,7 +1335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates sent by a client reporting the status of peers in a room. For internal
         # use by the Games SDK only. Calling this method directly is unsupported.
         # @param [String] room_id
@@ -1377,7 +1377,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get high scores, and optionally ranks, in leaderboards for the currently
         # authenticated player. For a specific time span, leaderboardId can be set to
         # ALL to retrieve data for all leaderboards in a given time span.
@@ -1439,7 +1439,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the scores in a leaderboard, starting from the top.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -1491,7 +1491,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the scores in a leaderboard around (and including) a player's score.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -1553,7 +1553,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submits a score to the specified leaderboard.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -1603,7 +1603,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submits multiple scores to leaderboards.
         # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list_object
         # @param [String] language
@@ -1641,7 +1641,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata for a given snapshot ID.
         # @param [String] snapshot_id
         #   The ID of the snapshot.
@@ -1679,7 +1679,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of snapshots created by your application for the player
         # corresponding to the player ID.
         # @param [String] player_id
@@ -1727,7 +1727,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancel a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
@@ -1760,7 +1760,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a turn-based match.
         # @param [Google::Apis::GamesV1::CreateTurnBasedMatchRequest] create_turn_based_match_request_object
         # @param [String] language
@@ -1798,7 +1798,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Decline an invitation to play a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
@@ -1836,7 +1836,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Dismiss a turn-based match from the match list. The match will no longer show
         # up in the list and will not generate notifications.
         # @param [String] match_id
@@ -1870,7 +1870,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Finish a turn-based match. Each player should make this call once, after all
         # results are in. Only the player whose turn it is may make the first call to
         # Finish, and can pass in the final match state.
@@ -1913,7 +1913,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the data for a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
@@ -1954,7 +1954,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Join a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
@@ -1992,7 +1992,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Leave a turn-based match when it is not the current player's turn, without
         # canceling the match.
         # @param [String] match_id
@@ -2031,7 +2031,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Leave a turn-based match during the current player's turn, without canceling
         # the match.
         # @param [String] match_id
@@ -2079,7 +2079,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns turn-based matches the player is or was involved in.
         # @param [Boolean] include_match_data
         #   True if match data should be returned in the response. Note that not all data
@@ -2133,7 +2133,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a rematch of a match that was previously completed, with the same
         # participants. This can be called by only one player on a match still in their
         # list; the player must have called Finish first. Returns the newly created
@@ -2179,7 +2179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns turn-based matches the player is or was involved in that changed since
         # the last sync call, with the least recent changes coming first. Matches that
         # should be removed from the local cache will have a status of MATCH_DELETED.
@@ -2235,7 +2235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Commit the results of a player turn.
         # @param [String] match_id
         #   The ID of the match.

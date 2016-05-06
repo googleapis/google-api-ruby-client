@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'cloudmonitoring/v2beta2/projects/')
         end
-        
+
         # Create a new metric.
         # @param [String] project
         #   The project id. The value can be the numeric project ID or string-based
@@ -90,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an existing metric.
         # @param [String] project
         #   The project ID to which the metric belongs.
@@ -128,7 +128,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List metric descriptors that match the query. If the query is not set, then
         # all of the metric descriptors will be returned. Large responses will be
         # paginated, use the nextPageToken returned in the response to request
@@ -187,7 +187,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the data points of the time series that match the metric and labels
         # values and that have data points in the interval. Large responses are
         # paginated; use the nextPageToken returned in the response to request
@@ -212,7 +212,7 @@ module Google
         #   results.
         # @param [Array<String>, String] labels
         #   A collection of labels for the matching time series, which are represented as:
-        #   
+        #
         #   - key==value: key equals the value
         #   - key=~value: key regex matches the value
         #   - key!=value: key does not equal the value
@@ -290,7 +290,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Put data points to one or more time series for one or more metrics. If a time
         # series does not exist, a new time series will be created. It is not allowed to
         # write a time series point that is older than the existing youngest point of
@@ -335,7 +335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the descriptors of the time series that match the metric and labels
         # values and that have data points in the interval. Large responses are
         # paginated; use the nextPageToken returned in the response to request
@@ -360,7 +360,7 @@ module Google
         #   not specified, count = 100.
         # @param [Array<String>, String] labels
         #   A collection of labels for the matching time series, which are represented as:
-        #   
+        #
         #   - key==value: key equals the value
         #   - key=~value: key regex matches the value
         #   - key!=value: key does not equal the value

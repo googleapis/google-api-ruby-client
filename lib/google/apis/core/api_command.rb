@@ -24,9 +24,9 @@ module Google
     module Core
       # Command for executing most basic API request with JSON requests/responses
       class ApiCommand < HttpCommand
-        JSON_CONTENT_TYPE = 'application/json'
-        FIELDS_PARAM = 'fields'
-        RATE_LIMIT_ERRORS = %w(rateLimitExceeded userRateLimitExceeded)
+        JSON_CONTENT_TYPE = 'application/json'.freeze
+        FIELDS_PARAM = 'fields'.freeze
+        RATE_LIMIT_ERRORS = %w(rateLimitExceeded userRateLimitExceeded).freeze
 
         # JSON serializer for request objects
         # @return [Google::Apis::Core::JsonRepresentation]

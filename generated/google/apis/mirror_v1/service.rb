@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'mirror/v1/')
         end
-        
+
         # Inserts a new account for a user
         # @param [String] user_token
         #   The ID for the user.
@@ -95,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a contact.
         # @param [String] id
         #   The ID of the contact.
@@ -128,7 +128,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single contact by ID.
         # @param [String] id
         #   The ID of the contact.
@@ -163,7 +163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new contact.
         # @param [Google::Apis::MirrorV1::Contact] contact_object
         # @param [String] fields
@@ -198,7 +198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of contacts for the authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -230,7 +230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a contact in place. This method supports patch semantics.
         # @param [String] id
         #   The ID of the contact.
@@ -268,7 +268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a contact in place.
         # @param [String] id
         #   The ID of the contact.
@@ -306,7 +306,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single location by ID.
         # @param [String] id
         #   The ID of the location or latest for the last known location.
@@ -341,7 +341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of locations for the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -373,7 +373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single setting by ID.
         # @param [String] id
         #   The ID of the setting. The following IDs are valid:
@@ -412,7 +412,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a subscription.
         # @param [String] id
         #   The ID of the subscription.
@@ -445,7 +445,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new subscription.
         # @param [Google::Apis::MirrorV1::Subscription] subscription_object
         # @param [String] fields
@@ -480,7 +480,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of subscriptions for the authenticated user and service.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -512,7 +512,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing subscription in place.
         # @param [String] id
         #   The ID of the subscription.
@@ -550,7 +550,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a timeline item.
         # @param [String] id
         #   The ID of the timeline item.
@@ -583,7 +583,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single timeline item by ID.
         # @param [String] id
         #   The ID of the timeline item.
@@ -618,7 +618,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new item into the timeline.
         # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_object
         # @param [String] fields
@@ -663,7 +663,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of timeline items for the authenticated user.
         # @param [String] bundle_id
         #   If provided, only items with the given bundleId will be returned.
@@ -716,7 +716,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a timeline item in place. This method supports patch semantics.
         # @param [String] id
         #   The ID of the timeline item.
@@ -754,7 +754,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a timeline item in place.
         # @param [String] id
         #   The ID of the timeline item.
@@ -802,7 +802,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an attachment from a timeline item.
         # @param [String] item_id
         #   The ID of the timeline item the attachment belongs to.
@@ -838,7 +838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves an attachment on a timeline item by item ID and attachment ID.
         # @param [String] item_id
         #   The ID of the timeline item the attachment belongs to.
@@ -883,7 +883,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new attachment to a timeline item.
         # @param [String] item_id
         #   The ID of the timeline item the attachment belongs to.
@@ -928,7 +928,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of attachments for a timeline item.
         # @param [String] item_id
         #   The ID of the timeline item whose attachments should be listed.

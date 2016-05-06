@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
         end
-        
+
         # Inserts a new mail into the archive of the Google group.
         # @param [String] group_id
         #   The group ID

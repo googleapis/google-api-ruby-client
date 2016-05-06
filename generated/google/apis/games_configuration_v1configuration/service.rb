@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'games/v1configuration/')
         end
-        
+
         # Delete the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -84,7 +84,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -119,7 +119,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new achievement configuration in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -157,7 +157,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of the achievement configurations in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -200,7 +200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the achievement configuration with the given ID. This
         # method supports patch semantics.
         # @param [String] achievement_id
@@ -239,7 +239,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the achievement configuration with the given ID.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
@@ -277,7 +277,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads an image for a resource with the given ID and image type.
         # @param [String] resource_id
         #   The ID of the resource used by this method.
@@ -325,7 +325,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -358,7 +358,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the metadata of the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -393,7 +393,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new leaderboard configuration in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -431,7 +431,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of the leaderboard configurations in this application.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
@@ -474,7 +474,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the leaderboard configuration with the given ID. This
         # method supports patch semantics.
         # @param [String] leaderboard_id
@@ -513,7 +513,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the metadata of the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.

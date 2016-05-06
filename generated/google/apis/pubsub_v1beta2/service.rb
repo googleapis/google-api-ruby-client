@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://pubsub.googleapis.com/', '')
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -82,7 +82,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a `resource`. Is empty if the policy or the
         # resource does not exist.
         # @param [String] resource
@@ -116,7 +116,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
         #   REQUIRED: The resource for which policy detail is being requested. `resource`
@@ -153,7 +153,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates the given topic with the given name.
         # @param [String] name
         #   The name of the topic. It must have the format `"projects/`project`/topics/`
@@ -190,7 +190,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does
         # not exist. The message payload must not be empty; it must contain either a non-
         # empty data field, or at least one attribute.
@@ -225,7 +225,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the configuration of a topic.
         # @param [String] topic
         #   The name of the topic to get.
@@ -255,7 +255,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists matching topics.
         # @param [String] project
         #   The name of the cloud project that topics belong to.
@@ -293,7 +293,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does
         # not exist. After a topic is deleted, a new topic may be created with the same
         # name; this is an entirely new topic with none of the old configuration or
@@ -327,7 +327,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the name of the subscriptions for this topic.
         # @param [String] topic
         #   The name of the topic that subscriptions are attached to.
@@ -365,7 +365,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -402,7 +402,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for a `resource`. Is empty if the policy or the
         # resource does not exist.
         # @param [String] resource
@@ -436,7 +436,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
         #   REQUIRED: The resource for which policy detail is being requested. `resource`
@@ -473,7 +473,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a subscription to a given topic for a given subscriber. If the
         # subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
         # topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the
@@ -515,7 +515,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the configuration details of a subscription.
         # @param [String] subscription
         #   The name of the subscription to get.
@@ -545,7 +545,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists matching subscriptions.
         # @param [String] project
         #   The name of the cloud project that subscriptions belong to.
@@ -583,7 +583,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing subscription. All pending messages in the subscription are
         # immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`.
         # After a subscription is deleted, a new one may be created with the same name,
@@ -617,7 +617,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the ack deadline for a specific message. This method is useful to
         # indicate that more time is needed to process a message by the subscriber, or
         # to make the message available for redelivery if the processing was interrupted.
@@ -652,7 +652,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Acknowledges the messages associated with the `ack_ids` in the `
         # AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from
         # the subscription. Acknowledging a message whose ack deadline has expired may
@@ -689,7 +689,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Pulls messages from the server. Returns an empty list if there are no messages
         # available in the backlog. The server may return `UNAVAILABLE` if there are too
         # many concurrent pull requests pending for the given subscription.
@@ -724,7 +724,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the `PushConfig` for a specified subscription. This may be used to
         # change a push subscription to a pull one (signified by an empty `PushConfig`)
         # or vice versa, or change the endpoint URL and other attributes of a push

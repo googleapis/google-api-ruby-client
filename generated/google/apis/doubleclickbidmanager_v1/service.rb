@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
         end
-        
+
         # Retrieves line items in CSV format.
         # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request_object
         # @param [String] fields
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads line items in CSV format.
         # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request_object
         # @param [String] fields
@@ -121,7 +121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query_object
         # @param [String] fields
@@ -156,7 +156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a stored query as well as the associated stored reports.
         # @param [String] query_id
         #   Query ID to delete.
@@ -189,7 +189,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a stored query.
         # @param [String] query_id
         #   Query ID to retrieve.
@@ -224,7 +224,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves stored queries.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -256,7 +256,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs a stored query to generate a report.
         # @param [String] query_id
         #   Query ID to run.
@@ -292,7 +292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves stored reports.
         # @param [String] query_id
         #   Query ID with which the reports are associated.
@@ -327,7 +327,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update proposal upon actions of Rubicon publisher.
         # @param [Google::Apis::DoubleclickbidmanagerV1::NotifyProposalChangeRequest] notify_proposal_change_request_object
         # @param [String] fields

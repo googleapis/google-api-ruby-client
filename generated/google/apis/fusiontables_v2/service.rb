@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'fusiontables/v2/')
         end
-        
+
         # Deletes the specified column.
         # @param [String] table_id
         #   Table from which the column is being deleted.
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific column by its ID.
         # @param [String] table_id
         #   Table to which the column belongs.
@@ -125,7 +125,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new column to the table.
         # @param [String] table_id
         #   Table for which a new column is being added.
@@ -163,7 +163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of columns.
         # @param [String] table_id
         #   Table whose columns are being listed.
@@ -204,7 +204,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the name or type of an existing column. This method supports patch
         # semantics.
         # @param [String] table_id
@@ -246,7 +246,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the name or type of an existing column.
         # @param [String] table_id
         #   Table for which the column is being updated.
@@ -287,7 +287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Executes a Fusion Tables SQL statement, which can be any of
         # - SELECT
         # - INSERT
@@ -350,7 +350,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Executes a SQL statement which can be any of
         # - SELECT
         # - SHOW
@@ -405,7 +405,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a style.
         # @param [String] table_id
         #   Table from which the style is being deleted
@@ -441,7 +441,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific style.
         # @param [String] table_id
         #   Table to which the requested style belongs
@@ -479,7 +479,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new style for the table.
         # @param [String] table_id
         #   Table for which a new style is being added
@@ -517,7 +517,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of styles.
         # @param [String] table_id
         #   Table whose styles are being listed
@@ -558,7 +558,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing style. This method supports patch semantics.
         # @param [String] table_id
         #   Table whose style is being updated.
@@ -599,7 +599,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing style.
         # @param [String] table_id
         #   Table whose style is being updated.
@@ -640,7 +640,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Copies a table.
         # @param [String] table_id
         #   ID of the table that is being copied.
@@ -678,7 +678,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a table.
         # @param [String] table_id
         #   ID of the table to be deleted.
@@ -711,7 +711,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific table by its ID.
         # @param [String] table_id
         #   Identifier for the table being requested.
@@ -746,7 +746,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Imports more rows into a table.
         # @param [String] table_id
         #   The table into which new rows are being imported.
@@ -813,7 +813,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Imports a new table.
         # @param [String] name
         #   The name to be assigned to the new table.
@@ -866,7 +866,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new table.
         # @param [Google::Apis::FusiontablesV2::Table] table_object
         # @param [String] fields
@@ -901,7 +901,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of tables a user owns.
         # @param [Fixnum] max_results
         #   Maximum number of tables to return. Default is 5.
@@ -939,7 +939,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing table. Unless explicitly requested, only the name,
         # description, and attribution will be updated. This method supports patch
         # semantics.
@@ -983,7 +983,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Replaces rows of an existing table. Current rows remain visible until all
         # replacement rows are ready.
         # @param [String] table_id
@@ -1052,7 +1052,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing table. Unless explicitly requested, only the name,
         # description, and attribution will be updated.
         # @param [String] table_id
@@ -1095,7 +1095,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a specific task by its ID, unless that task has already started
         # running.
         # @param [String] table_id
@@ -1132,7 +1132,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific task by its ID.
         # @param [String] table_id
         #   Table to which the task belongs.
@@ -1170,7 +1170,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of tasks.
         # @param [String] table_id
         #   Table whose tasks are being listed.
@@ -1214,7 +1214,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a template
         # @param [String] table_id
         #   Table from which the template is being deleted
@@ -1250,7 +1250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a specific template by its id
         # @param [String] table_id
         #   Table to which the template belongs
@@ -1288,7 +1288,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new template for the table.
         # @param [String] table_id
         #   Table for which a new template is being created
@@ -1326,7 +1326,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of templates.
         # @param [String] table_id
         #   Identifier for the table whose templates are being requested
@@ -1367,7 +1367,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing template. This method supports patch semantics.
         # @param [String] table_id
         #   Table to which the updated template belongs
@@ -1408,7 +1408,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing template
         # @param [String] table_id
         #   Table to which the updated template belongs

@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'qpxExpress/v1/trips/')
         end
-        
+
         # Returns a list of flights.
         # @param [Google::Apis::QpxExpressV1::SearchTripsRequest] search_trips_request_object
         # @param [String] fields

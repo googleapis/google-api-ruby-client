@@ -19,7 +19,7 @@ module Google
     # @deprecated Use google-auth-library-ruby instead
     class RedisStore
 
-      DEFAULT_REDIS_CREDENTIALS_KEY = "google_api_credentials"
+      DEFAULT_REDIS_CREDENTIALS_KEY = 'google_api_credentials'
 
       attr_accessor :redis
 
@@ -31,7 +31,7 @@ module Google
       # @param [Object] key
       #  Optional key to store credentials under. Defaults to 'google_api_credentials'
       def initialize(redis, key = nil)
-        @redis= redis
+        @redis = redis
         @redis_credentials_key = key
       end
 

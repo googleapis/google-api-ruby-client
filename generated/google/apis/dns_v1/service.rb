@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'dns/v1/projects/')
         end
-        
+
         # Atomically update the ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -94,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetch the representation of an existing Change.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -137,7 +137,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enumerate Changes to a ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -190,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -228,7 +228,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a previously created ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -265,7 +265,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetch the representation of an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -304,7 +304,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enumerate ManagedZones that have been created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -350,7 +350,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetch the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -385,7 +385,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enumerate ResourceRecordSets that have been created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
