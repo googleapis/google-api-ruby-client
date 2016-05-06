@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/')
         end
-        
+
         # Gets one account by ID.
         # @param [Fixnum] id
         #   The account id
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the authenticated user's list of accounts.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -119,7 +119,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account. This method supports patch semantics.
         # @param [Fixnum] id
         #   The account id
@@ -157,7 +157,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account.
         # @param [Fixnum] id
         #   The account id
@@ -195,7 +195,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the billing information for one account specified by account ID.
         # @param [Fixnum] account_id
         #   The account id.
@@ -230,7 +230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of billing information for all accounts of the authenticated
         # user.
         # @param [String] fields
@@ -263,7 +263,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the budget information for the adgroup specified by the accountId and
         # billingId.
         # @param [String] account_id
@@ -302,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request. This method
         # supports patch semantics.
@@ -345,7 +345,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request.
         # @param [String] account_id
@@ -387,7 +387,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the status for a single creative. A creative will be available 30-40
         # minutes after submission.
         # @param [Fixnum] account_id
@@ -426,7 +426,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submit a new creative.
         # @param [Google::Apis::AdexchangebuyerV1_3::Creative] creative_object
         # @param [String] fields
@@ -461,7 +461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the authenticated user's active creatives. A creative will
         # be available 30-40 minutes after submission.
         # @param [Array<Fixnum>, Fixnum] account_id
@@ -512,7 +512,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one direct deal by ID.
         # @param [String] id
         #   The direct deal id
@@ -547,7 +547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the authenticated user's list of direct deals.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -579,7 +579,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the authenticated user's list of performance metrics.
         # @param [String] account_id
         #   The account id to get the reports.
@@ -629,7 +629,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing pretargeting config.
         # @param [String] account_id
         #   The account id to delete the pretargeting config for.
@@ -665,7 +665,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a specific pretargeting configuration
         # @param [String] account_id
         #   The account id to get the pretargeting config for.
@@ -703,7 +703,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new pretargeting configuration.
         # @param [String] account_id
         #   The account id to insert the pretargeting config for.
@@ -741,7 +741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of the authenticated user's pretargeting configurations.
         # @param [String] account_id
         #   The account id to get the pretargeting configs for.
@@ -776,7 +776,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing pretargeting config. This method supports patch semantics.
         # @param [String] account_id
         #   The account id to update the pretargeting config for.
@@ -817,7 +817,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing pretargeting config.
         # @param [String] account_id
         #   The account id to update the pretargeting config for.

@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'androidenterprise/v1/')
         end
-        
+
         # Deletes a collection.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the details of a collection.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -125,7 +125,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new collection.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -163,7 +163,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the IDs of all the collections for an enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -198,7 +198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a collection. This method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -239,7 +239,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a collection.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -280,7 +280,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the user from the list of those specifically allowed to see the
         # collection. If the collection's visibility is set to viewersOnly then only
         # such users will see the collection.
@@ -321,7 +321,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the ID of the user if they have been specifically allowed to see the
         # collection. If the collection's visibility is set to viewersOnly then only
         # these users will see the collection.
@@ -364,7 +364,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the IDs of the users who have been specifically allowed to see the
         # collection. If the collection's visibility is set to viewersOnly then only
         # these users will see the collection.
@@ -404,7 +404,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds the user to the list of those specifically allowed to see the collection.
         # If the collection's visibility is set to viewersOnly then only such users will
         # see the collection. This method supports patch semantics.
@@ -450,7 +450,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds the user to the list of those specifically allowed to see the collection.
         # If the collection's visibility is set to viewersOnly then only such users will
         # see the collection.
@@ -496,7 +496,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the details of a device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -537,7 +537,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves whether a device is enabled or disabled for access by the user to
         # Google services. The device state takes effect only if enforcing EMM policies
         # on Android devices is enabled in the Google Admin Console. Otherwise, the
@@ -581,7 +581,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the IDs of all of a user's devices.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -619,7 +619,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets whether a device is enabled or disabled for access by the user to Google
         # services. The device state takes effect only if enforcing EMM policies on
         # Android devices is enabled in the Google Admin Console. Otherwise, the device
@@ -666,7 +666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the binding between the EMM and enterprise. This is now deprecated;
         # use this to unenroll customers that were previously enrolled with the 'insert'
         # call, then enroll them again with the 'enroll' call.
@@ -701,7 +701,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Enrolls an enterprise with the calling EMM.
         # @param [String] token
         #   The token provided by the enterprise to register the EMM.
@@ -739,7 +739,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the name and domain of an enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -774,7 +774,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the store layout resource.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -809,7 +809,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Establishes the binding between the EMM and an enterprise. This is now
         # deprecated; use enroll instead.
         # @param [String] token
@@ -848,7 +848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Looks up an enterprise by domain name.
         # @param [String] domain
         #   The exact primary domain name of the enterprise to look up.
@@ -883,7 +883,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sends a test push notification to validate the EMM integration with the Google
         # Cloud Pub/Sub service for this enterprise.
         # @param [String] enterprise_id
@@ -919,7 +919,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Set the account that will be used to authenticate to the API as the enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -957,7 +957,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the store layout resource.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -995,7 +995,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Unenrolls an enterprise from the calling EMM.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1028,7 +1028,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes an entitlement to an app for a user and uninstalls it.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1067,7 +1067,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of an entitlement.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1108,7 +1108,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List of all entitlements for the specified user. Only the ID is set.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1146,7 +1146,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds or updates an entitlement to an app for a user. This method supports
         # patch semantics.
         # @param [String] enterprise_id
@@ -1197,7 +1197,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds or updates an entitlement to an app for a user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1247,7 +1247,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of an enterprise's group license for a product.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1286,7 +1286,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves IDs of all products for which the enterprise has a group license.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1321,7 +1321,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the IDs of the users who have been granted entitlements under the
         # license.
         # @param [String] enterprise_id
@@ -1361,7 +1361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Requests to remove an app from a device. A call to get or list will still show
         # the app as installed on the device until it is actually removed.
         # @param [String] enterprise_id
@@ -1405,7 +1405,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of an installation of an app on a device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1450,7 +1450,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the details of all apps installed on the specified device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1491,7 +1491,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Requests to install the latest version of an app to a device. If the app is
         # already installed then it is updated to the latest version if necessary. This
         # method supports patch semantics.
@@ -1541,7 +1541,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Requests to install the latest version of an app to a device. If the app is
         # already installed then it is updated to the latest version if necessary.
         # @param [String] enterprise_id
@@ -1590,7 +1590,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of an Android app permission for display to an enterprise
         # admin.
         # @param [String] permission_id
@@ -1629,7 +1629,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Approves the specified product (and the relevant app permissions, if any).
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1668,7 +1668,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a URL that can be rendered in an iframe to display the permissions (
         # if any) of a product. An enterprise admin must view these permissions and
         # accept them on behalf of their organization in order to approve that product.
@@ -1717,7 +1717,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of a product for display to an enterprise admin.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1758,7 +1758,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the schema defining app restrictions configurable for this product.
         # All products have a schema, but this may be empty if no app restrictions are
         # defined.
@@ -1801,7 +1801,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the Android app permissions required by this app.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1839,7 +1839,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # This method has been deprecated. To programmatically approve applications, you
         # must use the iframe mechanism via the  generateApprovalUrl and  approve
         # methods of the Products resource. For more information, see the  Play EMM API
@@ -1885,7 +1885,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a cluster.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1924,7 +1924,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of a cluster.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1965,7 +1965,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new cluster in a page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2006,7 +2006,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the details of all clusters on the specified page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2044,7 +2044,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a cluster. This method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2088,7 +2088,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a cluster.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2132,7 +2132,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a store page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2168,7 +2168,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves details of a store page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2206,7 +2206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new store page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2244,7 +2244,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the details of all pages in the store.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2279,7 +2279,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the content of a store page. This method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2320,7 +2320,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the content of a store page.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2361,7 +2361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a token (activation code) to allow this user to configure their work
         # account in the Android Setup Wizard. Revokes any previously generated token.
         # This call only works with Google managed accounts.
@@ -2401,7 +2401,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a user's details.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2439,7 +2439,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the set of products a user is entitled to access.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2477,7 +2477,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Looks up a user by their primary email address.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2515,7 +2515,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revokes a previously generated token (activation code) for the user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2551,7 +2551,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the set of products a user is entitled to access.
         # @param [String] enterprise_id
         #   The ID of the enterprise.

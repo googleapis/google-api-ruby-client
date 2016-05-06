@@ -24,8 +24,8 @@ module Google
     # @deprecated Use google-auth-library-ruby instead
     class Storage
 
-      AUTHORIZATION_URI = 'https://accounts.google.com/o/oauth2/auth'
-      TOKEN_CREDENTIAL_URI = 'https://accounts.google.com/o/oauth2/token'
+      AUTHORIZATION_URI = 'https://accounts.google.com/o/oauth2/auth'.freeze
+      TOKEN_CREDENTIAL_URI = 'https://accounts.google.com/o/oauth2/token'.freeze
 
       # @return [Object] Storage object.
       attr_accessor :store
@@ -39,7 +39,7 @@ module Google
       # @param [Object] store
       #  Storage object
       def initialize(store)
-        @store= store
+        @store = store
         @authorization = nil
       end
 
@@ -49,7 +49,7 @@ module Google
       # @param [Signet::OAuth2::Client] authorization
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
-      def write_credentials(authorization=nil)
+      def write_credentials(authorization = nil)
         @authorization = authorization if authorization
         if @authorization.respond_to?(:refresh_token) && @authorization.refresh_token
           store.write_credentials(credentials_hash)
@@ -62,12 +62,12 @@ module Google
       def authorize
         @authorization = nil
         cached_credentials = load_credentials
-        if cached_credentials && cached_credentials.size > 0
+        if cached_credentials && !cached_credentials.empty?
           @authorization = Signet::OAuth2::Client.new(cached_credentials)
           @authorization.issued_at = Time.at(cached_credentials['issued_at'].to_i)
           self.refresh_authorization if @authorization.expired?
         end
-        return @authorization
+        @authorization
       end
 
       ##
@@ -89,14 +89,14 @@ module Google
       # @return [Hash] with credentials
       def credentials_hash
         {
-          :access_token          => authorization.access_token,
-          :authorization_uri     => AUTHORIZATION_URI,
-          :client_id             => authorization.client_id,
-          :client_secret         => authorization.client_secret,
-          :expires_in            => authorization.expires_in,
-          :refresh_token         => authorization.refresh_token,
-          :token_credential_uri  => TOKEN_CREDENTIAL_URI,
-          :issued_at             => authorization.issued_at.to_i
+          access_token: authorization.access_token,
+          authorization_uri: AUTHORIZATION_URI,
+          client_id: authorization.client_id,
+          client_secret: authorization.client_secret,
+          expires_in: authorization.expires_in,
+          refresh_token: authorization.refresh_token,
+          token_credential_uri: TOKEN_CREDENTIAL_URI,
+          issued_at: authorization.issued_at.to_i
         }
       end
     end

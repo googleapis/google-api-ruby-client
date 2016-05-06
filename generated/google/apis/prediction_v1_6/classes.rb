@@ -21,45 +21,45 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PredictionV1_6
-      
-      # 
+
+      #
       class Analyze
         include Google::Apis::Core::Hashable
-      
+
         # Description of the data the model was trained on.
         # Corresponds to the JSON property `dataDescription`
         # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription]
         attr_accessor :data_description
-      
+
         # List of errors with the data.
         # Corresponds to the JSON property `errors`
         # @return [Array<Hash<String,String>>]
         attr_accessor :errors
-      
+
         # The unique name for the predictive model.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # What kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Description of the model.
         # Corresponds to the JSON property `modelDescription`
         # @return [Google::Apis::PredictionV1_6::Analyze::ModelDescription]
         attr_accessor :model_description
-      
+
         # A URL to re-request this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @data_description = args[:data_description] if args.key?(:data_description)
@@ -69,59 +69,59 @@ module Google
           @model_description = args[:model_description] if args.key?(:model_description)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
-        
+
         # Description of the data the model was trained on.
         class DataDescription
           include Google::Apis::Core::Hashable
-        
+
           # Description of the input features in the data set.
           # Corresponds to the JSON property `features`
           # @return [Array<Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature>]
           attr_accessor :features
-        
+
           # Description of the output value or label.
           # Corresponds to the JSON property `outputFeature`
           # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature]
           attr_accessor :output_feature
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @features = args[:features] if args.key?(:features)
             @output_feature = args[:output_feature] if args.key?(:output_feature)
           end
-          
-          # 
+
+          #
           class Feature
             include Google::Apis::Core::Hashable
-          
+
             # Description of the categorical values of this feature.
             # Corresponds to the JSON property `categorical`
             # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical]
             attr_accessor :categorical
-          
+
             # The feature index.
             # Corresponds to the JSON property `index`
             # @return [String]
             attr_accessor :index
-          
+
             # Description of the numeric values of this feature.
             # Corresponds to the JSON property `numeric`
             # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric]
             attr_accessor :numeric
-          
+
             # Description of multiple-word text values of this feature.
             # Corresponds to the JSON property `text`
             # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text]
             attr_accessor :text
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @categorical = args[:categorical] if args.key?(:categorical)
@@ -129,49 +129,49 @@ module Google
               @numeric = args[:numeric] if args.key?(:numeric)
               @text = args[:text] if args.key?(:text)
             end
-            
+
             # Description of the categorical values of this feature.
             class Categorical
               include Google::Apis::Core::Hashable
-            
+
               # Number of categorical values for this feature in the data.
               # Corresponds to the JSON property `count`
               # @return [String]
               attr_accessor :count
-            
+
               # List of all the categories for this feature in the data set.
               # Corresponds to the JSON property `values`
               # @return [Array<Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value>]
               attr_accessor :values
-            
+
               def initialize(**args)
                  update!(**args)
               end
-            
+
               # Update properties of this object
               def update!(**args)
                 @count = args[:count] if args.key?(:count)
                 @values = args[:values] if args.key?(:values)
               end
-              
-              # 
+
+              #
               class Value
                 include Google::Apis::Core::Hashable
-              
+
                 # Number of times this feature had this value.
                 # Corresponds to the JSON property `count`
                 # @return [String]
                 attr_accessor :count
-              
+
                 # The category name.
                 # Corresponds to the JSON property `value`
                 # @return [String]
                 attr_accessor :value
-              
+
                 def initialize(**args)
                    update!(**args)
                 end
-              
+
                 # Update properties of this object
                 def update!(**args)
                   @count = args[:count] if args.key?(:count)
@@ -179,30 +179,30 @@ module Google
                 end
               end
             end
-            
+
             # Description of the numeric values of this feature.
             class Numeric
               include Google::Apis::Core::Hashable
-            
+
               # Number of numeric values for this feature in the data set.
               # Corresponds to the JSON property `count`
               # @return [String]
               attr_accessor :count
-            
+
               # Mean of the numeric values of this feature in the data set.
               # Corresponds to the JSON property `mean`
               # @return [String]
               attr_accessor :mean
-            
+
               # Variance of the numeric values of this feature in the data set.
               # Corresponds to the JSON property `variance`
               # @return [String]
               attr_accessor :variance
-            
+
               def initialize(**args)
                  update!(**args)
               end
-            
+
               # Update properties of this object
               def update!(**args)
                 @count = args[:count] if args.key?(:count)
@@ -210,74 +210,74 @@ module Google
                 @variance = args[:variance] if args.key?(:variance)
               end
             end
-            
+
             # Description of multiple-word text values of this feature.
             class Text
               include Google::Apis::Core::Hashable
-            
+
               # Number of multiple-word text values for this feature.
               # Corresponds to the JSON property `count`
               # @return [String]
               attr_accessor :count
-            
+
               def initialize(**args)
                  update!(**args)
               end
-            
+
               # Update properties of this object
               def update!(**args)
                 @count = args[:count] if args.key?(:count)
               end
             end
           end
-          
+
           # Description of the output value or label.
           class OutputFeature
             include Google::Apis::Core::Hashable
-          
+
             # Description of the output values in the data set.
             # Corresponds to the JSON property `numeric`
             # @return [Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric]
             attr_accessor :numeric
-          
+
             # Description of the output labels in the data set.
             # Corresponds to the JSON property `text`
             # @return [Array<Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Text>]
             attr_accessor :text
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @numeric = args[:numeric] if args.key?(:numeric)
               @text = args[:text] if args.key?(:text)
             end
-            
+
             # Description of the output values in the data set.
             class Numeric
               include Google::Apis::Core::Hashable
-            
+
               # Number of numeric output values in the data set.
               # Corresponds to the JSON property `count`
               # @return [String]
               attr_accessor :count
-            
+
               # Mean of the output values in the data set.
               # Corresponds to the JSON property `mean`
               # @return [String]
               attr_accessor :mean
-            
+
               # Variance of the output values in the data set.
               # Corresponds to the JSON property `variance`
               # @return [String]
               attr_accessor :variance
-            
+
               def initialize(**args)
                  update!(**args)
               end
-            
+
               # Update properties of this object
               def update!(**args)
                 @count = args[:count] if args.key?(:count)
@@ -285,25 +285,25 @@ module Google
                 @variance = args[:variance] if args.key?(:variance)
               end
             end
-            
-            # 
+
+            #
             class Text
               include Google::Apis::Core::Hashable
-            
+
               # Number of times the output label occurred in the data set.
               # Corresponds to the JSON property `count`
               # @return [String]
               attr_accessor :count
-            
+
               # The output label.
               # Corresponds to the JSON property `value`
               # @return [String]
               attr_accessor :value
-            
+
               def initialize(**args)
                  update!(**args)
               end
-            
+
               # Update properties of this object
               def update!(**args)
                 @count = args[:count] if args.key?(:count)
@@ -312,11 +312,11 @@ module Google
             end
           end
         end
-        
+
         # Description of the model.
         class ModelDescription
           include Google::Apis::Core::Hashable
-        
+
           # An output confusion matrix. This shows an estimate for how this model will do
           # in predictions. This is first indexed by the true class label. For each true
           # class label, this provides a pair `predicted_label, count`, where count is the
@@ -325,21 +325,21 @@ module Google
           # Corresponds to the JSON property `confusionMatrix`
           # @return [Hash<String,Hash<String,String>>]
           attr_accessor :confusion_matrix
-        
+
           # A list of the confusion matrix row totals.
           # Corresponds to the JSON property `confusionMatrixRowTotals`
           # @return [Hash<String,String>]
           attr_accessor :confusion_matrix_row_totals
-        
+
           # Basic information about the model.
           # Corresponds to the JSON property `modelinfo`
           # @return [Google::Apis::PredictionV1_6::Insert2]
           attr_accessor :modelinfo
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @confusion_matrix = args[:confusion_matrix] if args.key?(:confusion_matrix)
@@ -348,94 +348,94 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Input
         include Google::Apis::Core::Hashable
-      
+
         # Input to the model for a prediction.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::PredictionV1_6::Input::Input]
         attr_accessor :input
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @input = args[:input] if args.key?(:input)
         end
-        
+
         # Input to the model for a prediction.
         class Input
           include Google::Apis::Core::Hashable
-        
+
           # A list of input features, these can be strings or doubles.
           # Corresponds to the JSON property `csvInstance`
           # @return [Array<Object>]
           attr_accessor :csv_instance
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @csv_instance = args[:csv_instance] if args.key?(:csv_instance)
           end
         end
       end
-      
-      # 
+
+      #
       class Insert
         include Google::Apis::Core::Hashable
-      
+
         # The unique name for the predictive model.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # Type of predictive model (classification or regression).
         # Corresponds to the JSON property `modelType`
         # @return [String]
         attr_accessor :model_type
-      
+
         # The Id of the model to be copied over.
         # Corresponds to the JSON property `sourceModel`
         # @return [String]
         attr_accessor :source_model
-      
+
         # Google storage location of the training data file.
         # Corresponds to the JSON property `storageDataLocation`
         # @return [String]
         attr_accessor :storage_data_location
-      
+
         # Google storage location of the preprocessing pmml file.
         # Corresponds to the JSON property `storagePMMLLocation`
         # @return [String]
         attr_accessor :storage_pmml_location
-      
+
         # Google storage location of the pmml model file.
         # Corresponds to the JSON property `storagePMMLModelLocation`
         # @return [String]
         attr_accessor :storage_pmml_model_location
-      
+
         # Instances to train model on.
         # Corresponds to the JSON property `trainingInstances`
         # @return [Array<Google::Apis::PredictionV1_6::Insert::TrainingInstance>]
         attr_accessor :training_instances
-      
+
         # A class weighting function, which allows the importance weights for class
         # labels to be specified (Categorical models only).
         # Corresponds to the JSON property `utility`
         # @return [Array<Hash<String,Float>>]
         attr_accessor :utility
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
@@ -447,25 +447,25 @@ module Google
           @training_instances = args[:training_instances] if args.key?(:training_instances)
           @utility = args[:utility] if args.key?(:utility)
         end
-        
-        # 
+
+        #
         class TrainingInstance
           include Google::Apis::Core::Hashable
-        
+
           # The input features for this instance.
           # Corresponds to the JSON property `csvInstance`
           # @return [Array<Object>]
           attr_accessor :csv_instance
-        
+
           # The generic output value - could be regression or class label.
           # Corresponds to the JSON property `output`
           # @return [String]
           attr_accessor :output
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @csv_instance = args[:csv_instance] if args.key?(:csv_instance)
@@ -473,71 +473,71 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Insert2
         include Google::Apis::Core::Hashable
-      
+
         # Insert time of the model (as a RFC 3339 timestamp).
         # Corresponds to the JSON property `created`
         # @return [DateTime]
         attr_accessor :created
-      
+
         # The unique name for the predictive model.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # What kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Model metadata.
         # Corresponds to the JSON property `modelInfo`
         # @return [Google::Apis::PredictionV1_6::Insert2::ModelInfo]
         attr_accessor :model_info
-      
+
         # Type of predictive model (CLASSIFICATION or REGRESSION).
         # Corresponds to the JSON property `modelType`
         # @return [String]
         attr_accessor :model_type
-      
+
         # A URL to re-request this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         # Google storage location of the training data file.
         # Corresponds to the JSON property `storageDataLocation`
         # @return [String]
         attr_accessor :storage_data_location
-      
+
         # Google storage location of the preprocessing pmml file.
         # Corresponds to the JSON property `storagePMMLLocation`
         # @return [String]
         attr_accessor :storage_pmml_location
-      
+
         # Google storage location of the pmml model file.
         # Corresponds to the JSON property `storagePMMLModelLocation`
         # @return [String]
         attr_accessor :storage_pmml_model_location
-      
+
         # Training completion time (as a RFC 3339 timestamp).
         # Corresponds to the JSON property `trainingComplete`
         # @return [DateTime]
         attr_accessor :training_complete
-      
+
         # The current status of the training job. This can be one of following: RUNNING;
         # DONE; ERROR; ERROR: TRAINING JOB NOT FOUND
         # Corresponds to the JSON property `trainingStatus`
         # @return [String]
         attr_accessor :training_status
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @created = args[:created] if args.key?(:created)
@@ -552,17 +552,17 @@ module Google
           @training_complete = args[:training_complete] if args.key?(:training_complete)
           @training_status = args[:training_status] if args.key?(:training_status)
         end
-        
+
         # Model metadata.
         class ModelInfo
           include Google::Apis::Core::Hashable
-        
+
           # Estimated accuracy of model taking utility weights into account (Categorical
           # models only).
           # Corresponds to the JSON property `classWeightedAccuracy`
           # @return [String]
           attr_accessor :class_weighted_accuracy
-        
+
           # A number between 0.0 and 1.0, where 1.0 is 100% accurate. This is an estimate,
           # based on the amount and quality of the training data, of the estimated
           # prediction accuracy. You can use this is a guide to decide whether the results
@@ -572,32 +572,32 @@ module Google
           # Corresponds to the JSON property `classificationAccuracy`
           # @return [String]
           attr_accessor :classification_accuracy
-        
+
           # An estimated mean squared error. The can be used to measure the quality of the
           # predicted model (Regression models only).
           # Corresponds to the JSON property `meanSquaredError`
           # @return [String]
           attr_accessor :mean_squared_error
-        
+
           # Type of predictive model (CLASSIFICATION or REGRESSION).
           # Corresponds to the JSON property `modelType`
           # @return [String]
           attr_accessor :model_type
-        
+
           # Number of valid data instances used in the trained model.
           # Corresponds to the JSON property `numberInstances`
           # @return [String]
           attr_accessor :number_instances
-        
+
           # Number of class labels in the trained model (Categorical models only).
           # Corresponds to the JSON property `numberLabels`
           # @return [String]
           attr_accessor :number_labels
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @class_weighted_accuracy = args[:class_weighted_accuracy] if args.key?(:class_weighted_accuracy)
@@ -609,35 +609,35 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class List
         include Google::Apis::Core::Hashable
-      
+
         # List of models.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::PredictionV1_6::Insert2>]
         attr_accessor :items
-      
+
         # What kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Pagination token to fetch the next page, if one exists.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         # A URL to re-request this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
@@ -646,46 +646,46 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
-      
-      # 
+
+      #
       class Output
         include Google::Apis::Core::Hashable
-      
+
         # The unique name for the predictive model.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # What kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The most likely class label (Categorical models only).
         # Corresponds to the JSON property `outputLabel`
         # @return [String]
         attr_accessor :output_label
-      
+
         # A list of class labels with their estimated probabilities (Categorical models
         # only).
         # Corresponds to the JSON property `outputMulti`
         # @return [Array<Google::Apis::PredictionV1_6::Output::OutputMulti>]
         attr_accessor :output_multi
-      
+
         # The estimated regression value (Regression models only).
         # Corresponds to the JSON property `outputValue`
         # @return [String]
         attr_accessor :output_value
-      
+
         # A URL to re-request this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
@@ -695,25 +695,25 @@ module Google
           @output_value = args[:output_value] if args.key?(:output_value)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
-        
-        # 
+
+        #
         class OutputMulti
           include Google::Apis::Core::Hashable
-        
+
           # The class label.
           # Corresponds to the JSON property `label`
           # @return [String]
           attr_accessor :label
-        
+
           # The probability of the class label.
           # Corresponds to the JSON property `score`
           # @return [String]
           attr_accessor :score
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @label = args[:label] if args.key?(:label)
@@ -721,25 +721,25 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class Update
         include Google::Apis::Core::Hashable
-      
+
         # The input features for this instance.
         # Corresponds to the JSON property `csvInstance`
         # @return [Array<Object>]
         attr_accessor :csv_instance
-      
+
         # The generic output value - could be regression or class label.
         # Corresponds to the JSON property `output`
         # @return [String]
         attr_accessor :output
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @csv_instance = args[:csv_instance] if args.key?(:csv_instance)

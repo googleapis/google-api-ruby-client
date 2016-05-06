@@ -21,25 +21,25 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupsmigrationV1
-      
+
       # JSON response template for groups migration API.
       class Groups
         include Google::Apis::Core::Hashable
-      
+
         # The kind of insert resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The status of the insert request.
         # Corresponds to the JSON property `responseCode`
         # @return [String]
         attr_accessor :response_code
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)

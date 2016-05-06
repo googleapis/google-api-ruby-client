@@ -90,13 +90,13 @@ module Google
         auth = @authorization
 
         server = WEBrick::HTTPServer.new(
-          :Port => @port,
-          :BindAddress =>"localhost",
-          :Logger => WEBrick::Log.new(STDOUT, 0),
-          :AccessLog => []
+          Port: @port,
+          BindAddress: 'localhost',
+          Logger: WEBrick::Log.new(STDOUT, 0),
+          AccessLog: []
         )
         begin
-          trap("INT") { server.shutdown }
+          trap('INT') { server.shutdown }
 
           server.mount_proc '/' do |req, res|
             auth.code = req.query['code']

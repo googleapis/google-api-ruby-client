@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'discovery/v1/')
         end
-        
+
         # Retrieve the description of a particular version of an api.
         # @param [String] api
         #   The name of the API.
@@ -90,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve the list of APIs supported at this endpoint.
         # @param [String] name
         #   Only include APIs with the given name.

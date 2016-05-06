@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'deploymentmanager/v2/projects/')
         end
-        
+
         # Cancels and removes the preview currently associated with the deployment.
         # @param [String] project
         #   The project ID for this request.
@@ -92,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a deployment and all of the resources in the deployment.
         # @param [String] project
         #   The project ID for this request.
@@ -130,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a specific deployment.
         # @param [String] project
         #   The project ID for this request.
@@ -168,7 +168,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a deployment and all of the resources described by the deployment
         # manifest.
         # @param [String] project
@@ -216,7 +216,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all deployments for a given project.
         # @param [String] project
         #   The project ID for this request.
@@ -285,7 +285,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a deployment and all of the resources described by the deployment
         # manifest. This method supports patch semantics.
         # @param [String] project
@@ -344,7 +344,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stops an ongoing operation. This does not roll back any work that has already
         # been completed, but prevents any new work from being started.
         # @param [String] project
@@ -386,7 +386,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a deployment and all of the resources described by the deployment
         # manifest.
         # @param [String] project
@@ -445,7 +445,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a specific manifest.
         # @param [String] project
         #   The project ID for this request.
@@ -486,7 +486,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all manifests for a given deployment.
         # @param [String] project
         #   The project ID for this request.
@@ -558,7 +558,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a specific operation.
         # @param [String] project
         #   The project ID for this request.
@@ -596,7 +596,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all operations for a project.
         # @param [String] project
         #   The project ID for this request.
@@ -665,7 +665,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets information about a single resource.
         # @param [String] project
         #   The project ID for this request.
@@ -706,7 +706,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all resources in a given deployment.
         # @param [String] project
         #   The project ID for this request.
@@ -778,7 +778,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all resource types for Deployment Manager.
         # @param [String] project
         #   The project ID for this request.

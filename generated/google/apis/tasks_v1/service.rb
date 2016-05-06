@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'tasks/v1/')
         end
-        
+
         # Deletes the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -84,7 +84,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -119,7 +119,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new task list and adds it to the authenticated user's task lists.
         # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
@@ -154,7 +154,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all the authenticated user's task lists.
         # @param [String] max_results
         #   Maximum number of task lists returned on one page. Optional. The default is
@@ -193,7 +193,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the authenticated user's specified task list. This method supports
         # patch semantics.
         # @param [String] tasklist
@@ -232,7 +232,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -270,7 +270,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears all completed tasks from the specified task list. The affected tasks
         # will be marked as 'hidden' and no longer be returned by default when
         # retrieving all tasks for a task list.
@@ -305,7 +305,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified task from the task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -341,7 +341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified task.
         # @param [String] tasklist
         #   Task list identifier.
@@ -379,7 +379,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new task on the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -425,7 +425,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all tasks in the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -499,7 +499,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves the specified task to another position in the task list. This can
         # include putting it as a child task under a new parent and/or move it to a
         # different position among its sibling tasks.
@@ -547,7 +547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified task. This method supports patch semantics.
         # @param [String] tasklist
         #   Task list identifier.
@@ -588,7 +588,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the specified task.
         # @param [String] tasklist
         #   Task list identifier.

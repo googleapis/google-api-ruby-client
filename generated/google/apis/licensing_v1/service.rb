@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
         end
-        
+
         # Revoke License.
         # @param [String] product_id
         #   Name for product
@@ -90,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get license assignment of a particular product and sku for a user
         # @param [String] product_id
         #   Name for product
@@ -131,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License.
         # @param [String] product_id
         #   Name for product
@@ -172,7 +172,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List license assignments for given product of the customer.
         # @param [String] product_id
         #   Name for product
@@ -218,7 +218,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List license assignments for given product and sku of the customer.
         # @param [String] product_id
         #   Name for product
@@ -267,7 +267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License. This method supports patch semantics.
         # @param [String] product_id
         #   Name for product
@@ -311,7 +311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Assign License.
         # @param [String] product_id
         #   Name for product

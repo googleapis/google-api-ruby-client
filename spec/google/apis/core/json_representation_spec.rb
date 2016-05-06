@@ -128,7 +128,6 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
     end
 
     include_examples 'it serializes'
-
   end
 
   context 'with hash' do
@@ -157,7 +156,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   context 'when de-serializing' do
     let(:model) { representer_class.new(model_class.new).from_json(json) }
     let(:json) do
-      json = <<EOF
+      <<EOF
 { "stringValue": "test",
   "nilValue": null,
   "booleanValueTrue": true,

@@ -48,7 +48,7 @@ module Google
         def initialize
           super('https://vision.googleapis.com/', '')
         end
-        
+
         # Run image detection and annotation for a batch of images.
         # @param [Google::Apis::VisionV1::BatchAnnotateImagesRequest] batch_annotate_images_request_object
         # @param [String] quota_user

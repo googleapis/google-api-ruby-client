@@ -21,43 +21,43 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TranslateV2
-      
+
       class ListDetectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DetectionsResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListLanguagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class LanguagesResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListTranslationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TranslationsResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListDetectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -65,12 +65,12 @@ module Google
           collection :detections, as: 'detections', :class => Array do
         include Representable::JSON::Collection
         items class: Google::Apis::TranslateV2::DetectionsResource, decorator: Google::Apis::TranslateV2::DetectionsResource::Representation
-      
+
       end
-      
+
         end
       end
-      
+
       class DetectionsResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -80,16 +80,16 @@ module Google
           property :language, as: 'language'
         end
       end
-      
+
       class ListLanguagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListLanguagesResponse }
           collection :languages, as: 'languages', class: Google::Apis::TranslateV2::LanguagesResource, decorator: Google::Apis::TranslateV2::LanguagesResource::Representation
-      
+
         end
       end
-      
+
       class LanguagesResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -98,16 +98,16 @@ module Google
           property :name, as: 'name'
         end
       end
-      
+
       class ListTranslationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListTranslationsResponse }
           collection :translations, as: 'translations', class: Google::Apis::TranslateV2::TranslationsResource, decorator: Google::Apis::TranslateV2::TranslationsResource::Representation
-      
+
         end
       end
-      
+
       class TranslationsResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

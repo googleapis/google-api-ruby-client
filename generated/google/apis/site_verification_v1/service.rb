@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'siteVerification/v1/')
         end
-        
+
         # Relinquish ownership of a website or domain.
         # @param [String] id
         #   The id of a verified site or domain.
@@ -84,7 +84,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the most current data for a website or domain.
         # @param [String] id
         #   The id of a verified site or domain.
@@ -119,7 +119,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a verification token for placing on a website or domain.
         # @param [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest] get_web_resource_token_request_object
         # @param [String] fields
@@ -154,7 +154,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Attempt verification of a website or domain.
         # @param [String] verification_method
         #   The method to use for verifying a site or domain.
@@ -192,7 +192,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the list of your verified websites and domains.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -224,7 +224,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modify the list of owners for your website or domain. This method supports
         # patch semantics.
         # @param [String] id
@@ -263,7 +263,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modify the list of owners for your website or domain.
         # @param [String] id
         #   The id of a verified site or domain.

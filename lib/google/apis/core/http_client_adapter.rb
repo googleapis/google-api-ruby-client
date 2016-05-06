@@ -42,8 +42,8 @@ module Google
         def copy_response(http_res, res)
           unless res.status_code
             res.status_code = http_res.status.to_i
-            http_res.header.all.each do |(k,v)|
-              res.header[k] = v
+            http_res.header.all.each do |(key, val)|
+              res.header[key] = val
             end
           end
         end

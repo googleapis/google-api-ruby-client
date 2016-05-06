@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'calendar/v3/')
         end
-        
+
         # Deletes an access control rule.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns an access control rule.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -129,7 +129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an access control rule.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -169,7 +169,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the rules in the access control list for the calendar.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -230,7 +230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an access control rule. This method supports patch semantics.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -273,7 +273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an access control rule.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -316,7 +316,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes to ACL resources.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -380,7 +380,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an entry on the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -415,7 +415,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns an entry on the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -452,7 +452,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds an entry to the user's calendar list.
         # @param [Google::Apis::CalendarV3::CalendarListEntry] calendar_list_entry_object
         # @param [Boolean] color_rgb_format
@@ -493,7 +493,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns entries on the user's calendar list.
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. By default the value is
@@ -559,7 +559,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an entry on the user's calendar list. This method supports patch
         # semantics.
         # @param [String] calendar_id
@@ -606,7 +606,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an entry on the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -652,7 +652,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes to CalendarList resources.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Fixnum] max_results
@@ -721,7 +721,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears a primary calendar. This operation deletes all events associated with
         # the primary calendar of an account.
         # @param [String] calendar_id
@@ -757,7 +757,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a secondary calendar. Use calendars.clear for clearing all events on
         # primary calendars.
         # @param [String] calendar_id
@@ -793,7 +793,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns metadata for a calendar.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -830,7 +830,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a secondary calendar.
         # @param [Google::Apis::CalendarV3::Calendar] calendar_object
         # @param [String] fields
@@ -865,7 +865,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates metadata for a calendar. This method supports patch semantics.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -905,7 +905,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates metadata for a calendar.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -945,7 +945,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [String] fields
@@ -978,7 +978,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the color definitions for calendars and events.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1010,7 +1010,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an event.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1052,7 +1052,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns an event.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1108,7 +1108,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Imports an event. This operation is used to add a private copy of an existing
         # event to a calendar.
         # @param [String] calendar_id
@@ -1153,7 +1153,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an event.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1206,7 +1206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns instances of the specified recurring event.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1287,7 +1287,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns events on the specified calendar.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1426,7 +1426,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves an event to another calendar, i.e. changes an event's organizer.
         # @param [String] calendar_id
         #   Calendar identifier of the source calendar where the event currently is on.
@@ -1471,7 +1471,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an event. This method supports patch semantics.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1534,7 +1534,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an event based on a simple text string.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1578,7 +1578,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an event.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1641,7 +1641,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes to Events resources.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
@@ -1783,7 +1783,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns free/busy information for a set of calendars.
         # @param [Google::Apis::CalendarV3::FreeBusyRequest] free_busy_request_object
         # @param [String] fields
@@ -1818,7 +1818,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a single user setting.
         # @param [String] setting
         #   The id of the user setting.
@@ -1853,7 +1853,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all user settings for the authenticated user.
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. By default the value is
@@ -1902,7 +1902,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Watch for changes to Settings resources.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Fixnum] max_results

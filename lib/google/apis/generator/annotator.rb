@@ -108,10 +108,10 @@ module Google
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
           return nil unless name == verb || name.start_with?(verb + '_')
-          if !parts.empty?
+          unless parts.empty?
             resource_name = ActiveSupport::Inflector.singularize(parts.pop)
             resource_name = ActiveSupport::Inflector.underscore(resource_name)
-            if !name.include?(resource_name)
+            unless name.include?(resource_name)
               name = name.split('_').insert(1, resource_name).join('_')
             end
           end
@@ -128,11 +128,11 @@ module Google
           verb = ActiveSupport::Inflector.underscore(parts.pop)
           return verb if parts.empty?
           resource_name = ActiveSupport::Inflector.underscore(parts.pop)
-          if pluralize_method?(verb)
-            resource_name = ActiveSupport::Inflector.pluralize(resource_name)
-          else
-            resource_name = ActiveSupport::Inflector.singularize(resource_name)
-          end
+          resource_name = if pluralize_method?(verb)
+                            ActiveSupport::Inflector.pluralize(resource_name)
+                          else
+                            ActiveSupport::Inflector.singularize(resource_name)
+                          end
           if parts.empty?
             resource_path = resource_name
           else
@@ -155,8 +155,9 @@ module Google
         include Google::Apis::Core::Logging
 
         # Don't expose these in the API directly.
-        PARAMETER_BLACKLIST = %w(alt access_token bearer_token oauth_token pp prettyPrint
-                                 $.xgafv callback upload_protocol uploadType)
+        PARAMETER_BLACKLIST = %w(alt access_token bearer_token oauth_token pp
+                                 prettyPrint $.xgafv callback upload_protocol
+                                 uploadType).freeze
 
         # Prepare the API for the templates.
         # @param [Google::Apis::DiscoveryV1::RestDescription] description
@@ -259,7 +260,7 @@ module Google
             if type._ref
               ref = @rest_description.schemas[type._ref]
               ivars = ref.instance_variables - [:@name, :@generated_name]
-              (ivars).each do |var|
+              ivars.each do |var|
                 type.instance_variable_set(var, ref.instance_variable_get(var))
               end
             end
@@ -283,9 +284,9 @@ module Google
           if @all_methods.include?(m.generated_name)
             logger.error do
               sprintf('Duplicate method %s generated, path %s',
-                m.generated_name, @names.key)
+                      m.generated_name, @names.key)
             end
-            fail 'Duplicate name generated'
+            raise 'Duplicate name generated'
           end
           @all_methods[m.generated_name] = m
         end

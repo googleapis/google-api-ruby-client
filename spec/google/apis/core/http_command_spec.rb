@@ -30,7 +30,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     context('that are refreshable') do
       let(:authorization) do
         calls = 0
-        auth =  object_double(Signet::OAuth2::Client.new)
+        auth = object_double(Signet::OAuth2::Client.new)
         allow(auth).to receive(:apply!) do |header|
           header['Authorization'] = sprintf('Bearer a_token_value_%d', calls)
           calls += 1
@@ -40,7 +40,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
       it 'should send credentials' do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
-        result = command.execute(client)
+        command.execute(client)
         expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
           .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_0' }).to have_been_made
       end
@@ -53,14 +53,14 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         end
 
         it 'should refresh if auth error received' do
-          result = command.execute(client)
+          command.execute(client)
           expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
             .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
         end
 
         it 'should ignore retry count' do
           command.options.retries = 0
-          result = command.execute(client)
+          command.execute(client)
           expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
             .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
         end
@@ -72,7 +72,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
       it 'should send credentials' do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
-        result = command.execute(client)
+        command.execute(client)
         expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
           .with { |req| expect(req.headers['Authorization']).to eql 'Bearer a_token_value' }).to have_been_made
       end
@@ -141,7 +141,6 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       it 'should raise error with HTTP status code' do
         expect(err.status_code).to eq 500
       end
-
     end
 
     context('with callbacks') do
@@ -164,7 +163,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     it 'should send user headers' do
-      result = command.execute(client)
+      command.execute(client)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Foo'] == 'bar' }).to have_been_made
     end
@@ -253,7 +252,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     it 'should not swallow errors raised in block' do
-      expect { command.execute(client) { raise "Potatoes detected in tailpipe" } }.to raise_error("Potatoes detected in tailpipe")
+      expect { command.execute(client) { raise 'Potatoes detected in tailpipe' } }.to raise_error('Potatoes detected in tailpipe')
     end
   end
 
@@ -261,7 +260,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -269,7 +268,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&foo=bar')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -284,10 +283,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
   it 'should form encode parameters when method is POST and no body present' do
     stub_request(:post, 'https://www.googleapis.com/zoo/animals')
-        .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
-        .to_return(status: [200, ''])
+      .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
+      .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.query['b'] = 'hello'
     command.query['c'] = nil
     command.query['d'] = 0

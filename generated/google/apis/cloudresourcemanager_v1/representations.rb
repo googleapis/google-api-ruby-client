@@ -21,73 +21,73 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudresourcemanagerV1
-      
+
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ResourceId
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UndeleteProjectRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -98,10 +98,10 @@ module Google
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :parent, as: 'parent', class: Google::Apis::CloudresourcemanagerV1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1::ResourceId::Representation
-      
+
         end
       end
-      
+
       class ResourceId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -109,44 +109,44 @@ module Google
           property :id, as: 'id'
         end
       end
-      
+
       class ListProjectsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1::Project, decorator: Google::Apis::CloudresourcemanagerV1::Project::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
-      
+
       class UndeleteProjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
-      
+
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
-      
+
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1::Binding, decorator: Google::Apis::CloudresourcemanagerV1::Binding::Representation
-      
+
           property :etag, :base64 => true, as: 'etag'
         end
       end
-      
+
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -154,22 +154,22 @@ module Google
           collection :members, as: 'members'
         end
       end
-      
+
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV1::Policy, decorator: Google::Apis::CloudresourcemanagerV1::Policy::Representation
-      
+
         end
       end
-      
+
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
         end
       end
-      
+
       class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

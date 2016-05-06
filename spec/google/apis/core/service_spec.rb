@@ -248,9 +248,9 @@ EOF
     context 'with fetch_all' do
       let(:responses) do
         data = {}
-        data[nil] = OpenStruct.new(next_page_token: 'p1', items: ['a', 'b', 'c'], alt_items: [1, 2 , 3])
-        data['p1'] = OpenStruct.new(next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6])
-        data['p2'] = OpenStruct.new(next_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7,8, 9])
+        data[nil] = OpenStruct.new(next_page_token: 'p1', items: %w(a b c), alt_items: [1, 2, 3])
+        data['p1'] = OpenStruct.new(next_page_token: 'p2', items: %w(d e f), alt_items: [4, 5, 6])
+        data['p2'] = OpenStruct.new(next_page_token: nil, items: %w(g h i), alt_items: [7, 8, 9])
         data
       end
 
@@ -266,11 +266,11 @@ EOF
       end
 
       it 'should allow selecting another field for items' do
-        expect(service.fetch_all(items: :alt_items) { |token| responses[token] } ).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
+        expect(service.fetch_all(items: :alt_items) { |token| responses[token] }).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
       end
 
       it 'should allow limiting the number of items to fetch' do
-        expect(service.fetch_all(max: 5) { |token| responses[token] } ).to contain_exactly('a', 'b', 'c', 'd', 'e')
+        expect(service.fetch_all(max: 5) { |token| responses[token] }).to contain_exactly('a', 'b', 'c', 'd', 'e')
       end
 
       it 'should yield the next token' do
@@ -285,12 +285,12 @@ EOF
       it 'should cache results' do
         count = 0
         items = service.fetch_all do |token|
-          count = count + 1
+          count += 1
           responses[token]
         end
 
-        items.each{ |i| puts i }
-        items.each{ |i| puts i }
+        items.each { |i| puts i }
+        items.each { |i| puts i }
 
         expect(count).to eq 3
       end
@@ -298,16 +298,15 @@ EOF
       it 'should allow disabling caching' do
         count = 0
         items = service.fetch_all(cache: false) do |token|
-          count = count + 1
+          count += 1
           responses[token]
         end
 
-        items.each{ |i| puts i }
-        items.each{ |i| puts i }
+        items.each { |i| puts i }
+        items.each { |i| puts i }
 
         expect(count).to eq 6
       end
-
     end
   end
 end

@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://cloudtrace.googleapis.com/', '')
         end
-        
+
         # Sends new traces to Cloud Trace or updates existing traces. If the ID of a
         # trace that you send matches that of an existing trace, any fields in the
         # existing trace and its spans are overwritten by the provided values, and any
@@ -83,7 +83,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
@@ -144,7 +144,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a single trace by its ID.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.

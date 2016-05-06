@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'autoscaler/v1beta2/')
         end
-        
+
         # Deletes the specified Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -93,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the specified Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -134,7 +134,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds new Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -175,7 +175,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all Autoscaler resources in this zone.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -219,7 +219,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the entire content of the Autoscaler resource. This method supports
         # patch semantics.
         # @param [String] project
@@ -264,7 +264,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the entire content of the Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -308,7 +308,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified zone-specific operation resource.
         # @param [String] project
         # @param [String] zone
@@ -344,7 +344,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         # @param [String] zone
@@ -382,7 +382,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
         # @param [String] zone
@@ -424,8 +424,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project
         # @param [String] filter
         # @param [Fixnum] max_results

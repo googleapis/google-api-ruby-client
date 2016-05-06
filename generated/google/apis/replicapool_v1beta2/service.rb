@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'replicapool/v1beta2/projects/')
         end
-        
+
         # Removes the specified instances from the managed instance group, and from any
         # target pools of which they were members, without deleting the instances.
         # @param [String] project
@@ -97,7 +97,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the instance group manager and all instances contained within. If you'
         # d like to delete the manager without deleting the instances, you must first
         # abandon the instances to remove them from the group.
@@ -140,7 +140,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified instances. The instances are deleted, then removed from
         # the instance group and any target pools of which they were a member. The
         # targetSize of the instance group manager is reduced by the number of instances
@@ -187,7 +187,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Instance Group Manager resource.
         # @param [String] project
         #   The Google Developers Console project name.
@@ -228,7 +228,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an instance group manager, as well as the instance group and the
         # specified number of instances.
         # @param [String] project
@@ -273,7 +273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of Instance Group Manager resources contained within the
         # specified zone.
         # @param [String] project
@@ -323,7 +323,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Recreates the specified instances. The instances are deleted, then recreated
         # using the instance group manager's current instance template.
         # @param [String] project
@@ -368,7 +368,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resizes the managed instance group up or down. If resized up, new instances
         # are created using the current instance template. If resized down, instances
         # are removed in the order outlined in Resizing a managed instance group.
@@ -414,7 +414,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the instance template to use when creating new instances in this group.
         # Existing instances are not affected.
         # @param [String] project
@@ -459,7 +459,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies the target pools to which all new instances in this group are
         # assigned. Existing instances in the group are not affected.
         # @param [String] project
@@ -504,7 +504,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -545,7 +545,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
         #   Name of the project scoping this request.

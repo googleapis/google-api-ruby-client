@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'androidpublisher/v2/applications/')
         end
-        
+
         # Commits/applies the changes made in this edit back to the app.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -90,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an edit for an app. Creating a new edit will automatically delete any
         # of your previous edits so this method need only be called if you want to
         # preemptively abandon an edit.
@@ -129,7 +129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns information about the edit specified. Calls will fail if the edit is
         # no long active (e.g. has been deleted, superseded or expired).
         # @param [String] package_name
@@ -169,7 +169,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new edit for an app, populated with the app's current state.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -208,7 +208,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Checks that the edit can be successfully committed. The edit's changes are not
         # applied to the live app.
         # @param [String] package_name
@@ -248,7 +248,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the APK-specific localized listing for a specified APK and language
         # code.
         # @param [String] package_name
@@ -294,7 +294,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all the APK-specific localized listings for a specified APK.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -334,7 +334,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches the APK-specific localized listing for a specified APK and language
         # code.
         # @param [String] package_name
@@ -382,7 +382,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the APK-specific localized listings for a specified APK.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -424,7 +424,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates or creates the APK-specific localized listing for a specified APK and
         # language code. This method supports patch semantics.
         # @param [String] package_name
@@ -475,7 +475,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates or creates the APK-specific localized listing for a specified APK and
         # language code.
         # @param [String] package_name
@@ -526,7 +526,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new APK without uploading the APK itself to Google Play, instead
         # hosting the APK at a specified URL. This function is only available to
         # enterprises using Google Play for Work whose application is configured to
@@ -571,8 +571,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -610,8 +610,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -659,7 +659,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches app details for this edit. This includes the default language and
         # developer support contact information.
         # @param [String] package_name
@@ -699,7 +699,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates app details for this edit. This method supports patch semantics.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -741,7 +741,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates app details for this edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -783,7 +783,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches the Expansion File configuration for the APK specified.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -828,7 +828,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the APK's Expansion File configuration to reference another APK's
         # Expansion Files. To add a new Expansion File use the Upload method. This
         # method supports patch semantics.
@@ -878,7 +878,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the APK's Expansion File configuration to reference another APK's
         # Expansion Files. To add a new Expansion File use the Upload method.
         # @param [String] package_name
@@ -927,7 +927,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads and attaches a new Expansion File to the APK specified.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -982,7 +982,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the image (specified by id) from the edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1029,7 +1029,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all images for the specified language and image type.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1075,7 +1075,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all images for the specified language and image type.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1121,7 +1121,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Uploads a new image and adds it to the list of images for the specified
         # language and image type.
         # @param [String] package_name
@@ -1178,7 +1178,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified localized store listing from an edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1219,7 +1219,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes all localized listings from an edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1256,7 +1256,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches information about a localized store listing.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1299,7 +1299,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns all of the localized store listings attached to this edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1338,7 +1338,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a localized store listing. This method supports patch
         # semantics.
         # @param [String] package_name
@@ -1385,7 +1385,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a localized store listing.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1431,8 +1431,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1472,8 +1472,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1516,8 +1516,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1560,7 +1560,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Fetches the track configuration for the specified track type. Includes the APK
         # version codes that are in this track.
         # @param [String] package_name
@@ -1603,7 +1603,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the track configurations for this edit.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
@@ -1642,7 +1642,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the track configuration for the specified track type. When halted, the
         # rollout track cannot be updated without adding new APKs, and adding new APKs
         # will cause it to resume. This method supports patch semantics.
@@ -1689,7 +1689,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the track configuration for the specified track type. When halted, the
         # rollout track cannot be updated without adding new APKs, and adding new APKs
         # will cause it to resume.
@@ -1736,7 +1736,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the user's current inapp item or subscription entitlements
         # @param [String] package_name
         #   The package name of the application the inapp product was sold in (for example,
@@ -1782,8 +1782,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest] in_app_products_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1817,7 +1817,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an in-app product for an app.
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "
@@ -1854,7 +1854,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns information about the in-app product specified.
         # @param [String] package_name
         # @param [String] sku
@@ -1891,7 +1891,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new in-app product for an app.
         # @param [String] package_name
         #   Unique identifier for the Android app; for example, "com.spiffygame".
@@ -1934,7 +1934,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all the in-app products for an Android app, both subscriptions and
         # managed in-app products..
         # @param [String] package_name
@@ -1977,7 +1977,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the details of an in-app product. This method supports patch semantics.
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "
@@ -2024,7 +2024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the details of an in-app product.
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "
@@ -2071,7 +2071,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Checks the purchase and consumption status of an inapp item.
         # @param [String] package_name
         #   The package name of the application the inapp product was sold in (for example,
@@ -2113,7 +2113,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a user's subscription purchase. The subscription remains valid until
         # its expiration time.
         # @param [String] package_name
@@ -2154,7 +2154,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Defers a user's subscription purchase until a specified future expiration time.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
@@ -2199,7 +2199,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Checks whether a user's subscription purchase is valid and returns its expiry
         # time.
         # @param [String] package_name
@@ -2242,7 +2242,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Refunds a user's subscription purchase, but the subscription remains valid
         # until its expiration time and it will continue to recur.
         # @param [String] package_name
@@ -2283,7 +2283,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Refunds and immediately revokes a user's subscription purchase. Access to the
         # subscription will be terminated immediately and it will stop recurring.
         # @param [String] package_name

@@ -25,7 +25,7 @@ module Google
     module Core
       # Extension of Hurley's UploadIO to add length accessor
       class UploadIO < Hurley::UploadIO
-        OCTET_STREAM_CONTENT_TYPE = 'application/octet-stream'
+        OCTET_STREAM_CONTENT_TYPE = 'application/octet-stream'.freeze
 
         # Get the length of the stream
         # @return [Fixnum]
@@ -61,9 +61,9 @@ module Google
       # Base upload command. Not intended to be used directly
       # @private
       class BaseUploadCommand < ApiCommand
-        UPLOAD_PROTOCOL_HEADER = 'X-Goog-Upload-Protocol'
-        UPLOAD_CONTENT_TYPE_HEADER = 'X-Goog-Upload-Header-Content-Type'
-        UPLOAD_CONTENT_LENGTH = 'X-Goog-Upload-Header-Content-Length'
+        UPLOAD_PROTOCOL_HEADER = 'X-Goog-Upload-Protocol'.freeze
+        UPLOAD_CONTENT_TYPE_HEADER = 'X-Goog-Upload-Header-Content-Type'.freeze
+        UPLOAD_CONTENT_LENGTH = 'X-Goog-Upload-Header-Content-Length'.freeze
 
         # File name or IO containing the content to upload
         # @return [String, File, #read]
@@ -90,7 +90,7 @@ module Google
             self.upload_io = UploadIO.from_file(upload_source, content_type: upload_content_type)
             @close_io_on_finish = true
           else
-            fail Google::Apis::ClientError, 'Invalid upload source'
+            raise Google::Apis::ClientError, 'Invalid upload source'
           end
         end
 
@@ -108,7 +108,7 @@ module Google
 
       # Implementation of the raw upload protocol
       class RawUploadCommand < BaseUploadCommand
-        RAW_PROTOCOL = 'raw'
+        RAW_PROTOCOL = 'raw'.freeze
 
         # Ensure the content is readable and wrapped in an {{Google::Apis::Core::UploadIO}} instance.
         #
@@ -124,9 +124,9 @@ module Google
 
       # Implementation of the multipart upload protocol
       class MultipartUploadCommand < BaseUploadCommand
-        UPLOAD_BOUNDARY = 'RubyApiClientUpload'
-        MULTIPART_PROTOCOL = 'multipart'
-        MULTIPART_RELATED = 'multipart/related'
+        UPLOAD_BOUNDARY = 'RubyApiClientUpload'.freeze
+        MULTIPART_PROTOCOL = 'multipart'.freeze
+        MULTIPART_RELATED = 'multipart/related'.freeze
 
         # Encode the multipart request
         #
@@ -145,18 +145,18 @@ module Google
 
       # Implementation of the resumable upload protocol
       class ResumableUploadCommand < BaseUploadCommand
-        UPLOAD_COMMAND_HEADER = 'X-Goog-Upload-Command'
-        UPLOAD_OFFSET_HEADER = 'X-Goog-Upload-Offset'
-        BYTES_RECEIVED_HEADER = 'X-Goog-Upload-Size-Received'
-        UPLOAD_URL_HEADER = 'X-Goog-Upload-URL'
-        UPLOAD_STATUS_HEADER = 'X-Goog-Upload-Status'
-        STATUS_ACTIVE = 'active'
-        STATUS_FINAL = 'final'
-        STATUS_CANCELLED = 'cancelled'
-        RESUMABLE = 'resumable'
-        START_COMMAND = 'start'
-        QUERY_COMMAND = 'query'
-        UPLOAD_COMMAND = 'upload, finalize'
+        UPLOAD_COMMAND_HEADER = 'X-Goog-Upload-Command'.freeze
+        UPLOAD_OFFSET_HEADER = 'X-Goog-Upload-Offset'.freeze
+        BYTES_RECEIVED_HEADER = 'X-Goog-Upload-Size-Received'.freeze
+        UPLOAD_URL_HEADER = 'X-Goog-Upload-URL'.freeze
+        UPLOAD_STATUS_HEADER = 'X-Goog-Upload-Status'.freeze
+        STATUS_ACTIVE = 'active'.freeze
+        STATUS_FINAL = 'final'.freeze
+        STATUS_CANCELLED = 'cancelled'.freeze
+        RESUMABLE = 'resumable'.freeze
+        START_COMMAND = 'start'.freeze
+        QUERY_COMMAND = 'query'.freeze
+        UPLOAD_COMMAND = 'upload, finalize'.freeze
 
         # Reset upload to initial state.
         #
@@ -193,7 +193,7 @@ module Google
             @state = :final
           elsif upload_status == STATUS_CANCELLED
             @state = :cancelled
-            fail Google::Apis::ClientError, body
+            raise Google::Apis::ClientError, body
           end
           super(status, header, body)
         end

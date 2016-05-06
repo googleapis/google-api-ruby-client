@@ -29,8 +29,6 @@ module Google
       attr_writer :logger
     end
 
-    private
-
     # Create and configure a logger
     # @return [Logger]
     def self.default_logger
@@ -46,12 +44,9 @@ module Google
     # @return [Logger]
     def self.rails_logger
       if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
-          defined?(::Rails) &&
-          ::Rails.respond_to?(:logger) &&
-          !::Rails.logger.nil?
+         defined?(::Rails) && ::Rails.respond_to?(:logger) &&
+         !::Rails.logger.nil?
         ::Rails.logger
-      else
-        nil
       end
     end
   end

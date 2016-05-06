@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://cloudbuild.googleapis.com/', '')
         end
-        
+
         # Returns information about a previously requested build.
         # The Build that is returned includes its status (e.g., success or failure,
         # or in-progress), and timing information.
@@ -80,7 +80,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts a build with the specified configuration.
         # The long-running Operation returned by this method will include the ID of
         # the build, which can be passed to GetBuild to determine its status (e.g.,
@@ -116,7 +116,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists previously requested builds.
         # Previously requested builds may still be in-progress, or may have finished
         # successfully or unsuccessfully.
@@ -154,7 +154,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a requested build in progress.
         # @param [String] project_id
         #   ID of the project.
@@ -190,7 +190,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -222,7 +222,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding below allows API services to override the binding

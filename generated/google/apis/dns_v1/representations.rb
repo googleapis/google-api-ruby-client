@@ -21,79 +21,79 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DnsV1
-      
+
       class Change
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ManagedZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListManagedZonesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ResourceRecordSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListResourceRecordSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Change
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additions, as: 'additions', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSet::Representation
-      
+
           collection :deletions, as: 'deletions', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSet::Representation
-      
+
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
         end
       end
-      
+
       class ListChangesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :changes, as: 'changes', class: Google::Apis::DnsV1::Change, decorator: Google::Apis::DnsV1::Change::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class ManagedZone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -107,17 +107,17 @@ module Google
           collection :name_servers, as: 'nameServers'
         end
       end
-      
+
       class ListManagedZonesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :managed_zones, as: 'managedZones', class: Google::Apis::DnsV1::ManagedZone, decorator: Google::Apis::DnsV1::ManagedZone::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -125,10 +125,10 @@ module Google
           property :kind, as: 'kind'
           property :number, as: 'number'
           property :quota, as: 'quota', class: Google::Apis::DnsV1::Quota, decorator: Google::Apis::DnsV1::Quota::Representation
-      
+
         end
       end
-      
+
       class Quota
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -141,7 +141,7 @@ module Google
           property :total_rrdata_size_per_change, as: 'totalRrdataSizePerChange'
         end
       end
-      
+
       class ResourceRecordSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -152,14 +152,14 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class ListResourceRecordSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :rrsets, as: 'rrsets', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSet::Representation
-      
+
         end
       end
     end

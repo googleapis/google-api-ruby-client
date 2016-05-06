@@ -47,7 +47,7 @@ module Google
         def initialize
           super('https://genomics.googleapis.com/', '')
         end
-        
+
         # Creates a new annotation set. Caller must have WRITE permission for the
         # associated dataset. The following fields are required: * datasetId *
         # referenceSetId All other fields may be optionally specified, unless documented
@@ -80,7 +80,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation set. Caller must have READ permission for the associated
         # dataset.
         # @param [String] annotation_set_id
@@ -111,7 +111,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation set. The update must respect all mutability restrictions
         # and other invariants described on the annotation set resource. Caller must
         # have WRITE permission for the associated dataset.
@@ -150,7 +150,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation set. Caller must have WRITE permission for the
         # associated annotation set.
         # @param [String] annotation_set_id
@@ -181,7 +181,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotation sets that match the given criteria. Annotation sets
         # are returned in an unspecified order. This order is consistent, such that two
         # queries for the same content (regardless of page size) yield annotation sets
@@ -215,7 +215,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new annotation. Caller must have WRITE permission for the associated
         # annotation set. The following fields are required: * annotationSetId *
         # referenceName or referenceId ### Transcripts For annotations of type
@@ -252,7 +252,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates one or more new annotations atomically. All annotations must belong to
         # the same annotation set. Caller must have WRITE permission for this annotation
         # set. For optimal performance, batch positionally adjacent annotations together.
@@ -290,7 +290,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets an annotation. Caller must have READ permission for the associated
         # annotation set.
         # @param [String] annotation_id
@@ -321,7 +321,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an annotation. Caller must have WRITE permission for the associated
         # dataset.
         # @param [String] annotation_id
@@ -360,7 +360,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation. Caller must have WRITE permission for the associated
         # annotation set.
         # @param [String] annotation_id
@@ -391,7 +391,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for annotations that match the given criteria. Results are ordered by
         # genomic coordinate (by reference sequence, then position). Annotations with
         # equivalent genomic coordinates are returned in an unspecified order. This
@@ -427,7 +427,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists datasets within a project. For the definitions of datasets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics)
@@ -468,7 +468,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new dataset. For the definitions of datasets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -500,7 +500,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a dataset by ID. For the definitions of datasets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -532,7 +532,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a dataset. For the definitions of datasets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics) This method supports patch semantics.
@@ -572,7 +572,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a dataset and all of its contents (all read group sets, reference sets,
         # variant sets, call sets, annotation sets, etc.) This is reversible (up to one
         # week after the deletion) via the datasets.undelete operation. For the
@@ -607,7 +607,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undeletes a dataset by restoring a dataset which was deleted via this API. For
         # the definitions of datasets and other genomics resources, see [Fundamentals of
         # Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
@@ -644,7 +644,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the access control policy on the specified dataset. Replaces any existing
         # policy. For the definitions of datasets and other genomics resources, see [
         # Fundamentals of Google Genomics](https://cloud.google.com/genomics/
@@ -681,7 +681,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the access control policy for the dataset. This is empty if the policy or
         # resource does not exist. See Getting a Policy for more information. For the
         # definitions of datasets and other genomics resources, see [Fundamentals of
@@ -719,7 +719,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified resource. See Testing
         # Permissions for more information. For the definitions of datasets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
@@ -756,7 +756,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -787,7 +787,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request.
         # @param [String] name
         #   The name of the operation collection.
@@ -832,7 +832,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. Clients
         # may use Operations.GetOperation or Operations.ListOperations to check whether
@@ -868,7 +868,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates read group sets by asynchronously importing the provided information.
         # For the definitions of read group sets and other genomics resources, see [
         # Fundamentals of Google Genomics](https://cloud.google.com/genomics/
@@ -908,7 +908,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports a read group set to a BAM file in Google Cloud Storage. For the
         # definitions of read group sets and other genomics resources, see [Fundamentals
         # of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
@@ -948,7 +948,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for read group sets matching the criteria. For the definitions of
         # read group sets and other genomics resources, see [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -982,7 +982,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a read group set. For the definitions of read group sets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics) This method supports patch
@@ -1024,7 +1024,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a read group set. For the definitions of read group sets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics)
@@ -1057,7 +1057,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a read group set by ID. For the definitions of read group sets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics)
@@ -1089,7 +1089,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists fixed width coverage buckets for a read group set, each of which
         # correspond to a range of a reference sequence. Each bucket summarizes coverage
         # information across its corresponding genomic range. For the definitions of
@@ -1157,7 +1157,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of reads for one or more read group sets. For the definitions of
         # read group sets and other genomics resources, see [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -1202,7 +1202,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a stream of all the reads matching the search request, ordered by
         # reference name, position, and ID.
         # @param [Google::Apis::GenomicsV1::StreamReadsRequest] stream_reads_request_object
@@ -1233,7 +1233,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for reference sets which match the given criteria. For the
         # definitions of references and other genomics resources, see [Fundamentals of
         # Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
@@ -1268,7 +1268,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference set. For the definitions of references and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics) Implements [GlobalAllianceApi.
@@ -1302,7 +1302,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Searches for references which match the given criteria. For the definitions of
         # references and other genomics resources, see [Fundamentals of Google Genomics](
         # https://cloud.google.com/genomics/fundamentals-of-google-genomics) Implements [
@@ -1336,7 +1336,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a reference. For the definitions of references and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics) Implements [GlobalAllianceApi.
@@ -1370,7 +1370,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the bases in a reference, optionally restricted to a range. For the
         # definitions of references and other genomics resources, see [Fundamentals of
         # Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
@@ -1421,7 +1421,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates variant data by asynchronously importing the provided information. For
         # the definitions of variant sets and other genomics resources, see [
         # Fundamentals of Google Genomics](https://cloud.google.com/genomics/
@@ -1462,7 +1462,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of variants matching the criteria. For the definitions of variants
         # and other genomics resources, see [Fundamentals of Google Genomics](https://
         # cloud.google.com/genomics/fundamentals-of-google-genomics) Implements [
@@ -1496,7 +1496,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant. For the definitions of variants and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -1528,7 +1528,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant. For the definitions of variants and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics) This method supports patch semantics.
@@ -1569,7 +1569,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a variant. For the definitions of variants and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -1601,7 +1601,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant by ID. For the definitions of variants and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -1633,7 +1633,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Merges the given variants with existing variants. For the definitions of
         # variants and other genomics resources, see [Fundamentals of Google Genomics](
         # https://cloud.google.com/genomics/fundamentals-of-google-genomics) Each
@@ -1688,7 +1688,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a stream of all the variants matching the search request, ordered by
         # reference name, position, and ID.
         # @param [Google::Apis::GenomicsV1::StreamVariantsRequest] stream_variants_request_object
@@ -1719,7 +1719,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new variant set. For the definitions of variant sets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics) The provided variant set must
@@ -1753,7 +1753,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Exports variant set data to an external destination. For the definitions of
         # variant sets and other genomics resources, see [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -1789,7 +1789,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a variant set by ID. For the definitions of variant sets and other
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics)
@@ -1821,7 +1821,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of all variant sets matching search criteria. For the
         # definitions of variant sets and other genomics resources, see [Fundamentals of
         # Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
@@ -1855,7 +1855,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a variant set including all variants, call sets, and calls within.
         # This is not reversible. For the definitions of variant sets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
@@ -1888,7 +1888,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a variant set using patch semantics. For the definitions of variant
         # sets and other genomics resources, see [Fundamentals of Google Genomics](https:
         # //cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -1928,7 +1928,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of call sets matching the criteria. For the definitions of call
         # sets and other genomics resources, see [Fundamentals of Google Genomics](https:
         # //cloud.google.com/genomics/fundamentals-of-google-genomics) Implements [
@@ -1962,7 +1962,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a new call set. For the definitions of call sets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -1994,7 +1994,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a call set. For the definitions of call sets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics) This method supports patch semantics.
@@ -2034,7 +2034,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a call set. For the definitions of call sets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)
@@ -2066,7 +2066,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a call set by ID. For the definitions of call sets and other genomics
         # resources, see [Fundamentals of Google Genomics](https://cloud.google.com/
         # genomics/fundamentals-of-google-genomics)

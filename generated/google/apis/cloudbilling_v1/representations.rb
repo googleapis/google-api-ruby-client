@@ -21,31 +21,31 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbillingV1
-      
+
       class BillingAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListBillingAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListProjectBillingInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ProjectBillingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class BillingAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -54,25 +54,25 @@ module Google
           property :display_name, as: 'displayName'
         end
       end
-      
+
       class ListBillingAccountsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :billing_accounts, as: 'billingAccounts', class: Google::Apis::CloudbillingV1::BillingAccount, decorator: Google::Apis::CloudbillingV1::BillingAccount::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class ListProjectBillingInfoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :project_billing_info, as: 'projectBillingInfo', class: Google::Apis::CloudbillingV1::ProjectBillingInfo, decorator: Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class ProjectBillingInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

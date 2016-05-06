@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'youtube/analytics/v1/')
         end
-        
+
         # Retrieves a list of available batch report definitions.
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of processed batch reports.
         # @param [String] batch_report_definition_id
         #   The batchReportDefinitionId parameter specifies the ID of the batch reportort
@@ -127,7 +127,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes an item from a group.
         # @param [String] id
         #   The id parameter specifies the YouTube group item ID for the group that is
@@ -172,7 +172,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a group item.
         # @param [Google::Apis::YoutubeAnalyticsV1::GroupItem] group_item_object
         # @param [String] on_behalf_of_content_owner
@@ -218,7 +218,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of group items that match the API request parameters.
         # @param [String] group_id
         #   The id parameter specifies the unique ID of the group for which you want to
@@ -265,7 +265,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a group.
         # @param [String] id
         #   The id parameter specifies the YouTube group ID for the group that is being
@@ -310,7 +310,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a group.
         # @param [Google::Apis::YoutubeAnalyticsV1::Group] group_object
         # @param [String] on_behalf_of_content_owner
@@ -356,7 +356,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a collection of groups that match the API request parameters. For
         # example, you can retrieve all groups that the authenticated user owns, or you
         # can retrieve one or more groups by their unique IDs.
@@ -415,7 +415,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Modifies a group. For example, you could change a group's title.
         # @param [Google::Apis::YoutubeAnalyticsV1::Group] group_object
         # @param [String] on_behalf_of_content_owner
@@ -461,7 +461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve your YouTube Analytics reports.
         # @param [String] ids
         #   Identifies the YouTube channel or content owner for which you are retrieving

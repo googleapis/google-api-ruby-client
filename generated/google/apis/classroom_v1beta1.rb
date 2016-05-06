@@ -22,7 +22,7 @@ module Google
     #
     # Google Classroom API
     #
-    # @see 
+    # @see
     module ClassroomV1beta1
       VERSION = 'V1beta1'
       REVISION = '20150628'

@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://storagetransfer.googleapis.com/', '')
         end
-        
+
         # Returns the Google service account that is used by Storage Transfer Service to
         # access buckets in the project where transfers run or in other projects. Each
         # Google service account is associated with one Google Developers Console
@@ -83,7 +83,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the Google service account that is used by Storage Transfer Service to
         # access buckets in the project where transfers run or in other projects. Each
         # Google service account is associated with one Google Developers Console
@@ -120,7 +120,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a transfer job that runs periodically.
         # @param [Google::Apis::StoragetransferV1::TransferJob] transfer_job_object
         # @param [String] fields
@@ -150,7 +150,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a transfer job. Updating a job's transfer spec does not affect
         # transfer operations that are running already. Updating the scheduling of a job
         # is not allowed.
@@ -185,7 +185,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a transfer job.
         # @param [String] job_name
         #   The job to get. Required.
@@ -218,7 +218,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists transfer jobs.
         # @param [String] filter
         #   A list of query parameters specified as JSON text in the form of `"`project_id`
@@ -260,7 +260,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Pauses a transfer operation.
         # @param [String] name
         #   The name of the transfer operation. Required.
@@ -293,7 +293,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Resumes a transfer operation that is paused.
         # @param [String] name
         #   The name of the transfer operation. Required.
@@ -326,7 +326,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -357,7 +357,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
         # binding below allows API services to override the binding to use different
@@ -399,7 +399,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Cancels a transfer. Use the get method to check whether the cancellation
         # succeeded or whether the operation completed despite cancellation.
         # @param [String] name
@@ -430,7 +430,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # This method is not supported and the server returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.

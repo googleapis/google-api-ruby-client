@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://logging.googleapis.com/', '')
         end
-        
+
         # Deletes a log and all its log entries. The log will reappear if it receives
         # new entries.
         # @param [String] log_name
@@ -77,7 +77,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists sinks.
         # @param [String] project_name
         #   Required. The resource name of the project containing the sinks. Example: `"
@@ -120,7 +120,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a sink.
         # @param [String] sink_name
         #   The resource name of the sink to return. Example: `"projects/my-project-id/
@@ -151,7 +151,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a sink.
         # @param [String] project_name
         #   The resource name of the project in which to create the sink. Example: `"
@@ -185,7 +185,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a sink.
         # @param [String] sink_name
         #   The resource name of the sink to update. Example: `"projects/my-project-id/
@@ -221,7 +221,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a sink.
         # @param [String] sink_name
         #   The resource name of the sink to delete. Example: `"projects/my-project-id/
@@ -252,7 +252,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists logs-based metrics.
         # @param [String] project_name
         #   Required. The resource name of the project containing the metrics. Example: `"
@@ -295,7 +295,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the desired metric. Example: `"projects/my-project-id/
@@ -326,7 +326,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a logs-based metric.
         # @param [String] project_name
         #   The resource name of the project in which to create the metric. Example: `"
@@ -360,7 +360,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the metric to update. Example: `"projects/my-project-id/
@@ -396,7 +396,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a logs-based metric.
         # @param [String] metric_name
         #   The resource name of the metric to delete. Example: `"projects/my-project-id/
@@ -427,7 +427,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Writes log entries to Cloud Logging. All log entries in Cloud Logging are
         # written by this method.
         # @param [Google::Apis::LoggingV2beta1::WriteLogEntriesRequest] write_log_entries_request_object
@@ -458,7 +458,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists log entries. Use this method to retrieve log entries from Cloud Logging.
         # For ways to export log entries, see [Exporting Logs](/logging/docs/export).
         # @param [Google::Apis::LoggingV2beta1::ListLogEntriesRequest] list_log_entries_request_object
@@ -489,7 +489,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists monitored resource descriptors that are used by Cloud Logging.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. You must

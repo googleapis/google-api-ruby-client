@@ -22,10 +22,14 @@ RSpec.describe Google::Apis::Core::BatchCommand do
   include_context 'HTTP client'
 
   let(:command) do
-    command = Google::Apis::Core::BatchCommand.new(:post, 'https://www.googleapis.com/batch')
+    Google::Apis::Core::BatchCommand
+      .new(:post, 'https://www.googleapis.com/batch')
   end
 
-  let(:get_command) { Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/1') }
+  let(:get_command) do
+    Google::Apis::Core::HttpCommand
+      .new(:get, 'https://www.googleapis.com/zoo/animals/1')
+  end
 
   let(:post_with_string_command) do
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals/2')
@@ -133,7 +137,7 @@ EOF
         b.to_proc.call(3, res, err)
       end
       command.execute(client)
-    end.to yield_successive_args([1, 'Hello', nil], [3, nil, an_instance_of(Google::Apis::ServerError)], [2, 'world', nil],)
+    end.to yield_successive_args([1, 'Hello', nil], [3, nil, an_instance_of(Google::Apis::ServerError)], [2, 'world', nil])
   end
 
   it 'should raise error if batch is empty' do

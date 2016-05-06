@@ -21,60 +21,60 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdexchangebuyerV1_4
-      
+
       # Configuration data for an Ad Exchange buyer account.
       class Account
         include Google::Apis::Core::Hashable
-      
+
         # Your bidder locations that have distinct URLs.
         # Corresponds to the JSON property `bidderLocation`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Account::BidderLocation>]
         attr_accessor :bidder_location
-      
+
         # The nid parameter value used in cookie match requests. Please contact your
         # technical account manager if you need to change this.
         # Corresponds to the JSON property `cookieMatchingNid`
         # @return [String]
         attr_accessor :cookie_matching_nid
-      
+
         # The base URL used in cookie match requests.
         # Corresponds to the JSON property `cookieMatchingUrl`
         # @return [String]
         attr_accessor :cookie_matching_url
-      
+
         # Account id.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The maximum number of active creatives that an account can have, where a
         # creative is active if it was inserted or bid with in the last 30 days. Please
         # contact your technical account manager if you need to change this.
         # Corresponds to the JSON property `maximumActiveCreatives`
         # @return [Fixnum]
         attr_accessor :maximum_active_creatives
-      
+
         # The sum of all bidderLocation.maximumQps values cannot exceed this. Please
         # contact your technical account manager if you need to change this.
         # Corresponds to the JSON property `maximumTotalQps`
         # @return [Fixnum]
         attr_accessor :maximum_total_qps
-      
+
         # The number of creatives that this account inserted or bid with in the last 30
         # days.
         # Corresponds to the JSON property `numberActiveCreatives`
         # @return [Fixnum]
         attr_accessor :number_active_creatives
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @bidder_location = args[:bidder_location] if args.key?(:bidder_location)
@@ -86,11 +86,11 @@ module Google
           @maximum_total_qps = args[:maximum_total_qps] if args.key?(:maximum_total_qps)
           @number_active_creatives = args[:number_active_creatives] if args.key?(:number_active_creatives)
         end
-        
-        # 
+
+        #
         class BidderLocation
           include Google::Apis::Core::Hashable
-        
+
           # The protocol that the bidder endpoint is using. By default, OpenRTB protocols
           # use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses
           # protobuf encoding over the latest OpenRTB protocol version, which is 2.3 right
@@ -102,12 +102,12 @@ module Google
           # Corresponds to the JSON property `bidProtocol`
           # @return [String]
           attr_accessor :bid_protocol
-        
+
           # The maximum queries per second the Ad Exchange will send.
           # Corresponds to the JSON property `maximumQps`
           # @return [Fixnum]
           attr_accessor :maximum_qps
-        
+
           # The geographical region the Ad Exchange should send requests from. Only used
           # by some quota systems, but always setting the value is recommended. Allowed
           # values:
@@ -118,16 +118,16 @@ module Google
           # Corresponds to the JSON property `region`
           # @return [String]
           attr_accessor :region
-        
+
           # The URL to which the Ad Exchange will send bid requests.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @bid_protocol = args[:bid_protocol] if args.key?(:bid_protocol)
@@ -137,56 +137,56 @@ module Google
           end
         end
       end
-      
+
       # An account feed lists Ad Exchange buyer accounts that the user has access to.
       # Each entry in the feed corresponds to a single buyer account.
       class AccountsList
         include Google::Apis::Core::Hashable
-      
+
         # A list of accounts.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Account>]
         attr_accessor :items
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
-      
-      # 
+
+      #
       class AddOrderDealsRequest
         include Google::Apis::Core::Hashable
-      
+
         # The list of deals to add
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         # The last known proposal revision number.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         # Indicates an optional action to take on the proposal
         # Corresponds to the JSON property `updateAction`
         # @return [String]
         attr_accessor :update_action
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
@@ -194,100 +194,100 @@ module Google
           @update_action = args[:update_action] if args.key?(:update_action)
         end
       end
-      
-      # 
+
+      #
       class AddOrderDealsResponse
         include Google::Apis::Core::Hashable
-      
+
         # List of deals added (in the same proposal as passed in the request)
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         # The updated revision number for the proposal.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
           @proposal_revision_number = args[:proposal_revision_number] if args.key?(:proposal_revision_number)
         end
       end
-      
-      # 
+
+      #
       class AddOrderNotesRequest
         include Google::Apis::Core::Hashable
-      
+
         # The list of notes to add.
         # Corresponds to the JSON property `notes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceNote>]
         attr_accessor :notes
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @notes = args[:notes] if args.key?(:notes)
         end
       end
-      
-      # 
+
+      #
       class AddOrderNotesResponse
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `notes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceNote>]
         attr_accessor :notes
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @notes = args[:notes] if args.key?(:notes)
         end
       end
-      
+
       # The configuration data for an Ad Exchange billing info.
       class BillingInfo
         include Google::Apis::Core::Hashable
-      
+
         # Account id.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
-      
+
         # Account name.
         # Corresponds to the JSON property `accountName`
         # @return [String]
         attr_accessor :account_name
-      
+
         # A list of adgroup IDs associated with this particular account. These IDs may
         # show up as part of a realtime bidding BidRequest, which indicates a bid
         # request for this account.
         # Corresponds to the JSON property `billingId`
         # @return [Array<String>]
         attr_accessor :billing_id
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
@@ -296,73 +296,73 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
         end
       end
-      
+
       # A billing info feed lists Billing Info the Ad Exchange buyer account has
       # access to. Each entry in the feed corresponds to a single billing info.
       class BillingInfoList
         include Google::Apis::Core::Hashable
-      
+
         # A list of billing info relevant for your account.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::BillingInfo>]
         attr_accessor :items
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
-      
+
       # The configuration data for Ad Exchange RTB - Budget API.
       class Budget
         include Google::Apis::Core::Hashable
-      
+
         # The id of the account. This is required for get and update requests.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
-      
+
         # The billing id to determine which adgroup to provide budget information for.
         # This is required for get and update requests.
         # Corresponds to the JSON property `billingId`
         # @return [String]
         attr_accessor :billing_id
-      
+
         # The daily budget amount in unit amount of the account currency to apply for
         # the billingId provided. This is required for update requests.
         # Corresponds to the JSON property `budgetAmount`
         # @return [String]
         attr_accessor :budget_amount
-      
+
         # The currency code for the buyer. This cannot be altered here.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
-      
+
         # The unique id that describes this item.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
+
         # The kind of the resource, i.e. "adexchangebuyer#budget".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
@@ -373,154 +373,154 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
         end
       end
-      
-      # 
+
+      #
       class Buyer
         include Google::Apis::Core::Hashable
-      
+
         # Adx account id of the buyer.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
         end
       end
-      
-      # 
+
+      #
       class ContactInformation
         include Google::Apis::Core::Hashable
-      
+
         # Email address of the contact.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
-      
+
         # The name of the contact.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
-      # 
+
+      #
       class CreateOrdersRequest
         include Google::Apis::Core::Hashable
-      
+
         # The list of proposals to create.
         # Corresponds to the JSON property `proposals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Proposal>]
         attr_accessor :proposals
-      
-        # 
+
+        #
         # Corresponds to the JSON property `webPropertyCode`
         # @return [String]
         attr_accessor :web_property_code
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @proposals = args[:proposals] if args.key?(:proposals)
           @web_property_code = args[:web_property_code] if args.key?(:web_property_code)
         end
       end
-      
-      # 
+
+      #
       class CreateOrdersResponse
         include Google::Apis::Core::Hashable
-      
+
         # The list of proposals successfully created.
         # Corresponds to the JSON property `proposals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Proposal>]
         attr_accessor :proposals
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @proposals = args[:proposals] if args.key?(:proposals)
         end
       end
-      
+
       # A creative and its classification data.
       class Creative
         include Google::Apis::Core::Hashable
-      
+
         # The HTML snippet that displays the ad when inserted in the web page. If set,
         # videoURL should not be set.
         # Corresponds to the JSON property `HTMLSnippet`
         # @return [String]
         attr_accessor :html_snippet
-      
+
         # Account id.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
-      
+
         # Detected advertiser id, if any. Read-only. This field should not be set in
         # requests.
         # Corresponds to the JSON property `advertiserId`
         # @return [Array<String>]
         attr_accessor :advertiser_id
-      
+
         # The name of the company being advertised in the creative.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
         attr_accessor :advertiser_name
-      
+
         # The agency id for this creative.
         # Corresponds to the JSON property `agencyId`
         # @return [String]
         attr_accessor :agency_id
-      
+
         # The last upload timestamp of this creative if it was uploaded via API. Read-
         # only. The value of this field is generated, and will be ignored for uploads. (
         # formatted RFC 3339 timestamp).
         # Corresponds to the JSON property `apiUploadTimestamp`
         # @return [DateTime]
         attr_accessor :api_upload_timestamp
-      
+
         # All attributes for the ads that may be shown from this snippet.
         # Corresponds to the JSON property `attribute`
         # @return [Array<Fixnum>]
         attr_accessor :attribute
-      
+
         # A buyer-specific id identifying the creative in this ad.
         # Corresponds to the JSON property `buyerCreativeId`
         # @return [String]
         attr_accessor :buyer_creative_id
-      
+
         # The set of destination urls for the snippet.
         # Corresponds to the JSON property `clickThroughUrl`
         # @return [Array<String>]
         attr_accessor :click_through_url
-      
+
         # Shows any corrections that were applied to this creative. Read-only. This
         # field should not be set in requests.
         # Corresponds to the JSON property `corrections`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::Correction>]
         attr_accessor :corrections
-      
+
         # Top-level deals status. Read-only. This field should not be set in requests.
         # If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL) in
         # servingRestrictions will also exist. Note that this may be nuanced with other
@@ -529,33 +529,33 @@ module Google
         # Corresponds to the JSON property `dealsStatus`
         # @return [String]
         attr_accessor :deals_status
-      
+
         # The filtering reasons for the creative. Read-only. This field should not be
         # set in requests.
         # Corresponds to the JSON property `filteringReasons`
         # @return [Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons]
         attr_accessor :filtering_reasons
-      
+
         # Ad height.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
-      
+
         # The set of urls to be called to record an impression.
         # Corresponds to the JSON property `impressionTrackingUrl`
         # @return [Array<String>]
         attr_accessor :impression_tracking_url
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # If nativeAd is set, HTMLSnippet and videoURL should not be set.
         # Corresponds to the JSON property `nativeAd`
         # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd]
         attr_accessor :native_ad
-      
+
         # Top-level open auction status. Read-only. This field should not be set in
         # requests. If disapproved, an entry for auctionType=OPEN_AUCTION (or ALL) in
         # servingRestrictions will also exist. Note that this may be nuanced with other
@@ -564,24 +564,24 @@ module Google
         # Corresponds to the JSON property `openAuctionStatus`
         # @return [String]
         attr_accessor :open_auction_status
-      
+
         # Detected product categories, if any. Read-only. This field should not be set
         # in requests.
         # Corresponds to the JSON property `productCategories`
         # @return [Array<Fixnum>]
         attr_accessor :product_categories
-      
+
         # All restricted categories for the ads that may be shown from this snippet.
         # Corresponds to the JSON property `restrictedCategories`
         # @return [Array<Fixnum>]
         attr_accessor :restricted_categories
-      
+
         # Detected sensitive categories, if any. Read-only. This field should not be set
         # in requests.
         # Corresponds to the JSON property `sensitiveCategories`
         # @return [Array<Fixnum>]
         attr_accessor :sensitive_categories
-      
+
         # The granular status of this ad in specific contexts. A context here relates to
         # where something ultimately serves (for example, a physical location, a
         # platform, an HTTPS vs HTTP request, or the type of auction). Read-only. This
@@ -589,32 +589,32 @@ module Google
         # Corresponds to the JSON property `servingRestrictions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::ServingRestriction>]
         attr_accessor :serving_restrictions
-      
+
         # All vendor types for the ads that may be shown from this snippet.
         # Corresponds to the JSON property `vendorType`
         # @return [Array<Fixnum>]
         attr_accessor :vendor_type
-      
+
         # The version for this creative. Read-only. This field should not be set in
         # requests.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
-      
+
         # The url to fetch a video ad. If set, HTMLSnippet should not be set.
         # Corresponds to the JSON property `videoURL`
         # @return [String]
         attr_accessor :video_url
-      
+
         # Ad width.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @html_snippet = args[:html_snippet] if args.key?(:html_snippet)
@@ -643,78 +643,78 @@ module Google
           @video_url = args[:video_url] if args.key?(:video_url)
           @width = args[:width] if args.key?(:width)
         end
-        
-        # 
+
+        #
         class Correction
           include Google::Apis::Core::Hashable
-        
+
           # Additional details about the correction.
           # Corresponds to the JSON property `details`
           # @return [Array<String>]
           attr_accessor :details
-        
+
           # The type of correction that was applied to the creative.
           # Corresponds to the JSON property `reason`
           # @return [String]
           attr_accessor :reason
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @details = args[:details] if args.key?(:details)
             @reason = args[:reason] if args.key?(:reason)
           end
         end
-        
+
         # The filtering reasons for the creative. Read-only. This field should not be
         # set in requests.
         class FilteringReasons
           include Google::Apis::Core::Hashable
-        
+
           # The date in ISO 8601 format for the data. The data is collected from 00:00:00
           # to 23:59:59 in PST.
           # Corresponds to the JSON property `date`
           # @return [String]
           attr_accessor :date
-        
+
           # The filtering reasons.
           # Corresponds to the JSON property `reasons`
           # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons::Reason>]
           attr_accessor :reasons
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @date = args[:date] if args.key?(:date)
             @reasons = args[:reasons] if args.key?(:reasons)
           end
-          
-          # 
+
+          #
           class Reason
             include Google::Apis::Core::Hashable
-          
+
             # The number of times the creative was filtered for the status. The count is
             # aggregated across all publishers on the exchange.
             # Corresponds to the JSON property `filteringCount`
             # @return [String]
             attr_accessor :filtering_count
-          
+
             # The filtering status code. Please refer to the creative-status-codes.txt file
             # for different statuses.
             # Corresponds to the JSON property `filteringStatus`
             # @return [Fixnum]
             attr_accessor :filtering_status
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @filtering_count = args[:filtering_count] if args.key?(:filtering_count)
@@ -722,75 +722,75 @@ module Google
             end
           end
         end
-        
+
         # If nativeAd is set, HTMLSnippet and videoURL should not be set.
         class NativeAd
           include Google::Apis::Core::Hashable
-        
-          # 
+
+          #
           # Corresponds to the JSON property `advertiser`
           # @return [String]
           attr_accessor :advertiser
-        
+
           # The app icon, for app download ads.
           # Corresponds to the JSON property `appIcon`
           # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::AppIcon]
           attr_accessor :app_icon
-        
+
           # A long description of the ad.
           # Corresponds to the JSON property `body`
           # @return [String]
           attr_accessor :body
-        
+
           # A label for the button that the user is supposed to click.
           # Corresponds to the JSON property `callToAction`
           # @return [String]
           attr_accessor :call_to_action
-        
+
           # The URL to use for click tracking.
           # Corresponds to the JSON property `clickTrackingUrl`
           # @return [String]
           attr_accessor :click_tracking_url
-        
+
           # A short title for the ad.
           # Corresponds to the JSON property `headline`
           # @return [String]
           attr_accessor :headline
-        
+
           # A large image.
           # Corresponds to the JSON property `image`
           # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Image]
           attr_accessor :image
-        
+
           # The URLs are called when the impression is rendered.
           # Corresponds to the JSON property `impressionTrackingUrl`
           # @return [Array<String>]
           attr_accessor :impression_tracking_url
-        
+
           # A smaller image, for the advertiser logo.
           # Corresponds to the JSON property `logo`
           # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Logo]
           attr_accessor :logo
-        
+
           # The price of the promoted app including the currency info.
           # Corresponds to the JSON property `price`
           # @return [String]
           attr_accessor :price
-        
+
           # The app rating in the app store. Must be in the range [0-5].
           # Corresponds to the JSON property `starRating`
           # @return [Float]
           attr_accessor :star_rating
-        
+
           # The URL to the app store to purchase/download the promoted app.
           # Corresponds to the JSON property `store`
           # @return [String]
           attr_accessor :store
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @advertiser = args[:advertiser] if args.key?(:advertiser)
@@ -806,30 +806,30 @@ module Google
             @star_rating = args[:star_rating] if args.key?(:star_rating)
             @store = args[:store] if args.key?(:store)
           end
-          
+
           # The app icon, for app download ads.
           class AppIcon
             include Google::Apis::Core::Hashable
-          
-            # 
+
+            #
             # Corresponds to the JSON property `height`
             # @return [Fixnum]
             attr_accessor :height
-          
-            # 
+
+            #
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
-          
-            # 
+
+            #
             # Corresponds to the JSON property `width`
             # @return [Fixnum]
             attr_accessor :width
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @height = args[:height] if args.key?(:height)
@@ -837,30 +837,30 @@ module Google
               @width = args[:width] if args.key?(:width)
             end
           end
-          
+
           # A large image.
           class Image
             include Google::Apis::Core::Hashable
-          
-            # 
+
+            #
             # Corresponds to the JSON property `height`
             # @return [Fixnum]
             attr_accessor :height
-          
-            # 
+
+            #
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
-          
-            # 
+
+            #
             # Corresponds to the JSON property `width`
             # @return [Fixnum]
             attr_accessor :width
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @height = args[:height] if args.key?(:height)
@@ -868,30 +868,30 @@ module Google
               @width = args[:width] if args.key?(:width)
             end
           end
-          
+
           # A smaller image, for the advertiser logo.
           class Logo
             include Google::Apis::Core::Hashable
-          
-            # 
+
+            #
             # Corresponds to the JSON property `height`
             # @return [Fixnum]
             attr_accessor :height
-          
-            # 
+
+            #
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
-          
-            # 
+
+            #
             # Corresponds to the JSON property `width`
             # @return [Fixnum]
             attr_accessor :width
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @height = args[:height] if args.key?(:height)
@@ -900,16 +900,16 @@ module Google
             end
           end
         end
-        
-        # 
+
+        #
         class ServingRestriction
           include Google::Apis::Core::Hashable
-        
+
           # All known contexts/restrictions.
           # Corresponds to the JSON property `contexts`
           # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::ServingRestriction::Context>]
           attr_accessor :contexts
-        
+
           # The reasons for disapproval within this restriction, if any. Note that not all
           # disapproval reasons may be categorized, so it is possible for the creative to
           # have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an empty list for
@@ -918,55 +918,55 @@ module Google
           # Corresponds to the JSON property `disapprovalReasons`
           # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::ServingRestriction::DisapprovalReason>]
           attr_accessor :disapproval_reasons
-        
+
           # Why the creative is ineligible to serve in this context (e.g., it has been
           # explicitly disapproved or is pending review).
           # Corresponds to the JSON property `reason`
           # @return [String]
           attr_accessor :reason
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @contexts = args[:contexts] if args.key?(:contexts)
             @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
             @reason = args[:reason] if args.key?(:reason)
           end
-          
-          # 
+
+          #
           class Context
             include Google::Apis::Core::Hashable
-          
+
             # Only set when contextType=AUCTION_TYPE. Represents the auction types this
             # restriction applies to.
             # Corresponds to the JSON property `auctionType`
             # @return [Array<String>]
             attr_accessor :auction_type
-          
+
             # The type of context (e.g., location, platform, auction type, SSL-ness).
             # Corresponds to the JSON property `contextType`
             # @return [String]
             attr_accessor :context_type
-          
+
             # Only set when contextType=LOCATION. Represents the geo criterias this
             # restriction applies to.
             # Corresponds to the JSON property `geoCriteriaId`
             # @return [Array<Fixnum>]
             attr_accessor :geo_criteria_id
-          
+
             # Only set when contextType=PLATFORM. Represents the platforms this restriction
             # applies to.
             # Corresponds to the JSON property `platform`
             # @return [Array<String>]
             attr_accessor :platform
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @auction_type = args[:auction_type] if args.key?(:auction_type)
@@ -975,25 +975,25 @@ module Google
               @platform = args[:platform] if args.key?(:platform)
             end
           end
-          
-          # 
+
+          #
           class DisapprovalReason
             include Google::Apis::Core::Hashable
-          
+
             # Additional details about the reason for disapproval.
             # Corresponds to the JSON property `details`
             # @return [Array<String>]
             attr_accessor :details
-          
+
             # The categorized reason for disapproval.
             # Corresponds to the JSON property `reason`
             # @return [String]
             attr_accessor :reason
-          
+
             def initialize(**args)
                update!(**args)
             end
-          
+
             # Update properties of this object
             def update!(**args)
               @details = args[:details] if args.key?(:details)
@@ -1002,33 +1002,33 @@ module Google
           end
         end
       end
-      
+
       # The creatives feed lists the active creatives for the Ad Exchange buyer
       # accounts that the user has access to. Each entry in the feed corresponds to a
       # single creative.
       class CreativesList
         include Google::Apis::Core::Hashable
-      
+
         # A list of creatives.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative>]
         attr_accessor :items
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Continuation token used to page through creatives. To retrieve the next page
         # of results, set the next request's "pageToken" value to this.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
@@ -1036,106 +1036,106 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
-      
-      # 
+
+      #
       class DealServingMetadata
         include Google::Apis::Core::Hashable
-      
+
         # Tracks which parties (if any) have paused a deal. The deal is considered
         # paused if has_buyer_paused || has_seller_paused.
         # Corresponds to the JSON property `dealPauseStatus`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus]
         attr_accessor :deal_pause_status
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deal_pause_status = args[:deal_pause_status] if args.key?(:deal_pause_status)
         end
       end
-      
+
       # Tracks which parties (if any) have paused a deal. The deal is considered
       # paused if has_buyer_paused || has_seller_paused.
       class DealServingMetadataDealPauseStatus
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `hasBuyerPaused`
         # @return [Boolean]
         attr_accessor :has_buyer_paused
         alias_method :has_buyer_paused?, :has_buyer_paused
-      
-        # 
+
+        #
         # Corresponds to the JSON property `hasSellerPaused`
         # @return [Boolean]
         attr_accessor :has_seller_paused
         alias_method :has_seller_paused?, :has_seller_paused
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @has_buyer_paused = args[:has_buyer_paused] if args.key?(:has_buyer_paused)
           @has_seller_paused = args[:has_seller_paused] if args.key?(:has_seller_paused)
         end
       end
-      
-      # 
+
+      #
       class DealTerms
         include Google::Apis::Core::Hashable
-      
+
         # Visibilty of the URL in bid requests.
         # Corresponds to the JSON property `brandingType`
         # @return [String]
         attr_accessor :branding_type
-      
+
         # Description for the proposed terms of the deal.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
+
         # Non-binding estimate of the estimated gross spend for this deal Can be set by
         # buyer or seller.
         # Corresponds to the JSON property `estimatedGrossSpend`
         # @return [Google::Apis::AdexchangebuyerV1_4::Price]
         attr_accessor :estimated_gross_spend
-      
+
         # Non-binding estimate of the impressions served per day Can be set by buyer or
         # seller.
         # Corresponds to the JSON property `estimatedImpressionsPerDay`
         # @return [String]
         attr_accessor :estimated_impressions_per_day
-      
+
         # The terms for guaranteed fixed price deals.
         # Corresponds to the JSON property `guaranteedFixedPriceTerms`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsGuaranteedFixedPriceTerms]
         attr_accessor :guaranteed_fixed_price_terms
-      
+
         # The terms for non-guaranteed auction deals.
         # Corresponds to the JSON property `nonGuaranteedAuctionTerms`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedAuctionTerms]
         attr_accessor :non_guaranteed_auction_terms
-      
+
         # The terms for non-guaranteed fixed price deals.
         # Corresponds to the JSON property `nonGuaranteedFixedPriceTerms`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms]
         attr_accessor :non_guaranteed_fixed_price_terms
-      
+
         # For deals with Cost Per Day billing, defines the timezone used to mark the
         # boundaries of a day (buyer-readonly)
         # Corresponds to the JSON property `sellerTimeZone`
         # @return [String]
         attr_accessor :seller_time_zone
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @branding_type = args[:branding_type] if args.key?(:branding_type)
@@ -1148,31 +1148,31 @@ module Google
           @seller_time_zone = args[:seller_time_zone] if args.key?(:seller_time_zone)
         end
       end
-      
-      # 
+
+      #
       class DealTermsGuaranteedFixedPriceTerms
         include Google::Apis::Core::Hashable
-      
+
         # Fixed price for the specified buyer.
         # Corresponds to the JSON property `fixedPrices`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PricePerBuyer>]
         attr_accessor :fixed_prices
-      
+
         # Guaranteed impressions as a percentage. This is the percentage of guaranteed
         # looks that the buyer is guaranteeing to buy.
         # Corresponds to the JSON property `guaranteedImpressions`
         # @return [String]
         attr_accessor :guaranteed_impressions
-      
+
         # Count of guaranteed looks. Required for deal, optional for product.
         # Corresponds to the JSON property `guaranteedLooks`
         # @return [String]
         attr_accessor :guaranteed_looks
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
@@ -1180,76 +1180,76 @@ module Google
           @guaranteed_looks = args[:guaranteed_looks] if args.key?(:guaranteed_looks)
         end
       end
-      
-      # 
+
+      #
       class DealTermsNonGuaranteedAuctionTerms
         include Google::Apis::Core::Hashable
-      
+
         # True if open auction buyers are allowed to compete with invited buyers in this
         # private auction (buyer-readonly).
         # Corresponds to the JSON property `autoOptimizePrivateAuction`
         # @return [Boolean]
         attr_accessor :auto_optimize_private_auction
         alias_method :auto_optimize_private_auction?, :auto_optimize_private_auction
-      
+
         # Reserve price for the specified buyer.
         # Corresponds to the JSON property `reservePricePerBuyers`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PricePerBuyer>]
         attr_accessor :reserve_price_per_buyers
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @auto_optimize_private_auction = args[:auto_optimize_private_auction] if args.key?(:auto_optimize_private_auction)
           @reserve_price_per_buyers = args[:reserve_price_per_buyers] if args.key?(:reserve_price_per_buyers)
         end
       end
-      
-      # 
+
+      #
       class DealTermsNonGuaranteedFixedPriceTerms
         include Google::Apis::Core::Hashable
-      
+
         # Fixed price for the specified buyer.
         # Corresponds to the JSON property `fixedPrices`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PricePerBuyer>]
         attr_accessor :fixed_prices
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
         end
       end
-      
-      # 
+
+      #
       class DeleteOrderDealsRequest
         include Google::Apis::Core::Hashable
-      
+
         # List of deals to delete for a given proposal
         # Corresponds to the JSON property `dealIds`
         # @return [Array<String>]
         attr_accessor :deal_ids
-      
+
         # The last known proposal revision number.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
-        # 
+
+        #
         # Corresponds to the JSON property `updateAction`
         # @return [String]
         attr_accessor :update_action
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deal_ids = args[:deal_ids] if args.key?(:deal_ids)
@@ -1257,55 +1257,55 @@ module Google
           @update_action = args[:update_action] if args.key?(:update_action)
         end
       end
-      
-      # 
+
+      #
       class DeleteOrderDealsResponse
         include Google::Apis::Core::Hashable
-      
+
         # List of deals deleted (in the same proposal as passed in the request)
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         # The updated revision number for the proposal.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
           @proposal_revision_number = args[:proposal_revision_number] if args.key?(:proposal_revision_number)
         end
       end
-      
-      # 
+
+      #
       class DeliveryControl
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `creativeBlockingLevel`
         # @return [String]
         attr_accessor :creative_blocking_level
-      
-        # 
+
+        #
         # Corresponds to the JSON property `deliveryRateType`
         # @return [String]
         attr_accessor :delivery_rate_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `frequencyCaps`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::DeliveryControlFrequencyCap>]
         attr_accessor :frequency_caps
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creative_blocking_level = args[:creative_blocking_level] if args.key?(:creative_blocking_level)
@@ -1313,30 +1313,30 @@ module Google
           @frequency_caps = args[:frequency_caps] if args.key?(:frequency_caps)
         end
       end
-      
-      # 
+
+      #
       class DeliveryControlFrequencyCap
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `maxImpressions`
         # @return [Fixnum]
         attr_accessor :max_impressions
-      
-        # 
+
+        #
         # Corresponds to the JSON property `numTimeUnits`
         # @return [Fixnum]
         attr_accessor :num_time_units
-      
-        # 
+
+        #
         # Corresponds to the JSON property `timeUnitType`
         # @return [String]
         attr_accessor :time_unit_type
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @max_impressions = args[:max_impressions] if args.key?(:max_impressions)
@@ -1344,63 +1344,63 @@ module Google
           @time_unit_type = args[:time_unit_type] if args.key?(:time_unit_type)
         end
       end
-      
+
       # This message carries publisher provided breakdown. E.g. `dimension_type: '
       # COUNTRY', [`dimension_value: `id: 1, name: 'US'``, `dimension_value: `id: 2,
       # name: 'UK'``]`
       class Dimension
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `dimensionType`
         # @return [String]
         attr_accessor :dimension_type
-      
-        # 
+
+        #
         # Corresponds to the JSON property `dimensionValues`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::DimensionDimensionValue>]
         attr_accessor :dimension_values
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @dimension_type = args[:dimension_type] if args.key?(:dimension_type)
           @dimension_values = args[:dimension_values] if args.key?(:dimension_values)
         end
       end
-      
+
       # Value of the dimension.
       class DimensionDimensionValue
         include Google::Apis::Core::Hashable
-      
+
         # Id of the dimension.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
-      
+
         # Name of the dimension mainly for debugging purposes.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end
-      
-      # 
+
+      #
       class EditAllOrderDealsRequest
         include Google::Apis::Core::Hashable
-      
+
         # List of deals to edit. Service may perform 3 different operations based on
         # comparison of deals in this list vs deals already persisted in database: 1.
         # Add new deal to proposal If a deal in this list does not exist in the proposal,
@@ -1415,7 +1415,7 @@ module Google
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         # Represents a proposal in the marketplace. A proposal is the unit of
         # negotiation between a seller and a buyer and contains deals which are served.
         # Each field in a proposal can have one of the following setting:
@@ -1426,21 +1426,21 @@ module Google
         # Corresponds to the JSON property `proposal`
         # @return [Google::Apis::AdexchangebuyerV1_4::Proposal]
         attr_accessor :proposal
-      
+
         # The last known revision number for the proposal.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         # Indicates an optional action to take on the proposal
         # Corresponds to the JSON property `updateAction`
         # @return [String]
         attr_accessor :update_action
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
@@ -1449,163 +1449,163 @@ module Google
           @update_action = args[:update_action] if args.key?(:update_action)
         end
       end
-      
-      # 
+
+      #
       class EditAllOrderDealsResponse
         include Google::Apis::Core::Hashable
-      
+
         # List of all deals in the proposal after edit.
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         # The latest revision number after the update has been applied.
         # Corresponds to the JSON property `orderRevisionNumber`
         # @return [String]
         attr_accessor :order_revision_number
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
           @order_revision_number = args[:order_revision_number] if args.key?(:order_revision_number)
         end
       end
-      
-      # 
+
+      #
       class GetOffersResponse
         include Google::Apis::Core::Hashable
-      
+
         # The returned list of products.
         # Corresponds to the JSON property `products`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Product>]
         attr_accessor :products
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @products = args[:products] if args.key?(:products)
         end
       end
-      
-      # 
+
+      #
       class GetOrderDealsResponse
         include Google::Apis::Core::Hashable
-      
+
         # List of deals for the proposal
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceDeal>]
         attr_accessor :deals
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @deals = args[:deals] if args.key?(:deals)
         end
       end
-      
-      # 
+
+      #
       class GetOrderNotesResponse
         include Google::Apis::Core::Hashable
-      
+
         # The list of matching notes.
         # Corresponds to the JSON property `notes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceNote>]
         attr_accessor :notes
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @notes = args[:notes] if args.key?(:notes)
         end
       end
-      
-      # 
+
+      #
       class GetOrdersResponse
         include Google::Apis::Core::Hashable
-      
+
         # The list of matching proposals.
         # Corresponds to the JSON property `proposals`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Proposal>]
         attr_accessor :proposals
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @proposals = args[:proposals] if args.key?(:proposals)
         end
       end
-      
-      # 
+
+      #
       class GetPublisherProfilesByAccountIdResponse
         include Google::Apis::Core::Hashable
-      
+
         # Profiles for the requested publisher
         # Corresponds to the JSON property `profiles`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PublisherProfileApiProto>]
         attr_accessor :profiles
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @profiles = args[:profiles] if args.key?(:profiles)
         end
       end
-      
+
       # A proposal can contain multiple deals. A deal contains the terms and targeting
       # information that is used for serving.
       class MarketplaceDeal
         include Google::Apis::Core::Hashable
-      
+
         # Buyer private data (hidden from seller).
         # Corresponds to the JSON property `buyerPrivateData`
         # @return [Google::Apis::AdexchangebuyerV1_4::PrivateData]
         attr_accessor :buyer_private_data
-      
+
         # The time (ms since epoch) of the deal creation. (readonly)
         # Corresponds to the JSON property `creationTimeMs`
         # @return [String]
         attr_accessor :creation_time_ms
-      
+
         # Specifies the creative pre-approval policy (buyer-readonly)
         # Corresponds to the JSON property `creativePreApprovalPolicy`
         # @return [String]
         attr_accessor :creative_pre_approval_policy
-      
+
         # Specifies whether the creative is safeFrame compatible (buyer-readonly)
         # Corresponds to the JSON property `creativeSafeFrameCompatibility`
         # @return [String]
         attr_accessor :creative_safe_frame_compatibility
-      
+
         # A unique deal=id for the deal (readonly).
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
-      
+
         # Metadata about the serving status of this deal (readonly, writes via custom
         # actions)
         # Corresponds to the JSON property `dealServingMetadata`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealServingMetadata]
         attr_accessor :deal_serving_metadata
-      
+
         # The set of fields around delivery control that are interesting for a buyer to
         # see but are non-negotiable. These are set by the publisher. This message is
         # assigned an id of 100 since some day we would want to model this as a protobuf
@@ -1613,99 +1613,99 @@ module Google
         # Corresponds to the JSON property `deliveryControl`
         # @return [Google::Apis::AdexchangebuyerV1_4::DeliveryControl]
         attr_accessor :delivery_control
-      
+
         # The external deal id assigned to this deal once the deal is finalized. This is
         # the deal-id that shows up in serving/reporting etc. (readonly)
         # Corresponds to the JSON property `externalDealId`
         # @return [String]
         attr_accessor :external_deal_id
-      
+
         # Proposed flight end time of the deal (ms since epoch) This will generally be
         # stored in a granularity of a second. (updatable)
         # Corresponds to the JSON property `flightEndTimeMs`
         # @return [String]
         attr_accessor :flight_end_time_ms
-      
+
         # Proposed flight start time of the deal (ms since epoch) This will generally be
         # stored in a granularity of a second. (updatable)
         # Corresponds to the JSON property `flightStartTimeMs`
         # @return [String]
         attr_accessor :flight_start_time_ms
-      
+
         # Description for the deal terms. (updatable)
         # Corresponds to the JSON property `inventoryDescription`
         # @return [String]
         attr_accessor :inventory_description
-      
+
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#marketplaceDeal".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The time (ms since epoch) when the deal was last updated. (readonly)
         # Corresponds to the JSON property `lastUpdateTimeMs`
         # @return [String]
         attr_accessor :last_update_time_ms
-      
+
         # The name of the deal. (updatable)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # The product-id from which this deal was created. (readonly, except on create)
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
-      
+
         # The revision number of the product that the deal was created from (readonly,
         # except on create)
         # Corresponds to the JSON property `productRevisionNumber`
         # @return [String]
         attr_accessor :product_revision_number
-      
+
         # Specifies the creative source for programmatic deals, PUBLISHER means creative
         # is provided by seller and ADVERTISR means creative is provided by buyer. (
         # buyer-readonly)
         # Corresponds to the JSON property `programmaticCreativeSource`
         # @return [String]
         attr_accessor :programmatic_creative_source
-      
-        # 
+
+        #
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
-      
+
         # Optional Seller contact information for the deal (buyer-readonly)
         # Corresponds to the JSON property `sellerContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :seller_contacts
-      
+
         # The shared targeting visible to buyers and sellers. Each shared targeting
         # entity is AND'd together. (updatable)
         # Corresponds to the JSON property `sharedTargetings`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::SharedTargeting>]
         attr_accessor :shared_targetings
-      
+
         # The syndication product associated with the deal. (readonly, except on create)
         # Corresponds to the JSON property `syndicationProduct`
         # @return [String]
         attr_accessor :syndication_product
-      
+
         # The negotiable terms of the deal. (updatable)
         # Corresponds to the JSON property `terms`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTerms]
         attr_accessor :terms
-      
-        # 
+
+        #
         # Corresponds to the JSON property `webPropertyCode`
         # @return [String]
         attr_accessor :web_property_code
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @buyer_private_data = args[:buyer_private_data] if args.key?(:buyer_private_data)
@@ -1733,62 +1733,62 @@ module Google
           @web_property_code = args[:web_property_code] if args.key?(:web_property_code)
         end
       end
-      
-      # 
+
+      #
       class MarketplaceDealParty
         include Google::Apis::Core::Hashable
-      
+
         # The buyer/seller associated with the deal. One of buyer/seller is specified
         # for a deal-party.
         # Corresponds to the JSON property `buyer`
         # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
         attr_accessor :buyer
-      
+
         # The buyer/seller associated with the deal. One of buyer/seller is specified
         # for a deal party.
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
         attr_accessor :seller
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @buyer = args[:buyer] if args.key?(:buyer)
           @seller = args[:seller] if args.key?(:seller)
         end
       end
-      
-      # 
+
+      #
       class MarketplaceLabel
         include Google::Apis::Core::Hashable
-      
+
         # The accountId of the party that created the label.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
-      
+
         # The creation time (in ms since epoch) for the label.
         # Corresponds to the JSON property `createTimeMs`
         # @return [String]
         attr_accessor :create_time_ms
-      
+
         # Information about the party that created the label.
         # Corresponds to the JSON property `deprecatedMarketplaceDealParty`
         # @return [Google::Apis::AdexchangebuyerV1_4::MarketplaceDealParty]
         attr_accessor :deprecated_marketplace_deal_party
-      
+
         # The label to use.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
@@ -1797,58 +1797,58 @@ module Google
           @label = args[:label] if args.key?(:label)
         end
       end
-      
+
       # A proposal is associated with a bunch of notes which may optionally be
       # associated with a deal and/or revision number.
       class MarketplaceNote
         include Google::Apis::Core::Hashable
-      
+
         # The role of the person (buyer/seller) creating the note. (readonly)
         # Corresponds to the JSON property `creatorRole`
         # @return [String]
         attr_accessor :creator_role
-      
+
         # Notes can optionally be associated with a deal. (readonly, except on create)
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
-      
+
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#marketplaceNote".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The actual note to attach. (readonly, except on create)
         # Corresponds to the JSON property `note`
         # @return [String]
         attr_accessor :note
-      
+
         # The unique id for the note. (readonly)
         # Corresponds to the JSON property `noteId`
         # @return [String]
         attr_accessor :note_id
-      
+
         # The proposalId that a note is attached to. (readonly)
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
-      
+
         # If the note is associated with a proposal revision number, then store that
         # here. (readonly, except on create)
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         # The timestamp (ms since epoch) that this note was created. (readonly)
         # Corresponds to the JSON property `timestampMs`
         # @return [String]
         attr_accessor :timestamp_ms
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creator_role = args[:creator_role] if args.key?(:creator_role)
@@ -1861,133 +1861,133 @@ module Google
           @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
         end
       end
-      
+
       # The configuration data for an Ad Exchange performance report list.
       class PerformanceReport
         include Google::Apis::Core::Hashable
-      
+
         # The number of bid responses with an ad.
         # Corresponds to the JSON property `bidRate`
         # @return [Float]
         attr_accessor :bid_rate
-      
+
         # The number of bid requests sent to your bidder.
         # Corresponds to the JSON property `bidRequestRate`
         # @return [Float]
         attr_accessor :bid_request_rate
-      
+
         # Rate of various prefiltering statuses per match. Please refer to the callout-
         # status-codes.txt file for different statuses.
         # Corresponds to the JSON property `calloutStatusRate`
         # @return [Array<Object>]
         attr_accessor :callout_status_rate
-      
+
         # Average QPS for cookie matcher operations.
         # Corresponds to the JSON property `cookieMatcherStatusRate`
         # @return [Array<Object>]
         attr_accessor :cookie_matcher_status_rate
-      
+
         # Rate of ads with a given status. Please refer to the creative-status-codes.txt
         # file for different statuses.
         # Corresponds to the JSON property `creativeStatusRate`
         # @return [Array<Object>]
         attr_accessor :creative_status_rate
-      
+
         # The number of bid responses that were filtered due to a policy violation or
         # other errors.
         # Corresponds to the JSON property `filteredBidRate`
         # @return [Float]
         attr_accessor :filtered_bid_rate
-      
+
         # Average QPS for hosted match operations.
         # Corresponds to the JSON property `hostedMatchStatusRate`
         # @return [Array<Object>]
         attr_accessor :hosted_match_status_rate
-      
+
         # The number of potential queries based on your pretargeting settings.
         # Corresponds to the JSON property `inventoryMatchRate`
         # @return [Float]
         attr_accessor :inventory_match_rate
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The 50th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency50thPercentile`
         # @return [Float]
         attr_accessor :latency_50th_percentile
-      
+
         # The 85th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency85thPercentile`
         # @return [Float]
         attr_accessor :latency_85th_percentile
-      
+
         # The 95th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency95thPercentile`
         # @return [Float]
         attr_accessor :latency_95th_percentile
-      
+
         # Rate of various quota account statuses per quota check.
         # Corresponds to the JSON property `noQuotaInRegion`
         # @return [Float]
         attr_accessor :no_quota_in_region
-      
+
         # Rate of various quota account statuses per quota check.
         # Corresponds to the JSON property `outOfQuota`
         # @return [Float]
         attr_accessor :out_of_quota
-      
+
         # Average QPS for pixel match requests from clients.
         # Corresponds to the JSON property `pixelMatchRequests`
         # @return [Float]
         attr_accessor :pixel_match_requests
-      
+
         # Average QPS for pixel match responses from clients.
         # Corresponds to the JSON property `pixelMatchResponses`
         # @return [Float]
         attr_accessor :pixel_match_responses
-      
+
         # The configured quota limits for this account.
         # Corresponds to the JSON property `quotaConfiguredLimit`
         # @return [Float]
         attr_accessor :quota_configured_limit
-      
+
         # The throttled quota limits for this account.
         # Corresponds to the JSON property `quotaThrottledLimit`
         # @return [Float]
         attr_accessor :quota_throttled_limit
-      
+
         # The trading location of this data.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
-      
+
         # The number of properly formed bid responses received by our servers within the
         # deadline.
         # Corresponds to the JSON property `successfulRequestRate`
         # @return [Float]
         attr_accessor :successful_request_rate
-      
+
         # The unix timestamp of the starting time of this performance data.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
-      
+
         # The number of bid responses that were unsuccessful due to timeouts, incorrect
         # formatting, etc.
         # Corresponds to the JSON property `unsuccessfulRequestRate`
         # @return [Float]
         attr_accessor :unsuccessful_request_rate
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @bid_rate = args[:bid_rate] if args.key?(:bid_rate)
@@ -2014,175 +2014,175 @@ module Google
           @unsuccessful_request_rate = args[:unsuccessful_request_rate] if args.key?(:unsuccessful_request_rate)
         end
       end
-      
+
       # The configuration data for an Ad Exchange performance report list.
       class PerformanceReportList
         include Google::Apis::Core::Hashable
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # A list of performance reports relevant for the account.
         # Corresponds to the JSON property `performanceReport`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PerformanceReport>]
         attr_accessor :performance_report
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @performance_report = args[:performance_report] if args.key?(:performance_report)
         end
       end
-      
-      # 
+
+      #
       class PretargetingConfig
         include Google::Apis::Core::Hashable
-      
+
         # The id for billing purposes, provided for reference. Leave this field blank
         # for insert requests; the id will be generated automatically.
         # Corresponds to the JSON property `billingId`
         # @return [String]
         attr_accessor :billing_id
-      
+
         # The config id; generated automatically. Leave this field blank for insert
         # requests.
         # Corresponds to the JSON property `configId`
         # @return [String]
         attr_accessor :config_id
-      
+
         # The name of the config. Must be unique. Required for all requests.
         # Corresponds to the JSON property `configName`
         # @return [String]
         attr_accessor :config_name
-      
+
         # List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or
         # PRETARGETING_CREATIVE_TYPE_VIDEO.
         # Corresponds to the JSON property `creativeType`
         # @return [Array<String>]
         attr_accessor :creative_type
-      
+
         # Requests which allow one of these (width, height) pairs will match. All pairs
         # must be supported ad dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Dimension>]
         attr_accessor :dimensions
-      
+
         # Requests with any of these content labels will not match. Values are from
         # content-labels.txt in the downloadable files section.
         # Corresponds to the JSON property `excludedContentLabels`
         # @return [Array<String>]
         attr_accessor :excluded_content_labels
-      
+
         # Requests containing any of these geo criteria ids will not match.
         # Corresponds to the JSON property `excludedGeoCriteriaIds`
         # @return [Array<String>]
         attr_accessor :excluded_geo_criteria_ids
-      
+
         # Requests containing any of these placements will not match.
         # Corresponds to the JSON property `excludedPlacements`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::ExcludedPlacement>]
         attr_accessor :excluded_placements
-      
+
         # Requests containing any of these users list ids will not match.
         # Corresponds to the JSON property `excludedUserLists`
         # @return [Array<String>]
         attr_accessor :excluded_user_lists
-      
+
         # Requests containing any of these vertical ids will not match. Values are from
         # the publisher-verticals.txt file in the downloadable files section.
         # Corresponds to the JSON property `excludedVerticals`
         # @return [Array<String>]
         attr_accessor :excluded_verticals
-      
+
         # Requests containing any of these geo criteria ids will match.
         # Corresponds to the JSON property `geoCriteriaIds`
         # @return [Array<String>]
         attr_accessor :geo_criteria_ids
-      
+
         # Whether this config is active. Required for all requests.
         # Corresponds to the JSON property `isActive`
         # @return [Boolean]
         attr_accessor :is_active
         alias_method :is_active?, :is_active
-      
+
         # The kind of the resource, i.e. "adexchangebuyer#pretargetingConfig".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Request containing any of these language codes will match.
         # Corresponds to the JSON property `languages`
         # @return [Array<String>]
         attr_accessor :languages
-      
+
         # Requests containing any of these mobile carrier ids will match. Values are
         # from mobile-carriers.csv in the downloadable files section.
         # Corresponds to the JSON property `mobileCarriers`
         # @return [Array<String>]
         attr_accessor :mobile_carriers
-      
+
         # Requests containing any of these mobile device ids will match. Values are from
         # mobile-devices.csv in the downloadable files section.
         # Corresponds to the JSON property `mobileDevices`
         # @return [Array<String>]
         attr_accessor :mobile_devices
-      
+
         # Requests containing any of these mobile operating system version ids will
         # match. Values are from mobile-os.csv in the downloadable files section.
         # Corresponds to the JSON property `mobileOperatingSystemVersions`
         # @return [Array<String>]
         attr_accessor :mobile_operating_system_versions
-      
+
         # Requests containing any of these placements will match.
         # Corresponds to the JSON property `placements`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Placement>]
         attr_accessor :placements
-      
+
         # Requests matching any of these platforms will match. Possible values are
         # PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and
         # PRETARGETING_PLATFORM_TABLET.
         # Corresponds to the JSON property `platforms`
         # @return [Array<String>]
         attr_accessor :platforms
-      
+
         # Creative attributes should be declared here if all creatives corresponding to
         # this pretargeting configuration have that creative attribute. Values are from
         # pretargetable-creative-attributes.txt in the downloadable files section.
         # Corresponds to the JSON property `supportedCreativeAttributes`
         # @return [Array<String>]
         attr_accessor :supported_creative_attributes
-      
+
         # Requests containing any of these user list ids will match.
         # Corresponds to the JSON property `userLists`
         # @return [Array<String>]
         attr_accessor :user_lists
-      
+
         # Requests that allow any of these vendor ids will match. Values are from
         # vendors.txt in the downloadable files section.
         # Corresponds to the JSON property `vendorTypes`
         # @return [Array<String>]
         attr_accessor :vendor_types
-      
+
         # Requests containing any of these vertical ids will match.
         # Corresponds to the JSON property `verticals`
         # @return [Array<String>]
         attr_accessor :verticals
-      
+
         # Video requests satisfying any of these player size constraints will match.
         # Corresponds to the JSON property `videoPlayerSizes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::VideoPlayerSize>]
         attr_accessor :video_player_sizes
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @billing_id = args[:billing_id] if args.key?(:billing_id)
@@ -2210,111 +2210,111 @@ module Google
           @verticals = args[:verticals] if args.key?(:verticals)
           @video_player_sizes = args[:video_player_sizes] if args.key?(:video_player_sizes)
         end
-        
-        # 
+
+        #
         class Dimension
           include Google::Apis::Core::Hashable
-        
+
           # Height in pixels.
           # Corresponds to the JSON property `height`
           # @return [String]
           attr_accessor :height
-        
+
           # Width in pixels.
           # Corresponds to the JSON property `width`
           # @return [String]
           attr_accessor :width
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @height = args[:height] if args.key?(:height)
             @width = args[:width] if args.key?(:width)
           end
         end
-        
-        # 
+
+        #
         class ExcludedPlacement
           include Google::Apis::Core::Hashable
-        
+
           # The value of the placement. Interpretation depends on the placement type, e.g.
           # URL for a site placement, channel name for a channel placement, app id for a
           # mobile app placement.
           # Corresponds to the JSON property `token`
           # @return [String]
           attr_accessor :token
-        
+
           # The type of the placement.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @token = args[:token] if args.key?(:token)
             @type = args[:type] if args.key?(:type)
           end
         end
-        
-        # 
+
+        #
         class Placement
           include Google::Apis::Core::Hashable
-        
+
           # The value of the placement. Interpretation depends on the placement type, e.g.
           # URL for a site placement, channel name for a channel placement, app id for a
           # mobile app placement.
           # Corresponds to the JSON property `token`
           # @return [String]
           attr_accessor :token
-        
+
           # The type of the placement.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @token = args[:token] if args.key?(:token)
             @type = args[:type] if args.key?(:type)
           end
         end
-        
-        # 
+
+        #
         class VideoPlayerSize
           include Google::Apis::Core::Hashable
-        
+
           # The type of aspect ratio. Leave this field blank to match all aspect ratios.
           # Corresponds to the JSON property `aspectRatio`
           # @return [String]
           attr_accessor :aspect_ratio
-        
+
           # The minimum player height in pixels. Leave this field blank to match any
           # player height.
           # Corresponds to the JSON property `minHeight`
           # @return [String]
           attr_accessor :min_height
-        
+
           # The minimum player width in pixels. Leave this field blank to match any player
           # width.
           # Corresponds to the JSON property `minWidth`
           # @return [String]
           attr_accessor :min_width
-        
+
           def initialize(**args)
              update!(**args)
           end
-        
+
           # Update properties of this object
           def update!(**args)
             @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
@@ -2323,55 +2323,55 @@ module Google
           end
         end
       end
-      
-      # 
+
+      #
       class PretargetingConfigList
         include Google::Apis::Core::Hashable
-      
+
         # A list of pretargeting configs
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PretargetingConfig>]
         attr_accessor :items
-      
+
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
-      
-      # 
+
+      #
       class Price
         include Google::Apis::Core::Hashable
-      
+
         # The price value in micros.
         # Corresponds to the JSON property `amountMicros`
         # @return [Float]
         attr_accessor :amount_micros
-      
+
         # The currency code for the price.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
-      
+
         # The pricing type for the deal/product.
         # Corresponds to the JSON property `pricingType`
         # @return [String]
         attr_accessor :pricing_type
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
@@ -2379,7 +2379,7 @@ module Google
           @pricing_type = args[:pricing_type] if args.key?(:pricing_type)
         end
       end
-      
+
       # Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an
       # product can become [0,1] deals. To check if there is a PricePerBuyer for a
       # particular buyer or buyer/advertiser pair, we look for the most specific
@@ -2388,54 +2388,54 @@ module Google
       # for a matching rule where no buyer is set.
       class PricePerBuyer
         include Google::Apis::Core::Hashable
-      
+
         # The buyer who will pay this price. If unset, all buyers can pay this price (if
         # the advertisers match, and there's no more specific rule matching the buyer).
         # Corresponds to the JSON property `buyer`
         # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
         attr_accessor :buyer
-      
+
         # The specified price
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::AdexchangebuyerV1_4::Price]
         attr_accessor :price
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @buyer = args[:buyer] if args.key?(:buyer)
           @price = args[:price] if args.key?(:price)
         end
       end
-      
-      # 
+
+      #
       class PrivateData
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `referenceId`
         # @return [String]
         attr_accessor :reference_id
-      
-        # 
+
+        #
         # Corresponds to the JSON property `referencePayload`
         # @return [String]
         attr_accessor :reference_payload
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @reference_id = args[:reference_id] if args.key?(:reference_id)
           @reference_payload = args[:reference_payload] if args.key?(:reference_payload)
         end
       end
-      
+
       # A product is segment of inventory that a seller wishes to sell. It is
       # associated with certain terms and targeting information which helps buyer know
       # more about the inventory. Each field in a product can have one of the
@@ -2446,17 +2446,17 @@ module Google
       # the seller.
       class Product
         include Google::Apis::Core::Hashable
-      
+
         # Creation time in ms. since epoch (readonly)
         # Corresponds to the JSON property `creationTimeMs`
         # @return [String]
         attr_accessor :creation_time_ms
-      
+
         # Optional contact information for the creator of this product. (buyer-readonly)
         # Corresponds to the JSON property `creatorContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :creator_contacts
-      
+
         # The set of fields around delivery control that are interesting for a buyer to
         # see but are non-negotiable. These are set by the publisher. This message is
         # assigned an id of 100 since some day we would want to model this as a protobuf
@@ -2464,18 +2464,18 @@ module Google
         # Corresponds to the JSON property `deliveryControl`
         # @return [Google::Apis::AdexchangebuyerV1_4::DeliveryControl]
         attr_accessor :delivery_control
-      
+
         # The proposed end time for the deal (ms since epoch) (buyer-readonly)
         # Corresponds to the JSON property `flightEndTimeMs`
         # @return [String]
         attr_accessor :flight_end_time_ms
-      
+
         # Inventory availability dates. (times are in ms since epoch) The granularity is
         # generally in the order of seconds. (buyer-readonly)
         # Corresponds to the JSON property `flightStartTimeMs`
         # @return [String]
         attr_accessor :flight_start_time_ms
-      
+
         # If the creator has already signed off on the product, then the buyer can
         # finalize the deal by accepting the product as is. When copying to a proposal,
         # if any of the terms are changed, then auto_finalize is automatically set to
@@ -2484,48 +2484,48 @@ module Google
         # @return [Boolean]
         attr_accessor :has_creator_signed_off
         alias_method :has_creator_signed_off?, :has_creator_signed_off
-      
+
         # What exchange will provide this inventory (readonly, except on create).
         # Corresponds to the JSON property `inventorySource`
         # @return [String]
         attr_accessor :inventory_source
-      
+
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#product".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # Optional List of labels for the product (optional, buyer-readonly).
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel>]
         attr_accessor :labels
-      
+
         # Time of last update in ms. since epoch (readonly)
         # Corresponds to the JSON property `lastUpdateTimeMs`
         # @return [String]
         attr_accessor :last_update_time_ms
-      
+
         # Optional legacy offer id if this offer is a preferred deal offer.
         # Corresponds to the JSON property `legacyOfferId`
         # @return [String]
         attr_accessor :legacy_offer_id
-      
+
         # The name for this product as set by the seller. (buyer-readonly)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Optional private auction id if this offer is a private auction offer.
         # Corresponds to the JSON property `privateAuctionId`
         # @return [String]
         attr_accessor :private_auction_id
-      
+
         # The unique id for the product (readonly)
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
-      
+
         # Id of the publisher profile for a given seller. A (seller.account_id,
         # publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can
         # call the PublisherProfiles::List endpoint to get a list of publisher profiles
@@ -2533,50 +2533,50 @@ module Google
         # Corresponds to the JSON property `publisherProfileId`
         # @return [String]
         attr_accessor :publisher_profile_id
-      
+
         # The revision number of the product. (readonly)
         # Corresponds to the JSON property `revisionNumber`
         # @return [String]
         attr_accessor :revision_number
-      
+
         # Information about the seller that created this product (readonly, except on
         # create)
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
         attr_accessor :seller
-      
+
         # Targeting that is shared between the buyer and the seller. Each targeting
         # criteria has a specified key and for each key there is a list of inclusion
         # value or exclusion values. (buyer-readonly)
         # Corresponds to the JSON property `sharedTargetings`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::SharedTargeting>]
         attr_accessor :shared_targetings
-      
+
         # The state of the product. (buyer-readonly)
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
+
         # The syndication product associated with the deal. (readonly, except on create)
         # Corresponds to the JSON property `syndicationProduct`
         # @return [String]
         attr_accessor :syndication_product
-      
+
         # The negotiable terms of the deal (buyer-readonly)
         # Corresponds to the JSON property `terms`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTerms]
         attr_accessor :terms
-      
+
         # The web property code for the seller. This field is meant to be copied over as
         # is when creating deals.
         # Corresponds to the JSON property `webPropertyCode`
         # @return [String]
         attr_accessor :web_property_code
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creation_time_ms = args[:creation_time_ms] if args.key?(:creation_time_ms)
@@ -2603,7 +2603,7 @@ module Google
           @web_property_code = args[:web_property_code] if args.key?(:web_property_code)
         end
       end
-      
+
       # Represents a proposal in the marketplace. A proposal is the unit of
       # negotiation between a seller and a buyer and contains deals which are served.
       # Each field in a proposal can have one of the following setting:
@@ -2613,27 +2613,27 @@ module Google
       # the seller.
       class Proposal
         include Google::Apis::Core::Hashable
-      
+
         # Reference to the buyer that will get billed for this proposal. (readonly)
         # Corresponds to the JSON property `billedBuyer`
         # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
         attr_accessor :billed_buyer
-      
+
         # Reference to the buyer on the proposal. (readonly, except on create)
         # Corresponds to the JSON property `buyer`
         # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
         attr_accessor :buyer
-      
+
         # Optional contact information fort the buyer. (seller-readonly)
         # Corresponds to the JSON property `buyerContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :buyer_contacts
-      
+
         # Private data for buyer. (hidden from seller).
         # Corresponds to the JSON property `buyerPrivateData`
         # @return [Google::Apis::AdexchangebuyerV1_4::PrivateData]
         attr_accessor :buyer_private_data
-      
+
         # When an proposal is in an accepted state, indicates whether the buyer has
         # signed off Once both sides have signed off on a deal, the proposal can be
         # finalized by the seller. (seller-readonly)
@@ -2641,7 +2641,7 @@ module Google
         # @return [Boolean]
         attr_accessor :has_buyer_signed_off
         alias_method :has_buyer_signed_off?, :has_buyer_signed_off
-      
+
         # When an proposal is in an accepted state, indicates whether the buyer has
         # signed off Once both sides have signed off on a deal, the proposal can be
         # finalized by the seller. (buyer-readonly)
@@ -2649,101 +2649,101 @@ module Google
         # @return [Boolean]
         attr_accessor :has_seller_signed_off
         alias_method :has_seller_signed_off?, :has_seller_signed_off
-      
+
         # What exchange will provide this inventory (readonly, except on create).
         # Corresponds to the JSON property `inventorySource`
         # @return [String]
         attr_accessor :inventory_source
-      
+
         # True if the proposal is being renegotiated (readonly).
         # Corresponds to the JSON property `isRenegotiating`
         # @return [Boolean]
         attr_accessor :is_renegotiating
         alias_method :is_renegotiating?, :is_renegotiating
-      
+
         # True, if the buyside inventory setup is complete for this proposal. (readonly,
         # except via OrderSetupCompleted action)
         # Corresponds to the JSON property `isSetupComplete`
         # @return [Boolean]
         attr_accessor :is_setup_complete
         alias_method :is_setup_complete?, :is_setup_complete
-      
+
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#proposal".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # List of labels associated with the proposal. (readonly)
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel>]
         attr_accessor :labels
-      
+
         # The role of the last user that either updated the proposal or left a comment. (
         # readonly)
         # Corresponds to the JSON property `lastUpdaterOrCommentorRole`
         # @return [String]
         attr_accessor :last_updater_or_commentor_role
-      
-        # 
+
+        #
         # Corresponds to the JSON property `lastUpdaterRole`
         # @return [String]
         attr_accessor :last_updater_role
-      
+
         # The name for the proposal (updatable)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Optional negotiation id if this proposal is a preferred deal proposal.
         # Corresponds to the JSON property `negotiationId`
         # @return [String]
         attr_accessor :negotiation_id
-      
+
         # Indicates whether the buyer/seller created the proposal.(readonly)
         # Corresponds to the JSON property `originatorRole`
         # @return [String]
         attr_accessor :originator_role
-      
+
         # Optional private auction id if this proposal is a private auction proposal.
         # Corresponds to the JSON property `privateAuctionId`
         # @return [String]
         attr_accessor :private_auction_id
-      
+
         # The unique id of the proposal. (readonly).
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
-      
+
         # The current state of the proposal. (readonly)
         # Corresponds to the JSON property `proposalState`
         # @return [String]
         attr_accessor :proposal_state
-      
+
         # The revision number for the proposal (readonly).
         # Corresponds to the JSON property `revisionNumber`
         # @return [String]
         attr_accessor :revision_number
-      
+
         # The time (ms since epoch) when the proposal was last revised (readonly).
         # Corresponds to the JSON property `revisionTimeMs`
         # @return [String]
         attr_accessor :revision_time_ms
-      
+
         # Reference to the seller on the proposal. (readonly, except on create)
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
         attr_accessor :seller
-      
+
         # Optional contact information for the seller (buyer-readonly).
         # Corresponds to the JSON property `sellerContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :seller_contacts
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @billed_buyer = args[:billed_buyer] if args.key?(:billed_buyer)
@@ -2771,136 +2771,136 @@ module Google
           @seller_contacts = args[:seller_contacts] if args.key?(:seller_contacts)
         end
       end
-      
-      # 
+
+      #
       class PublisherProfileApiProto
         include Google::Apis::Core::Hashable
-      
+
         # The account id of the seller.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
-      
+
         # Publisher provided info on its audience.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
-      
+
         # A pitch statement for the buyer
         # Corresponds to the JSON property `buyerPitchStatement`
         # @return [String]
         attr_accessor :buyer_pitch_statement
-      
+
         # Direct contact for the publisher profile.
         # Corresponds to the JSON property `directContact`
         # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
         attr_accessor :direct_contact
-      
+
         # Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
         # Corresponds to the JSON property `exchange`
         # @return [String]
         attr_accessor :exchange
-      
+
         # Link to publisher's Google+ page.
         # Corresponds to the JSON property `googlePlusLink`
         # @return [String]
         attr_accessor :google_plus_link
-      
+
         # True, if this is the parent profile, which represents all domains owned by the
         # publisher.
         # Corresponds to the JSON property `isParent`
         # @return [Boolean]
         attr_accessor :is_parent
         alias_method :is_parent?, :is_parent
-      
+
         # True, if this profile is published. Deprecated for state.
         # Corresponds to the JSON property `isPublished`
         # @return [Boolean]
         attr_accessor :is_published
         alias_method :is_published?, :is_published
-      
+
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#publisherProfileApiProto".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
+
         # The url to the logo for the publisher.
         # Corresponds to the JSON property `logoUrl`
         # @return [String]
         attr_accessor :logo_url
-      
+
         # The url for additional marketing and sales materials.
         # Corresponds to the JSON property `mediaKitLink`
         # @return [String]
         attr_accessor :media_kit_link
-      
-        # 
+
+        #
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
+
         # Publisher provided overview.
         # Corresponds to the JSON property `overview`
         # @return [String]
         attr_accessor :overview
-      
+
         # The pair of (seller.account_id, profile_id) uniquely identifies a publisher
         # profile for a given publisher.
         # Corresponds to the JSON property `profileId`
         # @return [Fixnum]
         attr_accessor :profile_id
-      
+
         # Programmatic contact for the publisher profile.
         # Corresponds to the JSON property `programmaticContact`
         # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
         attr_accessor :programmatic_contact
-      
+
         # The list of domains represented in this publisher profile. Empty if this is a
         # parent profile.
         # Corresponds to the JSON property `publisherDomains`
         # @return [Array<String>]
         attr_accessor :publisher_domains
-      
+
         # Unique Id for publisher profile.
         # Corresponds to the JSON property `publisherProfileId`
         # @return [String]
         attr_accessor :publisher_profile_id
-      
+
         # This message carries publisher provided forecasting information.
         # Corresponds to the JSON property `publisherProvidedForecast`
         # @return [Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast]
         attr_accessor :publisher_provided_forecast
-      
+
         # Link to publisher rate card
         # Corresponds to the JSON property `rateCardInfoLink`
         # @return [String]
         attr_accessor :rate_card_info_link
-      
+
         # Link for a sample content page.
         # Corresponds to the JSON property `samplePageLink`
         # @return [String]
         attr_accessor :sample_page_link
-      
+
         # Seller of the publisher profile.
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
         attr_accessor :seller
-      
+
         # State of the publisher profile.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
+
         # Publisher provided key metrics and rankings.
         # Corresponds to the JSON property `topHeadlines`
         # @return [Array<String>]
         attr_accessor :top_headlines
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
@@ -2928,30 +2928,30 @@ module Google
           @top_headlines = args[:top_headlines] if args.key?(:top_headlines)
         end
       end
-      
+
       # This message carries publisher provided forecasting information.
       class PublisherProvidedForecast
         include Google::Apis::Core::Hashable
-      
+
         # Publisher provided dimensions. E.g. geo, sizes etc...
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Dimension>]
         attr_accessor :dimensions
-      
+
         # Publisher provided weekly impressions.
         # Corresponds to the JSON property `weeklyImpressions`
         # @return [String]
         attr_accessor :weekly_impressions
-      
+
         # Publisher provided weekly uniques.
         # Corresponds to the JSON property `weeklyUniques`
         # @return [String]
         attr_accessor :weekly_uniques
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
@@ -2959,57 +2959,57 @@ module Google
           @weekly_uniques = args[:weekly_uniques] if args.key?(:weekly_uniques)
         end
       end
-      
-      # 
+
+      #
       class Seller
         include Google::Apis::Core::Hashable
-      
+
         # The unique id for the seller. The seller fills in this field. The seller
         # account id is then available to buyer in the product.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
-      
+
         # Optional sub-account id for the seller.
         # Corresponds to the JSON property `subAccountId`
         # @return [String]
         attr_accessor :sub_account_id
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @sub_account_id = args[:sub_account_id] if args.key?(:sub_account_id)
         end
       end
-      
-      # 
+
+      #
       class SharedTargeting
         include Google::Apis::Core::Hashable
-      
+
         # The list of values to exclude from targeting. Each value is AND'd together.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValue>]
         attr_accessor :exclusions
-      
+
         # The list of value to include as part of the targeting. Each value is OR'd
         # together.
         # Corresponds to the JSON property `inclusions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValue>]
         attr_accessor :inclusions
-      
+
         # The key representing the shared targeting criterion.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
@@ -3017,36 +3017,36 @@ module Google
           @key = args[:key] if args.key?(:key)
         end
       end
-      
-      # 
+
+      #
       class TargetingValue
         include Google::Apis::Core::Hashable
-      
+
         # The creative size value to exclude/include.
         # Corresponds to the JSON property `creativeSizeValue`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueCreativeSize]
         attr_accessor :creative_size_value
-      
+
         # The daypart targeting to include / exclude. Filled in when the key is
         # GOOG_DAYPART_TARGETING.
         # Corresponds to the JSON property `dayPartTargetingValue`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueDayPartTargeting]
         attr_accessor :day_part_targeting_value
-      
+
         # The long value to exclude/include.
         # Corresponds to the JSON property `longValue`
         # @return [String]
         attr_accessor :long_value
-      
+
         # The string value to exclude/include.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @creative_size_value = args[:creative_size_value] if args.key?(:creative_size_value)
@@ -3055,30 +3055,30 @@ module Google
           @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
-      
-      # 
+
+      #
       class TargetingValueCreativeSize
         include Google::Apis::Core::Hashable
-      
+
         # For video size type, the list of companion sizes.
         # Corresponds to the JSON property `companionSizes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValueSize>]
         attr_accessor :companion_sizes
-      
+
         # The Creative size type.
         # Corresponds to the JSON property `creativeSizeType`
         # @return [String]
         attr_accessor :creative_size_type
-      
+
         # For regular or video creative size type, specifies the size of the creative.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueSize]
         attr_accessor :size
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @companion_sizes = args[:companion_sizes] if args.key?(:companion_sizes)
@@ -3086,65 +3086,65 @@ module Google
           @size = args[:size] if args.key?(:size)
         end
       end
-      
-      # 
+
+      #
       class TargetingValueDayPartTargeting
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `dayParts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::TargetingValueDayPartTargetingDayPart>]
         attr_accessor :day_parts
-      
-        # 
+
+        #
         # Corresponds to the JSON property `timeZoneType`
         # @return [String]
         attr_accessor :time_zone_type
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @day_parts = args[:day_parts] if args.key?(:day_parts)
           @time_zone_type = args[:time_zone_type] if args.key?(:time_zone_type)
         end
       end
-      
-      # 
+
+      #
       class TargetingValueDayPartTargetingDayPart
         include Google::Apis::Core::Hashable
-      
-        # 
+
+        #
         # Corresponds to the JSON property `dayOfWeek`
         # @return [String]
         attr_accessor :day_of_week
-      
-        # 
+
+        #
         # Corresponds to the JSON property `endHour`
         # @return [Fixnum]
         attr_accessor :end_hour
-      
-        # 
+
+        #
         # Corresponds to the JSON property `endMinute`
         # @return [Fixnum]
         attr_accessor :end_minute
-      
-        # 
+
+        #
         # Corresponds to the JSON property `startHour`
         # @return [Fixnum]
         attr_accessor :start_hour
-      
-        # 
+
+        #
         # Corresponds to the JSON property `startMinute`
         # @return [Fixnum]
         attr_accessor :start_minute
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
@@ -3154,61 +3154,61 @@ module Google
           @start_minute = args[:start_minute] if args.key?(:start_minute)
         end
       end
-      
-      # 
+
+      #
       class TargetingValueSize
         include Google::Apis::Core::Hashable
-      
+
         # The height of the creative.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
-      
+
         # The width of the creative.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @height = args[:height] if args.key?(:height)
           @width = args[:width] if args.key?(:width)
         end
       end
-      
-      # 
+
+      #
       class UpdatePrivateAuctionProposalRequest
         include Google::Apis::Core::Hashable
-      
+
         # The externalDealId of the deal to be updated.
         # Corresponds to the JSON property `externalDealId`
         # @return [String]
         attr_accessor :external_deal_id
-      
+
         # A proposal is associated with a bunch of notes which may optionally be
         # associated with a deal and/or revision number.
         # Corresponds to the JSON property `note`
         # @return [Google::Apis::AdexchangebuyerV1_4::MarketplaceNote]
         attr_accessor :note
-      
+
         # The current revision number of the proposal to be updated.
         # Corresponds to the JSON property `proposalRevisionNumber`
         # @return [String]
         attr_accessor :proposal_revision_number
-      
+
         # The proposed action on the private auction proposal.
         # Corresponds to the JSON property `updateAction`
         # @return [String]
         attr_accessor :update_action
-      
+
         def initialize(**args)
            update!(**args)
         end
-      
+
         # Update properties of this object
         def update!(**args)
           @external_deal_id = args[:external_deal_id] if args.key?(:external_deal_id)

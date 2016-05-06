@@ -51,8 +51,8 @@ module Google
         def initialize
           super('https://www.googleapis.com/', '')
         end
-        
-        # 
+
+        #
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,8 +83,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] access_token
         # @param [String] id_token
         # @param [String] token_handle
@@ -121,8 +121,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,8 +153,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

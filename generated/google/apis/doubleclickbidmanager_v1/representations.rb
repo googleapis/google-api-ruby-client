@@ -21,133 +21,133 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DoubleclickbidmanagerV1
-      
+
       class DownloadLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DownloadLineItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class FilterPair
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Note
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class NotifyProposalChangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Parameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Query
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class QueryMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class QuerySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Report
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ReportFailure
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ReportKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ReportMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ReportStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class RowStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class RunQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UploadLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UploadLineItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UploadStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DownloadLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -157,14 +157,14 @@ module Google
           property :format, as: 'format'
         end
       end
-      
+
       class DownloadLineItemsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_items, as: 'lineItems'
         end
       end
-      
+
       class FilterPair
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -172,25 +172,25 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class ListQueriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :queries, as: 'queries', class: Google::Apis::DoubleclickbidmanagerV1::Query, decorator: Google::Apis::DoubleclickbidmanagerV1::Query::Representation
-      
+
         end
       end
-      
+
       class ListReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :reports, as: 'reports', class: Google::Apis::DoubleclickbidmanagerV1::Report, decorator: Google::Apis::DoubleclickbidmanagerV1::Report::Representation
-      
+
         end
       end
-      
+
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -201,7 +201,7 @@ module Google
           property :username, as: 'username'
         end
       end
-      
+
       class NotifyProposalChangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -209,40 +209,40 @@ module Google
           property :href, as: 'href'
           property :id, as: 'id'
           collection :notes, as: 'notes', class: Google::Apis::DoubleclickbidmanagerV1::Note, decorator: Google::Apis::DoubleclickbidmanagerV1::Note::Representation
-      
+
           property :token, as: 'token'
         end
       end
-      
+
       class Parameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filters, as: 'filters', class: Google::Apis::DoubleclickbidmanagerV1::FilterPair, decorator: Google::Apis::DoubleclickbidmanagerV1::FilterPair::Representation
-      
+
           collection :group_bys, as: 'groupBys'
           property :include_invite_data, as: 'includeInviteData'
           collection :metrics, as: 'metrics'
           property :type, as: 'type'
         end
       end
-      
+
       class Query
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::DoubleclickbidmanagerV1::QueryMetadata, decorator: Google::Apis::DoubleclickbidmanagerV1::QueryMetadata::Representation
-      
+
           property :params, as: 'params', class: Google::Apis::DoubleclickbidmanagerV1::Parameters, decorator: Google::Apis::DoubleclickbidmanagerV1::Parameters::Representation
-      
+
           property :query_id, as: 'queryId'
           property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
           property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
           property :schedule, as: 'schedule', class: Google::Apis::DoubleclickbidmanagerV1::QuerySchedule, decorator: Google::Apis::DoubleclickbidmanagerV1::QuerySchedule::Representation
-      
+
           property :timezone_code, as: 'timezoneCode'
         end
       end
-      
+
       class QueryMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -259,7 +259,7 @@ module Google
           property :title, as: 'title'
         end
       end
-      
+
       class QuerySchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -269,26 +269,26 @@ module Google
           property :next_run_timezone_code, as: 'nextRunTimezoneCode'
         end
       end
-      
+
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key', class: Google::Apis::DoubleclickbidmanagerV1::ReportKey, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportKey::Representation
-      
+
           property :metadata, as: 'metadata', class: Google::Apis::DoubleclickbidmanagerV1::ReportMetadata, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportMetadata::Representation
-      
+
           property :params, as: 'params', class: Google::Apis::DoubleclickbidmanagerV1::Parameters, decorator: Google::Apis::DoubleclickbidmanagerV1::Parameters::Representation
-      
+
         end
       end
-      
+
       class ReportFailure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_code, as: 'errorCode'
         end
       end
-      
+
       class ReportKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -296,7 +296,7 @@ module Google
           property :report_id, as: 'reportId'
         end
       end
-      
+
       class ReportMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -304,21 +304,21 @@ module Google
           property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
           property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
           property :status, as: 'status', class: Google::Apis::DoubleclickbidmanagerV1::ReportStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportStatus::Representation
-      
+
         end
       end
-      
+
       class ReportStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure, as: 'failure', class: Google::Apis::DoubleclickbidmanagerV1::ReportFailure, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportFailure::Representation
-      
+
           property :finish_time_ms, as: 'finishTimeMs'
           property :format, as: 'format'
           property :state, as: 'state'
         end
       end
-      
+
       class RowStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -330,7 +330,7 @@ module Google
           property :row_number, as: 'rowNumber'
         end
       end
-      
+
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -340,7 +340,7 @@ module Google
           property :timezone_code, as: 'timezoneCode'
         end
       end
-      
+
       class UploadLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -349,21 +349,21 @@ module Google
           property :line_items, as: 'lineItems'
         end
       end
-      
+
       class UploadLineItemsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :upload_status, as: 'uploadStatus', class: Google::Apis::DoubleclickbidmanagerV1::UploadStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::UploadStatus::Representation
-      
+
         end
       end
-      
+
       class UploadStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors'
           collection :row_status, as: 'rowStatus', class: Google::Apis::DoubleclickbidmanagerV1::RowStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::RowStatus::Representation
-      
+
         end
       end
     end

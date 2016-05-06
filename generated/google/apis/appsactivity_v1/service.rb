@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'appsactivity/v1/')
         end
-        
+
         # Returns a list of activities visible to the current logged in user. Visible
         # activities are determined by the visiblity settings of the object that was
         # acted on, e.g. Drive files a user can see. An activity is a record of past

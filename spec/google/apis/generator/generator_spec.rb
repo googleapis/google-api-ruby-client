@@ -17,7 +17,7 @@ require 'google/apis/generator'
 require 'tmpdir'
 require 'fileutils'
 
-# TODO - Naked arrays in method requests/responses
+# TODO: NAKED ARRAYS IN METHOD REQUESTS/RESPONSES
 
 RSpec.describe Google::Apis::Generator do
   include TestHelpers
@@ -72,11 +72,11 @@ RSpec.describe Google::Apis::Generator do
       end
 
       it 'should define AUTH_TEST scope' do
-        expect(Google::Apis::TestV1::AUTH_TEST).to eql ('https://www.googleapis.com/auth/test')
+        expect(Google::Apis::TestV1::AUTH_TEST).to eql('https://www.googleapis.com/auth/test')
       end
 
       it 'should define AUTH_TEST_READONLY scope' do
-        expect(Google::Apis::TestV1::AUTH_TEST_READONLY).to eql ('https://www.googleapis.com/auth/test.readonly')
+        expect(Google::Apis::TestV1::AUTH_TEST_READONLY).to eql('https://www.googleapis.com/auth/test.readonly')
       end
 
       context 'when simplifying class names' do
@@ -151,24 +151,24 @@ EOF
           end
 
           it 'should parse subtypes' do
-            expect(thing.photo.filename).to eq "image.jpg"
+            expect(thing.photo.filename).to eq 'image.jpg'
           end
         end
 
         context 'With the to_json method' do
           let(:thing) do
             Google::Apis::TestV1::Thing.new(
-                name: "A thing",
-                properties: {
-                    prop_a: "value_a"
-                },
-                photo: {
-                    filename: "image.jpg"
-                },
-                hat: {
-                    type: "topHat",
-                    height: 100
-                }
+              name: 'A thing',
+              properties: {
+                prop_a: 'value_a'
+              },
+              photo: {
+                filename: 'image.jpg'
+              },
+              hat: {
+                type: 'topHat',
+                height: 100
+              }
             )
           end
         end

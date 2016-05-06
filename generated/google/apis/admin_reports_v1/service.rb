@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'admin/reports/v1/')
         end
-        
+
         # Retrieves a list of activities for a specific customer and application.
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -118,7 +118,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Push changes to activities
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -187,7 +187,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Stop watching resources through this channel
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] fields
@@ -220,7 +220,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report which is a collection of properties / statistics for a
         # specific customer.
         # @param [String] date
@@ -266,7 +266,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report which is a collection of properties / statistics for a set
         # of users.
         # @param [String] user_key

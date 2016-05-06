@@ -21,361 +21,361 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminDirectoryV1
-      
+
       class Alias
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Aliases
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Asp
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Asps
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class CalendarResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class CalendarResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ChromeOsDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class ActiveTimeRange
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class RecentUser
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ChromeOsDevices
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Customer
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class CustomerPostalAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DomainAlias
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class DomainAliases
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Domains
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Domains2
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Groups
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Member
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Members
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class MobileDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Application
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class MobileDeviceAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class MobileDevices
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Notifications
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class OrgUnit
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class OrgUnits
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Privilege
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Privileges
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Role
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class RolePrivilege
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class RoleAssignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class RoleAssignments
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Roles
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Schema
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class SchemaFieldSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class NumericIndexingSpec
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Schemas
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Token
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Tokens
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserAbout
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserEmail
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserExternalId
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserIm
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserMakeAdmin
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserName
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserOrganization
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserPhone
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserPhoto
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserRelation
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserUndelete
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UserWebsite
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Users
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class VerificationCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class VerificationCodes
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Alias
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -386,17 +386,17 @@ module Google
           property :primary_email, as: 'primaryEmail'
         end
       end
-      
+
       class Aliases
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aliases, as: 'aliases', class: Google::Apis::AdminDirectoryV1::Alias, decorator: Google::Apis::AdminDirectoryV1::Alias::Representation
-      
+
           property :etag, as: 'etag'
           property :kind, as: 'kind'
         end
       end
-      
+
       class Asp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -409,17 +409,17 @@ module Google
           property :user_key, as: 'userKey'
         end
       end
-      
+
       class Asps
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Asp, decorator: Google::Apis::AdminDirectoryV1::Asp::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class CalendarResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -432,18 +432,18 @@ module Google
           property :resource_type, as: 'resourceType'
         end
       end
-      
+
       class CalendarResources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::CalendarResource, decorator: Google::Apis::AdminDirectoryV1::CalendarResource::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Channel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,12 +459,12 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class ChromeOsDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_ranges, as: 'activeTimeRanges', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange::Representation
-      
+
           property :annotated_asset_id, as: 'annotatedAssetId'
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
@@ -475,9 +475,9 @@ module Google
           property :firmware_version, as: 'firmwareVersion'
           property :kind, as: 'kind'
           property :last_enrollment_time, as: 'lastEnrollmentTime', type: DateTime
-      
+
           property :last_sync, as: 'lastSync', type: DateTime
-      
+
           property :mac_address, as: 'macAddress'
           property :meid, as: 'meid'
           property :model, as: 'model'
@@ -487,23 +487,23 @@ module Google
           property :os_version, as: 'osVersion'
           property :platform_version, as: 'platformVersion'
           collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser::Representation
-      
+
           property :serial_number, as: 'serialNumber'
           property :status, as: 'status'
           property :support_end_date, as: 'supportEndDate', type: DateTime
-      
+
           property :will_auto_renew, as: 'willAutoRenew'
         end
-        
+
         class ActiveTimeRange
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :active_time, as: 'activeTime'
             property :date, as: 'date', type: Date
-        
+
           end
         end
-        
+
         class RecentUser
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -512,24 +512,24 @@ module Google
           end
         end
       end
-      
+
       class ChromeOsDevices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :chromeosdevices, as: 'chromeosdevices', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
-      
+
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Customer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate_email, as: 'alternateEmail'
           property :customer_creation_time, as: 'customerCreationTime', type: DateTime
-      
+
           property :customer_domain, as: 'customerDomain'
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -537,10 +537,10 @@ module Google
           property :language, as: 'language'
           property :phone_number, as: 'phoneNumber'
           property :postal_address, as: 'postalAddress', class: Google::Apis::AdminDirectoryV1::CustomerPostalAddress, decorator: Google::Apis::AdminDirectoryV1::CustomerPostalAddress::Representation
-      
+
         end
       end
-      
+
       class CustomerPostalAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -555,7 +555,7 @@ module Google
           property :region, as: 'region'
         end
       end
-      
+
       class DomainAlias
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -567,23 +567,23 @@ module Google
           property :verified, as: 'verified'
         end
       end
-      
+
       class DomainAliases
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domain_aliases, as: 'domainAliases', class: Google::Apis::AdminDirectoryV1::DomainAlias, decorator: Google::Apis::AdminDirectoryV1::DomainAlias::Representation
-      
+
           property :etag, as: 'etag'
           property :kind, as: 'kind'
         end
       end
-      
+
       class Domains
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, as: 'creationTime'
           collection :domain_aliases, as: 'domainAliases', class: Google::Apis::AdminDirectoryV1::DomainAlias, decorator: Google::Apis::AdminDirectoryV1::DomainAlias::Representation
-      
+
           property :domain_name, as: 'domainName'
           property :etag, as: 'etag'
           property :is_primary, as: 'isPrimary'
@@ -591,17 +591,17 @@ module Google
           property :verified, as: 'verified'
         end
       end
-      
+
       class Domains2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domains, as: 'domains', class: Google::Apis::AdminDirectoryV1::Domains, decorator: Google::Apis::AdminDirectoryV1::Domains::Representation
-      
+
           property :etag, as: 'etag'
           property :kind, as: 'kind'
         end
       end
-      
+
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -617,18 +617,18 @@ module Google
           collection :non_editable_aliases, as: 'nonEditableAliases'
         end
       end
-      
+
       class Groups
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :groups, as: 'groups', class: Google::Apis::AdminDirectoryV1::Group, decorator: Google::Apis::AdminDirectoryV1::Group::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Member
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -640,24 +640,24 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class Members
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           collection :members, as: 'members', class: Google::Apis::AdminDirectoryV1::Member, decorator: Google::Apis::AdminDirectoryV1::Member::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class MobileDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adb_status, as: 'adbStatus'
           collection :applications, as: 'applications', class: Google::Apis::AdminDirectoryV1::MobileDevice::Application, decorator: Google::Apis::AdminDirectoryV1::MobileDevice::Application::Representation
-      
+
           property :baseband_version, as: 'basebandVersion'
           property :build_number, as: 'buildNumber'
           property :default_language, as: 'defaultLanguage'
@@ -667,13 +667,13 @@ module Google
           collection :email, as: 'email'
           property :etag, as: 'etag'
           property :first_sync, as: 'firstSync', type: DateTime
-      
+
           property :hardware_id, as: 'hardwareId'
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
           property :kind, as: 'kind'
           property :last_sync, as: 'lastSync', type: DateTime
-      
+
           property :managed_account_is_on_owner_profile, as: 'managedAccountIsOnOwnerProfile'
           property :meid, as: 'meid'
           property :model, as: 'model'
@@ -690,7 +690,7 @@ module Google
           property :user_agent, as: 'userAgent'
           property :wifi_mac_address, as: 'wifiMacAddress'
         end
-        
+
         class Application
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -702,25 +702,25 @@ module Google
           end
         end
       end
-      
+
       class MobileDeviceAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
         end
       end
-      
+
       class MobileDevices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           collection :mobiledevices, as: 'mobiledevices', class: Google::Apis::AdminDirectoryV1::MobileDevice, decorator: Google::Apis::AdminDirectoryV1::MobileDevice::Representation
-      
+
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Notification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -731,23 +731,23 @@ module Google
           property :kind, as: 'kind'
           property :notification_id, as: 'notificationId'
           property :send_time, as: 'sendTime', type: DateTime
-      
+
           property :subject, as: 'subject'
         end
       end
-      
+
       class Notifications
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Notification, decorator: Google::Apis::AdminDirectoryV1::Notification::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :unread_notifications_count, as: 'unreadNotificationsCount'
         end
       end
-      
+
       class OrgUnit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -762,22 +762,22 @@ module Google
           property :parent_org_unit_path, as: 'parentOrgUnitPath'
         end
       end
-      
+
       class OrgUnits
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           collection :organization_units, as: 'organizationUnits', class: Google::Apis::AdminDirectoryV1::OrgUnit, decorator: Google::Apis::AdminDirectoryV1::OrgUnit::Representation
-      
+
         end
       end
-      
+
       class Privilege
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :child_privileges, as: 'childPrivileges', class: Google::Apis::AdminDirectoryV1::Privilege, decorator: Google::Apis::AdminDirectoryV1::Privilege::Representation
-      
+
           property :etag, as: 'etag'
           property :is_ou_scopable, as: 'isOuScopable'
           property :kind, as: 'kind'
@@ -786,17 +786,17 @@ module Google
           property :service_name, as: 'serviceName'
         end
       end
-      
+
       class Privileges
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Privilege, decorator: Google::Apis::AdminDirectoryV1::Privilege::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -808,9 +808,9 @@ module Google
           property :role_id, as: 'roleId'
           property :role_name, as: 'roleName'
           collection :role_privileges, as: 'rolePrivileges', class: Google::Apis::AdminDirectoryV1::Role::RolePrivilege, decorator: Google::Apis::AdminDirectoryV1::Role::RolePrivilege::Representation
-      
+
         end
-        
+
         class RolePrivilege
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -819,7 +819,7 @@ module Google
           end
         end
       end
-      
+
       class RoleAssignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -832,41 +832,41 @@ module Google
           property :scope_type, as: 'scopeType'
         end
       end
-      
+
       class RoleAssignments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::RoleAssignment, decorator: Google::Apis::AdminDirectoryV1::RoleAssignment::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Roles
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Role, decorator: Google::Apis::AdminDirectoryV1::Role::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :fields, as: 'fields', class: Google::Apis::AdminDirectoryV1::SchemaFieldSpec, decorator: Google::Apis::AdminDirectoryV1::SchemaFieldSpec::Representation
-      
+
           property :kind, as: 'kind'
           property :schema_id, as: 'schemaId'
           property :schema_name, as: 'schemaName'
         end
       end
-      
+
       class SchemaFieldSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -878,10 +878,10 @@ module Google
           property :kind, as: 'kind'
           property :multi_valued, as: 'multiValued'
           property :numeric_indexing_spec, as: 'numericIndexingSpec', class: Google::Apis::AdminDirectoryV1::SchemaFieldSpec::NumericIndexingSpec, decorator: Google::Apis::AdminDirectoryV1::SchemaFieldSpec::NumericIndexingSpec::Representation
-      
+
           property :read_access_type, as: 'readAccessType'
         end
-        
+
         class NumericIndexingSpec
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -890,17 +890,17 @@ module Google
           end
         end
       end
-      
+
       class Schemas
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           collection :schemas, as: 'schemas', class: Google::Apis::AdminDirectoryV1::Schema, decorator: Google::Apis::AdminDirectoryV1::Schema::Representation
-      
+
         end
       end
-      
+
       class Token
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -914,17 +914,17 @@ module Google
           property :user_key, as: 'userKey'
         end
       end
-      
+
       class Tokens
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Token, decorator: Google::Apis::AdminDirectoryV1::Token::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -933,11 +933,11 @@ module Google
           collection :aliases, as: 'aliases'
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
-      
+
           hash :custom_schemas, as: 'customSchemas'
           property :customer_id, as: 'customerId'
           property :deletion_time, as: 'deletionTime', type: DateTime
-      
+
           property :emails, as: 'emails'
           property :etag, as: 'etag'
           property :external_ids, as: 'externalIds'
@@ -951,9 +951,9 @@ module Google
           property :is_mailbox_setup, as: 'isMailboxSetup'
           property :kind, as: 'kind'
           property :last_login_time, as: 'lastLoginTime', type: DateTime
-      
+
           property :name, as: 'name', class: Google::Apis::AdminDirectoryV1::UserName, decorator: Google::Apis::AdminDirectoryV1::UserName::Representation
-      
+
           collection :non_editable_aliases, as: 'nonEditableAliases'
           property :notes, as: 'notes'
           property :org_unit_path, as: 'orgUnitPath'
@@ -969,7 +969,7 @@ module Google
           property :websites, as: 'websites'
         end
       end
-      
+
       class UserAbout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -977,7 +977,7 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class UserAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -996,7 +996,7 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class UserEmail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1006,7 +1006,7 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class UserExternalId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1015,7 +1015,7 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class UserIm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1027,14 +1027,14 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class UserMakeAdmin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :status, as: 'status'
         end
       end
-      
+
       class UserName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1043,7 +1043,7 @@ module Google
           property :given_name, as: 'givenName'
         end
       end
-      
+
       class UserOrganization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1060,7 +1060,7 @@ module Google
           property :type, as: 'type'
         end
       end
-      
+
       class UserPhone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1070,7 +1070,7 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class UserPhoto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1084,7 +1084,7 @@ module Google
           property :width, as: 'width'
         end
       end
-      
+
       class UserRelation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1093,14 +1093,14 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class UserUndelete
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :org_unit_path, as: 'orgUnitPath'
         end
       end
-      
+
       class UserWebsite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1110,7 +1110,7 @@ module Google
           property :value, as: 'value'
         end
       end
-      
+
       class Users
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1119,10 +1119,10 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :trigger_event, as: 'trigger_event'
           collection :users, as: 'users', class: Google::Apis::AdminDirectoryV1::User, decorator: Google::Apis::AdminDirectoryV1::User::Representation
-      
+
         end
       end
-      
+
       class VerificationCode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,13 +1132,13 @@ module Google
           property :verification_code, as: 'verificationCode'
         end
       end
-      
+
       class VerificationCodes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::VerificationCode, decorator: Google::Apis::AdminDirectoryV1::VerificationCode::Representation
-      
+
           property :kind, as: 'kind'
         end
       end

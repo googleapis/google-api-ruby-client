@@ -91,16 +91,16 @@ module Net
       chunk if chunk.is_a?(String)
       chunk.read if chunk.is_a?(IO)
       chunk.call if chunk.is_a?(Proc)
-      fail chunk if chunk.is_a?(Class)
+      raise chunk if chunk.is_a?(Class)
       chunk
     end
 
     def read_body(dest = nil, &block)
-      if !(defined?(@__read_body_previously_called).nil?) && @__read_body_previously_called
+      if !defined?(@__read_body_previously_called).nil? && @__read_body_previously_called
         return super
       end
       return @body if dest.nil? && block.nil?
-      fail ArgumentError.new('both arg and block given for HTTP method') if dest && block
+      raise ArgumentError.new('both arg and block given for HTTP method') if dest && block
       return nil if @body.nil?
 
       dest ||= ::Net::ReadAdapter.new(block)
@@ -122,8 +122,8 @@ class WebMockHTTPClient
     chunk if chunk.is_a?(String)
     chunk.read if chunk.is_a?(IO)
     chunk.call if chunk.is_a?(Proc)
-    fail HTTPClient::TimeoutError if chunk == ::Timeout::Error
-    fail chunk if chunk.is_a?(Class)
+    raise HTTPClient::TimeoutError if chunk == ::Timeout::Error
+    raise chunk if chunk.is_a?(Class)
     chunk
   end
 

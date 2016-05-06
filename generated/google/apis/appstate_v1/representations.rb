@@ -21,31 +21,31 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppstateV1
-      
+
       class GetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class UpdateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class WriteResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class GetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -55,17 +55,17 @@ module Google
           property :state_key, as: 'stateKey'
         end
       end
-      
+
       class ListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponse::Representation
-      
+
           property :kind, as: 'kind'
           property :maximum_key_count, as: 'maximumKeyCount'
         end
       end
-      
+
       class UpdateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -73,7 +73,7 @@ module Google
           property :kind, as: 'kind'
         end
       end
-      
+
       class WriteResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

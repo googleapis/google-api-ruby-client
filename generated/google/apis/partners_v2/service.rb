@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://partners.googleapis.com/', '')
         end
-        
+
         # Logs a user event.
         # @param [Google::Apis::PartnersV2::LogUserEventRequest] log_user_event_request_object
         # @param [String] fields
@@ -76,7 +76,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Logs a generic message from the client, such as `Failed to render component`, `
         # Profile page is running slow`, `More than 500 users have accessed this result.`
         # , etc.
@@ -108,7 +108,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists states for current user.
         # @param [String] request_metadata_user_overrides_ip_address
         #   IP address to use instead of the user's geo-located IP address.
@@ -159,7 +159,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a company.
         # @param [String] company_id
         #   The ID of the company to retrieve.
@@ -232,7 +232,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists companies.
         # @param [String] request_metadata_user_overrides_ip_address
         #   IP address to use instead of the user's geo-located IP address.
@@ -354,7 +354,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an advertiser lead for the given company ID.
         # @param [String] company_id
         #   The ID of the company to contact.

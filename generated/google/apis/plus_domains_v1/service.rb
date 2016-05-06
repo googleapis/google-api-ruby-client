@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'plusDomains/v1/')
         end
-        
+
         # Get an activity.
         # @param [String] activity_id
         #   The ID of the activity to get.
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new activity for the authenticated user.
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of. Its value should be "
@@ -130,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the activities in the specified collection for a particular user.
         # @param [String] user_id
         #   The ID of the user to get activities for. The special value "me" can be used
@@ -179,7 +179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the audiences to which a user can share.
         # @param [String] user_id
         #   The ID of the user to get audiences for. The special value "me" can be used to
@@ -225,7 +225,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a person to a circle. Google+ limits certain circle operations, including
         # the number of circle adds. Learn More.
         # @param [String] circle_id
@@ -267,7 +267,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a circle.
         # @param [String] circle_id
         #   The ID of the circle to get.
@@ -302,7 +302,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new circle for the authenticated user.
         # @param [String] user_id
         #   The ID of the user to create the circle on behalf of. The value "me" can be
@@ -341,7 +341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the circles for a user.
         # @param [String] user_id
         #   The ID of the user to get circles for. The special value "me" can be used to
@@ -387,7 +387,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a circle's description. This method supports patch semantics.
         # @param [String] circle_id
         #   The ID of the circle to update.
@@ -425,7 +425,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a circle.
         # @param [String] circle_id
         #   The ID of the circle to delete.
@@ -458,7 +458,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove a person from a circle.
         # @param [String] circle_id
         #   The ID of the circle to remove the person from.
@@ -497,7 +497,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a circle's description.
         # @param [String] circle_id
         #   The ID of the circle to update.
@@ -535,7 +535,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a comment.
         # @param [String] comment_id
         #   The ID of the comment to get.
@@ -570,7 +570,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new comment in reply to an activity.
         # @param [String] activity_id
         #   The ID of the activity to reply to.
@@ -608,7 +608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the comments for an activity.
         # @param [String] activity_id
         #   The ID of the activity to get comments for.
@@ -656,7 +656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a new media item to an album. The current upload size limitations are 36MB
         # for a photo and 1GB for a video. Uploads do not count against quota if photos
         # are less than 2048 pixels on their longest side or videos are less than 15
@@ -709,7 +709,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a person's profile.
         # @param [String] user_id
         #   The ID of the person to get the profile for. The special value "me" can be
@@ -745,7 +745,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection.
         # @param [String] user_id
         #   Get the collection of people for the person identified. Use "me" to indicate
@@ -797,7 +797,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people in the specified collection for a particular activity.
         # @param [String] activity_id
         #   The ID of the activity to get the list of people for.
@@ -845,7 +845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all of the people who are members of a circle.
         # @param [String] circle_id
         #   The ID of the circle to get the members of.

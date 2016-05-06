@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://logging.googleapis.com/', '')
         end
-        
+
         # Lists the logs in the project. Only logs that have entries are listed.
         # @param [String] projects_id
         #   Part of `projectName`. The resource name of the project whose logs are
@@ -99,7 +99,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a log and all its log entries. The log will reappear if it receives
         # new entries.
         # @param [String] projects_id
@@ -133,7 +133,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Writes log entries to Cloud Logging. Each entry consists of a `LogEntry`
         # object. You must fill in all the fields of the object, including one of the
         # payload fields. You may supply a map, `commonLabels`, that holds default (key,
@@ -174,7 +174,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists log sinks associated with a log.
         # @param [String] projects_id
         #   Part of `logName`. The log whose sinks are wanted. For example, `"compute.
@@ -208,7 +208,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a log sink.
         # @param [String] projects_id
         #   Part of `sinkName`. The resource name of the log sink to return.
@@ -244,7 +244,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a log sink. All log entries for a specified log are written to the
         # destination.
         # @param [String] projects_id
@@ -281,7 +281,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a log sink. If the sink does not exist, it is created.
         # @param [String] projects_id
         #   Part of `sinkName`. The resource name of the sink to update.
@@ -320,7 +320,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a log sink. After deletion, no new log entries are written to the
         # destination.
         # @param [String] projects_id
@@ -357,7 +357,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the log services that have log entries in this project.
         # @param [String] projects_id
         #   Part of `projectName`. The resource name of the project whose services are to
@@ -396,7 +396,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the current index values for a log service.
         # @param [String] projects_id
         #   Part of `serviceName`. The resource name of a log service whose service
@@ -461,7 +461,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists log service sinks associated with a log service.
         # @param [String] projects_id
         #   Part of `serviceName`. The log service whose sinks are wanted.
@@ -494,7 +494,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a log service sink.
         # @param [String] projects_id
         #   Part of `sinkName`. The resource name of the log service sink to return.
@@ -530,7 +530,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a log service sink. All log entries from a specified log service are
         # written to the destination.
         # @param [String] projects_id
@@ -568,7 +568,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a log service sink. If the sink does not exist, it is created.
         # @param [String] projects_id
         #   Part of `sinkName`. The resource name of the log service sink to update.
@@ -607,7 +607,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a log service sink. After deletion, no new log entries are written to
         # the destination.
         # @param [String] projects_id
@@ -644,7 +644,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists project sinks associated with a project.
         # @param [String] projects_id
         #   Part of `projectName`. The project whose sinks are wanted.
@@ -674,7 +674,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a project sink.
         # @param [String] projects_id
         #   Part of `sinkName`. The resource name of the project sink to return.
@@ -707,7 +707,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a project sink. A logs filter determines which log entries are written
         # to the destination.
         # @param [String] projects_id
@@ -742,7 +742,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a project sink. If the sink does not exist, it is created. The
         # destination, filter, or both may be updated.
         # @param [String] projects_id
@@ -779,7 +779,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a project sink. After deletion, no new log entries are written to the
         # destination.
         # @param [String] projects_id
@@ -813,7 +813,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists the logs-based metrics associated with a project.
         # @param [String] projects_id
         #   Part of `projectName`. The resource name for the project whose metrics are
@@ -852,7 +852,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a logs-based metric.
         # @param [String] projects_id
         #   Part of `metricName`. The resource name of the desired metric.
@@ -885,7 +885,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a logs-based metric.
         # @param [String] projects_id
         #   Part of `projectName`. The resource name of the project in which to create the
@@ -919,7 +919,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates or updates a logs-based metric.
         # @param [String] projects_id
         #   Part of `metricName`. The resource name of the metric to update.
@@ -955,7 +955,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a logs-based metric.
         # @param [String] projects_id
         #   Part of `metricName`. The resource name of the metric to delete.

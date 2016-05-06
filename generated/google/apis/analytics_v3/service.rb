@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'analytics/v3/')
         end
-        
+
         # Returns Analytics data for a view (profile).
         # @param [String] ids
         #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
@@ -132,7 +132,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns Analytics Multi-Channel Funnels data for a view (profile).
         # @param [String] ids
         #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
@@ -205,7 +205,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns real time data for a view (profile).
         # @param [String] ids
         #   Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX,
@@ -259,7 +259,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists account summaries (lightweight tree comprised of accounts/properties/
         # profiles) to which the user has access.
         # @param [Fixnum] max_results
@@ -300,7 +300,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a user from the given account.
         # @param [String] account_id
         #   Account ID to delete the user link for.
@@ -336,7 +336,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new user to the given account.
         # @param [String] account_id
         #   Account ID to create the user link for.
@@ -374,7 +374,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists account-user links for a given account.
         # @param [String] account_id
         #   Account ID to retrieve the user links for.
@@ -416,7 +416,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates permissions for an existing user on the given account.
         # @param [String] account_id
         #   Account ID to update the account-user link for.
@@ -457,7 +457,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all accounts to which the user has access.
         # @param [Fixnum] max_results
         #   The maximum number of accounts to include in this response.
@@ -496,7 +496,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List custom data sources to which the user has access.
         # @param [String] account_id
         #   Account Id for the custom data sources to retrieve.
@@ -541,7 +541,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a custom dimension to which the user has access.
         # @param [String] account_id
         #   Account ID for the custom dimension to retrieve.
@@ -582,7 +582,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new custom dimension.
         # @param [String] account_id
         #   Account ID for the custom dimension to create.
@@ -623,7 +623,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists custom dimensions to which the user has access.
         # @param [String] account_id
         #   Account ID for the custom dimensions to retrieve.
@@ -668,7 +668,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing custom dimension. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID for the custom dimension to update.
@@ -716,7 +716,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing custom dimension.
         # @param [String] account_id
         #   Account ID for the custom dimension to update.
@@ -764,7 +764,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a custom metric to which the user has access.
         # @param [String] account_id
         #   Account ID for the custom metric to retrieve.
@@ -805,7 +805,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new custom metric.
         # @param [String] account_id
         #   Account ID for the custom metric to create.
@@ -846,7 +846,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists custom metrics to which the user has access.
         # @param [String] account_id
         #   Account ID for the custom metrics to retrieve.
@@ -891,7 +891,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing custom metric. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID for the custom metric to update.
@@ -939,7 +939,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing custom metric.
         # @param [String] account_id
         #   Account ID for the custom metric to update.
@@ -987,7 +987,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete an experiment.
         # @param [String] account_id
         #   Account ID to which the experiment belongs
@@ -1029,7 +1029,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns an experiment to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the experiment for.
@@ -1073,7 +1073,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new experiment.
         # @param [String] account_id
         #   Account ID to create the experiment for.
@@ -1117,7 +1117,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists experiments to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve experiments for.
@@ -1165,7 +1165,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update an existing experiment. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID of the experiment to update.
@@ -1212,7 +1212,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update an existing experiment.
         # @param [String] account_id
         #   Account ID of the experiment to update.
@@ -1259,7 +1259,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a filter.
         # @param [String] account_id
         #   Account ID to delete the filter for.
@@ -1297,7 +1297,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a filters to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve filters for.
@@ -1335,7 +1335,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new filter.
         # @param [String] account_id
         #   Account ID to create filter for.
@@ -1373,7 +1373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all filters for an account
         # @param [String] account_id
         #   Account ID to retrieve filters for.
@@ -1415,7 +1415,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing filter. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the filter belongs.
@@ -1456,7 +1456,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing filter.
         # @param [String] account_id
         #   Account ID to which the filter belongs.
@@ -1497,7 +1497,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a goal to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the goal for.
@@ -1541,7 +1541,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new goal.
         # @param [String] account_id
         #   Account ID to create the goal for.
@@ -1585,7 +1585,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists goals to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve goals for. Can either be a specific account ID or '~all'
@@ -1637,7 +1637,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing goal. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to update the goal.
@@ -1684,7 +1684,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing goal.
         # @param [String] account_id
         #   Account ID to update the goal.
@@ -1731,7 +1731,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a profile filter link.
         # @param [String] account_id
         #   Account ID to which the profile filter link belongs.
@@ -1773,7 +1773,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a single profile filter link.
         # @param [String] account_id
         #   Account ID to retrieve profile filter link for.
@@ -1817,7 +1817,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new profile filter link.
         # @param [String] account_id
         #   Account ID to create profile filter link for.
@@ -1861,7 +1861,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all profile filter links for a profile.
         # @param [String] account_id
         #   Account ID to retrieve profile filter links for.
@@ -1912,7 +1912,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update an existing profile filter link. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which profile filter link belongs.
@@ -1959,7 +1959,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update an existing profile filter link.
         # @param [String] account_id
         #   Account ID to which profile filter link belongs.
@@ -2006,7 +2006,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a user from the given view (profile).
         # @param [String] account_id
         #   Account ID to delete the user link for.
@@ -2048,7 +2048,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new user to the given view (profile).
         # @param [String] account_id
         #   Account ID to create the user link for.
@@ -2092,7 +2092,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists profile-user links for a given view (profile).
         # @param [String] account_id
         #   Account ID which the given view (profile) belongs to.
@@ -2144,7 +2144,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates permissions for an existing user on the given view (profile).
         # @param [String] account_id
         #   Account ID to update the user link for.
@@ -2191,7 +2191,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a view (profile).
         # @param [String] account_id
         #   Account ID to delete the view (profile) for.
@@ -2230,7 +2230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a view (profile) to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the view (profile) for.
@@ -2271,7 +2271,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new view (profile).
         # @param [String] account_id
         #   Account ID to create the view (profile) for.
@@ -2312,7 +2312,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists views (profiles) to which the user has access.
         # @param [String] account_id
         #   Account ID for the view (profiles) to retrieve. Can either be a specific
@@ -2361,7 +2361,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing view (profile). This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the view (profile) belongs
@@ -2405,7 +2405,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing view (profile).
         # @param [String] account_id
         #   Account ID to which the view (profile) belongs
@@ -2449,7 +2449,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists segments to which the user has access.
         # @param [Fixnum] max_results
         #   The maximum number of segments to include in this response.
@@ -2488,7 +2488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an unsampled report.
         # @param [String] account_id
         #   Account ID to delete the unsampled report for.
@@ -2530,7 +2530,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a single unsampled report.
         # @param [String] account_id
         #   Account ID to retrieve unsampled report for.
@@ -2574,7 +2574,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new unsampled report.
         # @param [String] account_id
         #   Account ID to create the unsampled report for.
@@ -2618,7 +2618,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists unsampled reports to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve unsampled reports for. Must be a specific account ID, ~
@@ -2669,7 +2669,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete data associated with a previous upload.
         # @param [String] account_id
         #   Account Id for the uploads to be deleted.
@@ -2711,7 +2711,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List uploads to which the user has access.
         # @param [String] account_id
         #   Account Id for the upload to retrieve.
@@ -2755,7 +2755,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List uploads to which the user has access.
         # @param [String] account_id
         #   Account Id for the uploads to retrieve.
@@ -2803,7 +2803,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Upload data for a custom data source.
         # @param [String] account_id
         #   Account Id associated with the upload.
@@ -2854,7 +2854,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a web property-AdWords link.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
@@ -2893,7 +2893,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a web property-AdWords link to which the user has access.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
@@ -2934,7 +2934,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a webProperty-AdWords link.
         # @param [String] account_id
         #   ID of the Google Analytics account to create the link for.
@@ -2975,7 +2975,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists webProperty-AdWords links for a given web property.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
@@ -3020,7 +3020,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing webProperty-AdWords link. This method supports patch
         # semantics.
         # @param [String] account_id
@@ -3065,7 +3065,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing webProperty-AdWords link.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
@@ -3109,7 +3109,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a web property to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the web property for.
@@ -3147,7 +3147,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create a new property if the account has fewer than 20 properties. Web
         # properties are visible in the Google Analytics interface only if they have at
         # least one profile.
@@ -3187,7 +3187,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists web properties to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve web properties for. Can either be a specific account ID
@@ -3230,7 +3230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing web property. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the web property belongs
@@ -3271,7 +3271,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing web property.
         # @param [String] account_id
         #   Account ID to which the web property belongs
@@ -3312,7 +3312,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a user from the given web property.
         # @param [String] account_id
         #   Account ID to delete the user link for.
@@ -3351,7 +3351,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a new user to the given web property.
         # @param [String] account_id
         #   Account ID to create the user link for.
@@ -3392,7 +3392,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists webProperty-user links for a given web property.
         # @param [String] account_id
         #   Account ID which the given web property belongs to.
@@ -3439,7 +3439,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates permissions for an existing user on the given web property.
         # @param [String] account_id
         #   Account ID to update the account-user link for.
@@ -3483,7 +3483,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all columns for a report type
         # @param [String] report_type
         #   Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core
@@ -3519,7 +3519,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates an account ticket.
         # @param [Google::Apis::AnalyticsV3::AccountTicket] account_ticket_object
         # @param [String] fields

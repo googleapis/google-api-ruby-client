@@ -52,8 +52,8 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'manager/v1beta2/projects/')
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] region
         # @param [String] deployment_name
@@ -88,8 +88,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] region
         # @param [String] deployment_name
@@ -126,8 +126,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] region
         # @param [Google::Apis::ManagerV1beta2::Deployment] deployment_object
@@ -165,8 +165,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] region
         # @param [Fixnum] max_results
@@ -209,8 +209,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] template_name
         # @param [String] fields
@@ -243,8 +243,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [String] template_name
         # @param [String] fields
@@ -279,8 +279,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [Google::Apis::ManagerV1beta2::Template] template_object
         # @param [String] fields
@@ -316,8 +316,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] project_id
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned. Acceptable values are 0 to 100,

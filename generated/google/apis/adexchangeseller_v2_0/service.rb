@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adexchangeseller/v2.0/')
         end
-        
+
         # Get information about the selected Ad Exchange account.
         # @param [String] account_id
         #   Account to get information about. Tip: 'myaccount' is a valid ID.
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all accounts available to this Ad Exchange account.
         # @param [Fixnum] max_results
         #   The maximum number of accounts to include in the response, used for paging.
@@ -126,7 +126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad clients in this Ad Exchange account.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -169,7 +169,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the alerts for this Ad Exchange account.
         # @param [String] account_id
         #   Account owning the alerts.
@@ -209,7 +209,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the specified custom channel from the specified ad client.
         # @param [String] account_id
         #   Account to which the ad client belongs.
@@ -250,7 +250,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all custom channels in the specified ad client for this Ad Exchange
         # account.
         # @param [String] account_id
@@ -298,7 +298,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the metadata for the dimensions available to this AdExchange account.
         # @param [String] account_id
         #   Account with visibility to the dimensions.
@@ -333,7 +333,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the metadata for the metrics available to this AdExchange account.
         # @param [String] account_id
         #   Account with visibility to the metrics.
@@ -368,7 +368,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about the selected Ad Exchange Preferred Deal.
         # @param [String] account_id
         #   Account owning the deal.
@@ -406,7 +406,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the preferred deals for this Ad Exchange account.
         # @param [String] account_id
         #   Account owning the deals.
@@ -441,7 +441,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an Ad Exchange report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -515,7 +515,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an Ad Exchange report based on the saved report ID sent in the query
         # parameters.
         # @param [String] account_id
@@ -564,7 +564,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all saved reports in this Ad Exchange account.
         # @param [String] account_id
         #   Account owning the saved reports.
@@ -608,7 +608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all URL channels in the specified ad client for this Ad Exchange account.
         # @param [String] account_id
         #   Account to which the ad client belongs.

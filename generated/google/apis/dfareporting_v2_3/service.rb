@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'dfareporting/v2.3/')
         end
-        
+
         # Gets the account's active ad summary by account ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -89,7 +89,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account permission group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -127,7 +127,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of account permission groups.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -162,7 +162,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account permission by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -200,7 +200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of account permissions.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -235,7 +235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account user profile by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -273,7 +273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new account user profile.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -311,7 +311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of account user profiles, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -379,7 +379,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account user profile. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -420,7 +420,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account user profile.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -458,7 +458,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one account by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -496,7 +496,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of accounts, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -558,7 +558,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -599,7 +599,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing account.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -637,7 +637,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one ad by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -675,7 +675,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new ad.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -713,7 +713,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of ads, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -831,7 +831,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing ad. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -872,7 +872,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing ad.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -910,7 +910,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing advertiser group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -946,7 +946,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one advertiser group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -984,7 +984,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new advertiser group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1022,7 +1022,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of advertiser groups, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1081,7 +1081,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1122,7 +1122,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1160,7 +1160,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one advertiser by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1198,7 +1198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new advertiser.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1236,7 +1236,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of advertisers, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1313,7 +1313,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1354,7 +1354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing advertiser.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1392,7 +1392,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of browsers.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1427,7 +1427,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Associates a creative with the specified campaign. This method creates a
         # default ad with dimensions matching the creative in the campaign if such a
         # default ad does not exist already.
@@ -1470,7 +1470,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of creative IDs associated with the specified campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1517,7 +1517,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one campaign by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1555,7 +1555,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1600,7 +1600,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of campaigns, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1680,7 +1680,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1721,7 +1721,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1759,7 +1759,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one change log by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1797,7 +1797,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of change logs.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1873,7 +1873,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of cities, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1920,7 +1920,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one connection type by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1958,7 +1958,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of connection types.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -1993,7 +1993,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing content category.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2029,7 +2029,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one content category by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2067,7 +2067,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new content category.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2105,7 +2105,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of content categories, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2164,7 +2164,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing content category. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2205,7 +2205,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing content category.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2243,7 +2243,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one country by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2281,7 +2281,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of countries.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2316,7 +2316,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative asset.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2367,7 +2367,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing creative field value.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2406,7 +2406,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative field value by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2447,7 +2447,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative field value.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2488,7 +2488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative field values, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2545,7 +2545,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field value. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2589,7 +2589,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field value.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2630,7 +2630,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing creative field.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2666,7 +2666,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative field by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2704,7 +2704,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative field.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2742,7 +2742,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative fields, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2804,7 +2804,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2845,7 +2845,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative field.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2883,7 +2883,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2921,7 +2921,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -2959,7 +2959,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creative groups, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3024,7 +3024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3065,7 +3065,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3103,7 +3103,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one creative by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3141,7 +3141,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new creative.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3179,7 +3179,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of creatives, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3269,7 +3269,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3310,7 +3310,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing creative.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3348,7 +3348,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of report dimension values for a list of filters.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -3392,7 +3392,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one directory site contact by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3430,7 +3430,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of directory site contacts, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3494,7 +3494,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one directory site by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3532,7 +3532,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new directory site.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3570,7 +3570,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of directory sites, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3654,7 +3654,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing event tag.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3690,7 +3690,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one event tag by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3728,7 +3728,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new event tag.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3766,7 +3766,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of event tags, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3849,7 +3849,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing event tag. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3890,7 +3890,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing event tag.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -3928,7 +3928,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report file by its report ID and file ID.
         # @param [String] report_id
         #   The ID of the report.
@@ -3973,7 +3973,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists files for a user profile.
         # @param [String] profile_id
         #   The DFA profile ID.
@@ -4023,7 +4023,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing floodlight activity.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4059,7 +4059,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates a tag for a floodlight activity.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4097,7 +4097,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight activity by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4135,7 +4135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new floodlight activity.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4173,7 +4173,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight activities, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4262,7 +4262,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4303,7 +4303,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4341,7 +4341,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight activity group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4379,7 +4379,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new floodlight activity group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4417,7 +4417,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight activity groups, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4492,7 +4492,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity group. This method supports patch
         # semantics.
         # @param [String] profile_id
@@ -4534,7 +4534,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight activity group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4572,7 +4572,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one floodlight configuration by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4610,7 +4610,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of floodlight configurations, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4649,7 +4649,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight configuration. This method supports patch
         # semantics.
         # @param [String] profile_id
@@ -4691,7 +4691,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing floodlight configuration.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4729,7 +4729,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one inventory item by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4770,7 +4770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of inventory items, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4832,7 +4832,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing campaign landing page.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4871,7 +4871,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one campaign landing page by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4912,7 +4912,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new landing page for the specified campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4953,7 +4953,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of landing pages for the specified campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -4991,7 +4991,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign landing page. This method supports patch
         # semantics.
         # @param [String] profile_id
@@ -5036,7 +5036,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing campaign landing page.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5077,7 +5077,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of metros.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5112,7 +5112,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one mobile carrier by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5150,7 +5150,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of mobile carriers.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5185,7 +5185,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one operating system version by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5223,7 +5223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of operating system versions.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5258,7 +5258,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one operating system by DART ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5296,7 +5296,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of operating systems.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5331,7 +5331,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one order document by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5372,7 +5372,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of order documents, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5443,7 +5443,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one order by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5484,7 +5484,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of orders, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5548,7 +5548,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5586,7 +5586,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5624,7 +5624,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placement groups, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5733,7 +5733,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5774,7 +5774,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement group.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5812,7 +5812,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing placement strategy.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5848,7 +5848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement strategy by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5886,7 +5886,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement strategy.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5924,7 +5924,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placement strategies, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -5983,7 +5983,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement strategy. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6024,7 +6024,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement strategy.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6062,7 +6062,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generates tags for a placement.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6106,7 +6106,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one placement by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6144,7 +6144,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new placement.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6182,7 +6182,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of placements, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6297,7 +6297,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6338,7 +6338,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing placement.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6376,7 +6376,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one platform type by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6414,7 +6414,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of platform types.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6449,7 +6449,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one postal code by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6487,7 +6487,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of postal codes.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6522,7 +6522,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one project by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6560,7 +6560,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of projects, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6621,7 +6621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of regions.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6656,7 +6656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list share by remarketing list ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6694,7 +6694,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list share. This method supports patch
         # semantics.
         # @param [String] profile_id
@@ -6736,7 +6736,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list share.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6774,7 +6774,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6812,7 +6812,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new remarketing list.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6850,7 +6850,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of remarketing lists, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6915,7 +6915,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6956,7 +6956,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing remarketing list.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -6994,7 +6994,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a report by its ID.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7030,7 +7030,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report by its ID.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7068,7 +7068,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a report.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7106,7 +7106,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of reports.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7156,7 +7156,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a report. This method supports patch semantics.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7197,7 +7197,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Runs a report.
         # @param [String] profile_id
         #   The DFA profile ID.
@@ -7238,7 +7238,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a report.
         # @param [String] profile_id
         #   The DFA user profile ID.
@@ -7279,7 +7279,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the fields that are compatible to be selected in the respective
         # sections of a report criteria, given the fields already selected in the input
         # report and user permissions.
@@ -7319,7 +7319,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a report file.
         # @param [String] profile_id
         #   The DFA profile ID.
@@ -7367,7 +7367,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists files for a report.
         # @param [String] profile_id
         #   The DFA profile ID.
@@ -7417,7 +7417,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one site by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7455,7 +7455,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new site.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7493,7 +7493,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of sites, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7580,7 +7580,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing site. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7621,7 +7621,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing site.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7659,7 +7659,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one size by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7697,7 +7697,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new size.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7735,7 +7735,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of sizes, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7782,7 +7782,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one subaccount by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7820,7 +7820,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new subaccount.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7858,7 +7858,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of subaccounts, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7916,7 +7916,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing subaccount. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7957,7 +7957,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing subaccount.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -7995,7 +7995,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one remarketing list by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8033,7 +8033,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of targetable remarketing lists, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8095,7 +8095,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user profile by ID.
         # @param [String] profile_id
         #   The user profile ID.
@@ -8130,7 +8130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves list of user profiles for a user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8162,7 +8162,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role permission group by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8200,7 +8200,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of all supported user role permission groups.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8235,7 +8235,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role permission by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8273,7 +8273,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a list of user role permissions, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8311,7 +8311,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an existing user role.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8347,7 +8347,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user role by ID.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8385,7 +8385,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new user role.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8423,7 +8423,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of user roles, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8488,7 +8488,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing user role. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
@@ -8529,7 +8529,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing user role.
         # @param [String] profile_id
         #   User profile ID associated with this request.

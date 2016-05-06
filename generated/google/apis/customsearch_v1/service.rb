@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'customsearch/')
         end
-        
+
         # Returns metadata about the search performed, metadata about the custom search
         # engine used for the search, and the search results.
         # @param [String] q

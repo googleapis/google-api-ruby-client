@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'blogger/v3/')
         end
-        
+
         # Gets one blog and user info pair by blogId and userId.
         # @param [String] user_id
         #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
@@ -93,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one blog by ID.
         # @param [String] blog_id
         #   The ID of the blog to get.
@@ -135,7 +135,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a Blog by URL.
         # @param [String] url
         #   The URL of the blog to retrieve.
@@ -174,7 +174,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of blogs, possibly filtered.
         # @param [String] user_id
         #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
@@ -227,7 +227,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks a comment as not spam.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -268,7 +268,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a comment by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -307,7 +307,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one comment by ID.
         # @param [String] blog_id
         #   ID of the blog to containing the comment.
@@ -354,7 +354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the comments for a post, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch comments from.
@@ -413,7 +413,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the comments for a blog, across all posts, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch comments from.
@@ -465,7 +465,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks a comment as spam.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -506,7 +506,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the content of a comment.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -547,7 +547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve pageview stats for a Blog.
         # @param [String] blog_id
         #   The ID of the blog to get.
@@ -584,7 +584,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a page by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -620,7 +620,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one blog page by ID.
         # @param [String] blog_id
         #   ID of the blog containing the page.
@@ -660,7 +660,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a page.
         # @param [String] blog_id
         #   ID of the blog to add the page to.
@@ -701,7 +701,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the pages for a blog, optionally including non-LIVE statuses.
         # @param [String] blog_id
         #   ID of the blog to fetch Pages from.
@@ -751,7 +751,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a page. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -800,7 +800,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Publishes a draft page.
         # @param [String] blog_id
         #   The ID of the blog.
@@ -838,7 +838,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revert a published or scheduled page to draft state.
         # @param [String] blog_id
         #   The ID of the blog.
@@ -876,7 +876,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a page.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -925,7 +925,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one post and user info pair, by post ID and user ID. The post user info
         # contains per-user information about the post, such as access rights, specific
         # to the user.
@@ -972,7 +972,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of post and post user info pairs, possibly filtered. The post
         # user info contains per-user information about the post, such as access rights,
         # specific to the user.
@@ -1040,7 +1040,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a post by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1076,7 +1076,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a post by ID.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1129,7 +1129,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieve a Post by Path.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1174,7 +1174,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a post.
         # @param [String] blog_id
         #   ID of the blog to add the post to.
@@ -1223,7 +1223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of posts, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch posts from.
@@ -1290,7 +1290,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a post. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1350,7 +1350,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Publishes a draft post, optionally at the specific time of the given
         # publishDate parameter.
         # @param [String] blog_id
@@ -1395,7 +1395,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Revert a published or scheduled post to draft state.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1433,7 +1433,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Search for a post.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
@@ -1478,7 +1478,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a post.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1538,7 +1538,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets one user by ID.
         # @param [String] user_id
         #   The ID of the user to get.

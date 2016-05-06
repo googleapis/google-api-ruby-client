@@ -3,21 +3,25 @@ require 'spec_helper'
 require 'google/api_client/auth/storages/file_store'
 
 describe Google::APIClient::FileStore do
-  let(:root_path) { File.expand_path(File.join(__FILE__, '..','..','..', '..','..')) }
+  let(:root_path) do
+    File.expand_path(File.join(__FILE__, '..', '..', '..', '..', '..'))
+  end
   let(:json_file) { File.expand_path(File.join(root_path, 'fixtures', 'files', 'auth_stored_credentials.json')) }
 
-  let(:credentials_hash) {{
-      "access_token"=>"my_access_token",
-      "authorization_uri"=>"https://accounts.google.com/o/oauth2/auth",
-      "client_id"=>"123456_test_client_id@.apps.googleusercontent.com",
-      "client_secret"=>"123456_client_secret",
-      "expires_in"=>3600,
-      "refresh_token"=>"my_refresh_token",
-      "token_credential_uri"=>"https://accounts.google.com/o/oauth2/token",
-      "issued_at"=>1384440275
-  }}
+  let(:credentials_hash) do
+    {
+      'access_token' => 'my_access_token',
+      'authorization_uri' => 'https://accounts.google.com/o/oauth2/auth',
+      'client_id' => '123456_test_client_id@.apps.googleusercontent.com',
+      'client_secret' => '123456_client_secret',
+      'expires_in' => 3600,
+      'refresh_token' => 'my_refresh_token',
+      'token_credential_uri' => 'https://accounts.google.com/o/oauth2/token',
+      'issued_at' => 1_384_440_275
+    }
+  end
 
-  subject{Google::APIClient::FileStore.new('a file path')}
+  subject { Google::APIClient::FileStore.new('a file path') }
 
   it 'should have a path' do
     expect(subject.path).to be == 'a file path'
@@ -35,5 +39,12 @@ describe Google::APIClient::FileStore do
     io_stub = StringIO.new
     expect(subject).to receive(:open).and_return(io_stub)
     subject.write_credentials(credentials_hash)
+  end
+
+  context 'when file does not exist' do
+    it 'rescues with nil' do
+      subject.path = 'some_fake_path'
+      expect(subject.load_credentials).to be_nil
+    end
   end
 end

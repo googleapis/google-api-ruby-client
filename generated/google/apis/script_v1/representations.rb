@@ -21,43 +21,43 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ScriptV1
-      
+
       class ExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ExecutionError
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ScriptStackTraceElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ExecutionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class ExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -67,7 +67,7 @@ module Google
           property :dev_mode, as: 'devMode'
         end
       end
-      
+
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -75,11 +75,11 @@ module Google
           hash :metadata, as: 'metadata'
           property :done, as: 'done'
           property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
-      
+
           hash :response, as: 'response'
         end
       end
-      
+
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -88,17 +88,17 @@ module Google
           collection :details, as: 'details'
         end
       end
-      
+
       class ExecutionError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :script_stack_trace_elements, as: 'scriptStackTraceElements', class: Google::Apis::ScriptV1::ScriptStackTraceElement, decorator: Google::Apis::ScriptV1::ScriptStackTraceElement::Representation
-      
+
           property :error_message, as: 'errorMessage'
           property :error_type, as: 'errorType'
         end
       end
-      
+
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -106,7 +106,7 @@ module Google
           property :line_number, as: 'lineNumber'
         end
       end
-      
+
       class ExecutionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation

@@ -21,51 +21,51 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TasksV1
-      
+
       class Task
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Link
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TaskList
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TaskLists
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Tasks
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Task
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completed, as: 'completed', type: DateTime
-      
+
           property :deleted, as: 'deleted'
           property :due, as: 'due', type: DateTime
-      
+
           property :etag, as: 'etag'
           property :hidden, as: 'hidden'
           property :id, as: 'id'
           property :kind, as: 'kind'
           collection :links, as: 'links', class: Google::Apis::TasksV1::Task::Link, decorator: Google::Apis::TasksV1::Task::Link::Representation
-      
+
           property :notes, as: 'notes'
           property :parent, as: 'parent'
           property :position, as: 'position'
@@ -73,9 +73,9 @@ module Google
           property :status, as: 'status'
           property :title, as: 'title'
           property :updated, as: 'updated', type: DateTime
-      
+
         end
-        
+
         class Link
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -85,7 +85,7 @@ module Google
           end
         end
       end
-      
+
       class TaskList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -95,27 +95,27 @@ module Google
           property :self_link, as: 'selfLink'
           property :title, as: 'title'
           property :updated, as: 'updated', type: DateTime
-      
+
         end
       end
-      
+
       class TaskLists
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::TasksV1::TaskList, decorator: Google::Apis::TasksV1::TaskList::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end
       end
-      
+
       class Tasks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::TasksV1::Task, decorator: Google::Apis::TasksV1::Task::Representation
-      
+
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
         end

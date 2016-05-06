@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adsensehost/v4.1/')
         end
-        
+
         # Get information about the selected associated AdSense account.
         # @param [String] account_id
         #   Account to get information about.
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List hosted accounts associated with this AdSense account by ad client id.
         # @param [Array<String>, String] filter_ad_client_id
         #   Ad clients to list accounts for.
@@ -122,7 +122,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about one of the ad clients in the specified publisher's
         # AdSense account.
         # @param [String] account_id
@@ -161,7 +161,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all hosted ad clients in the specified hosted account.
         # @param [String] account_id
         #   Account for which to list ad clients.
@@ -204,7 +204,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete the specified ad unit from the specified publisher AdSense account.
         # @param [String] account_id
         #   Account which contains the ad unit.
@@ -245,7 +245,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get the specified host ad unit in this AdSense account.
         # @param [String] account_id
         #   Account which contains the ad unit.
@@ -286,7 +286,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get ad code for the specified ad unit, attaching the specified host custom
         # channels.
         # @param [String] account_id
@@ -331,7 +331,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert the supplied ad unit into the specified publisher AdSense account.
         # @param [String] account_id
         #   Account which will contain the ad unit.
@@ -372,7 +372,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all ad units in the specified publisher's AdSense account.
         # @param [String] account_id
         #   Account which contains the ad client.
@@ -420,7 +420,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the supplied ad unit in the specified publisher AdSense account. This
         # method supports patch semantics.
         # @param [String] account_id
@@ -465,7 +465,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update the supplied ad unit in the specified publisher AdSense account.
         # @param [String] account_id
         #   Account which contains the ad client.
@@ -506,7 +506,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -573,7 +573,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get information about one of the ad clients in the Host AdSense account.
         # @param [String] ad_client_id
         #   Ad client to get.
@@ -608,7 +608,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all host ad clients in this AdSense account.
         # @param [Fixnum] max_results
         #   The maximum number of ad clients to include in the response, used for paging.
@@ -648,7 +648,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Create an association session for initiating an association with an AdSense
         # user.
         # @param [Array<String>, String] product_code
@@ -693,7 +693,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Verify an association session after the association callback returns from
         # AdSense signup.
         # @param [String] token
@@ -729,7 +729,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a specific custom channel from the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client from which to delete the custom channel.
@@ -767,7 +767,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a specific custom channel from the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client from which to get the custom channel.
@@ -805,7 +805,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a new custom channel to the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client to which the new custom channel will be added.
@@ -843,7 +843,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all host custom channels in this AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list custom channels.
@@ -887,7 +887,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a custom channel in the host AdSense account. This method supports
         # patch semantics.
         # @param [String] ad_client_id
@@ -929,7 +929,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update a custom channel in the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client in which the custom channel will be updated.
@@ -967,7 +967,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -1031,7 +1031,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a URL channel from the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client from which to delete the URL channel.
@@ -1069,7 +1069,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add a new URL channel to the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client to which the new URL channel will be added.
@@ -1107,7 +1107,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all host URL channels in the host AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list URL channels.

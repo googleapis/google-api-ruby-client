@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'taskqueue/v1beta2/projects/')
         end
-        
+
         # Get detailed information about a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -92,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -131,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get a particular task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -172,7 +172,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Insert a new task in a TaskQueue
         # @param [String] project
         #   The project under which the queue lies
@@ -213,7 +213,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lease 1 or more tasks from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -265,7 +265,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List Tasks in a TaskQueue
         # @param [String] project
         #   The project under which the queue lies.
@@ -303,7 +303,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update tasks that are leased out of a TaskQueue. This method supports patch
         # semantics.
         # @param [String] project
@@ -349,7 +349,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Update tasks that are leased out of a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.

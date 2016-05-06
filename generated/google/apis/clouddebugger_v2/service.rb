@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://clouddebugger.googleapis.com/', '')
         end
-        
+
         # Registers the debuggee with the controller service. All agents attached to the
         # same application should call this method with the same request content to get
         # back the same stable `debuggee_id`. Agents should call this method again
@@ -82,7 +82,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the list of all active breakpoints for the debuggee. The breakpoint
         # specification (location, condition, and expression fields) is semantically
         # immutable, although the field values may change. For example, an agent may
@@ -131,7 +131,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the breakpoint state or mutable fields. The entire Breakpoint message
         # must be sent back to the controller service. Updates to active breakpoint
         # fields are only allowed if the new value does not change the breakpoint
@@ -172,7 +172,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all the debuggees that the user can set breakpoints to.
         # @param [String] project
         #   Project number of a Google Cloud project whose debuggees to list.
@@ -210,7 +210,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the breakpoint to the debuggee.
         # @param [String] debuggee_id
         #   ID of the debuggee where the breakpoint is to be set.
@@ -247,7 +247,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets breakpoint information.
         # @param [String] debuggee_id
         #   ID of the debuggee whose breakpoint to get.
@@ -284,7 +284,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the breakpoint from the debuggee.
         # @param [String] debuggee_id
         #   ID of the debuggee whose breakpoint to delete.
@@ -321,7 +321,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all breakpoints for the debuggee.
         # @param [String] debuggee_id
         #   ID of the debuggee whose breakpoints to list.

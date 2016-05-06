@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
         end
-        
+
         # Gets one resource by id.
         # @param [String] group_unique_id
         #   The resource ID
@@ -87,7 +87,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing resource. This method supports patch semantics.
         # @param [String] group_unique_id
         #   The resource ID
@@ -126,7 +126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing resource.
         # @param [String] group_unique_id
         #   The resource ID

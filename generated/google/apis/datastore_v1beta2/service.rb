@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'datastore/v1beta2/datasets/')
         end
-        
+
         # Allocate IDs for incomplete keys (useful for referencing an entity before it
         # is inserted).
         # @param [String] dataset_id
@@ -90,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Begin a new transaction.
         # @param [String] dataset_id
         #   Identifies the dataset.
@@ -128,7 +128,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Commit a transaction, optionally creating, deleting or modifying some entities.
         # @param [String] dataset_id
         #   Identifies the dataset.
@@ -166,7 +166,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Look up some entities by key.
         # @param [String] dataset_id
         #   Identifies the dataset.
@@ -204,7 +204,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Roll back a transaction.
         # @param [String] dataset_id
         #   Identifies the dataset.
@@ -242,7 +242,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Query for entities.
         # @param [String] dataset_id
         #   Identifies the dataset.

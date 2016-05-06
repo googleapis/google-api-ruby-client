@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'tagmanager/v1/')
         end
-        
+
         # Gets a GTM Account.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -86,7 +86,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Accounts that a user has access to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -118,7 +118,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Account.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -160,7 +160,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -198,7 +198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -234,7 +234,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -272,7 +272,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all Containers that belongs to a GTM Account.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -307,7 +307,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -352,7 +352,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -393,7 +393,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -432,7 +432,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -473,7 +473,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Environments of a GTM Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -511,7 +511,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Environment. This method supports patch semantics.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -559,7 +559,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -607,7 +607,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -648,7 +648,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -687,7 +687,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -728,7 +728,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Folders of a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -766,7 +766,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -814,7 +814,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all entities in a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -855,7 +855,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves entities to a GTM Folder.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -906,7 +906,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Re-generates the authorization code for a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -950,7 +950,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a GTM Tag.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -991,7 +991,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a GTM Tag.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1030,7 +1030,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a GTM Tag.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1071,7 +1071,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Tags of a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1109,7 +1109,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Tag.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1157,7 +1157,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a GTM Trigger.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1198,7 +1198,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a GTM Trigger.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1237,7 +1237,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a GTM Trigger.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1278,7 +1278,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Triggers of a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1316,7 +1316,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Trigger.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1364,7 +1364,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a GTM Variable.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1405,7 +1405,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a GTM Variable.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1444,7 +1444,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a GTM Variable.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1485,7 +1485,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all GTM Variables of a Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1523,7 +1523,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a GTM Variable.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1571,7 +1571,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1612,7 +1612,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1651,7 +1651,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1693,7 +1693,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists all Container Versions of a GTM Container.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1737,7 +1737,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Publishes a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1782,7 +1782,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores a Container Version. This will overwrite the container's current
         # configuration (including its variables, triggers and tags). The operation will
         # not have any effect on the version that is being served (i.e. the published
@@ -1826,7 +1826,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Undeletes a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1867,7 +1867,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a Container Version.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1915,7 +1915,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a user's Account & Container Permissions.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -1953,7 +1953,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a user from the account, revoking access to it and all of its
         # containers.
         # @param [String] account_id
@@ -1990,7 +1990,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets a user's Account & Container Permissions.
         # @param [String] account_id
         #   The GTM Account ID.
@@ -2028,7 +2028,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List all users that have access to the account along with Account and
         # Container Permissions granted to each of them.
         # @param [String] account_id
@@ -2064,7 +2064,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates a user's Account & Container Permissions.
         # @param [String] account_id
         #   The GTM Account ID.

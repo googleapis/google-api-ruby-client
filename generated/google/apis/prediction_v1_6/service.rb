@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'prediction/v1.6/projects/')
         end
-        
+
         # Submit input and request an output against a hosted model.
         # @param [String] project
         #   The project associated with the model.
@@ -93,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Get analysis of the model and the data the model was trained on.
         # @param [String] project
         #   The project associated with the model.
@@ -131,7 +131,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Delete a trained model.
         # @param [String] project
         #   The project associated with the model.
@@ -167,7 +167,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Check training status of your model.
         # @param [String] project
         #   The project associated with the model.
@@ -205,7 +205,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Train a Prediction API model.
         # @param [String] project
         #   The project associated with the model.
@@ -243,7 +243,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List available models.
         # @param [String] project
         #   The project associated with the model.
@@ -284,7 +284,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Submit model id and request a prediction.
         # @param [String] project
         #   The project associated with the model.
@@ -325,7 +325,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Add new data to a trained model.
         # @param [String] project
         #   The project associated with the model.

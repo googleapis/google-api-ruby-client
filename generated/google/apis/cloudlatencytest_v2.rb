@@ -22,7 +22,7 @@ module Google
     #
     # Reports latency data.
     #
-    # @see 
+    # @see
     module CloudlatencytestV2
       VERSION = 'V2'
       REVISION = '20160309'

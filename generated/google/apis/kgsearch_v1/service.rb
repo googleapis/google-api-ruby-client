@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://kgsearch.googleapis.com/', '')
         end
-        
+
         # Searches Knowledge Graph for entities that match the constraints. A list of
         # matched entities will be returned in response, which will be in JSON-LD format
         # and compatible with http://schema.org

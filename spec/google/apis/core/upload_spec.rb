@@ -52,12 +52,10 @@ RSpec.describe Google::Apis::Core::UploadIO do
         upload_io = Google::Apis::Core::UploadIO.from_file(file)
         expect(upload_io.length).to eq File.size(file)
       end
-
     end
   end
 
   context 'from_io' do
-
     context 'with i/o stream' do
       let(:io) { StringIO.new 'Hello google' }
 
@@ -76,7 +74,6 @@ RSpec.describe Google::Apis::Core::UploadIO do
         expect(upload_io.length).to eq 'Hello google'.length
       end
     end
-
   end
 end
 
@@ -131,7 +128,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
 
   context('with Tempfile input') do
     let(:file) do
-      temp_file = Tempfile.new("tempfile")
+      temp_file = Tempfile.new('tempfile')
       temp_file.write("Hello world\n")
       temp_file.rewind
       temp_file
@@ -213,7 +210,9 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
   context 'with uninterrupted upload' do
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals')
-        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' })
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active',
+                              'X-Goog-Upload-URL' =>
+                              'https://www.googleapis.com/zoo/animals' })
         .to_return(headers: { 'X-Goog-Upload-Status' => 'final' }, body: %(OK))
     end
 

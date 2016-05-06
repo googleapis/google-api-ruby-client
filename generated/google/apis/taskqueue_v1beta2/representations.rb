@@ -21,43 +21,43 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TaskqueueV1beta2
-      
+
       class Task
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class TaskQueue
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
         class Acl
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-        
+
         class Stats
           class Representation < Google::Apis::Core::JsonRepresentation; end
-        
+
           include Google::Apis::Core::JsonObjectSupport
         end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Tasks
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Tasks2
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
+
         include Google::Apis::Core::JsonObjectSupport
       end
-      
+
       class Task
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -71,19 +71,19 @@ module Google
           property :tag, as: 'tag'
         end
       end
-      
+
       class TaskQueue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl, decorator: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl::Representation
-      
+
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :max_leases, as: 'maxLeases'
           property :stats, as: 'stats', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats, decorator: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats::Representation
-      
+
         end
-        
+
         class Acl
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -92,7 +92,7 @@ module Google
             collection :producer_emails, as: 'producerEmails'
           end
         end
-        
+
         class Stats
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -103,21 +103,21 @@ module Google
           end
         end
       end
-      
+
       class Tasks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
-      
+
           property :kind, as: 'kind'
         end
       end
-      
+
       class Tasks2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
-      
+
           property :kind, as: 'kind'
         end
       end

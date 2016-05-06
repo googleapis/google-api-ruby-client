@@ -51,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'books/v1/')
         end
-        
+
         # Retrieves metadata for a specific bookshelf for the specified user.
         # @param [String] user_id
         #   ID of user for whom to retrieve bookshelves.
@@ -92,7 +92,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of public bookshelves for the specified user.
         # @param [String] user_id
         #   ID of user for whom to retrieve bookshelves.
@@ -130,7 +130,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves volumes in a specific bookshelf for the specified user.
         # @param [String] user_id
         #   ID of user for whom to retrieve bookshelf volumes.
@@ -180,8 +180,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] drive_document_id
         #   A drive document id. The upload_client_token must not be set.
         # @param [String] mime_type
@@ -223,7 +223,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Remove the book and its contents
         # @param [String] volume_id
         #   The id of the book to be removed.
@@ -256,8 +256,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [Google::Apis::BooksV1::LoadingResource] loading_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -291,7 +291,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of offline dictionary metadata available
         # @param [String] cpksver
         #   The device/version ID from which to request the data.
@@ -326,7 +326,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the layer summary for a volume.
         # @param [String] volume_id
         #   The volume to retrieve layers for.
@@ -370,7 +370,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List the layer summaries for a volume.
         # @param [String] volume_id
         #   The volume to retrieve layers for.
@@ -417,7 +417,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the annotation data.
         # @param [String] volume_id
         #   The volume to retrieve annotations for.
@@ -482,7 +482,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the annotation data for a volume and layer.
         # @param [String] volume_id
         #   The volume to retrieve annotation data for.
@@ -559,7 +559,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the volume annotation.
         # @param [String] volume_id
         #   The volume to retrieve annotations for.
@@ -607,7 +607,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the volume annotations for a volume and layer.
         # @param [String] volume_id
         #   The volume to retrieve annotations for.
@@ -688,7 +688,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the current settings for the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -720,7 +720,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Release downloaded content access restriction.
         # @param [Array<String>, String] volume_ids
         #   The volume(s) to release restrictions for.
@@ -764,7 +764,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Request concurrent and download access restrictions.
         # @param [String] source
         #   String to identify the originator of this request.
@@ -814,7 +814,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Request downloaded content access for specified volumes on the My eBooks shelf.
         # @param [String] source
         #   String to identify the originator of this request.
@@ -870,7 +870,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the settings for the user. If a sub-object is specified, it will
         # overwrite the existing sub-object stored in the server. Unspecified sub-
         # objects will retain the existing value.
@@ -907,7 +907,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes an annotation.
         # @param [String] annotation_id
         #   The ID for the annotation to delete.
@@ -943,7 +943,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Inserts a new annotation.
         # @param [Google::Apis::BooksV1::Annotation] annotation_object
         # @param [String] country
@@ -988,7 +988,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of annotations, possibly filtered.
         # @param [String] content_version
         #   The content version for the requested volume.
@@ -1053,7 +1053,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets the summary of specified layers.
         # @param [Array<String>, String] layer_ids
         #   Array of layer IDs to get the summary for.
@@ -1091,7 +1091,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates an existing annotation.
         # @param [String] annotation_id
         #   The ID for the annotation to update.
@@ -1132,7 +1132,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a volume to a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf to which to add a volume.
@@ -1174,7 +1174,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Clears all volumes from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
@@ -1210,7 +1210,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves metadata for a specific bookshelf belonging to the authenticated
         # user.
         # @param [String] shelf
@@ -1249,7 +1249,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of bookshelves belonging to the authenticated user.
         # @param [String] source
         #   String to identify the originator of this request.
@@ -1284,7 +1284,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Moves a volume within a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf with the volume.
@@ -1327,7 +1327,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes a volume from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
@@ -1369,7 +1369,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets volume information for volumes on a bookshelf.
         # @param [String] shelf
         #   The bookshelf ID or name retrieve volumes for.
@@ -1425,7 +1425,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves my reading position information for a volume.
         # @param [String] volume_id
         #   ID of volume for which to retrieve a reading position.
@@ -1466,7 +1466,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets my reading position information for a volume.
         # @param [String] volume_id
         #   ID of volume for which to update the reading position.
@@ -1517,7 +1517,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns notification details for a given notification id.
         # @param [String] notification_id
         #   String to identify the notification.
@@ -1559,7 +1559,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List categories for onboarding experience.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.
@@ -1594,7 +1594,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # List available volumes under categories for onboarding experience.
         # @param [Array<String>, String] category_id
         #   List of category ids requested.
@@ -1642,7 +1642,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a stream of personalized book clusters
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
@@ -1685,8 +1685,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] android_id
         #   device android_id
         # @param [String] device
@@ -1738,8 +1738,8 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # 
+
+        #
         # @param [String] android_id
         #   device android_id
         # @param [String] device
@@ -1789,7 +1789,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of promo offers available to the user
         # @param [String] android_id
         #   device android_id
@@ -1839,7 +1839,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns Series metadata for the given series ids.
         # @param [Array<String>, String] series_id
         #   String that identifies the series
@@ -1874,7 +1874,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns Series membership data given the series id.
         # @param [String] series_id
         #   String that identifies the series
@@ -1915,7 +1915,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Gets volume information for a single volume.
         # @param [String] volume_id
         #   ID of volume to retrieve.
@@ -1967,7 +1967,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Performs a book search.
         # @param [String] q
         #   Full-text search query string.
@@ -2038,7 +2038,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of associated books.
         # @param [String] volume_id
         #   ID of the source volume.
@@ -2087,7 +2087,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of books in My Library.
         # @param [Array<String>, String] acquire_method
         #   How the book was aquired
@@ -2142,7 +2142,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of recommended books for the current user.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
@@ -2185,7 +2185,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Rate a recommended book for the current user.
         # @param [String] rating
         #   Rating to be given to the volume.
@@ -2230,7 +2230,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Return a list of books uploaded by the current user.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for

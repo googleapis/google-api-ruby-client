@@ -52,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'clouduseraccounts/beta/projects/')
         end
-        
+
         # Deletes the specified operation resource.
         # @param [String] project
         #   Project ID for this request.
@@ -88,7 +88,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the specified operation resource.
         # @param [String] project
         #   Project ID for this request.
@@ -126,7 +126,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of operation resources contained within the specified
         # project.
         # @param [String] project
@@ -206,7 +206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds users to the specified group.
         # @param [String] project
         #   Project ID for this request.
@@ -247,7 +247,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified Group resource.
         # @param [String] project
         #   Project ID for this request.
@@ -285,7 +285,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified Group resource.
         # @param [String] project
         #   Project ID for this request.
@@ -323,7 +323,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a Group resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -362,7 +362,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves the list of groups contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -441,7 +441,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes users from the specified group.
         # @param [String] project
         #   Project ID for this request.
@@ -482,7 +482,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns a list of authorized public keys for a specific user account.
         # @param [String] project
         #   Project ID for this request.
@@ -529,7 +529,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of user accounts for an instance within a specific project.
         # @param [String] project
         #   Project ID for this request.
@@ -614,7 +614,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Adds a public key to the specified User resource with the data included in the
         # request.
         # @param [String] project
@@ -656,7 +656,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Deletes the specified User resource.
         # @param [String] project
         #   Project ID for this request.
@@ -694,7 +694,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the specified User resource.
         # @param [String] project
         #   Project ID for this request.
@@ -732,7 +732,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Creates a User resource in the specified project using the data included in
         # the request.
         # @param [String] project
@@ -771,7 +771,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Retrieves a list of users contained within the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -850,7 +850,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Removes the specified public key from the user.
         # @param [String] project
         #   Project ID for this request.

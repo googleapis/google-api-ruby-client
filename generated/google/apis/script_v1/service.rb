@@ -45,7 +45,7 @@ module Google
         def initialize
           super('https://script.googleapis.com/', '')
         end
-        
+
         # Runs a function in an Apps Script project that has been deployed for use with
         # the Apps Script Execution API. This method requires authorization with an
         # OAuth 2.0 token that includes at least one of the scopes listed in the [

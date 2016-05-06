@@ -19,9 +19,9 @@ describe Google::APIClient::Storage do
 
   describe 'authorize' do
     describe 'with credentials' do
-
       it 'should initialize a new OAuth Client' do
-        expect(subject).to receive(:load_credentials).and_return({:first => 'a dummy'})
+        expect(subject).to receive(:load_credentials)
+          .and_return(first: 'a dummy')
         expect(client_stub).to receive(:issued_at=)
         expect(client_stub).to receive(:expired?).and_return(false)
         expect(Signet::OAuth2::Client).to receive(:new).and_return(client_stub)
@@ -30,7 +30,8 @@ describe Google::APIClient::Storage do
       end
 
       it 'should refresh authorization' do
-        expect(subject).to receive(:load_credentials).and_return({:first => 'a dummy'})
+        expect(subject).to receive(:load_credentials)
+          .and_return(first: 'a dummy')
         expect(client_stub).to receive(:issued_at=)
         expect(client_stub).to receive(:expired?).and_return(true)
         expect(Signet::OAuth2::Client).to receive(:new).and_return(client_stub)
@@ -42,7 +43,6 @@ describe Google::APIClient::Storage do
     end
 
     describe 'without credentials' do
-
       it 'should return nil' do
         expect(subject.authorization).to be_nil
         expect(subject).to receive(:load_credentials).and_return({})
@@ -65,18 +65,18 @@ describe Google::APIClient::Storage do
     it 'should not call store to write credentials' do
       expect(subject).not_to receive(:credentials_hash)
       expect(subject.store).not_to receive(:write_credentials)
-      expect {
-        subject.write_credentials()
-      }.not_to raise_error
+      expect do
+        subject.write_credentials
+      end.not_to raise_error
     end
+
     it 'should not call store to write credentials' do
       expect(subject).not_to receive(:credentials_hash)
       expect(subject.store).not_to receive(:write_credentials)
-      expect {
+      expect do
         subject.write_credentials('something')
-      }.not_to raise_error
+      end.not_to raise_error
     end
-
   end
 
   describe 'refresh_authorization' do

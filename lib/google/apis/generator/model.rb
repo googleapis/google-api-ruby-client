@@ -75,16 +75,15 @@ module Google
           return [] if parameters.nil?
           parameters.values.select { |param| param.location == 'query' }
         end
-        
+
         def required_parameters
           return [] if parameter_order.nil? || parameters.nil?
           parameter_order.map { |name| parameters[name] }.select { |param| param.location == 'path' || param.required }
         end
-        
+
         def optional_query_parameters
           query_parameters.select { |param| param.required != true }
         end
-        
       end
 
       class RestResource
@@ -100,7 +99,7 @@ module Google
 
       class RestDescription
         attr_accessor :force_alt_json
-        alias_method :force_alt_json?, :force_alt_json
+        alias force_alt_json? force_alt_json
 
         def version
           ActiveSupport::Inflector.camelize(@version.gsub(/\W/, '-')).gsub(/-/, '_')

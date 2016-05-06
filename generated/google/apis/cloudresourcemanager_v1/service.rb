@@ -46,7 +46,7 @@ module Google
         def initialize
           super('https://cloudresourcemanager.googleapis.com/', '')
         end
-        
+
         # Retrieves the Project identified by the specified `project_id` (for example, `
         # my-project-123`). The caller must have read permissions for this Project.
         # @param [String] project_id
@@ -77,7 +77,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Lists Projects that are visible to the user and satisfy the specified filter.
         # This method returns Projects in an unspecified order. New Projects do not
         # necessarily appear at the end of the list.
@@ -126,7 +126,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Updates the attributes of the Project identified by the specified `project_id`
         # (for example, `my-project-123`). The caller must have modify permissions for
         # this Project.
@@ -161,7 +161,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Marks the Project identified by the specified `project_id` (for example, `my-
         # project-123`) for deletion. This method will only affect the Project if the
         # following criteria are met: + The Project does not have a billing account
@@ -202,7 +202,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Restores the Project identified by the specified `project_id` (for example, `
         # my-project-123`). You can only use this method for a Project that has a
         # lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by a
@@ -239,7 +239,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns the IAM access control policy for the specified Project. Permission is
         # denied if the policy or the resource does not exist.
         # @param [String] resource
@@ -276,7 +276,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Sets the IAM access control policy for the specified Project. Replaces any
         # existing policy. The following constraints apply when using `setIamPolicy()`: +
         # Project currently supports only `user:`emailid`` and `serviceAccount:`emailid`
@@ -324,7 +324,7 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
+
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
