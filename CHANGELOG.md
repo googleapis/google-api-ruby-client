@@ -1,3 +1,6 @@
+# 0.9.7
+* Add sheets v4 & analytics reporting v4, regenerate APIs
+
 # 0.9.6
 * Rewind output stream if server unable to honor range request when resuming a download
 * Fix web sample
