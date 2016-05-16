@@ -309,6 +309,11 @@ module Google
         attr_accessor :creation_timestamp
       
         # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -338,7 +343,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#Operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -417,6 +422,7 @@ module Google
         def update!(**args)
           @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
@@ -614,15 +620,10 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of the resource. Always kind#zone for zones.
+        # [Output Only] Type of the resource. Always compute#zone for zones.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `maintenanceWindows`
-        # @return [Array<Google::Apis::AutoscalerV1beta2::Zone::MaintenanceWindow>]
-        attr_accessor :maintenance_windows
       
         # 
         # Corresponds to the JSON property `name`
@@ -634,7 +635,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # [Output Only] Server defined URL for the resource.
+        # 
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -655,48 +656,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
-        end
-        
-        # 
-        class MaintenanceWindow
-          include Google::Apis::Core::Hashable
-        
-          # 
-          # Corresponds to the JSON property `beginTime`
-          # @return [String]
-          attr_accessor :begin_time
-        
-          # 
-          # Corresponds to the JSON property `description`
-          # @return [String]
-          attr_accessor :description
-        
-          # 
-          # Corresponds to the JSON property `endTime`
-          # @return [String]
-          attr_accessor :end_time
-        
-          # 
-          # Corresponds to the JSON property `name`
-          # @return [String]
-          attr_accessor :name
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @begin_time = args[:begin_time] if args.key?(:begin_time)
-            @description = args[:description] if args.key?(:description)
-            @end_time = args[:end_time] if args.key?(:end_time)
-            @name = args[:name] if args.key?(:name)
-          end
         end
       end
       
@@ -724,7 +687,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Server defined URL for this resource (output only).
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link

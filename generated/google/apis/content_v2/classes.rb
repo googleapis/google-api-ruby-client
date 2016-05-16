@@ -2733,7 +2733,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the cancellation.
+        # The reason for the cancellation. Orders that are cancelled with a noIventory
+        # reason will lead to the removal of the product from POG until you make an
+        # update to that product. This will not affect your Shopping ads.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -2766,7 +2768,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # If set, this indicates the user had a choice to opt in or out of providing
+        # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
         # marketing right opt in/out checkbox during the Purchases on Google checkout
@@ -4792,7 +4794,10 @@ module Google
         # @return [String]
         attr_accessor :multipack
       
-        # An identifier of the item.
+        # An identifier of the item. Leading and trailing whitespaces are stripped and
+        # multiple whitespaces are replaced by a single whitespace upon submission. Only
+        # valid unicode characters are accepted. See the products feed specification for
+        # details.
         # Corresponds to the JSON property `offerId`
         # @return [String]
         attr_accessor :offer_id
@@ -4813,7 +4818,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # Your category of the item (formatted as in product feeds specification).
+        # Your category of the item (formatted as in products feed specification).
         # Corresponds to the JSON property `productType`
         # @return [String]
         attr_accessor :product_type
@@ -4828,7 +4833,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :sale_price
       
-        # Date range during which the item is on sale (see product feed specifications).
+        # Date range during which the item is on sale (see products feed specification).
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date
@@ -5886,7 +5891,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # If set, this indicates the user had a choice to opt in or out of providing
+        # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
         # marketing right opt in/out checkbox during the Purchases on Google checkout

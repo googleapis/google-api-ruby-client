@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DealTermsGuaranteedFixedPriceTermsBillingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DealTermsNonGuaranteedAuctionTerms
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -591,6 +597,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :html_snippet, as: 'HTMLSnippet'
           property :account_id, as: 'accountId'
+          property :ad_choices_destination_url, as: 'adChoicesDestinationUrl'
           collection :advertiser_id, as: 'advertiserId'
           property :advertiser_name, as: 'advertiserName'
           property :agency_id, as: 'agencyId'
@@ -745,6 +752,7 @@ module Google
       class DealServingMetadataDealPauseStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_paused_by, as: 'firstPausedBy'
           property :has_buyer_paused, as: 'hasBuyerPaused'
           property :has_seller_paused, as: 'hasSellerPaused'
         end
@@ -771,10 +779,22 @@ module Google
       class DealTermsGuaranteedFixedPriceTerms
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_info, as: 'billingInfo', class: Google::Apis::AdexchangebuyerV1_4::DealTermsGuaranteedFixedPriceTermsBillingInfo, decorator: Google::Apis::AdexchangebuyerV1_4::DealTermsGuaranteedFixedPriceTermsBillingInfo::Representation
+      
           collection :fixed_prices, as: 'fixedPrices', class: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer, decorator: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer::Representation
       
           property :guaranteed_impressions, as: 'guaranteedImpressions'
           property :guaranteed_looks, as: 'guaranteedLooks'
+        end
+      end
+      
+      class DealTermsGuaranteedFixedPriceTermsBillingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_conversion_time_ms, as: 'currencyConversionTimeMs'
+          property :original_contracted_quantity, as: 'originalContractedQuantity'
+          property :price, as: 'price', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
+      
         end
       end
       
@@ -1105,6 +1125,7 @@ module Google
       class PricePerBuyer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auction_tier, as: 'auctionTier'
           property :buyer, as: 'buyer', class: Google::Apis::AdexchangebuyerV1_4::Buyer, decorator: Google::Apis::AdexchangebuyerV1_4::Buyer::Representation
       
           property :price, as: 'price', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
@@ -1141,6 +1162,8 @@ module Google
           property :private_auction_id, as: 'privateAuctionId'
           property :product_id, as: 'productId'
           property :publisher_profile_id, as: 'publisherProfileId'
+          property :publisher_provided_forecast, as: 'publisherProvidedForecast', class: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast, decorator: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast::Representation
+      
           property :revision_number, as: 'revisionNumber'
           property :seller, as: 'seller', class: Google::Apis::AdexchangebuyerV1_4::Seller, decorator: Google::Apis::AdexchangebuyerV1_4::Seller::Representation
       
@@ -1174,7 +1197,6 @@ module Google
           collection :labels, as: 'labels', class: Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel, decorator: Google::Apis::AdexchangebuyerV1_4::MarketplaceLabel::Representation
       
           property :last_updater_or_commentor_role, as: 'lastUpdaterOrCommentorRole'
-          property :last_updater_role, as: 'lastUpdaterRole'
           property :name, as: 'name'
           property :negotiation_id, as: 'negotiationId'
           property :originator_role, as: 'originatorRole'
@@ -1196,8 +1218,7 @@ module Google
           property :account_id, as: 'accountId'
           property :audience, as: 'audience'
           property :buyer_pitch_statement, as: 'buyerPitchStatement'
-          property :direct_contact, as: 'directContact', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
-      
+          property :direct_contact, as: 'directContact'
           property :exchange, as: 'exchange'
           property :google_plus_link, as: 'googlePlusLink'
           property :is_parent, as: 'isParent'
@@ -1208,8 +1229,7 @@ module Google
           property :name, as: 'name'
           property :overview, as: 'overview'
           property :profile_id, as: 'profileId'
-          property :programmatic_contact, as: 'programmaticContact', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
-      
+          property :programmatic_contact, as: 'programmaticContact'
           collection :publisher_domains, as: 'publisherDomains'
           property :publisher_profile_id, as: 'publisherProfileId'
           property :publisher_provided_forecast, as: 'publisherProvidedForecast', class: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast, decorator: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast::Representation

@@ -12,6 +12,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	adsense:v1.4 \
 	adsensehost:v4.1 \
 	analytics:v3 \
+    analyticsreporting:v4 \
 	androidenterprise:v1 \
 	androidpublisher:v2 \
 	appengine:v1beta5 \
@@ -82,6 +83,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	reseller:v1 \
 	resourceviews:v1beta2 \
 	script:v1 \
+	sheets:v4 \
 	siteVerification:v1 \
 	sqladmin:v1beta4 \
 	storage:v1 \

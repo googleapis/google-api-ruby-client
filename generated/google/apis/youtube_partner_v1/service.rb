@@ -2811,6 +2811,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Validate a metadata file.
+        # @param [Google::Apis::YoutubePartnerV1::ValidateRequest] validate_request_object
+        # @param [String] on_behalf_of_content_owner
+        #   The onBehalfOfContentOwner parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubePartnerV1::ValidateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubePartnerV1::ValidateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_validator(validate_request_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'validator', options)
+          command.request_representation = Google::Apis::YoutubePartnerV1::ValidateRequest::Representation
+          command.request_object = validate_request_object
+          command.response_representation = Google::Apis::YoutubePartnerV1::ValidateResponse::Representation
+          command.response_class = Google::Apis::YoutubePartnerV1::ValidateResponse
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves advertising settings for the specified video.
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which

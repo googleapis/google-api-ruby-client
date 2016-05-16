@@ -20,8 +20,8 @@ module Google
   module Apis
     # APIs Discovery Service
     #
-    # Lets you discover information about other Google APIs, such as what APIs are
-    # available, the resource and method details for each API.
+    # Provides information about other Google APIs, such as what APIs are available,
+    # the resource, and method details for each API.
     #
     # @see https://developers.google.com/discovery/
     module DiscoveryV1

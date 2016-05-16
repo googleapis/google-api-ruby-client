@@ -1272,6 +1272,32 @@ module Google
         end
       end
       
+      # 
+      class CustomerEncryptionKeyProtectedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `diskEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :disk_encryption_key
+      
+        # Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        # This field is only applicable for persistent disks.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Deprecation status for a public resource.
       class DeprecationStatus
         include Google::Apis::Core::Hashable
@@ -1365,13 +1391,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this disk. These can be later modified by the setLabels()
-        # method. Each label key & value must comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash. A label value can also be
-        # empty (e.g. "example-label": "").
+        # Labels to apply to this disk. These can be later modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1635,6 +1657,39 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class DiskMoveRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the destination zone to move the disk. This can be a full or
+        # partial URL. For example, the following are all valid URLs to a zone:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+        # - projects/project/zones/zone
+        # - zones/zone
+        # Corresponds to the JSON property `destinationZone`
+        # @return [String]
+        attr_accessor :destination_zone
+      
+        # The URL of the target disk to move. This can be a full or partial URL. For
+        # example, the following are all valid URLs to a disk:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # - projects/project/zones/zone/disks/disk
+        # - zones/zone/disks/disk
+        # Corresponds to the JSON property `targetDisk`
+        # @return [String]
+        attr_accessor :target_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_zone = args[:destination_zone] if args.key?(:destination_zone)
+          @target_disk = args[:target_disk] if args.key?(:target_disk)
         end
       end
       
@@ -2212,7 +2267,7 @@ module Google
         attr_accessor :ip_address
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
-        # AH or SCTP.
+        # AH, SCTP or ICMP.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -2498,7 +2553,13 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # The labels to set for this resource.
+        # A list of labels to apply for this resource. Each label key & value must
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash. For example, "webserver-frontend": "images". A label value can also be
+        # empty (e.g. "my-label": "").
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2980,13 +3041,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this image. These can be later modified by the setLabels()
-        # method. Each label key & value must comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash. A label value can also be
-        # empty (e.g. "example-label": "").
+        # Labels to apply to this image. These can be later modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -3613,9 +3670,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] The fingerprint of the target pools information. You can use
-        # this optional field for optimistic locking when you update the target pool
-        # entries.
+        # [Output Only] The fingerprint of the resource data. You can use this optional
+        # field for optimistic locking when you update the resource.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -4473,6 +4529,40 @@ module Google
       end
       
       # 
+      class MoveInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the destination zone to move the instance. This can be a full or
+        # partial URL. For example, the following are all valid URLs to a zone:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+        # - projects/project/zones/zone
+        # - zones/zone
+        # Corresponds to the JSON property `destinationZone`
+        # @return [String]
+        attr_accessor :destination_zone
+      
+        # The URL of the target instance to move. This can be a full or partial URL. For
+        # example, the following are all valid URLs to an instance:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        # instance
+        # - projects/project/zones/zone/instances/instance
+        # - zones/zone/instances/instance
+        # Corresponds to the JSON property `targetInstance`
+        # @return [String]
+        attr_accessor :target_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_zone = args[:destination_zone] if args.key?(:destination_zone)
+          @target_instance = args[:target_instance] if args.key?(:target_instance)
+        end
+      end
+      
+      # 
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -4815,7 +4905,14 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # The new labels for the resource, in the form of key/value pairs.
+        # A list of labels to apply for this instance. Changing instance labels will
+        # also change the instance tags.
+        # Each label key & value must comply with RFC1035. Specifically, the name must
+        # be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-
+        # 9])? which means the first character must be a lowercase letter, and all
+        # following characters must be a dash, lowercase letter, or digit, except the
+        # last character, which cannot be a dash. For example, "webserver-frontend": "
+        # images". A label value can also be empty (e.g. "my-label": "").
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4849,6 +4946,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # 
+      class InstancesStartWithEncryptionKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Array of disks associated with this instance that are protected with a
+        # customer-supplied encryption key.
+        # In order to start the instance, the disk url and its corresponding key must be
+        # provided.
+        # If the disk is not protected with a customer-supplied encryption key it should
+        # not be specified.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk>]
+        attr_accessor :disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
         end
       end
       
@@ -4922,6 +5043,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # [Output Only] Whether this machine type has a shared CPU.
+        # Corresponds to the JSON property `isSharedCpu`
+        # @return [Boolean]
+        attr_accessor :is_shared_cpu
+        alias_method :is_shared_cpu?, :is_shared_cpu
+      
         # [Output Only] The type of the resource. Always compute#machineType for machine
         # types.
         # Corresponds to the JSON property `kind`
@@ -4971,6 +5098,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @guest_cpus = args[:guest_cpus] if args.key?(:guest_cpus)
           @id = args[:id] if args.key?(:id)
+          @is_shared_cpu = args[:is_shared_cpu] if args.key?(:is_shared_cpu)
           @kind = args[:kind] if args.key?(:kind)
           @maximum_persistent_disks = args[:maximum_persistent_disks] if args.key?(:maximum_persistent_disks)
           @maximum_persistent_disks_size_gb = args[:maximum_persistent_disks_size_gb] if args.key?(:maximum_persistent_disks_size_gb)
@@ -5520,8 +5648,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] An optional IPV4 internal network address assigned to the
-        # instance for this network interface.
+        # An IPV4 internal network address to assign to the instance for this network
+        # interface. If not specified by user an unused internal IP is assigned by
+        # system.
         # Corresponds to the JSON property `networkIP`
         # @return [String]
         attr_accessor :network_ip
@@ -5532,9 +5661,9 @@ module Google
         # subnet mode, then this field should be specified. If you specify this property,
         # you can specify the subnetwork as a full or partial URL. For example, the
         # following are all valid URLs:
-        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
         # subnetworks/subnetwork
-        # - zones/zone/subnetworks/subnetwork
+        # - regions/region/subnetworks/subnetwork
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -7329,13 +7458,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this snapshot. These can be later modified by the setLabels(
-        # ) method. Each label key & value must comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash. A label value can also be
-        # empty (e.g. "example-label": "").
+        # Labels to apply to this snapshot. These can be later modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -9295,7 +9420,7 @@ module Google
         attr_accessor :self_link
       
         # The list of expected URL mappings. Request to update this UrlMap will succeed
-        # only all of the test cases pass.
+        # only if all of the test cases pass.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeBeta::UrlMapTest>]
         attr_accessor :tests

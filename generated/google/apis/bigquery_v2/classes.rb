@@ -238,7 +238,7 @@ module Google
         # when reading the data. The default value is 0. This property is useful if you
         # have header rows in the file that should be skipped.
         # Corresponds to the JSON property `skipLeadingRows`
-        # @return [Fixnum]
+        # @return [String]
         attr_accessor :skip_leading_rows
       
         def initialize(**args)
@@ -714,6 +714,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::CsvOptions]
         attr_accessor :csv_options
       
+        # [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
+        # Corresponds to the JSON property `googleSheetsOptions`
+        # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
+        attr_accessor :google_sheets_options
+      
         # [Optional] Indicates if BigQuery should allow extra values that are not
         # represented in the table schema. If true, the extra values are ignored. If
         # false, records with extra columns are treated as bad records, and if there are
@@ -744,13 +749,13 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Required] The data format. For CSV files, specify "CSV". For newline-
-        # delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "
-        # AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [
-        # Experimental] For Google Cloud Bigtable, specify "BIGTABLE". Please note that
-        # reading from Google Cloud Bigtable is experimental and has to be enabled for
-        # your project. Please contact Google Cloud Support to enable this for your
-        # project.
+        # [Required] The data format. For CSV files, specify "CSV". For Google sheets,
+        # specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "
+        # NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
+        # Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google Cloud
+        # Bigtable, specify "BIGTABLE". Please note that reading from Google Cloud
+        # Bigtable is experimental and has to be enabled for your project. Please
+        # contact Google Cloud Support to enable this for your project.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -758,12 +763,11 @@ module Google
         # [Required] The fully-qualified URIs that point to your data in Google Cloud.
         # For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
         # and it must come after the 'bucket' name. Size limits related to load jobs
-        # apply to external data sources, plus an additional limit of 10 GB maximum size
-        # across all URIs. For Google Cloud Bigtable URIs: Exactly one URI can be
-        # specified and it has be a fully specified and valid HTTPS URL for a Google
-        # Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can
-        # be specified, and it must end with '.backup_info'. Also, the '*' wildcard
-        # character is not allowed.
+        # apply to external data sources. For Google Cloud Bigtable URIs: Exactly one
+        # URI can be specified and it has be a fully specified and valid HTTPS URL for a
+        # Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one
+        # URI can be specified, and it must end with '.backup_info'. Also, the '*'
+        # wildcard character is not allowed.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
@@ -778,6 +782,7 @@ module Google
           @bigtable_options = args[:bigtable_options] if args.key?(:bigtable_options)
           @compression = args[:compression] if args.key?(:compression)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
+          @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @schema = args[:schema] if args.key?(:schema)
@@ -880,18 +885,23 @@ module Google
       end
       
       # 
-      class IntervalPartitionConfiguration
+      class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `expirationMs`
+        # [Optional] The number of rows at the top of a sheet that BigQuery will skip
+        # when reading the data. The default value is 0. This property is useful if you
+        # have header rows that should be skipped. When autodetect is on, behavior is
+        # the following: * skipLeadingRows unspecified - Autodetect tries to detect
+        # headers in the first row. If they are not detected, the row is read as data.
+        # Otherwise data is read starting from the second row. * skipLeadingRows is 0 -
+        # Instructs autodetect that there are no headers and data should be read
+        # starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1
+        # rows and tries to detect headers in row N. If headers are not detected, row N
+        # is just skipped. Otherwise row N is used to extract column names for the
+        # detected schema.
+        # Corresponds to the JSON property `skipLeadingRows`
         # @return [String]
-        attr_accessor :expiration_ms
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
+        attr_accessor :skip_leading_rows
       
         def initialize(**args)
            update!(**args)
@@ -899,8 +909,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
-          @type = args[:type] if args.key?(:type)
+          @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
         end
       end
       
@@ -1128,6 +1137,13 @@ module Google
         attr_accessor :allow_quoted_newlines
         alias_method :allow_quoted_newlines?, :allow_quoted_newlines
       
+        # [Experimental] Indicates if we should automatically infer the options and
+        # schema for CSV and JSON sources.
+        # Corresponds to the JSON property `autodetect`
+        # @return [Boolean]
+        attr_accessor :autodetect
+        alias_method :autodetect?, :autodetect
+      
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
         # BigQuery creates the table. CREATE_NEVER: The table must already exist. If it
@@ -1262,6 +1278,7 @@ module Google
         def update!(**args)
           @allow_jagged_rows = args[:allow_jagged_rows] if args.key?(:allow_jagged_rows)
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
+          @autodetect = args[:autodetect] if args.key?(:autodetect)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @encoding = args[:encoding] if args.key?(:encoding)
@@ -1354,10 +1371,10 @@ module Google
       
         # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
         # query. The default value is true. If set to false, the query will use BigQuery'
-        # s updated SQL dialect with improved standards compliance. When using BigQuery'
-        # s updated SQL, the values of allowLargeResults and flattenResults are ignored.
-        # Queries with useLegacySql set to false will be run as if allowLargeResults is
-        # true and flattenResults is false.
+        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+        # useLegacySql is set to false, the values of allowLargeResults and
+        # flattenResults are ignored; query will be run as if allowLargeResults is true
+        # and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -1687,6 +1704,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TableReference>]
         attr_accessor :referenced_tables
       
+        # [Output-only, Experimental] The schema of the results. Present only for
+        # successful dry run of non-legacy SQL queries.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::BigqueryV2::TableSchema]
+        attr_accessor :schema
+      
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [String]
@@ -1707,6 +1730,7 @@ module Google
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
+          @schema = args[:schema] if args.key?(:schema)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
         end
@@ -1970,10 +1994,10 @@ module Google
       
         # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
         # query. The default value is true. If set to false, the query will use BigQuery'
-        # s updated SQL dialect with improved standards compliance. When using BigQuery'
-        # s updated SQL, the values of allowLargeResults and flattenResults are ignored.
-        # Queries with useLegacySql set to false will be run as if allowLargeResults is
-        # true and flattenResults is false.
+        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+        # useLegacySql is set to false, the values of allowLargeResults and
+        # flattenResults are ignored; query will be run as if allowLargeResults is true
+        # and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -2192,18 +2216,17 @@ module Google
         # @return [String]
         attr_accessor :num_bytes
       
+        # [Output-only] The number of bytes in the table that are considered "long-term
+        # storage".
+        # Corresponds to the JSON property `numLongTermBytes`
+        # @return [String]
+        attr_accessor :num_long_term_bytes
+      
         # [Output-only] The number of rows of data in this table, excluding any data in
         # the streaming buffer.
         # Corresponds to the JSON property `numRows`
         # @return [String]
         attr_accessor :num_rows
-      
-        # [Experimental] List of partition configurations for this table. Currently only
-        # one configuration can be specified and it can only be an interval partition
-        # with type daily.
-        # Corresponds to the JSON property `partitionConfigurations`
-        # @return [Array<Google::Apis::BigqueryV2::TablePartitionConfiguration>]
-        attr_accessor :partition_configurations
       
         # [Optional] Describes the schema of this table.
         # Corresponds to the JSON property `schema`
@@ -2226,6 +2249,11 @@ module Google
         # Corresponds to the JSON property `tableReference`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :table_reference
+      
+        # [Experimental] If specified, configures time-based partitioning for this table.
+        # Corresponds to the JSON property `timePartitioning`
+        # @return [Google::Apis::BigqueryV2::TimePartitioning]
+        attr_accessor :time_partitioning
       
         # [Output-only] Describes the table type. The following values are supported:
         # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
@@ -2257,12 +2285,13 @@ module Google
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
+          @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
           @num_rows = args[:num_rows] if args.key?(:num_rows)
-          @partition_configurations = args[:partition_configurations] if args.key?(:partition_configurations)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @streaming_buffer = args[:streaming_buffer] if args.key?(:streaming_buffer)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
+          @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
           @type = args[:type] if args.key?(:type)
           @view = args[:view] if args.key?(:view)
         end
@@ -2597,26 +2626,6 @@ module Google
         end
       end
       
-      # [Required] A partition configuration. Only one type of partition should be
-      # configured.
-      class TablePartitionConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # [Pick one] Configures an interval partition.
-        # Corresponds to the JSON property `interval`
-        # @return [Google::Apis::BigqueryV2::IntervalPartitionConfiguration]
-        attr_accessor :interval
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @interval = args[:interval] if args.key?(:interval)
-        end
-      end
-      
       # 
       class TableReference
         include Google::Apis::Core::Hashable
@@ -2684,6 +2693,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # 
+      class TimePartitioning
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] Number of milliseconds for which to keep the storage for a
+        # partition.
+        # Corresponds to the JSON property `expirationMs`
+        # @return [String]
+        attr_accessor :expiration_ms
+      
+        # [Required] The only type supported is DAY, which will generate one partition
+        # per day based on data loading time.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

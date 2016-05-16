@@ -20,15 +20,14 @@ module Google
   module Apis
     # Google Cloud Vision API
     #
-    # The Google Cloud Vision API allows developers to easily integrate Google
-    # vision features, including image labeling, face, logo, and landmark detection,
-    # optical character recognition (OCR), and detection of explicit content, into
-    # applications.
+    # Integrates Google Vision features, including image labeling, face, logo, and
+    # landmark detection, optical character recognition (OCR), and detection of
+    # explicit content, into applications.
     #
     # @see https://cloud.google.com/vision/
     module VisionV1
       VERSION = 'V1'
-      REVISION = '20160413'
+      REVISION = '20160420'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

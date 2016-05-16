@@ -463,7 +463,6 @@ module Google
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
-          property :return_secure_token, as: 'returnSecureToken'
         end
       end
       
@@ -561,6 +560,7 @@ module Google
           property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
+          property :local_id, as: 'localId'
           property :new_email, as: 'newEmail'
           property :password_hash, :base64 => true, as: 'passwordHash'
           property :photo_url, as: 'photoUrl'
@@ -573,6 +573,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
+            property :federated_id, as: 'federatedId'
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
           end

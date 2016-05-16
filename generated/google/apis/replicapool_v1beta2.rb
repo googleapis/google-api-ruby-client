@@ -20,13 +20,13 @@ module Google
   module Apis
     # Google Compute Engine Instance Group Manager API
     #
-    # The Google Compute Engine Instance Group Manager API provides groups of
-    # homogenous Compute Engine Instances.
+    # [Deprecated. Please use Instance Group Manager in Compute API] Provides groups
+    # of homogenous Compute Engine instances.
     #
     # @see https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
     module ReplicapoolV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20150708'
+      REVISION = '20160509'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

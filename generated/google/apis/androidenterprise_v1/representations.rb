@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StoreCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +239,12 @@ module Google
       end
       
       class StorePage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TokenPagination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -465,6 +483,15 @@ module Google
         end
       end
       
+      class PageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result_per_page, as: 'resultPerPage'
+          property :start_index, as: 'startIndex'
+          property :total_results, as: 'totalResults'
+        end
+      end
+      
       class Permission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -535,6 +562,19 @@ module Google
         end
       end
       
+      class ProductsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :page_info, as: 'pageInfo', class: Google::Apis::AndroidenterpriseV1::PageInfo, decorator: Google::Apis::AndroidenterpriseV1::PageInfo::Representation
+      
+          collection :product, as: 'product', class: Google::Apis::AndroidenterpriseV1::Product, decorator: Google::Apis::AndroidenterpriseV1::Product::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidenterpriseV1::TokenPagination, decorator: Google::Apis::AndroidenterpriseV1::TokenPagination::Representation
+      
+        end
+      end
+      
       class StoreCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -581,6 +621,14 @@ module Google
           collection :link, as: 'link'
           collection :name, as: 'name', class: Google::Apis::AndroidenterpriseV1::LocalizedText, decorator: Google::Apis::AndroidenterpriseV1::LocalizedText::Representation
       
+        end
+      end
+      
+      class TokenPagination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :previous_page_token, as: 'previousPageToken'
         end
       end
       

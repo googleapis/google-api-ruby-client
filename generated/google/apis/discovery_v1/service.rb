@@ -22,8 +22,8 @@ module Google
     module DiscoveryV1
       # APIs Discovery Service
       #
-      # Lets you discover information about other Google APIs, such as what APIs are
-      #  available, the resource and method details for each API.
+      # Provides information about other Google APIs, such as what APIs are available,
+      #  the resource, and method details for each API.
       #
       # @example
       #    require 'google/apis/discovery_v1'

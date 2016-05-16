@@ -22,8 +22,8 @@ module Google
     module ReplicapoolV1beta2
       # Google Compute Engine Instance Group Manager API
       #
-      # The Google Compute Engine Instance Group Manager API provides groups of
-      #  homogenous Compute Engine Instances.
+      # [Deprecated. Please use Instance Group Manager in Compute API] Provides groups
+      #  of homogenous Compute Engine instances.
       #
       # @example
       #    require 'google/apis/replicapool_v1beta2'

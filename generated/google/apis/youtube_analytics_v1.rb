@@ -20,12 +20,12 @@ module Google
   module Apis
     # YouTube Analytics API
     #
-    # Retrieves your YouTube Analytics reports.
+    # Retrieves your YouTube Analytics data.
     #
     # @see http://developers.google.com/youtube/analytics/
     module YoutubeAnalyticsV1
       VERSION = 'V1'
-      REVISION = '20160301'
+      REVISION = '20160513'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

@@ -56,10 +56,10 @@ module Google
         # of doubles representing degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges. Example of normalization code in Python: def
-        # NormalizeLongitude(longitude): """Wrapsdecimal degrees longitude to [-180.0,
+        # NormalizeLongitude(longitude): """Wraps decimal degrees longitude to [-180.0,
         # 180.0].""" q, r = divmod(longitude, 360.0) if r > 180.0 or (r == 180.0 and q <=
         # -1.0): return r - 360.0 return r def NormalizeLatLng(latitude, longitude): """
-        # Wraps decimal degrees latitude and longitude to [-180.0, 180.0] and [-90.0, 90.
+        # Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and [-180.0, 180.
         # 0], respectively.""" r = latitude % 360.0 if r = 270.0: return r - 360,
         # NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(
         # longitude + 180.0) assert 180.0 == NormalizeLongitude(180.0) assert -180.0 ==
@@ -99,6 +99,39 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
+        # Write-only registration parameters for beacons using Eddystone-EID format. Two
+        # ways of securely registering an Eddystone-EID beacon with the service are
+        # supported: 1. Perform an ECDH key exchange via this API, including a previous
+        # call to `GET /v1beta1/eidparams`. In this case the fields `
+        # beacon_ecdh_public_key` and `service_ecdh_public_key` should be populated and `
+        # beacon_identity_key` should not be populated. This method ensures that only
+        # the two parties in the ECDH key exchange can compute the identity key, which
+        # becomes a secret between them. 2. Derive or obtain the beacon's identity key
+        # via other secure means (perhaps an ECDH key exchange between the beacon and a
+        # mobile device or any other secure method), and then submit the resulting
+        # identity key to the service. In this case `beacon_identity_key` field should
+        # be populated, and neither of `beacon_ecdh_public_key` nor `
+        # service_ecdh_public_key` fields should be. The security of this method depends
+        # on how securely the parties involved (in particular the bluetooth client)
+        # handle the identity key, and obviously on how securely the identity key was
+        # generated. See [the Eddystone specification](https://github.com/google/
+        # eddystone/tree/master/eddystone-eid) at GitHub.
+        # Corresponds to the JSON property `ephemeralIdRegistration`
+        # @return [Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration]
+        attr_accessor :ephemeral_id_registration
+      
+        # Some beacons may require a user to provide an authorization key before
+        # changing any of its configuration (e.g. broadcast frames, transmit power).
+        # This field provides a place to store and control access to that key. This
+        # field is populated in responses to `GET /v1beta1/beacons/3!beaconId` from
+        # users with write access to the given beacon. That is to say: If the user is
+        # authorized to write the beacon's confidential data in the service, the service
+        # considers them authorized to configure the beacon. Note that this key grants
+        # nothing on the service, only on the beacon itself.
+        # Corresponds to the JSON property `provisioningKey`
+        # @return [String]
+        attr_accessor :provisioning_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -114,6 +147,8 @@ module Google
           @expected_stability = args[:expected_stability] if args.key?(:expected_stability)
           @description = args[:description] if args.key?(:description)
           @properties = args[:properties] if args.key?(:properties)
+          @ephemeral_id_registration = args[:ephemeral_id_registration] if args.key?(:ephemeral_id_registration)
+          @provisioning_key = args[:provisioning_key] if args.key?(:provisioning_key)
         end
       end
       
@@ -150,10 +185,10 @@ module Google
       # of doubles representing degrees latitude and degrees longitude. Unless
       # specified otherwise, this must conform to the WGS84 standard. Values must be
       # within normalized ranges. Example of normalization code in Python: def
-      # NormalizeLongitude(longitude): """Wrapsdecimal degrees longitude to [-180.0,
+      # NormalizeLongitude(longitude): """Wraps decimal degrees longitude to [-180.0,
       # 180.0].""" q, r = divmod(longitude, 360.0) if r > 180.0 or (r == 180.0 and q <=
       # -1.0): return r - 360.0 return r def NormalizeLatLng(latitude, longitude): """
-      # Wraps decimal degrees latitude and longitude to [-180.0, 180.0] and [-90.0, 90.
+      # Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and [-180.0, 180.
       # 0], respectively.""" r = latitude % 360.0 if r = 270.0: return r - 360,
       # NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(
       # longitude + 180.0) assert 180.0 == NormalizeLongitude(180.0) assert -180.0 ==
@@ -206,6 +241,89 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Write-only registration parameters for beacons using Eddystone-EID format. Two
+      # ways of securely registering an Eddystone-EID beacon with the service are
+      # supported: 1. Perform an ECDH key exchange via this API, including a previous
+      # call to `GET /v1beta1/eidparams`. In this case the fields `
+      # beacon_ecdh_public_key` and `service_ecdh_public_key` should be populated and `
+      # beacon_identity_key` should not be populated. This method ensures that only
+      # the two parties in the ECDH key exchange can compute the identity key, which
+      # becomes a secret between them. 2. Derive or obtain the beacon's identity key
+      # via other secure means (perhaps an ECDH key exchange between the beacon and a
+      # mobile device or any other secure method), and then submit the resulting
+      # identity key to the service. In this case `beacon_identity_key` field should
+      # be populated, and neither of `beacon_ecdh_public_key` nor `
+      # service_ecdh_public_key` fields should be. The security of this method depends
+      # on how securely the parties involved (in particular the bluetooth client)
+      # handle the identity key, and obviously on how securely the identity key was
+      # generated. See [the Eddystone specification](https://github.com/google/
+      # eddystone/tree/master/eddystone-eid) at GitHub.
+      class EphemeralIdRegistration
+        include Google::Apis::Core::Hashable
+      
+        # The beacon's public key used for the Elliptic curve Diffie-Hellman key
+        # exchange. When this field is populated, `service_ecdh_public_key` must also be
+        # populated, and `beacon_identity_key` must not be.
+        # Corresponds to the JSON property `beaconEcdhPublicKey`
+        # @return [String]
+        attr_accessor :beacon_ecdh_public_key
+      
+        # The service's public key used for the Elliptic curve Diffie-Hellman key
+        # exchange. When this field is populated, `beacon_ecdh_public_key` must also be
+        # populated, and `beacon_identity_key` must not be.
+        # Corresponds to the JSON property `serviceEcdhPublicKey`
+        # @return [String]
+        attr_accessor :service_ecdh_public_key
+      
+        # The private key of the beacon. If this field is populated, `
+        # beacon_ecdh_public_key` and `service_ecdh_public_key` must not be populated.
+        # Corresponds to the JSON property `beaconIdentityKey`
+        # @return [String]
+        attr_accessor :beacon_identity_key
+      
+        # Indicates the nominal period between each rotation of the beacon's ephemeral
+        # ID. "Nominal" because the beacon should randomize the actual interval. See [
+        # the spec at github](https://github.com/google/eddystone/tree/master/eddystone-
+        # eid) for details. This value corresponds to a power-of-two scaler on the
+        # beacon's clock: when the scaler value is K, the beacon will begin broadcasting
+        # a new ephemeral ID on average every 2^K seconds.
+        # Corresponds to the JSON property `rotationPeriodExponent`
+        # @return [Fixnum]
+        attr_accessor :rotation_period_exponent
+      
+        # The initial clock value of the beacon. The beacon's clock must have begun
+        # counting at this value immediately prior to transmitting this value to the
+        # resolving service. Significant delay in transmitting this value to the service
+        # risks registration or resolution failures. If a value is not provided, the
+        # default is zero.
+        # Corresponds to the JSON property `initialClockValue`
+        # @return [String]
+        attr_accessor :initial_clock_value
+      
+        # An initial ephemeral ID calculated using the clock value submitted as `
+        # initial_clock_value`, and the secret key generated by the Diffie-Hellman key
+        # exchange using `service_ecdh_public_key` and `service_ecdh_public_key`. This
+        # initial EID value will be used by the service to confirm that the key exchange
+        # process was successful.
+        # Corresponds to the JSON property `initialEid`
+        # @return [String]
+        attr_accessor :initial_eid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @beacon_ecdh_public_key = args[:beacon_ecdh_public_key] if args.key?(:beacon_ecdh_public_key)
+          @service_ecdh_public_key = args[:service_ecdh_public_key] if args.key?(:service_ecdh_public_key)
+          @beacon_identity_key = args[:beacon_identity_key] if args.key?(:beacon_identity_key)
+          @rotation_period_exponent = args[:rotation_period_exponent] if args.key?(:rotation_period_exponent)
+          @initial_clock_value = args[:initial_clock_value] if args.key?(:initial_clock_value)
+          @initial_eid = args[:initial_eid] if args.key?(:initial_eid)
         end
       end
       
@@ -382,6 +500,43 @@ module Google
         end
       end
       
+      # Information a client needs to provision and register beacons that broadcast
+      # Eddystone-EID format beacon IDs, using Elliptic curve Diffie-Hellman key
+      # exchange. See [the Eddystone specification](https://github.com/google/
+      # eddystone/tree/master/eddystone-eid) at GitHub.
+      class EphemeralIdRegistrationParams
+        include Google::Apis::Core::Hashable
+      
+        # The beacon service's public key for use by a beacon to derive its Identity Key
+        # using Elliptic Curve Diffie-Hellman key exchange.
+        # Corresponds to the JSON property `serviceEcdhPublicKey`
+        # @return [String]
+        attr_accessor :service_ecdh_public_key
+      
+        # Indicates the minimum rotation period supported by the service. See
+        # EddystoneEidRegistration.rotation_period_exponent
+        # Corresponds to the JSON property `minRotationPeriodExponent`
+        # @return [Fixnum]
+        attr_accessor :min_rotation_period_exponent
+      
+        # Indicates the maximum rotation period supported by the service. See
+        # EddystoneEidRegistration.rotation_period_exponent
+        # Corresponds to the JSON property `maxRotationPeriodExponent`
+        # @return [Fixnum]
+        attr_accessor :max_rotation_period_exponent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_ecdh_public_key = args[:service_ecdh_public_key] if args.key?(:service_ecdh_public_key)
+          @min_rotation_period_exponent = args[:min_rotation_period_exponent] if args.key?(:min_rotation_period_exponent)
+          @max_rotation_period_exponent = args[:max_rotation_period_exponent] if args.key?(:max_rotation_period_exponent)
+        end
+      end
+      
       # Response that contains the requested diagnostics.
       class ListDiagnosticsResponse
         include Google::Apis::Core::Hashable
@@ -412,7 +567,8 @@ module Google
       class Diagnostics
         include Google::Apis::Core::Hashable
       
-        # Resource name of the beacon.
+        # Resource name of the beacon. For Eddystone-EID beacons, this may be the beacon'
+        # s current EID, or the beacon's "stable" Eddystone-UID.
         # Corresponds to the JSON property `beaconName`
         # @return [String]
         attr_accessor :beacon_name
@@ -422,8 +578,8 @@ module Google
         # relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
         # year and month where the day is not significant, e.g. credit card expiration
         # date. The year may be 0 to represent a month and day independent of year, e.g.
-        # anniversary date. Related types are [google.type.TimeOfDay][] and `google.
-        # protobuf.Timestamp`.
+        # anniversary date. Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `estimatedLowBatteryDate`
         # @return [Google::Apis::ProximitybeaconV1beta1::Date]
         attr_accessor :estimated_low_battery_date
@@ -450,24 +606,23 @@ module Google
       # relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
       # year and month where the day is not significant, e.g. credit card expiration
       # date. The year may be 0 to represent a month and day independent of year, e.g.
-      # anniversary date. Related types are [google.type.TimeOfDay][] and `google.
-      # protobuf.Timestamp`.
+      # anniversary date. Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Year of date. Must be from 1 to 9,999, or 0 if specifying a date without a
-        # year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
       
-        # Month of year of date. Must be from 1 to 12.
+        # Month of year. Must be from 1 to 12.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
         # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        # specifying a year/month where the day is not sigificant.
+        # specifying a year/month where the day is not significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
@@ -529,8 +684,7 @@ module Google
         # @return [String]
         attr_accessor :telemetry
       
-        # Time when the beacon was observed. Being sourced from a mobile device, this
-        # time may be suspect.
+        # Time when the beacon was observed.
         # Corresponds to the JSON property `timestampMs`
         # @return [String]
         attr_accessor :timestamp_ms
@@ -582,12 +736,6 @@ module Google
         # @return [String]
         attr_accessor :beacon_name
       
-        # Free text used to identify or describe the beacon in a registered
-        # establishment. For example: "entrance", "room 101", etc. May be empty.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
         # Attachments matching the type(s) requested. May be empty if no attachment
         # types were requested, or if none matched.
         # Corresponds to the JSON property `attachments`
@@ -602,7 +750,6 @@ module Google
         def update!(**args)
           @advertised_id = args[:advertised_id] if args.key?(:advertised_id)
           @beacon_name = args[:beacon_name] if args.key?(:beacon_name)
-          @description = args[:description] if args.key?(:description)
           @attachments = args[:attachments] if args.key?(:attachments)
         end
       end

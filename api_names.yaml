@@ -172,6 +172,7 @@
 "/analytics:v3/analytics.management.webpropertyUserLinks.update": update_web_property_user_link
 "/analytics:v3/analytics.metadata.columns.list": list_metadata_columns
 "/analytics:v3/analytics.provisioning.createAccountTicket": create_account_ticket
+"/analyticsreporting:v4/analyticsreporting.reports.batchGet": batch_get_reports
 "/androidenterprise:v1/CollectionViewersListResponse": list_collection_viewers_response
 "/androidenterprise:v1/CollectionsListResponse": list_collections_response
 "/androidenterprise:v1/DevicesListResponse": list_devices_response
@@ -991,6 +992,9 @@
 "/siteVerification:v1/SiteVerificationWebResourceGettokenResponse": get_web_resource_token_response
 "/siteVerification:v1/SiteVerificationWebResourceGettokenResponse/method": verification_method
 "/siteVerification:v1/SiteVerificationWebResourceListResponse": list_web_resource_response
+"/sheets:v4/sheets.spreadsheets.sheets.copyTo": copy_spreadsheet
+"/sheets:v4/sheets.spreadsheets.values.batchGet": batch_get_spreadsheet_values
+"/sheets:v4/sheets.spreadsheets.values.get": get_spreadsheet_values
 "/sqladmin:v1beta4/BackupRunsListResponse": list_backup_runs_response
 "/sqladmin:v1beta4/DatabasesListResponse": list_databases_response
 "/sqladmin:v1beta4/FlagsListResponse": list_flags_response

@@ -1823,6 +1823,7 @@ module Google
       
           property :description, as: 'description'
           property :disk_size_gb, as: 'diskSizeGb'
+          property :family, as: 'family'
           property :id, as: 'id'
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'

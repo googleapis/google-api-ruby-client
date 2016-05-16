@@ -843,6 +843,11 @@ module Google
         # @return [String]
         attr_accessor :format
       
+        # The frame rate of the inbound video data.
+        # Corresponds to the JSON property `frameRate`
+        # @return [String]
+        attr_accessor :frame_rate
+      
         # Describes information necessary for ingesting an RTMP or an HTTP stream.
         # Corresponds to the JSON property `ingestionInfo`
         # @return [Google::Apis::YoutubeV3::IngestionInfo]
@@ -853,6 +858,11 @@ module Google
         # @return [String]
         attr_accessor :ingestion_type
       
+        # The resolution of the inbound video data.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
         def initialize(**args)
            update!(**args)
         end
@@ -860,8 +870,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @format = args[:format] if args.key?(:format)
+          @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
           @ingestion_info = args[:ingestion_info] if args.key?(:ingestion_info)
           @ingestion_type = args[:ingestion_type] if args.key?(:ingestion_type)
+          @resolution = args[:resolution] if args.key?(:resolution)
         end
       end
       
@@ -3770,6 +3782,11 @@ module Google
         # @return [Google::Apis::YoutubeV3::MonitorStreamInfo]
         attr_accessor :monitor_stream
       
+        # The projection format of this broadcast. This defaults to rectangular.
+        # Corresponds to the JSON property `projection`
+        # @return [String]
+        attr_accessor :projection
+      
         # Automatically start recording after the event goes live. The default value for
         # this property is true.
         # Important: You must also set the enableDvr property's value to true if you
@@ -3807,6 +3824,7 @@ module Google
           @enable_embed = args[:enable_embed] if args.key?(:enable_embed)
           @enable_low_latency = args[:enable_low_latency] if args.key?(:enable_low_latency)
           @monitor_stream = args[:monitor_stream] if args.key?(:monitor_stream)
+          @projection = args[:projection] if args.key?(:projection)
           @record_from_start = args[:record_from_start] if args.key?(:record_from_start)
           @start_with_slate = args[:start_with_slate] if args.key?(:start_with_slate)
         end
@@ -7139,6 +7157,11 @@ module Google
         attr_accessor :licensed_content
         alias_method :licensed_content?, :licensed_content
       
+        # Specifies the projection format of the video.
+        # Corresponds to the JSON property `projection`
+        # @return [String]
+        attr_accessor :projection
+      
         # DEPRECATED Region restriction of the video.
         # Corresponds to the JSON property `regionRestriction`
         # @return [Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction]
@@ -7157,6 +7180,7 @@ module Google
           @dimension = args[:dimension] if args.key?(:dimension)
           @duration = args[:duration] if args.key?(:duration)
           @licensed_content = args[:licensed_content] if args.key?(:licensed_content)
+          @projection = args[:projection] if args.key?(:projection)
           @region_restriction = args[:region_restriction] if args.key?(:region_restriction)
         end
       end

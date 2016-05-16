@@ -22,7 +22,7 @@ module Google
     module ClassroomV1
       # Google Classroom API
       #
-      # Google Classroom API
+      # Manages classes, rosters, and invitations in Google Classroom.
       #
       # @example
       #    require 'google/apis/classroom_v1'

@@ -22,7 +22,7 @@ module Google
     module PlusV1
       # Google+ API
       #
-      # The Google+ API enables developers to build on top of the Google+ platform.
+      # Builds on top of the Google+ platform.
       #
       # @example
       #    require 'google/apis/plus_v1'

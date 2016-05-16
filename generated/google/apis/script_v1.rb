@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Apps Script Execution API
     #
-    # An API for executing Google Apps Script projects.
+    # Executes Google Apps Script projects.
     #
-    # @see https://developers.google.com/apps-script/execution/rest/v1/run
+    # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20150922'
+      REVISION = '20160426'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'
@@ -53,6 +53,9 @@ module Google
 
       # View and manage your Google Groups
       AUTH_GROUPS = 'https://www.googleapis.com/auth/groups'
+
+      # View and manage your spreadsheets in Google Drive
+      AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'

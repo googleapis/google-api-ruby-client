@@ -20,12 +20,12 @@ module Google
   module Apis
     # Compute Engine API
     #
-    # API for the Google Compute Engine service.
+    # Creates and runs virtual machines on Google Cloud Platform.
     #
     # @see https://developers.google.com/compute/docs/reference/latest/
     module ComputeV1
       VERSION = 'V1'
-      REVISION = '20160407'
+      REVISION = '20160426'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -22,12 +22,6 @@ module Google
   module Apis
     module DataprocV1
       
-      class Media
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -242,13 +236,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Media
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_name, as: 'resourceName'
-        end
       end
       
       class Cluster

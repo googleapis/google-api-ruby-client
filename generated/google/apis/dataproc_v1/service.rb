@@ -22,7 +22,7 @@ module Google
     module DataprocV1
       # Google Cloud Dataproc API
       #
-      # An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+      # Manages Hadoop-based clusters and jobs on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/dataproc_v1'
@@ -44,90 +44,6 @@ module Google
 
         def initialize
           super('https://dataproc.googleapis.com/', '')
-        end
-        
-        # Method for media upload. Upload is supported on the URI `/upload/v1/media/`+
-        # name``.
-        # @param [String] resource_name
-        #   Name of the media that is being downloaded. See ByteStream.ReadRequest.
-        #   resource_name.
-        # @param [Google::Apis::DataprocV1::Media] media_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] upload_source
-        #   IO stream or filename containing content to upload
-        # @param [String] content_type
-        #   Content type of the uploaded content.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Media] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Media]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_medium(resource_name, media_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          if upload_source.nil?
-            command =  make_simple_command(:post, 'v1/media/{+resourceName}', options)
-          else
-            command = make_upload_command(:post, 'v1/media/{+resourceName}', options)
-            command.upload_source = upload_source
-            command.upload_content_type = content_type
-          end
-          command.request_representation = Google::Apis::DataprocV1::Media::Representation
-          command.request_object = media_object
-          command.response_representation = Google::Apis::DataprocV1::Media::Representation
-          command.response_class = Google::Apis::DataprocV1::Media
-          command.params['resourceName'] = resource_name unless resource_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Method for media download. Download is supported on the URI `/v1/media/`+name`?
-        # alt=media`.
-        # @param [String] resource_name
-        #   Name of the media that is being downloaded. See ByteStream.ReadRequest.
-        #   resource_name.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] download_dest
-        #   IO stream or filename to receive content download
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Media] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Media]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_medium(resource_name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
-          if download_dest.nil?
-            command =  make_simple_command(:get, 'v1/media/{+resourceName}', options)
-          else
-            command = make_download_command(:get, 'v1/media/{+resourceName}', options)
-            command.download_dest = download_dest
-          end
-          command.response_representation = Google::Apis::DataprocV1::Media::Representation
-          command.response_class = Google::Apis::DataprocV1::Media
-          command.params['resourceName'] = resource_name unless resource_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
         end
         
         # Creates a cluster in a project.
@@ -180,8 +96,13 @@ module Google
         #   For example, to change the number of workers in a cluster to 5, the
         #   update_mask parameter would be specified as config.worker_config.num_instances,
         #   and the `PATCH` request body would specify the new value, as follows: ` "
-        #   config":` "workerConfig":` "numInstances":"5" ` ` ` Note: Currently, config.
-        #   worker_config.num_instances is the only field that can be updated.
+        #   config":` "workerConfig":` "numInstances":"5" ` ` ` Similarly, to change the
+        #   number of preemptible workers in a cluster to 5, the update_mask parameter
+        #   would be config.secondary_worker_config.num_instances, and the `PATCH` request
+        #   body would be set as follows: ` "config":` "secondaryWorkerConfig":` "
+        #   numInstances":"5" ` ` ` Note: Currently, config.worker_config.num_instances
+        #   and config.secondary_worker_config.num_instances are the only fields that can
+        #   be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

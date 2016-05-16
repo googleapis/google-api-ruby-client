@@ -2038,6 +2038,11 @@ module Google
         # @return [String]
         attr_accessor :player_id
       
+        # This is a JSON template for profile settings
+        # Corresponds to the JSON property `profileSettings`
+        # @return [Google::Apis::GamesV1::ProfileSettings]
+        attr_accessor :profile_settings
+      
         # The player's title rewarded for their game activities.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -2059,6 +2064,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
+          @profile_settings = args[:profile_settings] if args.key?(:profile_settings)
           @title = args[:title] if args.key?(:title)
         end
         
@@ -2643,6 +2649,34 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @scores = args[:scores] if args.key?(:scores)
+        end
+      end
+      
+      # This is a JSON template for profile settings
+      class ProfileSettings
+        include Google::Apis::Core::Hashable
+      
+        # Uniquely identifies the type of this resource. Value is always the fixed
+        # string games#profileSettings.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The player's current profile visibility. This field is visible to both 1P and
+        # 3P APIs.
+        # Corresponds to the JSON property `profileVisible`
+        # @return [Boolean]
+        attr_accessor :profile_visible
+        alias_method :profile_visible?, :profile_visible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile_visible = args[:profile_visible] if args.key?(:profile_visible)
         end
       end
       

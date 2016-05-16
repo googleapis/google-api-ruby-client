@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Cloud DNS API
     #
-    # The Google Cloud DNS API provides services for configuring and serving
-    # authoritative DNS records.
+    # Configures and serves authoritative DNS records.
     #
     # @see https://developers.google.com/cloud-dns
     module DnsV1
       VERSION = 'V1'
-      REVISION = '20160224'
+      REVISION = '20160509'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

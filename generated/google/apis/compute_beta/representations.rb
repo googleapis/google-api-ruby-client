@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerEncryptionKeyProtectedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeprecationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,12 @@ module Google
       end
       
       class DiskList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -611,6 +629,12 @@ module Google
       end
       
       class InstancesSetMachineTypeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesStartWithEncryptionKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1583,6 +1607,15 @@ module Google
         end
       end
       
+      class CustomerEncryptionKeyProtectedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source, as: 'source'
+        end
+      end
+      
       class DeprecationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1649,6 +1682,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class DiskMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_zone, as: 'destinationZone'
+          property :target_disk, as: 'targetDisk'
         end
       end
       
@@ -2340,6 +2381,14 @@ module Google
         end
       end
       
+      class MoveInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_zone, as: 'destinationZone'
+          property :target_instance, as: 'targetInstance'
+        end
+      end
+      
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2447,6 +2496,14 @@ module Google
         end
       end
       
+      class InstancesStartWithEncryptionKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk::Representation
+      
+        end
+      end
+      
       class License
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2466,6 +2523,7 @@ module Google
           property :description, as: 'description'
           property :guest_cpus, as: 'guestCpus'
           property :id, as: 'id'
+          property :is_shared_cpu, as: 'isSharedCpu'
           property :kind, as: 'kind'
           property :maximum_persistent_disks, as: 'maximumPersistentDisks'
           property :maximum_persistent_disks_size_gb, as: 'maximumPersistentDisksSizeGb'

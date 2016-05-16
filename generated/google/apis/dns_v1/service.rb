@@ -22,8 +22,7 @@ module Google
     module DnsV1
       # Google Cloud DNS API
       #
-      # The Google Cloud DNS API provides services for configuring and serving
-      #  authoritative DNS records.
+      # Configures and serves authoritative DNS records.
       #
       # @example
       #    require 'google/apis/dns_v1'

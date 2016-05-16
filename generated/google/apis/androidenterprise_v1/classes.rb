@@ -343,7 +343,8 @@ module Google
         # means that the EMM's app is a device owner. "managedProfile" means that the
         # EMM's app is the profile owner (and there is a separate personal profile which
         # is not managed). "containerApp" means that the EMM's app is managing the
-        # Android for Work container app on the device.
+        # Android for Work container app on the device. ?unmanagedProfile? means that
+        # the EMM?s app is managing a managed user on an unmanaged device
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -882,6 +883,37 @@ module Google
         end
       end
       
+      # 
+      class PageInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `resultPerPage`
+        # @return [Fixnum]
+        attr_accessor :result_per_page
+      
+        # 
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # 
+        # Corresponds to the JSON property `totalResults`
+        # @return [Fixnum]
+        attr_accessor :total_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result_per_page = args[:result_per_page] if args.key?(:result_per_page)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+        end
+      end
+      
       # A permission represents some extra capability, to be granted to an Android app,
       # which requires explicit consent. An enterprise admin must consent to these
       # permissions on behalf of their users before an entitlement for the app can be
@@ -1163,6 +1195,45 @@ module Google
         end
       end
       
+      # The matching products.
+      class ProductsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#productsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # General pagination information.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::AndroidenterpriseV1::PageInfo]
+        attr_accessor :page_info
+      
+        # Information about a product (e.g. an app) in the Google Play Store, for
+        # display to an enterprise admin.
+        # Corresponds to the JSON property `product`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::Product>]
+        attr_accessor :product
+      
+        # Pagination information for token pagination.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::AndroidenterpriseV1::TokenPagination]
+        attr_accessor :token_pagination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @product = args[:product] if args.key?(:product)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+        end
+      end
+      
       # Definition of a Google Play for Work store cluster, a list of products
       # displayed as part of a store page.
       class StoreCluster
@@ -1191,7 +1262,7 @@ module Google
         # this field. Duplicated values are allowed, but ordering between elements with
         # duplicate order is undefined.
         # The value of this field is never visible to a user, it is used solely for the
-        # purpose of defining an ordering. Maximum length is 20 characters.
+        # purpose of defining an ordering. Maximum length is 256 characters.
         # Corresponds to the JSON property `orderInPage`
         # @return [String]
         attr_accessor :order_in_page
@@ -1342,6 +1413,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @link = args[:link] if args.key?(:link)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class TokenPagination
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `previousPageToken`
+        # @return [String]
+        attr_accessor :previous_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @previous_page_token = args[:previous_page_token] if args.key?(:previous_page_token)
         end
       end
       

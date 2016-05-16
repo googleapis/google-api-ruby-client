@@ -20,12 +20,13 @@ module Google
   module Apis
     # Drive API
     #
-    # The API to interact with Drive.
+    # Manages files in Drive including uploading, downloading, searching, detecting
+    # changes, and updating sharing permissions.
     #
     # @see https://developers.google.com/drive/
     module DriveV3
       VERSION = 'V3'
-      REVISION = '20160408'
+      REVISION = '20160506'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

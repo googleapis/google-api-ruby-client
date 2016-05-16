@@ -22,7 +22,7 @@ module Google
     module ScriptV1
       # Google Apps Script Execution API
       #
-      # An API for executing Google Apps Script projects.
+      # Executes Google Apps Script projects.
       #
       # @example
       #    require 'google/apis/script_v1'
@@ -30,7 +30,7 @@ module Google
       #    Script = Google::Apis::ScriptV1 # Alias the module
       #    service = Script::ScriptService.new
       #
-      # @see https://developers.google.com/apps-script/execution/rest/v1/run
+      # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
       class ScriptService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

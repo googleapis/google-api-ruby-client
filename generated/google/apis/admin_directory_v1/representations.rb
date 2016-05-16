@@ -390,8 +390,7 @@ module Google
       class Aliases
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :aliases, as: 'aliases', class: Google::Apis::AdminDirectoryV1::Alias, decorator: Google::Apis::AdminDirectoryV1::Alias::Representation
-      
+          collection :aliases, as: 'aliases'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
         end

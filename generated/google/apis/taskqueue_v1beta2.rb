@@ -20,12 +20,12 @@ module Google
   module Apis
     # TaskQueue API
     #
-    # Lets you access a Google App Engine Pull Task Queue over REST.
+    # Accesses a Google App Engine Pull Task Queue over REST.
     #
     # @see https://developers.google.com/appengine/docs/python/taskqueue/rest
     module TaskqueueV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20141111'
+      REVISION = '20160428'
 
       # Manage your Tasks and Taskqueues
       AUTH_TASKQUEUE = 'https://www.googleapis.com/auth/taskqueue'

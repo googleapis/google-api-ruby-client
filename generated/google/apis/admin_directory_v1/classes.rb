@@ -71,7 +71,7 @@ module Google
       
         # List of alias objects.
         # Corresponds to the JSON property `aliases`
-        # @return [Array<Google::Apis::AdminDirectoryV1::Alias>]
+        # @return [Array<Object>]
         attr_accessor :aliases
       
         # ETag of the resource.

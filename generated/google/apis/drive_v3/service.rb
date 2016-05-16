@@ -22,7 +22,8 @@ module Google
     module DriveV3
       # Drive API
       #
-      # The API to interact with Drive.
+      # Manages files in Drive including uploading, downloading, searching, detecting
+      #  changes, and updating sharing permissions.
       #
       # @example
       #    require 'google/apis/drive_v3'

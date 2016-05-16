@@ -129,6 +129,19 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # The node pools associated with this cluster. When creating a new cluster, only
+        # a single node pool should be specified. This field should not be set if "
+        # node_config" or "initial_node_count" are specified.
+        # Corresponds to the JSON property `nodePools`
+        # @return [Array<Google::Apis::ContainerV1::NodePool>]
+        attr_accessor :node_pools
+      
+        # The list of Google Compute Engine [locations](/compute/docs/zones#available)
+        # in which the cluster's nodes should be located.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -225,6 +238,8 @@ module Google
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @node_pools = args[:node_pools] if args.key?(:node_pools)
+          @locations = args[:locations] if args.key?(:locations)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
@@ -420,6 +435,76 @@ module Google
         end
       end
       
+      # NodePool contains the name and configuration for a cluster's node pool. Node
+      # pools are a set of nodes (i.e. VM's), with a common configuration and
+      # specification, under the control of the cluster master. They may have a set of
+      # Kubernetes labels applied to them, which may be used to reference them during
+      # pod scheduling. They may also be resized up or down, to accommodate the
+      # workload.
+      class NodePool
+        include Google::Apis::Core::Hashable
+      
+        # The name of the node pool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Parameters that describe the nodes in a cluster.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ContainerV1::NodeConfig]
+        attr_accessor :config
+      
+        # The initial node count for the pool. You must ensure that your Compute Engine
+        # resource quota is sufficient for this number of instances. You must also have
+        # available firewall and routes quota.
+        # Corresponds to the JSON property `initialNodeCount`
+        # @return [Fixnum]
+        attr_accessor :initial_node_count
+      
+        # Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The version of the Kubernetes of this node.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # [Output only] The resource URLs of [instance groups](/compute/docs/instance-
+        # groups/) associated with this node pool.
+        # Corresponds to the JSON property `instanceGroupUrls`
+        # @return [Array<String>]
+        attr_accessor :instance_group_urls
+      
+        # The status of the nodes in this pool instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output only] Additional information about the current status of this node
+        # pool instance, if available.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @config = args[:config] if args.key?(:config)
+          @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @version = args[:version] if args.key?(:version)
+          @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @status = args[:status] if args.key?(:status)
+          @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
       # CreateClusterRequest creates a cluster.
       class CreateClusterRequest
         include Google::Apis::Core::Hashable
@@ -546,6 +631,13 @@ module Google
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :desired_addons_config
       
+        # The node pool to be upgraded. This field is mandatory if the "
+        # desired_node_version" or "desired_image_family" is specified and there is more
+        # than one node pool on the cluster.
+        # Corresponds to the JSON property `desiredNodePoolId`
+        # @return [String]
+        attr_accessor :desired_node_pool_id
+      
         # The Kubernetes version to change the master to. The only valid value is the
         # latest supported version. Use "-" to have the server automatically select the
         # latest version.
@@ -562,6 +654,7 @@ module Google
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
+          @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
         end
       end
@@ -606,6 +699,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :valid_node_versions
       
+        # Default image family.
+        # Corresponds to the JSON property `defaultImageFamily`
+        # @return [String]
+        attr_accessor :default_image_family
+      
+        # List of valid image families.
+        # Corresponds to the JSON property `validImageFamilies`
+        # @return [Array<String>]
+        attr_accessor :valid_image_families
+      
         def initialize(**args)
            update!(**args)
         end
@@ -614,6 +717,51 @@ module Google
         def update!(**args)
           @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
+          @default_image_family = args[:default_image_family] if args.key?(:default_image_family)
+          @valid_image_families = args[:valid_image_families] if args.key?(:valid_image_families)
+        end
+      end
+      
+      # ListNodePoolsResponse is the result of ListNodePoolsRequest.
+      class ListNodePoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of node pools for a cluster.
+        # Corresponds to the JSON property `nodePools`
+        # @return [Array<Google::Apis::ContainerV1::NodePool>]
+        attr_accessor :node_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_pools = args[:node_pools] if args.key?(:node_pools)
+        end
+      end
+      
+      # CreateNodePoolRequest creates a node pool for a cluster.
+      class CreateNodePoolRequest
+        include Google::Apis::Core::Hashable
+      
+        # NodePool contains the name and configuration for a cluster's node pool. Node
+        # pools are a set of nodes (i.e. VM's), with a common configuration and
+        # specification, under the control of the cluster master. They may have a set of
+        # Kubernetes labels applied to them, which may be used to reference them during
+        # pod scheduling. They may also be resized up or down, to accommodate the
+        # workload.
+        # Corresponds to the JSON property `nodePool`
+        # @return [Google::Apis::ContainerV1::NodePool]
+        attr_accessor :node_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_pool = args[:node_pool] if args.key?(:node_pool)
         end
       end
     end

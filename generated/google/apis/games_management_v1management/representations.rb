@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProfileSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuestsResetMultipleForAllRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -212,6 +218,8 @@ module Google
       
           property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
+          property :profile_settings, as: 'profileSettings', class: Google::Apis::GamesManagementV1management::ProfileSettings, decorator: Google::Apis::GamesManagementV1management::ProfileSettings::Representation
+      
           property :title, as: 'title'
         end
         
@@ -239,6 +247,14 @@ module Google
           property :definition_id, as: 'definitionId'
           property :kind, as: 'kind'
           collection :reset_score_time_spans, as: 'resetScoreTimeSpans'
+        end
+      end
+      
+      class ProfileSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :profile_visible, as: 'profileVisible'
         end
       end
       

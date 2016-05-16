@@ -2373,7 +2373,8 @@ module Google
         attr_accessor :background_color
       
         # Click-through URL for backup image. Applicable to the following creative types:
-        # ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
+        # FLASH_INPAGE, and HTML5_BANNER. Applicable to ENHANCED_BANNER when the
+        # primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `backupImageClickThroughUrl`
         # @return [String]
         attr_accessor :backup_image_click_through_url
@@ -2385,13 +2386,14 @@ module Google
         # all features detected by DCM for all the assets of this creative and can then
         # be modified by the client. To reset this field, copy over all the
         # creativeAssets' detected features. Applicable to the following creative types:
-        # ENHANCED_BANNER and HTML5_BANNER.
+        # HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset is not
+        # HTML_IMAGE.
         # Corresponds to the JSON property `backupImageFeatures`
         # @return [Array<String>]
         attr_accessor :backup_image_features
       
-        # Reporting label used for HTML5 banner backup image. Applicable to the
-        # following creative types: ENHANCED_BANNER.
+        # Reporting label used for HTML5 banner backup image. Applicable to
+        # ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `backupImageReportingLabel`
         # @return [String]
         attr_accessor :backup_image_reporting_label
@@ -2410,8 +2412,9 @@ module Google
         # should be exactly one entry in this list for each image creative asset. A
         # click tag is matched with a corresponding creative asset by matching the
         # clickTag.name field with the creativeAsset.assetIdentifier.name field.
-        # Applicable to the following creative types: ENHANCED_BANNER, ENHANCED_IMAGE,
-        # FLASH_INPAGE, HTML5_BANNER.
+        # Applicable to the following creative types: ENHANCED_IMAGE, FLASH_INPAGE
+        # HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset type is not
+        # HTML_IMAGE.
         # Corresponds to the JSON property `clickTags`
         # @return [Array<Google::Apis::DfareportingV2_3::ClickTag>]
         attr_accessor :click_tags
@@ -2447,8 +2450,8 @@ module Google
         # Whether Flash assets associated with the creative need to be automatically
         # converted to HTML5. This flag is enabled by default and users can choose to
         # disable it if they don't want the system to generate and use HTML5 asset for
-        # this creative. Applicable to the following creative types: ENHANCED_BANNER and
-        # FLASH_INPAGE.
+        # this creative. Applicable to the following creative type: FLASH_INPAGE.
+        # Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `convertFlashToHtml5`
         # @return [Boolean]
         attr_accessor :convert_flash_to_html5
@@ -2486,7 +2489,8 @@ module Google
         # ENHANCED_IMAGE creatives, these are read-only and auto-generated from
         # clickTags, For ENHANCED_BANNER, an event is also created from the
         # backupImageReportingLabel. Applicable to the following creative types:
-        # ENHANCED_BANNER, ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID.
+        # ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER
+        # when the primary asset is not HTML_IMAGE.
         # Corresponds to the JSON property `exitCustomEvents`
         # @return [Array<Google::Apis::DfareportingV2_3::CreativeCustomEvent>]
         attr_accessor :exit_custom_events
@@ -2582,7 +2586,8 @@ module Google
       
         # The internal Flash version for this creative as calculated by DoubleClick
         # Studio. This is a read-only field. Applicable to the following creative types:
-        # FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA, and all VPAID.
+        # FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER
+        # when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `requiredFlashVersion`
         # @return [Fixnum]
         attr_accessor :required_flash_version
@@ -2642,13 +2647,13 @@ module Google
         attr_accessor :subaccount_id
       
         # Third-party URL used to record backup image impressions. Applicable to the
-        # following creative types: all RICH_MEDIA
+        # following creative types: all RICH_MEDIA.
         # Corresponds to the JSON property `thirdPartyBackupImageImpressionsUrl`
         # @return [String]
         attr_accessor :third_party_backup_image_impressions_url
       
         # Third-party URL used to record rich media impressions. Applicable to the
-        # following creative types: all RICH_MEDIA
+        # following creative types: all RICH_MEDIA.
         # Corresponds to the JSON property `thirdPartyRichMediaImpressionsUrl`
         # @return [String]
         attr_accessor :third_party_rich_media_impressions_url
@@ -2662,6 +2667,7 @@ module Google
         # List of timer events configured for the creative. For ENHANCED_IMAGE creatives,
         # these are read-only and auto-generated from clickTags. Applicable to the
         # following creative types: ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID.
+        # Applicable to ENHANCED_BANNER when the primary asset is not HTML_IMAGE.
         # Corresponds to the JSON property `timerCustomEvents`
         # @return [Array<Google::Apis::DfareportingV2_3::CreativeCustomEvent>]
         attr_accessor :timer_custom_events
@@ -2773,8 +2779,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether ActionScript3 is enabled for the flash asset. This is a read-only
-        # field. Applicable to the following creative types: FLASH_INPAGE and
-        # ENHANCED_BANNER.
+        # field. Applicable to the following creative type: FLASH_INPAGE. Applicable to
+        # ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `actionScript3`
         # @return [Boolean]
         attr_accessor :action_script3
@@ -2873,8 +2879,8 @@ module Google
         attr_accessor :file_size
       
         # Flash version of the asset. This is a read-only field. Applicable to the
-        # following creative types: FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA, and
-        # all VPAID.
+        # following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID.
+        # Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `flashVersion`
         # @return [Fixnum]
         attr_accessor :flash_version
@@ -2982,8 +2988,8 @@ module Google
         # TRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO assets
         # and is applicable to INSTREAM_VIDEO and VPAID_LINEAR creatives.
         # ALTERNATE_VIDEO refers to the DCM representation of child asset videos from
-        # Studio, and is applicable to VPAID_LINEAR creatives. These cannot be added or
-        # removed within DCM.
+        # Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be
+        # added or removed within DCM.
         # For VPAID_LINEAR creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO
         # assets that are marked active serve as backup in case the VPAID creative
         # cannot be served. Only PARENT_VIDEO assets can be added or removed for an
@@ -3177,27 +3183,30 @@ module Google
         # Rules validated during code generation that generated a warning. This is a
         # read-only, auto-generated field.
         # Possible values are:
-        # - "CLICK_TAG_NON_TOP_LEVEL"
+        # - "ADMOB_REFERENCED"
+        # - "ASSET_FORMAT_UNSUPPORTED_DCM"
+        # - "ASSET_INVALID"
+        # - "CLICK_TAG_HARD_CODED"
+        # - "CLICK_TAG_INVALID"
+        # - "CLICK_TAG_IN_GWD"
         # - "CLICK_TAG_MISSING"
         # - "CLICK_TAG_MORE_THAN_ONE"
-        # - "CLICK_TAG_INVALID"
-        # - "ORPHANED_ASSET"
-        # - "PRIMARY_HTML_MISSING"
+        # - "CLICK_TAG_NON_TOP_LEVEL"
+        # - "COMPONENT_UNSUPPORTED_DCM"
+        # - "ENABLER_UNSUPPORTED_METHOD_DCM"
         # - "EXTERNAL_FILE_REFERENCED"
-        # - "MRAID_REFERENCED"
-        # - "ADMOB_REFERENCED"
+        # - "FILE_DETAIL_EMPTY"
         # - "FILE_TYPE_INVALID"
-        # - "ZIP_INVALID"
+        # - "GWD_PROPERTIES_INVALID"
+        # - "HTML5_FEATURE_UNSUPPORTED"
         # - "LINKED_FILE_NOT_FOUND"
         # - "MAX_FLASH_VERSION_11"
+        # - "MRAID_REFERENCED"
         # - "NOT_SSL_COMPLIANT"
-        # - "FILE_DETAIL_EMPTY"
-        # - "ASSET_INVALID"
-        # - "GWD_PROPERTIES_INVALID"
-        # - "ENABLER_UNSUPPORTED_METHOD_DCM"
-        # - "ASSET_FORMAT_UNSUPPORTED_DCM"
-        # - "COMPONENT_UNSUPPORTED_DCM"
-        # - "HTML5_FEATURE_UNSUPPORTED' "
+        # - "ORPHANED_ASSET"
+        # - "PRIMARY_HTML_MISSING"
+        # - "SVG_INVALID"
+        # - "ZIP_INVALID"
         # Corresponds to the JSON property `warnedValidationRules`
         # @return [Array<String>]
         attr_accessor :warned_validation_rules

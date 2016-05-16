@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Classroom API
     #
-    # Google Classroom API
+    # Manages classes, rosters, and invitations in Google Classroom.
     #
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20151013'
+      REVISION = '20160428'
 
       # Manage your Google Classroom classes
       AUTH_CLASSROOM_COURSES = 'https://www.googleapis.com/auth/classroom.courses'

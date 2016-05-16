@@ -193,6 +193,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
+        # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
         # `google.protobuf.Empty`.  If the original method is standard
@@ -204,14 +212,6 @@ module Google
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
-      
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
@@ -228,8 +228,8 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @done = args[:done] if args.key?(:done)
-          @response = args[:response] if args.key?(:response)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -265,12 +265,6 @@ module Google
       class StorageSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage generation for the object. If the generation is
-        # omitted, the latest generation will be used.
-        # Corresponds to the JSON property `generation`
-        # @return [String]
-        attr_accessor :generation
-      
         # Google Cloud Storage bucket containing source (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
@@ -278,6 +272,12 @@ module Google
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
+      
+        # Google Cloud Storage generation for the object. If the generation is
+        # omitted, the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [String]
+        attr_accessor :generation
       
         # Google Cloud Storage object containing source.
         # This object must be a gzipped archive file (.tar.gz) containing source to
@@ -292,8 +292,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @generation = args[:generation] if args.key?(:generation)
           @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
           @object = args[:object] if args.key?(:object)
         end
       end
@@ -372,6 +372,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Customer-readable message about the current status.
+        # @OutputOnly
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
         # List of images expected to be built and pushed to Google Container
         # Registry. If an image is listed here and the image is not produced by
         # one of the build steps, the build will fail. Any images present when
@@ -415,6 +421,7 @@ module Google
           @steps = args[:steps] if args.key?(:steps)
           @source = args[:source] if args.key?(:source)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
           @images = args[:images] if args.key?(:images)
           @start_time = args[:start_time] if args.key?(:start_time)
           @logs_bucket = args[:logs_bucket] if args.key?(:logs_bucket)
@@ -475,16 +482,16 @@ module Google
         # @return [String]
         attr_accessor :dir
       
-        # Additional environment variables to set for this step's container.
-        # Corresponds to the JSON property `env`
-        # @return [Array<String>]
-        attr_accessor :env
-      
         # Name of the container image to use for creating this stage in the
         # pipeline, as presented to `docker pull`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Additional environment variables to set for this step's container.
+        # Corresponds to the JSON property `env`
+        # @return [Array<String>]
+        attr_accessor :env
       
         def initialize(**args)
            update!(**args)
@@ -494,8 +501,8 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @dir = args[:dir] if args.key?(:dir)
-          @env = args[:env] if args.key?(:env)
           @name = args[:name] if args.key?(:name)
+          @env = args[:env] if args.key?(:env)
         end
       end
       

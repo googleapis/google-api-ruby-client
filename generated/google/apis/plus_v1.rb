@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google+ API
     #
-    # The Google+ API enables developers to build on top of the Google+ platform.
+    # Builds on top of the Google+ platform.
     #
     # @see https://developers.google.com/+/api/
     module PlusV1
       VERSION = 'V1'
-      REVISION = '20160412'
+      REVISION = '20160511'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'

@@ -1270,9 +1270,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
+          property :frame_rate, as: 'frameRate'
           property :ingestion_info, as: 'ingestionInfo', class: Google::Apis::YoutubeV3::IngestionInfo, decorator: Google::Apis::YoutubeV3::IngestionInfo::Representation
       
           property :ingestion_type, as: 'ingestionType'
+          property :resolution, as: 'resolution'
         end
       end
       
@@ -2003,6 +2005,7 @@ module Google
           property :enable_low_latency, as: 'enableLowLatency'
           property :monitor_stream, as: 'monitorStream', class: Google::Apis::YoutubeV3::MonitorStreamInfo, decorator: Google::Apis::YoutubeV3::MonitorStreamInfo::Representation
       
+          property :projection, as: 'projection'
           property :record_from_start, as: 'recordFromStart'
           property :start_with_slate, as: 'startWithSlate'
         end
@@ -2922,6 +2925,7 @@ module Google
           property :dimension, as: 'dimension'
           property :duration, as: 'duration'
           property :licensed_content, as: 'licensedContent'
+          property :projection, as: 'projection'
           property :region_restriction, as: 'regionRestriction', class: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction, decorator: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction::Representation
       
         end

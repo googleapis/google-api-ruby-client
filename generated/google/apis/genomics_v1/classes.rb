@@ -2526,6 +2526,16 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::VariantSetMetadata>]
         attr_accessor :metadata
       
+        # User-specified, mutable name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A textual description of this variant set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2537,6 +2547,8 @@ module Google
           @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
           @reference_bounds = args[:reference_bounds] if args.key?(:reference_bounds)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -3299,6 +3311,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time at which the job stopped running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The original request that started the operation. Note that this will be in
         # current version of the API. If the operation was started with v1beta2 API and
         # a GetOperation is performed on v1 API, a v1 request will be returned.
@@ -3320,6 +3337,7 @@ module Google
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @request = args[:request] if args.key?(:request)
           @events = args[:events] if args.key?(:events)
         end

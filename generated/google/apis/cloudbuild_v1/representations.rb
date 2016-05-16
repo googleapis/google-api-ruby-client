@@ -125,8 +125,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::CloudbuildV1::Status, decorator: Google::Apis::CloudbuildV1::Status::Representation
       
           property :done, as: 'done'
-          hash :response, as: 'response'
           hash :metadata, as: 'metadata'
+          hash :response, as: 'response'
           property :name, as: 'name'
         end
       end
@@ -142,8 +142,8 @@ module Google
       class StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation, as: 'generation'
           property :bucket, as: 'bucket'
+          property :generation, as: 'generation'
           property :object, as: 'object'
         end
       end
@@ -170,6 +170,7 @@ module Google
           property :source, as: 'source', class: Google::Apis::CloudbuildV1::Source, decorator: Google::Apis::CloudbuildV1::Source::Representation
       
           property :create_time, as: 'createTime'
+          property :status_detail, as: 'statusDetail'
           collection :images, as: 'images'
           property :start_time, as: 'startTime'
           property :logs_bucket, as: 'logsBucket'
@@ -197,8 +198,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
           property :dir, as: 'dir'
-          collection :env, as: 'env'
           property :name, as: 'name'
+          collection :env, as: 'env'
         end
       end
       

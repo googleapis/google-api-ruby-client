@@ -1571,15 +1571,14 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
-        # The size of data disk, in GB. The data disk size minimum is 10GB. This
-        # property is only applicable to Second Generation instances.
+        # The size of data disk, in GB. The data disk size minimum is 10GB. Applies only
+        # to Second Generation instances.
         # Corresponds to the JSON property `dataDiskSizeGb`
         # @return [String]
         attr_accessor :data_disk_size_gb
       
         # The type of data disk. Only supported for Second Generation instances. The
-        # default type is PD_SSD. This property is only applicable to Second Generation
-        # instances.
+        # default type is PD_SSD. Applies only to Second Generation instances.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
         attr_accessor :data_disk_type
@@ -1641,6 +1640,13 @@ module Google
         # @return [String]
         attr_accessor :settings_version
       
+        # Configuration to increase storage size automatically. The default value is
+        # false. Applies only to Second Generation instances.
+        # Corresponds to the JSON property `storageAutoResize`
+        # @return [Boolean]
+        attr_accessor :storage_auto_resize
+        alias_method :storage_auto_resize?, :storage_auto_resize
+      
         # The tier of service for this instance, for example D1, D2. For more
         # information, see pricing.
         # Corresponds to the JSON property `tier`
@@ -1668,6 +1674,7 @@ module Google
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
+          @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -1821,6 +1828,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # An Operations resource contains information about database instance operations
+        # such as create, delete, and restart. Operations resources are created in
+        # response to operations that were initiated; you never create them directly.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        attr_accessor :operation
+      
         # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
         # @return [Google::Apis::SqladminV1beta4::SslCert]
@@ -1834,6 +1848,7 @@ module Google
         def update!(**args)
           @client_cert = args[:client_cert] if args.key?(:client_cert)
           @kind = args[:kind] if args.key?(:kind)
+          @operation = args[:operation] if args.key?(:operation)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
         end
       end

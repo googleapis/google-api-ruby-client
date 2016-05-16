@@ -427,7 +427,7 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Proposal>]
         attr_accessor :proposals
       
-        # 
+        # Web property id of the seller creating these orders
         # Corresponds to the JSON property `webPropertyCode`
         # @return [String]
         attr_accessor :web_property_code
@@ -476,6 +476,11 @@ module Google
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
+      
+        # The link to the Ad Preferences page. This is only supported for native ads.
+        # Corresponds to the JSON property `adChoicesDestinationUrl`
+        # @return [String]
+        attr_accessor :ad_choices_destination_url
       
         # Detected advertiser id, if any. Read-only. This field should not be set in
         # requests.
@@ -619,6 +624,7 @@ module Google
         def update!(**args)
           @html_snippet = args[:html_snippet] if args.key?(:html_snippet)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ad_choices_destination_url = args[:ad_choices_destination_url] if args.key?(:ad_choices_destination_url)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
@@ -1042,7 +1048,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Tracks which parties (if any) have paused a deal. The deal is considered
-        # paused if has_buyer_paused || has_seller_paused.
+        # paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused
+        # or the has_seller_paused bits can be set independently.
         # Corresponds to the JSON property `dealPauseStatus`
         # @return [Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus]
         attr_accessor :deal_pause_status
@@ -1058,9 +1065,15 @@ module Google
       end
       
       # Tracks which parties (if any) have paused a deal. The deal is considered
-      # paused if has_buyer_paused || has_seller_paused.
+      # paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused
+      # or the has_seller_paused bits can be set independently.
       class DealServingMetadataDealPauseStatus
         include Google::Apis::Core::Hashable
+      
+        # If the deal is paused, records which party paused the deal first.
+        # Corresponds to the JSON property `firstPausedBy`
+        # @return [String]
+        attr_accessor :first_paused_by
       
         # 
         # Corresponds to the JSON property `hasBuyerPaused`
@@ -1080,6 +1093,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @first_paused_by = args[:first_paused_by] if args.key?(:first_paused_by)
           @has_buyer_paused = args[:has_buyer_paused] if args.key?(:has_buyer_paused)
           @has_seller_paused = args[:has_seller_paused] if args.key?(:has_seller_paused)
         end
@@ -1153,6 +1167,12 @@ module Google
       class DealTermsGuaranteedFixedPriceTerms
         include Google::Apis::Core::Hashable
       
+        # External billing info for this Deal. This field is relevant when external
+        # billing info such as price has a different currency code than DFP/AdX.
+        # Corresponds to the JSON property `billingInfo`
+        # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsGuaranteedFixedPriceTermsBillingInfo]
+        attr_accessor :billing_info
+      
         # Fixed price for the specified buyer.
         # Corresponds to the JSON property `fixedPrices`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::PricePerBuyer>]
@@ -1175,9 +1195,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_info = args[:billing_info] if args.key?(:billing_info)
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
           @guaranteed_impressions = args[:guaranteed_impressions] if args.key?(:guaranteed_impressions)
           @guaranteed_looks = args[:guaranteed_looks] if args.key?(:guaranteed_looks)
+        end
+      end
+      
+      # 
+      class DealTermsGuaranteedFixedPriceTermsBillingInfo
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp (in ms since epoch) when the original reservation price for the
+        # deal was first converted to DFP currency. This is used to convert the
+        # contracted price into advertiser's currency without discrepancy.
+        # Corresponds to the JSON property `currencyConversionTimeMs`
+        # @return [String]
+        attr_accessor :currency_conversion_time_ms
+      
+        # The original contracted quantity (# impressions) for this deal. To ensure
+        # delivery, sometimes publisher will book the deal with a impression buffer,
+        # however clients are billed using the original contracted quantity.
+        # Corresponds to the JSON property `originalContractedQuantity`
+        # @return [String]
+        attr_accessor :original_contracted_quantity
+      
+        # The original reservation price for the deal, if the currency code is different
+        # from the one used in negotiation.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Price]
+        attr_accessor :price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_conversion_time_ms = args[:currency_conversion_time_ms] if args.key?(:currency_conversion_time_ms)
+          @original_contracted_quantity = args[:original_contracted_quantity] if args.key?(:original_contracted_quantity)
+          @price = args[:price] if args.key?(:price)
         end
       end
       
@@ -1241,7 +1298,7 @@ module Google
         # @return [String]
         attr_accessor :proposal_revision_number
       
-        # 
+        # Indicates an optional action to take on the proposal
         # Corresponds to the JSON property `updateAction`
         # @return [String]
         attr_accessor :update_action
@@ -2389,6 +2446,11 @@ module Google
       class PricePerBuyer
         include Google::Apis::Core::Hashable
       
+        # Optional access type for this buyer.
+        # Corresponds to the JSON property `auctionTier`
+        # @return [String]
+        attr_accessor :auction_tier
+      
         # The buyer who will pay this price. If unset, all buyers can pay this price (if
         # the advertisers match, and there's no more specific rule matching the buyer).
         # Corresponds to the JSON property `buyer`
@@ -2406,6 +2468,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auction_tier = args[:auction_tier] if args.key?(:auction_tier)
           @buyer = args[:buyer] if args.key?(:buyer)
           @price = args[:price] if args.key?(:price)
         end
@@ -2534,6 +2597,11 @@ module Google
         # @return [String]
         attr_accessor :publisher_profile_id
       
+        # This message carries publisher provided forecasting information.
+        # Corresponds to the JSON property `publisherProvidedForecast`
+        # @return [Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast]
+        attr_accessor :publisher_provided_forecast
+      
         # The revision number of the product. (readonly)
         # Corresponds to the JSON property `revisionNumber`
         # @return [String]
@@ -2594,6 +2662,7 @@ module Google
           @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @publisher_profile_id = args[:publisher_profile_id] if args.key?(:publisher_profile_id)
+          @publisher_provided_forecast = args[:publisher_provided_forecast] if args.key?(:publisher_provided_forecast)
           @revision_number = args[:revision_number] if args.key?(:revision_number)
           @seller = args[:seller] if args.key?(:seller)
           @shared_targetings = args[:shared_targetings] if args.key?(:shared_targetings)
@@ -2685,11 +2754,6 @@ module Google
         # @return [String]
         attr_accessor :last_updater_or_commentor_role
       
-        # 
-        # Corresponds to the JSON property `lastUpdaterRole`
-        # @return [String]
-        attr_accessor :last_updater_role
-      
         # The name for the proposal (updatable)
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2758,7 +2822,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @last_updater_or_commentor_role = args[:last_updater_or_commentor_role] if args.key?(:last_updater_or_commentor_role)
-          @last_updater_role = args[:last_updater_role] if args.key?(:last_updater_role)
           @name = args[:name] if args.key?(:name)
           @negotiation_id = args[:negotiation_id] if args.key?(:negotiation_id)
           @originator_role = args[:originator_role] if args.key?(:originator_role)
@@ -2793,7 +2856,7 @@ module Google
       
         # Direct contact for the publisher profile.
         # Corresponds to the JSON property `directContact`
-        # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
+        # @return [String]
         attr_accessor :direct_contact
       
         # Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
@@ -2853,7 +2916,7 @@ module Google
       
         # Programmatic contact for the publisher profile.
         # Corresponds to the JSON property `programmaticContact`
-        # @return [Google::Apis::AdexchangebuyerV1_4::ContactInformation]
+        # @return [String]
         attr_accessor :programmatic_contact
       
         # The list of domains represented in this publisher profile. Empty if this is a

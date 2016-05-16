@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EphemeralIdRegistration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class Namespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EphemeralIdRegistrationParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -151,6 +163,9 @@ module Google
           property :expected_stability, as: 'expectedStability'
           property :description, as: 'description'
           hash :properties, as: 'properties'
+          property :ephemeral_id_registration, as: 'ephemeralIdRegistration', class: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration, decorator: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration::Representation
+      
+          property :provisioning_key, :base64 => true, as: 'provisioningKey'
         end
       end
       
@@ -174,6 +189,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class EphemeralIdRegistration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :beacon_ecdh_public_key, :base64 => true, as: 'beaconEcdhPublicKey'
+          property :service_ecdh_public_key, :base64 => true, as: 'serviceEcdhPublicKey'
+          property :beacon_identity_key, :base64 => true, as: 'beaconIdentityKey'
+          property :rotation_period_exponent, as: 'rotationPeriodExponent'
+          property :initial_clock_value, as: 'initialClockValue'
+          property :initial_eid, :base64 => true, as: 'initialEid'
         end
       end
       
@@ -230,6 +257,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :namespace_name, as: 'namespaceName'
           property :serving_visibility, as: 'servingVisibility'
+        end
+      end
+      
+      class EphemeralIdRegistrationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_ecdh_public_key, :base64 => true, as: 'serviceEcdhPublicKey'
+          property :min_rotation_period_exponent, as: 'minRotationPeriodExponent'
+          property :max_rotation_period_exponent, as: 'maxRotationPeriodExponent'
         end
       end
       
@@ -294,7 +330,6 @@ module Google
           property :advertised_id, as: 'advertisedId', class: Google::Apis::ProximitybeaconV1beta1::AdvertisedId, decorator: Google::Apis::ProximitybeaconV1beta1::AdvertisedId::Representation
       
           property :beacon_name, as: 'beaconName'
-          property :description, as: 'description'
           collection :attachments, as: 'attachments', class: Google::Apis::ProximitybeaconV1beta1::AttachmentInfo, decorator: Google::Apis::ProximitybeaconV1beta1::AttachmentInfo::Representation
       
         end

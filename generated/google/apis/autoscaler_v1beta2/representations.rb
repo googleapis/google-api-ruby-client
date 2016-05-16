@@ -102,12 +102,6 @@ module Google
       
       class Zone
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class MaintenanceWindow
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -197,6 +191,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::AutoscalerV1beta2::Operation::Error, decorator: Google::Apis::AutoscalerV1beta2::Operation::Error::Representation
       
@@ -278,22 +273,10 @@ module Google
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::AutoscalerV1beta2::Zone::MaintenanceWindow, decorator: Google::Apis::AutoscalerV1beta2::Zone::MaintenanceWindow::Representation
-      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-        end
-        
-        class MaintenanceWindow
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :begin_time, as: 'beginTime'
-            property :description, as: 'description'
-            property :end_time, as: 'endTime'
-            property :name, as: 'name'
-          end
         end
       end
       

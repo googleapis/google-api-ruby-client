@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProfileSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PushToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1135,6 +1141,8 @@ module Google
       
           property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
+          property :profile_settings, as: 'profileSettings', class: Google::Apis::GamesV1::ProfileSettings, decorator: Google::Apis::GamesV1::ProfileSettings::Representation
+      
           property :title, as: 'title'
         end
         
@@ -1292,6 +1300,14 @@ module Google
           property :kind, as: 'kind'
           collection :scores, as: 'scores', class: Google::Apis::GamesV1::ScoreSubmission, decorator: Google::Apis::GamesV1::ScoreSubmission::Representation
       
+        end
+      end
+      
+      class ProfileSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :profile_visible, as: 'profileVisible'
         end
       end
       

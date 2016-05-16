@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListNodePoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -126,6 +144,9 @@ module Google
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :subnetwork, as: 'subnetwork'
+          collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+          collection :locations, as: 'locations'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
           property :endpoint, as: 'endpoint'
@@ -187,6 +208,21 @@ module Google
         end
       end
       
+      class NodePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :config, as: 'config', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
+      
+          property :initial_node_count, as: 'initialNodeCount'
+          property :self_link, as: 'selfLink'
+          property :version, as: 'version'
+          collection :instance_group_urls, as: 'instanceGroupUrls'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+        end
+      end
+      
       class CreateClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -224,6 +260,7 @@ module Google
           property :desired_monitoring_service, as: 'desiredMonitoringService'
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
+          property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_master_version, as: 'desiredMasterVersion'
         end
       end
@@ -242,6 +279,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_cluster_version, as: 'defaultClusterVersion'
           collection :valid_node_versions, as: 'validNodeVersions'
+          property :default_image_family, as: 'defaultImageFamily'
+          collection :valid_image_families, as: 'validImageFamilies'
+        end
+      end
+      
+      class ListNodePoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+        end
+      end
+      
+      class CreateNodePoolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
         end
       end
     end

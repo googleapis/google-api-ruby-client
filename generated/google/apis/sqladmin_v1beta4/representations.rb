@@ -745,6 +745,7 @@ module Google
           property :pricing_plan, as: 'pricingPlan'
           property :replication_type, as: 'replicationType'
           property :settings_version, as: 'settingsVersion'
+          property :storage_auto_resize, as: 'storageAutoResize'
           property :tier, as: 'tier'
         end
       end
@@ -795,6 +796,8 @@ module Google
           property :client_cert, as: 'clientCert', class: Google::Apis::SqladminV1beta4::SslCertDetail, decorator: Google::Apis::SqladminV1beta4::SslCertDetail::Representation
       
           property :kind, as: 'kind'
+          property :operation, as: 'operation', class: Google::Apis::SqladminV1beta4::Operation, decorator: Google::Apis::SqladminV1beta4::Operation::Representation
+      
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
         end

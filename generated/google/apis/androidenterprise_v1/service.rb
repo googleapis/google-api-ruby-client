@@ -1630,7 +1630,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approves the specified product (and the relevant app permissions, if any).
+        # Approves the specified product and the relevant app permissions, if any. The
+        # maximum number of products that you can approve per enterprise customer is 1,
+        # 000.
+        # To learn how to use Google Play for Work to design and create a store layout
+        # to display approved products to your users, see Store Layout Design.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -1834,6 +1838,64 @@ module Google
           command.response_class = Google::Apis::AndroidenterpriseV1::ProductPermissions
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Finds approved products that match a query.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [Boolean] approved
+        #   Specifies whether to search among all products (false) or among only products
+        #   that have been approved (true). Only "true" is supported, and should be
+        #   specified.
+        # @param [String] language
+        #   The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). Results
+        #   are returned in the language best matching the preferred language.
+        # @param [Fixnum] max_results
+        #   Specifies the maximum number of products that can be returned per request. If
+        #   not specified, uses a default value of 100, which is also the maximum
+        #   retrievable within a single response.
+        # @param [String] query
+        #   The search query as typed in the Google Play Store search box. If omitted, all
+        #   approved apps will be returned (using the pagination parameters).
+        # @param [String] token
+        #   A pagination token is contained in a requests response when there are more
+        #   products. The token can be used in a subsequent request to obtain more
+        #   products, and so forth. This parameter cannot be used in the initial request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ProductsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::ProductsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_products(enterprise_id, approved: nil, language: nil, max_results: nil, query: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/products', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ProductsListResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ProductsListResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['approved'] = approved unless approved.nil?
+          command.query['language'] = language unless language.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['token'] = token unless token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google+ Domains API
     #
-    # The Google+ API enables developers to build on top of the Google+ platform.
+    # Builds on top of the Google+ platform for Google Apps Domains.
     #
     # @see https://developers.google.com/+/domains/
     module PlusDomainsV1
       VERSION = 'V1'
-      REVISION = '20160412'
+      REVISION = '20160511'
 
       # View your circles and the people and pages in them
       AUTH_PLUS_CIRCLES_READ = 'https://www.googleapis.com/auth/plus.circles.read'

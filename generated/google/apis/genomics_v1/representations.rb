@@ -1087,6 +1087,8 @@ module Google
       
           collection :metadata, as: 'metadata', class: Google::Apis::GenomicsV1::VariantSetMetadata, decorator: Google::Apis::GenomicsV1::VariantSetMetadata::Representation
       
+          property :name, as: 'name'
+          property :description, as: 'description'
         end
       end
       
@@ -1292,6 +1294,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project_id, as: 'projectId'
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           hash :request, as: 'request'
           collection :events, as: 'events', class: Google::Apis::GenomicsV1::OperationEvent, decorator: Google::Apis::GenomicsV1::OperationEvent::Representation
       

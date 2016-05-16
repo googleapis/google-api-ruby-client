@@ -2114,7 +2114,7 @@ module Google
         attr_accessor :ip_address
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
-        # AH or SCTP.
+        # AH, SCTP or ICMP.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -2820,6 +2820,13 @@ module Google
         # @return [String]
         attr_accessor :disk_size_gb
       
+        # The name of the image family to which this image belongs. You can create disks
+        # by specifying an image family instead of a specific image name. The image
+        # family always returns its latest image that is not deprecated.
+        # Corresponds to the JSON property `family`
+        # @return [String]
+        attr_accessor :family
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -2899,6 +2906,7 @@ module Google
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @family = args[:family] if args.key?(:family)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @licenses = args[:licenses] if args.key?(:licenses)
@@ -3418,9 +3426,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] The fingerprint of the target pools information. You can use
-        # this optional field for optimistic locking when you update the target pool
-        # entries.
+        # [Output Only] The fingerprint of the resource data. You can use this optional
+        # field for optimistic locking when you update the resource.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -5266,8 +5273,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] An optional IPV4 internal network address assigned to the
-        # instance for this network interface.
+        # An IPV4 internal network address to assign to the instance for this network
+        # interface. If not specified by user an unused internal IP is assigned by
+        # system.
         # Corresponds to the JSON property `networkIP`
         # @return [String]
         attr_accessor :network_ip
@@ -5278,9 +5286,9 @@ module Google
         # subnet mode, then this field should be specified. If you specify this property,
         # you can specify the subnetwork as a full or partial URL. For example, the
         # following are all valid URLs:
-        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
         # subnetworks/subnetwork
-        # - zones/zone/subnetworks/subnetwork
+        # - regions/region/subnetworks/subnetwork
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -8429,7 +8437,7 @@ module Google
         attr_accessor :self_link
       
         # The list of expected URL mappings. Request to update this UrlMap will succeed
-        # only all of the test cases pass.
+        # only if all of the test cases pass.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeV1::UrlMapTest>]
         attr_accessor :tests

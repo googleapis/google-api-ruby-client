@@ -106,7 +106,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IntervalPartitionConfiguration
+      class GoogleSheetsOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,12 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TablePartitionConfiguration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TableReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +311,12 @@ module Google
       end
       
       class TableSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimePartitioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -489,6 +489,8 @@ module Google
           property :compression, as: 'compression'
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       
+          property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
+      
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
@@ -519,11 +521,10 @@ module Google
         end
       end
       
-      class IntervalPartitionConfiguration
+      class GoogleSheetsOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expiration_ms, as: 'expirationMs'
-          property :type, as: 'type'
+          property :skip_leading_rows, as: 'skipLeadingRows'
         end
       end
       
@@ -589,6 +590,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_jagged_rows, as: 'allowJaggedRows'
           property :allow_quoted_newlines, as: 'allowQuotedNewlines'
+          property :autodetect, as: 'autodetect'
           property :create_disposition, as: 'createDisposition'
           property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
@@ -710,6 +712,8 @@ module Google
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :total_bytes_billed, as: 'totalBytesBilled'
           property :total_bytes_processed, as: 'totalBytesProcessed'
@@ -835,15 +839,16 @@ module Google
           property :last_modified_time, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :num_bytes, as: 'numBytes'
+          property :num_long_term_bytes, as: 'numLongTermBytes'
           property :num_rows, as: 'numRows'
-          collection :partition_configurations, as: 'partitionConfigurations', class: Google::Apis::BigqueryV2::TablePartitionConfiguration, decorator: Google::Apis::BigqueryV2::TablePartitionConfiguration::Representation
-      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
           property :streaming_buffer, as: 'streamingBuffer', class: Google::Apis::BigqueryV2::Streamingbuffer, decorator: Google::Apis::BigqueryV2::Streamingbuffer::Representation
       
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
       
           property :type, as: 'type'
           property :view, as: 'view', class: Google::Apis::BigqueryV2::ViewDefinition, decorator: Google::Apis::BigqueryV2::ViewDefinition::Representation
@@ -944,14 +949,6 @@ module Google
         end
       end
       
-      class TablePartitionConfiguration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :interval, as: 'interval', class: Google::Apis::BigqueryV2::IntervalPartitionConfiguration, decorator: Google::Apis::BigqueryV2::IntervalPartitionConfiguration::Representation
-      
-        end
-      end
-      
       class TableReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -974,6 +971,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
+        end
+      end
+      
+      class TimePartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_ms, as: 'expirationMs'
+          property :type, as: 'type'
         end
       end
       

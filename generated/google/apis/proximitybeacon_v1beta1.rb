@@ -20,12 +20,15 @@ module Google
   module Apis
     # Google Proximity Beacon API
     #
-    # This API provides services to register, manage, index, and search beacons.
+    # Registers, manages, indexes, and searches beacons.
     #
     # @see https://developers.google.com/beacons/proximity/
     module ProximitybeaconV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20150729'
+      REVISION = '20160429'
+
+      # View and modify your beacons
+      AUTH_USERLOCATION_BEACON_REGISTRY = 'https://www.googleapis.com/auth/userlocation.beacon.registry'
     end
   end
 end

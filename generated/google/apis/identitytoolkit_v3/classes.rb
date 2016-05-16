@@ -890,12 +890,6 @@ module Google
         # @return [String]
         attr_accessor :password
       
-        # Whether return sts id token and refresh token instead of gitkit token.
-        # Corresponds to the JSON property `returnSecureToken`
-        # @return [Boolean]
-        attr_accessor :return_secure_token
-        alias_method :return_secure_token?, :return_secure_token
-      
         def initialize(**args)
            update!(**args)
         end
@@ -909,7 +903,6 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
-          @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
         end
       end
       
@@ -1302,6 +1295,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The local ID of the user.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
         # The new email the user attempts to change to.
         # Corresponds to the JSON property `newEmail`
         # @return [String]
@@ -1338,6 +1336,7 @@ module Google
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
+          @local_id = args[:local_id] if args.key?(:local_id)
           @new_email = args[:new_email] if args.key?(:new_email)
           @password_hash = args[:password_hash] if args.key?(:password_hash)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
@@ -1353,6 +1352,11 @@ module Google
           # Corresponds to the JSON property `displayName`
           # @return [String]
           attr_accessor :display_name
+        
+          # User's identifier at IDP.
+          # Corresponds to the JSON property `federatedId`
+          # @return [String]
+          attr_accessor :federated_id
         
           # The user's photo url at the IDP.
           # Corresponds to the JSON property `photoUrl`
@@ -1372,6 +1376,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @display_name = args[:display_name] if args.key?(:display_name)
+            @federated_id = args[:federated_id] if args.key?(:federated_id)
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
           end

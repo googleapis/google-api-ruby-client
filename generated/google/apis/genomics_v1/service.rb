@@ -1897,8 +1897,8 @@ module Google
         # @param [Google::Apis::GenomicsV1::VariantSet] variant_set_object
         # @param [String] update_mask
         #   An optional mask specifying which fields to update. Supported fields: *
-        #   metadata. Leaving `updateMask` unset is equivalent to specifying all mutable
-        #   fields.
+        #   metadata. * name. * description. Leaving `updateMask` unset is equivalent to
+        #   specifying all mutable fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

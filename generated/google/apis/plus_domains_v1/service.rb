@@ -22,7 +22,7 @@ module Google
     module PlusDomainsV1
       # Google+ Domains API
       #
-      # The Google+ API enables developers to build on top of the Google+ platform.
+      # Builds on top of the Google+ platform for Google Apps Domains.
       #
       # @example
       #    require 'google/apis/plus_domains_v1'

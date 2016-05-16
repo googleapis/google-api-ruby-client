@@ -715,8 +715,9 @@ module Google
       class EntityAnnotation
         include Google::Apis::Core::Hashable
       
-        # Knowledge Graph entity ID. Maps to a freebase entity ID.
-        # (for example, "Google" maps to: mid /m/045c7b).
+        # Opaque entity ID. Some IDs might be available in Knowledge Graph(KG).
+        # For more details on KG please see:
+        # https://developers.google.com/knowledge-graph/
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid

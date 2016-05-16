@@ -466,6 +466,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoAdvertisingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1395,6 +1413,38 @@ module Google
           property :ratio, as: 'ratio'
           collection :territories, as: 'territories'
           property :type, as: 'type'
+        end
+      end
+      
+      class ValidateError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_name, as: 'columnName'
+          property :column_number, as: 'columnNumber'
+          property :line_number, as: 'lineNumber'
+          property :message, as: 'message'
+          property :message_code, as: 'messageCode'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class ValidateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :kind, as: 'kind'
+          property :locale, as: 'locale'
+          property :uploader_name, as: 'uploaderName'
+        end
+      end
+      
+      class ValidateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::YoutubePartnerV1::ValidateError, decorator: Google::Apis::YoutubePartnerV1::ValidateError::Representation
+      
+          property :kind, as: 'kind'
+          property :status, as: 'status'
         end
       end
       

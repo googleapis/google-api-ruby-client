@@ -22,7 +22,7 @@ module Google
     module TaskqueueV1beta2
       # TaskQueue API
       #
-      # Lets you access a Google App Engine Pull Task Queue over REST.
+      # Accesses a Google App Engine Pull Task Queue over REST.
       #
       # @example
       #    require 'google/apis/taskqueue_v1beta2'
