@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Comment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeveloperComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Review
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReviewReplyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReviewsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReviewsReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReviewsReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Season
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Timestamp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TokenPagination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +341,12 @@ module Google
       end
       
       class ListTracksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserComment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +425,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiry_time_seconds, as: 'expiryTimeSeconds'
           property :id, as: 'id'
+        end
+      end
+      
+      class Comment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_comment, as: 'developerComment', class: Google::Apis::AndroidpublisherV2::DeveloperComment, decorator: Google::Apis::AndroidpublisherV2::DeveloperComment::Representation
+      
+          property :user_comment, as: 'userComment', class: Google::Apis::AndroidpublisherV2::UserComment, decorator: Google::Apis::AndroidpublisherV2::UserComment::Representation
+      
+        end
+      end
+      
+      class DeveloperComment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_modified, as: 'lastModified', class: Google::Apis::AndroidpublisherV2::Timestamp, decorator: Google::Apis::AndroidpublisherV2::Timestamp::Representation
+      
+          property :text, as: 'text'
         end
       end
       
@@ -655,6 +728,52 @@ module Google
         end
       end
       
+      class Review
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_name, as: 'authorName'
+          collection :comments, as: 'comments', class: Google::Apis::AndroidpublisherV2::Comment, decorator: Google::Apis::AndroidpublisherV2::Comment::Representation
+      
+          property :review_id, as: 'reviewId'
+        end
+      end
+      
+      class ReviewReplyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_edited, as: 'lastEdited', class: Google::Apis::AndroidpublisherV2::Timestamp, decorator: Google::Apis::AndroidpublisherV2::Timestamp::Representation
+      
+          property :reply_text, as: 'replyText'
+        end
+      end
+      
+      class ReviewsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_info, as: 'pageInfo', class: Google::Apis::AndroidpublisherV2::PageInfo, decorator: Google::Apis::AndroidpublisherV2::PageInfo::Representation
+      
+          collection :reviews, as: 'reviews', class: Google::Apis::AndroidpublisherV2::Review, decorator: Google::Apis::AndroidpublisherV2::Review::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV2::TokenPagination, decorator: Google::Apis::AndroidpublisherV2::TokenPagination::Representation
+      
+        end
+      end
+      
+      class ReviewsReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reply_text, as: 'replyText'
+        end
+      end
+      
+      class ReviewsReplyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::AndroidpublisherV2::ReviewReplyResult, decorator: Google::Apis::AndroidpublisherV2::ReviewReplyResult::Representation
+      
+        end
+      end
+      
       class Season
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -714,6 +833,14 @@ module Google
         end
       end
       
+      class Timestamp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
       class TokenPagination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -737,6 +864,21 @@ module Google
           property :kind, as: 'kind'
           collection :tracks, as: 'tracks', class: Google::Apis::AndroidpublisherV2::Track, decorator: Google::Apis::AndroidpublisherV2::Track::Representation
       
+        end
+      end
+      
+      class UserComment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_os_version, as: 'androidOsVersion'
+          property :app_version_code, as: 'appVersionCode'
+          property :app_version_name, as: 'appVersionName'
+          property :device, as: 'device'
+          property :last_modified, as: 'lastModified', class: Google::Apis::AndroidpublisherV2::Timestamp, decorator: Google::Apis::AndroidpublisherV2::Timestamp::Representation
+      
+          property :reviewer_language, as: 'reviewerLanguage'
+          property :star_rating, as: 'starRating'
+          property :text, as: 'text'
         end
       end
     end
