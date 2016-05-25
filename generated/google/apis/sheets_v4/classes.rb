@@ -121,19 +121,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -222,7 +222,7 @@ module Google
       class UpdateConditionalFormatRuleRequest
         include Google::Apis::Core::Hashable
       
-        # The sheet of the rule to move.  Required if newIndex is set,
+        # The sheet of the rule to move.  Required if new_index is set,
         # unused otherwise.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
@@ -546,7 +546,6 @@ module Google
       
       # Updates properties of the named range with the specified
       # namedRangeId.
-      # It is an error to specify read only fields in the field mask.
       class UpdateNamedRangeRequest
         include Google::Apis::Core::Hashable
       
@@ -712,12 +711,14 @@ module Google
         # @return [Google::Apis::SheetsV4::PivotTable]
         attr_accessor :pivot_table
       
-        # Runs of rich text applied to subsections of the cell.
+        # Runs of rich text applied to subsections of the cell.  Runs are only valid
+        # on user entered strings, not formulas, bools, or numbers.
         # Runs start at specific indexes in the text and continue until the next
         # run. Properties of a run will continue unless explicitly changed
         # in a subsequent run (and properties of the first run will continue
         # the properties of the cell unless explicitly changed).
-        # When writing, the new runs will overwrite any prior runs.
+        # When writing, the new runs will overwrite any prior runs.  When writing a
+        # new user_entered_value, previous runs will be erased.
         # Corresponds to the JSON property `textFormatRuns`
         # @return [Array<Google::Apis::SheetsV4::TextFormatRun>]
         attr_accessor :text_format_runs
@@ -755,19 +756,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -796,19 +797,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -889,7 +890,7 @@ module Google
         end
       end
       
-      # Deletes the protected range with the given id.
+      # Deletes the protected range with the given ID.
       class DeleteProtectedRangeRequest
         include Google::Apis::Core::Hashable
       
@@ -1084,7 +1085,7 @@ module Google
         attr_accessor :title
       
         # The named range this filter view is backed by, if any.
-        # When writing, only one of range or namedRangeId
+        # When writing, only one of range or named_range_id
         # may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
@@ -1101,19 +1102,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -1158,19 +1159,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -1196,8 +1197,8 @@ module Google
         end
       end
       
-      # A run of a text format. The format of this run continues until explicitly
-      # overridden in the next run.
+      # A run of a text format. The format of this run continues until the start
+      # index of the next run.
       # When updating, all fields must be set.
       class TextFormatRun
         include Google::Apis::Core::Hashable
@@ -1256,7 +1257,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The old index of the rule. Not set if a rule was replaced
-        # (because it is the same as newIndex).
+        # (because it is the same as new_index).
         # Corresponds to the JSON property `oldIndex`
         # @return [Fixnum]
         attr_accessor :old_index
@@ -1289,7 +1290,7 @@ module Google
         end
       end
       
-      # Criteria for showing/hiding rows in a filter, filter view.
+      # Criteria for showing/hiding rows in a filter or filter view.
       class FilterCriteria
         include Google::Apis::Core::Hashable
       
@@ -1359,19 +1360,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -1394,7 +1395,7 @@ module Google
         # The filters will be applied before aggregating data into the pivot table.
         # The map's key is the column offset of the source range that you want to
         # filter, and the value is the criteria for that column.
-        # For example, if the source was `C10:E15', a key of `0` will have the filter
+        # For example, if the source was `C10:E15`, a key of `0` will have the filter
         # for column `C`, whereas the key `1` is for column `D`.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::PivotFilterCriteria>]
@@ -1458,7 +1459,6 @@ module Google
       end
       
       # Updates properties of a spreadsheet.
-      # It is an error to specify read only fields in the field mask.
       class UpdateSpreadsheetPropertiesRequest
         include Google::Apis::Core::Hashable
       
@@ -1633,19 +1633,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -1913,7 +1913,9 @@ module Google
       # Adds a new sheet.
       # When a sheet is added at a given index,
       # all subsequent sheets' indexes are incremented.
-      # To add an object sheet, use AddChartRequest instead.
+      # To add an object sheet, use AddChartRequest instead and specify
+      # EmbeddedObjectPosition.sheetId or
+      # EmbeddedObjectPosition.newSheet.
       class AddSheetRequest
         include Google::Apis::Core::Hashable
       
@@ -1961,7 +1963,7 @@ module Google
         # corresponds with one cell.
         # For output, empty trailing rows and columns will not be included.
         # For input, supported value types are: bool, string, and double.
-        # Null and empty values will be skipped.
+        # Null values will be skipped.
         # To set a cell to an empty value, set the string value to an empty string.
         # Corresponds to the JSON property `values`
         # @return [Array<Array<Object>>]
@@ -1975,13 +1977,14 @@ module Google
         attr_accessor :range
       
         # The major dimension of the values.
-        # For output, if the spreadsheet data is: A1=1,B1=2,A2=3,B2=4,
-        # then requesting range=A1:B2,majorDimension=ROWS will return [[1,2],[3,4]],
-        # whereas requesting range=A1:B2,majorDimension=COLUMNS will return
-        # [[1,3],[2,4]].
-        # For input, with range=A1:B2,majorDimension=ROWS then [[1,2],[3,4]]
-        # will set A1=1,B1=2,A2=3,B2=4. With range=A1:B2,majorDimension=COLUMNS
-        # then [[1,2],[3,4]] will set A1=1,B1=3,A2=2,B2=4.
+        # For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+        # then requesting `range=A1:B2,majorDimension=ROWS` will return
+        # `[[1,2],[3,4]]`,
+        # whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        # `[[1,3],[2,4]]`.
+        # For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]`
+        # will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS`
+        # then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.
         # When writing, if this field is not set, it defaults to ROWS.
         # Corresponds to the JSON property `majorDimension`
         # @return [String]
@@ -2014,8 +2017,8 @@ module Google
         attr_accessor :rows_changed
       
         # The number of occurrences (possibly multiple within a cell) changed.
-        # For example, if replacing "`e`" with "`o`" in "`Google Sheets`", this would
-        # be "`3`" because "`Google Sheets`" -> "`Googlo Shoots`".
+        # For example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this would
+        # be `"3"` because `"Google Sheets"` -> `"Googlo Shoots"`.
         # Corresponds to the JSON property `occurrencesChanged`
         # @return [Fixnum]
         attr_accessor :occurrences_changed
@@ -2048,7 +2051,7 @@ module Google
       class CellFormat
         include Google::Apis::Core::Hashable
       
-        # The horizontal alignment of the value in cell.
+        # The horizontal alignment of the value in the cell.
         # Corresponds to the JSON property `horizontalAlignment`
         # @return [String]
         attr_accessor :horizontal_alignment
@@ -2081,7 +2084,6 @@ module Google
         attr_accessor :padding
       
         # The number format of a cell.
-        # When updating, all fields must be set.
         # Corresponds to the JSON property `numberFormat`
         # @return [Google::Apis::SheetsV4::NumberFormat]
         attr_accessor :number_format
@@ -2194,7 +2196,7 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
       
-        # The vertical alignment of the value in cell.
+        # The vertical alignment of the value in the cell.
         # Corresponds to the JSON property `verticalAlignment`
         # @return [String]
         attr_accessor :vertical_alignment
@@ -2238,8 +2240,8 @@ module Google
         # The source dimensions are removed from the grid, so the
         # the data may end up in a different index than specified.
         # For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move
-        # "`1`" and "`2`" to between "`3`" and "`4`", the source would be
-        # `ROWS [1..3)`,and the destination index would be "`4`"
+        # `"1"` and `"2"` to between `"3"` and `"4"`, the source would be
+        # `ROWS [1..3)`,and the destination index would be `"4"`
         # (the zero-based index of row 5).
         # The end result would be `A1..A5` of `0, 3, 1, 2, 4`.
         # Corresponds to the JSON property `destinationIndex`
@@ -2308,7 +2310,7 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ExtendedValue>]
         attr_accessor :buckets
       
-        # The offset in the [PivotTable.values] list which the values in this
+        # The offset in the PivotTable.values list which the values in this
         # grouping should be sorted by.
         # Corresponds to the JSON property `valuesIndex`
         # @return [Fixnum]
@@ -2393,7 +2395,7 @@ module Google
         end
       end
       
-      # A single interpolation point a gradient conditional format.
+      # A single interpolation point on a gradient conditional format.
       # These pin the gradient color scale according to the color,
       # type and value chosen.
       class InterpolationPoint
@@ -2772,7 +2774,7 @@ module Google
         attr_accessor :description
       
         # The named range this protected range is backed by, if any.
-        # When writing, only one of range or namedRangeId
+        # When writing, only one of range or named_range_id
         # may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
@@ -2797,11 +2799,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :protected_range_id
       
-        # True if this this protected range will show a warning when editing.
+        # True if this protected range will show a warning when editing.
         # Warning-based protection means that every user can edit data in the
         # protected range, except editing will prompt a warning asking the user
         # to confirm the edit.
-        # When warning: if this field is true, then editors is ignored.
+        # When writing: if this field is true, then editors is ignored.
         # Additionally, if this field is changed from true to false and the
         # `editors` field is not set (nor included in the field mask), then
         # the editors will be set to all the editors in the document.
@@ -2815,19 +2817,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -2884,9 +2886,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Determines how the charts will use hidden rows or columns.
-        # This value is only meaningful if the
-        # ChartData.sourceRange
-        # is used for a domain or series.
         # Corresponds to the JSON property `hiddenDimensionStrategy`
         # @return [String]
         attr_accessor :hidden_dimension_strategy
@@ -2929,19 +2928,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -3073,10 +3072,10 @@ module Google
         # The regular expression and replacement should follow Java regex rules
         # at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html.
         # The replacement string is allowed to refer to capturing groups.
-        # For example, if one cell has the contents "`Google Sheets`" and another
-        # has "`Google Docs`", then searching for `"o.* (.*)"` with a replacement of
-        # `"$1 Rocks`"` would change the contents of the cells to
-        # "`GSheets Rocks`" and "`GDocs Rocks`" respectively.
+        # For example, if one cell has the contents `"Google Sheets"` and another
+        # has `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of
+        # `"$1 Rocks"` would change the contents of the cells to
+        # `"GSheets Rocks"` and `"GDocs Rocks"` respectively.
         # Corresponds to the JSON property `searchByRegex`
         # @return [Boolean]
         attr_accessor :search_by_regex
@@ -3111,19 +3110,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -3201,16 +3200,17 @@ module Google
       end
       
       # The number format of a cell.
-      # When updating, all fields must be set.
       class NumberFormat
         include Google::Apis::Core::Hashable
       
-        # Pattern string used for formatting.
+        # Pattern string used for formatting.  If not set, a default pattern based on
+        # the user's locale will be used if necessary for the given type.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
       
         # The type of the number format.
+        # When writing, this field must be set.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3227,7 +3227,6 @@ module Google
       end
       
       # Updates properties of dimensions within the specified range.
-      # It is an error to specify read only fields in the field mask.
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
       
@@ -3340,7 +3339,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Metadata about the requested columns in the grid, starting with the column
-        # in startColumn.
+        # in start_column.
         # Corresponds to the JSON property `columnMetadata`
         # @return [Array<Google::Apis::SheetsV4::DimensionProperties>]
         attr_accessor :column_metadata
@@ -3348,7 +3347,7 @@ module Google
         # The data in the grid, one entry per row,
         # starting with the row in startRow.
         # The values in RowData will correspond to columns starting
-        # at startColumn.
+        # at start_column.
         # Corresponds to the JSON property `rowData`
         # @return [Array<Google::Apis::SheetsV4::RowData>]
         attr_accessor :row_data
@@ -3359,7 +3358,7 @@ module Google
         attr_accessor :start_row
       
         # Metadata about the requested rows in the grid, starting with the row
-        # in startRow.
+        # in start_row.
         # Corresponds to the JSON property `rowMetadata`
         # @return [Array<Google::Apis::SheetsV4::DimensionProperties>]
         attr_accessor :row_metadata
@@ -3394,7 +3393,7 @@ module Google
         attr_accessor :formula
       
         # The column offset of the source range that this value reads from.
-        # For example, if the source was `C10:E15', a `sourceColumnOffset` of `0`
+        # For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
         # means this value refers to column `C`, whereas the offset `1` would
         # refer to column `D`.
         # Corresponds to the JSON property `sourceColumnOffset`
@@ -3446,19 +3445,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -3496,6 +3495,7 @@ module Google
       
         # If set, the ID of the new sheet. If not set, an ID is chosen.
         # If set, the ID must not conflict with any existing sheet ID.
+        # If set, it must be non-negative.
         # Corresponds to the JSON property `newSheetId`
         # @return [Fixnum]
         attr_accessor :new_sheet_id
@@ -3572,7 +3572,7 @@ module Google
         attr_accessor :style
       
         # The width of the border, in pixels.
-        # Border widths must be between 0 and 3 pixels.
+        # Border widths must be between 0 and 3 pixels, inclusive.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -3730,7 +3730,7 @@ module Google
         end
       end
       
-      # Adds new cells to the last row with data in a sheet,
+      # Adds new cells after the last row with data in a sheet,
       # inserting new rows into the sheet if necessary.
       class AppendCellsRequest
         include Google::Apis::Core::Hashable
@@ -3810,6 +3810,8 @@ module Google
         # chartType is
         # COMBO.
         # Different types will change the way the series is visualized.
+        # Only LINE, AREA,
+        # and COLUMN are supported.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3835,8 +3837,8 @@ module Google
       # B2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`,
       # C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
       # To keep the formula's ranges static, use the `$` indicator.
-      # For example, using the formula was `=$A$1`, neither
-      # the row nor column would increment.
+      # For example, use the formula `=$A$1` to prevent both the row and the
+      # column from incrementing.
       class RepeatCellRequest
         include Google::Apis::Core::Hashable
       
@@ -3857,19 +3859,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -3959,19 +3961,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4026,13 +4028,13 @@ module Google
         # @return [Google::Apis::SheetsV4::EmbeddedObjectPosition]
         attr_accessor :new_position
       
-        # The id of the object to moved.
+        # The ID of the object to moved.
         # Corresponds to the JSON property `objectId`
         # @return [Fixnum]
         attr_accessor :object_id_prop
       
-        # The fields of OverlayPosition that should be updated when
-        # setting a new position. Used only if
+        # The fields of OverlayPosition
+        # that should be updated when setting a new position. Used only if
         # newPosition.overlayPosition
         # is set, in which case at least one field must
         # be specified.  The root `newPosition.overlayPosition` is implied and
@@ -4107,7 +4109,7 @@ module Google
         attr_accessor :sort_order
       
         # The column offset of the source range that this grouping is based on.
-        # For example, if the source was `C10:E15', a `sourceColumnOffset` of `0`
+        # For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
         # means this group refers to column `C`, whereas the offset `1` would refer
         # to column `D`.
         # Corresponds to the JSON property `sourceColumnOffset`
@@ -4149,19 +4151,19 @@ module Google
       # Indexes are half open, e.g the start index is inclusive
       # and the end index is exclusive -- [start_index, end_index).
       # Missing indexes indicate the range is unbounded on that side.
-      # For example, if "Sheet1" is grid ID 0, then:
-      # Sheet1!A1:A1 == sheet_id: 0,
+      # For example, if `"Sheet1"` is sheet ID 0, then:
+      # `Sheet1!A1:A1 == sheet_id: 0,
       # start_row_index: 0, end_row_index: 1,
-      # start_column_index: 0, end_column_index: 1
-      # Sheet1!A3:B4 == sheet_id: 0,
+      # start_column_index: 0, end_column_index: 1`
+      # `Sheet1!A3:B4 == sheet_id: 0,
       # start_row_index: 2, end_row_index: 4,
-      # start_column_index: 0, end_column_index: 2
-      # Sheet1!A:B == sheet_id: 0,
-      # start_column_index: 0, end_column_index: 2
-      # Sheet1!A5:B == sheet_id: 0,
+      # start_column_index: 0, end_column_index: 2`
+      # `Sheet1!A:B == sheet_id: 0,
+      # start_column_index: 0, end_column_index: 2`
+      # `Sheet1!A5:B == sheet_id: 0,
       # start_row_index: 4,
-      # start_column_index: 0, end_column_index: 2
-      # Sheet1 == sheet_id:0
+      # start_column_index: 0, end_column_index: 2`
+      # `Sheet1 == sheet_id:0`
       # The start index must always be less than or equal to the end index.
       # If the start index equals the end index, then the range is empty.
       # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4333,19 +4335,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4359,19 +4361,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4421,19 +4423,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4537,21 +4539,21 @@ module Google
       class GradientRule
         include Google::Apis::Core::Hashable
       
-        # A single interpolation point a gradient conditional format.
+        # A single interpolation point on a gradient conditional format.
         # These pin the gradient color scale according to the color,
         # type and value chosen.
         # Corresponds to the JSON property `maxpoint`
         # @return [Google::Apis::SheetsV4::InterpolationPoint]
         attr_accessor :maxpoint
       
-        # A single interpolation point a gradient conditional format.
+        # A single interpolation point on a gradient conditional format.
         # These pin the gradient color scale according to the color,
         # type and value chosen.
         # Corresponds to the JSON property `midpoint`
         # @return [Google::Apis::SheetsV4::InterpolationPoint]
         attr_accessor :midpoint
       
-        # A single interpolation point a gradient conditional format.
+        # A single interpolation point on a gradient conditional format.
         # These pin the gradient color scale according to the color,
         # type and value chosen.
         # Corresponds to the JSON property `minpoint`
@@ -4585,19 +4587,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4686,19 +4688,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -4770,7 +4772,6 @@ module Google
       
       # Updates properties of the sheet with the specified
       # sheetId.
-      # It is an error to specify read only fields in the field mask.
       class UpdateSheetPropertiesRequest
         include Google::Apis::Core::Hashable
       
@@ -4971,19 +4972,19 @@ module Google
         # Indexes are half open, e.g the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
-        # For example, if "Sheet1" is grid ID 0, then:
-        # Sheet1!A1:A1 == sheet_id: 0,
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
         # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1
-        # Sheet1!A3:B4 == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
         # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1!A5:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
         # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2
-        # Sheet1 == sheet_id:0
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
         # The start index must always be less than or equal to the end index.
         # If the start index equals the end index, then the range is empty.
         # Empty ranges are typically not meaningful and are usually rendered in the
@@ -5020,7 +5021,6 @@ module Google
       
         # Updates properties of the named range with the specified
         # namedRangeId.
-        # It is an error to specify read only fields in the field mask.
         # Corresponds to the JSON property `updateNamedRange`
         # @return [Google::Apis::SheetsV4::UpdateNamedRangeRequest]
         attr_accessor :update_named_range
@@ -5031,7 +5031,6 @@ module Google
         attr_accessor :add_filter_view
       
         # Updates properties of a spreadsheet.
-        # It is an error to specify read only fields in the field mask.
         # Corresponds to the JSON property `updateSpreadsheetProperties`
         # @return [Google::Apis::SheetsV4::UpdateSpreadsheetPropertiesRequest]
         attr_accessor :update_spreadsheet_properties
@@ -5076,8 +5075,8 @@ module Google
         # B2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`,
         # C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
         # To keep the formula's ranges static, use the `$` indicator.
-        # For example, using the formula was `=$A$1`, neither
-        # the row nor column would increment.
+        # For example, use the formula `=$A$1` to prevent both the row and the
+        # column from incrementing.
         # Corresponds to the JSON property `repeatCell`
         # @return [Google::Apis::SheetsV4::RepeatCellRequest]
         attr_accessor :repeat_cell
@@ -5096,7 +5095,9 @@ module Google
         # Adds a new sheet.
         # When a sheet is added at a given index,
         # all subsequent sheets' indexes are incremented.
-        # To add an object sheet, use AddChartRequest instead.
+        # To add an object sheet, use AddChartRequest instead and specify
+        # EmbeddedObjectPosition.sheetId or
+        # EmbeddedObjectPosition.newSheet.
         # Corresponds to the JSON property `addSheet`
         # @return [Google::Apis::SheetsV4::AddSheetRequest]
         attr_accessor :add_sheet
@@ -5108,13 +5109,11 @@ module Google
       
         # Updates properties of the sheet with the specified
         # sheetId.
-        # It is an error to specify read only fields in the field mask.
         # Corresponds to the JSON property `updateSheetProperties`
         # @return [Google::Apis::SheetsV4::UpdateSheetPropertiesRequest]
         attr_accessor :update_sheet_properties
       
         # Updates properties of dimensions within the specified range.
-        # It is an error to specify read only fields in the field mask.
         # Corresponds to the JSON property `updateDimensionProperties`
         # @return [Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest]
         attr_accessor :update_dimension_properties
@@ -5134,7 +5133,7 @@ module Google
         # @return [Google::Apis::SheetsV4::AddProtectedRangeRequest]
         attr_accessor :add_protected_range
       
-        # Deletes the protected range with the given id.
+        # Deletes the protected range with the given ID.
         # Corresponds to the JSON property `deleteProtectedRange`
         # @return [Google::Apis::SheetsV4::DeleteProtectedRangeRequest]
         attr_accessor :delete_protected_range
@@ -5228,7 +5227,7 @@ module Google
         # @return [Google::Apis::SheetsV4::CutPasteRequest]
         attr_accessor :cut_paste
       
-        # Adds new cells to the last row with data in a sheet,
+        # Adds new cells after the last row with data in a sheet,
         # inserting new rows into the sheet if necessary.
         # Corresponds to the JSON property `appendCells`
         # @return [Google::Apis::SheetsV4::AppendCellsRequest]
@@ -5328,7 +5327,7 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ValueRange>]
         attr_accessor :value_ranges
       
-        # The id of the spreadsheet to retrieve data from.
+        # The ID of the spreadsheet the data was retrieved from.
         # Corresponds to the JSON property `spreadsheetId`
         # @return [String]
         attr_accessor :spreadsheet_id
@@ -5358,7 +5357,7 @@ module Google
         # either the green or red background.  If `inheritFromBefore` is true,
         # the two new rows will be red (because the row before the insertion point
         # was red), whereas if `inheritFromBefore` is false, the two new rows will
-        # be green (because the rows after the insertion point were green).
+        # be green (because the row after the insertion point was green).
         # Corresponds to the JSON property `inheritFromBefore`
         # @return [Boolean]
         attr_accessor :inherit_from_before

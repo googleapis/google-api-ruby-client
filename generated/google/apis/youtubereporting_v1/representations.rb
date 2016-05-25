@@ -91,6 +91,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+          property :deprecate_time, as: 'deprecateTime'
           property :system_managed, as: 'systemManaged'
         end
       end
@@ -102,6 +103,7 @@ module Google
           property :report_type_id, as: 'reportTypeId'
           property :name, as: 'name'
           property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
           property :system_managed, as: 'systemManaged'
         end
       end
@@ -135,6 +137,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :job_id, as: 'jobId'
+          property :job_expire_time, as: 'jobExpireTime'
           property :start_time, as: 'startTime'
           property :end_time, as: 'endTime'
           property :create_time, as: 'createTime'

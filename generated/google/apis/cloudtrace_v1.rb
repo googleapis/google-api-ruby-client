@@ -20,16 +20,24 @@ module Google
   module Apis
     # Google Cloud Trace API
     #
-    # The Cloud Trace API allows you to send traces to and retrieve traces from
-    # Google Cloud Trace.
+    # Send and retrieve trace data from Google Cloud Trace. Data is generated and
+    # available by default for all App Engine applications. Data from other
+    # applications can be written to Cloud Trace for display, reporting, and
+    # analysis.
     #
     # @see https://cloud.google.com/tools/cloud-trace
     module CloudtraceV1
       VERSION = 'V1'
-      REVISION = '20151207'
+      REVISION = '20160518'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Write Trace data for a project or application
+      AUTH_TRACE_APPEND = 'https://www.googleapis.com/auth/trace.append'
+
+      # Read Trace data for a project or application
+      AUTH_TRACE_READONLY = 'https://www.googleapis.com/auth/trace.readonly'
     end
   end
 end

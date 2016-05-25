@@ -498,6 +498,7 @@ module Google
       class VerifyCustomTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegated_project_number, as: 'delegatedProjectNumber'
           property :instance_id, as: 'instanceId'
           property :return_secure_token, as: 'returnSecureToken'
           property :token, as: 'token'

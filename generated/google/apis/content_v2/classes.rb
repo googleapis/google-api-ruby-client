@@ -4554,6 +4554,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
+        # Additional categories of the item (formatted as in products feed specification)
+        # .
+        # Corresponds to the JSON property `additionalProductTypes`
+        # @return [Array<String>]
+        attr_accessor :additional_product_types
+      
         # Set to true if the item is targeted towards adults.
         # Corresponds to the JSON property `adult`
         # @return [Boolean]
@@ -4931,6 +4937,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_image_links = args[:additional_image_links] if args.key?(:additional_image_links)
+          @additional_product_types = args[:additional_product_types] if args.key?(:additional_product_types)
           @adult = args[:adult] if args.key?(:adult)
           @adwords_grouping = args[:adwords_grouping] if args.key?(:adwords_grouping)
           @adwords_labels = args[:adwords_labels] if args.key?(:adwords_labels)

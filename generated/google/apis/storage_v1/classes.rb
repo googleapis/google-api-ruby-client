@@ -781,7 +781,8 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # Content-Type of the object data.
+        # Content-Type of the object data. If contentType is not specified, object
+        # downloads will be served as application/octet-stream.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type

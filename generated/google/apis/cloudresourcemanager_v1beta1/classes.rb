@@ -184,6 +184,61 @@ module Google
         end
       end
       
+      # The request sent to the GetAncestry method.
+      class GetAncestryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response from the GetAncestry method.
+      class GetAncestryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Ancestors are ordered from bottom to top of the resource hierarchy. The first
+        # ancestor is the project itself, followed by the project's parent, etc.
+        # Corresponds to the JSON property `ancestor`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Ancestor>]
+        attr_accessor :ancestor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestor = args[:ancestor] if args.key?(:ancestor)
+        end
+      end
+      
+      # Identifying information for a single ancestor of a project.
+      class Ancestor
+        include Google::Apis::Core::Hashable
+      
+        # A container to reference an id for any resource type. A `resource` in Google
+        # Cloud Platform is a generic term for something you (a developer) may want to
+        # interact with through one of our API's. Some examples are an AppEngine app, a
+        # Compute Engine instance, a Cloud SQL database, and so on.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::CloudresourcemanagerV1beta1::ResourceId]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable

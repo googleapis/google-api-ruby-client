@@ -341,7 +341,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Time at whihc execution of the build was finished.
+        # Time at which execution of the build was finished.
         # @OutputOnly
         # Corresponds to the JSON property `finishTime`
         # @return [String]

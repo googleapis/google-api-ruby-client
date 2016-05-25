@@ -195,7 +195,7 @@ module Google
         # return r
         # def NormalizeLatLng(latitude, longitude):
         # """Wraps decimal degrees latitude and longitude to
-        # [-180.0, 180.0] and [-90.0, 90.0], respectively."""
+        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
         # r = latitude % 360.0
         # if r <= 90.0:
         # return r, NormalizeLongitude(longitude)
@@ -234,7 +234,7 @@ module Google
         # return r
         # def NormalizeLatLng(latitude, longitude):
         # """Wraps decimal degrees latitude and longitude to
-        # [-180.0, 180.0] and [-90.0, 90.0], respectively."""
+        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
         # r = latitude % 360.0
         # if r <= 90.0:
         # return r, NormalizeLongitude(longitude)
@@ -393,17 +393,17 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # A bounding polygon for the detected image annotation.
-        # Corresponds to the JSON property `boundingPoly`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
-        attr_accessor :bounding_poly
-      
         # Yaw angle. Indicates the leftward/rightward angle that the face is
         # pointing, relative to the vertical plane perpendicular to the image. Range
         # [-180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::BoundingPoly]
+        attr_accessor :bounding_poly
       
         # Detected face landmarks.
         # Corresponds to the JSON property `landmarks`
@@ -443,8 +443,8 @@ module Google
           @surprise_likelihood = args[:surprise_likelihood] if args.key?(:surprise_likelihood)
           @anger_likelihood = args[:anger_likelihood] if args.key?(:anger_likelihood)
           @headwear_likelihood = args[:headwear_likelihood] if args.key?(:headwear_likelihood)
-          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
           @pan_angle = args[:pan_angle] if args.key?(:pan_angle)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
           @landmarks = args[:landmarks] if args.key?(:landmarks)
           @blurred_likelihood = args[:blurred_likelihood] if args.key?(:blurred_likelihood)
           @roll_angle = args[:roll_angle] if args.key?(:roll_angle)
@@ -662,6 +662,11 @@ module Google
       class ImageContext
         include Google::Apis::Core::Hashable
       
+        # Rectangle determined by min and max LatLng pairs.
+        # Corresponds to the JSON property `latLongRect`
+        # @return [Google::Apis::VisionV1::LatLongRect]
+        attr_accessor :lat_long_rect
+      
         # List of languages to use for TEXT_DETECTION. In most cases, an empty value
         # will yield the best results as it will allow text detection to
         # automatically detect the text language. For languages based on the latin
@@ -676,19 +681,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :language_hints
       
-        # Rectangle determined by min and max LatLng pairs.
-        # Corresponds to the JSON property `latLongRect`
-        # @return [Google::Apis::VisionV1::LatLongRect]
-        attr_accessor :lat_long_rect
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @language_hints = args[:language_hints] if args.key?(:language_hints)
           @lat_long_rect = args[:lat_long_rect] if args.key?(:lat_long_rect)
+          @language_hints = args[:language_hints] if args.key?(:language_hints)
         end
       end
       
@@ -978,7 +978,7 @@ module Google
         # return r
         # def NormalizeLatLng(latitude, longitude):
         # """Wraps decimal degrees latitude and longitude to
-        # [-180.0, 180.0] and [-90.0, 90.0], respectively."""
+        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
         # r = latitude % 360.0
         # if r <= 90.0:
         # return r, NormalizeLongitude(longitude)
@@ -1024,17 +1024,17 @@ module Google
         # @return [String]
         attr_accessor :medical
       
-        # Violence likelihood.
-        # Corresponds to the JSON property `violence`
-        # @return [String]
-        attr_accessor :violence
-      
         # Spoof likelihood. The likelihood that an obvious modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
+      
+        # Violence likelihood.
+        # Corresponds to the JSON property `violence`
+        # @return [String]
+        attr_accessor :violence
       
         # Represents the adult contents likelihood for the image.
         # Corresponds to the JSON property `adult`
@@ -1048,8 +1048,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @medical = args[:medical] if args.key?(:medical)
-          @violence = args[:violence] if args.key?(:violence)
           @spoof = args[:spoof] if args.key?(:spoof)
+          @violence = args[:violence] if args.key?(:violence)
           @adult = args[:adult] if args.key?(:adult)
         end
       end
@@ -1105,15 +1105,15 @@ module Google
       class Feature
         include Google::Apis::Core::Hashable
       
-        # Maximum number of results of this type.
-        # Corresponds to the JSON property `maxResults`
-        # @return [Fixnum]
-        attr_accessor :max_results
-      
         # The feature type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # Maximum number of results of this type.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
       
         def initialize(**args)
            update!(**args)
@@ -1121,8 +1121,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max_results = args[:max_results] if args.key?(:max_results)
           @type = args[:type] if args.key?(:type)
+          @max_results = args[:max_results] if args.key?(:max_results)
         end
       end
       
@@ -1164,39 +1164,6 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
-      class Position
-        include Google::Apis::Core::Hashable
-      
-        # Y coordinate.
-        # Corresponds to the JSON property `y`
-        # @return [Float]
-        attr_accessor :y
-      
-        # Z coordinate (or depth).
-        # Corresponds to the JSON property `z`
-        # @return [Float]
-        attr_accessor :z
-      
-        # X coordinate.
-        # Corresponds to the JSON property `x`
-        # @return [Float]
-        attr_accessor :x
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @y = args[:y] if args.key?(:y)
-          @z = args[:z] if args.key?(:z)
-          @x = args[:x] if args.key?(:x)
-        end
-      end
-      
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
       # specified otherwise, this must conform to the
@@ -1211,7 +1178,7 @@ module Google
       # return r
       # def NormalizeLatLng(latitude, longitude):
       # """Wraps decimal degrees latitude and longitude to
-      # [-180.0, 180.0] and [-90.0, 90.0], respectively."""
+      # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
       # r = latitude % 360.0
       # if r <= 90.0:
       # return r, NormalizeLongitude(longitude)
@@ -1235,15 +1202,15 @@ module Google
       class LatLng
         include Google::Apis::Core::Hashable
       
-        # The longitude in degrees. It must be in the range [-180.0, +180.0].
-        # Corresponds to the JSON property `longitude`
-        # @return [Float]
-        attr_accessor :longitude
-      
         # The latitude in degrees. It must be in the range [-90.0, +90.0].
         # Corresponds to the JSON property `latitude`
         # @return [Float]
         attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
       
         def initialize(**args)
            update!(**args)
@@ -1251,8 +1218,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @longitude = args[:longitude] if args.key?(:longitude)
           @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
+      # A 3D position in the image, used primarily for Face detection landmarks.
+      # A valid Position must have both x and y coordinates.
+      # The position coordinates are in the same scale as the original image.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Z coordinate (or depth).
+        # Corresponds to the JSON property `z`
+        # @return [Float]
+        attr_accessor :z
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @y = args[:y] if args.key?(:y)
+          @x = args[:x] if args.key?(:x)
+          @z = args[:z] if args.key?(:z)
         end
       end
     end

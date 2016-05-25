@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Sheets API
     #
-    # An API for reading and modifying Google Sheets.
+    # Reads and writes Google Sheets.
     #
     # @see https://developers.google.com/sheets/
     module SheetsV4
       VERSION = 'V4'
-      REVISION = '20160511'
+      REVISION = '20160519'
 
       # View the files in your Google Drive
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'

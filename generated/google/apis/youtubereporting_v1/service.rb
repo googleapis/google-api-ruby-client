@@ -22,8 +22,8 @@ module Google
     module YoutubereportingV1
       # YouTube Reporting API
       #
-      # Schedules reporting jobs and downloads the resulting bulk data reports about
-      #  YouTube channels, videos, etc. in the form of CSV files.
+      # Schedules reporting jobs containing your YouTube Analytics data and downloads
+      #  the resulting bulk data reports in the form of CSV files.
       #
       # @example
       #    require 'google/apis/youtubereporting_v1'
@@ -50,8 +50,7 @@ module Google
         # Method for media download. Download is supported on the URI `/v1/media/`+name`?
         # alt=media`.
         # @param [String] resource_name
-        #   Name of the media that is being downloaded. See ByteStream.ReadRequest.
-        #   resource_name.
+        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

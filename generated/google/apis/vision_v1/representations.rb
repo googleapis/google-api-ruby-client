@@ -154,13 +154,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Position
+      class LatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LatLng
+      class Position
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,9 +239,9 @@ module Google
           property :surprise_likelihood, as: 'surpriseLikelihood'
           property :anger_likelihood, as: 'angerLikelihood'
           property :headwear_likelihood, as: 'headwearLikelihood'
+          property :pan_angle, as: 'panAngle'
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
       
-          property :pan_angle, as: 'panAngle'
           collection :landmarks, as: 'landmarks', class: Google::Apis::VisionV1::Landmark, decorator: Google::Apis::VisionV1::Landmark::Representation
       
           property :blurred_likelihood, as: 'blurredLikelihood'
@@ -288,9 +288,9 @@ module Google
       class ImageContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :language_hints, as: 'languageHints'
           property :lat_long_rect, as: 'latLongRect', class: Google::Apis::VisionV1::LatLongRect, decorator: Google::Apis::VisionV1::LatLongRect::Representation
       
+          collection :language_hints, as: 'languageHints'
         end
       end
       
@@ -350,8 +350,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :medical, as: 'medical'
-          property :violence, as: 'violence'
           property :spoof, as: 'spoof'
+          property :violence, as: 'violence'
           property :adult, as: 'adult'
         end
       end
@@ -376,8 +376,8 @@ module Google
       class Feature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_results, as: 'maxResults'
           property :type, as: 'type'
+          property :max_results, as: 'maxResults'
         end
       end
       
@@ -397,20 +397,20 @@ module Google
         end
       end
       
+      class LatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
       class Position
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :y, as: 'y'
-          property :z, as: 'z'
           property :x, as: 'x'
-        end
-      end
-      
-      class LatLng
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :longitude, as: 'longitude'
-          property :latitude, as: 'latitude'
+          property :z, as: 'z'
         end
       end
     end

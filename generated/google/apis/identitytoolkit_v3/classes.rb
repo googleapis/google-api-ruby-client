@@ -1037,6 +1037,12 @@ module Google
       class VerifyCustomTokenRequest
         include Google::Apis::Core::Hashable
       
+        # GCP project number of the requesting delegated app. Currently only intended
+        # for Firebase V1 migration.
+        # Corresponds to the JSON property `delegatedProjectNumber`
+        # @return [String]
+        attr_accessor :delegated_project_number
+      
         # Instance id token of the app.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
@@ -1059,6 +1065,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @token = args[:token] if args.key?(:token)

@@ -1094,3 +1094,14 @@
 "/youtube:v3/VideoListResponse": list_videos_response
 "/youtubeAnalytics:v1/GroupItemListResponse": list_group_item_response
 "/youtubeAnalytics:v1/GroupListResponse": list_groups_response
+"/mybusiness:v3/mybusiness.accounts.locations.getGoogleUpdated": get_google_updated_account_location
+"/mybusiness:v3/mybusiness.accounts.locations.reviews.deleteReply": delete_reply
+"/mybusiness:v3/mybusiness.accounts.locations.reviews.reply": reply_to_review
+"/mybusiness:v3/mybusiness.accounts.locations.reviews.get": get_review
+"/mybusiness:v3/mybusiness.accounts.locations.reviews.list": list_reviews
+"/classroom:v1/classroom.courses.courseWork.create": create_course_work
+"/classroom:v1/classroom.courses.courseWork.get": get_course_work
+"/classroom:v1/classroom.courses.courseWork.list": list_course_works
+"/classroom:v1/classroom.courses.courseWork.studentSubmissions.get": get_student_submission
+"/classroom:v1/classroom.courses.courseWork.studentSubmissions.patch": patch_student_submission
+"/classroom:v1/classroom.courses.courseWork.studentSubmissions.list": list_student_submissions

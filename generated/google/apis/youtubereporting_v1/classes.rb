@@ -82,6 +82,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The date/time when this report type was/will be deprecated.
+        # Corresponds to the JSON property `deprecateTime`
+        # @return [String]
+        attr_accessor :deprecate_time
+      
         # True if this a system-managed report type; otherwise false. Reporting jobs for
         # system-managed report types are created automatically and can thus not be used
         # in the `CreateJob` method.
@@ -98,6 +103,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
           @system_managed = args[:system_managed] if args.key?(:system_managed)
         end
       end
@@ -126,6 +132,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The date/time when this job will expire/expired. After a job expired, no new
+        # reports are generated.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # True if this a system-managed job that cannot be modified by the user;
         # otherwise false.
         # Corresponds to the JSON property `systemManaged`
@@ -143,6 +155,7 @@ module Google
           @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
           @name = args[:name] if args.key?(:name)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @system_managed = args[:system_managed] if args.key?(:system_managed)
         end
       end
@@ -233,6 +246,11 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # The date/time when the job this report belongs to will expire/expired.
+        # Corresponds to the JSON property `jobExpireTime`
+        # @return [String]
+        attr_accessor :job_expire_time
+      
         # The start of the time period that the report instance covers. The value is
         # inclusive.
         # Corresponds to the JSON property `startTime`
@@ -263,6 +281,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @job_expire_time = args[:job_expire_time] if args.key?(:job_expire_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @create_time = args[:create_time] if args.key?(:create_time)

@@ -26,7 +26,10 @@ module Google
     # @see https://developers.google.com/prediction/docs/developer-guide
     module PredictionV1_6
       VERSION = 'V1_6'
-      REVISION = '20160304'
+      REVISION = '20160511'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # Manage your data and permissions in Google Cloud Storage
       AUTH_DEVSTORAGE_FULL_CONTROL = 'https://www.googleapis.com/auth/devstorage.full_control'

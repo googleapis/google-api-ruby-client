@@ -103,11 +103,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the trace. The trace name is sanitized and displayed in the Cloud
-        # Trace tool in the Google Developers Console. The name may be a method name or
-        # some other per-call site name. For the same executable and the same call point,
-        # a best practice is to use a consistent name, which makes it easier to
-        # correlate cross-trace spans.
+        # Name of the trace. The trace name is sanitized and displayed in the
+        # Stackdriver Trace tool in the `% dynamic print site_values.console_name %`.
+        # The name may be a method name or some other per-call site name. For the same
+        # executable and the same call point, a best practice is to use a consistent
+        # name, which makes it easier to correlate cross-trace spans.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

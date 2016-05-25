@@ -2212,6 +2212,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_image_links, as: 'additionalImageLinks'
+          collection :additional_product_types, as: 'additionalProductTypes'
           property :adult, as: 'adult'
           property :adwords_grouping, as: 'adwordsGrouping'
           collection :adwords_labels, as: 'adwordsLabels'

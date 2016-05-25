@@ -12,23 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/games_configuration_v1configuration/service.rb'
-require 'google/apis/games_configuration_v1configuration/classes.rb'
-require 'google/apis/games_configuration_v1configuration/representations.rb'
+require 'google/apis/mybusiness_v3/service.rb'
+require 'google/apis/mybusiness_v3/classes.rb'
+require 'google/apis/mybusiness_v3/representations.rb'
 
 module Google
   module Apis
-    # Google Play Game Services Publishing API
+    # Google My Business API
     #
-    # The Publishing API for Google Play Game Services.
+    # The Google My Business API provides an interface for managing business
+    # location information on Google.
     #
-    # @see https://developers.google.com/games/services
-    module GamesConfigurationV1configuration
-      VERSION = 'V1configuration'
-      REVISION = '20160519'
-
-      # View and manage your Google Play Developer account
-      AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
+    # @see https://developers.google.com/my-business/
+    module MybusinessV3
+      VERSION = 'V3'
+      REVISION = '0'
     end
   end
 end

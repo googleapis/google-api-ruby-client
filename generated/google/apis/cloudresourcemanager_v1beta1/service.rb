@@ -273,6 +273,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a list of ancestors in the resource hierarchy for the Project identified
+        # by the specified `project_id` (for example, `my-project-123`). The caller must
+        # have read permissions for this Project.
+        # @param [String] project_id
+        #   The Project ID (for example, `my-project-123`). Required.
+        # @param [Google::Apis::CloudresourcemanagerV1beta1::GetAncestryRequest] get_ancestry_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1beta1::GetAncestryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1beta1::GetAncestryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_ancestry(project_id, get_ancestry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:getAncestry', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::GetAncestryRequest::Representation
+          command.request_object = get_ancestry_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::GetAncestryResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1beta1::GetAncestryResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the IAM access control policy for the specified Project. Permission is
         # denied if the policy or the resource does not exist.
         # @param [String] resource

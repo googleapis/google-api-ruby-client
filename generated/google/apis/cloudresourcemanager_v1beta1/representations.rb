@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetAncestryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetAncestryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Ancestor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -146,6 +164,28 @@ module Google
       class UndeleteProjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GetAncestryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GetAncestryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ancestor, as: 'ancestor', class: Google::Apis::CloudresourcemanagerV1beta1::Ancestor, decorator: Google::Apis::CloudresourcemanagerV1beta1::Ancestor::Representation
+      
+        end
+      end
+      
+      class Ancestor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_id, as: 'resourceId', class: Google::Apis::CloudresourcemanagerV1beta1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1beta1::ResourceId::Representation
+      
         end
       end
       

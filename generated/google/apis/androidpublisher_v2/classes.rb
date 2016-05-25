@@ -252,6 +252,56 @@ module Google
         end
       end
       
+      # 
+      class Comment
+        include Google::Apis::Core::Hashable
+      
+        # A comment from a developer.
+        # Corresponds to the JSON property `developerComment`
+        # @return [Google::Apis::AndroidpublisherV2::DeveloperComment]
+        attr_accessor :developer_comment
+      
+        # A comment from a user.
+        # Corresponds to the JSON property `userComment`
+        # @return [Google::Apis::AndroidpublisherV2::UserComment]
+        attr_accessor :user_comment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_comment = args[:developer_comment] if args.key?(:developer_comment)
+          @user_comment = args[:user_comment] if args.key?(:user_comment)
+        end
+      end
+      
+      # 
+      class DeveloperComment
+        include Google::Apis::Core::Hashable
+      
+        # The last time at which this comment was updated.
+        # Corresponds to the JSON property `lastModified`
+        # @return [Google::Apis::AndroidpublisherV2::Timestamp]
+        attr_accessor :last_modified
+      
+        # The content of the comment, i.e. reply body.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_modified = args[:last_modified] if args.key?(:last_modified)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # An Entitlement resource indicates a user's current entitlement to an inapp
       # item or subscription.
       class Entitlement
@@ -1160,6 +1210,132 @@ module Google
       end
       
       # 
+      class Review
+        include Google::Apis::Core::Hashable
+      
+        # The name of the user who wrote the review.
+        # Corresponds to the JSON property `authorName`
+        # @return [String]
+        attr_accessor :author_name
+      
+        # A repeated field containing comments for the review.
+        # Corresponds to the JSON property `comments`
+        # @return [Array<Google::Apis::AndroidpublisherV2::Comment>]
+        attr_accessor :comments
+      
+        # Unique identifier for this review.
+        # Corresponds to the JSON property `reviewId`
+        # @return [String]
+        attr_accessor :review_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_name = args[:author_name] if args.key?(:author_name)
+          @comments = args[:comments] if args.key?(:comments)
+          @review_id = args[:review_id] if args.key?(:review_id)
+        end
+      end
+      
+      # 
+      class ReviewReplyResult
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the reply took effect.
+        # Corresponds to the JSON property `lastEdited`
+        # @return [Google::Apis::AndroidpublisherV2::Timestamp]
+        attr_accessor :last_edited
+      
+        # The reply text that was applied.
+        # Corresponds to the JSON property `replyText`
+        # @return [String]
+        attr_accessor :reply_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_edited = args[:last_edited] if args.key?(:last_edited)
+          @reply_text = args[:reply_text] if args.key?(:reply_text)
+        end
+      end
+      
+      # 
+      class ReviewsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::AndroidpublisherV2::PageInfo]
+        attr_accessor :page_info
+      
+        # 
+        # Corresponds to the JSON property `reviews`
+        # @return [Array<Google::Apis::AndroidpublisherV2::Review>]
+        attr_accessor :reviews
+      
+        # 
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::AndroidpublisherV2::TokenPagination]
+        attr_accessor :token_pagination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @reviews = args[:reviews] if args.key?(:reviews)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+        end
+      end
+      
+      # 
+      class ReviewsReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The text to set as the reply. Replies of more than approximately 350
+        # characters will be rejected. HTML tags will be stripped.
+        # Corresponds to the JSON property `replyText`
+        # @return [String]
+        attr_accessor :reply_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reply_text = args[:reply_text] if args.key?(:reply_text)
+        end
+      end
+      
+      # 
+      class ReviewsReplyResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::AndroidpublisherV2::ReviewReplyResult]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
       class Season
         include Google::Apis::Core::Hashable
       
@@ -1373,6 +1549,31 @@ module Google
       end
       
       # 
+      class Timestamp
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # 
+        # Corresponds to the JSON property `seconds`
+        # @return [String]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # 
       class TokenPagination
         include Google::Apis::Core::Hashable
       
@@ -1451,6 +1652,73 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
+      # 
+      class UserComment
+        include Google::Apis::Core::Hashable
+      
+        # Integer Android SDK version of the user's device at the time the review was
+        # written, e.g. 23 is Marshmallow. May be absent.
+        # Corresponds to the JSON property `androidOsVersion`
+        # @return [Fixnum]
+        attr_accessor :android_os_version
+      
+        # Integer version code of the app as installed at the time the review was
+        # written. May be absent.
+        # Corresponds to the JSON property `appVersionCode`
+        # @return [Fixnum]
+        attr_accessor :app_version_code
+      
+        # String version name of the app as installed at the time the review was written.
+        # May be absent.
+        # Corresponds to the JSON property `appVersionName`
+        # @return [String]
+        attr_accessor :app_version_name
+      
+        # Codename for the reviewer's device, e.g. klte, flounder. May be absent.
+        # Corresponds to the JSON property `device`
+        # @return [String]
+        attr_accessor :device
+      
+        # The last time at which this comment was updated.
+        # Corresponds to the JSON property `lastModified`
+        # @return [Google::Apis::AndroidpublisherV2::Timestamp]
+        attr_accessor :last_modified
+      
+        # Language code for the reviewer. This is taken from the device settings so is
+        # not guaranteed to match the language the review is written in. May be absent.
+        # Corresponds to the JSON property `reviewerLanguage`
+        # @return [String]
+        attr_accessor :reviewer_language
+      
+        # The star rating associated with the review, from 1 to 5.
+        # Corresponds to the JSON property `starRating`
+        # @return [Fixnum]
+        attr_accessor :star_rating
+      
+        # The content of the comment, i.e. review body. In some cases users have been
+        # able to write a review with separate title and body; in those cases the title
+        # and body are concatenated and separated by a tab character.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_os_version = args[:android_os_version] if args.key?(:android_os_version)
+          @app_version_code = args[:app_version_code] if args.key?(:app_version_code)
+          @app_version_name = args[:app_version_name] if args.key?(:app_version_name)
+          @device = args[:device] if args.key?(:device)
+          @last_modified = args[:last_modified] if args.key?(:last_modified)
+          @reviewer_language = args[:reviewer_language] if args.key?(:reviewer_language)
+          @star_rating = args[:star_rating] if args.key?(:star_rating)
+          @text = args[:text] if args.key?(:text)
         end
       end
     end

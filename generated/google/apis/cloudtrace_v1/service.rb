@@ -22,17 +22,19 @@ module Google
     module CloudtraceV1
       # Google Cloud Trace API
       #
-      # The Cloud Trace API allows you to send traces to and retrieve traces from
-      #  Google Cloud Trace.
+      # Send and retrieve trace data from Google Cloud Trace. Data is generated and
+      #  available by default for all App Engine applications. Data from other
+      #  applications can be written to Cloud Trace for display, reporting, and
+      #  analysis.
       #
       # @example
       #    require 'google/apis/cloudtrace_v1'
       #
       #    Cloudtrace = Google::Apis::CloudtraceV1 # Alias the module
-      #    service = Cloudtrace::CloudtraceService.new
+      #    service = Cloudtrace::CloudTraceService.new
       #
       # @see https://cloud.google.com/tools/cloud-trace
-      class CloudtraceService < Google::Apis::Core::BaseService
+      class CloudTraceService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,8 +49,8 @@ module Google
           super('https://cloudtrace.googleapis.com/', '')
         end
         
-        # Sends new traces to Cloud Trace or updates existing traces. If the ID of a
-        # trace that you send matches that of an existing trace, any fields in the
+        # Sends new traces to Stackdriver Trace or updates existing traces. If the ID of
+        # a trace that you send matches that of an existing trace, any fields in the
         # existing trace and its spans are overwritten by the provided values, and any
         # new fields provided are merged with the existing trace data. If the ID does
         # not match, a new trace is created.
