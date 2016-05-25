@@ -1,3 +1,6 @@
+# 0.9.8
+* Add mybusiness v3, regenerate APIs
+
 # 0.9.7
 * Add sheets v4 & analytics reporting v4, regenerate APIs
 
