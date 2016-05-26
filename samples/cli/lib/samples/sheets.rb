@@ -51,9 +51,8 @@ module Samples
       puts result.inspect
       data = []
       rows = result.values.length
-
-      rows.times.each do |k|
-        data.push(result.values[k])
+      rows.times.each do |row|
+        data.push(result.values[row])
       end
       print_table(data)
     end
