@@ -57,6 +57,6 @@ module Samples
       print_table(data)
     end
 
-    default_task :get_vlaues
+    default_task :get_values
   end
 end
