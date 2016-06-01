@@ -48,7 +48,6 @@ module Samples
       sheets = Sheets::SheetsService.new
       sheets.authorization = user_credentials_for(Sheets::AUTH_SPREADSHEETS_READONLY)
       result = sheets.get_spreadsheet_values(options[:spreadsheet_key], options[:range])
-      puts result.inspect
       data = []
       rows = result.values.length
       rows.times.each do |row|
