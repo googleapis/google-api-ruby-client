@@ -407,22 +407,29 @@ module Google
         # The `reportRequest.dateRanges` field should not be specified for cohorts
         # or Lifetime value requests.
         # If a date range is not provided, the default date range is (startDate:
-        # current date - 7 days, endDate: current date - 1 day)
+        # current date - 7 days, endDate: current date - 1 day). Every
+        # [ReportRequest](#ReportRequest) within a `batchGet` method must
+        # contain the same `dateRanges` definition.
         # Corresponds to the JSON property `dateRanges`
         # @return [Array<Google::Apis::AnalyticsreportingV4::DateRange>]
         attr_accessor :date_ranges
       
         # Segment the data returned for the request. A segment definition helps look
         # at a subset of the segment request. A request can contain up to four
-        # segments. All requests should have the same segment definitions. Requests
+        # segments. Every [ReportRequest](#ReportRequest) within a
+        # `batchGet` method must contain the same `segments` definition. Requests
         # with segments must have the `ga:segment` dimension.
         # Corresponds to the JSON property `segments`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Segment>]
         attr_accessor :segments
       
-        # The desired sampling level. If the sampling level is not specified the
-        # DEFAULT sampling level will be used. All requests should have same
-        # `samplingLevel`.
+        # The desired report
+        # [sample](https://support.google.com/analytics/answer/2637192) size.
+        # If the the `samplingLevel` field is unspecified the `DEFAULT` sampling
+        # level is used. Every [ReportRequest](#ReportRequest) within a
+        # `batchGet` method must contain the same `samplingLevel` definition. See
+        # [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        # for details.
         # Corresponds to the JSON property `samplingLevel`
         # @return [String]
         attr_accessor :sampling_level
@@ -471,7 +478,10 @@ module Google
         attr_accessor :hide_value_ranges
         alias_method :hide_value_ranges?, :hide_value_ranges
       
-        # Unique View Id for retrieving Analytics data.
+        # The Analytics
+        # [view ID](https://support.google.com/analytics/answer/1009618)
+        # from which to retrieve data. Every [ReportRequest](#ReportRequest)
+        # within a `batchGet` method must contain the same `viewId`.
         # Corresponds to the JSON property `viewId`
         # @return [String]
         attr_accessor :view_id
@@ -610,8 +620,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count
       
-        # If sampling was enabled, this returns the total number of samples
-        # present, one entry per date range.
+        # If the results are
+        # [sampled](https://support.google.com/analytics/answer/2637192),
+        # this returns the total number of
+        # samples present, one entry per date range. If the results are not sampled
+        # this field will not be defined. See
+        # [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        # for details.
         # Corresponds to the JSON property `samplingSpaceSizes`
         # @return [Array<String>]
         attr_accessor :sampling_space_sizes
@@ -623,8 +638,12 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
         attr_accessor :maximums
       
-        # If sampling was enabled, this returns the total number of samples
-        # read, one entry per date range
+        # If the results are
+        # [sampled](https://support.google.com/analytics/answer/2637192),
+        # this returns the total number of samples read, one entry per date range.
+        # If the results are not sampled this field will not be defined. See
+        # [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        # for details.
         # Corresponds to the JSON property `samplesReadCounts`
         # @return [Array<String>]
         attr_accessor :samples_read_counts
@@ -684,7 +703,7 @@ module Google
       
         # Requests, each request will have a separate response.
         # There can be a maximum of 5 requests. All requests should have the same
-        # `dateRange`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
+        # `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
         # Corresponds to the JSON property `reportRequests`
         # @return [Array<Google::Apis::AnalyticsreportingV4::ReportRequest>]
         attr_accessor :report_requests
@@ -880,8 +899,7 @@ module Google
       class PivotHeaderEntry
         include Google::Apis::Core::Hashable
       
-        # The name of the dimensions in the pivotDimensionValues field in the
-        # response.
+        # The name of the dimensions in the pivot response.
         # Corresponds to the JSON property `dimensionNames`
         # @return [Array<String>]
         attr_accessor :dimension_names
@@ -1144,7 +1162,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # List of metrics for each requested DateRange
+        # List of metrics for each requested DateRange.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
         attr_accessor :metrics

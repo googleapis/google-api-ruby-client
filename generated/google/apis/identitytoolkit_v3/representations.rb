@@ -389,6 +389,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :created_at, as: 'createdAt'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           collection :delete_attribute, as: 'deleteAttribute'
           collection :delete_provider, as: 'deleteProvider'
@@ -398,6 +399,7 @@ module Google
           property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
+          property :last_login_at, as: 'lastLoginAt'
           property :local_id, as: 'localId'
           property :oob_code, as: 'oobCode'
           property :password, as: 'password'
@@ -528,6 +530,7 @@ module Google
           property :experiment_percent, as: 'experimentPercent'
           property :provider, as: 'provider'
           property :secret, as: 'secret'
+          collection :whitelisted_audiences, as: 'whitelistedAudiences'
         end
       end
       
@@ -614,10 +617,12 @@ module Google
       class UserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, as: 'createdAt'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
+          property :last_login_at, as: 'lastLoginAt'
           property :local_id, as: 'localId'
           property :password_hash, :base64 => true, as: 'passwordHash'
           property :password_updated_at, as: 'passwordUpdatedAt'

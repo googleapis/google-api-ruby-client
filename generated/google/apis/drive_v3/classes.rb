@@ -1164,6 +1164,11 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
+        # The time at which this permission will expire (RFC 3339 date-time).
+        # Corresponds to the JSON property `expirationTime`
+        # @return [DateTime]
+        attr_accessor :expiration_time
+      
         # The ID of this permission. This is a unique identifier for the grantee, and is
         # published in User resources as permissionId.
         # Corresponds to the JSON property `id`
@@ -1208,6 +1213,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain = args[:domain] if args.key?(:domain)
           @email_address = args[:email_address] if args.key?(:email_address)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @photo_link = args[:photo_link] if args.key?(:photo_link)

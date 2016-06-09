@@ -1020,6 +1020,13 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
+        # Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set
+        # to 0, the cookie is non-persistent and lasts only until the end of the browser
+        # session (or equivalent). The maximum allowed value for TTL is one day.
+        # Corresponds to the JSON property `affinityCookieTtlSec`
+        # @return [Fixnum]
+        attr_accessor :affinity_cookie_ttl_sec
+      
         # The list of backends that serve this BackendService.
         # Corresponds to the JSON property `backends`
         # @return [Array<Google::Apis::ComputeBeta::Backend>]
@@ -1108,6 +1115,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Type of session affinity to use.
+        # Corresponds to the JSON property `sessionAffinity`
+        # @return [String]
+        attr_accessor :session_affinity
+      
         # How many seconds to wait for the backend before considering it a failed
         # request. Default is 30 seconds.
         # Corresponds to the JSON property `timeoutSec`
@@ -1120,6 +1132,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
           @backends = args[:backends] if args.key?(:backends)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -1134,6 +1147,7 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
@@ -3340,13 +3354,14 @@ module Google
         # A list of service accounts, with their specified scopes, authorized for this
         # instance. Service accounts generate access tokens that can be accessed through
         # the metadata server and used to authenticate applications on the instance. See
-        # Authenticating from Google Compute Engine for more information.
+        # Service Accounts for more information.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<Google::Apis::ComputeBeta::ServiceAccount>]
         attr_accessor :service_accounts
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, and TERMINATED.
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and
+        # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -4574,8 +4589,8 @@ module Google
         # IP addresses other than their own and receive packets with destination IP
         # addresses other than their own. If these instances will be used as an IP
         # gateway or it will be set as the next-hop in a Route resource, specify true.
-        # If unsure, leave this set to false. See the canIpForward documentation for
-        # more information.
+        # If unsure, leave this set to false. See the Enable IP forwarding for instances
+        # documentation for more information.
         # Corresponds to the JSON property `canIpForward`
         # @return [Boolean]
         attr_accessor :can_ip_forward
@@ -7092,7 +7107,7 @@ module Google
       class RouterStatus
         include Google::Apis::Core::Hashable
       
-        # Best routes for this router.
+        # Best routes for this router's network.
         # Corresponds to the JSON property `bestRoutes`
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :best_routes
@@ -9732,6 +9747,13 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # Remote traffic selectors to use when establishing the VPN tunnel with peer VPN
+        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
+        # 16. The ranges should be disjoint.
+        # Corresponds to the JSON property `remoteTrafficSelector`
+        # @return [Array<String>]
+        attr_accessor :remote_traffic_selector
+      
         # URL of router resource to be used for dynamic routing.
         # Corresponds to the JSON property `router`
         # @return [String]
@@ -9780,6 +9802,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @region = args[:region] if args.key?(:region)
+          @remote_traffic_selector = args[:remote_traffic_selector] if args.key?(:remote_traffic_selector)
           @router = args[:router] if args.key?(:router)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shared_secret = args[:shared_secret] if args.key?(:shared_secret)

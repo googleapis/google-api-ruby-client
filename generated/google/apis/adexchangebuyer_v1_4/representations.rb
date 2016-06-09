@@ -111,6 +111,12 @@ module Google
         
         class Correction
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Context
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -614,6 +620,7 @@ module Google
           property :height, as: 'height'
           collection :impression_tracking_url, as: 'impressionTrackingUrl'
           property :kind, as: 'kind'
+          collection :languages, as: 'languages'
           property :native_ad, as: 'nativeAd', class: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Representation
       
           property :open_auction_status, as: 'openAuctionStatus'
@@ -631,8 +638,20 @@ module Google
         class Correction
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            collection :contexts, as: 'contexts', class: Google::Apis::AdexchangebuyerV1_4::Creative::Correction::Context, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::Correction::Context::Representation
+        
             collection :details, as: 'details'
             property :reason, as: 'reason'
+          end
+          
+          class Context
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              collection :auction_type, as: 'auctionType'
+              property :context_type, as: 'contextType'
+              collection :geo_criteria_id, as: 'geoCriteriaId'
+              collection :platform, as: 'platform'
+            end
           end
         end
         
@@ -792,6 +811,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_conversion_time_ms, as: 'currencyConversionTimeMs'
+          property :dfp_line_item_id, as: 'dfpLineItemId'
           property :original_contracted_quantity, as: 'originalContractedQuantity'
           property :price, as: 'price', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
       
@@ -866,6 +886,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+          property :percentage, as: 'percentage'
         end
       end
       
@@ -1292,6 +1313,7 @@ module Google
           property :creative_size_type, as: 'creativeSizeType'
           property :size, as: 'size', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize::Representation
       
+          property :skippable_ad_type, as: 'skippableAdType'
         end
       end
       

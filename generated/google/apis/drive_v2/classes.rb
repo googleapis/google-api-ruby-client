@@ -2093,6 +2093,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The time at which this permission will expire (RFC 3339 date-time).
+        # Corresponds to the JSON property `expirationDate`
+        # @return [DateTime]
+        attr_accessor :expiration_date
+      
         # The ID of the user this permission refers to, and identical to the
         # permissionId in the About and Files resources. When making a drive.permissions.
         # insert request, exactly one of the id or value fields must be specified.
@@ -2161,6 +2166,7 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @email_address = args[:email_address] if args.key?(:email_address)
           @etag = args[:etag] if args.key?(:etag)
+          @expiration_date = args[:expiration_date] if args.key?(:expiration_date)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)

@@ -574,6 +574,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatPollClosedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollEditedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollOpenedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollVotedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatTextMessageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2202,6 +2232,14 @@ module Google
       
           property :message_retracted_details, as: 'messageRetractedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails::Representation
       
+          property :poll_closed_details, as: 'pollClosedDetails', class: Google::Apis::YoutubeV3::LiveChatPollClosedDetails, decorator: Google::Apis::YoutubeV3::LiveChatPollClosedDetails::Representation
+      
+          property :poll_edited_details, as: 'pollEditedDetails', class: Google::Apis::YoutubeV3::LiveChatPollEditedDetails, decorator: Google::Apis::YoutubeV3::LiveChatPollEditedDetails::Representation
+      
+          property :poll_opened_details, as: 'pollOpenedDetails', class: Google::Apis::YoutubeV3::LiveChatPollOpenedDetails, decorator: Google::Apis::YoutubeV3::LiveChatPollOpenedDetails::Representation
+      
+          property :poll_voted_details, as: 'pollVotedDetails', class: Google::Apis::YoutubeV3::LiveChatPollVotedDetails, decorator: Google::Apis::YoutubeV3::LiveChatPollVotedDetails::Representation
+      
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :text_message_details, as: 'textMessageDetails', class: Google::Apis::YoutubeV3::LiveChatTextMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatTextMessageDetails::Representation
@@ -2247,6 +2285,49 @@ module Google
           property :live_chat_id, as: 'liveChatId'
           property :moderator_details, as: 'moderatorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
+        end
+      end
+      
+      class LiveChatPollClosedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :poll_id, as: 'pollId'
+        end
+      end
+      
+      class LiveChatPollEditedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::LiveChatPollItem, decorator: Google::Apis::YoutubeV3::LiveChatPollItem::Representation
+      
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class LiveChatPollItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :item_id, as: 'itemId'
+        end
+      end
+      
+      class LiveChatPollOpenedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::LiveChatPollItem, decorator: Google::Apis::YoutubeV3::LiveChatPollItem::Representation
+      
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class LiveChatPollVotedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_id, as: 'itemId'
+          property :poll_id, as: 'pollId'
         end
       end
       

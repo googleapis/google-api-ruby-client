@@ -4533,6 +4533,26 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails]
         attr_accessor :message_retracted_details
       
+        # 
+        # Corresponds to the JSON property `pollClosedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollClosedDetails]
+        attr_accessor :poll_closed_details
+      
+        # 
+        # Corresponds to the JSON property `pollEditedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollEditedDetails]
+        attr_accessor :poll_edited_details
+      
+        # 
+        # Corresponds to the JSON property `pollOpenedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollOpenedDetails]
+        attr_accessor :poll_opened_details
+      
+        # 
+        # Corresponds to the JSON property `pollVotedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatPollVotedDetails]
+        attr_accessor :poll_voted_details
+      
         # The date and time when the message was orignally published. The value is
         # specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
         # Corresponds to the JSON property `publishedAt`
@@ -4569,6 +4589,10 @@ module Google
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
           @message_deleted_details = args[:message_deleted_details] if args.key?(:message_deleted_details)
           @message_retracted_details = args[:message_retracted_details] if args.key?(:message_retracted_details)
+          @poll_closed_details = args[:poll_closed_details] if args.key?(:poll_closed_details)
+          @poll_edited_details = args[:poll_edited_details] if args.key?(:poll_edited_details)
+          @poll_opened_details = args[:poll_opened_details] if args.key?(:poll_opened_details)
+          @poll_voted_details = args[:poll_voted_details] if args.key?(:poll_voted_details)
           @published_at = args[:published_at] if args.key?(:published_at)
           @text_message_details = args[:text_message_details] if args.key?(:text_message_details)
           @type = args[:type] if args.key?(:type)
@@ -4709,6 +4733,137 @@ module Google
         def update!(**args)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
           @moderator_details = args[:moderator_details] if args.key?(:moderator_details)
+        end
+      end
+      
+      # 
+      class LiveChatPollClosedDetails
+        include Google::Apis::Core::Hashable
+      
+        # The id of the poll that was closed.
+        # Corresponds to the JSON property `pollId`
+        # @return [String]
+        attr_accessor :poll_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @poll_id = args[:poll_id] if args.key?(:poll_id)
+        end
+      end
+      
+      # 
+      class LiveChatPollEditedDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::LiveChatPollItem>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # 
+      class LiveChatPollItem
+        include Google::Apis::Core::Hashable
+      
+        # Plain text description of the item.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @item_id = args[:item_id] if args.key?(:item_id)
+        end
+      end
+      
+      # 
+      class LiveChatPollOpenedDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::LiveChatPollItem>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # 
+      class LiveChatPollVotedDetails
+        include Google::Apis::Core::Hashable
+      
+        # The poll item the user chose.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # The poll the user voted on.
+        # Corresponds to the JSON property `pollId`
+        # @return [String]
+        attr_accessor :poll_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @poll_id = args[:poll_id] if args.key?(:poll_id)
         end
       end
       

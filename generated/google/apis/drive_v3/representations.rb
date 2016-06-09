@@ -451,6 +451,8 @@ module Google
           property :display_name, as: 'displayName'
           property :domain, as: 'domain'
           property :email_address, as: 'emailAddress'
+          property :expiration_time, as: 'expirationTime', type: DateTime
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :photo_link, as: 'photoLink'

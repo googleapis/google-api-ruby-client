@@ -160,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerEncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerEncryptionKeyProtectedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeprecationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesStartWithEncryptionKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class License
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -816,6 +834,78 @@ module Google
       
       class RouteList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Router
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterBgp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterBgpPeer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatusBgpPeerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1264,6 +1354,8 @@ module Google
           property :auto_delete, as: 'autoDelete'
           property :boot, as: 'boot'
           property :device_name, as: 'deviceName'
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :index, as: 'index'
           property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeV1::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeV1::AttachedDiskInitializeParams::Representation
       
@@ -1283,6 +1375,8 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :source_image, as: 'sourceImage'
+          property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
         end
       end
       
@@ -1447,6 +1541,23 @@ module Google
         end
       end
       
+      class CustomerEncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw_key, as: 'rawKey'
+          property :sha256, as: 'sha256'
+        end
+      end
+      
+      class CustomerEncryptionKeyProtectedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source, as: 'source'
+        end
+      end
+      
       class DeprecationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1463,6 +1574,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :last_attach_timestamp, as: 'lastAttachTimestamp'
@@ -1473,8 +1586,12 @@ module Google
           property :self_link, as: 'selfLink'
           property :size_gb, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
+          property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :source_image_id, as: 'sourceImageId'
           property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :status, as: 'status'
           property :type, as: 'type'
@@ -1825,6 +1942,8 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :family, as: 'family'
           property :id, as: 'id'
+          property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
@@ -1832,6 +1951,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :source_disk, as: 'sourceDisk'
+          property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :source_disk_id, as: 'sourceDiskId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
@@ -2267,6 +2388,14 @@ module Google
         end
       end
       
+      class InstancesStartWithEncryptionKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeV1::CustomerEncryptionKeyProtectedDisk::Representation
+      
+        end
+      end
+      
       class License
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2287,6 +2416,7 @@ module Google
           property :guest_cpus, as: 'guestCpus'
           property :id, as: 'id'
           property :image_space_gb, as: 'imageSpaceGb'
+          property :is_shared_cpu, as: 'isSharedCpu'
           property :kind, as: 'kind'
           property :maximum_persistent_disks, as: 'maximumPersistentDisks'
           property :maximum_persistent_disks_size_gb, as: 'maximumPersistentDisksSizeGb'
@@ -2604,6 +2734,7 @@ module Google
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_service_account, as: 'defaultServiceAccount'
           property :description, as: 'description'
           collection :enabled_features, as: 'enabledFeatures'
           property :id, as: 'id'
@@ -2716,6 +2847,143 @@ module Google
         end
       end
       
+      class Router
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp, as: 'bgp', class: Google::Apis::ComputeV1::RouterBgp, decorator: Google::Apis::ComputeV1::RouterBgp::Representation
+      
+          collection :bgp_peers, as: 'bgpPeers', class: Google::Apis::ComputeV1::RouterBgpPeer, decorator: Google::Apis::ComputeV1::RouterBgpPeer::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeV1::RouterInterface, decorator: Google::Apis::ComputeV1::RouterInterface::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RouterAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::RoutersScopedList, decorator: Google::Apis::ComputeV1::RoutersScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RouterBgp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asn, as: 'asn'
+        end
+      end
+      
+      class RouterBgpPeer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertised_route_priority, as: 'advertisedRoutePriority'
+          property :interface_name, as: 'interfaceName'
+          property :ip_address, as: 'ipAddress'
+          property :name, as: 'name'
+          property :peer_asn, as: 'peerAsn'
+          property :peer_ip_address, as: 'peerIpAddress'
+        end
+      end
+      
+      class RouterInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_range, as: 'ipRange'
+          property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :name, as: 'name'
+        end
+      end
+      
+      class RouterList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Router, decorator: Google::Apis::ComputeV1::Router::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RouterStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :best_routes, as: 'bestRoutes', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
+      
+          collection :bgp_peer_status, as: 'bgpPeerStatus', class: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus, decorator: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus::Representation
+      
+          property :network, as: 'network'
+        end
+      end
+      
+      class RouterStatusBgpPeerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advertised_routes, as: 'advertisedRoutes', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
+      
+          property :ip_address, as: 'ipAddress'
+          property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :name, as: 'name'
+          property :num_learned_routes, as: 'numLearnedRoutes'
+          property :peer_ip_address, as: 'peerIpAddress'
+          property :state, as: 'state'
+          property :status, as: 'status'
+          property :uptime, as: 'uptime'
+          property :uptime_seconds, as: 'uptimeSeconds'
+        end
+      end
+      
+      class RouterStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :result, as: 'result', class: Google::Apis::ComputeV1::RouterStatus, decorator: Google::Apis::ComputeV1::RouterStatus::Representation
+      
+        end
+      end
+      
+      class RoutersScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :routers, as: 'routers', class: Google::Apis::ComputeV1::Router, decorator: Google::Apis::ComputeV1::Router::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RoutersScopedList::Warning, decorator: Google::Apis::ComputeV1::RoutersScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2753,7 +3021,11 @@ module Google
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :source_disk, as: 'sourceDisk'
+          property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :source_disk_id, as: 'sourceDiskId'
           property :status, as: 'status'
           property :storage_bytes, as: 'storageBytes'
@@ -3294,6 +3566,8 @@ module Google
           property :name, as: 'name'
           property :peer_ip, as: 'peerIp'
           property :region, as: 'region'
+          collection :remote_traffic_selector, as: 'remoteTrafficSelector'
+          property :router, as: 'router'
           property :self_link, as: 'selfLink'
           property :shared_secret, as: 'sharedSecret'
           property :shared_secret_hash, as: 'sharedSecretHash'

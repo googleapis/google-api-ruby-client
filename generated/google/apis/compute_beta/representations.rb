@@ -1551,6 +1551,7 @@ module Google
       class BackendService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
           collection :backends, as: 'backends', class: Google::Apis::ComputeBeta::Backend, decorator: Google::Apis::ComputeBeta::Backend::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -1566,6 +1567,7 @@ module Google
           property :protocol, as: 'protocol'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
         end
       end
@@ -3682,6 +3684,7 @@ module Google
           property :name, as: 'name'
           property :peer_ip, as: 'peerIp'
           property :region, as: 'region'
+          collection :remote_traffic_selector, as: 'remoteTrafficSelector'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
           property :shared_secret, as: 'sharedSecret'

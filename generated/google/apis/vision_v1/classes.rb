@@ -668,15 +668,14 @@ module Google
         attr_accessor :lat_long_rect
       
         # List of languages to use for TEXT_DETECTION. In most cases, an empty value
-        # will yield the best results as it will allow text detection to
-        # automatically detect the text language. For languages based on the latin
-        # alphabet a hint is not needed. In rare cases, when the language of
-        # the text in the image is known in advance, setting this hint will help get
-        # better results (although it will hurt a great deal if the hint is wrong).
-        # Text detection will return an error if one or more of the languages
-        # specified here are not supported. The exact list of supported languages are
-        # specified here:
-        # https://cloud.google.com/translate/v2/using_rest#language-params
+        # yields the best results since it enables automatic language detection. For
+        # languages based on the Latin alphabet, setting `language_hints` is not
+        # needed. In rare cases, when the language of the text in the image is known,
+        # setting a hint will help get better results (although it will be a
+        # significant hindrance if the hint is wrong). Text detection returns an
+        # error if one or more of the specified languages is not one of the
+        # [supported
+        # languages](/translate/v2/translate-reference#supported_languages).
         # Corresponds to the JSON property `languageHints`
         # @return [Array<String>]
         attr_accessor :language_hints
@@ -1064,6 +1063,8 @@ module Google
         attr_accessor :source
       
         # Image content, represented as a stream of bytes.
+        # Note: as with all `bytes` fields, protobuffers use a pure binary
+        # representation, whereas JSON representations use base64.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

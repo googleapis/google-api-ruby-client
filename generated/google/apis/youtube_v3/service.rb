@@ -3622,9 +3622,12 @@ module Google
         # @param [Boolean] mine
         #   Set this parameter's value to true to retrieve a feed of the authenticated
         #   user's subscriptions.
+        # @param [Boolean] my_recent_subscribers
+        #   Set this parameter's value to true to retrieve a feed of the subscribers of
+        #   the authenticated user in reverse chronological order (newest first).
         # @param [Boolean] my_subscribers
         #   Set this parameter's value to true to retrieve a feed of the subscribers of
-        #   the authenticated user.
+        #   the authenticated user in no particular order.
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -3679,7 +3682,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subscriptions(part, channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subscriptions(part, channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_recent_subscribers: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'subscriptions', options)
           command.response_representation = Google::Apis::YoutubeV3::ListSubscriptionResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListSubscriptionResponse
@@ -3688,6 +3691,7 @@ module Google
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['mine'] = mine unless mine.nil?
+          command.query['myRecentSubscribers'] = my_recent_subscribers unless my_recent_subscribers.nil?
           command.query['mySubscribers'] = my_subscribers unless my_subscribers.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?

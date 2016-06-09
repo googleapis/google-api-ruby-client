@@ -2760,6 +2760,15 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # [Experimental] Specifies whether to use BigQuery's legacy SQL for this view.
+        # The default value is true. If set to false, the view will use BigQuery's
+        # standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
+        # views that reference this view must use the same flag value.
+        # Corresponds to the JSON property `useLegacySql`
+        # @return [Boolean]
+        attr_accessor :use_legacy_sql
+        alias_method :use_legacy_sql?, :use_legacy_sql
+      
         # [Experimental] Describes user-defined function resources used in the query.
         # Corresponds to the JSON property `userDefinedFunctionResources`
         # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
@@ -2772,6 +2781,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query = args[:query] if args.key?(:query)
+          @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
         end
       end

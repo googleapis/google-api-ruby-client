@@ -46,6 +46,11 @@ module Google
         # @return [String]
         attr_accessor :archive_only
       
+        # Custom footer text.
+        # Corresponds to the JSON property `customFooterText`
+        # @return [String]
+        attr_accessor :custom_footer_text
+      
         # Default email to which reply to any message should go.
         # Corresponds to the JSON property `customReplyTo`
         # @return [String]
@@ -65,6 +70,11 @@ module Google
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
+      
+        # Whether to include custom footer.
+        # Corresponds to the JSON property `includeCustomFooter`
+        # @return [String]
+        attr_accessor :include_custom_footer
       
         # If this groups should be included in global address list or not.
         # Corresponds to the JSON property `includeInGlobalAddressList`
@@ -196,10 +206,12 @@ module Google
           @allow_google_communication = args[:allow_google_communication] if args.key?(:allow_google_communication)
           @allow_web_posting = args[:allow_web_posting] if args.key?(:allow_web_posting)
           @archive_only = args[:archive_only] if args.key?(:archive_only)
+          @custom_footer_text = args[:custom_footer_text] if args.key?(:custom_footer_text)
           @custom_reply_to = args[:custom_reply_to] if args.key?(:custom_reply_to)
           @default_message_deny_notification_text = args[:default_message_deny_notification_text] if args.key?(:default_message_deny_notification_text)
           @description = args[:description] if args.key?(:description)
           @email = args[:email] if args.key?(:email)
+          @include_custom_footer = args[:include_custom_footer] if args.key?(:include_custom_footer)
           @include_in_global_address_list = args[:include_in_global_address_list] if args.key?(:include_in_global_address_list)
           @is_archived = args[:is_archived] if args.key?(:is_archived)
           @kind = args[:kind] if args.key?(:kind)

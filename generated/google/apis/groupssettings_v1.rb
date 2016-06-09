@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/groups-settings/get_started
     module GroupssettingsV1
       VERSION = 'V1'
-      REVISION = '20160323'
+      REVISION = '20160525'
 
       # View and manage the settings of a Google Apps Group
       AUTH_APPS_GROUPS_SETTINGS = 'https://www.googleapis.com/auth/apps.groups.settings'

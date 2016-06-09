@@ -3329,6 +3329,11 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::OperationEvent>]
         attr_accessor :events
       
+        # Runtime metadata on this Operation.
+        # Corresponds to the JSON property `runtimeMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :runtime_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3340,6 +3345,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @request = args[:request] if args.key?(:request)
           @events = args[:events] if args.key?(:events)
+          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
         end
       end
       
@@ -3359,6 +3365,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Runtime metadata that will be populated in the runtimeMetadata field of the
+      # Operation associated with a RunPipeline execution.
+      class RuntimeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Describes a GCE resource that is being managed by a running pipeline.
+        # Corresponds to the JSON property `gce`
+        # @return [Google::Apis::GenomicsV1::Gce]
+        attr_accessor :gce
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce = args[:gce] if args.key?(:gce)
+        end
+      end
+      
+      # Describes a GCE resource that is being managed by a running pipeline.
+      class Gce
+        include Google::Apis::Core::Hashable
+      
+        # The instance on which the operation is running.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        # The availability zone in which the instance resides.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        # The machine type of the instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # The names of the disks that were created for this pipeline.
+        # Corresponds to the JSON property `diskNames`
+        # @return [Array<String>]
+        attr_accessor :disk_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @zone = args[:zone] if args.key?(:zone)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @disk_names = args[:disk_names] if args.key?(:disk_names)
         end
       end
     end

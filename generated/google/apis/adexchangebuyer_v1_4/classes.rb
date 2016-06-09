@@ -556,6 +556,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Detected languages for this creative. Read-only. This field should not be set
+        # in requests.
+        # Corresponds to the JSON property `languages`
+        # @return [Array<String>]
+        attr_accessor :languages
+      
         # If nativeAd is set, HTMLSnippet and videoURL should not be set.
         # Corresponds to the JSON property `nativeAd`
         # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd]
@@ -638,6 +644,7 @@ module Google
           @height = args[:height] if args.key?(:height)
           @impression_tracking_url = args[:impression_tracking_url] if args.key?(:impression_tracking_url)
           @kind = args[:kind] if args.key?(:kind)
+          @languages = args[:languages] if args.key?(:languages)
           @native_ad = args[:native_ad] if args.key?(:native_ad)
           @open_auction_status = args[:open_auction_status] if args.key?(:open_auction_status)
           @product_categories = args[:product_categories] if args.key?(:product_categories)
@@ -653,6 +660,11 @@ module Google
         # 
         class Correction
           include Google::Apis::Core::Hashable
+        
+          # All known serving contexts containing serving status information.
+          # Corresponds to the JSON property `contexts`
+          # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::Correction::Context>]
+          attr_accessor :contexts
         
           # Additional details about the correction.
           # Corresponds to the JSON property `details`
@@ -670,8 +682,49 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @contexts = args[:contexts] if args.key?(:contexts)
             @details = args[:details] if args.key?(:details)
             @reason = args[:reason] if args.key?(:reason)
+          end
+          
+          # 
+          class Context
+            include Google::Apis::Core::Hashable
+          
+            # Only set when contextType=AUCTION_TYPE. Represents the auction types this
+            # correction applies to.
+            # Corresponds to the JSON property `auctionType`
+            # @return [Array<String>]
+            attr_accessor :auction_type
+          
+            # The type of context (e.g., location, platform, auction type, SSL-ness).
+            # Corresponds to the JSON property `contextType`
+            # @return [String]
+            attr_accessor :context_type
+          
+            # Only set when contextType=LOCATION. Represents the geo criterias this
+            # correction applies to.
+            # Corresponds to the JSON property `geoCriteriaId`
+            # @return [Array<Fixnum>]
+            attr_accessor :geo_criteria_id
+          
+            # Only set when contextType=PLATFORM. Represents the platforms this correction
+            # applies to.
+            # Corresponds to the JSON property `platform`
+            # @return [Array<String>]
+            attr_accessor :platform
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @auction_type = args[:auction_type] if args.key?(:auction_type)
+              @context_type = args[:context_type] if args.key?(:context_type)
+              @geo_criteria_id = args[:geo_criteria_id] if args.key?(:geo_criteria_id)
+              @platform = args[:platform] if args.key?(:platform)
+            end
           end
         end
         
@@ -1213,6 +1266,12 @@ module Google
         # @return [String]
         attr_accessor :currency_conversion_time_ms
       
+        # The DFP line item id associated with this deal. For features like CPD, buyers
+        # can retrieve the DFP line item for billing reconciliation.
+        # Corresponds to the JSON property `dfpLineItemId`
+        # @return [String]
+        attr_accessor :dfp_line_item_id
+      
         # The original contracted quantity (# impressions) for this deal. To ensure
         # delivery, sometimes publisher will book the deal with a impression buffer,
         # however clients are billed using the original contracted quantity.
@@ -1233,6 +1292,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @currency_conversion_time_ms = args[:currency_conversion_time_ms] if args.key?(:currency_conversion_time_ms)
+          @dfp_line_item_id = args[:dfp_line_item_id] if args.key?(:dfp_line_item_id)
           @original_contracted_quantity = args[:original_contracted_quantity] if args.key?(:original_contracted_quantity)
           @price = args[:price] if args.key?(:price)
         end
@@ -1438,10 +1498,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Name of the dimension mainly for debugging purposes.
+        # Name of the dimension mainly for debugging purposes, except for the case of
+        # CREATIVE_SIZE. For CREATIVE_SIZE, strings are used instead of ids.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Percent of total impressions for a dimension type. e.g. `dimension_type: '
+        # GENDER', [`dimension_value: `id: 1, name: 'MALE', percentage: 60``]` Gender
+        # MALE is 60% of all impressions which have gender.
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
       
         def initialize(**args)
            update!(**args)
@@ -1451,6 +1519,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @percentage = args[:percentage] if args.key?(:percentage)
         end
       end
       
@@ -3138,6 +3207,11 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueSize]
         attr_accessor :size
       
+        # The skippable ad type for video size.
+        # Corresponds to the JSON property `skippableAdType`
+        # @return [String]
+        attr_accessor :skippable_ad_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3147,6 +3221,7 @@ module Google
           @companion_sizes = args[:companion_sizes] if args.key?(:companion_sizes)
           @creative_size_type = args[:creative_size_type] if args.key?(:creative_size_type)
           @size = args[:size] if args.key?(:size)
+          @skippable_ad_type = args[:skippable_ad_type] if args.key?(:skippable_ad_type)
         end
       end
       

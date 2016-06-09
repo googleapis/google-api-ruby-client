@@ -478,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Gce
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnnotationSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1298,6 +1310,7 @@ module Google
           hash :request, as: 'request'
           collection :events, as: 'events', class: Google::Apis::GenomicsV1::OperationEvent, decorator: Google::Apis::GenomicsV1::OperationEvent::Representation
       
+          hash :runtime_metadata, as: 'runtimeMetadata'
         end
       end
       
@@ -1305,6 +1318,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+        end
+      end
+      
+      class RuntimeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce, as: 'gce', class: Google::Apis::GenomicsV1::Gce, decorator: Google::Apis::GenomicsV1::Gce::Representation
+      
+        end
+      end
+      
+      class Gce
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_name, as: 'instanceName'
+          property :zone, as: 'zone'
+          property :machine_type, as: 'machineType'
+          collection :disk_names, as: 'diskNames'
         end
       end
     end

@@ -587,6 +587,11 @@ module Google
         # @return [String]
         attr_accessor :captcha_response
       
+        # The timestamp when the account is created.
+        # Corresponds to the JSON property `createdAt`
+        # @return [String]
+        attr_accessor :created_at
+      
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
@@ -634,6 +639,11 @@ module Google
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
+      
+        # Last login timestamp.
+        # Corresponds to the JSON property `lastLoginAt`
+        # @return [String]
+        attr_accessor :last_login_at
       
         # The local ID of the user.
         # Corresponds to the JSON property `localId`
@@ -685,6 +695,7 @@ module Google
         def update!(**args)
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @created_at = args[:created_at] if args.key?(:created_at)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @delete_attribute = args[:delete_attribute] if args.key?(:delete_attribute)
           @delete_provider = args[:delete_provider] if args.key?(:delete_provider)
@@ -694,6 +705,7 @@ module Google
           @email_verified = args[:email_verified] if args.key?(:email_verified)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @last_login_at = args[:last_login_at] if args.key?(:last_login_at)
           @local_id = args[:local_id] if args.key?(:local_id)
           @oob_code = args[:oob_code] if args.key?(:oob_code)
           @password = args[:password] if args.key?(:password)
@@ -1171,6 +1183,11 @@ module Google
         # @return [String]
         attr_accessor :secret
       
+        # Whitelisted client IDs for audience check.
+        # Corresponds to the JSON property `whitelistedAudiences`
+        # @return [Array<String>]
+        attr_accessor :whitelisted_audiences
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1182,6 +1199,7 @@ module Google
           @experiment_percent = args[:experiment_percent] if args.key?(:experiment_percent)
           @provider = args[:provider] if args.key?(:provider)
           @secret = args[:secret] if args.key?(:secret)
+          @whitelisted_audiences = args[:whitelisted_audiences] if args.key?(:whitelisted_audiences)
         end
       end
       
@@ -1501,6 +1519,11 @@ module Google
       class UserInfo
         include Google::Apis::Core::Hashable
       
+        # User creation timestamp.
+        # Corresponds to the JSON property `createdAt`
+        # @return [String]
+        attr_accessor :created_at
+      
         # Whether the user is disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
@@ -1522,6 +1545,11 @@ module Google
         # @return [Boolean]
         attr_accessor :email_verified
         alias_method :email_verified?, :email_verified
+      
+        # last login timestamp.
+        # Corresponds to the JSON property `lastLoginAt`
+        # @return [String]
+        attr_accessor :last_login_at
       
         # The local ID of the user.
         # Corresponds to the JSON property `localId`
@@ -1569,10 +1597,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
           @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @last_login_at = args[:last_login_at] if args.key?(:last_login_at)
           @local_id = args[:local_id] if args.key?(:local_id)
           @password_hash = args[:password_hash] if args.key?(:password_hash)
           @password_updated_at = args[:password_updated_at] if args.key?(:password_updated_at)

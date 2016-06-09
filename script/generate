@@ -103,6 +103,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 URLS=(https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
       https://content.googleapis.com/discovery/v1/apis/compute/beta/rest \
       https://developers.google.com/my-business/samples/mybusiness_google_rest_v3.json \
+      https://monitoring.googleapis.com/\$discovery/rest?version=v3 \
 )
 
 echo 'a' | bundle exec bin/generate-api gen generated --from-discovery=true --names_out=$DIR/api_names_out.yaml --url=${URLS[*]}  --id=${API_IDS[*]}

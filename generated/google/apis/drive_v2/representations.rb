@@ -764,6 +764,8 @@ module Google
           property :domain, as: 'domain'
           property :email_address, as: 'emailAddress'
           property :etag, as: 'etag'
+          property :expiration_date, as: 'expirationDate', type: DateTime
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
