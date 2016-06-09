@@ -28,7 +28,9 @@ describe Google::APIClient::FileStore do
   it 'should load credentials' do
     subject.path = json_file
     credentials = subject.load_credentials
-    expect(credentials).to include('access_token', 'authorization_uri', 'refresh_token')
+    expect(credentials).to include(
+      'access_token', 'authorization_uri', 'refresh_token', 'client_id',
+      'client_secret', 'expires_in', 'token_credential_uri', 'issued_at')
   end
 
   it 'should write credentials' do

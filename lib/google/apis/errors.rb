@@ -19,7 +19,7 @@ module Google
       attr_reader :status_code
       attr_reader :header
       attr_reader :body
-      
+
       def initialize(err, status_code: nil, header: nil, body: nil)
         @cause = nil
 
@@ -42,7 +42,7 @@ module Google
         end
       end
     end
-    
+
     # An error which is raised when there is an unexpected response or other
     # transport error that prevents an operation from succeeding.
     class TransmissionError < Error
