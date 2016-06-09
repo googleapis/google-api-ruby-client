@@ -1,3 +1,7 @@
+# 0.9.9
+* Add monitoring v3, regenerate APIs
+* Add samples for sheets, bigquery
+
 # 0.9.8
 * Add mybusiness v3, regenerate APIs
 
