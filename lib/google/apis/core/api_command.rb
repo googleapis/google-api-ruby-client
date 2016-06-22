@@ -51,7 +51,7 @@ module Google
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
           if request_representation && request_object
             header[:content_type] ||= JSON_CONTENT_TYPE
-            self.body = request_representation.new(request_object).to_json(skip_undefined: true)
+            self.body = request_representation.new(request_object).to_json(user_options: { skip_undefined: true })
           end
           super
         end
