@@ -265,6 +265,11 @@ EOF
         expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
       end
 
+      it 'should ignore nil collections' do
+        responses['p1'].items = nil
+        expect(items).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
+      end
+
       it 'should allow selecting another field for items' do
         expect(service.fetch_all(items: :alt_items) { |token| responses[token] } ).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
       end
@@ -307,7 +312,6 @@ EOF
 
         expect(count).to eq 6
       end
-
     end
   end
 end

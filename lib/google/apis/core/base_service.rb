@@ -63,11 +63,12 @@ module Google
           item_count = 0
           loop do
             @last_result = @fetch_proc.call(page_token)
-            for item in @last_result.send(@items_field)
+            items = @last_result.send(@items_field)
+            for item in items
               item_count = item_count + 1
               break if @max && item_count > @max
               yield item
-            end
+            end unless items.nil?
             break if @max && item_count >= @max
             break if @last_result.next_page_token.nil? || @last_result.next_page_token == page_token
             page_token = @last_result.next_page_token
