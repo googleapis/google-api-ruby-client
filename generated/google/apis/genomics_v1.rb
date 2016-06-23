@@ -20,14 +20,12 @@ module Google
   module Apis
     # Genomics API
     #
-    # Stores, processes, explores and shares genomic data. This API implements the
-    # Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
-    # extensions.
+    # Stores, processes, explores and shares genomic data.
     #
     # @see https://cloud.google.com/genomics/
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20160607'
+      REVISION = '20160615'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

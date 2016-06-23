@@ -22,7 +22,7 @@ module Google
     module BooksV1
       # Books API
       #
-      # Lets you search for books and manage your Google Books library.
+      # Searches for books and manages your Google Books library.
       #
       # @example
       #    require 'google/apis/books_v1'

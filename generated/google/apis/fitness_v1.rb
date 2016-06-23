@@ -20,12 +20,12 @@ module Google
   module Apis
     # Fitness
     #
-    # Google Fit API
+    # Stores and accesses user data in the fitness store from apps on any platform.
     #
     # @see https://developers.google.com/fit/rest/
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20151021'
+      REVISION = '20160609'
 
       # View your activity information in Google Fit
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'

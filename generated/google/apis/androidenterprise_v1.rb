@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/android/work/play/emm-api
     module AndroidenterpriseV1
       VERSION = 'V1'
-      REVISION = '20160601'
+      REVISION = '20160607'
 
       # Manage corporate Android devices
       AUTH_ANDROIDENTERPRISE = 'https://www.googleapis.com/auth/androidenterprise'

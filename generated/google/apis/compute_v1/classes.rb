@@ -1030,6 +1030,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # If true, enable Cloud CDN for this BackendService.
+        # Corresponds to the JSON property `enableCDN`
+        # @return [Boolean]
+        attr_accessor :enable_cdn
+        alias_method :enable_cdn?, :enable_cdn
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a BackendService. An up-to-date fingerprint must be provided in
@@ -1111,6 +1117,7 @@ module Google
           @backends = args[:backends] if args.key?(:backends)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @id = args[:id] if args.key?(:id)
@@ -1155,8 +1162,7 @@ module Google
       class BackendServiceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1172,11 +1178,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
+        # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1200,18 +1202,37 @@ module Google
         end
       end
       
+      # 
+      class CacheInvalidationRule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # Represents a customer-supplied encryption key
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Specifies a 256-bit customer-supplied encryption key, encoded in base64 to
-        # either encrypt or decrypt this resource.
+        # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+        # base64 to either encrypt or decrypt this resource.
         # Corresponds to the JSON property `rawKey`
         # @return [String]
         attr_accessor :raw_key
       
-        # [Output only] The base64 encoded SHA-256 hash of the customer-supplied
-        # encryption key that protects this resource.
+        # [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-
+        # supplied encryption key that protects this resource.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -2930,7 +2951,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Any applicable publicly visible licenses.
+        # Any applicable license URI.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -3496,7 +3517,7 @@ module Google
         end
       end
       
-      # 
+      # An Instance Template Manager resource.
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       

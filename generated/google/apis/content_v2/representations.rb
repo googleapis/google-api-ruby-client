@@ -1037,6 +1037,8 @@ module Google
       
           property :cost_rule_tree, as: 'costRuleTree', class: Google::Apis::ContentV2::AccountShippingShippingServiceCostRule, decorator: Google::Apis::ContentV2::AccountShippingShippingServiceCostRule::Representation
       
+          property :max_days_in_transit, as: 'maxDaysInTransit'
+          property :min_days_in_transit, as: 'minDaysInTransit'
           property :name, as: 'name'
           property :sale_country, as: 'saleCountry'
         end

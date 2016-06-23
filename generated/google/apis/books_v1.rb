@@ -20,12 +20,12 @@ module Google
   module Apis
     # Books API
     #
-    # Lets you search for books and manage your Google Books library.
+    # Searches for books and manages your Google Books library.
     #
     # @see https://developers.google.com/books/docs/v1/getting_started
     module BooksV1
       VERSION = 'V1'
-      REVISION = '20160411'
+      REVISION = '20160531'
 
       # Manage your books
       AUTH_BOOKS = 'https://www.googleapis.com/auth/books'

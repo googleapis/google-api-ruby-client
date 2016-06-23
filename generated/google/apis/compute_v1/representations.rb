@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CacheInvalidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1506,6 +1512,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
           property :id, as: 'id'
@@ -1538,6 +1545,13 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class CacheInvalidationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
         end
       end
       

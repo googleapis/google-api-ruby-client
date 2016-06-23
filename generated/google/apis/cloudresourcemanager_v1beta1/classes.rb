@@ -44,9 +44,10 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # The user-assigned name of the Project. It must be 4 to 30 characters. Allowed
-        # characters are: lowercase and uppercase letters, numbers, hyphen, single-quote,
-        # double-quote, space, and exclamation point. Example: My Project Read-write.
+        # The user-assigned display name of the Project. It must be 4 to 30 characters.
+        # Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
+        # single-quote, double-quote, space, and exclamation point. Example: My Project
+        # Read-write.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -100,7 +101,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required field representing the resource type this id is for. At present, the
-        # only valid type is "organization".
+        # valid types are "project" and "organization".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -440,8 +441,16 @@ module Google
       class Organization
         include Google::Apis::Core::Hashable
       
+        # Output Only. The resource name of the organization. This is the organization's
+        # relative path in the API. Its format is "organizations/[organization_id]". For
+        # example, "organizations/1234".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # An immutable id for the Organization that is assigned on creation. This should
-        # be omitted when creating a new Organization. This field is read-only.
+        # be omitted when creating a new Organization. This field is read-only. This
+        # field is deprecated and will be removed in v1. Use name instead.
         # Corresponds to the JSON property `organizationId`
         # @return [String]
         attr_accessor :organization_id
@@ -466,16 +475,24 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
+        # The organization's current lifecycle state. Assigned by the server. @
+        # OutputOnly
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @organization_id = args[:organization_id] if args.key?(:organization_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @owner = args[:owner] if args.key?(:owner)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
         end
       end
       

@@ -978,6 +978,21 @@ module Google
         # @return [String]
         attr_accessor :group
       
+        # The max number of simultaneous connections for the group. Can be used with
+        # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
+        # maxConnections or maxConnectionsPerInstance must be set.
+        # Corresponds to the JSON property `maxConnections`
+        # @return [Fixnum]
+        attr_accessor :max_connections
+      
+        # The max number of simultaneous connections that a single backend instance can
+        # handle. This is used to calculate the capacity of the group. Can be used in
+        # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
+        # maxConnections or maxConnectionsPerInstance must be set.
+        # Corresponds to the JSON property `maxConnectionsPerInstance`
+        # @return [Fixnum]
+        attr_accessor :max_connections_per_instance
+      
         # The max requests per second (RPS) of the group. Can be used with either RATE
         # or UTILIZATION balancing modes, but required if RATE mode. For RATE mode,
         # either maxRate or maxRatePerInstance must be set.
@@ -1009,6 +1024,8 @@ module Google
           @capacity_scaler = args[:capacity_scaler] if args.key?(:capacity_scaler)
           @description = args[:description] if args.key?(:description)
           @group = args[:group] if args.key?(:group)
+          @max_connections = args[:max_connections] if args.key?(:max_connections)
+          @max_connections_per_instance = args[:max_connections_per_instance] if args.key?(:max_connections_per_instance)
           @max_rate = args[:max_rate] if args.key?(:max_rate)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
@@ -1031,6 +1048,11 @@ module Google
         # Corresponds to the JSON property `backends`
         # @return [Array<Google::Apis::ComputeBeta::Backend>]
         attr_accessor :backends
+      
+        # Message containing connection draining configuration.
+        # Corresponds to the JSON property `connectionDraining`
+        # @return [Google::Apis::ComputeBeta::ConnectionDraining]
+        attr_accessor :connection_draining
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -1134,6 +1156,7 @@ module Google
         def update!(**args)
           @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
           @backends = args[:backends] if args.key?(:backends)
+          @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
@@ -1182,8 +1205,7 @@ module Google
       class BackendServiceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1199,11 +1221,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
+        # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1246,30 +1264,50 @@ module Google
         end
       end
       
+      # Message containing connection draining configuration.
+      class ConnectionDraining
+        include Google::Apis::Core::Hashable
+      
+        # Time for which instance will be drained (not accept new connections, but still
+        # work to finish started).
+        # Corresponds to the JSON property `drainingTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :draining_timeout_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @draining_timeout_sec = args[:draining_timeout_sec] if args.key?(:draining_timeout_sec)
+        end
+      end
+      
       # Represents a customer-supplied encryption key
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Specifies a 256-bit customer-supplied encryption key, encoded in base64 to
-        # either encrypt or decrypt this resource.
+        # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+        # base64 to either encrypt or decrypt this resource.
         # Corresponds to the JSON property `rawKey`
         # @return [String]
         attr_accessor :raw_key
       
-        # Specifies a base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption
-        # key to either encrypt or decrypt this resource.
+        # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
+        # encryption key to either encrypt or decrypt this resource.
         # The key must meet the following requirements before you can provide it to
         # Compute Engine:
         # - The key is wrapped using a RSA public key certificate provided by Google.
-        # - After being wrapped, the key must be encoded in base64 encoding.  Get the
-        # RSA public key certificate provided by Google at:
+        # - After being wrapped, the key must be encoded in RFC 4648 base64 encoding.
+        # Get the RSA public key certificate provided by Google at:
         # https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
         # Corresponds to the JSON property `rsaEncryptedKey`
         # @return [String]
         attr_accessor :rsa_encrypted_key
       
-        # [Output only] The base64 encoded SHA-256 hash of the customer-supplied
-        # encryption key that protects this resource.
+        # [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-
+        # supplied encryption key that protects this resource.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -2593,6 +2631,319 @@ module Google
         end
       end
       
+      # 
+      class Http2HealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The value of the host header in the HTTP/2 health check request. If left empty
+        # (default value), the IP on behalf of which this health check is performed will
+        # be used.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The TCP port number for the health check request. The default value is 443.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The request path of the HTTP/2 health check request. The default value is /.
+        # Corresponds to the JSON property `requestPath`
+        # @return [String]
+        attr_accessor :request_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request_path = args[:request_path] if args.key?(:request_path)
+        end
+      end
+      
+      # 
+      class HttpHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The value of the host header in the HTTP health check request. If left empty (
+        # default value), the IP on behalf of which this health check is performed will
+        # be used.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The TCP port number for the health check request. The default value is 80.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The request path of the HTTP health check request. The default value is /.
+        # Corresponds to the JSON property `requestPath`
+        # @return [String]
+        attr_accessor :request_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request_path = args[:request_path] if args.key?(:request_path)
+        end
+      end
+      
+      # 
+      class HttpsHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The value of the host header in the HTTPS health check request. If left empty (
+        # default value), the IP on behalf of which this health check is performed will
+        # be used.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The TCP port number for the health check request. The default value is 443.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The request path of the HTTPS health check request. The default value is /.
+        # Corresponds to the JSON property `requestPath`
+        # @return [String]
+        attr_accessor :request_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request_path = args[:request_path] if args.key?(:request_path)
+        end
+      end
+      
+      # An HealthCheck resource. This resource defines a template for how individual
+      # virtual machines should be checked for health, via one of the supported
+      # protocols.
+      class HealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # How often (in seconds) to send a health check. The default value is 5 seconds.
+        # Corresponds to the JSON property `checkIntervalSec`
+        # @return [Fixnum]
+        attr_accessor :check_interval_sec
+      
+        # [Output Only] Creation timestamp in 3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A so-far unhealthy instance will be marked healthy after this many consecutive
+        # successes. The default value is 2.
+        # Corresponds to the JSON property `healthyThreshold`
+        # @return [Fixnum]
+        attr_accessor :healthy_threshold
+      
+        # 
+        # Corresponds to the JSON property `http2HealthCheck`
+        # @return [Google::Apis::ComputeBeta::Http2HealthCheck]
+        attr_accessor :http2_health_check
+      
+        # 
+        # Corresponds to the JSON property `httpHealthCheck`
+        # @return [Google::Apis::ComputeBeta::HttpHealthCheck]
+        attr_accessor :http_health_check
+      
+        # 
+        # Corresponds to the JSON property `httpsHealthCheck`
+        # @return [Google::Apis::ComputeBeta::HttpsHealthCheck]
+        attr_accessor :https_health_check
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # 
+        # Corresponds to the JSON property `sslHealthCheck`
+        # @return [Google::Apis::ComputeBeta::SslHealthCheck]
+        attr_accessor :ssl_health_check
+      
+        # 
+        # Corresponds to the JSON property `tcpHealthCheck`
+        # @return [Google::Apis::ComputeBeta::TcpHealthCheck]
+        attr_accessor :tcp_health_check
+      
+        # How long (in seconds) to wait before claiming failure. The default value is 5
+        # seconds. It is invalid for timeoutSec to have greater value than
+        # checkIntervalSec.
+        # Corresponds to the JSON property `timeoutSec`
+        # @return [Fixnum]
+        attr_accessor :timeout_sec
+      
+        # Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2.
+        # If not specified, the default is TCP. Exactly one of the protocol-specific
+        # health check field must be specified, which must match type field.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A so-far healthy instance will be marked unhealthy after this many consecutive
+        # failures. The default value is 2.
+        # Corresponds to the JSON property `unhealthyThreshold`
+        # @return [Fixnum]
+        attr_accessor :unhealthy_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_interval_sec = args[:check_interval_sec] if args.key?(:check_interval_sec)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
+          @http2_health_check = args[:http2_health_check] if args.key?(:http2_health_check)
+          @http_health_check = args[:http_health_check] if args.key?(:http_health_check)
+          @https_health_check = args[:https_health_check] if args.key?(:https_health_check)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @ssl_health_check = args[:ssl_health_check] if args.key?(:ssl_health_check)
+          @tcp_health_check = args[:tcp_health_check] if args.key?(:tcp_health_check)
+          @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @type = args[:type] if args.key?(:type)
+          @unhealthy_threshold = args[:unhealthy_threshold] if args.key?(:unhealthy_threshold)
+        end
+      end
+      
+      # Contains a list of HealthCheck resources.
+      class HealthCheckList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of HealthCheck resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::HealthCheck>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
       # A full or valid partial URL to a health check. For example, the following are
       # valid URLs:
       # - https://www.googleapis.com/compute/beta/projects/project-id/global/
@@ -3066,7 +3417,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Any applicable publicly visible licenses.
+        # Any applicable license URI.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -3653,7 +4004,7 @@ module Google
         end
       end
       
-      # 
+      # An Instance Template Manager resource.
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -7324,6 +7675,56 @@ module Google
         end
       end
       
+      # 
+      class SslHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The TCP port number for the health check request. The default value is 443.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The application data to send once the SSL connection has been established (
+        # default value is empty). If both request and response are empty, the
+        # connection establishment alone will indicate health. The request data can only
+        # be ASCII.
+        # Corresponds to the JSON property `request`
+        # @return [String]
+        attr_accessor :request
+      
+        # The bytes to match against the beginning of the response data. If left empty (
+        # the default value), any response will indicate health. The response data can
+        # only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request = args[:request] if args.key?(:request)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Sets the scheduling options for an Instance.
       class Scheduling
         include Google::Apis::Core::Hashable
@@ -8015,6 +8416,56 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class TcpHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The TCP port number for the health check request. The default value is 80.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The application data to send once the TCP connection has been established (
+        # default value is empty). If both request and response are empty, the
+        # connection establishment alone will indicate health. The request data can only
+        # be ASCII.
+        # Corresponds to the JSON property `request`
+        # @return [String]
+        attr_accessor :request
+      
+        # The bytes to match against the beginning of the response data. If left empty (
+        # the default value), any response will indicate health. The response data can
+        # only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request = args[:request] if args.key?(:request)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -9014,6 +9465,190 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # 
+      class TargetSslProxiesSetBackendServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the new BackendService resource for the targetSslProxy.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # 
+      class TargetSslProxiesSetProxyHeaderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The new type of proxy header to append before sending data to the backend.
+        # NONE or PROXY_V1 are allowed.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+        end
+      end
+      
+      # 
+      class TargetSslProxiesSetSslCertificatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # New set of URLs to SslCertificate resources to associate with this
+        # TargetSslProxy. Currently exactly one ssl certificate must be specified.
+        # Corresponds to the JSON property `sslCertificates`
+        # @return [Array<String>]
+        attr_accessor :ssl_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+        end
+      end
+      
+      # A TargetSslProxy resource. This resource defines an SSL proxy.
+      class TargetSslProxy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#targetSslProxy for target
+        # SSL proxies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # URL to the BackendService resource.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # URLs to SslCertificate resources that are used to authenticate connections to
+        # Backends. Currently exactly one SSL certificate must be specified.
+        # Corresponds to the JSON property `sslCertificates`
+        # @return [Array<String>]
+        attr_accessor :ssl_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @service = args[:service] if args.key?(:service)
+          @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+        end
+      end
+      
+      # Contains a list of TargetSslProxy resources.
+      class TargetSslProxyList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of TargetSslProxy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::TargetSslProxy>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       

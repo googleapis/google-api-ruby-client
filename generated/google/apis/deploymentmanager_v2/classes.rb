@@ -1121,6 +1121,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # An Operation resource, used to manage asynchronous API requests.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::DeploymentmanagerV2::Operation]
+        attr_accessor :operation
+      
         # [Output Only] Self link for the type.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1135,6 +1140,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
       end

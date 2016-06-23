@@ -2568,6 +2568,11 @@ module Google
           # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors]
           attr_accessor :more_from_authors
         
+          # 
+          # Corresponds to the JSON property `moreFromSeries`
+          # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries]
+          attr_accessor :more_from_series
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2575,10 +2580,30 @@ module Google
           # Update properties of this object
           def update!(**args)
             @more_from_authors = args[:more_from_authors] if args.key?(:more_from_authors)
+            @more_from_series = args[:more_from_series] if args.key?(:more_from_series)
           end
           
           # 
           class MoreFromAuthors
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `opted_state`
+            # @return [String]
+            attr_accessor :opted_state
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @opted_state = args[:opted_state] if args.key?(:opted_state)
+            end
+          end
+          
+          # 
+          class MoreFromSeries
             include Google::Apis::Core::Hashable
           
             # 
@@ -3032,6 +3057,12 @@ module Google
             # @return [Fixnum]
             attr_accessor :finsky_offer_type
           
+            # Indicates whether the offer is giftable.
+            # Corresponds to the JSON property `giftable`
+            # @return [Boolean]
+            attr_accessor :giftable
+            alias_method :giftable?, :giftable
+          
             # Offer list (=undiscounted) price in Micros.
             # Corresponds to the JSON property `listPrice`
             # @return [Google::Apis::BooksV1::Volume::SaleInfo::Offer::ListPrice]
@@ -3054,6 +3085,7 @@ module Google
             # Update properties of this object
             def update!(**args)
               @finsky_offer_type = args[:finsky_offer_type] if args.key?(:finsky_offer_type)
+              @giftable = args[:giftable] if args.key?(:giftable)
               @list_price = args[:list_price] if args.key?(:list_price)
               @rental_duration = args[:rental_duration] if args.key?(:rental_duration)
               @retail_price = args[:retail_price] if args.key?(:retail_price)

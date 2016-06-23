@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BucketByTimePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -219,6 +225,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration_millis, as: 'durationMillis'
+          property :period, as: 'period', class: Google::Apis::FitnessV1::BucketByTimePeriod, decorator: Google::Apis::FitnessV1::BucketByTimePeriod::Representation
+      
+        end
+      end
+      
+      class BucketByTimePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_zone_id, as: 'timeZoneId'
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       
@@ -242,6 +259,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application, as: 'application', class: Google::Apis::FitnessV1::Application, decorator: Google::Apis::FitnessV1::Application::Representation
       
+          collection :data_quality_standard, as: 'dataQualityStandard'
           property :data_stream_id, as: 'dataStreamId'
           property :data_stream_name, as: 'dataStreamName'
           property :data_type, as: 'dataType', class: Google::Apis::FitnessV1::DataType, decorator: Google::Apis::FitnessV1::DataType::Representation

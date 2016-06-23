@@ -192,7 +192,7 @@ module Google
         end
       end
       
-      # See: google3/java/com/google/android/apps/heart/platform/api/Application.java
+      # 
       class Application
         include Google::Apis::Core::Hashable
       
@@ -294,6 +294,11 @@ module Google
         # @return [String]
         attr_accessor :duration_millis
       
+        # 
+        # Corresponds to the JSON property `period`
+        # @return [Google::Apis::FitnessV1::BucketByTimePeriod]
+        attr_accessor :period
+      
         def initialize(**args)
            update!(**args)
         end
@@ -301,6 +306,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @period = args[:period] if args.key?(:period)
+        end
+      end
+      
+      # 
+      class BucketByTimePeriod
+        include Google::Apis::Core::Hashable
+      
+        # org.joda.timezone.DateTimeZone
+        # Corresponds to the JSON property `timeZoneId`
+        # @return [String]
+        attr_accessor :time_zone_id
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_zone_id = args[:time_zone_id] if args.key?(:time_zone_id)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -400,10 +437,15 @@ module Google
       class DataSource
         include Google::Apis::Core::Hashable
       
-        # See: google3/java/com/google/android/apps/heart/platform/api/Application.java
+        # 
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application
+      
+        # 
+        # Corresponds to the JSON property `dataQualityStandard`
+        # @return [Array<String>]
+        attr_accessor :data_quality_standard
       
         # A unique identifier for the data stream produced by this data source. The
         # identifier includes:
@@ -443,7 +485,7 @@ module Google
         # @return [String]
         attr_accessor :data_stream_name
       
-        # See: google3/java/com/google/android/apps/heart/platform/api/DataType.java
+        # 
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::FitnessV1::DataType]
         attr_accessor :data_type
@@ -481,6 +523,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @application = args[:application] if args.key?(:application)
+          @data_quality_standard = args[:data_quality_standard] if args.key?(:data_quality_standard)
           @data_stream_id = args[:data_stream_id] if args.key?(:data_stream_id)
           @data_stream_name = args[:data_stream_name] if args.key?(:data_stream_name)
           @data_type = args[:data_type] if args.key?(:data_type)
@@ -490,7 +533,7 @@ module Google
         end
       end
       
-      # See: google3/java/com/google/android/apps/heart/platform/api/DataType.java
+      # 
       class DataType
         include Google::Apis::Core::Hashable
       
@@ -757,7 +800,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :activity_type
       
-        # See: google3/java/com/google/android/apps/heart/platform/api/Application.java
+        # 
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application

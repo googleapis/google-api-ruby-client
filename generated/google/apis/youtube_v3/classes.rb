@@ -2296,7 +2296,7 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 67
+      # NEXT_ID: 68
       class ContentRating
         include Google::Apis::Core::Hashable
       
@@ -2460,6 +2460,11 @@ module Google
         # Corresponds to the JSON property `fpbRating`
         # @return [String]
         attr_accessor :fpb_rating
+      
+        # Reasons that explain why the video received its FPB (South Africa) rating.
+        # Corresponds to the JSON property `fpbRatingReasons`
+        # @return [Array<String>]
+        attr_accessor :fpb_rating_reasons
       
         # The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
         # rating.
@@ -2696,6 +2701,7 @@ module Google
           @fco_rating = args[:fco_rating] if args.key?(:fco_rating)
           @fmoc_rating = args[:fmoc_rating] if args.key?(:fmoc_rating)
           @fpb_rating = args[:fpb_rating] if args.key?(:fpb_rating)
+          @fpb_rating_reasons = args[:fpb_rating_reasons] if args.key?(:fpb_rating_reasons)
           @fsk_rating = args[:fsk_rating] if args.key?(:fsk_rating)
           @grfilm_rating = args[:grfilm_rating] if args.key?(:grfilm_rating)
           @icaa_rating = args[:icaa_rating] if args.key?(:icaa_rating)
@@ -7274,7 +7280,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 67
+        # NEXT_ID: 68
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating

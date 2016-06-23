@@ -622,6 +622,7 @@ module Google
       
           property :flatten_results, as: 'flattenResults'
           property :maximum_billing_tier, as: 'maximumBillingTier'
+          property :maximum_bytes_billed, as: 'maximumBytesBilled'
           property :preserve_nulls, as: 'preserveNulls'
           property :priority, as: 'priority'
           property :query, as: 'query'

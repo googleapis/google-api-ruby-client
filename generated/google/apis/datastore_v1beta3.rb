@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appengine_v1beta5/service.rb'
-require 'google/apis/appengine_v1beta5/classes.rb'
-require 'google/apis/appengine_v1beta5/representations.rb'
+require 'google/apis/datastore_v1beta3/service.rb'
+require 'google/apis/datastore_v1beta3/classes.rb'
+require 'google/apis/datastore_v1beta3/representations.rb'
 
 module Google
   module Apis
-    # Google App Engine Admin API
+    # Google Cloud Datastore API
     #
-    # Provisions and manages App Engine applications.
+    # Accesses the schemaless NoSQL database to provide fully managed, robust,
+    # scalable storage for your application.
     #
-    # @see https://cloud.google.com/appengine/docs/admin-api/
-    module AppengineV1beta5
-      VERSION = 'V1beta5'
+    # @see https://cloud.google.com/datastore/
+    module DatastoreV1beta3
+      VERSION = 'V1beta3'
       REVISION = '20160614'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your Google Cloud Datastore data
+      AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
     end
   end
 end

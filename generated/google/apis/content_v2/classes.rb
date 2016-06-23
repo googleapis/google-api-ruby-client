@@ -493,6 +493,18 @@ module Google
         # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCostRule]
         attr_accessor :cost_rule_tree
       
+        # The maximum number of days in transit. Must be a value between 0 and 250
+        # included. A value of 0 means same day delivery.
+        # Corresponds to the JSON property `maxDaysInTransit`
+        # @return [String]
+        attr_accessor :max_days_in_transit
+      
+        # The minimum number of days in transit. Must be a value between 0 and
+        # maxDaysIntransit included. A value of 0 means same day delivery.
+        # Corresponds to the JSON property `minDaysInTransit`
+        # @return [String]
+        attr_accessor :min_days_in_transit
+      
         # The name of this shipping service.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -512,6 +524,8 @@ module Google
           @active = args[:active] if args.key?(:active)
           @calculation_method = args[:calculation_method] if args.key?(:calculation_method)
           @cost_rule_tree = args[:cost_rule_tree] if args.key?(:cost_rule_tree)
+          @max_days_in_transit = args[:max_days_in_transit] if args.key?(:max_days_in_transit)
+          @min_days_in_transit = args[:min_days_in_transit] if args.key?(:min_days_in_transit)
           @name = args[:name] if args.key?(:name)
           @sale_country = args[:sale_country] if args.key?(:sale_country)
         end

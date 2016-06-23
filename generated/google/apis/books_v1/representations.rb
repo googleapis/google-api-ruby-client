@@ -417,6 +417,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class MoreFromSeries
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -1353,9 +1359,18 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :more_from_authors, as: 'moreFromAuthors', class: Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors, decorator: Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors::Representation
         
+            property :more_from_series, as: 'moreFromSeries', class: Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries, decorator: Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries::Representation
+        
           end
           
           class MoreFromAuthors
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :opted_state, as: 'opted_state'
+            end
+          end
+          
+          class MoreFromSeries
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :opted_state, as: 'opted_state'
@@ -1480,6 +1495,7 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :finsky_offer_type, as: 'finskyOfferType'
+              property :giftable, as: 'giftable'
               property :list_price, as: 'listPrice', class: Google::Apis::BooksV1::Volume::SaleInfo::Offer::ListPrice, decorator: Google::Apis::BooksV1::Volume::SaleInfo::Offer::ListPrice::Representation
           
               property :rental_duration, as: 'rentalDuration', class: Google::Apis::BooksV1::Volume::SaleInfo::Offer::RentalDuration, decorator: Google::Apis::BooksV1::Volume::SaleInfo::Offer::RentalDuration::Representation

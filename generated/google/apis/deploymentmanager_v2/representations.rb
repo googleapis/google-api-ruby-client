@@ -492,6 +492,8 @@ module Google
           property :id, as: 'id'
           property :insert_time, as: 'insertTime'
           property :name, as: 'name'
+          property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerV2::Operation, decorator: Google::Apis::DeploymentmanagerV2::Operation::Representation
+      
           property :self_link, as: 'selfLink'
         end
       end

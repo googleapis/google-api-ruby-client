@@ -1719,6 +1719,7 @@ module Google
           property :fco_rating, as: 'fcoRating'
           property :fmoc_rating, as: 'fmocRating'
           property :fpb_rating, as: 'fpbRating'
+          collection :fpb_rating_reasons, as: 'fpbRatingReasons'
           property :fsk_rating, as: 'fskRating'
           property :grfilm_rating, as: 'grfilmRating'
           property :icaa_rating, as: 'icaaRating'

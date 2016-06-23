@@ -70,7 +70,7 @@ module Google
         # [Optional] The type to convert the value in cells of this column. The values
         # are expected to be encoded using HBase Bytes.toBytes function when using the
         # BINARY encoding value. Following BigQuery types are allowed (case-sensitive) -
-        # BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. 'type' can also be
+        # BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be
         # set at the column family level. However, the setting at this level takes
         # precedence if 'type' is set at both levels.
         # Corresponds to the JSON property `type`
@@ -130,9 +130,9 @@ module Google
         # [Optional] The type to convert the value in cells of this column family. The
         # values are expected to be encoded using HBase Bytes.toBytes function when
         # using the BINARY encoding value. Following BigQuery types are allowed (case-
-        # sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. This can
-        # be overridden for a specific column by listing that column in 'columns' and
-        # specifying a type for it.
+        # sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This
+        # can be overridden for a specific column by listing that column in 'columns'
+        # and specifying a type for it.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1344,6 +1344,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :maximum_billing_tier
       
+        # [Optional] Limits the bytes billed for this job. Queries that will have bytes
+        # billed beyond this limit will fail (without incurring a charge). If
+        # unspecified, this will be set to your project default.
+        # Corresponds to the JSON property `maximumBytesBilled`
+        # @return [String]
+        attr_accessor :maximum_bytes_billed
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -1418,6 +1425,7 @@ module Google
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @flatten_results = args[:flatten_results] if args.key?(:flatten_results)
           @maximum_billing_tier = args[:maximum_billing_tier] if args.key?(:maximum_billing_tier)
+          @maximum_bytes_billed = args[:maximum_bytes_billed] if args.key?(:maximum_bytes_billed)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)

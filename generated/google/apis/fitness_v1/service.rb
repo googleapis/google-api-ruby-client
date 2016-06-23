@@ -22,7 +22,7 @@ module Google
     module FitnessV1
       # Fitness
       #
-      # Google Fit API
+      # Stores and accesses user data in the fitness store from apps on any platform.
       #
       # @example
       #    require 'google/apis/fitness_v1'
@@ -98,7 +98,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete the data source if there are no datapoints associated with it
+        # Deletes the specified data source. The request will fail if the data source
+        # contains any data points.
         # @param [String] user_id
         #   Retrieve a data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
@@ -137,7 +138,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a data source identified by a data stream ID.
+        # Returns the specified data source.
         # @param [String] user_id
         #   Retrieve a data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
@@ -177,8 +178,8 @@ module Google
         end
         
         # Lists all data sources that are visible to the developer, using the OAuth
-        # scopes provided. The list is not exhaustive: the user may have private data
-        # sources that are only visible to other developers or calls using other scopes.
+        # scopes provided. The list is not exhaustive; the user may have private data
+        # sources that are only visible to other developers, or calls using other scopes.
         # @param [String] user_id
         #   List data sources for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
@@ -218,12 +219,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a given data source. It is an error to modify the data source's data
-        # stream ID, data type, type, stream name or device information apart from the
-        # device version. Changing these fields would require a new unique data stream
-        # ID and separate data source.
-        # Data sources are identified by their data stream ID. This method supports
-        # patch semantics.
+        # Updates the specified data source. The dataStreamId, dataType, type,
+        # dataStreamName, and device properties with the exception of version, cannot be
+        # modified.
+        # Data sources are identified by their dataStreamId. This method supports patch
+        # semantics.
         # @param [String] user_id
         #   Update the data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
@@ -265,11 +265,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a given data source. It is an error to modify the data source's data
-        # stream ID, data type, type, stream name or device information apart from the
-        # device version. Changing these fields would require a new unique data stream
-        # ID and separate data source.
-        # Data sources are identified by their data stream ID.
+        # Updates the specified data source. The dataStreamId, dataType, type,
+        # dataStreamName, and device properties with the exception of version, cannot be
+        # modified.
+        # Data sources are identified by their dataStreamId.
         # @param [String] user_id
         #   Update the data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.

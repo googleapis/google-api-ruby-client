@@ -123,7 +123,9 @@ module Google
         # @return [Google::Apis::StorageV1::Bucket::Versioning]
         attr_accessor :versioning
       
-        # The bucket's website configuration.
+        # The bucket's website configuration, controlling how the service behaves when
+        # accessing bucket contents as a web site. See the Static Website Examples for
+        # more information.
         # Corresponds to the JSON property `website`
         # @return [Google::Apis::StorageV1::Bucket::Website]
         attr_accessor :website
@@ -377,17 +379,23 @@ module Google
           end
         end
         
-        # The bucket's website configuration.
+        # The bucket's website configuration, controlling how the service behaves when
+        # accessing bucket contents as a web site. See the Static Website Examples for
+        # more information.
         class Website
           include Google::Apis::Core::Hashable
         
-          # Behaves as the bucket's directory index where missing objects are treated as
-          # potential directories.
+          # If the requested object path is missing, the service will ensure the path has
+          # a trailing '/', append this suffix, and attempt to retrieve the resulting
+          # object. This allows the creation of index.html objects to represent directory
+          # pages.
           # Corresponds to the JSON property `mainPageSuffix`
           # @return [String]
           attr_accessor :main_page_suffix
         
-          # The custom object to return when a requested resource is not found.
+          # If the requested object path is missing, and any mainPageSuffix object is
+          # missing, if applicable, the service will return the named object from this
+          # bucket as the content for a 404 Not Found result.
           # Corresponds to the JSON property `notFoundPage`
           # @return [String]
           attr_accessor :not_found_page

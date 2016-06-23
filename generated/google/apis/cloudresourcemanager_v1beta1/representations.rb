@@ -247,11 +247,13 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :organization_id, as: 'organizationId'
           property :display_name, as: 'displayName'
           property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
       
           property :creation_time, as: 'creationTime'
+          property :lifecycle_state, as: 'lifecycleState'
         end
       end
       

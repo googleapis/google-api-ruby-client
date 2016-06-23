@@ -1494,18 +1494,19 @@ module Google
         # @return [String]
         attr_accessor :availability
       
-        # For VMEngines instances, the name of GCE VM where the instance lives. @
-        # OutputOnly
+        # For VMEngines instances, the name of the Compute Engine VM where the instance
+        # lives. @OutputOnly
         # Corresponds to the JSON property `vmName`
         # @return [String]
         attr_accessor :vm_name
       
-        # For VMEngines instances, the zone where the GCE VM is located. @OutputOnly
+        # For VMEngines instances, the zone where the Compute Engine VM is located. @
+        # OutputOnly
         # Corresponds to the JSON property `vmZoneName`
         # @return [String]
         attr_accessor :vm_zone_name
       
-        # For VMEngines instances, the GCE VM ID of the instance. @OutputOnly
+        # For VMEngines instances, the Compute Engine VM ID of the instance. @OutputOnly
         # Corresponds to the JSON property `vmId`
         # @return [String]
         attr_accessor :vm_id
@@ -1540,8 +1541,8 @@ module Google
         # @return [String]
         attr_accessor :memory_usage
       
-        # For VMEngines instances, the status of GCE VM where the instance lives. @
-        # OutputOnly
+        # For VMEngines instances, the status of the Compute Engine VM where the
+        # instance lives. @OutputOnly
         # Corresponds to the JSON property `vmStatus`
         # @return [String]
         attr_accessor :vm_status
@@ -1672,6 +1673,65 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @user = args[:user] if args.key?(:user)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation.
+      class OperationMetadataV1
+        include Google::Apis::Core::Hashable
+      
+        # API method name that initiated the operation. Example: "google.appengine.v1.
+        # Version.CreateVersion". @OutputOnly
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Timestamp that this operation was received. @OutputOnly
+        # Corresponds to the JSON property `insertTime`
+        # @return [String]
+        attr_accessor :insert_time
+      
+        # Timestamp that this operation was completed. (Not present if the operation is
+        # still in progress.) @OutputOnly
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The user who requested this operation. @OutputOnly
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Resource that this operation is acting on. Example: "apps/myapp/services/
+        # default". @OutputOnly
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @user = args[:user] if args.key?(:user)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # Metadata for the given google.cloud.location.Location.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

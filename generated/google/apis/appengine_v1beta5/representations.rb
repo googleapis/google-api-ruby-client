@@ -232,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -629,6 +641,23 @@ module Google
           property :end_time, as: 'endTime'
           property :user, as: 'user'
           property :target, as: 'target'
+        end
+      end
+      
+      class OperationMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
