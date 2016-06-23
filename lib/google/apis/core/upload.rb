@@ -17,8 +17,14 @@ require 'google/apis/core/http_command'
 require 'google/apis/core/api_command'
 require 'google/apis/errors'
 require 'addressable/uri'
-require 'mime-types'
 require 'tempfile'
+begin
+  require 'mime/types/columnar'
+rescue LoadError
+  # Temporary until next major bump when we can tighten
+  # dependency to mime-types >-=3.0
+  require 'mime-types'
+end
 
 module Google
   module Apis
