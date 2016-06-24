@@ -1,3 +1,9 @@
+# 0.9.10
+* Add datastore v1beta3, regenerate APIs
+* Reduce memory footprint used by mimetypes library
+* Fix bug with pagination when items collection is nil
+
+
 # 0.9.9
 * Add monitoring v3, regenerate APIs
 * Add samples for sheets, bigquery
