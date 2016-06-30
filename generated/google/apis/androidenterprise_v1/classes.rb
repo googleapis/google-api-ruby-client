@@ -22,6 +22,26 @@ module Google
   module Apis
     module AndroidenterpriseV1
       
+      # This represents an enterprise administrator who can manage the enterprise in
+      # the Google Play for Work Store.
+      class Administrator
+        include Google::Apis::Core::Hashable
+      
+        # The administrator's email address.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # Represents the list of app restrictions available to be pre-configured for the
       # product.
       class AppRestrictionsSchema
@@ -46,6 +66,28 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
+        end
+      end
+      
+      # An event generated when a new app version is uploaded to Google Play and its
+      # app restrictions schema changed. To fetch the app restrictions schema for an
+      # app, use Products.getAppRestrictionsSchema on the EMM API.
+      class AppRestrictionsSchemaChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # The id of the product (e.g. "app:com.google.android.gm") for which the app
+        # restriction schema changed. This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -152,6 +194,29 @@ module Google
         end
       end
       
+      # An event generated when a new version of an app is uploaded to Google Play.
+      # Notifications are sent for new public versions only: alpha, beta, or canary
+      # versions do not generate this event. To fetch up-to-date version history for
+      # an app, use Products.Get on the EMM API.
+      class AppUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # The id of the product (e.g. "app:com.google.android.gm") that was updated.
+        # This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # This represents a single version of the app.
       class AppVersion
         include Google::Apis::Core::Hashable
@@ -203,6 +268,35 @@ module Google
         def update!(**args)
           @approval_url = args[:approval_url] if args.key?(:approval_url)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # An AuthenticationToken is used by the EMM's device policy client on a device
+      # to provision the given EMM-managed user on that device.
+      class AuthenticationToken
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#authenticationToken".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The authentication token to be passed to the device policy client on the
+        # device where it can be used to provision the account for which this token was
+        # generated.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
@@ -417,32 +511,30 @@ module Google
         end
       end
       
-      # An enterprise resource represents a binding between an organization and their
-      # EMM.
-      # To create an enterprise, an admin of the enterprise must first go through a
-      # Play for Work sign-up flow. At the end of this the admin will be presented
-      # with a token (a short opaque alphanumeric string). They must then present this
-      # to the EMM, who then supplies it to the enroll method. Until this is done the
-      # EMM will not have any access to the enterprise.
-      # After calling enroll the EMM should call setAccount to specify the service
-      # account that will be allowed to act on behalf of the enterprise, which will be
-      # required for access to the enterprise's data through this API. Only one call
-      # of setAccount is allowed for a given enterprise; the only way to change the
-      # account later is to unenroll the enterprise and enroll it again (obtaining a
-      # new token).
-      # The EMM can unenroll an enterprise in order to sever the binding between them.
-      # Re-enrolling an enterprise is possible, but requires a new token to be
-      # retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll does)
-      # , not the enterprise's. Enterprises.unenroll can only be used for enterprises
-      # that were previously enrolled with the enroll call. Any enterprises that were
-      # enrolled using the (deprecated) Enterprises.insert call must be unenrolled
-      # with Enterprises.delete and can then be re-enrolled using the Enterprises.
-      # enroll call.
-      # The ID for an enterprise is an opaque string. It is returned by insert and
-      # enroll and can also be retrieved if the enterprise's primary domain is known
-      # using the list method.
+      # An enterprise resource represents the binding between an EMM and a specific
+      # organization.
+      # That binding can be instantiated in one of two different ways using this API
+      # as follows:
+      # 
+      # - For Google managed domain customers, the process involves using Enterprises.
+      # enroll and Enterprises.setAccount (in conjunction with artifacts obtained from
+      # the Admin console and the Google Developers console) and submitted to the EMM
+      # through a more-or-less manual process.
+      # - An alternative process that takes advantage of Google-provided mechanisms (
+      # Android for Work Sign-up UI) that expedite the process involves Enterprises.
+      # generateSignupUrl, Enterprises.completeSignup, Enterprises.getServiceAccount  (
+      # optional), and Enterprises.setAccount.
+      # The overall processes are very different and involve different identity models,
+      # but as an EMM, you can support either or both approaches in your EMM console.
+      # See EMM Developer?s Guide for details.
       class Enterprise
         include Google::Apis::Core::Hashable
+      
+        # Administrators of the enterprise. This is only supported for enterprises
+        # created via the EMM-initiated flow.
+        # Corresponds to the JSON property `administrator`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::Administrator>]
+        attr_accessor :administrator
       
         # The unique ID for the enterprise.
         # Corresponds to the JSON property `id`
@@ -471,6 +563,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @administrator = args[:administrator] if args.key?(:administrator)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -831,6 +924,50 @@ module Google
         end
       end
       
+      # An event generated when an app installation failed on a device
+      class InstallFailureEvent
+        include Google::Apis::Core::Hashable
+      
+        # The Android ID of the device. This field will always be present.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Additional details on the failure if applicable.
+        # Corresponds to the JSON property `failureDetails`
+        # @return [String]
+        attr_accessor :failure_details
+      
+        # The reason for the installation failure. This field will always be present.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # The id of the product (e.g. "app:com.google.android.gm") for which the install
+        # failure event occured. This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The ID of the user. This field will always be present.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @failure_details = args[:failure_details] if args.key?(:failure_details)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # The install resources for the device.
       class ListInstallsResponse
         include Google::Apis::Core::Hashable
@@ -880,6 +1017,145 @@ module Google
         def update!(**args)
           @locale = args[:locale] if args.key?(:locale)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # An event generated when new permissions are added to an app.
+      class NewPermissionsEvent
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions that the enterprise admin has already approved for this
+        # application. Use Permissions.Get on the EMM API to retrieve details about
+        # these permissions.
+        # Corresponds to the JSON property `approvedPermissions`
+        # @return [Array<String>]
+        attr_accessor :approved_permissions
+      
+        # The id of the product (e.g. "app:com.google.android.gm") for which new
+        # permissions were added. This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The set of permissions that the app is currently requesting. Use Permissions.
+        # Get on the EMM API to retrieve details about these permissions.
+        # Corresponds to the JSON property `requestedPermissions`
+        # @return [Array<String>]
+        attr_accessor :requested_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approved_permissions = args[:approved_permissions] if args.key?(:approved_permissions)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @requested_permissions = args[:requested_permissions] if args.key?(:requested_permissions)
+        end
+      end
+      
+      # A notification of one event relating to an enterprise.
+      class Notification
+        include Google::Apis::Core::Hashable
+      
+        # An event generated when a new app version is uploaded to Google Play and its
+        # app restrictions schema changed. To fetch the app restrictions schema for an
+        # app, use Products.getAppRestrictionsSchema on the EMM API.
+        # Corresponds to the JSON property `appRestrictionsSchemaChangeEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaChangeEvent]
+        attr_accessor :app_restrictions_schema_change_event
+      
+        # An event generated when a new version of an app is uploaded to Google Play.
+        # Notifications are sent for new public versions only: alpha, beta, or canary
+        # versions do not generate this event. To fetch up-to-date version history for
+        # an app, use Products.Get on the EMM API.
+        # Corresponds to the JSON property `appUpdateEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::AppUpdateEvent]
+        attr_accessor :app_update_event
+      
+        # The ID of the enterprise for which the notification is sent. This will always
+        # be present.
+        # Corresponds to the JSON property `enterpriseId`
+        # @return [String]
+        attr_accessor :enterprise_id
+      
+        # An event generated when an app installation failed on a device
+        # Corresponds to the JSON property `installFailureEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::InstallFailureEvent]
+        attr_accessor :install_failure_event
+      
+        # An event generated when new permissions are added to an app.
+        # Corresponds to the JSON property `newPermissionsEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::NewPermissionsEvent]
+        attr_accessor :new_permissions_event
+      
+        # An event generated when a product's approval status is changed.
+        # Corresponds to the JSON property `productApprovalEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::ProductApprovalEvent]
+        attr_accessor :product_approval_event
+      
+        # An event generated whenever a product's availability changes.
+        # Corresponds to the JSON property `productAvailabilityChangeEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent]
+        attr_accessor :product_availability_change_event
+      
+        # The time when the notification was published in milliseconds since 1970-01-
+        # 01T00:00:00Z. This will always be present.
+        # Corresponds to the JSON property `timestampMillis`
+        # @return [String]
+        attr_accessor :timestamp_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_restrictions_schema_change_event = args[:app_restrictions_schema_change_event] if args.key?(:app_restrictions_schema_change_event)
+          @app_update_event = args[:app_update_event] if args.key?(:app_update_event)
+          @enterprise_id = args[:enterprise_id] if args.key?(:enterprise_id)
+          @install_failure_event = args[:install_failure_event] if args.key?(:install_failure_event)
+          @new_permissions_event = args[:new_permissions_event] if args.key?(:new_permissions_event)
+          @product_approval_event = args[:product_approval_event] if args.key?(:product_approval_event)
+          @product_availability_change_event = args[:product_availability_change_event] if args.key?(:product_availability_change_event)
+          @timestamp_millis = args[:timestamp_millis] if args.key?(:timestamp_millis)
+        end
+      end
+      
+      # A resource returned by the PullNotificationSet API, which contains a
+      # collection of notifications for enterprises associated with the service
+      # account authenticated for the request.
+      class NotificationSet
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#notificationSet".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The notifications received, or empty if no notifications are present.
+        # Corresponds to the JSON property `notification`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::Notification>]
+        attr_accessor :notification
+      
+        # The notification set ID, required to mark the notification as received with
+        # the Enterprises.AcknowledgeNotification API. This will be omitted if no
+        # notifications are present.
+        # Corresponds to the JSON property `notificationSetId`
+        # @return [String]
+        attr_accessor :notification_set_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @notification = args[:notification] if args.key?(:notification)
+          @notification_set_id = args[:notification_set_id] if args.key?(:notification_set_id)
         end
       end
       
@@ -1062,6 +1338,59 @@ module Google
         end
       end
       
+      # An event generated when a product's approval status is changed.
+      class ProductApprovalEvent
+        include Google::Apis::Core::Hashable
+      
+        # Whether the product was approved or unapproved. This field will always be
+        # present.
+        # Corresponds to the JSON property `approved`
+        # @return [String]
+        attr_accessor :approved
+      
+        # The id of the product (e.g. "app:com.google.android.gm") for which the
+        # approval status has changed. This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approved = args[:approved] if args.key?(:approved)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # An event generated whenever a product's availability changes.
+      class ProductAvailabilityChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # The new state of the product. This field will always be present.
+        # Corresponds to the JSON property `availabilityStatus`
+        # @return [String]
+        attr_accessor :availability_status
+      
+        # The id of the product (e.g. "app:com.google.android.gm") for which the product
+        # availability changed. This field will always be present.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_status = args[:availability_status] if args.key?(:availability_status)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # A product permissions resource represents the set of permissions required by a
       # specific app and whether or not they have been accepted by an enterprise admin.
       # The API can be used to read the set of permissions, and also to update the set
@@ -1231,6 +1560,134 @@ module Google
           @page_info = args[:page_info] if args.key?(:page_info)
           @product = args[:product] if args.key?(:product)
           @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+        end
+      end
+      
+      # A service account identity, including the name and credentials that can be
+      # used to authenticate as the service account.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Credentials that can be used to authenticate as a service account.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::AndroidenterpriseV1::ServiceAccountKey]
+        attr_accessor :key
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#serviceAccount".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The account name of the service account, in the form of an email address.
+        # Assigned by the server.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Credentials that can be used to authenticate as a service account.
+      class ServiceAccountKey
+        include Google::Apis::Core::Hashable
+      
+        # The body of the private key credentials file, in string format. This is only
+        # populated when the ServiceAccountKey is created, and is not stored by Google.
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        # An opaque, unique identifier for this ServiceAccountKey. Assigned by the
+        # server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#serviceAccountKey".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The file format of the generated key data.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class ServiceAccountKeysListResponse
+        include Google::Apis::Core::Hashable
+      
+        # The service account credentials.
+        # Corresponds to the JSON property `serviceAccountKey`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ServiceAccountKey>]
+        attr_accessor :service_account_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_key = args[:service_account_key] if args.key?(:service_account_key)
+        end
+      end
+      
+      # A resource returned by the GenerateSignupUrl API, which contains the Signup
+      # URL and Completion Token.
+      class SignupInfo
+        include Google::Apis::Core::Hashable
+      
+        # An opaque token that will be required, along with the Enterprise Token, for
+        # obtaining the enterprise resource from CompleteSignup.
+        # Corresponds to the JSON property `completionToken`
+        # @return [String]
+        attr_accessor :completion_token
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#signupInfo".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A URL under which the Admin can sign up for an enterprise. The page pointed to
+        # cannot be rendered in an iframe.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_token = args[:completion_token] if args.key?(:completion_token)
+          @kind = args[:kind] if args.key?(:kind)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1441,16 +1898,43 @@ module Google
         end
       end
       
-      # A user resource represents an individual user within the enterprise's domain.
-      # Note that each user is associated with a Google account based on the user's
-      # corporate email address (which must be in one of the enterprise's domains). As
-      # part of installing the EMM's DPC app to manage a device the Google account
-      # must be provisioned to the device, and so the user resource must be created
-      # before that. This can be done using the Google Admin SDK Directory API.
-      # The ID for a user is an opaque string. It can be retrieved using the list
-      # method queried by the user's primary email address.
+      # A user resource represents an account associated with an enterprise. The
+      # account may be specific to a device or to an individual user (who can then use
+      # the account across multiple devices). The account may provide access to Google
+      # Play for Work only, or to other Google services, depending on the identity
+      # model used:
+      # - Google managed domain identity model requires synchronization to Google
+      # account sources (via primaryEmail).
+      # - Android for Work accounts identity model provides a dynamic means for
+      # enterprises to create user or device accounts as needed. These accounts
+      # provide access to Google Play for Work only.
       class User
         include Google::Apis::Core::Hashable
+      
+        # The id as used by the EMM for this user, e.g. "user342" or "asset#44418". Will
+        # always be set for EMM managed users and not set for Google managed users. For
+        # privacy sensitive deployments it should not be possible to identify the
+        # individual with this identifier.
+        # Corresponds to the JSON property `accountIdentifier`
+        # @return [String]
+        attr_accessor :account_identifier
+      
+        # The type of account that this user represents. A "deviceAccount" is specific
+        # to a single device while a "userAccount" represents a traditional user account,
+        # i.e. one that can be installed on multiple devices. "googleManaged" users
+        # will always be a "userAccount" but "emmManaged" users can be either a "
+        # userAccount" or a "deviceAccount".
+        # Corresponds to the JSON property `accountType`
+        # @return [String]
+        attr_accessor :account_type
+      
+        # The user's name as it is to be presented in user interfaces, e.g. "John". Can
+        # optionally be set for EMM managed users and will not be set for Google managed
+        # users. For privacy sensitive deployments this should be left unset or set to
+        # something generic.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # The unique ID for the user.
         # Corresponds to the JSON property `id`
@@ -1463,7 +1947,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The user's primary email address, e.g. "jsmith@example.com".
+        # The entity that manages the user. With "googleManaged" users, the source of
+        # truth is Google so EMMs have to make sure a Google account exists for the user.
+        # With "emmManaged" users, the EMM is in charge.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
+        # The user's primary email address, e.g. "jsmith@example.com". Will always be
+        # set for Google managed users and not set for EMM managed users.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
@@ -1474,8 +1966,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_identifier = args[:account_identifier] if args.key?(:account_identifier)
+          @account_type = args[:account_type] if args.key?(:account_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @management_type = args[:management_type] if args.key?(:management_type)
           @primary_email = args[:primary_email] if args.key?(:primary_email)
         end
       end

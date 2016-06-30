@@ -484,7 +484,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Gce
+      class ComputeEngine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1306,10 +1306,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project_id, as: 'projectId'
           property :create_time, as: 'createTime'
+          property :start_time, as: 'startTime'
           property :end_time, as: 'endTime'
           hash :request, as: 'request'
           collection :events, as: 'events', class: Google::Apis::GenomicsV1::OperationEvent, decorator: Google::Apis::GenomicsV1::OperationEvent::Representation
       
+          property :client_id, as: 'clientId'
           hash :runtime_metadata, as: 'runtimeMetadata'
         end
       end
@@ -1317,6 +1319,8 @@ module Google
       class OperationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+          property :end_time, as: 'endTime'
           property :description, as: 'description'
         end
       end
@@ -1324,12 +1328,12 @@ module Google
       class RuntimeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gce, as: 'gce', class: Google::Apis::GenomicsV1::Gce, decorator: Google::Apis::GenomicsV1::Gce::Representation
+          property :compute_engine, as: 'computeEngine', class: Google::Apis::GenomicsV1::ComputeEngine, decorator: Google::Apis::GenomicsV1::ComputeEngine::Representation
       
         end
       end
       
-      class Gce
+      class ComputeEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_name, as: 'instanceName'

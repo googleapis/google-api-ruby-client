@@ -22,7 +22,19 @@ module Google
   module Apis
     module AndroidenterpriseV1
       
+      class Administrator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppRestrictionsSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppRestrictionsSchemaChangeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppUpdateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +65,12 @@ module Google
       end
       
       class ApprovalUrlInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthenticationToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstallFailureEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +185,24 @@ module Google
       end
       
       class LocalizedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NewPermissionsEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Notification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +221,18 @@ module Google
       end
       
       class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductApprovalEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductAvailabilityChangeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +269,30 @@ module Google
       end
       
       class ProductsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAccountKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAccountKeysListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignupInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,12 +352,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Administrator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
       class AppRestrictionsSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :restrictions, as: 'restrictions', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction::Representation
       
+        end
+      end
+      
+      class AppRestrictionsSchemaChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
         end
       end
       
@@ -302,6 +400,13 @@ module Google
         end
       end
       
+      class AppUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+        end
+      end
+      
       class AppVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -315,6 +420,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approval_url, as: 'approvalUrl'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class AuthenticationToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :token, as: 'token'
         end
       end
       
@@ -376,6 +489,8 @@ module Google
       class Enterprise
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :administrator, as: 'administrator', class: Google::Apis::AndroidenterpriseV1::Administrator, decorator: Google::Apis::AndroidenterpriseV1::Administrator::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -466,6 +581,17 @@ module Google
         end
       end
       
+      class InstallFailureEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :failure_details, as: 'failureDetails'
+          property :failure_reason, as: 'failureReason'
+          property :product_id, as: 'productId'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class ListInstallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -480,6 +606,45 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locale, as: 'locale'
           property :text, as: 'text'
+        end
+      end
+      
+      class NewPermissionsEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_permissions, as: 'approvedPermissions'
+          property :product_id, as: 'productId'
+          collection :requested_permissions, as: 'requestedPermissions'
+        end
+      end
+      
+      class Notification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_restrictions_schema_change_event, as: 'appRestrictionsSchemaChangeEvent', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaChangeEvent, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaChangeEvent::Representation
+      
+          property :app_update_event, as: 'appUpdateEvent', class: Google::Apis::AndroidenterpriseV1::AppUpdateEvent, decorator: Google::Apis::AndroidenterpriseV1::AppUpdateEvent::Representation
+      
+          property :enterprise_id, as: 'enterpriseId'
+          property :install_failure_event, as: 'installFailureEvent', class: Google::Apis::AndroidenterpriseV1::InstallFailureEvent, decorator: Google::Apis::AndroidenterpriseV1::InstallFailureEvent::Representation
+      
+          property :new_permissions_event, as: 'newPermissionsEvent', class: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent, decorator: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent::Representation
+      
+          property :product_approval_event, as: 'productApprovalEvent', class: Google::Apis::AndroidenterpriseV1::ProductApprovalEvent, decorator: Google::Apis::AndroidenterpriseV1::ProductApprovalEvent::Representation
+      
+          property :product_availability_change_event, as: 'productAvailabilityChangeEvent', class: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent, decorator: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent::Representation
+      
+          property :timestamp_millis, as: 'timestampMillis'
+        end
+      end
+      
+      class NotificationSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :notification, as: 'notification', class: Google::Apis::AndroidenterpriseV1::Notification, decorator: Google::Apis::AndroidenterpriseV1::Notification::Representation
+      
+          property :notification_set_id, as: 'notificationSetId'
         end
       end
       
@@ -518,6 +683,22 @@ module Google
           property :small_icon_url, as: 'smallIconUrl'
           property :title, as: 'title'
           property :work_details_url, as: 'workDetailsUrl'
+        end
+      end
+      
+      class ProductApprovalEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approved, as: 'approved'
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class ProductAvailabilityChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_status, as: 'availabilityStatus'
+          property :product_id, as: 'productId'
         end
       end
       
@@ -572,6 +753,43 @@ module Google
       
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidenterpriseV1::TokenPagination, decorator: Google::Apis::AndroidenterpriseV1::TokenPagination::Representation
       
+        end
+      end
+      
+      class ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key', class: Google::Apis::AndroidenterpriseV1::ServiceAccountKey, decorator: Google::Apis::AndroidenterpriseV1::ServiceAccountKey::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ServiceAccountKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ServiceAccountKeysListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_account_key, as: 'serviceAccountKey', class: Google::Apis::AndroidenterpriseV1::ServiceAccountKey, decorator: Google::Apis::AndroidenterpriseV1::ServiceAccountKey::Representation
+      
+        end
+      end
+      
+      class SignupInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_token, as: 'completionToken'
+          property :kind, as: 'kind'
+          property :url, as: 'url'
         end
       end
       
@@ -635,8 +853,12 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_identifier, as: 'accountIdentifier'
+          property :account_type, as: 'accountType'
+          property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :management_type, as: 'managementType'
           property :primary_email, as: 'primaryEmail'
         end
       end

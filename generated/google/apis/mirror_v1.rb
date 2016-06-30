@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Mirror API
     #
-    # API for interacting with Glass users via the timeline.
+    # Interacts with Glass users via the timeline.
     #
     # @see https://developers.google.com/glass
     module MirrorV1
       VERSION = 'V1'
-      REVISION = '20151206'
+      REVISION = '20160616'
 
       # View your location
       AUTH_GLASS_LOCATION = 'https://www.googleapis.com/auth/glass.location'

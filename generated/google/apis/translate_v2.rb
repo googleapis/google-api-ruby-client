@@ -20,12 +20,12 @@ module Google
   module Apis
     # Translate API
     #
-    # Lets you translate text from one language to another
+    # Translates text from one language to another.
     #
     # @see https://developers.google.com/translate/v2/using_rest
     module TranslateV2
       VERSION = 'V2'
-      REVISION = '20160217'
+      REVISION = '20160627'
     end
   end
 end

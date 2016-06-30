@@ -2090,7 +2090,7 @@ module Google
         
         # Return a list of books in My Library.
         # @param [Array<String>, String] acquire_method
-        #   How the book was aquired
+        #   How the book was acquired
         # @param [String] country
         #   ISO-3166-1 code to override the IP-based location.
         # @param [String] locale

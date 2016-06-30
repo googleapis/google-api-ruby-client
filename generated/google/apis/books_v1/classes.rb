@@ -3561,6 +3561,11 @@ module Google
           # @return [Fixnum]
           attr_accessor :page_count
         
+          # A top-level summary of the panelization info in this volume.
+          # Corresponds to the JSON property `panelizationSummary`
+          # @return [Google::Apis::BooksV1::Volume::VolumeInfo::PanelizationSummary]
+          attr_accessor :panelization_summary
+        
           # URL to preview this volume on the Google Books site.
           # Corresponds to the JSON property `previewLink`
           # @return [String]
@@ -3637,6 +3642,7 @@ module Google
             @main_category = args[:main_category] if args.key?(:main_category)
             @maturity_rating = args[:maturity_rating] if args.key?(:maturity_rating)
             @page_count = args[:page_count] if args.key?(:page_count)
+            @panelization_summary = args[:panelization_summary] if args.key?(:panelization_summary)
             @preview_link = args[:preview_link] if args.key?(:preview_link)
             @print_type = args[:print_type] if args.key?(:print_type)
             @printed_page_count = args[:printed_page_count] if args.key?(:printed_page_count)
@@ -3753,6 +3759,45 @@ module Google
             def update!(**args)
               @identifier = args[:identifier] if args.key?(:identifier)
               @type = args[:type] if args.key?(:type)
+            end
+          end
+          
+          # A top-level summary of the panelization info in this volume.
+          class PanelizationSummary
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `containsEpubBubbles`
+            # @return [Boolean]
+            attr_accessor :contains_epub_bubbles
+            alias_method :contains_epub_bubbles?, :contains_epub_bubbles
+          
+            # 
+            # Corresponds to the JSON property `containsImageBubbles`
+            # @return [Boolean]
+            attr_accessor :contains_image_bubbles
+            alias_method :contains_image_bubbles?, :contains_image_bubbles
+          
+            # 
+            # Corresponds to the JSON property `epubBubbleVersion`
+            # @return [String]
+            attr_accessor :epub_bubble_version
+          
+            # 
+            # Corresponds to the JSON property `imageBubbleVersion`
+            # @return [String]
+            attr_accessor :image_bubble_version
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @contains_epub_bubbles = args[:contains_epub_bubbles] if args.key?(:contains_epub_bubbles)
+              @contains_image_bubbles = args[:contains_image_bubbles] if args.key?(:contains_image_bubbles)
+              @epub_bubble_version = args[:epub_bubble_version] if args.key?(:epub_bubble_version)
+              @image_bubble_version = args[:image_bubble_version] if args.key?(:image_bubble_version)
             end
           end
         end

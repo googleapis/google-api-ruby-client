@@ -22,7 +22,7 @@ module Google
     module MirrorV1
       # Google Mirror API
       #
-      # API for interacting with Glass users via the timeline.
+      # Interacts with Glass users via the timeline.
       #
       # @example
       #    require 'google/apis/mirror_v1'

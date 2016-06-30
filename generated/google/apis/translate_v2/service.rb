@@ -22,7 +22,7 @@ module Google
     module TranslateV2
       # Translate API
       #
-      # Lets you translate text from one language to another
+      # Translates text from one language to another.
       #
       # @example
       #    require 'google/apis/translate_v2'

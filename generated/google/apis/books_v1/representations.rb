@@ -567,6 +567,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class PanelizationSummary
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -1634,6 +1640,8 @@ module Google
             property :main_category, as: 'mainCategory'
             property :maturity_rating, as: 'maturityRating'
             property :page_count, as: 'pageCount'
+            property :panelization_summary, as: 'panelizationSummary', class: Google::Apis::BooksV1::Volume::VolumeInfo::PanelizationSummary, decorator: Google::Apis::BooksV1::Volume::VolumeInfo::PanelizationSummary::Representation
+        
             property :preview_link, as: 'previewLink'
             property :print_type, as: 'printType'
             property :printed_page_count, as: 'printedPageCount'
@@ -1674,6 +1682,16 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :identifier, as: 'identifier'
               property :type, as: 'type'
+            end
+          end
+          
+          class PanelizationSummary
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :contains_epub_bubbles, as: 'containsEpubBubbles'
+              property :contains_image_bubbles, as: 'containsImageBubbles'
+              property :epub_bubble_version, as: 'epubBubbleVersion'
+              property :image_bubble_version, as: 'imageBubbleVersion'
             end
           end
         end

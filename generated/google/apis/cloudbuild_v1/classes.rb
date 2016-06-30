@@ -137,6 +137,33 @@ module Google
         end
       end
       
+      # Provenance of the source. Ways to find the original source, or verify that
+      # some source was used for this build.
+      class SourceProvenance
+        include Google::Apis::Core::Hashable
+      
+        # Hash(es) of the build source, which can be used to verify that the original
+        # source integrity was maintained in the build. Note that FileHashes will
+        # only be populated if BuildOptions has requested a SourceProvenanceHash.
+        # The keys to this map are file paths used as build source and the values
+        # contain the hash values for those files.
+        # If the build source came in a single package such as a gzipped tarfile
+        # (.tar.gz), the FileHash will be for the single path to that file.
+        # @OutputOnly
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Hash<String,Google::Apis::CloudbuildV1::FileHashes>]
+        attr_accessor :file_hashes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -260,6 +287,31 @@ module Google
         end
       end
       
+      # Container message for hash values.
+      class HashProp
+        include Google::Apis::Core::Hashable
+      
+        # The hash value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The type of hash that was performed.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # StorageSource describes the location of the source in an archive file in
       # Google Cloud Storage.
       class StorageSource
@@ -330,6 +382,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Provenance of the source. Ways to find the original source, or verify that
+        # some source was used for this build.
+        # Corresponds to the JSON property `sourceProvenance`
+        # @return [Google::Apis::CloudbuildV1::SourceProvenance]
+        attr_accessor :source_provenance
+      
         # Results describes the artifacts created by the build pipeline.
         # Corresponds to the JSON property `results`
         # @return [Google::Apis::CloudbuildV1::Results]
@@ -340,6 +398,11 @@ module Google
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
+      
+        # Optional arguments to enable specific features of builds.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::CloudbuildV1::BuildOptions]
+        attr_accessor :options
       
         # Time at which execution of the build was finished.
         # @OutputOnly
@@ -414,8 +477,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
           @results = args[:results] if args.key?(:results)
           @status = args[:status] if args.key?(:status)
+          @options = args[:options] if args.key?(:options)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @timeout = args[:timeout] if args.key?(:timeout)
           @steps = args[:steps] if args.key?(:steps)
@@ -439,6 +504,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Container message for hashes of byte content of files, used in
+      # SourceProvenance messages to verify integrity of source input to the build.
+      class FileHashes
+        include Google::Apis::Core::Hashable
+      
+        # Collection of file hashes.
+        # Corresponds to the JSON property `fileHash`
+        # @return [Array<Google::Apis::CloudbuildV1::HashProp>]
+        attr_accessor :file_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hash = args[:file_hash] if args.key?(:file_hash)
         end
       end
       
@@ -503,6 +588,31 @@ module Google
           @dir = args[:dir] if args.key?(:dir)
           @name = args[:name] if args.key?(:name)
           @env = args[:env] if args.key?(:env)
+        end
+      end
+      
+      # Optional arguments to enable specific features of builds.
+      class BuildOptions
+        include Google::Apis::Core::Hashable
+      
+        # Requested hash for SourceProvenance.
+        # Corresponds to the JSON property `sourceProvenanceHash`
+        # @return [Array<String>]
+        attr_accessor :source_provenance_hash
+      
+        # Options for a verifiable build with details uploaded to the Analysis API.
+        # Corresponds to the JSON property `requestedVerifyOption`
+        # @return [String]
+        attr_accessor :requested_verify_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
+          @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
         end
       end
       

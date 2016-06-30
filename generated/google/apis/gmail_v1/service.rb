@@ -300,6 +300,10 @@ module Google
         #   Maximum number of drafts to return.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
+        # @param [String] q
+        #   Only return draft messages matching the specified query. Supports the same
+        #   query format as the Gmail search box. For example, "from:someuser@example.com
+        #   rfc822msgid: is:unread".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -321,7 +325,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_drafts(user_id, include_spam_trash: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_drafts(user_id, include_spam_trash: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{userId}/drafts', options)
           command.response_representation = Google::Apis::GmailV1::ListDraftsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListDraftsResponse
@@ -329,6 +333,7 @@ module Google
           command.query['includeSpamTrash'] = include_spam_trash unless include_spam_trash.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['q'] = q unless q.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

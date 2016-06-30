@@ -312,7 +312,7 @@ module Google
         # MonitoredResourceDescriptor for `"gce_instance"` has labels
         # `"instance_id"` and `"zone"`:
         # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "my-instance",
+        # "labels": ` "instance_id": "12345678901234",
         # "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
@@ -478,17 +478,17 @@ module Google
       class Exponential
         include Google::Apis::Core::Hashable
       
-        # Must be greater than 1
+        # Must be greater than 1.
         # Corresponds to the JSON property `growthFactor`
         # @return [Float]
         attr_accessor :growth_factor
       
-        # Must be greater than 0
+        # Must be greater than 0.
         # Corresponds to the JSON property `scale`
         # @return [Float]
         attr_accessor :scale
       
-        # must be greater than 0
+        # Must be greater than 0.
         # Corresponds to the JSON property `numFiniteBuckets`
         # @return [Fixnum]
         attr_accessor :num_finite_buckets
@@ -769,7 +769,7 @@ module Google
       # MonitoredResourceDescriptor for `"gce_instance"` has labels
       # `"instance_id"` and `"zone"`:
       # ` "type": "gce_instance",
-      # "labels": ` "instance_id": "my-instance",
+      # "labels": ` "instance_id": "12345678901234",
       # "zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
@@ -862,6 +862,7 @@ module Google
       
         # Required. The monitored resource type. For example, the type
         # `"cloudsql_database"` represents databases in Google Cloud SQL.
+        # The maximum length of this value is 256 characters.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1260,7 +1261,7 @@ module Google
         # MonitoredResourceDescriptor for `"gce_instance"` has labels
         # `"instance_id"` and `"zone"`:
         # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "my-instance",
+        # "labels": ` "instance_id": "12345678901234",
         # "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
