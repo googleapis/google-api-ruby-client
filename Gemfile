@@ -40,6 +40,14 @@ platforms :ruby do
   end
 end
 
+platforms :mri_21, :mri_22, :mri_23 do
+  group :development do
+    gem 'derailed_benchmarks'
+    gem 'stackprof'
+    gem 'rack-test'
+  end
+end
+
 if ENV['RAILS_VERSION']
   gem 'rails', ENV['RAILS_VERSION']
 end
