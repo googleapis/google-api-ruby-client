@@ -865,6 +865,13 @@
 "/genomics:v1/genomics.variantsets.search": search_variant_sets
 "/genomics:v1/genomics.referencesets.search": search_reference_sets
 "/gmail:v1/gmail.users.getProfile": get_user_profile
+"/gmail:v1/ListSendAsResponse/sendAs/send_a": send_as
+"/gmail:v1/gmail.users.settings.sendAs.create": create_user_setting_send_as
+"/gmail:v1/gmail.users.settings.sendAs.delete": delete_user_setting_send_as
+"/gmail:v1/gmail.users.settings.sendAs.get": get_user_setting_send_as
+"/gmail:v1/gmail.users.settings.sendAs.patch": patch_user_setting_send_as
+"/gmail:v1/gmail.users.settings.sendAs.update": update_user_setting_send_as
+"/gmail:v1/gmail.users.settings.sendAs.verify": verify_user_setting_send_as
 "/groupssettings:v1?force_alt_json" : true
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetProjectConfigRequest": set_project_config_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyCreateAuthUriRequest": create_auth_uri_request

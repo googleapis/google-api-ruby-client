@@ -474,7 +474,7 @@ module Google
         # @return [Google::Apis::StorageV1::BucketAccessControl::ProjectTeam]
         attr_accessor :project_team
       
-        # The access permission for the entity. Can be READER, WRITER, or OWNER.
+        # The access permission for the entity.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -512,7 +512,7 @@ module Google
           # @return [String]
           attr_accessor :project_number
         
-          # The team. Can be owners, editors, or viewers.
+          # The team.
           # Corresponds to the JSON property `team`
           # @return [String]
           attr_accessor :team
@@ -1051,7 +1051,7 @@ module Google
         # @return [Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam]
         attr_accessor :project_team
       
-        # The access permission for the entity. Can be READER or OWNER.
+        # The access permission for the entity.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1091,7 +1091,7 @@ module Google
           # @return [String]
           attr_accessor :project_number
         
-          # The team. Can be owners, editors, or viewers.
+          # The team.
           # Corresponds to the JSON property `team`
           # @return [String]
           attr_accessor :team

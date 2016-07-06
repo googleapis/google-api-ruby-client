@@ -22,6 +22,12 @@ module Google
   module Apis
     module GmailV1
       
+      class AutoForwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchDeleteMessagesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,30 @@ module Google
       end
       
       class Draft
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForwardingAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImapSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Label
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +107,18 @@ module Google
       end
       
       class ListDraftsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFiltersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListForwardingAddressesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -89,6 +137,12 @@ module Google
       end
       
       class ListMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSendAsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,13 +190,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PopSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Profile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendAs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SmtpMsa
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Thread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VacationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +238,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disposition, as: 'disposition'
+          property :email_address, as: 'emailAddress'
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class BatchDeleteMessagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -173,6 +260,49 @@ module Google
           property :id, as: 'id'
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
+        end
+      end
+      
+      class Filter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::GmailV1::FilterAction, decorator: Google::Apis::GmailV1::FilterAction::Representation
+      
+          property :criteria, as: 'criteria', class: Google::Apis::GmailV1::FilterCriteria, decorator: Google::Apis::GmailV1::FilterCriteria::Representation
+      
+          property :id, as: 'id'
+        end
+      end
+      
+      class FilterAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_label_ids, as: 'addLabelIds'
+          property :forward, as: 'forward'
+          collection :remove_label_ids, as: 'removeLabelIds'
+        end
+      end
+      
+      class FilterCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_chats, as: 'excludeChats'
+          property :from, as: 'from'
+          property :has_attachment, as: 'hasAttachment'
+          property :negated_query, as: 'negatedQuery'
+          property :query, as: 'query'
+          property :size, as: 'size'
+          property :size_comparison, as: 'sizeComparison'
+          property :subject, as: 'subject'
+          property :to, as: 'to'
+        end
+      end
+      
+      class ForwardingAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_email, as: 'forwardingEmail'
+          property :verification_status, as: 'verificationStatus'
         end
       end
       
@@ -227,6 +357,16 @@ module Google
         end
       end
       
+      class ImapSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_expunge, as: 'autoExpunge'
+          property :enabled, as: 'enabled'
+          property :expunge_behavior, as: 'expungeBehavior'
+          property :max_folder_size, as: 'maxFolderSize'
+        end
+      end
+      
       class Label
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -249,6 +389,22 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :result_size_estimate, as: 'resultSizeEstimate'
+        end
+      end
+      
+      class ListFiltersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter, as: 'filter', class: Google::Apis::GmailV1::Filter, decorator: Google::Apis::GmailV1::Filter::Representation
+      
+        end
+      end
+      
+      class ListForwardingAddressesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :forwarding_addresses, as: 'forwardingAddresses', class: Google::Apis::GmailV1::ForwardingAddress, decorator: Google::Apis::GmailV1::ForwardingAddress::Representation
+      
         end
       end
       
@@ -277,6 +433,14 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :result_size_estimate, as: 'resultSizeEstimate'
+        end
+      end
+      
+      class ListSendAsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :send_as, as: 'sendAs', class: Google::Apis::GmailV1::SendAs, decorator: Google::Apis::GmailV1::SendAs::Representation
+      
         end
       end
       
@@ -354,6 +518,14 @@ module Google
         end
       end
       
+      class PopSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_window, as: 'accessWindow'
+          property :disposition, as: 'disposition'
+        end
+      end
+      
       class Profile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -361,6 +533,33 @@ module Google
           property :history_id, as: 'historyId'
           property :messages_total, as: 'messagesTotal'
           property :threads_total, as: 'threadsTotal'
+        end
+      end
+      
+      class SendAs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
+          property :is_primary, as: 'isPrimary'
+          property :reply_to_address, as: 'replyToAddress'
+          property :send_as_email, as: 'sendAsEmail'
+          property :signature, as: 'signature'
+          property :smtp_msa, as: 'smtpMsa', class: Google::Apis::GmailV1::SmtpMsa, decorator: Google::Apis::GmailV1::SmtpMsa::Representation
+      
+          property :treat_as_alias, as: 'treatAsAlias'
+          property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class SmtpMsa
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :security_mode, as: 'securityMode'
+          property :username, as: 'username'
         end
       end
       
@@ -372,6 +571,20 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
           property :snippet, as: 'snippet'
+        end
+      end
+      
+      class VacationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_auto_reply, as: 'enableAutoReply'
+          property :end_time, as: 'endTime'
+          property :response_body_html, as: 'responseBodyHtml'
+          property :response_body_plain_text, as: 'responseBodyPlainText'
+          property :response_subject, as: 'responseSubject'
+          property :restrict_to_contacts, as: 'restrictToContacts'
+          property :restrict_to_domain, as: 'restrictToDomain'
+          property :start_time, as: 'startTime'
         end
       end
       

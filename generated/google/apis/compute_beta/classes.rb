@@ -568,6 +568,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the instance group resides (for
+        # autoscalers living in regional scope).
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -595,6 +601,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target = args[:target] if args.key?(:target)
           @zone = args[:zone] if args.key?(:zone)
@@ -3865,6 +3872,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # The URL of the region where the instance group is located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] The URL for this instance group. The server generates this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3899,6 +3911,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @network = args[:network] if args.key?(:network)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -4040,6 +4053,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The action to perform in case of zone failure (set only for Regional instance
+        # group managers).
+        # Corresponds to the JSON property `failoverAction`
+        # @return [String]
+        attr_accessor :failover_action
+      
         # [Output Only] The fingerprint of the resource data. You can use this optional
         # field for optimistic locking when you update the resource.
         # Corresponds to the JSON property `fingerprint`
@@ -4082,6 +4101,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
+        # [Output Only] URL of the region where the managed instance group resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] The URL for this managed instance group. The server defines this
         # URL.
         # Corresponds to the JSON property `selfLink`
@@ -4118,6 +4142,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @current_actions = args[:current_actions] if args.key?(:current_actions)
           @description = args[:description] if args.key?(:description)
+          @failover_action = args[:failover_action] if args.key?(:failover_action)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
@@ -4125,6 +4150,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)

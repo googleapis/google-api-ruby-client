@@ -555,7 +555,9 @@ module Google
           attr_accessor :available
           alias_method :available?, :available
         
-          # The name of the failover replica.
+          # The name of the failover replica. If specified at instance creation, a
+          # failover replica is created for the instance. The name doesn't include the
+          # project ID. This property is applicable only to Second Generation instances.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -1541,13 +1543,17 @@ module Google
       class Settings
         include Google::Apis::Core::Hashable
       
-        # The activation policy for this instance. This specifies when the instance
-        # should be activated and is applicable only when the instance state is RUNNABLE.
-        # This can be one of the following.
-        # ALWAYS: The instance should always be active.
-        # NEVER: The instance should never be activated.
-        # ON_DEMAND: The instance is activated upon receiving requests; only applicable
-        # to First Generation instances.
+        # The activation policy specifies when the instance is activated; it is
+        # applicable only when the instance state is RUNNABLE. The activation policy
+        # cannot be updated together with other settings for Second Generation instances.
+        # Valid values:
+        # ALWAYS: The instance is on; it is not deactivated by inactivity.
+        # NEVER: The instance is off; it is not activated, even if a connection request
+        # arrives.
+        # ON_DEMAND: The instance responds to incoming requests, and turns itself off
+        # when not in use. Instances with PER_USE pricing turn off after 15 minutes of
+        # inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of
+        # inactivity.
         # Corresponds to the JSON property `activationPolicy`
         # @return [String]
         attr_accessor :activation_policy

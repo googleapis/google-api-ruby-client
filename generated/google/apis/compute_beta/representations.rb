@@ -1517,6 +1517,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target, as: 'target'
           property :zone, as: 'zone'
@@ -2270,6 +2271,7 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
           property :network, as: 'network'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
@@ -2311,6 +2313,7 @@ module Google
           property :current_actions, as: 'currentActions', class: Google::Apis::ComputeBeta::InstanceGroupManagerActionsSummary, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerActionsSummary::Representation
       
           property :description, as: 'description'
+          property :failover_action, as: 'failoverAction'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, as: 'id'
           property :instance_group, as: 'instanceGroup'
@@ -2319,6 +2322,7 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'

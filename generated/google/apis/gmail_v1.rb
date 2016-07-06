@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20160621'
+      REVISION = '20160627'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'
@@ -47,6 +47,12 @@ module Google
 
       # Send email on your behalf
       AUTH_GMAIL_SEND = 'https://www.googleapis.com/auth/gmail.send'
+
+      # Manage your basic mail settings
+      AUTH_GMAIL_SETTINGS_BASIC = 'https://www.googleapis.com/auth/gmail.settings.basic'
+
+      # Manage your sensitive mail settings, including who can manage your mail
+      AUTH_GMAIL_SETTINGS_SHARING = 'https://www.googleapis.com/auth/gmail.settings.sharing'
     end
   end
 end

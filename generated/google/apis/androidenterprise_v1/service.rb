@@ -538,11 +538,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves whether a device is enabled or disabled for access by the user to
-        # Google services. The device state takes effect only if enforcing EMM policies
-        # on Android devices is enabled in the Google Admin Console. Otherwise, the
-        # device state is ignored and all devices are allowed access to Google services.
-        # This is only supported for Google-managed users.
+        # Retrieves whether a device's access to Google services is enabled or disabled.
+        # The device state takes effect only if enforcing EMM policies on Android
+        # devices is enabled in the Google Admin Console. Otherwise, the device state is
+        # ignored and all devices are allowed access to Google services. This is only
+        # supported for Google-managed users.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -621,11 +621,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets whether a device is enabled or disabled for access by the user to Google
-        # services. The device state takes effect only if enforcing EMM policies on
-        # Android devices is enabled in the Google Admin Console. Otherwise, the device
-        # state is ignored and all devices are allowed access to Google services. This
-        # is only supported for Google-managed users.
+        # Sets whether a device's access to Google services is enabled or disabled. The
+        # device state takes effect only if enforcing EMM policies on Android devices is
+        # enabled in the Google Admin Console. Otherwise, the device state is ignored
+        # and all devices are allowed access to Google services. This is only supported
+        # for Google-managed users.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -705,13 +705,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Completes the signup flow, by specifying the Completion Token and Enterprise
-        # Token. This request must not be called multiple times for a given Enterprise
+        # Completes the signup flow, by specifying the Completion token and Enterprise
+        # token. This request must not be called multiple times for a given Enterprise
         # Token.
         # @param [String] completion_token
-        #   The Completion Token intially returned by GenerateSignupUrl.
+        #   The Completion token initially returned by GenerateSignupUrl.
         # @param [String] enterprise_token
-        #   The Enterprise Token appended to the Callback URL.
+        #   The Enterprise token appended to the Callback URL.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2116,6 +2116,42 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['query'] = query unless query.nil?
           command.query['token'] = token unless token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unapproves the specified product (and the relevant app permissions, if any)
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] product_id
+        #   The ID of the product.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unapprove_product(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'enterprises/{enterpriseId}/products/{productId}/unapprove', options)
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['productId'] = product_id unless product_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -1,3 +1,6 @@
+# 0.9.11
+* Add DFA Reporting 2.5, regenerate APIs
+
 # 0.9.10
 * Add datastore v1beta3, regenerate APIs
 * Reduce memory footprint used by mimetypes library

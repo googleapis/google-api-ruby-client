@@ -1246,6 +1246,898 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the auto-forwarding setting for the specified account.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::AutoForwarding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::AutoForwarding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_auto_forwarding(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/autoForwarding', options)
+          command.response_representation = Google::Apis::GmailV1::AutoForwarding::Representation
+          command.response_class = Google::Apis::GmailV1::AutoForwarding
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets IMAP settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ImapSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ImapSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_imap(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/imap', options)
+          command.response_representation = Google::Apis::GmailV1::ImapSettings::Representation
+          command.response_class = Google::Apis::GmailV1::ImapSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets POP settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::PopSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::PopSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_pop(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/pop', options)
+          command.response_representation = Google::Apis::GmailV1::PopSettings::Representation
+          command.response_class = Google::Apis::GmailV1::PopSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets vacation responder settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::VacationSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::VacationSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_vacation(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/vacation', options)
+          command.response_representation = Google::Apis::GmailV1::VacationSettings::Representation
+          command.response_class = Google::Apis::GmailV1::VacationSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the auto-forwarding setting for the specified account. A verified
+        # forwarding address must be specified when auto-forwarding is enabled.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::AutoForwarding] auto_forwarding_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::AutoForwarding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::AutoForwarding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_auto_forwarding(user_id, auto_forwarding_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/autoForwarding', options)
+          command.request_representation = Google::Apis::GmailV1::AutoForwarding::Representation
+          command.request_object = auto_forwarding_object
+          command.response_representation = Google::Apis::GmailV1::AutoForwarding::Representation
+          command.response_class = Google::Apis::GmailV1::AutoForwarding
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates IMAP settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::ImapSettings] imap_settings_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ImapSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ImapSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_imap(user_id, imap_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/imap', options)
+          command.request_representation = Google::Apis::GmailV1::ImapSettings::Representation
+          command.request_object = imap_settings_object
+          command.response_representation = Google::Apis::GmailV1::ImapSettings::Representation
+          command.response_class = Google::Apis::GmailV1::ImapSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates POP settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::PopSettings] pop_settings_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::PopSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::PopSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_pop(user_id, pop_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/pop', options)
+          command.request_representation = Google::Apis::GmailV1::PopSettings::Representation
+          command.request_object = pop_settings_object
+          command.response_representation = Google::Apis::GmailV1::PopSettings::Representation
+          command.response_class = Google::Apis::GmailV1::PopSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates vacation responder settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::VacationSettings] vacation_settings_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::VacationSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::VacationSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_vacation(user_id, vacation_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/vacation', options)
+          command.request_representation = Google::Apis::GmailV1::VacationSettings::Representation
+          command.request_object = vacation_settings_object
+          command.response_representation = Google::Apis::GmailV1::VacationSettings::Representation
+          command.response_class = Google::Apis::GmailV1::VacationSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a filter.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::Filter] filter_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::Filter] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::Filter]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_setting_filter(user_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/filters', options)
+          command.request_representation = Google::Apis::GmailV1::Filter::Representation
+          command.request_object = filter_object
+          command.response_representation = Google::Apis::GmailV1::Filter::Representation
+          command.response_class = Google::Apis::GmailV1::Filter
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a filter.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] id
+        #   The ID of the filter to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_setting_filter(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{userId}/settings/filters/{id}', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a filter.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] id
+        #   The ID of the filter to be fetched.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::Filter] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::Filter]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_filter(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/filters/{id}', options)
+          command.response_representation = Google::Apis::GmailV1::Filter::Representation
+          command.response_class = Google::Apis::GmailV1::Filter
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the message filters of a Gmail user.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ListFiltersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ListFiltersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_setting_filters(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/filters', options)
+          command.response_representation = Google::Apis::GmailV1::ListFiltersResponse::Representation
+          command.response_class = Google::Apis::GmailV1::ListFiltersResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a forwarding address. If ownership verification is required, a message
+        # will be sent to the recipient and the resource's verification status will be
+        # set to `pending`; otherwise, the resource will be created with verification
+        # status set to `accepted`.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::ForwardingAddress] forwarding_address_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ForwardingAddress] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ForwardingAddress]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_setting_forwarding_address(user_id, forwarding_address_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/forwardingAddresses', options)
+          command.request_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
+          command.request_object = forwarding_address_object
+          command.response_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
+          command.response_class = Google::Apis::GmailV1::ForwardingAddress
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified forwarding address and revokes any verification that may
+        # have been required.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] forwarding_email
+        #   The forwarding address to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_setting_forwarding_address(user_id, forwarding_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['forwardingEmail'] = forwarding_email unless forwarding_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified forwarding address.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] forwarding_email
+        #   The forwarding address to be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ForwardingAddress] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ForwardingAddress]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_forwarding_address(user_id, forwarding_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/forwardingAddresses/{forwardingEmail}', options)
+          command.response_representation = Google::Apis::GmailV1::ForwardingAddress::Representation
+          command.response_class = Google::Apis::GmailV1::ForwardingAddress
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['forwardingEmail'] = forwarding_email unless forwarding_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the forwarding addresses for the specified account.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ListForwardingAddressesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ListForwardingAddressesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_setting_forwarding_addresses(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/forwardingAddresses', options)
+          command.response_representation = Google::Apis::GmailV1::ListForwardingAddressesResponse::Representation
+          command.response_class = Google::Apis::GmailV1::ListForwardingAddressesResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will
+        # attempt to connect to the SMTP service to validate the configuration before
+        # creating the alias. If ownership verification is required for the alias, a
+        # message will be sent to the email address and the resource's verification
+        # status will be set to `pending`; otherwise, the resource will be created with
+        # verification status set to `accepted`. If a signature is provided, Gmail will
+        # sanitize the HTML before saving it with the alias.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::SendAs] send_as_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SendAs] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SendAs]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_setting_send_as(user_id, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/sendAs', options)
+          command.request_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.request_object = send_as_object
+          command.response_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.response_class = Google::Apis::GmailV1::SendAs
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified send-as alias. Revokes any verification that may have
+        # been required for using it.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The send-as alias to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified send-as alias. Fails with an HTTP 404 error if the
+        # specified address is not a member of the collection.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The send-as alias to be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SendAs] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SendAs]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command.response_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.response_class = Google::Apis::GmailV1::SendAs
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the send-as aliases for the specified account. The result includes the
+        # primary send-as address associated with the account as well as any custom "
+        # from" aliases.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ListSendAsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ListSendAsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_setting_send_as(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/sendAs', options)
+          command.response_representation = Google::Apis::GmailV1::ListSendAsResponse::Representation
+          command.response_class = Google::Apis::GmailV1::ListSendAsResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
+        # HTML before saving it with the alias. This method supports patch semantics.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The send-as alias to be updated.
+        # @param [Google::Apis::GmailV1::SendAs] send_as_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SendAs] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SendAs]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_user_setting_send_as(user_id, send_as_email, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command.request_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.request_object = send_as_object
+          command.response_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.response_class = Google::Apis::GmailV1::SendAs
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
+        # HTML before saving it with the alias.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The send-as alias to be updated.
+        # @param [Google::Apis::GmailV1::SendAs] send_as_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SendAs] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SendAs]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_send_as(user_id, send_as_email, send_as_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/sendAs/{sendAsEmail}', options)
+          command.request_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.request_object = send_as_object
+          command.response_representation = Google::Apis::GmailV1::SendAs::Representation
+          command.response_class = Google::Apis::GmailV1::SendAs
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a verification email to the specified send-as alias address. The
+        # verification status must be `pending`.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The send-as alias to be verified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verify_user_setting_send_as(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/verify', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Immediately and permanently deletes the specified thread. This operation
         # cannot be undone. Prefer threads.trash instead.
         # @param [String] user_id

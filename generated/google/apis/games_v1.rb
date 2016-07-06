@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/games/services/
     module GamesV1
       VERSION = 'V1'
-      REVISION = '20160621'
+      REVISION = '20160628'
 
       # View and manage its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'

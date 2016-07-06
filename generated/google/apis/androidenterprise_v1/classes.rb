@@ -437,8 +437,7 @@ module Google
         # means that the EMM's app is a device owner. "managedProfile" means that the
         # EMM's app is the profile owner (and there is a separate personal profile which
         # is not managed). "containerApp" means that the EMM's app is managing the
-        # Android for Work container app on the device. ?unmanagedProfile? means that
-        # the EMM?s app is managing a managed user on an unmanaged device
+        # Android for Work container app on the device.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -526,7 +525,7 @@ module Google
       # optional), and Enterprises.setAccount.
       # The overall processes are very different and involve different identity models,
       # but as an EMM, you can support either or both approaches in your EMM console.
-      # See EMM Developer?s Guide for details.
+      # See EMM Developer's Guide for details.
       class Enterprise
         include Google::Apis::Core::Hashable
       
@@ -1234,10 +1233,10 @@ module Google
         end
       end
       
-      # A product represents an app in the Google Play Store that is available to at
-      # least some users in the enterprise. (Some apps are restricted to a single
-      # enterprise, and no information about them is made available outside that
-      # enterprise.)
+      # A Products resource represents an app in the Google Play Store that is
+      # available to at least some users in the enterprise. (Some apps are restricted
+      # to a single enterprise, and no information about them is made available
+      # outside that enterprise.)
       # The information provided for each product (localized name, icon, link to the
       # full Google Play details page) is intended to allow a basic representation of
       # the product within an EMM user interface.
@@ -1898,7 +1897,7 @@ module Google
         end
       end
       
-      # A user resource represents an account associated with an enterprise. The
+      # A Users resource represents an account associated with an enterprise. The
       # account may be specific to a device or to an individual user (who can then use
       # the account across multiple devices). The account may provide access to Google
       # Play for Work only, or to other Google services, depending on the identity
@@ -1954,8 +1953,8 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
-        # The user's primary email address, e.g. "jsmith@example.com". Will always be
-        # set for Google managed users and not set for EMM managed users.
+        # The user's primary email address, for example, "jsmith@example.com". Will
+        # always be set for Google managed users and not set for EMM managed users.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
