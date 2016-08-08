@@ -911,9 +911,8 @@ module Google
         # definitions of read group sets and other genomics resources, see [Fundamentals
         # of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
         # genomics) Note that currently there may be some differences between exported
-        # BAM files and the original BAM file at the time of import. See [
-        # ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for
-        # caveats.
+        # BAM files and the original BAM file at the time of import. See
+        # ImportReadGroupSets for caveats.
         # @param [String] read_group_set_id
         #   Required. The ID of the read group set to export. The caller must have READ
         #   access to this read group set.

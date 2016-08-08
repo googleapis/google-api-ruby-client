@@ -4425,7 +4425,10 @@ module Google
         # @return [String]
         attr_accessor :dimensions
       
-        # The type of download you need to use for the report data file.
+        # The type of download you need to use for the report data file. Possible values
+        # include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `
+        # GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is `
+        # GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.
         # Corresponds to the JSON property `downloadType`
         # @return [String]
         attr_accessor :download_type

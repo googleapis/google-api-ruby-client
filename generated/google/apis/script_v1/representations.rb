@@ -111,6 +111,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result'
+          property :status, as: 'status'
         end
       end
     end

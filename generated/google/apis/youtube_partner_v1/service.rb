@@ -1066,10 +1066,10 @@ module Google
         #   to retrieve.
         # @param [DateTime] created_after
         #   The createdAfter parameter allows you to restrict the set of returned claims
-        #   to ones originally created after the specified date.
+        #   to ones created on or after the specified date (inclusive).
         # @param [DateTime] created_before
         #   The createdBefore parameter allows you to restrict the set of returned claims
-        #   to ones originally created before the specified date.
+        #   to ones created before the specified date (exclusive).
         # @param [String] inactive_reasons
         #   The inactiveReasons parameter allows you to specify what kind of inactive
         #   claims you want to find based on the reasons why the claims became inactive.
@@ -1108,6 +1108,16 @@ module Google
         # @param [String] status
         #   The status parameter restricts your results to only claims in the specified
         #   status.
+        # @param [DateTime] status_modified_after
+        #   The statusModifiedAfter parameter allows you to restrict the result set to
+        #   only include claims that have had their status modified on or after the
+        #   specified date (inclusive). The date specified must be on or after June 30,
+        #   2016 (2016-06-30). The parameter value's format is YYYY-MM-DD.
+        # @param [DateTime] status_modified_before
+        #   The statusModifiedBefore parameter allows you to restrict the result set to
+        #   only include claims that have had their status modified before the specified
+        #   date (exclusive). The date specified must be on or after July 1, 2016 (2016-07-
+        #   01). The parameter value's format is YYYY-MM-DD.
         # @param [String] video_id
         #   The videoId parameter specifies comma-separated list of YouTube video IDs for
         #   which you are retrieving claims.
@@ -1132,7 +1142,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_claim_searches(asset_id: nil, content_type: nil, created_after: nil, created_before: nil, inactive_reasons: nil, include_third_party_claims: nil, on_behalf_of_content_owner: nil, origin: nil, page_token: nil, partner_uploaded: nil, q: nil, reference_id: nil, sort: nil, status: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_claim_searches(asset_id: nil, content_type: nil, created_after: nil, created_before: nil, inactive_reasons: nil, include_third_party_claims: nil, on_behalf_of_content_owner: nil, origin: nil, page_token: nil, partner_uploaded: nil, q: nil, reference_id: nil, sort: nil, status: nil, status_modified_after: nil, status_modified_before: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'claimSearch', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ClaimSearchResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ClaimSearchResponse
@@ -1150,6 +1160,8 @@ module Google
           command.query['referenceId'] = reference_id unless reference_id.nil?
           command.query['sort'] = sort unless sort.nil?
           command.query['status'] = status unless status.nil?
+          command.query['statusModifiedAfter'] = status_modified_after unless status_modified_after.nil?
+          command.query['statusModifiedBefore'] = status_modified_before unless status_modified_before.nil?
           command.query['videoId'] = video_id unless video_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

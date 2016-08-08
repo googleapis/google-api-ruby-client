@@ -196,12 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Exemplar
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,8 +358,6 @@ module Google
           property :mean, as: 'mean'
           property :range, as: 'range', class: Google::Apis::MonitoringV3::Range, decorator: Google::Apis::MonitoringV3::Range::Representation
       
-          collection :exemplars, as: 'exemplars', class: Google::Apis::MonitoringV3::Exemplar, decorator: Google::Apis::MonitoringV3::Exemplar::Representation
-      
         end
       end
       
@@ -508,15 +500,6 @@ module Google
       
           property :name, as: 'name'
           property :syntax, as: 'syntax'
-        end
-      end
-      
-      class Exemplar
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          collection :attachments, as: 'attachments'
-          property :timestamp, as: 'timestamp'
         end
       end
       

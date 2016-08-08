@@ -673,8 +673,8 @@ module Google
         
         # List all the deals for a given proposal
         # @param [String] proposal_id
-        #   The proposalId to get deals for. To search across proposals specify order_id =
-        #   '-' as part of the URL.
+        #   The proposalId to get deals for. To search across all proposals specify
+        #   order_id = '-' as part of the URL.
         # @param [String] pql_query
         #   Query string to retrieve specific deals.
         # @param [String] fields
@@ -788,7 +788,12 @@ module Google
         
         # Get all the notes associated with a proposal
         # @param [String] proposal_id
-        #   The proposalId to get notes for.
+        #   The proposalId to get notes for. To search across all proposals specify
+        #   order_id = '-' as part of the URL.
+        # @param [String] pql_query
+        #   Query string to retrieve specific notes. To search the text contents of notes,
+        #   please use syntax like "WHERE note.note = "foo" or "WHERE note.note LIKE "%bar%
+        #   "
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -810,11 +815,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_marketplacenotes(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_marketplacenotes(proposal_id, pql_query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'proposals/{proposalId}/notes', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetOrderNotesResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetOrderNotesResponse
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['pqlQuery'] = pql_query unless pql_query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

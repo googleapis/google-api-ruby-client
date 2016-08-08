@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepoSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -140,12 +146,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :storage_source, as: 'storageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
       
+          property :repo_source, as: 'repoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
         end
       end
       
       class SourceProvenance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+      
           hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
         end
@@ -193,6 +205,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
+          collection :build_step_images, as: 'buildStepImages'
         end
       end
       
@@ -214,6 +227,7 @@ module Google
           property :source, as: 'source', class: Google::Apis::CloudbuildV1::Source, decorator: Google::Apis::CloudbuildV1::Source::Representation
       
           property :create_time, as: 'createTime'
+          property :log_url, as: 'logUrl'
           property :status_detail, as: 'statusDetail'
           collection :images, as: 'images'
           property :start_time, as: 'startTime'
@@ -245,13 +259,26 @@ module Google
         end
       end
       
+      class RepoSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repo_name, as: 'repoName'
+          property :tag_name, as: 'tagName'
+          property :project_id, as: 'projectId'
+          property :branch_name, as: 'branchName'
+          property :commit_sha, as: 'commitSha'
+        end
+      end
+      
       class BuildStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args'
-          property :dir, as: 'dir'
-          property :name, as: 'name'
+          property :id, as: 'id'
           collection :env, as: 'env'
+          collection :wait_for, as: 'waitFor'
+          collection :args, as: 'args'
+          property :name, as: 'name'
+          property :dir, as: 'dir'
         end
       end
       

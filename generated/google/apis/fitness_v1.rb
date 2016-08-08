@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20160609'
+      REVISION = '20160801'
 
       # View your activity information in Google Fit
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
@@ -44,6 +44,12 @@ module Google
 
       # View and store your location data in Google Fit
       AUTH_FITNESS_LOCATION_WRITE = 'https://www.googleapis.com/auth/fitness.location.write'
+
+      # View nutrition information in Google Fit
+      AUTH_FITNESS_NUTRITION_READ = 'https://www.googleapis.com/auth/fitness.nutrition.read'
+
+      # View and store nutrition information in Google Fit
+      AUTH_FITNESS_NUTRITION_WRITE = 'https://www.googleapis.com/auth/fitness.nutrition.write'
     end
   end
 end

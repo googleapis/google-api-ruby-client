@@ -124,6 +124,11 @@ module Google
         # @return [String]
         attr_accessor :key
       
+        # For bundle or bundleArray restrictions, the list of nested restrictions.
+        # Corresponds to the JSON property `nestedRestriction`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
+        attr_accessor :nested_restriction
+      
         # The type of the restriction.
         # Corresponds to the JSON property `restrictionType`
         # @return [String]
@@ -145,6 +150,7 @@ module Google
           @entry = args[:entry] if args.key?(:entry)
           @entry_value = args[:entry_value] if args.key?(:entry_value)
           @key = args[:key] if args.key?(:key)
+          @nested_restriction = args[:nested_restriction] if args.key?(:nested_restriction)
           @restriction_type = args[:restriction_type] if args.key?(:restriction_type)
           @title = args[:title] if args.key?(:title)
         end
@@ -510,22 +516,18 @@ module Google
         end
       end
       
-      # An enterprise resource represents the binding between an EMM and a specific
-      # organization.
-      # That binding can be instantiated in one of two different ways using this API
-      # as follows:
-      # 
+      # An Enterprises resource represents the binding between an EMM and a specific
+      # organization. That binding can be instantiated in one of two different ways
+      # using this API as follows:
       # - For Google managed domain customers, the process involves using Enterprises.
       # enroll and Enterprises.setAccount (in conjunction with artifacts obtained from
-      # the Admin console and the Google Developers console) and submitted to the EMM
-      # through a more-or-less manual process.
-      # - An alternative process that takes advantage of Google-provided mechanisms (
-      # Android for Work Sign-up UI) that expedite the process involves Enterprises.
-      # generateSignupUrl, Enterprises.completeSignup, Enterprises.getServiceAccount  (
-      # optional), and Enterprises.setAccount.
-      # The overall processes are very different and involve different identity models,
-      # but as an EMM, you can support either or both approaches in your EMM console.
-      # See EMM Developer's Guide for details.
+      # the Admin console and the Google API Console) and submitted to the EMM through
+      # a more-or-less manual process.
+      # - For Android for Work Accounts customers, the process involves using
+      # Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
+      # with the Android for Work Sign-up UI (Google-provided mechanism) to create the
+      # binding without manual steps. As an EMM, you can support either or both
+      # approaches in your EMM console. See Create an Enterprise for details.
       class Enterprise
         include Google::Apis::Core::Hashable
       
@@ -546,12 +548,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of the enterprise, e.g. "Example Inc".
+        # The name of the enterprise, for example, "Example, Inc".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The enterprise's primary domain, e.g. "example.com".
+        # The enterprise's primary domain, such as "example.com".
         # Corresponds to the JSON property `primaryDomain`
         # @return [String]
         attr_accessor :primary_domain
@@ -1019,6 +1021,175 @@ module Google
         end
       end
       
+      # A managed configuration resource contains the set of managed properties that
+      # have been configured for an Android app. The app's developer would have
+      # defined configurable properties in the managed configurations schema.
+      class ManagedConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfiguration".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The set of managed properties for this configuration.
+        # Corresponds to the JSON property `managedProperty`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
+        attr_accessor :managed_property
+      
+        # The ID of the product that the managed configuration is for, e.g. "app:com.
+        # google.android.gm".
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_property = args[:managed_property] if args.key?(:managed_property)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # The managed configuration resources for the device.
+      class ManagedConfigurationsForDeviceListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsForDeviceListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A managed configuration for an app on a specific device.
+        # Corresponds to the JSON property `managedConfigurationForDevice`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedConfiguration>]
+        attr_accessor :managed_configuration_for_device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_configuration_for_device = args[:managed_configuration_for_device] if args.key?(:managed_configuration_for_device)
+        end
+      end
+      
+      # The managed configuration resources for the user.
+      class ManagedConfigurationsForUserListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsForUserListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A managed configuration for an app for a specific user.
+        # Corresponds to the JSON property `managedConfigurationForUser`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedConfiguration>]
+        attr_accessor :managed_configuration_for_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_configuration_for_user = args[:managed_configuration_for_user] if args.key?(:managed_configuration_for_user)
+        end
+      end
+      
+      # A managed property of a managed configuration. The property must match one of
+      # the properties in the app restrictions schema of the product. Exactly one of
+      # the value fields must be populated, and it must match the property's type in
+      # the app restrictions schema.
+      class ManagedProperty
+        include Google::Apis::Core::Hashable
+      
+        # The unique key that identifies the property.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The boolean value - this will only be present if type of the property is bool.
+        # Corresponds to the JSON property `valueBool`
+        # @return [Boolean]
+        attr_accessor :value_bool
+        alias_method :value_bool?, :value_bool
+      
+        # A bundle of managed properties.
+        # Corresponds to the JSON property `valueBundle`
+        # @return [Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle]
+        attr_accessor :value_bundle
+      
+        # The list of bundles of properties - this will only be present if type of the
+        # property is bundle_array.
+        # Corresponds to the JSON property `valueBundleArray`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle>]
+        attr_accessor :value_bundle_array
+      
+        # The integer value - this will only be present if type of the property is
+        # integer.
+        # Corresponds to the JSON property `valueInteger`
+        # @return [Fixnum]
+        attr_accessor :value_integer
+      
+        # The string value - this will only be present if type of the property is string,
+        # choice or hidden.
+        # Corresponds to the JSON property `valueString`
+        # @return [String]
+        attr_accessor :value_string
+      
+        # The list of string values - this will only be present if type of the property
+        # is multiselect.
+        # Corresponds to the JSON property `valueStringArray`
+        # @return [Array<String>]
+        attr_accessor :value_string_array
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value_bool = args[:value_bool] if args.key?(:value_bool)
+          @value_bundle = args[:value_bundle] if args.key?(:value_bundle)
+          @value_bundle_array = args[:value_bundle_array] if args.key?(:value_bundle_array)
+          @value_integer = args[:value_integer] if args.key?(:value_integer)
+          @value_string = args[:value_string] if args.key?(:value_string)
+          @value_string_array = args[:value_string_array] if args.key?(:value_string_array)
+        end
+      end
+      
+      # A bundle of managed properties.
+      class ManagedPropertyBundle
+        include Google::Apis::Core::Hashable
+      
+        # The list of managed properties.
+        # Corresponds to the JSON property `managedProperty`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
+        attr_accessor :managed_property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_property = args[:managed_property] if args.key?(:managed_property)
+        end
+      end
+      
       # An event generated when new permissions are added to an app.
       class NewPermissionsEvent
         include Google::Apis::Core::Hashable
@@ -1287,7 +1458,9 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Whether this product is free, free with in-app purchases, or paid.
+        # Whether this product is free, free with in-app purchases, or paid. If the
+        # pricing is unknown, this means the product is not generally available anymore (
+        # even though it might still be available to people who own it).
         # Corresponds to the JSON property `productPricing`
         # @return [String]
         attr_accessor :product_pricing
@@ -1750,8 +1923,8 @@ module Google
       
         # The ID of the store page to be used as the homepage. The homepage will be used
         # as the first page shown in the Google Play for Work store.
-        # If there is no homepage set, an empty store is shown. The homepage can be
-        # unset (by not specifying it) to empty the store.
+        # If a homepage has not been set, the Play store shown on devices will be empty.
+        # Not specifying a homepage on a store layout effectively empties the store.
         # If there exists at least one page, this field must be set to the ID of a valid
         # page.
         # Corresponds to the JSON property `homepageId`
@@ -1901,36 +2074,34 @@ module Google
       # account may be specific to a device or to an individual user (who can then use
       # the account across multiple devices). The account may provide access to Google
       # Play for Work only, or to other Google services, depending on the identity
-      # model used:
+      # model:
       # - Google managed domain identity model requires synchronization to Google
       # account sources (via primaryEmail).
-      # - Android for Work accounts identity model provides a dynamic means for
+      # - Android for Work Accounts identity model provides a dynamic means for
       # enterprises to create user or device accounts as needed. These accounts
       # provide access to Google Play for Work only.
       class User
         include Google::Apis::Core::Hashable
       
-        # The id as used by the EMM for this user, e.g. "user342" or "asset#44418". Will
-        # always be set for EMM managed users and not set for Google managed users. For
-        # privacy sensitive deployments it should not be possible to identify the
-        # individual with this identifier.
+        # A unique identifier you create for this user, such as "user342" or "asset#
+        # 44418". Do not use personally identifiable information (PII) for this property.
+        # Must always be set for EMM-managed users. Not set for Google-managed users.
         # Corresponds to the JSON property `accountIdentifier`
         # @return [String]
         attr_accessor :account_identifier
       
-        # The type of account that this user represents. A "deviceAccount" is specific
-        # to a single device while a "userAccount" represents a traditional user account,
-        # i.e. one that can be installed on multiple devices. "googleManaged" users
-        # will always be a "userAccount" but "emmManaged" users can be either a "
-        # userAccount" or a "deviceAccount".
+        # The type of account that this user represents. A userAccount can be installed
+        # on multiple devices, but a deviceAccount is specific to a single device. An
+        # EMM-managed user (emmManaged) can be either type (userAccount, deviceAccount),
+        # but a Google-managed user (googleManaged) is always a userAccount.
         # Corresponds to the JSON property `accountType`
         # @return [String]
         attr_accessor :account_type
       
-        # The user's name as it is to be presented in user interfaces, e.g. "John". Can
-        # optionally be set for EMM managed users and will not be set for Google managed
-        # users. For privacy sensitive deployments this should be left unset or set to
-        # something generic.
+        # The name that will appear in user interfaces. Setting this property is
+        # optional when creating EMM-managed users. If you do set this property, use
+        # something generic about the organization (such as "Example, Inc.") or your
+        # name (as EMM). Not used for Google-managed user accounts.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1946,9 +2117,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The entity that manages the user. With "googleManaged" users, the source of
-        # truth is Google so EMMs have to make sure a Google account exists for the user.
-        # With "emmManaged" users, the EMM is in charge.
+        # The entity that manages the user. With googleManaged users, the source of
+        # truth is Google so EMMs have to make sure a Google Account exists for the user.
+        # With emmManaged users, the EMM is in charge.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type

@@ -1064,6 +1064,11 @@ module Google
         # @return [String]
         attr_accessor :role
       
+        # Status of member (Immutable)
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # Type of member (Immutable)
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1080,6 +1085,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @role = args[:role] if args.key?(:role)
+          @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
       end

@@ -127,6 +127,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1::StorageSource]
         attr_accessor :storage_source
       
+        # RepoSource describes the location of the source in a Google Cloud Source
+        # Repository.
+        # Corresponds to the JSON property `repoSource`
+        # @return [Google::Apis::CloudbuildV1::RepoSource]
+        attr_accessor :repo_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -134,6 +140,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
+          @repo_source = args[:repo_source] if args.key?(:repo_source)
         end
       end
       
@@ -141,6 +148,18 @@ module Google
       # some source was used for this build.
       class SourceProvenance
         include Google::Apis::Core::Hashable
+      
+        # RepoSource describes the location of the source in a Google Cloud Source
+        # Repository.
+        # Corresponds to the JSON property `resolvedRepoSource`
+        # @return [Google::Apis::CloudbuildV1::RepoSource]
+        attr_accessor :resolved_repo_source
+      
+        # StorageSource describes the location of the source in an archive file in
+        # Google Cloud Storage.
+        # Corresponds to the JSON property `resolvedStorageSource`
+        # @return [Google::Apis::CloudbuildV1::StorageSource]
+        attr_accessor :resolved_storage_source
       
         # Hash(es) of the build source, which can be used to verify that the original
         # source integrity was maintained in the build. Note that FileHashes will
@@ -160,6 +179,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
+          @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
         end
       end
@@ -359,6 +380,11 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::BuiltImage>]
         attr_accessor :images
       
+        # List of build step digests, in order corresponding to build step indices.
+        # Corresponds to the JSON property `buildStepImages`
+        # @return [Array<String>]
+        attr_accessor :build_step_images
+      
         def initialize(**args)
            update!(**args)
         end
@@ -366,6 +392,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @images = args[:images] if args.key?(:images)
+          @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
         end
       end
       
@@ -435,6 +462,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # URL to logs for this build in Google Cloud Logging.
+        # @OutputOnly
+        # Corresponds to the JSON property `logUrl`
+        # @return [String]
+        attr_accessor :log_url
+      
         # Customer-readable message about the current status.
         # @OutputOnly
         # Corresponds to the JSON property `statusDetail`
@@ -486,6 +519,7 @@ module Google
           @steps = args[:steps] if args.key?(:steps)
           @source = args[:source] if args.key?(:source)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @log_url = args[:log_url] if args.key?(:log_url)
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @images = args[:images] if args.key?(:images)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -552,31 +586,36 @@ module Google
         end
       end
       
-      # BuildStep describes a step to perform in the build pipeline.
-      class BuildStep
+      # RepoSource describes the location of the source in a Google Cloud Source
+      # Repository.
+      class RepoSource
         include Google::Apis::Core::Hashable
       
-        # Command-line arguments to use when running this step's container.
-        # Corresponds to the JSON property `args`
-        # @return [Array<String>]
-        attr_accessor :args
-      
-        # Working directory (relative to project source root) to use when running
-        # this operation's container.
-        # Corresponds to the JSON property `dir`
+        # Name of the repo. If omitted, the name "default" is assumed.
+        # Corresponds to the JSON property `repoName`
         # @return [String]
-        attr_accessor :dir
+        attr_accessor :repo_name
       
-        # Name of the container image to use for creating this stage in the
-        # pipeline, as presented to `docker pull`.
-        # Corresponds to the JSON property `name`
+        # Name of the tag to build.
+        # Corresponds to the JSON property `tagName`
         # @return [String]
-        attr_accessor :name
+        attr_accessor :tag_name
       
-        # Additional environment variables to set for this step's container.
-        # Corresponds to the JSON property `env`
-        # @return [Array<String>]
-        attr_accessor :env
+        # ID of the project that owns the repo. If omitted, the project ID requesting
+        # the build is assumed.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the branch to build.
+        # Corresponds to the JSON property `branchName`
+        # @return [String]
+        attr_accessor :branch_name
+      
+        # Explicit commit SHA to build.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
       
         def initialize(**args)
            update!(**args)
@@ -584,10 +623,67 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @args = args[:args] if args.key?(:args)
-          @dir = args[:dir] if args.key?(:dir)
-          @name = args[:name] if args.key?(:name)
+          @repo_name = args[:repo_name] if args.key?(:repo_name)
+          @tag_name = args[:tag_name] if args.key?(:tag_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @branch_name = args[:branch_name] if args.key?(:branch_name)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+        end
+      end
+      
+      # BuildStep describes a step to perform in the build pipeline.
+      class BuildStep
+        include Google::Apis::Core::Hashable
+      
+        # Optional unique identifier for this build step, used in wait_for to
+        # reference this build step as a dependency.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Additional environment variables to set for this step's container.
+        # Corresponds to the JSON property `env`
+        # @return [Array<String>]
+        attr_accessor :env
+      
+        # The ID(s) of the step(s) that this build step depends on.
+        # This build step will not start until all the build steps in wait_for
+        # have completed successfully. If wait_for is empty, this build step will
+        # start when all previous build steps in the Build.Steps list have completed
+        # successfully.
+        # Corresponds to the JSON property `waitFor`
+        # @return [Array<String>]
+        attr_accessor :wait_for
+      
+        # Command-line arguments to use when running this step's container.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Name of the container image to use for creating this stage in the
+        # pipeline, as presented to `docker pull`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Working directory (relative to project source root) to use when running
+        # this operation's container.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @env = args[:env] if args.key?(:env)
+          @wait_for = args[:wait_for] if args.key?(:wait_for)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+          @dir = args[:dir] if args.key?(:dir)
         end
       end
       

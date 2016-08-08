@@ -1249,6 +1249,11 @@ module Google
         # @return [DateTime]
         attr_accessor :time_created
       
+        # The time the claim status and/or status detail was last modified.
+        # Corresponds to the JSON property `timeStatusLastModified`
+        # @return [DateTime]
+        attr_accessor :time_status_last_modified
+      
         # The unique YouTube video ID that identifies the video associated with the
         # claim.
         # Corresponds to the JSON property `videoId`
@@ -1280,6 +1285,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @third_party_claim = args[:third_party_claim] if args.key?(:third_party_claim)
           @time_created = args[:time_created] if args.key?(:time_created)
+          @time_status_last_modified = args[:time_status_last_modified] if args.key?(:time_status_last_modified)
           @video_id = args[:video_id] if args.key?(:video_id)
           @video_title = args[:video_title] if args.key?(:video_title)
           @video_views = args[:video_views] if args.key?(:video_views)

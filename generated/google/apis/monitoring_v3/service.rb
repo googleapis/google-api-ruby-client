@@ -48,14 +48,12 @@ module Google
           super('https://monitoring.googleapis.com/', '')
         end
         
-        # **Stackdriver Monitoring Agent only:** Creates a new time series.
-        # <aside class="caution">This method is only for use by the Google Monitoring
-        # Agent.
-        # Use projects.timeSeries.create
-        # instead.</aside>
+        # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
+        # caution">This method is only for use by the Google Monitoring Agent. Use
+        # projects.timeSeries.create instead.</aside>
         # @param [String] name
-        #   The project in which to create the time series. The format is
-        #   `"projects/PROJECT_ID_OR_NUMBER"`.
+        #   The project in which to create the time series. The format is &quot;projects/
+        #   PROJECT_ID_OR_NUMBER&quot;.
         # @param [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest] create_collectd_time_series_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -86,16 +84,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing group.
-        # You can change any group attributes except `name`.
+        # Updates an existing group. You can change any group attributes except name.
         # @param [String] name
-        #   The name of this group.
-        #   The format is
-        #   `"projects/`project_id_or_number`/groups/`group_id`"`.
-        #   When creating a group, this field is ignored and a new name is created
-        #   consisting of the project specified in the call to `CreateGroup`
-        #   and a unique ``group_id`` that is generated automatically.
-        #   @OutputOnly
+        #   Output only. The name of this group. The format is &quot;projects/`
+        #   project_id_or_number`/groups/`group_id`&quot;. When creating a group, this
+        #   field is ignored and a new name is created consisting of the project specified
+        #   in the call to CreateGroup and a unique `group_id` that is generated
+        #   automatically.
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not update the existing group.
@@ -131,8 +126,8 @@ module Google
         
         # Gets a single group.
         # @param [String] name
-        #   The group to retrieve. The format is
-        #   `"projects/`project_id_or_number`/groups/`group_id`"`.
+        #   The group to retrieve. The format is &quot;projects/`project_id_or_number`/
+        #   groups/`group_id`&quot;.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -162,8 +157,8 @@ module Google
         
         # Creates a new group.
         # @param [String] name
-        #   The project in which to create the group. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project in which to create the group. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not create the group.
@@ -199,29 +194,29 @@ module Google
         
         # Lists the existing groups.
         # @param [String] name
-        #   The project whose groups are to be listed. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project whose groups are to be listed. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [String] descendants_of_group
-        #   A group name: `"projects/`project_id_or_number`/groups/`group_id`"`.
-        #   Returns the descendants of the specified group.  This is a superset of
-        #   the results returned by the `childrenOfGroup` filter, and includes
-        #   children-of-children, and so forth.
+        #   A group name: &quot;projects/`project_id_or_number`/groups/`group_id`&quot;.
+        #   Returns the descendants of the specified group. This is a superset of the
+        #   results returned by the childrenOfGroup filter, and includes children-of-
+        #   children, and so forth.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] children_of_group
-        #   A group name: `"projects/`project_id_or_number`/groups/`group_id`"`.
-        #   Returns groups whose `parentName` field contains the group
-        #   name.  If no groups have this parent, the results are empty.
+        #   A group name: &quot;projects/`project_id_or_number`/groups/`group_id`&quot;.
+        #   Returns groups whose parentName field contains the group name. If no groups
+        #   have this parent, the results are empty.
         # @param [String] ancestors_of_group
-        #   A group name: `"projects/`project_id_or_number`/groups/`group_id`"`.
-        #   Returns groups that are ancestors of the specified group.
-        #   The groups are returned in order, starting with the immediate parent and
-        #   ending with the most distant ancestor.  If the specified group has no
-        #   immediate parent, the results are empty.
+        #   A group name: &quot;projects/`project_id_or_number`/groups/`group_id`&quot;.
+        #   Returns groups that are ancestors of the specified group. The groups are
+        #   returned in order, starting with the immediate parent and ending with the most
+        #   distant ancestor. If the specified group has no immediate parent, the results
+        #   are empty.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the `nextPageToken` value
-        #   returned by a previous call to this method.  Using this field causes the
-        #   method to return additional results from the previous method call.
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -256,8 +251,8 @@ module Google
         
         # Deletes an existing group.
         # @param [String] name
-        #   The group to delete. The format is
-        #   `"projects/`project_id_or_number`/groups/`group_id`"`.
+        #   The group to delete. The format is &quot;projects/`project_id_or_number`/
+        #   groups/`group_id`&quot;.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -287,29 +282,26 @@ module Google
         
         # Lists the monitored resources that are members of a group.
         # @param [String] name
-        #   The group whose members are listed. The format is
-        #   `"projects/`project_id_or_number`/groups/`group_id`"`.
+        #   The group whose members are listed. The format is &quot;projects/`
+        #   project_id_or_number`/groups/`group_id`&quot;.
         # @param [String] filter
-        #   An optional [list filter](/monitoring/api/learn_more#filtering) describing
-        #   the members to be returned.  The filter may reference the type, labels, and
-        #   metadata of monitored resources that comprise the group.
-        #   For example, to return only resources representing Compute Engine VM
-        #   instances, use this filter:
-        #   resource.type = "gce_instance"
+        #   An optional list filter (/monitoring/api/learn_more#filtering) describing the
+        #   members to be returned. The filter may reference the type, labels, and
+        #   metadata of monitored resources that comprise the group. For example, to
+        #   return only resources representing Compute Engine VM instances, use this
+        #   filter:
+        #   resource.type = &quot;gce_instance&quot;
         # @param [String] interval_end_time
-        #   Required. The end of the interval. The interval includes this
-        #   time.
+        #   Required. The end of the time interval.
         # @param [String] interval_start_time
-        #   If this value is omitted, the interval is a point in time,
-        #   `endTime`.  If `startTime` is present, it must be earlier than
-        #   (less than) `endTime`.  The interval begins after
-        #   `startTime`&mdash;it does not include `startTime`.
+        #   Optional. The beginning of the time interval. The default value for the start
+        #   time is the end time. The start time must not be later than the end time.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the `nextPageToken` value
-        #   returned by a previous call to this method.  Using this field causes the
-        #   method to return additional results from the previous method call.
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -345,10 +337,10 @@ module Google
         # Gets a single metric descriptor. This method does not require a Stackdriver
         # account.
         # @param [String] name
-        #   The metric descriptor on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`/metricDescriptors/`metric_id`"`.
-        #   An example value of ``metric_id`` is
-        #   `"compute.googleapis.com/instance/disk/read_bytes_count"`.
+        #   The metric descriptor on which to execute the request. The format is &quot;
+        #   projects/`project_id_or_number`/metricDescriptors/`metric_id`&quot;. An
+        #   example value of `metric_id` is &quot;compute.googleapis.com/instance/disk/
+        #   read_bytes_count&quot;.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -376,12 +368,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new metric descriptor.
-        # User-created metric descriptors define
-        # [custom metrics](/monitoring/custom-metrics).
+        # Creates a new metric descriptor. User-created metric descriptors define custom
+        # metrics (/monitoring/custom-metrics).
         # @param [String] name
-        #   The project on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project on which to execute the request. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [Google::Apis::MonitoringV3::MetricDescriptor] metric_descriptor_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -415,22 +406,20 @@ module Google
         # Lists metric descriptors that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   The project on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project on which to execute the request. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] filter
-        #   If this field is empty, all custom and
-        #   system-defined metric descriptors are returned.
-        #   Otherwise, the [filter](/monitoring/api/v3/filters)
-        #   specifies which metric descriptors are to be
-        #   returned. For example, the following filter matches all
-        #   [custom metrics](/monitoring/custom-metrics):
-        #   metric.type = starts_with("custom.googleapis.com/")
+        #   If this field is empty, all custom and system-defined metric descriptors are
+        #   returned. Otherwise, the filter (/monitoring/api/v3/filters) specifies which
+        #   metric descriptors are to be returned. For example, the following filter
+        #   matches all custom metrics (/monitoring/custom-metrics):
+        #   metric.type = starts_with(&quot;custom.googleapis.com/&quot;)
         # @param [String] page_token
-        #   If this field is not empty then it must contain the `nextPageToken` value
-        #   returned by a previous call to this method.  Using this field causes the
-        #   method to return additional results from the previous method call.
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -461,13 +450,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a metric descriptor. Only user-created
-        # [custom metrics](/monitoring/custom-metrics) can be deleted.
+        # Deletes a metric descriptor. Only user-created custom metrics (/monitoring/
+        # custom-metrics) can be deleted.
         # @param [String] name
-        #   The metric descriptor on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`/metricDescriptors/`metric_id`"`.
-        #   An example of ``metric_id`` is:
-        #   `"custom.googleapis.com/my_test_metric"`.
+        #   The metric descriptor on which to execute the request. The format is &quot;
+        #   projects/`project_id_or_number`/metricDescriptors/`metric_id`&quot;. An
+        #   example of `metric_id` is: &quot;custom.googleapis.com/my_test_metric&quot;.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -495,13 +483,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates or adds data to one or more time series.
-        # The response is empty if all time series in the request were written.
-        # If any time series could not be written, a corresponding failure message is
-        # included in the error response.
+        # Creates or adds data to one or more time series. The response is empty if all
+        # time series in the request were written. If any time series could not be
+        # written, a corresponding failure message is included in the error response.
         # @param [String] name
-        #   The project on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project on which to execute the request. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [Google::Apis::MonitoringV3::CreateTimeSeriesRequest] create_time_series_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -535,81 +522,65 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   The project on which to execute the request. The format is
-        #   "projects/`project_id_or_number`".
+        #   The project on which to execute the request. The format is "projects/`
+        #   project_id_or_number`".
         # @param [String] filter
-        #   A [monitoring filter](/monitoring/api/v3/filters) that specifies which time
-        #   series should be returned.  The filter must specify a single metric type,
-        #   and can additionally specify metric labels and other information. For
-        #   example:
-        #   metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-        #   metric.label.instance_name = "my-instance-name"
+        #   A monitoring filter (/monitoring/api/v3/filters) that specifies which time
+        #   series should be returned. The filter must specify a single metric type, and
+        #   can additionally specify metric labels and other information. For example:
+        #   metric.type = &quot;compute.googleapis.com/instance/cpu/usage_time&quot; AND
+        #   metric.label.instance_name = &quot;my-instance-name&quot;
         # @param [Array<String>, String] aggregation_group_by_fields
-        #   The set of fields to preserve when `crossSeriesReducer` is
-        #   specified. The `groupByFields` determine how the time series
-        #   are partitioned into subsets prior to applying the aggregation
-        #   function. Each subset contains time series that have the same
-        #   value for each of the grouping fields. Each individual time
-        #   series is a member of exactly one subset. The
-        #   `crossSeriesReducer` is applied to each subset of time series.
-        #   Fields not specified in `groupByFields` are aggregated away.
-        #   If `groupByFields` is not specified, the time series are
-        #   aggregated into a single output time series. If
-        #   `crossSeriesReducer` is not defined, this field is ignored.
+        #   The set of fields to preserve when crossSeriesReducer is specified. The
+        #   groupByFields determine how the time series are partitioned into subsets prior
+        #   to applying the aggregation function. Each subset contains time series that
+        #   have the same value for each of the grouping fields. Each individual time
+        #   series is a member of exactly one subset. The crossSeriesReducer is applied to
+        #   each subset of time series. Fields not specified in groupByFields are
+        #   aggregated away. If groupByFields is not specified, the time series are
+        #   aggregated into a single output time series. If crossSeriesReducer is not
+        #   defined, this field is ignored.
         # @param [String] aggregation_cross_series_reducer
-        #   The approach to be used to combine time series. Not all reducer
-        #   functions may be applied to all time series, depending on the
-        #   metric type and the value type of the original time
-        #   series. Reduction may change the metric type of value type of the
-        #   time series.
-        #   Time series data must be aligned in order to perform cross-time
-        #   series reduction. If `crossSeriesReducer` is specified, then
-        #   `perSeriesAligner` must be specified and not equal `ALIGN_NONE`
-        #   and `alignmentPeriod` must be specified; otherwise, an error is
-        #   returned.
+        #   The approach to be used to combine time series. Not all reducer functions may
+        #   be applied to all time series, depending on the metric type and the value type
+        #   of the original time series. Reduction may change the metric type of value
+        #   type of the time series.Time series data must be aligned in order to perform
+        #   cross-time series reduction. If crossSeriesReducer is specified, then
+        #   perSeriesAligner must be specified and not equal ALIGN_NONE and
+        #   alignmentPeriod must be specified; otherwise, an error is returned.
         # @param [String] interval_end_time
-        #   Required. The end of the interval. The interval includes this
-        #   time.
+        #   Required. The end of the time interval.
         # @param [String] interval_start_time
-        #   If this value is omitted, the interval is a point in time,
-        #   `endTime`.  If `startTime` is present, it must be earlier than
-        #   (less than) `endTime`.  The interval begins after
-        #   `startTime`&mdash;it does not include `startTime`.
+        #   Optional. The beginning of the time interval. The default value for the start
+        #   time is the end time. The start time must not be later than the end time.
         # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return.
-        #   When `view` field sets to `FULL`, it limits the number of `Points` server
-        #   will return; if `view` field is `HEADERS`, it limits the number of
-        #   `TimeSeries` server will return.
+        #   A positive number that is the maximum number of results to return. When view
+        #   field sets to FULL, it limits the number of Points server will return; if view
+        #   field is HEADERS, it limits the number of TimeSeries server will return.
         # @param [String] view
         #   Specifies which information is returned about the time series.
         # @param [String] aggregation_alignment_period
-        #   The alignment period for per-time series
-        #   alignment. If present, `alignmentPeriod` must be at least 60
-        #   seconds.  After per-time series alignment, each time series will
-        #   contain data points only on the period boundaries. If
-        #   `perSeriesAligner` is not specified or equals `ALIGN_NONE`, then
-        #   this field is ignored. If `perSeriesAligner` is specified and
-        #   does not equal `ALIGN_NONE`, then this field must be defined;
-        #   otherwise an error is returned.
+        #   The alignment period for per-time series alignment. If present,
+        #   alignmentPeriod must be at least 60 seconds. After per-time series alignment,
+        #   each time series will contain data points only on the period boundaries. If
+        #   perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+        #   ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then
+        #   this field must be defined; otherwise an error is returned.
         # @param [String] aggregation_per_series_aligner
-        #   The approach to be used to align individual time series. Not all
-        #   alignment functions may be applied to all time series, depending
-        #   on the metric type and value type of the original time
-        #   series. Alignment may change the metric type or the value type of
-        #   the time series.
-        #   Time series data must be aligned in order to perform cross-time
-        #   series reduction. If `crossSeriesReducer` is specified, then
-        #   `perSeriesAligner` must be specified and not equal `ALIGN_NONE`
-        #   and `alignmentPeriod` must be specified; otherwise, an error is
-        #   returned.
+        #   The approach to be used to align individual time series. Not all alignment
+        #   functions may be applied to all time series, depending on the metric type and
+        #   value type of the original time series. Alignment may change the metric type
+        #   or the value type of the time series.Time series data must be aligned in order
+        #   to perform cross-time series reduction. If crossSeriesReducer is specified,
+        #   then perSeriesAligner must be specified and not equal ALIGN_NONE and
+        #   alignmentPeriod must be specified; otherwise, an error is returned.
         # @param [String] order_by
-        #   Specifies the order in which the points of the time series should
-        #   be returned.  By default, results are not ordered.  Currently,
-        #   this field must be left blank.
+        #   Specifies the order in which the points of the time series should be returned.
+        #   By default, results are not ordered. Currently, this field must be left blank.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the `nextPageToken` value
-        #   returned by a previous call to this method.  Using this field causes the
-        #   method to return additional results from the previous method call.
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -651,11 +622,9 @@ module Google
         # Gets a single monitored resource descriptor. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   The monitored resource descriptor to get.  The format is
-        #   `"projects/`project_id_or_number`/monitoredResourceDescriptors/`resource_type`"
-        #   `.
-        #   The ``resource_type`` is a predefined type, such as
-        #   `cloudsql_database`.
+        #   The monitored resource descriptor to get. The format is &quot;projects/`
+        #   project_id_or_number`/monitoredResourceDescriptors/`resource_type`&quot;. The `
+        #   resource_type` is a predefined type, such as cloudsql_database.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -686,21 +655,20 @@ module Google
         # Lists monitored resource descriptors that match a filter. This method does not
         # require a Stackdriver account.
         # @param [String] name
-        #   The project on which to execute the request. The format is
-        #   `"projects/`project_id_or_number`"`.
+        #   The project on which to execute the request. The format is &quot;projects/`
+        #   project_id_or_number`&quot;.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] filter
-        #   An optional [filter](/monitoring/api/v3/filters) describing
-        #   the descriptors to be returned.  The filter can reference
-        #   the descriptor's type and labels. For example, the
-        #   following filter returns only Google Compute Engine descriptors
-        #   that have an `id` label:
-        #   resource.type = starts_with("gce_") AND resource.label:id
+        #   An optional filter (/monitoring/api/v3/filters) describing the descriptors to
+        #   be returned. The filter can reference the descriptor's type and labels. For
+        #   example, the following filter returns only Google Compute Engine descriptors
+        #   that have an id label:
+        #   resource.type = starts_with(&quot;gce_&quot;) AND resource.label:id
         # @param [String] page_token
-        #   If this field is not empty then it must contain the `nextPageToken` value
-        #   returned by a previous call to this method.  Using this field causes the
-        #   method to return additional results from the previous method call.
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.

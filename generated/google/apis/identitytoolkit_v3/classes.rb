@@ -300,6 +300,12 @@ module Google
         # @return [String]
         attr_accessor :continue_uri
       
+        # The hosted domain to restrict sign-in to accounts at that domain for Google
+        # Apps hosted accounts.
+        # Corresponds to the JSON property `hostedDomain`
+        # @return [String]
+        attr_accessor :hosted_domain
+      
         # The email or federated ID of the user.
         # Corresponds to the JSON property `identifier`
         # @return [String]
@@ -343,6 +349,7 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @context = args[:context] if args.key?(:context)
           @continue_uri = args[:continue_uri] if args.key?(:continue_uri)
+          @hosted_domain = args[:hosted_domain] if args.key?(:hosted_domain)
           @identifier = args[:identifier] if args.key?(:identifier)
           @oauth_consumer_key = args[:oauth_consumer_key] if args.key?(:oauth_consumer_key)
           @oauth_scope = args[:oauth_scope] if args.key?(:oauth_scope)
@@ -1850,6 +1857,11 @@ module Google
         # @return [String]
         attr_accessor :refresh_token
       
+        # The screen_name of a Twitter user.
+        # Corresponds to the JSON property `screenName`
+        # @return [String]
+        attr_accessor :screen_name
+      
         # The timezone of the user.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -1899,6 +1911,7 @@ module Google
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @screen_name = args[:screen_name] if args.key?(:screen_name)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @verified_provider = args[:verified_provider] if args.key?(:verified_provider)
         end

@@ -898,6 +898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutersPreviewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1508,6 +1514,7 @@ module Google
       class BackendService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
           collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::Backend::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -1523,6 +1530,7 @@ module Google
           property :protocol, as: 'protocol'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
         end
       end
@@ -2966,6 +2974,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :result, as: 'result', class: Google::Apis::ComputeV1::RouterStatus, decorator: Google::Apis::ComputeV1::RouterStatus::Representation
+      
+        end
+      end
+      
+      class RoutersPreviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::Router, decorator: Google::Apis::ComputeV1::Router::Representation
       
         end
       end

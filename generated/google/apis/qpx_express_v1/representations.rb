@@ -436,6 +436,7 @@ module Google
           collection :slice, as: 'slice', class: Google::Apis::QpxExpressV1::SliceInput, decorator: Google::Apis::QpxExpressV1::SliceInput::Representation
       
           property :solutions, as: 'solutions'
+          property :ticketing_country, as: 'ticketingCountry'
         end
       end
       

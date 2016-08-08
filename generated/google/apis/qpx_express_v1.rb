@@ -25,7 +25,7 @@ module Google
     # @see http://developers.google.com/qpx-express
     module QpxExpressV1
       VERSION = 'V1'
-      REVISION = '20160307'
+      REVISION = '20160708'
     end
   end
 end

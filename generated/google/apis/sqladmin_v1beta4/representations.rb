@@ -334,6 +334,7 @@ module Google
       class BackupRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :end_time, as: 'endTime', type: DateTime
       
           property :enqueued_time, as: 'enqueuedTime', type: DateTime
@@ -347,6 +348,7 @@ module Google
           property :start_time, as: 'startTime', type: DateTime
       
           property :status, as: 'status'
+          property :type, as: 'type'
           property :window_start_time, as: 'windowStartTime', type: DateTime
       
         end

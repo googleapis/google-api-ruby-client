@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DealTermsRubiconNonGuaranteedTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteOrderDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -615,6 +621,7 @@ module Google
           collection :corrections, as: 'corrections', class: Google::Apis::AdexchangebuyerV1_4::Creative::Correction, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::Correction::Representation
       
           property :deals_status, as: 'dealsStatus'
+          collection :detected_domains, as: 'detectedDomains'
           property :filtering_reasons, as: 'filteringReasons', class: Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons::Representation
       
           property :height, as: 'height'
@@ -771,9 +778,11 @@ module Google
       class DealServingMetadataDealPauseStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_pause_reason, as: 'buyerPauseReason'
           property :first_paused_by, as: 'firstPausedBy'
           property :has_buyer_paused, as: 'hasBuyerPaused'
           property :has_seller_paused, as: 'hasSellerPaused'
+          property :seller_pause_reason, as: 'sellerPauseReason'
         end
       end
       
@@ -791,6 +800,8 @@ module Google
       
           property :non_guaranteed_fixed_price_terms, as: 'nonGuaranteedFixedPriceTerms', class: Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms, decorator: Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms::Representation
       
+          property :rubicon_non_guaranteed_terms, as: 'rubiconNonGuaranteedTerms', class: Google::Apis::AdexchangebuyerV1_4::DealTermsRubiconNonGuaranteedTerms, decorator: Google::Apis::AdexchangebuyerV1_4::DealTermsRubiconNonGuaranteedTerms::Representation
+      
           property :seller_time_zone, as: 'sellerTimeZone'
         end
       end
@@ -804,6 +815,7 @@ module Google
       
           property :guaranteed_impressions, as: 'guaranteedImpressions'
           property :guaranteed_looks, as: 'guaranteedLooks'
+          property :minimum_daily_looks, as: 'minimumDailyLooks'
         end
       end
       
@@ -831,6 +843,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fixed_prices, as: 'fixedPrices', class: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer, decorator: Google::Apis::AdexchangebuyerV1_4::PricePerBuyer::Representation
+      
+        end
+      end
+      
+      class DealTermsRubiconNonGuaranteedTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority_price, as: 'priorityPrice', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
+      
+          property :standard_price, as: 'standardPrice', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
       
         end
       end
@@ -1139,6 +1161,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount_micros, as: 'amountMicros'
           property :currency_code, as: 'currencyCode'
+          property :expected_cpm_micros, as: 'expectedCpmMicros'
           property :pricing_type, as: 'pricingType'
         end
       end

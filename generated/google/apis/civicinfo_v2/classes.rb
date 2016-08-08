@@ -79,6 +79,11 @@ module Google
         # @return [String]
         attr_accessor :absentee_voting_info_url
       
+        # 
+        # Corresponds to the JSON property `addressLines`
+        # @return [Array<String>]
+        attr_accessor :address_lines
+      
         # A URL provided by this administrative body to give contest information to the
         # voter.
         # Corresponds to the JSON property `ballotInfoUrl`
@@ -151,6 +156,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absentee_voting_info_url = args[:absentee_voting_info_url] if args.key?(:absentee_voting_info_url)
+          @address_lines = args[:address_lines] if args.key?(:address_lines)
           @ballot_info_url = args[:ballot_info_url] if args.key?(:ballot_info_url)
           @correspondence_address = args[:correspondence_address] if args.key?(:correspondence_address)
           @election_info_url = args[:election_info_url] if args.key?(:election_info_url)

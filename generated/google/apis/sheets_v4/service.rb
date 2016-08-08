@@ -176,6 +176,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Appends values to a spreadsheet. The input range is used to search for
+        # existing data and find a "table" within that range. Values will be
+        # appended to the next row of the table, starting with the first column of
+        # the table. See the
+        # [guide](/sheets/guides/values#appending_values)
+        # and
+        # [sample code](/sheets/samples/writing#append_values)
+        # for specific details of how tables are detected and data is appended.
+        # The caller must specify the spreadsheet ID, range, and
+        # a valueInputOption.  The `valueInputOption` only
+        # controls how the input data will be added to the sheet (column-wise or
+        # row-wise), it does not influence what cell the data starts being written
+        # to.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to update.
+        # @param [String] range
+        #   The A1 notation of a range to search for a logical table of data.
+        #   Values will be appended after the last row of the table.
+        # @param [Google::Apis::SheetsV4::ValueRange] value_range_object
+        # @param [String] value_input_option
+        #   How the input data should be interpreted.
+        # @param [String] insert_data_option
+        #   How the input data should be inserted.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::AppendValuesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::AppendValuesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def append_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, value_input_option: nil, insert_data_option: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
+          command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
+          command.request_object = value_range_object
+          command.response_representation = Google::Apis::SheetsV4::AppendValuesResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::AppendValuesResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.params['range'] = range unless range.nil?
+          command.query['valueInputOption'] = value_input_option unless value_input_option.nil?
+          command.query['insertDataOption'] = insert_data_option unless insert_data_option.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets values in a range of a spreadsheet.
         # The caller must specify the spreadsheet ID, range, and
         # a valueInputOption.

@@ -22,20 +22,19 @@ module Google
   module Apis
     module MonitoringV3
       
-      # A specific metric identified by specifying values for all of the
-      # labels of a `MetricDescriptor`.
+      # A specific metric identified by specifying values for all of the labels of a
+      # MetricDescriptor.
       class Metric
         include Google::Apis::Core::Hashable
       
-        # The set of labels that uniquely identify a metric. To specify a
-        # metric, all labels enumerated in the `MetricDescriptor` must be
-        # assigned values.
+        # The set of labels that uniquely identify a metric. To specify a metric, all
+        # labels enumerated in the MetricDescriptor must be assigned values.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # An existing metric type, see google.api.MetricDescriptor.
-        # For example, `compute.googleapis.com/instance/cpu/usage_time`.
+        # An existing metric type, see google.api.MetricDescriptor. For example, compute.
+        # googleapis.com/instance/cpu/usage_time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -51,7 +50,7 @@ module Google
         end
       end
       
-      # The `ListGroupMembers` response.
+      # The ListGroupMembers response.
       class ListGroupMembersResponse
         include Google::Apis::Core::Hashable
       
@@ -60,9 +59,9 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::MonitoredResource>]
         attr_accessor :members
       
-        # If there are more results than have been returned, then this field is
-        # set to a non-empty value.  To see the additional results, use that value as
-        # `pageToken` in the next call to this method.
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -84,21 +83,19 @@ module Google
         end
       end
       
-      # A time interval extending from after `startTime` through `endTime`.  If
-      # `startTime` is omitted, the interval is the single point in time, `endTime`.
+      # A time interval extending just after a start time through an end time. If the
+      # start time is the same as the end time, then the interval represents a single
+      # point in time.
       class TimeInterval
         include Google::Apis::Core::Hashable
       
-        # Required. The end of the interval. The interval includes this
-        # time.
+        # Required. The end of the time interval.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # If this value is omitted, the interval is a point in time,
-        # `endTime`.  If `startTime` is present, it must be earlier than
-        # (less than) `endTime`.  The interval begins after
-        # `startTime`&mdash;it does not include `startTime`.
+        # Optional. The beginning of the time interval. The default value for the start
+        # time is the end time. The start time must not be later than the end time.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -114,29 +111,26 @@ module Google
         end
       end
       
-      # The description of a dynamic collection of monitored resources. Each group
-      # has a filter that is matched against monitored resources and their associated
+      # The description of a dynamic collection of monitored resources. Each group has
+      # a filter that is matched against monitored resources and their associated
       # metadata. If a group's filter matches an available monitored resource, then
-      # that resource is a member of that group.  Groups can contain any number of
-      # monitored resources, and each monitored resource can be a member of any
-      # number of groups.
-      # Groups can be nested in parent-child hierarchies. The `parentName` field
-      # identifies an optional parent for each group.  If a group has a parent, then
-      # the only monitored resources available to be matched by the group's filter
-      # are the resources contained in the parent group.  In other words, a group
-      # contains the monitored resources that match its filter and the filters of all
-      # the group's ancestors.  A group without a parent can contain any monitored
-      # resource.
-      # For example, consider an infrastructure running a set of instances with two
-      # user-defined tags: `"environment"` and `"role"`. A parent group has a filter,
-      # `environment="production"`.  A child of that parent group has a filter,
-      # `role="transcoder"`.  The parent group contains all instances in the
-      # production environment, regardless of their roles.  The child group contains
-      # instances that have the transcoder role *and* are in the production
-      # environment.
-      # The monitored resources contained in a group can change at any moment,
-      # depending on what resources exist and what filters are associated with the
-      # group and its ancestors.
+      # that resource is a member of that group. Groups can contain any number of
+      # monitored resources, and each monitored resource can be a member of any number
+      # of groups.Groups can be nested in parent-child hierarchies. The parentName
+      # field identifies an optional parent for each group. If a group has a parent,
+      # then the only monitored resources available to be matched by the group's
+      # filter are the resources contained in the parent group. In other words, a
+      # group contains the monitored resources that match its filter and the filters
+      # of all the group's ancestors. A group without a parent can contain any
+      # monitored resource.For example, consider an infrastructure running a set of
+      # instances with two user-defined tags: &quot;environment&quot; and &quot;role&
+      # quot;. A parent group has a filter, environment=&quot;production&quot;. A
+      # child of that parent group has a filter, role=&quot;transcoder&quot;. The
+      # parent group contains all instances in the production environment, regardless
+      # of their roles. The child group contains instances that have the transcoder
+      # role and are in the production environment.The monitored resources contained
+      # in a group can change at any moment, depending on what resources exist and
+      # what filters are associated with the group and its ancestors.
       class Group
         include Google::Apis::Core::Hashable
       
@@ -145,15 +139,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The name of the group's parent, if it has one.
-        # The format is `"projects/`project_id_or_number`/groups/`group_id`"`.
-        # For groups with no parent, `parentName` is the empty string, `""`.
+        # The name of the group's parent, if it has one. The format is &quot;projects/`
+        # project_id_or_number`/groups/`group_id`&quot;. For groups with no parent,
+        # parentName is the empty string, &quot;&quot;.
         # Corresponds to the JSON property `parentName`
         # @return [String]
         attr_accessor :parent_name
       
-        # If true, the members of this group are considered to be a cluster.
-        # The system can perform additional analysis on groups that are clusters.
+        # If true, the members of this group are considered to be a cluster. The system
+        # can perform additional analysis on groups that are clusters.
         # Corresponds to the JSON property `isCluster`
         # @return [Boolean]
         attr_accessor :is_cluster
@@ -164,13 +158,11 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # The name of this group.
-        # The format is
-        # `"projects/`project_id_or_number`/groups/`group_id`"`.
-        # When creating a group, this field is ignored and a new name is created
-        # consisting of the project specified in the call to `CreateGroup`
-        # and a unique ``group_id`` that is generated automatically.
-        # @OutputOnly
+        # Output only. The name of this group. The format is &quot;projects/`
+        # project_id_or_number`/groups/`group_id`&quot;. When creating a group, this
+        # field is ignored and a new name is created consisting of the project specified
+        # in the call to CreateGroup and a unique `group_id` that is generated
+        # automatically.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -189,7 +181,7 @@ module Google
         end
       end
       
-      # The `ListTimeSeries` response.
+      # The ListTimeSeries response.
       class ListTimeSeriesResponse
         include Google::Apis::Core::Hashable
       
@@ -198,9 +190,9 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
         attr_accessor :time_series
       
-        # If there are more results than have been returned, then this field is set
-        # to a non-empty value.  To see the additional results,
-        # use that value as `pageToken` in the next call to this method.
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -225,8 +217,9 @@ module Google
         # @return [Google::Apis::MonitoringV3::TypedValue]
         attr_accessor :value
       
-        # A time interval extending from after `startTime` through `endTime`.  If
-        # `startTime` is omitted, the interval is the single point in time, `endTime`.
+        # A time interval extending just after a start time through an end time. If the
+        # start time is the same as the end time, then the interval represents a single
+        # point in time.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
@@ -242,7 +235,7 @@ module Google
         end
       end
       
-      # A single data point from a `collectd`-based plugin.
+      # A single data point from a collectd-based plugin.
       class CollectdValue
         include Google::Apis::Core::Hashable
       
@@ -251,8 +244,8 @@ module Google
         # @return [Google::Apis::MonitoringV3::TypedValue]
         attr_accessor :value
       
-        # The data source for the `collectd` value. For example there are
-        # two data sources for network measurements: `"rx"` and `"tx"`.
+        # The data source for the collectd value. For example there are two data sources
+        # for network measurements: &quot;rx&quot; and &quot;tx&quot;.
         # Corresponds to the JSON property `dataSourceName`
         # @return [String]
         attr_accessor :data_source_name
@@ -274,55 +267,52 @@ module Google
         end
       end
       
-      # A collection of data points that describes the time-varying nature
-      # of a metric. A time series is identified by a combination of a
-      # fully-specified monitored resource and a fully-specified metric.
+      # A collection of data points that describes the time-varying values of a metric.
+      # A time series is identified by a combination of a fully-specified monitored
+      # resource and a fully-specified metric.
       class TimeSeries
         include Google::Apis::Core::Hashable
       
-        # A specific metric identified by specifying values for all of the
-        # labels of a `MetricDescriptor`.
+        # A specific metric identified by specifying values for all of the labels of a
+        # MetricDescriptor.
         # Corresponds to the JSON property `metric`
         # @return [Google::Apis::MonitoringV3::Metric]
         attr_accessor :metric
       
-        # The data points of this time series. When used as output, points will be
-        # sorted by decreasing time order. When used as input, points could be
-        # written in any orders.
+        # The data points of this time series. The order of the points is specified when
+        # you retrieve the time series.
         # Corresponds to the JSON property `points`
         # @return [Array<Google::Apis::MonitoringV3::Point>]
         attr_accessor :points
       
-        # The value type of the time series. This can be different than the value
-        # type specified in [google.api.MetricDescriptor] because of alignment and
-        # reduction operations on the data. This field is ignored when writing data;
-        # the value specified in the descriptor is used instead.
-        # @OutputOnly
+        # Output only. The value type of the time series. This can be different than the
+        # value type of the metric object if this time series is an alignment or
+        # reduction of other time series. This field is ignored when writing data to a
+        # time series.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
       
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The `type` field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's
-        # schema. Information in the `labels` field identifies the actual resource and
-        # its attributes according to the schema. For example, a particular Compute
-        # Engine VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for `"gce_instance"` has labels
-        # `"instance_id"` and `"zone"`:
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
+        # instance_id&quot; and &quot;zone&quot;:
+        # ` &quot;type&quot;: &quot;gce_instance&quot;,
+        # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
+        # &quot;zone&quot;: &quot;us-central1-a&quot; ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
       
-        # The metric kind of the time series. This can be different than the metric
-        # kind specified in [google.api.MetricDescriptor] because of alignment and
-        # reduction operations on the data. This field is ignored when writing data;
-        # the value specified in the descriptor is used instead.
-        # @OutputOnly
+        # Output only. The metric kind of the time series. This can be different than
+        # the metric kind of the metric object if this time series is an alignment or
+        # reduction of other time series. This field is ignored when writing data to a
+        # time series.
         # Corresponds to the JSON property `metricKind`
         # @return [String]
         attr_accessor :metric_kind
@@ -350,65 +340,61 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The unit in which the metric value is reported. It is only applicable
-        # if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
-        # supported units are a subset of [The Unified Code for Units of
-        # Measure](http://unitsofmeasure.org/ucum.html) standard:
-        # **Basic units (UNIT)**
-        # * `bit`   bit
-        # * `By`    byte
-        # * `s`     second
-        # * `min`   minute
-        # * `h`     hour
-        # * `d`     day
-        # **Prefixes (PREFIX)**
-        # * `k`     kilo    (10**3)
-        # * `M`     mega    (10**6)
-        # * `G`     giga    (10**9)
-        # * `T`     tera    (10**12)
-        # * `P`     peta    (10**15)
-        # * `E`     exa     (10**18)
-        # * `Z`     zetta   (10**21)
-        # * `Y`     yotta   (10**24)
-        # * `m`     milli   (10**-3)
-        # * `u`     micro   (10**-6)
-        # * `n`     nano    (10**-9)
-        # * `p`     pico    (10**-12)
-        # * `f`     femto   (10**-15)
-        # * `a`     atto    (10**-18)
-        # * `z`     zepto   (10**-21)
-        # * `y`     yocto   (10**-24)
-        # * `Ki`    kibi    (2**10)
-        # * `Mi`    mebi    (2**20)
-        # * `Gi`    gibi    (2**30)
-        # * `Ti`    tebi    (2**40)
-        # **Grammar**
-        # The grammar includes the dimensionless unit `1`, such as `1/s`.
-        # The grammar also includes these connectors:
-        # * `/`    division (as an infix operator, e.g. `1/s`).
-        # * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
-        # The grammar for a unit is as follows:
-        # Expression = Component ` "." Component ` ` "/" Component ` ;
+        # The unit in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
+        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
+        # standard:Basic units (UNIT)
+        # bit bit
+        # By byte
+        # s second
+        # min minute
+        # h hour
+        # d dayPrefixes (PREFIX)
+        # k kilo (10**3)
+        # M mega (10**6)
+        # G giga (10**9)
+        # T tera (10**12)
+        # P peta (10**15)
+        # E exa (10**18)
+        # Z zetta (10**21)
+        # Y yotta (10**24)
+        # m milli (10**-3)
+        # u micro (10**-6)
+        # n nano (10**-9)
+        # p pico (10**-12)
+        # f femto (10**-15)
+        # a atto (10**-18)
+        # z zepto (10**-21)
+        # y yocto (10**-24)
+        # Ki kibi (2**10)
+        # Mi mebi (2**20)
+        # Gi gibi (2**30)
+        # Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/
+        # s.The grammar also includes these connectors:
+        # / division (as an infix operator, e.g. 1/s).
+        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
+        # as follows:
+        # Expression = Component ` &quot;.&quot; Component ` ` &quot;/&quot; Component `
+        # ;
         # Component = [ PREFIX ] UNIT [ Annotation ]
         # | Annotation
-        # | "1"
+        # | &quot;1&quot;
         # ;
-        # Annotation = "`" NAME "`" ;
+        # Annotation = &quot;`&quot; NAME &quot;`&quot; ;
         # Notes:
-        # * `Annotation` is just a comment if it follows a `UNIT` and is
-        # equivalent to `1` if it is used alone. For examples,
-        # ``requests`/s == 1/s`, `By`transmitted`/s == By/s`.
-        # * `NAME` is a sequence of non-blank printable ASCII characters not
-        # containing '`' or '`'.
+        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
+        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
+        # s.
+        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
+        # or '`'.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type. For example, the
-        # `compute.googleapis.com/instance/network/received_bytes_count` metric type
-        # has a label, `loadbalanced`, that specifies whether the traffic was
-        # received through a load balanced IP address.
+        # metric type. For example, the compute.googleapis.com/instance/network/
+        # received_bytes_count metric type has a label, loadbalanced, that specifies
+        # whether the traffic was received through a load balanced IP address.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
@@ -423,8 +409,8 @@ module Google
         # @return [String]
         attr_accessor :value_type
       
-        # A concise name for the metric, which can be displayed in user interfaces.
-        # Use sentence case without an ending period, for example "Request count".
+        # A concise name for the metric, which can be displayed in user interfaces. Use
+        # sentence case without an ending period, for example "Request count".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -437,16 +423,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The metric type including a DNS name prefix, for example
-        # `"compute.googleapis.com/instance/cpu/utilization"`. Metric types
-        # should use a natural hierarchical grouping such as the following:
+        # The metric type including a DNS name prefix, for example &quot;compute.
+        # googleapis.com/instance/cpu/utilization&quot;. Metric types should use a
+        # natural hierarchical grouping such as the following:
         # compute.googleapis.com/instance/cpu/utilization
         # compute.googleapis.com/instance/disk/read_ops_count
         # compute.googleapis.com/instance/network/received_bytes_count
-        # Note that if the metric type changes, the monitoring data will be
-        # discontinued, and anything depends on it will break, such as monitoring
-        # dashboards, alerting rules and quota limits. Therefore, once a metric has
-        # been published, its type should be immutable.
+        # Note that if the metric type changes, the monitoring data will be discontinued,
+        # and anything depends on it will break, such as monitoring dashboards,
+        # alerting rules and quota limits. Therefore, once a metric has been published,
+        # its type should be immutable.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -468,13 +454,12 @@ module Google
         end
       end
       
-      # Specify a sequence of buckets that have a width that is proportional to
-      # the value of the lower bound.  Each bucket represents a constant relative
-      # uncertainty on a specific value in the bucket.
-      # Defines `num_finite_buckets + 2` (= N) buckets with these boundaries for
-      # bucket i:
-      # Upper bound (0 <= i < N-1):     scale * (growth_factor ^ i).
-      # Lower bound (1 <= i < N):       scale * (growth_factor ^ (i - 1)).
+      # Specify a sequence of buckets that have a width that is proportional to the
+      # value of the lower bound. Each bucket represents a constant relative
+      # uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2 (=
+      # N) buckets with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1)
+      # : scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (
+      # growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
       
@@ -505,14 +490,12 @@ module Google
         end
       end
       
-      # A set of buckets with arbitrary widths.
-      # Defines `size(bounds) + 1` (= N) buckets with these boundaries for
-      # bucket i:
-      # Upper bound (0 <= i < N-1):     bounds[i]
-      # Lower bound (1 <= i < N);       bounds[i - 1]
-      # There must be at least one element in `bounds`.  If `bounds` has only one
-      # element, there are no finite buckets, and that single element is the
-      # common boundary of the overflow and underflow buckets.
+      # A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
+      # with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): boundsi
+      # Lower bound (1 &lt;= i &lt; N); boundsi - 1There must be at least one element
+      # in bounds. If bounds has only one element, there are no finite buckets, and
+      # that single element is the common boundary of the overflow and underflow
+      # buckets.
       class Explicit
         include Google::Apis::Core::Hashable
       
@@ -531,13 +514,11 @@ module Google
         end
       end
       
-      # Specify a sequence of buckets that all have the same width (except
-      # overflow and underflow).  Each bucket represents a constant absolute
-      # uncertainty on the specific value in the bucket.
-      # Defines `num_finite_buckets + 2` (= N) buckets with these boundaries for
-      # bucket `i`:
-      # Upper bound (0 <= i < N-1):     offset + (width * i).
-      # Lower bound (1 <= i < N):       offset + (width * (i - 1)).
+      # Specify a sequence of buckets that all have the same width (except overflow
+      # and underflow). Each bucket represents a constant absolute uncertainty on the
+      # specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets with
+      # these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): offset + (
+      # width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
@@ -568,8 +549,8 @@ module Google
         end
       end
       
-      # A collection of data points sent from a `collectd`-based plugin.
-      # See the `collectd` documentation for more information.
+      # A collection of data points sent from a collectd-based plugin. See the
+      # collectd documentation for more information.
       class CollectdPayload
         include Google::Apis::Core::Hashable
       
@@ -578,18 +559,18 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The measurement metadata. Example: `"process_id" -> 12345`
+        # The measurement metadata. Example: &quot;process_id&quot; -&gt; 12345
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
         attr_accessor :metadata
       
-        # The measured values during this time interval.
-        # Each value must have a different `dataSourceName`.
+        # The measured values during this time interval. Each value must have a
+        # different dataSourceName.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
         attr_accessor :values
       
-        # The instance name of the plugin Example: `"hdcl"`.
+        # The instance name of the plugin Example: &quot;hdcl&quot;.
         # Corresponds to the JSON property `pluginInstance`
         # @return [String]
         attr_accessor :plugin_instance
@@ -599,17 +580,17 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The measurement type instance. Example: `"used"`.
+        # The measurement type instance. Example: &quot;used&quot;.
         # Corresponds to the JSON property `typeInstance`
         # @return [String]
         attr_accessor :type_instance
       
-        # The measurement type. Example: `"memory"`.
+        # The measurement type. Example: &quot;memory&quot;.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # The name of the plugin. Example: `"disk"`.
+        # The name of the plugin. Example: &quot;disk&quot;.
         # Corresponds to the JSON property `plugin`
         # @return [String]
         attr_accessor :plugin
@@ -631,19 +612,19 @@ module Google
         end
       end
       
-      # The `ListMetricDescriptors` response.
+      # The ListMetricDescriptors response.
       class ListMetricDescriptorsResponse
         include Google::Apis::Core::Hashable
       
-        # The metric descriptors that are available to the project
-        # and that match the value of `filter`, if present.
+        # The metric descriptors that are available to the project and that match the
+        # value of filter, if present.
         # Corresponds to the JSON property `metricDescriptors`
         # @return [Array<Google::Apis::MonitoringV3::MetricDescriptor>]
         attr_accessor :metric_descriptors
       
-        # If there are more results than have been returned, then this field is set
-        # to a non-empty value.  To see the additional results,
-        # use that value as `pageToken` in the next call to this method.
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -660,52 +641,47 @@ module Google
       end
       
       # Distribution contains summary statistics for a population of values and,
-      # optionally, a histogram representing the distribution of those values across
-      # a specified set of histogram buckets.
-      # The summary statistics are the count, mean, sum of the squared deviation from
-      # the mean, the minimum, and the maximum of the set of population of values.
-      # The histogram is based on a sequence of buckets and gives a count of values
-      # that fall into each bucket.  The boundaries of the buckets are given either
-      # explicitly or by specifying parameters for a method of computing them
-      # (buckets of fixed width or buckets of exponentially increasing width).
-      # Although it is not forbidden, it is generally a bad idea to include
-      # non-finite values (infinities or NaNs) in the population of values, as this
-      # will render the `mean` and `sum_of_squared_deviation` fields meaningless.
+      # optionally, a histogram representing the distribution of those values across a
+      # specified set of histogram buckets.The summary statistics are the count, mean,
+      # sum of the squared deviation from the mean, the minimum, and the maximum of
+      # the set of population of values.The histogram is based on a sequence of
+      # buckets and gives a count of values that fall into each bucket. The boundaries
+      # of the buckets are given either explicitly or by specifying parameters for a
+      # method of computing them (buckets of fixed width or buckets of exponentially
+      # increasing width).Although it is not forbidden, it is generally a bad idea to
+      # include non-finite values (infinities or NaNs) in the population of values, as
+      # this will render the mean and sum_of_squared_deviation fields meaningless.
       class Distribution
         include Google::Apis::Core::Hashable
       
-        # If `bucket_options` is given, then the sum of the values in `bucket_counts`
-        # must equal the value in `count`.  If `bucket_options` is not given, no
-        # `bucket_counts` fields may be given.
-        # Bucket counts are given in order under the numbering scheme described
-        # above (the underflow bucket has number 0; the finite buckets, if any,
-        # have numbers 1 through N-2; the overflow bucket has number N-1).
-        # The size of `bucket_counts` must be no greater than N as defined in
-        # `bucket_options`.
+        # If bucket_options is given, then the sum of the values in bucket_counts must
+        # equal the value in count. If bucket_options is not given, no bucket_counts
+        # fields may be given.Bucket counts are given in order under the numbering
+        # scheme described above (the underflow bucket has number 0; the finite buckets,
+        # if any, have numbers 1 through N-2; the overflow bucket has number N-1).The
+        # size of bucket_counts must be no greater than N as defined in bucket_options.
         # Any suffix of trailing zero bucket_count fields may be omitted.
         # Corresponds to the JSON property `bucketCounts`
         # @return [Array<String>]
         attr_accessor :bucket_counts
       
         # A Distribution may optionally contain a histogram of the values in the
-        # population.  The histogram is given in `bucket_counts` as counts of values
-        # that fall into one of a sequence of non-overlapping buckets.  The sequence
-        # of buckets is described by `bucket_options`.
-        # A bucket specifies an inclusive lower bound and exclusive upper bound for
-        # the values that are counted for that bucket.  The upper bound of a bucket
-        # is strictly greater than the lower bound.
-        # The sequence of N buckets for a Distribution consists of an underflow
-        # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and
-        # an overflow bucket (number N - 1).  The buckets are contiguous:  the lower
-        # bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1.
-        # The buckets span the whole range of finite values: lower bound of the
-        # underflow bucket is -infinity and the upper bound of the overflow bucket is
-        # +infinity.  The finite buckets are so-called because both bounds are
-        # finite.
-        # `BucketOptions` describes bucket boundaries in one of three ways.  Two
-        # describe the boundaries by giving parameters for a formula to generate
-        # boundaries and one gives the bucket boundaries explicitly.
-        # If `bucket_boundaries` is not given, then no `bucket_counts` may be given.
+        # population. The histogram is given in bucket_counts as counts of values that
+        # fall into one of a sequence of non-overlapping buckets. The sequence of
+        # buckets is described by bucket_options.A bucket specifies an inclusive lower
+        # bound and exclusive upper bound for the values that are counted for that
+        # bucket. The upper bound of a bucket is strictly greater than the lower bound.
+        # The sequence of N buckets for a Distribution consists of an underflow bucket (
+        # number 0), zero or more finite buckets (number 1 through N - 2) and an
+        # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+        # bucket i (i &gt; 0) is the same as the upper bound of bucket i - 1. The
+        # buckets span the whole range of finite values: lower bound of the underflow
+        # bucket is -infinity and the upper bound of the overflow bucket is +infinity.
+        # The finite buckets are so-called because both bounds are finite.BucketOptions
+        # describes bucket boundaries in one of three ways. Two describe the boundaries
+        # by giving parameters for a formula to generate boundaries and one gives the
+        # bucket boundaries explicitly.If bucket_boundaries is not given, then no
+        # bucket_counts may be given.
         # Corresponds to the JSON property `bucketOptions`
         # @return [Google::Apis::MonitoringV3::BucketOptions]
         attr_accessor :bucket_options
@@ -715,18 +691,18 @@ module Google
         # @return [String]
         attr_accessor :count
       
-        # The sum of squared deviations from the mean of the values in the
-        # population.  For values x_i this is:
+        # The sum of squared deviations from the mean of the values in the population.
+        # For values x_i this is:
         # Sum[i=1..n]((x_i - mean)^2)
         # Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
-        # describes Welford's method for accumulating this sum in one pass.
-        # If `count` is zero then this field must be zero.
+        # describes Welford's method for accumulating this sum in one pass.If count is
+        # zero then this field must be zero.
         # Corresponds to the JSON property `sumOfSquaredDeviation`
         # @return [Float]
         attr_accessor :sum_of_squared_deviation
       
-        # The arithmetic mean of the values in the population. If `count` is zero
-        # then this field must be zero.
+        # The arithmetic mean of the values in the population. If count is zero then
+        # this field must be zero.
         # Corresponds to the JSON property `mean`
         # @return [Float]
         attr_accessor :mean
@@ -735,13 +711,6 @@ module Google
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::MonitoringV3::Range]
         attr_accessor :range
-      
-        # Must be in increasing order of |value| field.  The current requirement
-        # enforced by the backend is that at most one Exemplar will fall into any
-        # bucket.
-        # Corresponds to the JSON property `exemplars`
-        # @return [Array<Google::Apis::MonitoringV3::Exemplar>]
-        attr_accessor :exemplars
       
         def initialize(**args)
            update!(**args)
@@ -755,35 +724,34 @@ module Google
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
           @mean = args[:mean] if args.key?(:mean)
           @range = args[:range] if args.key?(:range)
-          @exemplars = args[:exemplars] if args.key?(:exemplars)
         end
       end
       
       # An object representing a resource that can be used for monitoring, logging,
       # billing, or other purposes. Examples include virtual machine instances,
-      # databases, and storage devices such as disks. The `type` field identifies a
-      # MonitoredResourceDescriptor object that describes the resource's
-      # schema. Information in the `labels` field identifies the actual resource and
-      # its attributes according to the schema. For example, a particular Compute
-      # Engine VM instance could be represented by the following object, because the
-      # MonitoredResourceDescriptor for `"gce_instance"` has labels
-      # `"instance_id"` and `"zone"`:
-      # ` "type": "gce_instance",
-      # "labels": ` "instance_id": "12345678901234",
-      # "zone": "us-central1-a" ``
+      # databases, and storage devices such as disks. The type field identifies a
+      # MonitoredResourceDescriptor object that describes the resource's schema.
+      # Information in the labels field identifies the actual resource and its
+      # attributes according to the schema. For example, a particular Compute Engine
+      # VM instance could be represented by the following object, because the
+      # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
+      # instance_id&quot; and &quot;zone&quot;:
+      # ` &quot;type&quot;: &quot;gce_instance&quot;,
+      # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
+      # &quot;zone&quot;: &quot;us-central1-a&quot; ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
         # Required. Values for all of the labels listed in the associated monitored
-        # resource descriptor. For example, Cloud SQL databases use the labels
-        # `"database_id"` and `"zone"`.
+        # resource descriptor. For example, Cloud SQL databases use the labels &quot;
+        # database_id&quot; and &quot;zone&quot;.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The monitored resource type. This field must match
-        # the `type` field of a MonitoredResourceDescriptor object. For
-        # example, the type of a Cloud SQL database is `"cloudsql_database"`.
+        # Required. The monitored resource type. This field must match the type field of
+        # a MonitoredResourceDescriptor object. For example, the type of a Cloud SQL
+        # database is &quot;cloudsql_database&quot;.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -830,49 +798,50 @@ module Google
         end
       end
       
-      # An object that describes the schema of a MonitoredResource object using a
-      # type name and a set of labels.  For example, the monitored resource
-      # descriptor for Google Compute Engine VM instances has a type of
-      # `"gce_instance"` and specifies the use of the labels `"instance_id"` and
-      # `"zone"` to identify particular VM instances.
-      # Different APIs can support different monitored resource types. APIs generally
-      # provide a `list` method that returns the monitored resource descriptors used
-      # by the API.
+      # An object that describes the schema of a MonitoredResource object using a type
+      # name and a set of labels. For example, the monitored resource descriptor for
+      # Google Compute Engine VM instances has a type of &quot;gce_instance&quot; and
+      # specifies the use of the labels &quot;instance_id&quot; and &quot;zone&quot;
+      # to identify particular VM instances.Different APIs can support different
+      # monitored resource types. APIs generally provide a list method that returns
+      # the monitored resource descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
         # Optional. A concise name for the monitored resource type that might be
-        # displayed in user interfaces. For example, `"Google Cloud SQL Database"`.
+        # displayed in user interfaces. For example, &quot;Google Cloud SQL Database&
+        # quot;.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. A detailed description of the monitored resource type that might
-        # be used in documentation.
+        # Optional. A detailed description of the monitored resource type that might be
+        # used in documentation.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Required. A set of labels used to describe instances of this monitored
         # resource type. For example, an individual Google Cloud SQL database is
-        # identified by values for the labels `"database_id"` and `"zone"`.
+        # identified by values for the labels &quot;database_id&quot; and &quot;zone&
+        # quot;.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
-        # Required. The monitored resource type. For example, the type
-        # `"cloudsql_database"` represents databases in Google Cloud SQL.
-        # The maximum length of this value is 256 characters.
+        # Required. The monitored resource type. For example, the type &quot;
+        # cloudsql_database&quot; represents databases in Google Cloud SQL. The maximum
+        # length of this value is 256 characters.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. The resource name of the monitored resource descriptor:
-        # `"projects/`project_id`/monitoredResourceDescriptors/`type`"` where
-        # `type` is the value of the `type` field in this object and
-        # `project_id` is a project ID that provides API-specific context for
-        # accessing the type.  APIs that do not use project information can use the
-        # resource name format `"monitoredResourceDescriptors/`type`"`.
+        # Optional. The resource name of the monitored resource descriptor: &quot;
+        # projects/`project_id`/monitoredResourceDescriptors/`type`&quot; where `type`
+        # is the value of the type field in this object and `project_id` is a project ID
+        # that provides API-specific context for accessing the type. APIs that do not
+        # use project information can use the resource name format &quot;
+        # monitoredResourceDescriptors/`type`&quot;.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -895,7 +864,7 @@ module Google
       class TypedValue
         include Google::Apis::Core::Hashable
       
-        # A Boolean value: `true` or `false`.
+        # A Boolean value: true or false.
         # Corresponds to the JSON property `boolValue`
         # @return [Boolean]
         attr_accessor :bool_value
@@ -911,25 +880,24 @@ module Google
         # @return [String]
         attr_accessor :int64_value
       
-        # A 64-bit double-precision floating-point number. Its magnitude
-        # is approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16
-        # significant digits of precision.
+        # A 64-bit double-precision floating-point number. Its magnitude is
+        # approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant
+        # digits of precision.
         # Corresponds to the JSON property `doubleValue`
         # @return [Float]
         attr_accessor :double_value
       
         # Distribution contains summary statistics for a population of values and,
-        # optionally, a histogram representing the distribution of those values across
-        # a specified set of histogram buckets.
-        # The summary statistics are the count, mean, sum of the squared deviation from
-        # the mean, the minimum, and the maximum of the set of population of values.
-        # The histogram is based on a sequence of buckets and gives a count of values
-        # that fall into each bucket.  The boundaries of the buckets are given either
-        # explicitly or by specifying parameters for a method of computing them
-        # (buckets of fixed width or buckets of exponentially increasing width).
-        # Although it is not forbidden, it is generally a bad idea to include
-        # non-finite values (infinities or NaNs) in the population of values, as this
-        # will render the `mean` and `sum_of_squared_deviation` fields meaningless.
+        # optionally, a histogram representing the distribution of those values across a
+        # specified set of histogram buckets.The summary statistics are the count, mean,
+        # sum of the squared deviation from the mean, the minimum, and the maximum of
+        # the set of population of values.The histogram is based on a sequence of
+        # buckets and gives a count of values that fall into each bucket. The boundaries
+        # of the buckets are given either explicitly or by specifying parameters for a
+        # method of computing them (buckets of fixed width or buckets of exponentially
+        # increasing width).Although it is not forbidden, it is generally a bad idea to
+        # include non-finite values (infinities or NaNs) in the population of values, as
+        # this will render the mean and sum_of_squared_deviation fields meaningless.
         # Corresponds to the JSON property `distributionValue`
         # @return [Google::Apis::MonitoringV3::Distribution]
         attr_accessor :distribution_value
@@ -948,19 +916,19 @@ module Google
         end
       end
       
-      # The `ListMonitoredResourcDescriptors` response.
+      # The ListMonitoredResourcDescriptors response.
       class ListMonitoredResourceDescriptorsResponse
         include Google::Apis::Core::Hashable
       
-        # If there are more results than have been returned, then this field is set
-        # to a non-empty value.  To see the additional results,
-        # use that value as `pageToken` in the next call to this method.
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The monitored resource descriptors that are available to this project
-        # and that match `filter`, if present.
+        # The monitored resource descriptors that are available to this project and that
+        # match filter, if present.
         # Corresponds to the JSON property `resourceDescriptors`
         # @return [Array<Google::Apis::MonitoringV3::MonitoredResourceDescriptor>]
         attr_accessor :resource_descriptors
@@ -995,8 +963,8 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Option>]
         attr_accessor :options
       
-        # The index of the field type in `Type.oneofs`, for message or enumeration
-        # types. The first type has index 1; zero means the type is not in the list.
+        # The index of the field type in Type.oneofs, for message or enumeration types.
+        # The first type has index 1; zero means the type is not in the list.
         # Corresponds to the JSON property `oneofIndex`
         # @return [Fixnum]
         attr_accessor :oneof_index
@@ -1006,8 +974,8 @@ module Google
         # @return [String]
         attr_accessor :cardinality
       
-        # The field type URL, without the scheme, for message or enumeration
-        # types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
+        # The field type URL, without the scheme, for message or enumeration types.
+        # Example: &quot;type.googleapis.com/google.protobuf.Timestamp&quot;.
         # Corresponds to the JSON property `typeUrl`
         # @return [String]
         attr_accessor :type_url
@@ -1057,12 +1025,12 @@ module Google
       class Option
         include Google::Apis::Core::Hashable
       
-        # The option's value. For example, `"com.google.protobuf"`.
+        # The option's value. For example, &quot;com.google.protobuf&quot;.
         # Corresponds to the JSON property `value`
         # @return [Hash<String,Object>]
         attr_accessor :value
       
-        # The option's name. For example, `"java_package"`.
+        # The option's name. For example, &quot;java_package&quot;.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1078,13 +1046,13 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance:
       # service Foo `
       # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
       # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # The JSON representation for Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1097,13 +1065,14 @@ module Google
         end
       end
       
-      # `SourceContext` represents information about the source of a
-      # protobuf element, like the file in which it is defined.
+      # SourceContext represents information about the source of a protobuf element,
+      # like the file in which it is defined.
       class SourceContext
         include Google::Apis::Core::Hashable
       
         # The path-qualified name of the .proto file that contained the associated
-        # protobuf element.  For example: `"google/protobuf/source.proto"`.
+        # protobuf element. For example: &quot;google/protobuf/source_context.proto&quot;
+        # .
         # Corresponds to the JSON property `fileName`
         # @return [String]
         attr_accessor :file_name
@@ -1143,15 +1112,15 @@ module Google
         end
       end
       
-      # The `CreateTimeSeries` request.
+      # The CreateTimeSeries request.
       class CreateTimeSeriesRequest
         include Google::Apis::Core::Hashable
       
-        # The new data to be added to a list of time series.
-        # Adds at most one data point to each of several time series.  The new data
-        # point must be more recent than any other point in its time series.  Each
-        # `TimeSeries` value must fully specify a unique time series by supplying
-        # all label values for the metric and the monitored resource.
+        # The new data to be added to a list of time series. Adds at most one data point
+        # to each of several time series. The new data point must be more recent than
+        # any other point in its time series. Each TimeSeries value must fully specify a
+        # unique time series by supplying all label values for the metric and the
+        # monitored resource.
         # Corresponds to the JSON property `timeSeries`
         # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
         attr_accessor :time_series
@@ -1167,57 +1136,50 @@ module Google
       end
       
       # A Distribution may optionally contain a histogram of the values in the
-      # population.  The histogram is given in `bucket_counts` as counts of values
-      # that fall into one of a sequence of non-overlapping buckets.  The sequence
-      # of buckets is described by `bucket_options`.
-      # A bucket specifies an inclusive lower bound and exclusive upper bound for
-      # the values that are counted for that bucket.  The upper bound of a bucket
-      # is strictly greater than the lower bound.
-      # The sequence of N buckets for a Distribution consists of an underflow
-      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and
-      # an overflow bucket (number N - 1).  The buckets are contiguous:  the lower
-      # bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1.
-      # The buckets span the whole range of finite values: lower bound of the
-      # underflow bucket is -infinity and the upper bound of the overflow bucket is
-      # +infinity.  The finite buckets are so-called because both bounds are
-      # finite.
-      # `BucketOptions` describes bucket boundaries in one of three ways.  Two
-      # describe the boundaries by giving parameters for a formula to generate
-      # boundaries and one gives the bucket boundaries explicitly.
-      # If `bucket_boundaries` is not given, then no `bucket_counts` may be given.
+      # population. The histogram is given in bucket_counts as counts of values that
+      # fall into one of a sequence of non-overlapping buckets. The sequence of
+      # buckets is described by bucket_options.A bucket specifies an inclusive lower
+      # bound and exclusive upper bound for the values that are counted for that
+      # bucket. The upper bound of a bucket is strictly greater than the lower bound.
+      # The sequence of N buckets for a Distribution consists of an underflow bucket (
+      # number 0), zero or more finite buckets (number 1 through N - 2) and an
+      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+      # bucket i (i &gt; 0) is the same as the upper bound of bucket i - 1. The
+      # buckets span the whole range of finite values: lower bound of the underflow
+      # bucket is -infinity and the upper bound of the overflow bucket is +infinity.
+      # The finite buckets are so-called because both bounds are finite.BucketOptions
+      # describes bucket boundaries in one of three ways. Two describe the boundaries
+      # by giving parameters for a formula to generate boundaries and one gives the
+      # bucket boundaries explicitly.If bucket_boundaries is not given, then no
+      # bucket_counts may be given.
       class BucketOptions
         include Google::Apis::Core::Hashable
       
-        # A set of buckets with arbitrary widths.
-        # Defines `size(bounds) + 1` (= N) buckets with these boundaries for
-        # bucket i:
-        # Upper bound (0 <= i < N-1):     bounds[i]
-        # Lower bound (1 <= i < N);       bounds[i - 1]
-        # There must be at least one element in `bounds`.  If `bounds` has only one
-        # element, there are no finite buckets, and that single element is the
-        # common boundary of the overflow and underflow buckets.
+        # A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
+        # with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): boundsi
+        # Lower bound (1 &lt;= i &lt; N); boundsi - 1There must be at least one element
+        # in bounds. If bounds has only one element, there are no finite buckets, and
+        # that single element is the common boundary of the overflow and underflow
+        # buckets.
         # Corresponds to the JSON property `explicitBuckets`
         # @return [Google::Apis::MonitoringV3::Explicit]
         attr_accessor :explicit_buckets
       
-        # Specify a sequence of buckets that have a width that is proportional to
-        # the value of the lower bound.  Each bucket represents a constant relative
-        # uncertainty on a specific value in the bucket.
-        # Defines `num_finite_buckets + 2` (= N) buckets with these boundaries for
-        # bucket i:
-        # Upper bound (0 <= i < N-1):     scale * (growth_factor ^ i).
-        # Lower bound (1 <= i < N):       scale * (growth_factor ^ (i - 1)).
+        # Specify a sequence of buckets that have a width that is proportional to the
+        # value of the lower bound. Each bucket represents a constant relative
+        # uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2 (=
+        # N) buckets with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1)
+        # : scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (
+        # growth_factor ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::MonitoringV3::Exponential]
         attr_accessor :exponential_buckets
       
-        # Specify a sequence of buckets that all have the same width (except
-        # overflow and underflow).  Each bucket represents a constant absolute
-        # uncertainty on the specific value in the bucket.
-        # Defines `num_finite_buckets + 2` (= N) buckets with these boundaries for
-        # bucket `i`:
-        # Upper bound (0 <= i < N-1):     offset + (width * i).
-        # Lower bound (1 <= i < N):       offset + (width * (i - 1)).
+        # Specify a sequence of buckets that all have the same width (except overflow
+        # and underflow). Each bucket represents a constant absolute uncertainty on the
+        # specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets with
+        # these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): offset + (
+        # width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::MonitoringV3::Linear]
         attr_accessor :linear_buckets
@@ -1234,35 +1196,36 @@ module Google
         end
       end
       
-      # The `CreateCollectdTimeSeries` request.
+      # The CreateCollectdTimeSeries request.
       class CreateCollectdTimeSeriesRequest
         include Google::Apis::Core::Hashable
       
-        # The `collectd` payloads representing the time series data.
-        # You must not include more than a single point for each
-        # time series, so no two payloads can have the same values
-        # for all of the fields `plugin`, `plugin_instance`, `type`, and `type_instance`.
+        # The collectd payloads representing the time series data. You must not include
+        # more than a single point for each time series, so no two payloads can have the
+        # same values for all of the fields plugin, plugin_instance, type, and
+        # type_instance.
         # Corresponds to the JSON property `collectdPayloads`
         # @return [Array<Google::Apis::MonitoringV3::CollectdPayload>]
         attr_accessor :collectd_payloads
       
-        # The version of `collectd` that collected the data. Example: `"5.3.0-192.el6"`.
+        # The version of collectd that collected the data. Example: &quot;5.3.0-192.el6&
+        # quot;.
         # Corresponds to the JSON property `collectdVersion`
         # @return [String]
         attr_accessor :collectd_version
       
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The `type` field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's
-        # schema. Information in the `labels` field identifies the actual resource and
-        # its attributes according to the schema. For example, a particular Compute
-        # Engine VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for `"gce_instance"` has labels
-        # `"instance_id"` and `"zone"`:
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
+        # instance_id&quot; and &quot;zone&quot;:
+        # ` &quot;type&quot;: &quot;gce_instance&quot;,
+        # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
+        # &quot;zone&quot;: &quot;us-central1-a&quot; ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -1283,7 +1246,7 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
-        # The list of types appearing in `oneof` definitions in this type.
+        # The list of types appearing in oneof definitions in this type.
         # Corresponds to the JSON property `oneofs`
         # @return [Array<String>]
         attr_accessor :oneofs
@@ -1293,8 +1256,8 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Option>]
         attr_accessor :options
       
-        # `SourceContext` represents information about the source of a
-        # protobuf element, like the file in which it is defined.
+        # SourceContext represents information about the source of a protobuf element,
+        # like the file in which it is defined.
         # Corresponds to the JSON property `sourceContext`
         # @return [Google::Apis::MonitoringV3::SourceContext]
         attr_accessor :source_context
@@ -1329,52 +1292,7 @@ module Google
         end
       end
       
-      # Exemplars are example points that may be used to annotate aggregated
-      # distribution values.  They are metadata that gives information about a
-      # particular value added to a Distribution bucket, such as a trace ID that
-      # was active when a value was added.  They can contain further information,
-      # such as a example values and timestamps, origin, etc.
-      # This is an experimental feature which is available in internal Monarch.
-      # The purpose of including it here is to be able to construct demos and
-      # prototypes for the purposes of eludicating use cases.
-      class Exemplar
-        include Google::Apis::Core::Hashable
-      
-        # Value of the exemplar point.  This value determines to which bucket the
-        # exemplar belongs.
-        # Corresponds to the JSON property `value`
-        # @return [Float]
-        attr_accessor :value
-      
-        # Contextual information about the example value.  Examples are:
-        # Trace ID: type.googleapis.com/google.devtools.cloudtrace.v1.Trace
-        # Literal string: type.googleapis.com/google.protobuf.StringValue
-        # Labels dropped during aggregation:
-        # type.googleapis.com/google.monitoring.v3.DroppedLabels
-        # There may be only a single attachment of any given message type in a
-        # single exemplar, and this is enforced by the system.
-        # Corresponds to the JSON property `attachments`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :attachments
-      
-        # The observation (sampling) time of the above value.
-        # Corresponds to the JSON property `timestamp`
-        # @return [String]
-        attr_accessor :timestamp
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-          @attachments = args[:attachments] if args.key?(:attachments)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
-        end
-      end
-      
-      # The `ListGroups` response.
+      # The ListGroups response.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
       
@@ -1383,9 +1301,9 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Group>]
         attr_accessor :group
       
-        # If there are more results than have been returned, then this field is set
-        # to a non-empty value.  To see the additional results,
-        # use that value as `pageToken` in the next call to this method.
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

@@ -47,7 +47,9 @@ module Google
         end
       end
       
-      # A metric in the request.
+      # [Metrics](https://support.google.com/analytics/answer/1033861)
+      # are the quantitative measurements. For example, the metric `ga:users`
+      # indicates the total number of users for the requested time period.
       class Metric
         include Google::Apis::Core::Hashable
       
@@ -358,7 +360,8 @@ module Google
         # @return [Google::Apis::AnalyticsreportingV4::CohortGroup]
         attr_accessor :cohort_group
       
-        # Dimensions requested in the request.
+        # The dimensions requested.
+        # Requests can have a total of 7 dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Dimension>]
         attr_accessor :dimensions
@@ -394,7 +397,7 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::DimensionFilterClause>]
         attr_accessor :dimension_filter_clauses
       
-        # The pivot definitions.
+        # The pivot definitions. Requests can have a maximum of 2 pivots.
         # Corresponds to the JSON property `pivots`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Pivot>]
         attr_accessor :pivots
@@ -434,8 +437,9 @@ module Google
         # @return [String]
         attr_accessor :sampling_level
       
-        # Metrics, the quantitative measurements, requested in the request.
-        # Requests must specify at least one metric.
+        # The metrics requested.
+        # Requests must specify at least one metric. Requests can have a
+        # total of 10 metrics.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Metric>]
         attr_accessor :metrics
@@ -987,12 +991,14 @@ module Google
       class Pivot
         include Google::Apis::Core::Hashable
       
-        # A list of dimensions to show as pivot columns.
+        # A list of dimensions to show as pivot columns. A Pivot can have a maximum
+        # of 4 dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Dimension>]
         attr_accessor :dimensions
       
-        # Metrics to aggregate and return.
+        # The pivot metrics. Pivot metrics are part of the
+        # restriction on total number of metrics in the request.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Metric>]
         attr_accessor :metrics
@@ -1331,7 +1337,10 @@ module Google
         end
       end
       
-      # A dimension in the request.
+      # [Dimensions](https://support.google.com/analytics/answer/1033861)
+      # are attributes of your data. For example, the dimension `ga:city`
+      # indicates the city, for example, "Paris" or "New York", from which
+      # a session originates.
       class Dimension
         include Google::Apis::Core::Hashable
       

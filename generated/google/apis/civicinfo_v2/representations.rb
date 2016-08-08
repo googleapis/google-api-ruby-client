@@ -160,6 +160,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absentee_voting_info_url, as: 'absenteeVotingInfoUrl'
+          collection :address_lines, as: 'addressLines'
           property :ballot_info_url, as: 'ballotInfoUrl'
           property :correspondence_address, as: 'correspondenceAddress', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       

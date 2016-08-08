@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20160426'
+      REVISION = '20160801'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'

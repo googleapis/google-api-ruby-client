@@ -20,12 +20,13 @@ module Google
   module Apis
     # Google Civic Information API
     #
-    # An API for accessing civic information.
+    # Provides polling places, early vote locations, contest data, election
+    # officials, and government representatives for U.S. residential addresses.
     #
     # @see https://developers.google.com/civic-information
     module CivicinfoV2
       VERSION = 'V2'
-      REVISION = '20150820'
+      REVISION = '20160707'
     end
   end
 end

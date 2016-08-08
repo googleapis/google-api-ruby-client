@@ -364,6 +364,7 @@ module Google
           collection :column_families, as: 'columnFamilies', class: Google::Apis::BigqueryV2::BigtableColumnFamily, decorator: Google::Apis::BigqueryV2::BigtableColumnFamily::Representation
       
           property :ignore_unspecified_column_families, as: 'ignoreUnspecifiedColumnFamilies'
+          property :read_rowkey_as_string, as: 'readRowkeyAsString'
         end
       end
       
@@ -393,6 +394,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :last_modified_time, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :self_link, as: 'selfLink'
@@ -430,6 +432,7 @@ module Google
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'
+            hash :labels, as: 'labels'
           end
         end
       end
@@ -511,6 +514,7 @@ module Google
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
+          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       
@@ -710,6 +714,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
+          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
@@ -806,6 +811,7 @@ module Google
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
+          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       

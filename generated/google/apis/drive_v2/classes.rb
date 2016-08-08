@@ -137,7 +137,7 @@ module Google
         # @return [String]
         attr_accessor :quota_type
       
-        # The number of remaining change ids.
+        # The number of remaining change ids, limited to no more than 2500.
         # Corresponds to the JSON property `remainingChangeIds`
         # @return [String]
         attr_accessor :remaining_change_ids

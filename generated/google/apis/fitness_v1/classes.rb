@@ -151,6 +151,13 @@ module Google
         # @return [String]
         attr_accessor :end_time_millis
       
+        # A list of acceptable data quality standards. Only data points which conform to
+        # at least one of the specified data quality standards will be returned. If the
+        # list is empty, all data points are returned.
+        # Corresponds to the JSON property `filteredDataQualityStandard`
+        # @return [Array<String>]
+        attr_accessor :filtered_data_quality_standard
+      
         # The start of a window of time. Data that intersects with this time window will
         # be aggregated. The time is in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
@@ -169,6 +176,7 @@ module Google
           @bucket_by_session = args[:bucket_by_session] if args.key?(:bucket_by_session)
           @bucket_by_time = args[:bucket_by_time] if args.key?(:bucket_by_time)
           @end_time_millis = args[:end_time_millis] if args.key?(:end_time_millis)
+          @filtered_data_quality_standard = args[:filtered_data_quality_standard] if args.key?(:filtered_data_quality_standard)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
         end
       end

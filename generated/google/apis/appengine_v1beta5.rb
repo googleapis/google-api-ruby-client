@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/appengine/docs/admin-api/
     module AppengineV1beta5
       VERSION = 'V1beta5'
-      REVISION = '20160614'
+      REVISION = '20160802'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

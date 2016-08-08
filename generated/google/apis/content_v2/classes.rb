@@ -2747,7 +2747,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the cancellation. Orders that are cancelled with a noIventory
+        # The reason for the cancellation. Orders that are cancelled with a noInventory
         # reason will lead to the removal of the product from POG until you make an
         # update to that product. This will not affect your Shopping ads.
         # Corresponds to the JSON property `reason`

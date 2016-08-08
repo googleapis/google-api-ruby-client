@@ -20,13 +20,12 @@ module Google
   module Apis
     # Ad Exchange Seller API
     #
-    # Gives Ad Exchange seller users access to their inventory and the ability to
-    # generate reports
+    # Accesses the inventory of Ad Exchange seller users and generates reports.
     #
     # @see https://developers.google.com/ad-exchange/seller-rest/
     module AdexchangesellerV2_0
       VERSION = 'V2_0'
-      REVISION = '20160513'
+      REVISION = '20160805'
 
       # View and manage your Ad Exchange data
       AUTH_ADEXCHANGE_SELLER = 'https://www.googleapis.com/auth/adexchange.seller'

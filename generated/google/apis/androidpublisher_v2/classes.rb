@@ -1373,8 +1373,9 @@ module Google
       class SubscriptionDeferralInfo
         include Google::Apis::Core::Hashable
       
-        # The desired next expiry time for the subscription in milliseconds since Epoch.
-        # The given time must be after the current expiry time for the subscription.
+        # The desired next expiry time to assign to the subscription, in milliseconds
+        # since the Epoch. The given time must be later/greater than the current expiry
+        # time for the subscription.
         # Corresponds to the JSON property `desiredExpiryTimeMillis`
         # @return [String]
         attr_accessor :desired_expiry_time_millis
@@ -1408,8 +1409,8 @@ module Google
         attr_accessor :auto_renewing
         alias_method :auto_renewing?, :auto_renewing
       
-        # The cancel reason of the subscription, if the subscription is not auto
-        # renewing. Possible values are:
+        # The reason why a subscription was cancelled or is not auto-renewing. Possible
+        # values are:
         # - User cancelled the subscription
         # - Subscription was cancelled by the system, for example because of a billing
         # problem
@@ -1429,7 +1430,7 @@ module Google
         # @return [String]
         attr_accessor :developer_payload
       
-        # Time at which the subscription will expire, in milliseconds since Epoch.
+        # Time at which the subscription will expire, in milliseconds since the Epoch.
         # Corresponds to the JSON property `expiryTimeMillis`
         # @return [String]
         attr_accessor :expiry_time_millis
@@ -1448,8 +1449,8 @@ module Google
         attr_accessor :payment_state
       
         # Price of the subscription, not including tax. Price is expressed in micro-
-        # units, where 1,000,000 micro-units equal one unit of the currency. For example,
-        # if the subscription price is €1.99, price_amount_micros is 1990000.
+        # units, where 1,000,000 micro-units represents one unit of the currency. For
+        # example, if the subscription price is €1.99, price_amount_micros is 1990000.
         # Corresponds to the JSON property `priceAmountMicros`
         # @return [String]
         attr_accessor :price_amount_micros
@@ -1460,7 +1461,7 @@ module Google
         # @return [String]
         attr_accessor :price_currency_code
       
-        # Time at which the subscription was granted, in milliseconds since Epoch.
+        # Time at which the subscription was granted, in milliseconds since the Epoch.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [String]
         attr_accessor :start_time_millis

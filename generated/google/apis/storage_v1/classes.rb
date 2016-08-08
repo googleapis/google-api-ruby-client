@@ -763,7 +763,8 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
-        # Cache-Control directive for the object data.
+        # Cache-Control directive for the object data. If omitted, and the object is
+        # accessible to all anonymous users, the default will be public, max-age=3600.
         # Corresponds to the JSON property `cacheControl`
         # @return [String]
         attr_accessor :cache_control

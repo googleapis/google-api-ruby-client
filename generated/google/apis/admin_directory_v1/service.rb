@@ -382,7 +382,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrives a customer.
+        # Retrieves a customer.
         # @param [String] customer_key
         #   Id of the customer to be retrieved
         # @param [String] fields
@@ -679,7 +679,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrives a domain of the customer.
+        # Retrieves a domain of the customer.
         # @param [String] customer
         #   Immutable id of the Google Apps account.
         # @param [String] domain_name

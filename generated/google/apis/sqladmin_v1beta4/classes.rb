@@ -105,6 +105,11 @@ module Google
       class BackupRun
         include Google::Apis::Core::Hashable
       
+        # The description of this run, only applicable to on-demand backups.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The time the backup operation completed in UTC timezone in RFC 3339 format,
         # for example 2012-11-15T16:19:00.094Z.
         # Corresponds to the JSON property `endTime`
@@ -154,6 +159,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # The start time of the backup window during which this the backup was attempted
         # in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
         # Corresponds to the JSON property `windowStartTime`
@@ -166,6 +176,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @enqueued_time = args[:enqueued_time] if args.key?(:enqueued_time)
           @error = args[:error] if args.key?(:error)
@@ -175,6 +186,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
           @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end

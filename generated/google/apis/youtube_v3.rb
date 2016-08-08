@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/youtube/v3
     module YoutubeV3
       VERSION = 'V3'
-      REVISION = '20160613'
+      REVISION = '20160805'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

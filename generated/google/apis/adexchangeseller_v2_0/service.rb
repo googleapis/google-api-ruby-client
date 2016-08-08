@@ -22,8 +22,7 @@ module Google
     module AdexchangesellerV2_0
       # Ad Exchange Seller API
       #
-      # Gives Ad Exchange seller users access to their inventory and the ability to
-      #  generate reports
+      # Accesses the inventory of Ad Exchange seller users and generates reports.
       #
       # @example
       #    require 'google/apis/adexchangeseller_v2_0'

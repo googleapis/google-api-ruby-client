@@ -43,7 +43,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	dataproc:v1 \
 	datastore:v1beta3 \
 	deploymentmanager:v2 \
-	dfareporting:v2.5 \
+	dfareporting:v2.6 \
 	discovery:v1 \
 	dns:v1 \
 	doubleclickbidmanager:v1 \

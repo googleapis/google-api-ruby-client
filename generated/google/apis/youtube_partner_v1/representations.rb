@@ -856,6 +856,8 @@ module Google
           property :third_party_claim, as: 'thirdPartyClaim'
           property :time_created, as: 'timeCreated', type: DateTime
       
+          property :time_status_last_modified, as: 'timeStatusLastModified', type: DateTime
+      
           property :video_id, as: 'videoId'
           property :video_title, as: 'videoTitle'
           property :video_views, as: 'videoViews'

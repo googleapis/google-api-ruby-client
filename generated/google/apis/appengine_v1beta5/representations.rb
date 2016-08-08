@@ -208,13 +208,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Instance
+      class DebugInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -591,15 +609,6 @@ module Google
         end
       end
       
-      class ListInstancesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instances, as: 'instances', class: Google::Apis::AppengineV1beta5::Instance, decorator: Google::Apis::AppengineV1beta5::Instance::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -618,6 +627,40 @@ module Google
           property :memory_usage, as: 'memoryUsage'
           property :vm_status, as: 'vmStatus'
           property :vm_unlocked, as: 'vmUnlocked'
+        end
+      end
+      
+      class ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AppengineV1beta5::Instance, decorator: Google::Apis::AppengineV1beta5::Instance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class DebugInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::AppengineV1beta5::Location, decorator: Google::Apis::AppengineV1beta5::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :location_id, as: 'locationId'
+          hash :labels, as: 'labels'
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -658,6 +701,8 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_environment_available, as: 'standardEnvironmentAvailable'
+          property :flexible_environment_available, as: 'flexibleEnvironmentAvailable'
         end
       end
     end

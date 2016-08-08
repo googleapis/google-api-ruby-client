@@ -22,7 +22,8 @@ module Google
   module Apis
     module ComputeV1
       
-      # An access configuration attached to an instance's network interface.
+      # An access configuration attached to an instance's network interface. Only one
+      # access config per instance is supported.
       class AccessConfig
         include Google::Apis::Core::Hashable
       
@@ -414,7 +415,8 @@ module Google
         attr_accessor :mode
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # This field is only applicable for persistent disks.
+        # This field is only applicable for persistent disks. Note that for
+        # InstanceTemplate, it is just disk name, not URL for the disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -475,7 +477,8 @@ module Google
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/
         # diskType
         # - projects/project/zones/zone/diskTypes/diskType
-        # - zones/zone/diskTypes/diskType
+        # - zones/zone/diskTypes/diskType  Note that for InstanceTemplate, this is the
+        # name of the disk type, not URL.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -942,6 +945,7 @@ module Google
       
         # Specifies the balancing mode for this backend. For global HTTP(S) load
         # balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -951,6 +955,7 @@ module Google
         # to 100% of its configured CPU or RPS (depending on balancingMode). A setting
         # of 0 means the group is completely drained, offering 0% of its available CPU
         # or RPS. Valid range is [0.0,1.0].
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -968,6 +973,8 @@ module Google
         # Instance Group resource.
         # Note that you must specify an Instance Group resource using the fully-
         # qualified URL, rather than a partial URL.
+        # When the BackendService has load balancing scheme INTERNAL, the instance group
+        # must be in a zone within the same region as the BackendService.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -975,6 +982,7 @@ module Google
         # The max requests per second (RPS) of the group. Can be used with either RATE
         # or UTILIZATION balancing modes, but required if RATE mode. For RATE mode,
         # either maxRate or maxRatePerInstance must be set.
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
@@ -983,12 +991,14 @@ module Google
         # This is used to calculate the capacity of the group. Can be used in either
         # balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
         # set.
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `maxRatePerInstance`
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
         # Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization
         # target for the group. The default is 0.8. Valid range is [0.0, 1.0].
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -1014,6 +1024,14 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
+        # Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set
+        # to 0, the cookie is non-persistent and lasts only until the end of the browser
+        # session (or equivalent). The maximum allowed value for TTL is one day.
+        # When the load balancing scheme is INTERNAL, this field is not used.
+        # Corresponds to the JSON property `affinityCookieTtlSec`
+        # @return [Fixnum]
+        attr_accessor :affinity_cookie_ttl_sec
+      
         # The list of backends that serve this BackendService.
         # Corresponds to the JSON property `backends`
         # @return [Array<Google::Apis::ComputeV1::Backend>]
@@ -1031,6 +1049,7 @@ module Google
         attr_accessor :description
       
         # If true, enable Cloud CDN for this BackendService.
+        # When the load balancing scheme is INTERNAL, this field is not used.
         # Corresponds to the JSON property `enableCDN`
         # @return [Boolean]
         attr_accessor :enable_cdn
@@ -1047,6 +1066,8 @@ module Google
         # The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
         # health checking this BackendService. Currently at most one health check can be
         # specified, and a health check is required.
+        # For internal load balancing, a URL to a HealthCheck resource must be specified
+        # instead.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -1075,18 +1096,23 @@ module Google
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80.
+        # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
         # Name of backend port. The same name should appear in the instance groups
-        # referenced by this service. Required.
+        # referenced by this service. Required when the load balancing scheme is
+        # EXTERNAL.
+        # When the load balancing scheme is INTERNAL, this field is not used.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.
+        # Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+        # For internal load balancing, the possible values are TCP and UDP, and the
+        # default is TCP.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -1102,6 +1128,16 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Type of session affinity to use. The default is NONE.
+        # When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or
+        # GENERATED_COOKIE.
+        # When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP,
+        # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
+        # When the protocol is UDP, this field is not used.
+        # Corresponds to the JSON property `sessionAffinity`
+        # @return [String]
+        attr_accessor :session_affinity
+      
         # How many seconds to wait for the backend before considering it a failed
         # request. Default is 30 seconds.
         # Corresponds to the JSON property `timeoutSec`
@@ -1114,6 +1150,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
           @backends = args[:backends] if args.key?(:backends)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -1128,6 +1165,7 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
@@ -1367,7 +1405,7 @@ module Google
         # @return [String]
         attr_accessor :last_detach_timestamp
       
-        # [Output Only] Any applicable publicly visible licenses.
+        # Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -2020,8 +2058,8 @@ module Google
       class Firewall
         include Google::Apis::Core::Hashable
       
-        # The list of rules specified by this firewall. Each rule specifies a protocol
-        # and port-range tuple that describes a permitted connection.
+        # The list of ALLOW rules specified by this firewall. Each rule specifies a
+        # protocol and port-range tuple that describes a permitted connection.
         # Corresponds to the JSON property `allowed`
         # @return [Array<Google::Apis::ComputeV1::Firewall::Allowed>]
         attr_accessor :allowed
@@ -2076,24 +2114,25 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The IP address blocks that this rule applies to, expressed in CIDR format. One
-        # or both of sourceRanges and sourceTags may be set.
-        # If both properties are set, an inbound connection is allowed if the range
-        # matches the sourceRanges OR the tag of the source matches the sourceTags
-        # property. The connection does not need to match both properties.
+        # If source ranges are specified, the firewall will apply only to traffic that
+        # has source IP address in these ranges. These ranges must be expressed in CIDR
+        # format. One or both of sourceRanges and sourceTags may be set. If both
+        # properties are set, the firewall will apply to traffic that has source IP
+        # address within sourceRanges OR the source IP that belongs to a tag listed in
+        # the sourceTags property. The connection does not need to match both properties
+        # for the firewall to apply.
         # Corresponds to the JSON property `sourceRanges`
         # @return [Array<String>]
         attr_accessor :source_ranges
       
-        # A list of instance tags which this rule applies to. One or both of
-        # sourceRanges and sourceTags may be set.
-        # If both properties are set, an inbound connection is allowed if the range
-        # matches the sourceRanges OR the tag of the source matches the sourceTags
-        # property. The connection does not need to match both properties.
-        # Source tags cannot be used to allow access to an instance's external IP
-        # address. Because tags are associated with an instance, not an IP address,
-        # source tags can only be used to control traffic traveling from an instance
-        # inside the same network as the firewall.
+        # If source tags are specified, the firewall will apply only to traffic with
+        # source IP that belongs to a tag listed in source tags. Source tags cannot be
+        # used to control traffic to an instance's external IP address. Because tags are
+        # associated with an instance, not an IP address. One or both of sourceRanges
+        # and sourceTags may be set. If both properties are set, the firewall will apply
+        # to traffic that has source IP address within sourceRanges OR the source IP
+        # that belongs to a tag listed in the sourceTags property. The connection does
+        # not need to match both properties for the firewall to apply.
         # Corresponds to the JSON property `sourceTags`
         # @return [Array<String>]
         attr_accessor :source_tags
@@ -2129,17 +2168,17 @@ module Google
         class Allowed
           include Google::Apis::Core::Hashable
         
-          # The IP protocol that is allowed for this rule. The protocol type is required
-          # when creating a firewall rule. This value can either be one of the following
-          # well known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP
-          # protocol number.
+          # The IP protocol to which this rule applies. The protocol type is required when
+          # creating a firewall rule. This value can either be one of the following well
+          # known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP protocol
+          # number.
           # Corresponds to the JSON property `IPProtocol`
           # @return [String]
           attr_accessor :ip_protocol
         
-          # An optional list of ports which are allowed. This field is only applicable for
-          # UDP or TCP protocol. Each entry must be either an integer or a range. If not
-          # specified, connections through any port are allowed
+          # An optional list of ports to which this rule applies. This field is only
+          # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+          # range. If not specified, this rule applies to connections through any port.
           # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
           # Corresponds to the JSON property `ports`
           # @return [Array<String>]
@@ -2212,17 +2251,23 @@ module Google
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
-        # Value of the reserved IP address that this forwarding rule is serving on
-        # behalf of. For global forwarding rules, the address must be a global IP; for
-        # regional forwarding rules, the address must live in the same region as the
-        # forwarding rule. If left empty (default value), an ephemeral IP from the same
-        # scope (global or regional) will be assigned.
+        # The IP address that this forwarding rule is serving on behalf of.
+        # For global forwarding rules, the address must be a global IP; for regional
+        # forwarding rules, the address must live in the same region as the forwarding
+        # rule. By default, this field is empty and an ephemeral IP from the same scope (
+        # global or regional) will be assigned.
+        # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
+        # address belonging to the network/subnetwork configured for the forwarding rule.
+        # A reserved address cannot be used. If the field is empty, the IP address will
+        # be automatically allocated from the internal IP range of the subnetwork or
+        # network configured for this forwarding rule.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
         # AH, SCTP or ICMP.
+        # When the load balancing scheme is INTERNAL</code, only TCP and UDP are valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -2263,6 +2308,7 @@ module Google
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
+        # This field is not used for internal load balancing.
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
@@ -2284,6 +2330,7 @@ module Google
         # TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of
         # a type appropriate to the target object. For example, TargetHttpProxy requires
         # HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
+        # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -2930,7 +2977,8 @@ module Google
       
         # The name of the image family to which this image belongs. You can create disks
         # by specifying an image family instead of a specific image name. The image
-        # family always returns its latest image that is not deprecated.
+        # family always returns its latest image that is not deprecated. The name of the
+        # image family must comply with RFC1035.
         # Corresponds to the JSON property `family`
         # @return [String]
         attr_accessor :family
@@ -3202,7 +3250,7 @@ module Google
       
         # An array of configurations for this interface. This specifies how this
         # interface is configured to interact with other network services, such as
-        # connecting to the internet.
+        # connecting to the internet. Only one interface is supported per instance.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
@@ -3517,7 +3565,7 @@ module Google
         end
       end
       
-      # An Instance Template Manager resource.
+      # An Instance Group Manager resource.
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -3651,8 +3699,10 @@ module Google
       
         # [Output Only] The number of instances in the managed instance group that are
         # scheduled to be created or are currently being created. If the group fails to
-        # create one of these instances, it tries again until it creates the instance
+        # create any of these instances, it tries again until it creates the instance
         # successfully.
+        # If you have disabled creation retries, this field will not be populated;
+        # instead, the creatingWithoutRetries field will be populated.
         # Corresponds to the JSON property `creating`
         # @return [Fixnum]
         attr_accessor :creating
@@ -4050,8 +4100,8 @@ module Google
       class InstanceGroupsListInstances
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this list of instance groups. The server
-        # generates this identifier.
+        # [Output Only] A unique identifier for this list of instances in the specified
+        # instance group. The server generates this identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4063,7 +4113,8 @@ module Google
         attr_accessor :items
       
         # [Output Only] The resource type, which is always compute#
-        # instanceGroupsListInstances for lists of instance groups.
+        # instanceGroupsListInstances for the list of instances in the specified
+        # instance group.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4077,8 +4128,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this list of instance groups. The server generates
-        # this URL.
+        # [Output Only] The URL for this list of instances in the specified instance
+        # groups. The server generates this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -5088,7 +5139,7 @@ module Google
         # fails to create this instance, it will try again until it is successful.
         # - CREATING_WITHOUT_RETRIES The managed instance group is attempting to create
         # this instance only once. If the group fails to create this instance, it does
-        # not try again and the group's target_size value is decreased.
+        # not try again and the group's targetSize value is decreased instead.
         # - RECREATING The managed instance group is recreating this instance.
         # - DELETING The managed instance group is permanently deleting this instance.
         # - ABANDONING The managed instance group is abandoning this instance. The
@@ -5399,8 +5450,8 @@ module Google
       class NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is
-        # the only access config supported. If there are no accessConfigs specified,
+        # An array of configurations for this interface. Currently, only one access
+        # config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified,
         # then this instance will have no external internet access.
         # Corresponds to the JSON property `accessConfigs`
         # @return [Array<Google::Apis::ComputeV1::AccessConfig>]
@@ -6570,12 +6621,14 @@ module Google
       class Router
         include Google::Apis::Core::Hashable
       
-        # 
+        # BGP information specific to this router.
         # Corresponds to the JSON property `bgp`
         # @return [Google::Apis::ComputeV1::RouterBgp]
         attr_accessor :bgp
       
-        # 
+        # BGP information that needs to be configured into the routing stack to
+        # establish the BGP peering. It must specify peer ASN and either interface name,
+        # IP, or peer IP. Please refer to RFC4273.
         # Corresponds to the JSON property `bgpPeers`
         # @return [Array<Google::Apis::ComputeV1::RouterBgpPeer>]
         attr_accessor :bgp_peers
@@ -6597,7 +6650,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # 
+        # Router interfaces. Each interface requires either one linked resource (e.g.
+        # linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeV1::RouterInterface>]
         attr_accessor :interfaces
@@ -6721,9 +6775,7 @@ module Google
         end
       end
       
-      # BGP information that needs to be configured into the routing stack to
-      # establish the BGP peering. It must specify peer ASN and either interface name,
-      # IP, or peer IP. Reference: https://tools.ietf.org/html/rfc4273
+      # 
       class RouterBgpPeer
         include Google::Apis::Core::Hashable
       
@@ -6776,8 +6828,7 @@ module Google
         end
       end
       
-      # Router interfaces. Each interface requires either one linked resource (e.g.
-      # linked_vpn_tunnel) or IP address + range (specified in ip_range).
+      # 
       class RouterInterface
         include Google::Apis::Core::Hashable
       
@@ -6988,6 +7039,25 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class RoutersPreviewResponse
+        include Google::Apis::Core::Hashable
+      
+        # Router resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeV1::Router]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       

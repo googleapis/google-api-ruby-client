@@ -245,6 +245,11 @@ module Google
         # @return [Object]
         attr_accessor :result
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -252,6 +257,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+          @status = args[:status] if args.key?(:status)
         end
       end
     end

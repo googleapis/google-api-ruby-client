@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppendValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CellFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1256,6 +1262,16 @@ module Google
           property :occurrences_changed, as: 'occurrencesChanged'
           property :formulas_changed, as: 'formulasChanged'
           property :sheets_changed, as: 'sheetsChanged'
+        end
+      end
+      
+      class AppendValuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          property :table_range, as: 'tableRange'
+          property :updates, as: 'updates', class: Google::Apis::SheetsV4::UpdateValuesResponse, decorator: Google::Apis::SheetsV4::UpdateValuesResponse::Representation
+      
         end
       end
       

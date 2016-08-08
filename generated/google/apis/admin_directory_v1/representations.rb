@@ -636,6 +636,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :role, as: 'role'
+          property :status, as: 'status'
           property :type, as: 'type'
         end
       end

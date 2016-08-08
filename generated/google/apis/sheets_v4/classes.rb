@@ -1972,6 +1972,8 @@ module Google
         # The range the values cover, in A1 notation.
         # For output, this range indicates the entire requested range,
         # even though the values will exclude trailing rows and columns.
+        # When appending values, this field represents the range to search for a
+        # table, after which values will be appended.
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
@@ -2044,6 +2046,39 @@ module Google
           @occurrences_changed = args[:occurrences_changed] if args.key?(:occurrences_changed)
           @formulas_changed = args[:formulas_changed] if args.key?(:formulas_changed)
           @sheets_changed = args[:sheets_changed] if args.key?(:sheets_changed)
+        end
+      end
+      
+      # The response when updating a range of values in a spreadsheet.
+      class AppendValuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The spreadsheet the updates were applied to.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The range (in A1 notation) of the table that values are being appended to
+        # (before the values were appended).
+        # Empty if no table was found.
+        # Corresponds to the JSON property `tableRange`
+        # @return [String]
+        attr_accessor :table_range
+      
+        # The response when updating a range of values in a spreadsheet.
+        # Corresponds to the JSON property `updates`
+        # @return [Google::Apis::SheetsV4::UpdateValuesResponse]
+        attr_accessor :updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @table_range = args[:table_range] if args.key?(:table_range)
+          @updates = args[:updates] if args.key?(:updates)
         end
       end
       

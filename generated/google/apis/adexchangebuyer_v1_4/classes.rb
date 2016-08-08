@@ -535,6 +535,12 @@ module Google
         # @return [String]
         attr_accessor :deals_status
       
+        # Detected domains for this creative. Read-only. This field should not be set in
+        # requests.
+        # Corresponds to the JSON property `detectedDomains`
+        # @return [Array<String>]
+        attr_accessor :detected_domains
+      
         # The filtering reasons for the creative. Read-only. This field should not be
         # set in requests.
         # Corresponds to the JSON property `filteringReasons`
@@ -640,6 +646,7 @@ module Google
           @click_through_url = args[:click_through_url] if args.key?(:click_through_url)
           @corrections = args[:corrections] if args.key?(:corrections)
           @deals_status = args[:deals_status] if args.key?(:deals_status)
+          @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
           @filtering_reasons = args[:filtering_reasons] if args.key?(:filtering_reasons)
           @height = args[:height] if args.key?(:height)
           @impression_tracking_url = args[:impression_tracking_url] if args.key?(:impression_tracking_url)
@@ -1123,6 +1130,11 @@ module Google
       class DealServingMetadataDealPauseStatus
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `buyerPauseReason`
+        # @return [String]
+        attr_accessor :buyer_pause_reason
+      
         # If the deal is paused, records which party paused the deal first.
         # Corresponds to the JSON property `firstPausedBy`
         # @return [String]
@@ -1140,15 +1152,22 @@ module Google
         attr_accessor :has_seller_paused
         alias_method :has_seller_paused?, :has_seller_paused
       
+        # 
+        # Corresponds to the JSON property `sellerPauseReason`
+        # @return [String]
+        attr_accessor :seller_pause_reason
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @buyer_pause_reason = args[:buyer_pause_reason] if args.key?(:buyer_pause_reason)
           @first_paused_by = args[:first_paused_by] if args.key?(:first_paused_by)
           @has_buyer_paused = args[:has_buyer_paused] if args.key?(:has_buyer_paused)
           @has_seller_paused = args[:has_seller_paused] if args.key?(:has_seller_paused)
+          @seller_pause_reason = args[:seller_pause_reason] if args.key?(:seller_pause_reason)
         end
       end
       
@@ -1193,6 +1212,11 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsNonGuaranteedFixedPriceTerms]
         attr_accessor :non_guaranteed_fixed_price_terms
       
+        # The terms for rubicon non-guaranteed deals.
+        # Corresponds to the JSON property `rubiconNonGuaranteedTerms`
+        # @return [Google::Apis::AdexchangebuyerV1_4::DealTermsRubiconNonGuaranteedTerms]
+        attr_accessor :rubicon_non_guaranteed_terms
+      
         # For deals with Cost Per Day billing, defines the timezone used to mark the
         # boundaries of a day (buyer-readonly)
         # Corresponds to the JSON property `sellerTimeZone`
@@ -1212,6 +1236,7 @@ module Google
           @guaranteed_fixed_price_terms = args[:guaranteed_fixed_price_terms] if args.key?(:guaranteed_fixed_price_terms)
           @non_guaranteed_auction_terms = args[:non_guaranteed_auction_terms] if args.key?(:non_guaranteed_auction_terms)
           @non_guaranteed_fixed_price_terms = args[:non_guaranteed_fixed_price_terms] if args.key?(:non_guaranteed_fixed_price_terms)
+          @rubicon_non_guaranteed_terms = args[:rubicon_non_guaranteed_terms] if args.key?(:rubicon_non_guaranteed_terms)
           @seller_time_zone = args[:seller_time_zone] if args.key?(:seller_time_zone)
         end
       end
@@ -1237,10 +1262,17 @@ module Google
         # @return [String]
         attr_accessor :guaranteed_impressions
       
-        # Count of guaranteed looks. Required for deal, optional for product.
+        # Count of guaranteed looks. Required for deal, optional for product. For CPD
+        # deals, buyer changes to guaranteed_looks will be ignored.
         # Corresponds to the JSON property `guaranteedLooks`
         # @return [String]
         attr_accessor :guaranteed_looks
+      
+        # Count of minimum daily looks for a CPD deal. For CPD deals, buyer should
+        # negotiate on this field instead of guaranteed_looks.
+        # Corresponds to the JSON property `minimumDailyLooks`
+        # @return [String]
+        attr_accessor :minimum_daily_looks
       
         def initialize(**args)
            update!(**args)
@@ -1252,6 +1284,7 @@ module Google
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
           @guaranteed_impressions = args[:guaranteed_impressions] if args.key?(:guaranteed_impressions)
           @guaranteed_looks = args[:guaranteed_looks] if args.key?(:guaranteed_looks)
+          @minimum_daily_looks = args[:minimum_daily_looks] if args.key?(:minimum_daily_looks)
         end
       end
       
@@ -1273,8 +1306,9 @@ module Google
         attr_accessor :dfp_line_item_id
       
         # The original contracted quantity (# impressions) for this deal. To ensure
-        # delivery, sometimes publisher will book the deal with a impression buffer,
-        # however clients are billed using the original contracted quantity.
+        # delivery, sometimes the publisher will book the deal with a impression buffer,
+        # such that guaranteed_looks is greater than the contracted quantity. However
+        # clients are billed using the original contracted quantity.
         # Corresponds to the JSON property `originalContractedQuantity`
         # @return [String]
         attr_accessor :original_contracted_quantity
@@ -1341,6 +1375,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
+        end
+      end
+      
+      # 
+      class DealTermsRubiconNonGuaranteedTerms
+        include Google::Apis::Core::Hashable
+      
+        # Optional price for Rubicon priority access in the auction.
+        # Corresponds to the JSON property `priorityPrice`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Price]
+        attr_accessor :priority_price
+      
+        # Optional price for Rubicon standard access in the auction.
+        # Corresponds to the JSON property `standardPrice`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Price]
+        attr_accessor :standard_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @priority_price = args[:priority_price] if args.key?(:priority_price)
+          @standard_price = args[:standard_price] if args.key?(:standard_price)
         end
       end
       
@@ -1643,7 +1702,10 @@ module Google
       class GetOrderNotesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of matching notes.
+        # The list of matching notes. The notes for a proposal are ordered from oldest
+        # to newest. If the notes span multiple proposals, they will be grouped by
+        # proposal, with the notes for the most recently modified proposal appearing
+        # first.
         # Corresponds to the JSON property `notes`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MarketplaceNote>]
         attr_accessor :notes
@@ -1721,7 +1783,7 @@ module Google
         # @return [String]
         attr_accessor :creative_safe_frame_compatibility
       
-        # A unique deal=id for the deal (readonly).
+        # A unique deal-id for the deal (readonly).
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
@@ -2489,6 +2551,11 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
+        # In case of CPD deals, the expected CPM in micros.
+        # Corresponds to the JSON property `expectedCpmMicros`
+        # @return [Float]
+        attr_accessor :expected_cpm_micros
+      
         # The pricing type for the deal/product.
         # Corresponds to the JSON property `pricingType`
         # @return [String]
@@ -2502,6 +2569,7 @@ module Google
         def update!(**args)
           @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @expected_cpm_micros = args[:expected_cpm_micros] if args.key?(:expected_cpm_micros)
           @pricing_type = args[:pricing_type] if args.key?(:pricing_type)
         end
       end
@@ -2762,7 +2830,7 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
         attr_accessor :buyer
       
-        # Optional contact information fort the buyer. (seller-readonly)
+        # Optional contact information of the buyer. (seller-readonly)
         # Corresponds to the JSON property `buyerContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :buyer_contacts
@@ -2773,7 +2841,7 @@ module Google
         attr_accessor :buyer_private_data
       
         # When an proposal is in an accepted state, indicates whether the buyer has
-        # signed off Once both sides have signed off on a deal, the proposal can be
+        # signed off. Once both sides have signed off on a deal, the proposal can be
         # finalized by the seller. (seller-readonly)
         # Corresponds to the JSON property `hasBuyerSignedOff`
         # @return [Boolean]
@@ -2868,7 +2936,7 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::Seller]
         attr_accessor :seller
       
-        # Optional contact information for the seller (buyer-readonly).
+        # Optional contact information of the seller (buyer-readonly).
         # Corresponds to the JSON property `sellerContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :seller_contacts

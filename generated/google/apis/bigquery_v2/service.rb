@@ -177,6 +177,12 @@ module Google
         #   Project ID of the datasets to be listed
         # @param [Boolean] all
         #   Whether to list all datasets, including hidden ones
+        # @param [String] filter
+        #   An expression for filtering the results of the request by label. The syntax is
+        #   "labels.[:]". Multiple filters can be ANDed together by connecting with a
+        #   space. Example: "labels.department:receiving labels.active". See https://cloud.
+        #   google.com/bigquery/docs/labeling-datasets#filtering_datasets_using_labels for
+        #   details.
         # @param [Fixnum] max_results
         #   The maximum number of results to return
         # @param [String] page_token
@@ -202,12 +208,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_datasets(project_id, all: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_datasets(project_id, all: nil, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/datasets', options)
           command.response_representation = Google::Apis::BigqueryV2::DatasetList::Representation
           command.response_class = Google::Apis::BigqueryV2::DatasetList
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['all'] = all unless all.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

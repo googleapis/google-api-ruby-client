@@ -68,16 +68,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -263,16 +261,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -333,16 +329,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -529,16 +523,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -848,16 +840,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1004,16 +994,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1117,16 +1105,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1187,16 +1173,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1434,16 +1418,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1663,16 +1645,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1815,16 +1795,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2011,16 +1989,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2242,16 +2218,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2428,16 +2402,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2539,16 +2511,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2683,16 +2653,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2869,16 +2837,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3139,16 +3105,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3399,7 +3363,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] family
-        #   Name of the image resource to return.
+        #   Name of the image family to search for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3493,16 +3457,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3613,16 +3575,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3866,16 +3826,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4222,16 +4180,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4421,16 +4377,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4497,16 +4451,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4781,16 +4733,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4897,16 +4847,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5273,16 +5221,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5780,16 +5726,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5893,16 +5837,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6079,16 +6021,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6420,16 +6360,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6529,16 +6467,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6598,16 +6534,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6835,16 +6769,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6925,6 +6857,51 @@ module Google
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['router'] = router unless router.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Preview fields auto-generated during router create and update operations.
+        # Calling this method does NOT create or update the router.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] router
+        #   Name of the Router resource to query.
+        # @param [Google::Apis::ComputeV1::Router] router_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::RoutersPreviewResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::RoutersPreviewResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def preview_router(project, region, router, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/routers/{router}/preview', options)
+          command.request_representation = Google::Apis::ComputeV1::Router::Representation
+          command.request_object = router_object
+          command.response_representation = Google::Apis::ComputeV1::RoutersPreviewResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::RoutersPreviewResponse
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
@@ -7110,16 +7087,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7261,16 +7236,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7447,16 +7420,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7516,16 +7487,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7712,16 +7681,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7899,16 +7866,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8126,16 +8091,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8277,16 +8240,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8474,16 +8435,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8632,16 +8591,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8873,16 +8830,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9078,16 +9033,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9275,16 +9228,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9503,16 +9454,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9697,16 +9646,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9894,16 +9841,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10046,16 +9991,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10155,16 +10098,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a

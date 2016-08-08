@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/youtube/reporting/v1/reports/
     module YoutubereportingV1
       VERSION = 'V1'
-      REVISION = '20160517'
+      REVISION = '20160719'
 
       # View monetary and non-monetary YouTube Analytics reports for your YouTube content
       AUTH_YT_ANALYTICS_MONETARY_READONLY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'

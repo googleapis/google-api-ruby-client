@@ -190,6 +190,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedConfigurationsForDeviceListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedConfigurationsForUserListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedPropertyBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NewPermissionsEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -384,6 +414,8 @@ module Google
           collection :entry, as: 'entry'
           collection :entry_value, as: 'entryValue'
           property :key, as: 'key'
+          collection :nested_restriction, as: 'nestedRestriction', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction::Representation
+      
           property :restriction_type, as: 'restrictionType'
           property :title, as: 'title'
         end
@@ -606,6 +638,57 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locale, as: 'locale'
           property :text, as: 'text'
+        end
+      end
+      
+      class ManagedConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :managed_property, as: 'managedProperty', class: Google::Apis::AndroidenterpriseV1::ManagedProperty, decorator: Google::Apis::AndroidenterpriseV1::ManagedProperty::Representation
+      
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class ManagedConfigurationsForDeviceListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :managed_configuration_for_device, as: 'managedConfigurationForDevice', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
+      
+        end
+      end
+      
+      class ManagedConfigurationsForUserListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :managed_configuration_for_user, as: 'managedConfigurationForUser', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
+      
+        end
+      end
+      
+      class ManagedProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value_bool, as: 'valueBool'
+          property :value_bundle, as: 'valueBundle', class: Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle, decorator: Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle::Representation
+      
+          collection :value_bundle_array, as: 'valueBundleArray', class: Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle, decorator: Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle::Representation
+      
+          property :value_integer, as: 'valueInteger'
+          property :value_string, as: 'valueString'
+          collection :value_string_array, as: 'valueStringArray'
+        end
+      end
+      
+      class ManagedPropertyBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :managed_property, as: 'managedProperty', class: Google::Apis::AndroidenterpriseV1::ManagedProperty, decorator: Google::Apis::AndroidenterpriseV1::ManagedProperty::Representation
+      
         end
       end
       

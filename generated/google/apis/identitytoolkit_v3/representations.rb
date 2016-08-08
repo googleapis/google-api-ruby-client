@@ -315,6 +315,7 @@ module Google
           property :client_id, as: 'clientId'
           property :context, as: 'context'
           property :continue_uri, as: 'continueUri'
+          property :hosted_domain, as: 'hostedDomain'
           property :identifier, as: 'identifier'
           property :oauth_consumer_key, as: 'oauthConsumerKey'
           property :oauth_scope, as: 'oauthScope'
@@ -683,6 +684,7 @@ module Google
           property :photo_url, as: 'photoUrl'
           property :provider_id, as: 'providerId'
           property :refresh_token, as: 'refreshToken'
+          property :screen_name, as: 'screenName'
           property :time_zone, as: 'timeZone'
           collection :verified_provider, as: 'verifiedProvider'
         end

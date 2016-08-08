@@ -174,6 +174,14 @@ module Google
         attr_accessor :ignore_unspecified_column_families
         alias_method :ignore_unspecified_column_families?, :ignore_unspecified_column_families
       
+        # [Optional] If field is true, then the rowkey column families will be read and
+        # converted to string. Otherwise they are read with BYTES type values and users
+        # need to manually cast them with CAST if necessary. The default value is false.
+        # Corresponds to the JSON property `readRowkeyAsString`
+        # @return [Boolean]
+        attr_accessor :read_rowkey_as_string
+        alias_method :read_rowkey_as_string?, :read_rowkey_as_string
+      
         def initialize(**args)
            update!(**args)
         end
@@ -182,6 +190,7 @@ module Google
         def update!(**args)
           @column_families = args[:column_families] if args.key?(:column_families)
           @ignore_unspecified_column_families = args[:ignore_unspecified_column_families] if args.key?(:ignore_unspecified_column_families)
+          @read_rowkey_as_string = args[:read_rowkey_as_string] if args.key?(:read_rowkey_as_string)
         end
       end
       
@@ -325,6 +334,17 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Experimental] The labels associated with this dataset. You can use these to
+        # organize and group your datasets. You can set this property when inserting or
+        # updating a dataset. Label keys and values can be no longer than 63 characters,
+        # can only contain letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter and must be unique within a dataset. Both keys and
+        # values are additionally constrained to be <= 128 bytes in size.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output-only] The date when this dataset or any of its tables was last
         # modified, in milliseconds since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -358,6 +378,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -490,6 +511,12 @@ module Google
           # @return [String]
           attr_accessor :kind
         
+          # [Experimental] The labels associated with this dataset. You can use these to
+          # organize and group your datasets.
+          # Corresponds to the JSON property `labels`
+          # @return [Hash<String,String>]
+          attr_accessor :labels
+        
           def initialize(**args)
              update!(**args)
           end
@@ -500,6 +527,7 @@ module Google
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
+            @labels = args[:labels] if args.key?(:labels)
           end
         end
       end
@@ -834,6 +862,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output-only, Experimental] The number of rows affected by a DML statement.
+        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # Corresponds to the JSON property `numDmlAffectedRows`
+        # @return [String]
+        attr_accessor :num_dml_affected_rows
+      
         # A token used for paging results.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
@@ -876,6 +910,7 @@ module Google
           @job_complete = args[:job_complete] if args.key?(:job_complete)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
           @kind = args[:kind] if args.key?(:kind)
+          @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @page_token = args[:page_token] if args.key?(:page_token)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)
@@ -1700,8 +1735,13 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only, Experimental] Describes execution plan for the query as a list
-        # of stages.
+        # [Output-only, Experimental] The number of rows affected by a DML statement.
+        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # Corresponds to the JSON property `numDmlAffectedRows`
+        # @return [String]
+        attr_accessor :num_dml_affected_rows
+      
+        # [Output-only, Experimental] Describes execution plan for the query.
         # Corresponds to the JSON property `queryPlan`
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
@@ -1736,6 +1776,7 @@ module Google
         def update!(**args)
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
+          @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @schema = args[:schema] if args.key?(:schema)
@@ -2075,6 +2116,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output-only, Experimental] The number of rows affected by a DML statement.
+        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # Corresponds to the JSON property `numDmlAffectedRows`
+        # @return [String]
+        attr_accessor :num_dml_affected_rows
+      
         # A token used for paging results.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
@@ -2115,6 +2162,7 @@ module Google
           @job_complete = args[:job_complete] if args.key?(:job_complete)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
           @kind = args[:kind] if args.key?(:kind)
+          @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @page_token = args[:page_token] if args.key?(:page_token)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)

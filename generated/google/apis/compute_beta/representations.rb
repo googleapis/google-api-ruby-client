@@ -868,6 +868,84 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionAutoscalerList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagerList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersAbandonInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersDeleteInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersListInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersRecreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSetAutoHealingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSetTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupsListInstances
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupsListInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupsSetNamedPortsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -953,6 +1031,12 @@ module Google
       end
       
       class RouterStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersPreviewResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2563,6 +2647,7 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
+          hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
@@ -3040,6 +3125,123 @@ module Google
         end
       end
       
+      class RegionAutoscalerList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Autoscaler, decorator: Google::Apis::ComputeBeta::Autoscaler::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RegionInstanceGroupList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceGroup, decorator: Google::Apis::ComputeBeta::InstanceGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RegionInstanceGroupManagerList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceGroupManager, decorator: Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RegionInstanceGroupManagersAbandonInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersDeleteInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeBeta::ManagedInstance, decorator: Google::Apis::ComputeBeta::ManagedInstance::Representation
+      
+        end
+      end
+      
+      class RegionInstanceGroupManagersRecreateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersSetAutoHealingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeBeta::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerAutoHealingPolicy::Representation
+      
+        end
+      end
+      
+      class RegionInstanceGroupManagersSetTargetPoolsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class RegionInstanceGroupManagersSetTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+        end
+      end
+      
+      class RegionInstanceGroupsListInstances
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceWithNamedPorts, decorator: Google::Apis::ComputeBeta::InstanceWithNamedPorts::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RegionInstanceGroupsListInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_state, as: 'instanceState'
+          property :port_name, as: 'portName'
+        end
+      end
+      
+      class RegionInstanceGroupsSetNamedPortsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
+      
+        end
+      end
+      
       class RegionList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3217,6 +3419,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :result, as: 'result', class: Google::Apis::ComputeBeta::RouterStatus, decorator: Google::Apis::ComputeBeta::RouterStatus::Representation
+      
+        end
+      end
+      
+      class RoutersPreviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeBeta::Router, decorator: Google::Apis::ComputeBeta::Router::Representation
       
         end
       end

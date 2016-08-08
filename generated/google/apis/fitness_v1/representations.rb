@@ -184,6 +184,7 @@ module Google
           property :bucket_by_time, as: 'bucketByTime', class: Google::Apis::FitnessV1::BucketByTime, decorator: Google::Apis::FitnessV1::BucketByTime::Representation
       
           property :end_time_millis, as: 'endTimeMillis'
+          collection :filtered_data_quality_standard, as: 'filteredDataQualityStandard'
           property :start_time_millis, as: 'startTimeMillis'
         end
       end

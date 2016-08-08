@@ -68,16 +68,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -273,16 +271,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -397,16 +393,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -603,16 +597,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -976,16 +968,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1183,16 +1173,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1306,16 +1294,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1386,16 +1372,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1643,16 +1627,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1971,16 +1953,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2174,16 +2154,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2380,16 +2358,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2665,16 +2641,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2902,16 +2876,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3064,16 +3036,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3218,16 +3188,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3413,16 +3381,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3734,16 +3700,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4055,16 +4019,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4366,7 +4328,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] family
-        #   Name of the image resource to return.
+        #   Name of the image family to search for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4460,16 +4422,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4673,16 +4633,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4936,16 +4894,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5145,13 +5101,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resizes the managed instance group. If you increase the size, the group
-        # creates new instances using the current instance template. If you decrease the
-        # size, the group deletes instances. The resize operation is marked DONE when
-        # the resize actions are scheduled even if the group has not yet added or
-        # deleted any instances. You must separately verify the status of the creating
-        # or deleting actions with the listmanagedinstances method. This method is an
-        # extended version of Resize and it supports more advanced options.
+        # Resizes the managed instance group with advanced configuration options like
+        # disabling creation retries. This is an extended version of the resize method.
+        # If you increase the size of the instance group, the group creates new
+        # instances using the current instance template. If you decrease the size, the
+        # group deletes instances. The resize operation is marked DONE when the resize
+        # actions are scheduled even if the group has not yet added or deleted any
+        # instances. You must separately verify the status of the creating,
+        # creatingWithoutRetries, or deleting actions with the get or
+        # listmanagedinstances method.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5440,16 +5398,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5649,16 +5605,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5735,16 +5689,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6073,16 +6025,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6240,16 +6190,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6631,16 +6579,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7237,16 +7183,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7360,16 +7304,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7556,16 +7498,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7850,6 +7790,1274 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the specified autoscaler.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] autoscaler
+        #   Name of the autoscaler to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region_autoscaler(project, region, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified autoscaler.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] autoscaler
+        #   Name of the autoscaler to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Autoscaler] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Autoscaler]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_autoscaler(project, region, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
+          command.response_class = Google::Apis::ComputeBeta::Autoscaler
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an autoscaler in the specified project using the data included in the
+        # request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_region_autoscaler(project, region, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/autoscalers', options)
+          command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of autoscalers contained within the specified region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RegionAutoscalerList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RegionAutoscalerList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_autoscalers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/autoscalers', options)
+          command.response_representation = Google::Apis::ComputeBeta::RegionAutoscalerList::Representation
+          command.response_class = Google::Apis::ComputeBeta::RegionAutoscalerList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a autoscaler in the specified project using the data included in the
+        # request. This method supports patch semantics.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] autoscaler
+        #   Name of the autoscaler to update.
+        # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region_autoscaler(project, region, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
+          command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_autoscaler_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/autoscalers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a autoscaler in the specified project using the data included in the
+        # request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{project}/regions/{region}/autoscalers', options)
+          command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Schedules a group action to remove the specified instances from the managed
+        # instance group. Abandoning an instance does not delete the instance, but it
+        # does remove the instance from any target pools that are applied by the managed
+        # instance group. This method reduces the targetSize of the managed instance
+        # group by the number of instances that you abandon. This operation is marked as
+        # DONE when the action is scheduled even if the instances have not yet been
+        # removed from the group. You must separately verify the status of the
+        # abandoning action with the listmanagedinstances method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersAbandonInstancesRequest] region_instance_group_managers_abandon_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def abandon_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_abandon_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersAbandonInstancesRequest::Representation
+          command.request_object = region_instance_group_managers_abandon_instances_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified managed instance group and all of the instances in that
+        # group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region_instance_group_manager(project, region, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Schedules a group action to delete the specified instances in the managed
+        # instance group. The instances are also removed from any target pools of which
+        # they were a member. This method reduces the targetSize of the managed instance
+        # group by the number of instances that you delete. This operation is marked as
+        # DONE when the action is scheduled even if the instances are still being
+        # deleted. You must separately verify the status of the deleting action with the
+        # listmanagedinstances method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersDeleteInstancesRequest] region_instance_group_managers_delete_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_delete_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersDeleteInstancesRequest::Representation
+          command.request_object = region_instance_group_managers_delete_instances_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all of the details for the specified managed instance group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InstanceGroupManager] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManager]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_instance_group_manager(project, region, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.response_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.response_class = Google::Apis::ComputeBeta::InstanceGroupManager
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a managed instance group using the information that you specify in the
+        # request. After the group is created, it schedules an action to create
+        # instances in the group using the specified instance template. This operation
+        # is marked as DONE when the group is created even if the instances in the group
+        # have not yet been created. You must separately verify the status of the
+        # individual instances with the listmanagedinstances method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_region_instance_group_manager(project, region, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of managed instance groups that are contained within the
+        # specified region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RegionInstanceGroupManagerList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RegionInstanceGroupManagerList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_group_managers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers', options)
+          command.response_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagerList::Representation
+          command.response_class = Google::Apis::ComputeBeta::RegionInstanceGroupManagerList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the instances in the managed instance group and instances that are
+        # scheduled to be created. The list includes any current actions that the group
+        # has scheduled for its instances.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_group_manager_managed_instances(project, region, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
+          command.response_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstancesResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstancesResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Schedules a group action to recreate the specified instances in the managed
+        # instance group. The instances are deleted and recreated using the current
+        # instance template for the managed instance group. This operation is marked as
+        # DONE when the action is scheduled even if the instances have not yet been
+        # recreated. You must separately verify the status of the recreating action with
+        # the listmanagedinstances method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersRecreateRequest] region_instance_group_managers_recreate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def recreate_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_recreate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersRecreateRequest::Representation
+          command.request_object = region_instance_group_managers_recreate_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the intended size for the managed instance group. If you increase the
+        # size, the group schedules actions to create new instances using the current
+        # instance template. If you decrease the size, the group schedules delete
+        # actions on one or more instances. The resize operation is marked DONE when the
+        # resize actions are scheduled even if the group has not yet added or deleted
+        # any instances. You must separately verify the status of the creating or
+        # deleting actions with the listmanagedinstances method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Fixnum] size
+        #   Number of instances that should exist in this instance group manager.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resize_region_instance_group_manager(project, region, instance_group_manager, size, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resize', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['size'] = size unless size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies the autohealing policy for the instances in this managed instance
+        # group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetAutoHealingRequest] region_instance_group_managers_set_auto_healing_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_instance_group_manager_auto_healing_policies(project, region, instance_group_manager, region_instance_group_managers_set_auto_healing_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetAutoHealingRequest::Representation
+          command.request_object = region_instance_group_managers_set_auto_healing_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the instance template to use when creating new instances in this group.
+        # Existing instances are not affected.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTemplateRequest] region_instance_group_managers_set_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_instance_group_manager_instance_template(project, region, instance_group_manager, region_instance_group_managers_set_template_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTemplateRequest::Representation
+          command.request_object = region_instance_group_managers_set_template_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies the target pools to which all new instances in this group are
+        # assigned. Existing instances in the group are not affected.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   Name of the managed instance group.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTargetPoolsRequest] region_instance_group_managers_set_target_pools_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_instance_group_manager_target_pools(project, region, instance_group_manager, region_instance_group_managers_set_target_pools_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTargetPoolsRequest::Representation
+          command.request_object = region_instance_group_managers_set_target_pools_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_instance_group_manager_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified instance group resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group
+        #   Name of the instance group resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InstanceGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InstanceGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_instance_group(project, region, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroups/{instanceGroup}', options)
+          command.response_representation = Google::Apis::ComputeBeta::InstanceGroup::Representation
+          command.response_class = Google::Apis::ComputeBeta::InstanceGroup
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of instance group resources contained within the specified
+        # region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RegionInstanceGroupList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RegionInstanceGroupList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroups', options)
+          command.response_representation = Google::Apis::ComputeBeta::RegionInstanceGroupList::Representation
+          command.response_class = Google::Apis::ComputeBeta::RegionInstanceGroupList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the instances in the specified instance group and displays information
+        # about the named ports. Depending on the specified options, this method can
+        # list all instances or only the instances that are running.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group
+        #   Name of the regional instance group for which we want to list the instances.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupsListInstancesRequest] region_instance_groups_list_instances_request_object
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RegionInstanceGroupsListInstances] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RegionInstanceGroupsListInstances]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_group_instances(project, region, instance_group, region_instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupsListInstancesRequest::Representation
+          command.request_object = region_instance_groups_list_instances_request_object
+          command.response_representation = Google::Apis::ComputeBeta::RegionInstanceGroupsListInstances::Representation
+          command.response_class = Google::Apis::ComputeBeta::RegionInstanceGroupsListInstances
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the named ports for the specified regional instance group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group
+        #   The name of the regional instance group where the named ports are updated.
+        # @param [Google::Apis::ComputeBeta::RegionInstanceGroupsSetNamedPortsRequest] region_instance_groups_set_named_ports_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_instance_group_named_ports(project, region, instance_group, region_instance_groups_set_named_ports_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupsSetNamedPortsRequest::Representation
+          command.request_object = region_instance_groups_set_named_ports_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_instance_group_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeBeta::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeBeta::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7948,16 +9156,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8067,16 +9273,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8146,16 +9350,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8393,16 +9595,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8493,6 +9693,51 @@ module Google
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['router'] = router unless router.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Preview fields auto-generated during router create and update operations.
+        # Calling this method does NOT create or update the router.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] router
+        #   Name of the Router resource to query.
+        # @param [Google::Apis::ComputeBeta::Router] router_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::RoutersPreviewResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::RoutersPreviewResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def preview_router(project, region, router, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/routers/{router}/preview', options)
+          command.request_representation = Google::Apis::ComputeBeta::Router::Representation
+          command.request_object = router_object
+          command.response_representation = Google::Apis::ComputeBeta::RoutersPreviewResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::RoutersPreviewResponse
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
@@ -8722,16 +9967,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8924,16 +10167,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9203,16 +10444,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9323,16 +10562,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9529,16 +10766,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9770,16 +11005,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10048,16 +11281,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10250,16 +11481,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10457,16 +11686,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10669,16 +11896,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10920,16 +12145,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -11296,16 +12519,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -11539,16 +12760,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -11746,16 +12965,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12028,16 +13245,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12273,16 +13488,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12480,16 +13693,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12686,16 +13897,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12805,16 +14014,14 @@ module Google
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
         #   instance, you would use filter=name ne example-instance.
-        #   Compute Engine Beta API Only: When filtering in the Beta API, you can also
-        #   filter on nested fields. For example, you could filter on instances that have
-        #   set the scheduling.automaticRestart field to true. Use filtering on nested
-        #   fields to take advantage of labels to organize and search for results based on
-        #   label values.
-        #   The Beta API also supports filtering on multiple expressions by providing each
-        #   separate expression within parentheses. For example, (scheduling.
-        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
-        #   treated as AND expressions, meaning that resources must match all expressions
-        #   to pass the filters.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a

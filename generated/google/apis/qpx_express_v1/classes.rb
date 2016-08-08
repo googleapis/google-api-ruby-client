@@ -1165,6 +1165,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :solutions
       
+        # IATA country code representing the point of ticketing.
+        # Corresponds to the JSON property `ticketingCountry`
+        # @return [String]
+        attr_accessor :ticketing_country
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1177,6 +1182,7 @@ module Google
           @sale_country = args[:sale_country] if args.key?(:sale_country)
           @slice = args[:slice] if args.key?(:slice)
           @solutions = args[:solutions] if args.key?(:solutions)
+          @ticketing_country = args[:ticketing_country] if args.key?(:ticketing_country)
         end
       end
       

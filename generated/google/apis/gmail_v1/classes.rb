@@ -975,10 +975,7 @@ module Google
       class PopSettings
         include Google::Apis::Core::Hashable
       
-        # The range of messages which are accessible via POP. Setting this to
-        # FROM_NOW_ON causes any existing messages to become inaccessible and causes all
-        # future messages to become accessible. Setting this to ALL_MAIL causes all
-        # messages to become accessible, even if they have been fetched previously.
+        # The range of messages which are accessible via POP.
         # Corresponds to the JSON property `accessWindow`
         # @return [String]
         attr_accessor :access_window
@@ -1055,9 +1052,9 @@ module Google
         # Whether this address is selected as the default "From:" address in situations
         # such as composing a new message or sending a vacation auto-reply. Every Gmail
         # account has exactly one default send-as address, so the only legal value that
-        # clients may write to this field is `true`. Changing this from `false` to `true`
-        # for an address will result in this field becoming `false` for the other
-        # previous default address.
+        # clients may write to this field is true. Changing this from false to true for
+        # an address will result in this field becoming false for the other previous
+        # default address.
         # Corresponds to the JSON property `isDefault`
         # @return [Boolean]
         attr_accessor :is_default
@@ -1225,8 +1222,8 @@ module Google
       
         # An optional end time for sending auto-replies (epoch ms). When this is
         # specified, Gmail will automatically reply only to messages that it receives
-        # before the end time. If both `startTime` and `endTime` are specified, `
-        # startTime` must precede `endTime`.
+        # before the end time. If both startTime and endTime are specified, startTime
+        # must precede endTime.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -1264,8 +1261,8 @@ module Google
       
         # An optional start time for sending auto-replies (epoch ms). When this is
         # specified, Gmail will automatically reply only to messages that it receives
-        # after the start time. If both `startTime` and `endTime` are specified, `
-        # startTime` must precede `endTime`.
+        # after the start time. If both startTime and endTime are specified, startTime
+        # must precede endTime.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
