@@ -25,12 +25,20 @@ require 'addressable/uri'
 
 module Google
   module Apis
+
     # @private
     class Generator
+
       # Helper for picking names for methods, properties, types, etc. Performs various normaliations
       # as well as allows for overriding individual names from a configuration file for cases
       # where algorithmic approaches produce poor APIs.
       class Names
+        ActiveSupport::Inflector.inflections do |inflections|
+          puts "Customizing inflections..."
+          u = inflections.uncountable('send_as', 'as')
+          puts u
+        end
+
         include Google::Apis::Core::Logging
         include NameHelpers
 
