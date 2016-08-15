@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ClouddebuggerV2
-      # Google Cloud Debugger API
+      # Stackdriver Debugger API
       #
       # Examines the call stack and variables of a running application without
       #  stopping or slowing it down.
@@ -31,7 +31,7 @@ module Google
       #    Clouddebugger = Google::Apis::ClouddebuggerV2 # Alias the module
       #    service = Clouddebugger::CloudDebuggerService.new
       #
-      # @see https://cloud.google.com/tools/cloud-debugger
+      # @see http://cloud.google.com/debugger
       class CloudDebuggerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

@@ -18,24 +18,21 @@ require 'google/apis/clouddebugger_v2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Debugger API
+    # Stackdriver Debugger API
     #
     # Examines the call stack and variables of a running application without
     # stopping or slowing it down.
     #
-    # @see https://cloud.google.com/tools/cloud-debugger
+    # @see http://cloud.google.com/debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20160602'
+      REVISION = '20160810'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # Manage cloud debugger
       AUTH_CLOUD_DEBUGGER = 'https://www.googleapis.com/auth/cloud_debugger'
-
-      # Manage active breakpoints in cloud debugger
-      AUTH_CLOUD_DEBUGLETCONTROLLER = 'https://www.googleapis.com/auth/cloud_debugletcontroller'
     end
   end
 end

@@ -992,13 +992,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of dimensions to show as pivot columns. A Pivot can have a maximum
-        # of 4 dimensions.
+        # of 4 dimensions. Pivot dimensions are part of the restriction on the
+        # total number of dimensions allowed in the request.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Dimension>]
         attr_accessor :dimensions
       
         # The pivot metrics. Pivot metrics are part of the
-        # restriction on total number of metrics in the request.
+        # restriction on total number of metrics allowed in the request.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Metric>]
         attr_accessor :metrics

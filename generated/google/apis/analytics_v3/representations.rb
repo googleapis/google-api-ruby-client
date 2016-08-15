@@ -376,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IncludeConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkedForeignAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class McfData
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -486,6 +498,36 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemarketingAudience
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class AudienceDefinition
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class StateBasedAudienceDefinition
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class ExcludeConditions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemarketingAudiences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1366,6 +1408,33 @@ module Google
         end
       end
       
+      class IncludeConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :days_to_look_back, as: 'daysToLookBack'
+          property :is_smart_list, as: 'isSmartList'
+          property :kind, as: 'kind'
+          property :membership_duration_days, as: 'membershipDurationDays'
+          property :segment, as: 'segment'
+        end
+      end
+      
+      class LinkedForeignAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :eligible_for_search, as: 'eligibleForSearch'
+          property :id, as: 'id'
+          property :internal_web_property_id, as: 'internalWebPropertyId'
+          property :kind, as: 'kind'
+          property :linked_account_id, as: 'linkedAccountId'
+          property :remarketing_audience_id, as: 'remarketingAudienceId'
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :web_property_id, as: 'webPropertyId'
+        end
+      end
+      
       class McfData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1630,6 +1699,72 @@ module Google
             collection :metrics, as: 'metrics'
             collection :sort, as: 'sort'
           end
+        end
+      end
+      
+      class RemarketingAudience
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :audience_definition, as: 'audienceDefinition', class: Google::Apis::AnalyticsV3::RemarketingAudience::AudienceDefinition, decorator: Google::Apis::AnalyticsV3::RemarketingAudience::AudienceDefinition::Representation
+      
+          property :audience_type, as: 'audienceType'
+          property :created, as: 'created', type: DateTime
+      
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :internal_web_property_id, as: 'internalWebPropertyId'
+          property :kind, as: 'kind'
+          collection :linked_ad_accounts, as: 'linkedAdAccounts', class: Google::Apis::AnalyticsV3::LinkedForeignAccount, decorator: Google::Apis::AnalyticsV3::LinkedForeignAccount::Representation
+      
+          collection :linked_views, as: 'linkedViews'
+          property :name, as: 'name'
+          property :state_based_audience_definition, as: 'stateBasedAudienceDefinition', class: Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition, decorator: Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition::Representation
+      
+          property :updated, as: 'updated', type: DateTime
+      
+          property :web_property_id, as: 'webPropertyId'
+        end
+        
+        class AudienceDefinition
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :include_conditions, as: 'includeConditions', class: Google::Apis::AnalyticsV3::IncludeConditions, decorator: Google::Apis::AnalyticsV3::IncludeConditions::Representation
+        
+          end
+        end
+        
+        class StateBasedAudienceDefinition
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :exclude_conditions, as: 'excludeConditions', class: Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition::ExcludeConditions, decorator: Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition::ExcludeConditions::Representation
+        
+            property :include_conditions, as: 'includeConditions', class: Google::Apis::AnalyticsV3::IncludeConditions, decorator: Google::Apis::AnalyticsV3::IncludeConditions::Representation
+        
+          end
+          
+          class ExcludeConditions
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :exclusion_duration, as: 'exclusionDuration'
+              property :segment, as: 'segment'
+            end
+          end
+        end
+      end
+      
+      class RemarketingAudiences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AnalyticsV3::RemarketingAudience, decorator: Google::Apis::AnalyticsV3::RemarketingAudience::Representation
+      
+          property :items_per_page, as: 'itemsPerPage'
+          property :kind, as: 'kind'
+          property :next_link, as: 'nextLink'
+          property :previous_link, as: 'previousLink'
+          property :start_index, as: 'startIndex'
+          property :total_results, as: 'totalResults'
+          property :username, as: 'username'
         end
       end
       

@@ -624,6 +624,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :annotations, as: 'annotations', class: Google::Apis::GenomicsV1::Annotation, decorator: Google::Apis::GenomicsV1::Annotation::Representation
       
+          property :request_id, as: 'requestId'
         end
       end
       

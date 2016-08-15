@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CarrierRate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CarriersCarrier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Datafeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeliveryTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +383,12 @@ module Google
       end
       
       class Errors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Headers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +437,12 @@ module Google
       end
       
       class SetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationIdSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -724,6 +754,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostalCodeGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostalCodeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Price
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +916,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RateGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsGetSupportedCarriersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Table
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestOrder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -899,6 +1007,12 @@ module Google
       end
       
       class TestOrderPaymentMethod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1343,6 +1457,28 @@ module Google
         end
       end
       
+      class CarrierRate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :carrier_service, as: 'carrierService'
+          property :flat_adjustment, as: 'flatAdjustment', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :name, as: 'name'
+          property :origin_postal_code, as: 'originPostalCode'
+          property :percentage_adjustment, as: 'percentageAdjustment'
+        end
+      end
+      
+      class CarriersCarrier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :name, as: 'name'
+          collection :services, as: 'services'
+        end
+      end
+      
       class Datafeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1519,6 +1655,14 @@ module Google
         end
       end
       
+      class DeliveryTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
+          property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+        end
+      end
+      
       class Error
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1535,6 +1679,20 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::ContentV2::Error, decorator: Google::Apis::ContentV2::Error::Representation
       
           property :message, as: 'message'
+        end
+      end
+      
+      class Headers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::ContentV2::LocationIdSet, decorator: Google::Apis::ContentV2::LocationIdSet::Representation
+      
+          collection :number_of_items, as: 'numberOfItems'
+          collection :postal_code_group_names, as: 'postalCodeGroupNames'
+          collection :prices, as: 'prices', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          collection :weights, as: 'weights', class: Google::Apis::ContentV2::Weight, decorator: Google::Apis::ContentV2::Weight::Representation
+      
         end
       end
       
@@ -1627,6 +1785,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+        end
+      end
+      
+      class LocationIdSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location_ids, as: 'locationIds'
         end
       end
       
@@ -2202,6 +2367,24 @@ module Google
         end
       end
       
+      class PostalCodeGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :name, as: 'name'
+          collection :postal_code_ranges, as: 'postalCodeRanges', class: Google::Apis::ContentV2::PostalCodeRange, decorator: Google::Apis::ContentV2::PostalCodeRange::Representation
+      
+        end
+      end
+      
+      class PostalCodeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :postal_code_range_begin, as: 'postalCodeRangeBegin'
+          property :postal_code_range_end, as: 'postalCodeRangeEnd'
+        end
+      end
+      
       class Price
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2539,6 +2722,127 @@ module Google
         end
       end
       
+      class RateGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_shipping_labels, as: 'applicableShippingLabels'
+          collection :carrier_rates, as: 'carrierRates', class: Google::Apis::ContentV2::CarrierRate, decorator: Google::Apis::ContentV2::CarrierRate::Representation
+      
+          property :main_table, as: 'mainTable', class: Google::Apis::ContentV2::Table, decorator: Google::Apis::ContentV2::Table::Representation
+      
+          property :single_value, as: 'singleValue', class: Google::Apis::ContentV2::Value, decorator: Google::Apis::ContentV2::Value::Representation
+      
+          collection :subtables, as: 'subtables', class: Google::Apis::ContentV2::Table, decorator: Google::Apis::ContentV2::Table::Representation
+      
+        end
+      end
+      
+      class Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cells, as: 'cells', class: Google::Apis::ContentV2::Value, decorator: Google::Apis::ContentV2::Value::Representation
+      
+        end
+      end
+      
+      class Service
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :currency, as: 'currency'
+          property :delivery_country, as: 'deliveryCountry'
+          property :delivery_time, as: 'deliveryTime', class: Google::Apis::ContentV2::DeliveryTime, decorator: Google::Apis::ContentV2::DeliveryTime::Representation
+      
+          property :name, as: 'name'
+          collection :rate_groups, as: 'rateGroups', class: Google::Apis::ContentV2::RateGroup, decorator: Google::Apis::ContentV2::RateGroup::Representation
+      
+        end
+      end
+      
+      class ShippingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          collection :postal_code_groups, as: 'postalCodeGroups', class: Google::Apis::ContentV2::PostalCodeGroup, decorator: Google::Apis::ContentV2::PostalCodeGroup::Representation
+      
+          collection :services, as: 'services', class: Google::Apis::ContentV2::Service, decorator: Google::Apis::ContentV2::Service::Representation
+      
+        end
+      end
+      
+      class ShippingsettingsCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::ShippingsettingsCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::ShippingsettingsCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class ShippingsettingsCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :batch_id, as: 'batchId'
+          property :merchant_id, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :shipping_settings, as: 'shippingSettings', class: Google::Apis::ContentV2::ShippingSettings, decorator: Google::Apis::ContentV2::ShippingSettings::Representation
+      
+        end
+      end
+      
+      class ShippingsettingsCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::ShippingsettingsCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::ShippingsettingsCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class ShippingsettingsCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::Errors::Representation
+      
+          property :kind, as: 'kind'
+          property :shipping_settings, as: 'shippingSettings', class: Google::Apis::ContentV2::ShippingSettings, decorator: Google::Apis::ContentV2::ShippingSettings::Representation
+      
+        end
+      end
+      
+      class ShippingsettingsGetSupportedCarriersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :carriers, as: 'carriers', class: Google::Apis::ContentV2::CarriersCarrier, decorator: Google::Apis::ContentV2::CarriersCarrier::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class ShippingsettingsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2::ShippingSettings, decorator: Google::Apis::ContentV2::ShippingSettings::Representation
+      
+        end
+      end
+      
+      class Table
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_headers, as: 'columnHeaders', class: Google::Apis::ContentV2::Headers, decorator: Google::Apis::ContentV2::Headers::Representation
+      
+          property :name, as: 'name'
+          property :row_headers, as: 'rowHeaders', class: Google::Apis::ContentV2::Headers, decorator: Google::Apis::ContentV2::Headers::Representation
+      
+          collection :rows, as: 'rows', class: Google::Apis::ContentV2::Row, decorator: Google::Apis::ContentV2::Row::Representation
+      
+        end
+      end
+      
       class TestOrder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2613,6 +2917,18 @@ module Google
           property :last_four_digits, as: 'lastFourDigits'
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :type, as: 'type'
+        end
+      end
+      
+      class Value
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_rate_name, as: 'carrierRateName'
+          property :flat_rate, as: 'flatRate', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :no_shipping, as: 'noShipping'
+          property :price_percentage, as: 'pricePercentage'
+          property :subtable_name, as: 'subtableName'
         end
       end
       

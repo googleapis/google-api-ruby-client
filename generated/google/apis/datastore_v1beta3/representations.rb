@@ -309,6 +309,7 @@ module Google
           property :cursor, :base64 => true, as: 'cursor'
           property :entity, as: 'entity', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -357,6 +358,7 @@ module Google
       class QueryResultBatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_version, as: 'snapshotVersion'
           property :end_cursor, :base64 => true, as: 'endCursor'
           property :skipped_cursor, :base64 => true, as: 'skippedCursor'
           property :entity_result_type, as: 'entityResultType'
@@ -426,8 +428,10 @@ module Google
       class MutationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflict_detected, as: 'conflictDetected'
           property :key, as: 'key', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -506,6 +510,7 @@ module Google
       
           property :update, as: 'update', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
+          property :base_version, as: 'baseVersion'
           property :upsert, as: 'upsert', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
           property :delete, as: 'delete', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation

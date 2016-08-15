@@ -3187,6 +3187,133 @@ module Google
         end
       end
       
+      # JSON template for an Analytics Remarketing Include Conditions.
+      class IncludeConditions
+        include Google::Apis::Core::Hashable
+      
+        # The look-back window lets you specify a time frame for evaluating the behavior
+        # that qualifies users for your audience. For example, if your filters include
+        # users from Central Asia, and Transactions Greater than 2, and you set the look-
+        # back window to 14 days, then any user from Central Asia whose cumulative
+        # transactions exceed 2 during the last 14 days is added to the audience.
+        # Corresponds to the JSON property `daysToLookBack`
+        # @return [Fixnum]
+        attr_accessor :days_to_look_back
+      
+        # Boolean indicating whether this segment is a smart list. https://support.
+        # google.com/analytics/answer/4628577
+        # Corresponds to the JSON property `isSmartList`
+        # @return [Boolean]
+        attr_accessor :is_smart_list
+        alias_method :is_smart_list?, :is_smart_list
+      
+        # Resource type for include conditions.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Number of days a user remains in the audience. Use any integer from 1-540. In
+        # remarketing audiences for search ads, membership duration is truncated to 180
+        # days.
+        # Corresponds to the JSON property `membershipDurationDays`
+        # @return [Fixnum]
+        attr_accessor :membership_duration_days
+      
+        # The segment condition that will cause a user to be added to an audience.
+        # Corresponds to the JSON property `segment`
+        # @return [String]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_to_look_back = args[:days_to_look_back] if args.key?(:days_to_look_back)
+          @is_smart_list = args[:is_smart_list] if args.key?(:is_smart_list)
+          @kind = args[:kind] if args.key?(:kind)
+          @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # JSON template for an Analytics Remarketing Audience Foreign Link.
+      class LinkedForeignAccount
+        include Google::Apis::Core::Hashable
+      
+        # Account ID to which this linked foreign account belongs.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Boolean indicating whether this is eligible for search.
+        # Corresponds to the JSON property `eligibleForSearch`
+        # @return [Boolean]
+        attr_accessor :eligible_for_search
+        alias_method :eligible_for_search?, :eligible_for_search
+      
+        # Entity ad account link ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Internal ID for the web property to which this linked foreign account belongs.
+        # Corresponds to the JSON property `internalWebPropertyId`
+        # @return [String]
+        attr_accessor :internal_web_property_id
+      
+        # Resource type for linked foreign account.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The foreign account ID. For example the an AdWords `linkedAccountId` has the
+        # following format XXX-XXX-XXXX.
+        # Corresponds to the JSON property `linkedAccountId`
+        # @return [String]
+        attr_accessor :linked_account_id
+      
+        # Remarketing audience ID to which this linked foreign account belongs.
+        # Corresponds to the JSON property `remarketingAudienceId`
+        # @return [String]
+        attr_accessor :remarketing_audience_id
+      
+        # The status of this foreign account link.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The type of the foreign account. For example `ADWORDS_LINKS`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Web property ID of the form UA-XXXXX-YY to which this linked foreign account
+        # belongs.
+        # Corresponds to the JSON property `webPropertyId`
+        # @return [String]
+        attr_accessor :web_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @eligible_for_search = args[:eligible_for_search] if args.key?(:eligible_for_search)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @linked_account_id = args[:linked_account_id] if args.key?(:linked_account_id)
+          @remarketing_audience_id = args[:remarketing_audience_id] if args.key?(:remarketing_audience_id)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+        end
+      end
+      
       # Multi-Channel Funnels data for a given view (profile).
       class McfData
         include Google::Apis::Core::Hashable
@@ -4264,6 +4391,246 @@ module Google
             @metrics = args[:metrics] if args.key?(:metrics)
             @sort = args[:sort] if args.key?(:sort)
           end
+        end
+      end
+      
+      # JSON template for an Analytics remarketing audience.
+      class RemarketingAudience
+        include Google::Apis::Core::Hashable
+      
+        # Account ID to which this remarketing audience belongs.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # The simple audience definition that will cause a user to be added to an
+        # audience.
+        # Corresponds to the JSON property `audienceDefinition`
+        # @return [Google::Apis::AnalyticsV3::RemarketingAudience::AudienceDefinition]
+        attr_accessor :audience_definition
+      
+        # The type of audience, either SIMPLE or STATE_BASED.
+        # Corresponds to the JSON property `audienceType`
+        # @return [String]
+        attr_accessor :audience_type
+      
+        # Time this remarketing audience was created.
+        # Corresponds to the JSON property `created`
+        # @return [DateTime]
+        attr_accessor :created
+      
+        # The description of this remarketing audience.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Remarketing Audience ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Internal ID for the web property to which this remarketing audience belongs.
+        # Corresponds to the JSON property `internalWebPropertyId`
+        # @return [String]
+        attr_accessor :internal_web_property_id
+      
+        # Collection type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The linked ad accounts associated with this remarketing audience. A
+        # remarketing audience can have only one linkedAdAccount currently.
+        # Corresponds to the JSON property `linkedAdAccounts`
+        # @return [Array<Google::Apis::AnalyticsV3::LinkedForeignAccount>]
+        attr_accessor :linked_ad_accounts
+      
+        # The views (profiles) that this remarketing audience is linked to.
+        # Corresponds to the JSON property `linkedViews`
+        # @return [Array<String>]
+        attr_accessor :linked_views
+      
+        # The name of this remarketing audience.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A state based audience definition that will cause a user to be added or
+        # removed from an audience.
+        # Corresponds to the JSON property `stateBasedAudienceDefinition`
+        # @return [Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition]
+        attr_accessor :state_based_audience_definition
+      
+        # Time this remarketing audience was last modified.
+        # Corresponds to the JSON property `updated`
+        # @return [DateTime]
+        attr_accessor :updated
+      
+        # Web property ID of the form UA-XXXXX-YY to which this remarketing audience
+        # belongs.
+        # Corresponds to the JSON property `webPropertyId`
+        # @return [String]
+        attr_accessor :web_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @audience_definition = args[:audience_definition] if args.key?(:audience_definition)
+          @audience_type = args[:audience_type] if args.key?(:audience_type)
+          @created = args[:created] if args.key?(:created)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @internal_web_property_id = args[:internal_web_property_id] if args.key?(:internal_web_property_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @linked_ad_accounts = args[:linked_ad_accounts] if args.key?(:linked_ad_accounts)
+          @linked_views = args[:linked_views] if args.key?(:linked_views)
+          @name = args[:name] if args.key?(:name)
+          @state_based_audience_definition = args[:state_based_audience_definition] if args.key?(:state_based_audience_definition)
+          @updated = args[:updated] if args.key?(:updated)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+        end
+        
+        # The simple audience definition that will cause a user to be added to an
+        # audience.
+        class AudienceDefinition
+          include Google::Apis::Core::Hashable
+        
+          # JSON template for an Analytics Remarketing Include Conditions.
+          # Corresponds to the JSON property `includeConditions`
+          # @return [Google::Apis::AnalyticsV3::IncludeConditions]
+          attr_accessor :include_conditions
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @include_conditions = args[:include_conditions] if args.key?(:include_conditions)
+          end
+        end
+        
+        # A state based audience definition that will cause a user to be added or
+        # removed from an audience.
+        class StateBasedAudienceDefinition
+          include Google::Apis::Core::Hashable
+        
+          # Defines the conditions to exclude users from the audience.
+          # Corresponds to the JSON property `excludeConditions`
+          # @return [Google::Apis::AnalyticsV3::RemarketingAudience::StateBasedAudienceDefinition::ExcludeConditions]
+          attr_accessor :exclude_conditions
+        
+          # JSON template for an Analytics Remarketing Include Conditions.
+          # Corresponds to the JSON property `includeConditions`
+          # @return [Google::Apis::AnalyticsV3::IncludeConditions]
+          attr_accessor :include_conditions
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @exclude_conditions = args[:exclude_conditions] if args.key?(:exclude_conditions)
+            @include_conditions = args[:include_conditions] if args.key?(:include_conditions)
+          end
+          
+          # Defines the conditions to exclude users from the audience.
+          class ExcludeConditions
+            include Google::Apis::Core::Hashable
+          
+            # Whether to make the exclusion TEMPORARY or PERMANENT.
+            # Corresponds to the JSON property `exclusionDuration`
+            # @return [String]
+            attr_accessor :exclusion_duration
+          
+            # The segment condition that will cause a user to be removed from an audience.
+            # Corresponds to the JSON property `segment`
+            # @return [String]
+            attr_accessor :segment
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @exclusion_duration = args[:exclusion_duration] if args.key?(:exclusion_duration)
+              @segment = args[:segment] if args.key?(:segment)
+            end
+          end
+        end
+      end
+      
+      # A remarketing audience collection lists Analytics remarketing audiences to
+      # which the user has access. Each resource in the collection corresponds to a
+      # single Analytics remarketing audience.
+      class RemarketingAudiences
+        include Google::Apis::Core::Hashable
+      
+        # A list of remarketing audiences.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::AnalyticsV3::RemarketingAudience>]
+        attr_accessor :items
+      
+        # The maximum number of resources the response can contain, regardless of the
+        # actual number of resources returned. Its value ranges from 1 to 1000 with a
+        # value of 1000 by default, or otherwise specified by the max-results query
+        # parameter.
+        # Corresponds to the JSON property `itemsPerPage`
+        # @return [Fixnum]
+        attr_accessor :items_per_page
+      
+        # Collection type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Link to next page for this remarketing audience collection.
+        # Corresponds to the JSON property `nextLink`
+        # @return [String]
+        attr_accessor :next_link
+      
+        # Link to previous page for this view (profile) collection.
+        # Corresponds to the JSON property `previousLink`
+        # @return [String]
+        attr_accessor :previous_link
+      
+        # The starting index of the resources, which is 1 by default or otherwise
+        # specified by the start-index query parameter.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # The total number of results for the query, regardless of the number of results
+        # in the response.
+        # Corresponds to the JSON property `totalResults`
+        # @return [Fixnum]
+        attr_accessor :total_results
+      
+        # Email ID of the authenticated user
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_link = args[:next_link] if args.key?(:next_link)
+          @previous_link = args[:previous_link] if args.key?(:previous_link)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @total_results = args[:total_results] if args.key?(:total_results)
+          @username = args[:username] if args.key?(:username)
         end
       end
       

@@ -809,7 +809,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A concise name for the monitored resource type that might be
-        # displayed in user interfaces. For example, &quot;Google Cloud SQL Database&
+        # displayed in user interfaces. It should be a Title Cased Noun Phrase, without
+        # any article or other determiners. For example, &quot;Google Cloud SQL Database&
         # quot;.
         # Corresponds to the JSON property `displayName`
         # @return [String]

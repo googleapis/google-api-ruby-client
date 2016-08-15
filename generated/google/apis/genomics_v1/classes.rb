@@ -531,6 +531,17 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Annotation>]
         attr_accessor :annotations
       
+        # A unique request ID which enables the server to detect duplicated requests. If
+        # provided, duplicated requests will result in the same response; if not
+        # provided, duplicated requests may result in duplicated data. For a given
+        # annotation set, callers should not reuse `request_id`s when writing different
+        # batches of annotations - behavior in this case is undefined. A common approach
+        # is to use a UUID. For batch jobs where worker crashes are a possibility,
+        # consider using some unique variant of a worker or run ID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -538,6 +549,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       

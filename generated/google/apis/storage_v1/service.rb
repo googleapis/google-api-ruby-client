@@ -1154,6 +1154,10 @@ module Google
         # @param [String] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
+        # @param [String] kms_key_name
+        #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
+        #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
+        #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1177,7 +1181,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def compose_object(destination_bucket, destination_object, compose_request_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def compose_object(destination_bucket, destination_object, compose_request_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, kms_key_name: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command =  make_simple_command(:post, 'b/{destinationBucket}/o/{destinationObject}/compose', options)
           else
@@ -1193,6 +1197,7 @@ module Google
           command.query['destinationPredefinedAcl'] = destination_predefined_acl unless destination_predefined_acl.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['kmsKeyName'] = kms_key_name unless kms_key_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1449,6 +1454,10 @@ module Google
         # @param [String] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
+        # @param [String] kms_key_name
+        #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
+        #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
+        #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] name
         #   Name of the object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any. For information
@@ -1484,7 +1493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_object(bucket, object_object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_object(bucket, object_object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, kms_key_name: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, 'b/{bucket}/o', options)
           else
@@ -1502,6 +1511,7 @@ module Google
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['kmsKeyName'] = kms_key_name unless kms_key_name.nil?
           command.query['name'] = name unless name.nil?
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['projection'] = projection unless projection.nil?
@@ -1656,6 +1666,10 @@ module Google
         #   about how to URL encode object names to be path safe, see Encoding URI Path
         #   Parts.
         # @param [Google::Apis::StorageV1::Object] object_object
+        # @param [String] destination_kms_key_name
+        #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
+        #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
+        #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1722,7 +1736,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_kms_key_name: nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -1732,6 +1746,7 @@ module Google
           command.params['sourceObject'] = source_object unless source_object.nil?
           command.params['destinationBucket'] = destination_bucket unless destination_bucket.nil?
           command.params['destinationObject'] = destination_object unless destination_object.nil?
+          command.query['destinationKmsKeyName'] = destination_kms_key_name unless destination_kms_key_name.nil?
           command.query['destinationPredefinedAcl'] = destination_predefined_acl unless destination_predefined_acl.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?

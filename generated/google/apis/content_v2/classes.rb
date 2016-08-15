@@ -1513,6 +1513,93 @@ module Google
         end
       end
       
+      # 
+      class CarrierRate
+        include Google::Apis::Core::Hashable
+      
+        # Carrier service, such as "UPS" or "Fedex". The list of supported carriers can
+        # be retrieved via the getSupportedCarriers method. Required.
+        # Corresponds to the JSON property `carrierName`
+        # @return [String]
+        attr_accessor :carrier_name
+      
+        # Carrier service, such as "ground" or "2 days". The list of supported services
+        # for a carrier can be retrieved via the getSupportedCarriers method. Required.
+        # Corresponds to the JSON property `carrierService`
+        # @return [String]
+        attr_accessor :carrier_service
+      
+        # Additive shipping rate modifier. Can be negative. For example ` "value": "1", "
+        # currency" : "USD" ` adds $1 to the rate, ` "value": "-3", "currency" : "USD" `
+        # removes $3 from the rate. Optional.
+        # Corresponds to the JSON property `flatAdjustment`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :flat_adjustment
+      
+        # Name of the carrier rate. Must be unique per rate group. Required.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Shipping origin for this carrier rate. Required.
+        # Corresponds to the JSON property `originPostalCode`
+        # @return [String]
+        attr_accessor :origin_postal_code
+      
+        # Multiplicative shipping rate modifier as a number in decimal notation. Can be
+        # negative. For example "5.4" increases the rate by 5.4%, "-3" decreases the
+        # rate by 3%. Optional.
+        # Corresponds to the JSON property `percentageAdjustment`
+        # @return [String]
+        attr_accessor :percentage_adjustment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @carrier_service = args[:carrier_service] if args.key?(:carrier_service)
+          @flat_adjustment = args[:flat_adjustment] if args.key?(:flat_adjustment)
+          @name = args[:name] if args.key?(:name)
+          @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
+          @percentage_adjustment = args[:percentage_adjustment] if args.key?(:percentage_adjustment)
+        end
+      end
+      
+      # 
+      class CarriersCarrier
+        include Google::Apis::Core::Hashable
+      
+        # The CLDR country code of the carrier (e.g., "US"). Always present.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The name of the carrier (e.g., "UPS"). Always present.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of supported services (e.g., "ground") for that carrier. Contains at
+        # least one service.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @name = args[:name] if args.key?(:name)
+          @services = args[:services] if args.key?(:services)
+        end
+      end
+      
       # Datafeed data.
       class Datafeed
         include Google::Apis::Core::Hashable
@@ -2130,6 +2217,34 @@ module Google
         end
       end
       
+      # 
+      class DeliveryTime
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of business days that is spent in transit. 0 means same day
+        # delivery, 1 means next day delivery. Must be greater than or equal to
+        # minTransitTimeInDays. Required.
+        # Corresponds to the JSON property `maxTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :max_transit_time_in_days
+      
+        # Minimum number of business days that is spent in transit. 0 means same day
+        # delivery, 1 means next day delivery. Required.
+        # Corresponds to the JSON property `minTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :min_transit_time_in_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
+          @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+        end
+      end
+      
       # An error returned by the API.
       class Error
         include Google::Apis::Core::Hashable
@@ -2189,6 +2304,63 @@ module Google
           @code = args[:code] if args.key?(:code)
           @errors = args[:errors] if args.key?(:errors)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A non-empty list of row or column headers for a table. Exactly one of prices,
+      # weights, numItems, postalCodeGroupNames, or locations must be set.
+      class Headers
+        include Google::Apis::Core::Hashable
+      
+        # A list of location ID sets. Must be non-empty. Can only be set if all other
+        # fields are not set.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::ContentV2::LocationIdSet>]
+        attr_accessor :locations
+      
+        # A list of inclusive number of items upper bounds. The last value can be "
+        # infinity". For example ["10", "50", "infinity"] represents the headers "<= 10
+        # items", " 50 items". Must be non-empty. Can only be set if all other fields
+        # are not set.
+        # Corresponds to the JSON property `numberOfItems`
+        # @return [Array<String>]
+        attr_accessor :number_of_items
+      
+        # A list of postal group names. The last value can be "all other locations".
+        # Example: ["zone 1", "zone 2", "all other locations"]. The referred postal code
+        # groups must match the delivery country of the service. Must be non-empty. Can
+        # only be set if all other fields are not set.
+        # Corresponds to the JSON property `postalCodeGroupNames`
+        # @return [Array<String>]
+        attr_accessor :postal_code_group_names
+      
+        # be "infinity". For example [`"value": "10", "currency": "USD"`, `"value": "500"
+        # , "currency": "USD"`, `"value": "infinity", "currency": "USD"`] represents the
+        # headers "<= $10", " $500". All prices within a service must have the same
+        # currency. Must be non-empty. Can only be set if all other fields are not set.
+        # Corresponds to the JSON property `prices`
+        # @return [Array<Google::Apis::ContentV2::Price>]
+        attr_accessor :prices
+      
+        # be "infinity". For example [`"value": "10", "unit": "kg"`, `"value": "50", "
+        # unit": "kg"`, `"value": "infinity", "unit": "kg"`] represents the headers "<=
+        # 10kg", " 50kg". All weights within a service must have the same unit. Must be
+        # non-empty. Can only be set if all other fields are not set.
+        # Corresponds to the JSON property `weights`
+        # @return [Array<Google::Apis::ContentV2::Weight>]
+        attr_accessor :weights
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @number_of_items = args[:number_of_items] if args.key?(:number_of_items)
+          @postal_code_group_names = args[:postal_code_group_names] if args.key?(:postal_code_group_names)
+          @prices = args[:prices] if args.key?(:prices)
+          @weights = args[:weights] if args.key?(:weights)
         end
       end
       
@@ -2492,6 +2664,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LocationIdSet
+        include Google::Apis::Core::Hashable
+      
+        # A non-empty list of location IDs. They must all be of the same location type (
+        # e.g., state).
+        # Corresponds to the JSON property `locationIds`
+        # @return [Array<String>]
+        attr_accessor :location_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_ids = args[:location_ids] if args.key?(:location_ids)
         end
       end
       
@@ -4535,6 +4727,71 @@ module Google
       end
       
       # 
+      class PostalCodeGroup
+        include Google::Apis::Core::Hashable
+      
+        # The CLDR territory code of the country the postal code group applies to.
+        # Required.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The name of the postal code group, referred to in headers. Required.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A range of postal codes. Required.
+        # Corresponds to the JSON property `postalCodeRanges`
+        # @return [Array<Google::Apis::ContentV2::PostalCodeRange>]
+        attr_accessor :postal_code_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @name = args[:name] if args.key?(:name)
+          @postal_code_ranges = args[:postal_code_ranges] if args.key?(:postal_code_ranges)
+        end
+      end
+      
+      # 
+      class PostalCodeRange
+        include Google::Apis::Core::Hashable
+      
+        # A postal code or a pattern of the form prefix* denoting the inclusive lower
+        # bound of the range defining the area. Examples values: "94108", "9410*", "9*".
+        # Required.
+        # Corresponds to the JSON property `postalCodeRangeBegin`
+        # @return [String]
+        attr_accessor :postal_code_range_begin
+      
+        # A postal code or a pattern of the form prefix* denoting the inclusive upper
+        # bound of the range defining the area. It must have the same length as
+        # postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then
+        # postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a
+        # pattern then postalCodeRangeEnd must be a pattern with the same prefix length.
+        # Optional: if not set, then the area is defined as being all the postal codes
+        # matching postalCodeRangeBegin.
+        # Corresponds to the JSON property `postalCodeRangeEnd`
+        # @return [String]
+        attr_accessor :postal_code_range_end
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postal_code_range_begin = args[:postal_code_range_begin] if args.key?(:postal_code_range_begin)
+          @postal_code_range_end = args[:postal_code_range_end] if args.key?(:postal_code_range_end)
+        end
+      end
+      
+      # 
       class Price
         include Google::Apis::Core::Hashable
       
@@ -5835,6 +6092,387 @@ module Google
       end
       
       # 
+      class RateGroup
+        include Google::Apis::Core::Hashable
+      
+        # A list of shipping labels defining the products to which this rate group
+        # applies to. This is a disjunction: only one of the labels has to match for the
+        # rate group to apply. May only be empty for the last rate group of a service.
+        # Required.
+        # Corresponds to the JSON property `applicableShippingLabels`
+        # @return [Array<String>]
+        attr_accessor :applicable_shipping_labels
+      
+        # A list of carrier rates that can be referred to by mainTable or singleValue.
+        # Corresponds to the JSON property `carrierRates`
+        # @return [Array<Google::Apis::ContentV2::CarrierRate>]
+        attr_accessor :carrier_rates
+      
+        # A table defining the rate group, when singleValue is not expressive enough.
+        # Can only be set if singleValue is not set.
+        # Corresponds to the JSON property `mainTable`
+        # @return [Google::Apis::ContentV2::Table]
+        attr_accessor :main_table
+      
+        # The single value of a rate group or the value of a rate group table's cell.
+        # Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
+        # subtableName must be set.
+        # Corresponds to the JSON property `singleValue`
+        # @return [Google::Apis::ContentV2::Value]
+        attr_accessor :single_value
+      
+        # A list of subtables referred to by mainTable. Can only be set if mainTable is
+        # set.
+        # Corresponds to the JSON property `subtables`
+        # @return [Array<Google::Apis::ContentV2::Table>]
+        attr_accessor :subtables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applicable_shipping_labels = args[:applicable_shipping_labels] if args.key?(:applicable_shipping_labels)
+          @carrier_rates = args[:carrier_rates] if args.key?(:carrier_rates)
+          @main_table = args[:main_table] if args.key?(:main_table)
+          @single_value = args[:single_value] if args.key?(:single_value)
+          @subtables = args[:subtables] if args.key?(:subtables)
+        end
+      end
+      
+      # 
+      class Row
+        include Google::Apis::Core::Hashable
+      
+        # The list of cells that constitute the row. Must have the same length as
+        # columnHeaders for two-dimensional tables, a length of 1 for one-dimensional
+        # tables. Required.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<Google::Apis::ContentV2::Value>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # 
+      class Service
+        include Google::Apis::Core::Hashable
+      
+        # A boolean exposing the active status of the shipping service. Required.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # The CLDR code of the currency to which this service applies. Must match that
+        # of the prices in rate groups.
+        # Corresponds to the JSON property `currency`
+        # @return [String]
+        attr_accessor :currency
+      
+        # The CLDR territory code of the country to which the service applies. Required.
+        # Corresponds to the JSON property `deliveryCountry`
+        # @return [String]
+        attr_accessor :delivery_country
+      
+        # Time spent in various aspects from order to the delivery of the product.
+        # Required.
+        # Corresponds to the JSON property `deliveryTime`
+        # @return [Google::Apis::ContentV2::DeliveryTime]
+        attr_accessor :delivery_time
+      
+        # Free-form name of the service. Must be unique within target account. Required.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Shipping rate group definitions. Only the last one is allowed to have an empty
+        # applicableShippingLabels, which means "everything else". The other
+        # applicableShippingLabels must not overlap.
+        # Corresponds to the JSON property `rateGroups`
+        # @return [Array<Google::Apis::ContentV2::RateGroup>]
+        attr_accessor :rate_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @currency = args[:currency] if args.key?(:currency)
+          @delivery_country = args[:delivery_country] if args.key?(:delivery_country)
+          @delivery_time = args[:delivery_time] if args.key?(:delivery_time)
+          @name = args[:name] if args.key?(:name)
+          @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
+        end
+      end
+      
+      # The merchant account's shipping settings.
+      class ShippingSettings
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account to which these account shipping settings belong. Ignored
+        # upon update, always present in get request responses.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # A list of postal code groups that can be referred to in services. Optional.
+        # Corresponds to the JSON property `postalCodeGroups`
+        # @return [Array<Google::Apis::ContentV2::PostalCodeGroup>]
+        attr_accessor :postal_code_groups
+      
+        # The target account's list of services. Optional.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::ContentV2::Service>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @postal_code_groups = args[:postal_code_groups] if args.key?(:postal_code_groups)
+          @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # 
+      class ShippingsettingsCustomBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The request entries to be processed in the batch.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::ShippingsettingsCustomBatchRequestEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # A batch entry encoding a single non-batch accountshipping request.
+      class ShippingsettingsCustomBatchRequestEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account for which to get/update account shipping settings.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # An entry ID, unique within the batch request.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [String]
+        attr_accessor :merchant_id
+      
+        # 
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The merchant account's shipping settings.
+        # Corresponds to the JSON property `shippingSettings`
+        # @return [Google::Apis::ContentV2::ShippingSettings]
+        attr_accessor :shipping_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @shipping_settings = args[:shipping_settings] if args.key?(:shipping_settings)
+        end
+      end
+      
+      # 
+      class ShippingsettingsCustomBatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the execution of the batch requests.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::ShippingsettingsCustomBatchResponseEntry>]
+        attr_accessor :entries
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsCustomBatchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # A batch entry encoding a single non-batch shipping settings response.
+      class ShippingsettingsCustomBatchResponseEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the request entry to which this entry responds.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # A list of errors returned by a failed batch entry.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::ContentV2::Errors]
+        attr_accessor :errors
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsCustomBatchResponseEntry".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The merchant account's shipping settings.
+        # Corresponds to the JSON property `shippingSettings`
+        # @return [Google::Apis::ContentV2::ShippingSettings]
+        attr_accessor :shipping_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
+          @shipping_settings = args[:shipping_settings] if args.key?(:shipping_settings)
+        end
+      end
+      
+      # 
+      class ShippingsettingsGetSupportedCarriersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of supported carriers. May be empty.
+        # Corresponds to the JSON property `carriers`
+        # @return [Array<Google::Apis::ContentV2::CarriersCarrier>]
+        attr_accessor :carriers
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsGetSupportedCarriersResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carriers = args[:carriers] if args.key?(:carriers)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class ShippingsettingsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of shipping settings.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2::ShippingSettings>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class Table
+        include Google::Apis::Core::Hashable
+      
+        # A non-empty list of row or column headers for a table. Exactly one of prices,
+        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # Corresponds to the JSON property `columnHeaders`
+        # @return [Google::Apis::ContentV2::Headers]
+        attr_accessor :column_headers
+      
+        # Name of the table. Required for subtables, ignored for the main table.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A non-empty list of row or column headers for a table. Exactly one of prices,
+        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # Corresponds to the JSON property `rowHeaders`
+        # @return [Google::Apis::ContentV2::Headers]
+        attr_accessor :row_headers
+      
+        # The list of rows that constitute the table. Must have the same length as
+        # rowHeaders. Required.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContentV2::Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @name = args[:name] if args.key?(:name)
+          @row_headers = args[:row_headers] if args.key?(:row_headers)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # 
       class TestOrder
         include Google::Apis::Core::Hashable
       
@@ -6114,6 +6752,56 @@ module Google
           @last_four_digits = args[:last_four_digits] if args.key?(:last_four_digits)
           @predefined_billing_address = args[:predefined_billing_address] if args.key?(:predefined_billing_address)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The single value of a rate group or the value of a rate group table's cell.
+      # Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
+      # subtableName must be set.
+      class Value
+        include Google::Apis::Core::Hashable
+      
+        # The name of a carrier rate referring to a carrier rate defined in the same
+        # rate group. Can only be set if all other fields are not set.
+        # Corresponds to the JSON property `carrierRateName`
+        # @return [String]
+        attr_accessor :carrier_rate_name
+      
+        # A flat rate. Can only be set if all other fields are not set.
+        # Corresponds to the JSON property `flatRate`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :flat_rate
+      
+        # If true, then the product can't ship. Must be true when set, can only be set
+        # if all other fields are not set.
+        # Corresponds to the JSON property `noShipping`
+        # @return [Boolean]
+        attr_accessor :no_shipping
+        alias_method :no_shipping?, :no_shipping
+      
+        # A percentage of the price represented as a number in decimal notation (e.g., "
+        # 5.4"). Can only be set if all other fields are not set.
+        # Corresponds to the JSON property `pricePercentage`
+        # @return [String]
+        attr_accessor :price_percentage
+      
+        # The name of a subtable. Can only be set in table cells (i.e., not for single
+        # values), and only if all other fields are not set.
+        # Corresponds to the JSON property `subtableName`
+        # @return [String]
+        attr_accessor :subtable_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_rate_name = args[:carrier_rate_name] if args.key?(:carrier_rate_name)
+          @flat_rate = args[:flat_rate] if args.key?(:flat_rate)
+          @no_shipping = args[:no_shipping] if args.key?(:no_shipping)
+          @price_percentage = args[:price_percentage] if args.key?(:price_percentage)
+          @subtable_name = args[:subtable_name] if args.key?(:subtable_name)
         end
       end
       

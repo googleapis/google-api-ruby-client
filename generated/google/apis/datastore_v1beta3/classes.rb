@@ -378,6 +378,16 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Entity]
         attr_accessor :entity
       
+        # The version of the entity, a strictly positive number that monotonically
+        # increases with changes to the entity.
+        # This field is set for `FULL` entity results.
+        # For missing entities in
+        # `LookupResponse`, this is the version of the snapshot that was used to look
+        # up the entity, and it is always set except for eventually consistent reads.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -386,6 +396,7 @@ module Google
         def update!(**args)
           @cursor = args[:cursor] if args.key?(:cursor)
           @entity = args[:entity] if args.key?(:entity)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -525,6 +536,17 @@ module Google
       class QueryResultBatch
         include Google::Apis::Core::Hashable
       
+        # The version number of the snapshot this batch was returned from.
+        # This applies to the range of results from the query's `start_cursor` (or
+        # the beginning of the query if no cursor was given) to this batch's
+        # `end_cursor` (not the query's `end_cursor`).
+        # In a single transaction, subsequent query result batches for the same query
+        # can have a greater snapshot version number. Each batch's snapshot version
+        # is valid for all preceding batches.
+        # Corresponds to the JSON property `snapshotVersion`
+        # @return [String]
+        attr_accessor :snapshot_version
+      
         # A cursor that points to the position after the last result in the batch.
         # Corresponds to the JSON property `endCursor`
         # @return [String]
@@ -562,6 +584,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @snapshot_version = args[:snapshot_version] if args.key?(:snapshot_version)
           @end_cursor = args[:end_cursor] if args.key?(:end_cursor)
           @skipped_cursor = args[:skipped_cursor] if args.key?(:skipped_cursor)
           @entity_result_type = args[:entity_result_type] if args.key?(:entity_result_type)
@@ -740,6 +763,13 @@ module Google
       class MutationResult
         include Google::Apis::Core::Hashable
       
+        # Whether a conflict was detected for this mutation. Always false when a
+        # conflict detection strategy field is not set in the mutation.
+        # Corresponds to the JSON property `conflictDetected`
+        # @return [Boolean]
+        attr_accessor :conflict_detected
+        alias_method :conflict_detected?, :conflict_detected
+      
         # A unique identifier for an entity.
         # If a key's partition ID or any of its path kinds or names are
         # reserved/read-only, the key is reserved/read-only.
@@ -748,13 +778,24 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Key]
         attr_accessor :key
       
+        # The version of the entity on the server after processing the mutation. If
+        # the mutation doesn't change anything on the server, then the version will
+        # be the version of the current entity or, if no entity is present, a version
+        # that is strictly greater than the version of any previous entity and less
+        # than the version of any possible future entity.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @conflict_detected = args[:conflict_detected] if args.key?(:conflict_detected)
           @key = args[:key] if args.key?(:key)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1015,6 +1056,12 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Entity]
         attr_accessor :update
       
+        # The version of the entity that this mutation is being applied to. If this
+        # does not match the current version on the server, the mutation conflicts.
+        # Corresponds to the JSON property `baseVersion`
+        # @return [String]
+        attr_accessor :base_version
+      
         # A Datastore data object.
         # An entity is limited to 1 megabyte when stored. That _roughly_
         # corresponds to a limit of 1 megabyte for the serialized form of this
@@ -1039,6 +1086,7 @@ module Google
         def update!(**args)
           @insert = args[:insert] if args.key?(:insert)
           @update = args[:update] if args.key?(:update)
+          @base_version = args[:base_version] if args.key?(:base_version)
           @upsert = args[:upsert] if args.key?(:upsert)
           @delete = args[:delete] if args.key?(:delete)
         end
