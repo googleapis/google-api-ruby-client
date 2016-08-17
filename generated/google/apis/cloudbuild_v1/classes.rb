@@ -282,6 +282,50 @@ module Google
         end
       end
       
+      # Configuration for an automated build in response to source repository
+      # changes.
+      class BuildTrigger
+        include Google::Apis::Core::Hashable
+      
+        # RepoSource describes the location of the source in a Google Cloud Source
+        # Repository.
+        # Corresponds to the JSON property `triggerTemplate`
+        # @return [Google::Apis::CloudbuildV1::RepoSource]
+        attr_accessor :trigger_template
+      
+        # A build resource in the Container Builder API.
+        # At a high level, a Build describes where to find source code, how to build
+        # it (for example, the builder image to run on the source), and what tag to
+        # apply to the built image when it is pushed to Google Container Registry.
+        # Corresponds to the JSON property `build`
+        # @return [Google::Apis::CloudbuildV1::Build]
+        attr_accessor :build
+      
+        # Time when the trigger was created.
+        # @OutputOnly
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Unique identifier of the trigger.
+        # @OutputOnly
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
+          @build = args[:build] if args.key?(:build)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # BuiltImage describes an image built by the pipeline.
       class BuiltImage
         include Google::Apis::Core::Hashable
@@ -528,6 +572,25 @@ module Google
         end
       end
       
+      # Response containing existing BuildTriggers.
+      class ListBuildTriggersResponse
+        include Google::Apis::Core::Hashable
+      
+        # BuildTriggers for the project, sorted by create_time descending.
+        # Corresponds to the JSON property `triggers`
+        # @return [Array<Google::Apis::CloudbuildV1::BuildTrigger>]
+        attr_accessor :triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @triggers = args[:triggers] if args.key?(:triggers)
+        end
+      end
+      
       # Request to cancel an ongoing build.
       class CancelBuildRequest
         include Google::Apis::Core::Hashable
@@ -684,6 +747,25 @@ module Google
           @args = args[:args] if args.key?(:args)
           @name = args[:name] if args.key?(:name)
           @dir = args[:dir] if args.key?(:dir)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

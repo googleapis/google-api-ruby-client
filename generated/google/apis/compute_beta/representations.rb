@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalerStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoscalersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1126,6 +1132,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworksExpandIpCidrRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworksScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1603,6 +1615,9 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          collection :status_details, as: 'statusDetails', class: Google::Apis::ComputeBeta::AutoscalerStatusDetails, decorator: Google::Apis::ComputeBeta::AutoscalerStatusDetails::Representation
+      
           property :target, as: 'target'
           property :zone, as: 'zone'
         end
@@ -1629,6 +1644,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AutoscalerStatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -3598,6 +3621,13 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworksExpandIpCidrRangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
         end
       end
       

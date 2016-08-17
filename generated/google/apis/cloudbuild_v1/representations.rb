@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuiltImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBuildTriggersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelBuildRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +119,12 @@ module Google
       end
       
       class BuildStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -175,6 +193,18 @@ module Google
         end
       end
       
+      class BuildTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
+      
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+        end
+      end
+      
       class BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -236,6 +266,14 @@ module Google
         end
       end
       
+      class ListBuildTriggersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :triggers, as: 'triggers', class: Google::Apis::CloudbuildV1::BuildTrigger, decorator: Google::Apis::CloudbuildV1::BuildTrigger::Representation
+      
+        end
+      end
+      
       class CancelBuildRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -279,6 +317,12 @@ module Google
           collection :args, as: 'args'
           property :name, as: 'name'
           property :dir, as: 'dir'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

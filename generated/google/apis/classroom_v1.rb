@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20160517'
+      REVISION = '20160816'
 
       # View instructions for teacher-assigned work in your Google Classroom classes
       AUTH_CLASSROOM_COURSE_WORK_READONLY = 'https://www.googleapis.com/auth/classroom.course-work.readonly'

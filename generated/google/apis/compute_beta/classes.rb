@@ -582,12 +582,25 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of the autoscaler configuration.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Human-readable details about the current state of the autoscaler.
+        # Examples: ?Error when fetching replicas: Replica Pool xxx doesn?t exist.? ?
+        # Autoscaling capped at min_num_replicas: 2.?
+        # Corresponds to the JSON property `statusDetails`
+        # @return [Array<Google::Apis::ComputeBeta::AutoscalerStatusDetails>]
+        attr_accessor :status_details
+      
         # URL of the managed instance group that this autoscaler will scale.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # [Output Only] URL of the zone where the instance group resides.
+        # [Output Only] URL of the zone where the instance group resides (for
+        # autoscalers living in zonal scope).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -606,6 +619,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @status_details = args[:status_details] if args.key?(:status_details)
           @target = args[:target] if args.key?(:target)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -706,6 +721,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class AutoscalerStatusDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -865,7 +905,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The target CPU utilization that the autoscaler should maintain. Must be a
-        # float value in the range (0, 1]. If not specified, the default is 0.8.
+        # float value in the range (0, 1]. If not specified, the default is 0.6.
         # If the CPU level is below the target utilization, the autoscaler scales down
         # the number of instances until it reaches the minimum number of instances you
         # specified or until the average CPU of your instances reaches the target
@@ -3908,7 +3948,8 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The URL of the region where the instance group is located.
+        # The URL of the region where the instance group is located (for regional
+        # resources).
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -3928,7 +3969,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # [Output Only] The URL of the zone where the instance group is located.
+        # [Output Only] The URL of the zone where the instance group is located (for
+        # zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -4137,7 +4179,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
-        # [Output Only] URL of the region where the managed instance group resides.
+        # [Output Only] The URL of the region where the managed instance group resides (
+        # for regional resources).
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -4162,7 +4205,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
-        # The name of the zone where the managed instance group is located.
+        # [Output Only] The URL of the zone where the managed instance group is located (
+        # for zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8809,6 +8853,28 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class SubnetworksExpandIpCidrRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The IP (in CIDR format or netmask) of internal addresses that are legal on
+        # this Subnetwork. This range should be disjoint from other subnetworks within
+        # this network. This range can only be larger than (i.e. a superset of) the
+        # range previously defined before the update.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
         end
       end
       

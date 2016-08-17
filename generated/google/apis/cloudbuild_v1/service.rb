@@ -46,6 +46,176 @@ module Google
           super('https://cloudbuild.googleapis.com/', '')
         end
         
+        # Creates a new BuildTrigger.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project for which to configure automatic builds.
+        # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::BuildTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::BuildTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_trigger(project_id, build_trigger_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/triggers', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
+          command.request_object = build_trigger_object
+          command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
+          command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a BuildTrigger.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project that owns the trigger.
+        # @param [String] trigger_id
+        #   ID of the BuildTrigger to get.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::BuildTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::BuildTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_trigger(project_id, trigger_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
+          command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists existing BuildTrigger.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project for which to list BuildTriggers.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListBuildTriggersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListBuildTriggersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_triggers(project_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/projects/{projectId}/triggers', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListBuildTriggersResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListBuildTriggersResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an BuildTrigger by its project ID and trigger ID.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project that owns the trigger.
+        # @param [String] trigger_id
+        #   ID of the BuildTrigger to delete.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_trigger(project_id, trigger_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an BuildTrigger by its project ID and trigger ID.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project that owns the trigger.
+        # @param [String] trigger_id
+        #   ID of the BuildTrigger to update.
+        # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::BuildTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::BuildTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_trigger(project_id, trigger_id, build_trigger_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
+          command.request_object = build_trigger_object
+          command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
+          command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts a build with the specified configuration.
         # The long-running Operation returned by this method will include the ID of
         # the build, which can be passed to GetBuild to determine its status (e.g.,

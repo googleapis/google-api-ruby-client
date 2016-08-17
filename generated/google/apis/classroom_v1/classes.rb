@@ -494,54 +494,14 @@ module Google
         end
       end
       
-      # An invitation to join a course.
-      class Invitation
+      # Response when listing guardian invitations.
+      class ListGuardianInvitationsResponse
         include Google::Apis::Core::Hashable
       
-        # Identifier assigned by Classroom. Read-only.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Identifier of the invited user. When specified as a parameter of a request,
-        # this identifier can be set to one of the following: * the numeric identifier
-        # for the user * the email address of the user * the string literal `"me"`,
-        # indicating the requesting user
-        # Corresponds to the JSON property `userId`
-        # @return [String]
-        attr_accessor :user_id
-      
-        # Identifier of the course to invite the user to.
-        # Corresponds to the JSON property `courseId`
-        # @return [String]
-        attr_accessor :course_id
-      
-        # Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @user_id = args[:user_id] if args.key?(:user_id)
-          @course_id = args[:course_id] if args.key?(:course_id)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Response when listing invitations.
-      class ListInvitationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Invitations that match the list request.
-        # Corresponds to the JSON property `invitations`
-        # @return [Array<Google::Apis::ClassroomV1::Invitation>]
-        attr_accessor :invitations
+        # Guardian invitations that matched the list request.
+        # Corresponds to the JSON property `guardianInvitations`
+        # @return [Array<Google::Apis::ClassroomV1::GuardianInvitation>]
+        attr_accessor :guardian_invitations
       
         # Token identifying the next page of results to return. If empty, no further
         # results are available.
@@ -555,8 +515,119 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @invitations = args[:invitations] if args.key?(:invitations)
+          @guardian_invitations = args[:guardian_invitations] if args.key?(:guardian_invitations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # An invitation to become the guardian of a specified user, sent to a specified
+      # email address.
+      class GuardianInvitation
+        include Google::Apis::Core::Hashable
+      
+        # ID of the student (in standard format)
+        # Corresponds to the JSON property `studentId`
+        # @return [String]
+        attr_accessor :student_id
+      
+        # Unique identifier for this invitation. Read-only.
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
+      
+        # Email address that the invitation was sent to. This field is only visible to
+        # domain administrators.
+        # Corresponds to the JSON property `invitedEmailAddress`
+        # @return [String]
+        attr_accessor :invited_email_address
+      
+        # The state that this invitation is in.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time that this invitation was created. Read-only.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @student_id = args[:student_id] if args.key?(:student_id)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @invited_email_address = args[:invited_email_address] if args.key?(:invited_email_address)
+          @state = args[:state] if args.key?(:state)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+        end
+      end
+      
+      # Response when listing guardians.
+      class ListGuardiansResponse
+        include Google::Apis::Core::Hashable
+      
+        # Guardians on this page of results that met the criteria specified in the
+        # request.
+        # Corresponds to the JSON property `guardians`
+        # @return [Array<Google::Apis::ClassroomV1::Guardian>]
+        attr_accessor :guardians
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guardians = args[:guardians] if args.key?(:guardians)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Association between a student and a guardian of that student. The guardian may
+      # receive information about the student's course work.
+      class Guardian
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for the student to whom the guardian relationship applies.
+        # Corresponds to the JSON property `studentId`
+        # @return [String]
+        attr_accessor :student_id
+      
+        # Identifier for the guardian.
+        # Corresponds to the JSON property `guardianId`
+        # @return [String]
+        attr_accessor :guardian_id
+      
+        # Global information for a user.
+        # Corresponds to the JSON property `guardianProfile`
+        # @return [Google::Apis::ClassroomV1::UserProfile]
+        attr_accessor :guardian_profile
+      
+        # The email address to which the initial guardian invitation was sent. This
+        # field is only visible to domain administrators.
+        # Corresponds to the JSON property `invitedEmailAddress`
+        # @return [String]
+        attr_accessor :invited_email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @student_id = args[:student_id] if args.key?(:student_id)
+          @guardian_id = args[:guardian_id] if args.key?(:guardian_id)
+          @guardian_profile = args[:guardian_profile] if args.key?(:guardian_profile)
+          @invited_email_address = args[:invited_email_address] if args.key?(:invited_email_address)
         end
       end
       
@@ -780,6 +851,72 @@ module Google
         end
       end
       
+      # An invitation to join a course.
+      class Invitation
+        include Google::Apis::Core::Hashable
+      
+        # Identifier assigned by Classroom. Read-only.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifier of the invited user. When specified as a parameter of a request,
+        # this identifier can be set to one of the following: * the numeric identifier
+        # for the user * the email address of the user * the string literal `"me"`,
+        # indicating the requesting user
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # Identifier of the course to invite the user to.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Response when listing invitations.
+      class ListInvitationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Invitations that match the list request.
+        # Corresponds to the JSON property `invitations`
+        # @return [Array<Google::Apis::ClassroomV1::Invitation>]
+        attr_accessor :invitations
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invitations = args[:invitations] if args.key?(:invitations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Course work created by a teacher for students of the course.
       class CourseWork
         include Google::Apis::Core::Hashable
@@ -807,12 +944,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Additional materials.
+        # Additional materials. CourseWork must have no more than 20 material items.
         # Corresponds to the JSON property `materials`
         # @return [Array<Google::Apis::ClassroomV1::Material>]
         attr_accessor :materials
       
-        # Status of this course work.. If unspecified, the default state is `DRAFT`.
+        # Status of this course work. If unspecified, the default state is `DRAFT`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -852,7 +989,7 @@ module Google
         attr_accessor :due_time
       
         # Maximum grade for this course work. If zero or unspecified, this assignment is
-        # considered ungraded. This must be an integer value.
+        # considered ungraded. This must be a non-negative integer value.
         # Corresponds to the JSON property `maxPoints`
         # @return [Float]
         attr_accessor :max_points
@@ -1146,7 +1283,7 @@ module Google
         # @return [String]
         attr_accessor :user_id
       
-        # Creation time of this submission.. This may be unset if the student has not
+        # Creation time of this submission. This may be unset if the student has not
         # accessed this item. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
@@ -1169,14 +1306,15 @@ module Google
         attr_accessor :late
         alias_method :late?, :late
       
-        # Optional pending grade. If unset, no grade was set. This must be an integer
-        # value. This is only visible to and modifiable by course teachers.
+        # Optional pending grade. If unset, no grade was set. This must be a non-
+        # negative integer value. This is only visible to and modifiable by course
+        # teachers.
         # Corresponds to the JSON property `draftGrade`
         # @return [Float]
         attr_accessor :draft_grade
       
-        # Optional grade. If unset, no grade was set. This must be an integer value.
-        # This may be modified only by course teachers.
+        # Optional grade. If unset, no grade was set. This must be a non-negative
+        # integer value. This may be modified only by course teachers.
         # Corresponds to the JSON property `assignedGrade`
         # @return [Float]
         attr_accessor :assigned_grade
@@ -1407,7 +1545,8 @@ module Google
       class ModifyAttachmentsRequest
         include Google::Apis::Core::Hashable
       
-        # Attachments to add. This may only contain link attachments.
+        # Attachments to add. A student submission may not have more than 20 attachments.
+        # This may only contain link attachments.
         # Corresponds to the JSON property `addAttachments`
         # @return [Array<Google::Apis::ClassroomV1::Attachment>]
         attr_accessor :add_attachments

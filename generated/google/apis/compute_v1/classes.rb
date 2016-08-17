@@ -575,7 +575,8 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # [Output Only] URL of the zone where the instance group resides.
+        # [Output Only] URL of the zone where the instance group resides (for
+        # autoscalers living in zonal scope).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -852,7 +853,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The target CPU utilization that the autoscaler should maintain. Must be a
-        # float value in the range (0, 1]. If not specified, the default is 0.8.
+        # float value in the range (0, 1]. If not specified, the default is 0.6.
         # If the CPU level is below the target utilization, the autoscaler scales down
         # the number of instances until it reaches the minimum number of instances you
         # specified or until the average CPU of your instances reaches the target
@@ -3441,7 +3442,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # [Output Only] The URL of the zone where the instance group is located.
+        # [Output Only] The URL of the zone where the instance group is located (for
+        # zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3657,7 +3659,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
-        # The name of the zone where the managed instance group is located.
+        # [Output Only] The URL of the zone where the managed instance group is located (
+        # for zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3707,6 +3710,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :creating
       
+        # [Output Only] The number of instances that the managed instance group will
+        # attempt to create. The group attempts to create each instance only once. If
+        # the group fails to create any of these instances, it decreases the group's
+        # target_size value accordingly.
+        # Corresponds to the JSON property `creatingWithoutRetries`
+        # @return [Fixnum]
+        attr_accessor :creating_without_retries
+      
         # [Output Only] The number of instances in the managed instance group that are
         # scheduled to be deleted or are currently being deleted.
         # Corresponds to the JSON property `deleting`
@@ -3748,6 +3759,7 @@ module Google
         def update!(**args)
           @abandoning = args[:abandoning] if args.key?(:abandoning)
           @creating = args[:creating] if args.key?(:creating)
+          @creating_without_retries = args[:creating_without_retries] if args.key?(:creating_without_retries)
           @deleting = args[:deleting] if args.key?(:deleting)
           @none = args[:none] if args.key?(:none)
           @recreating = args[:recreating] if args.key?(:recreating)

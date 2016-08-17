@@ -94,13 +94,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Invitation
+      class ListGuardianInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListInvitationsResponse
+      class GuardianInvitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGuardiansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Guardian
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +155,18 @@ module Google
       end
       
       class ListStudentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Invitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,22 +406,43 @@ module Google
         end
       end
       
-      class Invitation
+      class ListGuardianInvitationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :user_id, as: 'userId'
-          property :course_id, as: 'courseId'
-          property :role, as: 'role'
+          collection :guardian_invitations, as: 'guardianInvitations', class: Google::Apis::ClassroomV1::GuardianInvitation, decorator: Google::Apis::ClassroomV1::GuardianInvitation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
-      class ListInvitationsResponse
+      class GuardianInvitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :invitations, as: 'invitations', class: Google::Apis::ClassroomV1::Invitation, decorator: Google::Apis::ClassroomV1::Invitation::Representation
+          property :student_id, as: 'studentId'
+          property :invitation_id, as: 'invitationId'
+          property :invited_email_address, as: 'invitedEmailAddress'
+          property :state, as: 'state'
+          property :creation_time, as: 'creationTime'
+        end
+      end
+      
+      class ListGuardiansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guardians, as: 'guardians', class: Google::Apis::ClassroomV1::Guardian, decorator: Google::Apis::ClassroomV1::Guardian::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Guardian
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :student_id, as: 'studentId'
+          property :guardian_id, as: 'guardianId'
+          property :guardian_profile, as: 'guardianProfile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+      
+          property :invited_email_address, as: 'invitedEmailAddress'
         end
       end
       
@@ -465,6 +510,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :students, as: 'students', class: Google::Apis::ClassroomV1::Student, decorator: Google::Apis::ClassroomV1::Student::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Invitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :user_id, as: 'userId'
+          property :course_id, as: 'courseId'
+          property :role, as: 'role'
+        end
+      end
+      
+      class ListInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :invitations, as: 'invitations', class: Google::Apis::ClassroomV1::Invitation, decorator: Google::Apis::ClassroomV1::Invitation::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

@@ -284,6 +284,12 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
+        # Explicitly specify the auth flow type. Currently only support "CODE_FLOW" type.
+        # The field is only used for Google provider.
+        # Corresponds to the JSON property `authFlowType`
+        # @return [String]
+        attr_accessor :auth_flow_type
+      
         # The relying party OAuth client ID.
         # Corresponds to the JSON property `clientId`
         # @return [String]
@@ -339,6 +345,11 @@ module Google
         # @return [String]
         attr_accessor :provider_id
       
+        # The session_id passed by client.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -346,6 +357,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_id = args[:app_id] if args.key?(:app_id)
+          @auth_flow_type = args[:auth_flow_type] if args.key?(:auth_flow_type)
           @client_id = args[:client_id] if args.key?(:client_id)
           @context = args[:context] if args.key?(:context)
           @continue_uri = args[:continue_uri] if args.key?(:continue_uri)
@@ -356,6 +368,7 @@ module Google
           @openid_realm = args[:openid_realm] if args.key?(:openid_realm)
           @ota_app = args[:ota_app] if args.key?(:ota_app)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -1588,6 +1601,11 @@ module Google
         # @return [String]
         attr_accessor :salt
       
+        # User's screen name at Twitter.
+        # Corresponds to the JSON property `screenName`
+        # @return [String]
+        attr_accessor :screen_name
+      
         # Timestamp in seconds for valid login token.
         # Corresponds to the JSON property `validSince`
         # @return [String]
@@ -1616,6 +1634,7 @@ module Google
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
           @salt = args[:salt] if args.key?(:salt)
+          @screen_name = args[:screen_name] if args.key?(:screen_name)
           @valid_since = args[:valid_since] if args.key?(:valid_since)
           @version = args[:version] if args.key?(:version)
         end
@@ -1655,6 +1674,11 @@ module Google
           # @return [String]
           attr_accessor :raw_id
         
+          # User's screen name at Twitter.
+          # Corresponds to the JSON property `screenName`
+          # @return [String]
+          attr_accessor :screen_name
+        
           def initialize(**args)
              update!(**args)
           end
@@ -1667,6 +1691,7 @@ module Google
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
             @raw_id = args[:raw_id] if args.key?(:raw_id)
+            @screen_name = args[:screen_name] if args.key?(:screen_name)
           end
         end
       end

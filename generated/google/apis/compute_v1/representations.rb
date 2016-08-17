@@ -2115,6 +2115,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abandoning, as: 'abandoning'
           property :creating, as: 'creating'
+          property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
           property :none, as: 'none'
           property :recreating, as: 'recreating'

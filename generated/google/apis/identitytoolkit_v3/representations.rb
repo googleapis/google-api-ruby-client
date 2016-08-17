@@ -312,6 +312,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_id, as: 'appId'
+          property :auth_flow_type, as: 'authFlowType'
           property :client_id, as: 'clientId'
           property :context, as: 'context'
           property :continue_uri, as: 'continueUri'
@@ -322,6 +323,7 @@ module Google
           property :openid_realm, as: 'openidRealm'
           property :ota_app, as: 'otaApp'
           property :provider_id, as: 'providerId'
+          property :session_id, as: 'sessionId'
         end
       end
       
@@ -631,6 +633,7 @@ module Google
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo::Representation
       
           property :salt, :base64 => true, as: 'salt'
+          property :screen_name, as: 'screenName'
           property :valid_since, as: 'validSince'
           property :version, as: 'version'
         end
@@ -644,6 +647,7 @@ module Google
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
             property :raw_id, as: 'rawId'
+            property :screen_name, as: 'screenName'
           end
         end
       end
