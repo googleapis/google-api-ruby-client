@@ -203,6 +203,9 @@ module Google
           when 401
             message ||= 'Unauthorized'
             raise Google::Apis::AuthorizationError.new(message, status_code: status, header: header, body: body)
+          when 429
+            message ||= 'Rate limit exceeded'
+            raise Google::Apis::RateLimitError.new(message, status_code: status, header: header, body: body)
           when 304, 400, 402...500
             message ||= 'Invalid request'
             raise Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)

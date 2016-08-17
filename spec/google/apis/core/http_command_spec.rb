@@ -299,4 +299,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.options.retries = 0
     expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
   end
+
+  it 'should raise rate limit error for 429 status codes' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [429, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::RateLimitError)
+  end
 end
