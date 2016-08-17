@@ -16,8 +16,6 @@ require 'spec_helper'
 require 'google/apis/options'
 require 'google/apis/core/base_service'
 require 'google/apis/core/json_representation'
-require 'hurley/test'
-require 'ostruct'
 
 RSpec.describe Google::Apis::Core::BaseService do
   include TestHelpers
@@ -190,6 +188,8 @@ EOF
 
   context 'with batch uploads' do
     before(:example) do
+      allow(SecureRandom).to receive(:uuid).and_return('b1981e17-f622-49af-b2eb-203308b1b17d')
+      allow(Digest::SHA1).to receive(:hexdigest).and_return('outer', 'inner')
       response = <<EOF.gsub(/\n/, "\r\n")
 --batch123
 Content-Type: application/http
@@ -225,6 +225,44 @@ EOF
           service.send(:execute_or_queue_command, command, &b)
         end
       end.to yield_with_args('Hello', nil)
+    end
+
+    it 'should send nested multipart' do
+      service.batch_upload do |service|
+        command = service.send(:make_upload_command, :post, 'zoo/animals', {})
+        command.upload_source = StringIO.new('test')
+        command.upload_content_type = 'text/plain'
+        service.send(:execute_or_queue_command, command)
+      end
+      expected_body = <<EOF.gsub(/\n/, "\r\n")
+--outer
+Content-Type: application/http
+Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
+Content-Length: 303
+Content-Transfer-Encoding: binary
+
+POST /upload/zoo/animals? HTTP/1.1
+Content-Type: multipart/related; boundary=inner
+X-Goog-Upload-Protocol: multipart
+Host: www.googleapis.com
+
+--inner
+Content-Type: application/json
+
+
+--inner
+Content-Type: text/plain
+Content-Length: 4
+Content-Transfer-Encoding: binary
+
+test
+--inner--
+
+
+--outer--
+
+EOF
+      expect(a_request(:put, 'https://www.googleapis.com/upload/').with(body: expected_body)).to have_been_made
     end
 
     it 'should disallow downloads in batch' do

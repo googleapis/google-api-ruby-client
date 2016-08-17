@@ -19,11 +19,8 @@ require 'google/apis/core/api_command'
 require 'google/apis/core/batch'
 require 'google/apis/core/upload'
 require 'google/apis/core/download'
-require 'google/apis/core/http_client_adapter'
 require 'google/apis/options'
 require 'googleauth'
-require 'hurley'
-require 'hurley/addressable'
 
 module Google
   module Apis
@@ -96,7 +93,7 @@ module Google
         attr_accessor :batch_path
 
         # HTTP client
-        # @return [Hurley::Client]
+        # @return [HTTPClient]
         attr_accessor :client
 
         # General settings
@@ -198,7 +195,7 @@ module Google
         end
 
         # Get the current HTTP client
-        # @return [Hurley::Client]
+        # @return [HTTPClient]
         def client
           @client ||= new_client
         end
@@ -368,18 +365,29 @@ module Google
         end
 
         # Create a new HTTP client
-        # @return [Hurley::Client]
+        # @return [HTTPClient]
         def new_client
-          client = Hurley::Client.new
-          client.connection = Google::Apis::Core::HttpClientAdapter.new unless client_options.use_net_http
-          client.request_options.timeout = request_options.timeout_sec
-          client.request_options.open_timeout = request_options.open_timeout_sec
-          client.request_options.proxy = client_options.proxy_url
-          client.request_options.query_class = Hurley::Query::Flat
-          client.ssl_options.ca_file = File.join(Google::Apis::ROOT, 'lib', 'cacerts.pem')
-          client.header[:user_agent] = user_agent
+          client = ::HTTPClient.new
+
+          client.transparent_gzip_decompression = true
+
+          client.proxy = client_options.proxy_url if client_options.proxy_url
+
+          if request_options.timeout_sec
+            client.connect_timeout = request_options.timeout_sec
+            client.receive_timeout = request_options.timeout_sec
+            client.send_timeout = request_options.timeout_sec
+          end
+
+          if request_options.open_timeout_sec
+            client.connect_timeout = request_options.open_timeout_sec
+            client.send_timeout = request_options.open_timeout_sec
+          end
+          client.follow_redirect_count = 5
+          client.default_header = { 'User-Agent' => user_agent }
           client
         end
+
 
         # Build the user agent header
         # @return [String]

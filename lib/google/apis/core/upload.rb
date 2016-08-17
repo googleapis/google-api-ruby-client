@@ -29,41 +29,6 @@ end
 module Google
   module Apis
     module Core
-      # Extension of Hurley's UploadIO to add length accessor
-      class UploadIO < Hurley::UploadIO
-        OCTET_STREAM_CONTENT_TYPE = 'application/octet-stream'
-
-        # Get the length of the stream
-        # @return [Fixnum]
-        def length
-          io.respond_to?(:length) ? io.length : File.size(local_path)
-        end
-
-        # Create a new instance given a file path
-        # @param [String, File] file_name
-        #  Path to file
-        # @param [String] content_type
-        #  Optional content type. If nil, will attempt to auto-detect
-        # @return [Google::Apis::Core::UploadIO]
-        def self.from_file(file_name, content_type: nil)
-          if content_type.nil?
-            type = MIME::Types.of(file_name)
-            content_type = type.first.content_type unless type.nil? || type.empty?
-          end
-          new(file_name, content_type || OCTET_STREAM_CONTENT_TYPE)
-        end
-
-        # Wraps an IO stream in UploadIO
-        # @param [#read] io
-        #  IO to wrap
-        # @param [String] content_type
-        #  Optional content type.
-        # @return [Google::Apis::Core::UploadIO]
-        def self.from_io(io, content_type: OCTET_STREAM_CONTENT_TYPE)
-          new(io, content_type)
-        end
-      end
-
       # Base upload command. Not intended to be used directly
       # @private
       class BaseUploadCommand < ApiCommand
@@ -83,17 +48,17 @@ module Google
         # @return [Google::Apis::Core::UploadIO]
         attr_accessor :upload_io
 
-        # Ensure the content is readable and wrapped in an {{Google::Apis::Core::UploadIO}} instance.
+        # Ensure the content is readable and wrapped in an IO instance.
         #
         # @return [void]
         # @raise [Google::Apis::ClientError] if upload source is invalid
         def prepare!
           super
           if streamable?(upload_source)
-            self.upload_io = UploadIO.from_io(upload_source, content_type: upload_content_type)
+            self.upload_io = upload_source
             @close_io_on_finish = false
           elsif upload_source.is_a?(String)
-            self.upload_io = UploadIO.from_file(upload_source, content_type: upload_content_type)
+            self.upload_io = File.new(upload_source, 'r')
             @close_io_on_finish = true
           else
             fail Google::Apis::ClientError, 'Invalid upload source'
@@ -124,13 +89,12 @@ module Google
           super
           self.body = upload_io
           header[UPLOAD_PROTOCOL_HEADER] = RAW_PROTOCOL
-          header[UPLOAD_CONTENT_TYPE_HEADER] = upload_io.content_type
+          header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
         end
       end
 
       # Implementation of the multipart upload protocol
       class MultipartUploadCommand < BaseUploadCommand
-        UPLOAD_BOUNDARY = 'RubyApiClientUpload'
         MULTIPART_PROTOCOL = 'multipart'
         MULTIPART_RELATED = 'multipart/related'
 
@@ -140,11 +104,11 @@ module Google
         # @raise [Google::Apis::ClientError] if upload source is invalid
         def prepare!
           super
-          @multipart = Multipart.new(boundary: UPLOAD_BOUNDARY, content_type: MULTIPART_RELATED)
-          @multipart.add_json(body)
-          @multipart.add_upload(upload_io)
-          self.body = @multipart.assemble
-          header[:content_type] = @multipart.content_type
+          multipart = Multipart.new
+          multipart.add_json(body)
+          multipart.add_upload(upload_io, content_type: upload_content_type)
+          self.body = multipart.assemble
+          header['Content-Type'] = multipart.content_type
           header[UPLOAD_PROTOCOL_HEADER] = MULTIPART_PROTOCOL
         end
       end
@@ -179,7 +143,7 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
-        # @param [Hurley::Header] header
+        # @param [HTTP::Message::Headers] header
         #   Response headers
         # @param [String, #read] body
         #  Response body
@@ -189,9 +153,9 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          @offset = Integer(header[BYTES_RECEIVED_HEADER]) if header.key?(BYTES_RECEIVED_HEADER)
-          @upload_url = header[UPLOAD_URL_HEADER] if header.key?(UPLOAD_URL_HEADER)
-          upload_status = header[UPLOAD_STATUS_HEADER]
+          @offset = Integer(header[BYTES_RECEIVED_HEADER].first) unless header[BYTES_RECEIVED_HEADER].empty?
+          @upload_url = header[UPLOAD_URL_HEADER].first unless header[UPLOAD_URL_HEADER].empty?
+          upload_status = header[UPLOAD_STATUS_HEADER].first
           logger.debug { sprintf('Upload status %s', upload_status) }
           if upload_status == STATUS_ACTIVE
             @state = :active
@@ -204,61 +168,68 @@ module Google
           super(status, header, body)
         end
 
-        # Send the start command to initiate the upload
-        #
-        # @param [Hurley::Client] client
-        #   HTTP client
-        # @return [Hurley::Response]
-        # @raise [Google::Apis::ServerError] Unable to send the request
         def send_start_command(client)
           logger.debug { sprintf('Sending upload start command to %s', url) }
-          client.send(method, url, body) do |req|
-            apply_request_options(req)
-            req.header[UPLOAD_PROTOCOL_HEADER] = RESUMABLE
-            req.header[UPLOAD_COMMAND_HEADER] = START_COMMAND
-            req.header[UPLOAD_CONTENT_LENGTH] = upload_io.length.to_s
-            req.header[UPLOAD_CONTENT_TYPE_HEADER] = upload_io.content_type
-          end
+
+          request_header = header.dup
+          apply_request_options(request_header)
+          request_header[UPLOAD_PROTOCOL_HEADER] = RESUMABLE
+          request_header[UPLOAD_COMMAND_HEADER] = START_COMMAND
+          request_header[UPLOAD_CONTENT_LENGTH] = upload_io.size.to_s
+          request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
+
+          client.request(method.to_s.upcase,
+                         url.to_s, query: nil,
+                         body: body,
+                         header: request_header,
+                         follow_redirect: true)
         rescue => e
           raise Google::Apis::ServerError, e.message
         end
 
         # Query for the status of an incomplete upload
         #
-        # @param [Hurley::Client] client
+        # @param [HTTPClient] client
         #   HTTP client
-        # @return [Hurley::Response]
+        # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_query_command(client)
           logger.debug { sprintf('Sending upload query command to %s', @upload_url) }
-          client.post(@upload_url, nil) do |req|
-            apply_request_options(req)
-            req.header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
-          end
+
+          request_header = header.dup
+          apply_request_options(request_header)
+          request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
+
+          client.post(@upload_url, header: request_header, follow_redirect: true)
         end
+
 
         # Send the actual content
         #
-        # @param [Hurley::Client] client
+        # @param [HTTPClient] client
         #   HTTP client
-        # @return [Hurley::Response]
+        # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
+
           content = upload_io
           content.pos = @offset
-          client.post(@upload_url, content) do |req|
-            apply_request_options(req)
-            req.header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
-            req.header[UPLOAD_OFFSET_HEADER] = @offset.to_s
-          end
+
+          request_header = header.dup
+          apply_request_options(request_header)
+          request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
+          request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
+          request_header[UPLOAD_OFFSET_HEADER] = @offset.to_s
+
+          client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
         end
 
         # Execute the upload request once. This will typically perform two HTTP requests -- one to initiate or query
         # for the status of the upload, the second to send the (remaining) content.
         #
         # @private
-        # @param [Hurley::Client] client
+        # @param [HTTPClient] client
         #   HTTP client
         # @yield [result, err] Result or error if block supplied
         # @return [Object]

@@ -25,19 +25,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'hurley'
 require 'google/apis/core/multipart'
 require 'google/apis/core/http_command'
 require 'google/apis/core/upload'
 require 'google/apis/core/download'
+require 'google/apis/core/composite_io'
 require 'addressable/uri'
 require 'securerandom'
+
 module Google
   module Apis
     module Core
       # Wrapper request for batching multiple calls in a single server request
       class BatchCommand < HttpCommand
-        BATCH_BOUNDARY = 'RubyApiBatchRequest'.freeze
         MULTIPART_MIXED = 'multipart/mixed'
 
         # @param [symbol] method
@@ -81,7 +81,7 @@ module Google
             parts.each_index do |index|
               response = deserializer.to_http_response(parts[index])
               outer_header = response.shift
-              call_id = header_to_id(outer_header[:content_id]) || index
+              call_id = header_to_id(outer_header['Content-ID'].first) || index
               call, callback = @calls[call_id]
               begin
                 result = call.process_response(*response) unless call.nil?
@@ -106,17 +106,16 @@ module Google
           fail BatchError, 'Cannot make an empty batch request' if @calls.empty?
 
           serializer = CallSerializer.new
-          multipart = Multipart.new(boundary: BATCH_BOUNDARY, content_type: MULTIPART_MIXED)
+          multipart = Multipart.new(content_type: MULTIPART_MIXED)
           @calls.each_index do |index|
             call, _ = @calls[index]
             content_id = id_to_header(index)
-            io = serializer.to_upload_io(call)
-            multipart.add_upload(io, content_id: content_id)
+            io = serializer.to_part(call)
+            multipart.add_upload(io, content_type: 'application/http', content_id: content_id)
           end
           self.body = multipart.assemble
 
-          header[:content_type] = multipart.content_type
-          header[:content_length] = "#{body.length}"
+          header['Content-Type'] = multipart.content_type
           super
         end
 
@@ -155,24 +154,20 @@ module Google
       # Serializes a command for embedding in a multipart batch request
       # @private
       class CallSerializer
-        HTTP_CONTENT_TYPE = 'application/http'
-
         ##
         # Serialize a single batched call for assembling the multipart message
         #
         # @param [Google::Apis::Core::HttpCommand] call
         #   the call to serialize.
-        # @return [Hurley::UploadIO]
+        # @return [IO]
         #   the serialized request
-        def to_upload_io(call)
+        def to_part(call)
           call.prepare!
           parts = []
           parts << build_head(call)
           parts << build_body(call) unless call.body.nil?
           length = parts.inject(0) { |a, e| a + e.length }
-          Hurley::UploadIO.new(Hurley::CompositeReadIO.new(length, *parts),
-                               HTTP_CONTENT_TYPE,
-                               'ruby-api-request')
+          Google::Apis::Core::CompositeIO.new(*parts)
         end
 
         protected
@@ -201,7 +196,7 @@ module Google
         #
         # @param [String] call_response
         #   the response to parse.
-        # @return [Array<(Fixnum, Hurley::Header, String)>]
+        # @return [Array<(Fixnum, Hash, String)>]
         #   Status, header, and response body.
         def to_http_response(call_response)
           outer_header, outer_body = split_header_and_body(call_response)
@@ -218,10 +213,10 @@ module Google
         #
         # @param [String] response
         #   the response to parse.
-        # @return [Array<(Hurley::Header, String)>]
+        # @return [Array<(HTTP::Message::Headers, String)>]
         #   the header and the body, separately.
         def split_header_and_body(response)
-          header = Hurley::Header.new
+          header = HTTP::Message::Headers.new
           payload = response.lstrip
           while payload
             line, payload = payload.split(/\n/, 2)
