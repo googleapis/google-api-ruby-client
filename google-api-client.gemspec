@@ -25,7 +25,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'addressable', '~> 2.3'
   spec.add_runtime_dependency 'mime-types', '>= 1.6'
   spec.add_runtime_dependency 'googleauth', '~> 0.5'
-  spec.add_runtime_dependency 'thor', '~> 0.19'
   spec.add_runtime_dependency 'httpclient', '>= 2.8.1', '< 3.0'
   spec.add_runtime_dependency 'memoist', '~> 0.11'
+  spec.add_development_dependency 'thor', '~> 0.14'
+  spec.add_development_dependency 'activesupport', '>= 3.2', '< 5.0'
+
 end
