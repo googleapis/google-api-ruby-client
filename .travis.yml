@@ -6,7 +6,6 @@ rvm:
   - 2.1
   - jruby-9000
 env:
-  - RAILS_VERSION="~>3.2"
   - RAILS_VERSION="~>4.0.0"
   - RAILS_VERSION="~>4.1.0"
   - RAILS_VERSION="~>4.2.0"
