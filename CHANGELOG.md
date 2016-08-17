@@ -1,6 +1,19 @@
+# 0.10.0
+* *Breaking Change* - Fix handling of large numbers during code generation. Previously the
+  uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
+* Remove Hurley as dependency. May cause inor breaking changes if directly accessing the underlying
+  client connection.
+* Drop compatibility with Rails 3.x since that is no longer supported by the Rails community.
+* Upgrade representable to 3.0
+* Upgrade mime-types to 3.0
+* Move Thor & ActiveSupport to development depenencies. Using the code gengerator
+  now requires using the Bundle file or install the gem with dev dependencies.
+* Treat 429 status codes as rate limit errors
+* Fix a potential download corruption if download interrupted and retried against a URL
+  that does not return partial content.
+
 # 0.9.12
 * Regenerated APIs
-
 
 # 0.9.11
 * Add DFA Reporting 2.5, regenerate APIs
@@ -9,7 +22,6 @@
 * Add datastore v1beta3, regenerate APIs
 * Reduce memory footprint used by mimetypes library
 * Fix bug with pagination when items collection is nil
-
 
 # 0.9.9
 * Add monitoring v3, regenerate APIs
