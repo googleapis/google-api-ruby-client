@@ -34,9 +34,7 @@ module Google
       # where algorithmic approaches produce poor APIs.
       class Names
         ActiveSupport::Inflector.inflections do |inflections|
-          puts "Customizing inflections..."
           u = inflections.uncountable('send_as', 'as')
-          puts u
         end
 
         include Google::Apis::Core::Logging

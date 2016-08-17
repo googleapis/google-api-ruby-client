@@ -1,3 +1,7 @@
+# 0.9.12
+* Regenerated APIs
+
+
 # 0.9.11
 * Add DFA Reporting 2.5, regenerate APIs
 
