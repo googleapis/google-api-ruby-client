@@ -6,13 +6,13 @@ gemspec
 
 group :development do
   gem 'bundler', '~> 1.7'
-  gem 'rake', '~> 10.0'
+  gem 'rake', '~> 11.2'
   gem 'rspec', '~> 3.1'
   gem 'json_spec', '~> 1.1'
-  gem 'webmock', '~> 1.21'
+  gem 'webmock', '~> 2.1'
   gem 'simplecov', '~> 0.12'
   gem 'coveralls', '~> 0.8'
-  gem 'rubocop', '~> 0.29'
+  gem 'rubocop', '~> 0.42.0'
   gem 'launchy', '~> 2.4'
   gem 'dotenv', '~> 2.0'
   gem 'fakefs', '~> 0.6', require: "fakefs/safe"
