@@ -51,6 +51,8 @@ module Google
           when 'string', 'boolean', 'number', 'integer', 'any'
             return 'DateTime' if format == 'date-time'
             return 'Date' if format == 'date'
+            return 'Fixnum' if format == 'int64'
+            return 'Fixnum' if format == 'uint64'
             return TYPE_MAP[type]
           when 'array'
             return sprintf('Array<%s>', items.generated_type)

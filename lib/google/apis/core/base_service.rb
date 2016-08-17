@@ -21,6 +21,7 @@ require 'google/apis/core/upload'
 require 'google/apis/core/download'
 require 'google/apis/options'
 require 'googleauth'
+require 'httpclient'
 
 module Google
   module Apis
