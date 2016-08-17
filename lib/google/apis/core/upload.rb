@@ -18,13 +18,7 @@ require 'google/apis/core/api_command'
 require 'google/apis/errors'
 require 'addressable/uri'
 require 'tempfile'
-begin
-  require 'mime/types/columnar'
-rescue LoadError
-  # Temporary until next major bump when we can tighten
-  # dependency to mime-types >-=3.0
-  require 'mime-types'
-end
+require 'mime-types'
 
 module Google
   module Apis
@@ -59,6 +53,10 @@ module Google
             @close_io_on_finish = false
           elsif upload_source.is_a?(String)
             self.upload_io = File.new(upload_source, 'r')
+            if upload_content_type.nil?
+              type = MIME::Types.of(upload_source)
+              upload_content_type = type.first.content_type unless type.nil? || type.empty?
+            end
             @close_io_on_finish = true
           else
             fail Google::Apis::ClientError, 'Invalid upload source'

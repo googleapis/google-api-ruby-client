@@ -80,9 +80,8 @@ RSpec.describe Google::Apis::Error do
 
     context '@cause is falsy' do
       before do
-        subject.class.superclass.any_instance.stub(:backtrace) do
-          "super class's #backtrace called"
-        end
+        expect_any_instance_of(subject.class.superclass).to receive(:backtrace).and_return(
+            "super class's #backtrace called")
       end
 
       it "calls super class's #backtrace" do
