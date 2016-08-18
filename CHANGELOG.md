@@ -1,3 +1,6 @@
+# 0.8.7
+* Lock activesupport version to < 5.0
+
 # 0.8.6
 * Use discovered 'rootUrl' as base URI for services
 * Respect discovered methods with colons in path

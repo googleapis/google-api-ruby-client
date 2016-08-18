@@ -644,7 +644,7 @@ RSpec.describe Google::APIClient do
   describe 'with the Drive API' do
     before do
       CLIENT.authorization = nil
-      @drive = CLIENT.discovered_api('drive', 'v1')
+      @drive = CLIENT.discovered_api('drive', 'v2')
     end
 
     it 'should include media upload info methods' do

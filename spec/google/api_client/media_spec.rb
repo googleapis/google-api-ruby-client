@@ -114,7 +114,7 @@ RSpec.describe Google::APIClient::ResumableUpload do
   end
 
   before do
-    @drive = CLIENT.discovered_api('drive', 'v1')
+    @drive = CLIENT.discovered_api('drive', 'v2')
     @file = File.expand_path('files/sample.txt', fixtures_path)
     @media = Google::APIClient::UploadIO.new(@file, 'text/plain')
     @uploader = Google::APIClient::ResumableUpload.new(

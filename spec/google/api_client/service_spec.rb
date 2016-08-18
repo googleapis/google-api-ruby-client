@@ -227,14 +227,14 @@ RSpec.describe Google::APIClient::Service do
 
     it 'should make a valid call with an object body and media upload' do
       conn = stub_connection do |stub|
-        stub.post('/upload/drive/v1/files?uploadType=multipart') do |env|
+        stub.post('/upload/drive/v2/files?uploadType=multipart') do |env|
           expect(env.body).to be_a Faraday::CompositeReadIO
           [200, {}, '{}']
         end
       end
       drive = Google::APIClient::Service.new(
         'drive',
-        'v1',
+        'v2',
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
@@ -248,7 +248,7 @@ RSpec.describe Google::APIClient::Service do
 
     describe 'with no connection' do
       before do
-        @drive = Google::APIClient::Service.new('drive', 'v1',
+        @drive = Google::APIClient::Service.new('drive', 'v2',
           {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
