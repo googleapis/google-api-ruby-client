@@ -63,6 +63,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	iam:v1 \
 	identitytoolkit:v3 \
 	kgsearch:v1 \
+	language:v1beta1 \
 	licensing:v1 \
 	logging:v2beta1 \
 	manager:v1beta2 \

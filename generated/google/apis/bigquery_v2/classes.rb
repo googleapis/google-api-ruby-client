@@ -1271,6 +1271,18 @@ module Google
         # @return [String]
         attr_accessor :schema_inline_format
       
+        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # side effect of the load job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
+        # and the destination table is a partition of a table, specified by partition
+        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
+        # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+        # relaxing a required field in the original schema to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
+      
         # [Optional] The number of rows at the top of a CSV file that BigQuery will skip
         # when loading the data. The default value is 0. This property is useful if you
         # have header rows in the file that should be skipped.
@@ -1325,6 +1337,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @schema_inline = args[:schema_inline] if args.key?(:schema_inline)
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
@@ -1403,6 +1416,19 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # side effect of the query job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is
+        # WRITE_TRUNCATE and the destination table is a partition of a table, specified
+        # by partition decorators. For normal tables, WRITE_TRUNCATE will always
+        # overwrite the schema. One or more of the following values are specified:
+        # ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        # ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema
+        # to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
+      
         # [Optional] If querying an external data source outside of BigQuery, describes
         # the data format, location and other properties of the data source. By defining
         # these properties, the data source can then be queried as if it were a standard
@@ -1464,6 +1490,7 @@ module Google
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
