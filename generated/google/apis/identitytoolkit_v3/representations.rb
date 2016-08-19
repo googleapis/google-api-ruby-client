@@ -494,6 +494,7 @@ module Google
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'
           property :request_uri, as: 'requestUri'
+          property :return_idp_credential, as: 'returnIdpCredential'
           property :return_refresh_token, as: 'returnRefreshToken'
           property :return_secure_token, as: 'returnSecureToken'
           property :session_id, as: 'sessionId'
@@ -647,6 +648,7 @@ module Google
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
             property :raw_id, as: 'rawId'
+            property :raw_user_info, as: 'rawUserInfo'
             property :screen_name, as: 'screenName'
           end
         end
@@ -664,6 +666,7 @@ module Google
           property :email, as: 'email'
           property :email_recycled, as: 'emailRecycled'
           property :email_verified, as: 'emailVerified'
+          property :error_message, as: 'errorMessage'
           property :expires_in, as: 'expiresIn'
           property :federated_id, as: 'federatedId'
           property :first_name, as: 'firstName'
@@ -687,6 +690,7 @@ module Google
           property :original_email, as: 'originalEmail'
           property :photo_url, as: 'photoUrl'
           property :provider_id, as: 'providerId'
+          property :raw_user_info, as: 'rawUserInfo'
           property :refresh_token, as: 'refreshToken'
           property :screen_name, as: 'screenName'
           property :time_zone, as: 'timeZone'

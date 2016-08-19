@@ -608,6 +608,7 @@ module Google
       
           property :schema_inline, as: 'schemaInline'
           property :schema_inline_format, as: 'schemaInlineFormat'
+          collection :schema_update_options, as: 'schemaUpdateOptions'
           property :skip_leading_rows, as: 'skipLeadingRows'
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
@@ -630,6 +631,7 @@ module Google
           property :preserve_nulls, as: 'preserveNulls'
           property :priority, as: 'priority'
           property :query, as: 'query'
+          collection :schema_update_options, as: 'schemaUpdateOptions'
           hash :table_definitions, as: 'tableDefinitions', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
       
           property :use_legacy_sql, as: 'useLegacySql'

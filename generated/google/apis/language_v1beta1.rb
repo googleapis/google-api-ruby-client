@@ -12,20 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudbuild_v1/service.rb'
-require 'google/apis/cloudbuild_v1/classes.rb'
-require 'google/apis/cloudbuild_v1/representations.rb'
+require 'google/apis/language_v1beta1/service.rb'
+require 'google/apis/language_v1beta1/classes.rb'
+require 'google/apis/language_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Container Builder API
+    # Google Cloud Natural Language API
     #
-    # Builds container images in the cloud.
+    # Google Cloud Natural Language API provides natural language understanding
+    # technologies to developers. Examples include sentiment analysis, entity
+    # recognition, and text annotations.
     #
-    # @see https://cloud.google.com/container-builder/docs/
-    module CloudbuildV1
-      VERSION = 'V1'
-      REVISION = '20160818'
+    # @see https://cloud.google.com/natural-language/
+    module LanguageV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20160810'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
