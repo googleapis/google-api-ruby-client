@@ -680,7 +680,7 @@ module Google
         # The finite buckets are so-called because both bounds are finite.BucketOptions
         # describes bucket boundaries in one of three ways. Two describe the boundaries
         # by giving parameters for a formula to generate boundaries and one gives the
-        # bucket boundaries explicitly.If bucket_boundaries is not given, then no
+        # bucket boundaries explicitly.If bucket_options is not given, then no
         # bucket_counts may be given.
         # Corresponds to the JSON property `bucketOptions`
         # @return [Google::Apis::MonitoringV3::BucketOptions]
@@ -1151,7 +1151,7 @@ module Google
       # The finite buckets are so-called because both bounds are finite.BucketOptions
       # describes bucket boundaries in one of three ways. Two describe the boundaries
       # by giving parameters for a formula to generate boundaries and one gives the
-      # bucket boundaries explicitly.If bucket_boundaries is not given, then no
+      # bucket boundaries explicitly.If bucket_options is not given, then no
       # bucket_counts may be given.
       class BucketOptions
         include Google::Apis::Core::Hashable

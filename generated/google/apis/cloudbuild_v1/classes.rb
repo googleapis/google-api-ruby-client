@@ -287,6 +287,12 @@ module Google
       class BuildTrigger
         include Google::Apis::Core::Hashable
       
+        # Path, from the source root, to a file whose contents is used for the
+        # template.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
         # RepoSource describes the location of the source in a Google Cloud Source
         # Repository.
         # Corresponds to the JSON property `triggerTemplate`
@@ -319,6 +325,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filename = args[:filename] if args.key?(:filename)
           @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)

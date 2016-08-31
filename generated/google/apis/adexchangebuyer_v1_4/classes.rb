@@ -1180,6 +1180,13 @@ module Google
         # @return [String]
         attr_accessor :branding_type
       
+        # Indicates that this ExternalDealId exists under at least two different
+        # AdxInventoryDeals. Currently, the only case that the same ExternalDealId will
+        # exist is programmatic cross sell case.
+        # Corresponds to the JSON property `crossListedExternalDealIdType`
+        # @return [String]
+        attr_accessor :cross_listed_external_deal_id_type
+      
         # Description for the proposed terms of the deal.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1230,6 +1237,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @branding_type = args[:branding_type] if args.key?(:branding_type)
+          @cross_listed_external_deal_id_type = args[:cross_listed_external_deal_id_type] if args.key?(:cross_listed_external_deal_id_type)
           @description = args[:description] if args.key?(:description)
           @estimated_gross_spend = args[:estimated_gross_spend] if args.key?(:estimated_gross_spend)
           @estimated_impressions_per_day = args[:estimated_impressions_per_day] if args.key?(:estimated_impressions_per_day)

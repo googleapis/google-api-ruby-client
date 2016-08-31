@@ -287,6 +287,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :kg_foreign_key, as: 'kgForeignKey'
           property :name, as: 'name'
           property :scope, as: 'scope'
         end

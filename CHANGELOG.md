@@ -1,6 +1,10 @@
+# 0.9.13
+* Fix fetch_all to work correctly with the genomics API
+* Add speech & language APIs, regenerate APIs
+
+
 # 0.9.12
 * Regenerated APIs
-
 
 # 0.9.11
 * Add DFA Reporting 2.5, regenerate APIs

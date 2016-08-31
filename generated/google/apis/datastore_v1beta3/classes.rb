@@ -171,7 +171,7 @@ module Google
       
         # The identifier of the transaction in which to read. A
         # transaction identifier is returned by a call to
-        # BeginTransaction.
+        # Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # @return [String]
         attr_accessor :transaction
@@ -218,13 +218,13 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.Commit.
+      # The request for Datastore.Commit.
       class CommitRequest
         include Google::Apis::Core::Hashable
       
         # The identifier of the transaction associated with the commit. A
         # transaction identifier is returned by a call to
-        # BeginTransaction.
+        # Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # @return [String]
         attr_accessor :transaction
@@ -340,12 +340,12 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.Rollback.
+      # The request for Datastore.Rollback.
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
         # The transaction identifier, returned by a call to
-        # google.datastore.v1beta3.Datastore.BeginTransaction.
+        # Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # @return [String]
         attr_accessor :transaction
@@ -380,10 +380,11 @@ module Google
       
         # The version of the entity, a strictly positive number that monotonically
         # increases with changes to the entity.
-        # This field is set for `FULL` entity results.
-        # For missing entities in
-        # `LookupResponse`, this is the version of the snapshot that was used to look
-        # up the entity, and it is always set except for eventually consistent reads.
+        # This field is set for `FULL` entity
+        # results.
+        # For missing entities in `LookupResponse`, this
+        # is the version of the snapshot that was used to look up the entity, and it
+        # is always set except for eventually consistent reads.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -473,7 +474,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.BeginTransaction.
+      # The response for Datastore.BeginTransaction.
       class BeginTransactionResponse
         include Google::Apis::Core::Hashable
       
@@ -594,7 +595,7 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.AllocateIds.
+      # The request for Datastore.AllocateIds.
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
       
@@ -706,7 +707,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.Rollback
+      # The response for Datastore.Rollback.
       # (an empty message).
       class RollbackResponse
         include Google::Apis::Core::Hashable
@@ -799,7 +800,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.AllocateIds.
+      # The response for Datastore.AllocateIds.
       class AllocateIdsResponse
         include Google::Apis::Core::Hashable
       
@@ -819,7 +820,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.Lookup.
+      # The response for Datastore.Lookup.
       class LookupResponse
         include Google::Apis::Core::Hashable
       
@@ -856,7 +857,7 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.BeginTransaction.
+      # The request for Datastore.BeginTransaction.
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
       
@@ -925,7 +926,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.RunQuery.
+      # The response for Datastore.RunQuery.
       class RunQueryResponse
         include Google::Apis::Core::Hashable
       
@@ -996,17 +997,16 @@ module Google
         # @return [String]
         attr_accessor :query_string
       
-        # For each non-reserved named binding site in the query string,
-        # there must be a named parameter with that name,
-        # but not necessarily the inverse.
+        # For each non-reserved named binding site in the query string, there must be
+        # a named parameter with that name, but not necessarily the inverse.
         # Key must match regex `A-Za-z_$*`, must not match regex
         # `__.*__`, and must not be `""`.
         # Corresponds to the JSON property `namedBindings`
         # @return [Hash<String,Google::Apis::DatastoreV1beta3::GqlQueryParameter>]
         attr_accessor :named_bindings
       
-        # When false, the query string must not contain any literals and instead
-        # must bind all values. For example,
+        # When false, the query string must not contain any literals and instead must
+        # bind all values. For example,
         # `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
         # `SELECT * FROM Kind WHERE a = @value` is.
         # Corresponds to the JSON property `allowLiterals`
@@ -1016,9 +1016,8 @@ module Google
       
         # Numbered binding site @1 references the first numbered parameter,
         # effectively using 1-based indexing, rather than the usual 0.
-        # For each binding site numbered i in `query_string`,
-        # there must be an i-th numbered parameter.
-        # The inverse must also be true.
+        # For each binding site numbered i in `query_string`, there must be an i-th
+        # numbered parameter. The inverse must also be true.
         # Corresponds to the JSON property `positionalBindings`
         # @return [Array<Google::Apis::DatastoreV1beta3::GqlQueryParameter>]
         attr_accessor :positional_bindings
@@ -1092,7 +1091,7 @@ module Google
         end
       end
       
-      # The response for google.datastore.v1beta3.Datastore.Commit.
+      # The response for Datastore.Commit.
       class CommitResponse
         include Google::Apis::Core::Hashable
       
@@ -1119,7 +1118,7 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.RunQuery.
+      # The request for Datastore.RunQuery.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
@@ -1171,7 +1170,7 @@ module Google
         end
       end
       
-      # The request for google.datastore.v1beta3.Datastore.Lookup.
+      # The request for Datastore.Lookup.
       class LookupRequest
         include Google::Apis::Core::Hashable
       

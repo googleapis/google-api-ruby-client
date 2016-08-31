@@ -136,7 +136,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new backup run on demand.
+        # Creates a new backup run on demand. This method is applicable only to Second
+        # Generation instances.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance

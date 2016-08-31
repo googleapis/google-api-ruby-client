@@ -12,22 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/vision_v1/service.rb'
-require 'google/apis/vision_v1/classes.rb'
-require 'google/apis/vision_v1/representations.rb'
+require 'google/apis/language_v1beta1/service.rb'
+require 'google/apis/language_v1beta1/classes.rb'
+require 'google/apis/language_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Vision API
+    # Google Cloud Natural Language API
     #
-    # Integrates Google Vision features, including image labeling, face, logo, and
-    # landmark detection, optical character recognition (OCR), and detection of
-    # explicit content, into applications.
+    # Google Cloud Natural Language API provides natural language understanding
+    # technologies to developers. Examples include sentiment analysis, entity
+    # recognition, and text annotations.
     #
-    # @see https://cloud.google.com/vision/
-    module VisionV1
-      VERSION = 'V1'
-      REVISION = '20160822'
+    # @see https://cloud.google.com/natural-language/
+    module LanguageV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20160816'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

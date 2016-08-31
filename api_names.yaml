@@ -1050,3 +1050,5 @@
 "/classroom:v1/classroom.courses.courseWork.studentSubmissions.get": get_student_submission
 "/classroom:v1/classroom.courses.courseWork.studentSubmissions.patch": patch_student_submission
 "/classroom:v1/classroom.courses.courseWork.studentSubmissions.list": list_student_submissions
+"/speech:v1beta1/speech.speech.syncrecognize": sync_recognize_speech
+"/speech:v1beta1/speech.speech.asyncrecognize": async_recognize_speech

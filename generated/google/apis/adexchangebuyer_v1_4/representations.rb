@@ -790,6 +790,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branding_type, as: 'brandingType'
+          property :cross_listed_external_deal_id_type, as: 'crossListedExternalDealIdType'
           property :description, as: 'description'
           property :estimated_gross_spend, as: 'estimatedGrossSpend', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
       

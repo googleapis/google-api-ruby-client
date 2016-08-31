@@ -132,6 +132,10 @@ module Google
         #   obtained at https://www.googleapis.com/civicinfo/`version`/elections
         # @param [Boolean] official_only
         #   If set to true, only data from official state sources will be returned.
+        # @param [Boolean] return_all_available_data
+        #   If set to true, the query will return the success codeand include any partial
+        #   information when it is unable to determine a matching address or unable to
+        #   determine the election for electionId=0 queries.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,13 +157,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_voter_info(address, election_id: nil, official_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_voter_info(address, election_id: nil, official_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'voterinfo', options)
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::VoterInfoResponse
           command.query['address'] = address unless address.nil?
           command.query['electionId'] = election_id unless election_id.nil?
           command.query['officialOnly'] = official_only unless official_only.nil?
+          command.query['returnAllAvailableData'] = return_all_available_data unless return_all_available_data.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -196,6 +196,7 @@ module Google
       class BuildTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filename, as: 'filename'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
           property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation

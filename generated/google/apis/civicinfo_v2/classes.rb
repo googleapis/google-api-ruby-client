@@ -322,9 +322,8 @@ module Google
         attr_accessor :primary_party
       
         # The set of ballot responses for the referendum. A ballot response represents a
-        # line on the ballot. Common examples might include "yes" or "no" for referenda,
-        # or a judge's name for a retention contest. This field is only populated for
-        # contests of type 'Referendum'.
+        # line on the ballot. Common examples might include "yes" or "no" for referenda.
+        # This field is only populated for contests of type 'Referendum'.
         # Corresponds to the JSON property `referendumBallotResponses`
         # @return [Array<String>]
         attr_accessor :referendum_ballot_responses
@@ -403,7 +402,8 @@ module Google
         attr_accessor :special
       
         # The type of contest. Usually this will be 'General', 'Primary', or 'Run-off'
-        # for contests with candidates. For referenda this will be 'Referendum'.
+        # for contests with candidates. For referenda this will be 'Referendum'. For
+        # Retention contests this will typically be 'Retention'.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -621,6 +621,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # 
+        # Corresponds to the JSON property `kgForeignKey`
+        # @return [String]
+        attr_accessor :kg_foreign_key
+      
         # The name of the district.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -641,6 +646,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @kg_foreign_key = args[:kg_foreign_key] if args.key?(:kg_foreign_key)
           @name = args[:name] if args.key?(:name)
           @scope = args[:scope] if args.key?(:scope)
         end

@@ -124,6 +124,8 @@ module Google
         # @param [Fixnum] id
         #   The account id
         # @param [Google::Apis::AdexchangebuyerV1_4::Account] account_object
+        # @param [Boolean] confirm_unsafe_account_change
+        #   Confirmation for erasing bidder and cookie matching urls.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,13 +147,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account(id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account(id, account_object = nil, confirm_unsafe_account_change: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'accounts/{id}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Account
           command.params['id'] = id unless id.nil?
+          command.query['confirmUnsafeAccountChange'] = confirm_unsafe_account_change unless confirm_unsafe_account_change.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -162,6 +165,8 @@ module Google
         # @param [Fixnum] id
         #   The account id
         # @param [Google::Apis::AdexchangebuyerV1_4::Account] account_object
+        # @param [Boolean] confirm_unsafe_account_change
+        #   Confirmation for erasing bidder and cookie matching urls.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -183,13 +188,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account(id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account(id, account_object = nil, confirm_unsafe_account_change: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{id}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Account
           command.params['id'] = id unless id.nil?
+          command.query['confirmUnsafeAccountChange'] = confirm_unsafe_account_change unless confirm_unsafe_account_change.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1291,7 +1297,8 @@ module Google
         #   should then fetch the latest proposal at head revision and retry the update at
         #   that revision.
         # @param [String] update_action
-        #   The proposed action to take on the proposal.
+        #   The proposed action to take on the proposal. This field is required and it
+        #   must be set when updating a proposal.
         # @param [Google::Apis::AdexchangebuyerV1_4::Proposal] proposal_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1406,7 +1413,8 @@ module Google
         #   should then fetch the latest proposal at head revision and retry the update at
         #   that revision.
         # @param [String] update_action
-        #   The proposed action to take on the proposal.
+        #   The proposed action to take on the proposal. This field is required and it
+        #   must be set when updating a proposal.
         # @param [Google::Apis::AdexchangebuyerV1_4::Proposal] proposal_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

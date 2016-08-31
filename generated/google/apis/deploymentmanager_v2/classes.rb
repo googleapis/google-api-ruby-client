@@ -528,7 +528,9 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] The URL of the resource that the operation modifies.
+        # [Output Only] The URL of the resource that the operation modifies. If creating
+        # a persistent disk snapshot, this points to the persistent disk that the
+        # snapshot was created from.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -763,7 +765,7 @@ module Google
         attr_accessor :properties
       
         # [Output Only] The type of the resource, for example compute.v1.instance, or
-        # replicaPools.v1beta2.instanceGroupManager.
+        # cloudfunctions.v1beta1.function.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

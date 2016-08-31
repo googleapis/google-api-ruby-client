@@ -1030,6 +1030,13 @@ module Google
         # @return [String]
         attr_accessor :request_uri
       
+        # Whether return 200 and IDP credential rather than throw exception when
+        # federated id is already linked.
+        # Corresponds to the JSON property `returnIdpCredential`
+        # @return [Boolean]
+        attr_accessor :return_idp_credential
+        alias_method :return_idp_credential?, :return_idp_credential
+      
         # Whether to return refresh tokens.
         # Corresponds to the JSON property `returnRefreshToken`
         # @return [Boolean]
@@ -1059,6 +1066,7 @@ module Google
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
           @post_body = args[:post_body] if args.key?(:post_body)
           @request_uri = args[:request_uri] if args.key?(:request_uri)
+          @return_idp_credential = args[:return_idp_credential] if args.key?(:return_idp_credential)
           @return_refresh_token = args[:return_refresh_token] if args.key?(:return_refresh_token)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @session_id = args[:session_id] if args.key?(:session_id)
@@ -1674,6 +1682,11 @@ module Google
           # @return [String]
           attr_accessor :raw_id
         
+          # Raw IDP-returned user info.
+          # Corresponds to the JSON property `rawUserInfo`
+          # @return [String]
+          attr_accessor :raw_user_info
+        
           # User's screen name at Twitter.
           # Corresponds to the JSON property `screenName`
           # @return [String]
@@ -1691,6 +1704,7 @@ module Google
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
             @raw_id = args[:raw_id] if args.key?(:raw_id)
+            @raw_user_info = args[:raw_user_info] if args.key?(:raw_user_info)
             @screen_name = args[:screen_name] if args.key?(:screen_name)
           end
         end
@@ -1749,6 +1763,11 @@ module Google
         # @return [Boolean]
         attr_accessor :email_verified
         alias_method :email_verified?, :email_verified
+      
+        # Client error code.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
       
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
@@ -1877,6 +1896,11 @@ module Google
         # @return [String]
         attr_accessor :provider_id
       
+        # Raw IDP-returned user info.
+        # Corresponds to the JSON property `rawUserInfo`
+        # @return [String]
+        attr_accessor :raw_user_info
+      
         # If idToken is STS id token, then this field will be refresh token.
         # Corresponds to the JSON property `refreshToken`
         # @return [String]
@@ -1912,6 +1936,7 @@ module Google
           @email = args[:email] if args.key?(:email)
           @email_recycled = args[:email_recycled] if args.key?(:email_recycled)
           @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @federated_id = args[:federated_id] if args.key?(:federated_id)
           @first_name = args[:first_name] if args.key?(:first_name)
@@ -1935,6 +1960,7 @@ module Google
           @original_email = args[:original_email] if args.key?(:original_email)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @raw_user_info = args[:raw_user_info] if args.key?(:raw_user_info)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @screen_name = args[:screen_name] if args.key?(:screen_name)
           @time_zone = args[:time_zone] if args.key?(:time_zone)

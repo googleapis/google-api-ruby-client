@@ -1271,6 +1271,18 @@ module Google
         # @return [String]
         attr_accessor :schema_inline_format
       
+        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # side effect of the load job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
+        # and the destination table is a partition of a table, specified by partition
+        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
+        # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+        # relaxing a required field in the original schema to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
+      
         # [Optional] The number of rows at the top of a CSV file that BigQuery will skip
         # when loading the data. The default value is 0. This property is useful if you
         # have header rows in the file that should be skipped.
@@ -1325,6 +1337,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @schema_inline = args[:schema_inline] if args.key?(:schema_inline)
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
@@ -1386,6 +1399,12 @@ module Google
         # @return [String]
         attr_accessor :maximum_bytes_billed
       
+        # [Experimental] Standard SQL only. Whether to use positional (?) or named (@
+        # myparam) query parameters in this query.
+        # Corresponds to the JSON property `parameterMode`
+        # @return [String]
+        attr_accessor :parameter_mode
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -1402,6 +1421,24 @@ module Google
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
+      
+        # [Experimental] Query parameters for Standard SQL queries.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :query_parameters
+      
+        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # side effect of the query job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is
+        # WRITE_TRUNCATE and the destination table is a partition of a table, specified
+        # by partition decorators. For normal tables, WRITE_TRUNCATE will always
+        # overwrite the schema. One or more of the following values are specified:
+        # ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        # ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema
+        # to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
       
         # [Optional] If querying an external data source outside of BigQuery, describes
         # the data format, location and other properties of the data source. By defining
@@ -1461,9 +1498,12 @@ module Google
           @flatten_results = args[:flatten_results] if args.key?(:flatten_results)
           @maximum_billing_tier = args[:maximum_billing_tier] if args.key?(:maximum_billing_tier)
           @maximum_bytes_billed = args[:maximum_bytes_billed] if args.key?(:maximum_bytes_billed)
+          @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
@@ -1768,6 +1808,12 @@ module Google
         # @return [String]
         attr_accessor :total_bytes_processed
       
+        # [Output-only, Experimental] Standard SQL only: list of undeclared query
+        # parameters detected during a dry run validation.
+        # Corresponds to the JSON property `undeclaredQueryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :undeclared_query_parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1782,6 +1828,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
         end
       end
       
@@ -1985,6 +2032,132 @@ module Google
       end
       
       # 
+      class QueryParameter
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] If unset, this is a positional parameter. Otherwise, should be
+        # unique within a query.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Required] The type of this parameter.
+        # Corresponds to the JSON property `parameterType`
+        # @return [Google::Apis::BigqueryV2::QueryParameterType]
+        attr_accessor :parameter_type
+      
+        # [Required] The value of this parameter.
+        # Corresponds to the JSON property `parameterValue`
+        # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+        attr_accessor :parameter_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parameter_type = args[:parameter_type] if args.key?(:parameter_type)
+          @parameter_value = args[:parameter_value] if args.key?(:parameter_value)
+        end
+      end
+      
+      # 
+      class QueryParameterType
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The type of the array's elements, if this is an array.
+        # Corresponds to the JSON property `arrayType`
+        # @return [Google::Apis::BigqueryV2::QueryParameterType]
+        attr_accessor :array_type
+      
+        # [Optional] The types of the fields of this struct, in order, if this is a
+        # struct.
+        # Corresponds to the JSON property `structTypes`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameterType::StructType>]
+        attr_accessor :struct_types
+      
+        # [Required] The top level type of this field.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_type = args[:array_type] if args.key?(:array_type)
+          @struct_types = args[:struct_types] if args.key?(:struct_types)
+          @type = args[:type] if args.key?(:type)
+        end
+        
+        # 
+        class StructType
+          include Google::Apis::Core::Hashable
+        
+          # [Optional] Human-oriented description of the field.
+          # Corresponds to the JSON property `description`
+          # @return [String]
+          attr_accessor :description
+        
+          # [Optional] The name of this field.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # [Required] The type of this field.
+          # Corresponds to the JSON property `type`
+          # @return [Google::Apis::BigqueryV2::QueryParameterType]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @description = args[:description] if args.key?(:description)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
+          end
+        end
+      end
+      
+      # 
+      class QueryParameterValue
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The array values, if this is an array type.
+        # Corresponds to the JSON property `arrayValues`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameterValue>]
+        attr_accessor :array_values
+      
+        # [Optional] The struct field values, in order of the struct type's declaration.
+        # Corresponds to the JSON property `structValues`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameterValue>]
+        attr_accessor :struct_values
+      
+        # [Optional] The value of this value, if a simple scalar type.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_values = args[:array_values] if args.key?(:array_values)
+          @struct_values = args[:struct_values] if args.key?(:struct_values)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
       class QueryRequest
         include Google::Apis::Core::Hashable
       
@@ -2018,6 +2191,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
+        # [Experimental] Standard SQL only. Whether to use positional (?) or named (@
+        # myparam) query parameters in this query.
+        # Corresponds to the JSON property `parameterMode`
+        # @return [String]
+        attr_accessor :parameter_mode
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -2030,6 +2209,11 @@ module Google
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
+      
+        # [Experimental] Query parameters for Standard SQL queries.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :query_parameters
       
         # [Optional] How long to wait for the query to complete, in milliseconds, before
         # the request times out and returns. Note that this is only a timeout for the
@@ -2070,8 +2254,10 @@ module Google
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
           @max_results = args[:max_results] if args.key?(:max_results)
+          @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
