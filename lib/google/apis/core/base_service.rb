@@ -64,11 +64,16 @@ module Google
           loop do
             @last_result = @fetch_proc.call(page_token)
             items = @last_result.send(@items_field)
-            for item in items
-              item_count = item_count + 1
-              break if @max && item_count > @max
-              yield item
-            end unless items.nil?
+            if items.kind_of?(Array)
+              for item in items
+                item_count = item_count + 1
+                break if @max && item_count > @max
+                yield item
+              end
+            elsif items
+              # yield singular non-nil items (for genomics API)
+              yield items
+            end
             break if @max && item_count >= @max
             break if @last_result.next_page_token.nil? || @last_result.next_page_token == page_token
             page_token = @last_result.next_page_token
