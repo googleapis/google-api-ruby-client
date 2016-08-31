@@ -60,6 +60,8 @@ Object properties in the ruby client use the standard ruby convention for naming
 * For properties that are defined as hashes with user-defined keys, no translation is performed on the key.
 * For embedded field masks in requests (for example, the Sheets API), specify the camelCase form when referencing fields.
 
+Outisde those exceptions, if a property is specified using camelCase in a request, it will be ignored during serialization and omitted from the request.
+
 ### Media
 
 Methods that allow media operations have additional parameters to specify the upload source or download destination.
