@@ -105,6 +105,10 @@ module Google
           end
         end
 
+        def allow_form_encoding?
+          request_representation.nil? && super
+        end
+
         private
 
         # Attempt to parse a JSON error message, returning the first found error

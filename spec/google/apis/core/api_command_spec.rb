@@ -17,7 +17,7 @@ require 'google/apis/core/api_command'
 require 'google/apis/core/json_representation'
 require 'hurley/test'
 
-RSpec.describe Google::Apis::Core::HttpCommand do
+RSpec.describe Google::Apis::Core::ApiCommand do
   include TestHelpers
   include_context 'HTTP client'
 
@@ -40,19 +40,27 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command = Google::Apis::Core::ApiCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
       command.request_representation = representer_class
       command.request_object = request
+      command.query['a'] = 'b'
       command
     end
 
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=b')
         .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should serialize the request object' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req|
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?a=b').with do |req|
         be_json_eql(%({"value":"hello"})).matches?(req.body)
       end).to have_been_made
+    end
+
+    it 'should not form encode query parameters when body expected but nil' do
+      command.query['a'] = 'b'
+      command.request_object = nil
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?a=b').with(body: nil)).to have_been_made
     end
   end
 

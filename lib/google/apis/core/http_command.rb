@@ -146,7 +146,7 @@ module Google
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
-          if [:post, :put].include?(method)  && body.nil?
+          if allow_form_encoding?
             @form_encoded = true
             self.body = Addressable::URI.form_encode(url.query_values(Array))
             self.header['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -304,6 +304,10 @@ module Google
           req.header.update(header)
           req.options.timeout = options.timeout_sec
           req.options.open_timeout = options.open_timeout_sec
+        end
+
+        def allow_form_encoding?
+          [:post, :put].include?(method) && body.nil?
         end
 
         private
