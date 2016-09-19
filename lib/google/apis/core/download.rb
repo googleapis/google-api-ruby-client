@@ -23,6 +23,7 @@ module Google
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
         RANGE_HEADER = 'range'
+        OK_STATUS = [200, 201, 206]
 
         # File or IO to write content to
         # @return [String, File, #write]
@@ -65,7 +66,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_once(client, &block)
-          client.get(@download_url || url) do |req|
+          response = client.get(@download_url || url) do |req|
             apply_request_options(req)
             check_if_rewind_needed = false
             if @offset > 0
@@ -73,7 +74,7 @@ module Google
               req.header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
               check_if_rewind_needed = true
             end
-            req.on_body(200, 201, 206) do |res, chunk|
+            req.on_body(*OK_STATUS) do |res, chunk|
               check_status(res.status_code, chunk) unless res.status_code.nil?
               if check_if_rewind_needed && res.status_code != 206
                 # Oh no! Requested a chunk, but received the entire content
@@ -88,6 +89,10 @@ module Google
               @download_io.flush
             end
           end
+
+          # Since the on_body block only runs on success, check status again just in case it failed
+          check_status(response.status_code, response.body) unless OK_STATUS.include?(response.status_code.to_i)
+
           if @close_io_on_finish
             result = nil
           else

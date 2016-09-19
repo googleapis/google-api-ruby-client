@@ -48,6 +48,17 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
       end
     end
 
+    context 'with error' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .to_return(status: [404, 'Not Found'], body: '')
+      end
+
+      it 'should raise error' do
+        expect {received}.to raise_error(Google::Apis::ClientError)
+      end
+    end
+
     context 'with disconnects' do
       before(:example) do
         stub_request(:get, 'https://www.googleapis.com/zoo/animals')
