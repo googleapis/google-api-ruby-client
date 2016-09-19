@@ -1,3 +1,8 @@
+# 0.9.14
+* Fix error handling with downloads, no longer fails silently
+* Prevent form-encoding query parameters for APIs that don't expect it
+* Regenerate APIs
+
 # 0.9.13
 * Fix fetch_all to work correctly with the genomics API
 * Add speech & language APIs, regenerate APIs
