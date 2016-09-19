@@ -430,7 +430,7 @@ module Google
         # genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.
         # com/genomics/fundamentals-of-google-genomics)
         # @param [String] project_id
-        #   Required. The project to list datasets for.
+        #   Required. The Google Cloud project ID to list datasets for.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single page. If unspecified,
         #   defaults to 50. The maximum value is 1024.

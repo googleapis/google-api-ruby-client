@@ -2730,6 +2730,11 @@ module Google
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
       
+        # The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+        # Corresponds to the JSON property `channelType`
+        # @return [String]
+        attr_accessor :channel_type
+      
         # The details of the customer who placed the order.
         # Corresponds to the JSON property `customer`
         # @return [Google::Apis::ContentV2::OrderCustomer]
@@ -2831,6 +2836,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
+          @channel_type = args[:channel_type] if args.key?(:channel_type)
           @customer = args[:customer] if args.key?(:customer)
           @delivery_details = args[:delivery_details] if args.key?(:delivery_details)
           @id = args[:id] if args.key?(:id)

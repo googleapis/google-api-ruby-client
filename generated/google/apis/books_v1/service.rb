@@ -1979,6 +1979,9 @@ module Google
         #   Restrict results to books with this language code.
         # @param [String] library_restrict
         #   Restrict search to this user's library.
+        # @param [String] max_allowed_maturity_rating
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -2016,7 +2019,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_volumes(q, download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_volumes(q, download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_allowed_maturity_rating: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'volumes', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
@@ -2024,6 +2027,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['langRestrict'] = lang_restrict unless lang_restrict.nil?
           command.query['libraryRestrict'] = library_restrict unless library_restrict.nil?
+          command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['partner'] = partner unless partner.nil?

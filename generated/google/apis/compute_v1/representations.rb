@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectionDraining
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -318,6 +324,36 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Http2HealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpsHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -922,6 +958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Scheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -996,6 +1038,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1139,6 +1187,36 @@ module Google
       end
       
       class TargetReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetBackendServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetProxyHeaderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetSslCertificatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1505,6 +1583,8 @@ module Google
           property :capacity_scaler, as: 'capacityScaler'
           property :description, as: 'description'
           property :group, as: 'group'
+          property :max_connections, as: 'maxConnections'
+          property :max_connections_per_instance, as: 'maxConnectionsPerInstance'
           property :max_rate, as: 'maxRate'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
@@ -1516,6 +1596,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
           collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::Backend::Representation
+      
+          property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeV1::ConnectionDraining, decorator: Google::Apis::ComputeV1::ConnectionDraining::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -1560,6 +1642,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
+        end
+      end
+      
+      class ConnectionDraining
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :draining_timeout_sec, as: 'drainingTimeoutSec'
         end
       end
       
@@ -1862,6 +1951,78 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class Http2HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request_path, as: 'requestPath'
+        end
+      end
+      
+      class HttpHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request_path, as: 'requestPath'
+        end
+      end
+      
+      class HttpsHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request_path, as: 'requestPath'
+        end
+      end
+      
+      class HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_interval_sec, as: 'checkIntervalSec'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :healthy_threshold, as: 'healthyThreshold'
+          property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeV1::Http2HealthCheck, decorator: Google::Apis::ComputeV1::Http2HealthCheck::Representation
+      
+          property :http_health_check, as: 'httpHealthCheck', class: Google::Apis::ComputeV1::HttpHealthCheck, decorator: Google::Apis::ComputeV1::HttpHealthCheck::Representation
+      
+          property :https_health_check, as: 'httpsHealthCheck', class: Google::Apis::ComputeV1::HttpsHealthCheck, decorator: Google::Apis::ComputeV1::HttpsHealthCheck::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :ssl_health_check, as: 'sslHealthCheck', class: Google::Apis::ComputeV1::SslHealthCheck, decorator: Google::Apis::ComputeV1::SslHealthCheck::Representation
+      
+          property :tcp_health_check, as: 'tcpHealthCheck', class: Google::Apis::ComputeV1::TcpHealthCheck, decorator: Google::Apis::ComputeV1::TcpHealthCheck::Representation
+      
+          property :timeout_sec, as: 'timeoutSec'
+          property :type, as: 'type'
+          property :unhealthy_threshold, as: 'unhealthyThreshold'
+        end
+      end
+      
+      class HealthCheckList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::HealthCheck, decorator: Google::Apis::ComputeV1::HealthCheck::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       
@@ -3015,6 +3176,17 @@ module Google
         end
       end
       
+      class SslHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request, as: 'request'
+          property :response, as: 'response'
+        end
+      end
+      
       class Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3167,6 +3339,17 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class TcpHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request, as: 'request'
+          property :response, as: 'response'
         end
       end
       
@@ -3418,6 +3601,54 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target, as: 'target'
+        end
+      end
+      
+      class TargetSslProxiesSetBackendServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class TargetSslProxiesSetProxyHeaderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proxy_header, as: 'proxyHeader'
+        end
+      end
+      
+      class TargetSslProxiesSetSslCertificatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssl_certificates, as: 'sslCertificates'
+        end
+      end
+      
+      class TargetSslProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :proxy_header, as: 'proxyHeader'
+          property :self_link, as: 'selfLink'
+          property :service, as: 'service'
+          collection :ssl_certificates, as: 'sslCertificates'
+        end
+      end
+      
+      class TargetSslProxyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetSslProxy, decorator: Google::Apis::ComputeV1::TargetSslProxy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       

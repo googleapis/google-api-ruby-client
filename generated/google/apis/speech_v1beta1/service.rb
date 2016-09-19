@@ -28,10 +28,10 @@ module Google
       #    require 'google/apis/speech_v1beta1'
       #
       #    Speech = Google::Apis::SpeechV1beta1 # Alias the module
-      #    service = Speech::CloudSpeechAPIService.new
+      #    service = Speech::SpeechService.new
       #
       # @see https://cloud.google.com/speech/
-      class CloudSpeechAPIService < Google::Apis::Core::BaseService
+      class SpeechService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

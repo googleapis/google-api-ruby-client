@@ -287,17 +287,40 @@ module Google
       class BuildTrigger
         include Google::Apis::Core::Hashable
       
-        # Path, from the source root, to a file whose contents is used for the
-        # template.
-        # Corresponds to the JSON property `filename`
+        # Unique identifier of the trigger.
+        # @OutputOnly
+        # Corresponds to the JSON property `id`
         # @return [String]
-        attr_accessor :filename
+        attr_accessor :id
+      
+        # Human-readable description of this trigger.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # RepoSource describes the location of the source in a Google Cloud Source
         # Repository.
         # Corresponds to the JSON property `triggerTemplate`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
         attr_accessor :trigger_template
+      
+        # If true, the trigger will never result in a build.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Time when the trigger was created.
+        # @OutputOnly
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Path, from the source root, to a file whose contents is used for the
+        # template.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
       
         # A build resource in the Container Builder API.
         # At a high level, a Build describes where to find source code, how to build
@@ -307,29 +330,19 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build
       
-        # Time when the trigger was created.
-        # @OutputOnly
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Unique identifier of the trigger.
-        # @OutputOnly
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @filename = args[:filename] if args.key?(:filename)
-          @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
-          @build = args[:build] if args.key?(:build)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @id = args[:id] if args.key?(:id)
+          @description = args[:description] if args.key?(:description)
+          @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @filename = args[:filename] if args.key?(:filename)
+          @build = args[:build] if args.key?(:build)
         end
       end
       
@@ -785,7 +798,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_provenance_hash
       
-        # Options for a verifiable build with details uploaded to the Analysis API.
+        # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
         attr_accessor :requested_verify_option

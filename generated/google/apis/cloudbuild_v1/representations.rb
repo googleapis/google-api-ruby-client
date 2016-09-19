@@ -196,13 +196,15 @@ module Google
       class BuildTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :filename, as: 'filename'
+          property :id, as: 'id'
+          property :description, as: 'description'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
+          property :disabled, as: 'disabled'
+          property :create_time, as: 'createTime'
+          property :filename, as: 'filename'
           property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
-          property :create_time, as: 'createTime'
-          property :id, as: 'id'
         end
       end
       

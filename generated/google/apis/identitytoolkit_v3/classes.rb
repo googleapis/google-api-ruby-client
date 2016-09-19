@@ -306,6 +306,11 @@ module Google
         # @return [String]
         attr_accessor :continue_uri
       
+        # The query parameter that client can customize by themselves in auth url.
+        # Corresponds to the JSON property `customParameter`
+        # @return [Array<Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter>]
+        attr_accessor :custom_parameter
+      
         # The hosted domain to restrict sign-in to accounts at that domain for Google
         # Apps hosted accounts.
         # Corresponds to the JSON property `hostedDomain`
@@ -361,6 +366,7 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @context = args[:context] if args.key?(:context)
           @continue_uri = args[:continue_uri] if args.key?(:continue_uri)
+          @custom_parameter = args[:custom_parameter] if args.key?(:custom_parameter)
           @hosted_domain = args[:hosted_domain] if args.key?(:hosted_domain)
           @identifier = args[:identifier] if args.key?(:identifier)
           @oauth_consumer_key = args[:oauth_consumer_key] if args.key?(:oauth_consumer_key)
@@ -369,6 +375,31 @@ module Google
           @ota_app = args[:ota_app] if args.key?(:ota_app)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
           @session_id = args[:session_id] if args.key?(:session_id)
+        end
+        
+        # 
+        class CustomParameter
+          include Google::Apis::Core::Hashable
+        
+          # The key of the query parameter.
+          # Corresponds to the JSON property `key`
+          # @return [String]
+          attr_accessor :key
+        
+          # The value of the query parameter.
+          # Corresponds to the JSON property `value`
+          # @return [String]
+          attr_accessor :value
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @key = args[:key] if args.key?(:key)
+            @value = args[:value] if args.key?(:value)
+          end
         end
       end
       
@@ -968,6 +999,13 @@ module Google
         # @return [String]
         attr_accessor :salt_separator
       
+        # If true, backend will do sanity check(including duplicate email and federated
+        # id) when uploading account.
+        # Corresponds to the JSON property `sanityCheck`
+        # @return [Boolean]
+        attr_accessor :sanity_check
+        alias_method :sanity_check?, :sanity_check
+      
         # The key for to hash the password.
         # Corresponds to the JSON property `signerKey`
         # @return [String]
@@ -989,6 +1027,7 @@ module Google
           @memory_cost = args[:memory_cost] if args.key?(:memory_cost)
           @rounds = args[:rounds] if args.key?(:rounds)
           @salt_separator = args[:salt_separator] if args.key?(:salt_separator)
+          @sanity_check = args[:sanity_check] if args.key?(:sanity_check)
           @signer_key = args[:signer_key] if args.key?(:signer_key)
           @users = args[:users] if args.key?(:users)
         end
@@ -1297,7 +1336,8 @@ module Google
       class ResetPasswordResponse
         include Google::Apis::Core::Hashable
       
-        # The user's email.
+        # The user's email. If the out-of-band code is for email recovery, the user's
+        # original email.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1307,6 +1347,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # If the out-of-band code is for email recovery, the user's new email.
+        # Corresponds to the JSON property `newEmail`
+        # @return [String]
+        attr_accessor :new_email
+      
+        # The request type.
+        # Corresponds to the JSON property `requestType`
+        # @return [String]
+        attr_accessor :request_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1315,6 +1365,8 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @kind = args[:kind] if args.key?(:kind)
+          @new_email = args[:new_email] if args.key?(:new_email)
+          @request_type = args[:request_type] if args.key?(:request_type)
         end
       end
       
@@ -1552,6 +1604,12 @@ module Google
         # @return [String]
         attr_accessor :created_at
       
+        # Whether the user is authenticated by the developer.
+        # Corresponds to the JSON property `customAuth`
+        # @return [Boolean]
+        attr_accessor :custom_auth
+        alias_method :custom_auth?, :custom_auth
+      
         # Whether the user is disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
@@ -1609,7 +1667,7 @@ module Google
         # @return [String]
         attr_accessor :salt
       
-        # User's screen name at Twitter.
+        # User's screen name at Twitter or login name at Github.
         # Corresponds to the JSON property `screenName`
         # @return [String]
         attr_accessor :screen_name
@@ -1631,6 +1689,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created_at = args[:created_at] if args.key?(:created_at)
+          @custom_auth = args[:custom_auth] if args.key?(:custom_auth)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
@@ -1687,7 +1746,7 @@ module Google
           # @return [String]
           attr_accessor :raw_user_info
         
-          # User's screen name at Twitter.
+          # User's screen name at Twitter or login name at Github.
           # Corresponds to the JSON property `screenName`
           # @return [String]
           attr_accessor :screen_name
@@ -1906,7 +1965,7 @@ module Google
         # @return [String]
         attr_accessor :refresh_token
       
-        # The screen_name of a Twitter user.
+        # The screen_name of a Twitter user or the login name at Github.
         # Corresponds to the JSON property `screenName`
         # @return [String]
         attr_accessor :screen_name

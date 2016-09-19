@@ -179,10 +179,9 @@ module Google
         #   Whether to list all datasets, including hidden ones
         # @param [String] filter
         #   An expression for filtering the results of the request by label. The syntax is
-        #   "labels.[:]". Multiple filters can be ANDed together by connecting with a
-        #   space. Example: "labels.department:receiving labels.active". See https://cloud.
-        #   google.com/bigquery/docs/labeling-datasets#filtering_datasets_using_labels for
-        #   details.
+        #   "labels.<name>[:<value>]". Multiple filters can be ANDed together by
+        #   connecting with a space. Example: "labels.department:receiving labels.active".
+        #   See Filtering datasets using labels for details.
         # @param [Fixnum] max_results
         #   The maximum number of results to return
         # @param [String] page_token
@@ -339,7 +338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'project/{projectId}/jobs/{jobId}/cancel', options)
+          command =  make_simple_command(:post, 'projects/{projectId}/jobs/{jobId}/cancel', options)
           command.response_representation = Google::Apis::BigqueryV2::CancelJobResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::CancelJobResponse
           command.params['projectId'] = project_id unless project_id.nil?

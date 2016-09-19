@@ -827,7 +827,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The Google Developers Console project ID that this dataset belongs to.
+        # The Google Cloud project ID that this dataset belongs to.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1203,8 +1203,8 @@ module Google
       class ExportReadGroupSetRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Google Developers Console project ID that owns this export. The
-        # caller must have WRITE access to this project.
+        # Required. The Google Cloud project ID that owns this export. The caller must
+        # have WRITE access to this project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -2029,8 +2029,8 @@ module Google
       class StreamReadsRequest
         include Google::Apis::Core::Hashable
       
-        # The Google Developers Console project ID or number which will be billed for
-        # this access. The caller must have WRITE access to this project. Required.
+        # The Google Cloud project ID which will be billed for this access. The caller
+        # must have WRITE access to this project. Required.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -3202,8 +3202,8 @@ module Google
       class StreamVariantsRequest
         include Google::Apis::Core::Hashable
       
-        # The Google Developers Console project ID or number which will be billed for
-        # this access. The caller must have WRITE access to this project. Required.
+        # The Google Cloud project ID which will be billed for this access. The caller
+        # must have WRITE access to this project. Required.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

@@ -1808,6 +1808,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged, as: 'acknowledged'
+          property :channel_type, as: 'channelType'
           property :customer, as: 'customer', class: Google::Apis::ContentV2::OrderCustomer, decorator: Google::Apis::ContentV2::OrderCustomer::Representation
       
           property :delivery_details, as: 'deliveryDetails', class: Google::Apis::ContentV2::OrderDeliveryDetails, decorator: Google::Apis::ContentV2::OrderDeliveryDetails::Representation

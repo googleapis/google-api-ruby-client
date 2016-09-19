@@ -336,11 +336,7 @@ module Google
       
         # [Experimental] The labels associated with this dataset. You can use these to
         # organize and group your datasets. You can set this property when inserting or
-        # updating a dataset. Label keys and values can be no longer than 63 characters,
-        # can only contain letters, numeric characters, underscores and dashes.
-        # International characters are allowed. Label values are optional. Label keys
-        # must start with a letter and must be unique within a dataset. Both keys and
-        # values are additionally constrained to be <= 128 bytes in size.
+        # updating a dataset. See Labeling Datasets for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2137,7 +2133,7 @@ module Google
       
         # [Optional] The struct field values, in order of the struct type's declaration.
         # Corresponds to the JSON property `structValues`
-        # @return [Array<Google::Apis::BigqueryV2::QueryParameterValue>]
+        # @return [Hash<String,Google::Apis::BigqueryV2::QueryParameterValue>]
         attr_accessor :struct_values
       
         # [Optional] The value of this value, if a simple scalar type.

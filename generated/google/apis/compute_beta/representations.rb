@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceGroupHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -162,6 +168,24 @@ module Google
       
       class BackendServiceList
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServicesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -335,6 +359,12 @@ module Google
       end
       
       class GlobalSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1751,6 +1781,7 @@ module Google
           collection :health_checks, as: 'healthChecks'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :port, as: 'port'
           property :port_name, as: 'portName'
@@ -1759,6 +1790,18 @@ module Google
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
+        end
+      end
+      
+      class BackendServiceAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::BackendServicesScopedList, decorator: Google::Apis::ComputeBeta::BackendServicesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       
@@ -1780,6 +1823,34 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class BackendServicesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backend_services, as: 'backendServices', class: Google::Apis::ComputeBeta::BackendService, decorator: Google::Apis::ComputeBeta::BackendService::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::BackendServicesScopedList::Warning, decorator: Google::Apis::ComputeBeta::BackendServicesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::BackendServicesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::BackendServicesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -2039,14 +2110,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
+          property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :port_range, as: 'portRange'
+          collection :ports, as: 'ports'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
         end
       end
@@ -2108,6 +2184,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class GuestOsFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -2281,6 +2364,8 @@ module Google
           property :description, as: 'description'
           property :disk_size_gb, as: 'diskSizeGb'
           property :family, as: 'family'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
           property :id, as: 'id'
           property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       

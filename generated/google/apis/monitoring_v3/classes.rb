@@ -285,10 +285,11 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Point>]
         attr_accessor :points
       
-        # Output only. The value type of the time series. This can be different than the
-        # value type of the metric object if this time series is an alignment or
-        # reduction of other time series. This field is ignored when writing data to a
-        # time series.
+        # The value type of the time series. This can be different than the value type
+        # of the metric object if this time series is an alignment or reduction of other
+        # time series. When writing data to a time series, this field is optional, and,
+        # when specified, must match the value type of the metric descriptor. If a
+        # metric descriptor is auto-created, its value type will match this field.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -309,10 +310,11 @@ module Google
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
       
-        # Output only. The metric kind of the time series. This can be different than
-        # the metric kind of the metric object if this time series is an alignment or
-        # reduction of other time series. This field is ignored when writing data to a
-        # time series.
+        # The metric kind of the time series. This can be different than the metric kind
+        # of the metric object if this time series is an alignment or reduction of other
+        # time series. When writing data to a time series, this field is optional, and,
+        # when specified, must match the metric kind of the metric descriptor. If a
+        # metric descriptor is auto-created, its metric kind will match this field.
         # Corresponds to the JSON property `metricKind`
         # @return [String]
         attr_accessor :metric_kind
@@ -399,12 +401,14 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
-        # Whether the metric records instantaneous values, changes to a value, etc.
+        # Whether the metric records instantaneous values, changes to a value, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
         # Corresponds to the JSON property `metricKind`
         # @return [String]
         attr_accessor :metric_kind
       
-        # Whether the measurement is an integer, a floating-point number, etc.
+        # Whether the measurement is an integer, a floating-point number, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type

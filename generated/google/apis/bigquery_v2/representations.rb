@@ -853,7 +853,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :array_values, as: 'arrayValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
       
-          collection :struct_values, as: 'structValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+          hash :struct_values, as: 'structValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
       
           property :value, as: 'value'
         end

@@ -47,7 +47,8 @@ module Google
         # @return [Hash<String,Array<String>>]
         attr_accessor :import_formats
       
-        # This is always drive#about.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#about"
+        # .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -142,7 +143,8 @@ module Google
         # @return [String]
         attr_accessor :file_id
       
-        # This is always drive#change.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # change".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -182,7 +184,8 @@ module Google
         # @return [Array<Google::Apis::DriveV3::Change>]
         attr_accessor :changes
       
-        # This is always drive#changeList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # changeList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -332,7 +335,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#comment.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # comment".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -419,7 +423,8 @@ module Google
         # @return [Array<Google::Apis::DriveV3::Comment>]
         attr_accessor :comments
       
-        # This is always drive#commentList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # commentList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -531,7 +536,7 @@ module Google
         attr_accessor :is_app_authorized
         alias_method :is_app_authorized?, :is_app_authorized
       
-        # This is always drive#file.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#file".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1083,7 +1088,8 @@ module Google
         # @return [Array<Google::Apis::DriveV3::File>]
         attr_accessor :files
       
-        # This is always drive#fileList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # fileList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1115,7 +1121,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :ids
       
-        # This is always drive#generatedIds
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # generatedIds".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1175,7 +1182,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#permission.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # permission".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1226,7 +1234,8 @@ module Google
       class PermissionList
         include Google::Apis::Core::Hashable
       
-        # This is always drive#permissionList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # permissionList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1291,7 +1300,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#reply.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#reply"
+        # .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1323,7 +1333,8 @@ module Google
       class ReplyList
         include Google::Apis::Core::Hashable
       
-        # This is always drive#replyList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # replyList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1370,7 +1381,8 @@ module Google
         attr_accessor :keep_forever
         alias_method :keep_forever?, :keep_forever
       
-        # This is always drive#revision.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # revision".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1453,7 +1465,8 @@ module Google
       class RevisionList
         include Google::Apis::Core::Hashable
       
-        # This is always drive#revisionList.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # revisionList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1478,7 +1491,8 @@ module Google
       class StartPageToken
         include Google::Apis::Core::Hashable
       
-        # This is always drive#startPageToken.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # startPageToken".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1514,7 +1528,7 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
-        # This is always drive#user.
+        # Identifies what kind of resource this is. Value: the fixed string "drive#user".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

@@ -18,7 +18,7 @@ require 'google/apis/monitoring_v3/representations.rb'
 
 module Google
   module Apis
-    # Google Monitoring API
+    # Stackdriver Monitoring API
     #
     # Manages your Stackdriver Monitoring data and configurations. Most projects
     # must be associated with a Stackdriver account, with a few exceptions as noted
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/monitoring/api/
     module MonitoringV3
       VERSION = 'V3'
-      REVISION = '20160829'
+      REVISION = '20160912'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

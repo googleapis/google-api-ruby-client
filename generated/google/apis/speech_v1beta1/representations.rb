@@ -153,6 +153,7 @@ module Google
           property :encoding, as: 'encoding'
           property :profanity_filter, as: 'profanityFilter'
           property :sample_rate, as: 'sampleRate'
+          property :audio_channels, as: 'audioChannels'
         end
       end
       

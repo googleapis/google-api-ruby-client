@@ -294,6 +294,8 @@ module Google
         #   ID of the project.
         # @param [Fixnum] page_size
         #   Number of results to return in the list.
+        # @param [String] filter
+        #   The raw filter text to constrain the results.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
         # @param [String] quota_user
@@ -313,12 +315,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_builds(project_id, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_builds(project_id, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/builds', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListBuildsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListBuildsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?

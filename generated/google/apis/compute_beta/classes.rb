@@ -996,18 +996,19 @@ module Google
       class Backend
         include Google::Apis::Core::Hashable
       
-        # Specifies the balancing mode for this backend. For global HTTP(S) load
-        # balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.
+        # Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL
+        # load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE
+        # (for HTTP(S)) and CONNECTION (for TCP/SSL).
         # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
       
-        # A multiplier applied to the group's maximum servicing capacity (either
-        # UTILIZATION or RATE). Default value is 1, which means the group will serve up
-        # to 100% of its configured CPU or RPS (depending on balancingMode). A setting
-        # of 0 means the group is completely drained, offering 0% of its available CPU
-        # or RPS. Valid range is [0.0,1.0].
+        # A multiplier applied to the group's maximum servicing capacity (based on
+        # UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group
+        # will serve up to 100% of its configured capacity (depending on balancingMode).
+        # A setting of 0 means the group is completely drained, offering 0% of its
+        # available Capacity. Valid range is [0.0,1.0].
         # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
@@ -1161,6 +1162,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # 
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -1237,6 +1243,7 @@ module Google
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
@@ -1245,6 +1252,49 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+        end
+      end
+      
+      # Contains a list of BackendServicesScopedList.
+      class BackendServiceAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A map of scoped BackendService lists.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::BackendServicesScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] A token used to continue a truncated list request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
       
@@ -1315,6 +1365,97 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class BackendServicesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # List of BackendServices contained in this scope.
+        # Corresponds to the JSON property `backendServices`
+        # @return [Array<Google::Apis::ComputeBeta::BackendService>]
+        attr_accessor :backend_services
+      
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::BackendServicesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_services = args[:backend_services] if args.key?(:backend_services)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::BackendServicesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -2408,6 +2549,13 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
+        # This field is not used for external load balancing.
+        # For internal load balancing, this field identifies the BackendService resource
+        # to receive the matched traffic.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -2431,6 +2579,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # This signifies what the ForwardingRule will be used for and can only take the
+        # following values: INTERNAL EXTERNAL The value of INTERNAL means that this will
+        # be used for Internal Network Load Balancing (TCP, UDP). The value of EXTERNAL
+        # means that this will be used for External Load Balancing (HTTP(S) LB, External
+        # TCP/UDP LB, SSL Proxy)
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -2441,6 +2598,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This field is not used for external load balancing.
+        # For internal load balancing, this field identifies the network that the load
+        # balanced IP should belong to for this Forwarding Rule. If this field is not
+        # specified, the default network will be used.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
@@ -2448,6 +2613,16 @@ module Google
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
+      
+        # This field is not used for external load balancing.
+        # When the load balancing scheme is INTERNAL, a single port or a comma separated
+        # list of ports can be configured. Only packets addressed to these ports will be
+        # forwarded to the backends configured with this forwarding rule. If the port
+        # list is not provided then all ports are allowed to pass through.
+        # You may specify a maximum of up to 5 ports.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<String>]
+        attr_accessor :ports
       
         # [Output Only] URL of the region where the regional forwarding rule resides.
         # This field is not applicable to global forwarding rules.
@@ -2459,6 +2634,16 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # This field is not used for external load balancing.
+        # For internal load balancing, this field identifies the subnetwork that the
+        # load balanced IP should belong to for this Forwarding Rule.
+        # If the network specified is in auto subnet mode, this field is optional.
+        # However, if the network is in custom subnet mode, a subnetwork must be
+        # specified.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
       
         # The URL of the target resource to receive the matched traffic. For regional
         # forwarding rules, this target must live in the same region as the forwarding
@@ -2479,14 +2664,19 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @port_range = args[:port_range] if args.key?(:port_range)
+          @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @target = args[:target] if args.key?(:target)
         end
       end
@@ -2710,6 +2900,25 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Features supported by the guest os.
+      class GuestOsFeature
+        include Google::Apis::Core::Hashable
+      
+        # The type of supported feature..
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3438,7 +3647,7 @@ module Google
         # @return [String]
         attr_accessor :archive_size_bytes
       
-        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -3466,6 +3675,11 @@ module Google
         # Corresponds to the JSON property `family`
         # @return [String]
         attr_accessor :family
+      
+        # Features of the guest os, valid for bootable images only.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
+        attr_accessor :guest_os_features
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -3574,6 +3788,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @family = args[:family] if args.key?(:family)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @image_encryption_key = args[:image_encryption_key] if args.key?(:image_encryption_key)
           @kind = args[:kind] if args.key?(:kind)
@@ -3794,7 +4009,7 @@ module Google
         attr_accessor :service_accounts
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
         # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3916,8 +4131,8 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # [Output Only] A unique identifier for this resource type. The server generates
-        # this identifier.
+        # [Output Only] A unique identifier for this instance group. The server
+        # generates this identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id

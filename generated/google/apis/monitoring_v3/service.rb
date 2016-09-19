@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MonitoringV3
-      # Google Monitoring API
+      # Stackdriver Monitoring API
       #
       # Manages your Stackdriver Monitoring data and configurations. Most projects
       #  must be associated with a Stackdriver account, with a few exceptions as noted

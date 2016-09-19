@@ -66,6 +66,12 @@ module Google
       
       class CreateAuthUriRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class CustomParameter
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -316,6 +322,8 @@ module Google
           property :client_id, as: 'clientId'
           property :context, as: 'context'
           property :continue_uri, as: 'continueUri'
+          collection :custom_parameter, as: 'customParameter', class: Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter, decorator: Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter::Representation
+      
           property :hosted_domain, as: 'hostedDomain'
           property :identifier, as: 'identifier'
           property :oauth_consumer_key, as: 'oauthConsumerKey'
@@ -324,6 +332,14 @@ module Google
           property :ota_app, as: 'otaApp'
           property :provider_id, as: 'providerId'
           property :session_id, as: 'sessionId'
+        end
+        
+        class CustomParameter
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :key, as: 'key'
+            property :value, as: 'value'
+          end
         end
       end
       
@@ -479,6 +495,7 @@ module Google
           property :memory_cost, as: 'memoryCost'
           property :rounds, as: 'rounds'
           property :salt_separator, :base64 => true, as: 'saltSeparator'
+          property :sanity_check, as: 'sanityCheck'
           property :signer_key, :base64 => true, as: 'signerKey'
           collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::Representation
       
@@ -557,6 +574,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :kind, as: 'kind'
+          property :new_email, as: 'newEmail'
+          property :request_type, as: 'requestType'
         end
       end
       
@@ -622,6 +641,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_at, as: 'createdAt'
+          property :custom_auth, as: 'customAuth'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'

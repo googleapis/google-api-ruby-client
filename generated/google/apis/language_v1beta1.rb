@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/natural-language/
     module LanguageV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20160816'
+      REVISION = '20160912'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
