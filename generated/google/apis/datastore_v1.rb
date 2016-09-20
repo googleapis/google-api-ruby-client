@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudbuild_v1/service.rb'
-require 'google/apis/cloudbuild_v1/classes.rb'
-require 'google/apis/cloudbuild_v1/representations.rb'
+require 'google/apis/datastore_v1/service.rb'
+require 'google/apis/datastore_v1/classes.rb'
+require 'google/apis/datastore_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Container Builder API
+    # Google Cloud Datastore API
     #
-    # Builds container images in the cloud.
+    # Accesses the schemaless NoSQL database to provide fully managed, robust,
+    # scalable storage for your application.
     #
-    # @see https://cloud.google.com/container-builder/docs/
-    module CloudbuildV1
+    # @see https://cloud.google.com/datastore/
+    module DatastoreV1
       VERSION = 'V1'
-      REVISION = '20160920'
+      REVISION = '20160823'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your Google Cloud Datastore data
+      AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
     end
   end
 end

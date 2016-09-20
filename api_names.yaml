@@ -623,6 +623,10 @@
 "/datastore:v1beta2/AllocateIdsResponse": allocate_ids_response
 "/datastore:v1beta2/BeginTransactionRequest": begin_transaction_request
 "/datastore:v1beta2/BeginTransactionResponse": begin_transaction_response
+"/datastore:v1/AllocateIdsRequest": allocate_ids_request
+"/datastore:v1/AllocateIdsResponse": allocate_ids_response
+"/datastore:v1/BeginTransactionRequest": begin_transaction_request
+"/datastore:v1/BeginTransactionResponse": begin_transaction_response
 "/deploymentmanager:v2/DeploymentsListResponse": list_deployments_response
 "/deploymentmanager:v2/ManifestsListResponse": list_manifests_response
 "/deploymentmanager:v2/OperationsListResponse": list_operations_response

@@ -1,3 +1,7 @@
+# 0.9.15
+* Add datastore v1
+* Regenerate APIs
+
 # 0.9.14
 * Fix error handling with downloads, no longer fails silently
 * Prevent form-encoding query parameters for APIs that don't expect it
