@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreativeDealIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class DealStatus
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreativesList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -697,6 +709,7 @@ module Google
             property :price, as: 'price'
             property :star_rating, as: 'starRating'
             property :store, as: 'store'
+            property :video_url, as: 'videoURL'
           end
           
           class AppIcon
@@ -753,6 +766,24 @@ module Google
               collection :details, as: 'details'
               property :reason, as: 'reason'
             end
+          end
+        end
+      end
+      
+      class CreativeDealIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deal_statuses, as: 'dealStatuses', class: Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::DealStatus, decorator: Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::DealStatus::Representation
+      
+          property :kind, as: 'kind'
+        end
+        
+        class DealStatus
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :arc_status, as: 'arcStatus'
+            property :deal_id, as: 'dealId'
+            property :web_property_id, as: 'webPropertyId'
           end
         end
       end
@@ -991,6 +1022,7 @@ module Google
           property :flight_end_time_ms, as: 'flightEndTimeMs'
           property :flight_start_time_ms, as: 'flightStartTimeMs'
           property :inventory_description, as: 'inventoryDescription'
+          property :is_rfp_template, as: 'isRfpTemplate'
           property :kind, as: 'kind'
           property :last_update_time_ms, as: 'lastUpdateTimeMs'
           property :name, as: 'name'
@@ -1233,6 +1265,7 @@ module Google
       
           property :buyer_private_data, as: 'buyerPrivateData', class: Google::Apis::AdexchangebuyerV1_4::PrivateData, decorator: Google::Apis::AdexchangebuyerV1_4::PrivateData::Representation
       
+          collection :dbm_advertiser_ids, as: 'dbmAdvertiserIds'
           property :has_buyer_signed_off, as: 'hasBuyerSignedOff'
           property :has_seller_signed_off, as: 'hasSellerSignedOff'
           property :inventory_source, as: 'inventorySource'

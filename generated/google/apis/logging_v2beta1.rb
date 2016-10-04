@@ -18,14 +18,14 @@ require 'google/apis/logging_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Logging API
+    # Stackdriver Logging API
     #
-    # Writes log entries and manages your logs, log sinks, and logs-based metrics.
+    # Writes log entries and manages your Stackdriver Logging configuration.
     #
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2beta1
       VERSION = 'V2beta1'
-      REVISION = '20160322'
+      REVISION = '20160926'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
@@ -33,14 +33,14 @@ module Google
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
 
-      # Administrate log data for your projects
-      AUTH_LOGGING_ADMIN = 'https://www.googleapis.com/auth/logging.admin'
-
       # View log data for your projects
       AUTH_LOGGING_READ = 'https://www.googleapis.com/auth/logging.read'
 
       # Submit log data for your projects
       AUTH_LOGGING_WRITE = 'https://www.googleapis.com/auth/logging.write'
+
+      # Administrate log data for your projects
+      AUTH_LOGGING_ADMIN = 'https://www.googleapis.com/auth/logging.admin'
     end
   end
 end

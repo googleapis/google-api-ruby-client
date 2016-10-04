@@ -52,6 +52,8 @@ module Google
         # or update the Project. Several APIs are activated automatically for the
         # Project, including Google Cloud Storage.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::Project] project_object
+        # @param [Boolean] use_legacy_stack
+        #   A safety hatch to opt out of the new reliable project creation process.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -69,12 +71,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project(project_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project(project_object = nil, use_legacy_stack: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/projects', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1beta1::Project
+          command.query['useLegacyStack'] = use_legacy_stack unless use_legacy_stack.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -310,9 +313,8 @@ module Google
         # denied if the policy or the resource does not exist.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `getIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -355,11 +357,10 @@ module Google
         # accept the invitation. + Invitations to grant the owner role cannot be sent
         # using `setIamPolicy()`; they must be sent only using the Cloud Platform
         # Console. + Membership changes that leave the project without any owners that
-        # have accepted the Terms of Service (ToS) will be rejected. + Members cannot be
-        # added to more than one role in the same policy. + There must be at least one
-        # owner who has accepted the Terms of Service (ToS) agreement in the policy.
-        # Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the
-        # policy will fail. This restriction also applies to legacy projects that no
+        # have accepted the Terms of Service (ToS) will be rejected. + There must be at
+        # least one owner who has accepted the Terms of Service (ToS) agreement in the
+        # policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from
+        # the policy will fail. This restriction also applies to legacy projects that no
         # longer have owners who have accepted the ToS. Edits to IAM policies will be
         # rejected until the lack of a ToS-accepting owner is rectified. + Calling this
         # method requires enabling the App Engine Admin API. Note: Removing service
@@ -368,9 +369,8 @@ module Google
         # used before removing or updating its roles.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `setIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -404,9 +404,8 @@ module Google
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
-        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
-        #   zone*/disks/*disk*`. The format for the path specified in this value is
-        #   resource specific and is specified in the `testIamPermissions` documentation.
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -485,8 +484,7 @@ module Google
         
         # Fetches an Organization resource identified by the specified resource name.
         # @param [String] name
-        #   The resource name of the Organization to fetch. Its format is "organizations/[
-        #   organization_id]". For example, "organizations/1234".
+        #   The resource name of the Organization to fetch, e.g. "organizations/1234".
         # @param [String] organization_id
         #   The id of the Organization resource to fetch. This field is deprecated and
         #   will be removed in v1. Use name instead.
@@ -555,13 +553,11 @@ module Google
         
         # Sets the access control policy on an Organization resource. Replaces any
         # existing policy. The `resource` field should be the organization's resource
-        # name, e.g. "organizations/123". For backward compatibility, the resource
-        # provided may also be the organization_id. This will not be supported in v1.
+        # name, e.g. "organizations/123".
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `setIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -594,14 +590,11 @@ module Google
         
         # Gets the access control policy for an Organization resource. May be empty if
         # no such policy or resource exists. The `resource` field should be the
-        # organization's resource name, e.g. "organizations/123". For backward
-        # compatibility, the resource provided may also be the organization_id. This
-        # will not be supported in v1.
+        # organization's resource name, e.g. "organizations/123".
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `getIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -634,13 +627,11 @@ module Google
         
         # Returns permissions that a caller has on the specified Organization. The `
         # resource` field should be the organization's resource name, e.g. "
-        # organizations/123". For backward compatibility, the resource provided may also
-        # be the organization_id. This will not be supported in v1.
+        # organizations/123".
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
-        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
-        #   zone*/disks/*disk*`. The format for the path specified in this value is
-        #   resource specific and is specified in the `testIamPermissions` documentation.
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

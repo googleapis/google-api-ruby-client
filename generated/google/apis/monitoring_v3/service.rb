@@ -49,7 +49,7 @@ module Google
         end
         
         # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
-        # caution">This method is only for use by the Google Monitoring Agent. Use
+        # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
         # projects.timeSeries.create instead.</aside>
         # @param [String] name
         #   The project in which to create the time series. The format is &quot;projects/

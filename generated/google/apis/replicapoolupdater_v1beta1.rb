@@ -20,12 +20,14 @@ module Google
   module Apis
     # Google Compute Engine Instance Group Updater API
     #
-    # Updates groups of Compute Engine instances.
+    # [Deprecated. Please use compute.instanceGroupManagers.update method.
+    # replicapoolupdater API will be disabled after December 30th, 2016] Updates
+    # groups of Compute Engine instances.
     #
     # @see https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
     module ReplicapoolupdaterV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20160229'
+      REVISION = '20161003'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -88,42 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Rule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +101,42 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryGrantableRolesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryGrantableRolesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyDelta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindingDelta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -192,7 +192,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :private_key_type, as: 'privateKeyType'
+          property :key_algorithm, as: 'keyAlgorithm'
           property :private_key_data, :base64 => true, as: 'privateKeyData'
+          property :public_key_data, :base64 => true, as: 'publicKeyData'
           property :valid_after_time, as: 'validAfterTime'
           property :valid_before_time, as: 'validBeforeTime'
         end
@@ -202,6 +204,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_key_type, as: 'privateKeyType'
+          property :key_algorithm, as: 'keyAlgorithm'
         end
       end
       
@@ -226,8 +229,6 @@ module Google
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::IamV1::Binding, decorator: Google::Apis::IamV1::Binding::Representation
       
-          collection :rules, as: 'rules', class: Google::Apis::IamV1::Rule, decorator: Google::Apis::IamV1::Rule::Representation
-      
           property :etag, :base64 => true, as: 'etag'
         end
       end
@@ -237,65 +238,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :role, as: 'role'
           collection :members, as: 'members'
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          collection :permissions, as: 'permissions'
-          property :action, as: 'action'
-          collection :in, as: 'in'
-          collection :not_in, as: 'notIn'
-          collection :conditions, as: 'conditions', class: Google::Apis::IamV1::Condition, decorator: Google::Apis::IamV1::Condition::Representation
-      
-          collection :log_config, as: 'logConfig', class: Google::Apis::IamV1::LogConfig, decorator: Google::Apis::IamV1::LogConfig::Representation
-      
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :sys, as: 'sys'
-          property :svc, as: 'svc'
-          property :op, as: 'op'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :counter, as: 'counter', class: Google::Apis::IamV1::CounterOptions, decorator: Google::Apis::IamV1::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::IamV1::DataAccessOptions, decorator: Google::Apis::IamV1::DataAccessOptions::Representation
-      
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::IamV1::CloudAuditOptions, decorator: Google::Apis::IamV1::CloudAuditOptions::Representation
-      
-        end
-      end
-      
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric, as: 'metric'
-          property :field, as: 'field'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -318,6 +260,55 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class QueryGrantableRolesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class QueryGrantableRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :roles, as: 'roles', class: Google::Apis::IamV1::Role, decorator: Google::Apis::IamV1::Role::Representation
+      
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :title, as: 'title'
+          property :description, as: 'description'
+        end
+      end
+      
+      class AuditData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_delta, as: 'policyDelta', class: Google::Apis::IamV1::PolicyDelta, decorator: Google::Apis::IamV1::PolicyDelta::Representation
+      
+        end
+      end
+      
+      class PolicyDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :binding_deltas, as: 'bindingDeltas', class: Google::Apis::IamV1::BindingDelta, decorator: Google::Apis::IamV1::BindingDelta::Representation
+      
+        end
+      end
+      
+      class BindingDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :role, as: 'role'
+          property :member, as: 'member'
         end
       end
     end

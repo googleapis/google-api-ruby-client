@@ -1060,8 +1060,8 @@ module Google
         # service account authenticated for the request. The notification set may be
         # empty if no notification are pending.
         # A notification set returned needs to be acknowledged within 20 seconds by
-        # calling Enterprises.AcknowledgeNotificationSet, unless the notification set is
-        # empty.
+        # calling Enterprises​.AcknowledgeNotificationSet, unless the notification set
+        # is empty.
         # Notifications that are not acknowledged within the 20 seconds will eventually
         # be included again in the response to another PullNotificationSet request, and
         # those that are never acknowledged will ultimately be deleted according to the
@@ -1069,11 +1069,16 @@ module Google
         # Multiple requests might be performed concurrently to retrieve notifications,
         # in which case the pending notifications (if any) will be split among each
         # caller, if any are pending.
+        # If no notifications are present, an empty notification list is returned.
+        # Subsequent requests may return more notifications once they become available.
         # @param [String] request_mode
-        #   The request mode for pulling notifications. If omitted, defaults to
-        #   WAIT_FOR_NOTIFCATIONS.
-        #   If this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually timeout,
-        #   in which case it should be retried.
+        #   The request mode for pulling notifications.
+        #   Specifying waitForNotifications will cause the request to block and wait until
+        #   one or more notifications are present, or return an empty notification list if
+        #   no notifications are present after some time.
+        #   Speciying returnImmediately will cause the request to immediately return the
+        #   pending notifications, or an empty list if no notifications are present.
+        #   If omitted, defaults to waitForNotifications.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3445,6 +3450,9 @@ module Google
         # Creates a new EMM-managed user.
         # The Users resource passed in the body of the request should include an
         # accountIdentifier and an accountType.
+        # If a corresponding user already exists with the same account identifier, the
+        # user will be updated with the resource. In this case only the displayName
+        # field can be changed.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::User] user_object
