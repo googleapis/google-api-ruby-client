@@ -40,7 +40,8 @@ API_IDS=(adexchangebuyer:v1.4 \
 	content:v2 \
 	coordinate:v1 \
 	customsearch:v1 \
-	dataproc:v1 \
+	dataflow:v1b3 \
+  dataproc:v1 \
 	datastore:v1 \
 	deploymentmanager:v2 \
 	dfareporting:v2.6 \
