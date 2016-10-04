@@ -25120,6 +25120,12 @@
 "/pubsub:v1/pubsub.projects.subscriptions.pull/subscription": subscription
 "/pubsub:v1/pubsub.projects.subscriptions.modifyPushConfig": modify_subscription_push_config
 "/pubsub:v1/pubsub.projects.subscriptions.modifyPushConfig/subscription": subscription
+"/pubsub:v1/pubsub.projects.snapshots.setIamPolicy": set_snapshot_iam_policy
+"/pubsub:v1/pubsub.projects.snapshots.setIamPolicy/resource": resource
+"/pubsub:v1/pubsub.projects.snapshots.getIamPolicy": get_project_snapshot_iam_policy
+"/pubsub:v1/pubsub.projects.snapshots.getIamPolicy/resource": resource
+"/pubsub:v1/pubsub.projects.snapshots.testIamPermissions": test_snapshot_iam_permissions
+"/pubsub:v1/pubsub.projects.snapshots.testIamPermissions/resource": resource
 "/pubsub:v1/SetIamPolicyRequest": set_iam_policy_request
 "/pubsub:v1/SetIamPolicyRequest/policy": policy
 "/pubsub:v1/Policy": policy

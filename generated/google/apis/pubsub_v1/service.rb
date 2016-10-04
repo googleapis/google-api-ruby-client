@@ -50,9 +50,8 @@ module Google
         # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `setIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -83,13 +82,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a `resource`. Returns an empty policy if
-        # the resource exists and does not have a policy set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `getIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,9 +118,8 @@ module Google
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
-        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
-        #   zone*/disks/*disk*`. The format for the path specified in this value is
-        #   resource specific and is specified in the `testIamPermissions` documentation.
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
         # @param [Google::Apis::PubsubV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -369,9 +366,8 @@ module Google
         # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `setIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -402,13 +398,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a `resource`. Returns an empty policy if
-        # the resource exists and does not have a policy set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `getIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,9 +434,8 @@ module Google
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
-        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
-        #   zone*/disks/*disk*`. The format for the path specified in this value is
-        #   resource specific and is specified in the `testIamPermissions` documentation.
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
         # @param [Google::Apis::PubsubV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -475,7 +469,8 @@ module Google
         # Creates a subscription to a given topic. If the subscription already exists,
         # returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `
         # NOT_FOUND`. If the name is not provided in the request, the server will assign
-        # a random name for this subscription on the same project as the topic.
+        # a random name for this subscription on the same project as the topic. Note
+        # that for REST API requests, you must specify a name.
         # @param [String] name
         #   The name of the subscription. It must have the format `"projects/`project`/
         #   subscriptions/`subscription`"`. ``subscription`` must start with a letter, and
@@ -581,10 +576,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing subscription. All pending messages in the subscription are
-        # immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`.
-        # After a subscription is deleted, a new one may be created with the same name,
-        # but the new one has no association with the old subscription, or its topic
+        # Deletes an existing subscription. All messages retained in the subscription
+        # are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`
+        # . After a subscription is deleted, a new one may be created with the same name,
+        # but the new one has no association with the old subscription or its topic
         # unless the same topic is specified.
         # @param [String] subscription
         #   The subscription to delete.
@@ -618,6 +613,8 @@ module Google
         # Modifies the ack deadline for a specific message. This method is useful to
         # indicate that more time is needed to process a message by the subscriber, or
         # to make the message available for redelivery if the processing was interrupted.
+        # Note that this does not modify the subscription-level `ackDeadlineSeconds`
+        # used for subsequent messages.
         # @param [String] subscription
         #   The name of the subscription.
         # @param [Google::Apis::PubsubV1::ModifyAckDeadlineRequest] modify_ack_deadline_request_object
@@ -754,6 +751,110 @@ module Google
           command.response_representation = Google::Apis::PubsubV1::Empty::Representation
           command.response_class = Google::Apis::PubsubV1::Empty
           command.params['subscription'] = subscription unless subscription.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. `resource` is
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
+        # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_snapshot_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::PubsubV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
+          command.response_class = Google::Apis::PubsubV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. `resource` is
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_snapshot_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
+          command.response_class = Google::Apis::PubsubV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. `
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
+        # @param [Google::Apis::PubsubV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_snapshot_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::PubsubV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::PubsubV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
