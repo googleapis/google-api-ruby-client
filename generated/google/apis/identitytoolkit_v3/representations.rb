@@ -66,12 +66,6 @@ module Google
       
       class CreateAuthUriRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class CustomParameter
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -322,8 +316,7 @@ module Google
           property :client_id, as: 'clientId'
           property :context, as: 'context'
           property :continue_uri, as: 'continueUri'
-          collection :custom_parameter, as: 'customParameter', class: Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter, decorator: Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter::Representation
-      
+          hash :custom_parameter, as: 'customParameter'
           property :hosted_domain, as: 'hostedDomain'
           property :identifier, as: 'identifier'
           property :oauth_consumer_key, as: 'oauthConsumerKey'
@@ -332,14 +325,6 @@ module Google
           property :ota_app, as: 'otaApp'
           property :provider_id, as: 'providerId'
           property :session_id, as: 'sessionId'
-        end
-        
-        class CustomParameter
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
         end
       end
       

@@ -1480,6 +1480,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target, as: 'target'
           property :zone, as: 'zone'
@@ -2217,6 +2218,7 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
           property :network, as: 'network'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
@@ -2264,6 +2266,7 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'

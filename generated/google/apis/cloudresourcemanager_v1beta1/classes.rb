@@ -372,8 +372,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see IAM
-        # Overview.
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -455,8 +455,9 @@ module Google
         # @return [String]
         attr_accessor :organization_id
       
-        # A friendly string to be used to refer to the Organization in the UI. This
-        # field is required.
+        # A friendly string to be used to refer to the Organization in the UI. Assigned
+        # by the server, set to the firm name of the Google For Work customer that owns
+        # this organization. @OutputOnly
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -515,6 +516,100 @@ module Google
         # Update properties of this object
         def update!(**args)
           @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateProject. It provides insight for when significant phases of
+      # Project creation have completed.
+      class ProjectCreationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Creation time of the project creation workflow.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # True if the project can be retrieved using GetProject. No other operations on
+        # the project are guaranteed to work until the project creation is complete.
+        # Corresponds to the JSON property `gettable`
+        # @return [Boolean]
+        attr_accessor :gettable
+        alias_method :gettable?, :gettable
+      
+        # True if the project creation process is complete.
+        # Corresponds to the JSON property `ready`
+        # @return [Boolean]
+        attr_accessor :ready
+        alias_method :ready?, :ready
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gettable = args[:gettable] if args.key?(:gettable)
+          @ready = args[:ready] if args.key?(:ready)
+        end
+      end
+      
+      # Metadata describing a long running folder operation
+      class FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The resource name of the folder's parent. Only applicable when the
+        # operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        # The resource name of the folder or organization we are either creating the
+        # folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+        end
+      end
+      
+      # A classification of the Folder Operation error.
+      class FolderOperationError
+        include Google::Apis::Core::Hashable
+      
+        # The type of operation error experienced.
+        # Corresponds to the JSON property `errorMessageId`
+        # @return [String]
+        attr_accessor :error_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
         end
       end
     end

@@ -8110,7 +8110,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a autoscaler in the specified project using the data included in the
+        # Updates an autoscaler in the specified project using the data included in the
         # request. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
@@ -8199,7 +8199,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a autoscaler in the specified project using the data included in the
+        # Updates an autoscaler in the specified project using the data included in the
         # request.
         # @param [String] project
         #   Project ID for this request.
@@ -8774,7 +8774,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details for the specified managed instance group.
+        # Returns all of the details about the specified managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8985,6 +8985,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a managed instance group using the information that you specify in the
+        # request. This operation is marked as DONE when the group is updated even if
+        # the instances in the group have not yet been updated. You must separately
+        # verify the status of the individual instances with the listmanagedinstances
+        # method. This method supports patch semantics.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Schedules a group action to recreate the specified instances in the managed
         # instance group. The instances are deleted and recreated using the current
         # instance template for the managed instance group. This operation is marked as
@@ -9129,8 +9177,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the instance template to use when creating new instances in this group.
-        # Existing instances are not affected.
+        # Sets the instance template to use when creating new instances or recreating
+        # instances in this group. Existing instances are not affected.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9257,6 +9305,54 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a managed instance group using the information that you specify in the
+        # request. This operation is marked as DONE when the group is updated even if
+        # the instances in the group have not yet been updated. You must separately
+        # verify the status of the individual instances with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

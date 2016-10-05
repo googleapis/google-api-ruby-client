@@ -322,14 +322,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate
       
-        # [Optional] The number of interleaved channels in the input audio data.
-        # Valid values for LINEAR16 and FLAC are `1`-`8`.
-        # Valid values for MULAW, AMR and AMR_WB are only `1`.
-        # If `0` or omitted, defaults to one channel (mono).
-        # Corresponds to the JSON property `audioChannels`
-        # @return [Fixnum]
-        attr_accessor :audio_channels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -342,7 +334,6 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
-          @audio_channels = args[:audio_channels] if args.key?(:audio_channels)
         end
       end
       

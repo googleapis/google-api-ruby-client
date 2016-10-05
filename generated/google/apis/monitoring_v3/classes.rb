@@ -269,7 +269,8 @@ module Google
       
       # A collection of data points that describes the time-varying values of a metric.
       # A time series is identified by a combination of a fully-specified monitored
-      # resource and a fully-specified metric.
+      # resource and a fully-specified metric. This type is used for both listing and
+      # creating time series.
       class TimeSeries
         include Google::Apis::Core::Hashable
       
@@ -279,17 +280,21 @@ module Google
         # @return [Google::Apis::MonitoringV3::Metric]
         attr_accessor :metric
       
-        # The data points of this time series. The order of the points is specified when
-        # you retrieve the time series.
+        # The data points of this time series. When listing time series, the order of
+        # the points is specified by the list method.When creating a time series, this
+        # field must contain exactly one point and the point's type must be the same as
+        # the value type of the associated metric. If the associated metric's descriptor
+        # must be auto-created, then the value type of the descriptor is determined by
+        # the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
         # Corresponds to the JSON property `points`
         # @return [Array<Google::Apis::MonitoringV3::Point>]
         attr_accessor :points
       
-        # The value type of the time series. This can be different than the value type
-        # of the metric object if this time series is an alignment or reduction of other
-        # time series. When writing data to a time series, this field is optional, and,
-        # when specified, must match the value type of the metric descriptor. If a
-        # metric descriptor is auto-created, its value type will match this field.
+        # The value type of the time series. When listing time series, this value type
+        # might be different from the value type of the associated metric if this time
+        # series is an alignment or reduction of other time series.When creating a time
+        # series, this field is optional. If present, it must be the same as the type of
+        # the data in the points field.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -310,11 +315,13 @@ module Google
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
       
-        # The metric kind of the time series. This can be different than the metric kind
-        # of the metric object if this time series is an alignment or reduction of other
-        # time series. When writing data to a time series, this field is optional, and,
-        # when specified, must match the metric kind of the metric descriptor. If a
-        # metric descriptor is auto-created, its metric kind will match this field.
+        # The metric kind of the time series. When listing time series, this metric kind
+        # might be different from the metric kind of the associated metric if this time
+        # series is an alignment or reduction of other time series.When creating a time
+        # series, this field is optional. If present, it must be the same as the metric
+        # kind of the associated metric. If the associated metric's descriptor must be
+        # auto-created, then this field specifies the metric kind of the new descriptor
+        # and must be either GAUGE (the default) or CUMULATIVE.
         # Corresponds to the JSON property `metricKind`
         # @return [String]
         attr_accessor :metric_kind

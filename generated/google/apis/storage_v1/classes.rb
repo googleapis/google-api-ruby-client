@@ -1026,7 +1026,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The content generation of the object.
+        # The content generation of the object, if applied to an object.
         # Corresponds to the JSON property `generation`
         # @return [String]
         attr_accessor :generation
@@ -1042,7 +1042,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of the object.
+        # The name of the object, if applied to an object.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -1115,7 +1115,7 @@ module Google
       
         # The list of items.
         # Corresponds to the JSON property `items`
-        # @return [Array<Object>]
+        # @return [Array<Google::Apis::StorageV1::ObjectAccessControl>]
         attr_accessor :items
       
         # The kind of item this is. For lists of object access control entries, this is

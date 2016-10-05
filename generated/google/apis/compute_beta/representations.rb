@@ -3203,6 +3203,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeBeta::UsageExportLocation, decorator: Google::Apis::ComputeBeta::UsageExportLocation::Representation
       
+          property :xpn_project_status, as: 'xpnProjectStatus'
         end
       end
       

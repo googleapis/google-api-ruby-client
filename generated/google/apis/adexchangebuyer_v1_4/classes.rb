@@ -568,7 +568,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
-        # If nativeAd is set, HTMLSnippet and videoURL should not be set.
+        # If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
+        # not be set. (The videoURL inside nativeAd can be set.)
         # Corresponds to the JSON property `nativeAd`
         # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd]
         attr_accessor :native_ad
@@ -618,7 +619,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
-        # The url to fetch a video ad. If set, HTMLSnippet should not be set.
+        # The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not
+        # be set. Note, this is diffrent from resource.native_ad.video_url above.
         # Corresponds to the JSON property `videoURL`
         # @return [String]
         attr_accessor :video_url
@@ -789,7 +791,8 @@ module Google
           end
         end
         
-        # If nativeAd is set, HTMLSnippet and videoURL should not be set.
+        # If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
+        # not be set. (The videoURL inside nativeAd can be set.)
         class NativeAd
           include Google::Apis::Core::Hashable
         
@@ -853,6 +856,11 @@ module Google
           # @return [String]
           attr_accessor :store
         
+          # 
+          # Corresponds to the JSON property `videoURL`
+          # @return [String]
+          attr_accessor :video_url
+        
           def initialize(**args)
              update!(**args)
           end
@@ -871,6 +879,7 @@ module Google
             @price = args[:price] if args.key?(:price)
             @star_rating = args[:star_rating] if args.key?(:star_rating)
             @store = args[:store] if args.key?(:store)
+            @video_url = args[:video_url] if args.key?(:video_url)
           end
           
           # The app icon, for app download ads.
@@ -1065,6 +1074,62 @@ module Google
               @details = args[:details] if args.key?(:details)
               @reason = args[:reason] if args.key?(:reason)
             end
+          end
+        end
+      end
+      
+      # The external deal ids associated with a creative.
+      class CreativeDealIds
+        include Google::Apis::Core::Hashable
+      
+        # A list of external deal ids and ARC approval status.
+        # Corresponds to the JSON property `dealStatuses`
+        # @return [Array<Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::DealStatus>]
+        attr_accessor :deal_statuses
+      
+        # Resource type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deal_statuses = args[:deal_statuses] if args.key?(:deal_statuses)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+        
+        # 
+        class DealStatus
+          include Google::Apis::Core::Hashable
+        
+          # ARC approval status.
+          # Corresponds to the JSON property `arcStatus`
+          # @return [String]
+          attr_accessor :arc_status
+        
+          # External deal ID.
+          # Corresponds to the JSON property `dealId`
+          # @return [String]
+          attr_accessor :deal_id
+        
+          # Publisher ID.
+          # Corresponds to the JSON property `webPropertyId`
+          # @return [Fixnum]
+          attr_accessor :web_property_id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @arc_status = args[:arc_status] if args.key?(:arc_status)
+            @deal_id = args[:deal_id] if args.key?(:deal_id)
+            @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
           end
         end
       end
@@ -1833,6 +1898,13 @@ module Google
         # @return [String]
         attr_accessor :inventory_description
       
+        # Indicates whether the current deal is a RFP template. RFP template is created
+        # by buyer and not based on seller created products.
+        # Corresponds to the JSON property `isRfpTemplate`
+        # @return [Boolean]
+        attr_accessor :is_rfp_template
+        alias_method :is_rfp_template?, :is_rfp_template
+      
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#marketplaceDeal".
         # Corresponds to the JSON property `kind`
@@ -1915,6 +1987,7 @@ module Google
           @flight_end_time_ms = args[:flight_end_time_ms] if args.key?(:flight_end_time_ms)
           @flight_start_time_ms = args[:flight_start_time_ms] if args.key?(:flight_start_time_ms)
           @inventory_description = args[:inventory_description] if args.key?(:inventory_description)
+          @is_rfp_template = args[:is_rfp_template] if args.key?(:is_rfp_template)
           @kind = args[:kind] if args.key?(:kind)
           @last_update_time_ms = args[:last_update_time_ms] if args.key?(:last_update_time_ms)
           @name = args[:name] if args.key?(:name)
@@ -2848,6 +2921,11 @@ module Google
         # @return [Google::Apis::AdexchangebuyerV1_4::PrivateData]
         attr_accessor :buyer_private_data
       
+        # IDs of DBM advertisers permission to this proposal.
+        # Corresponds to the JSON property `dbmAdvertiserIds`
+        # @return [Array<String>]
+        attr_accessor :dbm_advertiser_ids
+      
         # When an proposal is in an accepted state, indicates whether the buyer has
         # signed off. Once both sides have signed off on a deal, the proposal can be
         # finalized by the seller. (seller-readonly)
@@ -2959,6 +3037,7 @@ module Google
           @buyer = args[:buyer] if args.key?(:buyer)
           @buyer_contacts = args[:buyer_contacts] if args.key?(:buyer_contacts)
           @buyer_private_data = args[:buyer_private_data] if args.key?(:buyer_private_data)
+          @dbm_advertiser_ids = args[:dbm_advertiser_ids] if args.key?(:dbm_advertiser_ids)
           @has_buyer_signed_off = args[:has_buyer_signed_off] if args.key?(:has_buyer_signed_off)
           @has_seller_signed_off = args[:has_seller_signed_off] if args.key?(:has_seller_signed_off)
           @inventory_source = args[:inventory_source] if args.key?(:inventory_source)

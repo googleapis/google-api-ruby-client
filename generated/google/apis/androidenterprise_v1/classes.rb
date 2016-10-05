@@ -113,7 +113,9 @@ module Google
         attr_accessor :entry
       
         # For choice or multiselect restrictions, the list of possible entries' machine-
-        # readable values.
+        # readable values. These values should be used in the configuration, either as a
+        # single string value for a choice restriction or in a stringArray for a
+        # multiselect restriction.
         # Corresponds to the JSON property `entryValue`
         # @return [Array<String>]
         attr_accessor :entry_value
@@ -124,7 +126,9 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # For bundle or bundleArray restrictions, the list of nested restrictions.
+        # For bundle or bundleArray restrictions, the list of nested restrictions. A
+        # bundle restriction is always nested within a bundleArray restriction, and a
+        # bundleArray restriction is at most two levels deep.
         # Corresponds to the JSON property `nestedRestriction`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
         attr_accessor :nested_restriction

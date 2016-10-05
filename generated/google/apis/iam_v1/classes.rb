@@ -31,8 +31,8 @@ module Google
         # @return [Array<Google::Apis::IamV1::ServiceAccount>]
         attr_accessor :accounts
       
-        # To retrieve the next page of results, set [ListServiceAccountsRequest.
-        # page_token] to this value.
+        # To retrieve the next page of results, set ListServiceAccountsRequest.
+        # page_token to this value.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -49,22 +49,25 @@ module Google
       end
       
       # A service account in the Identity and Access Management API. To create a
-      # service account, you specify the project_id and account_id for the account.
-      # The account_id is unique within the project, and used to generate the service
-      # account email address and a stable unique id. All other methods can identify
-      # accounts using the format "projects/`project`/serviceAccounts/`account`".
-      # Using '-' as a wildcard for the project, will infer the project from the
-      # account. The account value can be the email address or the unique_id of the
-      # service account.
+      # service account, specify the `project_id` and the `account_id` for the account.
+      # The `account_id` is unique within the project, and is used to generate the
+      # service account email address and a stable `unique_id`. If the account already
+      # exists, the account's resource name is returned in util::Status's ResourceInfo.
+      # resource_name in the format of projects/`project`/serviceAccounts/`email`. The
+      # caller can use the name in other methods to access the account. All other
+      # methods can identify the service account using the format `projects/`project`/
+      # serviceAccounts/`account``. Using `-` as a wildcard for the project will infer
+      # the project from the account. The `account` value can be the `email` address
+      # or the `unique_id` of the service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # The resource name of the service account in the format "projects/`project`/
-        # serviceAccounts/`account`". In requests using '-' as a wildcard for the
-        # project, will infer the project from the account and the account value can be
-        # the email address or the unique_id of the service account. In responses the
-        # resource name will always be in the format "projects/`project`/serviceAccounts/
-        # `email`".
+        # The resource name of the service account in the following format: `projects/`
+        # project`/serviceAccounts/`account``. Requests using `-` as a wildcard for the
+        # project will infer the project from the `account` and the `account` value can
+        # be the `email` address or the `unique_id` of the service account. In responses
+        # the resource name will always be in the format `projects/`project`/
+        # serviceAccounts/`email``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -74,12 +77,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # @OutputOnly unique and stable id of the service account.
+        # @OutputOnly The unique and stable id of the service account.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
       
-        # @OutputOnly Email address of the service account.
+        # @OutputOnly The email address of the service account.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -123,21 +126,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The account id that is used to generate the service account email
-        # address and a stable unique id. It is unique within a project, must be 1-63
-        # characters long, and match the regular expression [a-z]([-a-z0-9]*[a-z0-9]) to
-        # comply with RFC1035.
+        # address and a stable unique id. It is unique within a project, must be 6-30
+        # characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])`
+        # to comply with RFC1035.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
       
         # A service account in the Identity and Access Management API. To create a
-        # service account, you specify the project_id and account_id for the account.
-        # The account_id is unique within the project, and used to generate the service
-        # account email address and a stable unique id. All other methods can identify
-        # accounts using the format "projects/`project`/serviceAccounts/`account`".
-        # Using '-' as a wildcard for the project, will infer the project from the
-        # account. The account value can be the email address or the unique_id of the
-        # service account.
+        # service account, specify the `project_id` and the `account_id` for the account.
+        # The `account_id` is unique within the project, and is used to generate the
+        # service account email address and a stable `unique_id`. If the account already
+        # exists, the account's resource name is returned in util::Status's ResourceInfo.
+        # resource_name in the format of projects/`project`/serviceAccounts/`email`. The
+        # caller can use the name in other methods to access the account. All other
+        # methods can identify the service account using the format `projects/`project`/
+        # serviceAccounts/`account``. Using `-` as a wildcard for the project will infer
+        # the project from the account. The `account` value can be the `email` address
+        # or the `unique_id` of the service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -189,27 +195,46 @@ module Google
         end
       end
       
-      # Represents a service account key. A service account can have 0 or more key
-      # pairs. The private keys for these are not stored by Google. ServiceAccountKeys
-      # are immutable.
+      # Represents a service account key. A service account has two sets of key-pairs:
+      # user-managed, and system-managed. User-managed key-pairs can be created and
+      # deleted by users. Users are responsible for rotating these keys periodically
+      # to ensure security of their service accounts. Users retain the private key of
+      # these key-pairs, and Google retains ONLY the public key. System-managed key-
+      # pairs are managed automatically by Google, and rotated daily without user
+      # intervention. The private key never leaves Google's servers to maximize
+      # security. Public keys for all service accounts are also published at the
+      # OAuth2 Service Account API.
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
-        # The resource name of the service account key in the format "projects/`project`/
-        # serviceAccounts/`email`/keys/`key`".
+        # The resource name of the service account key in the following format `projects/
+        # `project`/serviceAccounts/`account`/keys/`key``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The type of the private key.
+        # The output format for the private key. Only provided in `
+        # CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `
+        # ListServiceAccountKey` responses. Google never exposes system-managed private
+        # keys, and never retains user-managed private keys.
         # Corresponds to the JSON property `privateKeyType`
         # @return [String]
         attr_accessor :private_key_type
       
-        # The key data.
+        # Specifies the algorithm (and possibly key size) for the key.
+        # Corresponds to the JSON property `keyAlgorithm`
+        # @return [String]
+        attr_accessor :key_algorithm
+      
+        # The private key data. Only provided in `CreateServiceAccountKey` responses.
         # Corresponds to the JSON property `privateKeyData`
         # @return [String]
         attr_accessor :private_key_data
+      
+        # The public key data. Only provided in `GetServiceAccountKey` responses.
+        # Corresponds to the JSON property `publicKeyData`
+        # @return [String]
+        attr_accessor :public_key_data
       
         # The key can be used after this timestamp.
         # Corresponds to the JSON property `validAfterTime`
@@ -229,7 +254,9 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
+          @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @private_key_data = args[:private_key_data] if args.key?(:private_key_data)
+          @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
           @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
           @valid_before_time = args[:valid_before_time] if args.key?(:valid_before_time)
         end
@@ -239,10 +266,17 @@ module Google
       class CreateServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
-        # The type of the key requested. GOOGLE_CREDENTIALS is the default key type.
+        # The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the default
+        # output format.
         # Corresponds to the JSON property `privateKeyType`
         # @return [String]
         attr_accessor :private_key_type
+      
+        # Which type of key and algorithm to use for the key. The default is currently a
+        # 4K RSA key. However this may change in the future.
+        # Corresponds to the JSON property `keyAlgorithm`
+        # @return [String]
+        attr_accessor :key_algorithm
       
         def initialize(**args)
            update!(**args)
@@ -251,6 +285,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
+          @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
         end
       end
       
@@ -258,7 +293,7 @@ module Google
       class SignBlobRequest
         include Google::Apis::Core::Hashable
       
-        # The bytes to sign
+        # The bytes to sign.
         # Corresponds to the JSON property `bytesToSign`
         # @return [String]
         attr_accessor :bytes_to_sign
@@ -305,7 +340,7 @@ module Google
       # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
       # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
       # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-      # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+      # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
       # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
       # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
@@ -322,11 +357,6 @@ module Google
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::IamV1::Binding>]
         attr_accessor :bindings
-      
-        # 
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::IamV1::Rule>]
-        attr_accessor :rules
       
         # `etag` is used for optimistic concurrency control as a way to help prevent
         # simultaneous updates of a policy from overwriting each other. It is strongly
@@ -348,7 +378,6 @@ module Google
         def update!(**args)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
-          @rules = args[:rules] if args.key?(:rules)
           @etag = args[:etag] if args.key?(:etag)
         end
       end
@@ -390,209 +419,6 @@ module Google
         end
       end
       
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
-        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
-        # *') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
-        # entries. The format for in and not_in entries is the same as for members in a
-        # Binding (see google/iam/v1/policy.proto).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::IamV1::Condition>]
-        attr_accessor :conditions
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::IamV1::LogConfig>]
-        attr_accessor :log_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @permissions = args[:permissions] if args.key?(:permissions)
-          @action = args[:action] if args.key?(:action)
-          @in = args[:in] if args.key?(:in)
-          @not_in = args[:not_in] if args.key?(:not_in)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @log_config = args[:log_config] if args.key?(:log_config)
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # Trusted attributes supplied by any service that owns resources and uses the
-        # IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # The object of the condition. Exactly one of these must be set.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @sys = args[:sys] if args.key?(:sys)
-          @svc = args[:svc] if args.key?(:svc)
-          @op = args[:op] if args.key?(:op)
-          @value = args[:value] if args.key?(:value)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # Specifies what kind of log the caller must write Increment a streamz counter
-      # with the specified metric and field names. Metric names should start with a '/'
-      # , generally be lowercase-only, and end in "_count". Field names should not
-      # contain an initial slash. The actual exported metric names will have "/iam/
-      # policy" prepended. Field names correspond to IAM request parameters and field
-      # values are their respective values. At present only "iam_principal",
-      # corresponding to IAMContext.principal, is supported. Examples: counter `
-      # metric: "/debug_access_count" field: "iam_principal" ` ==> increment counter /
-      # iam/policy/backend_debug_access_count `iam_principal=[value of IAMContext.
-      # principal]` At this time we do not support: * multiple field names (though
-      # this may be supported in the future) * decrementing the counter * incrementing
-      # it by anything other than 1
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Options for counters
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::IamV1::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::IamV1::DataAccessOptions]
-        attr_accessor :data_access
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::IamV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-        end
-      end
-      
-      # Options for counters
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric = args[:metric] if args.key?(:metric)
-          @field = args[:field] if args.key?(:field)
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -604,7 +430,7 @@ module Google
         # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
         # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
         # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+        # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
         # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
         # IAM developer's guide](https://cloud.google.com/iam).
         # Corresponds to the JSON property `policy`
@@ -626,8 +452,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see IAM
-        # Overview.
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -658,6 +484,155 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # The grantable role query request.
+      class QueryGrantableRolesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name to query from the list of grantable roles.
+        # The name follows the Google Cloud Platform resource format. For example, a
+        # Cloud Platform project with id `my-project` will be named `//
+        # cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # The grantable role query response.
+      class QueryGrantableRolesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching roles.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::IamV1::Role>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
+      # A role in the Identity and Access Management API.
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # The name of the role. When Role is used in CreateRole, the role name must not
+        # be set. When Role is used in output and other input such as UpdateRole, the
+        # role name is the complete path, e.g., roles/logging.viewer for curated roles
+        # and organizations/`organization-id`/roles/logging.viewer for custom roles.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A human-readable title for the role. Typically this is limited to
+        # 100 UTF-8 bytes.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Optional. A human-readable description for the role.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @title = args[:title] if args.key?(:title)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Audit log information specific to Cloud IAM. This message is serialized as an `
+      # Any` type in the `ServiceData` message of an `AuditLog` message.
+      class AuditData
+        include Google::Apis::Core::Hashable
+      
+        # The difference delta between two policies.
+        # Corresponds to the JSON property `policyDelta`
+        # @return [Google::Apis::IamV1::PolicyDelta]
+        attr_accessor :policy_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_delta = args[:policy_delta] if args.key?(:policy_delta)
+        end
+      end
+      
+      # The difference delta between two policies.
+      class PolicyDelta
+        include Google::Apis::Core::Hashable
+      
+        # The delta for Bindings between two policies.
+        # Corresponds to the JSON property `bindingDeltas`
+        # @return [Array<Google::Apis::IamV1::BindingDelta>]
+        attr_accessor :binding_deltas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
+        end
+      end
+      
+      # One delta entry for Binding. Each individual change (only one member in each
+      # entry) to a binding will be a separate entry.
+      class BindingDelta
+        include Google::Apis::Core::Hashable
+      
+        # The action that was performed on a Binding. Required
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`. Required
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # A single identity requesting access for a Cloud Platform resource. Follows the
+        # same format of Binding.members. Required
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @role = args[:role] if args.key?(:role)
+          @member = args[:member] if args.key?(:member)
         end
       end
     end

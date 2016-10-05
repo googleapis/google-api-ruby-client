@@ -12,32 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/oauth2_v2/service.rb'
-require 'google/apis/oauth2_v2/classes.rb'
-require 'google/apis/oauth2_v2/representations.rb'
+require 'google/apis/dataflow_v1b3/service.rb'
+require 'google/apis/dataflow_v1b3/classes.rb'
+require 'google/apis/dataflow_v1b3/representations.rb'
 
 module Google
   module Apis
-    # Google OAuth2 API
+    # Google Dataflow API
     #
-    # Obtains end-user authorization grants for use with other Google APIs.
+    # Develops and executes data processing patterns like ETL, batch computation,
+    # and continuous computation.
     #
-    # @see https://developers.google.com/accounts/docs/OAuth2
-    module Oauth2V2
-      VERSION = 'V2'
-      REVISION = '20160915'
+    # @see https://cloud.google.com/dataflow
+    module DataflowV1b3
+      VERSION = 'V1b3'
+      REVISION = '20160923'
 
-      # Know the list of people in your circles, your age range, and language
-      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
-
-      # Know who you are on Google
-      AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
-
-      # View your basic profile info
-      AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
     end
   end
 end

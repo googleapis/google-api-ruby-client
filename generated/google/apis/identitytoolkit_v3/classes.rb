@@ -306,9 +306,11 @@ module Google
         # @return [String]
         attr_accessor :continue_uri
       
-        # The query parameter that client can customize by themselves in auth url.
+        # The query parameter that client can customize by themselves in auth url. The
+        # following parameters are reserved for server so that they cannot be customized
+        # by clients: client_id, response_type, scope, redirect_uri, state.
         # Corresponds to the JSON property `customParameter`
-        # @return [Array<Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::CustomParameter>]
+        # @return [Hash<String,String>]
         attr_accessor :custom_parameter
       
         # The hosted domain to restrict sign-in to accounts at that domain for Google
@@ -375,31 +377,6 @@ module Google
           @ota_app = args[:ota_app] if args.key?(:ota_app)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
           @session_id = args[:session_id] if args.key?(:session_id)
-        end
-        
-        # 
-        class CustomParameter
-          include Google::Apis::Core::Hashable
-        
-          # The key of the query parameter.
-          # Corresponds to the JSON property `key`
-          # @return [String]
-          attr_accessor :key
-        
-          # The value of the query parameter.
-          # Corresponds to the JSON property `value`
-          # @return [String]
-          attr_accessor :value
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @key = args[:key] if args.key?(:key)
-            @value = args[:value] if args.key?(:value)
-          end
         end
       end
       
