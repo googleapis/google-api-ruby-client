@@ -1616,7 +1616,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The cononical id for this location. For example: `"us-east1"`.
+        # The canonical id for this location. For example: `"us-east1"`.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id

@@ -389,6 +389,11 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Connection name of the Cloud SQL instance used in connection strings.
+        # Corresponds to the JSON property `connectionName`
+        # @return [String]
+        attr_accessor :connection_name
+      
         # The current disk usage of the instance in bytes. This property has been
         # deprecated. Users should use the "cloudsql.googleapis.com/database/disk/
         # bytes_used" metric in Cloud Monitoring API instead. Please see https://groups.
@@ -530,6 +535,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @connection_name = args[:connection_name] if args.key?(:connection_name)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
           @database_version = args[:database_version] if args.key?(:database_version)
           @etag = args[:etag] if args.key?(:etag)

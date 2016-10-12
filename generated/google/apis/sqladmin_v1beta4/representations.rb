@@ -409,6 +409,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
+          property :connection_name, as: 'connectionName'
           property :current_disk_size, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
           property :etag, as: 'etag'

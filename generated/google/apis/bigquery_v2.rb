@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigqueryV2
       VERSION = 'V2'
-      REVISION = '20160922'
+      REVISION = '20161001'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

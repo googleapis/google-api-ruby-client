@@ -286,8 +286,7 @@ module Google
         # [Optional] The language of the supplied audio as a BCP-47 language tag.
         # Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
         # If omitted, defaults to "en-US". See
-        # [Language Support](https://cloud.google.com/speech/docs/best-practices#
-        # language_support)
+        # [Language Support](https://cloud.google.com/speech/docs/languages)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -412,6 +411,25 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # `SyncRecognizeResponse` is the only message returned to the client by
       # `SyncRecognize`. It contains the result as zero or more sequential
       # `SpeechRecognitionResult` messages.
@@ -431,25 +449,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       

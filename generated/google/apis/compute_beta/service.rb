@@ -1107,10 +1107,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the BackendService resource. There are several
-        # restrictions and guidelines to keep in mind when updating a backend service.
-        # Read  Restrictions and Guidelines for more information. This method supports
-        # patch semantics.
+        # Updates the specified BackendService resource with the data included in the
+        # request. There are several restrictions and guidelines to keep in mind when
+        # updating a backend service. Read  Restrictions and Guidelines for more
+        # information. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1192,9 +1192,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the BackendService resource. There are several
-        # restrictions and guidelines to keep in mind when updating a backend service.
-        # Read  Restrictions and Guidelines for more information.
+        # Updates the specified BackendService resource with the data included in the
+        # request. There are several restrictions and guidelines to keep in mind when
+        # updating a backend service. Read  Restrictions and Guidelines for more
+        # information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -8494,10 +8495,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the regional BackendService resource. There are
-        # several restrictions and guidelines to keep in mind when updating a backend
-        # service. Read  Restrictions and Guidelines for more information. This method
-        # supports patch semantics.
+        # Updates the specified regional BackendService resource with the data included
+        # in the request. There are several restrictions and guidelines to keep in mind
+        # when updating a backend service. Read  Restrictions and Guidelines for more
+        # information. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8585,9 +8586,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the entire content of the regional BackendService resource. There are
-        # several restrictions and guidelines to keep in mind when updating a backend
-        # service. Read  Restrictions and Guidelines for more information.
+        # Updates the specified regional BackendService resource with the data included
+        # in the request. There are several restrictions and guidelines to keep in mind
+        # when updating a backend service. Read  Restrictions and Guidelines for more
+        # information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10256,8 +10258,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the Router resource. This method supports patch
-        # semantics.
+        # Updates the specified Router resource with the data included in the request.
+        # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10390,7 +10392,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the Router resource.
+        # Updates the specified Router resource with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -13949,8 +13951,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the UrlMap resource. This method supports patch
-        # semantics.
+        # Updates the specified UrlMap resource with the data included in the request.
+        # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -14032,7 +14034,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the entire content of the UrlMap resource.
+        # Updates the specified UrlMap resource with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map

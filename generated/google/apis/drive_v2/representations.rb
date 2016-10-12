@@ -853,6 +853,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DriveV2::Revision, decorator: Google::Apis::DriveV2::Revision::Representation
       
           property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
         end
       end
