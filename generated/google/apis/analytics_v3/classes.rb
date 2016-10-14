@@ -2413,6 +2413,11 @@ module Google
         attr_accessor :contains_sampled_data
         alias_method :contains_sampled_data?, :contains_sampled_data
       
+        # The last refreshed time in seconds for Analytics data.
+        # Corresponds to the JSON property `dataLastRefreshed`
+        # @return [String]
+        attr_accessor :data_last_refreshed
+      
         # 
         # Corresponds to the JSON property `dataTable`
         # @return [Google::Apis::AnalyticsV3::GaData::DataTable]
@@ -2498,6 +2503,7 @@ module Google
         def update!(**args)
           @column_headers = args[:column_headers] if args.key?(:column_headers)
           @contains_sampled_data = args[:contains_sampled_data] if args.key?(:contains_sampled_data)
+          @data_last_refreshed = args[:data_last_refreshed] if args.key?(:data_last_refreshed)
           @data_table = args[:data_table] if args.key?(:data_table)
           @id = args[:id] if args.key?(:id)
           @items_per_page = args[:items_per_page] if args.key?(:items_per_page)
@@ -3212,9 +3218,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Number of days a user remains in the audience. Use any integer from 1-540. In
-        # remarketing audiences for search ads, membership duration is truncated to 180
-        # days.
+        # Number of days (in the range 1 to 540) a user remains in the audience.
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
@@ -3666,8 +3670,10 @@ module Google
       
         # The currency type associated with this view (profile), defaults to USD. The
         # supported values are:
-        # ARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR, JPY,
-        # KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND, ZAR
+        # USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD,
+        # THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR,
+        # UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD,
+        # VEF, LVL
         # Corresponds to the JSON property `currency`
         # @return [String]
         attr_accessor :currency

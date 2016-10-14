@@ -482,6 +482,7 @@ module Google
           property :salt_separator, :base64 => true, as: 'saltSeparator'
           property :sanity_check, as: 'sanityCheck'
           property :signer_key, :base64 => true, as: 'signerKey'
+          property :target_project_id, as: 'targetProjectId'
           collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::Representation
       
         end
