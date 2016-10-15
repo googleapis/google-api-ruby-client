@@ -2758,8 +2758,8 @@ module Google
         attr_accessor :name
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
-        # FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field
-        # contains a nested schema).
+        # FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD
+        # indicates that the field contains a nested schema).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

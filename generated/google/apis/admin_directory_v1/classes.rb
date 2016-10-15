@@ -574,6 +574,32 @@ module Google
         end
       end
       
+      # JSON request template for firing actions on ChromeOs Device in Directory
+      # Devices API.
+      class ChromeOsDeviceAction
+        include Google::Apis::Core::Hashable
+      
+        # Action to be taken on the ChromeOs Device
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # 
+        # Corresponds to the JSON property `deprovisionReason`
+        # @return [String]
+        attr_accessor :deprovision_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @deprovision_reason = args[:deprovision_reason] if args.key?(:deprovision_reason)
+        end
+      end
+      
       # JSON response template for List Chrome OS Devices operation in Directory API.
       class ChromeOsDevices
         include Google::Apis::Core::Hashable
@@ -1147,6 +1173,16 @@ module Google
         # @return [String]
         attr_accessor :baseband_version
       
+        # Mobile Device Bootloader version (Read-only)
+        # Corresponds to the JSON property `bootloaderVersion`
+        # @return [String]
+        attr_accessor :bootloader_version
+      
+        # Mobile Device Brand (Read-only)
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
         # Mobile Device Build number (Read-only)
         # Corresponds to the JSON property `buildNumber`
         # @return [String]
@@ -1173,10 +1209,20 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
+        # DevicePasswordStatus (Read-only)
+        # Corresponds to the JSON property `devicePasswordStatus`
+        # @return [String]
+        attr_accessor :device_password_status
+      
         # List of owner user's email addresses (Read-only)
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
         attr_accessor :email
+      
+        # Mobile Device Encryption Status (Read-only)
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [String]
+        attr_accessor :encryption_status
       
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
@@ -1188,6 +1234,11 @@ module Google
         # Corresponds to the JSON property `firstSync`
         # @return [DateTime]
         attr_accessor :first_sync
+      
+        # Mobile Device Hardware (Read-only)
+        # Corresponds to the JSON property `hardware`
+        # @return [String]
+        attr_accessor :hardware
       
         # Mobile Device Hardware Id (Read-only)
         # Corresponds to the JSON property `hardwareId`
@@ -1222,6 +1273,11 @@ module Google
         attr_accessor :managed_account_is_on_owner_profile
         alias_method :managed_account_is_on_owner_profile?, :managed_account_is_on_owner_profile
       
+        # Mobile Device manufacturer (Read-only)
+        # Corresponds to the JSON property `manufacturer`
+        # @return [String]
+        attr_accessor :manufacturer
+      
         # Mobile Device MEID number (Read-only)
         # Corresponds to the JSON property `meid`
         # @return [String]
@@ -1252,10 +1308,25 @@ module Google
         # @return [Array<String>]
         attr_accessor :other_accounts_info
       
+        # DMAgentPermission (Read-only)
+        # Corresponds to the JSON property `privilege`
+        # @return [String]
+        attr_accessor :privilege
+      
+        # Mobile Device release version version (Read-only)
+        # Corresponds to the JSON property `releaseVersion`
+        # @return [String]
+        attr_accessor :release_version
+      
         # Unique identifier of Mobile Device (Read-only)
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
+      
+        # Mobile Device Security patch level (Read-only)
+        # Corresponds to the JSON property `securityPatchLevel`
+        # @return [String]
+        attr_accessor :security_patch_level
       
         # Mobile Device SSN or Serial Number (Read-only)
         # Corresponds to the JSON property `serialNumber`
@@ -1303,27 +1374,36 @@ module Google
           @adb_status = args[:adb_status] if args.key?(:adb_status)
           @applications = args[:applications] if args.key?(:applications)
           @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
+          @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
+          @brand = args[:brand] if args.key?(:brand)
           @build_number = args[:build_number] if args.key?(:build_number)
           @default_language = args[:default_language] if args.key?(:default_language)
           @developer_options_status = args[:developer_options_status] if args.key?(:developer_options_status)
           @device_compromised_status = args[:device_compromised_status] if args.key?(:device_compromised_status)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @device_password_status = args[:device_password_status] if args.key?(:device_password_status)
           @email = args[:email] if args.key?(:email)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
           @etag = args[:etag] if args.key?(:etag)
           @first_sync = args[:first_sync] if args.key?(:first_sync)
+          @hardware = args[:hardware] if args.key?(:hardware)
           @hardware_id = args[:hardware_id] if args.key?(:hardware_id)
           @imei = args[:imei] if args.key?(:imei)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @kind = args[:kind] if args.key?(:kind)
           @last_sync = args[:last_sync] if args.key?(:last_sync)
           @managed_account_is_on_owner_profile = args[:managed_account_is_on_owner_profile] if args.key?(:managed_account_is_on_owner_profile)
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @meid = args[:meid] if args.key?(:meid)
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
           @network_operator = args[:network_operator] if args.key?(:network_operator)
           @os = args[:os] if args.key?(:os)
           @other_accounts_info = args[:other_accounts_info] if args.key?(:other_accounts_info)
+          @privilege = args[:privilege] if args.key?(:privilege)
+          @release_version = args[:release_version] if args.key?(:release_version)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @security_patch_level = args[:security_patch_level] if args.key?(:security_patch_level)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @status = args[:status] if args.key?(:status)
           @supports_work_profile = args[:supports_work_profile] if args.key?(:supports_work_profile)

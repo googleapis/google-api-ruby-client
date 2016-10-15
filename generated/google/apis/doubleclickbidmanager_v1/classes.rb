@@ -91,8 +91,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :file_types
       
-        # IDs of the specified filter type used to filter entities to fetch. If omitted,
-        # all the entities will be returned.
+        # The IDs of the specified filter type. This is used to filter entities to fetch.
+        # At least one ID must be specified. Only one ID is allowed for the
+        # ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types
+        # all IDs must be from the same Advertiser.
         # Corresponds to the JSON property `filterIds`
         # @return [Array<String>]
         attr_accessor :filter_ids

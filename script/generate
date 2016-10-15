@@ -5,6 +5,7 @@
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
 API_IDS=(adexchangebuyer:v1.4 \
+  adexchangebuyer2:v2beta1 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
 	admin:datatransfer_v1 \

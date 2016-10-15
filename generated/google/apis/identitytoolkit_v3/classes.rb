@@ -308,7 +308,7 @@ module Google
       
         # The query parameter that client can customize by themselves in auth url. The
         # following parameters are reserved for server so that they cannot be customized
-        # by clients: client_id, response_type, scope, redirect_uri, state.
+        # by clients: client_id, response_type, scope, redirect_uri, state, oauth_token.
         # Corresponds to the JSON property `customParameter`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameter
@@ -988,6 +988,12 @@ module Google
         # @return [String]
         attr_accessor :signer_key
       
+        # Specify which project (field value is actually project id) to operate. Only
+        # used when provided credential.
+        # Corresponds to the JSON property `targetProjectId`
+        # @return [String]
+        attr_accessor :target_project_id
+      
         # The account info to be stored.
         # Corresponds to the JSON property `users`
         # @return [Array<Google::Apis::IdentitytoolkitV3::UserInfo>]
@@ -1006,6 +1012,7 @@ module Google
           @salt_separator = args[:salt_separator] if args.key?(:salt_separator)
           @sanity_check = args[:sanity_check] if args.key?(:sanity_check)
           @signer_key = args[:signer_key] if args.key?(:signer_key)
+          @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
           @users = args[:users] if args.key?(:users)
         end
       end

@@ -301,6 +301,7 @@ module Google
       
           collection :course_material_sets, as: 'courseMaterialSets', class: Google::Apis::ClassroomV1::CourseMaterialSet, decorator: Google::Apis::ClassroomV1::CourseMaterialSet::Representation
       
+          property :guardians_enabled, as: 'guardiansEnabled'
         end
       end
       

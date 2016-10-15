@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://classroom.googleapis.com/', '')
+          super('https://prod-day0-classroom.sandbox.googleapis.com/', '')
         end
         
         # Creates a course. The user specified in `ownerId` is the owner of the created
@@ -249,6 +249,8 @@ module Google
         #   identifier. The identifier can be one of the following: * the numeric
         #   identifier for the user * the email address of the user * the string literal `"
         #   me"`, indicating the requesting user
+        # @param [Array<String>, String] course_states
+        #   Restricts returned courses to those in one of the specified states
         # @param [Fixnum] page_size
         #   Maximum number of items to return. Zero or unspecified indicates that the
         #   server may assign a maximum. The server may return fewer than the specified
@@ -274,12 +276,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_courses(student_id: nil, teacher_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_courses(student_id: nil, teacher_id: nil, course_states: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/courses', options)
           command.response_representation = Google::Apis::ClassroomV1::ListCoursesResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListCoursesResponse
           command.query['studentId'] = student_id unless student_id.nil?
           command.query['teacherId'] = teacher_id unless teacher_id.nil?
+          command.query['courseStates'] = course_states unless course_states.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1277,18 +1280,21 @@ module Google
         # to view, filtered by the parameters provided. This method returns the
         # following error codes: * `PERMISSION_DENIED` if a `student_id` is specified,
         # and the requesting user is not permitted to view guardian invitations for that
-        # student, if guardians are not enabled for the domain in question, or for other
-        # access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its
-        # format cannot be recognized (it is not an email address, nor a `student_id`
-        # from the API, nor the literal string `me`). May also be returned if an invalid
-        # `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is
-        # specified, and its format can be recognized, but Classroom has no record of
-        # that student.
+        # student, if `"-"` is specified as the `student_id` and the user is not a
+        # domain administrator, if guardians are not enabled for the domain in question,
+        # or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is
+        # specified, but its format cannot be recognized (it is not an email address,
+        # nor a `student_id` from the API, nor the literal string `me`). May also be
+        # returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a
+        # `student_id` is specified, and its format can be recognized, but Classroom has
+        # no record of that student.
         # @param [String] student_id
         #   The ID of the student whose guardian invitations are to be returned. The
         #   identifier can be one of the following: * the numeric identifier for the user *
         #   the email address of the user * the string literal `"me"`, indicating the
-        #   requesting user
+        #   requesting user * the string literal `"-"`, indicating that results should be
+        #   returned for all students that the requesting user is permitted to view
+        #   guardian invitations.
         # @param [String] invited_email_address
         #   If specified, only results with the specified `invited_email_address` will be
         #   returned.
@@ -1485,10 +1491,13 @@ module Google
         end
         
         # Returns a list of guardians that the requesting user is permitted to view,
-        # restricted to those that match the request. This method returns the following
-        # error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the
-        # requesting user is not permitted to view guardian information for that student,
-        # if guardians are not enabled for the domain in question, if the `
+        # restricted to those that match the request. To list guardians for any student
+        # that the requesting user may view guardians for, use the literal character `-`
+        # for the student ID. This method returns the following error codes: * `
+        # PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is
+        # not permitted to view guardian information for that student, if `"-"` is
+        # specified as the `student_id` and the user is not a domain administrator, if
+        # guardians are not enabled for the domain in question, if the `
         # invited_email_address` filter is set by a user who is not a domain
         # administrator, or for other access errors. * `INVALID_ARGUMENT` if a `
         # student_id` is specified, but its format cannot be recognized (it is not an
@@ -1500,7 +1509,8 @@ module Google
         #   Filter results by the student who the guardian is linked to. The identifier
         #   can be one of the following: * the numeric identifier for the user * the email
         #   address of the user * the string literal `"me"`, indicating the requesting
-        #   user
+        #   user * the string literal `"-"`, indicating that results should be returned
+        #   for all students that the requesting user has access to view.
         # @param [String] invited_email_address
         #   Filter results by the email address that the original invitation was sent to,
         #   resulting in this guardian link. This filter can only be used by domain

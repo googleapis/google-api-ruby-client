@@ -3648,7 +3648,7 @@ module Google
         # @return [String]
         attr_accessor :archive_size_bytes
       
-        # Creation timestamp in RFC3339 text format.
+        # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -4352,8 +4352,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The action to perform in case of zone failure (set only for Regional instance
-        # group managers).
+        # The action to perform in case of zone failure. Only one value is supported,
+        # NO_FAILOVER. The default is NO_FAILOVER.
         # Corresponds to the JSON property `failoverAction`
         # @return [String]
         attr_accessor :failover_action
@@ -4483,7 +4483,7 @@ module Google
         # [Output Only] The number of instances that the managed instance group will
         # attempt to create. The group attempts to create each instance only once. If
         # the group fails to create any of these instances, it decreases the group's
-        # target_size value accordingly.
+        # targetSize value accordingly.
         # Corresponds to the JSON property `creatingWithoutRetries`
         # @return [Fixnum]
         attr_accessor :creating_without_retries
@@ -4648,7 +4648,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -6424,7 +6424,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for this resource .
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -8172,7 +8172,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -8541,7 +8541,7 @@ module Google
         # @return [String]
         attr_accessor :next
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -10551,7 +10551,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -10600,7 +10600,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -11302,7 +11302,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link

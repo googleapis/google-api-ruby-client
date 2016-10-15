@@ -12,23 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appengine_v1beta5/service.rb'
-require 'google/apis/appengine_v1beta5/classes.rb'
-require 'google/apis/appengine_v1beta5/representations.rb'
+require 'google/apis/adexchangebuyer2_v2beta1/service.rb'
+require 'google/apis/adexchangebuyer2_v2beta1/classes.rb'
+require 'google/apis/adexchangebuyer2_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # Google App Engine Admin API
+    # Ad Exchange Buyer API II
     #
-    # Provisions and manages App Engine applications.
+    # Accesses the latest features for managing Ad Exchange accounts and Real-Time
+    # Bidding configurations and auction metrics.
     #
-    # @see https://cloud.google.com/appengine/docs/admin-api/
-    module AppengineV1beta5
-      VERSION = 'V1beta5'
+    # @see https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
+    module Adexchangebuyer2V2beta1
+      VERSION = 'V2beta1'
       REVISION = '20161012'
 
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      # Manage your Ad Exchange buyer account configuration
+      AUTH_ADEXCHANGE_BUYER = 'https://www.googleapis.com/auth/adexchange.buyer'
     end
   end
 end

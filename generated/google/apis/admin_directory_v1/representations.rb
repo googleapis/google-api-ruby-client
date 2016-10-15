@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChromeOsDeviceAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChromeOsDevices
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -512,6 +518,14 @@ module Google
         end
       end
       
+      class ChromeOsDeviceAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :deprovision_reason, as: 'deprovisionReason'
+        end
+      end
+      
       class ChromeOsDevices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -659,15 +673,20 @@ module Google
           collection :applications, as: 'applications', class: Google::Apis::AdminDirectoryV1::MobileDevice::Application, decorator: Google::Apis::AdminDirectoryV1::MobileDevice::Application::Representation
       
           property :baseband_version, as: 'basebandVersion'
+          property :bootloader_version, as: 'bootloaderVersion'
+          property :brand, as: 'brand'
           property :build_number, as: 'buildNumber'
           property :default_language, as: 'defaultLanguage'
           property :developer_options_status, as: 'developerOptionsStatus'
           property :device_compromised_status, as: 'deviceCompromisedStatus'
           property :device_id, as: 'deviceId'
+          property :device_password_status, as: 'devicePasswordStatus'
           collection :email, as: 'email'
+          property :encryption_status, as: 'encryptionStatus'
           property :etag, as: 'etag'
           property :first_sync, as: 'firstSync', type: DateTime
       
+          property :hardware, as: 'hardware'
           property :hardware_id, as: 'hardwareId'
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
@@ -675,13 +694,17 @@ module Google
           property :last_sync, as: 'lastSync', type: DateTime
       
           property :managed_account_is_on_owner_profile, as: 'managedAccountIsOnOwnerProfile'
+          property :manufacturer, as: 'manufacturer'
           property :meid, as: 'meid'
           property :model, as: 'model'
           collection :name, as: 'name'
           property :network_operator, as: 'networkOperator'
           property :os, as: 'os'
           collection :other_accounts_info, as: 'otherAccountsInfo'
+          property :privilege, as: 'privilege'
+          property :release_version, as: 'releaseVersion'
           property :resource_id, as: 'resourceId'
+          property :security_patch_level, as: 'securityPatchLevel'
           property :serial_number, as: 'serialNumber'
           property :status, as: 'status'
           property :supports_work_profile, as: 'supportsWorkProfile'
