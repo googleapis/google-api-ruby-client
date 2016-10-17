@@ -2450,13 +2450,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets remarketing audiences to which the user has access.
+        # Gets a remarketing audience to which the user has access.
         # @param [String] account_id
-        #   Account ID for the remarketing audience to retrieve.
+        #   The account ID of the remarketing audience to retrieve.
         # @param [String] web_property_id
-        #   Web property ID for the remarketing audience to retrieve.
+        #   The web property ID of the remarketing audience to retrieve.
         # @param [String] remarketing_audience_id
-        #   The ID to retrieve the Remarketing Audience for.
+        #   The ID of the remarketing audience to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2491,11 +2491,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new remarketing audiences.
+        # Creates a new remarketing audience.
         # @param [String] account_id
-        #   Account ID to create the remarketing audience for.
+        #   The account ID for which to create the remarketing audience.
         # @param [String] web_property_id
-        #   Web property ID to create the remarketing audience for.
+        #   Web property ID for which to create the remarketing audience.
         # @param [Google::Apis::AnalyticsV3::RemarketingAudience] remarketing_audience_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2534,9 +2534,9 @@ module Google
         
         # Lists remarketing audiences to which the user has access.
         # @param [String] account_id
-        #   Account ID for the remarketing audience to retrieve.
+        #   The account ID of the remarketing audiences to retrieve.
         # @param [String] web_property_id
-        #   Web property ID for the remarketing audience to retrieve.
+        #   The web property ID of the remarketing audiences to retrieve.
         # @param [Fixnum] max_results
         #   The maximum number of remarketing audiences to include in this response.
         # @param [Fixnum] start_index
@@ -2579,14 +2579,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing remarketing audiences. This method supports patch
-        # semantics.
+        # Updates an existing remarketing audience. This method supports patch semantics.
         # @param [String] account_id
-        #   Account ID for the remarketing audience to update.
+        #   The account ID of the remarketing audience to update.
         # @param [String] web_property_id
-        #   Web property ID for the remarketing audience to update.
+        #   The web property ID of the remarketing audience to update.
         # @param [String] remarketing_audience_id
-        #   Remarketing audience ID of the remarketing audience to update.
+        #   The ID of the remarketing audience to update.
         # @param [Google::Apis::AnalyticsV3::RemarketingAudience] remarketing_audience_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2624,13 +2623,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing remarketing audiences.
+        # Updates an existing remarketing audience.
         # @param [String] account_id
-        #   Account ID for the remarketing audience to update.
+        #   The account ID of the remarketing audience to update.
         # @param [String] web_property_id
-        #   Web property ID for the remarketing audience to update.
+        #   The web property ID of the remarketing audience to update.
         # @param [String] remarketing_audience_id
-        #   Remarketing audience ID of the remarketing audience to update.
+        #   The ID of the remarketing audience to update.
         # @param [Google::Apis::AnalyticsV3::RemarketingAudience] remarketing_audience_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

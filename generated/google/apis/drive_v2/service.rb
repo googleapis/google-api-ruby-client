@@ -2620,6 +2620,11 @@ module Google
         # Lists a file's revisions.
         # @param [String] file_id
         #   The ID of the file.
+        # @param [Fixnum] max_results
+        #   Maximum number of revisions to return.
+        # @param [String] page_token
+        #   Page token for revisions. To get the next page of results, set this parameter
+        #   to the value of "nextPageToken" from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2641,11 +2646,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_revisions(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_revisions(file_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files/{fileId}/revisions', options)
           command.response_representation = Google::Apis::DriveV2::RevisionList::Representation
           command.response_class = Google::Apis::DriveV2::RevisionList
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -81,6 +81,85 @@ module Google
         end
       end
       
+      # Request to fetch stored insertion orders, line items, TrueView ad groups and
+      # ads.
+      class DownloadRequest
+        include Google::Apis::Core::Hashable
+      
+        # File types that will be returned.
+        # Corresponds to the JSON property `fileTypes`
+        # @return [Array<String>]
+        attr_accessor :file_types
+      
+        # The IDs of the specified filter type. This is used to filter entities to fetch.
+        # At least one ID must be specified. Only one ID is allowed for the
+        # ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types
+        # all IDs must be from the same Advertiser.
+        # Corresponds to the JSON property `filterIds`
+        # @return [Array<String>]
+        attr_accessor :filter_ids
+      
+        # Filter type used to filter line items to fetch.
+        # Corresponds to the JSON property `filterType`
+        # @return [String]
+        attr_accessor :filter_type
+      
+        # SDF Version (column names, types, order) in which the entities will be
+        # returned. Default to 3.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_types = args[:file_types] if args.key?(:file_types)
+          @filter_ids = args[:filter_ids] if args.key?(:filter_ids)
+          @filter_type = args[:filter_type] if args.key?(:filter_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Download response.
+      class DownloadResponse
+        include Google::Apis::Core::Hashable
+      
+        # Retrieved ad groups in SDF format.
+        # Corresponds to the JSON property `adGroups`
+        # @return [String]
+        attr_accessor :ad_groups
+      
+        # Retrieved ads in SDF format.
+        # Corresponds to the JSON property `ads`
+        # @return [String]
+        attr_accessor :ads
+      
+        # Retrieved insertion orders in SDF format.
+        # Corresponds to the JSON property `insertionOrders`
+        # @return [String]
+        attr_accessor :insertion_orders
+      
+        # Retrieved line items in SDF format.
+        # Corresponds to the JSON property `lineItems`
+        # @return [String]
+        attr_accessor :line_items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_groups = args[:ad_groups] if args.key?(:ad_groups)
+          @ads = args[:ads] if args.key?(:ads)
+          @insertion_orders = args[:insertion_orders] if args.key?(:insertion_orders)
+          @line_items = args[:line_items] if args.key?(:line_items)
+        end
+      end
+      
       # Filter used to match traffic data in your report.
       class FilterPair
         include Google::Apis::Core::Hashable
@@ -155,92 +234,6 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @reports = args[:reports] if args.key?(:reports)
-        end
-      end
-      
-      # Publisher comment from Rubicon.
-      class Note
-        include Google::Apis::Core::Hashable
-      
-        # Note id.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Message from publisher.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Equals "publisher" for notification from Rubicon.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Time when the note was added, e.g. "2015-12-16T17:25:35.000-08:00".
-        # Corresponds to the JSON property `timestamp`
-        # @return [String]
-        attr_accessor :timestamp
-      
-        # Publisher user name.
-        # Corresponds to the JSON property `username`
-        # @return [String]
-        attr_accessor :username
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @message = args[:message] if args.key?(:message)
-          @source = args[:source] if args.key?(:source)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
-          @username = args[:username] if args.key?(:username)
-        end
-      end
-      
-      # NotifyProposalChange request.
-      class NotifyProposalChangeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Action taken by publisher. One of: Accept, Decline, Append
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # URL to access proposal detail.
-        # Corresponds to the JSON property `href`
-        # @return [String]
-        attr_accessor :href
-      
-        # Below are contents of notification from Rubicon. Proposal id.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Notes from publisher
-        # Corresponds to the JSON property `notes`
-        # @return [Array<Google::Apis::DoubleclickbidmanagerV1::Note>]
-        attr_accessor :notes
-      
-        # Deal token, available when proposal is accepted by publisher.
-        # Corresponds to the JSON property `token`
-        # @return [String]
-        attr_accessor :token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @href = args[:href] if args.key?(:href)
-          @id = args[:id] if args.key?(:id)
-          @notes = args[:notes] if args.key?(:notes)
-          @token = args[:token] if args.key?(:token)
         end
       end
       

@@ -124,6 +124,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectCreationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FolderOperationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -261,6 +279,32 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :directory_customer_id, as: 'directoryCustomerId'
+        end
+      end
+      
+      class ProjectCreationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :gettable, as: 'gettable'
+          property :ready, as: 'ready'
+        end
+      end
+      
+      class FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :operation_type, as: 'operationType'
+          property :source_parent, as: 'sourceParent'
+          property :destination_parent, as: 'destinationParent'
+        end
+      end
+      
+      class FolderOperationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message_id, as: 'errorMessageId'
         end
       end
     end

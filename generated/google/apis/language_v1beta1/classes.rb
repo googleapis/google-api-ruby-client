@@ -290,8 +290,8 @@ module Google
         end
       end
       
-      # The request message for the advanced text annotation API, which performs all
-      # the above plus syntactic analysis.
+      # The request message for the text annotation API, which can perform multiple
+      # analysis types (sentiment, entities, and syntax) in one call.
       class AnnotateTextRequest
         include Google::Apis::Core::Hashable
       
@@ -416,6 +416,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified
         # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -577,6 +578,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified
         # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language

@@ -1471,6 +1471,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The page token for the next page of revisions. This will be absent if the end
+        # of the revisions list has been reached.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # The full list of revisions.
         # Corresponds to the JSON property `revisions`
         # @return [Array<Google::Apis::DriveV3::Revision>]
@@ -1483,6 +1489,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @revisions = args[:revisions] if args.key?(:revisions)
         end
       end

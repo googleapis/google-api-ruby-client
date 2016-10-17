@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module IamV1
-      # Google Identity and Access Management API
+      # Google Identity and Access Management (IAM) API
       #
       # Manages identity and access control for Google Cloud Platform resources,
       #  including the creation of service accounts, which you can use to authenticate
@@ -48,17 +48,17 @@ module Google
           super('https://iam.googleapis.com/', '')
         end
         
-        # Lists service accounts for a project.
+        # Lists ServiceAccounts for a project.
         # @param [String] name
         #   Required. The resource name of the project associated with the service
-        #   accounts, such as "projects/123"
+        #   accounts, such as `projects/my-project-123`.
         # @param [Fixnum] page_size
         #   Optional limit on the number of service accounts to include in the response.
-        #   Further accounts can subsequently be obtained by including the [
-        #   ListServiceAccountsResponse.next_page_token] in a subsequent request.
+        #   Further accounts can subsequently be obtained by including the
+        #   ListServiceAccountsResponse.next_page_token in a subsequent request.
         # @param [String] page_token
-        #   Optional pagination token returned in an earlier [ListServiceAccountsResponse.
-        #   next_page_token].
+        #   Optional pagination token returned in an earlier ListServiceAccountsResponse.
+        #   next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,12 +88,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a ServiceAccount
+        # Gets a ServiceAccount.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". Using '-' as a wildcard for the project, will
-        #   infer the project from the account. The account value can be the email address
-        #   or the unique_id of the service account.
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Using `-` as a wildcard for the project
+        #   will infer the project from the account. The `account` value can be the `email`
+        #   address or the `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,10 +121,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a service account and returns it.
+        # Creates a ServiceAccount and returns it.
         # @param [String] name
         #   Required. The resource name of the project associated with the service
-        #   accounts, such as "projects/123"
+        #   accounts, such as `projects/my-project-123`.
         # @param [Google::Apis::IamV1::CreateServiceAccountRequest] create_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -155,15 +155,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a service account. Currently, only the following fields are updatable:
-        # 'display_name' . The 'etag' is mandatory.
+        # Updates a ServiceAccount. Currently, only the following fields are updatable: `
+        # display_name` . The `etag` is mandatory.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". In requests using '-' as a wildcard for the
-        #   project, will infer the project from the account and the account value can be
-        #   the email address or the unique_id of the service account. In responses the
-        #   resource name will always be in the format "projects/`project`/serviceAccounts/
-        #   `email`".
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Requests using `-` as a wildcard for the
+        #   project will infer the project from the `account` and the `account` value can
+        #   be the `email` address or the `unique_id` of the service account. In responses
+        #   the resource name will always be in the format `projects/`project`/
+        #   serviceAccounts/`email``.
         # @param [Google::Apis::IamV1::ServiceAccount] service_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -194,12 +194,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a service acount.
+        # Deletes a ServiceAccount.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". Using '-' as a wildcard for the project, will
-        #   infer the project from the account. The account value can be the email address
-        #   or the unique_id of the service account.
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Using `-` as a wildcard for the project
+        #   will infer the project from the account. The `account` value can be the `email`
+        #   address or the `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -227,12 +227,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Signs a blob using a service account.
+        # Signs a blob using a service account's system-managed private key.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". Using '-' as a wildcard for the project, will
-        #   infer the project from the account. The account value can be the email address
-        #   or the unique_id of the service account.
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Using `-` as a wildcard for the project
+        #   will infer the project from the account. The `account` value can be the `email`
+        #   address or the `unique_id` of the service account.
         # @param [Google::Apis::IamV1::SignBlobRequest] sign_blob_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -263,12 +263,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the IAM access control policy for specified IAM resource.
+        # Returns the IAM access control policy for a ServiceAccount.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `getIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -296,12 +295,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for the specified IAM resource.
+        # Sets the IAM access control policy for a ServiceAccount.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. `resource` is
-        #   usually specified as a path, such as `projects/*project*/zones/*zone*/disks/*
-        #   disk*`. The format for the path specified in this value is resource specific
-        #   and is specified in the `setIamPolicy` documentation.
+        #   usually specified as a path. For example, a Project resource is specified as `
+        #   projects/`project``.
         # @param [Google::Apis::IamV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -332,13 +330,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tests the specified permissions against the IAM access control policy for the
-        # specified IAM resource.
+        # Tests the specified permissions against the IAM access control policy for a
+        # ServiceAccount.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. `
-        #   resource` is usually specified as a path, such as `projects/*project*/zones/*
-        #   zone*/disks/*disk*`. The format for the path specified in this value is
-        #   resource specific and is specified in the `testIamPermissions` documentation.
+        #   resource` is usually specified as a path. For example, a Project resource is
+        #   specified as `projects/`project``.
         # @param [Google::Apis::IamV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -369,15 +366,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists service account keys
+        # Lists ServiceAccountKeys.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". Using '-' as a wildcard for the project, will
-        #   infer the project from the account. The account value can be the email address
-        #   or the unique_id of the service account.
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Using `-` as a wildcard for the project,
+        #   will infer the project from the account. The `account` value can be the `email`
+        #   address or the `unique_id` of the service account.
         # @param [Array<String>, String] key_types
-        #   The type of keys the user wants to list. If empty, all key types are included
-        #   in the response. Duplicate key types are not allowed.
+        #   Filters the types of keys the user wants to include in the list response.
+        #   Duplicate key types are not allowed. If no key type is provided, all keys are
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -408,10 +406,13 @@ module Google
         
         # Gets the ServiceAccountKey by key id.
         # @param [String] name
-        #   The resource name of the service account key in the format "projects/`project`/
-        #   serviceAccounts/`account`/keys/`key`". Using '-' as a wildcard for the project
-        #   will infer the project from the account. The account value can be the email
-        #   address or the unique_id of the service account.
+        #   The resource name of the service account key in the following format: `
+        #   projects/`project`/serviceAccounts/`account`/keys/`key``. Using `-` as a
+        #   wildcard for the project will infer the project from the account. The `account`
+        #   value can be the `email` address or the `unique_id` of the service account.
+        # @param [String] public_key_type
+        #   The output format of the public key requested. X509_PEM is the default output
+        #   format.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -429,22 +430,23 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_service_account_key(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_service_account_key(name, public_key_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::IamV1::ServiceAccountKey::Representation
           command.response_class = Google::Apis::IamV1::ServiceAccountKey
           command.params['name'] = name unless name.nil?
+          command.query['publicKeyType'] = public_key_type unless public_key_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a service account key and returns it.
+        # Creates a ServiceAccountKey and returns it.
         # @param [String] name
-        #   The resource name of the service account in the format "projects/`project`/
-        #   serviceAccounts/`account`". Using '-' as a wildcard for the project, will
-        #   infer the project from the account. The account value can be the email address
-        #   or the unique_id of the service account.
+        #   The resource name of the service account in the following format: `projects/`
+        #   project`/serviceAccounts/`account``. Using `-` as a wildcard for the project
+        #   will infer the project from the account. The `account` value can be the `email`
+        #   address or the `unique_id` of the service account.
         # @param [Google::Apis::IamV1::CreateServiceAccountKeyRequest] create_service_account_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -475,12 +477,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a service account key.
+        # Deletes a ServiceAccountKey.
         # @param [String] name
-        #   The resource name of the service account key in the format "projects/`project`/
-        #   serviceAccounts/`account`/keys/`key`". Using '-' as a wildcard for the project
-        #   will infer the project from the account. The account value can be the email
-        #   address or the unique_id of the service account.
+        #   The resource name of the service account key in the following format: `
+        #   projects/`project`/serviceAccounts/`account`/keys/`key``. Using `-` as a
+        #   wildcard for the project will infer the project from the account. The `account`
+        #   value can be the `email` address or the `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -503,6 +505,38 @@ module Google
           command.response_representation = Google::Apis::IamV1::Empty::Representation
           command.response_class = Google::Apis::IamV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Queries roles that can be granted on a particular resource. A role is
+        # grantable if it can be used as the role in a binding for a policy for that
+        # resource.
+        # @param [Google::Apis::IamV1::QueryGrantableRolesRequest] query_grantable_roles_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::QueryGrantableRolesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::QueryGrantableRolesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_grantable_roles(query_grantable_roles_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/roles:queryGrantableRoles', options)
+          command.request_representation = Google::Apis::IamV1::QueryGrantableRolesRequest::Representation
+          command.request_object = query_grantable_roles_request_object
+          command.response_representation = Google::Apis::IamV1::QueryGrantableRolesResponse::Representation
+          command.response_class = Google::Apis::IamV1::QueryGrantableRolesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

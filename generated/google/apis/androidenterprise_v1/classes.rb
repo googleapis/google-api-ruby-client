@@ -42,6 +42,69 @@ module Google
         end
       end
       
+      # A token authorizing an administrator to access an iframe.
+      class AdministratorWebToken
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#administratorWebToken".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # An opaque token to be passed to the Play front-end to generate an iframe.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Specification for a token used to generate iframes. The token specifies what
+      # data the admin is allowed to modify and the URI the iframe is allowed to
+      # communiate with.
+      class AdministratorWebTokenSpec
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#administratorWebTokenSpec".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may
+        # not be hosted at other URIs. This URI must be https.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The list of permissions the admin is granted within the iframe. The admin will
+        # only be allowed to view an iframe if they have all of the permissions
+        # associated with it.
+        # Corresponds to the JSON property `permission`
+        # @return [Array<String>]
+        attr_accessor :permission
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @parent = args[:parent] if args.key?(:parent)
+          @permission = args[:permission] if args.key?(:permission)
+        end
+      end
+      
       # Represents the list of app restrictions available to be pre-configured for the
       # product.
       class AppRestrictionsSchema
@@ -113,7 +176,9 @@ module Google
         attr_accessor :entry
       
         # For choice or multiselect restrictions, the list of possible entries' machine-
-        # readable values.
+        # readable values. These values should be used in the configuration, either as a
+        # single string value for a choice restriction or in a stringArray for a
+        # multiselect restriction.
         # Corresponds to the JSON property `entryValue`
         # @return [Array<String>]
         attr_accessor :entry_value
@@ -124,7 +189,9 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # For bundle or bundleArray restrictions, the list of nested restrictions.
+        # For bundle or bundleArray restrictions, the list of nested restrictions. A
+        # bundle restriction is always nested within a bundleArray restriction, and a
+        # bundleArray restriction is at most two levels deep.
         # Corresponds to the JSON property `nestedRestriction`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
         attr_accessor :nested_restriction
@@ -1945,6 +2012,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Sets a store layout type. If set to "custom", "homepageId" must be specified.
+        # If set to "basic", the layout will consist of all approved apps accessible by
+        # the user, split in pages of 100 each; in this case, "homepageId" must not be
+        # specified. The "basic" setting takes precedence over any existing collections
+        # setup for this enterprise (if any). Should the enterprise use
+        # collectionViewers for controlling access rights, these will still be respected.
+        # Corresponds to the JSON property `storeLayoutType`
+        # @return [String]
+        attr_accessor :store_layout_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1953,6 +2030,7 @@ module Google
         def update!(**args)
           @homepage_id = args[:homepage_id] if args.key?(:homepage_id)
           @kind = args[:kind] if args.key?(:kind)
+          @store_layout_type = args[:store_layout_type] if args.key?(:store_layout_type)
         end
       end
       

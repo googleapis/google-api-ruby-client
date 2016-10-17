@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdministratorWebToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdministratorWebTokenSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppRestrictionsSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -386,6 +398,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class AdministratorWebToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :token, as: 'token'
+        end
+      end
+      
+      class AdministratorWebTokenSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :parent, as: 'parent'
+          collection :permission, as: 'permission'
         end
       end
       
@@ -893,6 +922,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :homepage_id, as: 'homepageId'
           property :kind, as: 'kind'
+          property :store_layout_type, as: 'storeLayoutType'
         end
       end
       

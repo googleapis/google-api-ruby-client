@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/books/docs/v1/getting_started
     module BooksV1
       VERSION = 'V1'
-      REVISION = '20160823'
+      REVISION = '20161005'
 
       # Manage your books
       AUTH_BOOKS = 'https://www.googleapis.com/auth/books'

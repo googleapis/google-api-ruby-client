@@ -76,13 +76,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SyncRecognizeResponse
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class SyncRecognizeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -153,7 +153,6 @@ module Google
           property :encoding, as: 'encoding'
           property :profanity_filter, as: 'profanityFilter'
           property :sample_rate, as: 'sampleRate'
-          property :audio_channels, as: 'audioChannels'
         end
       end
       
@@ -184,17 +183,17 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SyncRecognizeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :results, as: 'results', class: Google::Apis::SpeechV1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1beta1::SpeechRecognitionResult::Representation
       
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

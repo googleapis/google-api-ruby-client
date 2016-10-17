@@ -22,7 +22,9 @@ module Google
     module ReplicapoolupdaterV1beta1
       # Google Compute Engine Instance Group Updater API
       #
-      # Updates groups of Compute Engine instances.
+      # [Deprecated. Please use compute.instanceGroupManagers.update method.
+      #  replicapoolupdater API will be disabled after December 30th, 2016] Updates
+      #  groups of Compute Engine instances.
       #
       # @example
       #    require 'google/apis/replicapoolupdater_v1beta1'

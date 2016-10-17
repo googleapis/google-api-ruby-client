@@ -78,10 +78,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Advanced API that analyzes the document and provides a full set of text
-        # annotations, including semantic, syntactic, and sentiment information. This
-        # API is intended for users who are familiar with machine learning and need
-        # in-depth text features to build upon.
+        # A convenience method that provides all the features that analyzeSentiment,
+        # analyzeEntities, and analyzeSyntax provide in one call.
         # @param [Google::Apis::LanguageV1beta1::AnnotateTextRequest] annotate_text_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any

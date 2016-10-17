@@ -2413,7 +2413,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Series info list. The client always expects this element in the JSON output,
+        # hence declared here as OutputAlways.
         # Corresponds to the JSON property `series`
         # @return [Array<Google::Apis::BooksV1::Series::Series>]
         attr_accessor :series

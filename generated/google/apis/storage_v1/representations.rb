@@ -464,7 +464,8 @@ module Google
       class ObjectAccessControls
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items'
+          collection :items, as: 'items', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
+      
           property :kind, as: 'kind'
         end
       end

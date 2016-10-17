@@ -129,6 +129,12 @@ module Google
         # @return [Array<Google::Apis::ClassroomV1::CourseMaterialSet>]
         attr_accessor :course_material_sets
       
+        # Whether or not guardian notifications are enabled for this course. Read-only.
+        # Corresponds to the JSON property `guardiansEnabled`
+        # @return [Boolean]
+        attr_accessor :guardians_enabled
+        alias_method :guardians_enabled?, :guardians_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -151,6 +157,7 @@ module Google
           @course_group_email = args[:course_group_email] if args.key?(:course_group_email)
           @teacher_folder = args[:teacher_folder] if args.key?(:teacher_folder)
           @course_material_sets = args[:course_material_sets] if args.key?(:course_material_sets)
+          @guardians_enabled = args[:guardians_enabled] if args.key?(:guardians_enabled)
         end
       end
       
