@@ -1,3 +1,7 @@
+# 0.9.19
+* Regenerate APIs
+* Add Adexchangebuyer2 api
+
 # 0.9.15
 * Add datastore v1
 * Regenerate APIs
@@ -10,7 +14,6 @@
 # 0.9.13
 * Fix fetch_all to work correctly with the genomics API
 * Add speech & language APIs, regenerate APIs
-
 
 # 0.9.12
 * Regenerated APIs

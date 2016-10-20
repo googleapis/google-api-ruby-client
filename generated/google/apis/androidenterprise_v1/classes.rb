@@ -1715,6 +1715,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :product_id
       
+        # The interpretation of this product set. "unknown" should never be sent and
+        # ignored if received. "whitelist" means that this product set constitutes a
+        # whitelist. "includeAll" means that all products are accessible (the value of
+        # the productId field is therefore ignored). If a value is not supplied, it is
+        # interpreted to be "whitelist" for backwards compatibility.
+        # Corresponds to the JSON property `productSetBehavior`
+        # @return [String]
+        attr_accessor :product_set_behavior
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1723,6 +1732,7 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @product_set_behavior = args[:product_set_behavior] if args.key?(:product_set_behavior)
         end
       end
       

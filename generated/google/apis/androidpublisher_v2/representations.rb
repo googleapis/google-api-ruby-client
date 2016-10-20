@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeobfuscationFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeobfuscationFilesUploadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeveloperComment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -434,6 +446,21 @@ module Google
           property :developer_comment, as: 'developerComment', class: Google::Apis::AndroidpublisherV2::DeveloperComment, decorator: Google::Apis::AndroidpublisherV2::DeveloperComment::Representation
       
           property :user_comment, as: 'userComment', class: Google::Apis::AndroidpublisherV2::UserComment, decorator: Google::Apis::AndroidpublisherV2::UserComment::Representation
+      
+        end
+      end
+      
+      class DeobfuscationFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :symbol_type, as: 'symbolType'
+        end
+      end
+      
+      class DeobfuscationFilesUploadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deobfuscation_file, as: 'deobfuscationFile', class: Google::Apis::AndroidpublisherV2::DeobfuscationFile, decorator: Google::Apis::AndroidpublisherV2::DeobfuscationFile::Representation
       
         end
       end

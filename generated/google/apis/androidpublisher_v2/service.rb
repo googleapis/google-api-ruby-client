@@ -660,6 +660,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the deobfuscation file of the specified APK. If a deobfuscation file
+        # already exists, it will be replaced.
+        # @param [String] package_name
+        #   Unique identifier of the Android app for which the deobfuscatiuon files are
+        #   being uploaded; for example, "com.spiffygame".
+        # @param [String] edit_id
+        #   Unique identifier for this edit.
+        # @param [Fixnum] apk_version_code
+        #   The version code of the APK whose deobfuscation file is being uploaded.
+        # @param [String] deobfuscation_file_type
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_edit_deobfuscationfile(package_name, edit_id, apk_version_code, deobfuscation_file_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}', options)
+          else
+            command = make_upload_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.response_representation = Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['editId'] = edit_id unless edit_id.nil?
+          command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
+          command.params['deobfuscationFileType'] = deobfuscation_file_type unless deobfuscation_file_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches app details for this edit. This includes the default language and
         # developer support contact information.
         # @param [String] package_name

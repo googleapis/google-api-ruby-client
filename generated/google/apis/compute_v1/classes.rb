@@ -1552,8 +1552,7 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # [Output Only] The status of disk creation. Applicable statuses includes:
-        # CREATING, FAILED, READY, RESTORING.
+        # [Output Only] The status of disk creation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3395,8 +3394,8 @@ module Google
         # valid partial URL. You must provide either this property or the rawDisk.source
         # property but not both to create an image. For example, the following are valid
         # values:
-        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk
-        # - projects/project/zones/zone/disk/disk
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # - projects/project/zones/zone/disks/disk
         # - zones/zone/disks/disk
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
@@ -7045,7 +7044,7 @@ module Google
         attr_accessor :id
       
         # Router interfaces. Each interface requires either one linked resource (e.g.
-        # linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).
+        # linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or both.
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeV1::RouterInterface>]
         attr_accessor :interfaces

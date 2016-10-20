@@ -1520,6 +1520,7 @@ module Google
         # @param [String] disk
         #   Name of the persistent disk to snapshot.
         # @param [Google::Apis::ComputeBeta::Snapshot] snapshot_object
+        # @param [Boolean] guest_flush
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1541,7 +1542,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_disk_snapshot(project, zone, disk, snapshot_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_disk_snapshot(project, zone, disk, snapshot_object = nil, guest_flush: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/createSnapshot', options)
           command.request_representation = Google::Apis::ComputeBeta::Snapshot::Representation
           command.request_object = snapshot_object
@@ -1550,6 +1551,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['disk'] = disk unless disk.nil?
+          command.query['guestFlush'] = guest_flush unless guest_flush.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -837,6 +837,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :product_id, as: 'productId'
+          property :product_set_behavior, as: 'productSetBehavior'
         end
       end
       

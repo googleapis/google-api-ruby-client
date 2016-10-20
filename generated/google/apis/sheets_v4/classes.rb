@@ -217,6 +217,34 @@ module Google
         end
       end
       
+      # The response when clearing a range of values in a spreadsheet.
+      class ClearValuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The spreadsheet the updates were applied to.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The range (in A1 notation) that was cleared.
+        # (If the request was for an unbounded range or a ranger larger
+        # than the bounds of the sheet, this will be the actual range
+        # that was cleared, bounded to the sheet's limits.)
+        # Corresponds to the JSON property `clearedRange`
+        # @return [String]
+        attr_accessor :cleared_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @cleared_range = args[:cleared_range] if args.key?(:cleared_range)
+        end
+      end
+      
       # Updates a conditional format rule at the given index,
       # or moves a conditional format rule to another index.
       class UpdateConditionalFormatRuleRequest
@@ -1561,6 +1589,34 @@ module Google
         end
       end
       
+      # The response when updating a range of values in a spreadsheet.
+      class BatchClearValuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The spreadsheet the updates were applied to.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The ranges that were cleared, in A1 notation.
+        # (If the requests were for an unbounded range or a ranger larger
+        # than the bounds of the sheet, this will be the actual ranges
+        # that were cleared, bounded to the sheet's limits.)
+        # Corresponds to the JSON property `clearedRanges`
+        # @return [Array<String>]
+        attr_accessor :cleared_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @cleared_ranges = args[:cleared_ranges] if args.key?(:cleared_ranges)
+        end
+      end
+      
       # A rule describing a conditional format.
       class ConditionalFormatRule
         include Google::Apis::Core::Hashable
@@ -2793,6 +2849,19 @@ module Google
         end
       end
       
+      # The request for clearing a range of values in a spreadsheet.
+      class ClearValuesRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A protected range.
       class ProtectedRange
         include Google::Apis::Core::Hashable
@@ -3263,6 +3332,25 @@ module Google
         end
       end
       
+      # The request for clearing more than one range of values in a spreadsheet.
+      class BatchClearValuesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ranges to clear, in A1 notation.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<String>]
+        attr_accessor :ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ranges = args[:ranges] if args.key?(:ranges)
+        end
+      end
+      
       # Updates properties of dimensions within the specified range.
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
@@ -3609,7 +3697,7 @@ module Google
         attr_accessor :style
       
         # The width of the border, in pixels.
-        # Border widths must be between 0 and 3 pixels, inclusive.
+        # Deprecated; the width is determined by the "style" field.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width

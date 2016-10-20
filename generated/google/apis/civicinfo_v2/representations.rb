@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContextParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DivisionRepresentativeInfoRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DivisionSearchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DivisionSearchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +89,12 @@ module Google
       end
       
       class ElectionOfficial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ElectionsQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepresentativeInfoRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepresentativeInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +161,12 @@ module Google
       end
       
       class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoterInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -235,6 +271,29 @@ module Google
         end
       end
       
+      class ContextParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_profile, as: 'clientProfile'
+        end
+      end
+      
+      class DivisionRepresentativeInfoRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
+      
+        end
+      end
+      
+      class DivisionSearchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
+      
+        end
+      end
+      
       class DivisionSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -271,6 +330,14 @@ module Google
           property :name, as: 'name'
           property :office_phone_number, as: 'officePhoneNumber'
           property :title, as: 'title'
+        end
+      end
+      
+      class ElectionsQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
+      
         end
       end
       
@@ -360,6 +427,14 @@ module Google
         end
       end
       
+      class RepresentativeInfoRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
+      
+        end
+      end
+      
       class RepresentativeInfoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -393,6 +468,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :official, as: 'official'
+        end
+      end
+      
+      class VoterInfoRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
+      
         end
       end
       

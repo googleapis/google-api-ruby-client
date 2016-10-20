@@ -113,22 +113,19 @@ module Google
         end
       end
       
-      # Describes a sink used to export log entries outside Stackdriver Logging.
+      # Describes a sink used to export log entries outside of Stackdriver Logging.
       class LogSink
         include Google::Apis::Core::Hashable
       
-        # Output only. The iam identity to which the destination needs to grant write
-        # access.  This may be a service account or a group.
-        # Examples (Do not assume these specific values):
-        # "serviceAccount:cloud-logs@system.gserviceaccount.com"
-        # "group:cloud-logs@google.com"
-        # For GCS destinations, the role "roles/owner" is required on the bucket
-        # For Cloud Pubsub destinations, the role "roles/pubsub.publisher" is
-        # required on the topic
-        # For BigQuery, the role "roles/editor" is required on the dataset
-        # Corresponds to the JSON property `writerIdentity`
+        # Required. The export destination. See
+        # [Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).
+        # Examples:
+        # "storage.googleapis.com/my-gcs-bucket"
+        # "bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset"
+        # "pubsub.googleapis.com/projects/my-project/topics/my-topic"
+        # Corresponds to the JSON property `destination`
         # @return [String]
-        attr_accessor :writer_identity
+        attr_accessor :destination
       
         # Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).
         # Only log entries matching the filter are exported. The filter
@@ -141,23 +138,10 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Required. The export destination. See
-        # [Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).
-        # Examples:
-        # "storage.googleapis.com/my-gcs-bucket"
-        # "bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset"
-        # "pubsub.googleapis.com/projects/my-project/topics/my-topic"
-        # Corresponds to the JSON property `destination`
+        # Optional. Time at which this sink expires.
+        # Corresponds to the JSON property `endTime`
         # @return [String]
-        attr_accessor :destination
-      
-        # Optional. The log entry version to use for this sink's exported log
-        # entries.  This version does not have to correspond to the version of the
-        # log entry that was written to Stackdriver Logging. If omitted, the
-        # v2 format is used.
-        # Corresponds to the JSON property `outputVersionFormat`
-        # @return [String]
-        attr_accessor :output_version_format
+        attr_accessor :end_time
       
         # Required. The client-assigned sink identifier, unique within the
         # project. Example: `"my-syslog-errors-to-pubsub"`.  Sink identifiers are
@@ -168,17 +152,48 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Time range for which this sink is active.
+        # Logs are exported only if start_time <= entry.timestamp < end_time
+        # Both start_time and end_time may be omitted to specify
+        # (half) infinite ranges. The start_time must be less than the end_time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. The log entry version to use for this sink's exported log
+        # entries.  This version does not have to correspond to the version of the
+        # log entry that was written to Stackdriver Logging. If omitted, the
+        # v2 format is used.
+        # Corresponds to the JSON property `outputVersionFormat`
+        # @return [String]
+        attr_accessor :output_version_format
+      
+        # Output only. The IAM identity to which the destination needs to grant write
+        # access.  This may be a service account or a group.
+        # Examples (Do not assume these specific values):
+        # "serviceAccount:cloud-logs@system.gserviceaccount.com"
+        # "group:cloud-logs@google.com"
+        # For GCS destinations, the role "roles/owner" is required on the bucket
+        # For Cloud Pubsub destinations, the role "roles/pubsub.publisher" is
+        # required on the topic
+        # For BigQuery, the role "roles/editor" is required on the dataset
+        # Corresponds to the JSON property `writerIdentity`
+        # @return [String]
+        attr_accessor :writer_identity
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
-          @filter = args[:filter] if args.key?(:filter)
           @destination = args[:destination] if args.key?(:destination)
-          @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @filter = args[:filter] if args.key?(:filter)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
       end
       
@@ -1105,7 +1120,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :project_ids
       
-        # Optional. One or more cloud resources from which to retrieve log entries.
+        # Required. One or more cloud resources from which to retrieve log entries.
         # Example: `"projects/my-project-1A"`, `"projects/1234567890"`.  Projects
         # listed in `projectIds` are added to this list.
         # Corresponds to the JSON property `resourceNames`

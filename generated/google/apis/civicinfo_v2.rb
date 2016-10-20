@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/civic-information
     module CivicinfoV2
       VERSION = 'V2'
-      REVISION = '20160823'
+      REVISION = '20161017'
     end
   end
 end

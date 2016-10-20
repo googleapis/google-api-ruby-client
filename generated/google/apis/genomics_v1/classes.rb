@@ -1037,6 +1037,31 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::GenomicsV1::Operation>]
+        attr_accessor :operations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1115,31 +1140,6 @@ module Google
           @done = args[:done] if args.key?(:done)
           @error = args[:error] if args.key?(:error)
           @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::GenomicsV1::Operation>]
-        attr_accessor :operations
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operations = args[:operations] if args.key?(:operations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

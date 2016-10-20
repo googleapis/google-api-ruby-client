@@ -191,7 +191,9 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # The candidate's name.
+        # The candidate's name. If this is a joint ticket it will indicate the name of
+        # the candidate at the top of a ticket followed by a / and that name of
+        # candidate at the bottom of the ticket. e.g. "Mitt Romney / Paul Ryan"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -441,6 +443,63 @@ module Google
         end
       end
       
+      # 
+      class ContextParams
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `clientProfile`
+        # @return [String]
+        attr_accessor :client_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_profile = args[:client_profile] if args.key?(:client_profile)
+        end
+      end
+      
+      # A request to look up representative information for a single division.
+      class DivisionRepresentativeInfoRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextParams`
+        # @return [Google::Apis::CivicinfoV2::ContextParams]
+        attr_accessor :context_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_params = args[:context_params] if args.key?(:context_params)
+        end
+      end
+      
+      # A search request for political geographies.
+      class DivisionSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextParams`
+        # @return [Google::Apis::CivicinfoV2::ContextParams]
+        attr_accessor :context_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_params = args[:context_params] if args.key?(:context_params)
+        end
+      end
+      
       # The result of a division search query.
       class DivisionSearchResponse
         include Google::Apis::Core::Hashable
@@ -582,6 +641,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @office_phone_number = args[:office_phone_number] if args.key?(:office_phone_number)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class ElectionsQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextParams`
+        # @return [Google::Apis::CivicinfoV2::ContextParams]
+        attr_accessor :context_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_params = args[:context_params] if args.key?(:context_params)
         end
       end
       
@@ -920,6 +998,26 @@ module Google
         end
       end
       
+      # A request for political geography and representative information for an
+      # address.
+      class RepresentativeInfoRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextParams`
+        # @return [Google::Apis::CivicinfoV2::ContextParams]
+        attr_accessor :context_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_params = args[:context_params] if args.key?(:context_params)
+        end
+      end
+      
       # The result of a representative info lookup query.
       class RepresentativeInfoResponse
         include Google::Apis::Core::Hashable
@@ -1044,6 +1142,25 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @official = args[:official] if args.key?(:official)
+        end
+      end
+      
+      # A request for information about a voter.
+      class VoterInfoRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextParams`
+        # @return [Google::Apis::CivicinfoV2::ContextParams]
+        attr_accessor :context_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_params = args[:context_params] if args.key?(:context_params)
         end
       end
       

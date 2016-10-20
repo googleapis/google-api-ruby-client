@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClearValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateConditionalFormatRuleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchClearValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConditionalFormatRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClearValuesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProtectedRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +461,12 @@ module Google
       end
       
       class NumberFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchClearValuesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -803,6 +827,14 @@ module Google
         end
       end
       
+      class ClearValuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          property :cleared_range, as: 'clearedRange'
+        end
+      end
+      
       class UpdateConditionalFormatRuleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1183,14 @@ module Google
         end
       end
       
+      class BatchClearValuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          collection :cleared_ranges, as: 'clearedRanges'
+        end
+      end
+      
       class ConditionalFormatRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1392,6 +1432,12 @@ module Google
         end
       end
       
+      class ClearValuesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ProtectedRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1495,6 +1541,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pattern, as: 'pattern'
           property :type, as: 'type'
+        end
+      end
+      
+      class BatchClearValuesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ranges, as: 'ranges'
         end
       end
       

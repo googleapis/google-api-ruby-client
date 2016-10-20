@@ -100,10 +100,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The bucket's storage class. This defines how objects in the bucket are stored
-        # and determines the SLA and the cost of storage. Values include STANDARD,
-        # NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. For more
-        # information, see storage classes.
+        # The bucket's default storage class, used whenever no storageClass is specified
+        # for a newly-created object. This defines how objects in the bucket are stored
+        # and determines the SLA and the cost of storage. Values include MULTI_REGIONAL,
+        # REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If
+        # this value is not specified when the bucket is created, it will default to
+        # STANDARD. For more information, see storage classes.
         # Corresponds to the JSON property `storageClass`
         # @return [String]
         attr_accessor :storage_class
@@ -247,7 +249,12 @@ module Google
             class Action
               include Google::Apis::Core::Hashable
             
-              # Type of the action. Currently, only Delete is supported.
+              # Target storage class. Required iff the type of the action is SetStorageClass.
+              # Corresponds to the JSON property `storageClass`
+              # @return [String]
+              attr_accessor :storage_class
+            
+              # Type of the action. Currently, only Delete and SetStorageClass are supported.
               # Corresponds to the JSON property `type`
               # @return [String]
               attr_accessor :type
@@ -258,6 +265,7 @@ module Google
             
               # Update properties of this object
               def update!(**args)
+                @storage_class = args[:storage_class] if args.key?(:storage_class)
                 @type = args[:type] if args.key?(:type)
               end
             end
@@ -286,6 +294,13 @@ module Google
               attr_accessor :is_live
               alias_method :is_live?, :is_live
             
+              # Objects having any of the storage classes specified by this condition will be
+              # matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD,
+              # and DURABLE_REDUCED_AVAILABILITY.
+              # Corresponds to the JSON property `matchesStorageClass`
+              # @return [Array<String>]
+              attr_accessor :matches_storage_class
+            
               # Relevant only for versioned objects. If the value is N, this condition is
               # satisfied when there are at least N versions (including the live version)
               # newer than this version of the object.
@@ -302,6 +317,7 @@ module Google
                 @age = args[:age] if args.key?(:age)
                 @created_before = args[:created_before] if args.key?(:created_before)
                 @is_live = args[:is_live] if args.key?(:is_live)
+                @matches_storage_class = args[:matches_storage_class] if args.key?(:matches_storage_class)
                 @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
               end
             end

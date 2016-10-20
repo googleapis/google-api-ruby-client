@@ -172,11 +172,13 @@ module Google
       class LogSink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :writer_identity, as: 'writerIdentity'
-          property :filter, as: 'filter'
           property :destination, as: 'destination'
-          property :output_version_format, as: 'outputVersionFormat'
+          property :filter, as: 'filter'
+          property :end_time, as: 'endTime'
           property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :output_version_format, as: 'outputVersionFormat'
+          property :writer_identity, as: 'writerIdentity'
         end
       end
       

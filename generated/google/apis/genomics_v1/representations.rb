@@ -178,13 +178,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +748,15 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::GenomicsV1::Operation, decorator: Google::Apis::GenomicsV1::Operation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -757,15 +766,6 @@ module Google
           property :error, as: 'error', class: Google::Apis::GenomicsV1::Status, decorator: Google::Apis::GenomicsV1::Status::Representation
       
           hash :response, as: 'response'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::GenomicsV1::Operation, decorator: Google::Apis::GenomicsV1::Operation::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       

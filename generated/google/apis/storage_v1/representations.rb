@@ -241,6 +241,7 @@ module Google
             class Action
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
+                property :storage_class, as: 'storageClass'
                 property :type, as: 'type'
               end
             end
@@ -252,6 +253,7 @@ module Google
                 property :created_before, as: 'createdBefore', type: Date
             
                 property :is_live, as: 'isLive'
+                collection :matches_storage_class, as: 'matchesStorageClass'
                 property :num_newer_versions, as: 'numNewerVersions'
               end
             end

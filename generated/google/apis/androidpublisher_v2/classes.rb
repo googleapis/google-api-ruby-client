@@ -277,6 +277,44 @@ module Google
         end
       end
       
+      # Represents a deobfuscation file.
+      class DeobfuscationFile
+        include Google::Apis::Core::Hashable
+      
+        # The type of the deobfuscation file.
+        # Corresponds to the JSON property `symbolType`
+        # @return [String]
+        attr_accessor :symbol_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @symbol_type = args[:symbol_type] if args.key?(:symbol_type)
+        end
+      end
+      
+      # 
+      class DeobfuscationFilesUploadResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a deobfuscation file.
+        # Corresponds to the JSON property `deobfuscationFile`
+        # @return [Google::Apis::AndroidpublisherV2::DeobfuscationFile]
+        attr_accessor :deobfuscation_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deobfuscation_file = args[:deobfuscation_file] if args.key?(:deobfuscation_file)
+        end
+      end
+      
       # 
       class DeveloperComment
         include Google::Apis::Core::Hashable
