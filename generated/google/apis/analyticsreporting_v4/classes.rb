@@ -469,8 +469,7 @@ module Google
         # following expression selects `ga:browser` dimension which starts with
         # Firefox; `ga:browser=~^Firefox`. For more information on dimensions
         # and metric filters, see
-        # [Filters reference](https://developers.google.com/analytics/devguides/
-        # reporting/core/v3/reference#filters).
+        # [Filters reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).
         # Corresponds to the JSON property `filtersExpression`
         # @return [String]
         attr_accessor :filters_expression
