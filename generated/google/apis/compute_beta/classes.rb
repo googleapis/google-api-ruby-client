@@ -415,8 +415,12 @@ module Google
         attr_accessor :mode
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # This field is only applicable for persistent disks. Note that for
-        # InstanceTemplate, it is just disk name, not URL for the disk.
+        # When creating a new instance, one of initializeParams.sourceImage or disks.
+        # source is required.
+        # If desired, you can also attach existing non-root persistent disks using this
+        # property. This field is only applicable for persistent disks.
+        # Note that for InstanceTemplate, specify the disk name, not the URL for the
+        # disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -488,8 +492,8 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The source image used to create this disk. If the source image is deleted,
-        # this field will not be set.
+        # The source image to create this disk. When creating a new instance, one of
+        # initializeParams.sourceImage or disks.source is required.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-8 to use the
         # latest Debian 8 image:
@@ -503,6 +507,7 @@ module Google
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
         # global/images/family/my-private-family
+        # If the source image is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -524,6 +529,35 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+        end
+      end
+      
+      # Enables "data access" audit logging for a service and specifies a list of
+      # members that are log-exempted.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that are exempted from "data access" audit logging
+        # for the `service` specified above. Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # Specifies a service that will be enabled for "data access" audit logging. For
+        # example, `resourcemanager`, `storage`, `compute`. `allServices` is a special
+        # value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -1092,6 +1126,117 @@ module Google
         end
       end
       
+      # A BackendBucket resource. This resource defines a Cloud Storage bucket.
+      class BackendBucket
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket name.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided by the client when
+        # the resource is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If true, enable Cloud CDN for this BackendBucket.
+        # Corresponds to the JSON property `enableCdn`
+        # @return [Boolean]
+        attr_accessor :enable_cdn
+        alias_method :enable_cdn?, :enable_cdn
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Contains a list of BackendBucket resources.
+      class BackendBucketList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of BackendBucket resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::BackendBucket>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] A token used to continue a truncated list request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
       # A BackendService resource. This resource defines a group of backend virtual
       # machines and their serving capacity.
       class BackendService
@@ -1459,9 +1604,54 @@ module Google
         end
       end
       
+      # Associates `members` with a `role`.
+      class Binding
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values:
+        # * `allUsers`: A special identifier that represents anyone who is on the
+        # internet; with or without a Google account.
+        # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        # authenticated with a Google account or a service account.
+        # * `user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@gmail.com` or `joe@example.com`.
+        # * `serviceAccount:`emailid``: An email address that represents a service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
+        # * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`.
+        # * `domain:`domain``: A Google Apps domain name that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # 
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
+      
+        # If set, this invalidation rule will only apply to requests with a Host header
+        # matching host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
       
         # 
         # Corresponds to the JSON property `path`
@@ -1474,7 +1664,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A condition to be met.
+      class Condition
+        include Google::Apis::Core::Hashable
+      
+        # Trusted attributes supplied by the IAM system.
+        # Corresponds to the JSON property `iam`
+        # @return [String]
+        attr_accessor :iam
+      
+        # An operator to apply the subject with.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # Trusted attributes discharged by the service.
+        # Corresponds to the JSON property `svc`
+        # @return [String]
+        attr_accessor :svc
+      
+        # Trusted attributes supplied by any service that owns resources and uses the
+        # IAM system for access control.
+        # Corresponds to the JSON property `sys`
+        # @return [String]
+        attr_accessor :sys
+      
+        # DEPRECATED. Use 'values' instead.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The objects of the condition. This is mutually exclusive with 'value'.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam = args[:iam] if args.key?(:iam)
+          @op = args[:op] if args.key?(:op)
+          @svc = args[:svc] if args.key?(:svc)
+          @sys = args[:sys] if args.key?(:sys)
+          @value = args[:value] if args.key?(:value)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -1568,20 +1809,23 @@ module Google
       class DeprecationStatus
         include Google::Apis::Core::Hashable
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to DELETED.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to DELETED. This is only informational and the status will
+        # not change unless the client explicitly changes it.
         # Corresponds to the JSON property `deleted`
         # @return [String]
         attr_accessor :deleted
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to DEPRECATED.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to DEPRECATED. This is only informational and the status
+        # will not change unless the client explicitly changes it.
         # Corresponds to the JSON property `deprecated`
         # @return [String]
         attr_accessor :deprecated
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to OBSOLETE.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to OBSOLETE. This is only informational and the status will
+        # not change unless the client explicitly changes it.
         # Corresponds to the JSON property `obsolete`
         # @return [String]
         attr_accessor :obsolete
@@ -5723,6 +5967,50 @@ module Google
         end
       end
       
+      # Specifies what kind of log the caller must write
+      class LogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Options for counters
+        # Corresponds to the JSON property `counter`
+        # @return [Google::Apis::ComputeBeta::LogConfigCounterOptions]
+        attr_accessor :counter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @counter = args[:counter] if args.key?(:counter)
+        end
+      end
+      
+      # Options for counters
+      class LogConfigCounterOptions
+        include Google::Apis::Core::Hashable
+      
+        # The field value to attribute.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # The metric to update.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
       # A Machine Type resource.
       class MachineType
         include Google::Apis::Core::Hashable
@@ -6559,9 +6847,9 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] The URL of the resource that the operation modifies. If creating
-        # a persistent disk snapshot, this points to the persistent disk that the
-        # snapshot was created from.
+        # [Output Only] The URL of the resource that the operation modifies. For
+        # operations related to creating a snapshot, this points to the persistent disk
+        # that the snapshot was created from.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -6993,6 +7281,88 @@ module Google
         def update!(**args)
           @paths = args[:paths] if args.key?(:paths)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Defines an Identity and Access Management (IAM) policy. It is used to specify
+      # access control policies for Cloud Platform resources.
+      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `
+      # members` to a `role`, where the members can be user accounts, Google groups,
+      # Google domains, and service accounts. A `role` is a named list of permissions
+      # defined by IAM.
+      # **Example**
+      # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+      # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+      # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
+      # sean@example.com"] ` ] `
+      # For a description of IAM and its features, see the [IAM developer's guide](
+      # https://cloud.google.com/iam).
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies audit logging configs for "data access". "data access": generally
+        # refers to data reads/writes and admin reads. "admin activity": generally
+        # refers to admin writes.
+        # Note: `AuditConfig` doesn't apply to "admin activity", which always enables
+        # audit logging.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::ComputeBeta::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`. Multiple `bindings` must not be
+        # specified for the same `role`. `bindings` with no members will result in an
+        # error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeBeta::Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `iamOwned`
+        # @return [Boolean]
+        attr_accessor :iam_owned
+        alias_method :iam_owned?, :iam_owned
+      
+        # If more than one rule is specified, the rules are applied in the following
+        # manner: - All matching LOG rules are always applied. - If any DENY/
+        # DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if
+        # one or more matching rule requires logging. - Otherwise, if any ALLOW/
+        # ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if
+        # one or more matching rule requires logging. - Otherwise, if no rule applies,
+        # permission is denied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeBeta::Rule>]
+        attr_accessor :rules
+      
+        # Version of the `Policy`. The default version is 0.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
+          @rules = args[:rules] if args.key?(:rules)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -8427,6 +8797,66 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # A rule to be applied in a Policy.
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # Required
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Additional restrictions that must be met
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ComputeBeta::Condition>]
+        attr_accessor :conditions
+      
+        # Human-readable description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/
+        # AUTHORITY_SELECTOR is in at least one of these entries.
+        # Corresponds to the JSON property `ins`
+        # @return [Array<String>]
+        attr_accessor :ins
+      
+        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+        # that match the LOG action.
+        # Corresponds to the JSON property `logConfigs`
+        # @return [Array<Google::Apis::ComputeBeta::LogConfig>]
+        attr_accessor :log_configs
+      
+        # If one or more 'not_in' clauses are specified, the rule matches if the
+        # PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        # Corresponds to the JSON property `notIns`
+        # @return [Array<String>]
+        attr_accessor :not_ins
+      
+        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
+        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
+        # *') matches all verbs.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @description = args[:description] if args.key?(:description)
+          @ins = args[:ins] if args.key?(:ins)
+          @log_configs = args[:log_configs] if args.key?(:log_configs)
+          @not_ins = args[:not_ins] if args.key?(:not_ins)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       

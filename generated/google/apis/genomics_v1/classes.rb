@@ -3345,8 +3345,8 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::OperationEvent>]
         attr_accessor :events
       
-        # Optionally provided by the caller when submitting the request that creates the
-        # operation.
+        # This field is deprecated. Use `labels` instead. Optionally provided by the
+        # caller when submitting the request that creates the operation.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -3355,6 +3355,12 @@ module Google
         # Corresponds to the JSON property `runtimeMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :runtime_metadata
+      
+        # Optionally provided by the caller when submitting the request that creates the
+        # operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         def initialize(**args)
            update!(**args)
@@ -3370,6 +3376,7 @@ module Google
           @events = args[:events] if args.key?(:events)
           @client_id = args[:client_id] if args.key?(:client_id)
           @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       

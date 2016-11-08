@@ -223,10 +223,12 @@ module Google
         #   The A1 notation of the values to retrieve.
         # @param [String] value_render_option
         #   How values should be represented in the output.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] date_time_render_option
         #   How dates, times, and durations should be represented in the output.
         #   This is ignored if value_render_option is
         #   FORMATTED_VALUE.
+        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
         # @param [String] major_dimension
         #   The major dimension that results should use.
         #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
@@ -309,10 +311,12 @@ module Google
         #   The A1 notation of the values to retrieve.
         # @param [String] value_render_option
         #   How values should be represented in the output.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] date_time_render_option
         #   How dates, times, and durations should be represented in the output.
         #   This is ignored if value_render_option is
         #   FORMATTED_VALUE.
+        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
         # @param [String] major_dimension
         #   The major dimension that results should use.
         #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
@@ -370,8 +374,20 @@ module Google
         #   The A1 notation of a range to search for a logical table of data.
         #   Values will be appended after the last row of the table.
         # @param [Google::Apis::SheetsV4::ValueRange] value_range_object
+        # @param [String] response_value_render_option
+        #   Determines how values in the response should be rendered.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] value_input_option
         #   How the input data should be interpreted.
+        # @param [String] response_date_time_render_option
+        #   Determines how dates, times, and durations in the response should be
+        #   rendered. This is ignored if response_value_render_option is
+        #   FORMATTED_VALUE.
+        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # @param [Boolean] include_values_in_response
+        #   Determines if the update response should include the values
+        #   of the cells that were appended. By default, responses
+        #   do not include the updated values.
         # @param [String] insert_data_option
         #   How the input data should be inserted.
         # @param [String] quota_user
@@ -391,7 +407,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def append_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, value_input_option: nil, insert_data_option: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def append_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, response_value_render_option: nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, insert_data_option: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
@@ -399,7 +415,10 @@ module Google
           command.response_class = Google::Apis::SheetsV4::AppendValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
+          command.query['responseValueRenderOption'] = response_value_render_option unless response_value_render_option.nil?
           command.query['valueInputOption'] = value_input_option unless value_input_option.nil?
+          command.query['responseDateTimeRenderOption'] = response_date_time_render_option unless response_date_time_render_option.nil?
+          command.query['includeValuesInResponse'] = include_values_in_response unless include_values_in_response.nil?
           command.query['insertDataOption'] = insert_data_option unless insert_data_option.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -414,8 +433,23 @@ module Google
         # @param [String] range
         #   The A1 notation of the values to update.
         # @param [Google::Apis::SheetsV4::ValueRange] value_range_object
+        # @param [String] response_value_render_option
+        #   Determines how values in the response should be rendered.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] value_input_option
         #   How the input data should be interpreted.
+        # @param [String] response_date_time_render_option
+        #   Determines how dates, times, and durations in the response should be
+        #   rendered. This is ignored if response_value_render_option is
+        #   FORMATTED_VALUE.
+        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # @param [Boolean] include_values_in_response
+        #   Determines if the update response should include the values
+        #   of the cells that were updated. By default, responses
+        #   do not include the updated values.
+        #   If the range to write was larger than than the range actually written,
+        #   the response will include all values in the requested range (excluding
+        #   trailing empty rows and columns).
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -433,7 +467,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, value_input_option: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, response_value_render_option: nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
@@ -441,7 +475,10 @@ module Google
           command.response_class = Google::Apis::SheetsV4::UpdateValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
+          command.query['responseValueRenderOption'] = response_value_render_option unless response_value_render_option.nil?
           command.query['valueInputOption'] = value_input_option unless value_input_option.nil?
+          command.query['responseDateTimeRenderOption'] = response_date_time_render_option unless response_date_time_render_option.nil?
+          command.query['includeValuesInResponse'] = include_values_in_response unless include_values_in_response.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

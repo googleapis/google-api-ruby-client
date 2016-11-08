@@ -563,6 +563,12 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
+        # Whether the file has been modified by this user.
+        # Corresponds to the JSON property `modifiedByMe`
+        # @return [Boolean]
+        attr_accessor :modified_by_me
+        alias_method :modified_by_me?, :modified_by_me
+      
         # The last time the file was modified by the user (RFC 3339 date-time).
         # Corresponds to the JSON property `modifiedByMeTime`
         # @return [DateTime]
@@ -744,6 +750,7 @@ module Google
           @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
           @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @modified_by_me = args[:modified_by_me] if args.key?(:modified_by_me)
           @modified_by_me_time = args[:modified_by_me_time] if args.key?(:modified_by_me_time)
           @modified_time = args[:modified_time] if args.key?(:modified_time)
           @name = args[:name] if args.key?(:name)

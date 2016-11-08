@@ -507,6 +507,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV3::EmailTemplate]
         attr_accessor :change_email_template
       
+        # 
+        # Corresponds to the JSON property `dynamicLinksDomain`
+        # @return [String]
+        attr_accessor :dynamic_links_domain
+      
         # Whether anonymous user is enabled.
         # Corresponds to the JSON property `enableAnonymousUser`
         # @return [Boolean]
@@ -554,6 +559,7 @@ module Google
           @api_key = args[:api_key] if args.key?(:api_key)
           @authorized_domains = args[:authorized_domains] if args.key?(:authorized_domains)
           @change_email_template = args[:change_email_template] if args.key?(:change_email_template)
+          @dynamic_links_domain = args[:dynamic_links_domain] if args.key?(:dynamic_links_domain)
           @enable_anonymous_user = args[:enable_anonymous_user] if args.key?(:enable_anonymous_user)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @legacy_reset_password_template = args[:legacy_reset_password_template] if args.key?(:legacy_reset_password_template)
@@ -905,6 +911,12 @@ module Google
         # @return [String]
         attr_accessor :captcha_response
       
+        # Whether to disable the user. Only can be used by service account.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # The name of the user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -914,6 +926,12 @@ module Google
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
+      
+        # Mark the email as verified or not. Only can be used by service account.
+        # Corresponds to the JSON property `emailVerified`
+        # @return [Boolean]
+        attr_accessor :email_verified
+        alias_method :email_verified?, :email_verified
       
         # The GITKit token of the authenticated user.
         # Corresponds to the JSON property `idToken`
@@ -930,6 +948,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # The photo url of the user.
+        # Corresponds to the JSON property `photoUrl`
+        # @return [String]
+        attr_accessor :photo_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -938,17 +961,26 @@ module Google
         def update!(**args)
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
         end
       end
       
       # Request to upload user account in batch.
       class UploadAccountRequest
         include Google::Apis::Core::Hashable
+      
+        # Whether allow overwrite existing account when user local_id exists.
+        # Corresponds to the JSON property `allowOverwrite`
+        # @return [Boolean]
+        attr_accessor :allow_overwrite
+        alias_method :allow_overwrite?, :allow_overwrite
       
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
@@ -1005,6 +1037,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_overwrite = args[:allow_overwrite] if args.key?(:allow_overwrite)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @hash_algorithm = args[:hash_algorithm] if args.key?(:hash_algorithm)
           @memory_cost = args[:memory_cost] if args.key?(:memory_cost)
@@ -1646,6 +1679,11 @@ module Google
         # @return [Array<Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo>]
         attr_accessor :provider_user_info
       
+        # The user's plain text password.
+        # Corresponds to the JSON property `rawPassword`
+        # @return [String]
+        attr_accessor :raw_password
+      
         # The user's password salt.
         # Corresponds to the JSON property `salt`
         # @return [String]
@@ -1684,6 +1722,7 @@ module Google
           @password_updated_at = args[:password_updated_at] if args.key?(:password_updated_at)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
+          @raw_password = args[:raw_password] if args.key?(:raw_password)
           @salt = args[:salt] if args.key?(:salt)
           @screen_name = args[:screen_name] if args.key?(:screen_name)
           @valid_since = args[:valid_since] if args.key?(:valid_since)
@@ -1725,11 +1764,6 @@ module Google
           # @return [String]
           attr_accessor :raw_id
         
-          # Raw IDP-returned user info.
-          # Corresponds to the JSON property `rawUserInfo`
-          # @return [String]
-          attr_accessor :raw_user_info
-        
           # User's screen name at Twitter or login name at Github.
           # Corresponds to the JSON property `screenName`
           # @return [String]
@@ -1747,7 +1781,6 @@ module Google
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
             @raw_id = args[:raw_id] if args.key?(:raw_id)
-            @raw_user_info = args[:raw_user_info] if args.key?(:raw_user_info)
             @screen_name = args[:screen_name] if args.key?(:screen_name)
           end
         end

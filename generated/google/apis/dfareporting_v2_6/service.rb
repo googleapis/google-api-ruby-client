@@ -312,7 +312,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of account user profiles, possibly filtered.
+        # Retrieves a list of account user profiles, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
@@ -497,7 +498,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of accounts, possibly filtered.
+        # Retrieves the list of accounts, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
@@ -714,7 +715,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of ads, possibly filtered.
+        # Retrieves a list of ads, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
@@ -1024,7 +1025,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of advertiser groups, possibly filtered.
+        # Retrieves a list of advertiser groups, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] ids
@@ -1238,7 +1240,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of advertisers, possibly filtered.
+        # Retrieves a list of advertisers, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_group_ids
@@ -1473,6 +1476,7 @@ module Google
         end
         
         # Retrieves the list of creative IDs associated with the specified campaign.
+        # This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] campaign_id
@@ -1602,7 +1606,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of campaigns, possibly filtered.
+        # Retrieves a list of campaigns, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_group_ids
@@ -1799,7 +1803,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of change logs.
+        # Retrieves a list of change logs. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] action
@@ -2107,7 +2111,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of content categories, possibly filtered.
+        # Retrieves a list of content categories, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] ids
@@ -2528,7 +2533,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of creative field values, possibly filtered.
+        # Retrieves a list of creative field values, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] creative_field_id
@@ -2782,7 +2788,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of creative fields, possibly filtered.
+        # Retrieves a list of creative fields, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_ids
@@ -2999,7 +3006,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of creative groups, possibly filtered.
+        # Retrieves a list of creative groups, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_ids
@@ -3219,7 +3227,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of creatives, possibly filtered.
+        # Retrieves a list of creatives, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
@@ -3470,7 +3478,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of directory site contacts, possibly filtered.
+        # Retrieves a list of directory site contacts, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] directory_site_ids
@@ -3610,7 +3619,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of directory sites, possibly filtered.
+        # Retrieves a list of directory sites, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] accepts_in_stream_video_placements
@@ -4345,7 +4355,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of floodlight activities, possibly filtered.
+        # Retrieves a list of floodlight activities, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] advertiser_id
@@ -4589,7 +4600,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of floodlight activity groups, possibly filtered.
+        # Retrieves a list of floodlight activity groups, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] advertiser_id
@@ -4942,7 +4954,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of inventory items, possibly filtered.
+        # Retrieves a list of inventory items, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] project_id
@@ -5582,7 +5595,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of order documents, possibly filtered.
+        # Retrieves a list of order documents, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] project_id
@@ -5694,7 +5708,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of orders, possibly filtered.
+        # Retrieves a list of orders, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] project_id
@@ -5834,7 +5848,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of placement groups, possibly filtered.
+        # Retrieves a list of placement groups, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_ids
@@ -6134,7 +6149,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of placement strategies, possibly filtered.
+        # Retrieves a list of placement strategies, possibly filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] ids
@@ -6392,7 +6408,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of placements, possibly filtered.
+        # Retrieves a list of placements, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_ids
@@ -6770,7 +6786,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of projects, possibly filtered.
+        # Retrieves a list of projects, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] advertiser_ids
@@ -7060,7 +7076,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of remarketing lists, possibly filtered.
+        # Retrieves a list of remarketing lists, possibly filtered. This method supports
+        # paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] advertiser_id
@@ -7703,7 +7720,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of sites, possibly filtered.
+        # Retrieves a list of sites, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] accepts_in_stream_video_placements
@@ -8068,7 +8085,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a list of subaccounts, possibly filtered.
+        # Gets a list of subaccounts, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Array<String>, String] ids
@@ -8243,7 +8260,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of targetable remarketing lists, possibly filtered.
+        # Retrieves a list of targetable remarketing lists, possibly filtered. This
+        # method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] advertiser_id
@@ -8381,7 +8399,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of targeting templates, optionally filtered.
+        # Retrieves a list of targeting templates, optionally filtered. This method
+        # supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [String] advertiser_id
@@ -8849,7 +8868,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of user roles, possibly filtered.
+        # Retrieves a list of user roles, possibly filtered. This method supports paging.
         # @param [String] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] account_user_role_only

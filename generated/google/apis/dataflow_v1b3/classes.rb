@@ -232,6 +232,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # The location which contains this job.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -255,6 +260,7 @@ module Google
           @replaced_by_job_id = args[:replaced_by_job_id] if args.key?(:replaced_by_job_id)
           @temp_files = args[:temp_files] if args.key?(:temp_files)
           @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -910,6 +916,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Zero or more messages describing locations that failed to respond.
+        # Corresponds to the JSON property `failedLocation`
+        # @return [Array<Google::Apis::DataflowV1b3::FailedLocation>]
+        attr_accessor :failed_location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -918,6 +929,27 @@ module Google
         def update!(**args)
           @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @failed_location = args[:failed_location] if args.key?(:failed_location)
+        end
+      end
+      
+      # FailedLocation indicates which location failed to respond to a request for
+      # data.
+      class FailedLocation
+        include Google::Apis::Core::Hashable
+      
+        # The name of the failed location.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1182,6 +1214,11 @@ module Google
         # @return [String]
         attr_accessor :current_worker_time
       
+        # The location which contains the WorkItem's job.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1191,6 +1228,7 @@ module Google
           @worker_id = args[:worker_id] if args.key?(:worker_id)
           @work_item_statuses = args[:work_item_statuses] if args.key?(:work_item_statuses)
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -2424,6 +2462,11 @@ module Google
         # @return [String]
         attr_accessor :worker_id
       
+        # The location which contains the WorkItem's job.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2435,6 +2478,7 @@ module Google
           @requested_lease_duration = args[:requested_lease_duration] if args.key?(:requested_lease_duration)
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
+          @location = args[:location] if args.key?(:location)
         end
       end
       

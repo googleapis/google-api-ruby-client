@@ -12,29 +12,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/sheets_v4/service.rb'
-require 'google/apis/sheets_v4/classes.rb'
-require 'google/apis/sheets_v4/representations.rb'
+require 'google/apis/slides_v1/service.rb'
+require 'google/apis/slides_v1/classes.rb'
+require 'google/apis/slides_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Sheets API
+    # Google Slides API
     #
-    # Reads and writes Google Sheets.
+    # An API for creating and editing Google Slides presentations.
     #
-    # @see https://developers.google.com/sheets/
-    module SheetsV4
-      VERSION = 'V4'
-      REVISION = '20161105'
+    # @see https://developers.google.com/slides/
+    module SlidesV1
+      VERSION = 'V1'
+      REVISION = '20161102'
 
-      # View the files in your Google Drive
-      AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+      # View and manage the files in your Google Drive
+      AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
       # View your Google Spreadsheets
       AUTH_SPREADSHEETS_READONLY = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 
-      # View and manage the files in your Google Drive
-      AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+      # View and manage your Google Slides presentations
+      AUTH_PRESENTATIONS = 'https://www.googleapis.com/auth/presentations'
+
+      # View your Google Slides presentations
+      AUTH_PRESENTATIONS_READONLY = 'https://www.googleapis.com/auth/presentations.readonly'
+
+      # View the files in your Google Drive
+      AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
 
       # View and manage your spreadsheets in Google Drive
       AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'

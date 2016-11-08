@@ -2776,6 +2776,16 @@ module Google
         #   The id parameter specifies the YouTube playlist item ID for the playlist item
         #   that is being deleted. In a playlistItem resource, the id property specifies
         #   the playlist item's ID.
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2797,9 +2807,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_playlist_item(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_playlist_item(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'playlistItems', options)
           command.query['id'] = id unless id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2952,6 +2963,16 @@ module Google
         #   specify values, the existing start and end times will be removed and replaced
         #   with the default settings.
         # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2973,12 +2994,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist_item(part, playlist_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_playlist_item(part, playlist_item_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'playlistItems', options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
           command.request_object = playlist_item_object
           command.response_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
           command.response_class = Google::Apis::YoutubeV3::PlaylistItem
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -4069,12 +4091,20 @@ module Google
         #   property specifies the video's ID.
         # @param [String] locale
         #   DEPRECATED
+        # @param [Fixnum] max_height
+        #   The maxHeight parameter specifies a maximum height of the embedded player. If
+        #   maxWidth is provided, maxHeight may not be reached in order to not violate the
+        #   width request.
         # @param [Fixnum] max_results
         #   The maxResults parameter specifies the maximum number of items that should be
         #   returned in the result set.
         #   Note: This parameter is supported for use in conjunction with the myRating
         #   parameter, but it is not supported for use in conjunction with the id
         #   parameter.
+        # @param [Fixnum] max_width
+        #   The maxWidth parameter specifies a maximum width of the embedded player. If
+        #   maxHeight is provided, maxWidth may not be reached in order to not violate the
+        #   height request.
         # @param [String] my_rating
         #   Set this parameter's value to like or dislike to instruct the API to only
         #   return videos liked or disliked by the authenticated user.
@@ -4125,7 +4155,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_videos(part, chart: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_videos(part, chart: nil, hl: nil, id: nil, locale: nil, max_height: nil, max_results: nil, max_width: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'videos', options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideosResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListVideosResponse
@@ -4133,7 +4163,9 @@ module Google
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
           command.query['locale'] = locale unless locale.nil?
+          command.query['maxHeight'] = max_height unless max_height.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['maxWidth'] = max_width unless max_width.nil?
           command.query['myRating'] = my_rating unless my_rating.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

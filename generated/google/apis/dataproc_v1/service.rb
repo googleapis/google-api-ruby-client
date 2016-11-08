@@ -22,7 +22,7 @@ module Google
     module DataprocV1
       # Google Cloud Dataproc API
       #
-      # Manages Hadoop-based clusters and jobs on Google Cloud Platform.
+      # An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/dataproc_v1'
@@ -215,10 +215,24 @@ module Google
         #   belongs to.
         # @param [String] region
         #   [Required] The Cloud Dataproc region in which to handle the request.
+        # @param [String] filter
+        #   [Optional] A filter constraining the clusters to list. Filters are case-
+        #   sensitive and have the following syntax: field:value [field:value] ... or
+        #   field = value [AND [field = value]] ... where **field** is one of `status.
+        #   state`, `clusterName`, or `labels.[KEY]`, and `[KEY]` is a label key. **value**
+        #   can be `*` to match all values. `status.state` can be one of the following: `
+        #   ACTIVE`, `INACTIVE`, `CREATING`, `RUNNING`, `ERROR`, `DELETING`, or `UPDATING`.
+        #   `ACTIVE` contains the `CREATING`, `UPDATING`, and `RUNNING` states. `INACTIVE`
+        #   contains the `DELETING` and `ERROR` states. `clusterName` is the name of the
+        #   cluster provided at creation time. Only the logical `AND` operator is
+        #   supported; space-separated items are treated as having an implicit `AND`
+        #   operator. Example valid filters are: status.state:ACTIVE clusterName:mycluster
+        #   labels.env:staging \ labels.starred:* and status.state = ACTIVE AND
+        #   clusterName = mycluster \ AND labels.env = staging AND labels.starred = *
         # @param [Fixnum] page_size
-        #   The standard List page size.
+        #   [Optional] The standard List page size.
         # @param [String] page_token
-        #   The standard List page token.
+        #   [Optional] The standard List page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -236,12 +250,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_clusters(project_id, region, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_clusters(project_id, region, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/clusters', options)
           command.response_representation = Google::Apis::DataprocV1::ListClustersResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -376,7 +391,18 @@ module Google
         #   [Optional] If set, the returned jobs list includes only jobs that were
         #   submitted to the named cluster.
         # @param [String] job_state_matcher
-        #   [Optional] Specifies enumerated categories of jobs to list.
+        #   [Optional] Specifies enumerated categories of jobs to list (default = match
+        #   ALL jobs).
+        # @param [String] filter
+        #   [Optional] A filter constraining the jobs to list. Filters are case-sensitive
+        #   and have the following syntax: field:value] ... or [field = value] AND [field [
+        #   = value]] ... where **field** is `status.state` or `labels.[KEY]`, and `[KEY]`
+        #   is a label key. **value** can be `*` to match all values. `status.state` can
+        #   be either `ACTIVE` or `INACTIVE`. Only the logical `AND` operator is supported;
+        #   space-separated items are treated as having an implicit `AND` operator.
+        #   Example valid filters are: status.state:ACTIVE labels.env:staging labels.
+        #   starred:* and status.state = ACTIVE AND labels.env = staging AND labels.
+        #   starred = *
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -394,7 +420,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(project_id, region, page_size: nil, page_token: nil, cluster_name: nil, job_state_matcher: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_jobs(project_id, region, page_size: nil, page_token: nil, cluster_name: nil, job_state_matcher: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/jobs', options)
           command.response_representation = Google::Apis::DataprocV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListJobsResponse
@@ -404,6 +430,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['jobStateMatcher'] = job_state_matcher unless job_state_matcher.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -488,37 +515,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation. Clients can use this method
-        # to poll the operation result at intervals as recommended by the API service.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
-          command.response_class = Google::Apis::DataprocV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
         # binding below allows API services to override the binding to use different
@@ -561,13 +557,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
-        #   The name of the operation resource to be cancelled.
+        #   The name of the operation resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -577,18 +570,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataprocV1::Empty]
+        # @return [Google::Apis::DataprocV1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
-          command.response_class = Google::Apis::DataprocV1::Empty
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -620,6 +613,43 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::DataprocV1::Empty::Representation
           command.response_class = Google::Apis::DataprocV1::Empty
           command.params['name'] = name unless name.nil?

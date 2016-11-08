@@ -260,6 +260,12 @@ module Google
         #   resource and the sink identifier.  If the sink does not exist, this method
         #   creates the sink.  Example: `"projects/my-project-id/sinks/my-sink-id"`.
         # @param [Google::Apis::LoggingV2beta1::LogSink] log_sink_object
+        # @param [Boolean] unique_writer_identity
+        #   Optional. Whether the sink will have a dedicated service account returned
+        #   in the sink's writer_identity. Set this field to be true to export
+        #   logs from one project to a different project. This field is ignored for
+        #   non-project sinks (e.g. organization sinks) because those sinks are
+        #   required to have dedicated service accounts.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -277,13 +283,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_sink(sink_name, log_sink_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def update_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v2beta1/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2beta1::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -326,6 +333,12 @@ module Google
         #   Example: `"projects/my-project-id"`.
         #   The new sink must be provided in the request.
         # @param [Google::Apis::LoggingV2beta1::LogSink] log_sink_object
+        # @param [Boolean] unique_writer_identity
+        #   Optional. Whether the sink will have a dedicated service account returned
+        #   in the sink's writer_identity. Set this field to be true to export
+        #   logs from one project to a different project. This field is ignored for
+        #   non-project sinks (e.g. organization sinks) because those sinks are
+        #   required to have dedicated service accounts.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -343,13 +356,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_sink(parent, log_sink_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def create_project_sink(parent, log_sink_object = nil, unique_writer_identity: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2beta1::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -357,7 +371,7 @@ module Google
         
         # Lists sinks.
         # @param [String] parent
-        #   Required. The cloud resource containing the sinks.
+        #   Required. The resource name where this sink was created.
         #   Example: `"projects/my-logging-project"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.

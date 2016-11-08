@@ -505,8 +505,9 @@ module Google
       class Sentiment
         include Google::Apis::Core::Hashable
       
-        # Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers
-        # represent more positive sentiments.
+        # DEPRECATED FIELD - This field is being deprecated in
+        # favor of score. Please refer to our documentation at
+        # https://cloud.google.com/natural-language/docs for more information.
         # Corresponds to the JSON property `polarity`
         # @return [Float]
         attr_accessor :polarity

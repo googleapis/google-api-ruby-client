@@ -1100,12 +1100,6 @@ module Google
       class ChannelContentDetails
         include Google::Apis::Core::Hashable
       
-        # The googlePlusUserId object identifies the Google+ profile ID associated with
-        # this channel.
-        # Corresponds to the JSON property `googlePlusUserId`
-        # @return [String]
-        attr_accessor :google_plus_user_id
-      
         # 
         # Corresponds to the JSON property `relatedPlaylists`
         # @return [Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists]
@@ -1117,7 +1111,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @google_plus_user_id = args[:google_plus_user_id] if args.key?(:google_plus_user_id)
           @related_playlists = args[:related_playlists] if args.key?(:related_playlists)
         end
         
@@ -2005,11 +1998,6 @@ module Google
         # @return [String]
         attr_accessor :author_display_name
       
-        # Link to the author's Google+ profile, if any.
-        # Corresponds to the JSON property `authorGoogleplusProfileUrl`
-        # @return [String]
-        attr_accessor :author_googleplus_profile_url
-      
         # The URL for the avatar of the user who posted the comment.
         # Corresponds to the JSON property `authorProfileImageUrl`
         # @return [String]
@@ -2092,7 +2080,6 @@ module Google
           @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
           @author_channel_url = args[:author_channel_url] if args.key?(:author_channel_url)
           @author_display_name = args[:author_display_name] if args.key?(:author_display_name)
-          @author_googleplus_profile_url = args[:author_googleplus_profile_url] if args.key?(:author_googleplus_profile_url)
           @author_profile_image_url = args[:author_profile_image_url] if args.key?(:author_profile_image_url)
           @can_rate = args[:can_rate] if args.key?(:can_rate)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
@@ -7311,6 +7298,13 @@ module Google
         # @return [String]
         attr_accessor :duration
       
+        # Indicates whether the video uploader has provided a custom thumbnail image for
+        # the video. This property is only visible to the video uploader.
+        # Corresponds to the JSON property `hasCustomThumbnail`
+        # @return [Boolean]
+        attr_accessor :has_custom_thumbnail
+        alias_method :has_custom_thumbnail?, :has_custom_thumbnail
+      
         # The value of is_license_content indicates whether the video is licensed
         # content.
         # Corresponds to the JSON property `licensedContent`
@@ -7340,6 +7334,7 @@ module Google
           @definition = args[:definition] if args.key?(:definition)
           @dimension = args[:dimension] if args.key?(:dimension)
           @duration = args[:duration] if args.key?(:duration)
+          @has_custom_thumbnail = args[:has_custom_thumbnail] if args.key?(:has_custom_thumbnail)
           @licensed_content = args[:licensed_content] if args.key?(:licensed_content)
           @projection = args[:projection] if args.key?(:projection)
           @region_restriction = args[:region_restriction] if args.key?(:region_restriction)
@@ -7434,11 +7429,6 @@ module Google
         # @return [String]
         attr_accessor :file_type
       
-        # Geographical coordinates of a point, in WGS84.
-        # Corresponds to the JSON property `recordingLocation`
-        # @return [Google::Apis::YoutubeV3::GeoPoint]
-        attr_accessor :recording_location
-      
         # A list of video streams contained in the uploaded video file. Each item in the
         # list contains detailed metadata about a video stream.
         # Corresponds to the JSON property `videoStreams`
@@ -7459,7 +7449,6 @@ module Google
           @file_name = args[:file_name] if args.key?(:file_name)
           @file_size = args[:file_size] if args.key?(:file_size)
           @file_type = args[:file_type] if args.key?(:file_type)
-          @recording_location = args[:recording_location] if args.key?(:recording_location)
           @video_streams = args[:video_streams] if args.key?(:video_streams)
         end
       end
@@ -7796,10 +7785,20 @@ module Google
       class VideoPlayer
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `embedHeight`
+        # @return [String]
+        attr_accessor :embed_height
+      
         # An <iframe> tag that embeds a player that will play the video.
         # Corresponds to the JSON property `embedHtml`
         # @return [String]
         attr_accessor :embed_html
+      
+        # The embed width
+        # Corresponds to the JSON property `embedWidth`
+        # @return [String]
+        attr_accessor :embed_width
       
         def initialize(**args)
            update!(**args)
@@ -7807,7 +7806,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @embed_height = args[:embed_height] if args.key?(:embed_height)
           @embed_html = args[:embed_html] if args.key?(:embed_html)
+          @embed_width = args[:embed_width] if args.key?(:embed_width)
         end
       end
       

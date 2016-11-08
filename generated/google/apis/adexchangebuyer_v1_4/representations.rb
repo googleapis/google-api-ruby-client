@@ -699,6 +699,7 @@ module Google
         
             property :body, as: 'body'
             property :call_to_action, as: 'callToAction'
+            property :click_link_url, as: 'clickLinkUrl'
             property :click_tracking_url, as: 'clickTrackingUrl'
             property :headline, as: 'headline'
             property :image, as: 'image', class: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Image, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Image::Representation
@@ -1139,6 +1140,7 @@ module Google
       
           collection :platforms, as: 'platforms'
           collection :supported_creative_attributes, as: 'supportedCreativeAttributes'
+          collection :user_identifier_data_required, as: 'userIdentifierDataRequired'
           collection :user_lists, as: 'userLists'
           collection :vendor_types, as: 'vendorTypes'
           collection :verticals, as: 'verticals'

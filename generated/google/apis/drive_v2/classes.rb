@@ -1802,6 +1802,12 @@ module Google
           attr_accessor :hidden
           alias_method :hidden?, :hidden
         
+          # Whether the file has been modified by this user.
+          # Corresponds to the JSON property `modified`
+          # @return [Boolean]
+          attr_accessor :modified
+          alias_method :modified?, :modified
+        
           # Whether viewers and commenters are prevented from downloading, printing, and
           # copying this file.
           # Corresponds to the JSON property `restricted`
@@ -1835,6 +1841,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @hidden = args[:hidden] if args.key?(:hidden)
+            @modified = args[:modified] if args.key?(:modified)
             @restricted = args[:restricted] if args.key?(:restricted)
             @starred = args[:starred] if args.key?(:starred)
             @trashed = args[:trashed] if args.key?(:trashed)

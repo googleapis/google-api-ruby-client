@@ -687,6 +687,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :hidden, as: 'hidden'
+            property :modified, as: 'modified'
             property :restricted, as: 'restricted'
             property :starred, as: 'starred'
             property :trashed, as: 'trashed'

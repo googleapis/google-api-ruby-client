@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YarnApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,11 +257,14 @@ module Google
           property :cluster_name, as: 'clusterName'
           property :config, as: 'config', class: Google::Apis::DataprocV1::ClusterConfig, decorator: Google::Apis::DataprocV1::ClusterConfig::Representation
       
+          hash :labels, as: 'labels'
           property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
       
           property :cluster_uuid, as: 'clusterUuid'
+          property :metrics, as: 'metrics', class: Google::Apis::DataprocV1::ClusterMetrics, decorator: Google::Apis::DataprocV1::ClusterMetrics::Representation
+      
         end
       end
       
@@ -278,6 +293,7 @@ module Google
           property :zone_uri, as: 'zoneUri'
           property :network_uri, as: 'networkUri'
           property :subnetwork_uri, as: 'subnetworkUri'
+          property :internal_ip_only, as: 'internalIpOnly'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           collection :tags, as: 'tags'
           hash :metadata, as: 'metadata'
@@ -337,6 +353,14 @@ module Google
           property :state, as: 'state'
           property :detail, as: 'detail'
           property :state_start_time, as: 'stateStartTime'
+        end
+      end
+      
+      class ClusterMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :hdfs_metrics, as: 'hdfsMetrics'
+          hash :yarn_metrics, as: 'yarnMetrics'
         end
       end
       
@@ -407,8 +431,11 @@ module Google
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
       
+          collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1::YarnApplication, decorator: Google::Apis::DataprocV1::YarnApplication::Representation
+      
           property :driver_output_resource_uri, as: 'driverOutputResourceUri'
           property :driver_control_files_uri, as: 'driverControlFilesUri'
+          hash :labels, as: 'labels'
         end
       end
       
@@ -538,6 +565,16 @@ module Google
         end
       end
       
+      class YarnApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :progress, as: 'progress'
+          property :tracking_url, as: 'trackingUrl'
+        end
+      end
+      
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -586,6 +623,7 @@ module Google
       
           property :operation_type, as: 'operationType'
           property :description, as: 'description'
+          hash :labels, as: 'labels'
         end
       end
       

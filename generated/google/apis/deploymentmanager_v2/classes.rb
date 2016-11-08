@@ -690,9 +690,9 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] The URL of the resource that the operation modifies. If creating
-        # a persistent disk snapshot, this points to the persistent disk that the
-        # snapshot was created from.
+        # [Output Only] The URL of the resource that the operation modifies. For
+        # operations related to creating a snapshot, this points to the persistent disk
+        # that the snapshot was created from.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link

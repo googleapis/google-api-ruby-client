@@ -54,7 +54,7 @@ module Google
         # @return [Google::Apis::VisionV1::Image]
         attr_accessor :image
       
-        # Image context.
+        # Image context and/or feature-specific parameters.
         # Corresponds to the JSON property `imageContext`
         # @return [Google::Apis::VisionV1::ImageContext]
         attr_accessor :image_context
@@ -658,7 +658,7 @@ module Google
         end
       end
       
-      # Image context.
+      # Image context and/or feature-specific parameters.
       class ImageContext
         include Google::Apis::Core::Hashable
       

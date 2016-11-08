@@ -415,8 +415,12 @@ module Google
         attr_accessor :mode
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # This field is only applicable for persistent disks. Note that for
-        # InstanceTemplate, it is just disk name, not URL for the disk.
+        # When creating a new instance, one of initializeParams.sourceImage or disks.
+        # source is required.
+        # If desired, you can also attach existing non-root persistent disks using this
+        # property. This field is only applicable for persistent disks.
+        # Note that for InstanceTemplate, specify the disk name, not the URL for the
+        # disk.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -483,8 +487,8 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The source image used to create this disk. If the source image is deleted,
-        # this field will not be set.
+        # The source image to create this disk. When creating a new instance, one of
+        # initializeParams.sourceImage or disks.source is required.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-8 to use the
         # latest Debian 8 image:
@@ -498,6 +502,7 @@ module Google
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
         # global/images/family/my-private-family
+        # If the source image is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -1370,20 +1375,23 @@ module Google
       class DeprecationStatus
         include Google::Apis::Core::Hashable
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to DELETED.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to DELETED. This is only informational and the status will
+        # not change unless the client explicitly changes it.
         # Corresponds to the JSON property `deleted`
         # @return [String]
         attr_accessor :deleted
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to DEPRECATED.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to DEPRECATED. This is only informational and the status
+        # will not change unless the client explicitly changes it.
         # Corresponds to the JSON property `deprecated`
         # @return [String]
         attr_accessor :deprecated
       
-        # An optional RFC3339 timestamp on or after which the deprecation state of this
-        # resource will be changed to OBSOLETE.
+        # An optional RFC3339 timestamp on or after which the state of this resource is
+        # intended to change to OBSOLETE. This is only informational and the status will
+        # not change unless the client explicitly changes it.
         # Corresponds to the JSON property `obsolete`
         # @return [String]
         attr_accessor :obsolete
@@ -6068,9 +6076,9 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] The URL of the resource that the operation modifies. If creating
-        # a persistent disk snapshot, this points to the persistent disk that the
-        # snapshot was created from.
+        # [Output Only] The URL of the resource that the operation modifies. For
+        # operations related to creating a snapshot, this points to the persistent disk
+        # that the snapshot was created from.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -8162,6 +8170,28 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class SubnetworksExpandIpCidrRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The IP (in CIDR format or netmask) of internal addresses that are legal on
+        # this Subnetwork. This range should be disjoint from other subnetworks within
+        # this network. This range can only be larger than (i.e. a superset of) the
+        # range previously defined before the update.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
         end
       end
       

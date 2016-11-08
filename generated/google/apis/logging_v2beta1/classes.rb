@@ -114,6 +114,10 @@ module Google
       end
       
       # Describes a sink used to export log entries outside of Stackdriver Logging.
+      # A logs filter controls which log entries are exported.  Sinks can have a
+      # start time and an end time; these can be used to place log entries from an
+      # exact time range into a particular destination.  If both `start_time` and
+      # `end_time` are present, then `start_time` must be less than `end_time`.
       class LogSink
         include Google::Apis::Core::Hashable
       
@@ -134,11 +138,14 @@ module Google
         # log entry that was originally written to Stackdriver Logging.
         # Example filter (V2 format):
         # logName=projects/my-projectid/logs/syslog AND severity>=ERROR
+        # The maximum length of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Optional. Time at which this sink expires.
+        # Optional. Time at which this sink will stop exporting log entries.  If this
+        # value is present, then log entries are exported only if `entry.timestamp` <
+        # `end_time`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -152,10 +159,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Time range for which this sink is active.
-        # Logs are exported only if start_time <= entry.timestamp < end_time
-        # Both start_time and end_time may be omitted to specify
-        # (half) infinite ranges. The start_time must be less than the end_time.
+        # Optional. The time at which this sink will begin exporting log entries.  If
+        # this value is present, then log entries are exported only if `start_time`
+        # <=`entry.timestamp`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -168,15 +174,11 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
-        # Output only. The IAM identity to which the destination needs to grant write
-        # access.  This may be a service account or a group.
-        # Examples (Do not assume these specific values):
-        # "serviceAccount:cloud-logs@system.gserviceaccount.com"
-        # "group:cloud-logs@google.com"
-        # For GCS destinations, the role "roles/owner" is required on the bucket
-        # For Cloud Pubsub destinations, the role "roles/pubsub.publisher" is
-        # required on the topic
-        # For BigQuery, the role "roles/editor" is required on the dataset
+        # Output only. An IAM identity&mdash;a service account or group&mdash;that
+        # will write exported log entries to the destination on behalf of Stackdriver
+        # Logging. You must grant this identity write-access to the destination.
+        # Consult the destination service's documentation to determine the exact role
+        # that must be granted.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
@@ -209,6 +211,7 @@ module Google
       
         # Required. An [advanced logs filter](/logging/docs/view/advanced_filters).
         # Example: `"resource.type=gae_app AND severity>=ERROR"`.
+        # The maximum length of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -878,9 +881,9 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Whether this is the first RequestLog entry for this request.  If an active
-        # request has several RequestLog entries written to Cloud Logging, this field
-        # will be set for one of them.
+        # Whether this is the first `RequestLog` entry for this request.  If an
+        # active request has several `RequestLog` entries written to Stackdriver
+        # Logging, then this field will be set for one of them.
         # Corresponds to the JSON property `first`
         # @return [Boolean]
         attr_accessor :first
@@ -986,7 +989,7 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
-        # Cloud Trace identifier for this request.
+        # Stackdriver Trace identifier for this request.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
@@ -1107,6 +1110,7 @@ module Google
         # Optional. A filter that chooses which log entries to return.  See [Advanced
         # Logs Filters](/logging/docs/view/advanced_filters).  Only log entries that
         # match the filter are returned.  An empty filter matches all log entries.
+        # The maximum length of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

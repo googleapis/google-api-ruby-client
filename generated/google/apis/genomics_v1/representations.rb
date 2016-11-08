@@ -1314,6 +1314,7 @@ module Google
       
           property :client_id, as: 'clientId'
           hash :runtime_metadata, as: 'runtimeMetadata'
+          hash :labels, as: 'labels'
         end
       end
       

@@ -314,6 +314,7 @@ module Google
       
           property :md5_checksum, as: 'md5Checksum'
           property :mime_type, as: 'mimeType'
+          property :modified_by_me, as: 'modifiedByMe'
           property :modified_by_me_time, as: 'modifiedByMeTime', type: DateTime
       
           property :modified_time, as: 'modifiedTime', type: DateTime

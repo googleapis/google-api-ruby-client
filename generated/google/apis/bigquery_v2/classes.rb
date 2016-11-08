@@ -1061,6 +1061,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
+        # [Experimental] The labels associated with this job. You can use these to
+        # organize and group your jobs. Label keys and values can be no longer than 63
+        # characters, can only contain letters, numeric characters, underscores and
+        # dashes. International characters are allowed. Label values are optional. Label
+        # keys must start with a letter and must be unique within a dataset. Both keys
+        # and values are additionally constrained to be <= 128 bytes in size.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Pick one] Configures a load job.
         # Corresponds to the JSON property `load`
         # @return [Google::Apis::BigqueryV2::JobConfigurationLoad]
@@ -1080,6 +1090,7 @@ module Google
           @copy = args[:copy] if args.key?(:copy)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @extract = args[:extract] if args.key?(:extract)
+          @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
         end
@@ -1418,12 +1429,12 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # [Experimental] Query parameters for Standard SQL queries.
+        # Query parameters for standard SQL queries.
         # Corresponds to the JSON property `queryParameters`
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
-        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # [Experimental] Allows the schema of the destination table to be updated as a
         # side effect of the query job. Schema update options are supported in two cases:
         # when writeDisposition is WRITE_APPEND; when writeDisposition is
         # WRITE_TRUNCATE and the destination table is a partition of a table, specified
@@ -1444,12 +1455,11 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
-        # query. The default value is true. If set to false, the query will use BigQuery'
-        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-        # useLegacySql is set to false, the values of allowLargeResults and
-        # flattenResults are ignored; query will be run as if allowLargeResults is true
-        # and flattenResults is false.
+        # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+        # default value is true. If set to false, the query will use BigQuery's standard
+        # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
+        # to false, the values of allowLargeResults and flattenResults are ignored;
+        # query will be run as if allowLargeResults is true and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -2221,12 +2231,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_ms
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
-        # query. The default value is true. If set to false, the query will use BigQuery'
-        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-        # useLegacySql is set to false, the values of allowLargeResults and
-        # flattenResults are ignored; query will be run as if allowLargeResults is true
-        # and flattenResults is false.
+        # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+        # default value is true. If set to false, the query will use BigQuery's standard
+        # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
+        # to false, the values of allowLargeResults and flattenResults are ignored;
+        # query will be run as if allowLargeResults is true and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -2998,10 +3007,10 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL for this view.
-        # The default value is true. If set to false, the view will use BigQuery's
-        # standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
-        # views that reference this view must use the same flag value.
+        # Specifies whether to use BigQuery's legacy SQL for this view. The default
+        # value is true. If set to false, the view will use BigQuery's standard SQL:
+        # https://cloud.google.com/bigquery/sql-reference/ Queries and views that
+        # reference this view must use the same flag value.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql

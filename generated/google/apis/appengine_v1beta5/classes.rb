@@ -22,6 +22,31 @@ module Google
   module Apis
     module AppengineV1beta5
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::AppengineV1beta5::Operation>]
+        attr_accessor :operations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -172,31 +197,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::AppengineV1beta5::Operation>]
-        attr_accessor :operations
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operations = args[:operations] if args.key?(:operations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1519,6 +1519,12 @@ module Google
         attr_accessor :vm_unlocked
         alias_method :vm_unlocked?, :vm_unlocked
       
+        # The IP address of this instance. Only applicable for instances in App Engine
+        # flexible environment. @OutputOnly
+        # Corresponds to the JSON property `vmIp`
+        # @return [String]
+        attr_accessor :vm_ip
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1540,6 +1546,7 @@ module Google
           @memory_usage = args[:memory_usage] if args.key?(:memory_usage)
           @vm_status = args[:vm_status] if args.key?(:vm_status)
           @vm_unlocked = args[:vm_unlocked] if args.key?(:vm_unlocked)
+          @vm_ip = args[:vm_ip] if args.key?(:vm_ip)
         end
       end
       
@@ -1572,12 +1579,21 @@ module Google
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa KEY_VALUE`
+        # or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]","
+        # expireOn":"[EXPIRE_TIME]"`` For more information, see [Adding and Removing SSH
+        # Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+        # Corresponds to the JSON property `sshKey`
+        # @return [String]
+        attr_accessor :ssh_key
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @ssh_key = args[:ssh_key] if args.key?(:ssh_key)
         end
       end
       
@@ -1643,6 +1659,51 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation.
+      class OperationMetadataExperimental
+        include Google::Apis::Core::Hashable
+      
+        # API method that initiated this operation. Example: `google.appengine.
+        # experimental.CustomDomains.CreateCustomDomain`. @OutputOnly
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Time that this operation was created. @OutputOnly
+        # Corresponds to the JSON property `insertTime`
+        # @return [String]
+        attr_accessor :insert_time
+      
+        # Time that this operation completed. @OutputOnly
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # User who requested this operation. @OutputOnly
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Name of the resource that this operation is acting on. Example: `apps/myapp/
+        # customDomains/example.com`. @OutputOnly
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @user = args[:user] if args.key?(:user)
+          @target = args[:target] if args.key?(:target)
         end
       end
       

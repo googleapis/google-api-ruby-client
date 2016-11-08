@@ -88,6 +88,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	script:v1 \
 	sheets:v4 \
 	siteVerification:v1 \
+	slides:v1 \
     speech:v1beta1 \
 	sqladmin:v1beta4 \
 	storage:v1 \

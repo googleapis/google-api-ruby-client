@@ -1,6 +1,10 @@
+# 0.9.20
+* Regenerate APIs
+* Add Slides API
+
 # 0.9.19
 * Regenerate APIs
-* Add Adexchangebuyer2 api
+* Add Adexchangebuyer2 API
 
 # 0.9.15
 * Add datastore v1

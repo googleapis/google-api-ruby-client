@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddBandingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextFormatRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBandingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -544,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddBandingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppendCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,13 +598,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetBasicFilterRequest
+      class UpdateEmbeddedObjectPositionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateEmbeddedObjectPositionRequest
+      class SetBasicFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -599,6 +617,12 @@ module Google
       end
       
       class DuplicateFilterViewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BandingProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -617,6 +641,12 @@ module Google
       end
       
       class DeleteSheetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateBandingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -755,6 +785,12 @@ module Google
       end
       
       class DeleteEmbeddedObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BandedRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -910,11 +946,13 @@ module Google
       class UpdateValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :updated_range, as: 'updatedRange'
           property :updated_columns, as: 'updatedColumns'
+          property :updated_cells, as: 'updatedCells'
+          property :updated_data, as: 'updatedData', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
+      
+          property :updated_range, as: 'updatedRange'
           property :spreadsheet_id, as: 'spreadsheetId'
           property :updated_rows, as: 'updatedRows'
-          property :updated_cells, as: 'updatedCells'
         end
       end
       
@@ -1032,6 +1070,8 @@ module Google
       
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse::Representation
       
+          property :add_banding, as: 'addBanding', class: Google::Apis::SheetsV4::AddBandingResponse, decorator: Google::Apis::SheetsV4::AddBandingResponse::Representation
+      
           property :duplicate_sheet, as: 'duplicateSheet', class: Google::Apis::SheetsV4::DuplicateSheetResponse, decorator: Google::Apis::SheetsV4::DuplicateSheetResponse::Representation
       
           property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewResponse, decorator: Google::Apis::SheetsV4::DuplicateFilterViewResponse::Representation
@@ -1071,6 +1111,14 @@ module Google
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
+      
+        end
+      end
+      
+      class AddBandingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range, as: 'bandedRange', class: Google::Apis::SheetsV4::BandedRange, decorator: Google::Apis::SheetsV4::BandedRange::Representation
       
         end
       end
@@ -1173,6 +1221,9 @@ module Google
           property :value_input_option, as: 'valueInputOption'
           collection :data, as: 'data', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
       
+          property :response_value_render_option, as: 'responseValueRenderOption'
+          property :response_date_time_render_option, as: 'responseDateTimeRenderOption'
+          property :include_values_in_response, as: 'includeValuesInResponse'
         end
       end
       
@@ -1411,8 +1462,11 @@ module Google
       class BatchUpdateSpreadsheetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_spreadsheet_in_response, as: 'includeSpreadsheetInResponse'
           collection :requests, as: 'requests', class: Google::Apis::SheetsV4::Request, decorator: Google::Apis::SheetsV4::Request::Representation
       
+          collection :response_ranges, as: 'responseRanges'
+          property :response_include_grid_data, as: 'responseIncludeGridData'
         end
       end
       
@@ -1608,6 +1662,13 @@ module Google
         end
       end
       
+      class DeleteBandingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range_id, as: 'bandedRangeId'
+        end
+      end
+      
       class BasicFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1668,6 +1729,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chart, as: 'chart', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
+      
+        end
+      end
+      
+      class AddBandingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range, as: 'bandedRange', class: Google::Apis::SheetsV4::BandedRange, decorator: Google::Apis::SheetsV4::BandedRange::Representation
       
         end
       end
@@ -1736,14 +1805,6 @@ module Google
         end
       end
       
-      class SetBasicFilterRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter', class: Google::Apis::SheetsV4::BasicFilter, decorator: Google::Apis::SheetsV4::BasicFilter::Representation
-      
-        end
-      end
-      
       class UpdateEmbeddedObjectPositionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1751,6 +1812,14 @@ module Google
       
           property :object_id_prop, as: 'objectId'
           property :fields, as: 'fields'
+        end
+      end
+      
+      class SetBasicFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter', class: Google::Apis::SheetsV4::BasicFilter, decorator: Google::Apis::SheetsV4::BasicFilter::Representation
+      
         end
       end
       
@@ -1766,6 +1835,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
+      
+        end
+      end
+      
+      class BandingProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footer_color, as: 'footerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :second_band_color, as: 'secondBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :first_band_color, as: 'firstBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
         end
       end
@@ -1801,6 +1884,15 @@ module Google
         end
       end
       
+      class UpdateBandingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range, as: 'bandedRange', class: Google::Apis::SheetsV4::BandedRange, decorator: Google::Apis::SheetsV4::BandedRange::Representation
+      
+          property :fields, as: 'fields'
+        end
+      end
+      
       class ChartData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1827,6 +1919,8 @@ module Google
           collection :merges, as: 'merges', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           collection :data, as: 'data', class: Google::Apis::SheetsV4::GridData, decorator: Google::Apis::SheetsV4::GridData::Representation
+      
+          collection :banded_ranges, as: 'bandedRanges', class: Google::Apis::SheetsV4::BandedRange, decorator: Google::Apis::SheetsV4::BandedRange::Representation
       
         end
       end
@@ -1872,6 +1966,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spreadsheet_id, as: 'spreadsheetId'
+          property :updated_spreadsheet, as: 'updatedSpreadsheet', class: Google::Apis::SheetsV4::Spreadsheet, decorator: Google::Apis::SheetsV4::Spreadsheet::Representation
+      
           collection :replies, as: 'replies', class: Google::Apis::SheetsV4::Response, decorator: Google::Apis::SheetsV4::Response::Representation
       
         end
@@ -2061,9 +2157,15 @@ module Google
       
           property :merge_cells, as: 'mergeCells', class: Google::Apis::SheetsV4::MergeCellsRequest, decorator: Google::Apis::SheetsV4::MergeCellsRequest::Representation
       
+          property :update_banding, as: 'updateBanding', class: Google::Apis::SheetsV4::UpdateBandingRequest, decorator: Google::Apis::SheetsV4::UpdateBandingRequest::Representation
+      
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartRequest, decorator: Google::Apis::SheetsV4::AddChartRequest::Representation
       
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest::Representation
+      
+          property :add_banding, as: 'addBanding', class: Google::Apis::SheetsV4::AddBandingRequest, decorator: Google::Apis::SheetsV4::AddBandingRequest::Representation
+      
+          property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
           property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
       
@@ -2124,6 +2226,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :object_id_prop, as: 'objectId'
+        end
+      end
+      
+      class BandedRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range_id, as: 'bandedRangeId'
+          property :row_properties, as: 'rowProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
+      
+          property :column_properties, as: 'columnProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
         end
       end
       

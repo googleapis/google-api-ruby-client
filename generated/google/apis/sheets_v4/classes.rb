@@ -604,15 +604,25 @@ module Google
       class UpdateValuesResponse
         include Google::Apis::Core::Hashable
       
-        # The range (in A1 notation) that updates were applied to.
-        # Corresponds to the JSON property `updatedRange`
-        # @return [String]
-        attr_accessor :updated_range
-      
         # The number of columns where at least one cell in the column was updated.
         # Corresponds to the JSON property `updatedColumns`
         # @return [Fixnum]
         attr_accessor :updated_columns
+      
+        # The number of cells updated.
+        # Corresponds to the JSON property `updatedCells`
+        # @return [Fixnum]
+        attr_accessor :updated_cells
+      
+        # Data within a range of the spreadsheet.
+        # Corresponds to the JSON property `updatedData`
+        # @return [Google::Apis::SheetsV4::ValueRange]
+        attr_accessor :updated_data
+      
+        # The range (in A1 notation) that updates were applied to.
+        # Corresponds to the JSON property `updatedRange`
+        # @return [String]
+        attr_accessor :updated_range
       
         # The spreadsheet the updates were applied to.
         # Corresponds to the JSON property `spreadsheetId`
@@ -624,22 +634,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :updated_rows
       
-        # The number of cells updated.
-        # Corresponds to the JSON property `updatedCells`
-        # @return [Fixnum]
-        attr_accessor :updated_cells
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @updated_range = args[:updated_range] if args.key?(:updated_range)
           @updated_columns = args[:updated_columns] if args.key?(:updated_columns)
+          @updated_cells = args[:updated_cells] if args.key?(:updated_cells)
+          @updated_data = args[:updated_data] if args.key?(:updated_data)
+          @updated_range = args[:updated_range] if args.key?(:updated_range)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
           @updated_rows = args[:updated_rows] if args.key?(:updated_rows)
-          @updated_cells = args[:updated_cells] if args.key?(:updated_cells)
         end
       end
       
@@ -1042,6 +1048,11 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse]
         attr_accessor :delete_conditional_format_rule
       
+        # The result of adding a banded range.
+        # Corresponds to the JSON property `addBanding`
+        # @return [Google::Apis::SheetsV4::AddBandingResponse]
+        attr_accessor :add_banding
+      
         # The result of duplicating a sheet.
         # Corresponds to the JSON property `duplicateSheet`
         # @return [Google::Apis::SheetsV4::DuplicateSheetResponse]
@@ -1071,6 +1082,7 @@ module Google
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
+          @add_banding = args[:add_banding] if args.key?(:add_banding)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
@@ -1222,6 +1234,25 @@ module Google
         def update!(**args)
           @range = args[:range] if args.key?(:range)
           @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
+        end
+      end
+      
+      # The result of adding a banded range.
+      class AddBandingResponse
+        include Google::Apis::Core::Hashable
+      
+        # A banded (alternating colors) range in a sheet.
+        # Corresponds to the JSON property `bandedRange`
+        # @return [Google::Apis::SheetsV4::BandedRange]
+        attr_accessor :banded_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banded_range = args[:banded_range] if args.key?(:banded_range)
         end
       end
       
@@ -1559,6 +1590,32 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ValueRange>]
         attr_accessor :data
       
+        # Determines how values in the response should be rendered.
+        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # Corresponds to the JSON property `responseValueRenderOption`
+        # @return [String]
+        attr_accessor :response_value_render_option
+      
+        # Determines how dates, times, and durations in the response should be
+        # rendered. This is ignored if response_value_render_option is
+        # FORMATTED_VALUE.
+        # The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # Corresponds to the JSON property `responseDateTimeRenderOption`
+        # @return [String]
+        attr_accessor :response_date_time_render_option
+      
+        # Determines if the update response should include the values
+        # of the cells that were updated. By default, responses
+        # do not include the updated values. The `updatedData` field within
+        # each of the BatchUpdateValuesResponse.responses will contain
+        # the updated values. If the range to write was larger than than the range
+        # actually written, the response will include all values in the requested
+        # range (excluding trailing empty rows and columns).
+        # Corresponds to the JSON property `includeValuesInResponse`
+        # @return [Boolean]
+        attr_accessor :include_values_in_response
+        alias_method :include_values_in_response?, :include_values_in_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1567,6 +1624,9 @@ module Google
         def update!(**args)
           @value_input_option = args[:value_input_option] if args.key?(:value_input_option)
           @data = args[:data] if args.key?(:data)
+          @response_value_render_option = args[:response_value_render_option] if args.key?(:response_value_render_option)
+          @response_date_time_render_option = args[:response_date_time_render_option] if args.key?(:response_date_time_render_option)
+          @include_values_in_response = args[:include_values_in_response] if args.key?(:include_values_in_response)
         end
       end
       
@@ -2668,10 +2728,31 @@ module Google
       class BatchUpdateSpreadsheetRequest
         include Google::Apis::Core::Hashable
       
+        # Determines if the update response should include the spreadsheet
+        # resource.
+        # Corresponds to the JSON property `includeSpreadsheetInResponse`
+        # @return [Boolean]
+        attr_accessor :include_spreadsheet_in_response
+        alias_method :include_spreadsheet_in_response?, :include_spreadsheet_in_response
+      
         # A list of updates to apply to the spreadsheet.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::SheetsV4::Request>]
         attr_accessor :requests
+      
+        # Limits the ranges included in the response spreadsheet.
+        # Meaningful only if include_spreadsheet_response is 'true'.
+        # Corresponds to the JSON property `responseRanges`
+        # @return [Array<String>]
+        attr_accessor :response_ranges
+      
+        # True if grid data should be returned. Meaningful only if
+        # if include_spreadsheet_response is 'true'.
+        # This parameter is ignored if a field mask was set in the request.
+        # Corresponds to the JSON property `responseIncludeGridData`
+        # @return [Boolean]
+        attr_accessor :response_include_grid_data
+        alias_method :response_include_grid_data?, :response_include_grid_data
       
         def initialize(**args)
            update!(**args)
@@ -2679,7 +2760,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_spreadsheet_in_response = args[:include_spreadsheet_in_response] if args.key?(:include_spreadsheet_in_response)
           @requests = args[:requests] if args.key?(:requests)
+          @response_ranges = args[:response_ranges] if args.key?(:response_ranges)
+          @response_include_grid_data = args[:response_include_grid_data] if args.key?(:response_include_grid_data)
         end
       end
       
@@ -3554,6 +3638,25 @@ module Google
         end
       end
       
+      # Removes the banded range with the given ID from the spreadsheet.
+      class DeleteBandingRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the banded range to delete.
+        # Corresponds to the JSON property `bandedRangeId`
+        # @return [Fixnum]
+        attr_accessor :banded_range_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banded_range_id = args[:banded_range_id] if args.key?(:banded_range_id)
+        end
+      end
+      
       # The default filter associated with a sheet.
       class BasicFilter
         include Google::Apis::Core::Hashable
@@ -3855,6 +3958,25 @@ module Google
         end
       end
       
+      # Adds a new banded range to the spreadsheet.
+      class AddBandingRequest
+        include Google::Apis::Core::Hashable
+      
+        # A banded (alternating colors) range in a sheet.
+        # Corresponds to the JSON property `bandedRange`
+        # @return [Google::Apis::SheetsV4::BandedRange]
+        attr_accessor :banded_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banded_range = args[:banded_range] if args.key?(:banded_range)
+        end
+      end
+      
       # Adds new cells after the last row with data in a sheet,
       # inserting new rows into the sheet if necessary.
       class AppendCellsRequest
@@ -4124,25 +4246,6 @@ module Google
         end
       end
       
-      # Sets the basic filter associated with a sheet.
-      class SetBasicFilterRequest
-        include Google::Apis::Core::Hashable
-      
-        # The default filter associated with a sheet.
-        # Corresponds to the JSON property `filter`
-        # @return [Google::Apis::SheetsV4::BasicFilter]
-        attr_accessor :filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-        end
-      end
-      
       # Update an embedded object's position (such as a moving or resizing a
       # chart or image).
       class UpdateEmbeddedObjectPositionRequest
@@ -4178,6 +4281,25 @@ module Google
           @new_position = args[:new_position] if args.key?(:new_position)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Sets the basic filter associated with a sheet.
+      class SetBasicFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The default filter associated with a sheet.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::SheetsV4::BasicFilter]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -4221,6 +4343,445 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Properties referring a single dimension (either row or column). If both
+      # BandedRange.row_properties and BandedRange.column_properties are
+      # set, the fill colors are applied to cells according to the following rules:
+      # * header_color and footer_color take priority over band colors.
+      # * first_band_color takes priority over second_band_color.
+      # * row_properties takes priority over column_properties.
+      # For example, the first row color takes priority over the first column
+      # color, but the first column color takes priority over the second row color.
+      # Similarly, the row header takes priority over the column header in the
+      # top left cell, but the column header takes priority over the first row
+      # color if the row header is not set.
+      class BandingProperties
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `footerColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :footer_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `headerColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :header_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `secondBandColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :second_band_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `firstBandColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :first_band_color
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footer_color = args[:footer_color] if args.key?(:footer_color)
+          @header_color = args[:header_color] if args.key?(:header_color)
+          @second_band_color = args[:second_band_color] if args.key?(:second_band_color)
+          @first_band_color = args[:first_band_color] if args.key?(:first_band_color)
         end
       end
       
@@ -4354,6 +4915,33 @@ module Google
         end
       end
       
+      # Updates properties of the supplied banded range.
+      class UpdateBandingRequest
+        include Google::Apis::Core::Hashable
+      
+        # A banded (alternating colors) range in a sheet.
+        # Corresponds to the JSON property `bandedRange`
+        # @return [Google::Apis::SheetsV4::BandedRange]
+        attr_accessor :banded_range
+      
+        # The fields that should be updated.  At least one field must be specified.
+        # The root `bandedRange` is implied and should not be specified.
+        # A single `"*"` can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banded_range = args[:banded_range] if args.key?(:banded_range)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
       # The data included in a domain or series.
       class ChartData
         include Google::Apis::Core::Hashable
@@ -4424,6 +5012,11 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::GridData>]
         attr_accessor :data
       
+        # The banded (i.e. alternating colors) ranges on this sheet.
+        # Corresponds to the JSON property `bandedRanges`
+        # @return [Array<Google::Apis::SheetsV4::BandedRange>]
+        attr_accessor :banded_ranges
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4438,6 +5031,7 @@ module Google
           @basic_filter = args[:basic_filter] if args.key?(:basic_filter)
           @merges = args[:merges] if args.key?(:merges)
           @data = args[:data] if args.key?(:data)
+          @banded_ranges = args[:banded_ranges] if args.key?(:banded_ranges)
         end
       end
       
@@ -4640,6 +5234,11 @@ module Google
         # @return [String]
         attr_accessor :spreadsheet_id
       
+        # Resource that represents a spreadsheet.
+        # Corresponds to the JSON property `updatedSpreadsheet`
+        # @return [Google::Apis::SheetsV4::Spreadsheet]
+        attr_accessor :updated_spreadsheet
+      
         # The reply of the updates.  This maps 1:1 with the updates, although
         # replies to some requests may be empty.
         # Corresponds to the JSON property `replies`
@@ -4653,6 +5252,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @updated_spreadsheet = args[:updated_spreadsheet] if args.key?(:updated_spreadsheet)
           @replies = args[:replies] if args.key?(:replies)
         end
       end
@@ -5279,6 +5879,11 @@ module Google
         # @return [Google::Apis::SheetsV4::MergeCellsRequest]
         attr_accessor :merge_cells
       
+        # Updates properties of the supplied banded range.
+        # Corresponds to the JSON property `updateBanding`
+        # @return [Google::Apis::SheetsV4::UpdateBandingRequest]
+        attr_accessor :update_banding
+      
         # Adds a chart to a sheet in the spreadsheet.
         # Corresponds to the JSON property `addChart`
         # @return [Google::Apis::SheetsV4::AddChartRequest]
@@ -5289,6 +5894,16 @@ module Google
         # Corresponds to the JSON property `deleteConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest]
         attr_accessor :delete_conditional_format_rule
+      
+        # Adds a new banded range to the spreadsheet.
+        # Corresponds to the JSON property `addBanding`
+        # @return [Google::Apis::SheetsV4::AddBandingRequest]
+        attr_accessor :add_banding
+      
+        # Removes the banded range with the given ID from the spreadsheet.
+        # Corresponds to the JSON property `deleteBanding`
+        # @return [Google::Apis::SheetsV4::DeleteBandingRequest]
+        attr_accessor :delete_banding
       
         # Updates a chart's specifications.
         # (This does not move or resize a chart. To move or resize a chart, use
@@ -5420,8 +6035,11 @@ module Google
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
           @set_basic_filter = args[:set_basic_filter] if args.key?(:set_basic_filter)
           @merge_cells = args[:merge_cells] if args.key?(:merge_cells)
+          @update_banding = args[:update_banding] if args.key?(:update_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
+          @add_banding = args[:add_banding] if args.key?(:add_banding)
+          @delete_banding = args[:delete_banding] if args.key?(:delete_banding)
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
           @delete_embedded_object = args[:delete_embedded_object] if args.key?(:delete_embedded_object)
@@ -5524,6 +6142,84 @@ module Google
         # Update properties of this object
         def update!(**args)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # A banded (alternating colors) range in a sheet.
+      class BandedRange
+        include Google::Apis::Core::Hashable
+      
+        # The id of the banded range.
+        # Corresponds to the JSON property `bandedRangeId`
+        # @return [Fixnum]
+        attr_accessor :banded_range_id
+      
+        # Properties referring a single dimension (either row or column). If both
+        # BandedRange.row_properties and BandedRange.column_properties are
+        # set, the fill colors are applied to cells according to the following rules:
+        # * header_color and footer_color take priority over band colors.
+        # * first_band_color takes priority over second_band_color.
+        # * row_properties takes priority over column_properties.
+        # For example, the first row color takes priority over the first column
+        # color, but the first column color takes priority over the second row color.
+        # Similarly, the row header takes priority over the column header in the
+        # top left cell, but the column header takes priority over the first row
+        # color if the row header is not set.
+        # Corresponds to the JSON property `rowProperties`
+        # @return [Google::Apis::SheetsV4::BandingProperties]
+        attr_accessor :row_properties
+      
+        # Properties referring a single dimension (either row or column). If both
+        # BandedRange.row_properties and BandedRange.column_properties are
+        # set, the fill colors are applied to cells according to the following rules:
+        # * header_color and footer_color take priority over band colors.
+        # * first_band_color takes priority over second_band_color.
+        # * row_properties takes priority over column_properties.
+        # For example, the first row color takes priority over the first column
+        # color, but the first column color takes priority over the second row color.
+        # Similarly, the row header takes priority over the column header in the
+        # top left cell, but the column header takes priority over the first row
+        # color if the row header is not set.
+        # Corresponds to the JSON property `columnProperties`
+        # @return [Google::Apis::SheetsV4::BandingProperties]
+        attr_accessor :column_properties
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banded_range_id = args[:banded_range_id] if args.key?(:banded_range_id)
+          @row_properties = args[:row_properties] if args.key?(:row_properties)
+          @column_properties = args[:column_properties] if args.key?(:column_properties)
+          @range = args[:range] if args.key?(:range)
         end
       end
       

@@ -649,7 +649,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Whether this ad is active.
+        # Whether this ad is active. When true, archived must be false.
         # Corresponds to the JSON property `active`
         # @return [Boolean]
         attr_accessor :active
@@ -665,7 +665,7 @@ module Google
         # @return [Google::Apis::DfareportingV2_6::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
-        # Whether this ad is archived.
+        # Whether this ad is archived. When true, active must be false.
         # Corresponds to the JSON property `archived`
         # @return [Boolean]
         attr_accessor :archived
@@ -2280,7 +2280,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Whether the user has Limit Ad Tracking set.
+        # Whether Limit Ad Tracking is enabled. When set to true, the conversion will be
+        # used for reporting but not targeting. This will prevent remarketing.
         # Corresponds to the JSON property `limitAdTracking`
         # @return [Boolean]
         attr_accessor :limit_ad_tracking

@@ -966,6 +966,206 @@ module Google
       end
       
       # 
+      class PostalAddress
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `addressLines`
+        # @return [Array<String>]
+        attr_accessor :address_lines
+      
+        # 
+        # Corresponds to the JSON property `administrativeAreaName`
+        # @return [String]
+        attr_accessor :administrative_area_name
+      
+        # 
+        # Corresponds to the JSON property `countryName`
+        # @return [String]
+        attr_accessor :country_name
+      
+        # 
+        # Corresponds to the JSON property `countryNameCode`
+        # @return [String]
+        attr_accessor :country_name_code
+      
+        # 
+        # Corresponds to the JSON property `dependentLocalityName`
+        # @return [String]
+        attr_accessor :dependent_locality_name
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfareLeadingType`
+        # @return [String]
+        attr_accessor :dependent_thoroughfare_leading_type
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfareName`
+        # @return [String]
+        attr_accessor :dependent_thoroughfare_name
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfarePostDirection`
+        # @return [String]
+        attr_accessor :dependent_thoroughfare_post_direction
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfarePreDirection`
+        # @return [String]
+        attr_accessor :dependent_thoroughfare_pre_direction
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfareTrailingType`
+        # @return [String]
+        attr_accessor :dependent_thoroughfare_trailing_type
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfaresConnector`
+        # @return [String]
+        attr_accessor :dependent_thoroughfares_connector
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfaresIndicator`
+        # @return [String]
+        attr_accessor :dependent_thoroughfares_indicator
+      
+        # 
+        # Corresponds to the JSON property `dependentThoroughfaresType`
+        # @return [String]
+        attr_accessor :dependent_thoroughfares_type
+      
+        # 
+        # Corresponds to the JSON property `firmName`
+        # @return [String]
+        attr_accessor :firm_name
+      
+        # 
+        # Corresponds to the JSON property `isDisputed`
+        # @return [Boolean]
+        attr_accessor :is_disputed
+        alias_method :is_disputed?, :is_disputed
+      
+        # 
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # 
+        # Corresponds to the JSON property `localityName`
+        # @return [String]
+        attr_accessor :locality_name
+      
+        # 
+        # Corresponds to the JSON property `postBoxNumber`
+        # @return [String]
+        attr_accessor :post_box_number
+      
+        # 
+        # Corresponds to the JSON property `postalCodeNumber`
+        # @return [String]
+        attr_accessor :postal_code_number
+      
+        # 
+        # Corresponds to the JSON property `postalCodeNumberExtension`
+        # @return [String]
+        attr_accessor :postal_code_number_extension
+      
+        # 
+        # Corresponds to the JSON property `premiseName`
+        # @return [String]
+        attr_accessor :premise_name
+      
+        # 
+        # Corresponds to the JSON property `recipientName`
+        # @return [String]
+        attr_accessor :recipient_name
+      
+        # 
+        # Corresponds to the JSON property `sortingCode`
+        # @return [String]
+        attr_accessor :sorting_code
+      
+        # 
+        # Corresponds to the JSON property `subAdministrativeAreaName`
+        # @return [String]
+        attr_accessor :sub_administrative_area_name
+      
+        # 
+        # Corresponds to the JSON property `subPremiseName`
+        # @return [String]
+        attr_accessor :sub_premise_name
+      
+        # 
+        # Corresponds to the JSON property `thoroughfareLeadingType`
+        # @return [String]
+        attr_accessor :thoroughfare_leading_type
+      
+        # 
+        # Corresponds to the JSON property `thoroughfareName`
+        # @return [String]
+        attr_accessor :thoroughfare_name
+      
+        # 
+        # Corresponds to the JSON property `thoroughfareNumber`
+        # @return [String]
+        attr_accessor :thoroughfare_number
+      
+        # 
+        # Corresponds to the JSON property `thoroughfarePostDirection`
+        # @return [String]
+        attr_accessor :thoroughfare_post_direction
+      
+        # 
+        # Corresponds to the JSON property `thoroughfarePreDirection`
+        # @return [String]
+        attr_accessor :thoroughfare_pre_direction
+      
+        # 
+        # Corresponds to the JSON property `thoroughfareTrailingType`
+        # @return [String]
+        attr_accessor :thoroughfare_trailing_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_lines = args[:address_lines] if args.key?(:address_lines)
+          @administrative_area_name = args[:administrative_area_name] if args.key?(:administrative_area_name)
+          @country_name = args[:country_name] if args.key?(:country_name)
+          @country_name_code = args[:country_name_code] if args.key?(:country_name_code)
+          @dependent_locality_name = args[:dependent_locality_name] if args.key?(:dependent_locality_name)
+          @dependent_thoroughfare_leading_type = args[:dependent_thoroughfare_leading_type] if args.key?(:dependent_thoroughfare_leading_type)
+          @dependent_thoroughfare_name = args[:dependent_thoroughfare_name] if args.key?(:dependent_thoroughfare_name)
+          @dependent_thoroughfare_post_direction = args[:dependent_thoroughfare_post_direction] if args.key?(:dependent_thoroughfare_post_direction)
+          @dependent_thoroughfare_pre_direction = args[:dependent_thoroughfare_pre_direction] if args.key?(:dependent_thoroughfare_pre_direction)
+          @dependent_thoroughfare_trailing_type = args[:dependent_thoroughfare_trailing_type] if args.key?(:dependent_thoroughfare_trailing_type)
+          @dependent_thoroughfares_connector = args[:dependent_thoroughfares_connector] if args.key?(:dependent_thoroughfares_connector)
+          @dependent_thoroughfares_indicator = args[:dependent_thoroughfares_indicator] if args.key?(:dependent_thoroughfares_indicator)
+          @dependent_thoroughfares_type = args[:dependent_thoroughfares_type] if args.key?(:dependent_thoroughfares_type)
+          @firm_name = args[:firm_name] if args.key?(:firm_name)
+          @is_disputed = args[:is_disputed] if args.key?(:is_disputed)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @locality_name = args[:locality_name] if args.key?(:locality_name)
+          @post_box_number = args[:post_box_number] if args.key?(:post_box_number)
+          @postal_code_number = args[:postal_code_number] if args.key?(:postal_code_number)
+          @postal_code_number_extension = args[:postal_code_number_extension] if args.key?(:postal_code_number_extension)
+          @premise_name = args[:premise_name] if args.key?(:premise_name)
+          @recipient_name = args[:recipient_name] if args.key?(:recipient_name)
+          @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
+          @sub_administrative_area_name = args[:sub_administrative_area_name] if args.key?(:sub_administrative_area_name)
+          @sub_premise_name = args[:sub_premise_name] if args.key?(:sub_premise_name)
+          @thoroughfare_leading_type = args[:thoroughfare_leading_type] if args.key?(:thoroughfare_leading_type)
+          @thoroughfare_name = args[:thoroughfare_name] if args.key?(:thoroughfare_name)
+          @thoroughfare_number = args[:thoroughfare_number] if args.key?(:thoroughfare_number)
+          @thoroughfare_post_direction = args[:thoroughfare_post_direction] if args.key?(:thoroughfare_post_direction)
+          @thoroughfare_pre_direction = args[:thoroughfare_pre_direction] if args.key?(:thoroughfare_pre_direction)
+          @thoroughfare_trailing_type = args[:thoroughfare_trailing_type] if args.key?(:thoroughfare_trailing_type)
+        end
+      end
+      
+      # 
       class RepresentativeInfoData
         include Google::Apis::Core::Hashable
       
@@ -1154,6 +1354,11 @@ module Google
         # @return [Google::Apis::CivicinfoV2::ContextParams]
         attr_accessor :context_params
       
+        # 
+        # Corresponds to the JSON property `voterInfoSegmentResult`
+        # @return [Google::Apis::CivicinfoV2::VoterInfoSegmentResult]
+        attr_accessor :voter_info_segment_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1161,6 +1366,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @context_params = args[:context_params] if args.key?(:context_params)
+          @voter_info_segment_result = args[:voter_info_segment_result] if args.key?(:voter_info_segment_result)
         end
       end
       
@@ -1249,6 +1455,43 @@ module Google
           @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
           @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class VoterInfoSegmentResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `generatedMillis`
+        # @return [String]
+        attr_accessor :generated_millis
+      
+        # 
+        # Corresponds to the JSON property `postalAddress`
+        # @return [Google::Apis::CivicinfoV2::PostalAddress]
+        attr_accessor :postal_address
+      
+        # A request for information about a voter.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::CivicinfoV2::VoterInfoRequest]
+        attr_accessor :request
+      
+        # The result of a voter info lookup query.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::CivicinfoV2::VoterInfoResponse]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_millis = args[:generated_millis] if args.key?(:generated_millis)
+          @postal_address = args[:postal_address] if args.key?(:postal_address)
+          @request = args[:request] if args.key?(:request)
+          @response = args[:response] if args.key?(:response)
         end
       end
     end

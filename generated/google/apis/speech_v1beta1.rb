@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/speech/
     module SpeechV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20161017'
+      REVISION = '20161031'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

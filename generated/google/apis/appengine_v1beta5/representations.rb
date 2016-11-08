@@ -22,6 +22,12 @@ module Google
   module Apis
     module AppengineV1beta5
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,12 +35,6 @@ module Google
       end
       
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataExperimental
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::AppengineV1beta5::Operation, decorator: Google::Apis::AppengineV1beta5::Operation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -280,15 +295,6 @@ module Google
           property :code, as: 'code'
           property :message, as: 'message'
           collection :details, as: 'details'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::AppengineV1beta5::Operation, decorator: Google::Apis::AppengineV1beta5::Operation::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -627,6 +633,7 @@ module Google
           property :memory_usage, as: 'memoryUsage'
           property :vm_status, as: 'vmStatus'
           property :vm_unlocked, as: 'vmUnlocked'
+          property :vm_ip, as: 'vmIp'
         end
       end
       
@@ -642,6 +649,7 @@ module Google
       class DebugInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssh_key, as: 'sshKey'
         end
       end
       
@@ -661,6 +669,17 @@ module Google
           property :location_id, as: 'locationId'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class OperationMetadataExperimental
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
         end
       end
       

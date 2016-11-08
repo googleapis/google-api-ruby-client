@@ -764,7 +764,8 @@ module Google
         #   The time this job was created, in seconds from the [epoch](http://en.
         #   wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` * `projectId
         #   = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND
-        #   status = RUNNING`
+        #   status = RUNNING` * `projectId = my-project AND labels.color = *` * `projectId
+        #   = my-project AND labels.color = red`
         # @param [Fixnum] page_size
         #   The maximum number of results to return. If unspecified, defaults to 256. The
         #   maximum value is 2048.

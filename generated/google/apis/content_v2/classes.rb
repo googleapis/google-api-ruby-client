@@ -2414,6 +2414,14 @@ module Google
         # @return [Google::Apis::ContentV2::LoyaltyPoints]
         attr_accessor :loyalty_points
       
+        # Store pickup information. Only supported for local inventory. Not setting
+        # pickup means "don't update" while setting it to the empty value (`` in JSON)
+        # means "delete". Otherwise, pickupMethod and pickupSla must be set together,
+        # unless pickupMethod is "not supported".
+        # Corresponds to the JSON property `pickup`
+        # @return [Google::Apis::ContentV2::InventoryPickup]
+        attr_accessor :pickup
+      
         # The price of the product.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2::Price]
@@ -2453,6 +2461,7 @@ module Google
           @installment = args[:installment] if args.key?(:installment)
           @kind = args[:kind] if args.key?(:kind)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @pickup = args[:pickup] if args.key?(:pickup)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @sale_price = args[:sale_price] if args.key?(:sale_price)
@@ -2583,6 +2592,36 @@ module Google
       end
       
       # 
+      class InventoryPickup
+        include Google::Apis::Core::Hashable
+      
+        # Whether store pickup is available for this offer and whether the pickup option
+        # should be shown as buy, reserve, or not supported. Only supported for local
+        # inventory. Unless the value is "not supported", must be submitted together
+        # with pickupSla.
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # The expected date that an order will be ready for pickup, relative to when the
+        # order is placed. Only supported for local inventory. Must be submitted
+        # together with pickupMethod.
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
+        end
+      end
+      
+      # 
       class SetInventoryRequest
         include Google::Apis::Core::Hashable
       
@@ -2600,6 +2639,14 @@ module Google
         # Corresponds to the JSON property `loyaltyPoints`
         # @return [Google::Apis::ContentV2::LoyaltyPoints]
         attr_accessor :loyalty_points
+      
+        # Store pickup information. Only supported for local inventory. Not setting
+        # pickup means "don't update" while setting it to the empty value (`` in JSON)
+        # means "delete". Otherwise, pickupMethod and pickupSla must be set together,
+        # unless pickupMethod is "not supported".
+        # Corresponds to the JSON property `pickup`
+        # @return [Google::Apis::ContentV2::InventoryPickup]
+        attr_accessor :pickup
       
         # The price of the product.
         # Corresponds to the JSON property `price`
@@ -2639,6 +2686,7 @@ module Google
           @availability = args[:availability] if args.key?(:availability)
           @installment = args[:installment] if args.key?(:installment)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @pickup = args[:pickup] if args.key?(:pickup)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @sale_price = args[:sale_price] if args.key?(:sale_price)

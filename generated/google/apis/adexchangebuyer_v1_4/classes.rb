@@ -93,11 +93,12 @@ module Google
         
           # The protocol that the bidder endpoint is using. By default, OpenRTB protocols
           # use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses
-          # protobuf encoding over the latest OpenRTB protocol version, which is 2.3 right
+          # protobuf encoding over the latest OpenRTB protocol version, which is 2.4 right
           # now. Allowed values:
           # - PROTOCOL_ADX
           # - PROTOCOL_OPENRTB_2_2
           # - PROTOCOL_OPENRTB_2_3
+          # - PROTOCOL_OPENRTB_2_4
           # - PROTOCOL_OPENRTB_PROTOBUF
           # Corresponds to the JSON property `bidProtocol`
           # @return [String]
@@ -620,7 +621,7 @@ module Google
         attr_accessor :version
       
         # The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not
-        # be set. Note, this is diffrent from resource.native_ad.video_url above.
+        # be set. Note, this is different from resource.native_ad.video_url above.
         # Corresponds to the JSON property `videoURL`
         # @return [String]
         attr_accessor :video_url
@@ -816,6 +817,11 @@ module Google
           # @return [String]
           attr_accessor :call_to_action
         
+          # The URL that the browser/SDK will load when the user clicks the ad.
+          # Corresponds to the JSON property `clickLinkUrl`
+          # @return [String]
+          attr_accessor :click_link_url
+        
           # The URL to use for click tracking.
           # Corresponds to the JSON property `clickTrackingUrl`
           # @return [String]
@@ -856,7 +862,8 @@ module Google
           # @return [String]
           attr_accessor :store
         
-          # 
+          # The URL of the XML VAST for a native ad. Note this is a separate field from
+          # resource.video_url.
           # Corresponds to the JSON property `videoURL`
           # @return [String]
           attr_accessor :video_url
@@ -871,6 +878,7 @@ module Google
             @app_icon = args[:app_icon] if args.key?(:app_icon)
             @body = args[:body] if args.key?(:body)
             @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
+            @click_link_url = args[:click_link_url] if args.key?(:click_link_url)
             @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
             @headline = args[:headline] if args.key?(:headline)
             @image = args[:image] if args.key?(:image)
@@ -2427,6 +2435,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_creative_attributes
       
+        # Requests containing the specified type of user data will match. Possible
+        # values are HOSTED_MATCH_DATA, which means the request is cookie-targetable and
+        # has a match in the buyer's hosted match table, and COOKIE_OR_IDFA, which means
+        # the request has either a targetable cookie or an iOS IDFA.
+        # Corresponds to the JSON property `userIdentifierDataRequired`
+        # @return [Array<String>]
+        attr_accessor :user_identifier_data_required
+      
         # Requests containing any of these user list ids will match.
         # Corresponds to the JSON property `userLists`
         # @return [Array<String>]
@@ -2474,6 +2490,7 @@ module Google
           @placements = args[:placements] if args.key?(:placements)
           @platforms = args[:platforms] if args.key?(:platforms)
           @supported_creative_attributes = args[:supported_creative_attributes] if args.key?(:supported_creative_attributes)
+          @user_identifier_data_required = args[:user_identifier_data_required] if args.key?(:user_identifier_data_required)
           @user_lists = args[:user_lists] if args.key?(:user_lists)
           @vendor_types = args[:vendor_types] if args.key?(:vendor_types)
           @verticals = args[:verticals] if args.key?(:verticals)

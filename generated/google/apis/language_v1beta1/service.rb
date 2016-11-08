@@ -30,10 +30,10 @@ module Google
       #    require 'google/apis/language_v1beta1'
       #
       #    Language = Google::Apis::LanguageV1beta1 # Alias the module
-      #    service = Language::CloudNaturalLanguageAPIService.new
+      #    service = Language::CloudNaturalLanguageService.new
       #
       # @see https://cloud.google.com/natural-language/
-      class CloudNaturalLanguageAPIService < Google::Apis::Core::BaseService
+      class CloudNaturalLanguageService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

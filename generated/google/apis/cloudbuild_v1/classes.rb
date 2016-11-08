@@ -582,6 +582,13 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The ID of the BuildTrigger that triggered this build, if it was
+        # triggered automatically.
+        # @OutputOnly
+        # Corresponds to the JSON property `buildTriggerId`
+        # @return [String]
+        attr_accessor :build_trigger_id
+      
         # Google Cloud Storage bucket where logs should be written (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
@@ -617,6 +624,7 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @images = args[:images] if args.key?(:images)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @logs_bucket = args[:logs_bucket] if args.key?(:logs_bucket)
           @project_id = args[:project_id] if args.key?(:project_id)
         end

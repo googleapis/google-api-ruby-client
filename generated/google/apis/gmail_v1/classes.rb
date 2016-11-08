@@ -870,10 +870,10 @@ module Google
         # @return [String]
         attr_accessor :attachment_id
       
-        # The body data of a MIME message part. May be empty for MIME container types
-        # that have no message body or when the body data is sent as a separate
-        # attachment. An attachment ID is present if the body data is contained in a
-        # separate attachment.
+        # The body data of a MIME message part as a base64url encoded string. May be
+        # empty for MIME container types that have no message body or when the body data
+        # is sent as a separate attachment. An attachment ID is present if the body data
+        # is contained in a separate attachment.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
@@ -1036,8 +1036,7 @@ module Google
       
       # Settings associated with a send-as alias, which can be either the primary
       # login address associated with the account or a custom "from" address. Send-as
-      # aliases correspond to the "Send Mail As" feature in the web interface. See
-      # for more details.
+      # aliases correspond to the "Send Mail As" feature in the web interface.
       class SendAs
         include Google::Apis::Core::Hashable
       
@@ -1092,9 +1091,8 @@ module Google
         # @return [Google::Apis::GmailV1::SmtpMsa]
         attr_accessor :smtp_msa
       
-        # Whether Gmail should treat this address as an alias for the user's primary
-        # email address. See  for more details. This setting only applies to custom "
-        # from" aliases.
+        # Whether Gmail should  treat this address as an alias for the user's primary
+        # email address. This setting only applies to custom "from" aliases.
         # Corresponds to the JSON property `treatAsAlias`
         # @return [Boolean]
         attr_accessor :treat_as_alias
@@ -1210,7 +1208,7 @@ module Google
       end
       
       # Vacation auto-reply settings for an account. These settings correspond to the "
-      # Vacation responder" feature in the web interface. See  for more details.
+      # Vacation responder" feature in the web interface.
       class VacationSettings
         include Google::Apis::Core::Hashable
       

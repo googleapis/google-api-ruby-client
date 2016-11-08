@@ -1375,7 +1375,6 @@ module Google
       class ChannelContentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :google_plus_user_id, as: 'googlePlusUserId'
           property :related_playlists, as: 'relatedPlaylists', class: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists, decorator: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists::Representation
       
         end
@@ -1618,7 +1617,6 @@ module Google
           property :author_channel_id, as: 'authorChannelId'
           property :author_channel_url, as: 'authorChannelUrl'
           property :author_display_name, as: 'authorDisplayName'
-          property :author_googleplus_profile_url, as: 'authorGoogleplusProfileUrl'
           property :author_profile_image_url, as: 'authorProfileImageUrl'
           property :can_rate, as: 'canRate'
           property :channel_id, as: 'channelId'
@@ -3006,6 +3004,7 @@ module Google
           property :definition, as: 'definition'
           property :dimension, as: 'dimension'
           property :duration, as: 'duration'
+          property :has_custom_thumbnail, as: 'hasCustomThumbnail'
           property :licensed_content, as: 'licensedContent'
           property :projection, as: 'projection'
           property :region_restriction, as: 'regionRestriction', class: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction, decorator: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction::Representation
@@ -3033,8 +3032,6 @@ module Google
           property :file_name, as: 'fileName'
           property :file_size, as: 'fileSize'
           property :file_type, as: 'fileType'
-          property :recording_location, as: 'recordingLocation', class: Google::Apis::YoutubeV3::GeoPoint, decorator: Google::Apis::YoutubeV3::GeoPoint::Representation
-      
           collection :video_streams, as: 'videoStreams', class: Google::Apis::YoutubeV3::VideoFileDetailsVideoStream, decorator: Google::Apis::YoutubeV3::VideoFileDetailsVideoStream::Representation
       
         end
@@ -3129,7 +3126,9 @@ module Google
       class VideoPlayer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :embed_height, as: 'embedHeight'
           property :embed_html, as: 'embedHtml'
+          property :embed_width, as: 'embedWidth'
         end
       end
       

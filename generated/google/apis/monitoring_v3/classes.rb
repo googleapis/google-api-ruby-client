@@ -22,19 +22,19 @@ module Google
   module Apis
     module MonitoringV3
       
-      # A specific metric identified by specifying values for all of the labels of a
+      # A specific metric, identified by specifying values for all of the labels of a
       # MetricDescriptor.
       class Metric
         include Google::Apis::Core::Hashable
       
-        # The set of labels that uniquely identify a metric. To specify a metric, all
-        # labels enumerated in the MetricDescriptor must be assigned values.
+        # The set of label values that uniquely identify this metric. All labels listed
+        # in the MetricDescriptor must be assigned values.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # An existing metric type, see google.api.MetricDescriptor. For example, compute.
-        # googleapis.com/instance/cpu/usage_time.
+        # An existing metric type, see google.api.MetricDescriptor. For example, custom.
+        # googleapis.com/invoice/paid/amount.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -274,7 +274,7 @@ module Google
       class TimeSeries
         include Google::Apis::Core::Hashable
       
-        # A specific metric identified by specifying values for all of the labels of a
+        # A specific metric, identified by specifying values for all of the labels of a
         # MetricDescriptor.
         # Corresponds to the JSON property `metric`
         # @return [Google::Apis::MonitoringV3::Metric]
@@ -340,7 +340,9 @@ module Google
         end
       end
       
-      # Defines a metric type and its schema.
+      # Defines a metric type and its schema. Once a metric descriptor is created,
+      # deleting or altering it stops data collection and makes the metric type's
+      # existing data unusable.
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
@@ -401,9 +403,10 @@ module Google
         attr_accessor :unit
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type. For example, the compute.googleapis.com/instance/network/
-        # received_bytes_count metric type has a label, loadbalanced, that specifies
-        # whether the traffic was received through a load balanced IP address.
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
@@ -426,24 +429,23 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name. The format of the name may vary between different
-        # implementations. For examples:
-        # projects/`project_id`/metricDescriptors/`type=**`
-        # metricDescriptors/`type=**`
+        # The resource name of the metric descriptor. Depending on the implementation,
+        # the name typically includes: (1) the parent resource name that defines the
+        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
+        # which also appears in the type field of this descriptor. For example,
+        # following is the resource name of a custom metric within the GCP project
+        # 123456789:
+        # &quot;projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%
+        # 2Fpaid%2Famount&quot;
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The metric type including a DNS name prefix, for example &quot;compute.
-        # googleapis.com/instance/cpu/utilization&quot;. Metric types should use a
-        # natural hierarchical grouping such as the following:
-        # compute.googleapis.com/instance/cpu/utilization
-        # compute.googleapis.com/instance/disk/read_ops_count
-        # compute.googleapis.com/instance/network/received_bytes_count
-        # Note that if the metric type changes, the monitoring data will be discontinued,
-        # and anything depends on it will break, such as monitoring dashboards,
-        # alerting rules and quota limits. Therefore, once a metric has been published,
-        # its type should be immutable.
+        # The metric type, including its DNS name prefix. The type is not URL-encoded.
+        # All user-defined metric types have the DNS name custom.googleapis.com. Metric
+        # types should use a natural hierarchical grouping. For example:
+        # &quot;custom.googleapis.com/invoice/paid/amount&quot;
+        # &quot;appengine.googleapis.com/http/server/response_latencies&quot;
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

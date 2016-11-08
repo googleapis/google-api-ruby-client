@@ -264,6 +264,7 @@ module Google
           property :status_detail, as: 'statusDetail'
           collection :images, as: 'images'
           property :start_time, as: 'startTime'
+          property :build_trigger_id, as: 'buildTriggerId'
           property :logs_bucket, as: 'logsBucket'
           property :project_id, as: 'projectId'
         end

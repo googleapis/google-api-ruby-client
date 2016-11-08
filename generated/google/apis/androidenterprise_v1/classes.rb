@@ -88,7 +88,8 @@ module Google
       
         # The list of permissions the admin is granted within the iframe. The admin will
         # only be allowed to view an iframe if they have all of the permissions
-        # associated with it.
+        # associated with it. The only valid value is "approveApps" that will allow the
+        # admin to access the iframe in "approve" mode.
         # Corresponds to the JSON property `permission`
         # @return [Array<String>]
         attr_accessor :permission
@@ -2022,12 +2023,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Sets a store layout type. If set to "custom", "homepageId" must be specified.
-        # If set to "basic", the layout will consist of all approved apps accessible by
-        # the user, split in pages of 100 each; in this case, "homepageId" must not be
-        # specified. The "basic" setting takes precedence over any existing collections
-        # setup for this enterprise (if any). Should the enterprise use
-        # collectionViewers for controlling access rights, these will still be respected.
+        # The store layout type. By default, this value is set to "basic". If set to "
+        # custom", "homepageId" must be specified. If set to "basic", the layout will
+        # consist of all approved apps accessible by the user, split in pages of 100
+        # each; in this case, "homepageId" must not be specified. The "basic" setting
+        # takes precedence over any existing collections setup for this enterprise (if
+        # any). Should the enterprise use collectionViewers for controlling access
+        # rights, these will still be respected.
         # Corresponds to the JSON property `storeLayoutType`
         # @return [String]
         attr_accessor :store_layout_type

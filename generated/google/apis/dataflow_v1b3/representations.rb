@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailedLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -675,6 +681,7 @@ module Google
           property :replaced_by_job_id, as: 'replacedByJobId'
           collection :temp_files, as: 'tempFiles'
           hash :labels, as: 'labels'
+          property :location, as: 'location'
         end
       end
       
@@ -819,6 +826,15 @@ module Google
           collection :jobs, as: 'jobs', class: Google::Apis::DataflowV1b3::Job, decorator: Google::Apis::DataflowV1b3::Job::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :failed_location, as: 'failedLocation', class: Google::Apis::DataflowV1b3::FailedLocation, decorator: Google::Apis::DataflowV1b3::FailedLocation::Representation
+      
+        end
+      end
+      
+      class FailedLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -890,6 +906,7 @@ module Google
           collection :work_item_statuses, as: 'workItemStatuses', class: Google::Apis::DataflowV1b3::WorkItemStatus, decorator: Google::Apis::DataflowV1b3::WorkItemStatus::Representation
       
           property :current_worker_time, as: 'currentWorkerTime'
+          property :location, as: 'location'
         end
       end
       
@@ -1244,6 +1261,7 @@ module Google
           property :requested_lease_duration, as: 'requestedLeaseDuration'
           property :current_worker_time, as: 'currentWorkerTime'
           property :worker_id, as: 'workerId'
+          property :location, as: 'location'
         end
       end
       

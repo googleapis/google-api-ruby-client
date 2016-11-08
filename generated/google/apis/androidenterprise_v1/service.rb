@@ -1226,7 +1226,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the store layout for the enterprise.
+        # Sets the store layout for the enterprise. By default, storeLayoutType is set
+        # to "basic" and the basic store layout is enabled. The basic layout only
+        # contains apps approved by the administrator, and that have been added to the
+        # available product set for a user (using the  setAvailableProductSet call).
+        # Apps on the page are sorted in order of their product ID value. If you create
+        # a custom store layout (by setting storeLayoutType = "custom"), the basic store
+        # layout is disabled.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object

@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostalAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepresentativeInfoData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class VoterInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoterInfoSegmentResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -415,6 +427,43 @@ module Google
         end
       end
       
+      class PostalAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_lines, as: 'addressLines'
+          property :administrative_area_name, as: 'administrativeAreaName'
+          property :country_name, as: 'countryName'
+          property :country_name_code, as: 'countryNameCode'
+          property :dependent_locality_name, as: 'dependentLocalityName'
+          property :dependent_thoroughfare_leading_type, as: 'dependentThoroughfareLeadingType'
+          property :dependent_thoroughfare_name, as: 'dependentThoroughfareName'
+          property :dependent_thoroughfare_post_direction, as: 'dependentThoroughfarePostDirection'
+          property :dependent_thoroughfare_pre_direction, as: 'dependentThoroughfarePreDirection'
+          property :dependent_thoroughfare_trailing_type, as: 'dependentThoroughfareTrailingType'
+          property :dependent_thoroughfares_connector, as: 'dependentThoroughfaresConnector'
+          property :dependent_thoroughfares_indicator, as: 'dependentThoroughfaresIndicator'
+          property :dependent_thoroughfares_type, as: 'dependentThoroughfaresType'
+          property :firm_name, as: 'firmName'
+          property :is_disputed, as: 'isDisputed'
+          property :language_code, as: 'languageCode'
+          property :locality_name, as: 'localityName'
+          property :post_box_number, as: 'postBoxNumber'
+          property :postal_code_number, as: 'postalCodeNumber'
+          property :postal_code_number_extension, as: 'postalCodeNumberExtension'
+          property :premise_name, as: 'premiseName'
+          property :recipient_name, as: 'recipientName'
+          property :sorting_code, as: 'sortingCode'
+          property :sub_administrative_area_name, as: 'subAdministrativeAreaName'
+          property :sub_premise_name, as: 'subPremiseName'
+          property :thoroughfare_leading_type, as: 'thoroughfareLeadingType'
+          property :thoroughfare_name, as: 'thoroughfareName'
+          property :thoroughfare_number, as: 'thoroughfareNumber'
+          property :thoroughfare_post_direction, as: 'thoroughfarePostDirection'
+          property :thoroughfare_pre_direction, as: 'thoroughfarePreDirection'
+          property :thoroughfare_trailing_type, as: 'thoroughfareTrailingType'
+        end
+      end
+      
       class RepresentativeInfoData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -476,6 +525,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context_params, as: 'contextParams', class: Google::Apis::CivicinfoV2::ContextParams, decorator: Google::Apis::CivicinfoV2::ContextParams::Representation
       
+          property :voter_info_segment_result, as: 'voterInfoSegmentResult', class: Google::Apis::CivicinfoV2::VoterInfoSegmentResult, decorator: Google::Apis::CivicinfoV2::VoterInfoSegmentResult::Representation
+      
         end
       end
       
@@ -500,6 +551,19 @@ module Google
       
           property :precinct_id, as: 'precinctId'
           collection :state, as: 'state', class: Google::Apis::CivicinfoV2::AdministrationRegion, decorator: Google::Apis::CivicinfoV2::AdministrationRegion::Representation
+      
+        end
+      end
+      
+      class VoterInfoSegmentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generated_millis, as: 'generatedMillis'
+          property :postal_address, as: 'postalAddress', class: Google::Apis::CivicinfoV2::PostalAddress, decorator: Google::Apis::CivicinfoV2::PostalAddress::Representation
+      
+          property :request, as: 'request', class: Google::Apis::CivicinfoV2::VoterInfoRequest, decorator: Google::Apis::CivicinfoV2::VoterInfoRequest::Representation
+      
+          property :response, as: 'response', class: Google::Apis::CivicinfoV2::VoterInfoResponse, decorator: Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
       
         end
       end

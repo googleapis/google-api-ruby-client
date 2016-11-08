@@ -619,6 +619,8 @@
 "/dataproc:v1/dataproc.projects.regions.operations.list": list_operations
 "/dataproc:v1/dataproc.projects.regions.operations.cancel": cancel_operation
 "/dataproc:v1/dataproc.projects.regions.operations.delete": delete_operation
+"/dataflow:v1b3/dataflow.projects.jobs.workItems.lease": lease_project_work_item
+"/dataflow:v1b3/dataflow.projects.locations.jobs.workItems.lease": lease_project_location_work_item
 "/datastore:v1beta2/AllocateIdsRequest": allocate_ids_request
 "/datastore:v1beta2/AllocateIdsResponse": allocate_ids_response
 "/datastore:v1beta2/BeginTransactionRequest": begin_transaction_request

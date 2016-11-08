@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://prod-day0-classroom.sandbox.googleapis.com/', '')
+          super('https://classroom.googleapis.com/', '')
         end
         
         # Creates a course. The user specified in `ownerId` is the owner of the created

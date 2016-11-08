@@ -364,6 +364,7 @@ module Google
           collection :authorized_domains, as: 'authorizedDomains'
           property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
+          property :dynamic_links_domain, as: 'dynamicLinksDomain'
           property :enable_anonymous_user, as: 'enableAnonymousUser'
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
       
@@ -464,17 +465,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
+          property :photo_url, as: 'photoUrl'
         end
       end
       
       class UploadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_overwrite, as: 'allowOverwrite'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
@@ -639,6 +644,7 @@ module Google
           property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo::Representation
       
+          property :raw_password, as: 'rawPassword'
           property :salt, :base64 => true, as: 'salt'
           property :screen_name, as: 'screenName'
           property :valid_since, as: 'validSince'
@@ -654,7 +660,6 @@ module Google
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
             property :raw_id, as: 'rawId'
-            property :raw_user_info, as: 'rawUserInfo'
             property :screen_name, as: 'screenName'
           end
         end
