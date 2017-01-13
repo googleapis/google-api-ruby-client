@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20160907'
+      REVISION = '20161128'
 
       # View your activity information in Google Fit
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
@@ -33,11 +33,29 @@ module Google
       # View and store your activity information in Google Fit
       AUTH_FITNESS_ACTIVITY_WRITE = 'https://www.googleapis.com/auth/fitness.activity.write'
 
+      # View blood glucose data in Google Fit
+      AUTH_FITNESS_BLOOD_GLUCOSE_READ = 'https://www.googleapis.com/auth/fitness.blood_glucose.read'
+
+      # View and store blood glucose data in Google Fit
+      AUTH_FITNESS_BLOOD_GLUCOSE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_glucose.write'
+
+      # View blood pressure data in Google Fit
+      AUTH_FITNESS_BLOOD_PRESSURE_READ = 'https://www.googleapis.com/auth/fitness.blood_pressure.read'
+
+      # View and store blood pressure data in Google Fit
+      AUTH_FITNESS_BLOOD_PRESSURE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_pressure.write'
+
       # View body sensor information in Google Fit
       AUTH_FITNESS_BODY_READ = 'https://www.googleapis.com/auth/fitness.body.read'
 
       # View and store body sensor data in Google Fit
       AUTH_FITNESS_BODY_WRITE = 'https://www.googleapis.com/auth/fitness.body.write'
+
+      # View body temperature data in Google Fit
+      AUTH_FITNESS_BODY_TEMPERATURE_READ = 'https://www.googleapis.com/auth/fitness.body_temperature.read'
+
+      # View and store body temperature data in Google Fit
+      AUTH_FITNESS_BODY_TEMPERATURE_WRITE = 'https://www.googleapis.com/auth/fitness.body_temperature.write'
 
       # View your stored location data in Google Fit
       AUTH_FITNESS_LOCATION_READ = 'https://www.googleapis.com/auth/fitness.location.read'
@@ -50,6 +68,18 @@ module Google
 
       # View and store nutrition information in Google Fit
       AUTH_FITNESS_NUTRITION_WRITE = 'https://www.googleapis.com/auth/fitness.nutrition.write'
+
+      # View oxygen saturation data in Google Fit
+      AUTH_FITNESS_OXYGEN_SATURATION_READ = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.read'
+
+      # View and store oxygen saturation data in Google Fit
+      AUTH_FITNESS_OXYGEN_SATURATION_WRITE = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.write'
+
+      # View reproductive health data in Google Fit
+      AUTH_FITNESS_REPRODUCTIVE_HEALTH_READ = 'https://www.googleapis.com/auth/fitness.reproductive_health.read'
+
+      # View and store reproductive health data in Google Fit
+      AUTH_FITNESS_REPRODUCTIVE_HEALTH_WRITE = 'https://www.googleapis.com/auth/fitness.reproductive_health.write'
     end
   end
 end

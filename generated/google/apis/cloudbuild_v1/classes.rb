@@ -415,6 +415,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # StorageSource describes the location of the source in an archive file in
       # Google Cloud Storage.
       class StorageSource
@@ -523,6 +536,8 @@ module Google
         attr_accessor :options
       
         # Time at which execution of the build was finished.
+        # The difference between finish_time and start_time is the duration of the
+        # build's execution.
         # @OutputOnly
         # Corresponds to the JSON property `finishTime`
         # @return [String]
@@ -547,7 +562,7 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Source]
         attr_accessor :source
       
-        # Time at which the build was created.
+        # Time at which the request to create the build was received.
         # @OutputOnly
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -567,8 +582,7 @@ module Google
       
         # A list of images to be pushed upon the successful completion of all build
         # steps.
-        # The images will be pushed using the builder
-        # service account's credentials.
+        # The images will be pushed using the builder service account's credentials.
         # The digests of the pushed images will be stored in the Build resource's
         # results field.
         # If any of the images fail to be pushed, the build is marked FAILURE.
@@ -662,26 +676,6 @@ module Google
         end
       end
       
-      # Container message for hashes of byte content of files, used in
-      # SourceProvenance messages to verify integrity of source input to the build.
-      class FileHashes
-        include Google::Apis::Core::Hashable
-      
-        # Collection of file hashes.
-        # Corresponds to the JSON property `fileHash`
-        # @return [Array<Google::Apis::CloudbuildV1::HashProp>]
-        attr_accessor :file_hash
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @file_hash = args[:file_hash] if args.key?(:file_hash)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -704,6 +698,26 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Container message for hashes of byte content of files, used in
+      # SourceProvenance messages to verify integrity of source input to the build.
+      class FileHashes
+        include Google::Apis::Core::Hashable
+      
+        # Collection of file hashes.
+        # Corresponds to the JSON property `fileHash`
+        # @return [Array<Google::Apis::CloudbuildV1::HashProp>]
+        attr_accessor :file_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hash = args[:file_hash] if args.key?(:file_hash)
         end
       end
       
@@ -787,11 +801,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
+        # Optional entrypoint to be used instead of the build step image's default
+        # If unset, the image's default will be used.
+        # Corresponds to the JSON property `entrypoint`
+        # @return [String]
+        attr_accessor :entrypoint
+      
         # The name of the container image that will run this particular build step.
-        # If the image is already available in the host's
-        # Docker daemon's cache, it will be run directly. If not, the host will
-        # attempt to pull the image first, using the builder service account's
-        # credentials if necessary.
+        # If the image is already available in the host's Docker daemon's cache, it
+        # will be run directly. If not, the host will attempt to pull the image
+        # first, using the builder service account's credentials if necessary.
         # The Docker daemon's cache will already have the latest versions of all of
         # the officially supported build steps
         # (https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon
@@ -821,6 +840,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @wait_for = args[:wait_for] if args.key?(:wait_for)
           @args = args[:args] if args.key?(:args)
+          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @name = args[:name] if args.key?(:name)
           @dir = args[:dir] if args.key?(:dir)
         end

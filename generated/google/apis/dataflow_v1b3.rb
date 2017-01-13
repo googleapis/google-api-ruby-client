@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Dataflow API
     #
-    # Develops and executes data processing patterns like ETL, batch computation,
-    # and continuous computation.
+    # Manages Google Cloud Dataflow projects on Google Cloud Platform.
     #
     # @see https://cloud.google.com/dataflow
     module DataflowV1b3
       VERSION = 'V1b3'
-      REVISION = '20160928'
+      REVISION = '20161004'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -52,451 +52,6 @@ module Google
           super('https://www.googleapis.com/', 'androidenterprise/v1/')
         end
         
-        # Deletes a collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_collection(enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/collections/{collectionId}', options)
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves the details of a collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Collection] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Collection]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_collection(enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/collections/{collectionId}', options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Collection
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Collection] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Collection]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_collection(enterprise_id, collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'enterprises/{enterpriseId}/collections', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.request_object = collection_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Collection
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves the IDs of all the collections for an enterprise.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListCollectionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::ListCollectionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_collections(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/collections', options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ListCollectionsResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ListCollectionsResponse
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a collection. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Collection] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Collection]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_collection(enterprise_id, collection_id, collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'enterprises/{enterpriseId}/collections/{collectionId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.request_object = collection_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Collection
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Collection] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Collection]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_collection(enterprise_id, collection_id, collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/collections/{collectionId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.request_object = collection_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Collection::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Collection
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Removes the user from the list of those specifically allowed to see the
-        # collection. If the collection's visibility is set to viewersOnly then only
-        # such users will see the collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_collection_viewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}', options)
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves the ID of the user if they have been specifically allowed to see the
-        # collection. If the collection's visibility is set to viewersOnly then only
-        # these users will see the collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::User] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::User]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_collection_viewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}', options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::User
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves the IDs of the users who have been specifically allowed to see the
-        # collection. If the collection's visibility is set to viewersOnly then only
-        # these users will see the collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_collection_viewers(enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/collections/{collectionId}/users', options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds the user to the list of those specifically allowed to see the collection.
-        # If the collection's visibility is set to viewersOnly then only such users will
-        # see the collection. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [Google::Apis::AndroidenterpriseV1::User] user_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::User] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::User]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_collection_viewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.request_object = user_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::User
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds the user to the list of those specifically allowed to see the collection.
-        # If the collection's visibility is set to viewersOnly then only such users will
-        # see the collection.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] collection_id
-        #   The ID of the collection.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [Google::Apis::AndroidenterpriseV1::User] user_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::User] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::User]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_collection_viewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.request_object = user_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::User
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['collectionId'] = collection_id unless collection_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieves the details of a device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -746,9 +301,9 @@ module Google
         end
         
         # Returns a unique token to access an embeddable UI. To generate a web UI, pass
-        # the generated token into the Play for Work javascript API. Each token may only
-        # be used to start one UI session. See the javascript API documentation for
-        # further information.
+        # the generated token into the managed Google Play javascript API. Each token
+        # may only be used to start one UI session. See the javascript API documentation
+        # for further information.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpec] administrator_web_token_spec_object
@@ -1228,11 +783,11 @@ module Google
         
         # Sets the store layout for the enterprise. By default, storeLayoutType is set
         # to "basic" and the basic store layout is enabled. The basic layout only
-        # contains apps approved by the administrator, and that have been added to the
-        # available product set for a user (using the  setAvailableProductSet call).
-        # Apps on the page are sorted in order of their product ID value. If you create
-        # a custom store layout (by setting storeLayoutType = "custom"), the basic store
-        # layout is disabled.
+        # contains apps approved by the admin, and that have been added to the available
+        # product set for a user (using the  setAvailableProductSet call). Apps on the
+        # page are sorted in order of their product ID value. If you create a custom
+        # store layout (by setting storeLayoutType = "custom"), the basic store layout
+        # is disabled.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object
@@ -2349,8 +1904,8 @@ module Google
         # Approves the specified product and the relevant app permissions, if any. The
         # maximum number of products that you can approve per enterprise customer is 1,
         # 000.
-        # To learn how to use Google Play for Work to design and create a store layout
-        # to display approved products to your users, see Store Layout Design.
+        # To learn how to use managed Google Play to design and create a store layout to
+        # display approved products to your users, see Store Layout Design.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -2482,7 +2037,7 @@ module Google
         # Retrieves the schema that defines the configurable properties for this product.
         # All products have a schema, but this schema may be empty if no managed
         # configurations have been defined. This schema can be used to populate a UI
-        # that allows an administrator to configure the product. To apply a managed
+        # that allows an admin to configure the product. To apply a managed
         # configuration based on the schema obtained using this API, see Managed
         # Configurations through Play.
         # @param [String] enterprise_id
@@ -2579,7 +2134,7 @@ module Google
         #   not specified, uses a default value of 100, which is also the maximum
         #   retrievable within a single response.
         # @param [String] query
-        #   The search query as typed in the Google Play Store search box. If omitted, all
+        #   The search query as typed in the Google Play store search box. If omitted, all
         #   approved apps will be returned (using the pagination parameters), including
         #   apps that are not available in the store (e.g. unpublished apps).
         # @param [String] token
@@ -3378,8 +2933,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a token (activation code) to allow this user to configure their work
-        # account in the Android Setup Wizard. Revokes any previously generated token.
+        # Generates a token (activation code) to allow this user to configure their
+        # managed account in the Android Setup Wizard. Revokes any previously generated
+        # token.
         # This call only works with Google managed accounts.
         # @param [String] enterprise_id
         #   The ID of the enterprise.

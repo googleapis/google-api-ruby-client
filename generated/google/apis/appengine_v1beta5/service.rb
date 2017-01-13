@@ -48,8 +48,8 @@ module Google
         
         # Creates an App Engine application for a Google Cloud Platform project. This
         # requires a project that excludes an App Engine application. For details about
-        # creating a project without an application, see the [Google Cloud Resource
-        # Manager create project topic](https://cloud.google.com/resource-manager/docs/
+        # creating a project without an application, see the Google Cloud Resource
+        # Manager create project topic (https://cloud.google.com/resource-manager/docs/
         # creating-project).
         # @param [Google::Apis::AppengineV1beta5::Application] application_object
         # @param [String] fields
@@ -82,10 +82,10 @@ module Google
         
         # Gets information about an application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the application to get. Example: `apps/myapp`.
+        #   Part of `name`. Name of the application to get. Example: apps/myapp.
         # @param [Boolean] ensure_resources_exist
         #   Certain resources associated with an application are created on-demand.
-        #   Controls whether these resources should be created when performing the `GET`
+        #   Controls whether these resources should be created when performing the GET
         #   operation. If specified and any resources could not be created, the request
         #   will fail with an error code. Additionally, this parameter can cause the
         #   request to take longer to complete. Note: This parameter will be deprecated in
@@ -118,9 +118,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates application fields.
+        # Updates the specified Application resource. You can update the following
+        # fields: auth_domain (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1beta5/apps#Application.FIELDS.auth_domain)
+        # default_cookie_expiration (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1beta5/apps#Application.FIELDS.default_cookie_expiration)
         # @param [String] apps_id
-        #   Part of `name`. Name of the application to update. Example: `apps/myapp`.
+        #   Part of `name`. Name of the Application resource to update. Example: apps/
+        #   myapp.
         # @param [Google::Apis::AppengineV1beta5::Application] application_object
         # @param [String] mask
         #   Standard field mask for the set of fields to be updated.
@@ -155,9 +160,9 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding below allows API services to override the binding to use different
-        # resource name schemes, such as `users/*/operations`.
+        # doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding
+        # below allows API services to override the binding to use different resource
+        # name schemes, such as users/*/operations.
         # @param [String] apps_id
         #   Part of `name`. The name of the operation collection.
         # @param [String] filter
@@ -232,8 +237,8 @@ module Google
         
         # Deletes the specified service and all enclosed versions.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] fields
@@ -266,8 +271,8 @@ module Google
         
         # Gets the current configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] fields
@@ -300,7 +305,7 @@ module Google
         
         # Lists all the services in the application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -336,25 +341,25 @@ module Google
         
         # Updates the configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: `apps/myapp/services/
-        #   default`.
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
+        #   default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta5::Service] service_object
         # @param [String] mask
         #   Standard field mask for the set of fields to be updated.
         # @param [Boolean] migrate_traffic
-        #   Set to `true` to gradually shift traffic from one version to another single
+        #   Set to true to gradually shift traffic from one version to another single
         #   version. By default, traffic is shifted immediately. For gradual traffic
         #   migration, the target version must be located within instances that are
-        #   configured for both [warmup requests](https://cloud.google.com/appengine/docs/
+        #   configured for both warmup requests (https://cloud.google.com/appengine/docs/
         #   admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype)
-        #   and [automatic scaling](https://cloud.google.com/appengine/docs/admin-api/
+        #   and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/
         #   reference/rest/v1beta5/apps.services.versions#automaticscaling). You must
-        #   specify the [`shardBy`](https://cloud.google.com/appengine/docs/admin-api/
+        #   specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/
         #   reference/rest/v1beta5/apps.services#shardby) field in the Service resource.
         #   Gradual traffic migration is not supported in the App Engine flexible
-        #   environment. For examples, see [Migrating and Splitting Traffic](https://cloud.
+        #   environment. For examples, see Migrating and Splitting Traffic (https://cloud.
         #   google.com/appengine/docs/admin-api/migrating-splitting-traffic).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -427,8 +432,8 @@ module Google
         
         # Deletes an existing version.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default/versions/v1`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -462,17 +467,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified Version resource. By default, only a `BASIC_VIEW` will be
-        # returned. Specify the `FULL_VIEW` parameter to get the full resource.
+        # Gets the specified Version resource. By default, only a BASIC_VIEW will be
+        # returned. Specify the FULL_VIEW parameter to get the full resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default/versions/v1`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] view
-        #   Controls the set of fields returned in the `Get` response.
+        #   Controls the set of fields returned in the Get response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -505,12 +510,12 @@ module Google
         
         # Lists the versions of a service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] view
-        #   Controls the set of fields returned in the `List` response.
+        #   Controls the set of fields returned in the List response.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -548,23 +553,23 @@ module Google
         
         # Updates the specified Version resource. You can specify the following fields
         # depending on the App Engine environment and type of scaling that the version
-        # resource uses: * [`serving_status`](https://cloud.google.com/appengine/docs/
-        # admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.
+        # resource uses: serving_status (https://cloud.google.com/appengine/docs/admin-
+        # api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.
         # serving_status): For Version resources that use basic scaling, manual scaling,
-        # or run in the App Engine flexible environment. * [`instance_class`](https://
-        # cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.
+        # or run in the App Engine flexible environment. instance_class (https://cloud.
+        # google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.
         # versions#Version.FIELDS.instance_class): For Version resources that run in the
-        # App Engine standard environment. * [`automatic_scaling.min_idle_instances`](
-        # https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.
-        # services.versions#Version.FIELDS.automatic_scaling): For Version resources
-        # that use automatic scaling and run in the App Engine standard environment. * [`
-        # automatic_scaling.max_idle_instances`](https://cloud.google.com/appengine/docs/
+        # App Engine standard environment. automatic_scaling.min_idle_instances (https://
+        # cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.
+        # versions#Version.FIELDS.automatic_scaling): For Version resources that use
+        # automatic scaling and run in the App Engine standard environment.
+        # automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/
         # admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.
         # automatic_scaling): For Version resources that use automatic scaling and run
         # in the App Engine standard environment.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: `apps/myapp/services/
-        #   default/versions/1`.
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
+        #   default/versions/1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -646,8 +651,8 @@ module Google
         
         # Gets instance information.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default/versions/v1/instances/instance-1`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -686,8 +691,8 @@ module Google
         
         # Lists the instances of a version.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default/versions/v1`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -731,11 +736,11 @@ module Google
         # connect to the virtual machine where the instance lives. While in "debug mode",
         # the instance continues to serve live traffic. You should delete the instance
         # when you are done debugging and then allow the system to take over and
-        # determine if another instance should be started. Only applicable for instances
+        # determine if another instance should be started.Only applicable for instances
         # in App Engine flexible environment.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: `apps/myapp/services/
-        #   default/versions/v1/instances/instance-1`.
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id

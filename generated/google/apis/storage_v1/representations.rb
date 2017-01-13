@@ -414,6 +414,8 @@ module Google
       
           property :time_deleted, as: 'timeDeleted', type: DateTime
       
+          property :time_storage_class_updated, as: 'timeStorageClassUpdated', type: DateTime
+      
           property :updated, as: 'updated', type: DateTime
       
         end

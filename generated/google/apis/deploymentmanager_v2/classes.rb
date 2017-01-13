@@ -22,10 +22,15 @@ module Google
   module Apis
     module DeploymentmanagerV2
       
-      # Enables "data access" audit logging for a service and specifies a list of
-      # members that are log-exempted.
+      # Provides the configuration for non-admin_activity logging for a service.
+      # Controls exemptions and specific log sub-types.
       class AuditConfig
         include Google::Apis::Core::Hashable
+      
+        # The configuration for each type of logging
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::DeploymentmanagerV2::AuditLogConfig>]
+        attr_accessor :audit_log_configs
       
         # Specifies the identities that are exempted from "data access" audit logging
         # for the `service` specified above. Follows the same format of Binding.members.
@@ -33,9 +38,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies a service that will be enabled for "data access" audit logging. For
-        # example, `resourcemanager`, `storage`, `compute`. `allServices` is a special
-        # value that covers all services.
+        # Specifies a service that will be enabled for audit logging. For example, `
+        # resourcemanager`, `storage`, `compute`. `allServices` is a special value that
+        # covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -46,8 +51,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Provides the configuration for a sub-type of logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that are exempted from this type of logging Follows
+        # the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
       

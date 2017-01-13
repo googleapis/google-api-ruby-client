@@ -22,42 +22,6 @@ module Google
   module Apis
     module YoutubeAnalyticsV1
       
-      class BatchReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Output
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-        
-        class TimeSpan
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchReportDefinition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchReportDefinitionList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchReportList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -110,69 +74,6 @@ module Google
         end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          collection :outputs, as: 'outputs', class: Google::Apis::YoutubeAnalyticsV1::BatchReport::Output, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReport::Output::Representation
-      
-          property :report_id, as: 'reportId'
-          property :time_span, as: 'timeSpan', class: Google::Apis::YoutubeAnalyticsV1::BatchReport::TimeSpan, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReport::TimeSpan::Representation
-      
-          property :time_updated, as: 'timeUpdated', type: DateTime
-      
-        end
-        
-        class Output
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :download_url, as: 'downloadUrl'
-            property :format, as: 'format'
-            property :type, as: 'type'
-          end
-        end
-        
-        class TimeSpan
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :end_time, as: 'endTime', type: DateTime
-        
-            property :start_time, as: 'startTime', type: DateTime
-        
-          end
-        end
-      end
-      
-      class BatchReportDefinition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class BatchReportDefinitionList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::BatchReportDefinition, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReportDefinition::Representation
-      
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class BatchReportList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::BatchReport, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReport::Representation
-      
-          property :kind, as: 'kind'
-        end
       end
       
       class Group

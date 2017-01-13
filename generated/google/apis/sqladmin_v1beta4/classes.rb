@@ -1041,6 +1041,25 @@ module Google
         end
       end
       
+      # Instance truncate log request.
+      class InstancesTruncateLogRequest
+        include Google::Apis::Core::Hashable
+      
+        # Database Instance truncate log context.
+        # Corresponds to the JSON property `truncateLogContext`
+        # @return [Google::Apis::SqladminV1beta4::TruncateLogContext]
+        attr_accessor :truncate_log_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @truncate_log_context = args[:truncate_log_context] if args.key?(:truncate_log_context)
+        end
+      end
+      
       # IP Management configuration.
       class IpConfiguration
         include Google::Apis::Core::Hashable
@@ -1093,6 +1112,13 @@ module Google
         # @return [DateTime]
         attr_accessor :time_to_retire
       
+        # The type of this IP address. A PRIMARY address is an address that can accept
+        # incoming connections. An OUTGOING address is the source address of connections
+        # originating from the instance, if supported.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1101,6 +1127,7 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @time_to_retire = args[:time_to_retire] if args.key?(:time_to_retire)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1921,8 +1948,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The applicable regions for this tier. Can be us-east1, europe-west1 or asia-
-        # east1.
+        # The applicable regions for this tier.
         # Corresponds to the JSON property `region`
         # @return [Array<String>]
         attr_accessor :region
@@ -1969,6 +1995,32 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Database Instance truncate log context.
+      class TruncateLogContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#truncateLogContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and
+        # MYSQL_SLOW_TABLE.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
       

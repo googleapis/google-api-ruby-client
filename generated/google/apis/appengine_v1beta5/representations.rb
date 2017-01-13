@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class SourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndpointsApiService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,6 +376,8 @@ module Google
           property :nobuild_files_regex, as: 'nobuildFilesRegex'
           property :deployment, as: 'deployment', class: Google::Apis::AppengineV1beta5::Deployment, decorator: Google::Apis::AppengineV1beta5::Deployment::Representation
       
+          property :endpoints_api_service, as: 'endpointsApiService', class: Google::Apis::AppengineV1beta5::EndpointsApiService, decorator: Google::Apis::AppengineV1beta5::EndpointsApiService::Representation
+      
         end
       end
       
@@ -446,6 +460,7 @@ module Google
           collection :forwarded_ports, as: 'forwardedPorts'
           property :instance_tag, as: 'instanceTag'
           property :name, as: 'name'
+          property :subnetwork_name, as: 'subnetworkName'
         end
       end
       
@@ -455,6 +470,17 @@ module Google
           property :cpu, as: 'cpu'
           property :disk_gb, as: 'diskGb'
           property :memory_gb, as: 'memoryGb'
+          collection :volumes, as: 'volumes', class: Google::Apis::AppengineV1beta5::Volume, decorator: Google::Apis::AppengineV1beta5::Volume::Representation
+      
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :volume_type, as: 'volumeType'
+          property :size_gb, as: 'sizeGb'
         end
       end
       
@@ -576,6 +602,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :repository, as: 'repository'
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class EndpointsApiService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :config_id, as: 'configId'
         end
       end
       
@@ -714,6 +748,8 @@ module Google
           property :end_time, as: 'endTime'
           property :user, as: 'user'
           property :target, as: 'target'
+          property :ephemeral_message, as: 'ephemeralMessage'
+          collection :warning, as: 'warning'
         end
       end
       

@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportWorkItemStatusRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,12 @@ module Google
       end
       
       class StringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DistributionUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -610,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceUtilizationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SendWorkerMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +641,12 @@ module Google
       end
       
       class WorkerHealthReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceUtilizationReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -894,8 +918,22 @@ module Google
       class CreateJobFromTemplateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_name, as: 'jobName'
           property :gcs_path, as: 'gcsPath'
           hash :parameters, as: 'parameters'
+          property :environment, as: 'environment', class: Google::Apis::DataflowV1b3::RuntimeEnvironment, decorator: Google::Apis::DataflowV1b3::RuntimeEnvironment::Representation
+      
+        end
+      end
+      
+      class RuntimeEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_workers, as: 'maxWorkers'
+          property :zone, as: 'zone'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :temp_location, as: 'tempLocation'
+          property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
         end
       end
       
@@ -969,6 +1007,8 @@ module Google
           property :floating_point_list, as: 'floatingPointList', class: Google::Apis::DataflowV1b3::FloatingPointList, decorator: Google::Apis::DataflowV1b3::FloatingPointList::Representation
       
           property :string_list, as: 'stringList', class: Google::Apis::DataflowV1b3::StringList, decorator: Google::Apis::DataflowV1b3::StringList::Representation
+      
+          property :distribution, as: 'distribution', class: Google::Apis::DataflowV1b3::DistributionUpdate, decorator: Google::Apis::DataflowV1b3::DistributionUpdate::Representation
       
           property :internal, as: 'internal'
         end
@@ -1062,6 +1102,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :elements, as: 'elements'
+        end
+      end
+      
+      class DistributionUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min, as: 'min', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
+      
+          property :max, as: 'max', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
+      
+          property :count, as: 'count', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
+      
+          property :sum, as: 'sum', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
+      
+          property :sum_of_squares, as: 'sumOfSquares'
         end
       end
       
@@ -1545,6 +1600,7 @@ module Google
           property :id_label, as: 'idLabel'
           property :drop_late_data, as: 'dropLateData'
           property :tracking_subscription, as: 'trackingSubscription'
+          property :with_attributes, as: 'withAttributes'
         end
       end
       
@@ -1688,6 +1744,8 @@ module Google
       
           property :worker_message_code, as: 'workerMessageCode', class: Google::Apis::DataflowV1b3::WorkerMessageCode, decorator: Google::Apis::DataflowV1b3::WorkerMessageCode::Representation
       
+          property :worker_metrics, as: 'workerMetrics', class: Google::Apis::DataflowV1b3::ResourceUtilizationReport, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReport::Representation
+      
         end
       end
       
@@ -1709,6 +1767,13 @@ module Google
         end
       end
       
+      class ResourceUtilizationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics'
+        end
+      end
+      
       class SendWorkerMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1722,6 +1787,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :worker_health_report_response, as: 'workerHealthReportResponse', class: Google::Apis::DataflowV1b3::WorkerHealthReportResponse, decorator: Google::Apis::DataflowV1b3::WorkerHealthReportResponse::Representation
       
+          property :worker_metrics_response, as: 'workerMetricsResponse', class: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse::Representation
+      
         end
       end
       
@@ -1729,6 +1796,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :report_interval, as: 'reportInterval'
+        end
+      end
+      
+      class ResourceUtilizationReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

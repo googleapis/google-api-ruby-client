@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchModifyMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Draft
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
+        end
+      end
+      
+      class BatchModifyMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_label_ids, as: 'addLabelIds'
+          collection :ids, as: 'ids'
+          collection :remove_label_ids, as: 'removeLabelIds'
         end
       end
       

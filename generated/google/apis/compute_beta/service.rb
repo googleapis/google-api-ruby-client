@@ -5368,6 +5368,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a managed instance group using the information that you specify in the
+        # request. This operation is marked as DONE when the group is updated even if
+        # the instances in the group have not yet been updated. You must separately
+        # verify the status of the individual instances with the listmanagedinstances
+        # method. This method supports patch semantics.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where you want to create the managed instance group.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Schedules a group action to recreate the specified instances in the managed
         # instance group. The instances are deleted and recreated using the current
         # instance template for the managed instance group. This operation is marked as
@@ -5697,6 +5745,54 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a managed instance group using the information that you specify in the
+        # request. This operation is marked as DONE when the group is updated even if
+        # the instances in the group have not yet been updated. You must separately
+        # verify the status of the individual instances with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where you want to create the managed instance group.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7274,6 +7370,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the service account on the instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance resource to start.
+        # @param [Google::Apis::ComputeBeta::InstancesSetServiceAccountRequest] instances_set_service_account_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_service_account(project, zone, instance, instances_set_service_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setServiceAccount', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstancesSetServiceAccountRequest::Representation
+          command.request_object = instances_set_service_account_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets tags for the specified instance to the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -8033,6 +8173,80 @@ module Google
           command =  make_simple_command(:get, '{project}', options)
           command.response_representation = Google::Apis::ComputeBeta::Project::Representation
           command.response_class = Google::Apis::ComputeBeta::Project
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the XPN host project that this project links to. May be empty if no link
+        # exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Project] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Project]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/getXpnHost', options)
+          command.response_representation = Google::Apis::ComputeBeta::Project::Representation
+          command.response_class = Google::Apis::ComputeBeta::Project
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all XPN host projects visible to the user in an organization.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::XpnHostList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::XpnHostList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/listXpnHosts', options)
+          command.request_representation = Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest::Representation
+          command.request_object = projects_list_xpn_hosts_request_object
+          command.response_representation = Google::Apis::ComputeBeta::XpnHostList::Representation
+          command.response_class = Google::Apis::ComputeBeta::XpnHostList
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

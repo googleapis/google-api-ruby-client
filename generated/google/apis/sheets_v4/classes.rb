@@ -2779,7 +2779,13 @@ module Google
         # The index of the sheet within the spreadsheet.
         # When adding or updating sheet properties, if this field
         # is excluded then the sheet will be added or moved to the end
-        # of the sheet list.
+        # of the sheet list. When updating sheet indices or inserting
+        # sheets, movement is considered in "before the move" indexes.
+        # For example, if there were 3 sheets (S1, S2, S3) in order to
+        # move S1 ahead of S2 the index would have to be set to 2. A sheet
+        # index update request will be ignored if the requested index is
+        # identical to the sheets current index or if the requested new
+        # index is equal to the current sheet index + 1.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -3066,6 +3072,103 @@ module Google
         def update!(**args)
           @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
           @index = args[:index] if args.key?(:index)
+        end
+      end
+      
+      # Deletes a range of cells, shifting other cells into the deleted area.
+      class DeleteRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The dimension from which deleted cells will be replaced with.
+        # If ROWS, existing cells will be shifted upward to
+        # replace the deleted cells. If COLUMNS, existing cells
+        # will be shifted left to replace the deleted cells.
+        # Corresponds to the JSON property `shiftDimension`
+        # @return [String]
+        attr_accessor :shift_dimension
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shift_dimension = args[:shift_dimension] if args.key?(:shift_dimension)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Inserts cells into a range, shifting the existing cells over or down.
+      class InsertRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The dimension which will be shifted when inserting cells.
+        # If ROWS, existing cells will be shifted down.
+        # If COLUMNS, existing cells will be shifted right.
+        # Corresponds to the JSON property `shiftDimension`
+        # @return [String]
+        attr_accessor :shift_dimension
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shift_dimension = args[:shift_dimension] if args.key?(:shift_dimension)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -3520,6 +3623,12 @@ module Google
         # @return [Google::Apis::SheetsV4::SpreadsheetProperties]
         attr_accessor :properties
       
+        # The url of the spreadsheet.
+        # This field is read-only.
+        # Corresponds to the JSON property `spreadsheetUrl`
+        # @return [String]
+        attr_accessor :spreadsheet_url
+      
         # The sheets that are part of a spreadsheet.
         # Corresponds to the JSON property `sheets`
         # @return [Array<Google::Apis::SheetsV4::Sheet>]
@@ -3538,6 +3647,7 @@ module Google
         def update!(**args)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
           @properties = args[:properties] if args.key?(:properties)
+          @spreadsheet_url = args[:spreadsheet_url] if args.key?(:spreadsheet_url)
           @sheets = args[:sheets] if args.key?(:sheets)
           @named_ranges = args[:named_ranges] if args.key?(:named_ranges)
         end
@@ -4075,6 +4185,58 @@ module Google
         end
       end
       
+      # A named range.
+      class NamedRange
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the named range.
+        # Corresponds to the JSON property `namedRangeId`
+        # @return [String]
+        attr_accessor :named_range_id
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        # The name of the named range.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
+          @range = args[:range] if args.key?(:range)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Updates all cells in the range to the values in the given Cell object.
       # Only the fields listed in the fields field are updated; others are
       # unchanged.
@@ -4191,58 +4353,6 @@ module Google
           @series = args[:series] if args.key?(:series)
           @legend_position = args[:legend_position] if args.key?(:legend_position)
           @axis = args[:axis] if args.key?(:axis)
-        end
-      end
-      
-      # A named range.
-      class NamedRange
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the named range.
-        # Corresponds to the JSON property `namedRangeId`
-        # @return [String]
-        attr_accessor :named_range_id
-      
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
-        # Corresponds to the JSON property `range`
-        # @return [Google::Apis::SheetsV4::GridRange]
-        attr_accessor :range
-      
-        # The name of the named range.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
-          @range = args[:range] if args.key?(:range)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5770,6 +5880,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UnmergeCellsRequest]
         attr_accessor :unmerge_cells
       
+        # Inserts cells into a range, shifting the existing cells over or down.
+        # Corresponds to the JSON property `insertRange`
+        # @return [Google::Apis::SheetsV4::InsertRangeRequest]
+        attr_accessor :insert_range
+      
         # Updates an existing protected range with the specified
         # protectedRangeId.
         # Corresponds to the JSON property `updateProtectedRange`
@@ -5912,6 +6027,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateChartSpecRequest]
         attr_accessor :update_chart_spec
       
+        # Deletes a range of cells, shifting other cells into the deleted area.
+        # Corresponds to the JSON property `deleteRange`
+        # @return [Google::Apis::SheetsV4::DeleteRangeRequest]
+        attr_accessor :delete_range
+      
         # Deletes the dimensions from the sheet.
         # Corresponds to the JSON property `deleteDimension`
         # @return [Google::Apis::SheetsV4::DeleteDimensionRequest]
@@ -6017,6 +6137,7 @@ module Google
           @update_spreadsheet_properties = args[:update_spreadsheet_properties] if args.key?(:update_spreadsheet_properties)
           @append_dimension = args[:append_dimension] if args.key?(:append_dimension)
           @unmerge_cells = args[:unmerge_cells] if args.key?(:unmerge_cells)
+          @insert_range = args[:insert_range] if args.key?(:insert_range)
           @update_protected_range = args[:update_protected_range] if args.key?(:update_protected_range)
           @delete_filter_view = args[:delete_filter_view] if args.key?(:delete_filter_view)
           @clear_basic_filter = args[:clear_basic_filter] if args.key?(:clear_basic_filter)
@@ -6041,6 +6162,7 @@ module Google
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @delete_banding = args[:delete_banding] if args.key?(:delete_banding)
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
+          @delete_range = args[:delete_range] if args.key?(:delete_range)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
           @delete_embedded_object = args[:delete_embedded_object] if args.key?(:delete_embedded_object)
           @paste_data = args[:paste_data] if args.key?(:paste_data)

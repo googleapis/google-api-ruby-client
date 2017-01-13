@@ -20,13 +20,12 @@ module Google
   module Apis
     # Knowledge Graph Search API
     #
-    # Knowledge Graph Search API allows developers to search the Google Knowledge
-    # Graph for entities.
+    # Searches the Google Knowledge Graph for entities.
     #
     # @see https://developers.google.com/knowledge-graph/
     module KgsearchV1
       VERSION = 'V1'
-      REVISION = '20151215'
+      REVISION = '20170109'
     end
   end
 end

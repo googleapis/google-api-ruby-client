@@ -637,6 +637,11 @@ module Google
         # @return [String]
         attr_accessor :records_written
       
+        # Current status for the stage.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # List of operations within the stage in dependency order (approximately
         # chronological).
         # Corresponds to the JSON property `steps`
@@ -677,6 +682,7 @@ module Google
           @read_ratio_max = args[:read_ratio_max] if args.key?(:read_ratio_max)
           @records_read = args[:records_read] if args.key?(:records_read)
           @records_written = args[:records_written] if args.key?(:records_written)
+          @status = args[:status] if args.key?(:status)
           @steps = args[:steps] if args.key?(:steps)
           @wait_ratio_avg = args[:wait_ratio_avg] if args.key?(:wait_ratio_avg)
           @wait_ratio_max = args[:wait_ratio_max] if args.key?(:wait_ratio_max)
@@ -1239,6 +1245,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
+        # [Optional] Specifies a string that represents a null value in a CSV file. For
+        # example, if you specify "\N", BigQuery interprets "\N" as a null value when
+        # loading a CSV file. The default value is the empty string. If you set this
+        # property to a custom value, BigQuery still interprets the empty string as a
+        # null value for all data types except for STRING and BYTE. For STRING and BYTE
+        # columns, BigQuery interprets the empty string as an empty value.
+        # Corresponds to the JSON property `nullMarker`
+        # @return [String]
+        attr_accessor :null_marker
+      
         # [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which
         # entity properties to load into BigQuery from a Cloud Datastore backup.
         # Property names are case sensitive and must be top-level properties. If no
@@ -1339,6 +1355,7 @@ module Google
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
+          @null_marker = args[:null_marker] if args.key?(:null_marker)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
           @schema = args[:schema] if args.key?(:schema)
@@ -1406,8 +1423,9 @@ module Google
         # @return [String]
         attr_accessor :maximum_bytes_billed
       
-        # [Experimental] Standard SQL only. Whether to use positional (?) or named (@
-        # myparam) query parameters in this query.
+        # [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
+        # query parameters or to NAMED to use named (@myparam) query parameters in this
+        # query.
         # Corresponds to the JSON property `parameterMode`
         # @return [String]
         attr_accessor :parameter_mode
@@ -1804,6 +1822,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
+        # [Output-only, Experimental] The type of query statement, if valid.
+        # Corresponds to the JSON property `statementType`
+        # @return [String]
+        attr_accessor :statement_type
+      
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [String]
@@ -1832,6 +1855,7 @@ module Google
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @schema = args[:schema] if args.key?(:schema)
+          @statement_type = args[:statement_type] if args.key?(:statement_type)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
@@ -2197,8 +2221,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
-        # [Experimental] Standard SQL only. Whether to use positional (?) or named (@
-        # myparam) query parameters in this query.
+        # [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
+        # query parameters or to NAMED to use named (@myparam) query parameters in this
+        # query.
         # Corresponds to the JSON property `parameterMode`
         # @return [String]
         attr_accessor :parameter_mode
@@ -2445,6 +2470,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Experimental] The labels associated with this table. You can use these to
+        # organize and group your tables. Label keys and values can be no longer than 63
+        # characters, can only contain letters, numeric characters, underscores and
+        # dashes. International characters are allowed. Label values are optional. Label
+        # keys must start with a letter and must be unique within a dataset. Both keys
+        # and values are additionally constrained to be <= 128 bytes in size.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output-only] The time when this table was last modified, in milliseconds
         # since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -2529,6 +2564,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
@@ -2767,8 +2803,9 @@ module Google
         attr_accessor :name
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
-        # FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD
-        # indicates that the field contains a nested schema).
+        # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same
+        # as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates
+        # that the field contains a nested schema) or STRUCT (same as RECORD).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2848,6 +2885,12 @@ module Google
           # @return [String]
           attr_accessor :kind
         
+          # [Experimental] The labels associated with this table. You can use these to
+          # organize and group your tables.
+          # Corresponds to the JSON property `labels`
+          # @return [Hash<String,String>]
+          attr_accessor :labels
+        
           # A reference uniquely identifying the table.
           # Corresponds to the JSON property `tableReference`
           # @return [Google::Apis::BigqueryV2::TableReference]
@@ -2867,6 +2910,7 @@ module Google
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
+            @labels = args[:labels] if args.key?(:labels)
             @table_reference = args[:table_reference] if args.key?(:table_reference)
             @type = args[:type] if args.key?(:type)
           end

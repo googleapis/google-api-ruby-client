@@ -580,6 +580,7 @@ module Google
           property :file_size, as: 'fileSize'
           property :folder_color_rgb, as: 'folderColorRgb'
           property :full_file_extension, as: 'fullFileExtension'
+          property :has_thumbnail, as: 'hasThumbnail'
           property :head_revision_id, as: 'headRevisionId'
           property :icon_link, as: 'iconLink'
           property :id, as: 'id'
@@ -628,6 +629,7 @@ module Google
           property :thumbnail, as: 'thumbnail', class: Google::Apis::DriveV2::File::Thumbnail, decorator: Google::Apis::DriveV2::File::Thumbnail::Representation
       
           property :thumbnail_link, as: 'thumbnailLink'
+          property :thumbnail_version, as: 'thumbnailVersion'
           property :title, as: 'title'
           property :user_permission, as: 'userPermission', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::Permission::Representation
       

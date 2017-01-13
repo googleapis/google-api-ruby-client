@@ -106,18 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListGuardiansResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Guardian
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UserProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +143,18 @@ module Google
       end
       
       class ListStudentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGuardiansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Guardian
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -427,26 +427,6 @@ module Google
         end
       end
       
-      class ListGuardiansResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :guardians, as: 'guardians', class: Google::Apis::ClassroomV1::Guardian, decorator: Google::Apis::ClassroomV1::Guardian::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class Guardian
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :student_id, as: 'studentId'
-          property :guardian_id, as: 'guardianId'
-          property :guardian_profile, as: 'guardianProfile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
-      
-          property :invited_email_address, as: 'invitedEmailAddress'
-        end
-      end
-      
       class UserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -513,6 +493,26 @@ module Google
           collection :students, as: 'students', class: Google::Apis::ClassroomV1::Student, decorator: Google::Apis::ClassroomV1::Student::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGuardiansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guardians, as: 'guardians', class: Google::Apis::ClassroomV1::Guardian, decorator: Google::Apis::ClassroomV1::Guardian::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Guardian
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :student_id, as: 'studentId'
+          property :guardian_id, as: 'guardianId'
+          property :guardian_profile, as: 'guardianProfile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+      
+          property :invited_email_address, as: 'invitedEmailAddress'
         end
       end
       

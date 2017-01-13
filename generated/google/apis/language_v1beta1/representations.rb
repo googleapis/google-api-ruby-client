@@ -64,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeSyntaxRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DependencyEdge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeSyntaxResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -165,6 +177,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text', class: Google::Apis::LanguageV1beta1::TextSpan, decorator: Google::Apis::LanguageV1beta1::TextSpan::Representation
       
+          property :type, as: 'type'
         end
       end
       
@@ -173,6 +186,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::LanguageV1beta1::Document, decorator: Google::Apis::LanguageV1beta1::Document::Representation
       
+          property :encoding_type, as: 'encodingType'
         end
       end
       
@@ -182,6 +196,17 @@ module Google
           property :document_sentiment, as: 'documentSentiment', class: Google::Apis::LanguageV1beta1::Sentiment, decorator: Google::Apis::LanguageV1beta1::Sentiment::Representation
       
           property :language, as: 'language'
+          collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1beta1::Sentence, decorator: Google::Apis::LanguageV1beta1::Sentence::Representation
+      
+        end
+      end
+      
+      class AnalyzeSyntaxRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document', class: Google::Apis::LanguageV1beta1::Document, decorator: Google::Apis::LanguageV1beta1::Document::Representation
+      
+          property :encoding_type, as: 'encodingType'
         end
       end
       
@@ -190,6 +215,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :head_token_index, as: 'headTokenIndex'
           property :label, as: 'label'
+        end
+      end
+      
+      class AnalyzeSyntaxResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language, as: 'language'
+          collection :tokens, as: 'tokens', class: Google::Apis::LanguageV1beta1::Token, decorator: Google::Apis::LanguageV1beta1::Token::Representation
+      
+          collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1beta1::Sentence, decorator: Google::Apis::LanguageV1beta1::Sentence::Representation
+      
         end
       end
       
@@ -209,6 +245,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text', class: Google::Apis::LanguageV1beta1::TextSpan, decorator: Google::Apis::LanguageV1beta1::TextSpan::Representation
       
+          property :sentiment, as: 'sentiment', class: Google::Apis::LanguageV1beta1::Sentiment, decorator: Google::Apis::LanguageV1beta1::Sentiment::Representation
+      
         end
       end
       
@@ -224,7 +262,18 @@ module Google
       class PartOfSpeech
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect, as: 'aspect'
+          property :gender, as: 'gender'
+          property :person, as: 'person'
+          property :case, as: 'case'
+          property :form, as: 'form'
+          property :tense, as: 'tense'
+          property :proper, as: 'proper'
+          property :mood, as: 'mood'
           property :tag, as: 'tag'
+          property :number, as: 'number'
+          property :reciprocity, as: 'reciprocity'
+          property :voice, as: 'voice'
         end
       end
       
@@ -258,6 +307,7 @@ module Google
       class Sentiment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
           property :polarity, as: 'polarity'
           property :magnitude, as: 'magnitude'
         end

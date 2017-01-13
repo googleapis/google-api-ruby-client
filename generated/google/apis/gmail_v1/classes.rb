@@ -74,6 +74,37 @@ module Google
         end
       end
       
+      # 
+      class BatchModifyMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of label IDs to add to messages.
+        # Corresponds to the JSON property `addLabelIds`
+        # @return [Array<String>]
+        attr_accessor :add_label_ids
+      
+        # The IDs of the messages to modify. There is a limit of 1000 ids per request.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        # A list of label IDs to remove from messages.
+        # Corresponds to the JSON property `removeLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_label_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @ids = args[:ids] if args.key?(:ids)
+          @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
+        end
+      end
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable
@@ -878,7 +909,7 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Total number of bytes in the body of the message part.
+        # Number of bytes for the message part data (encoding notwithstanding).
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size

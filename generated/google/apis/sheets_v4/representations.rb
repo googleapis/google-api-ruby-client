@@ -424,6 +424,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChartSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NamedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepeatCellRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,12 +605,6 @@ module Google
       end
       
       class BasicChartSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NamedRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1517,6 +1529,24 @@ module Google
         end
       end
       
+      class DeleteRangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shift_dimension, as: 'shiftDimension'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class InsertRangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shift_dimension, as: 'shiftDimension'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
       class ChartSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1631,6 +1661,7 @@ module Google
           property :spreadsheet_id, as: 'spreadsheetId'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
       
+          property :spreadsheet_url, as: 'spreadsheetUrl'
           collection :sheets, as: 'sheets', class: Google::Apis::SheetsV4::Sheet, decorator: Google::Apis::SheetsV4::Sheet::Representation
       
           collection :named_ranges, as: 'namedRanges', class: Google::Apis::SheetsV4::NamedRange, decorator: Google::Apis::SheetsV4::NamedRange::Representation
@@ -1769,6 +1800,16 @@ module Google
         end
       end
       
+      class NamedRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :named_range_id, as: 'namedRangeId'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class RepeatCellRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1792,16 +1833,6 @@ module Google
           property :legend_position, as: 'legendPosition'
           collection :axis, as: 'axis', class: Google::Apis::SheetsV4::BasicChartAxis, decorator: Google::Apis::SheetsV4::BasicChartAxis::Representation
       
-        end
-      end
-      
-      class NamedRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :named_range_id, as: 'namedRangeId'
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          property :name, as: 'name'
         end
       end
       
@@ -2121,6 +2152,8 @@ module Google
       
           property :unmerge_cells, as: 'unmergeCells', class: Google::Apis::SheetsV4::UnmergeCellsRequest, decorator: Google::Apis::SheetsV4::UnmergeCellsRequest::Representation
       
+          property :insert_range, as: 'insertRange', class: Google::Apis::SheetsV4::InsertRangeRequest, decorator: Google::Apis::SheetsV4::InsertRangeRequest::Representation
+      
           property :update_protected_range, as: 'updateProtectedRange', class: Google::Apis::SheetsV4::UpdateProtectedRangeRequest, decorator: Google::Apis::SheetsV4::UpdateProtectedRangeRequest::Representation
       
           property :delete_filter_view, as: 'deleteFilterView', class: Google::Apis::SheetsV4::DeleteFilterViewRequest, decorator: Google::Apis::SheetsV4::DeleteFilterViewRequest::Representation
@@ -2168,6 +2201,8 @@ module Google
           property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
           property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
+      
+          property :delete_range, as: 'deleteRange', class: Google::Apis::SheetsV4::DeleteRangeRequest, decorator: Google::Apis::SheetsV4::DeleteRangeRequest::Representation
       
           property :delete_dimension, as: 'deleteDimension', class: Google::Apis::SheetsV4::DeleteDimensionRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionRequest::Representation
       

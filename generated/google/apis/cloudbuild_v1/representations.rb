@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,13 +106,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FileHashes
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
+      class FileHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -224,6 +230,12 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -284,19 +296,19 @@ module Google
         end
       end
       
-      class FileHashes
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
-      
-        end
-      end
-      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudbuildV1::Operation, decorator: Google::Apis::CloudbuildV1::Operation::Representation
+      
+        end
+      end
+      
+      class FileHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
       
         end
       end
@@ -319,6 +331,7 @@ module Google
           collection :env, as: 'env'
           collection :wait_for, as: 'waitFor'
           collection :args, as: 'args'
+          property :entrypoint, as: 'entrypoint'
           property :name, as: 'name'
           property :dir, as: 'dir'
         end

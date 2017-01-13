@@ -971,6 +971,8 @@ module Google
           property :ip_whitelisted, as: 'ipWhitelisted'
           property :is_admin, as: 'isAdmin'
           property :is_delegated_admin, as: 'isDelegatedAdmin'
+          property :is_enforced_in2_sv, as: 'isEnforcedIn2Sv'
+          property :is_enrolled_in2_sv, as: 'isEnrolledIn2Sv'
           property :is_mailbox_setup, as: 'isMailboxSetup'
           property :kind, as: 'kind'
           property :last_login_time, as: 'lastLoginTime', type: DateTime

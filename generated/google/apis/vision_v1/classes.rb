@@ -26,10 +26,11 @@ module Google
       class ImageSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage image URI. It must be in the following form:
-        # `gs://bucket_name/object_name`. For more
-        # details, please see: https://cloud.google.com/storage/docs/reference-uris.
-        # NOTE: Cloud Storage object versioning is not supported!
+        # Google Cloud Storage image URI, which must be in the following form:
+        # `gs://bucket_name/object_name` (for details, see
+        # [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/
+        # reference-uris)).
+        # NOTE: Cloud Storage object versioning is not supported.
         # Corresponds to the JSON property `gcsImageUri`
         # @return [String]
         attr_accessor :gcs_image_uri
@@ -80,39 +81,37 @@ module Google
       class AnnotateImageResponse
         include Google::Apis::Core::Hashable
       
-        # If present, label detection completed successfully.
+        # If present, label detection has completed successfully.
         # Corresponds to the JSON property `labelAnnotations`
         # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
         attr_accessor :label_annotations
       
-        # If present, landmark detection completed successfully.
+        # If present, landmark detection has completed successfully.
         # Corresponds to the JSON property `landmarkAnnotations`
         # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # Set of features pertaining to the image, computed by various computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # If present, safe-search annotation has completed successfully.
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1::SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
       
-        # Stores image properties (e.g. dominant colors).
+        # Stores image properties, such as dominant colors.
         # Corresponds to the JSON property `imagePropertiesAnnotation`
         # @return [Google::Apis::VisionV1::ImageProperties]
         attr_accessor :image_properties_annotation
       
-        # If present, text (OCR) detection completed successfully.
+        # If present, text (OCR) detection has completed successfully.
         # Corresponds to the JSON property `textAnnotations`
         # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
         attr_accessor :text_annotations
       
-        # If present, logo detection completed successfully.
+        # If present, logo detection has completed successfully.
         # Corresponds to the JSON property `logoAnnotations`
         # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
         attr_accessor :logo_annotations
       
-        # If present, face detection completed successfully.
+        # If present, face detection has completed successfully.
         # Corresponds to the JSON property `faceAnnotations`
         # @return [Array<Google::Apis::VisionV1::FaceAnnotation>]
         attr_accessor :face_annotations
@@ -177,7 +176,7 @@ module Google
         end
       end
       
-      # Rectangle determined by min and max LatLng pairs.
+      # Rectangle determined by min and max `LatLng` pairs.
       class LatLongRect
         include Google::Apis::Core::Hashable
       
@@ -216,6 +215,8 @@ module Google
         # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
         # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
         # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+        # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+        # as if it were annotated as ST_LOCATION.
         # Corresponds to the JSON property `maxLatLng`
         # @return [Google::Apis::VisionV1::LatLng]
         attr_accessor :max_lat_lng
@@ -255,6 +256,8 @@ module Google
         # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
         # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
         # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+        # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+        # as if it were annotated as ST_LOCATION.
         # Corresponds to the JSON property `minLatLng`
         # @return [Google::Apis::VisionV1::LatLng]
         attr_accessor :min_lat_lng
@@ -346,9 +349,8 @@ module Google
       class FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Pitch angle. Indicates the upwards/downwards angle that the face is
-        # pointing
-        # relative to the image's horizontal plane. Range [-180,180].
+        # Pitch angle, which indicates the upwards/downwards angle that the face is
+        # pointing relative to the image's horizontal plane. Range [-180,180].
         # Corresponds to the JSON property `tiltAngle`
         # @return [Float]
         attr_accessor :tilt_angle
@@ -393,8 +395,8 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Yaw angle. Indicates the leftward/rightward angle that the face is
-        # pointing, relative to the vertical plane perpendicular to the image. Range
+        # Yaw angle, which indicates the leftward/rightward angle that the face is
+        # pointing relative to the vertical plane perpendicular to the image. Range
         # [-180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
@@ -415,10 +417,9 @@ module Google
         # @return [String]
         attr_accessor :blurred_likelihood
       
-        # Roll angle. Indicates the amount of clockwise/anti-clockwise rotation of
-        # the
-        # face relative to the image vertical, about the axis perpendicular to the
-        # face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
+        # of the face relative to the image vertical about the axis perpendicular to
+        # the face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -478,12 +479,12 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score and fraction of
-      # image the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of
+      # the image that the color occupies in the image.
       class ColorInfo
         include Google::Apis::Core::Hashable
       
-        # Stores the fraction of pixels the color occupies in the image.
+        # The fraction of pixels the color occupies in the image.
         # Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
@@ -630,8 +631,9 @@ module Google
       
       # A face-specific landmark (for example, a face feature).
       # Landmark positions may fall outside the bounds of the image
-      # when the face is near one or more edges of the image.
-      # Therefore it is NOT guaranteed that 0 <= x < width or 0 <= y < height.
+      # if the face is near one or more edges of the image.
+      # Therefore it is NOT guaranteed that `0 <= x < width` or
+      # `0 <= y < height`.
       class Landmark
         include Google::Apis::Core::Hashable
       
@@ -662,7 +664,7 @@ module Google
       class ImageContext
         include Google::Apis::Core::Hashable
       
-        # Rectangle determined by min and max LatLng pairs.
+        # Rectangle determined by min and max `LatLng` pairs.
         # Corresponds to the JSON property `latLongRect`
         # @return [Google::Apis::VisionV1::LatLongRect]
         attr_accessor :lat_long_rect
@@ -674,8 +676,7 @@ module Google
         # setting a hint will help get better results (although it will be a
         # significant hindrance if the hint is wrong). Text detection returns an
         # error if one or more of the specified languages is not one of the
-        # [supported
-        # languages](/translate/v2/translate-reference#supported_languages).
+        # [supported languages](/vision/docs/languages).
         # Corresponds to the JSON property `languageHints`
         # @return [Array<String>]
         attr_accessor :language_hints
@@ -714,35 +715,35 @@ module Google
       class EntityAnnotation
         include Google::Apis::Core::Hashable
       
-        # Opaque entity ID. Some IDs might be available in Knowledge Graph(KG).
-        # For more details on KG please see:
-        # https://developers.google.com/knowledge-graph/
+        # Opaque entity ID. Some IDs may be available in
+        # [Google Knowledge Graph Search API](https://developers.google.com/knowledge-
+        # graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Entity textual description, expressed in its <code>locale</code> language.
+        # Entity textual description, expressed in its `locale` language.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of 'tower' to an image containing
-        # 'Eiffel Tower' is likely higher than an image containing a distant towering
-        # building, though the confidence that there is a tower may be the same.
-        # Range [0, 1].
+        # image. For example, the relevancy of "tower" is likely higher to an image
+        # containing the detected "Eiffel Tower" than to an image containing a
+        # detected distant towering building, even though the confidence that
+        # there is a tower in each image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
       
         # The language code for the locale in which the entity textual
-        # <code>description</code> (next field) is expressed.
+        # `description` is expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # Some entities can have additional optional <code>Property</code> fields.
-        # For example a different kind of score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value)
+        # fields, such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1::Property>]
         attr_accessor :properties
@@ -758,17 +759,18 @@ module Google
         attr_accessor :bounding_poly
       
         # The location information for the detected entity. Multiple
-        # <code>LocationInfo</code> elements can be present since one location may
-        # indicate the location of the scene in the query image, and another the
-        # location of the place where the query image was taken. Location information
-        # is usually present for landmarks.
+        # `LocationInfo` elements can be present because one location may
+        # indicate the location of the scene in the image, and another location
+        # may indicate the location of the place where the image was taken.
+        # Location information is usually present for landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1::LocationInfo>]
         attr_accessor :locations
       
         # The accuracy of the entity detection in an image.
-        # For example, for an image containing 'Eiffel Tower,' this field represents
-        # the confidence that there is a tower in the query image. Range [0, 1].
+        # For example, for an image in which the "Eiffel Tower" entity is detected,
+        # this field represents the confidence that there is a tower in the query
+        # image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -791,7 +793,7 @@ module Google
         end
       end
       
-      # Arbitrary name/value pair.
+      # A `Property` consists of a user-supplied name/value pair.
       class Property
         include Google::Apis::Core::Hashable
       
@@ -998,6 +1000,8 @@ module Google
         # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
         # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
         # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+        # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+        # as if it were annotated as ST_LOCATION.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1::LatLng]
         attr_accessor :lat_lng
@@ -1012,18 +1016,16 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by various computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # 
       class SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
-        # Likelihood this is a medical image.
+        # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
       
-        # Spoof likelihood. The likelihood that an obvious modification
+        # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
         # Corresponds to the JSON property `spoof`
@@ -1035,7 +1037,7 @@ module Google
         # @return [String]
         attr_accessor :violence
       
-        # Represents the adult contents likelihood for the image.
+        # Represents the adult content likelihood for the image.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -1084,7 +1086,7 @@ module Google
       class DominantColorsAnnotation
         include Google::Apis::Core::Hashable
       
-        # RGB color values, with their score and pixel fraction.
+        # RGB color values with their score and pixel fraction.
         # Corresponds to the JSON property `colors`
         # @return [Array<Google::Apis::VisionV1::ColorInfo>]
         attr_accessor :colors
@@ -1099,9 +1101,9 @@ module Google
         end
       end
       
-      # The <em>Feature</em> indicates what type of image detection task to perform.
       # Users describe the type of Google Cloud Vision API tasks to perform over
-      # images by using <em>Feature</em>s. Features encode the Cloud Vision API
+      # images by using *Feature*s. Each Feature indicates a type of image
+      # detection task to perform. Features encode the Cloud Vision API
       # vertical to operate on and the number of top-scoring results to return.
       class Feature
         include Google::Apis::Core::Hashable
@@ -1146,7 +1148,7 @@ module Google
         end
       end
       
-      # Stores image properties (e.g. dominant colors).
+      # Stores image properties, such as dominant colors.
       class ImageProperties
         include Google::Apis::Core::Hashable
       
@@ -1200,6 +1202,8 @@ module Google
       # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
       # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
       # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+      # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+      # as if it were annotated as ST_LOCATION.
       class LatLng
         include Google::Apis::Core::Hashable
       

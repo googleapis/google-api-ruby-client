@@ -30,22 +30,22 @@ module Google
       # Delete your Google Tag Manager containers
       AUTH_TAGMANAGER_DELETE_CONTAINERS = 'https://www.googleapis.com/auth/tagmanager.delete.containers'
 
-      # Manage your Google Tag Manager containers
+      # Manage your Google Tag Manager container and its subcomponents, excluding versioning and publishing
       AUTH_TAGMANAGER_EDIT_CONTAINERS = 'https://www.googleapis.com/auth/tagmanager.edit.containers'
 
       # Manage your Google Tag Manager container versions
       AUTH_TAGMANAGER_EDIT_CONTAINERVERSIONS = 'https://www.googleapis.com/auth/tagmanager.edit.containerversions'
 
-      # Manage your Google Tag Manager accounts
+      # View and manage your Google Tag Manager accounts
       AUTH_TAGMANAGER_MANAGE_ACCOUNTS = 'https://www.googleapis.com/auth/tagmanager.manage.accounts'
 
-      # Manage user permissions of your Google Tag Manager data
+      # Manage user permissions of your Google Tag Manager account and container
       AUTH_TAGMANAGER_MANAGE_USERS = 'https://www.googleapis.com/auth/tagmanager.manage.users'
 
-      # Publish your Google Tag Manager containers
+      # Publish your Google Tag Manager container versions
       AUTH_TAGMANAGER_PUBLISH = 'https://www.googleapis.com/auth/tagmanager.publish'
 
-      # View your Google Tag Manager containers
+      # View your Google Tag Manager container and its subcomponents
       AUTH_TAGMANAGER_READONLY = 'https://www.googleapis.com/auth/tagmanager.readonly'
     end
   end

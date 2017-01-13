@@ -2283,7 +2283,7 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 68
+      # NEXT_ID: 69
       class ContentRating
         include Google::Apis::Core::Hashable
       
@@ -2519,6 +2519,11 @@ module Google
         # @return [String]
         attr_accessor :mccyp_rating
       
+        # The video's rating system for Vietnam - MCST
+        # Corresponds to the JSON property `mcstRating`
+        # @return [String]
+        attr_accessor :mcst_rating
+      
         # The video's rating from Singapore's Media Development Authority (MDA) and,
         # specifically, it's Board of Film Censors (BFC).
         # Corresponds to the JSON property `mdaRating`
@@ -2701,6 +2706,7 @@ module Google
           @lsf_rating = args[:lsf_rating] if args.key?(:lsf_rating)
           @mccaa_rating = args[:mccaa_rating] if args.key?(:mccaa_rating)
           @mccyp_rating = args[:mccyp_rating] if args.key?(:mccyp_rating)
+          @mcst_rating = args[:mcst_rating] if args.key?(:mcst_rating)
           @mda_rating = args[:mda_rating] if args.key?(:mda_rating)
           @medietilsynet_rating = args[:medietilsynet_rating] if args.key?(:medietilsynet_rating)
           @meku_rating = args[:meku_rating] if args.key?(:meku_rating)
@@ -5538,6 +5544,12 @@ module Google
         # @return [String]
         attr_accessor :video_id
       
+        # The date and time that the video was published to YouTube. The value is
+        # specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+        # Corresponds to the JSON property `videoPublishedAt`
+        # @return [DateTime]
+        attr_accessor :video_published_at
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5548,6 +5560,7 @@ module Google
           @note = args[:note] if args.key?(:note)
           @start_at = args[:start_at] if args.key?(:start_at)
           @video_id = args[:video_id] if args.key?(:video_id)
+          @video_published_at = args[:video_published_at] if args.key?(:video_published_at)
         end
       end
       
@@ -7267,7 +7280,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 68
+        # NEXT_ID: 69
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating
