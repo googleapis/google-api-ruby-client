@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     module Adexchangebuyer2V2beta1
       VERSION = 'V2beta1'
-      REVISION = '20161107'
+      REVISION = '20161108'
 
       # Manage your Ad Exchange buyer account configuration
       AUTH_ADEXCHANGE_BUYER = 'https://www.googleapis.com/auth/adexchange.buyer'
