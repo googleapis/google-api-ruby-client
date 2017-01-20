@@ -48,6 +48,7 @@ API_IDS=(adexchangebuyer:v1.4 \
 	dfareporting:v2.6 \
 	discovery:v1 \
 	dns:v1 \
+	dns:v2beta1 \
 	doubleclickbidmanager:v1 \
 	doubleclicksearch:v2 \
 	drive:v2 \
