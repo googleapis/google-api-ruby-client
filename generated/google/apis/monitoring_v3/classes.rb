@@ -123,14 +123,14 @@ module Google
       # group contains the monitored resources that match its filter and the filters
       # of all the group's ancestors. A group without a parent can contain any
       # monitored resource.For example, consider an infrastructure running a set of
-      # instances with two user-defined tags: &quot;environment&quot; and &quot;role&
-      # quot;. A parent group has a filter, environment=&quot;production&quot;. A
-      # child of that parent group has a filter, role=&quot;transcoder&quot;. The
-      # parent group contains all instances in the production environment, regardless
-      # of their roles. The child group contains instances that have the transcoder
-      # role and are in the production environment.The monitored resources contained
-      # in a group can change at any moment, depending on what resources exist and
-      # what filters are associated with the group and its ancestors.
+      # instances with two user-defined tags: "environment" and "role". A parent group
+      # has a filter, environment="production". A child of that parent group has a
+      # filter, role="transcoder". The parent group contains all instances in the
+      # production environment, regardless of their roles. The child group contains
+      # instances that have the transcoder role and are in the production environment.
+      # The monitored resources contained in a group can change at any moment,
+      # depending on what resources exist and what filters are associated with the
+      # group and its ancestors.
       class Group
         include Google::Apis::Core::Hashable
       
@@ -139,9 +139,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The name of the group's parent, if it has one. The format is &quot;projects/`
-        # project_id_or_number`/groups/`group_id`&quot;. For groups with no parent,
-        # parentName is the empty string, &quot;&quot;.
+        # The name of the group's parent, if it has one. The format is "projects/`
+        # project_id_or_number`/groups/`group_id`". For groups with no parent,
+        # parentName is the empty string, "".
         # Corresponds to the JSON property `parentName`
         # @return [String]
         attr_accessor :parent_name
@@ -158,11 +158,10 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Output only. The name of this group. The format is &quot;projects/`
-        # project_id_or_number`/groups/`group_id`&quot;. When creating a group, this
-        # field is ignored and a new name is created consisting of the project specified
-        # in the call to CreateGroup and a unique `group_id` that is generated
-        # automatically.
+        # Output only. The name of this group. The format is "projects/`
+        # project_id_or_number`/groups/`group_id`". When creating a group, this field is
+        # ignored and a new name is created consisting of the project specified in the
+        # call to CreateGroup and a unique `group_id` that is generated automatically.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -245,7 +244,7 @@ module Google
         attr_accessor :value
       
         # The data source for the collectd value. For example there are two data sources
-        # for network measurements: &quot;rx&quot; and &quot;tx&quot;.
+        # for network measurements: "rx" and "tx".
         # Corresponds to the JSON property `dataSourceName`
         # @return [String]
         attr_accessor :data_source_name
@@ -306,11 +305,11 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
-        # instance_id&quot; and &quot;zone&quot;:
-        # ` &quot;type&quot;: &quot;gce_instance&quot;,
-        # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
-        # &quot;zone&quot;: &quot;us-central1-a&quot; ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+        # zone":
+        # ` "type": "gce_instance",
+        # "labels": ` "instance_id": "12345678901234",
+        # "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -385,13 +384,12 @@ module Google
         # / division (as an infix operator, e.g. 1/s).
         # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
         # as follows:
-        # Expression = Component ` &quot;.&quot; Component ` ` &quot;/&quot; Component `
-        # ;
+        # Expression = Component ` "." Component ` ` "/" Component ` ;
         # Component = [ PREFIX ] UNIT [ Annotation ]
         # | Annotation
-        # | &quot;1&quot;
+        # | "1"
         # ;
-        # Annotation = &quot;`&quot; NAME &quot;`&quot; ;
+        # Annotation = "`" NAME "`" ;
         # Notes:
         # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
         # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
@@ -433,19 +431,19 @@ module Google
         # the name typically includes: (1) the parent resource name that defines the
         # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
         # which also appears in the type field of this descriptor. For example,
-        # following is the resource name of a custom metric within the GCP project
-        # 123456789:
-        # &quot;projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%
-        # 2Fpaid%2Famount&quot;
+        # following is the resource name of a custom metric within the GCP project my-
+        # project-id:
+        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
+        # 2Fpaid%2Famount"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All user-defined metric types have the DNS name custom.googleapis.com. Metric
-        # types should use a natural hierarchical grouping. For example:
-        # &quot;custom.googleapis.com/invoice/paid/amount&quot;
-        # &quot;appengine.googleapis.com/http/server/response_latencies&quot;
+        # All user-defined custom metric types have the DNS name custom.googleapis.com.
+        # Metric types should use a natural hierarchical grouping. For example:
+        # "custom.googleapis.com/invoice/paid/amount"
+        # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -470,9 +468,9 @@ module Google
       # Specify a sequence of buckets that have a width that is proportional to the
       # value of the lower bound. Each bucket represents a constant relative
       # uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2 (=
-      # N) buckets with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1)
-      # : scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (
-      # growth_factor ^ (i - 1)).
+      # N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1):
+      # scale * (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor
+      # ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
       
@@ -504,11 +502,10 @@ module Google
       end
       
       # A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
-      # with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): boundsi
-      # Lower bound (1 &lt;= i &lt; N); boundsi - 1There must be at least one element
-      # in bounds. If bounds has only one element, there are no finite buckets, and
-      # that single element is the common boundary of the overflow and underflow
-      # buckets.
+      # with these boundaries for bucket i:Upper bound (0 <= i < N-1): boundsi  Lower
+      # bound (1 <= i < N); boundsi - 1There must be at least one element in bounds.
+      # If bounds has only one element, there are no finite buckets, and that single
+      # element is the common boundary of the overflow and underflow buckets.
       class Explicit
         include Google::Apis::Core::Hashable
       
@@ -530,8 +527,8 @@ module Google
       # Specify a sequence of buckets that all have the same width (except overflow
       # and underflow). Each bucket represents a constant absolute uncertainty on the
       # specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets with
-      # these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): offset + (
-      # width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
+      # these boundaries for bucket i:Upper bound (0 <= i < N-1): offset + (width * i).
+      # Lower bound (1 <= i < N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
@@ -572,7 +569,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The measurement metadata. Example: &quot;process_id&quot; -&gt; 12345
+        # The measurement metadata. Example: "process_id" -> 12345
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
         attr_accessor :metadata
@@ -583,7 +580,7 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
         attr_accessor :values
       
-        # The instance name of the plugin Example: &quot;hdcl&quot;.
+        # The instance name of the plugin Example: "hdcl".
         # Corresponds to the JSON property `pluginInstance`
         # @return [String]
         attr_accessor :plugin_instance
@@ -593,17 +590,17 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The measurement type instance. Example: &quot;used&quot;.
+        # The measurement type instance. Example: "used".
         # Corresponds to the JSON property `typeInstance`
         # @return [String]
         attr_accessor :type_instance
       
-        # The measurement type. Example: &quot;memory&quot;.
+        # The measurement type. Example: "memory".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # The name of the plugin. Example: &quot;disk&quot;.
+        # The name of the plugin. Example: "disk".
         # Corresponds to the JSON property `plugin`
         # @return [String]
         attr_accessor :plugin
@@ -687,14 +684,14 @@ module Google
         # The sequence of N buckets for a Distribution consists of an underflow bucket (
         # number 0), zero or more finite buckets (number 1 through N - 2) and an
         # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
-        # bucket i (i &gt; 0) is the same as the upper bound of bucket i - 1. The
-        # buckets span the whole range of finite values: lower bound of the underflow
-        # bucket is -infinity and the upper bound of the overflow bucket is +infinity.
-        # The finite buckets are so-called because both bounds are finite.BucketOptions
-        # describes bucket boundaries in one of three ways. Two describe the boundaries
-        # by giving parameters for a formula to generate boundaries and one gives the
-        # bucket boundaries explicitly.If bucket_options is not given, then no
-        # bucket_counts may be given.
+        # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+        # span the whole range of finite values: lower bound of the underflow bucket is -
+        # infinity and the upper bound of the overflow bucket is +infinity. The finite
+        # buckets are so-called because both bounds are finite.BucketOptions describes
+        # bucket boundaries in one of three ways. Two describe the boundaries by giving
+        # parameters for a formula to generate boundaries and one gives the bucket
+        # boundaries explicitly.If bucket_options is not given, then no bucket_counts
+        # may be given.
         # Corresponds to the JSON property `bucketOptions`
         # @return [Google::Apis::MonitoringV3::BucketOptions]
         attr_accessor :bucket_options
@@ -747,24 +744,24 @@ module Google
       # Information in the labels field identifies the actual resource and its
       # attributes according to the schema. For example, a particular Compute Engine
       # VM instance could be represented by the following object, because the
-      # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
-      # instance_id&quot; and &quot;zone&quot;:
-      # ` &quot;type&quot;: &quot;gce_instance&quot;,
-      # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
-      # &quot;zone&quot;: &quot;us-central1-a&quot; ``
+      # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+      # zone":
+      # ` "type": "gce_instance",
+      # "labels": ` "instance_id": "12345678901234",
+      # "zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
         # Required. Values for all of the labels listed in the associated monitored
-        # resource descriptor. For example, Cloud SQL databases use the labels &quot;
-        # database_id&quot; and &quot;zone&quot;.
+        # resource descriptor. For example, Cloud SQL databases use the labels "
+        # database_id" and "zone".
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
         # Required. The monitored resource type. This field must match the type field of
         # a MonitoredResourceDescriptor object. For example, the type of a Cloud SQL
-        # database is &quot;cloudsql_database&quot;.
+        # database is "cloudsql_database".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -813,18 +810,17 @@ module Google
       
       # An object that describes the schema of a MonitoredResource object using a type
       # name and a set of labels. For example, the monitored resource descriptor for
-      # Google Compute Engine VM instances has a type of &quot;gce_instance&quot; and
-      # specifies the use of the labels &quot;instance_id&quot; and &quot;zone&quot;
-      # to identify particular VM instances.Different APIs can support different
-      # monitored resource types. APIs generally provide a list method that returns
-      # the monitored resource descriptors used by the API.
+      # Google Compute Engine VM instances has a type of "gce_instance" and specifies
+      # the use of the labels "instance_id" and "zone" to identify particular VM
+      # instances.Different APIs can support different monitored resource types. APIs
+      # generally provide a list method that returns the monitored resource
+      # descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
         # Optional. A concise name for the monitored resource type that might be
         # displayed in user interfaces. It should be a Title Cased Noun Phrase, without
-        # any article or other determiners. For example, &quot;Google Cloud SQL Database&
-        # quot;.
+        # any article or other determiners. For example, "Google Cloud SQL Database".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -837,25 +833,24 @@ module Google
       
         # Required. A set of labels used to describe instances of this monitored
         # resource type. For example, an individual Google Cloud SQL database is
-        # identified by values for the labels &quot;database_id&quot; and &quot;zone&
-        # quot;.
+        # identified by values for the labels "database_id" and "zone".
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
-        # Required. The monitored resource type. For example, the type &quot;
-        # cloudsql_database&quot; represents databases in Google Cloud SQL. The maximum
+        # Required. The monitored resource type. For example, the type "
+        # cloudsql_database" represents databases in Google Cloud SQL. The maximum
         # length of this value is 256 characters.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. The resource name of the monitored resource descriptor: &quot;
-        # projects/`project_id`/monitoredResourceDescriptors/`type`&quot; where `type`
-        # is the value of the type field in this object and `project_id` is a project ID
-        # that provides API-specific context for accessing the type. APIs that do not
-        # use project information can use the resource name format &quot;
-        # monitoredResourceDescriptors/`type`&quot;.
+        # Optional. The resource name of the monitored resource descriptor: "projects/`
+        # project_id`/monitoredResourceDescriptors/`type`" where `type` is the value of
+        # the type field in this object and `project_id` is a project ID that provides
+        # API-specific context for accessing the type. APIs that do not use project
+        # information can use the resource name format "monitoredResourceDescriptors/`
+        # type`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -989,7 +984,7 @@ module Google
         attr_accessor :cardinality
       
         # The field type URL, without the scheme, for message or enumeration types.
-        # Example: &quot;type.googleapis.com/google.protobuf.Timestamp&quot;.
+        # Example: "type.googleapis.com/google.protobuf.Timestamp".
         # Corresponds to the JSON property `typeUrl`
         # @return [String]
         attr_accessor :type_url
@@ -1039,12 +1034,18 @@ module Google
       class Option
         include Google::Apis::Core::Hashable
       
-        # The option's value. For example, &quot;com.google.protobuf&quot;.
+        # The option's value packed in an Any message. If the value is a primitive, the
+        # corresponding wrapper type defined in google/protobuf/wrappers.proto should be
+        # used. If the value is an enum, it should be stored as an int32 value using the
+        # google.protobuf.Int32Value type.
         # Corresponds to the JSON property `value`
         # @return [Hash<String,Object>]
         attr_accessor :value
       
-        # The option's name. For example, &quot;java_package&quot;.
+        # The option's name. For protobuf built-in options (options defined in
+        # descriptor.proto), this is the short name. For example, "map_entry". For
+        # custom options, it should be the fully-qualified name. For example, "google.
+        # api.http".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1085,8 +1086,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The path-qualified name of the .proto file that contained the associated
-        # protobuf element. For example: &quot;google/protobuf/source_context.proto&quot;
-        # .
+        # protobuf element. For example: "google/protobuf/source_context.proto".
         # Corresponds to the JSON property `fileName`
         # @return [String]
         attr_accessor :file_name
@@ -1158,23 +1158,22 @@ module Google
       # The sequence of N buckets for a Distribution consists of an underflow bucket (
       # number 0), zero or more finite buckets (number 1 through N - 2) and an
       # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
-      # bucket i (i &gt; 0) is the same as the upper bound of bucket i - 1. The
-      # buckets span the whole range of finite values: lower bound of the underflow
-      # bucket is -infinity and the upper bound of the overflow bucket is +infinity.
-      # The finite buckets are so-called because both bounds are finite.BucketOptions
-      # describes bucket boundaries in one of three ways. Two describe the boundaries
-      # by giving parameters for a formula to generate boundaries and one gives the
-      # bucket boundaries explicitly.If bucket_options is not given, then no
-      # bucket_counts may be given.
+      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+      # span the whole range of finite values: lower bound of the underflow bucket is -
+      # infinity and the upper bound of the overflow bucket is +infinity. The finite
+      # buckets are so-called because both bounds are finite.BucketOptions describes
+      # bucket boundaries in one of three ways. Two describe the boundaries by giving
+      # parameters for a formula to generate boundaries and one gives the bucket
+      # boundaries explicitly.If bucket_options is not given, then no bucket_counts
+      # may be given.
       class BucketOptions
         include Google::Apis::Core::Hashable
       
         # A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
-        # with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): boundsi
-        # Lower bound (1 &lt;= i &lt; N); boundsi - 1There must be at least one element
-        # in bounds. If bounds has only one element, there are no finite buckets, and
-        # that single element is the common boundary of the overflow and underflow
-        # buckets.
+        # with these boundaries for bucket i:Upper bound (0 <= i < N-1): boundsi  Lower
+        # bound (1 <= i < N); boundsi - 1There must be at least one element in bounds.
+        # If bounds has only one element, there are no finite buckets, and that single
+        # element is the common boundary of the overflow and underflow buckets.
         # Corresponds to the JSON property `explicitBuckets`
         # @return [Google::Apis::MonitoringV3::Explicit]
         attr_accessor :explicit_buckets
@@ -1182,9 +1181,9 @@ module Google
         # Specify a sequence of buckets that have a width that is proportional to the
         # value of the lower bound. Each bucket represents a constant relative
         # uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2 (=
-        # N) buckets with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1)
-        # : scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (
-        # growth_factor ^ (i - 1)).
+        # N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1):
+        # scale * (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor
+        # ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::MonitoringV3::Exponential]
         attr_accessor :exponential_buckets
@@ -1192,8 +1191,8 @@ module Google
         # Specify a sequence of buckets that all have the same width (except overflow
         # and underflow). Each bucket represents a constant absolute uncertainty on the
         # specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets with
-        # these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): offset + (
-        # width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
+        # these boundaries for bucket i:Upper bound (0 <= i < N-1): offset + (width * i).
+        # Lower bound (1 <= i < N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::MonitoringV3::Linear]
         attr_accessor :linear_buckets
@@ -1222,8 +1221,7 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::CollectdPayload>]
         attr_accessor :collectd_payloads
       
-        # The version of collectd that collected the data. Example: &quot;5.3.0-192.el6&
-        # quot;.
+        # The version of collectd that collected the data. Example: "5.3.0-192.el6".
         # Corresponds to the JSON property `collectdVersion`
         # @return [String]
         attr_accessor :collectd_version
@@ -1235,11 +1233,11 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;
-        # instance_id&quot; and &quot;zone&quot;:
-        # ` &quot;type&quot;: &quot;gce_instance&quot;,
-        # &quot;labels&quot;: ` &quot;instance_id&quot;: &quot;12345678901234&quot;,
-        # &quot;zone&quot;: &quot;us-central1-a&quot; ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+        # zone":
+        # ` "type": "gce_instance",
+        # "labels": ` "instance_id": "12345678901234",
+        # "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource

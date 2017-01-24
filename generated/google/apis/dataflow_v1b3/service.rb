@@ -22,8 +22,7 @@ module Google
     module DataflowV1b3
       # Google Dataflow API
       #
-      # Develops and executes data processing patterns like ETL, batch computation,
-      #  and continuous computation.
+      # Manages Google Cloud Dataflow projects on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/dataflow_v1b3'
@@ -80,16 +79,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a dataflow job.
+        # Creates a Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] view
-        #   Level of information requested in response.
+        #   The level of information requested in response.
         # @param [String] replace_job_id
-        #   DEPRECATED. This field is now on the Job message.
+        #   Deprecated. This field is now in the Job message.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -122,15 +121,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the state of the specified dataflow job.
+        # Gets the state of the specified Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
-        #   Identifies a single job.
+        #   The job ID.
         # @param [String] view
-        #   Level of information requested in response.
+        #   The level of information requested in response.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -161,14 +160,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of an existing dataflow job.
+        # Updates the state of an existing Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
-        #   Identifies a single job.
+        #   The job ID.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -200,13 +199,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the jobs of a project
+        # List the jobs of a project.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] view
-        #   Level of information requested in response. Default is SUMMARY.
+        #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -215,7 +214,7 @@ module Google
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -488,16 +487,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a dataflow job.
+        # Creates a Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] view
-        #   Level of information requested in response.
+        #   The level of information requested in response.
         # @param [String] replace_job_id
-        #   DEPRECATED. This field is now on the Job message.
+        #   Deprecated. This field is now in the Job message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -530,15 +529,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the state of the specified dataflow job.
+        # Gets the state of the specified Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] job_id
-        #   Identifies a single job.
+        #   The job ID.
         # @param [String] view
-        #   Level of information requested in response.
+        #   The level of information requested in response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -569,13 +568,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of an existing dataflow job.
+        # Updates the state of an existing Cloud Dataflow job.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] job_id
-        #   Identifies a single job.
+        #   The job ID.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -608,15 +607,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the jobs of a project
+        # List the jobs of a project.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] location
-        #   The location which contains this job.
+        #   The location that contains this job.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] view
-        #   Level of information requested in response. Default is SUMMARY.
+        #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -830,9 +829,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a dataflow job from a template.
+        # Creates a Cloud Dataflow job from a template.
         # @param [String] project_id
-        #   The project which owns the job.
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

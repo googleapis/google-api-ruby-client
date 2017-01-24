@@ -53,8 +53,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # have the format of `operations/some/unique/name`.
+        # originally returns it. If you use the default HTTP mapping, the name should
+        # have the format of operations/some/unique/name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -67,56 +67,55 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # If the value is `false`, it means the operation is still in progress. If true,
-        # the operation is completed, and either `error` or `response` is available.
+        # If the value is false, it means the operation is still in progress. If true,
+        # the operation is completed, and either error or response is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
-        # use and understand for most users - Flexible enough to meet unexpected needs #
-        # Overview The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of google.
-        # rpc.Code, but it may accept additional error codes if needed. The error
-        # message should be a developer-facing English message that helps developers *
-        # understand* and *resolve* the error. If a localized user-facing error message
-        # is needed, put the localized message in the error details or localize it in
-        # the client. The optional error details may contain arbitrary information about
-        # the error. There is a predefined set of error detail types in the package `
-        # google.rpc` which can be used for common error conditions. # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C. # Other uses The
-        # error model and the `Status` message can be used in a variety of environments,
-        # either with or without APIs, to provide a consistent developer experience
-        # across different environments. Example uses of this error model include: -
-        # Partial errors. If a service needs to return partial errors to the client, it
-        # may embed the `Status` in the normal response to indicate the partial errors. -
-        # Workflow errors. A typical workflow has multiple steps. Each step may have a `
-        # Status` message for error reporting purpose. - Batch operations. If a client
-        # uses batch request and batch response, the `Status` message should be used
-        # directly inside batch response, one for each error sub-response. -
-        # Asynchronous operations. If an API call embeds asynchronous operation results
-        # in its response, the status of those operations should be represented directly
-        # using the `Status` message. - Logging. If some API errors are stored in logs,
-        # the message `Status` could be used directly after any stripping needed for
-        # security/privacy reasons.
+        # The Status type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+        # (https://github.com/grpc). The error model is designed to be: Simple to use
+        # and understand for most users Flexible enough to meet unexpected
+        # needsOverviewThe Status message contains three pieces of data: error code,
+        # error message, and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed. The error
+        # message should be a developer-facing English message that helps developers
+        # understand and resolve the error. If a localized user-facing error message is
+        # needed, put the localized message in the error details or localize it in the
+        # client. The optional error details may contain arbitrary information about the
+        # error. There is a predefined set of error detail types in the package google.
+        # rpc which can be used for common error conditions.Language mappingThe Status
+        # message is the logical representation of the error model, but it is not
+        # necessarily the actual wire format. When the Status message is exposed in
+        # different client libraries and different wire protocols, it can be mapped
+        # differently. For example, it will likely be mapped to some exceptions in Java,
+        # but more likely mapped to some error codes in C.Other usesThe error model and
+        # the Status message can be used in a variety of environments, either with or
+        # without APIs, to provide a consistent developer experience across different
+        # environments.Example uses of this error model include: Partial errors. If a
+        # service needs to return partial errors to the client, it may embed the Status
+        # in the normal response to indicate the partial errors. Workflow errors. A
+        # typical workflow has multiple steps. Each step may have a Status message for
+        # error reporting purpose. Batch operations. If a client uses batch request and
+        # batch response, the Status message should be used directly inside batch
+        # response, one for each error sub-response. Asynchronous operations. If an API
+        # call embeds asynchronous operation results in its response, the status of
+        # those operations should be represented directly using the Status message.
+        # Logging. If some API errors are stored in logs, the message Status could be
+        # used directly after any stripping needed for security/privacy reasons.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::AppengineV1beta5::Status]
         attr_accessor :error
       
         # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # method returns no data on success, such as Delete, the response is google.
+        # protobuf.Empty. If the original method is standard Get/Create/Update, the
+        # response should be the resource. For other methods, the response should have
+        # the type XxxResponse, where Xxx is the original method name. For example, if
+        # the original method name is TakeSnapshot(), the inferred response type is
+        # TakeSnapshotResponse.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -135,38 +134,37 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). The error model is designed to be: - Simple to
-      # use and understand for most users - Flexible enough to meet unexpected needs #
-      # Overview The `Status` message contains three pieces of data: error code, error
-      # message, and error details. The error code should be an enum value of google.
-      # rpc.Code, but it may accept additional error codes if needed. The error
-      # message should be a developer-facing English message that helps developers *
-      # understand* and *resolve* the error. If a localized user-facing error message
-      # is needed, put the localized message in the error details or localize it in
-      # the client. The optional error details may contain arbitrary information about
-      # the error. There is a predefined set of error detail types in the package `
-      # google.rpc` which can be used for common error conditions. # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C. # Other uses The
-      # error model and the `Status` message can be used in a variety of environments,
-      # either with or without APIs, to provide a consistent developer experience
-      # across different environments. Example uses of this error model include: -
-      # Partial errors. If a service needs to return partial errors to the client, it
-      # may embed the `Status` in the normal response to indicate the partial errors. -
-      # Workflow errors. A typical workflow has multiple steps. Each step may have a `
-      # Status` message for error reporting purpose. - Batch operations. If a client
-      # uses batch request and batch response, the `Status` message should be used
-      # directly inside batch response, one for each error sub-response. -
-      # Asynchronous operations. If an API call embeds asynchronous operation results
-      # in its response, the status of those operations should be represented directly
-      # using the `Status` message. - Logging. If some API errors are stored in logs,
-      # the message `Status` could be used directly after any stripping needed for
-      # security/privacy reasons.
+      # The Status type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+      # (https://github.com/grpc). The error model is designed to be: Simple to use
+      # and understand for most users Flexible enough to meet unexpected
+      # needsOverviewThe Status message contains three pieces of data: error code,
+      # error message, and error details. The error code should be an enum value of
+      # google.rpc.Code, but it may accept additional error codes if needed. The error
+      # message should be a developer-facing English message that helps developers
+      # understand and resolve the error. If a localized user-facing error message is
+      # needed, put the localized message in the error details or localize it in the
+      # client. The optional error details may contain arbitrary information about the
+      # error. There is a predefined set of error detail types in the package google.
+      # rpc which can be used for common error conditions.Language mappingThe Status
+      # message is the logical representation of the error model, but it is not
+      # necessarily the actual wire format. When the Status message is exposed in
+      # different client libraries and different wire protocols, it can be mapped
+      # differently. For example, it will likely be mapped to some exceptions in Java,
+      # but more likely mapped to some error codes in C.Other usesThe error model and
+      # the Status message can be used in a variety of environments, either with or
+      # without APIs, to provide a consistent developer experience across different
+      # environments.Example uses of this error model include: Partial errors. If a
+      # service needs to return partial errors to the client, it may embed the Status
+      # in the normal response to indicate the partial errors. Workflow errors. A
+      # typical workflow has multiple steps. Each step may have a Status message for
+      # error reporting purpose. Batch operations. If a client uses batch request and
+      # batch response, the Status message should be used directly inside batch
+      # response, one for each error sub-response. Asynchronous operations. If an API
+      # call embeds asynchronous operation results in its response, the status of
+      # those operations should be represented directly using the Status message.
+      # Logging. If some API errors are stored in logs, the message Status could be
+      # used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
       
@@ -205,7 +203,7 @@ module Google
       class Application
         include Google::Apis::Core::Hashable
       
-        # Full path to the Application resource in the API. Example: `apps/myapp`. @
+        # Full path to the Application resource in the API. Example: apps/myapp.@
         # OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -213,51 +211,50 @@ module Google
       
         # Identifier of the Application resource. This identifier is equivalent to the
         # project ID of the Google Cloud Platform project where you want to deploy your
-        # application. Example: `myapp`.
+        # application. Example: myapp.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # HTTP path dispatch rules for requests to the application that do not
-        # explicitly target a service or version. Rules are order-dependent. @OutputOnly
+        # explicitly target a service or version. Rules are order-dependent.@OutputOnly
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1beta5::UrlDispatchRule>]
         attr_accessor :dispatch_rules
       
         # Google Apps authentication domain that controls which users can access this
-        # application. Defaults to open access for any Google Account.
+        # application.Defaults to open access for any Google Account.
         # Corresponds to the JSON property `authDomain`
         # @return [String]
         attr_accessor :auth_domain
       
         # Location from which this application will be run. Application instances will
         # run out of data centers in the chosen location, which is also where all of the
-        # application's end user content is stored. Defaults to `us-central`. Options
-        # are: `us-central` - Central US `europe-west` - Western Europe `us-east1` -
-        # Eastern US
+        # application's end user content is stored.Defaults to us-central.Options are:us-
+        # central - Central USeurope-west - Western Europeus-east1 - Eastern US
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
         # A Google Cloud Storage bucket that can be used for storing files associated
         # with this application. This bucket is associated with the application and can
-        # be used by the gcloud deployment commands. @OutputOnly
+        # be used by the gcloud deployment commands.@OutputOnly
         # Corresponds to the JSON property `codeBucket`
         # @return [String]
         attr_accessor :code_bucket
       
-        # Cookie expiration policy for this application. @OutputOnly
+        # Cookie expiration policy for this application.
         # Corresponds to the JSON property `defaultCookieExpiration`
         # @return [String]
         attr_accessor :default_cookie_expiration
       
-        # Hostname used to reach the application, as resolved by App Engine. @OutputOnly
+        # Hostname used to reach the application, as resolved by App Engine.@OutputOnly
         # Corresponds to the JSON property `defaultHostname`
         # @return [String]
         attr_accessor :default_hostname
       
         # A Google Cloud Storage bucket that can be used by the application to store
-        # content. @OutputOnly
+        # content.@OutputOnly
         # Corresponds to the JSON property `defaultBucket`
         # @return [String]
         attr_accessor :default_bucket
@@ -284,21 +281,21 @@ module Google
       class UrlDispatchRule
         include Google::Apis::Core::Hashable
       
-        # Domain name to match against. The wildcard "`*`" is supported if specified
-        # before a period: "`*.`". Defaults to matching all domains: "`*`".
+        # Domain name to match against. The wildcard "*" is supported if specified
+        # before a period: "*.".Defaults to matching all domains: "*".
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # Pathname within the host. Must start with a "`/`". A single "`*`" can be
-        # included at the end of the path. The sum of the lengths of the domain and path
-        # may not exceed 100 characters.
+        # Pathname within the host. Must start with a "/". A single "*" can be included
+        # at the end of the path. The sum of the lengths of the domain and path may not
+        # exceed 100 characters.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
         # Resource id of a service in this application that should serve the matched
-        # request. The service must already exist. Example: `default`.
+        # request. The service must already exist. Example: default.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -320,15 +317,15 @@ module Google
       class Version
         include Google::Apis::Core::Hashable
       
-        # Full path to the Version resource in the API. Example: `apps/myapp/services/
-        # default/versions/v1`. @OutputOnly
+        # Full path to the Version resource in the API. Example: apps/myapp/services/
+        # default/versions/v1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Relative name of the version within the module. Example: `v1`. Version names
-        # can contain only lowercase letters, numbers, or hyphens. Reserved names: "
-        # default", "latest", and any name with the prefix "ah-".
+        # Relative name of the version within the module. Example: v1. Version names can
+        # contain only lowercase letters, numbers, or hyphens. Reserved names: "default",
+        # "latest", and any name with the prefix "ah-".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -359,10 +356,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :inbound_services
       
-        # Instance class that is used to run this version. Valid values are: *
-        # AutomaticScaling: `F1`, `F2`, `F4`, `F4_1G` * ManualScaling or BasicScaling: `
-        # B1`, `B2`, `B4`, `B8`, `B4_1G` Defaults to `F1` for AutomaticScaling and `B1`
-        # for ManualScaling or BasicScaling.
+        # Instance class that is used to run this version. Valid values are:
+        # AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4,
+        # B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or
+        # BasicScaling.
         # Corresponds to the JSON property `instanceClass`
         # @return [String]
         attr_accessor :instance_class
@@ -377,7 +374,7 @@ module Google
         # @return [Google::Apis::AppengineV1beta5::Resources]
         attr_accessor :resources
       
-        # Desired runtime. Example: `python27`.
+        # Desired runtime. Example: python27.
         # Corresponds to the JSON property `runtime`
         # @return [String]
         attr_accessor :runtime
@@ -400,70 +397,69 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :beta_settings
       
-        # App Engine execution environment to use for this version. Defaults to `1`.
+        # App Engine execution environment to use for this version.Defaults to 1.
         # Corresponds to the JSON property `env`
         # @return [String]
         attr_accessor :env
       
-        # Current serving status of this version. Only the versions with a `SERVING`
-        # status create instances and can be billed. `SERVING_STATUS_UNSPECIFIED` is an
-        # invalid value. Defaults to `SERVING`.
+        # Current serving status of this version. Only the versions with a SERVING
+        # status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
+        # invalid value. Defaults to SERVING.
         # Corresponds to the JSON property `servingStatus`
         # @return [String]
         attr_accessor :serving_status
       
-        # Email address of the user who created this version. @OutputOnly
+        # Email address of the user who created this version.@OutputOnly
         # Corresponds to the JSON property `deployer`
         # @return [String]
         attr_accessor :deployer
       
-        # Time that this version was created. @OutputOnly
+        # Time that this version was created.@OutputOnly
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Total size of version files hosted on App Engine disk in bytes. @OutputOnly
+        # Total size of version files hosted on App Engine disk in bytes.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
         # @return [String]
         attr_accessor :disk_usage_bytes
       
         # An ordered list of URL-matching patterns that should be applied to incoming
         # requests. The first matching URL handles the request and other request
-        # handlers are not attempted. Only returned in `GET` requests if `view=FULL` is
-        # set.
+        # handlers are not attempted.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `handlers`
         # @return [Array<Google::Apis::AppengineV1beta5::UrlMap>]
         attr_accessor :handlers
       
-        # Custom static error pages. Limited to 10KB per page. Only returned in `GET`
-        # requests if `view=FULL` is set.
+        # Custom static error pages. Limited to 10KB per page.Only returned in GET
+        # requests if view=FULL is set.
         # Corresponds to the JSON property `errorHandlers`
         # @return [Array<Google::Apis::AppengineV1beta5::ErrorHandler>]
         attr_accessor :error_handlers
       
         # Configuration for third-party Python runtime libraries required by the
-        # application. Only returned in `GET` requests if `view=FULL` is set.
+        # application.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `libraries`
         # @return [Array<Google::Apis::AppengineV1beta5::Library>]
         attr_accessor :libraries
       
-        # [Google Cloud Endpoints](https://cloud.google.com/appengine/docs/python/
+        # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
         # endpoints/) configuration for API handlers.
         # Corresponds to the JSON property `apiConfig`
         # @return [Google::Apis::AppengineV1beta5::ApiConfigHandler]
         attr_accessor :api_config
       
-        # Environment variables made available to the application. Only returned in `GET`
-        # requests if `view=FULL` is set.
+        # Environment variables made available to the application.Only returned in GET
+        # requests if view=FULL is set.
         # Corresponds to the JSON property `envVariables`
         # @return [Hash<String,String>]
         attr_accessor :env_variables
       
         # Duration that static files should be cached by web proxies and browsers. Only
-        # applicable if the corresponding [StaticFilesHandler](https://cloud.google.com/
+        # applicable if the corresponding StaticFilesHandler (https://cloud.google.com/
         # appengine/docs/admin-api/reference/rest/v1/apps.services.versions#
-        # staticfileshandler) does not specify its own expiration time. Only returned in
-        # `GET` requests if `view=FULL` is set.
+        # staticfileshandler) does not specify its own expiration time.Only returned in
+        # GET requests if view=FULL is set.
         # Corresponds to the JSON property `defaultExpiration`
         # @return [String]
         attr_accessor :default_expiration
@@ -476,8 +472,7 @@ module Google
         attr_accessor :health_check
       
         # Files that match this pattern will not be built into this version. Only
-        # applicable for Go runtimes. Only returned in `GET` requests if `view=FULL` is
-        # set.
+        # applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
         # Corresponds to the JSON property `nobuildFilesRegex`
         # @return [String]
         attr_accessor :nobuild_files_regex
@@ -486,6 +481,15 @@ module Google
         # Corresponds to the JSON property `deployment`
         # @return [Google::Apis::AppengineV1beta5::Deployment]
         attr_accessor :deployment
+      
+        # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
+        # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
+        # via an NGINX proxy.The fields here refer to the name and configuration id of a
+        # "service" resource in the Service Management API (https://cloud.google.com/
+        # service-management/overview).
+        # Corresponds to the JSON property `endpointsApiService`
+        # @return [Google::Apis::AppengineV1beta5::EndpointsApiService]
+        attr_accessor :endpoints_api_service
       
         def initialize(**args)
            update!(**args)
@@ -520,6 +524,7 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @nobuild_files_regex = args[:nobuild_files_regex] if args.key?(:nobuild_files_regex)
           @deployment = args[:deployment] if args.key?(:deployment)
+          @endpoints_api_service = args[:endpoints_api_service] if args.key?(:endpoints_api_service)
         end
       end
       
@@ -528,7 +533,7 @@ module Google
       class AutomaticScaling
         include Google::Apis::Core::Hashable
       
-        # Amount of time that the [Autoscaler](https://cloud.google.com/compute/docs/
+        # Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/
         # autoscaler/) should wait between changes to the number of virtual machines.
         # Only applicable for VM runtimes.
         # Corresponds to the JSON property `coolDownPeriod`
@@ -541,7 +546,7 @@ module Google
         attr_accessor :cpu_utilization
       
         # Number of concurrent requests an automatic scaling instance can accept before
-        # the scheduler spawns a new instance. Defaults to a runtime-specific value.
+        # the scheduler spawns a new instance.Defaults to a runtime-specific value.
         # Corresponds to the JSON property `maxConcurrentRequests`
         # @return [Fixnum]
         attr_accessor :max_concurrent_requests
@@ -774,8 +779,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Number of instances to assign to the service at the start. This number can
-        # later be altered by using the [Modules API](https://cloud.google.com/appengine/
-        # docs/python/modules/functions) `set_num_instances()` function.
+        # later be altered by using the Modules API (https://cloud.google.com/appengine/
+        # docs/python/modules/functions) set_num_instances() function.
         # Corresponds to the JSON property `instances`
         # @return [Fixnum]
         attr_accessor :instances
@@ -806,10 +811,26 @@ module Google
         attr_accessor :instance_tag
       
         # Google Cloud Platform network where the virtual machines are created. Specify
-        # the short name, not the resource path. Defaults to `default`.
+        # the short name, not the resource path.Defaults to default.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Google Cloud Platform sub-network where the virtual machines are created.
+        # Specify the short name, not the resource path.If a subnetwork name is
+        # specified, a network name will also be required unless it is for the default
+        # network. If the network the VM instance is being created in is a Legacy
+        # network, then the IP address is allocated from the IPv4Range. If the network
+        # the VM instance is being created in is an auto Subnet Mode Network, then only
+        # network name should be specified (not the subnetwork_name) and the IP address
+        # is created from the IPCidrRange of the subnetwork that exists in that zone for
+        # that network. If the network the VM instance is being created in is a custom
+        # Subnet Mode Network, then the subnetwork_name must be specified and the IP
+        # address is created from the IPCidrRange of the subnetwork.If specified, the
+        # subnetwork must exist in the same region as the Flex app.
+        # Corresponds to the JSON property `subnetworkName`
+        # @return [String]
+        attr_accessor :subnetwork_name
       
         def initialize(**args)
            update!(**args)
@@ -820,6 +841,7 @@ module Google
           @forwarded_ports = args[:forwarded_ports] if args.key?(:forwarded_ports)
           @instance_tag = args[:instance_tag] if args.key?(:instance_tag)
           @name = args[:name] if args.key?(:name)
+          @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
         end
       end
       
@@ -842,6 +864,11 @@ module Google
         # @return [Float]
         attr_accessor :memory_gb
       
+        # Volumes mounted within the app container.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::AppengineV1beta5::Volume>]
+        attr_accessor :volumes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -851,6 +878,38 @@ module Google
           @cpu = args[:cpu] if args.key?(:cpu)
           @disk_gb = args[:disk_gb] if args.key?(:disk_gb)
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # Volumes mounted within the app container. Only applicable for VM runtimes.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # Unique name for the volume.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Underlying volume type, e.g. 'tmpfs'.
+        # Corresponds to the JSON property `volumeType`
+        # @return [String]
+        attr_accessor :volume_type
+      
+        # Volume size in gigabytes.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Float]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @volume_type = args[:volume_type] if args.key?(:volume_type)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
       
@@ -896,13 +955,13 @@ module Google
         attr_accessor :login
       
         # Action to take when users access resources that require authentication.
-        # Defaults to `redirect`.
+        # Defaults to redirect.
         # Corresponds to the JSON property `authFailAction`
         # @return [String]
         attr_accessor :auth_fail_action
       
-        # `30x` code to use when performing redirects for the `secure` field. Defaults
-        # to `302`.
+        # 30x code to use when performing redirects for the secure field. Defaults to
+        # 302.
         # Corresponds to the JSON property `redirectHttpResponseCode`
         # @return [String]
         attr_accessor :redirect_http_response_code
@@ -1042,7 +1101,7 @@ module Google
         # @return [String]
         attr_accessor :static_file
       
-        # MIME type of file. Defaults to `text/html`.
+        # MIME type of file. Defaults to text/html.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1084,18 +1143,18 @@ module Google
         end
       end
       
-      # [Google Cloud Endpoints](https://cloud.google.com/appengine/docs/python/
+      # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
       # endpoints/) configuration for API handlers.
       class ApiConfigHandler
         include Google::Apis::Core::Hashable
       
         # Action to take when users access resources that require authentication.
-        # Defaults to `redirect`.
+        # Defaults to redirect.
         # Corresponds to the JSON property `authFailAction`
         # @return [String]
         attr_accessor :auth_fail_action
       
-        # Level of login required to access this resource. Defaults to `optional`.
+        # Level of login required to access this resource. Defaults to optional.
         # Corresponds to the JSON property `login`
         # @return [String]
         attr_accessor :login
@@ -1231,7 +1290,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # URL source to use to fetch this file. Must be a URL to a resource in Google
-        # Cloud Storage in the form 'http(s)://storage.googleapis.com/\/\'.
+        # Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
         # Corresponds to the JSON property `sourceUrl`
         # @return [String]
         attr_accessor :source_url
@@ -1241,7 +1300,7 @@ module Google
         # @return [String]
         attr_accessor :sha1_sum
       
-        # The MIME type of the file. Defaults to the value from Google Cloud Storage.
+        # The MIME type of the file.Defaults to the value from Google Cloud Storage.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1308,7 +1367,38 @@ module Google
         end
       end
       
-      # Response message for `Versions.ListVersions`.
+      # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
+      # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
+      # via an NGINX proxy.The fields here refer to the name and configuration id of a
+      # "service" resource in the Service Management API (https://cloud.google.com/
+      # service-management/overview).
+      class EndpointsApiService
+        include Google::Apis::Core::Hashable
+      
+        # Endpoints service name which is the name of the "service" resource in the
+        # Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Endpoints service configuration id as specified by the Service Management API.
+        # For example "2016-09-19r1"
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @config_id = args[:config_id] if args.key?(:config_id)
+        end
+      end
+      
+      # Response message for Versions.ListVersions.
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
       
@@ -1342,13 +1432,13 @@ module Google
       class Service
         include Google::Apis::Core::Hashable
       
-        # Full path to the Service resource in the API. Example: `apps/myapp/services/
-        # default`. @OutputOnly
+        # Full path to the Service resource in the API. Example: apps/myapp/services/
+        # default.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Relative name of the service within the application. Example: `default`. @
+        # Relative name of the service within the application. Example: default.@
         # OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1406,7 +1496,7 @@ module Google
         end
       end
       
-      # Response message for `Services.ListServices`.
+      # Response message for Services.ListServices.
       class ListServicesResponse
         include Google::Apis::Core::Hashable
       
@@ -1436,91 +1526,91 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Full path to the Instance resource in the API. Example: `apps/myapp/services/
-        # default/versions/v1/instances/instance-1`. @OutputOnly
+        # Full path to the Instance resource in the API. Example: apps/myapp/services/
+        # default/versions/v1/instances/instance-1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Relative name of the instance within the version. Example: `instance-1`. @
+        # Relative name of the instance within the version. Example: instance-1.@
         # OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # App Engine release this instance is running on. @OutputOnly
+        # App Engine release this instance is running on.@OutputOnly
         # Corresponds to the JSON property `appEngineRelease`
         # @return [String]
         attr_accessor :app_engine_release
       
-        # Availability of the instance. @OutputOnly
+        # Availability of the instance.@OutputOnly
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
       
         # Name of the virtual machine where this instance lives. Only applicable for
-        # instances in App Engine flexible environment. @OutputOnly
+        # instances in App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmName`
         # @return [String]
         attr_accessor :vm_name
       
         # Zone where the virtual machine is located. Only applicable for instances in
-        # App Engine flexible environment. @OutputOnly
+        # App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmZoneName`
         # @return [String]
         attr_accessor :vm_zone_name
       
         # Virtual machine ID of this instance. Only applicable for instances in App
-        # Engine flexible environment. @OutputOnly
+        # Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmId`
         # @return [String]
         attr_accessor :vm_id
       
-        # Time that this instance was started. @OutputOnly
+        # Time that this instance was started.@OutputOnly
         # Corresponds to the JSON property `startTimestamp`
         # @return [String]
         attr_accessor :start_timestamp
       
-        # Number of requests since this instance was started. @OutputOnly
+        # Number of requests since this instance was started.@OutputOnly
         # Corresponds to the JSON property `requests`
         # @return [Fixnum]
         attr_accessor :requests
       
-        # Number of errors since this instance was started. @OutputOnly
+        # Number of errors since this instance was started.@OutputOnly
         # Corresponds to the JSON property `errors`
         # @return [Fixnum]
         attr_accessor :errors
       
-        # Average queries per second (QPS) over the last minute. @OutputOnly
+        # Average queries per second (QPS) over the last minute.@OutputOnly
         # Corresponds to the JSON property `qps`
         # @return [Float]
         attr_accessor :qps
       
-        # Average latency (ms) over the last minute. @OutputOnly
+        # Average latency (ms) over the last minute.@OutputOnly
         # Corresponds to the JSON property `averageLatency`
         # @return [Fixnum]
         attr_accessor :average_latency
       
-        # Total memory in use (bytes). @OutputOnly
+        # Total memory in use (bytes).@OutputOnly
         # Corresponds to the JSON property `memoryUsage`
         # @return [String]
         attr_accessor :memory_usage
       
         # Status of the virtual machine where this instance lives. Only applicable for
-        # instances in App Engine flexible environment. @OutputOnly
+        # instances in App Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmStatus`
         # @return [String]
         attr_accessor :vm_status
       
         # Whether this instance is in debug mode. Only applicable for instances in App
-        # Engine flexible environment. @OutputOnly
+        # Engine flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmUnlocked`
         # @return [Boolean]
         attr_accessor :vm_unlocked
         alias_method :vm_unlocked?, :vm_unlocked
       
         # The IP address of this instance. Only applicable for instances in App Engine
-        # flexible environment. @OutputOnly
+        # flexible environment.@OutputOnly
         # Corresponds to the JSON property `vmIp`
         # @return [String]
         attr_accessor :vm_ip
@@ -1550,7 +1640,7 @@ module Google
         end
       end
       
-      # Response message for `Instances.ListInstances`.
+      # Response message for Instances.ListInstances.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
@@ -1575,14 +1665,15 @@ module Google
         end
       end
       
-      # Request message for `Instances.DebugInstance`.
+      # Request message for Instances.DebugInstance.
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa KEY_VALUE`
-        # or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]","
-        # expireOn":"[EXPIRE_TIME]"`` For more information, see [Adding and Removing SSH
-        # Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+        # Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa [KEY_VALUE]
+        # [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]",
+        # "expireOn":"[EXPIRE_TIME]"`For more information, see Adding and Removing SSH
+        # Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+        # .
         # Corresponds to the JSON property `sshKey`
         # @return [String]
         attr_accessor :ssh_key
@@ -1627,12 +1718,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Resource name for the location, which may vary between implementations. For
-        # example: `"projects/example-project/locations/us-east1"`
+        # example: "projects/example-project/locations/us-east1"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The canonical id for this location. For example: `"us-east1"`.
+        # The canonical id for this location. For example: "us-east1".
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1666,29 +1757,29 @@ module Google
       class OperationMetadataExperimental
         include Google::Apis::Core::Hashable
       
-        # API method that initiated this operation. Example: `google.appengine.
-        # experimental.CustomDomains.CreateCustomDomain`. @OutputOnly
+        # API method that initiated this operation. Example: google.appengine.
+        # experimental.CustomDomains.CreateCustomDomain.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Time that this operation was created. @OutputOnly
+        # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # Time that this operation completed. @OutputOnly
+        # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # User who requested this operation. @OutputOnly
+        # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
       
-        # Name of the resource that this operation is acting on. Example: `apps/myapp/
-        # customDomains/example.com`. @OutputOnly
+        # Name of the resource that this operation is acting on. Example: apps/myapp/
+        # customDomains/example.com.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1712,34 +1803,34 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Type of this operation. Deprecated, use method field instead. Example: "
-        # create_version". @OutputOnly
+        # create_version".@OutputOnly
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
       
-        # Timestamp that this operation was created. @OutputOnly
+        # Timestamp that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # Timestamp that this operation completed. @OutputOnly
+        # Timestamp that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # User who requested this operation. @OutputOnly
+        # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
       
-        # Name of the resource that this operation is acting on. Example: `apps/myapp/
-        # modules/default`. @OutputOnly
+        # Name of the resource that this operation is acting on. Example: apps/myapp/
+        # modules/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # API method that initiated this operation. Example: `google.appengine.v1beta4.
-        # Version.CreateVersion`. @OutputOnly
+        # API method that initiated this operation. Example: google.appengine.v1beta4.
+        # Version.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1763,29 +1854,29 @@ module Google
       class OperationMetadataV1Beta5
         include Google::Apis::Core::Hashable
       
-        # API method name that initiated this operation. Example: `google.appengine.
-        # v1beta5.Version.CreateVersion`. @OutputOnly
+        # API method name that initiated this operation. Example: google.appengine.
+        # v1beta5.Version.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Timestamp that this operation was created. @OutputOnly
+        # Timestamp that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # Timestamp that this operation completed. @OutputOnly
+        # Timestamp that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # User who requested this operation. @OutputOnly
+        # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
       
-        # Name of the resource that this operation is acting on. Example: `apps/myapp/
-        # services/default`. @OutputOnly
+        # Name of the resource that this operation is acting on. Example: apps/myapp/
+        # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1808,32 +1899,43 @@ module Google
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
-        # API method that initiated this operation. Example: `google.appengine.v1.
-        # Versions.CreateVersion`. @OutputOnly
+        # API method that initiated this operation. Example: google.appengine.v1.
+        # Versions.CreateVersion.@OutputOnly
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Time that this operation was created. @OutputOnly
+        # Time that this operation was created.@OutputOnly
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # Time that this operation completed. @OutputOnly
+        # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # User who requested this operation. @OutputOnly
+        # User who requested this operation.@OutputOnly
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
       
-        # Name of the resource that this operation is acting on. Example: `apps/myapp/
-        # services/default`. @OutputOnly
+        # Name of the resource that this operation is acting on. Example: apps/myapp/
+        # services/default.@OutputOnly
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
+      
+        # Ephemeral message that may change every time the operation is polled. @
+        # OutputOnly
+        # Corresponds to the JSON property `ephemeralMessage`
+        # @return [String]
+        attr_accessor :ephemeral_message
+      
+        # Durable messages that persist on every operation poll. @OutputOnly
+        # Corresponds to the JSON property `warning`
+        # @return [Array<String>]
+        attr_accessor :warning
       
         def initialize(**args)
            update!(**args)
@@ -1846,6 +1948,8 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @user = args[:user] if args.key?(:user)
           @target = args[:target] if args.key?(:target)
+          @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
+          @warning = args[:warning] if args.key?(:warning)
         end
       end
       
@@ -1853,15 +1957,13 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # App Engine Standard Environment is available in the given location. @
-        # OutputOnly
+        # App Engine Standard Environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `standardEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :standard_environment_available
         alias_method :standard_environment_available?, :standard_environment_available
       
-        # App Engine Flexible Environment is available in the given location. @
-        # OutputOnly
+        # App Engine Flexible Environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `flexibleEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :flexible_environment_available

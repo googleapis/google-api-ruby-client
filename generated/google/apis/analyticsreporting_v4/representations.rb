@@ -396,6 +396,7 @@ module Google
       
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsreportingV4::ReportRow, decorator: Google::Apis::AnalyticsreportingV4::ReportRow::Representation
       
+          property :data_last_refreshed, as: 'dataLastRefreshed'
           collection :totals, as: 'totals', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
           property :is_data_golden, as: 'isDataGolden'

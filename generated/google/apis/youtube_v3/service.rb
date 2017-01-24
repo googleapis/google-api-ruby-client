@@ -4098,8 +4098,8 @@ module Google
         # @param [Fixnum] max_results
         #   The maxResults parameter specifies the maximum number of items that should be
         #   returned in the result set.
-        #   Note: This parameter is supported for use in conjunction with the myRating
-        #   parameter, but it is not supported for use in conjunction with the id
+        #   Note: This parameter is supported for use in conjunction with the myRating and
+        #   chart parameters, but it is not supported for use in conjunction with the id
         #   parameter.
         # @param [Fixnum] max_width
         #   The maxWidth parameter specifies a maximum width of the embedded player. If
@@ -4122,8 +4122,8 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        #   Note: This parameter is supported for use in conjunction with the myRating
-        #   parameter, but it is not supported for use in conjunction with the id
+        #   Note: This parameter is supported for use in conjunction with the myRating and
+        #   chart parameters, but it is not supported for use in conjunction with the id
         #   parameter.
         # @param [String] region_code
         #   The regionCode parameter instructs the API to select a video chart available

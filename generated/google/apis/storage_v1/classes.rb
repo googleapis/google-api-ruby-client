@@ -905,6 +905,12 @@ module Google
         # @return [DateTime]
         attr_accessor :time_deleted
       
+        # The time at which the object's storage class was last changed. When the object
+        # is initially created, it will be set to timeCreated.
+        # Corresponds to the JSON property `timeStorageClassUpdated`
+        # @return [DateTime]
+        attr_accessor :time_storage_class_updated
+      
         # The modification time of the object metadata in RFC 3339 format.
         # Corresponds to the JSON property `updated`
         # @return [DateTime]
@@ -941,6 +947,7 @@ module Google
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @time_created = args[:time_created] if args.key?(:time_created)
           @time_deleted = args[:time_deleted] if args.key?(:time_deleted)
+          @time_storage_class_updated = args[:time_storage_class_updated] if args.key?(:time_storage_class_updated)
           @updated = args[:updated] if args.key?(:updated)
         end
         

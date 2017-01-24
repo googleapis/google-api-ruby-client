@@ -31,8 +31,8 @@ module Google
       class SearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
-          property :type, as: 'type'
+          property :_context, as: '@context'
+          property :_type, as: '@type'
           collection :item_list_element, as: 'itemListElement'
         end
       end

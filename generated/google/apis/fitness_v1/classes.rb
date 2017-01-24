@@ -871,7 +871,7 @@ module Google
       
       # Holder object for the value of a single field in a data point.
       # A field value has a particular format and is only ever set to one of an
-      # integer or a floating point value.
+      # integer or a floating point value. LINT.IfChange
       class Value
         include Google::Apis::Core::Hashable
       

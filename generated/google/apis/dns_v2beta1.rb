@@ -12,27 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudresourcemanager_v1beta1/service.rb'
-require 'google/apis/cloudresourcemanager_v1beta1/classes.rb'
-require 'google/apis/cloudresourcemanager_v1beta1/representations.rb'
+require 'google/apis/dns_v2beta1/service.rb'
+require 'google/apis/dns_v2beta1/classes.rb'
+require 'google/apis/dns_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Resource Manager API
+    # Google Cloud DNS API
     #
-    # The Google Cloud Resource Manager API provides methods for creating, reading,
-    # and updating project metadata.
+    # Configures and serves authoritative DNS records.
     #
-    # @see https://cloud.google.com/resource-manager
-    module CloudresourcemanagerV1beta1
-      VERSION = 'V1beta1'
-      REVISION = '20170118'
+    # @see https://developers.google.com/cloud-dns
+    module DnsV2beta1
+      VERSION = 'V2beta1'
+      REVISION = '20170102'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
+
+      # View your DNS records hosted by Google Cloud DNS
+      AUTH_NDEV_CLOUDDNS_READONLY = 'https://www.googleapis.com/auth/ndev.clouddns.readonly'
+
+      # View and manage your DNS records hosted by Google Cloud DNS
+      AUTH_NDEV_CLOUDDNS_READWRITE = 'https://www.googleapis.com/auth/ndev.clouddns.readwrite'
     end
   end
 end

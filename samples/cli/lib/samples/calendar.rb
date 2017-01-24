@@ -36,7 +36,7 @@ module Samples
 
       event = {
         summary: options[:summary],
-        attendees: Array(options[:attenddes]).map { |email| { email: email } },
+        attendees: Array(options[:attendees]).map { |email| { email: email } },
         start: {
           date_time: DateTime.parse(options[:start])
         },

@@ -91,15 +91,15 @@ module Google
         class BidderLocation
           include Google::Apis::Core::Hashable
         
-          # The protocol that the bidder endpoint is using. By default, OpenRTB protocols
-          # use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses
-          # protobuf encoding over the latest OpenRTB protocol version, which is 2.4 right
-          # now. Allowed values:
+          # The protocol that the bidder endpoint is using. OpenRTB protocols with prefix
+          # PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed
+          # values:
           # - PROTOCOL_ADX
           # - PROTOCOL_OPENRTB_2_2
           # - PROTOCOL_OPENRTB_2_3
           # - PROTOCOL_OPENRTB_2_4
-          # - PROTOCOL_OPENRTB_PROTOBUF
+          # - PROTOCOL_OPENRTB_PROTOBUF_2_3
+          # - PROTOCOL_OPENRTB_PROTOBUF_2_4
           # Corresponds to the JSON property `bidProtocol`
           # @return [String]
           attr_accessor :bid_protocol
@@ -1901,7 +1901,7 @@ module Google
         # @return [String]
         attr_accessor :flight_start_time_ms
       
-        # Description for the deal terms. (updatable)
+        # Description for the deal terms. (buyer-readonly)
         # Corresponds to the JSON property `inventoryDescription`
         # @return [String]
         attr_accessor :inventory_description
@@ -2398,6 +2398,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
+        # Requests where the predicted viewability is below the specified decile will
+        # not match. E.g. if the buyer sets this value to 5, requests from slots where
+        # the predicted viewability is below 50% will not match. If the predicted
+        # viewability is unknown this field will be ignored.
+        # Corresponds to the JSON property `minimumViewabilityDecile`
+        # @return [Fixnum]
+        attr_accessor :minimum_viewability_decile
+      
         # Requests containing any of these mobile carrier ids will match. Values are
         # from mobile-carriers.csv in the downloadable files section.
         # Corresponds to the JSON property `mobileCarriers`
@@ -2484,6 +2492,7 @@ module Google
           @is_active = args[:is_active] if args.key?(:is_active)
           @kind = args[:kind] if args.key?(:kind)
           @languages = args[:languages] if args.key?(:languages)
+          @minimum_viewability_decile = args[:minimum_viewability_decile] if args.key?(:minimum_viewability_decile)
           @mobile_carriers = args[:mobile_carriers] if args.key?(:mobile_carriers)
           @mobile_devices = args[:mobile_devices] if args.key?(:mobile_devices)
           @mobile_operating_system_versions = args[:mobile_operating_system_versions] if args.key?(:mobile_operating_system_versions)
@@ -2809,6 +2818,14 @@ module Google
         # @return [String]
         attr_accessor :legacy_offer_id
       
+        # Marketplace publisher profile Id. This Id differs from the regular
+        # publisher_profile_id in that 1. This is a new id, the old Id will be
+        # deprecated in 2017. 2. This id uniquely identifies a publisher profile by
+        # itself.
+        # Corresponds to the JSON property `marketplacePublisherProfileId`
+        # @return [String]
+        attr_accessor :marketplace_publisher_profile_id
+      
         # The name for this product as set by the seller. (buyer-readonly)
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2893,6 +2910,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_update_time_ms = args[:last_update_time_ms] if args.key?(:last_update_time_ms)
           @legacy_offer_id = args[:legacy_offer_id] if args.key?(:legacy_offer_id)
+          @marketplace_publisher_profile_id = args[:marketplace_publisher_profile_id] if args.key?(:marketplace_publisher_profile_id)
           @name = args[:name] if args.key?(:name)
           @private_auction_id = args[:private_auction_id] if args.key?(:private_auction_id)
           @product_id = args[:product_id] if args.key?(:product_id)

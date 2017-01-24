@@ -1730,6 +1730,7 @@ module Google
           property :lsf_rating, as: 'lsfRating'
           property :mccaa_rating, as: 'mccaaRating'
           property :mccyp_rating, as: 'mccypRating'
+          property :mcst_rating, as: 'mcstRating'
           property :mda_rating, as: 'mdaRating'
           property :medietilsynet_rating, as: 'medietilsynetRating'
           property :meku_rating, as: 'mekuRating'
@@ -2515,6 +2516,8 @@ module Google
           property :note, as: 'note'
           property :start_at, as: 'startAt'
           property :video_id, as: 'videoId'
+          property :video_published_at, as: 'videoPublishedAt', type: DateTime
+      
         end
       end
       

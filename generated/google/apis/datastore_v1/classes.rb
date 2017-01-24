@@ -106,6 +106,8 @@ module Google
         # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
         # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
         # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+        # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+        # as if it were annotated as ST_LOCATION.
         # Corresponds to the JSON property `geoPointValue`
         # @return [Google::Apis::DatastoreV1::LatLng]
         attr_accessor :geo_point_value
@@ -544,6 +546,7 @@ module Google
         # In a single transaction, subsequent query result batches for the same query
         # can have a greater snapshot version number. Each batch's snapshot version
         # is valid for all preceding batches.
+        # The value will be zero for eventually consistent queries.
         # Corresponds to the JSON property `snapshotVersion`
         # @return [String]
         attr_accessor :snapshot_version
@@ -1230,6 +1233,8 @@ module Google
       # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
       # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
       # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
+      # The code in logs/storage/validator/logs_validator_traits.cc treats this type
+      # as if it were annotated as ST_LOCATION.
       class LatLng
         include Google::Apis::Core::Hashable
       

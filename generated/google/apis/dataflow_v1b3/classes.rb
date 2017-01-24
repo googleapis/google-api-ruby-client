@@ -110,30 +110,31 @@ module Google
         end
       end
       
-      # Defines a job to be run by the Dataflow service.
+      # Defines a job to be run by the Cloud Dataflow service.
       class Job
         include Google::Apis::Core::Hashable
       
-        # The unique ID of this job. This field is set by the Dataflow service when the
-        # Job is created, and is immutable for the life of the Job.
+        # The unique ID of this job. This field is set by the Cloud Dataflow service
+        # when the Job is created, and is immutable for the life of the job.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The project which owns the job.
+        # The ID of the Cloud Platform project that the job belongs to.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # The user-specified Dataflow job name. Only one Job with a given name may exist
-        # in a project at any given time. If a caller attempts to create a Job with the
-        # same name as an already-existing Job, the attempt will return the existing Job.
-        # The name must match the regular expression [a-z]([-a-z0-9]`0,38`[a-z0-9])?
+        # The user-specified Cloud Dataflow job name. Only one Job with a given name may
+        # exist in a project at any given time. If a caller attempts to create a Job
+        # with the same name as an already-existing Job, the attempt returns the
+        # existing Job. The name must match the regular expression `[a-z]([-a-z0-9]`0,38`
+        # [a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The type of dataflow job.
+        # The type of Cloud Dataflow job.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -148,11 +149,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
         attr_accessor :steps
       
-        # The current state of the job. Jobs are created in the JOB_STATE_STOPPED state
-        # unless otherwise specified. A job in the JOB_STATE_RUNNING state may
-        # asynchronously enter a terminal state. Once a job has reached a terminal state,
-        # no further state updates may be made. This field may be mutated by the
-        # Dataflow service; callers cannot mutate it.
+        # The current state of the job. Jobs are created in the `JOB_STATE_STOPPED`
+        # state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may
+        # asynchronously enter a terminal state. After a job has reached a terminal
+        # state, no further state updates may be made. This field may be mutated by the
+        # Cloud Dataflow service; callers cannot mutate it.
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -162,54 +163,53 @@ module Google
         # @return [String]
         attr_accessor :current_state_time
       
-        # The job's requested state. UpdateJob may be used to switch between the
-        # JOB_STATE_STOPPED and JOB_STATE_RUNNING states, by setting requested_state.
-        # UpdateJob may also be used to directly set a job's requested state to
-        # JOB_STATE_CANCELLED or JOB_STATE_DONE, irrevocably terminating the job if it
-        # has not already reached a terminal state.
+        # The job's requested state. `UpdateJob` may be used to switch between the `
+        # JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state.
+        # `UpdateJob` may also be used to directly set a job's requested state to `
+        # JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if
+        # it has not already reached a terminal state.
         # Corresponds to the JSON property `requestedState`
         # @return [String]
         attr_accessor :requested_state
       
-        # Additional information about how a Dataflow job will be executed which isn’t
-        # contained in the submitted job.
+        # Additional information about how a Cloud Dataflow job will be executed that
+        # isn't contained in the submitted job.
         # Corresponds to the JSON property `executionInfo`
         # @return [Google::Apis::DataflowV1b3::JobExecutionInfo]
         attr_accessor :execution_info
       
-        # Timestamp when job was initially created. Immutable, set by the Dataflow
-        # service.
+        # The timestamp when the job was initially created. Immutable and set by the
+        # Cloud Dataflow service.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # If this job is an update of an existing job, this field will be the ID of the
-        # job it replaced. When sending a CreateJobRequest, you can update a job by
-        # specifying it here. The job named here will be stopped, and its intermediate
-        # state transferred to this job.
+        # If this job is an update of an existing job, this field is the job ID of the
+        # job it replaced. When sending a `CreateJobRequest`, you can update a job by
+        # specifying it here. The job named here is stopped, and its intermediate state
+        # is transferred to this job.
         # Corresponds to the JSON property `replaceJobId`
         # @return [String]
         attr_accessor :replace_job_id
       
-        # Map of transform name prefixes of the job to be replaced to the corresponding
-        # name prefixes of the new job.
+        # The map of transform name prefixes of the job to be replaced to the
+        # corresponding name prefixes of the new job.
         # Corresponds to the JSON property `transformNameMapping`
         # @return [Hash<String,String>]
         attr_accessor :transform_name_mapping
       
-        # Client's unique identifier of the job, re-used by SDK across retried attempts.
-        # If this field is set, the service will ensure its uniqueness. That is, the
-        # request to create a job will fail if the service has knowledge of a previously
-        # submitted job with the same client's id and job name. The caller may, for
-        # example, use this field to ensure idempotence of job creation across retried
-        # attempts to create a job. By default, the field is empty and, in that case,
-        # the service ignores it.
+        # The client's unique identifier of the job, re-used across retried attempts. If
+        # this field is set, the service will ensure its uniqueness. The request to
+        # create a job will fail if the service has knowledge of a previously submitted
+        # job with the same client's ID and job name. The caller may use this field to
+        # ensure idempotence of job creation across retried attempts to create a job. By
+        # default, the field is empty and, in that case, the service ignores it.
         # Corresponds to the JSON property `clientRequestId`
         # @return [String]
         attr_accessor :client_request_id
       
-        # If another job is an update of this job (and thus, this job is in
-        # JOB_STATE_UPDATED), this field will contain the ID of that job.
+        # If another job is an update of this job (and thus, this job is in `
+        # JOB_STATE_UPDATED`), this field contains the ID of that job.
         # Corresponds to the JSON property `replacedByJobId`
         # @return [String]
         attr_accessor :replaced_by_job_id
@@ -232,7 +232,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The location which contains this job.
+        # The location that contains this job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -291,8 +291,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :experiments
       
-        # Worker pools. At least one "harness" worker pool must be specified in order
-        # for the job to have workers.
+        # The worker pools. At least one "harness" worker pool must be specified in
+        # order for the job to have workers.
         # Corresponds to the JSON property `workerPools`
         # @return [Array<Google::Apis::DataflowV1b3::WorkerPool>]
         attr_accessor :worker_pools
@@ -315,9 +315,9 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
-        # The Dataflow SDK pipeline options specified by the user. These options are
-        # passed through the service and are used to recreate the SDK pipeline options
-        # on the worker in a language agnostic and platform independent way.
+        # The Cloud Dataflow SDK pipeline options specified by the user. These options
+        # are passed through the service and are used to recreate the SDK pipeline
+        # options on the worker in a language agnostic and platform independent way.
         # Corresponds to the JSON property `sdkPipelineOptions`
         # @return [Hash<String,Object>]
         attr_accessor :sdk_pipeline_options
@@ -351,14 +351,14 @@ module Google
         end
       end
       
-      # Describes one particular pool of Dataflow workers to be instantiated by the
-      # Dataflow service in order to perform the computations required by a job. Note
-      # that a workflow job may use multiple pools, in order to match the various
-      # computational requirements of the various stages of the job.
+      # Describes one particular pool of Cloud Dataflow workers to be instantiated by
+      # the Cloud Dataflow service in order to perform the computations required by a
+      # job. Note that a workflow job may use multiple pools, in order to match the
+      # various computational requirements of the various stages of the job.
       class WorkerPool
         include Google::Apis::Core::Hashable
       
-        # The kind of the worker pool; currently only 'harness' and 'shuffle' are
+        # The kind of the worker pool; currently only `harness` and `shuffle` are
         # supported.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -390,15 +390,16 @@ module Google
         attr_accessor :machine_type
       
         # Sets the policy for determining when to turndown worker pool. Allowed values
-        # are: TEARDOWN_ALWAYS, TEARDOWN_ON_SUCCESS, and TEARDOWN_NEVER. TEARDOWN_ALWAYS
-        # means workers are always torn down regardless of whether the job succeeds.
-        # TEARDOWN_ON_SUCCESS means workers are torn down if the job succeeds.
-        # TEARDOWN_NEVER means the workers are never torn down. If the workers are not
-        # torn down by the service, they will continue to run and use Google Compute
-        # Engine VM resources in the user's project until they are explicitly terminated
-        # by the user. Because of this, Google recommends using the TEARDOWN_ALWAYS
-        # policy except for small, manually supervised test jobs. If unknown or
-        # unspecified, the service will attempt to choose a reasonable default.
+        # are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `
+        # TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the
+        # job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job
+        # succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the
+        # workers are not torn down by the service, they will continue to run and use
+        # Google Compute Engine VM resources in the user's project until they are
+        # explicitly terminated by the user. Because of this, Google recommends using
+        # the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs.
+        # If unknown or unspecified, the service will attempt to choose a reasonable
+        # default.
         # Corresponds to the JSON property `teardownPolicy`
         # @return [String]
         attr_accessor :teardown_policy
@@ -469,8 +470,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # Docker container image that executes Dataflow worker harness, residing in
-        # Google Container Registry. Required.
+        # Required. Docker container image that executes the Cloud Dataflow worker
+        # harness, residing in Google Container Registry.
         # Corresponds to the JSON property `workerHarnessContainerImage`
         # @return [String]
         attr_accessor :worker_harness_container_image
@@ -517,12 +518,12 @@ module Google
         end
       end
       
-      # Packages that need to be installed in order for a worker to run the steps of
-      # the Dataflow job which will be assigned to its worker pool. This is the
-      # mechanism by which the SDK causes code to be loaded onto the workers. For
-      # example, the Dataflow Java SDK might use this to install jars containing the
-      # user's code and all of the various dependencies (libraries, data files, etc)
-      # required in order for that code to run.
+      # The packages that must be installed in order for a worker to run the steps of
+      # the Cloud Dataflow job that will be assigned to its worker pool. This is the
+      # mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the
+      # workers. For example, the Cloud Dataflow Java SDK might use this to install
+      # jars containing the user's code and all of the various dependencies (libraries,
+      # data files, etc.) required in order for that code to run.
       class Package
         include Google::Apis::Core::Hashable
       
@@ -564,8 +565,8 @@ module Google
         # @return [String]
         attr_accessor :task_group
       
-        # OAuth2 scopes to be requested by the taskrunner in order to access the
-        # dataflow API.
+        # The OAuth2 scopes to be requested by the taskrunner in order to access the
+        # Cloud Dataflow API.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -580,7 +581,7 @@ module Google
         # @return [String]
         attr_accessor :base_url
       
-        # API version of endpoint, e.g. "v1b3"
+        # The API version of endpoint, e.g. "v1b3"
         # Corresponds to the JSON property `dataflowApiVersion`
         # @return [String]
         attr_accessor :dataflow_api_version
@@ -590,24 +591,24 @@ module Google
         # @return [Google::Apis::DataflowV1b3::WorkerSettings]
         attr_accessor :parallel_worker_settings
       
-        # Location on the worker for task-specific subdirectories.
+        # The location on the worker for task-specific subdirectories.
         # Corresponds to the JSON property `baseTaskDir`
         # @return [String]
         attr_accessor :base_task_dir
       
-        # Do we continue taskrunner if an exception is hit?
+        # Whether to continue taskrunner if an exception is hit.
         # Corresponds to the JSON property `continueOnException`
         # @return [Boolean]
         attr_accessor :continue_on_exception
         alias_method :continue_on_exception?, :continue_on_exception
       
-        # Send taskrunner log into to Google Compute Engine VM serial console?
+        # Whether to send taskrunner log info to Google Compute Engine VM serial console.
         # Corresponds to the JSON property `logToSerialconsole`
         # @return [Boolean]
         attr_accessor :log_to_serialconsole
         alias_method :log_to_serialconsole?, :log_to_serialconsole
       
-        # Also send taskrunner log info to stderr?
+        # Whether to also send taskrunner log info to stderr.
         # Corresponds to the JSON property `alsologtostderr`
         # @return [Boolean]
         attr_accessor :alsologtostderr
@@ -620,7 +621,7 @@ module Google
         # @return [String]
         attr_accessor :log_upload_location
       
-        # Directory on the VM to store logs.
+        # The directory on the VM to store logs.
         # Corresponds to the JSON property `logDir`
         # @return [String]
         attr_accessor :log_dir
@@ -632,32 +633,32 @@ module Google
         # @return [String]
         attr_accessor :temp_storage_prefix
       
-        # Command to launch the worker harness.
+        # The command to launch the worker harness.
         # Corresponds to the JSON property `harnessCommand`
         # @return [String]
         attr_accessor :harness_command
       
-        # Store the workflow in this file.
+        # The file to store the workflow in.
         # Corresponds to the JSON property `workflowFileName`
         # @return [String]
         attr_accessor :workflow_file_name
       
-        # Store preprocessing commands in this file.
+        # The file to store preprocessing commands in.
         # Corresponds to the JSON property `commandlinesFileName`
         # @return [String]
         attr_accessor :commandlines_file_name
       
-        # ID string of VM.
+        # The ID string of the VM.
         # Corresponds to the JSON property `vmId`
         # @return [String]
         attr_accessor :vm_id
       
-        # Suggested backend language.
+        # The suggested backend language.
         # Corresponds to the JSON property `languageHint`
         # @return [String]
         attr_accessor :language_hint
       
-        # Streaming worker main class name.
+        # The streaming worker main class name.
         # Corresponds to the JSON property `streamingWorkerMainClass`
         # @return [String]
         attr_accessor :streaming_worker_main_class
@@ -703,14 +704,14 @@ module Google
         # @return [String]
         attr_accessor :base_url
       
-        # Send work progress updates to service.
+        # Whether to send work progress updates to the service.
         # Corresponds to the JSON property `reportingEnabled`
         # @return [Boolean]
         attr_accessor :reporting_enabled
         alias_method :reporting_enabled?, :reporting_enabled
       
-        # The Dataflow service path relative to the root URL, for example, "dataflow/
-        # v1b3/projects".
+        # The Cloud Dataflow service path relative to the root URL, for example, "
+        # dataflow/v1b3/projects".
         # Corresponds to the JSON property `servicePath`
         # @return [String]
         attr_accessor :service_path
@@ -721,7 +722,7 @@ module Google
         # @return [String]
         attr_accessor :shuffle_service_path
       
-        # ID of the worker running this pipeline.
+        # The ID of the worker running this pipeline.
         # Corresponds to the JSON property `workerId`
         # @return [String]
         attr_accessor :worker_id
@@ -764,13 +765,12 @@ module Google
         # default. For example, the standard persistent disk type is a resource name
         # typically ending in "pd-standard". If SSD persistent disks are available, the
         # resource name typically ends with "pd-ssd". The actual valid values are
-        # defined the Google Compute Engine API, not by the Dataflow API; consult the
-        # Google Compute Engine documentation for more information about determining the
-        # set of available disk types for a particular project and zone. Google Compute
-        # Engine Disk types are local to a particular project in a particular zone, and
-        # so the resource name will typically look something like this: compute.
-        # googleapis.com/projects/
-        # /zones//diskTypes/pd-standard
+        # defined the Google Compute Engine API, not by the Cloud Dataflow API; consult
+        # the Google Compute Engine documentation for more information about determining
+        # the set of available disk types for a particular project and zone. Google
+        # Compute Engine Disk types are local to a particular project in a particular
+        # zone, and so the resource name will typically look something like this:
+        # compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -817,27 +817,27 @@ module Google
         end
       end
       
-      # Defines a particular step within a Dataflow job. A job consists of multiple
-      # steps, each of which performs some specific operation as part of the overall
-      # job. Data is typically passed from one step to another as part of the job.
-      # Here's an example of a sequence of steps which together implement a Map-Reduce
-      # job: * Read a collection of data from some source, parsing the collection's
-      # elements. * Validate the elements. * Apply a user-defined function to map each
-      # element to some value and extract an element-specific key value. * Group
-      # elements with the same key into a single element with that key, transforming a
-      # multiply-keyed collection into a uniquely-keyed collection. * Write the
-      # elements out to some data sink. (Note that the Dataflow service may be used to
-      # run many different types of jobs, not just Map-Reduce).
+      # Defines a particular step within a Cloud Dataflow job. A job consists of
+      # multiple steps, each of which performs some specific operation as part of the
+      # overall job. Data is typically passed from one step to another as part of the
+      # job. Here's an example of a sequence of steps which together implement a Map-
+      # Reduce job: * Read a collection of data from some source, parsing the
+      # collection's elements. * Validate the elements. * Apply a user-defined
+      # function to map each element to some value and extract an element-specific key
+      # value. * Group elements with the same key into a single element with that key,
+      # transforming a multiply-keyed collection into a uniquely-keyed collection. *
+      # Write the elements out to some data sink. Note that the Cloud Dataflow service
+      # may be used to run many different types of jobs, not just Map-Reduce.
       class Step
         include Google::Apis::Core::Hashable
       
-        # The kind of step in the dataflow Job.
+        # The kind of step in the Cloud Dataflow job.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name identifying the step. This must be unique for each step with respect to
-        # all other steps in the dataflow Job.
+        # The name that identifies the step. This must be unique for each step with
+        # respect to all other steps in the Cloud Dataflow job.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -860,8 +860,8 @@ module Google
         end
       end
       
-      # Additional information about how a Dataflow job will be executed which isn’t
-      # contained in the submitted job.
+      # Additional information about how a Cloud Dataflow job will be executed that
+      # isn't contained in the submitted job.
       class JobExecutionInfo
         include Google::Apis::Core::Hashable
       
@@ -901,8 +901,8 @@ module Google
         end
       end
       
-      # Response to a request to list Dataflow jobs. This may be a partial response,
-      # depending on the page size in the ListJobsRequest.
+      # Response to a request to list Cloud Dataflow jobs. This may be a partial
+      # response, depending on the page size in the ListJobsRequest.
       class ListJobsResponse
         include Google::Apis::Core::Hashable
       
@@ -933,8 +933,7 @@ module Google
         end
       end
       
-      # FailedLocation indicates which location failed to respond to a request for
-      # data.
+      # Indicates which location failed to respond to a request for data.
       class FailedLocation
         include Google::Apis::Core::Hashable
       
@@ -1166,19 +1165,30 @@ module Google
         end
       end
       
-      # Request to create a Dataflow job.
+      # A request to create a Cloud Dataflow job from a template.
       class CreateJobFromTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # A path to the serialized JSON representation of the job.
+        # Required. The job name to use for the created job.
+        # Corresponds to the JSON property `jobName`
+        # @return [String]
+        attr_accessor :job_name
+      
+        # Required. A Cloud Storage path to the template from which to create the job.
+        # Must be a valid Cloud Storage URL, beginning with `gs://`.
         # Corresponds to the JSON property `gcsPath`
         # @return [String]
         attr_accessor :gcs_path
       
-        # Dynamic parameterization of the job's runtime environment.
+        # The runtime parameters to pass to the job.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
+      
+        # The environment values to set at runtime.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
+        attr_accessor :environment
       
         def initialize(**args)
            update!(**args)
@@ -1186,8 +1196,59 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job_name = args[:job_name] if args.key?(:job_name)
           @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
+      # The environment values to set at runtime.
+      class RuntimeEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of Google Compute Engine instances to be made available to
+        # your pipeline during execution, from 1 to 1000.
+        # Corresponds to the JSON property `maxWorkers`
+        # @return [Fixnum]
+        attr_accessor :max_workers
+      
+        # The Compute Engine [availability zone](https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) for launching worker instances to run your
+        # pipeline.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        # The email address of the service account to run the job as.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # The Cloud Storage path to use for temporary files. Must be a valid Cloud
+        # Storage URL, beginning with `gs://`.
+        # Corresponds to the JSON property `tempLocation`
+        # @return [String]
+        attr_accessor :temp_location
+      
+        # Whether to bypass the safety checks for the job's temporary directory. Use
+        # with caution.
+        # Corresponds to the JSON property `bypassTempDirValidation`
+        # @return [Boolean]
+        attr_accessor :bypass_temp_dir_validation
+        alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_workers = args[:max_workers] if args.key?(:max_workers)
+          @zone = args[:zone] if args.key?(:zone)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @temp_location = args[:temp_location] if args.key?(:temp_location)
+          @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
         end
       end
       
@@ -1474,6 +1535,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::StringList]
         attr_accessor :string_list
       
+        # A metric value representing a distribution.
+        # Corresponds to the JSON property `distribution`
+        # @return [Google::Apis::DataflowV1b3::DistributionUpdate]
+        attr_accessor :distribution
+      
         # Value for internally-defined counters used by the Dataflow service.
         # Corresponds to the JSON property `internal`
         # @return [Object]
@@ -1497,6 +1563,7 @@ module Google
           @integer_list = args[:integer_list] if args.key?(:integer_list)
           @floating_point_list = args[:floating_point_list] if args.key?(:floating_point_list)
           @string_list = args[:string_list] if args.key?(:string_list)
+          @distribution = args[:distribution] if args.key?(:distribution)
           @internal = args[:internal] if args.key?(:internal)
         end
       end
@@ -1787,6 +1854,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @elements = args[:elements] if args.key?(:elements)
+        end
+      end
+      
+      # A metric value representing a distribution.
+      class DistributionUpdate
+        include Google::Apis::Core::Hashable
+      
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
+        # Corresponds to the JSON property `min`
+        # @return [Google::Apis::DataflowV1b3::SplitInt64]
+        attr_accessor :min
+      
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
+        # Corresponds to the JSON property `max`
+        # @return [Google::Apis::DataflowV1b3::SplitInt64]
+        attr_accessor :max
+      
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
+        # Corresponds to the JSON property `count`
+        # @return [Google::Apis::DataflowV1b3::SplitInt64]
+        attr_accessor :count
+      
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
+        # Corresponds to the JSON property `sum`
+        # @return [Google::Apis::DataflowV1b3::SplitInt64]
+        attr_accessor :sum
+      
+        # Use a double since the sum of squares is likely to overflow int64.
+        # Corresponds to the JSON property `sumOfSquares`
+        # @return [Float]
+        attr_accessor :sum_of_squares
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min = args[:min] if args.key?(:min)
+          @max = args[:max] if args.key?(:max)
+          @count = args[:count] if args.key?(:count)
+          @sum = args[:sum] if args.key?(:sum)
+          @sum_of_squares = args[:sum_of_squares] if args.key?(:sum_of_squares)
         end
       end
       
@@ -3426,6 +3540,12 @@ module Google
         # @return [String]
         attr_accessor :tracking_subscription
       
+        # If true, then the client has requested to get pubsub attributes.
+        # Corresponds to the JSON property `withAttributes`
+        # @return [Boolean]
+        attr_accessor :with_attributes
+        alias_method :with_attributes?, :with_attributes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3438,6 +3558,7 @@ module Google
           @id_label = args[:id_label] if args.key?(:id_label)
           @drop_late_data = args[:drop_late_data] if args.key?(:drop_late_data)
           @tracking_subscription = args[:tracking_subscription] if args.key?(:tracking_subscription)
+          @with_attributes = args[:with_attributes] if args.key?(:with_attributes)
         end
       end
       
@@ -3887,6 +4008,14 @@ module Google
         # @return [Google::Apis::DataflowV1b3::WorkerMessageCode]
         attr_accessor :worker_message_code
       
+        # Worker metrics exported from workers. This contains resource utilization
+        # metrics accumulated from a variety of sources. For more information, see go/df-
+        # resource-signals. Note that this proto closely follows the structure of its
+        # DFE siblings in its contents.
+        # Corresponds to the JSON property `workerMetrics`
+        # @return [Google::Apis::DataflowV1b3::ResourceUtilizationReport]
+        attr_accessor :worker_metrics
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3897,6 +4026,7 @@ module Google
           @time = args[:time] if args.key?(:time)
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
           @worker_message_code = args[:worker_message_code] if args.key?(:worker_message_code)
+          @worker_metrics = args[:worker_metrics] if args.key?(:worker_metrics)
         end
       end
       
@@ -3988,6 +4118,29 @@ module Google
         end
       end
       
+      # Worker metrics exported from workers. This contains resource utilization
+      # metrics accumulated from a variety of sources. For more information, see go/df-
+      # resource-signals. Note that this proto closely follows the structure of its
+      # DFE siblings in its contents.
+      class ResourceUtilizationReport
+        include Google::Apis::Core::Hashable
+      
+        # Each Struct must parallel DFE worker metrics protos (eg., cpu_time metric will
+        # have nested values “timestamp_ms, total_ms, rate”).
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
       # The response to the worker messages.
       class SendWorkerMessagesResponse
         include Google::Apis::Core::Hashable
@@ -4017,6 +4170,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::WorkerHealthReportResponse]
         attr_accessor :worker_health_report_response
       
+        # Service-side response to WorkerMessage reporting resource utilization.
+        # Corresponds to the JSON property `workerMetricsResponse`
+        # @return [Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse]
+        attr_accessor :worker_metrics_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4024,6 +4182,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @worker_health_report_response = args[:worker_health_report_response] if args.key?(:worker_health_report_response)
+          @worker_metrics_response = args[:worker_metrics_response] if args.key?(:worker_metrics_response)
         end
       end
       
@@ -4046,6 +4205,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @report_interval = args[:report_interval] if args.key?(:report_interval)
+        end
+      end
+      
+      # Service-side response to WorkerMessage reporting resource utilization.
+      class ResourceUtilizationReportResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

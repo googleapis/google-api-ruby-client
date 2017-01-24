@@ -1133,6 +1133,7 @@ module Google
           property :is_active, as: 'isActive'
           property :kind, as: 'kind'
           collection :languages, as: 'languages'
+          property :minimum_viewability_decile, as: 'minimumViewabilityDecile'
           collection :mobile_carriers, as: 'mobileCarriers'
           collection :mobile_devices, as: 'mobileDevices'
           collection :mobile_operating_system_versions, as: 'mobileOperatingSystemVersions'
@@ -1237,6 +1238,7 @@ module Google
       
           property :last_update_time_ms, as: 'lastUpdateTimeMs'
           property :legacy_offer_id, as: 'legacyOfferId'
+          property :marketplace_publisher_profile_id, as: 'marketplacePublisherProfileId'
           property :name, as: 'name'
           property :private_auction_id, as: 'privateAuctionId'
           property :product_id, as: 'productId'

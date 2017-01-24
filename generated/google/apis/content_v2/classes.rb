@@ -32,10 +32,11 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
-        # List of linked AdWords accounts, active or pending approval. To create a new
-        # link request, add a new link with status active to the list. It will remain is
-        # state pending until approved or rejected in the AdWords interface. To delete
-        # an active link or to cancel a link request, remove it from the list.
+        # List of linked AdWords accounts that are active or pending approval. To create
+        # a new link request, add a new link with status active to the list. It will
+        # remain in a pending state until approved or rejected either in the AdWords
+        # interface or through the  AdWords API. To delete an active link, or to cancel
+        # a link request, remove it from the list.
         # Corresponds to the JSON property `adwordsLinks`
         # @return [Array<Google::Apis::ContentV2::AccountAdwordsLink>]
         attr_accessor :adwords_links
@@ -3031,8 +3032,7 @@ module Google
         # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the Purchases on Google checkout
-        # flow.
+        # marketing right opt in/out checkbox during the checkout flow.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference
@@ -6607,8 +6607,7 @@ module Google
         # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the Purchases on Google checkout
-        # flow. Optional.
+        # marketing right opt in/out checkbox during the checkout flow. Optional.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference

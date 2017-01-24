@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetShare
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetShareListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssetSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -632,6 +644,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::AssetSnippet, decorator: Google::Apis::YoutubePartnerV1::AssetSnippet::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubePartnerV1::PageInfo, decorator: Google::Apis::YoutubePartnerV1::PageInfo::Representation
+      
+        end
+      end
+      
+      class AssetShare
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :share_id, as: 'shareId'
+          property :view_id, as: 'viewId'
+        end
+      end
+      
+      class AssetShareListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::AssetShare, decorator: Google::Apis::YoutubePartnerV1::AssetShare::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

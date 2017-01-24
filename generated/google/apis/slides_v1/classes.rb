@@ -683,7 +683,7 @@ module Google
         # @return [String]
         attr_accessor :presentation_id
       
-        # The layouts in the presentation.  A layout is a template that determines
+        # The layouts in the presentation. A layout is a template that determines
         # how content is arranged and styled on the slides that inherit from that
         # layout.
         # Corresponds to the JSON property `layouts`
@@ -1052,15 +1052,15 @@ module Google
         # @return [Google::Apis::SlidesV1::Dimension]
         attr_accessor :weight
       
-        # The style of the arrow at the beginning of the line.
-        # Corresponds to the JSON property `startArrow`
-        # @return [String]
-        attr_accessor :start_arrow
-      
         # The style of the arrow at the end of the line.
         # Corresponds to the JSON property `endArrow`
         # @return [String]
         attr_accessor :end_arrow
+      
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
       
         # The fill of the line.
         # Corresponds to the JSON property `lineFill`
@@ -1072,6 +1072,11 @@ module Google
         # @return [String]
         attr_accessor :dash_style
       
+        # The style of the arrow at the beginning of the line.
+        # Corresponds to the JSON property `startArrow`
+        # @return [String]
+        attr_accessor :start_arrow
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,10 +1084,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @weight = args[:weight] if args.key?(:weight)
-          @start_arrow = args[:start_arrow] if args.key?(:start_arrow)
           @end_arrow = args[:end_arrow] if args.key?(:end_arrow)
+          @link = args[:link] if args.key?(:link)
           @line_fill = args[:line_fill] if args.key?(:line_fill)
           @dash_style = args[:dash_style] if args.key?(:dash_style)
+          @start_arrow = args[:start_arrow] if args.key?(:start_arrow)
         end
       end
       
@@ -1540,7 +1546,7 @@ module Google
       end
       
       # Creates an embedded Google Sheets chart.
-      # NOTE: Chart creation requires  at least one of the spreadsheets.readonly,
+      # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
       # spreadsheets, drive.readonly, or drive OAuth scopes.
       class CreateSheetsChartRequest
         include Google::Apis::Core::Hashable
@@ -2001,6 +2007,46 @@ module Google
         end
       end
       
+      # Updates the properties of a Line.
+      class UpdateLinePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the line the update is applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The properties of the Line.
+        # When unset, these fields default to values that match the appearance of
+        # new lines created in the Slides editor.
+        # Corresponds to the JSON property `lineProperties`
+        # @return [Google::Apis::SlidesV1::LineProperties]
+        attr_accessor :line_properties
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `lineProperties` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the line solid fill color, set `fields` to
+        # `"lineFill.solidFill.color"`.
+        # To reset a property to its default value, include its field name in the
+        # field mask but leave the field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @line_properties = args[:line_properties] if args.key?(:line_properties)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
       # The table cell background fill.
       class TableCellBackgroundFill
         include Google::Apis::Core::Hashable
@@ -2259,7 +2305,7 @@ module Google
       end
       
       # Slide layout reference. This may reference either:
-      # - A predefined layout, or
+      # - A predefined layout
       # - One of the layouts in the presentation.
       class LayoutReference
         include Google::Apis::Core::Hashable
@@ -2662,6 +2708,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The rendered content of this auto text, if available.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2670,6 +2721,7 @@ module Google
         def update!(**args)
           @style = args[:style] if args.key?(:style)
           @type = args[:type] if args.key?(:type)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -2791,6 +2843,11 @@ module Google
         # @return [Google::Apis::SlidesV1::Outline]
         attr_accessor :outline
       
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
+      
         # The shape background fill.
         # Corresponds to the JSON property `shapeBackgroundFill`
         # @return [Google::Apis::SlidesV1::ShapeBackgroundFill]
@@ -2812,8 +2869,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @outline = args[:outline] if args.key?(:outline)
+          @link = args[:link] if args.key?(:link)
           @shape_background_fill = args[:shape_background_fill] if args.key?(:shape_background_fill)
           @shadow = args[:shadow] if args.key?(:shadow)
+        end
+      end
+      
+      # Creates a line.
+      class CreateLineRequest
+        include Google::Apis::Core::Hashable
+      
+        # A user-supplied object ID.
+        # If you specify an ID, it must be unique among all pages and page elements
+        # in the presentation. The ID must start with an alphanumeric character or an
+        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        # may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`).
+        # The length of the ID must not be less than 5 or greater than 50.
+        # If you don't specify an ID, a unique one is generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Common properties for a page element.
+        # Note: When you initially create a
+        # PageElement, the API may modify
+        # the values of both `size` and `transform`, but the
+        # visual size will be unchanged.
+        # Corresponds to the JSON property `elementProperties`
+        # @return [Google::Apis::SlidesV1::PageElementProperties]
+        attr_accessor :element_properties
+      
+        # The category of line to be created.
+        # Corresponds to the JSON property `lineCategory`
+        # @return [String]
+        attr_accessor :line_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @element_properties = args[:element_properties] if args.key?(:element_properties)
+          @line_category = args[:line_category] if args.key?(:line_category)
         end
       end
       
@@ -3176,6 +3276,11 @@ module Google
         # @return [Float]
         attr_accessor :contrast
       
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
+      
         # A recolor effect applied on an image.
         # Corresponds to the JSON property `recolor`
         # @return [Google::Apis::SlidesV1::Recolor]
@@ -3198,6 +3303,7 @@ module Google
           @shadow = args[:shadow] if args.key?(:shadow)
           @transparency = args[:transparency] if args.key?(:transparency)
           @contrast = args[:contrast] if args.key?(:contrast)
+          @link = args[:link] if args.key?(:link)
           @recolor = args[:recolor] if args.key?(:recolor)
           @brightness = args[:brightness] if args.key?(:brightness)
         end
@@ -3355,7 +3461,7 @@ module Google
         attr_accessor :insertion_index
       
         # Slide layout reference. This may reference either:
-        # - A predefined layout, or
+        # - A predefined layout
         # - One of the layouts in the presentation.
         # Corresponds to the JSON property `slideLayoutReference`
         # @return [Google::Apis::SlidesV1::LayoutReference]
@@ -3565,6 +3671,26 @@ module Google
         end
       end
       
+      # A PageElement kind representing
+      # word art.
+      class WordArt
+        include Google::Apis::Core::Hashable
+      
+        # The text rendered as word art.
+        # Corresponds to the JSON property `renderedText`
+        # @return [String]
+        attr_accessor :rendered_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_text = args[:rendered_text] if args.key?(:rendered_text)
+        end
+      end
+      
       # Specifies a contiguous range of an indexed collection, such as characters in
       # text.
       class Range
@@ -3596,26 +3722,6 @@ module Google
           @end_index = args[:end_index] if args.key?(:end_index)
           @start_index = args[:start_index] if args.key?(:start_index)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # A PageElement kind representing
-      # word art.
-      class WordArt
-        include Google::Apis::Core::Hashable
-      
-        # The text rendered as word art.
-        # Corresponds to the JSON property `renderedText`
-        # @return [String]
-        attr_accessor :rendered_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rendered_text = args[:rendered_text] if args.key?(:rendered_text)
         end
       end
       
@@ -3691,6 +3797,11 @@ module Google
         # @return [Google::Apis::SlidesV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
       
+        # Creates a line.
+        # Corresponds to the JSON property `createLine`
+        # @return [Google::Apis::SlidesV1::CreateLineRequest]
+        attr_accessor :create_line
+      
         # Update the styling of text in a Shape or
         # Table.
         # Corresponds to the JSON property `updateTextStyle`
@@ -3716,7 +3827,7 @@ module Google
         attr_accessor :refresh_sheets_chart
       
         # Creates an embedded Google Sheets chart.
-        # NOTE: Chart creation requires  at least one of the spreadsheets.readonly,
+        # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
         # spreadsheets, drive.readonly, or drive OAuth scopes.
         # Corresponds to the JSON property `createSheetsChart`
         # @return [Google::Apis::SlidesV1::CreateSheetsChartRequest]
@@ -3792,6 +3903,11 @@ module Google
         # @return [Google::Apis::SlidesV1::DeleteTableColumnRequest]
         attr_accessor :delete_table_column
       
+        # Updates the properties of a Line.
+        # Corresponds to the JSON property `updateLineProperties`
+        # @return [Google::Apis::SlidesV1::UpdateLinePropertiesRequest]
+        attr_accessor :update_line_properties
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3806,6 +3922,7 @@ module Google
           @update_video_properties = args[:update_video_properties] if args.key?(:update_video_properties)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
+          @create_line = args[:create_line] if args.key?(:create_line)
           @update_text_style = args[:update_text_style] if args.key?(:update_text_style)
           @insert_table_rows = args[:insert_table_rows] if args.key?(:insert_table_rows)
           @update_table_cell_properties = args[:update_table_cell_properties] if args.key?(:update_table_cell_properties)
@@ -3824,6 +3941,7 @@ module Google
           @create_image = args[:create_image] if args.key?(:create_image)
           @duplicate_object = args[:duplicate_object] if args.key?(:duplicate_object)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
+          @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
         end
       end
       

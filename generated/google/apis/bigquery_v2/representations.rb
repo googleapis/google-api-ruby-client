@@ -490,6 +490,7 @@ module Google
           property :read_ratio_max, as: 'readRatioMax'
           property :records_read, as: 'recordsRead'
           property :records_written, as: 'recordsWritten'
+          property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
       
           property :wait_ratio_avg, as: 'waitRatioAvg'
@@ -627,6 +628,7 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
+          property :null_marker, as: 'nullMarker'
           collection :projection_fields, as: 'projectionFields'
           property :quote, as: 'quote'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
@@ -751,6 +753,7 @@ module Google
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
+          property :statement_type, as: 'statementType'
           property :total_bytes_billed, as: 'totalBytesBilled'
           property :total_bytes_processed, as: 'totalBytesProcessed'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
@@ -921,6 +924,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :last_modified_time, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :num_bytes, as: 'numBytes'
@@ -1027,6 +1031,7 @@ module Google
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'
+            hash :labels, as: 'labels'
             property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
         
             property :type, as: 'type'

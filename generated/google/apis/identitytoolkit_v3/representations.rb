@@ -343,6 +343,7 @@ module Google
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
+          property :target_project_id, as: 'targetProjectId'
         end
       end
       

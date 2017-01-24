@@ -664,6 +664,12 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::ReportRow>]
         attr_accessor :rows
       
+        # The last time the data in the report was refreshed. All the hits received
+        # before this timestamp are included in the calculation of the report.
+        # Corresponds to the JSON property `dataLastRefreshed`
+        # @return [String]
+        attr_accessor :data_last_refreshed
+      
         # For each requested date range, for the set of all rows that match
         # the query, every requested value format gets a total. The total
         # for a value format is computed by first totaling the metrics
@@ -696,6 +702,7 @@ module Google
           @samples_read_counts = args[:samples_read_counts] if args.key?(:samples_read_counts)
           @minimums = args[:minimums] if args.key?(:minimums)
           @rows = args[:rows] if args.key?(:rows)
+          @data_last_refreshed = args[:data_last_refreshed] if args.key?(:data_last_refreshed)
           @totals = args[:totals] if args.key?(:totals)
           @is_data_golden = args[:is_data_golden] if args.key?(:is_data_golden)
         end

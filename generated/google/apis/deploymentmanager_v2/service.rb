@@ -98,6 +98,8 @@ module Google
         #   The project ID for this request.
         # @param [String] deployment
         #   The name of the deployment for this request.
+        # @param [String] delete_policy
+        #   Sets the policy to use for deleting resources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,12 +121,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_deployment(project, deployment, delete_policy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/deployments/{deployment}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::Operation
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
+          command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

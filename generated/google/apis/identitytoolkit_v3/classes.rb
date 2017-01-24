@@ -432,6 +432,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Specify which project (field value is actually project id) to operate. Only
+        # used when provided credential.
+        # Corresponds to the JSON property `targetProjectId`
+        # @return [String]
+        attr_accessor :target_project_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -441,6 +447,7 @@ module Google
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @max_results = args[:max_results] if args.key?(:max_results)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
         end
       end
       

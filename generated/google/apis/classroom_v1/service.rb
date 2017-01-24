@@ -743,9 +743,10 @@ module Google
         # must be made with an OAuth client ID from the associated Developer Console
         # project. This method returns the following error codes: * `PERMISSION_DENIED`
         # if the requesting user is not permitted to access the requested course, create
-        # course work in the requested course, or for access errors. * `INVALID_ARGUMENT`
-        # if the request is malformed. * `NOT_FOUND` if the requested course does not
-        # exist.
+        # course work in the requested course, share a Drive attachment, or for access
+        # errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+        # requested course does not exist. * `FAILED_PRECONDITION` for the following
+        # request error: * AttachmentNotVisible
         # @param [String] course_id
         #   Identifier of the course. This identifier can be either the Classroom-assigned
         #   identifier or an alias.
@@ -774,6 +775,105 @@ module Google
           command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
           command.response_class = Google::Apis::ClassroomV1::CourseWork
           command.params['courseId'] = course_id unless course_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates one or more fields of a course work. See google.classroom.v1.
+        # CourseWork for details of which fields may be updated and who may change them.
+        # This request must be made by the Developer Console project of the [OAuth
+        # client ID](https://support.google.com/cloud/answer/6158849) used to create the
+        # corresponding course work item. This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project did not create the
+        # corresponding course work, if the user is not permitted to make the requested
+        # modification to the student submission, or for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the
+        # requested course work has already been deleted. * `NOT_FOUND` if the requested
+        # course, course work, or student submission does not exist.
+        # @param [String] course_id
+        #   Identifier of the course. This identifier can be either the Classroom-assigned
+        #   identifier or an alias.
+        # @param [String] id
+        #   Identifier of the course work.
+        # @param [Google::Apis::ClassroomV1::CourseWork] course_work_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields on the course work to update. This field is
+        #   required to do an update. The update fails if invalid fields are specified. If
+        #   a field supports empty values, it can be cleared by specifying it in the
+        #   update mask and not in the CourseWork object. If a field that does not support
+        #   empty values is included in the update mask and not set in the CourseWork
+        #   object, an `INVALID_ARGUMENT` error will be returned. The following fields may
+        #   be specified by teachers: * `title` * `description` * `state` * `due_date` * `
+        #   due_time` * `max_points` * `submission_modification_mode`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::CourseWork] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::CourseWork]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work(course_id, id, course_work_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{id}', options)
+          command.request_representation = Google::Apis::ClassroomV1::CourseWork::Representation
+          command.request_object = course_work_object
+          command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
+          command.response_class = Google::Apis::ClassroomV1::CourseWork
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a course work. This request must be made by the Developer Console
+        # project of the [OAuth client ID](https://support.google.com/cloud/answer/
+        # 6158849) used to create the corresponding course work item. This method
+        # returns the following error codes: * `PERMISSION_DENIED` if the requesting
+        # developer project did not create the corresponding course work, if the
+        # requesting user is not permitted to delete the requested course or for access
+        # errors. * `FAILED_PRECONDITION` if the requested course work has already been
+        # deleted. * `NOT_FOUND` if no course exists with the requested ID.
+        # @param [String] course_id
+        #   Identifier of the course. This identifier can be either the Classroom-assigned
+        #   identifier or an alias.
+        # @param [String] id
+        #   Identifier of the course work to delete. This identifier is a Classroom-
+        #   assigned identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_course_work(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/courses/{courseId}/courseWork/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1091,7 +1191,7 @@ module Google
         
         # Reclaims a student submission on behalf of the student that owns it.
         # Reclaiming a student submission transfers ownership of attached Drive files to
-        # the student and update the submission state. Only the student that ownes the
+        # the student and update the submission state. Only the student that owns the
         # requested student submission may call this method, and only for a student
         # submission that has been turned in. This request must be made by the Developer
         # Console project of the [OAuth client ID](https://support.google.com/cloud/
@@ -1194,15 +1294,15 @@ module Google
         end
         
         # Modifies attachments of student submission. Attachments may only be added to
-        # student submissions whose type is `ASSIGNMENT`. This request must be made by
-        # the Developer Console project of the [OAuth client ID](https://support.google.
-        # com/cloud/answer/6158849) used to create the corresponding course work item.
-        # This method returns the following error codes: * `PERMISSION_DENIED` if the
-        # requesting user is not permitted to access the requested course or course work,
-        # if the user is not permitted to modify attachments on the requested student
-        # submission, or for access errors. * `INVALID_ARGUMENT` if the request is
-        # malformed. * `NOT_FOUND` if the requested course, course work, or student
-        # submission does not exist.
+        # student submissions belonging to course work objects with a `workType` of `
+        # ASSIGNMENT`. This request must be made by the Developer Console project of the
+        # [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the corresponding course work item. This method returns the following
+        # error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
+        # access the requested course or course work, if the user is not permitted to
+        # modify attachments on the requested student submission, or for access errors. *
+        # `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+        # requested course, course work, or student submission does not exist.
         # @param [String] course_id
         #   Identifier of the course. This identifier can be either the Classroom-assigned
         #   identifier or an alias.
@@ -1244,7 +1344,7 @@ module Google
         
         # Returns a user profile. This method returns the following error codes: * `
         # PERMISSION_DENIED` if the requesting user is not permitted to access this user
-        # profile or if no profile exists with the requested ID or for access errors.
+        # profile, if no profile exists with the requested ID, or for access errors.
         # @param [String] user_id
         #   Identifier of the profile to return. The identifier can be one of the
         #   following: * the numeric identifier for the user * the email address of the
@@ -1554,13 +1654,15 @@ module Google
         end
         
         # Returns a specific guardian. This method returns the following error codes: * `
-        # PERMISSION_DENIED` if the requesting user is not permitted to view guardian
-        # information for the student identified by the `student_id`, if guardians are
-        # not enabled for the domain in question, or for other access errors. * `
-        # INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be
-        # recognized (it is not an email address, nor a `student_id` from the API, nor
-        # the literal string `me`). * `NOT_FOUND` if Classroom cannot find any record of
-        # the given student or `guardian_id`, or if the guardian has been disabled.
+        # PERMISSION_DENIED` if no user that matches the provided `student_id` is
+        # visible to the requesting user, if the requesting user is not permitted to
+        # view guardian information for the student identified by the `student_id`, if
+        # guardians are not enabled for the domain in question, or for other access
+        # errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format
+        # cannot be recognized (it is not an email address, nor a `student_id` from the
+        # API, nor the literal string `me`). * `NOT_FOUND` if the requesting user is
+        # permitted to view guardians for the requested `student_id`, but no `Guardian`
+        # record exists for that student that matches the provided `guardian_id`.
         # @param [String] student_id
         #   The student whose guardian is being requested. One of the following: * the
         #   numeric identifier for the user * the email address of the user * the string
@@ -1597,13 +1699,15 @@ module Google
         
         # Deletes a guardian. The guardian will no longer receive guardian notifications
         # and the guardian will no longer be accessible via the API. This method returns
-        # the following error codes: * `PERMISSION_DENIED` if the requesting user is not
-        # permitted to manage guardians for the student identified by the `student_id`,
-        # if guardians are not enabled for the domain in question, or for other access
-        # errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format
-        # cannot be recognized (it is not an email address, nor a `student_id` from the
-        # API). * `NOT_FOUND` if Classroom cannot find any record of the given `
-        # student_id` or `guardian_id`, or if the guardian has already been disabled.
+        # the following error codes: * `PERMISSION_DENIED` if no user that matches the
+        # provided `student_id` is visible to the requesting user, if the requesting
+        # user is not permitted to manage guardians for the student identified by the `
+        # student_id`, if guardians are not enabled for the domain in question, or for
+        # other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but
+        # its format cannot be recognized (it is not an email address, nor a `student_id`
+        # from the API). * `NOT_FOUND` if the requesting user is permitted to modify
+        # guardians for the requested `student_id`, but no `Guardian` record exists for
+        # that student with the provided `guardian_id`.
         # @param [String] student_id
         #   The student whose guardian is to be deleted. One of the following: * the
         #   numeric identifier for the user * the email address of the user * the string

@@ -774,6 +774,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Modifies the labels on the specified messages.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::BatchModifyMessagesRequest] batch_modify_messages_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_modify_messages(user_id, batch_modify_messages_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/messages/batchModify', options)
+          command.request_representation = Google::Apis::GmailV1::BatchModifyMessagesRequest::Representation
+          command.request_object = batch_modify_messages_request_object
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Immediately and permanently deletes the specified message. This operation
         # cannot be undone. Prefer messages.trash instead.
         # @param [String] user_id
@@ -997,7 +1034,8 @@ module Google
         # @param [String] q
         #   Only return messages matching the specified query. Supports the same query
         #   format as the Gmail search box. For example, "from:someuser@example.com
-        #   rfc822msgid: is:unread".
+        #   rfc822msgid: is:unread". Parameter cannot be used when accessing the api using
+        #   the gmail.metadata scope.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2236,7 +2274,8 @@ module Google
         # @param [String] q
         #   Only return threads matching the specified query. Supports the same query
         #   format as the Gmail search box. For example, "from:someuser@example.com
-        #   rfc822msgid: is:unread".
+        #   rfc822msgid: is:unread". Parameter cannot be used when accessing the api using
+        #   the gmail.metadata scope.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

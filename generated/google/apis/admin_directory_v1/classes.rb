@@ -2400,6 +2400,18 @@ module Google
         attr_accessor :is_delegated_admin
         alias_method :is_delegated_admin?, :is_delegated_admin
       
+        # Is 2-step verification enforced (Read-only)
+        # Corresponds to the JSON property `isEnforcedIn2Sv`
+        # @return [Boolean]
+        attr_accessor :is_enforced_in2_sv
+        alias_method :is_enforced_in2_sv?, :is_enforced_in2_sv
+      
+        # Is enrolled in 2-step verification (Read-only)
+        # Corresponds to the JSON property `isEnrolledIn2Sv`
+        # @return [Boolean]
+        attr_accessor :is_enrolled_in2_sv
+        alias_method :is_enrolled_in2_sv?, :is_enrolled_in2_sv
+      
         # Is mailbox setup (Read-only)
         # Corresponds to the JSON property `isMailboxSetup`
         # @return [Boolean]
@@ -2511,6 +2523,8 @@ module Google
           @ip_whitelisted = args[:ip_whitelisted] if args.key?(:ip_whitelisted)
           @is_admin = args[:is_admin] if args.key?(:is_admin)
           @is_delegated_admin = args[:is_delegated_admin] if args.key?(:is_delegated_admin)
+          @is_enforced_in2_sv = args[:is_enforced_in2_sv] if args.key?(:is_enforced_in2_sv)
+          @is_enrolled_in2_sv = args[:is_enrolled_in2_sv] if args.key?(:is_enrolled_in2_sv)
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
           @kind = args[:kind] if args.key?(:kind)
           @last_login_time = args[:last_login_time] if args.key?(:last_login_time)

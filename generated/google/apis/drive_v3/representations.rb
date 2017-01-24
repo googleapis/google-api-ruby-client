@@ -303,6 +303,7 @@ module Google
           property :file_extension, as: 'fileExtension'
           property :folder_color_rgb, as: 'folderColorRgb'
           property :full_file_extension, as: 'fullFileExtension'
+          property :has_thumbnail, as: 'hasThumbnail'
           property :head_revision_id, as: 'headRevisionId'
           property :icon_link, as: 'iconLink'
           property :id, as: 'id'
@@ -338,6 +339,7 @@ module Google
           collection :spaces, as: 'spaces'
           property :starred, as: 'starred'
           property :thumbnail_link, as: 'thumbnailLink'
+          property :thumbnail_version, as: 'thumbnailVersion'
           property :trashed, as: 'trashed'
           property :version, as: 'version'
           property :video_media_metadata, as: 'videoMediaMetadata', class: Google::Apis::DriveV3::File::VideoMediaMetadata, decorator: Google::Apis::DriveV3::File::VideoMediaMetadata::Representation

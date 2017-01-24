@@ -31,9 +31,7 @@ module Google
         # automatically detected). Both ISO and BCP-47 language codes are
         # accepted.<br>
         # **Current Language Restrictions:**
-        # * Only English, Spanish, and Japanese textual content
-        # are supported, with the following additional restriction:
-        # * `analyzeSentiment` only supports English text.
+        # * Only English, Spanish, and Japanese textual content are supported.
         # If the language (either specified by the caller or automatically detected)
         # is not supported by the called API method, an `INVALID_ARGUMENT` error
         # is returned.
@@ -42,6 +40,9 @@ module Google
         attr_accessor :language
       
         # The Google Cloud Storage URI where the file content is located.
+        # This URI must be of the form: gs://bucket_name/object_name. For more
+        # details, see https://cloud.google.com/storage/docs/reference-uris.
+        # NOTE: Cloud Storage object versioning is not supported.
         # Corresponds to the JSON property `gcsContentUri`
         # @return [String]
         attr_accessor :gcs_content_uri
@@ -204,6 +205,11 @@ module Google
         # @return [Google::Apis::LanguageV1beta1::TextSpan]
         attr_accessor :text
       
+        # The type of the entity mention.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -211,6 +217,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -224,6 +231,12 @@ module Google
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
       
+        # The encoding type used by the API to calculate sentence offsets for the
+        # sentence sentiment.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -231,6 +244,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
         end
       end
       
@@ -250,6 +264,11 @@ module Google
         # @return [String]
         attr_accessor :language
       
+        # The sentiment for all the sentences in the document.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
         def initialize(**args)
            update!(**args)
         end
@@ -258,6 +277,33 @@ module Google
         def update!(**args)
           @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
           @language = args[:language] if args.key?(:language)
+          @sentences = args[:sentences] if args.key?(:sentences)
+        end
+      end
+      
+      # The syntax analysis request message.
+      class AnalyzeSyntaxRequest
+        include Google::Apis::Core::Hashable
+      
+        # ################################################################ #
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1beta1::Document]
+        attr_accessor :document
+      
+        # The encoding type used by the API to calculate offsets.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
         end
       end
       
@@ -287,6 +333,39 @@ module Google
         def update!(**args)
           @head_token_index = args[:head_token_index] if args.key?(:head_token_index)
           @label = args[:label] if args.key?(:label)
+        end
+      end
+      
+      # The syntax analysis response message.
+      class AnalyzeSyntaxResponse
+        include Google::Apis::Core::Hashable
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Tokens, along with their syntactic information, in the input document.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
+        attr_accessor :tokens
+      
+        # Sentences in the input document.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @tokens = args[:tokens] if args.key?(:tokens)
+          @sentences = args[:sentences] if args.key?(:sentences)
         end
       end
       
@@ -333,6 +412,12 @@ module Google
         # @return [Google::Apis::LanguageV1beta1::TextSpan]
         attr_accessor :text
       
+        # Represents the feeling associated with the entire text or entities in
+        # the text.
+        # Corresponds to the JSON property `sentiment`
+        # @return [Google::Apis::LanguageV1beta1::Sentiment]
+        attr_accessor :sentiment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -340,6 +425,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+          @sentiment = args[:sentiment] if args.key?(:sentiment)
         end
       end
       
@@ -382,10 +468,65 @@ module Google
       class PartOfSpeech
         include Google::Apis::Core::Hashable
       
+        # The grammatical aspect.
+        # Corresponds to the JSON property `aspect`
+        # @return [String]
+        attr_accessor :aspect
+      
+        # The grammatical gender.
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
+        # The grammatical person.
+        # Corresponds to the JSON property `person`
+        # @return [String]
+        attr_accessor :person
+      
+        # The grammatical case.
+        # Corresponds to the JSON property `case`
+        # @return [String]
+        attr_accessor :case
+      
+        # The grammatical form.
+        # Corresponds to the JSON property `form`
+        # @return [String]
+        attr_accessor :form
+      
+        # The grammatical tense.
+        # Corresponds to the JSON property `tense`
+        # @return [String]
+        attr_accessor :tense
+      
+        # The grammatical properness.
+        # Corresponds to the JSON property `proper`
+        # @return [String]
+        attr_accessor :proper
+      
+        # The grammatical mood.
+        # Corresponds to the JSON property `mood`
+        # @return [String]
+        attr_accessor :mood
+      
         # The part of speech tag.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
+      
+        # The grammatical number.
+        # Corresponds to the JSON property `number`
+        # @return [String]
+        attr_accessor :number
+      
+        # The grammatical reciprocity.
+        # Corresponds to the JSON property `reciprocity`
+        # @return [String]
+        attr_accessor :reciprocity
+      
+        # The grammatical voice.
+        # Corresponds to the JSON property `voice`
+        # @return [String]
+        attr_accessor :voice
       
         def initialize(**args)
            update!(**args)
@@ -393,7 +534,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aspect = args[:aspect] if args.key?(:aspect)
+          @gender = args[:gender] if args.key?(:gender)
+          @person = args[:person] if args.key?(:person)
+          @case = args[:case] if args.key?(:case)
+          @form = args[:form] if args.key?(:form)
+          @tense = args[:tense] if args.key?(:tense)
+          @proper = args[:proper] if args.key?(:proper)
+          @mood = args[:mood] if args.key?(:mood)
           @tag = args[:tag] if args.key?(:tag)
+          @number = args[:number] if args.key?(:number)
+          @reciprocity = args[:reciprocity] if args.key?(:reciprocity)
+          @voice = args[:voice] if args.key?(:voice)
         end
       end
       
@@ -455,8 +607,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Metadata associated with the entity.
-        # Currently, only Wikipedia URLs are provided, if available.
-        # The associated key is "wikipedia_url".
+        # Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if
+        # available. The associated keys are "wikipedia_url" and "mid", respectively.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
@@ -505,6 +657,12 @@ module Google
       class Sentiment
         include Google::Apis::Core::Hashable
       
+        # Sentiment score between -1.0 (negative sentiment) and 1.0
+        # (positive sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         # DEPRECATED FIELD - This field is being deprecated in
         # favor of score. Please refer to our documentation at
         # https://cloud.google.com/natural-language/docs for more information.
@@ -513,7 +671,7 @@ module Google
         attr_accessor :polarity
       
         # A non-negative number in the [0, +inf) range, which represents
-        # the absolute magnitude of sentiment regardless of polarity (positive or
+        # the absolute magnitude of sentiment regardless of score (positive or
         # negative).
         # Corresponds to the JSON property `magnitude`
         # @return [Float]
@@ -525,6 +683,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @score = args[:score] if args.key?(:score)
           @polarity = args[:polarity] if args.key?(:polarity)
           @magnitude = args[:magnitude] if args.key?(:magnitude)
         end
@@ -549,8 +708,7 @@ module Google
         # @return [Google::Apis::LanguageV1beta1::DependencyEdge]
         attr_accessor :dependency_edge
       
-        # [Lemma](https://en.wikipedia.org/wiki/Lemma_(morphology))
-        # of the token.
+        # [Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.
         # Corresponds to the JSON property `lemma`
         # @return [String]
         attr_accessor :lemma

@@ -28,6 +28,33 @@ module Samples
   class Gmail < BaseCli
     Gmail = Google::Apis::GmailV1
 
+    desc 'get ID', 'Get a message for an id with the gmail API'
+    def get(id)
+      gmail = Gmail::GmailService.new
+      gmail.authorization = user_credentials_for(Gmail::AUTH_SCOPE)
+
+      result = gmail.get_user_message('me', id)
+      payload = result.payload
+      headers = payload.headers
+
+      date = headers.any? { |h| h.name == 'Date' } ? headers.find { |h| h.name == 'Date' }.value : ''
+      from = headers.any? { |h| h.name == 'From' } ? headers.find { |h| h.name == 'From' }.value : ''
+      to = headers.any? { |h| h.name == 'To' } ? headers.find { |h| h.name == 'To' }.value : ''
+      subject = headers.any? { |h| h.name == 'Subject' } ? headers.find { |h| h.name == 'Subject' }.value : ''
+
+      body = payload.body.data
+      if body.nil? && payload.parts.any?
+        body = payload.parts.map { |part| part.body.data }.join
+      end
+
+      puts "id: #{result.id}"
+      puts "date: #{date}"
+      puts "from: #{from}"
+      puts "to: #{to}"
+      puts "subject: #{subject}"
+      puts "body: #{body}"
+    end
+
     desc 'send TEXT', 'Send a message with the gmail API'
     method_option :to, type: :string, required: true
     method_option :from, type: :string, required: true
@@ -45,6 +72,53 @@ module Samples
       gmail.send_user_message('me',
                               upload_source: StringIO.new(message.to_s),
                               content_type: 'message/rfc822')
+    end
+
+    desc 'list', 'list messages with the gmail API'
+    method_option :limit, type: :numeric, default: 100
+    def list
+      gmail = Gmail::GmailService.new
+      gmail.authorization = user_credentials_for(Gmail::AUTH_SCOPE)
+
+      messages = []
+      next_page = nil
+      begin
+        result = gmail.list_user_messages('me', max_results: [options[:limit], 500].min, page_token: next_page)
+        messages += result.messages
+        break if messages.size >= options[:limit]
+        next_page = result.next_page_token
+      end while next_page
+
+      puts "Found #{messages.size} messages"
+    end
+
+    desc 'search QUERY', 'Search messages matching the specified query with the gmail API'
+    method_option :limit, type: :numeric, default: 100
+    def search(query)
+      gmail = Gmail::GmailService.new
+      gmail.authorization = user_credentials_for(Gmail::AUTH_SCOPE)
+
+      ids =
+        gmail.fetch_all(max: options[:limit], items: :messages) do |token|
+          gmail.list_user_messages('me', max_results: [options[:limit], 500].min, q: query, page_token: token)
+        end.map(&:id)
+
+      callback = lambda do |result, err|
+        if err
+          puts "error: #{err.inspect}"
+        else
+          headers = result.payload.headers
+          date = headers.any? { |h| h.name == 'Date' } ? headers.find { |h| h.name == 'Date' }.value : ''
+          subject = headers.any? { |h| h.name == 'Subject' } ? headers.find { |h| h.name == 'Subject' }.value : ''
+          puts "#{result.id}, #{date}, #{subject}"
+        end
+      end
+
+      ids.each_slice(1000) do |ids_array|
+        gmail.batch do |gm|
+          ids_array.each { |id| gm.get_user_message('me', id, &callback) }
+        end
+      end
     end
   end
 end

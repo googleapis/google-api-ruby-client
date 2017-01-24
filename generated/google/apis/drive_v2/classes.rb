@@ -588,7 +588,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of apps.
+        # The list of apps.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::App>]
         attr_accessor :items
@@ -682,7 +682,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of changes.
+        # The list of changes. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::Change>]
         attr_accessor :items
@@ -702,7 +703,10 @@ module Google
         # @return [String]
         attr_accessor :next_link
       
-        # The page token for the next page of changes.
+        # The page token for the next page of changes. This will be absent if the end of
+        # the changes list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -815,7 +819,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of children.
+        # The list of children. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::ChildReference>]
         attr_accessor :items
@@ -830,7 +835,10 @@ module Google
         # @return [String]
         attr_accessor :next_link
       
-        # The page token for the next page of children.
+        # The page token for the next page of children. This will be absent if the end
+        # of the children list has been reached. If the token is rejected for any reason,
+        # it should be discarded, and pagination should be restarted from the first
+        # page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1034,7 +1042,8 @@ module Google
       class CommentList
         include Google::Apis::Core::Hashable
       
-        # List of comments.
+        # The list of comments. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::Comment>]
         attr_accessor :items
@@ -1049,7 +1058,10 @@ module Google
         # @return [String]
         attr_accessor :next_link
       
-        # The token to use to request the next page of results.
+        # The page token for the next page of comments. This will be absent if the end
+        # of the comments list has been reached. If the token is rejected for any reason,
+        # it should be discarded, and pagination should be restarted from the first
+        # page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1152,7 +1164,8 @@ module Google
       class CommentReplyList
         include Google::Apis::Core::Hashable
       
-        # List of reply.
+        # The list of replies. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::CommentReply>]
         attr_accessor :items
@@ -1167,7 +1180,10 @@ module Google
         # @return [String]
         attr_accessor :next_link
       
-        # The token to use to request the next page of results.
+        # The page token for the next page of replies. This will be absent if the end of
+        # the replies list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1303,6 +1319,12 @@ module Google
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
+      
+        # Whether this file has a thumbnail.
+        # Corresponds to the JSON property `hasThumbnail`
+        # @return [Boolean]
+        attr_accessor :has_thumbnail
+        alias_method :has_thumbnail?, :has_thumbnail
       
         # The ID of the file's head revision. This field is only populated for files
         # with content stored in Drive; it is not populated for Google Docs or shortcut
@@ -1481,17 +1503,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :spaces
       
-        # Thumbnail for the file. Only accepted on upload and for files that are not
-        # already thumbnailed by Google.
+        # A thumbnail for the file. This will only be used if Drive cannot generate a
+        # standard thumbnail.
         # Corresponds to the JSON property `thumbnail`
         # @return [Google::Apis::DriveV2::File::Thumbnail]
         attr_accessor :thumbnail
       
         # A short-lived link to the file's thumbnail. Typically lasts on the order of
-        # hours.
+        # hours. Only populated when the requesting app can access the file's content.
         # Corresponds to the JSON property `thumbnailLink`
         # @return [String]
         attr_accessor :thumbnail_link
+      
+        # The thumbnail version for use in thumbnail cache invalidation.
+        # Corresponds to the JSON property `thumbnailVersion`
+        # @return [String]
+        attr_accessor :thumbnail_version
       
         # The title of this file.
         # Corresponds to the JSON property `title`
@@ -1558,6 +1585,7 @@ module Google
           @file_size = args[:file_size] if args.key?(:file_size)
           @folder_color_rgb = args[:folder_color_rgb] if args.key?(:folder_color_rgb)
           @full_file_extension = args[:full_file_extension] if args.key?(:full_file_extension)
+          @has_thumbnail = args[:has_thumbnail] if args.key?(:has_thumbnail)
           @head_revision_id = args[:head_revision_id] if args.key?(:head_revision_id)
           @icon_link = args[:icon_link] if args.key?(:icon_link)
           @id = args[:id] if args.key?(:id)
@@ -1591,6 +1619,7 @@ module Google
           @spaces = args[:spaces] if args.key?(:spaces)
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
           @thumbnail_link = args[:thumbnail_link] if args.key?(:thumbnail_link)
+          @thumbnail_version = args[:thumbnail_version] if args.key?(:thumbnail_version)
           @title = args[:title] if args.key?(:title)
           @user_permission = args[:user_permission] if args.key?(:user_permission)
           @version = args[:version] if args.key?(:version)
@@ -1849,8 +1878,8 @@ module Google
           end
         end
         
-        # Thumbnail for the file. Only accepted on upload and for files that are not
-        # already thumbnailed by Google.
+        # A thumbnail for the file. This will only be used if Drive cannot generate a
+        # standard thumbnail.
         class Thumbnail
           include Google::Apis::Core::Hashable
         
@@ -1917,7 +1946,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of files.
+        # The list of files. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::File>]
         attr_accessor :items
@@ -1932,7 +1962,10 @@ module Google
         # @return [String]
         attr_accessor :next_link
       
-        # The page token for the next page of files.
+        # The page token for the next page of files. This will be absent if the end of
+        # the files list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1997,7 +2030,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of parents.
+        # The list of parents.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
         attr_accessor :items
@@ -2108,7 +2141,7 @@ module Google
         # The ID of the user this permission refers to, and identical to the
         # permissionId in the About and Files resources. When making a drive.permissions.
         # insert request, exactly one of the id or value fields must be specified unless
-        # the permission type anyone, in which case both id and value are ignored.
+        # the permission type is anyone, in which case both id and value are ignored.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2153,7 +2186,7 @@ module Google
         # The email address or domain name for the entity. This is used during inserts
         # and is not populated in responses. When making a drive.permissions.insert
         # request, exactly one of the id or value fields must be specified unless the
-        # permission type anyone, in which case both id and value are ignored.
+        # permission type is anyone, in which case both id and value are ignored.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2222,7 +2255,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of permissions.
+        # The list of permissions.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::Permission>]
         attr_accessor :items
@@ -2488,7 +2521,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The actual list of revisions.
+        # The list of revisions. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DriveV2::Revision>]
         attr_accessor :items

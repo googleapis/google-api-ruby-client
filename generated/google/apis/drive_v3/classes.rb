@@ -179,7 +179,8 @@ module Google
       class ChangeList
         include Google::Apis::Core::Hashable
       
-        # The page of changes.
+        # The list of changes. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `changes`
         # @return [Array<Google::Apis::DriveV3::Change>]
         attr_accessor :changes
@@ -197,7 +198,9 @@ module Google
         attr_accessor :new_start_page_token
       
         # The page token for the next page of changes. This will be absent if the end of
-        # the current changes list has been reached.
+        # the changes list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -418,7 +421,8 @@ module Google
       class CommentList
         include Google::Apis::Core::Hashable
       
-        # The page of comments.
+        # The list of comments. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::DriveV3::Comment>]
         attr_accessor :comments
@@ -430,7 +434,9 @@ module Google
         attr_accessor :kind
       
         # The page token for the next page of comments. This will be absent if the end
-        # of the comments list has been reached.
+        # of the comments list has been reached. If the token is rejected for any reason,
+        # it should be discarded, and pagination should be restarted from the first
+        # page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -508,6 +514,12 @@ module Google
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
+      
+        # Whether this file has a thumbnail.
+        # Corresponds to the JSON property `hasThumbnail`
+        # @return [Boolean]
+        attr_accessor :has_thumbnail
+        alias_method :has_thumbnail?, :has_thumbnail
       
         # The ID of the file's head revision. This is currently only available for files
         # with binary content in Drive.
@@ -666,10 +678,16 @@ module Google
         alias_method :starred?, :starred
       
         # A short-lived link to the file's thumbnail, if available. Typically lasts on
-        # the order of hours.
+        # the order of hours. Only populated when the requesting app can access the file'
+        # s content.
         # Corresponds to the JSON property `thumbnailLink`
         # @return [String]
         attr_accessor :thumbnail_link
+      
+        # The thumbnail version for use in thumbnail cache invalidation.
+        # Corresponds to the JSON property `thumbnailVersion`
+        # @return [String]
+        attr_accessor :thumbnail_version
       
         # Whether the file has been trashed, either explicitly or from a trashed parent
         # folder. Only the owner may trash a file, and other users cannot see files in
@@ -741,6 +759,7 @@ module Google
           @file_extension = args[:file_extension] if args.key?(:file_extension)
           @folder_color_rgb = args[:folder_color_rgb] if args.key?(:folder_color_rgb)
           @full_file_extension = args[:full_file_extension] if args.key?(:full_file_extension)
+          @has_thumbnail = args[:has_thumbnail] if args.key?(:has_thumbnail)
           @head_revision_id = args[:head_revision_id] if args.key?(:head_revision_id)
           @icon_link = args[:icon_link] if args.key?(:icon_link)
           @id = args[:id] if args.key?(:id)
@@ -768,6 +787,7 @@ module Google
           @spaces = args[:spaces] if args.key?(:spaces)
           @starred = args[:starred] if args.key?(:starred)
           @thumbnail_link = args[:thumbnail_link] if args.key?(:thumbnail_link)
+          @thumbnail_version = args[:thumbnail_version] if args.key?(:thumbnail_version)
           @trashed = args[:trashed] if args.key?(:trashed)
           @version = args[:version] if args.key?(:version)
           @video_media_metadata = args[:video_media_metadata] if args.key?(:video_media_metadata)
@@ -1090,7 +1110,8 @@ module Google
       class FileList
         include Google::Apis::Core::Hashable
       
-        # The page of files.
+        # The list of files. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::DriveV3::File>]
         attr_accessor :files
@@ -1102,7 +1123,9 @@ module Google
         attr_accessor :kind
       
         # The page token for the next page of files. This will be absent if the end of
-        # the files list has been reached.
+        # the files list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1247,7 +1270,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The full list of permissions.
+        # The list of permissions.
         # Corresponds to the JSON property `permissions`
         # @return [Array<Google::Apis::DriveV3::Permission>]
         attr_accessor :permissions
@@ -1347,12 +1370,15 @@ module Google
         attr_accessor :kind
       
         # The page token for the next page of replies. This will be absent if the end of
-        # the replies list has been reached.
+        # the replies list has been reached. If the token is rejected for any reason, it
+        # should be discarded, and pagination should be restarted from the first page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The page of replies.
+        # The list of replies. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DriveV3::Reply>]
         attr_accessor :replies
@@ -1479,12 +1505,15 @@ module Google
         attr_accessor :kind
       
         # The page token for the next page of revisions. This will be absent if the end
-        # of the revisions list has been reached.
+        # of the revisions list has been reached. If the token is rejected for any
+        # reason, it should be discarded, and pagination should be restarted from the
+        # first page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The full list of revisions.
+        # The list of revisions. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `revisions`
         # @return [Array<Google::Apis::DriveV3::Revision>]
         attr_accessor :revisions

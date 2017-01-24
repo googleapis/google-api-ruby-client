@@ -227,7 +227,9 @@ module Google
         end
         
         # Performs asynchronous speech recognition: receive results via the
-        # google.longrunning.Operations interface. Returns either an
+        # [google.longrunning.Operations]
+        # (/speech/reference/rest/v1beta1/operations#Operation)
+        # interface. Returns either an
         # `Operation.error` or an `Operation.response` which contains
         # an `AsyncRecognizeResponse` message.
         # @param [Google::Apis::SpeechV1beta1::AsyncRecognizeRequest] async_recognize_request_object

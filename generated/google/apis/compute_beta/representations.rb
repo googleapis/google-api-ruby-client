@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,7 +184,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceGroupHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceIap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +233,12 @@ module Google
       end
       
       class CacheInvalidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheKeyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,12 +419,6 @@ module Google
       end
       
       class GuestOsFeature
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Http2HealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -736,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetServiceAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesStartWithEncryptionKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -935,6 +959,12 @@ module Google
       end
       
       class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsListXpnHostsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1474,6 +1504,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UdpHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1554,6 +1590,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class XpnHostList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1690,8 +1732,18 @@ module Google
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ComputeBeta::AuditLogConfig, decorator: Google::Apis::ComputeBeta::AuditLogConfig::Representation
+      
           collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
       
@@ -1860,6 +1912,8 @@ module Google
           property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
           collection :backends, as: 'backends', class: Google::Apis::ComputeBeta::Backend, decorator: Google::Apis::ComputeBeta::Backend::Representation
       
+          property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicy::Representation
+      
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeBeta::ConnectionDraining, decorator: Google::Apis::ComputeBeta::ConnectionDraining::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -1867,6 +1921,8 @@ module Google
           property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
+          property :iap, as: 'iap', class: Google::Apis::ComputeBeta::BackendServiceIap, decorator: Google::Apis::ComputeBeta::BackendServiceIap::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
@@ -1893,12 +1949,30 @@ module Google
         end
       end
       
+      class BackendServiceCdnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeBeta::CacheKeyPolicy, decorator: Google::Apis::ComputeBeta::CacheKeyPolicy::Representation
+      
+        end
+      end
+      
       class BackendServiceGroupHealth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeBeta::HealthStatus, decorator: Google::Apis::ComputeBeta::HealthStatus::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BackendServiceIap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_secret, as: 'oauth2ClientSecret'
+          property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
         end
       end
       
@@ -1955,6 +2029,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
           property :path, as: 'path'
+        end
+      end
+      
+      class CacheKeyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_host, as: 'includeHost'
+          property :include_protocol, as: 'includeProtocol'
+          property :include_query_string, as: 'includeQueryString'
+          collection :query_string_blacklist, as: 'queryStringBlacklist'
+          collection :query_string_whitelist, as: 'queryStringWhitelist'
         end
       end
       
@@ -2303,17 +2388,6 @@ module Google
         end
       end
       
-      class Http2HealthCheck
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :host, as: 'host'
-          property :port, as: 'port'
-          property :port_name, as: 'portName'
-          property :proxy_header, as: 'proxyHeader'
-          property :request_path, as: 'requestPath'
-        end
-      end
-      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2343,8 +2417,6 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :healthy_threshold, as: 'healthyThreshold'
-          property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeBeta::Http2HealthCheck, decorator: Google::Apis::ComputeBeta::Http2HealthCheck::Representation
-      
           property :http_health_check, as: 'httpHealthCheck', class: Google::Apis::ComputeBeta::HttpHealthCheck, decorator: Google::Apis::ComputeBeta::HttpHealthCheck::Representation
       
           property :https_health_check, as: 'httpsHealthCheck', class: Google::Apis::ComputeBeta::HttpsHealthCheck, decorator: Google::Apis::ComputeBeta::HttpsHealthCheck::Representation
@@ -2359,6 +2431,8 @@ module Google
       
           property :timeout_sec, as: 'timeoutSec'
           property :type, as: 'type'
+          property :udp_health_check, as: 'udpHealthCheck', class: Google::Apis::ComputeBeta::UdpHealthCheck, decorator: Google::Apis::ComputeBeta::UdpHealthCheck::Representation
+      
           property :unhealthy_threshold, as: 'unhealthyThreshold'
         end
       end
@@ -2625,6 +2699,7 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_account, as: 'serviceAccount'
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
           property :zone, as: 'zone'
@@ -2965,6 +3040,14 @@ module Google
         end
       end
       
+      class InstancesSetServiceAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
       class InstancesStartWithEncryptionKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3155,6 +3238,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeBeta::AccessConfig, decorator: Google::Apis::ComputeBeta::AccessConfig::Representation
       
+          property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
@@ -3344,6 +3428,13 @@ module Google
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeBeta::UsageExportLocation, decorator: Google::Apis::ComputeBeta::UsageExportLocation::Representation
       
           property :xpn_project_status, as: 'xpnProjectStatus'
+        end
+      end
+      
+      class ProjectsListXpnHostsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :organization, as: 'organization'
         end
       end
       
@@ -4303,6 +4394,16 @@ module Google
         end
       end
       
+      class UdpHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :request, as: 'request'
+          property :response, as: 'response'
+        end
+      end
+      
       class UrlMap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4459,6 +4560,18 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class XpnHostList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Project, decorator: Google::Apis::ComputeBeta::Project::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       

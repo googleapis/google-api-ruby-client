@@ -2027,6 +2027,11 @@ module Google
         attr_accessor :kind
       
         # 
+        # Corresponds to the JSON property `notificationGroup`
+        # @return [String]
+        attr_accessor :notification_group
+      
+        # 
         # Corresponds to the JSON property `notification_type`
         # @return [String]
         attr_accessor :notification_type
@@ -2070,6 +2075,7 @@ module Google
           @dont_show_notification = args[:dont_show_notification] if args.key?(:dont_show_notification)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @kind = args[:kind] if args.key?(:kind)
+          @notification_group = args[:notification_group] if args.key?(:notification_group)
           @notification_type = args[:notification_type] if args.key?(:notification_type)
           @pcampaign_id = args[:pcampaign_id] if args.key?(:pcampaign_id)
           @reason = args[:reason] if args.key?(:reason)
@@ -2413,8 +2419,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Series info list. The client always expects this element in the JSON output,
-        # hence declared here as OutputAlways.
+        # 
         # Corresponds to the JSON property `series`
         # @return [Array<Google::Apis::BooksV1::Series::Series>]
         attr_accessor :series
