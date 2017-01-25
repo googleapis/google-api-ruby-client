@@ -1,3 +1,18 @@
+# 0.9.24
+* Regenerate APIs
+* Add `dfareporting:v2.7`
+* Fix file permissions issue present in released gems for versions `0.9.21` through `0.9.23`
+
+# 0.9.23
+* Regenerate APIs
+* Add `dns:v2beta1`
+
+# 0.9.22
+* Regenerate APIs
+
+# 0.9.21
+* Regenerate APIs
+
 # 0.9.20
 * Regenerate APIs
 * Add Slides API
