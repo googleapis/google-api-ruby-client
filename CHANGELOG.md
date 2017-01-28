@@ -1,3 +1,8 @@
+# 0.9.25
+* Regenerate APIs
+* Add `cloudkms:v1beta1`
+* Add `manufacturers:v1`
+
 # 0.9.24
 * Regenerate APIs
 * Add `dfareporting:v2.7`
