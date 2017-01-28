@@ -444,6 +444,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Roll back the previously Aborted or Failed NodePool upgrade. This will be an
+        # no-op if the last upgrade successfully completed.
+        # @param [String] project_id
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
+        # @param [String] zone
+        #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+        #   which the cluster resides.
+        # @param [String] cluster_id
+        #   The name of the cluster to rollback.
+        # @param [String] node_pool_id
+        #   The name of the node pool to rollback.
+        # @param [Google::Apis::ContainerV1::RollbackNodePoolUpgradeRequest] rollback_node_pool_upgrade_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_node_pool_upgrade(project_id, zone, cluster_id, node_pool_id, rollback_node_pool_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', options)
+          command.request_representation = Google::Apis::ContainerV1::RollbackNodePoolUpgradeRequest::Representation
+          command.request_object = rollback_node_pool_upgrade_request_object
+          command.response_representation = Google::Apis::ContainerV1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.params['nodePoolId'] = node_pool_id unless node_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the NodeManagement options for a node pool.
+        # @param [String] project_id
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
+        # @param [String] zone
+        #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+        #   which the cluster resides.
+        # @param [String] cluster_id
+        #   The name of the cluster to update.
+        # @param [String] node_pool_id
+        #   The name of the node pool to update.
+        # @param [Google::Apis::ContainerV1::SetNodePoolManagementRequest] set_node_pool_management_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_zone_cluster_node_pool_management(project_id, zone, cluster_id, node_pool_id, set_node_pool_management_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', options)
+          command.request_representation = Google::Apis::ContainerV1::SetNodePoolManagementRequest::Representation
+          command.request_object = set_node_pool_management_request_object
+          command.response_representation = Google::Apis::ContainerV1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.params['nodePoolId'] = node_pool_id unless node_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all operations in a project in a specific zone or all zones.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project number](https://support.
@@ -509,6 +598,47 @@ module Google
           command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['operationId'] = operation_id unless operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels the specified operation.
+        # @param [String] project_id
+        #   The Google Developers Console [project ID or project number](https://support.
+        #   google.com/cloud/answer/6158840).
+        # @param [String] zone
+        #   The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+        #   which the operation resides.
+        # @param [String] operation_id
+        #   The server-assigned `name` of the operation.
+        # @param [Google::Apis::ContainerV1::CancelOperationRequest] cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(project_id, zone, operation_id, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', options)
+          command.request_representation = Google::Apis::ContainerV1::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
+          command.response_representation = Google::Apis::ContainerV1::Empty::Representation
+          command.response_class = Google::Apis::ContainerV1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['operationId'] = operation_id unless operation_id.nil?

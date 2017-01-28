@@ -70,6 +70,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePoolAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoUpgradeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +143,18 @@ module Google
       end
       
       class CreateNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackNodePoolUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetNodePoolManagementRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -147,6 +189,7 @@ module Google
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
       
           collection :locations, as: 'locations'
+          property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
           property :endpoint, as: 'endpoint'
@@ -160,6 +203,7 @@ module Google
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :current_node_count, as: 'currentNodeCount'
+          property :expire_time, as: 'expireTime'
         end
       end
       
@@ -169,7 +213,13 @@ module Google
           property :machine_type, as: 'machineType'
           property :disk_size_gb, as: 'diskSizeGb'
           collection :oauth_scopes, as: 'oauthScopes'
+          property :service_account, as: 'serviceAccount'
           hash :metadata, as: 'metadata'
+          property :image_type, as: 'imageType'
+          hash :labels, as: 'labels'
+          property :local_ssd_count, as: 'localSsdCount'
+          collection :tags, as: 'tags'
+          property :preemptible, as: 'preemptible'
         end
       end
       
@@ -220,6 +270,36 @@ module Google
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
+      
+          property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
+      
+        end
+      end
+      
+      class NodePoolAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :min_node_count, as: 'minNodeCount'
+          property :max_node_count, as: 'maxNodeCount'
+        end
+      end
+      
+      class NodeManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_upgrade, as: 'autoUpgrade'
+          property :upgrade_options, as: 'upgradeOptions', class: Google::Apis::ContainerV1::AutoUpgradeOptions, decorator: Google::Apis::ContainerV1::AutoUpgradeOptions::Representation
+      
+        end
+      end
+      
+      class AutoUpgradeOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_upgrade_start_time, as: 'autoUpgradeStartTime'
+          property :description, as: 'description'
         end
       end
       
@@ -261,6 +341,10 @@ module Google
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
+          property :desired_image_type, as: 'desiredImageType'
+          property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
+      
+          collection :desired_locations, as: 'desiredLocations'
           property :desired_master_version, as: 'desiredMasterVersion'
         end
       end
@@ -274,13 +358,26 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_cluster_version, as: 'defaultClusterVersion'
           collection :valid_node_versions, as: 'validNodeVersions'
-          property :default_image_family, as: 'defaultImageFamily'
-          collection :valid_image_families, as: 'validImageFamilies'
+          property :default_image_type, as: 'defaultImageType'
+          collection :valid_image_types, as: 'validImageTypes'
+          collection :valid_master_versions, as: 'validMasterVersions'
         end
       end
       
@@ -296,6 +393,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+        end
+      end
+      
+      class RollbackNodePoolUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SetNodePoolManagementRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
         end
       end
