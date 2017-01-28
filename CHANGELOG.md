@@ -1,3 +1,6 @@
+# 0.9.26
+* Update gem to reflect changes in 0.9.25
+
 # 0.9.25
 * Regenerate APIs
 * Add `cloudkms:v1beta1`
