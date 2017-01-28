@@ -22,31 +22,13 @@ module Google
   module Apis
     module SpeechV1beta1
       
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RecognitionAudio
+      class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SpeechRecognitionAlternative
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,19 +46,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpeechRecognitionResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,7 +58,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpeechContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpeechRecognitionAlternative
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpeechRecognitionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecognitionAudio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,20 +100,9 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
+      class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
-        end
-      end
-      
-      class RecognitionAudio
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, :base64 => true, as: 'content'
-          property :uri, as: 'uri'
         end
       end
       
@@ -122,24 +111,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::SpeechV1beta1::Status, decorator: Google::Apis::SpeechV1beta1::Status::Representation
       
-          property :done, as: 'done'
           hash :metadata, as: 'metadata'
+          property :done, as: 'done'
           hash :response, as: 'response'
           property :name, as: 'name'
-        end
-      end
-      
-      class SpeechRecognitionAlternative
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :transcript, as: 'transcript'
-          property :confidence, as: 'confidence'
-        end
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -147,30 +122,52 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_alternatives, as: 'maxAlternatives'
+          property :sample_rate, as: 'sampleRate'
           property :language_code, as: 'languageCode'
           property :speech_context, as: 'speechContext', class: Google::Apis::SpeechV1beta1::SpeechContext, decorator: Google::Apis::SpeechV1beta1::SpeechContext::Representation
       
           property :encoding, as: 'encoding'
           property :profanity_filter, as: 'profanityFilter'
-          property :sample_rate, as: 'sampleRate'
         end
       end
       
       class SyncRecognizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio, as: 'audio', class: Google::Apis::SpeechV1beta1::RecognitionAudio, decorator: Google::Apis::SpeechV1beta1::RecognitionAudio::Representation
-      
           property :config, as: 'config', class: Google::Apis::SpeechV1beta1::RecognitionConfig, decorator: Google::Apis::SpeechV1beta1::RecognitionConfig::Representation
+      
+          property :audio, as: 'audio', class: Google::Apis::SpeechV1beta1::RecognitionAudio, decorator: Google::Apis::SpeechV1beta1::RecognitionAudio::Representation
       
         end
       end
       
-      class SpeechRecognitionResult
+      class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1beta1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1beta1::SpeechRecognitionAlternative::Representation
+          collection :details, as: 'details'
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
       
+      class SyncRecognizeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::SpeechV1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1beta1::SpeechRecognitionResult::Representation
+      
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SpeechContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :phrases, as: 'phrases'
         end
       end
       
@@ -183,33 +180,36 @@ module Google
         end
       end
       
-      class Empty
+      class SpeechRecognitionAlternative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :transcript, as: 'transcript'
         end
       end
       
-      class SyncRecognizeResponse
+      class SpeechRecognitionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :results, as: 'results', class: Google::Apis::SpeechV1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1beta1::SpeechRecognitionResult::Representation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1beta1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1beta1::SpeechRecognitionAlternative::Representation
       
         end
       end
       
-      class SpeechContext
+      class RecognitionAudio
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :phrases, as: 'phrases'
+          property :content, :base64 => true, as: 'content'
+          property :uri, as: 'uri'
         end
       end
       
       class AsyncRecognizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio, as: 'audio', class: Google::Apis::SpeechV1beta1::RecognitionAudio, decorator: Google::Apis::SpeechV1beta1::RecognitionAudio::Representation
-      
           property :config, as: 'config', class: Google::Apis::SpeechV1beta1::RecognitionConfig, decorator: Google::Apis::SpeechV1beta1::RecognitionConfig::Representation
+      
+          property :audio, as: 'audio', class: Google::Apis::SpeechV1beta1::RecognitionAudio, decorator: Google::Apis::SpeechV1beta1::RecognitionAudio::Representation
       
         end
       end

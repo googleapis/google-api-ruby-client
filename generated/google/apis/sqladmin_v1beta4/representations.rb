@@ -751,6 +751,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
+          property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
@@ -770,6 +771,7 @@ module Google
           property :replication_type, as: 'replicationType'
           property :settings_version, as: 'settingsVersion'
           property :storage_auto_resize, as: 'storageAutoResize'
+          property :storage_auto_resize_limit, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
         end
       end

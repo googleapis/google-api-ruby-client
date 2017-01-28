@@ -1609,6 +1609,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
+        # The availability type. This can be one of the following.
+        # ZONAL: A Cloud SQL instance that is zonally available. The instance is bound
+        # to a single GCE zone and may be inaccessible during an outage for that GCE
+        # zone.
+        # REGIONAL: A Cloud SQL instance that is regionally available. The instance is
+        # provisioned in multiple zones within a region and is able to provide higher
+        # availability than an instance with a zonal availability type.
+        # Corresponds to the JSON property `availabilityType`
+        # @return [String]
+        attr_accessor :availability_type
+      
         # Database instance backup configuration.
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::SqladminV1beta4::BackupConfiguration]
@@ -1698,6 +1709,13 @@ module Google
         attr_accessor :storage_auto_resize
         alias_method :storage_auto_resize?, :storage_auto_resize
       
+        # The maximum size to which storage capacity can be automatically increased. The
+        # default value is 0, which specifies that there is no limit. Applies only to
+        # Second Generation instances.
+        # Corresponds to the JSON property `storageAutoResizeLimit`
+        # @return [String]
+        attr_accessor :storage_auto_resize_limit
+      
         # The tier of service for this instance, for example D1, D2. For more
         # information, see pricing.
         # Corresponds to the JSON property `tier`
@@ -1712,6 +1730,7 @@ module Google
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @authorized_gae_applications = args[:authorized_gae_applications] if args.key?(:authorized_gae_applications)
+          @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
@@ -1726,6 +1745,7 @@ module Google
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
+          @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
         end
       end

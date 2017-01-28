@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/adsense_v1_4/service.rb'
-require 'google/apis/adsense_v1_4/classes.rb'
-require 'google/apis/adsense_v1_4/representations.rb'
+require 'google/apis/manufacturers_v1/service.rb'
+require 'google/apis/manufacturers_v1/classes.rb'
+require 'google/apis/manufacturers_v1/representations.rb'
 
 module Google
   module Apis
-    # AdSense Management API
+    # Manufacturer Center API
     #
-    # Accesses AdSense publishers' inventory and generates performance reports.
+    # Public API for managing Manufacturer Center related data.
     #
-    # @see https://developers.google.com/adsense/management/
-    module AdsenseV1_4
-      VERSION = 'V1_4'
-      REVISION = '20170125'
+    # @see https://developers.google.com/manufacturers/
+    module ManufacturersV1
+      VERSION = 'V1'
+      REVISION = '20161028'
 
-      # View and manage your AdSense data
-      AUTH_ADSENSE = 'https://www.googleapis.com/auth/adsense'
-
-      # View your AdSense data
-      AUTH_ADSENSE_READONLY = 'https://www.googleapis.com/auth/adsense.readonly'
+      # Manage your product listings for Google Manufacturer Center
+      AUTH_MANUFACTURERCENTER = 'https://www.googleapis.com/auth/manufacturercenter'
     end
   end
 end

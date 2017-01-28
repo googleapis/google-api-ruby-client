@@ -22,31 +22,7 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       
-      class ClientUser
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ClientUserInvitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListClientUserInvitationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListClientUsersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Client
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,22 +34,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListClientUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListClientUserInvitationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Client
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientUser
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
-          property :client_account_id, as: 'clientAccountId'
-          property :status, as: 'status'
-          property :user_id, as: 'userId'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ClientUserInvitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :invitation_id, as: 'invitationId'
           property :email, as: 'email'
           property :client_account_id, as: 'clientAccountId'
-          property :invitation_id, as: 'invitationId'
+        end
+      end
+      
+      class ListClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListClientUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :users, as: 'users', class: Google::Apis::Adexchangebuyer2V2beta1::ClientUser, decorator: Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+      
         end
       end
       
@@ -86,35 +94,27 @@ module Google
         end
       end
       
-      class ListClientUsersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :users, as: 'users', class: Google::Apis::Adexchangebuyer2V2beta1::ClientUser, decorator: Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class Client
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :visible_to_seller, as: 'visibleToSeller'
+          property :client_account_id, as: 'clientAccountId'
+          property :entity_name, as: 'entityName'
           property :status, as: 'status'
           property :entity_type, as: 'entityType'
-          property :role, as: 'role'
           property :client_name, as: 'clientName'
-          property :client_account_id, as: 'clientAccountId'
+          property :role, as: 'role'
+          property :visible_to_seller, as: 'visibleToSeller'
           property :entity_id, as: 'entityId'
-          property :entity_name, as: 'entityName'
         end
       end
       
-      class ListClientsResponse
+      class ClientUser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-      
+          property :client_account_id, as: 'clientAccountId'
+          property :status, as: 'status'
+          property :user_id, as: 'userId'
+          property :email, as: 'email'
         end
       end
     end

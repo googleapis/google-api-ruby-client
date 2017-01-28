@@ -129,8 +129,7 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # The node pools associated with this cluster. When creating a new cluster, only
-        # a single node pool should be specified. This field should not be set if "
+        # The node pools associated with this cluster. This field should not be set if "
         # node_config" or "initial_node_count" are specified.
         # Corresponds to the JSON property `nodePools`
         # @return [Array<Google::Apis::ContainerV1::NodePool>]
@@ -141,6 +140,16 @@ module Google
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
+      
+        # Kubernetes alpha features are enabled on this cluster. This includes alpha API
+        # groups (e.g. v1alpha1) and features that may not be production ready in the
+        # kubernetes version of the master and nodes. The cluster has no SLA for uptime
+        # and master/node upgrades are disabled. Alpha enabled clusters are
+        # automatically deleted thirty days after creation.
+        # Corresponds to the JSON property `enableKubernetesAlpha`
+        # @return [Boolean]
+        attr_accessor :enable_kubernetes_alpha
+        alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
@@ -221,6 +230,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_node_count
       
+        # [Output only] The time the cluster will be automatically deleted in [RFC3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -240,6 +255,7 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @locations = args[:locations] if args.key?(:locations)
+          @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
@@ -253,6 +269,7 @@ module Google
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
         end
       end
       
@@ -285,6 +302,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
+        # The Google Cloud Platform Service Account to be used by the node VMs. If no
+        # Service Account is specified, the "default" service account is used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # The metadata key/value pairs assigned to instances in the cluster. Keys must
         # conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length.
         # These are reflected as part of a URL in the metadata server. Additionally, to
@@ -298,6 +321,47 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # The image type to use for this node. Note that for a given image type, the
+        # latest version of it will be used.
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # The map of Kubernetes labels (key/value pairs) to be applied to each node.
+        # These will added in addition to any default label(s) that Kubernetes may apply
+        # to the node. In case of conflict in label keys, the applied set may differ
+        # depending on the Kubernetes version -- it's best to assume the behavior is
+        # undefined and conflicts should be avoided. For more information, including
+        # usage and the valid values, see: http://kubernetes.io/v1.1/docs/user-guide/
+        # labels.html
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The number of local SSD disks to be attached to the node. The limit for this
+        # value is dependant upon the maximum number of disks available on a machine per
+        # zone. See: https://cloud.google.com/compute/docs/disks/local-ssd#
+        # local_ssd_limits for more information.
+        # Corresponds to the JSON property `localSsdCount`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_count
+      
+        # The list of instance tags applied to all nodes. Tags are used to identify
+        # valid sources or targets for network firewalls and are specified by the client
+        # during cluster or node pool creation. Each tag within the list must comply
+        # with RFC1035.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Whether the nodes are created as preemptible VM instances. See: https://cloud.
+        # google.com/compute/docs/instances/preemptible for more inforamtion about
+        # preemptible VM instances.
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
         def initialize(**args)
            update!(**args)
         end
@@ -307,7 +371,13 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @labels = args[:labels] if args.key?(:labels)
+          @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @tags = args[:tags] if args.key?(:tags)
+          @preemptible = args[:preemptible] if args.key?(:preemptible)
         end
       end
       
@@ -461,12 +531,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # Server-defined URL for the resource.
+        # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # The version of the Kubernetes of this node.
+        # [Output only] The version of the Kubernetes of this node.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -477,7 +547,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
-        # The status of the nodes in this pool instance.
+        # [Output only] The status of the nodes in this pool instance.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -487,6 +557,18 @@ module Google
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
+      
+        # NodePoolAutoscaling contains information required by cluster autoscaler to
+        # adjust the size of the node pool to the current cluster usage.
+        # Corresponds to the JSON property `autoscaling`
+        # @return [Google::Apis::ContainerV1::NodePoolAutoscaling]
+        attr_accessor :autoscaling
+      
+        # NodeManagement defines the set of node management services turned on for the
+        # node pool.
+        # Corresponds to the JSON property `management`
+        # @return [Google::Apis::ContainerV1::NodeManagement]
+        attr_accessor :management
       
         def initialize(**args)
            update!(**args)
@@ -502,6 +584,99 @@ module Google
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
+          @management = args[:management] if args.key?(:management)
+        end
+      end
+      
+      # NodePoolAutoscaling contains information required by cluster autoscaler to
+      # adjust the size of the node pool to the current cluster usage.
+      class NodePoolAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Is autoscaling enabled for this node pool.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        # Maximum number of nodes in the NodePool. Must be >= min_node_count. There has
+        # to enough quota to scale up the cluster.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+        end
+      end
+      
+      # NodeManagement defines the set of node management services turned on for the
+      # node pool.
+      class NodeManagement
+        include Google::Apis::Core::Hashable
+      
+        # Whether the nodes will be automatically upgraded.
+        # Corresponds to the JSON property `autoUpgrade`
+        # @return [Boolean]
+        attr_accessor :auto_upgrade
+        alias_method :auto_upgrade?, :auto_upgrade
+      
+        # AutoUpgradeOptions defines the set of options for the user to control how the
+        # Auto Upgrades will proceed.
+        # Corresponds to the JSON property `upgradeOptions`
+        # @return [Google::Apis::ContainerV1::AutoUpgradeOptions]
+        attr_accessor :upgrade_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade = args[:auto_upgrade] if args.key?(:auto_upgrade)
+          @upgrade_options = args[:upgrade_options] if args.key?(:upgrade_options)
+        end
+      end
+      
+      # AutoUpgradeOptions defines the set of options for the user to control how the
+      # Auto Upgrades will proceed.
+      class AutoUpgradeOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] This field is set when upgrades are about to commence with the
+        # approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/
+        # rfc3339.txt) text format.
+        # Corresponds to the JSON property `autoUpgradeStartTime`
+        # @return [String]
+        attr_accessor :auto_upgrade_start_time
+      
+        # [Output only] This field is set when upgrades are about to commence with the
+        # description of the upgrade.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_start_time = args[:auto_upgrade_start_time] if args.key?(:auto_upgrade_start_time)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -631,12 +806,33 @@ module Google
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :desired_addons_config
       
-        # The node pool to be upgraded. This field is mandatory if the "
-        # desired_node_version" or "desired_image_family" is specified and there is more
-        # than one node pool on the cluster.
+        # The node pool to be upgraded. This field is mandatory if "desired_node_version"
+        # , "desired_image_family" or "desired_node_pool_autoscaling" is specified and
+        # there is more than one node pool on the cluster.
         # Corresponds to the JSON property `desiredNodePoolId`
         # @return [String]
         attr_accessor :desired_node_pool_id
+      
+        # The desired image type for the node pool. NOTE: Set the "desired_node_pool"
+        # field as well.
+        # Corresponds to the JSON property `desiredImageType`
+        # @return [String]
+        attr_accessor :desired_image_type
+      
+        # NodePoolAutoscaling contains information required by cluster autoscaler to
+        # adjust the size of the node pool to the current cluster usage.
+        # Corresponds to the JSON property `desiredNodePoolAutoscaling`
+        # @return [Google::Apis::ContainerV1::NodePoolAutoscaling]
+        attr_accessor :desired_node_pool_autoscaling
+      
+        # The desired list of Google Compute Engine [locations](/compute/docs/zones#
+        # available) in which the cluster's nodes should be located. Changing the
+        # locations a cluster is in will result in nodes being either created or removed
+        # from the cluster, depending on whether locations are being added or removed.
+        # This list must always include the cluster's primary zone.
+        # Corresponds to the JSON property `desiredLocations`
+        # @return [Array<String>]
+        attr_accessor :desired_locations
       
         # The Kubernetes version to change the master to. The only valid value is the
         # latest supported version. Use "-" to have the server automatically select the
@@ -655,6 +851,9 @@ module Google
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
+          @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
+          @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
+          @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
         end
       end
@@ -685,6 +884,36 @@ module Google
         end
       end
       
+      # CancelOperationRequest cancels a single operation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Container Engine service configuration.
       class ServerConfig
         include Google::Apis::Core::Hashable
@@ -699,15 +928,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :valid_node_versions
       
-        # Default image family.
-        # Corresponds to the JSON property `defaultImageFamily`
+        # Default image type.
+        # Corresponds to the JSON property `defaultImageType`
         # @return [String]
-        attr_accessor :default_image_family
+        attr_accessor :default_image_type
       
-        # List of valid image families.
-        # Corresponds to the JSON property `validImageFamilies`
+        # List of valid image types.
+        # Corresponds to the JSON property `validImageTypes`
         # @return [Array<String>]
-        attr_accessor :valid_image_families
+        attr_accessor :valid_image_types
+      
+        # List of valid master versions.
+        # Corresponds to the JSON property `validMasterVersions`
+        # @return [Array<String>]
+        attr_accessor :valid_master_versions
       
         def initialize(**args)
            update!(**args)
@@ -717,8 +951,9 @@ module Google
         def update!(**args)
           @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
-          @default_image_family = args[:default_image_family] if args.key?(:default_image_family)
-          @valid_image_families = args[:valid_image_families] if args.key?(:valid_image_families)
+          @default_image_type = args[:default_image_type] if args.key?(:default_image_type)
+          @valid_image_types = args[:valid_image_types] if args.key?(:valid_image_types)
+          @valid_master_versions = args[:valid_master_versions] if args.key?(:valid_master_versions)
         end
       end
       
@@ -762,6 +997,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_pool = args[:node_pool] if args.key?(:node_pool)
+        end
+      end
+      
+      # RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
+      # NodePool upgrade. This will be an no-op if the last upgrade successfully
+      # completed.
+      class RollbackNodePoolUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # SetNodePoolManagementRequest sets the node management properties of a node
+      # pool.
+      class SetNodePoolManagementRequest
+        include Google::Apis::Core::Hashable
+      
+        # NodeManagement defines the set of node management services turned on for the
+        # node pool.
+        # Corresponds to the JSON property `management`
+        # @return [Google::Apis::ContainerV1::NodeManagement]
+        attr_accessor :management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @management = args[:management] if args.key?(:management)
         end
       end
     end

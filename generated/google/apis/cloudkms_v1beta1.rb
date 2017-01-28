@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/adsense_v1_4/service.rb'
-require 'google/apis/adsense_v1_4/classes.rb'
-require 'google/apis/adsense_v1_4/representations.rb'
+require 'google/apis/cloudkms_v1beta1/service.rb'
+require 'google/apis/cloudkms_v1beta1/classes.rb'
+require 'google/apis/cloudkms_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # AdSense Management API
+    # Google Cloud KMS API
     #
-    # Accesses AdSense publishers' inventory and generates performance reports.
+    # 
     #
-    # @see https://developers.google.com/adsense/management/
-    module AdsenseV1_4
-      VERSION = 'V1_4'
-      REVISION = '20170125'
+    # @see https://cloud.google.com/kms/
+    module CloudkmsV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20170117'
 
-      # View and manage your AdSense data
-      AUTH_ADSENSE = 'https://www.googleapis.com/auth/adsense'
-
-      # View your AdSense data
-      AUTH_ADSENSE_READONLY = 'https://www.googleapis.com/auth/adsense.readonly'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

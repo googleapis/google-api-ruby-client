@@ -22,63 +22,17 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       
-      # A client user is created under a client buyer and has restricted access to
-      # the Ad Exchange Marketplace and certain other sections
-      # of the Ad Exchange Buyer UI based on the role
-      # granted to the associated client buyer.
-      # The only way a new client user can be created is via accepting an
-      # email invitation
-      # (see the
-      # accounts.clients.invitations.create
-      # method).
-      # All fields are required unless otherwise specified.
-      class ClientUser
-        include Google::Apis::Core::Hashable
-      
-        # User's email address. The value of this field
-        # is ignored in an update operation.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # Numerical account ID of the client buyer
-        # with which the user is associated; the
-        # buyer must be a client of the current sponsor buyer.
-        # The value of this field is ignored in an update operation.
-        # Corresponds to the JSON property `clientAccountId`
-        # @return [String]
-        attr_accessor :client_account_id
-      
-        # The status of the client user.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The unique numerical ID of the client user
-        # that has accepted an invitation.
-        # The value of this field is ignored in an update operation.
-        # Corresponds to the JSON property `userId`
-        # @return [String]
-        attr_accessor :user_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-          @status = args[:status] if args.key?(:status)
-          @user_id = args[:user_id] if args.key?(:user_id)
-        end
-      end
-      
       # An invitation for a new client user to get access to the Ad Exchange
       # Buyer UI.
       # All fields are required unless otherwise specified.
       class ClientUserInvitation
         include Google::Apis::Core::Hashable
+      
+        # The unique numerical ID of the invitation that is sent to the user.
+        # The value of this field is ignored in create operations.
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
       
         # The email address to which the invitation is sent. Email
         # addresses should be unique among all client users under each sponsor
@@ -94,11 +48,36 @@ module Google
         # @return [String]
         attr_accessor :client_account_id
       
-        # The unique numerical ID of the invitation that is sent to the user.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `invitationId`
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @email = args[:email] if args.key?(:email)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+        end
+      end
+      
+      # 
+      class ListClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned list of clients.
+        # Corresponds to the JSON property `clients`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
+        attr_accessor :clients
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListClientsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.clients.list method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :invitation_id
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -106,9 +85,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @clients = args[:clients] if args.key?(:clients)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListClientUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListClientUsersRequest.pageToken
+        # field in the subsequent call to the
+        # clients.invitations.list
+        # method to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned list of client users.
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUser>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -143,37 +152,6 @@ module Google
         end
       end
       
-      # 
-      class ListClientUsersResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned list of client users.
-        # Corresponds to the JSON property `users`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUser>]
-        attr_accessor :users
-      
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListClientUsersRequest.pageToken
-        # field in the subsequent call to the
-        # clients.invitations.list
-        # method to retrieve the next
-        # page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @users = args[:users] if args.key?(:users)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # A client resource represents a client buyer&mdash;an agency,
       # a brand, or an advertiser customer of the sponsor buyer.
       # Users associated with the client buyer have restricted access to
@@ -184,11 +162,18 @@ module Google
       class Client
         include Google::Apis::Core::Hashable
       
-        # Whether the client buyer will be visible to sellers.
-        # Corresponds to the JSON property `visibleToSeller`
-        # @return [Boolean]
-        attr_accessor :visible_to_seller
-        alias_method :visible_to_seller?, :visible_to_seller
+        # The globally-unique numerical ID of the client.
+        # The value of this field is ignored in create and update operations.
+        # Corresponds to the JSON property `clientAccountId`
+        # @return [String]
+        attr_accessor :client_account_id
+      
+        # The name of the entity. This field is automatically fetched based on
+        # the type and ID.
+        # The value of this field is ignored in create and update operations.
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
       
         # The status of the client buyer.
         # Corresponds to the JSON property `status`
@@ -200,13 +185,6 @@ module Google
         # @return [String]
         attr_accessor :entity_type
       
-        # The role which is assigned to the client buyer. Each role implies a set of
-        # permissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,
-        # `CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
         # Name used to represent this client to publishers.
         # You may have multiple clients that map to the same entity,
         # but for each client the combination of `clientName` and entity
@@ -216,11 +194,18 @@ module Google
         # @return [String]
         attr_accessor :client_name
       
-        # The globally-unique numerical ID of the client.
-        # The value of this field is ignored in create and update operations.
-        # Corresponds to the JSON property `clientAccountId`
+        # The role which is assigned to the client buyer. Each role implies a set of
+        # permissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,
+        # `CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`.
+        # Corresponds to the JSON property `role`
         # @return [String]
-        attr_accessor :client_account_id
+        attr_accessor :role
+      
+        # Whether the client buyer will be visible to sellers.
+        # Corresponds to the JSON property `visibleToSeller`
+        # @return [Boolean]
+        attr_accessor :visible_to_seller
+        alias_method :visible_to_seller?, :visible_to_seller
       
         # Numerical identifier of the client entity.
         # The entity can be an advertiser, a brand, or an agency.
@@ -240,48 +225,61 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # The name of the entity. This field is automatically fetched based on
-        # the type and ID.
-        # The value of this field is ignored in create and update operations.
-        # Corresponds to the JSON property `entityName`
-        # @return [String]
-        attr_accessor :entity_name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @visible_to_seller = args[:visible_to_seller] if args.key?(:visible_to_seller)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
           @status = args[:status] if args.key?(:status)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
-          @role = args[:role] if args.key?(:role)
           @client_name = args[:client_name] if args.key?(:client_name)
-          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+          @role = args[:role] if args.key?(:role)
+          @visible_to_seller = args[:visible_to_seller] if args.key?(:visible_to_seller)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
-          @entity_name = args[:entity_name] if args.key?(:entity_name)
         end
       end
       
-      # 
-      class ListClientsResponse
+      # A client user is created under a client buyer and has restricted access to
+      # the Ad Exchange Marketplace and certain other sections
+      # of the Ad Exchange Buyer UI based on the role
+      # granted to the associated client buyer.
+      # The only way a new client user can be created is via accepting an
+      # email invitation
+      # (see the
+      # accounts.clients.invitations.create
+      # method).
+      # All fields are required unless otherwise specified.
+      class ClientUser
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListClientsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.clients.list method
-        # to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
+        # Numerical account ID of the client buyer
+        # with which the user is associated; the
+        # buyer must be a client of the current sponsor buyer.
+        # The value of this field is ignored in an update operation.
+        # Corresponds to the JSON property `clientAccountId`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :client_account_id
       
-        # The returned list of clients.
-        # Corresponds to the JSON property `clients`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
-        attr_accessor :clients
+        # The status of the client user.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The unique numerical ID of the client user
+        # that has accepted an invitation.
+        # The value of this field is ignored in an update operation.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # User's email address. The value of this field
+        # is ignored in an update operation.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
       
         def initialize(**args)
            update!(**args)
@@ -289,8 +287,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @clients = args[:clients] if args.key?(:clients)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+          @status = args[:status] if args.key?(:status)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @email = args[:email] if args.key?(:email)
         end
       end
     end
