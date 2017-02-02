@@ -55,7 +55,7 @@ module Google
           def if_fn(name)
             ivar_name = "@#{name}".to_sym
             lambda do |opts|
-              if opts[:skip_undefined]
+              if opts[:user_options] && opts[:user_options][:skip_undefined]
                 if respond_to?(:key?)
                   self.key?(name) || instance_variable_defined?(ivar_name)
                 else
@@ -137,7 +137,7 @@ module Google
 
         def to_json
           representation = self.class.const_get(:Representation)
-          representation.new(self).to_json(skip_undefined: true)
+          representation.new(self).to_json(user_options: { skip_undefined: true })
         end
       end
     end

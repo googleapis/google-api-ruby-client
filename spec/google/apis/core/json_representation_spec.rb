@@ -109,7 +109,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   context 'with model object' do
-    let(:json) { representer_class.new(model).to_json(skip_undefined: true) }
+    let(:json) { representer_class.new(model).to_json(user_options: { skip_undefined: true }) }
     let(:model) do
       model = model_class.new
       model.nil_value = nil
@@ -132,7 +132,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   context 'with hash' do
-    let(:json) { representer_class.new(model).to_json(skip_undefined: true) }
+    let(:json) { representer_class.new(model).to_json(user_options: { skip_undefined: true }) }
     let(:model) do
       {
         nil_value: nil,
