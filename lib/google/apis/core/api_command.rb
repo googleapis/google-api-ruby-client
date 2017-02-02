@@ -26,7 +26,11 @@ module Google
       class ApiCommand < HttpCommand
         JSON_CONTENT_TYPE = 'application/json'
         FIELDS_PARAM = 'fields'
-        RATE_LIMIT_ERRORS = %w(rateLimitExceeded userRateLimitExceeded)
+        ERROR_REASON_MAPPING = {
+          'rateLimitExceeded' => Google::Apis::RateLimitError,
+          'userRateLimitExceeded' => Google::Apis::RateLimitError,
+          'projectNotLinked' => Google::Apis::ProjectNotLinkedError
+        }
 
         # JSON serializer for request objects
         # @return [Google::Apis::Core::JsonRepresentation]
@@ -94,10 +98,12 @@ module Google
             error = parse_error(body)
             if error
               message = sprintf('%s: %s', error['reason'], error['message'])
-              raise Google::Apis::RateLimitError.new(message,
-                                                     status_code: status,
-                                                     header: header,
-                                                     body: body) if RATE_LIMIT_ERRORS.include?(error['reason'])
+              raise ERROR_REASON_MAPPING[error['reason']].new(
+                message,
+                status_code: status,
+                header: header,
+                body: body
+              ) if ERROR_REASON_MAPPING.key?(error['reason'])
             end
             super(status, header, body, message)
           else
