@@ -46,7 +46,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The ID of the bucket.
+        # The ID of the bucket. For buckets, the id and name properities are the same.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -835,7 +835,8 @@ module Google
         # @return [String]
         attr_accessor :generation
       
-        # The ID of the object.
+        # The ID of the object, including the bucket name, object name, and generation
+        # number.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -869,7 +870,7 @@ module Google
         # @return [String]
         attr_accessor :metageneration
       
-        # The name of this object. Required if not specified by URL parameter.
+        # The name of the object. Required if not specified by URL parameter.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

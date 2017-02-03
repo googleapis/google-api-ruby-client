@@ -339,6 +339,7 @@ module Google
       class DeploymentUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           collection :labels, as: 'labels', class: Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry, decorator: Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry::Representation
       
           property :manifest, as: 'manifest'

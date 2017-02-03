@@ -22,6 +22,30 @@ module Google
   module Apis
     module CloudresourcemanagerV1beta1
       
+      class FolderOperationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Ancestor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,13 +94,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsResponse
+      class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetIamPolicyRequest
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,27 +143,38 @@ module Google
       end
       
       class FolderOperationError
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message_id, as: 'errorMessageId'
+        end
       end
       
       class FolderOperation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_type, as: 'operationType'
+          property :display_name, as: 'displayName'
+          property :source_parent, as: 'sourceParent'
+          property :destination_parent, as: 'destinationParent'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1beta1::Binding, decorator: Google::Apis::CloudresourcemanagerV1beta1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
       end
       
       class ResourceId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :id, as: 'id'
+        end
       end
       
       class Ancestor
@@ -161,9 +196,9 @@ module Google
       class ListOrganizationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1beta1::Organization, decorator: Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -190,13 +225,13 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
-      
-          property :name, as: 'name'
           property :organization_id, as: 'organizationId'
           property :lifecycle_state, as: 'lifecycleState'
           property :display_name, as: 'displayName'
           property :creation_time, as: 'creationTime'
+          property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -209,16 +244,16 @@ module Google
         end
       end
       
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class GetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -255,8 +290,8 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
           property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :lifecycle_state, as: 'lifecycleState'
@@ -270,41 +305,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class FolderOperationError
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message_id, as: 'errorMessageId'
-        end
-      end
-      
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1beta1::Binding, decorator: Google::Apis::CloudresourcemanagerV1beta1::Binding::Representation
-      
-        end
-      end
-      
-      class FolderOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :source_parent, as: 'sourceParent'
-          property :destination_parent, as: 'destinationParent'
-          property :operation_type, as: 'operationType'
-        end
-      end
-      
-      class ResourceId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          property :id, as: 'id'
         end
       end
     end

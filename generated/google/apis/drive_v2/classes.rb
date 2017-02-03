@@ -2559,6 +2559,32 @@ module Google
         end
       end
       
+      # 
+      class StartPageToken
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "drive#
+        # startPageToken".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The starting page token for listing changes.
+        # Corresponds to the JSON property `startPageToken`
+        # @return [String]
+        attr_accessor :start_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @start_page_token = args[:start_page_token] if args.key?(:start_page_token)
+        end
+      end
+      
       # Information about a Drive user.
       class User
         include Google::Apis::Core::Hashable

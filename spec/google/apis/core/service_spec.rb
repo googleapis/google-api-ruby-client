@@ -248,9 +248,12 @@ EOF
     context 'with fetch_all' do
       let(:responses) do
         data = {}
-        data[nil] = OpenStruct.new(next_page_token: 'p1', items: ['a', 'b', 'c'], alt_items: [1, 2 , 3], singular: 'foo')
-        data['p1'] = OpenStruct.new(next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar')
-        data['p2'] = OpenStruct.new(next_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7,8, 9], singular: 'baz')
+        data[nil] = OpenStruct.new(
+          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo')
+        data['p1'] = OpenStruct.new(
+          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar')
+        data['p2'] = OpenStruct.new(
+          next_page_token: nil, alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz')
         data
       end
 
@@ -263,6 +266,11 @@ EOF
       it 'should stop on repeated page token' do
         responses['p2'].next_page_token = 'p2'
         expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+      end
+
+      it 'should allow selecting another field for response page token' do
+        expect(service.fetch_all(response_page_token: :alt_page_token) { |token| responses[token] }
+              ).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
       end
 
       it 'should ignore nil collections' do
