@@ -1,3 +1,6 @@
+# 0.9.28
+* Fix file permissions issue
+
 # 0.9.27
 * Allow abnormal page token cases for paging methods
 * Regenerate APIs
