@@ -1202,11 +1202,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :detail, as: 'detail'
           property :displayed_value, as: 'displayedValue'
           collection :example_items, as: 'exampleItems', class: Google::Apis::ContentV2::AccountStatusExampleItem, decorator: Google::Apis::ContentV2::AccountStatusExampleItem::Representation
       
           property :id, as: 'id'
           property :last_checked, as: 'lastChecked'
+          property :location, as: 'location'
           property :num_items, as: 'numItems'
           property :severity, as: 'severity'
           property :submitted_value, as: 'submittedValue'

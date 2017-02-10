@@ -25,7 +25,10 @@ module Google
     # @see https://cloud.google.com/genomics
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20170126'
+      REVISION = '20170202'
+
+      # View and manage Genomics data
+      AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
@@ -38,9 +41,6 @@ module Google
 
       # View Genomics data
       AUTH_GENOMICS_READONLY = 'https://www.googleapis.com/auth/genomics.readonly'
-
-      # View and manage Genomics data
-      AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
     end
   end
 end

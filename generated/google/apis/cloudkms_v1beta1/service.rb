@@ -20,9 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudkmsV1beta1
-      # Google Cloud KMS API
+      # Google Cloud Key Management Service (KMS) API
       #
-      # 
+      # Manages encryption for your cloud services the same way you do on-premise. You
+      #  can generate, use, rotate, and destroy AES256 encryption keys.
       #
       # @example
       #    require 'google/apis/cloudkms_v1beta1'
@@ -119,14 +120,14 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the location associated with the
         #   KeyRings, in the format `projects/*/locations/*`.
-        # @param [String] page_token
-        #   Optional pagination token, returned earlier via
-        #   ListKeyRingsResponse.next_page_token.
         # @param [Fixnum] page_size
         #   Optional limit on the number of KeyRings to include in the
         #   response.  Further KeyRings can subsequently be obtained by
         #   including the ListKeyRingsResponse.next_page_token in a subsequent
         #   request.  If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional pagination token, returned earlier via
+        #   ListKeyRingsResponse.next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -144,13 +145,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_rings(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_rings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+parent}/keyRings', options)
           command.response_representation = Google::Apis::CloudkmsV1beta1::ListKeyRingsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1beta1::ListKeyRingsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -325,40 +326,6 @@ module Google
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudkmsV1beta1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1beta1::TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudkmsV1beta1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudkmsV1beta1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_crypto_key_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
-          command.response_representation = Google::Apis::CloudkmsV1beta1::Policy::Representation
-          command.response_class = Google::Apis::CloudkmsV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -581,6 +548,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   `resource` is usually specified as a path. For example, a Project
+        #   resource is specified as `projects/`project``.
+        # @param [Google::Apis::CloudkmsV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_crypto_key_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::CloudkmsV1beta1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::CloudkmsV1beta1::Policy::Representation
+          command.response_class = Google::Apis::CloudkmsV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new CryptoKey within a KeyRing.
         # CryptoKey.purpose is required.
         # @param [String] parent
@@ -620,42 +623,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
-        # @param [Google::Apis::CloudkmsV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudkmsV1beta1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudkmsV1beta1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_crypto_key_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::CloudkmsV1beta1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::CloudkmsV1beta1::Policy::Representation
-          command.response_class = Google::Apis::CloudkmsV1beta1::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Update the version of a CryptoKey that will be used in Encrypt
         # @param [String] name
         #   The resource name of the CryptoKey to update.
@@ -689,19 +656,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists CryptoKeyVersions.
-        # @param [String] parent
-        #   Required. The resource name of the CryptoKey to list, in the format
-        #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        # @param [String] page_token
-        #   Optional pagination token, returned earlier via
-        #   ListCryptoKeyVersionsResponse.next_page_token.
-        # @param [Fixnum] page_size
-        #   Optional limit on the number of CryptoKeyVersions to
-        #   include in the response. Further CryptoKeyVersions can
-        #   subsequently be obtained by including the
-        #   ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
-        #   If unspecified, the server will pick an appropriate default.
+        # Gets the access control policy for a resource.
+        # Returns an empty policy if the resource exists and does not have a policy
+        # set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested.
+        #   `resource` is usually specified as a path. For example, a Project
+        #   resource is specified as `projects/`project``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -711,100 +672,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::CloudkmsV1beta1::Policy] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse]
+        # @return [Google::Apis::CloudkmsV1beta1::Policy]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/cryptoKeyVersions', options)
-          command.response_representation = Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse::Representation
-          command.response_class = Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Create a new CryptoKeyVersion in a CryptoKey.
-        # The server will assign the next sequential id. If unset,
-        # state will be set to
-        # ENABLED.
-        # @param [String] parent
-        #   Required. The name of the CryptoKey associated with
-        #   the CryptoKeyVersions.
-        # @param [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] crypto_key_version_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_key_ring_crypto_key_crypto_key_version(parent, crypto_key_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/cryptoKeyVersions', options)
-          command.request_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
-          command.request_object = crypto_key_version_object
-          command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
-          command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Schedule a CryptoKeyVersion for destruction.
-        # Upon calling this method, CryptoKeyVersion.state will be set to
-        # DESTROY_SCHEDULED
-        # and destroy_time will be set to a time 24
-        # hours in the future, at which point the state
-        # will be changed to
-        # DESTROYED, and the key
-        # material will be irrevocably destroyed.
-        # Before the destroy_time is reached,
-        # RestoreCryptoKeyVersion may be called to reverse the process.
-        # @param [String] name
-        #   The resource name of the CryptoKeyVersion to destroy.
-        # @param [Google::Apis::CloudkmsV1beta1::DestroyCryptoKeyVersionRequest] destroy_crypto_key_version_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def destroy_crypto_key_version(name, destroy_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:destroy', options)
-          command.request_representation = Google::Apis::CloudkmsV1beta1::DestroyCryptoKeyVersionRequest::Representation
-          command.request_object = destroy_crypto_key_version_request_object
-          command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
-          command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
-          command.params['name'] = name unless name.nil?
+        def get_project_location_key_ring_crypto_key_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::CloudkmsV1beta1::Policy::Representation
+          command.response_class = Google::Apis::CloudkmsV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -840,6 +720,36 @@ module Google
           command =  make_simple_command(:post, 'v1beta1/{+name}:restore', options)
           command.request_representation = Google::Apis::CloudkmsV1beta1::RestoreCryptoKeyVersionRequest::Representation
           command.request_object = restore_crypto_key_version_request_object
+          command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
+          command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for a given CryptoKeyVersion.
+        # @param [String] name
+        #   The name of the CryptoKeyVersion to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_key_ring_crypto_key_crypto_key_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
           command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
           command.params['name'] = name unless name.nil?
@@ -890,9 +800,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns metadata for a given CryptoKeyVersion.
+        # Lists CryptoKeyVersions.
+        # @param [String] parent
+        #   Required. The resource name of the CryptoKey to list, in the format
+        #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # @param [Fixnum] page_size
+        #   Optional limit on the number of CryptoKeyVersions to
+        #   include in the response. Further CryptoKeyVersions can
+        #   subsequently be obtained by including the
+        #   ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional pagination token, returned earlier via
+        #   ListCryptoKeyVersionsResponse.next_page_token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+parent}/cryptoKeyVersions', options)
+          command.response_representation = Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1beta1::ListCryptoKeyVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Schedule a CryptoKeyVersion for destruction.
+        # Upon calling this method, CryptoKeyVersion.state will be set to
+        # DESTROY_SCHEDULED
+        # and destroy_time will be set to a time 24
+        # hours in the future, at which point the state
+        # will be changed to
+        # DESTROYED, and the key
+        # material will be irrevocably destroyed.
+        # Before the destroy_time is reached,
+        # RestoreCryptoKeyVersion may be called to reverse the process.
         # @param [String] name
-        #   The name of the CryptoKeyVersion to get.
+        #   The resource name of the CryptoKeyVersion to destroy.
+        # @param [Google::Apis::CloudkmsV1beta1::DestroyCryptoKeyVersionRequest] destroy_crypto_key_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -910,11 +872,50 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_crypto_key_crypto_key_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+        def destroy_crypto_key_version(name, destroy_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+name}:destroy', options)
+          command.request_representation = Google::Apis::CloudkmsV1beta1::DestroyCryptoKeyVersionRequest::Representation
+          command.request_object = destroy_crypto_key_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
           command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new CryptoKeyVersion in a CryptoKey.
+        # The server will assign the next sequential id. If unset,
+        # state will be set to
+        # ENABLED.
+        # @param [String] parent
+        #   Required. The name of the CryptoKey associated with
+        #   the CryptoKeyVersions.
+        # @param [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] crypto_key_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1beta1::CryptoKeyVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_key_ring_crypto_key_crypto_key_version(parent, crypto_key_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+parent}/cryptoKeyVersions', options)
+          command.request_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
+          command.request_object = crypto_key_version_object
+          command.response_representation = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
+          command.response_class = Google::Apis::CloudkmsV1beta1::CryptoKeyVersion
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

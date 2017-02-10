@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/resource-manager
     module CloudresourcemanagerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170125'
+      REVISION = '20170201'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'

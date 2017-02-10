@@ -132,12 +132,12 @@ module Google
         end
       end
       
-      # The `RecognitionConfig` message provides information to the recognizer
-      # that specifies how to process the request.
+      # Provides information to the recognizer that specifies how to process the
+      # request.
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
-        # [Optional] Maximum number of recognition hypotheses to be returned.
+        # *Optional* Maximum number of recognition hypotheses to be returned.
         # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
         # within each `SpeechRecognitionResult`.
         # The server may return fewer than `max_alternatives`.
@@ -147,7 +147,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_alternatives
       
-        # [Required] Sample rate in Hertz of the audio data sent in all
+        # *Required* Sample rate in Hertz of the audio data sent in all
         # `RecognitionAudio` messages. Valid values are: 8000-48000.
         # 16000 is optimal. For best results, set the sampling rate of the audio
         # source to 16000 Hz. If that's not possible, use the native sample rate of
@@ -156,7 +156,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate
       
-        # [Optional] The language of the supplied audio as a BCP-47 language tag.
+        # *Optional* The language of the supplied audio as a BCP-47 language tag.
         # Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
         # If omitted, defaults to "en-US". See
         # [Language Support](https://cloud.google.com/speech/docs/languages)
@@ -165,18 +165,12 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Provides "hints" to the speech recognizer to favor specific words and phrases
-        # in the results.
-        # Corresponds to the JSON property `speechContext`
-        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
-        attr_accessor :speech_context
-      
-        # [Required] Encoding of audio data sent in all `RecognitionAudio` messages.
+        # *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
         # Corresponds to the JSON property `encoding`
         # @return [String]
         attr_accessor :encoding
       
-        # [Optional] If set to `true`, the server will attempt to filter out
+        # *Optional* If set to `true`, the server will attempt to filter out
         # profanities, replacing all but the initial character in each filtered word
         # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
         # won't be filtered out.
@@ -184,6 +178,12 @@ module Google
         # @return [Boolean]
         attr_accessor :profanity_filter
         alias_method :profanity_filter?, :profanity_filter
+      
+        # Provides "hints" to the speech recognizer to favor specific words and phrases
+        # in the results.
+        # Corresponds to the JSON property `speechContext`
+        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
+        attr_accessor :speech_context
       
         def initialize(**args)
            update!(**args)
@@ -194,19 +194,18 @@ module Google
           @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
           @language_code = args[:language_code] if args.key?(:language_code)
-          @speech_context = args[:speech_context] if args.key?(:speech_context)
           @encoding = args[:encoding] if args.key?(:encoding)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
+          @speech_context = args[:speech_context] if args.key?(:speech_context)
         end
       end
       
-      # `SyncRecognizeRequest` is the top-level message sent by the client for
-      # the `SyncRecognize` method.
+      # The top-level message sent by the client for the `SyncRecognize` method.
       class SyncRecognizeRequest
         include Google::Apis::Core::Hashable
       
-        # The `RecognitionConfig` message provides information to the recognizer
-        # that specifies how to process the request.
+        # Provides information to the recognizer that specifies how to process the
+        # request.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
         attr_accessor :config
@@ -302,13 +301,13 @@ module Google
         end
       end
       
-      # `SyncRecognizeResponse` is the only message returned to the client by
-      # `SyncRecognize`. It contains the result as zero or more sequential
-      # `SpeechRecognitionResult` messages.
+      # The only message returned to the client by `SyncRecognize`. method. It
+      # contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages.
       class SyncRecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # [Output-only] Sequential list of transcription results corresponding to
+        # *Output-only* Sequential list of transcription results corresponding to
         # sequential portions of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
@@ -343,20 +342,25 @@ module Google
         end
       end
       
-      # Provides "hints" to the speech recognizer to favor specific words and phrases
-      # in the results.
-      class SpeechContext
+      # Alternative hypotheses (a.k.a. n-best list).
+      class SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
-        # [Optional] A list of strings containing words and phrases "hints" so that
-        # the speech recognition is more likely to recognize them. This can be used
-        # to improve the accuracy for specific words and phrases, for example, if
-        # specific commands are typically spoken by the user. This can also be used
-        # to add additional words to the vocabulary of the recognizer. See
-        # [usage limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `phrases`
-        # @return [Array<String>]
-        attr_accessor :phrases
+        # *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is typically provided only for the top hypothesis, and
+        # only for `is_final=true` results. Clients should not rely on the
+        # `confidence` field as it is not guaranteed to be accurate, or even set, in
+        # any of the results.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # *Output-only* Transcript text representing the words that the user spoke.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
       
         def initialize(**args)
            update!(**args)
@@ -364,7 +368,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @phrases = args[:phrases] if args.key?(:phrases)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @transcript = args[:transcript] if args.key?(:transcript)
         end
       end
       
@@ -393,25 +398,20 @@ module Google
         end
       end
       
-      # Alternative hypotheses (a.k.a. n-best list).
-      class SpeechRecognitionAlternative
+      # Provides "hints" to the speech recognizer to favor specific words and phrases
+      # in the results.
+      class SpeechContext
         include Google::Apis::Core::Hashable
       
-        # [Output-only] The confidence estimate between 0.0 and 1.0. A higher number
-        # indicates an estimated greater likelihood that the recognized words are
-        # correct. This field is typically provided only for the top hypothesis, and
-        # only for `is_final=true` results. Clients should not rely on the
-        # `confidence` field as it is not guaranteed to be accurate, or even set, in
-        # any of the results.
-        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
-        # Corresponds to the JSON property `confidence`
-        # @return [Float]
-        attr_accessor :confidence
-      
-        # [Output-only] Transcript text representing the words that the user spoke.
-        # Corresponds to the JSON property `transcript`
-        # @return [String]
-        attr_accessor :transcript
+        # *Optional* A list of strings containing words and phrases "hints" so that
+        # the speech recognition is more likely to recognize them. This can be used
+        # to improve the accuracy for specific words and phrases, for example, if
+        # specific commands are typically spoken by the user. This can also be used
+        # to add additional words to the vocabulary of the recognizer. See
+        # [usage limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `phrases`
+        # @return [Array<String>]
+        attr_accessor :phrases
       
         def initialize(**args)
            update!(**args)
@@ -419,8 +419,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @confidence = args[:confidence] if args.key?(:confidence)
-          @transcript = args[:transcript] if args.key?(:transcript)
+          @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
       
@@ -428,7 +427,7 @@ module Google
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
       
-        # [Output-only] May contain one or more recognition hypotheses (up to the
+        # *Output-only* May contain one or more recognition hypotheses (up to the
         # maximum specified in `max_alternatives`).
         # Corresponds to the JSON property `alternatives`
         # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionAlternative>]
@@ -479,13 +478,12 @@ module Google
         end
       end
       
-      # `AsyncRecognizeRequest` is the top-level message sent by the client for
-      # the `AsyncRecognize` method.
+      # The top-level message sent by the client for the `AsyncRecognize` method.
       class AsyncRecognizeRequest
         include Google::Apis::Core::Hashable
       
-        # The `RecognitionConfig` message provides information to the recognizer
-        # that specifies how to process the request.
+        # Provides information to the recognizer that specifies how to process the
+        # request.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
         attr_accessor :config

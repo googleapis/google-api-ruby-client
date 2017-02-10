@@ -27,11 +27,11 @@ module Google
       VERSION = 'V1'
       REVISION = '20170105'
 
-      # View and manage Pub/Sub topics and subscriptions
-      AUTH_PUBSUB = 'https://www.googleapis.com/auth/pubsub'
-
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage Pub/Sub topics and subscriptions
+      AUTH_PUBSUB = 'https://www.googleapis.com/auth/pubsub'
     end
   end
 end

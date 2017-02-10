@@ -64,7 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpeechContext
+      class SpeechRecognitionAlternative
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,7 +76,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpeechRecognitionAlternative
+      class SpeechContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,10 +124,10 @@ module Google
           property :max_alternatives, as: 'maxAlternatives'
           property :sample_rate, as: 'sampleRate'
           property :language_code, as: 'languageCode'
-          property :speech_context, as: 'speechContext', class: Google::Apis::SpeechV1beta1::SpeechContext, decorator: Google::Apis::SpeechV1beta1::SpeechContext::Representation
-      
           property :encoding, as: 'encoding'
           property :profanity_filter, as: 'profanityFilter'
+          property :speech_context, as: 'speechContext', class: Google::Apis::SpeechV1beta1::SpeechContext, decorator: Google::Apis::SpeechV1beta1::SpeechContext::Representation
+      
         end
       end
       
@@ -164,10 +164,11 @@ module Google
         end
       end
       
-      class SpeechContext
+      class SpeechRecognitionAlternative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :phrases, as: 'phrases'
+          property :confidence, as: 'confidence'
+          property :transcript, as: 'transcript'
         end
       end
       
@@ -180,11 +181,10 @@ module Google
         end
       end
       
-      class SpeechRecognitionAlternative
+      class SpeechContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :transcript, as: 'transcript'
+          collection :phrases, as: 'phrases'
         end
       end
       

@@ -1,3 +1,10 @@
+# 0.9.28
+* Fix file permissions issue
+
+# 0.9.27
+* Allow abnormal page token cases for paging methods
+* Regenerate APIs
+
 # 0.9.26
 * Update gem to reflect changes in 0.9.25
 

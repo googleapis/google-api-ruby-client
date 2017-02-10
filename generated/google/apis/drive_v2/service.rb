@@ -216,6 +216,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the starting pageToken for listing future changes.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::StartPageToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::StartPageToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_change_start_page_token(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'changes/startPageToken', options)
+          command.response_representation = Google::Apis::DriveV2::StartPageToken::Representation
+          command.response_class = Google::Apis::DriveV2::StartPageToken
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the changes for a user.
         # @param [Boolean] include_deleted
         #   Whether to include deleted items.
@@ -226,7 +258,9 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
-        #   Page token for changes.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of 'nextPageToken' from the previous response or to the
+        #   response from the getStartPageToken method.
         # @param [String] spaces
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
@@ -280,7 +314,9 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
-        #   Page token for changes.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of 'nextPageToken' from the previous response or to the
+        #   response from the getStartPageToken method.
         # @param [String] spaces
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.

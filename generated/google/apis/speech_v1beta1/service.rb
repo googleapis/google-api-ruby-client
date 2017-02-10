@@ -46,80 +46,6 @@ module Google
           super('https://speech.googleapis.com/', '')
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding below allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [String] name
-        #   The name of the operation collection.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1beta1::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1beta1::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(page_size: nil, filter: nil, name: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/operations', options)
-          command.response_representation = Google::Apis::SpeechV1beta1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::SpeechV1beta1::ListOperationsResponse
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['name'] = name unless name.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/operations/{+name}', options)
-          command.response_representation = Google::Apis::SpeechV1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -189,6 +115,80 @@ module Google
           command =  make_simple_command(:delete, 'v1beta1/operations/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1beta1::Empty::Representation
           command.response_class = Google::Apis::SpeechV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the
+        # server doesn't support this method, it returns `UNIMPLEMENTED`.
+        # NOTE: the `name` binding below allows API services to override the binding
+        # to use different resource name schemes, such as `users/*/operations`.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [String] name
+        #   The name of the operation collection.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpeechV1beta1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpeechV1beta1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operations(filter: nil, name: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/operations', options)
+          command.response_representation = Google::Apis::SpeechV1beta1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::SpeechV1beta1::ListOperationsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.  Clients can use this
+        # method to poll the operation result at intervals as recommended by the API
+        # service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpeechV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpeechV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/operations/{+name}', options)
+          command.response_representation = Google::Apis::SpeechV1beta1::Operation::Representation
+          command.response_class = Google::Apis::SpeechV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
