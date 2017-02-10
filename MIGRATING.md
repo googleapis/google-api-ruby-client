@@ -61,6 +61,8 @@ are expected to be added by end of Q2 2015.
 The underlying [Signet](https://github.com/google/signet) is still used for authorization. OAuth 2 credentials obtained
 previously will continue to work with the `0.9` version. OAuth 1 is no longer supported.
 
+If your where using a PKCS12 file to authorize, we recommend you to use a client_secret.json file with googleauth.
+
 ## Media uploads
 
 Media uploads are significantly simpler in `0.9`.
