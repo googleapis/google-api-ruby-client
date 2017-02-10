@@ -3773,6 +3773,7 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
+          command.request_representation = Google::Apis::Core::JsonRepresentation
           command.response_representation = Google::Apis::YoutubeV3::SetThumbnailResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::SetThumbnailResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
