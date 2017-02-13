@@ -35,9 +35,12 @@ module Samples
       metadata  = {
         snippet: {
           title: options[:title] || file
+        },
+        status: {
+          privacy_status: 'unlisted'
         }
       }
-      result = youtube.insert_video('snippet', metadata, upload_source: file)
+      result = youtube.insert_video('snippet,status', metadata, upload_source: file)
       say "Upload complete"
     end
   end
