@@ -472,6 +472,7 @@ module Google
           property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
+          property :local_id, as: 'localId'
           property :password, as: 'password'
           property :photo_url, as: 'photoUrl'
         end
@@ -576,6 +577,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :email_verified, as: 'emailVerified'
           property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
@@ -685,6 +687,7 @@ module Google
           property :full_name, as: 'fullName'
           property :id_token, as: 'idToken'
           property :input_email, as: 'inputEmail'
+          property :is_new_user, as: 'isNewUser'
           property :kind, as: 'kind'
           property :language, as: 'language'
           property :last_name, as: 'lastName'

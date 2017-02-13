@@ -105,7 +105,7 @@ module Google
         end
       end
       
-      # Respone of downloading accounts in batch.
+      # Response of downloading accounts in batch.
       class DownloadAccountResponse
         include Google::Apis::Core::Hashable
       
@@ -950,6 +950,11 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
+        # Privileged caller can create user with specified user id.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
         # The new password of the user.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -974,6 +979,7 @@ module Google
           @email_verified = args[:email_verified] if args.key?(:email_verified)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @local_id = args[:local_id] if args.key?(:local_id)
           @password = args[:password] if args.key?(:password)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
         end
@@ -1408,6 +1414,12 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # If email has been verified.
+        # Corresponds to the JSON property `emailVerified`
+        # @return [Boolean]
+        attr_accessor :email_verified
+        alias_method :email_verified?, :email_verified
+      
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
@@ -1462,6 +1474,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
@@ -1885,6 +1898,12 @@ module Google
         # @return [String]
         attr_accessor :input_email
       
+        # True if it's a new user sign-in, false if it's a returning user.
+        # Corresponds to the JSON property `isNewUser`
+        # @return [Boolean]
+        attr_accessor :is_new_user
+        alias_method :is_new_user?, :is_new_user
+      
         # The fixed string "identitytoolkit#VerifyAssertionResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2026,6 +2045,7 @@ module Google
           @full_name = args[:full_name] if args.key?(:full_name)
           @id_token = args[:id_token] if args.key?(:id_token)
           @input_email = args[:input_email] if args.key?(:input_email)
+          @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
           @kind = args[:kind] if args.key?(:kind)
           @language = args[:language] if args.key?(:language)
           @last_name = args[:last_name] if args.key?(:last_name)

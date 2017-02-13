@@ -22,83 +22,6 @@ module Google
   module Apis
     module YoutubereportingV1
       
-      # Media resource.
-      class Media
-        include Google::Apis::Core::Hashable
-      
-        # Name of the media resource.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-        end
-      end
-      
-      # A report's metadata including the URL from which the report itself can be
-      # downloaded.
-      class Report
-        include Google::Apis::Core::Hashable
-      
-        # The server-generated ID of the report.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The end of the time period that the report instance covers. The value is
-        # exclusive.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The date/time when the job this report belongs to will expire/expired.
-        # Corresponds to the JSON property `jobExpireTime`
-        # @return [String]
-        attr_accessor :job_expire_time
-      
-        # The URL from which the report can be downloaded (max. 1000 characters).
-        # Corresponds to the JSON property `downloadUrl`
-        # @return [String]
-        attr_accessor :download_url
-      
-        # The start of the time period that the report instance covers. The value is
-        # inclusive.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # The date/time when this report was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The ID of the job that created this report.
-        # Corresponds to the JSON property `jobId`
-        # @return [String]
-        attr_accessor :job_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @job_expire_time = args[:job_expire_time] if args.key?(:job_expire_time)
-          @download_url = args[:download_url] if args.key?(:download_url)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @job_id = args[:job_id] if args.key?(:job_id)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -118,23 +41,47 @@ module Google
         end
       end
       
-      # Response message for ReportingService.ListReportTypes.
-      class ListReportTypesResponse
+      # A report's metadata including the URL from which the report itself can be
+      # downloaded.
+      class Report
         include Google::Apis::Core::Hashable
       
-        # The list of report types.
-        # Corresponds to the JSON property `reportTypes`
-        # @return [Array<Google::Apis::YoutubereportingV1::ReportType>]
-        attr_accessor :report_types
-      
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListReportTypesRequest.page_token
-        # field in the subsequent call to `ListReportTypes` method to retrieve the next
-        # page of results.
-        # Corresponds to the JSON property `nextPageToken`
+        # The date/time when this report was created.
+        # Corresponds to the JSON property `createTime`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :create_time
+      
+        # The ID of the job that created this report.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The server-generated ID of the report.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The date/time when the job this report belongs to will expire/expired.
+        # Corresponds to the JSON property `jobExpireTime`
+        # @return [String]
+        attr_accessor :job_expire_time
+      
+        # The end of the time period that the report instance covers. The value is
+        # exclusive.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The URL from which the report can be downloaded (max. 1000 characters).
+        # Corresponds to the JSON property `downloadUrl`
+        # @return [String]
+        attr_accessor :download_url
+      
+        # The start of the time period that the report instance covers. The value is
+        # inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         def initialize(**args)
            update!(**args)
@@ -142,8 +89,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @report_types = args[:report_types] if args.key?(:report_types)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @id = args[:id] if args.key?(:id)
+          @job_expire_time = args[:job_expire_time] if args.key?(:job_expire_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @download_url = args[:download_url] if args.key?(:download_url)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -184,6 +136,35 @@ module Google
           @system_managed = args[:system_managed] if args.key?(:system_managed)
           @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for ReportingService.ListReportTypes.
+      class ListReportTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of report types.
+        # Corresponds to the JSON property `reportTypes`
+        # @return [Array<Google::Apis::YoutubereportingV1::ReportType>]
+        attr_accessor :report_types
+      
+        # A token to retrieve next page of results.
+        # Pass this value in the
+        # ListReportTypesRequest.page_token
+        # field in the subsequent call to `ListReportTypes` method to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_types = args[:report_types] if args.key?(:report_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -273,11 +254,6 @@ module Google
       class ListReportsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of report types.
-        # Corresponds to the JSON property `reports`
-        # @return [Array<Google::Apis::YoutubereportingV1::Report>]
-        attr_accessor :reports
-      
         # A token to retrieve next page of results.
         # Pass this value in the
         # ListReportsRequest.page_token
@@ -287,14 +263,38 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of report types.
+        # Corresponds to the JSON property `reports`
+        # @return [Array<Google::Apis::YoutubereportingV1::Report>]
+        attr_accessor :reports
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @reports = args[:reports] if args.key?(:reports)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reports = args[:reports] if args.key?(:reports)
+        end
+      end
+      
+      # Media resource.
+      class Media
+        include Google::Apis::Core::Hashable
+      
+        # Name of the media resource.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
     end

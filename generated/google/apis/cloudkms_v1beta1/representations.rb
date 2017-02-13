@@ -22,54 +22,6 @@ module Google
   module Apis
     module CloudkmsV1beta1
       
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DecryptRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCryptoKeysResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DecryptResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,12 +29,6 @@ module Google
       end
       
       class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,13 +52,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateCryptoKeyPrimaryVersionRequest
+      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class RestoreCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCryptoKeyPrimaryVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,80 +143,51 @@ module Google
       end
       
       class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data_access, as: 'dataAccess', class: Google::Apis::CloudkmsV1beta1::DataAccessOptions, decorator: Google::Apis::CloudkmsV1beta1::DataAccessOptions::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::CloudkmsV1beta1::CloudAuditOptions, decorator: Google::Apis::CloudkmsV1beta1::CloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::CloudkmsV1beta1::CounterOptions, decorator: Google::Apis::CloudkmsV1beta1::CounterOptions::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :update_mask, as: 'updateMask'
-          property :policy, as: 'policy', class: Google::Apis::CloudkmsV1beta1::Policy, decorator: Google::Apis::CloudkmsV1beta1::Policy::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DecryptRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ciphertext, :base64 => true, as: 'ciphertext'
-          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :location_id, as: 'locationId'
-          hash :metadata, as: 'metadata'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListCryptoKeysResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :crypto_keys, as: 'cryptoKeys', class: Google::Apis::CloudkmsV1beta1::CryptoKey, decorator: Google::Apis::CloudkmsV1beta1::CryptoKey::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :total_size, as: 'totalSize'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :sys, as: 'sys'
-          collection :values, as: 'values'
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric, as: 'metric'
-          property :field, as: 'field'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DecryptResponse
@@ -278,15 +201,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class ListLocationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :locations, as: 'locations', class: Google::Apis::CloudkmsV1beta1::Location, decorator: Google::Apis::CloudkmsV1beta1::Location::Representation
-      
         end
       end
       
@@ -308,16 +222,31 @@ module Google
       class EncryptResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ciphertext, :base64 => true, as: 'ciphertext'
           property :name, as: 'name'
+          property :ciphertext, :base64 => true, as: 'ciphertext'
         end
       end
       
       class KeyRing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :name, as: 'name'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::CloudkmsV1beta1::Location, decorator: Google::Apis::CloudkmsV1beta1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class RestoreCryptoKeyVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -325,12 +254,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key_version_id, as: 'cryptoKeyVersionId'
-        end
-      end
-      
-      class RestoreCryptoKeyVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -343,31 +266,31 @@ module Google
       class ListKeyRingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :key_rings, as: 'keyRings', class: Google::Apis::CloudkmsV1beta1::KeyRing, decorator: Google::Apis::CloudkmsV1beta1::KeyRing::Representation
-      
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+          collection :key_rings, as: 'keyRings', class: Google::Apis::CloudkmsV1beta1::KeyRing, decorator: Google::Apis::CloudkmsV1beta1::KeyRing::Representation
+      
         end
       end
       
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudkmsV1beta1::AuditLogConfig, decorator: Google::Apis::CloudkmsV1beta1::AuditLogConfig::Representation
-      
           collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudkmsV1beta1::AuditLogConfig, decorator: Google::Apis::CloudkmsV1beta1::AuditLogConfig::Representation
+      
         end
       end
       
       class CryptoKeyVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :destroy_time, as: 'destroyTime'
           property :create_time, as: 'createTime'
           property :state, as: 'state'
           property :name, as: 'name'
           property :destroy_event_time, as: 'destroyEventTime'
-          property :destroy_time, as: 'destroyTime'
         end
       end
       
@@ -434,13 +357,90 @@ module Google
       class CryptoKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :purpose, as: 'purpose'
+          property :next_rotation_time, as: 'nextRotationTime'
           property :create_time, as: 'createTime'
           property :rotation_period, as: 'rotationPeriod'
           property :primary, as: 'primary', class: Google::Apis::CloudkmsV1beta1::CryptoKeyVersion, decorator: Google::Apis::CloudkmsV1beta1::CryptoKeyVersion::Representation
       
           property :name, as: 'name'
-          property :purpose, as: 'purpose'
-          property :next_rotation_time, as: 'nextRotationTime'
+        end
+      end
+      
+      class LogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::CloudkmsV1beta1::CloudAuditOptions, decorator: Google::Apis::CloudkmsV1beta1::CloudAuditOptions::Representation
+      
+          property :counter, as: 'counter', class: Google::Apis::CloudkmsV1beta1::CounterOptions, decorator: Google::Apis::CloudkmsV1beta1::CounterOptions::Representation
+      
+          property :data_access, as: 'dataAccess', class: Google::Apis::CloudkmsV1beta1::DataAccessOptions, decorator: Google::Apis::CloudkmsV1beta1::DataAccessOptions::Representation
+      
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::CloudkmsV1beta1::Policy, decorator: Google::Apis::CloudkmsV1beta1::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class DecryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class ListCryptoKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :crypto_keys, as: 'cryptoKeys', class: Google::Apis::CloudkmsV1beta1::CryptoKey, decorator: Google::Apis::CloudkmsV1beta1::CryptoKey::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :op, as: 'op'
+          property :svc, as: 'svc'
+          property :sys, as: 'sys'
+          property :value, as: 'value'
+          property :iam, as: 'iam'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class CounterOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :field, as: 'field'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
     end

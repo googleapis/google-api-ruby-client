@@ -46,16 +46,17 @@ module Google
           super('https://script.googleapis.com/', '')
         end
         
-        # Runs a function in an Apps Script project that has been deployed for use with
-        # the Apps Script Execution API. This method requires authorization with an
-        # OAuth 2.0 token that includes at least one of the scopes listed in the [
-        # Authentication](#authentication) section; script projects that do not require
-        # authorization cannot be executed through this API. To find the correct scopes
-        # to include in the authentication token, open the project in the script editor,
-        # then select **File > Project properties** and click the **Scopes** tab.
+        # Runs a function in an Apps Script project. The project must be deployed
+        # for use with the Apps Script Execution API.
+        # This method requires authorization with an OAuth 2.0 token that includes at
+        # least one of the scopes listed in the [Authorization](#authorization)
+        # section; script projects that do not require authorization cannot be
+        # executed through this API. To find the correct scopes to include in the
+        # authentication token, open the project in the script editor, then select
+        # **File > Project properties** and click the **Scopes** tab.
         # @param [String] script_id
         #   The project key of the script to be executed. To find the project key, open
-        #   the project in the script editor, then select **File > Project properties**.
+        #   the project in the script editor and select **File > Project properties**.
         # @param [Google::Apis::ScriptV1::ExecutionRequest] execution_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

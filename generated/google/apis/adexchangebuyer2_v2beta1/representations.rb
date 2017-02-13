@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListClientsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListClientUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +47,12 @@ module Google
       end
       
       class ListClientUserInvitationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListClientsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -75,28 +75,19 @@ module Google
       class ClientUser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
           property :user_id, as: 'userId'
           property :email, as: 'email'
           property :client_account_id, as: 'clientAccountId'
-          property :status, as: 'status'
         end
       end
       
       class ClientUserInvitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :invitation_id, as: 'invitationId'
           property :email, as: 'email'
           property :client_account_id, as: 'clientAccountId'
-          property :invitation_id, as: 'invitationId'
-        end
-      end
-      
-      class ListClientsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-      
         end
       end
       
@@ -112,9 +103,18 @@ module Google
       class ListClientUserInvitationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :invitations, as: 'invitations', class: Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
       
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
     end

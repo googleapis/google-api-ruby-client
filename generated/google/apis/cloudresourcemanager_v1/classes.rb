@@ -108,6 +108,12 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
@@ -120,21 +126,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -216,14 +216,6 @@ module Google
       class Organization
         include Google::Apis::Core::Hashable
       
-        # A friendly string to be used to refer to the Organization in the UI.
-        # Assigned by the server, set to the firm name of the Google For Work
-        # customer that owns this organization.
-        # @OutputOnly
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
         # Timestamp when the Organization was created. Assigned by the server.
         # @OutputOnly
         # Corresponds to the JSON property `creationTime`
@@ -251,17 +243,25 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A friendly string to be used to refer to the Organization in the UI.
+        # Assigned by the server, set to the primary domain of the G Suite
+        # customer that owns the organization.
+        # @OutputOnly
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @owner = args[:owner] if args.key?(:owner)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -335,27 +335,6 @@ module Google
         end
       end
       
-      # Response from the GetAncestry method.
-      class GetAncestryResponse
-        include Google::Apis::Core::Hashable
-      
-        # Ancestors are ordered from bottom to top of the resource hierarchy. The
-        # first ancestor is the project itself, followed by the project's parent,
-        # etc.
-        # Corresponds to the JSON property `ancestor`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
-        attr_accessor :ancestor
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ancestor = args[:ancestor] if args.key?(:ancestor)
-        end
-      end
-      
       # The entity that owns an Organization. The lifetime of the Organization and
       # all of its descendants are bound to the `OrganizationOwner`. If the
       # `OrganizationOwner` is deleted, the Organization and all its descendants will
@@ -378,6 +357,27 @@ module Google
         end
       end
       
+      # Response from the GetAncestry method.
+      class GetAncestryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Ancestors are ordered from bottom to top of the resource hierarchy. The
+        # first ancestor is the project itself, followed by the project's parent,
+        # etc.
+        # Corresponds to the JSON property `ancestor`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
+        attr_accessor :ancestor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestor = args[:ancestor] if args.key?(:ancestor)
+        end
+      end
+      
       # A page of the response received from the
       # ListProjects
       # method.
@@ -386,12 +386,6 @@ module Google
       # retrieve the next request page.
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
-      
-        # The list of Projects that matched the list filter. This list can
-        # be paginated.
-        # Corresponds to the JSON property `projects`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
-        attr_accessor :projects
       
         # Pagination token.
         # If the result set is too large to fit in a single response, this token
@@ -405,14 +399,20 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of Projects that matched the list filter. This list can
+        # be paginated.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
+        attr_accessor :projects
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @projects = args[:projects] if args.key?(:projects)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -557,28 +557,6 @@ module Google
         end
       end
       
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
       # The response returned from the `SearchOrganizations` method.
       class SearchOrganizationsResponse
         include Google::Apis::Core::Hashable
@@ -606,6 +584,86 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @organizations = args[:organizations] if args.key?(:organizations)
+        end
+      end
+      
+      # Request message for `TestIamPermissions` method.
+      class TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the `resource`. Permissions with
+        # wildcards (such as '*' or 'storage.*') are not allowed. For more
+        # information see
+        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A classification of the Folder Operation error.
+      class FolderOperationError
+        include Google::Apis::Core::Hashable
+      
+        # The type of operation error experienced.
+        # Corresponds to the JSON property `errorMessageId`
+        # @return [String]
+        attr_accessor :error_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
+        end
+      end
+      
+      # Metadata describing a long running folder operation
+      class FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the folder's parent.
+        # Only applicable when the operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        # The resource name of the folder or organization we are either creating
+        # the folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
         end
       end
       
@@ -672,64 +730,6 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
-        end
-      end
-      
-      # Metadata describing a long running folder operation
-      class FolderOperation
-        include Google::Apis::Core::Hashable
-      
-        # The type of this operation.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # The display name of the folder.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The resource name of the folder's parent.
-        # Only applicable when the operation_type is MOVE.
-        # Corresponds to the JSON property `sourceParent`
-        # @return [String]
-        attr_accessor :source_parent
-      
-        # The resource name of the folder or organization we are either creating
-        # the folder under or moving the folder to.
-        # Corresponds to the JSON property `destinationParent`
-        # @return [String]
-        attr_accessor :destination_parent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @source_parent = args[:source_parent] if args.key?(:source_parent)
-          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
-        end
-      end
-      
-      # A classification of the Folder Operation error.
-      class FolderOperationError
-        include Google::Apis::Core::Hashable
-      
-        # The type of operation error experienced.
-        # Corresponds to the JSON property `errorMessageId`
-        # @return [String]
-        attr_accessor :error_message_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
         end
       end
       

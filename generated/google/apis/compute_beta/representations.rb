@@ -22,6 +22,48 @@ module Google
   module Apis
     module ComputeBeta
       
+      class AcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -748,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetMachineResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesSetMachineTypeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +923,12 @@ module Google
       end
       
       class NetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPeering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1616,6 +1670,82 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
+      class AcceleratorType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AcceleratorTypeAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::AcceleratorTypesScopedList, decorator: Google::Apis::ComputeBeta::AcceleratorTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AcceleratorTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::AcceleratorType, decorator: Google::Apis::ComputeBeta::AcceleratorType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AcceleratorTypesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_types, as: 'acceleratorTypes', class: Google::Apis::ComputeBeta::AcceleratorType, decorator: Google::Apis::ComputeBeta::AcceleratorType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::AcceleratorTypesScopedList::Warning, decorator: Google::Apis::ComputeBeta::AcceleratorTypesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::AcceleratorTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::AcceleratorTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
       end
       
       class AccessConfig
@@ -2599,6 +2729,8 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -3033,6 +3165,14 @@ module Google
         end
       end
       
+      class InstancesSetMachineResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
+      
+        end
+      end
+      
       class InstancesSetMachineTypeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3228,6 +3368,8 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :peerings, as: 'peerings', class: Google::Apis::ComputeBeta::NetworkPeering, decorator: Google::Apis::ComputeBeta::NetworkPeering::Representation
+      
           property :self_link, as: 'selfLink'
           collection :subnetworks, as: 'subnetworks'
         end
@@ -3255,6 +3397,17 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class NetworkPeering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create_routes, as: 'autoCreateRoutes'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails'
         end
       end
       
@@ -3615,6 +3768,7 @@ module Google
           property :next_hop_instance, as: 'nextHopInstance'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'

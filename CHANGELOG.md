@@ -1,3 +1,9 @@
+# 0.10.0
+* Regenerate APIs
+* Some exceptions are more descriptive for specific errors
+* `representable` dependency bumped to `~> 3.0`
+* `retriable` dependency bumped to `>= 2.0, < 4.0`
+
 # 0.9.28
 * Fix file permissions issue
 
