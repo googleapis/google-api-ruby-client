@@ -2,6 +2,10 @@
 * Regenerate APIs
 * Some exceptions are more descriptive for specific errors
 * `representable` dependency bumped to `~> 3.0`
+  * Breaking change for `skip_undefined` option under `to_json`:
+
+    Should now pass `foo.to_json(user_options: { skip_undefined: true })`
+    instead of `foo.to_json(skip_undefined: true)`
 * `retriable` dependency bumped to `>= 2.0, < 4.0`
 
 # 0.9.28
