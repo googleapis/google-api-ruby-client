@@ -125,6 +125,11 @@ module Google
       class ClientUser
         include Google::Apis::Core::Hashable
       
+        # The status of the client user.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # The unique numerical ID of the client user
         # that has accepted an invitation.
         # The value of this field is ignored in an update operation.
@@ -146,21 +151,16 @@ module Google
         # @return [String]
         attr_accessor :client_account_id
       
-        # The status of the client user.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @status = args[:status] if args.key?(:status)
           @user_id = args[:user_id] if args.key?(:user_id)
           @email = args[:email] if args.key?(:email)
           @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -169,6 +169,12 @@ module Google
       # All fields are required unless otherwise specified.
       class ClientUserInvitation
         include Google::Apis::Core::Hashable
+      
+        # The unique numerical ID of the invitation that is sent to the user.
+        # The value of this field is ignored in create operations.
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
       
         # The email address to which the invitation is sent. Email
         # addresses should be unique among all client users under each sponsor
@@ -184,51 +190,15 @@ module Google
         # @return [String]
         attr_accessor :client_account_id
       
-        # The unique numerical ID of the invitation that is sent to the user.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `invitationId`
-        # @return [String]
-        attr_accessor :invitation_id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
           @email = args[:email] if args.key?(:email)
           @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
-        end
-      end
-      
-      # 
-      class ListClientsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListClientsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.clients.list method
-        # to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The returned list of clients.
-        # Corresponds to the JSON property `clients`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
-        attr_accessor :clients
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @clients = args[:clients] if args.key?(:clients)
         end
       end
       
@@ -267,6 +237,11 @@ module Google
       class ListClientUserInvitationsResponse
         include Google::Apis::Core::Hashable
       
+        # The returned list of client users.
+        # Corresponds to the JSON property `invitations`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation>]
+        attr_accessor :invitations
+      
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListClientUserInvitationsRequest.pageToken
@@ -278,10 +253,35 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The returned list of client users.
-        # Corresponds to the JSON property `invitations`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation>]
-        attr_accessor :invitations
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invitations = args[:invitations] if args.key?(:invitations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned list of clients.
+        # Corresponds to the JSON property `clients`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
+        attr_accessor :clients
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListClientsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.clients.list method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -289,8 +289,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @clients = args[:clients] if args.key?(:clients)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @invitations = args[:invitations] if args.key?(:invitations)
         end
       end
     end

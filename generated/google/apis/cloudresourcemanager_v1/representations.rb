@@ -76,13 +76,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetAncestryResponse
+      class OrganizationOwner
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrganizationOwner
+      class GetAncestryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,19 +112,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SearchOrganizationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FolderOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,7 +136,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FolderOperationError
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -171,9 +171,9 @@ module Google
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
           property :code, as: 'code'
           property :message, as: 'message'
-          collection :details, as: 'details'
         end
       end
       
@@ -200,12 +200,12 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
           property :creation_time, as: 'creationTime'
           property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1::OrganizationOwner::Representation
       
           property :lifecycle_state, as: 'lifecycleState'
           property :name, as: 'name'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -231,6 +231,13 @@ module Google
         end
       end
       
+      class OrganizationOwner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :directory_customer_id, as: 'directoryCustomerId'
+        end
+      end
+      
       class GetAncestryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -239,19 +246,12 @@ module Google
         end
       end
       
-      class OrganizationOwner
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :directory_customer_id, as: 'directoryCustomerId'
-        end
-      end
-      
       class ListProjectsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1::Project, decorator: Google::Apis::CloudresourcemanagerV1::Project::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -284,6 +284,15 @@ module Google
         end
       end
       
+      class SearchOrganizationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1::Organization, decorator: Google::Apis::CloudresourcemanagerV1::Organization::Representation
+      
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -291,12 +300,20 @@ module Google
         end
       end
       
-      class SearchOrganizationsResponse
+      class FolderOperationError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1::Organization, decorator: Google::Apis::CloudresourcemanagerV1::Organization::Representation
+          property :error_message_id, as: 'errorMessageId'
+        end
+      end
       
+      class FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :source_parent, as: 'sourceParent'
+          property :destination_parent, as: 'destinationParent'
+          property :operation_type, as: 'operationType'
         end
       end
       
@@ -307,23 +324,6 @@ module Google
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1::Binding, decorator: Google::Apis::CloudresourcemanagerV1::Binding::Representation
       
-        end
-      end
-      
-      class FolderOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_type, as: 'operationType'
-          property :display_name, as: 'displayName'
-          property :source_parent, as: 'sourceParent'
-          property :destination_parent, as: 'destinationParent'
-        end
-      end
-      
-      class FolderOperationError
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message_id, as: 'errorMessageId'
         end
       end
       

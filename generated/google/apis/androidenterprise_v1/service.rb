@@ -3168,7 +3168,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the set of products a user is entitled to access.
+        # Modifies the set of products that a user is entitled to access (referred to as
+        # whitelisted products). Only products that are approved or products that were
+        # previously approved (products with revoked approval) can be whitelisted.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id

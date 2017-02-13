@@ -52,6 +52,205 @@ module Google
           super('https://www.googleapis.com/', 'compute/beta/projects/')
         end
         
+        # Retrieves an aggregated list of accelerator types.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_accelerator_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified accelerator type. Get a list of available accelerator
+        # types by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] accelerator_type
+        #   Name of the accelerator type to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_accelerator_type(project, zone, accelerator_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes/{acceleratorType}', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorType::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorType
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorType'] = accelerator_type unless accelerator_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of accelerator types available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests.
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorTypeList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorTypeList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorTypeList::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorTypeList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of addresses.
         # @param [String] project
         #   Project ID for this request.
@@ -5369,10 +5568,11 @@ module Google
         end
         
         # Updates a managed instance group using the information that you specify in the
-        # request. This operation is marked as DONE when the group is updated even if
-        # the instances in the group have not yet been updated. You must separately
-        # verify the status of the individual instances with the listmanagedinstances
-        # method. This method supports patch semantics.
+        # request. The field statefulPolicy is updated using PATCH semantics. This
+        # operation is marked as DONE when the group is updated even if the instances in
+        # the group have not yet been updated. You must separately verify the status of
+        # the individual instances with the listmanagedinstances method. This method
+        # supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5752,10 +5952,10 @@ module Google
         end
         
         # Updates a managed instance group using the information that you specify in the
-        # request. This operation is marked as DONE when the group is updated even if
-        # the instances in the group have not yet been updated. You must separately
-        # verify the status of the individual instances with the listmanagedinstances
-        # method.
+        # request. The field statefulPolicy is updated using PATCH semantics. This
+        # operation is marked as DONE when the group is updated even if the instances in
+        # the group have not yet been updated. You must separately verify the status of
+        # the individual instances with the listmanagedinstances method.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7237,6 +7437,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Changes the number and/or type of accelerator for a stopped instance to the
+        # values specified in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest] instances_set_machine_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest::Representation
+          command.request_object = instances_set_machine_resources_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Changes the machine type for a stopped instance to the machine type specified
         # in the request.
         # @param [String] project
@@ -8220,6 +8465,10 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
+        # @param [String] filter
+        # @param [Fixnum] max_results
+        # @param [String] order_by
+        # @param [String] page_token
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8241,13 +8490,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/listXpnHosts', options)
           command.request_representation = Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest::Representation
           command.request_object = projects_list_xpn_hosts_request_object
           command.response_representation = Google::Apis::ComputeBeta::XpnHostList::Representation
           command.response_class = Google::Apis::ComputeBeta::XpnHostList
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

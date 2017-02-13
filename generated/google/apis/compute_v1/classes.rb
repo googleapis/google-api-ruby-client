@@ -1814,13 +1814,12 @@ module Google
       class DiskList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of persistent disks.
+        # A list of Disk resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Disk>]
         attr_accessor :items
@@ -1830,11 +1829,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
+        # [Output Only] A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2461,7 +2456,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The IP address that this forwarding rule is serving on behalf of.
-        # For global forwarding rules, the address must be a global IP; for regional
+        # For global forwarding rules, the address must be a global IP. For regional
         # forwarding rules, the address must live in the same region as the forwarding
         # rule. By default, this field is empty and an ephemeral IP from the same scope (
         # global or regional) will be assigned.
@@ -2476,7 +2471,7 @@ module Google
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
         # AH, SCTP or ICMP.
-        # When the load balancing scheme is INTERNAL</code, only TCP and UDP are valid.
+        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -2512,10 +2507,10 @@ module Google
         attr_accessor :kind
       
         # This signifies what the ForwardingRule will be used for and can only take the
-        # following values: INTERNAL EXTERNAL The value of INTERNAL means that this will
-        # be used for Internal Network Load Balancing (TCP, UDP). The value of EXTERNAL
-        # means that this will be used for External Load Balancing (HTTP(S) LB, External
-        # TCP/UDP LB, SSL Proxy)
+        # following values: INTERNAL, EXTERNAL The value of INTERNAL means that this
+        # will be used for Internal Network Load Balancing (TCP, UDP). The value of
+        # EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
+        # External TCP/UDP LB, SSL Proxy)
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -6073,10 +6068,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # URL of the network resource for this instance. This is required for creating
-        # an instance but optional when creating a firewall rule. If not specified when
-        # creating a firewall rule, the default network is used:
-        # global/networks/default
+        # URL of the network resource for this instance. When creating an instance, if
+        # neither the network nor the subnetwork is specified, the default network
+        # global/networks/default is used; if the network is not specified but the
+        # subnetwork is specified, the network is inferred.
+        # This field is optional when creating a firewall rule. If not specified when
+        # creating a firewall rule, the default network global/networks/default is used.
         # If you specify this property, you can specify the network as a full or partial
         # URL. For example, the following are all valid URLs:
         # - https://www.googleapis.com/compute/v1/projects/project/global/networks/
@@ -7360,8 +7357,8 @@ module Google
       # priority value. If there is still a tie, it uses the layer three and four
       # packet headers to select just one of the remaining matching routes. The packet
       # is then forwarded as specified by the nextHop field of the winning route -
-      # either to another instance destination, a instance gateway or a Google Compute
-      # Engine-operated gateway.
+      # either to another instance destination, an instance gateway, or a Google
+      # Compute Engine-operated gateway.
       # Packets that do not match any route in the sending instance's routing table
       # are dropped.
       class Route

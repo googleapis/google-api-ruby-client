@@ -27,11 +27,11 @@ module Google
       VERSION = 'V4'
       REVISION = '20161129'
 
-      # View your Google Analytics data
-      AUTH_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/analytics.readonly'
-
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
+
+      # View your Google Analytics data
+      AUTH_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/analytics.readonly'
     end
   end
 end

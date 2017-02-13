@@ -22,23 +22,37 @@ module Google
   module Apis
     module SpeechV1beta1
       
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should have the format of `operations/some/unique/name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by
@@ -91,44 +105,17 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -165,6 +152,12 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Provides "hints" to the speech recognizer to favor specific words and phrases
+        # in the results.
+        # Corresponds to the JSON property `speechContext`
+        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
+        attr_accessor :speech_context
+      
         # *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
         # Corresponds to the JSON property `encoding`
         # @return [String]
@@ -179,12 +172,6 @@ module Google
         attr_accessor :profanity_filter
         alias_method :profanity_filter?, :profanity_filter
       
-        # Provides "hints" to the speech recognizer to favor specific words and phrases
-        # in the results.
-        # Corresponds to the JSON property `speechContext`
-        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
-        attr_accessor :speech_context
-      
         def initialize(**args)
            update!(**args)
         end
@@ -194,9 +181,9 @@ module Google
           @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @speech_context = args[:speech_context] if args.key?(:speech_context)
           @encoding = args[:encoding] if args.key?(:encoding)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
-          @speech_context = args[:speech_context] if args.key?(:speech_context)
         end
       end
       
@@ -271,6 +258,13 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
         # Corresponds to the JSON property `details`
@@ -282,22 +276,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -373,31 +360,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
       # Provides "hints" to the speech recognizer to favor specific words and phrases
       # in the results.
       class SpeechContext
@@ -423,6 +385,31 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # A speech recognition result corresponding to a portion of the audio.
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
@@ -440,6 +427,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
+        end
+      end
+      
+      # The top-level message sent by the client for the `AsyncRecognize` method.
+      class AsyncRecognizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Provides information to the recognizer that specifies how to process the
+        # request.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
+        attr_accessor :config
+      
+        # Contains audio data in the encoding specified in the `RecognitionConfig`.
+        # Either `content` or `uri` must be supplied. Supplying both or neither
+        # returns google.rpc.Code.INVALID_ARGUMENT. See
+        # [audio limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `audio`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
+        attr_accessor :audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @audio = args[:audio] if args.key?(:audio)
         end
       end
       
@@ -475,35 +491,6 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # The top-level message sent by the client for the `AsyncRecognize` method.
-      class AsyncRecognizeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Provides information to the recognizer that specifies how to process the
-        # request.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
-        attr_accessor :config
-      
-        # Contains audio data in the encoding specified in the `RecognitionConfig`.
-        # Either `content` or `uri` must be supplied. Supplying both or neither
-        # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [audio limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `audio`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
-        attr_accessor :audio
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @audio = args[:audio] if args.key?(:audio)
         end
       end
     end

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Cloud Dataproc API
     #
-    # An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+    # Manages Hadoop-based clusters and jobs on Google Cloud Platform.
     #
     # @see https://cloud.google.com/dataproc/
     module DataprocV1
       VERSION = 'V1'
-      REVISION = '20161102'
+      REVISION = '20170207'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
