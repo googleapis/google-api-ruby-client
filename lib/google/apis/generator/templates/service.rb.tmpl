@@ -42,6 +42,7 @@ module Google
 <% end -%>
         def initialize
           super('<%= api.root_url %>', '<%= api.service_path %>')
+          @batch_path = '<%= api.batch_path %>'
         end
 <% for api_method in api.all_methods -%>
 <%= indent(include('method', :api_method => api_method, :api => api), 8) -%>
