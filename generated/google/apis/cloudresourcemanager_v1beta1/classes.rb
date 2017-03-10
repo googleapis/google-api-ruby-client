@@ -22,19 +22,6 @@ module Google
   module Apis
     module CloudresourcemanagerV1beta1
       
-      # Request message for `GetIamPolicy` method.
-      class GetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Response message for `TestIamPermissions` method.
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
@@ -55,16 +42,9 @@ module Google
         end
       end
       
-      # Response from the GetAncestry method.
-      class GetAncestryResponse
+      # Request message for `GetIamPolicy` method.
+      class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
-      
-        # Ancestors are ordered from bottom to top of the resource hierarchy. The
-        # first ancestor is the project itself, followed by the project's parent,
-        # etc.
-        # Corresponds to the JSON property `ancestor`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Ancestor>]
-        attr_accessor :ancestor
       
         def initialize(**args)
            update!(**args)
@@ -72,7 +52,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ancestor = args[:ancestor] if args.key?(:ancestor)
         end
       end
       
@@ -95,6 +74,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
+        end
+      end
+      
+      # Response from the GetAncestry method.
+      class GetAncestryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Ancestors are ordered from bottom to top of the resource hierarchy. The
+        # first ancestor is the project itself, followed by the project's parent,
+        # etc.
+        # Corresponds to the JSON property `ancestor`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Ancestor>]
+        attr_accessor :ancestor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestor = args[:ancestor] if args.key?(:ancestor)
         end
       end
       
@@ -136,6 +136,49 @@ module Google
         end
       end
       
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
       # The request sent to the
       # GetAncestry
       # method.
@@ -152,7 +195,7 @@ module Google
       end
       
       # A Project is a high-level Google Cloud Platform entity.  It is a
-      # container for ACLs, APIs, AppEngine Apps, VMs, and other
+      # container for ACLs, APIs, App Engine Apps, VMs, and other
       # Google Cloud Platform resources.
       class Project
         include Google::Apis::Core::Hashable
@@ -182,11 +225,17 @@ module Google
       
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an AppEngine app,
+        # interact with through one of our API's. Some examples are an App Engine app,
         # a Compute Engine instance, a Cloud SQL database, and so on.
         # Corresponds to the JSON property `parent`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::ResourceId]
         attr_accessor :parent
+      
+        # Creation time.
+        # Read-only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
         # The labels associated with this Project.
         # Label keys must be between 1 and 63 characters long and must conform
@@ -201,12 +250,6 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
-        # Creation time.
-        # Read-only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
       
         # The user-assigned display name of the Project.
         # It must be 4 to 30 characters.
@@ -228,8 +271,8 @@ module Google
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @project_number = args[:project_number] if args.key?(:project_number)
           @parent = args[:parent] if args.key?(:parent)
-          @labels = args[:labels] if args.key?(:labels)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -253,25 +296,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # A classification of the Folder Operation error.
-      class FolderOperationError
-        include Google::Apis::Core::Hashable
-      
-        # The type of operation error experienced.
-        # Corresponds to the JSON property `errorMessageId`
-        # @return [String]
-        attr_accessor :error_message_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
         end
       end
       
@@ -304,6 +328,18 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`.
+        # Multiple `bindings` must not be specified for the same `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Binding>]
+        attr_accessor :bindings
+      
         # `etag` is used for optimistic concurrency control as a way to help
         # prevent simultaneous updates of a policy from overwriting each other.
         # It is strongly suggested that systems make use of the `etag` in the
@@ -322,33 +358,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
-        # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Binding>]
-        attr_accessor :bindings
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-          @bindings = args[:bindings] if args.key?(:bindings)
         end
       end
       
       # Metadata describing a long running folder operation
       class FolderOperation
         include Google::Apis::Core::Hashable
-      
-        # The type of this operation.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
       
         # The display name of the folder.
         # Corresponds to the JSON property `displayName`
@@ -367,22 +392,46 @@ module Google
         # @return [String]
         attr_accessor :destination_parent
       
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @source_parent = args[:source_parent] if args.key?(:source_parent)
           @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+        end
+      end
+      
+      # A classification of the Folder Operation error.
+      class FolderOperationError
+        include Google::Apis::Core::Hashable
+      
+        # The type of operation error experienced.
+        # Corresponds to the JSON property `errorMessageId`
+        # @return [String]
+        attr_accessor :error_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
         end
       end
       
       # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
-      # interact with through one of our API's. Some examples are an AppEngine app,
+      # interact with through one of our API's. Some examples are an App Engine app,
       # a Compute Engine instance, a Cloud SQL database, and so on.
       class ResourceId
         include Google::Apis::Core::Hashable
@@ -410,13 +459,87 @@ module Google
         end
       end
       
+      # Specifies the audit configuration for a service.
+      # It consists of which permission types are logged, and what identities, if
+      # any, are exempted from logging.
+      # An AuditConifg must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service,
+      # the union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # `
+      # "audit_configs": [
+      # `
+      # "service": "allServices"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `,
+      # `
+      # "log_type": "ADMIN_READ",
+      # `
+      # ]
+      # `,
+      # `
+      # "service": "fooservice@googleapis.com"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # "exempted_members": [
+      # "user:bar@gmail.com"
+      # ]
+      # `
+      # ]
+      # `
+      # ]
+      # `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
+      # bar@gmail.com from DATA_WRITE logging.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `resourcemanager`, `storage`, `compute`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The configuration for logging of each type of permission.
+        # Next ID: 4
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+        end
+      end
+      
       # Identifying information for a single ancestor of a project.
       class Ancestor
         include Google::Apis::Core::Hashable
       
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an AppEngine app,
+        # interact with through one of our API's. Some examples are an App Engine app,
         # a Compute Engine instance, a Cloud SQL database, and so on.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::ResourceId]
@@ -429,35 +552,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # The response returned from the `ListOrganizations` method.
-      class ListOrganizationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A pagination token to be used to retrieve the next page of results. If the
-        # result is too large to fit within the page size specified in the request,
-        # this field will be set with a token that can be used to fetch the next page
-        # of results. If this field is empty, it indicates that this response
-        # contains the last page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of Organizations that matched the list query, possibly paginated.
-        # Corresponds to the JSON property `organizations`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Organization>]
-        attr_accessor :organizations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @organizations = args[:organizations] if args.key?(:organizations)
         end
       end
       
@@ -495,6 +589,15 @@ module Google
         # @return [Google::Apis::CloudresourcemanagerV1beta1::Policy]
         attr_accessor :policy
       
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, a default
+        # mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -502,6 +605,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The response returned from the `ListOrganizations` method.
+      class ListOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A pagination token to be used to retrieve the next page of results. If the
+        # result is too large to fit within the page size specified in the request,
+        # this field will be set with a token that can be used to fetch the next page
+        # of results. If this field is empty, it indicates that this response
+        # contains the last page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Organizations that matched the list query, possibly paginated.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Organization>]
+        attr_accessor :organizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @organizations = args[:organizations] if args.key?(:organizations)
         end
       end
       
@@ -553,20 +686,6 @@ module Google
       # `
       # The JSON representation for `Empty` is empty JSON object ````.
       class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The request sent to the UndeleteProject
-      # method.
-      class UndeleteProjectRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -641,17 +760,25 @@ module Google
         end
       end
       
+      # The request sent to the UndeleteProject
+      # method.
+      class UndeleteProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A status object which is used as the `metadata` field for the Operation
       # returned by CreateProject. It provides insight for when significant phases of
       # Project creation have completed.
       class ProjectCreationStatus
         include Google::Apis::Core::Hashable
-      
-        # True if the project creation process is complete.
-        # Corresponds to the JSON property `ready`
-        # @return [Boolean]
-        attr_accessor :ready
-        alias_method :ready?, :ready
       
         # Creation time of the project creation workflow.
         # Corresponds to the JSON property `createTime`
@@ -666,15 +793,21 @@ module Google
         attr_accessor :gettable
         alias_method :gettable?, :gettable
       
+        # True if the project creation process is complete.
+        # Corresponds to the JSON property `ready`
+        # @return [Boolean]
+        attr_accessor :ready
+        alias_method :ready?, :ready
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @ready = args[:ready] if args.key?(:ready)
           @create_time = args[:create_time] if args.key?(:create_time)
           @gettable = args[:gettable] if args.key?(:gettable)
+          @ready = args[:ready] if args.key?(:ready)
         end
       end
     end

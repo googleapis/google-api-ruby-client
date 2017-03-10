@@ -35,53 +35,17 @@ module Google
       # @see https://cloud.google.com/monitoring/api/
       class MonitoringService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
 
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
+
         def initialize
           super('https://monitoring.googleapis.com/', '')
-        end
-        
-        # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
-        # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
-        # projects.timeSeries.create instead.</aside>
-        # @param [String] name
-        #   The project in which to create the time series. The format is "projects/
-        #   PROJECT_ID_OR_NUMBER".
-        # @param [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest] create_collectd_time_series_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MonitoringV3::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_collectd_time_series(name, create_collectd_time_series_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
-          command.request_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest::Representation
-          command.request_object = create_collectd_time_series_request_object
-          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
-          command.response_class = Google::Apis::MonitoringV3::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
         end
         
         # Lists time series that match a filter. This method does not require a
@@ -89,22 +53,6 @@ module Google
         # @param [String] name
         #   The project on which to execute the request. The format is "projects/`
         #   project_id_or_number`".
-        # @param [String] interval_end_time
-        #   Required. The end of the time interval.
-        # @param [String] aggregation_alignment_period
-        #   The alignment period for per-time series alignment. If present,
-        #   alignmentPeriod must be at least 60 seconds. After per-time series alignment,
-        #   each time series will contain data points only on the period boundaries. If
-        #   perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
-        #   ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then
-        #   this field must be defined; otherwise an error is returned.
-        # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return. When view
-        #   field sets to FULL, it limits the number of Points server will return; if view
-        #   field is HEADERS, it limits the number of TimeSeries server will return.
-        # @param [String] order_by
-        #   Specifies the order in which the points of the time series should be returned.
-        #   By default, results are not ordered. Currently, this field must be left blank.
         # @param [String] aggregation_cross_series_reducer
         #   The approach to be used to combine time series. Not all reducer functions may
         #   be applied to all time series, depending on the metric type and the value type
@@ -119,6 +67,10 @@ module Google
         #   labels and other information. For example:
         #   metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
         #   metric.label.instance_name = "my-instance-name"
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
         # @param [String] aggregation_per_series_aligner
         #   The approach to be used to align individual time series. Not all alignment
         #   functions may be applied to all time series, depending on the metric type and
@@ -127,10 +79,6 @@ module Google
         #   to perform cross-time series reduction. If crossSeriesReducer is specified,
         #   then perSeriesAligner must be specified and not equal ALIGN_NONE and
         #   alignmentPeriod must be specified; otherwise, an error is returned.
-        # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
-        #   returned by a previous call to this method. Using this field causes the method
-        #   to return additional results from the previous method call.
         # @param [String] interval_start_time
         #   Optional. The beginning of the time interval. The default value for the start
         #   time is the end time. The start time must not be later than the end time.
@@ -148,11 +96,27 @@ module Google
         #   specified and all the time series have the same resource type, then the time
         #   series are aggregated into a single output time series. If crossSeriesReducer
         #   is not defined, this field is ignored.
+        # @param [String] interval_end_time
+        #   Required. The end of the time interval.
+        # @param [String] aggregation_alignment_period
+        #   The alignment period for per-time series alignment. If present,
+        #   alignmentPeriod must be at least 60 seconds. After per-time series alignment,
+        #   each time series will contain data points only on the period boundaries. If
+        #   perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+        #   ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then
+        #   this field must be defined; otherwise an error is returned.
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return. When view
+        #   field sets to FULL, it limits the number of Points server will return; if view
+        #   field is HEADERS, it limits the number of TimeSeries server will return.
+        # @param [String] order_by
+        #   Specifies the order in which the points of the time series should be returned.
+        #   By default, results are not ordered. Currently, this field must be left blank.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -165,24 +129,24 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_time_series(name, interval_end_time: nil, aggregation_alignment_period: nil, page_size: nil, order_by: nil, aggregation_cross_series_reducer: nil, filter: nil, aggregation_per_series_aligner: nil, page_token: nil, interval_start_time: nil, view: nil, aggregation_group_by_fields: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_time_series(name, aggregation_cross_series_reducer: nil, filter: nil, page_token: nil, aggregation_per_series_aligner: nil, interval_start_time: nil, view: nil, aggregation_group_by_fields: nil, interval_end_time: nil, aggregation_alignment_period: nil, page_size: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/timeSeries', options)
           command.response_representation = Google::Apis::MonitoringV3::ListTimeSeriesResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListTimeSeriesResponse
           command.params['name'] = name unless name.nil?
+          command.query['aggregation.crossSeriesReducer'] = aggregation_cross_series_reducer unless aggregation_cross_series_reducer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['aggregation.perSeriesAligner'] = aggregation_per_series_aligner unless aggregation_per_series_aligner.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['aggregation.groupByFields'] = aggregation_group_by_fields unless aggregation_group_by_fields.nil?
           command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
           command.query['aggregation.alignmentPeriod'] = aggregation_alignment_period unless aggregation_alignment_period.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['aggregation.crossSeriesReducer'] = aggregation_cross_series_reducer unless aggregation_cross_series_reducer.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['aggregation.perSeriesAligner'] = aggregation_per_series_aligner unless aggregation_per_series_aligner.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['aggregation.groupByFields'] = aggregation_group_by_fields unless aggregation_group_by_fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -193,11 +157,11 @@ module Google
         #   The project on which to execute the request. The format is "projects/`
         #   project_id_or_number`".
         # @param [Google::Apis::MonitoringV3::CreateTimeSeriesRequest] create_time_series_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -210,15 +174,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_time_series(name, create_time_series_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def create_time_series(name, create_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v3/{+name}/timeSeries', options)
           command.request_representation = Google::Apis::MonitoringV3::CreateTimeSeriesRequest::Representation
           command.request_object = create_time_series_request_object
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -238,11 +202,11 @@ module Google
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method
         #   to return additional results from the previous method call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -255,7 +219,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_metric_descriptors(name, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_metric_descriptors(name, page_size: nil, filter: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse
@@ -263,8 +227,8 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -274,11 +238,11 @@ module Google
         #   The metric descriptor on which to execute the request. The format is "projects/
         #   `project_id_or_number`/metricDescriptors/`metric_id`". An example value of `
         #   metric_id` is "compute.googleapis.com/instance/disk/read_bytes_count".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -291,13 +255,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_metric_descriptor(name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MetricDescriptor
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -307,11 +271,11 @@ module Google
         #   The project on which to execute the request. The format is "projects/`
         #   project_id_or_number`".
         # @param [Google::Apis::MonitoringV3::MetricDescriptor] metric_descriptor_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -324,15 +288,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_metric_descriptor(name, metric_descriptor_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def create_project_metric_descriptor(name, metric_descriptor_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v3/{+name}/metricDescriptors', options)
           command.request_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.request_object = metric_descriptor_object
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MetricDescriptor
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -341,11 +305,11 @@ module Google
         #   The metric descriptor on which to execute the request. The format is "projects/
         #   `project_id_or_number`/metricDescriptors/`metric_id`". An example of `
         #   metric_id` is: "custom.googleapis.com/my_test_metric".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -358,13 +322,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_metric_descriptor(name, quota_user: nil, fields: nil, options: nil, &block)
+        def delete_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -373,6 +337,8 @@ module Google
         # @param [String] name
         #   The project on which to execute the request. The format is "projects/`
         #   project_id_or_number`".
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return.
         # @param [String] filter
         #   An optional filter describing the descriptors to be returned. The filter can
         #   reference the descriptor's type and labels. For example, the following filter
@@ -382,13 +348,11 @@ module Google
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method
         #   to return additional results from the previous method call.
-        # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -401,16 +365,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_monitored_resource_descriptors(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_monitored_resource_descriptors(name, page_size: nil, filter: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/monitoredResourceDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse
           command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -420,11 +384,11 @@ module Google
         #   The monitored resource descriptor to get. The format is "projects/`
         #   project_id_or_number`/monitoredResourceDescriptors/`resource_type`". The `
         #   resource_type` is a predefined type, such as cloudsql_database.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -437,13 +401,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_monitored_resource_descriptor(name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_project_monitored_resource_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MonitoredResourceDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MonitoredResourceDescriptor
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -451,11 +415,11 @@ module Google
         # @param [String] name
         #   The group to delete. The format is "projects/`project_id_or_number`/groups/`
         #   group_id`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -468,13 +432,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_group(name, quota_user: nil, fields: nil, options: nil, &block)
+        def delete_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -482,6 +446,14 @@ module Google
         # @param [String] name
         #   The project whose groups are to be listed. The format is "projects/`
         #   project_id_or_number`".
+        # @param [String] children_of_group
+        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns
+        #   groups whose parentName field contains the group name. If no groups have this
+        #   parent, the results are empty.
+        # @param [String] descendants_of_group
+        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns the
+        #   descendants of the specified group. This is a superset of the results returned
+        #   by the childrenOfGroup filter, and includes children-of-children, and so forth.
         # @param [String] page_token
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method
@@ -494,19 +466,11 @@ module Google
         #   order, starting with the immediate parent and ending with the most distant
         #   ancestor. If the specified group has no immediate parent, the results are
         #   empty.
-        # @param [String] children_of_group
-        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns
-        #   groups whose parentName field contains the group name. If no groups have this
-        #   parent, the results are empty.
-        # @param [String] descendants_of_group
-        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns the
-        #   descendants of the specified group. This is a superset of the results returned
-        #   by the childrenOfGroup filter, and includes children-of-children, and so forth.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -519,18 +483,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_groups(name, page_token: nil, page_size: nil, ancestors_of_group: nil, children_of_group: nil, descendants_of_group: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_groups(name, children_of_group: nil, descendants_of_group: nil, page_token: nil, page_size: nil, ancestors_of_group: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/groups', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupsResponse
           command.params['name'] = name unless name.nil?
+          command.query['childrenOfGroup'] = children_of_group unless children_of_group.nil?
+          command.query['descendantsOfGroup'] = descendants_of_group unless descendants_of_group.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['ancestorsOfGroup'] = ancestors_of_group unless ancestors_of_group.nil?
-          command.query['childrenOfGroup'] = children_of_group unless children_of_group.nil?
-          command.query['descendantsOfGroup'] = descendants_of_group unless descendants_of_group.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -538,11 +502,11 @@ module Google
         # @param [String] name
         #   The group to retrieve. The format is "projects/`project_id_or_number`/groups/`
         #   group_id`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -555,13 +519,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_group(name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
           command.response_class = Google::Apis::MonitoringV3::Group
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -574,11 +538,11 @@ module Google
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not update the existing group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -591,7 +555,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_group(name, group_object = nil, validate_only: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def update_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
@@ -599,8 +563,8 @@ module Google
           command.response_class = Google::Apis::MonitoringV3::Group
           command.params['name'] = name unless name.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -611,11 +575,11 @@ module Google
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not create the group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -628,7 +592,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_group(name, group_object = nil, validate_only: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def create_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v3/{+name}/groups', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
@@ -636,8 +600,8 @@ module Google
           command.response_class = Google::Apis::MonitoringV3::Group
           command.params['name'] = name unless name.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -645,8 +609,6 @@ module Google
         # @param [String] name
         #   The group whose members are listed. The format is "projects/`
         #   project_id_or_number`/groups/`group_id`".
-        # @param [String] interval_end_time
-        #   Required. The end of the time interval.
         # @param [String] filter
         #   An optional list filter describing the members to be returned. The filter may
         #   reference the type, labels, and metadata of monitored resources that comprise
@@ -657,16 +619,18 @@ module Google
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method
         #   to return additional results from the previous method call.
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return.
         # @param [String] interval_start_time
         #   Optional. The beginning of the time interval. The default value for the start
         #   time is the end time. The start time must not be later than the end time.
-        # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return.
+        # @param [String] interval_end_time
+        #   Required. The end of the time interval.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -679,26 +643,62 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_group_members(name, interval_end_time: nil, filter: nil, page_token: nil, interval_start_time: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_group_members(name, filter: nil, page_token: nil, page_size: nil, interval_start_time: nil, interval_end_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/members', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupMembersResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupMembersResponse
           command.params['name'] = name unless name.nil?
-          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
+        # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
+        # projects.timeSeries.create instead.</aside>
+        # @param [String] name
+        #   The project in which to create the time series. The format is "projects/
+        #   PROJECT_ID_OR_NUMBER".
+        # @param [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest] create_collectd_time_series_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_collectd_time_series(name, create_collectd_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
+          command.request_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest::Representation
+          command.request_object = create_collectd_time_series_request_object
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

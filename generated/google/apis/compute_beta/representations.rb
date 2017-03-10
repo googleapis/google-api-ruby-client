@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AliasIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -282,6 +288,42 @@ module Google
       
       class CacheKeyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Commitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -934,6 +976,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksAddPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksRemovePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1013,6 +1067,24 @@ module Google
       end
       
       class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsDisableXpnResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsEnableXpnResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsGetXpnResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1115,6 +1187,12 @@ module Google
       end
       
       class RegionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1295,6 +1373,12 @@ module Google
       end
       
       class SubnetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkSecondaryRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1504,6 +1588,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetTcpProxiesSetBackendServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetTcpProxiesSetProxyHeaderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetTcpProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetTcpProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetVpnGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1649,6 +1757,12 @@ module Google
       end
       
       class XpnHostList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class XpnResourceId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1823,6 +1937,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class AliasIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :subnetwork_range_name, as: 'subnetworkRangeName'
         end
       end
       
@@ -2170,6 +2292,78 @@ module Google
           property :include_query_string, as: 'includeQueryString'
           collection :query_string_blacklist, as: 'queryStringBlacklist'
           collection :query_string_whitelist, as: 'queryStringWhitelist'
+        end
+      end
+      
+      class Commitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :end_timestamp, as: 'endTimestamp'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :plan, as: 'plan'
+          property :region, as: 'region'
+          collection :resources, as: 'resources', class: Google::Apis::ComputeBeta::ResourceCommitment, decorator: Google::Apis::ComputeBeta::ResourceCommitment::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :start_timestamp, as: 'startTimestamp'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class CommitmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::CommitmentsScopedList, decorator: Google::Apis::ComputeBeta::CommitmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class CommitmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Commitment, decorator: Google::Apis::ComputeBeta::Commitment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class CommitmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commitments, as: 'commitments', class: Google::Apis::ComputeBeta::Commitment, decorator: Google::Apis::ComputeBeta::Commitment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::CommitmentsScopedList::Warning, decorator: Google::Apis::ComputeBeta::CommitmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::CommitmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::CommitmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -3380,6 +3574,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeBeta::AccessConfig, decorator: Google::Apis::ComputeBeta::AccessConfig::Representation
       
+          collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeBeta::AliasIpRange, decorator: Google::Apis::ComputeBeta::AliasIpRange::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -3408,6 +3604,22 @@ module Google
           property :network, as: 'network'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class NetworksAddPeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create_routes, as: 'autoCreateRoutes'
+          property :name, as: 'name'
+          property :peer_network, as: 'peerNetwork'
+        end
+      end
+      
+      class NetworksRemovePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -3584,6 +3796,32 @@ module Google
         end
       end
       
+      class ProjectsDisableXpnResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :xpn_resource, as: 'xpnResource', class: Google::Apis::ComputeBeta::XpnResourceId, decorator: Google::Apis::ComputeBeta::XpnResourceId::Representation
+      
+        end
+      end
+      
+      class ProjectsEnableXpnResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :xpn_resource, as: 'xpnResource', class: Google::Apis::ComputeBeta::XpnResourceId, decorator: Google::Apis::ComputeBeta::XpnResourceId::Representation
+      
+        end
+      end
+      
+      class ProjectsGetXpnResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ComputeBeta::XpnResourceId, decorator: Google::Apis::ComputeBeta::XpnResourceId::Representation
+      
+        end
+      end
+      
       class ProjectsListXpnHostsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3744,6 +3982,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ResourceCommitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount'
+          property :type, as: 'type'
         end
       end
       
@@ -4081,7 +4327,10 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :region, as: 'region'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeBeta::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeBeta::SubnetworkSecondaryRange::Representation
+      
           property :self_link, as: 'selfLink'
         end
       end
@@ -4107,6 +4356,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworkSecondaryRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
         end
       end
       
@@ -4455,6 +4712,46 @@ module Google
         end
       end
       
+      class TargetTcpProxiesSetBackendServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class TargetTcpProxiesSetProxyHeaderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proxy_header, as: 'proxyHeader'
+        end
+      end
+      
+      class TargetTcpProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :proxy_header, as: 'proxyHeader'
+          property :self_link, as: 'selfLink'
+          property :service, as: 'service'
+        end
+      end
+      
+      class TargetTcpProxyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::TargetTcpProxy, decorator: Google::Apis::ComputeBeta::TargetTcpProxy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
       class TargetVpnGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4726,6 +5023,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class XpnResourceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :type, as: 'type'
         end
       end
       

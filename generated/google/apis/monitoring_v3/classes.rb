@@ -22,6 +22,51 @@ module Google
   module Apis
     module MonitoringV3
       
+      # The CreateCollectdTimeSeries request.
+      class CreateCollectdTimeSeriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+        # zone":
+        # ` "type": "gce_instance",
+        # "labels": ` "instance_id": "12345678901234",
+        # "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::MonitoringV3::MonitoredResource]
+        attr_accessor :resource
+      
+        # The collectd payloads representing the time series data. You must not include
+        # more than a single point for each time series, so no two payloads can have the
+        # same values for all of the fields plugin, plugin_instance, type, and
+        # type_instance.
+        # Corresponds to the JSON property `collectdPayloads`
+        # @return [Array<Google::Apis::MonitoringV3::CollectdPayload>]
+        attr_accessor :collectd_payloads
+      
+        # The version of collectd that collected the data. Example: "5.3.0-192.el6".
+        # Corresponds to the JSON property `collectdVersion`
+        # @return [String]
+        attr_accessor :collectd_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+          @collectd_payloads = args[:collectd_payloads] if args.key?(:collectd_payloads)
+          @collectd_version = args[:collectd_version] if args.key?(:collectd_version)
+        end
+      end
+      
       # The ListGroupMembers response.
       class ListGroupMembersResponse
         include Google::Apis::Core::Hashable
@@ -52,51 +97,6 @@ module Google
           @members = args[:members] if args.key?(:members)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
-        end
-      end
-      
-      # The CreateCollectdTimeSeries request.
-      class CreateCollectdTimeSeriesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The version of collectd that collected the data. Example: "5.3.0-192.el6".
-        # Corresponds to the JSON property `collectdVersion`
-        # @return [String]
-        attr_accessor :collectd_version
-      
-        # An object representing a resource that can be used for monitoring, logging,
-        # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The type field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's schema.
-        # Information in the labels field identifies the actual resource and its
-        # attributes according to the schema. For example, a particular Compute Engine
-        # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
-        # Corresponds to the JSON property `resource`
-        # @return [Google::Apis::MonitoringV3::MonitoredResource]
-        attr_accessor :resource
-      
-        # The collectd payloads representing the time series data. You must not include
-        # more than a single point for each time series, so no two payloads can have the
-        # same values for all of the fields plugin, plugin_instance, type, and
-        # type_instance.
-        # Corresponds to the JSON property `collectdPayloads`
-        # @return [Array<Google::Apis::MonitoringV3::CollectdPayload>]
-        attr_accessor :collectd_payloads
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @collectd_version = args[:collectd_version] if args.key?(:collectd_version)
-          @resource = args[:resource] if args.key?(:resource)
-          @collectd_payloads = args[:collectd_payloads] if args.key?(:collectd_payloads)
         end
       end
       
@@ -134,17 +134,6 @@ module Google
       # creating time series.
       class TimeSeries
         include Google::Apis::Core::Hashable
-      
-        # The metric kind of the time series. When listing time series, this metric kind
-        # might be different from the metric kind of the associated metric if this time
-        # series is an alignment or reduction of other time series.When creating a time
-        # series, this field is optional. If present, it must be the same as the metric
-        # kind of the associated metric. If the associated metric's descriptor must be
-        # auto-created, then this field specifies the metric kind of the new descriptor
-        # and must be either GAUGE (the default) or CUMULATIVE.
-        # Corresponds to the JSON property `metricKind`
-        # @return [String]
-        attr_accessor :metric_kind
       
         # A specific metric, identified by specifying values for all of the labels of a
         # MetricDescriptor.
@@ -187,17 +176,28 @@ module Google
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
       
+        # The metric kind of the time series. When listing time series, this metric kind
+        # might be different from the metric kind of the associated metric if this time
+        # series is an alignment or reduction of other time series.When creating a time
+        # series, this field is optional. If present, it must be the same as the metric
+        # kind of the associated metric. If the associated metric's descriptor must be
+        # auto-created, then this field specifies the metric kind of the new descriptor
+        # and must be either GAUGE (the default) or CUMULATIVE.
+        # Corresponds to the JSON property `metricKind`
+        # @return [String]
+        attr_accessor :metric_kind
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @metric = args[:metric] if args.key?(:metric)
           @points = args[:points] if args.key?(:points)
           @value_type = args[:value_type] if args.key?(:value_type)
           @resource = args[:resource] if args.key?(:resource)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
         end
       end
       
@@ -389,23 +389,6 @@ module Google
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
-        # Required. A set of labels used to describe instances of this monitored
-        # resource type. For example, an individual Google Cloud SQL database is
-        # identified by values for the labels "database_id" and "zone".
-        # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
-        attr_accessor :labels
-      
-        # Optional. The resource name of the monitored resource descriptor: "projects/`
-        # project_id`/monitoredResourceDescriptors/`type`" where `type` is the value of
-        # the type field in this object and `project_id` is a project ID that provides
-        # API-specific context for accessing the type. APIs that do not use project
-        # information can use the resource name format "monitoredResourceDescriptors/`
-        # type`".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # Optional. A concise name for the monitored resource type that might be
         # displayed in user interfaces. It should be a Title Cased Noun Phrase, without
         # any article or other determiners. For example, "Google Cloud SQL Database".
@@ -426,17 +409,34 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Required. A set of labels used to describe instances of this monitored
+        # resource type. For example, an individual Google Cloud SQL database is
+        # identified by values for the labels "database_id" and "zone".
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
+        attr_accessor :labels
+      
+        # Optional. The resource name of the monitored resource descriptor: "projects/`
+        # project_id`/monitoredResourceDescriptors/`type`" where `type` is the value of
+        # the type field in this object and `project_id` is a project ID that provides
+        # API-specific context for accessing the type. APIs that do not use project
+        # information can use the resource name format "monitoredResourceDescriptors/`
+        # type`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @description = args[:description] if args.key?(:description)
           @type = args[:type] if args.key?(:type)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -501,26 +501,15 @@ module Google
       class CollectdPayload
         include Google::Apis::Core::Hashable
       
-        # The measured values during this time interval. Each value must have a
-        # different dataSourceName.
-        # Corresponds to the JSON property `values`
-        # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
-        attr_accessor :values
-      
-        # The measurement type instance. Example: "used".
-        # Corresponds to the JSON property `typeInstance`
-        # @return [String]
-        attr_accessor :type_instance
+        # The measurement metadata. Example: "process_id" -> 12345
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
+        attr_accessor :metadata
       
         # The measurement type. Example: "memory".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
-      
-        # The measurement metadata. Example: "process_id" -> 12345
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
-        attr_accessor :metadata
       
         # The name of the plugin. Example: "disk".
         # Corresponds to the JSON property `plugin`
@@ -542,20 +531,31 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The measured values during this time interval. Each value must have a
+        # different dataSourceName.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
+        attr_accessor :values
+      
+        # The measurement type instance. Example: "used".
+        # Corresponds to the JSON property `typeInstance`
+        # @return [String]
+        attr_accessor :type_instance
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @values = args[:values] if args.key?(:values)
-          @type_instance = args[:type_instance] if args.key?(:type_instance)
-          @type = args[:type] if args.key?(:type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
           @plugin = args[:plugin] if args.key?(:plugin)
           @plugin_instance = args[:plugin_instance] if args.key?(:plugin_instance)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @values = args[:values] if args.key?(:values)
+          @type_instance = args[:type_instance] if args.key?(:type_instance)
         end
       end
       
@@ -599,14 +599,6 @@ module Google
       class Option
         include Google::Apis::Core::Hashable
       
-        # The option's name. For protobuf built-in options (options defined in
-        # descriptor.proto), this is the short name. For example, "map_entry". For
-        # custom options, it should be the fully-qualified name. For example, "google.
-        # api.http".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The option's value packed in an Any message. If the value is a primitive, the
         # corresponding wrapper type defined in google/protobuf/wrappers.proto should be
         # used. If the value is an enum, it should be stored as an int32 value using the
@@ -615,14 +607,22 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :value
       
+        # The option's name. For protobuf built-in options (options defined in
+        # descriptor.proto), this is the short name. For example, "map_entry". For
+        # custom options, it should be the fully-qualified name. For example, "google.
+        # api.http".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -705,6 +705,11 @@ module Google
       class Exponential
         include Google::Apis::Core::Hashable
       
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
         # Must be greater than 1.
         # Corresponds to the JSON property `growthFactor`
         # @return [Float]
@@ -715,31 +720,21 @@ module Google
         # @return [Float]
         attr_accessor :scale
       
-        # Must be greater than 0.
-        # Corresponds to the JSON property `numFiniteBuckets`
-        # @return [Fixnum]
-        attr_accessor :num_finite_buckets
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
           @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
           @scale = args[:scale] if args.key?(:scale)
-          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
         end
       end
       
       # A single data point in a time series.
       class Point
         include Google::Apis::Core::Hashable
-      
-        # A single strongly-typed value.
-        # Corresponds to the JSON property `value`
-        # @return [Google::Apis::MonitoringV3::TypedValue]
-        attr_accessor :value
       
         # A time interval extending just after a start time through an end time. If the
         # start time is the same as the end time, then the interval represents a single
@@ -748,14 +743,19 @@ module Google
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
       
+        # A single strongly-typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::MonitoringV3::TypedValue]
+        attr_accessor :value
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @value = args[:value] if args.key?(:value)
           @interval = args[:interval] if args.key?(:interval)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -774,15 +774,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :number
       
-        # The field JSON name.
-        # Corresponds to the JSON property `jsonName`
-        # @return [String]
-        attr_accessor :json_name
-      
         # The field type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The field JSON name.
+        # Corresponds to the JSON property `jsonName`
+        # @return [String]
+        attr_accessor :json_name
       
         # The protocol buffer options.
         # Corresponds to the JSON property `options`
@@ -824,8 +824,8 @@ module Google
         def update!(**args)
           @type_url = args[:type_url] if args.key?(:type_url)
           @number = args[:number] if args.key?(:number)
-          @json_name = args[:json_name] if args.key?(:json_name)
           @kind = args[:kind] if args.key?(:kind)
+          @json_name = args[:json_name] if args.key?(:json_name)
           @options = args[:options] if args.key?(:options)
           @oneof_index = args[:oneof_index] if args.key?(:oneof_index)
           @cardinality = args[:cardinality] if args.key?(:cardinality)
@@ -840,17 +840,17 @@ module Google
       class Metric
         include Google::Apis::Core::Hashable
       
-        # The set of label values that uniquely identify this metric. All labels listed
-        # in the MetricDescriptor must be assigned values.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
         # An existing metric type, see google.api.MetricDescriptor. For example, custom.
         # googleapis.com/invoice/paid/amount.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # The set of label values that uniquely identify this metric. All labels listed
+        # in the MetricDescriptor must be assigned values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         def initialize(**args)
            update!(**args)
@@ -858,19 +858,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
           @type = args[:type] if args.key?(:type)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
-      
-        # The label key.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
       
         # A human-readable description for the label.
         # Corresponds to the JSON property `description`
@@ -882,15 +877,20 @@ module Google
         # @return [String]
         attr_accessor :value_type
       
+        # The label key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] if args.key?(:key)
           @description = args[:description] if args.key?(:description)
           @value_type = args[:value_type] if args.key?(:value_type)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -918,6 +918,56 @@ module Google
         def update!(**args)
           @time_series = args[:time_series] if args.key?(:time_series)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A protocol buffer message type.
+      class Type
+        include Google::Apis::Core::Hashable
+      
+        # The list of types appearing in oneof definitions in this type.
+        # Corresponds to the JSON property `oneofs`
+        # @return [Array<String>]
+        attr_accessor :oneofs
+      
+        # The source syntax.
+        # Corresponds to the JSON property `syntax`
+        # @return [String]
+        attr_accessor :syntax
+      
+        # SourceContext represents information about the source of a protobuf element,
+        # like the file in which it is defined.
+        # Corresponds to the JSON property `sourceContext`
+        # @return [Google::Apis::MonitoringV3::SourceContext]
+        attr_accessor :source_context
+      
+        # The protocol buffer options.
+        # Corresponds to the JSON property `options`
+        # @return [Array<Google::Apis::MonitoringV3::Option>]
+        attr_accessor :options
+      
+        # The list of fields.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::MonitoringV3::Field>]
+        attr_accessor :fields
+      
+        # The fully qualified message name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oneofs = args[:oneofs] if args.key?(:oneofs)
+          @syntax = args[:syntax] if args.key?(:syntax)
+          @source_context = args[:source_context] if args.key?(:source_context)
+          @options = args[:options] if args.key?(:options)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -990,56 +1040,6 @@ module Google
         end
       end
       
-      # A protocol buffer message type.
-      class Type
-        include Google::Apis::Core::Hashable
-      
-        # The source syntax.
-        # Corresponds to the JSON property `syntax`
-        # @return [String]
-        attr_accessor :syntax
-      
-        # SourceContext represents information about the source of a protobuf element,
-        # like the file in which it is defined.
-        # Corresponds to the JSON property `sourceContext`
-        # @return [Google::Apis::MonitoringV3::SourceContext]
-        attr_accessor :source_context
-      
-        # The protocol buffer options.
-        # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::MonitoringV3::Option>]
-        attr_accessor :options
-      
-        # The list of fields.
-        # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::MonitoringV3::Field>]
-        attr_accessor :fields
-      
-        # The fully qualified message name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The list of types appearing in oneof definitions in this type.
-        # Corresponds to the JSON property `oneofs`
-        # @return [Array<String>]
-        attr_accessor :oneofs
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @syntax = args[:syntax] if args.key?(:syntax)
-          @source_context = args[:source_context] if args.key?(:source_context)
-          @options = args[:options] if args.key?(:options)
-          @fields = args[:fields] if args.key?(:fields)
-          @name = args[:name] if args.key?(:name)
-          @oneofs = args[:oneofs] if args.key?(:oneofs)
-        end
-      end
-      
       # A Distribution may optionally contain a histogram of the values in the
       # population. The histogram is given in bucket_counts as counts of values that
       # fall into one of a sequence of non-overlapping buckets. The sequence of
@@ -1104,6 +1104,11 @@ module Google
       class CollectdValue
         include Google::Apis::Core::Hashable
       
+        # The type of measurement.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [String]
+        attr_accessor :data_source_type
+      
         # The data source for the collectd value. For example there are two data sources
         # for network measurements: "rx" and "tx".
         # Corresponds to the JSON property `dataSourceName`
@@ -1115,20 +1120,15 @@ module Google
         # @return [Google::Apis::MonitoringV3::TypedValue]
         attr_accessor :value
       
-        # The type of measurement.
-        # Corresponds to the JSON property `dataSourceType`
-        # @return [String]
-        attr_accessor :data_source_type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @data_source_name = args[:data_source_name] if args.key?(:data_source_name)
           @value = args[:value] if args.key?(:value)
-          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
         end
       end
       
@@ -1159,22 +1159,58 @@ module Google
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
+        # The set of labels that can be used to describe a specific instance of this
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
+        attr_accessor :labels
+      
+        # The resource name of the metric descriptor. Depending on the implementation,
+        # the name typically includes: (1) the parent resource name that defines the
+        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
+        # which also appears in the type field of this descriptor. For example,
+        # following is the resource name of a custom metric within the GCP project my-
+        # project-id:
+        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
+        # 2Fpaid%2Famount"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The metric type, including its DNS name prefix. The type is not URL-encoded.
+        # All user-defined custom metric types have the DNS name custom.googleapis.com.
+        # Metric types should use a natural hierarchical grouping. For example:
+        # "custom.googleapis.com/invoice/paid/amount"
+        # "appengine.googleapis.com/http/server/response_latencies"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Whether the measurement is an integer, a floating-point number, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
         # Whether the metric records instantaneous values, changes to a value, etc. Some
         # combinations of metric_kind and value_type might not be supported.
         # Corresponds to the JSON property `metricKind`
         # @return [String]
         attr_accessor :metric_kind
       
+        # A detailed description of the metric, which can be used in documentation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # A concise name for the metric, which can be displayed in user interfaces. Use
         # sentence case without an ending period, for example "Request count".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
-      
-        # A detailed description of the metric, which can be used in documentation.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
       
         # The unit in which the metric value is reported. It is only applicable if the
         # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
@@ -1226,56 +1262,20 @@ module Google
         # @return [String]
         attr_accessor :unit
       
-        # The set of labels that can be used to describe a specific instance of this
-        # metric type. For example, the appengine.googleapis.com/http/server/
-        # response_latencies metric type has a label for the HTTP response code,
-        # response_code, so you can look at latencies for successful responses or just
-        # for responses that failed.
-        # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
-        attr_accessor :labels
-      
-        # The resource name of the metric descriptor. Depending on the implementation,
-        # the name typically includes: (1) the parent resource name that defines the
-        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
-        # which also appears in the type field of this descriptor. For example,
-        # following is the resource name of a custom metric within the GCP project my-
-        # project-id:
-        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
-        # 2Fpaid%2Famount"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All user-defined custom metric types have the DNS name custom.googleapis.com.
-        # Metric types should use a natural hierarchical grouping. For example:
-        # "custom.googleapis.com/invoice/paid/amount"
-        # "appengine.googleapis.com/http/server/response_latencies"
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Whether the measurement is an integer, a floating-point number, etc. Some
-        # combinations of metric_kind and value_type might not be supported.
-        # Corresponds to the JSON property `valueType`
-        # @return [String]
-        attr_accessor :value_type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @description = args[:description] if args.key?(:description)
-          @unit = args[:unit] if args.key?(:unit)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @value_type = args[:value_type] if args.key?(:value_type)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @unit = args[:unit] if args.key?(:unit)
         end
       end
       

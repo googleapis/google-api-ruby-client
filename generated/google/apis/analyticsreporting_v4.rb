@@ -25,13 +25,13 @@ module Google
     # @see https://developers.google.com/analytics/devguides/reporting/core/v4/
     module AnalyticsreportingV4
       VERSION = 'V4'
-      REVISION = '20161129'
-
-      # View and manage your Google Analytics data
-      AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
+      REVISION = '20170309'
 
       # View your Google Analytics data
       AUTH_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/analytics.readonly'
+
+      # View and manage your Google Analytics data
+      AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
     end
   end
 end

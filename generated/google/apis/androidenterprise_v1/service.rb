@@ -341,9 +341,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the binding between the EMM and enterprise. This is now deprecated;
-        # use this to unenroll customers that were previously enrolled with the 'insert'
-        # call, then enroll them again with the 'enroll' call.
+        # Deletes the binding between the EMM and enterprise. This is now deprecated.
+        # Use this method only to unenroll customers that were previously enrolled with
+        # the insert call, then enroll them again with the enroll call.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -656,8 +656,8 @@ module Google
         # service account authenticated for the request. The notification set may be
         # empty if no notification are pending.
         # A notification set returned needs to be acknowledged within 20 seconds by
-        # calling Enterprises​.AcknowledgeNotificationSet, unless the notification set
-        # is empty.
+        # calling Enterprises.AcknowledgeNotificationSet, unless the notification set is
+        # empty.
         # Notifications that are not acknowledged within the 20 seconds will eventually
         # be included again in the response to another PullNotificationSet request, and
         # those that are never acknowledged will ultimately be deleted according to the
@@ -743,7 +743,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Set the account that will be used to authenticate to the API as the enterprise.
+        # Sets the account that will be used to authenticate to the API as the
+        # enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::EnterpriseAccount] enterprise_account_object
@@ -858,7 +859,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes an entitlement to an app for a user and uninstalls it.
+        # Removes an entitlement to an app for a user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -938,7 +939,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List of all entitlements for the specified user. Only the ID is set.
+        # Lists all entitlements for the specified user. Only the ID is set.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1322,7 +1323,7 @@ module Google
         end
         
         # Requests to install the latest version of an app to a device. If the app is
-        # already installed then it is updated to the latest version if necessary. This
+        # already installed, then it is updated to the latest version if necessary. This
         # method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1372,7 +1373,7 @@ module Google
         end
         
         # Requests to install the latest version of an app to a device. If the app is
-        # already installed then it is updated to the latest version if necessary.
+        # already installed, then it is updated to the latest version if necessary.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2138,7 +2139,7 @@ module Google
         #   approved apps will be returned (using the pagination parameters), including
         #   apps that are not available in the store (e.g. unpublished apps).
         # @param [String] token
-        #   A pagination token is contained in a requests response when there are more
+        #   A pagination token is contained in a request''s response when there are more
         #   products. The token can be used in a subsequent request to obtain more
         #   products, and so forth. This parameter cannot be used in the initial request.
         # @param [String] fields

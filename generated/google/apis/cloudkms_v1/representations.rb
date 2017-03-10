@@ -20,21 +20,15 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module CloudresourcemanagerV1
+    module CloudkmsV1
       
-      class Empty
+      class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Organization
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetAncestryResponse
+      class CounterOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,13 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SearchOrganizationsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetAncestryRequest
+      class DecryptResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,7 +52,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FolderOperation
+      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,7 +64,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourceId
+      class EncryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyRing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCryptoKeyPrimaryVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataAccessOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListKeyRingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,19 +106,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
+      class CryptoKeyVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListLiensResponse
+      class CloudAuditOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,13 +124,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteProjectRequest
+      class EncryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ProjectCreationStatus
+      class ListCryptoKeyVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,49 +142,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetIamPolicyRequest
+      class DestroyCryptoKeyVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrganizationOwner
+      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListProjectsResponse
+      class CryptoKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Project
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchOrganizationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FolderOperationError
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Lien
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Ancestor
+      class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,29 +172,41 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class DecryptRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCryptoKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :op, as: 'op'
+          property :svc, as: 'svc'
+          property :sys, as: 'sys'
+          property :value, as: 'value'
+          collection :values, as: 'values'
+          property :iam, as: 'iam'
         end
       end
       
-      class Organization
+      class CounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1::OrganizationOwner::Representation
-      
-          property :lifecycle_state, as: 'lifecycleState'
-          property :name, as: 'name'
-          property :display_name, as: 'displayName'
-          property :creation_time, as: 'creationTime'
-        end
-      end
-      
-      class GetAncestryResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ancestor, as: 'ancestor', class: Google::Apis::CloudresourcemanagerV1::Ancestor, decorator: Google::Apis::CloudresourcemanagerV1::Ancestor::Representation
-      
+          property :metric, as: 'metric'
+          property :field, as: 'field'
         end
       end
       
@@ -218,18 +218,10 @@ module Google
         end
       end
       
-      class SearchOrganizationsRequest
+      class DecryptResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-          property :page_token, as: 'pageToken'
-          property :page_size, as: 'pageSize'
-        end
-      end
-      
-      class GetAncestryRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plaintext, :base64 => true, as: 'plaintext'
         end
       end
       
@@ -240,13 +232,12 @@ module Google
         end
       end
       
-      class FolderOperation
+      class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_type, as: 'operationType'
-          property :display_name, as: 'displayName'
-          property :source_parent, as: 'sourceParent'
-          property :destination_parent, as: 'destinationParent'
+          collection :locations, as: 'locations', class: Google::Apis::CloudkmsV1::Location, decorator: Google::Apis::CloudkmsV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -254,58 +245,86 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudresourcemanagerV1::AuditConfig, decorator: Google::Apis::CloudresourcemanagerV1::AuditConfig::Representation
+          property :iam_owned, as: 'iamOwned'
+          collection :rules, as: 'rules', class: Google::Apis::CloudkmsV1::Rule, decorator: Google::Apis::CloudkmsV1::Rule::Representation
       
-          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1::Binding, decorator: Google::Apis::CloudresourcemanagerV1::Binding::Representation
+          property :version, as: 'version'
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudkmsV1::AuditConfig, decorator: Google::Apis::CloudkmsV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::CloudkmsV1::Binding, decorator: Google::Apis::CloudkmsV1::Binding::Representation
       
         end
       end
       
-      class ResourceId
+      class EncryptResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :type, as: 'type'
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :name, as: 'name'
+        end
+      end
+      
+      class KeyRing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+        end
+      end
+      
+      class UpdateCryptoKeyPrimaryVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_version_id, as: 'cryptoKeyVersionId'
+        end
+      end
+      
+      class RestoreCryptoKeyVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DataAccessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListKeyRingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+          collection :key_rings, as: 'keyRings', class: Google::Apis::CloudkmsV1::KeyRing, decorator: Google::Apis::CloudkmsV1::KeyRing::Representation
+      
         end
       end
       
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV1::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV1::AuditLogConfig::Representation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudkmsV1::AuditLogConfig, decorator: Google::Apis::CloudkmsV1::AuditLogConfig::Representation
       
         end
       end
       
-      class Operation
+      class CryptoKeyVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          hash :response, as: 'response'
+          property :state, as: 'state'
           property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::CloudresourcemanagerV1::Status, decorator: Google::Apis::CloudresourcemanagerV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
+          property :destroy_event_time, as: 'destroyEventTime'
+          property :destroy_time, as: 'destroyTime'
+          property :create_time, as: 'createTime'
         end
       end
       
-      class Status
+      class CloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          collection :details, as: 'details'
-          property :code, as: 'code'
-        end
-      end
-      
-      class ListLiensResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :liens, as: 'liens', class: Google::Apis::CloudresourcemanagerV1::Lien, decorator: Google::Apis::CloudresourcemanagerV1::Lien::Representation
-      
         end
       end
       
@@ -317,18 +336,21 @@ module Google
         end
       end
       
-      class UndeleteProjectRequest
+      class EncryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :plaintext, :base64 => true, as: 'plaintext'
+          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
         end
       end
       
-      class ProjectCreationStatus
+      class ListCryptoKeyVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ready, as: 'ready'
-          property :create_time, as: 'createTime'
-          property :gettable, as: 'gettable'
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+          collection :crypto_key_versions, as: 'cryptoKeyVersions', class: Google::Apis::CloudkmsV1::CryptoKeyVersion, decorator: Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
+      
         end
       end
       
@@ -339,74 +361,48 @@ module Google
         end
       end
       
-      class GetIamPolicyRequest
+      class DestroyCryptoKeyVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      class OrganizationOwner
+      class Rule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :directory_customer_id, as: 'directoryCustomerId'
+          collection :not_in, as: 'notIn'
+          property :description, as: 'description'
+          collection :conditions, as: 'conditions', class: Google::Apis::CloudkmsV1::Condition, decorator: Google::Apis::CloudkmsV1::Condition::Representation
+      
+          collection :log_config, as: 'logConfig', class: Google::Apis::CloudkmsV1::LogConfig, decorator: Google::Apis::CloudkmsV1::LogConfig::Representation
+      
+          collection :in, as: 'in'
+          collection :permissions, as: 'permissions'
+          property :action, as: 'action'
         end
       end
       
-      class ListProjectsResponse
+      class CryptoKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1::Project, decorator: Google::Apis::CloudresourcemanagerV1::Project::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class Project
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :lifecycle_state, as: 'lifecycleState'
-          property :project_number, as: 'projectNumber'
-          property :parent, as: 'parent', class: Google::Apis::CloudresourcemanagerV1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1::ResourceId::Representation
-      
+          property :purpose, as: 'purpose'
+          property :next_rotation_time, as: 'nextRotationTime'
           property :create_time, as: 'createTime'
-          hash :labels, as: 'labels'
+          property :rotation_period, as: 'rotationPeriod'
+          property :primary, as: 'primary', class: Google::Apis::CloudkmsV1::CryptoKeyVersion, decorator: Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
+      
           property :name, as: 'name'
-          property :project_id, as: 'projectId'
         end
       end
       
-      class SearchOrganizationsResponse
+      class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1::Organization, decorator: Google::Apis::CloudresourcemanagerV1::Organization::Representation
+          property :counter, as: 'counter', class: Google::Apis::CloudkmsV1::CounterOptions, decorator: Google::Apis::CloudkmsV1::CounterOptions::Representation
       
-        end
-      end
+          property :data_access, as: 'dataAccess', class: Google::Apis::CloudkmsV1::DataAccessOptions, decorator: Google::Apis::CloudkmsV1::DataAccessOptions::Representation
       
-      class FolderOperationError
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message_id, as: 'errorMessageId'
-        end
-      end
-      
-      class Lien
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :parent, as: 'parent'
-          property :create_time, as: 'createTime'
-          property :name, as: 'name'
-          property :reason, as: 'reason'
-          property :origin, as: 'origin'
-          collection :restrictions, as: 'restrictions'
-        end
-      end
-      
-      class Ancestor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_id, as: 'resourceId', class: Google::Apis::CloudresourcemanagerV1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1::ResourceId::Representation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::CloudkmsV1::CloudAuditOptions, decorator: Google::Apis::CloudkmsV1::CloudAuditOptions::Representation
       
         end
       end
@@ -415,8 +411,36 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :update_mask, as: 'updateMask'
-          property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV1::Policy, decorator: Google::Apis::CloudresourcemanagerV1::Policy::Representation
+          property :policy, as: 'policy', class: Google::Apis::CloudkmsV1::Policy, decorator: Google::Apis::CloudkmsV1::Policy::Representation
       
+        end
+      end
+      
+      class DecryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          hash :labels, as: 'labels'
+        end
+      end
+      
+      class ListCryptoKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :crypto_keys, as: 'cryptoKeys', class: Google::Apis::CloudkmsV1::CryptoKey, decorator: Google::Apis::CloudkmsV1::CryptoKey::Representation
+      
+          property :total_size, as: 'totalSize'
         end
       end
     end

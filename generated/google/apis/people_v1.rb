@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20170213'
+      REVISION = '20170310'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'

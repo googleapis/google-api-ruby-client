@@ -1131,6 +1131,31 @@ module Google
         end
       end
       
+      # User defined labels for Cloud SQL instances.
+      class Labels
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Preferred location. This specifies where a Cloud SQL instance should
       # preferably be located, either in a specific Compute Engine zone, or co-located
       # with an App Engine application. Note that if the preferred location is not
@@ -1609,13 +1634,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # The availability type. This can be one of the following.
-        # ZONAL: A Cloud SQL instance that is zonally available. The instance is bound
-        # to a single GCE zone and may be inaccessible during an outage for that GCE
-        # zone.
-        # REGIONAL: A Cloud SQL instance that is regionally available. The instance is
-        # provisioned in multiple zones within a region and is able to provide higher
-        # availability than an instance with a zonal availability type.
+        # Reserved for future use.
         # Corresponds to the JSON property `availabilityType`
         # @return [String]
         attr_accessor :availability_type
@@ -1666,6 +1685,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # User defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::SqladminV1beta4::Labels>]
+        attr_accessor :labels
       
         # Preferred location. This specifies where a Cloud SQL instance should
         # preferably be located, either in a specific Compute Engine zone, or co-located
@@ -1739,6 +1763,7 @@ module Google
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)

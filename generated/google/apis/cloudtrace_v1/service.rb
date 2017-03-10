@@ -36,14 +36,14 @@ module Google
       # @see https://cloud.google.com/trace
       class CloudTraceService < Google::Apis::Core::BaseService
         # @return [String]
-        #  API key. Your API key identifies your project and provides you with API access,
-        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
-        attr_accessor :key
-
-        # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
+
+        # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
 
         def initialize
           super('https://cloudtrace.googleapis.com/', '')
@@ -57,11 +57,11 @@ module Google
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
         # @param [Google::Apis::CloudtraceV1::Traces] traces_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -74,15 +74,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_traces(project_id, traces_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_traces(project_id, traces_object = nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/projects/{projectId}/traces', options)
           command.request_representation = Google::Apis::CloudtraceV1::Traces::Representation
           command.request_object = traces_object
           command.response_representation = Google::Apis::CloudtraceV1::Empty::Representation
           command.response_class = Google::Apis::CloudtraceV1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -118,11 +118,11 @@ module Google
         #   Descending order can be specified by appending `desc` to the sort field
         #   (for example, `name desc`).
         #   Only one sort field is permitted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -135,7 +135,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_traces(project_id, filter: nil, end_time: nil, start_time: nil, page_token: nil, page_size: nil, view: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_traces(project_id, filter: nil, end_time: nil, start_time: nil, page_token: nil, page_size: nil, view: nil, order_by: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
           command.response_representation = Google::Apis::CloudtraceV1::ListTracesResponse::Representation
           command.response_class = Google::Apis::CloudtraceV1::ListTracesResponse
@@ -147,8 +147,8 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['view'] = view unless view.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -157,11 +157,11 @@ module Google
         #   ID of the Cloud project where the trace data is stored.
         # @param [String] trace_id
         #   ID of the trace to return.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -174,22 +174,22 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_trace(project_id, trace_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_trace(project_id, trace_id, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/traces/{traceId}', options)
           command.response_representation = Google::Apis::CloudtraceV1::Trace::Representation
           command.response_class = Google::Apis::CloudtraceV1::Trace
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['traceId'] = trace_id unless trace_id.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
 
         protected
 
         def apply_command_defaults(command)
-          command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['key'] = key unless key.nil?
         end
       end
     end

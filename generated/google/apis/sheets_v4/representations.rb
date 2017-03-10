@@ -22,19 +22,229 @@ module Google
   module Apis
     module SheetsV4
       
+      class SheetProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDimensionPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceAndDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BandingProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddProtectedRangeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ErrorValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PivotValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopySheetToAnotherSpreadsheetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PivotGroupSortValueBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmbeddedObjectPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteProtectedRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoFillRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GradientRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetBasicFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClearValuesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterpolationPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteEmbeddedObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FindReplaceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteSheetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DuplicateFilterViewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateConditionalFormatRuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConditionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DuplicateSheetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendedValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BandedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchClearValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Spreadsheet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddChartRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateProtectedRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddSheetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddFilterViewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IterativeCalculationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OverlayPosition
+      class SpreadsheetProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpreadsheetProperties
+      class OverlayPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,13 +406,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppendCellsRequest
+      class ValueRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ValueRange
+      class AppendCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextRotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PieChartSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,13 +688,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Padding
+      class BasicChartAxis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BasicChartAxis
+      class Padding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,19 +760,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClearBasicFilterRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TextToColumnsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteBandingRequest
+      class ClearBasicFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,13 +778,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBandingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppendValuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MoveDimensionRequest
+      class AddFilterViewRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,7 +802,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddFilterViewRequest
+      class MoveDimensionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -611,256 +827,399 @@ module Google
       end
       
       class SheetProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :index, as: 'index'
+          property :tab_color, as: 'tabColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :sheet_id, as: 'sheetId'
+          property :right_to_left, as: 'rightToLeft'
+          property :hidden, as: 'hidden'
+          property :sheet_type, as: 'sheetType'
+          property :grid_properties, as: 'gridProperties', class: Google::Apis::SheetsV4::GridProperties, decorator: Google::Apis::SheetsV4::GridProperties::Representation
+      
+        end
       end
       
       class UpdateDimensionPropertiesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :range, as: 'range', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+          property :fields, as: 'fields'
+        end
       end
       
       class SourceAndDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension, as: 'dimension'
+          property :fill_length, as: 'fillLength'
+          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class FilterView
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :named_range_id, as: 'namedRangeId'
+          property :filter_view_id, as: 'filterViewId'
+          hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :title, as: 'title'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
+      
+        end
       end
       
       class BandingProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footer_color, as: 'footerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :first_band_color, as: 'firstBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :second_band_color, as: 'secondBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+        end
       end
       
       class BasicFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
+      
+          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
+      
+        end
       end
       
       class AddProtectedRangeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protected_range, as: 'protectedRange', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class UpdateValuesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :updated_rows, as: 'updatedRows'
+          property :updated_data, as: 'updatedData', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :updated_columns, as: 'updatedColumns'
+          property :spreadsheet_id, as: 'spreadsheetId'
+          property :updated_range, as: 'updatedRange'
+          property :updated_cells, as: 'updatedCells'
+        end
       end
       
       class ErrorValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :message, as: 'message'
+        end
       end
       
       class PivotValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_column_offset, as: 'sourceColumnOffset'
+          property :name, as: 'name'
+          property :formula, as: 'formula'
+          property :summarize_function, as: 'summarizeFunction'
+        end
       end
       
       class CopySheetToAnotherSpreadsheetRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_spreadsheet_id, as: 'destinationSpreadsheetId'
+        end
       end
       
       class PivotGroupSortValueBucket
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :values_index, as: 'valuesIndex'
+          collection :buckets, as: 'buckets', class: Google::Apis::SheetsV4::ExtendedValue, decorator: Google::Apis::SheetsV4::ExtendedValue::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class EmbeddedObjectPosition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_sheet, as: 'newSheet'
+          property :sheet_id, as: 'sheetId'
+          property :overlay_position, as: 'overlayPosition', class: Google::Apis::SheetsV4::OverlayPosition, decorator: Google::Apis::SheetsV4::OverlayPosition::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class DeleteProtectedRangeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protected_range_id, as: 'protectedRangeId'
+        end
       end
       
       class AutoFillRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :use_alternate_series, as: 'useAlternateSeries'
+          property :source_and_destination, as: 'sourceAndDestination', class: Google::Apis::SheetsV4::SourceAndDestination, decorator: Google::Apis::SheetsV4::SourceAndDestination::Representation
+      
+        end
       end
       
       class GradientRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :midpoint, as: 'midpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
+          property :minpoint, as: 'minpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
       
-      class ClearValuesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+          property :maxpoint, as: 'maxpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class SetBasicFilterRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter', class: Google::Apis::SheetsV4::BasicFilter, decorator: Google::Apis::SheetsV4::BasicFilter::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
+      end
+      
+      class ClearValuesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class InterpolationPoint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FindReplaceResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+          property :type, as: 'type'
+        end
       end
       
       class DeleteEmbeddedObjectRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class FindReplaceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :values_changed, as: 'valuesChanged'
+          property :occurrences_changed, as: 'occurrencesChanged'
+          property :rows_changed, as: 'rowsChanged'
+          property :sheets_changed, as: 'sheetsChanged'
+          property :formulas_changed, as: 'formulasChanged'
+        end
       end
       
       class DeleteSheetRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sheet_id, as: 'sheetId'
+        end
       end
       
       class DuplicateFilterViewRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_id, as: 'filterId'
+        end
       end
       
       class UpdateConditionalFormatRuleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :old_rule, as: 'oldRule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :new_index, as: 'newIndex'
+          property :old_index, as: 'oldIndex'
+          property :new_rule, as: 'newRule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
+      
+        end
       end
       
       class ConditionValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :relative_date, as: 'relativeDate'
+          property :user_entered_value, as: 'userEnteredValue'
+        end
       end
       
       class DuplicateSheetRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_sheet_id, as: 'newSheetId'
+          property :insert_sheet_index, as: 'insertSheetIndex'
+          property :new_sheet_name, as: 'newSheetName'
+          property :source_sheet_id, as: 'sourceSheetId'
+        end
       end
       
       class ExtendedValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number_value, as: 'numberValue'
+          property :error_value, as: 'errorValue', class: Google::Apis::SheetsV4::ErrorValue, decorator: Google::Apis::SheetsV4::ErrorValue::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AddChartRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Spreadsheet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchClearValuesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+          property :string_value, as: 'stringValue'
+          property :bool_value, as: 'boolValue'
+          property :formula_value, as: 'formulaValue'
+        end
       end
       
       class BandedRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_properties, as: 'rowProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :column_properties, as: 'columnProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          property :banded_range_id, as: 'bandedRangeId'
+        end
+      end
+      
+      class BatchClearValuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          collection :cleared_ranges, as: 'clearedRanges'
+        end
+      end
+      
+      class Spreadsheet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          collection :sheets, as: 'sheets', class: Google::Apis::SheetsV4::Sheet, decorator: Google::Apis::SheetsV4::Sheet::Representation
+      
+          collection :named_ranges, as: 'namedRanges', class: Google::Apis::SheetsV4::NamedRange, decorator: Google::Apis::SheetsV4::NamedRange::Representation
+      
+          property :spreadsheet_url, as: 'spreadsheetUrl'
+          property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
+      
+        end
+      end
+      
+      class AddChartRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chart, as: 'chart', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
+      
+        end
       end
       
       class UpdateProtectedRangeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protected_range, as: 'protectedRange', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :fields, as: 'fields'
+        end
       end
       
       class TextFormat
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :bold, as: 'bold'
+          property :font_family, as: 'fontFamily'
+          property :strikethrough, as: 'strikethrough'
+          property :italic, as: 'italic'
+          property :font_size, as: 'fontSize'
+          property :underline, as: 'underline'
+        end
       end
       
       class AddSheetResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class AddFilterViewResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class IterativeCalculationSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_iterations, as: 'maxIterations'
           property :convergence_threshold, as: 'convergenceThreshold'
-        end
-      end
-      
-      class OverlayPosition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :offset_y_pixels, as: 'offsetYPixels'
-          property :height_pixels, as: 'heightPixels'
-          property :width_pixels, as: 'widthPixels'
-          property :offset_x_pixels, as: 'offsetXPixels'
-          property :anchor_cell, as: 'anchorCell', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
-      
+          property :max_iterations, as: 'maxIterations'
         end
       end
       
       class SpreadsheetProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :time_zone, as: 'timeZone'
-          property :locale, as: 'locale'
-          property :iterative_calculation_settings, as: 'iterativeCalculationSettings', class: Google::Apis::SheetsV4::IterativeCalculationSettings, decorator: Google::Apis::SheetsV4::IterativeCalculationSettings::Representation
-      
           property :auto_recalc, as: 'autoRecalc'
           property :default_format, as: 'defaultFormat', class: Google::Apis::SheetsV4::CellFormat, decorator: Google::Apis::SheetsV4::CellFormat::Representation
       
+          property :time_zone, as: 'timeZone'
+          property :title, as: 'title'
+          property :locale, as: 'locale'
+          property :iterative_calculation_settings, as: 'iterativeCalculationSettings', class: Google::Apis::SheetsV4::IterativeCalculationSettings, decorator: Google::Apis::SheetsV4::IterativeCalculationSettings::Representation
+      
+        end
+      end
+      
+      class OverlayPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :width_pixels, as: 'widthPixels'
+          property :offset_x_pixels, as: 'offsetXPixels'
+          property :anchor_cell, as: 'anchorCell', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
+          property :offset_y_pixels, as: 'offsetYPixels'
+          property :height_pixels, as: 'heightPixels'
         end
       end
       
       class RepeatCellRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
           property :fields, as: 'fields'
           property :cell, as: 'cell', class: Google::Apis::SheetsV4::CellData, decorator: Google::Apis::SheetsV4::CellData::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
         end
       end
@@ -885,38 +1244,38 @@ module Google
       class UpdateSpreadsheetPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :fields, as: 'fields'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
       
+          property :fields, as: 'fields'
         end
       end
       
       class BatchUpdateValuesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :response_value_render_option, as: 'responseValueRenderOption'
           property :include_values_in_response, as: 'includeValuesInResponse'
           property :value_input_option, as: 'valueInputOption'
           collection :data, as: 'data', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
       
           property :response_date_time_render_option, as: 'responseDateTimeRenderOption'
-          property :response_value_render_option, as: 'responseValueRenderOption'
         end
       end
       
       class ProtectedRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :unprotected_ranges, as: 'unprotectedRanges', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
           property :named_range_id, as: 'namedRangeId'
           property :protected_range_id, as: 'protectedRangeId'
           property :warning_only, as: 'warningOnly'
           property :requesting_user_can_edit, as: 'requestingUserCanEdit'
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
           property :editors, as: 'editors', class: Google::Apis::SheetsV4::Editors, decorator: Google::Apis::SheetsV4::Editors::Representation
       
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
           property :description, as: 'description'
+          collection :unprotected_ranges, as: 'unprotectedRanges', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
         end
       end
       
@@ -932,10 +1291,10 @@ module Google
       class DimensionRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_index, as: 'startIndex'
-          property :end_index, as: 'endIndex'
           property :sheet_id, as: 'sheetId'
           property :dimension, as: 'dimension'
+          property :start_index, as: 'startIndex'
+          property :end_index, as: 'endIndex'
         end
       end
       
@@ -952,11 +1311,11 @@ module Google
       class CutPasteRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           property :paste_type, as: 'pasteType'
-          property :destination, as: 'destination', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
-      
         end
       end
       
@@ -973,13 +1332,13 @@ module Google
       class Borders
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :top, as: 'top', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
+      
           property :left, as: 'left', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
           property :right, as: 'right', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
           property :bottom, as: 'bottom', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
-      
-          property :top, as: 'top', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
         end
       end
@@ -995,10 +1354,6 @@ module Google
       class UpdateBordersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bottom, as: 'bottom', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
-      
-          property :inner_vertical, as: 'innerVertical', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
-      
           property :right, as: 'right', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
@@ -1008,6 +1363,10 @@ module Google
           property :top, as: 'top', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
           property :left, as: 'left', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
+      
+          property :bottom, as: 'bottom', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
+      
+          property :inner_vertical, as: 'innerVertical', class: Google::Apis::SheetsV4::Border, decorator: Google::Apis::SheetsV4::Border::Representation
       
         end
       end
@@ -1030,14 +1389,16 @@ module Google
       
           property :text_direction, as: 'textDirection'
           property :wrap_strategy, as: 'wrapStrategy'
+          property :text_rotation, as: 'textRotation', class: Google::Apis::SheetsV4::TextRotation, decorator: Google::Apis::SheetsV4::TextRotation::Representation
+      
         end
       end
       
       class ClearValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cleared_range, as: 'clearedRange'
           property :spreadsheet_id, as: 'spreadsheetId'
+          property :cleared_range, as: 'clearedRange'
         end
       end
       
@@ -1075,9 +1436,9 @@ module Google
       class BatchGetValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :spreadsheet_id, as: 'spreadsheetId'
           collection :value_ranges, as: 'valueRanges', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
       
+          property :spreadsheet_id, as: 'spreadsheetId'
         end
       end
       
@@ -1116,17 +1477,17 @@ module Google
       class PivotTable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :values, as: 'values', class: Google::Apis::SheetsV4::PivotValue, decorator: Google::Apis::SheetsV4::PivotValue::Representation
-      
-          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          collection :columns, as: 'columns', class: Google::Apis::SheetsV4::PivotGroup, decorator: Google::Apis::SheetsV4::PivotGroup::Representation
-      
           hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::PivotFilterCriteria, decorator: Google::Apis::SheetsV4::PivotFilterCriteria::Representation
       
           collection :rows, as: 'rows', class: Google::Apis::SheetsV4::PivotGroup, decorator: Google::Apis::SheetsV4::PivotGroup::Representation
       
           property :value_layout, as: 'valueLayout'
+          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          collection :columns, as: 'columns', class: Google::Apis::SheetsV4::PivotGroup, decorator: Google::Apis::SheetsV4::PivotGroup::Representation
+      
+          collection :values, as: 'values', class: Google::Apis::SheetsV4::PivotValue, decorator: Google::Apis::SheetsV4::PivotValue::Representation
+      
         end
       end
       
@@ -1135,16 +1496,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sources, as: 'sources', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
-        end
-      end
-      
-      class AppendCellsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :rows, as: 'rows', class: Google::Apis::SheetsV4::RowData, decorator: Google::Apis::SheetsV4::RowData::Representation
-      
-          property :fields, as: 'fields'
-          property :sheet_id, as: 'sheetId'
         end
       end
       
@@ -1161,6 +1512,16 @@ module Google
         end
       end
       
+      class AppendCellsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rows, as: 'rows', class: Google::Apis::SheetsV4::RowData, decorator: Google::Apis::SheetsV4::RowData::Representation
+      
+          property :fields, as: 'fields'
+          property :sheet_id, as: 'sheetId'
+        end
+      end
+      
       class AddBandingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1172,6 +1533,12 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
+      
+          property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
+      
+          property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse::Representation
+      
           property :add_named_range, as: 'addNamedRange', class: Google::Apis::SheetsV4::AddNamedRangeResponse, decorator: Google::Apis::SheetsV4::AddNamedRangeResponse::Representation
       
           property :add_filter_view, as: 'addFilterView', class: Google::Apis::SheetsV4::AddFilterViewResponse, decorator: Google::Apis::SheetsV4::AddFilterViewResponse::Representation
@@ -1190,12 +1557,6 @@ module Google
       
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartResponse, decorator: Google::Apis::SheetsV4::AddChartResponse::Representation
       
-          property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
-      
-          property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
-      
-          property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse::Representation
-      
         end
       end
       
@@ -1211,9 +1572,9 @@ module Google
       class TextFormatRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_index, as: 'startIndex'
           property :format, as: 'format', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
+          property :start_index, as: 'startIndex'
         end
       end
       
@@ -1247,24 +1608,24 @@ module Google
       class GridData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :row_metadata, as: 'rowMetadata', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
-      
           collection :row_data, as: 'rowData', class: Google::Apis::SheetsV4::RowData, decorator: Google::Apis::SheetsV4::RowData::Representation
       
           property :start_row, as: 'startRow'
           collection :column_metadata, as: 'columnMetadata', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
       
           property :start_column, as: 'startColumn'
+          collection :row_metadata, as: 'rowMetadata', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
+      
         end
       end
       
       class Border
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :style, as: 'style'
           property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
           property :width, as: 'width'
-          property :style, as: 'style'
         end
       end
       
@@ -1325,9 +1686,9 @@ module Google
       class DeleteRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :shift_dimension, as: 'shiftDimension'
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
+          property :shift_dimension, as: 'shiftDimension'
         end
       end
       
@@ -1343,20 +1704,20 @@ module Google
       class UpdateSheetPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :fields, as: 'fields'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
       
+          property :fields, as: 'fields'
         end
       end
       
       class GridProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :row_count, as: 'rowCount'
           property :frozen_row_count, as: 'frozenRowCount'
           property :hide_gridlines, as: 'hideGridlines'
           property :column_count, as: 'columnCount'
           property :frozen_column_count, as: 'frozenColumnCount'
+          property :row_count, as: 'rowCount'
         end
       end
       
@@ -1387,10 +1748,6 @@ module Google
       class Sheet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :protected_ranges, as: 'protectedRanges', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
-      
-          collection :conditional_formats, as: 'conditionalFormats', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
-      
           property :basic_filter, as: 'basicFilter', class: Google::Apis::SheetsV4::BasicFilter, decorator: Google::Apis::SheetsV4::BasicFilter::Representation
       
           collection :merges, as: 'merges', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
@@ -1405,15 +1762,19 @@ module Google
       
           collection :filter_views, as: 'filterViews', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
       
+          collection :conditional_formats, as: 'conditionalFormats', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
+      
+          collection :protected_ranges, as: 'protectedRanges', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
+      
         end
       end
       
       class BooleanRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::SheetsV4::BooleanCondition, decorator: Google::Apis::SheetsV4::BooleanCondition::Representation
-      
           property :format, as: 'format', class: Google::Apis::SheetsV4::CellFormat, decorator: Google::Apis::SheetsV4::CellFormat::Representation
+      
+          property :condition, as: 'condition', class: Google::Apis::SheetsV4::BooleanCondition, decorator: Google::Apis::SheetsV4::BooleanCondition::Representation
       
         end
       end
@@ -1439,20 +1800,20 @@ module Google
       class Editors
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :users, as: 'users'
           collection :groups, as: 'groups'
           property :domain_users_can_edit, as: 'domainUsersCanEdit'
-          collection :users, as: 'users'
         end
       end
       
       class UpdateConditionalFormatRuleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_index, as: 'newIndex'
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
           property :index, as: 'index'
           property :sheet_id, as: 'sheetId'
-          property :new_index, as: 'newIndex'
         end
       end
       
@@ -1507,32 +1868,40 @@ module Google
       class UpdateEmbeddedObjectPositionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :fields, as: 'fields'
-          property :object_id_prop, as: 'objectId'
           property :new_position, as: 'newPosition', class: Google::Apis::SheetsV4::EmbeddedObjectPosition, decorator: Google::Apis::SheetsV4::EmbeddedObjectPosition::Representation
       
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+        end
+      end
+      
+      class TextRotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :angle, as: 'angle'
+          property :vertical, as: 'vertical'
         end
       end
       
       class PieChartSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :three_dimensional, as: 'threeDimensional'
           property :series, as: 'series', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
           property :legend_position, as: 'legendPosition'
           property :pie_hole, as: 'pieHole'
-          property :domain, as: 'domain', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
-      
-          property :three_dimensional, as: 'threeDimensional'
         end
       end
       
       class UpdateFilterViewRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
           property :filter, as: 'filter', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
       
-          property :fields, as: 'fields'
         end
       end
       
@@ -1551,12 +1920,12 @@ module Google
       class CopyPasteRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :paste_orientation, as: 'pasteOrientation'
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           property :paste_type, as: 'pasteType'
           property :destination, as: 'destination', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
+          property :paste_orientation, as: 'pasteOrientation'
         end
       end
       
@@ -1572,45 +1941,21 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :sort_range, as: 'sortRange', class: Google::Apis::SheetsV4::SortRangeRequest, decorator: Google::Apis::SheetsV4::SortRangeRequest::Representation
-      
-          property :delete_protected_range, as: 'deleteProtectedRange', class: Google::Apis::SheetsV4::DeleteProtectedRangeRequest, decorator: Google::Apis::SheetsV4::DeleteProtectedRangeRequest::Representation
-      
-          property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewRequest, decorator: Google::Apis::SheetsV4::DuplicateFilterViewRequest::Representation
-      
-          property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartRequest, decorator: Google::Apis::SheetsV4::AddChartRequest::Representation
-      
-          property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceRequest, decorator: Google::Apis::SheetsV4::FindReplaceRequest::Representation
-      
-          property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
-      
-          property :text_to_columns, as: 'textToColumns', class: Google::Apis::SheetsV4::TextToColumnsRequest, decorator: Google::Apis::SheetsV4::TextToColumnsRequest::Representation
-      
-          property :update_protected_range, as: 'updateProtectedRange', class: Google::Apis::SheetsV4::UpdateProtectedRangeRequest, decorator: Google::Apis::SheetsV4::UpdateProtectedRangeRequest::Representation
-      
-          property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetRequest, decorator: Google::Apis::SheetsV4::AddSheetRequest::Representation
-      
-          property :delete_filter_view, as: 'deleteFilterView', class: Google::Apis::SheetsV4::DeleteFilterViewRequest, decorator: Google::Apis::SheetsV4::DeleteFilterViewRequest::Representation
-      
-          property :copy_paste, as: 'copyPaste', class: Google::Apis::SheetsV4::CopyPasteRequest, decorator: Google::Apis::SheetsV4::CopyPasteRequest::Representation
-      
-          property :insert_dimension, as: 'insertDimension', class: Google::Apis::SheetsV4::InsertDimensionRequest, decorator: Google::Apis::SheetsV4::InsertDimensionRequest::Representation
-      
           property :delete_range, as: 'deleteRange', class: Google::Apis::SheetsV4::DeleteRangeRequest, decorator: Google::Apis::SheetsV4::DeleteRangeRequest::Representation
       
           property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
           property :add_filter_view, as: 'addFilterView', class: Google::Apis::SheetsV4::AddFilterViewRequest, decorator: Google::Apis::SheetsV4::AddFilterViewRequest::Representation
       
-          property :set_data_validation, as: 'setDataValidation', class: Google::Apis::SheetsV4::SetDataValidationRequest, decorator: Google::Apis::SheetsV4::SetDataValidationRequest::Representation
-      
           property :update_borders, as: 'updateBorders', class: Google::Apis::SheetsV4::UpdateBordersRequest, decorator: Google::Apis::SheetsV4::UpdateBordersRequest::Representation
+      
+          property :set_data_validation, as: 'setDataValidation', class: Google::Apis::SheetsV4::SetDataValidationRequest, decorator: Google::Apis::SheetsV4::SetDataValidationRequest::Representation
       
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest::Representation
       
-          property :repeat_cell, as: 'repeatCell', class: Google::Apis::SheetsV4::RepeatCellRequest, decorator: Google::Apis::SheetsV4::RepeatCellRequest::Representation
-      
           property :clear_basic_filter, as: 'clearBasicFilter', class: Google::Apis::SheetsV4::ClearBasicFilterRequest, decorator: Google::Apis::SheetsV4::ClearBasicFilterRequest::Representation
+      
+          property :repeat_cell, as: 'repeatCell', class: Google::Apis::SheetsV4::RepeatCellRequest, decorator: Google::Apis::SheetsV4::RepeatCellRequest::Representation
       
           property :append_dimension, as: 'appendDimension', class: Google::Apis::SheetsV4::AppendDimensionRequest, decorator: Google::Apis::SheetsV4::AppendDimensionRequest::Representation
       
@@ -1628,9 +1973,9 @@ module Google
       
           property :duplicate_sheet, as: 'duplicateSheet', class: Google::Apis::SheetsV4::DuplicateSheetRequest, decorator: Google::Apis::SheetsV4::DuplicateSheetRequest::Representation
       
-          property :delete_sheet, as: 'deleteSheet', class: Google::Apis::SheetsV4::DeleteSheetRequest, decorator: Google::Apis::SheetsV4::DeleteSheetRequest::Representation
-      
           property :unmerge_cells, as: 'unmergeCells', class: Google::Apis::SheetsV4::UnmergeCellsRequest, decorator: Google::Apis::SheetsV4::UnmergeCellsRequest::Representation
+      
+          property :delete_sheet, as: 'deleteSheet', class: Google::Apis::SheetsV4::DeleteSheetRequest, decorator: Google::Apis::SheetsV4::DeleteSheetRequest::Representation
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest::Representation
       
@@ -1654,9 +1999,9 @@ module Google
       
           property :add_banding, as: 'addBanding', class: Google::Apis::SheetsV4::AddBandingRequest, decorator: Google::Apis::SheetsV4::AddBandingRequest::Representation
       
-          property :auto_resize_dimensions, as: 'autoResizeDimensions', class: Google::Apis::SheetsV4::AutoResizeDimensionsRequest, decorator: Google::Apis::SheetsV4::AutoResizeDimensionsRequest::Representation
-      
           property :append_cells, as: 'appendCells', class: Google::Apis::SheetsV4::AppendCellsRequest, decorator: Google::Apis::SheetsV4::AppendCellsRequest::Representation
+      
+          property :auto_resize_dimensions, as: 'autoResizeDimensions', class: Google::Apis::SheetsV4::AutoResizeDimensionsRequest, decorator: Google::Apis::SheetsV4::AutoResizeDimensionsRequest::Representation
       
           property :cut_paste, as: 'cutPaste', class: Google::Apis::SheetsV4::CutPasteRequest, decorator: Google::Apis::SheetsV4::CutPasteRequest::Representation
       
@@ -1670,41 +2015,65 @@ module Google
       
           property :delete_dimension, as: 'deleteDimension', class: Google::Apis::SheetsV4::DeleteDimensionRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionRequest::Representation
       
+          property :sort_range, as: 'sortRange', class: Google::Apis::SheetsV4::SortRangeRequest, decorator: Google::Apis::SheetsV4::SortRangeRequest::Representation
+      
+          property :delete_protected_range, as: 'deleteProtectedRange', class: Google::Apis::SheetsV4::DeleteProtectedRangeRequest, decorator: Google::Apis::SheetsV4::DeleteProtectedRangeRequest::Representation
+      
+          property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewRequest, decorator: Google::Apis::SheetsV4::DuplicateFilterViewRequest::Representation
+      
+          property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartRequest, decorator: Google::Apis::SheetsV4::AddChartRequest::Representation
+      
+          property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceRequest, decorator: Google::Apis::SheetsV4::FindReplaceRequest::Representation
+      
+          property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
+      
+          property :text_to_columns, as: 'textToColumns', class: Google::Apis::SheetsV4::TextToColumnsRequest, decorator: Google::Apis::SheetsV4::TextToColumnsRequest::Representation
+      
+          property :update_protected_range, as: 'updateProtectedRange', class: Google::Apis::SheetsV4::UpdateProtectedRangeRequest, decorator: Google::Apis::SheetsV4::UpdateProtectedRangeRequest::Representation
+      
+          property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetRequest, decorator: Google::Apis::SheetsV4::AddSheetRequest::Representation
+      
+          property :copy_paste, as: 'copyPaste', class: Google::Apis::SheetsV4::CopyPasteRequest, decorator: Google::Apis::SheetsV4::CopyPasteRequest::Representation
+      
+          property :delete_filter_view, as: 'deleteFilterView', class: Google::Apis::SheetsV4::DeleteFilterViewRequest, decorator: Google::Apis::SheetsV4::DeleteFilterViewRequest::Representation
+      
+          property :insert_dimension, as: 'insertDimension', class: Google::Apis::SheetsV4::InsertDimensionRequest, decorator: Google::Apis::SheetsV4::InsertDimensionRequest::Representation
+      
         end
       end
       
       class GridRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_column_index, as: 'startColumnIndex'
+          property :sheet_id, as: 'sheetId'
           property :end_row_index, as: 'endRowIndex'
           property :end_column_index, as: 'endColumnIndex'
           property :start_row_index, as: 'startRowIndex'
-          property :start_column_index, as: 'startColumnIndex'
-          property :sheet_id, as: 'sheetId'
         end
       end
       
       class BasicChartSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :series, as: 'series', class: Google::Apis::SheetsV4::BasicChartSeries, decorator: Google::Apis::SheetsV4::BasicChartSeries::Representation
-      
-          property :legend_position, as: 'legendPosition'
           collection :domains, as: 'domains', class: Google::Apis::SheetsV4::BasicChartDomain, decorator: Google::Apis::SheetsV4::BasicChartDomain::Representation
       
           property :header_count, as: 'headerCount'
           collection :axis, as: 'axis', class: Google::Apis::SheetsV4::BasicChartAxis, decorator: Google::Apis::SheetsV4::BasicChartAxis::Representation
       
           property :chart_type, as: 'chartType'
+          collection :series, as: 'series', class: Google::Apis::SheetsV4::BasicChartSeries, decorator: Google::Apis::SheetsV4::BasicChartSeries::Representation
+      
+          property :legend_position, as: 'legendPosition'
         end
       end
       
       class SetDataValidationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::DataValidationRule, decorator: Google::Apis::SheetsV4::DataValidationRule::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
         end
       end
@@ -1712,9 +2081,6 @@ module Google
       class CellData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :text_format_runs, as: 'textFormatRuns', class: Google::Apis::SheetsV4::TextFormatRun, decorator: Google::Apis::SheetsV4::TextFormatRun::Representation
-      
-          property :formatted_value, as: 'formattedValue'
           property :hyperlink, as: 'hyperlink'
           property :pivot_table, as: 'pivotTable', class: Google::Apis::SheetsV4::PivotTable, decorator: Google::Apis::SheetsV4::PivotTable::Representation
       
@@ -1729,6 +2095,9 @@ module Google
       
           property :effective_value, as: 'effectiveValue', class: Google::Apis::SheetsV4::ExtendedValue, decorator: Google::Apis::SheetsV4::ExtendedValue::Representation
       
+          collection :text_format_runs, as: 'textFormatRuns', class: Google::Apis::SheetsV4::TextFormatRun, decorator: Google::Apis::SheetsV4::TextFormatRun::Representation
+      
+          property :formatted_value, as: 'formattedValue'
         end
       end
       
@@ -1743,16 +2112,6 @@ module Google
         end
       end
       
-      class Padding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bottom, as: 'bottom'
-          property :top, as: 'top'
-          property :left, as: 'left'
-          property :right, as: 'right'
-        end
-      end
-      
       class BasicChartAxis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1760,6 +2119,16 @@ module Google
           property :title, as: 'title'
           property :format, as: 'format', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
+        end
+      end
+      
+      class Padding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom, as: 'bottom'
+          property :top, as: 'top'
+          property :left, as: 'left'
+          property :right, as: 'right'
         end
       end
       
@@ -1774,9 +2143,9 @@ module Google
       class UpdateChartSpecRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chart_id, as: 'chartId'
           property :spec, as: 'spec', class: Google::Apis::SheetsV4::ChartSpec, decorator: Google::Apis::SheetsV4::ChartSpec::Representation
       
-          property :chart_id, as: 'chartId'
         end
       end
       
@@ -1790,22 +2159,22 @@ module Google
       class BatchUpdateValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_updated_rows, as: 'totalUpdatedRows'
-          collection :responses, as: 'responses', class: Google::Apis::SheetsV4::UpdateValuesResponse, decorator: Google::Apis::SheetsV4::UpdateValuesResponse::Representation
-      
           property :total_updated_sheets, as: 'totalUpdatedSheets'
           property :total_updated_cells, as: 'totalUpdatedCells'
           property :total_updated_columns, as: 'totalUpdatedColumns'
           property :spreadsheet_id, as: 'spreadsheetId'
+          property :total_updated_rows, as: 'totalUpdatedRows'
+          collection :responses, as: 'responses', class: Google::Apis::SheetsV4::UpdateValuesResponse, decorator: Google::Apis::SheetsV4::UpdateValuesResponse::Representation
+      
         end
       end
       
       class SortRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
           collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
         end
       end
@@ -1850,27 +2219,20 @@ module Google
         end
       end
       
+      class TextToColumnsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, as: 'delimiter'
+          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          property :delimiter_type, as: 'delimiterType'
+        end
+      end
+      
       class ClearBasicFilterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sheet_id, as: 'sheetId'
-        end
-      end
-      
-      class TextToColumnsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          property :delimiter_type, as: 'delimiterType'
-          property :delimiter, as: 'delimiter'
-        end
-      end
-      
-      class DeleteBandingRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :banded_range_id, as: 'bandedRangeId'
         end
       end
       
@@ -1885,6 +2247,13 @@ module Google
         end
       end
       
+      class DeleteBandingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banded_range_id, as: 'bandedRangeId'
+        end
+      end
+      
       class AppendValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1892,22 +2261,6 @@ module Google
       
           property :table_range, as: 'tableRange'
           property :spreadsheet_id, as: 'spreadsheetId'
-        end
-      end
-      
-      class MoveDimensionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
-      
-          property :destination_index, as: 'destinationIndex'
-        end
-      end
-      
-      class PivotFilterCriteria
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :visible_values, as: 'visibleValues'
         end
       end
       
@@ -1919,12 +2272,28 @@ module Google
         end
       end
       
+      class PivotFilterCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :visible_values, as: 'visibleValues'
+        end
+      end
+      
+      class MoveDimensionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_index, as: 'destinationIndex'
+          property :source, as: 'source', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+        end
+      end
+      
       class AddConditionalFormatRuleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :index, as: 'index'
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
+          property :index, as: 'index'
         end
       end
       
@@ -1945,359 +2314,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :pattern, as: 'pattern'
-        end
-      end
-      
-      class SheetProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :tab_color, as: 'tabColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :index, as: 'index'
-          property :sheet_id, as: 'sheetId'
-          property :right_to_left, as: 'rightToLeft'
-          property :hidden, as: 'hidden'
-          property :grid_properties, as: 'gridProperties', class: Google::Apis::SheetsV4::GridProperties, decorator: Google::Apis::SheetsV4::GridProperties::Representation
-      
-          property :sheet_type, as: 'sheetType'
-        end
-      end
-      
-      class UpdateDimensionPropertiesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
-      
-          property :fields, as: 'fields'
-          property :properties, as: 'properties', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
-      
-        end
-      end
-      
-      class SourceAndDestination
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fill_length, as: 'fillLength'
-          property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          property :dimension, as: 'dimension'
-        end
-      end
-      
-      class FilterView
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :named_range_id, as: 'namedRangeId'
-          property :filter_view_id, as: 'filterViewId'
-          hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
-      
-          property :title, as: 'title'
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
-      
-        end
-      end
-      
-      class BandingProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :footer_color, as: 'footerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :first_band_color, as: 'firstBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :second_band_color, as: 'secondBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-        end
-      end
-      
-      class BasicFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
-      
-          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
-      
-        end
-      end
-      
-      class AddProtectedRangeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :protected_range, as: 'protectedRange', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
-      
-        end
-      end
-      
-      class UpdateValuesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :updated_data, as: 'updatedData', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
-      
-          property :updated_rows, as: 'updatedRows'
-          property :updated_columns, as: 'updatedColumns'
-          property :spreadsheet_id, as: 'spreadsheetId'
-          property :updated_range, as: 'updatedRange'
-          property :updated_cells, as: 'updatedCells'
-        end
-      end
-      
-      class ErrorValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          property :message, as: 'message'
-        end
-      end
-      
-      class PivotValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :formula, as: 'formula'
-          property :summarize_function, as: 'summarizeFunction'
-          property :source_column_offset, as: 'sourceColumnOffset'
-          property :name, as: 'name'
-        end
-      end
-      
-      class CopySheetToAnotherSpreadsheetRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_spreadsheet_id, as: 'destinationSpreadsheetId'
-        end
-      end
-      
-      class PivotGroupSortValueBucket
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :values_index, as: 'valuesIndex'
-          collection :buckets, as: 'buckets', class: Google::Apis::SheetsV4::ExtendedValue, decorator: Google::Apis::SheetsV4::ExtendedValue::Representation
-      
-        end
-      end
-      
-      class EmbeddedObjectPosition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_sheet, as: 'newSheet'
-          property :sheet_id, as: 'sheetId'
-          property :overlay_position, as: 'overlayPosition', class: Google::Apis::SheetsV4::OverlayPosition, decorator: Google::Apis::SheetsV4::OverlayPosition::Representation
-      
-        end
-      end
-      
-      class DeleteProtectedRangeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :protected_range_id, as: 'protectedRangeId'
-        end
-      end
-      
-      class AutoFillRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          property :use_alternate_series, as: 'useAlternateSeries'
-          property :source_and_destination, as: 'sourceAndDestination', class: Google::Apis::SheetsV4::SourceAndDestination, decorator: Google::Apis::SheetsV4::SourceAndDestination::Representation
-      
-        end
-      end
-      
-      class GradientRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :minpoint, as: 'minpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
-      
-          property :maxpoint, as: 'maxpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
-      
-          property :midpoint, as: 'midpoint', class: Google::Apis::SheetsV4::InterpolationPoint, decorator: Google::Apis::SheetsV4::InterpolationPoint::Representation
-      
-        end
-      end
-      
-      class ClearValuesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class SetBasicFilterRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter', class: Google::Apis::SheetsV4::BasicFilter, decorator: Google::Apis::SheetsV4::BasicFilter::Representation
-      
-        end
-      end
-      
-      class InterpolationPoint
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :type, as: 'type'
-          property :value, as: 'value'
-        end
-      end
-      
-      class FindReplaceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :values_changed, as: 'valuesChanged'
-          property :occurrences_changed, as: 'occurrencesChanged'
-          property :rows_changed, as: 'rowsChanged'
-          property :sheets_changed, as: 'sheetsChanged'
-          property :formulas_changed, as: 'formulasChanged'
-        end
-      end
-      
-      class DeleteEmbeddedObjectRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-        end
-      end
-      
-      class DeleteSheetRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :sheet_id, as: 'sheetId'
-        end
-      end
-      
-      class DuplicateFilterViewRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter_id, as: 'filterId'
-        end
-      end
-      
-      class UpdateConditionalFormatRuleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :old_index, as: 'oldIndex'
-          property :new_rule, as: 'newRule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
-      
-          property :old_rule, as: 'oldRule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
-      
-          property :new_index, as: 'newIndex'
-        end
-      end
-      
-      class ConditionValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :relative_date, as: 'relativeDate'
-          property :user_entered_value, as: 'userEnteredValue'
-        end
-      end
-      
-      class DuplicateSheetRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_sheet_id, as: 'sourceSheetId'
-          property :new_sheet_id, as: 'newSheetId'
-          property :insert_sheet_index, as: 'insertSheetIndex'
-          property :new_sheet_name, as: 'newSheetName'
-        end
-      end
-      
-      class ExtendedValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :number_value, as: 'numberValue'
-          property :error_value, as: 'errorValue', class: Google::Apis::SheetsV4::ErrorValue, decorator: Google::Apis::SheetsV4::ErrorValue::Representation
-      
-          property :string_value, as: 'stringValue'
-          property :bool_value, as: 'boolValue'
-          property :formula_value, as: 'formulaValue'
-        end
-      end
-      
-      class AddChartRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chart, as: 'chart', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
-      
-        end
-      end
-      
-      class Spreadsheet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
-      
-          property :spreadsheet_id, as: 'spreadsheetId'
-          collection :sheets, as: 'sheets', class: Google::Apis::SheetsV4::Sheet, decorator: Google::Apis::SheetsV4::Sheet::Representation
-      
-          collection :named_ranges, as: 'namedRanges', class: Google::Apis::SheetsV4::NamedRange, decorator: Google::Apis::SheetsV4::NamedRange::Representation
-      
-          property :spreadsheet_url, as: 'spreadsheetUrl'
-        end
-      end
-      
-      class BatchClearValuesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :spreadsheet_id, as: 'spreadsheetId'
-          collection :cleared_ranges, as: 'clearedRanges'
-        end
-      end
-      
-      class BandedRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :row_properties, as: 'rowProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
-      
-          property :column_properties, as: 'columnProperties', class: Google::Apis::SheetsV4::BandingProperties, decorator: Google::Apis::SheetsV4::BandingProperties::Representation
-      
-          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
-      
-          property :banded_range_id, as: 'bandedRangeId'
-        end
-      end
-      
-      class UpdateProtectedRangeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :protected_range, as: 'protectedRange', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
-      
-          property :fields, as: 'fields'
-        end
-      end
-      
-      class TextFormat
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :font_size, as: 'fontSize'
-          property :underline, as: 'underline'
-          property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
-      
-          property :bold, as: 'bold'
-          property :font_family, as: 'fontFamily'
-          property :italic, as: 'italic'
-          property :strikethrough, as: 'strikethrough'
-        end
-      end
-      
-      class AddSheetResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
-      
-        end
-      end
-      
-      class AddFilterViewResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
-      
         end
       end
     end

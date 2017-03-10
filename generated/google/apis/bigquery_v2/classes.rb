@@ -1069,10 +1069,10 @@ module Google
       
         # [Experimental] The labels associated with this job. You can use these to
         # organize and group your jobs. Label keys and values can be no longer than 63
-        # characters, can only contain letters, numeric characters, underscores and
-        # dashes. International characters are allowed. Label values are optional. Label
-        # keys must start with a letter and must be unique within a dataset. Both keys
-        # and values are additionally constrained to be <= 128 bytes in size.
+        # characters, can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International characters are allowed. Label values are
+        # optional. Label keys must start with a letter and each label in the list must
+        # have a different key.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2472,10 +2472,10 @@ module Google
       
         # [Experimental] The labels associated with this table. You can use these to
         # organize and group your tables. Label keys and values can be no longer than 63
-        # characters, can only contain letters, numeric characters, underscores and
-        # dashes. International characters are allowed. Label values are optional. Label
-        # keys must start with a letter and must be unique within a dataset. Both keys
-        # and values are additionally constrained to be <= 128 bytes in size.
+        # characters, can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International characters are allowed. Label values are
+        # optional. Label keys must start with a letter and each label in the list must
+        # have a different key.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2901,6 +2901,11 @@ module Google
           # @return [String]
           attr_accessor :type
         
+          # Additional details for a view.
+          # Corresponds to the JSON property `view`
+          # @return [Google::Apis::BigqueryV2::TableList::Table::View]
+          attr_accessor :view
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2913,6 +2918,27 @@ module Google
             @labels = args[:labels] if args.key?(:labels)
             @table_reference = args[:table_reference] if args.key?(:table_reference)
             @type = args[:type] if args.key?(:type)
+            @view = args[:view] if args.key?(:view)
+          end
+          
+          # Additional details for a view.
+          class View
+            include Google::Apis::Core::Hashable
+          
+            # True if view is defined in legacy SQL dialect, false if in standard SQL.
+            # Corresponds to the JSON property `useLegacySql`
+            # @return [Boolean]
+            attr_accessor :use_legacy_sql
+            alias_method :use_legacy_sql?, :use_legacy_sql
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
+            end
           end
         end
       end

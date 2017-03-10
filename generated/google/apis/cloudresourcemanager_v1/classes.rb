@@ -22,162 +22,6 @@ module Google
   module Apis
     module CloudresourcemanagerV1
       
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **Example**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/owner",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-        # ]
-        # `,
-        # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
-        # `
-        # ]
-        # `
-        # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
-          @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Associates `members` with a `role`.
-      class Binding
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` or `joe@example.com`.
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -197,30 +41,10 @@ module Google
         end
       end
       
-      # The request sent to the UndeleteProject
-      # method.
-      class UndeleteProjectRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # The root node in the resource hierarchy to which a particular entity's
       # (e.g., company) resources belong.
       class Organization
         include Google::Apis::Core::Hashable
-      
-        # Timestamp when the Organization was created. Assigned by the server.
-        # @OutputOnly
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
       
         # The entity that owns an Organization. The lifetime of the Organization and
         # all of its descendants are bound to the `OrganizationOwner`. If the
@@ -251,109 +75,23 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Timestamp when the Organization was created. Assigned by the server.
+        # @OutputOnly
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @owner = args[:owner] if args.key?(:owner)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
           @display_name = args[:display_name] if args.key?(:display_name)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by CreateProject. It provides insight for when significant phases of
-      # Project creation have completed.
-      class ProjectCreationStatus
-        include Google::Apis::Core::Hashable
-      
-        # True if the project creation process is complete.
-        # Corresponds to the JSON property `ready`
-        # @return [Boolean]
-        attr_accessor :ready
-        alias_method :ready?, :ready
-      
-        # Creation time of the project creation workflow.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # True if the project can be retrieved using GetProject. No other operations
-        # on the project are guaranteed to work until the project creation is
-        # complete.
-        # Corresponds to the JSON property `gettable`
-        # @return [Boolean]
-        attr_accessor :gettable
-        alias_method :gettable?, :gettable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ready = args[:ready] if args.key?(:ready)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @gettable = args[:gettable] if args.key?(:gettable)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Request message for `GetIamPolicy` method.
-      class GetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The entity that owns an Organization. The lifetime of the Organization and
-      # all of its descendants are bound to the `OrganizationOwner`. If the
-      # `OrganizationOwner` is deleted, the Organization and all its descendants will
-      # be deleted.
-      class OrganizationOwner
-        include Google::Apis::Core::Hashable
-      
-        # The Google for Work customer id used in the Directory API.
-        # Corresponds to the JSON property `directoryCustomerId`
-        # @return [String]
-        attr_accessor :directory_customer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
         end
       end
       
@@ -378,32 +116,37 @@ module Google
         end
       end
       
-      # A page of the response received from the
-      # ListProjects
-      # method.
-      # A paginated response where more pages are available has
-      # `next_page_token` set. This token can be used in a subsequent request to
-      # retrieve the next request page.
-      class ListProjectsResponse
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class AuditLogConfig
         include Google::Apis::Core::Hashable
       
-        # Pagination token.
-        # If the result set is too large to fit in a single response, this token
-        # is returned. It encodes the position of the current result cursor.
-        # Feeding this value into a new list request with the `page_token` parameter
-        # gives the next page of the results.
-        # When `next_page_token` is not filled in, there is no next page and
-        # the list returned is the last page in the result set.
-        # Pagination tokens have a limited lifetime.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
       
-        # The list of Projects that matched the list filter. This list can
-        # be paginated.
-        # Corresponds to the JSON property `projects`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
-        attr_accessor :projects
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
       
         def initialize(**args)
            update!(**args)
@@ -411,8 +154,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @projects = args[:projects] if args.key?(:projects)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
       
@@ -474,119 +217,6 @@ module Google
         end
       end
       
-      # A Project is a high-level Google Cloud Platform entity.  It is a
-      # container for ACLs, APIs, AppEngine Apps, VMs, and other
-      # Google Cloud Platform resources.
-      class Project
-        include Google::Apis::Core::Hashable
-      
-        # The Project lifecycle state.
-        # Read-only.
-        # Corresponds to the JSON property `lifecycleState`
-        # @return [String]
-        attr_accessor :lifecycle_state
-      
-        # The number uniquely identifying the project.
-        # Example: <code>415104041262</code>
-        # Read-only.
-        # Corresponds to the JSON property `projectNumber`
-        # @return [String]
-        attr_accessor :project_number
-      
-        # A container to reference an id for any resource type. A `resource` in Google
-        # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an AppEngine app,
-        # a Compute Engine instance, a Cloud SQL database, and so on.
-        # Corresponds to the JSON property `parent`
-        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
-        attr_accessor :parent
-      
-        # Creation time.
-        # Read-only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The labels associated with this Project.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
-        # No more than 256 labels can be associated with a given resource.
-        # Clients should store labels in a representation such as JSON that does not
-        # depend on specific characters being disallowed.
-        # Example: <code>"environment" : "dev"</code>
-        # Read-write.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The user-assigned display name of the Project.
-        # It must be 4 to 30 characters.
-        # Allowed characters are: lowercase and uppercase letters, numbers,
-        # hyphen, single-quote, double-quote, space, and exclamation point.
-        # Example: <code>My Project</code>
-        # Read-write.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The unique, user-assigned ID of the Project.
-        # It must be 6 to 30 lowercase letters, digits, or hyphens.
-        # It must start with a letter.
-        # Trailing hyphens are prohibited.
-        # Example: <code>tokyo-rain-123</code>
-        # Read-only after creation.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
-          @project_number = args[:project_number] if args.key?(:project_number)
-          @parent = args[:parent] if args.key?(:parent)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @project_id = args[:project_id] if args.key?(:project_id)
-        end
-      end
-      
-      # The response returned from the `SearchOrganizations` method.
-      class SearchOrganizationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A pagination token to be used to retrieve the next page of results. If the
-        # result is too large to fit within the page size specified in the request,
-        # this field will be set with a token that can be used to fetch the next page
-        # of results. If this field is empty, it indicates that this response
-        # contains the last page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of Organizations that matched the search query, possibly
-        # paginated.
-        # Corresponds to the JSON property `organizations`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Organization>]
-        attr_accessor :organizations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @organizations = args[:organizations] if args.key?(:organizations)
-        end
-      end
-      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -609,28 +239,14 @@ module Google
         end
       end
       
-      # A classification of the Folder Operation error.
-      class FolderOperationError
-        include Google::Apis::Core::Hashable
-      
-        # The type of operation error experienced.
-        # Corresponds to the JSON property `errorMessageId`
-        # @return [String]
-        attr_accessor :error_message_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
-        end
-      end
-      
       # Metadata describing a long running folder operation
       class FolderOperation
         include Google::Apis::Core::Hashable
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
       
         # The display name of the folder.
         # Corresponds to the JSON property `displayName`
@@ -649,21 +265,16 @@ module Google
         # @return [String]
         attr_accessor :destination_parent
       
-        # The type of this operation.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @source_parent = args[:source_parent] if args.key?(:source_parent)
           @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
         end
       end
       
@@ -714,6 +325,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
         # Associates a list of `members` to a `role`.
         # Multiple `bindings` must not be specified for the same `role`.
         # `bindings` with no members will result in an error.
@@ -729,22 +345,17 @@ module Google
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
         end
       end
       
       # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
-      # interact with through one of our API's. Some examples are an AppEngine app,
+      # interact with through one of our API's. Some examples are an App Engine app,
       # a Compute Engine instance, a Cloud SQL database, and so on.
       class ResourceId
         include Google::Apis::Core::Hashable
-      
-        # Required field representing the resource type this id is for.
-        # At present, the only valid type is "organization".
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
       
         # Required field for the type-specific id. This should correspond to the id
         # used in the type-specific API's.
@@ -752,14 +363,94 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Required field representing the resource type this id is for.
+        # At present, the valid types are: "organization"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] if args.key?(:type)
           @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specifies the audit configuration for a service.
+      # It consists of which permission types are logged, and what identities, if
+      # any, are exempted from logging.
+      # An AuditConifg must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service,
+      # the union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # `
+      # "audit_configs": [
+      # `
+      # "service": "allServices"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `,
+      # `
+      # "log_type": "ADMIN_READ",
+      # `
+      # ]
+      # `,
+      # `
+      # "service": "fooservice@googleapis.com"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # "exempted_members": [
+      # "user:bar@gmail.com"
+      # ]
+      # `
+      # ]
+      # `
+      # ]
+      # `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
+      # bar@gmail.com from DATA_WRITE logging.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `resourcemanager`, `storage`, `compute`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The configuration for logging of each type of permission.
+        # Next ID: 4
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
         end
       end
       
@@ -860,13 +551,489 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by
+      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # - Simple to use and understand for most users
+      # - Flexible enough to meet unexpected needs
+      # # Overview
+      # The `Status` message contains three pieces of data: error code, error message,
+      # and error details. The error code should be an enum value of
+      # google.rpc.Code, but it may accept additional error codes if needed.  The
+      # error message should be a developer-facing English message that helps
+      # developers *understand* and *resolve* the error. If a localized user-facing
+      # error message is needed, put the localized message in the error details or
+      # localize it in the client. The optional error details may contain arbitrary
+      # information about the error. There is a predefined set of error detail types
+      # in the package `google.rpc` which can be used for common error conditions.
+      # # Language mapping
+      # The `Status` message is the logical representation of the error model, but it
+      # is not necessarily the actual wire format. When the `Status` message is
+      # exposed in different client libraries and different wire protocols, it can be
+      # mapped differently. For example, it will likely be mapped to some exceptions
+      # in Java, but more likely mapped to some error codes in C.
+      # # Other uses
+      # The error model and the `Status` message can be used in a variety of
+      # environments, either with or without APIs, to provide a
+      # consistent developer experience across different environments.
+      # Example uses of this error model include:
+      # - Partial errors. If a service needs to return partial errors to the client,
+      # it may embed the `Status` in the normal response to indicate the partial
+      # errors.
+      # - Workflow errors. A typical workflow has multiple steps. Each step may
+      # have a `Status` message for error reporting purpose.
+      # - Batch operations. If a client uses batch request and batch response, the
+      # `Status` message should be used directly inside batch response, one for
+      # each error sub-response.
+      # - Asynchronous operations. If an API call embeds asynchronous operation
+      # results in its response, the status of those operations should be
+      # represented directly using the `Status` message.
+      # - Logging. If some API errors are stored in logs, the message `Status` could
+      # be used directly after any stripping needed for security/privacy reasons.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # The response message for Liens.ListLiens.
+      class ListLiensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Liens.
+        # Corresponds to the JSON property `liens`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
+        attr_accessor :liens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @liens = args[:liens] if args.key?(:liens)
+        end
+      end
+      
+      # Associates `members` with a `role`.
+      class Binding
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities requesting access for a Cloud Platform resource.
+        # `members` can have the following values:
+        # * `allUsers`: A special identifier that represents anyone who is
+        # on the internet; with or without a Google account.
+        # * `allAuthenticatedUsers`: A special identifier that represents anyone
+        # who is authenticated with a Google account or a service account.
+        # * `user:`emailid``: An email address that represents a specific Google
+        # account. For example, `alice@gmail.com` or `joe@example.com`.
+        # * `serviceAccount:`emailid``: An email address that represents a service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
+        # * `group:`emailid``: An email address that represents a Google group.
+        # For example, `admins@example.com`.
+        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`.
+        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Required
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # The request sent to the UndeleteProject
+      # method.
+      class UndeleteProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateProject. It provides insight for when significant phases of
+      # Project creation have completed.
+      class ProjectCreationStatus
+        include Google::Apis::Core::Hashable
+      
+        # True if the project creation process is complete.
+        # Corresponds to the JSON property `ready`
+        # @return [Boolean]
+        attr_accessor :ready
+        alias_method :ready?, :ready
+      
+        # Creation time of the project creation workflow.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # True if the project can be retrieved using GetProject. No other operations
+        # on the project are guaranteed to work until the project creation is
+        # complete.
+        # Corresponds to the JSON property `gettable`
+        # @return [Boolean]
+        attr_accessor :gettable
+        alias_method :gettable?, :gettable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ready = args[:ready] if args.key?(:ready)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gettable = args[:gettable] if args.key?(:gettable)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is
+        # allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request message for `GetIamPolicy` method.
+      class GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The entity that owns an Organization. The lifetime of the Organization and
+      # all of its descendants are bound to the `OrganizationOwner`. If the
+      # `OrganizationOwner` is deleted, the Organization and all its descendants will
+      # be deleted.
+      class OrganizationOwner
+        include Google::Apis::Core::Hashable
+      
+        # The Google for Work customer id used in the Directory API.
+        # Corresponds to the JSON property `directoryCustomerId`
+        # @return [String]
+        attr_accessor :directory_customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
+        end
+      end
+      
+      # A page of the response received from the
+      # ListProjects
+      # method.
+      # A paginated response where more pages are available has
+      # `next_page_token` set. This token can be used in a subsequent request to
+      # retrieve the next request page.
+      class ListProjectsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Projects that matched the list filter. This list can
+        # be paginated.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
+        attr_accessor :projects
+      
+        # Pagination token.
+        # If the result set is too large to fit in a single response, this token
+        # is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results.
+        # When `next_page_token` is not filled in, there is no next page and
+        # the list returned is the last page in the result set.
+        # Pagination tokens have a limited lifetime.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @projects = args[:projects] if args.key?(:projects)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A Project is a high-level Google Cloud Platform entity.  It is a
+      # container for ACLs, APIs, App Engine Apps, VMs, and other
+      # Google Cloud Platform resources.
+      class Project
+        include Google::Apis::Core::Hashable
+      
+        # The Project lifecycle state.
+        # Read-only.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # The number uniquely identifying the project.
+        # Example: <code>415104041262</code>
+        # Read-only.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [String]
+        attr_accessor :project_number
+      
+        # A container to reference an id for any resource type. A `resource` in Google
+        # Cloud Platform is a generic term for something you (a developer) may want to
+        # interact with through one of our API's. Some examples are an App Engine app,
+        # a Compute Engine instance, a Cloud SQL database, and so on.
+        # Corresponds to the JSON property `parent`
+        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
+        attr_accessor :parent
+      
+        # Creation time.
+        # Read-only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The labels associated with this Project.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 256 labels can be associated with a given resource.
+        # Clients should store labels in a representation such as JSON that does not
+        # depend on specific characters being disallowed.
+        # Example: <code>"environment" : "dev"</code>
+        # Read-write.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The user-assigned display name of the Project.
+        # It must be 4 to 30 characters.
+        # Allowed characters are: lowercase and uppercase letters, numbers,
+        # hyphen, single-quote, double-quote, space, and exclamation point.
+        # Example: <code>My Project</code>
+        # Read-write.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The unique, user-assigned ID of the Project.
+        # It must be 6 to 30 lowercase letters, digits, or hyphens.
+        # It must start with a letter.
+        # Trailing hyphens are prohibited.
+        # Example: <code>tokyo-rain-123</code>
+        # Read-only after creation.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @parent = args[:parent] if args.key?(:parent)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The response returned from the `SearchOrganizations` method.
+      class SearchOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A pagination token to be used to retrieve the next page of results. If the
+        # result is too large to fit within the page size specified in the request,
+        # this field will be set with a token that can be used to fetch the next page
+        # of results. If this field is empty, it indicates that this response
+        # contains the last page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Organizations that matched the search query, possibly
+        # paginated.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Organization>]
+        attr_accessor :organizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @organizations = args[:organizations] if args.key?(:organizations)
+        end
+      end
+      
+      # A classification of the Folder Operation error.
+      class FolderOperationError
+        include Google::Apis::Core::Hashable
+      
+        # The type of operation error experienced.
+        # Corresponds to the JSON property `errorMessageId`
+        # @return [String]
+        attr_accessor :error_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
+        end
+      end
+      
+      # A Lien represents an encumbrance on the actions that can be performed on a
+      # resource.
+      class Lien
+        include Google::Apis::Core::Hashable
+      
+        # A reference to the resource this Lien is attached to. The server will
+        # validate the parent against those for which Liens are supported.
+        # Example: `projects/1234`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The creation time of this Lien.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A system-generated unique identifier for this Lien.
+        # Example: `liens/1234abcd`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Concise user-visible strings indicating why an action cannot be performed
+        # on a resource. Maximum lenth of 200 characters.
+        # Example: 'Holds production API key'
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # A stable, user-visible/meaningful string identifying the origin of the
+        # Lien, intended to be inspected programmatically. Maximum length of 200
+        # characters.
+        # Example: 'compute.googleapis.com'
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # The types of operations which should be blocked as a result of this Lien.
+        # Each value should correspond to an IAM permission. The server will
+        # validate the permissions against those for which Liens are supported.
+        # An empty list is meaningless and will be rejected.
+        # Example: ['resourcemanager.projects.delete']
+        # Corresponds to the JSON property `restrictions`
+        # @return [Array<String>]
+        attr_accessor :restrictions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @reason = args[:reason] if args.key?(:reason)
+          @origin = args[:origin] if args.key?(:origin)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
+        end
+      end
+      
       # Identifying information for a single ancestor of a project.
       class Ancestor
         include Google::Apis::Core::Hashable
       
         # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an AppEngine app,
+        # interact with through one of our API's. Some examples are an App Engine app,
         # a Compute Engine instance, a Cloud SQL database, and so on.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
@@ -879,6 +1046,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, a default
+        # mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
     end

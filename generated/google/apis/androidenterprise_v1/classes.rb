@@ -374,15 +374,15 @@ module Google
         end
       end
       
-      # A device resource represents a mobile device managed by the EMM and belonging
+      # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
-      # This collection cannot be modified via the API; it is automatically populated
+      # This collection cannot be modified via the API. It is automatically populated
       # as devices are set up to be managed.
       class Device
         include Google::Apis::Core::Hashable
       
         # The Google Play Services Android ID for the device encoded as a lowercase hex
-        # string, e.g. "123456789abcdef0".
+        # string. For example, "123456789abcdef0".
         # Corresponds to the JSON property `androidId`
         # @return [String]
         attr_accessor :android_id
@@ -613,30 +613,26 @@ module Google
         end
       end
       
-      # The existence of an entitlement resource means that a user has the right to
-      # use a particular app on any of their devices. This might be because the app is
-      # free or because they have been allocated a license to the app from a group
-      # license purchased by the enterprise.
-      # It should always be true that a user has an app installed on one of their
-      # devices only if they have an entitlement to it. So if an entitlement is
-      # deleted, the app will be uninstalled from all devices. Similarly if the user
-      # installs an app (and is permitted to do so), or the EMM triggers an install of
-      # the app, an entitlement to that app is automatically created. If this is
-      # impossible - e.g. the enterprise has not purchased sufficient licenses - then
-      # installation fails.
-      # Note that entitlements are always user specific, not device specific; a user
-      # may have an entitlement even though they have not installed the app anywhere.
-      # Once they have an entitlement they can install the app on multiple devices.
-      # The API can be used to create an entitlement. If the app is a free app, a
-      # group license for that app is created. If it's a paid app, creating the
-      # entitlement consumes one license; it remains consumed until the entitlement is
-      # removed. Optionally an installation of the app on all the user's managed
-      # devices can be triggered at the time the entitlement is created. An
-      # entitlement cannot be created for an app if the app requires permissions that
-      # the enterprise has not yet accepted.
-      # Entitlements for paid apps that are due to purchases by the user on a non-
-      # managed profile will have "userPurchase" as entitlement reason; those
-      # entitlements cannot be removed via the API.
+      # The presence of an Entitlements resource indicates that a user has the right
+      # to use a particular app. Entitlements are user specific, not device specific.
+      # This allows a user with an entitlement to an app to install the app on all
+      # their devices. It's also possible for a user to hold an entitlement to an app
+      # without installing the app on any device.
+      # The API can be used to create an entitlement. As an option, you can also use
+      # the API to trigger the installation of an app on all a user's managed devices
+      # at the same time the entitlement is created.
+      # If the app is free, creating the entitlement also creates a group license for
+      # that app. For paid apps, creating the entitlement consumes one license, and
+      # that license remains consumed until the entitlement is removed. If the
+      # enterprise hasn't purchased enough licenses, then no entitlement is created
+      # and the installation fails. An entitlement is also not created for an app if
+      # the app requires permissions that the enterprise hasn't accepted.
+      # If an entitlement is deleted, the app may be uninstalled from a user's device.
+      # As a best practice, uninstall the app by calling  Installs.delete() before
+      # deleting the entitlement.
+      # Entitlements for apps that a user pays for on an unmanaged profile have "
+      # userPurchase" as the entitlement reason. These entitlements cannot be removed
+      # via the API.
       class Entitlement
         include Google::Apis::Core::Hashable
       
@@ -646,14 +642,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The ID of the product that the entitlement is for, e.g. "app:com.google.
-        # android.gm".
+        # The ID of the product that the entitlement is for. For example, "app:com.
+        # google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The reason for the entitlement, e.g. "free" for free apps. This is temporary,
-        # it will be replaced by the acquisition kind field of group licenses.
+        # The reason for the entitlement. For example, "free" for free apps. This
+        # property is temporary: it will be replaced by the acquisition kind field of
+        # group licenses.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -717,19 +714,18 @@ module Google
       class GroupLicense
         include Google::Apis::Core::Hashable
       
-        # How this group license was acquired. "bulkPurchase" means that this group
-        # license object was created because the enterprise purchased licenses for this
-        # product; this is "free" otherwise (for free products).
+        # How this group license was acquired. "bulkPurchase" means that this
+        # Grouplicenses resource was created because the enterprise purchased licenses
+        # for this product; otherwise, the value is "free" (for free products).
         # Corresponds to the JSON property `acquisitionKind`
         # @return [String]
         attr_accessor :acquisition_kind
       
         # Whether the product to which this group license relates is currently approved
-        # by the enterprise, as either "approved" or "unapproved". Products are approved
-        # when a group license is first created, but this approval may be revoked by an
-        # enterprise admin via Google Play. Unapproved products will not be visible to
-        # end users in collections and new entitlements to them should not normally be
-        # created.
+        # by the enterprise. Products are approved when a group license is first created,
+        # but this approval may be revoked by an enterprise admin via Google Play.
+        # Unapproved products will not be visible to end users in collections, and new
+        # entitlements to them should not normally be created.
         # Corresponds to the JSON property `approval`
         # @return [String]
         attr_accessor :approval
@@ -747,14 +743,14 @@ module Google
         attr_accessor :num_provisioned
       
         # The number of purchased licenses (possibly in multiple purchases). If this
-        # field is omitted then there is no limit on the number of licenses that can be
-        # provisioned (e.g. if the acquisition kind is "free").
+        # field is omitted, then there is no limit on the number of licenses that can be
+        # provisioned (for example, if the acquisition kind is "free").
         # Corresponds to the JSON property `numPurchased`
         # @return [Fixnum]
         attr_accessor :num_purchased
       
-        # The ID of the product that the license is for, e.g. "app:com.google.android.gm"
-        # .
+        # The ID of the product that the license is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -826,18 +822,18 @@ module Google
         end
       end
       
-      # The existence of an install resource indicates that an app is installed on a
+      # The existence of an Installs resource indicates that an app is installed on a
       # particular device (or that an install is pending).
       # The API can be used to create an install resource using the update method.
       # This triggers the actual install of the app on the device. If the user does
-      # not already have an entitlement for the app then an attempt is made to create
-      # one. If this fails (e.g. because the app is not free and there is no available
-      # license) then the creation of the install fails.
-      # The API can also be used to update an installed app. If the update method is
-      # used on an existing install then the app will be updated to the latest
+      # not already have an entitlement for the app, then an attempt is made to create
+      # one. If this fails (for example, because the app is not free and there is no
+      # available license), then the creation of the install fails.
+      # The API can also be used to update an installed app. If the update method is
+      # used on an existing install, then the app will be updated to the latest
       # available version.
       # Note that it is not possible to force the installation of a specific version
-      # of an app; the version code is read-only.
+      # of an app: the version code is read-only.
       # If a user installs an app themselves (as permitted by the enterprise), then
       # again an install resource and possibly an entitlement resource are
       # automatically created.
@@ -862,8 +858,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The ID of the product that the install is for, e.g. "app:com.google.android.gm"
-        # .
+        # The ID of the product that the install is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1161,14 +1157,11 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
-        # Identifies the extent to which the device is controlled by an Android for Work
-        # EMM in various deployment configurations.
+        # Identifies the extent to which the device is controlled by an Android EMM in
+        # various deployment configurations.
         # Possible values include:
-        # - "managedDevice", a device that has the EMM's device policy controller (DPC)
-        # as the device owner,
-        # - "managedProfile", a device that has a work profile managed by the DPC (DPC
-        # is profile owner) in addition to a separate, personal profile that is
-        # unavailable to the DPC,
+        # - "managedDevice", a device where the DPC is set as device owner,
+        # - "managedProfile", a device where the DPC is set as profile owner.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -1366,17 +1359,18 @@ module Google
         end
       end
       
-      # A permission represents some extra capability, to be granted to an Android app,
-      # which requires explicit consent. An enterprise admin must consent to these
-      # permissions on behalf of their users before an entitlement for the app can be
-      # created.
+      # A Permissions resource represents some extra capability, to be granted to an
+      # Android app, which requires explicit consent. An enterprise admin must consent
+      # to these permissions on behalf of their users before an entitlement for the
+      # app can be created.
       # The permissions collection is read-only. The information provided for each
-      # permission (localized name and description) is intended to be used in the EMM
+      # permission (localized name and description) is intended to be used in the MDM
       # user interface when obtaining consent from the enterprise.
       class Permission
         include Google::Apis::Core::Hashable
       
-        # A longer description of the permissions giving more details of what it affects.
+        # A longer description of the Permissions resource, giving more details of what
+        # it affects.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1426,7 +1420,7 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppVersion>]
         attr_accessor :app_version
       
-        # The name of the author of the product (e.g. the app developer).
+        # The name of the author of the product (for example, the app developer).
         # Corresponds to the JSON property `authorName`
         # @return [String]
         attr_accessor :author_name

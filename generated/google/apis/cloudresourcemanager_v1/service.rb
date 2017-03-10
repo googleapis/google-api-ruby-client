@@ -47,113 +47,37 @@ module Google
           super('https://cloudresourcemanager.googleapis.com/', '')
         end
         
-        # Gets the access control policy for an Organization resource. May be empty
-        # if no such policy or resource exists. The `resource` field should be the
-        # organization's resource name, e.g. "organizations/123".
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
-        # @param [Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest::Representation
-          command.request_object = get_iam_policy_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Searches Organization resources that are visible to the user and satisfy
-        # the specified filter. This method returns Organizations in an unspecified
-        # order. New Organizations do not necessarily appear at the end of the
-        # results.
-        # @param [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsRequest] search_organizations_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_organizations(search_organizations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/organizations:search', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsRequest::Representation
-          command.request_object = search_organizations_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Fetches an Organization resource identified by the specified resource name.
-        # @param [String] name
-        #   The resource name of the Organization to fetch, e.g. "organizations/1234".
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Organization] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::Organization]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::Organization::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::Organization
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on an Organization resource. Replaces any
-        # existing policy. The `resource` field should be the organization's resource
-        # name, e.g. "organizations/123".
+        # Sets the IAM access control policy for the specified Project. Replaces
+        # any existing policy.
+        # The following constraints apply when using `setIamPolicy()`:
+        # + Project does not support `allUsers` and `allAuthenticatedUsers` as
+        # `members` in a `Binding` of a `Policy`.
+        # + The owner role can be granted only to `user` and `serviceAccount`.
+        # + Service accounts can be made owners of a project directly
+        # without any restrictions. However, to be added as an owner, a user must be
+        # invited via Cloud Platform console and must accept the invitation.
+        # + A user cannot be granted the owner role using `setIamPolicy()`. The user
+        # must be granted the owner role using the Cloud Platform Console and must
+        # explicitly accept the invitation.
+        # + Invitations to grant the owner role cannot be sent using
+        # `setIamPolicy()`;
+        # they must be sent only using the Cloud Platform Console.
+        # + Membership changes that leave the project without any owners that have
+        # accepted the Terms of Service (ToS) will be rejected.
+        # + There must be at least one owner who has accepted the Terms of
+        # Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
+        # to remove the last ToS-accepted owner from the policy will fail. This
+        # restriction also applies to legacy projects that no longer have owners
+        # who have accepted the ToS. Edits to IAM policies will be rejected until
+        # the lack of a ToS-accepting owner is rectified.
+        # + Calling this method requires enabling the App Engine Admin API.
+        # Note: Removing service accounts from policies or changing their roles
+        # can render services completely inoperable. It is important to understand
+        # how the service account is being used before removing or updating its
+        # roles.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
+        #   See the operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -172,82 +96,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_organization_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+        def set_project_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Policy
           command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that a caller has on the specified Organization.
-        # The `resource` field should be the organization's resource name,
-        # e.g. "organizations/123".
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
-        # @param [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_organization_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest::Representation
-          command.request_object = test_iam_permissions_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::Operation::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::Operation
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -289,74 +144,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for the specified Project. Replaces
-        # any existing policy.
-        # The following constraints apply when using `setIamPolicy()`:
-        # + Project does not support `allUsers` and `allAuthenticatedUsers` as
-        # `members` in a `Binding` of a `Policy`.
-        # + The owner role can be granted only to `user` and `serviceAccount`.
-        # + Service accounts can be made owners of a project directly
-        # without any restrictions. However, to be added as an owner, a user must be
-        # invited via Cloud Platform console and must accept the invitation.
-        # + A user cannot be granted the owner role using `setIamPolicy()`. The user
-        # must be granted the owner role using the Cloud Platform Console and must
-        # explicitly accept the invitation.
-        # + Invitations to grant the owner role cannot be sent using
-        # `setIamPolicy()`;
-        # they must be sent only using the Cloud Platform Console.
-        # + Membership changes that leave the project without any owners that have
-        # accepted the Terms of Service (ToS) will be rejected.
-        # + There must be at least one owner who has accepted the Terms of
-        # Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
-        # to remove the last ToS-accepted owner from the policy will fail. This
-        # restriction also applies to legacy projects that no longer have owners
-        # who have accepted the ToS. Edits to IAM policies will be rejected until
-        # the lack of a ToS-accepting owner is rectified.
-        # + Calling this method requires enabling the App Engine Admin API.
-        # Note: Removing service accounts from policies or changing their roles
-        # can render services completely inoperable. It is important to understand
-        # how the service account is being used before removing or updating its
-        # roles.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
-        # @param [Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns the IAM access control policy for the specified Project.
         # Permission is denied if the policy or the resource does not exist.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
+        #   See the operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -459,42 +251,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a list of ancestors in the resource hierarchy for the Project
-        # identified by the specified `project_id` (for example, `my-project-123`).
-        # The caller must have read permissions for this Project.
-        # @param [String] project_id
-        #   The Project ID (for example, `my-project-123`).
-        #   Required.
-        # @param [Google::Apis::CloudresourcemanagerV1::GetAncestryRequest] get_ancestry_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::GetAncestryResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::GetAncestryResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_ancestry(project_id, get_ancestry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}:getAncestry', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryRequest::Representation
-          command.request_object = get_ancestry_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryResponse::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::GetAncestryResponse
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates the attributes of the Project identified by the specified
         # `project_id` (for example, `my-project-123`).
         # The caller must have modify permissions for this Project.
@@ -531,11 +287,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a list of ancestors in the resource hierarchy for the Project
+        # identified by the specified `project_id` (for example, `my-project-123`).
+        # The caller must have read permissions for this Project.
+        # @param [String] project_id
+        #   The Project ID (for example, `my-project-123`).
+        #   Required.
+        # @param [Google::Apis::CloudresourcemanagerV1::GetAncestryRequest] get_ancestry_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::GetAncestryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::GetAncestryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_ancestry(project_id, get_ancestry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}:getAncestry', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryRequest::Representation
+          command.request_object = get_ancestry_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::GetAncestryResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested.
-        #   `resource` is usually specified as a path. For example, a Project
-        #   resource is specified as `projects/`project``.
+        #   See the operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -618,6 +409,15 @@ module Google
         # Lists Projects that are visible to the user and satisfy the
         # specified filter. This method returns Projects in an unspecified order.
         # New Projects do not necessarily appear at the end of the list.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to ListProjects
+        #   that indicates from where listing should continue.
+        #   Optional.
+        # @param [Fixnum] page_size
+        #   The maximum number of Projects to return in the response.
+        #   The server can return fewer Projects than requested.
+        #   If unspecified, server picks an appropriate default.
+        #   Optional.
         # @param [String] filter
         #   An expression for filtering the results of the request.  Filter rules are
         #   case insensitive. The fields eligible for filtering are:
@@ -636,15 +436,6 @@ module Google
         #   |labels.color:red&nbsp;label.size:big|The project's label `color` has the
         #   value `red` and its label `size` has the value `big`.
         #   Optional.
-        # @param [String] page_token
-        #   A pagination token returned from a previous call to ListProjects
-        #   that indicates from where listing should continue.
-        #   Optional.
-        # @param [Fixnum] page_size
-        #   The maximum number of Projects to return in the response.
-        #   The server can return fewer Projects than requested.
-        #   If unspecified, server picks an appropriate default.
-        #   Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -662,13 +453,323 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_projects(filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_projects(page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListProjectsResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::ListProjectsResponse
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for an Organization resource. May be empty
+        # if no such policy or resource exists. The `resource` field should be the
+        # organization's resource name, e.g. "organizations/123".
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches Organization resources that are visible to the user and satisfy
+        # the specified filter. This method returns Organizations in an unspecified
+        # order. New Organizations do not necessarily appear at the end of the
+        # results.
+        # @param [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsRequest] search_organizations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_organizations(search_organizations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/organizations:search', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsRequest::Representation
+          command.request_object = search_organizations_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches an Organization resource identified by the specified resource name.
+        # @param [String] name
+        #   The resource name of the Organization to fetch, e.g. "organizations/1234".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Organization] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Organization]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Organization::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Organization
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on an Organization resource. Replaces any
+        # existing policy. The `resource` field should be the organization's resource
+        # name, e.g. "organizations/123".
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_organization_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified Organization.
+        # The `resource` field should be the organization's resource name,
+        # e.g. "organizations/123".
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_organization_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a Lien which applies to the resource denoted by the `parent` field.
+        # Callers of this method will require permission on the `parent` resource.
+        # For example, applying to `projects/1234` requires permission
+        # `resourcemanager.projects.updateLiens`.
+        # NOTE: Some resources may limit the number of Liens which may be applied.
+        # @param [Google::Apis::CloudresourcemanagerV1::Lien] lien_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Lien] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Lien]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_lien(lien_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/liens', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::Lien::Representation
+          command.request_object = lien_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Lien::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Lien
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a Lien by `name`.
+        # Callers of this method will require permission on the `parent` resource.
+        # For example, a Lien with a `parent` of `projects/1234` requires permission
+        # `resourcemanager.projects.updateLiens`.
+        # @param [String] name
+        #   The name/identifier of the Lien to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_lien(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all Liens applied to the `parent` resource.
+        # Callers of this method will require permission on the `parent` resource.
+        # For example, a Lien with a `parent` of `projects/1234` requires permission
+        # `resourcemanager.projects.get`.
+        # @param [String] page_token
+        #   The `next_page_token` value returned from a previous List request, if any.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. This is a suggestion for the server.
+        # @param [String] parent
+        #   The name of the resource to list all attached Liens.
+        #   For example, `projects/1234`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::ListLiensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::ListLiensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_liens(page_token: nil, page_size: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/liens', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::ListLiensResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::ListLiensResponse
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.  Clients can use this
+        # method to poll the operation result at intervals as recommended by the API
+        # service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

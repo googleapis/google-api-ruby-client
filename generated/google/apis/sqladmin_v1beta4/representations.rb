@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Labels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +634,14 @@ module Google
         end
       end
       
+      class Labels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class LocationPreference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -763,6 +777,8 @@ module Google
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
           property :kind, as: 'kind'
+          collection :labels, as: 'labels', class: Google::Apis::SqladminV1beta4::Labels, decorator: Google::Apis::SqladminV1beta4::Labels::Representation
+      
           property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1beta4::LocationPreference, decorator: Google::Apis::SqladminV1beta4::LocationPreference::Representation
       
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1beta4::MaintenanceWindow, decorator: Google::Apis::SqladminV1beta4::MaintenanceWindow::Representation

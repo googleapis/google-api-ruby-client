@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResellernotifyGetwatchdetailsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResellernotifyResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Seats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +148,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :renewal_type, as: 'renewalType'
+        end
+      end
+      
+      class ResellernotifyGetwatchdetailsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_account_email_addresses, as: 'serviceAccountEmailAddresses'
+          property :topic_name, as: 'topicName'
+        end
+      end
+      
+      class ResellernotifyResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic_name, as: 'topicName'
         end
       end
       

@@ -22,25 +22,6 @@ module Google
   module Apis
     module CloudtraceV1
       
-      # List of new or updated traces.
-      class Traces
-        include Google::Apis::Core::Hashable
-      
-        # List of traces.
-        # Corresponds to the JSON property `traces`
-        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
-        attr_accessor :traces
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @traces = args[:traces] if args.key?(:traces)
-        end
-      end
-      
       # A span represents a single timed event within a trace. Spans can be nested
       # and form a trace tree. Often, a trace contains a root span that describes the
       # end-to-end latency of an operation and, optionally, one or more subspans for
@@ -48,23 +29,6 @@ module Google
       # between spans in a trace.
       class TraceSpan
         include Google::Apis::Core::Hashable
-      
-        # End time of the span in nanoseconds from the UNIX epoch.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Start time of the span in nanoseconds from the UNIX epoch.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Distinguishes between spans generated in a particular context. For example,
-        # two spans with the same name may be distinguished using `RPC_CLIENT`
-        # and `RPC_SERVER` to identify queueing latency associated with the span.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
       
         # Collection of labels associated with the span. Label keys must be less than
         # 128 bytes. Label values must be less than 16 kilobytes.
@@ -94,19 +58,36 @@ module Google
         # @return [String]
         attr_accessor :parent_span_id
       
+        # End time of the span in nanoseconds from the UNIX epoch.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start time of the span in nanoseconds from the UNIX epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Distinguishes between spans generated in a particular context. For example,
+        # two spans with the same name may be distinguished using `RPC_CLIENT`
+        # and `RPC_SERVER` to identify queueing latency associated with the span.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @span_id = args[:span_id] if args.key?(:span_id)
           @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -187,6 +168,25 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @spans = args[:spans] if args.key?(:spans)
           @trace_id = args[:trace_id] if args.key?(:trace_id)
+        end
+      end
+      
+      # List of new or updated traces.
+      class Traces
+        include Google::Apis::Core::Hashable
+      
+        # List of traces.
+        # Corresponds to the JSON property `traces`
+        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
+        attr_accessor :traces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @traces = args[:traces] if args.key?(:traces)
         end
       end
     end

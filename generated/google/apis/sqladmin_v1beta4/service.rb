@@ -478,6 +478,9 @@ module Google
         end
         
         # List all available database flags for Google Cloud SQL instances.
+        # @param [String] database_version
+        #   Database version for flag retrieval. Flags are specific to the database
+        #   version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -499,10 +502,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_flags(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_flags(database_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'flags', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListFlagsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListFlagsResponse
+          command.query['databaseVersion'] = database_version unless database_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -796,6 +800,8 @@ module Google
         # instance name.
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
+        # @param [String] filter
+        #   A filter expression for filtering listed instances.
         # @param [Fixnum] max_results
         #   The maximum number of results to return per response.
         # @param [String] page_token
@@ -822,11 +828,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instances(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instances(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{project}/instances', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListInstancesResponse
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

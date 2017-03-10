@@ -869,6 +869,7 @@ module Google
           property :price_amount_micros, as: 'priceAmountMicros'
           property :price_currency_code, as: 'priceCurrencyCode'
           property :start_time_millis, as: 'startTimeMillis'
+          property :user_cancellation_time_millis, as: 'userCancellationTimeMillis'
         end
       end
       

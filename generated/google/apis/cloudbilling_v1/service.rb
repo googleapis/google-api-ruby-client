@@ -22,8 +22,8 @@ module Google
     module CloudbillingV1
       # Google Cloud Billing API
       #
-      # Retrieves Google Developers Console billing accounts and associates them with
-      #  projects.
+      # Allows developers to manage billing for their Google Cloud Platform projects
+      #  programmatically.
       #
       # @example
       #    require 'google/apis/cloudbilling_v1'
@@ -47,17 +47,111 @@ module Google
           super('https://cloudbilling.googleapis.com/', '')
         end
         
-        # Gets information about a billing account. The current authenticated user must
-        # be an [owner of the billing account](https://support.google.com/cloud/answer/
-        # 4430947).
+        # Sets or updates the billing account associated with a project. You specify
+        # the new billing account by setting the `billing_account_name` in the
+        # `ProjectBillingInfo` resource to the resource name of a billing account.
+        # Associating a project with an open billing account enables billing on the
+        # project and allows charges for resource usage. If the project already had a
+        # billing account, this method changes the billing account used for resource
+        # usage charges.
+        # *Note:* Incurred charges that have not yet been reported in the transaction
+        # history of the Google Cloud Console may be billed to the new billing
+        # account, even if the charge occurred before the new billing account was
+        # assigned to the project.
+        # The current authenticated user must have ownership privileges for both the
+        # [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
+        # ) and the [billing
+        # account](https://support.google.com/cloud/answer/4430947).
+        # You can disable billing on the project by setting the
+        # `billing_account_name` field to empty. This action disassociates the
+        # current billing account from the project. Any billable activity of your
+        # in-use services will stop, and your application could stop functioning as
+        # expected. Any unbilled charges to date will be billed to the previously
+        # associated account. The current authenticated user must be either an owner
+        # of the project or an owner of the billing account for the project.
+        # Note that associating a project with a *closed* billing account will have
+        # much the same effect as disabling billing on the project: any paid
+        # resources used by the project will be shut down. Thus, unless you wish to
+        # disable billing, you should always call this method with the name of an
+        # *open* billing account.
         # @param [String] name
-        #   The resource name of the billing account to retrieve. For example, `
-        #   billingAccounts/012345-567890-ABCDEF`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
+        #   The resource name of the project associated with the billing information
+        #   that you want to update. For example, `projects/tokyo-rain-123`.
+        # @param [Google::Apis::CloudbillingV1::ProjectBillingInfo] project_billing_info_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::ProjectBillingInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::ProjectBillingInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_billing_info(name, project_billing_info_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+name}/billingInfo', options)
+          command.request_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
+          command.request_object = project_billing_info_object
+          command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
+          command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the billing information for a project. The current authenticated user
+        # must have [permission to view the
+        # project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
+        # ).
+        # @param [String] name
+        #   The resource name of the project for which billing information is
+        #   retrieved. For example, `projects/tokyo-rain-123`.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::ProjectBillingInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::ProjectBillingInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_billing_info(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}/billingInfo', options)
+          command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
+          command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a billing account. The current authenticated user
+        # must be an [owner of the billing
+        # account](https://support.google.com/cloud/answer/4430947).
+        # @param [String] name
+        #   The resource name of the billing account to retrieve. For example,
+        #   `billingAccounts/012345-567890-ABCDEF`.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -70,29 +164,30 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_billing_account(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_billing_account(name, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.response_class = Google::Apis::CloudbillingV1::BillingAccount
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the billing accounts that the current authenticated user [owns](https://
-        # support.google.com/cloud/answer/4430947).
+        # Lists the billing accounts that the current authenticated user
+        # [owns](https://support.google.com/cloud/answer/4430947).
         # @param [Fixnum] page_size
-        #   Requested page size. The maximum page size is 100; this is also the default.
+        #   Requested page size. The maximum page size is 100; this is also the
+        #   default.
         # @param [String] page_token
-        #   A token identifying a page of results to return. This should be a `
-        #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
-        #   unspecified, the first page of results is returned.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
+        #   A token identifying a page of results to return. This should be a
+        #   `next_page_token` value returned from a previous `ListBillingAccounts`
+        #   call. If unspecified, the first page of results is returned.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -105,34 +200,35 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_accounts(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_accounts(page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/billingAccounts', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists the projects associated with a billing account. The current
-        # authenticated user must be an [owner of the billing account](https://support.
-        # google.com/cloud/answer/4430947).
+        # authenticated user must be an [owner of the billing
+        # account](https://support.google.com/cloud/answer/4430947).
         # @param [String] name
-        #   The resource name of the billing account associated with the projects that you
-        #   want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
+        #   The resource name of the billing account associated with the projects that
+        #   you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
         # @param [Fixnum] page_size
-        #   Requested page size. The maximum page size is 100; this is also the default.
+        #   Requested page size. The maximum page size is 100; this is also the
+        #   default.
         # @param [String] page_token
-        #   A token identifying a page of results to be returned. This should be a `
-        #   next_page_token` value returned from a previous `ListProjectBillingInfo` call.
-        #   If unspecified, the first page of results is returned.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
+        #   A token identifying a page of results to be returned. This should be a
+        #   `next_page_token` value returned from a previous `ListProjectBillingInfo`
+        #   call. If unspecified, the first page of results is returned.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -145,104 +241,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_projects(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_projects(name, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}/projects', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse
           command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the billing information for a project. The current authenticated user
-        # must have [permission to view the project](https://cloud.google.com/docs/
-        # permissions-overview#h.bgs0oxofvnoo ).
-        # @param [String] name
-        #   The resource name of the project for which billing information is retrieved.
-        #   For example, `projects/tokyo-rain-123`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbillingV1::ProjectBillingInfo] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbillingV1::ProjectBillingInfo]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_billing_info(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/billingInfo', options)
-          command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
-          command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets or updates the billing account associated with a project. You specify the
-        # new billing account by setting the `billing_account_name` in the `
-        # ProjectBillingInfo` resource to the resource name of a billing account.
-        # Associating a project with an open billing account enables billing on the
-        # project and allows charges for resource usage. If the project already had a
-        # billing account, this method changes the billing account used for resource
-        # usage charges. *Note:* Incurred charges that have not yet been reported in the
-        # transaction history of the Google Developers Console may be billed to the new
-        # billing account, even if the charge occurred before the new billing account
-        # was assigned to the project. The current authenticated user must have
-        # ownership privileges for both the [project](https://cloud.google.com/docs/
-        # permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://
-        # support.google.com/cloud/answer/4430947). You can disable billing on the
-        # project by setting the `billing_account_name` field to empty. This action
-        # disassociates the current billing account from the project. Any billable
-        # activity of your in-use services will stop, and your application could stop
-        # functioning as expected. Any unbilled charges to date will be billed to the
-        # previously associated account. The current authenticated user must be either
-        # an owner of the project or an owner of the billing account for the project.
-        # Note that associating a project with a *closed* billing account will have much
-        # the same effect as disabling billing on the project: any paid resources used
-        # by the project will be shut down. Thus, unless you wish to disable billing,
-        # you should always call this method with the name of an *open* billing account.
-        # @param [String] name
-        #   The resource name of the project associated with the billing information that
-        #   you want to update. For example, `projects/tokyo-rain-123`.
-        # @param [Google::Apis::CloudbillingV1::ProjectBillingInfo] project_billing_info_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbillingV1::ProjectBillingInfo] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbillingV1::ProjectBillingInfo]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_billing_info(name, project_billing_info_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}/billingInfo', options)
-          command.request_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
-          command.request_object = project_billing_info_object
-          command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
-          command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 

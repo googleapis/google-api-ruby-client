@@ -22,13 +22,13 @@ module Google
   module Apis
     module MonitoringV3
       
-      class ListGroupMembersResponse
+      class CreateCollectdTimeSeriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateCollectdTimeSeriesRequest
+      class ListGroupMembersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,13 +154,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Group
+      class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Type
+      class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +202,17 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateCollectdTimeSeriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+          collection :collectd_payloads, as: 'collectdPayloads', class: Google::Apis::MonitoringV3::CollectdPayload, decorator: Google::Apis::MonitoringV3::CollectdPayload::Representation
+      
+          property :collectd_version, as: 'collectdVersion'
+        end
+      end
+      
       class ListGroupMembersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -209,17 +220,6 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
-        end
-      end
-      
-      class CreateCollectdTimeSeriesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :collectd_version, as: 'collectdVersion'
-          property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
-      
-          collection :collectd_payloads, as: 'collectdPayloads', class: Google::Apis::MonitoringV3::CollectdPayload, decorator: Google::Apis::MonitoringV3::CollectdPayload::Representation
-      
         end
       end
       
@@ -235,7 +235,6 @@ module Google
       class TimeSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_kind, as: 'metricKind'
           property :metric, as: 'metric', class: Google::Apis::MonitoringV3::Metric, decorator: Google::Apis::MonitoringV3::Metric::Representation
       
           collection :points, as: 'points', class: Google::Apis::MonitoringV3::Point, decorator: Google::Apis::MonitoringV3::Point::Representation
@@ -243,6 +242,7 @@ module Google
           property :value_type, as: 'valueType'
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
+          property :metric_kind, as: 'metricKind'
         end
       end
       
@@ -288,12 +288,12 @@ module Google
       class MonitoredResourceDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
-      
-          property :name, as: 'name'
           property :display_name, as: 'displayName'
           property :description, as: 'description'
           property :type, as: 'type'
+          collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -312,16 +312,16 @@ module Google
       class CollectdPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :values, as: 'values', class: Google::Apis::MonitoringV3::CollectdValue, decorator: Google::Apis::MonitoringV3::CollectdValue::Representation
-      
-          property :type_instance, as: 'typeInstance'
-          property :type, as: 'type'
           hash :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
+          property :type, as: 'type'
           property :plugin, as: 'plugin'
           property :plugin_instance, as: 'pluginInstance'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+          collection :values, as: 'values', class: Google::Apis::MonitoringV3::CollectdValue, decorator: Google::Apis::MonitoringV3::CollectdValue::Representation
+      
+          property :type_instance, as: 'typeInstance'
         end
       end
       
@@ -337,8 +337,8 @@ module Google
       class Option
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
           hash :value, as: 'value'
+          property :name, as: 'name'
         end
       end
       
@@ -366,18 +366,18 @@ module Google
       class Exponential
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_finite_buckets, as: 'numFiniteBuckets'
           property :growth_factor, as: 'growthFactor'
           property :scale, as: 'scale'
-          property :num_finite_buckets, as: 'numFiniteBuckets'
         end
       end
       
       class Point
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
-      
           property :interval, as: 'interval', class: Google::Apis::MonitoringV3::TimeInterval, decorator: Google::Apis::MonitoringV3::TimeInterval::Representation
+      
+          property :value, as: 'value', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
         end
       end
@@ -387,8 +387,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type_url, as: 'typeUrl'
           property :number, as: 'number'
-          property :json_name, as: 'jsonName'
           property :kind, as: 'kind'
+          property :json_name, as: 'jsonName'
           collection :options, as: 'options', class: Google::Apis::MonitoringV3::Option, decorator: Google::Apis::MonitoringV3::Option::Representation
       
           property :oneof_index, as: 'oneofIndex'
@@ -402,17 +402,17 @@ module Google
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
           property :type, as: 'type'
+          hash :labels, as: 'labels'
         end
       end
       
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
           property :description, as: 'description'
           property :value_type, as: 'valueType'
+          property :key, as: 'key'
         end
       end
       
@@ -425,20 +425,10 @@ module Google
         end
       end
       
-      class Group
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :is_cluster, as: 'isCluster'
-          property :filter, as: 'filter'
-          property :name, as: 'name'
-          property :parent_name, as: 'parentName'
-        end
-      end
-      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :oneofs, as: 'oneofs'
           property :syntax, as: 'syntax'
           property :source_context, as: 'sourceContext', class: Google::Apis::MonitoringV3::SourceContext, decorator: Google::Apis::MonitoringV3::SourceContext::Representation
       
@@ -447,7 +437,17 @@ module Google
           collection :fields, as: 'fields', class: Google::Apis::MonitoringV3::Field, decorator: Google::Apis::MonitoringV3::Field::Representation
       
           property :name, as: 'name'
-          collection :oneofs, as: 'oneofs'
+        end
+      end
+      
+      class Group
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :is_cluster, as: 'isCluster'
+          property :filter, as: 'filter'
+          property :name, as: 'name'
+          property :parent_name, as: 'parentName'
         end
       end
       
@@ -466,10 +466,10 @@ module Google
       class CollectdValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_type, as: 'dataSourceType'
           property :data_source_name, as: 'dataSourceName'
           property :value, as: 'value', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
-          property :data_source_type, as: 'dataSourceType'
         end
       end
       
@@ -483,15 +483,15 @@ module Google
       class MetricDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_kind, as: 'metricKind'
-          property :display_name, as: 'displayName'
-          property :description, as: 'description'
-          property :unit, as: 'unit'
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
           property :name, as: 'name'
           property :type, as: 'type'
           property :value_type, as: 'valueType'
+          property :metric_kind, as: 'metricKind'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :unit, as: 'unit'
         end
       end
       

@@ -1053,6 +1053,117 @@ module Google
         end
       end
       
+      # A BackendBucket resource. This resource defines a Cloud Storage bucket.
+      class BackendBucket
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket name.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided by the client when
+        # the resource is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If true, enable Cloud CDN for this BackendBucket.
+        # Corresponds to the JSON property `enableCdn`
+        # @return [Boolean]
+        attr_accessor :enable_cdn
+        alias_method :enable_cdn?, :enable_cdn
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Contains a list of BackendBucket resources.
+      class BackendBucketList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of BackendBucket resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::BackendBucket>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] A token used to continue a truncated list request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
       # A BackendService resource. This resource defines a group of backend virtual
       # machines and their serving capacity.
       class BackendService
@@ -1154,7 +1265,7 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+        # Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
         # For internal load balancing, the possible values are TCP and UDP, and the
         # default is TCP.
         # Corresponds to the JSON property `protocol`
@@ -1305,7 +1416,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1786,7 +1901,8 @@ module Google
         # requests. If the number of results is larger than maxResults, use the
         # nextPageToken as a value for the query parameter pageToken in the next list
         # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
+        # continue paging through the results. Acceptable values are 0 to 500, inclusive.
+        # (Default: 500)
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1829,7 +1945,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # This token allows you to get the next page of results for list requests. If
+        # the number of results is larger than maxResults, use the nextPageToken as a
+        # value for the query parameter pageToken in the next list request. Subsequent
+        # list requests will have their own nextPageToken to continue paging through the
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2574,10 +2694,10 @@ module Google
       
         # The URL of the target resource to receive the matched traffic. For regional
         # forwarding rules, this target must live in the same region as the forwarding
-        # rule. For global forwarding rules, this target must be a global
-        # TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of
-        # a type appropriate to the target object. For example, TargetHttpProxy requires
-        # HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
+        # rule. For global forwarding rules, this target must be a global load balancing
+        # resource. The forwarded traffic must be of a type appropriate to the target
+        # object. For example, TargetHttpProxy requires HTTP traffic, and
+        # TargetHttpsProxy requires HTTPS traffic.
         # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -2829,6 +2949,7 @@ module Google
         attr_accessor :host
       
         # The TCP port number for the health check request. The default value is 80.
+        # Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -2876,6 +2997,7 @@ module Google
         attr_accessor :host
       
         # The TCP port number for the health check request. The default value is 443.
+        # Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -3815,8 +3937,9 @@ module Google
         attr_accessor :self_link
       
         # A list of service accounts, with their specified scopes, authorized for this
-        # instance. Service accounts generate access tokens that can be accessed through
-        # the metadata server and used to authenticate applications on the instance. See
+        # instance. Only one service account per VM instance is supported.
+        # Service accounts generate access tokens that can be accessed through the
+        # metadata server and used to authenticate applications on the instance. See
         # Service Accounts for more information.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
@@ -6177,7 +6300,7 @@ module Google
         # @return [String]
         attr_accessor :client_operation_id
       
-        # [Output Only] Creation timestamp in RFC3339 text format.
+        # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -8138,6 +8261,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The TCP port number for the health check request. The default value is 443.
+        # Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -8248,10 +8372,10 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The starting byte position of the output that was returned. This
-        # should match the start parameter sent with the request. If the serial console
-        # output exceeds the size of the buffer, older output will be overwritten by
-        # newer content and the start values will be mismatched.
+        # The starting byte position of the output that was returned. This should match
+        # the start parameter sent with the request. If the serial console output
+        # exceeds the size of the buffer, older output will be overwritten by newer
+        # content and the start values will be mismatched.
         # Corresponds to the JSON property `start`
         # @return [String]
         attr_accessor :start
@@ -8886,6 +9010,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The TCP port number for the health check request. The default value is 80.
+        # Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -9490,8 +9615,8 @@ module Google
         end
       end
       
-      # A TargetPool resource. This resource defines a pool of instances, associated
-      # HttpHealthCheck resources, and the fallback target pool.
+      # A TargetPool resource. This resource defines a pool of instances, an
+      # associated HttpHealthCheck resource, and the fallback target pool.
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -9537,9 +9662,10 @@ module Google
         # @return [Float]
         attr_accessor :failover_ratio
       
-        # A list of URLs to the HttpHealthCheck resource. A member instance in this pool
-        # is considered healthy if and only if all specified health checks pass. An
-        # empty list means all member instances will be considered healthy at all times.
+        # The URL of the HttpHealthCheck resource. A member instance in this pool is
+        # considered healthy if and only if the health checks pass. An empty list means
+        # all member instances will be considered healthy at all times. Only
+        # HttpHealthChecks are supported. Only one health check may be specified.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -9738,7 +9864,7 @@ module Google
       class AddTargetPoolsHealthCheckRequest
         include Google::Apis::Core::Hashable
       
-        # A list of HttpHealthCheck resources to add to the target pool.
+        # The HttpHealthCheck to add to the target pool.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<Google::Apis::ComputeV1::HealthCheckReference>]
         attr_accessor :health_checks

@@ -1583,6 +1583,12 @@ module Google
         # @return [String]
         attr_accessor :start_time_millis
       
+        # The time at which the subscription was canceled by the user, in milliseconds
+        # since the epoch. Only present if cancelReason is 0.
+        # Corresponds to the JSON property `userCancellationTimeMillis`
+        # @return [String]
+        attr_accessor :user_cancellation_time_millis
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1599,6 +1605,7 @@ module Google
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
+          @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)
         end
       end
       

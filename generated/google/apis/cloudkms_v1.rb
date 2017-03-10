@@ -12,21 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/partners_v2/service.rb'
-require 'google/apis/partners_v2/classes.rb'
-require 'google/apis/partners_v2/representations.rb'
+require 'google/apis/cloudkms_v1/service.rb'
+require 'google/apis/cloudkms_v1/classes.rb'
+require 'google/apis/cloudkms_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Partners API
+    # Google Cloud Key Management Service (KMS) API
     #
-    # Searches certified companies and creates contact leads with them, and also
-    # audits the usage of clients.
+    # Manages encryption for your cloud services the same way you do on-premise. You
+    # can generate, use, rotate, and destroy AES256 encryption keys.
     #
-    # @see https://developers.google.com/partners/
-    module PartnersV2
-      VERSION = 'V2'
-      REVISION = '20170303'
+    # @see https://cloud.google.com/kms/
+    module CloudkmsV1
+      VERSION = 'V1'
+      REVISION = '20170301'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

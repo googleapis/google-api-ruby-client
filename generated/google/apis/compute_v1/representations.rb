@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendBucketList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1697,6 +1709,32 @@ module Google
           property :max_rate, as: 'maxRate'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
+        end
+      end
+      
+      class BackendBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :enable_cdn, as: 'enableCdn'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class BackendBucketList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::BackendBucket, decorator: Google::Apis::ComputeV1::BackendBucket::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       

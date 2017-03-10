@@ -29,6 +29,7 @@ API_IDS=(adexchangebuyer:v1.4 \
   cloudbilling:v1 \
   cloudbuild:v1 \
   clouddebugger:v2 \
+  cloudkms:v1 \
   cloudkms:v1beta1 \
   cloudlatencytest:v2 \
   cloudmonitoring:v2beta2 \

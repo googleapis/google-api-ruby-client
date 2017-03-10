@@ -1629,7 +1629,8 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # The type of data feed.
+        # The type of data feed. For product inventory feeds, only feeds for local
+        # stores, not online stores, are supported.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
