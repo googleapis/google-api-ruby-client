@@ -142,7 +142,7 @@ end
 Or if sharing the same block:
 
 ```ruby
-require 'google/apis/urlshortner_v1'
+require 'google/apis/urlshortener_v1'
 
 urlshortener = Google::Apis::UrlshortenerV1::UrlshortenerService.new
 
