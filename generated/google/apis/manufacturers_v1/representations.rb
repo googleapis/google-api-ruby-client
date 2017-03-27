@@ -22,7 +22,7 @@ module Google
   module Apis
     module ManufacturersV1
       
-      class Issue
+      class Count
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -34,7 +34,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Attributes
+      class Capacity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,19 +46,56 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Issue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Price
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Count
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :type, as: 'type'
-          property :attribute, as: 'attribute'
-          property :severity, as: 'severity'
+          property :value, as: 'value'
+          property :unit, as: 'unit'
         end
       end
       
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_country, as: 'targetCountry'
+          property :content_language, as: 'contentLanguage'
+          property :name, as: 'name'
           collection :manually_deleted_attributes, as: 'manuallyDeletedAttributes'
           collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
       
@@ -70,23 +107,14 @@ module Google
           property :parent, as: 'parent'
           property :manually_provided_attributes, as: 'manuallyProvidedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
       
-          property :target_country, as: 'targetCountry'
-          property :content_language, as: 'contentLanguage'
-          property :name, as: 'name'
         end
       end
       
-      class Attributes
+      class Capacity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :gtin, as: 'gtin'
-          property :title, as: 'title'
-          property :product_line, as: 'productLine'
-          property :brand, as: 'brand'
-          property :product_name, as: 'productName'
-          collection :product_type, as: 'productType'
-          property :mpn, as: 'mpn'
-          property :product_page_url, as: 'productPageUrl'
+          property :value, as: 'value'
+          property :unit, as: 'unit'
         end
       end
       
@@ -96,6 +124,98 @@ module Google
           collection :products, as: 'products', class: Google::Apis::ManufacturersV1::Product, decorator: Google::Apis::ManufacturersV1::Product::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ProductDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_value, as: 'attributeValue'
+          property :section_name, as: 'sectionName'
+          property :attribute_name, as: 'attributeName'
+        end
+      end
+      
+      class FeatureDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          property :headline, as: 'headline'
+        end
+      end
+      
+      class Issue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp, as: 'timestamp'
+          property :severity, as: 'severity'
+          property :description, as: 'description'
+          property :type, as: 'type'
+          property :attribute, as: 'attribute'
+        end
+      end
+      
+      class Price
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount'
+          property :currency, as: 'currency'
+        end
+      end
+      
+      class Image
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :image_url, as: 'imageUrl'
+          property :status, as: 'status'
+        end
+      end
+      
+      class Attributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_system, as: 'sizeSystem'
+          property :theme, as: 'theme'
+          property :pattern, as: 'pattern'
+          property :image_link, as: 'imageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          collection :product_type, as: 'productType'
+          property :format, as: 'format'
+          collection :additional_image_link, as: 'additionalImageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          collection :video_link, as: 'videoLink'
+          property :color, as: 'color'
+          property :product_name, as: 'productName'
+          property :size_type, as: 'sizeType'
+          property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
+      
+          collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
+      
+          property :size, as: 'size'
+          property :title, as: 'title'
+          property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
+      
+          property :brand, as: 'brand'
+          property :disclosure_date, as: 'disclosureDate'
+          property :material, as: 'material'
+          property :scent, as: 'scent'
+          property :age_group, as: 'ageGroup'
+          collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
+      
+          property :flavor, as: 'flavor'
+          property :product_page_url, as: 'productPageUrl'
+          property :mpn, as: 'mpn'
+          property :release_date, as: 'releaseDate'
+          collection :gtin, as: 'gtin'
+          property :item_group_id, as: 'itemGroupId'
+          property :product_line, as: 'productLine'
+          property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
+      
+          property :description, as: 'description'
+          property :gender, as: 'gender'
         end
       end
     end

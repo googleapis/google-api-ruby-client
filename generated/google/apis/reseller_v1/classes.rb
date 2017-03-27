@@ -452,6 +452,14 @@ module Google
         # @return [String]
         attr_accessor :sku_id
       
+        # Read-only external display name for a product's SKU assigned to a customer in
+        # the subscription. SKU names are subject to change at Google's discretion. For
+        # products and SKUs available in this version of the API, see  Product and SKU
+        # IDs.
+        # Corresponds to the JSON property `skuName`
+        # @return [String]
+        attr_accessor :sku_name
+      
         # This is an optional property.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -513,6 +521,7 @@ module Google
           @resource_ui_url = args[:resource_ui_url] if args.key?(:resource_ui_url)
           @seats = args[:seats] if args.key?(:seats)
           @sku_id = args[:sku_id] if args.key?(:sku_id)
+          @sku_name = args[:sku_name] if args.key?(:sku_name)
           @status = args[:status] if args.key?(:status)
           @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)

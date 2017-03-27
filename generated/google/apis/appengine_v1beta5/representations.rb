@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityAwareProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataV1Beta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +335,8 @@ module Google
           property :default_cookie_expiration, as: 'defaultCookieExpiration'
           property :default_hostname, as: 'defaultHostname'
           property :default_bucket, as: 'defaultBucket'
+          property :iap, as: 'iap', class: Google::Apis::AppengineV1beta5::IdentityAwareProxy, decorator: Google::Apis::AppengineV1beta5::IdentityAwareProxy::Representation
+      
         end
       end
       
@@ -332,6 +346,16 @@ module Google
           property :domain, as: 'domain'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class IdentityAwareProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_secret, as: 'oauth2ClientSecret'
+          property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
         end
       end
       
@@ -737,6 +761,19 @@ module Google
           property :end_time, as: 'endTime'
           property :user, as: 'user'
           property :target, as: 'target'
+        end
+      end
+      
+      class OperationMetadataV1Beta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
+          property :ephemeral_message, as: 'ephemeralMessage'
+          collection :warning, as: 'warning'
         end
       end
       

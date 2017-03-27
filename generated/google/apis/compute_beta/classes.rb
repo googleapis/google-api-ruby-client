@@ -3374,11 +3374,31 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # The list of DENY rules specified by this firewall. Each rule specifies a
+        # protocol and port-range tuple that describes a permitted connection.
+        # Corresponds to the JSON property `denied`
+        # @return [Array<Google::Apis::ComputeBeta::Firewall::Denied>]
+        attr_accessor :denied
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # If destination ranges are specified, the firewall will apply only to traffic
+        # that has destination IP address in these ranges. These ranges must be
+        # expressed in CIDR format. Only IPv4 is supported.
+        # Corresponds to the JSON property `destinationRanges`
+        # @return [Array<String>]
+        attr_accessor :destination_ranges
+      
+        # Direction of traffic to which this firewall applies; default is INGRESS. Note:
+        # For INGRESS traffic, it is NOT supported to specify destinationRanges; For
+        # EGRESS traffic, it is NOT supported to specify sourceRanges OR sourceTags.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -3413,6 +3433,15 @@ module Google
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # Priority for this rule. This is an integer between 0 and 65535, both inclusive.
+        # When not specified, the value assumed is 1000. Relative priorities determine
+        # precedence of conflicting rules. Lower value of priority implies higher
+        # precedence (eg, a rule with priority 0 has higher precedence than a rule with
+        # priority 1). DENY rules take precedence over ALLOW rules having equal priority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
       
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
@@ -3458,11 +3487,15 @@ module Google
         def update!(**args)
           @allowed = args[:allowed] if args.key?(:allowed)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @denied = args[:denied] if args.key?(:denied)
           @description = args[:description] if args.key?(:description)
+          @destination_ranges = args[:destination_ranges] if args.key?(:destination_ranges)
+          @direction = args[:direction] if args.key?(:direction)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
           @source_tags = args[:source_tags] if args.key?(:source_tags)
@@ -3471,6 +3504,37 @@ module Google
         
         # 
         class Allowed
+          include Google::Apis::Core::Hashable
+        
+          # The IP protocol to which this rule applies. The protocol type is required when
+          # creating a firewall rule. This value can either be one of the following well
+          # known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP protocol
+          # number.
+          # Corresponds to the JSON property `IPProtocol`
+          # @return [String]
+          attr_accessor :ip_protocol
+        
+          # An optional list of ports to which this rule applies. This field is only
+          # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+          # range. If not specified, this rule applies to connections through any port.
+          # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+          # Corresponds to the JSON property `ports`
+          # @return [Array<String>]
+          attr_accessor :ports
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+            @ports = args[:ports] if args.key?(:ports)
+          end
+        end
+        
+        # 
+        class Denied
           include Google::Apis::Core::Hashable
         
           # The IP protocol to which this rule applies. The protocol type is required when
@@ -7142,6 +7206,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
+        # [Output Only] Intended version of this instance.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ComputeBeta::ManagedInstanceVersion]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7153,6 +7222,7 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -7225,6 +7295,32 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
           end
+        end
+      end
+      
+      # 
+      class ManagedInstanceVersion
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The intended template of the instance. This field is empty when
+        # current_action is one of ` DELETING, ABANDONING `.
+        # Corresponds to the JSON property `instanceTemplate`
+        # @return [String]
+        attr_accessor :instance_template
+      
+        # [Output Only] Name of the version.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_template = args[:instance_template] if args.key?(:instance_template)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -10726,6 +10822,26 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `privateIpGoogleAccess`
+        # @return [Boolean]
+        attr_accessor :private_ip_google_access
+        alias_method :private_ip_google_access?, :private_ip_google_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
         end
       end
       

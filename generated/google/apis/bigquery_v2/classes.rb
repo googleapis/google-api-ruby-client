@@ -334,9 +334,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Experimental] The labels associated with this dataset. You can use these to
-        # organize and group your datasets. You can set this property when inserting or
-        # updating a dataset. See Labeling Datasets for more information.
+        # The labels associated with this dataset. You can use these to organize and
+        # group your datasets. You can set this property when inserting or updating a
+        # dataset. See Labeling Datasets for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -347,8 +347,8 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
-        # [Experimental] The geographic location where the dataset should reside.
-        # Possible values include EU and US. The default value is US.
+        # The geographic location where the dataset should reside. Possible values
+        # include EU and US. The default value is US.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -507,8 +507,8 @@ module Google
           # @return [String]
           attr_accessor :kind
         
-          # [Experimental] The labels associated with this dataset. You can use these to
-          # organize and group your datasets.
+          # The labels associated with this dataset. You can use these to organize and
+          # group your datasets.
           # Corresponds to the JSON property `labels`
           # @return [Hash<String,String>]
           attr_accessor :labels
@@ -720,8 +720,8 @@ module Google
       class ExternalDataConfiguration
         include Google::Apis::Core::Hashable
       
-        # [Experimental] Try to detect schema and format options automatically. Any
-        # option specified explicitly will be honored.
+        # Try to detect schema and format options automatically. Any option specified
+        # explicitly will be honored.
         # Corresponds to the JSON property `autodetect`
         # @return [Boolean]
         attr_accessor :autodetect
@@ -782,10 +782,8 @@ module Google
         # [Required] The data format. For CSV files, specify "CSV". For Google sheets,
         # specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "
         # NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
-        # Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google Cloud
-        # Bigtable, specify "BIGTABLE". Please note that reading from Google Cloud
-        # Bigtable is experimental and has to be enabled for your project. Please
-        # contact Google Cloud Support to enable this for your project.
+        # Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud
+        # Bigtable, specify "BIGTABLE".
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -864,8 +862,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
@@ -1185,8 +1183,8 @@ module Google
         attr_accessor :allow_quoted_newlines
         alias_method :allow_quoted_newlines?, :allow_quoted_newlines
       
-        # [Experimental] Indicates if we should automatically infer the options and
-        # schema for CSV and JSON sources.
+        # Indicates if we should automatically infer the options and schema for CSV and
+        # JSON sources.
         # Corresponds to the JSON property `autodetect`
         # @return [Boolean]
         attr_accessor :autodetect
@@ -1255,12 +1253,11 @@ module Google
         # @return [String]
         attr_accessor :null_marker
       
-        # [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which
-        # entity properties to load into BigQuery from a Cloud Datastore backup.
-        # Property names are case sensitive and must be top-level properties. If no
-        # properties are specified, BigQuery loads all properties. If any named property
-        # isn't found in the Cloud Datastore backup, an invalid error is returned in the
-        # job result.
+        # If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
+        # properties to load into BigQuery from a Cloud Datastore backup. Property names
+        # are case sensitive and must be top-level properties. If no properties are
+        # specified, BigQuery loads all properties. If any named property isn't found in
+        # the Cloud Datastore backup, an invalid error is returned in the job result.
         # Corresponds to the JSON property `projectionFields`
         # @return [Array<String>]
         attr_accessor :projection_fields
@@ -1423,9 +1420,8 @@ module Google
         # @return [String]
         attr_accessor :maximum_bytes_billed
       
-        # [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
-        # query parameters or to NAMED to use named (@myparam) query parameters in this
-        # query.
+        # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
+        # to NAMED to use named (@myparam) query parameters in this query.
         # Corresponds to the JSON property `parameterMode`
         # @return [String]
         attr_accessor :parameter_mode
@@ -1492,7 +1488,7 @@ module Google
         attr_accessor :use_query_cache
         alias_method :use_query_cache?, :use_query_cache
       
-        # [Experimental] Describes user-defined function resources used in the query.
+        # Describes user-defined function resources used in the query.
         # Corresponds to the JSON property `userDefinedFunctionResources`
         # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
         attr_accessor :user_defined_function_resources
@@ -1799,13 +1795,13 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
       
-        # [Output-only, Experimental] Describes execution plan for the query.
+        # [Output-only] Describes execution plan for the query.
         # Corresponds to the JSON property `queryPlan`
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
@@ -2221,9 +2217,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
-        # [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
-        # query parameters or to NAMED to use named (@myparam) query parameters in this
-        # query.
+        # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
+        # to NAMED to use named (@myparam) query parameters in this query.
         # Corresponds to the JSON property `parameterMode`
         # @return [String]
         attr_accessor :parameter_mode
@@ -2241,7 +2236,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # [Experimental] Query parameters for Standard SQL queries.
+        # Query parameters for Standard SQL queries.
         # Corresponds to the JSON property `queryParameters`
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
@@ -2332,8 +2327,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
@@ -3086,7 +3081,7 @@ module Google
         attr_accessor :use_legacy_sql
         alias_method :use_legacy_sql?, :use_legacy_sql
       
-        # [Experimental] Describes user-defined function resources used in the query.
+        # Describes user-defined function resources used in the query.
         # Corresponds to the JSON property `userDefinedFunctionResources`
         # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
         attr_accessor :user_defined_function_resources

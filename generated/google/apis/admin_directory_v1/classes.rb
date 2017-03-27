@@ -2463,6 +2463,11 @@ module Google
         # @return [Object]
         attr_accessor :phones
       
+        # 
+        # Corresponds to the JSON property `posixAccounts`
+        # @return [Object]
+        attr_accessor :posix_accounts
+      
         # username of User
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
@@ -2472,6 +2477,11 @@ module Google
         # Corresponds to the JSON property `relations`
         # @return [Object]
         attr_accessor :relations
+      
+        # 
+        # Corresponds to the JSON property `sshPublicKeys`
+        # @return [Object]
+        attr_accessor :ssh_public_keys
       
         # Indicates if user is suspended
         # Corresponds to the JSON property `suspended`
@@ -2535,8 +2545,10 @@ module Google
           @organizations = args[:organizations] if args.key?(:organizations)
           @password = args[:password] if args.key?(:password)
           @phones = args[:phones] if args.key?(:phones)
+          @posix_accounts = args[:posix_accounts] if args.key?(:posix_accounts)
           @primary_email = args[:primary_email] if args.key?(:primary_email)
           @relations = args[:relations] if args.key?(:relations)
+          @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
           @suspended = args[:suspended] if args.key?(:suspended)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @thumbnail_photo_etag = args[:thumbnail_photo_etag] if args.key?(:thumbnail_photo_etag)
@@ -3033,6 +3045,69 @@ module Google
         end
       end
       
+      # JSON template for a POSIX account entry. Description of the field family: go/
+      # fbs-posix.
+      class UserPosixAccount
+        include Google::Apis::Core::Hashable
+      
+        # The GECOS (user information) entry for this account.
+        # Corresponds to the JSON property `gecos`
+        # @return [String]
+        attr_accessor :gecos
+      
+        # The default group ID.
+        # Corresponds to the JSON property `gid`
+        # @return [Fixnum]
+        attr_accessor :gid
+      
+        # The path to the home directory for this account.
+        # Corresponds to the JSON property `homeDirectory`
+        # @return [String]
+        attr_accessor :home_directory
+      
+        # If this is user's primary account within the SystemId.
+        # Corresponds to the JSON property `primary`
+        # @return [Boolean]
+        attr_accessor :primary
+        alias_method :primary?, :primary
+      
+        # The path to the login shell for this account.
+        # Corresponds to the JSON property `shell`
+        # @return [String]
+        attr_accessor :shell
+      
+        # System identifier for which account Username or Uid apply to.
+        # Corresponds to the JSON property `systemId`
+        # @return [String]
+        attr_accessor :system_id
+      
+        # The user ID.
+        # Corresponds to the JSON property `uid`
+        # @return [Fixnum]
+        attr_accessor :uid
+      
+        # The username of the account.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gecos = args[:gecos] if args.key?(:gecos)
+          @gid = args[:gid] if args.key?(:gid)
+          @home_directory = args[:home_directory] if args.key?(:home_directory)
+          @primary = args[:primary] if args.key?(:primary)
+          @shell = args[:shell] if args.key?(:shell)
+          @system_id = args[:system_id] if args.key?(:system_id)
+          @uid = args[:uid] if args.key?(:uid)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # JSON template for a relation entry.
       class UserRelation
         include Google::Apis::Core::Hashable
@@ -3062,6 +3137,37 @@ module Google
           @custom_type = args[:custom_type] if args.key?(:custom_type)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # JSON template for a POSIX account entry.
+      class UserSshPublicKey
+        include Google::Apis::Core::Hashable
+      
+        # An expiration time in microseconds since epoch.
+        # Corresponds to the JSON property `expirationTimeUsec`
+        # @return [String]
+        attr_accessor :expiration_time_usec
+      
+        # A SHA-256 fingerprint of the SSH public key. (Read-only)
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # An SSH public key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_time_usec = args[:expiration_time_usec] if args.key?(:expiration_time_usec)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @key = args[:key] if args.key?(:key)
         end
       end
       

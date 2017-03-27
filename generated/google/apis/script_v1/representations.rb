@@ -22,18 +22,6 @@ module Google
   module Apis
     module ScriptV1
       
-      class ExecutionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ScriptStackTraceElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,29 +47,22 @@ module Google
       end
       
       class ExecutionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :result, as: 'result'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          hash :metadata, as: 'metadata'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_number, as: 'lineNumber'
           property :function, as: 'function'
+          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -107,10 +88,29 @@ module Google
       class ExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :session_state, as: 'sessionState'
           property :function, as: 'function'
           property :dev_mode, as: 'devMode'
           collection :parameters, as: 'parameters'
+          property :session_state, as: 'sessionState'
+        end
+      end
+      
+      class ExecutionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          hash :response, as: 'response'
+          property :name, as: 'name'
+          property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
         end
       end
     end

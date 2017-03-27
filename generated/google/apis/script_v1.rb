@@ -25,7 +25,10 @@ module Google
     # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20170228'
+      REVISION = '20170321'
+
+      # View your email address
+      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
       # Manage your calendars
       CALENDAR_FEEDS = 'https://www.google.com/calendar/feeds'
@@ -39,26 +42,23 @@ module Google
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
-      # View and manage your spreadsheets in Google Drive
-      AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
-
       # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'
 
-      # View and manage the provisioning of users on your domain
-      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
+      # View and manage your spreadsheets in Google Drive
+      AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
 
       # View and manage the provisioning of groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP = 'https://www.googleapis.com/auth/admin.directory.group'
+
+      # View and manage the provisioning of users on your domain
+      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
 
       # View and manage your forms in Google Drive
       AUTH_FORMS = 'https://www.googleapis.com/auth/forms'
 
       # Manage your contacts
       M8_FEEDS = 'https://www.google.com/m8/feeds'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
     end
   end
 end

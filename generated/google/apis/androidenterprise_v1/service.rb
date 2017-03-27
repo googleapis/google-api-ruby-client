@@ -539,7 +539,7 @@ module Google
         end
         
         # Returns the store layout for the enterprise. If the store layout has not been
-        # set, or if the store layout has no homepageId set, returns a NOT_FOUND error.
+        # set, returns "basic" as the store layout type and no homepage.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -787,8 +787,8 @@ module Google
         # contains apps approved by the admin, and that have been added to the available
         # product set for a user (using the  setAvailableProductSet call). Apps on the
         # page are sorted in order of their product ID value. If you create a custom
-        # store layout (by setting storeLayoutType = "custom"), the basic store layout
-        # is disabled.
+        # store layout (by setting storeLayoutType = "custom" and setting a homepage),
+        # the basic store layout is disabled.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object

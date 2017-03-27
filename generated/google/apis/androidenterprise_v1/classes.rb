@@ -1941,12 +1941,10 @@ module Google
       class StoreLayout
         include Google::Apis::Core::Hashable
       
-        # The ID of the store page to be used as the homepage. The homepage will be used
-        # as the first page shown in the managed Google Play store.
-        # If a homepage has not been set, the Play store shown on devices will be empty.
-        # Not specifying a homepage on a store layout effectively empties the store.
-        # If there exists at least one page, this field must be set to the ID of a valid
-        # page.
+        # The ID of the store page to be used as the homepage. The homepage is the first
+        # page shown in the managed Google Play Store.
+        # Not specifying a homepage is equivalent to setting the store layout type to "
+        # basic".
         # Corresponds to the JSON property `homepageId`
         # @return [String]
         attr_accessor :homepage_id
@@ -1957,13 +1955,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The store layout type. By default, this value is set to "basic". If set to "
-        # custom", "homepageId" must be specified. If set to "basic", the layout will
-        # consist of all approved apps accessible by the user, split in pages of 100
-        # each; in this case, "homepageId" must not be specified. The "basic" setting
-        # takes precedence over any existing collections setup for this enterprise (if
-        # any). Should the enterprise use collectionViewers for controlling access
-        # rights, these will still be respected.
+        # The store layout type. By default, this value is set to "basic" if the
+        # homepageId field is not set, and to "custom" otherwise. If set to "basic", the
+        # layout will consist of all approved apps that have been whitelisted for the
+        # user.
         # Corresponds to the JSON property `storeLayoutType`
         # @return [String]
         attr_accessor :store_layout_type

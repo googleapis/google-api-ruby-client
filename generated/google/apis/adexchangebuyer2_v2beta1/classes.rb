@@ -22,25 +22,6 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A request for watching changes to creative Status.
       class WatchCreativeRequest
         include Google::Apis::Core::Hashable
@@ -80,6 +61,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_types = args[:app_types] if args.key?(:app_types)
+        end
+      end
+      
+      # 
+      class ListClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned list of clients.
+        # Corresponds to the JSON property `clients`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
+        attr_accessor :clients
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListClientsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.clients.list method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clients = args[:clients] if args.key?(:clients)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -177,36 +188,6 @@ module Google
         end
       end
       
-      # 
-      class ListClientsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned list of clients.
-        # Corresponds to the JSON property `clients`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
-        attr_accessor :clients
-      
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListClientsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.clients.list method
-        # to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @clients = args[:clients] if args.key?(:clients)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # @OutputOnly A security context.
       class SecurityContext
         include Google::Apis::Core::Hashable
@@ -223,6 +204,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @securities = args[:securities] if args.key?(:securities)
+        end
+      end
+      
+      # HTML content for a creative.
+      class HtmlContent
+        include Google::Apis::Core::Hashable
+      
+        # The width of the HTML snippet in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        # The HTML snippet that displays the ad when inserted in the web page.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # The height of the HTML snippet in pixels.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @width = args[:width] if args.key?(:width)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @height = args[:height] if args.key?(:height)
         end
       end
       
@@ -252,37 +264,6 @@ module Google
         def update!(**args)
           @creatives = args[:creatives] if args.key?(:creatives)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # HTML content for a creative.
-      class HtmlContent
-        include Google::Apis::Core::Hashable
-      
-        # The height of the HTML snippet in pixels.
-        # Corresponds to the JSON property `height`
-        # @return [Fixnum]
-        attr_accessor :height
-      
-        # The width of the HTML snippet in pixels.
-        # Corresponds to the JSON property `width`
-        # @return [Fixnum]
-        attr_accessor :width
-      
-        # The HTML snippet that displays the ad when inserted in the web page.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @height = args[:height] if args.key?(:height)
-          @width = args[:width] if args.key?(:width)
-          @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
       
@@ -421,6 +402,13 @@ module Google
       class ClientUserInvitation
         include Google::Apis::Core::Hashable
       
+        # The email address to which the invitation is sent. Email
+        # addresses should be unique among all client users under each sponsor
+        # buyer.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
         # Numerical account ID of the client buyer
         # that the invited user is associated with.
         # The value of this field is ignored in create operations.
@@ -434,22 +422,15 @@ module Google
         # @return [String]
         attr_accessor :invitation_id
       
-        # The email address to which the invitation is sent. Email
-        # addresses should be unique among all client users under each sponsor
-        # buyer.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @email = args[:email] if args.key?(:email)
           @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
           @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
-          @email = args[:email] if args.key?(:email)
         end
       end
       
@@ -632,11 +613,6 @@ module Google
       class CreativeDealAssociation
         include Google::Apis::Core::Hashable
       
-        # The account the creative belongs to.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
         # The ID of the creative associated with the deal.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
@@ -647,15 +623,20 @@ module Google
         # @return [String]
         attr_accessor :deals_id
       
+        # The account the creative belongs to.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deals_id = args[:deals_id] if args.key?(:deals_id)
+          @account_id = args[:account_id] if args.key?(:account_id)
         end
       end
       
@@ -663,11 +644,6 @@ module Google
       # day (from midnight to midnight Pacific).
       class FilteringStats
         include Google::Apis::Core::Hashable
-      
-        # The set of filtering reasons for this date.
-        # Corresponds to the JSON property `reasons`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Reason>]
-        attr_accessor :reasons
       
         # Represents a whole calendar date, e.g. date of birth. The time of day and
         # time zone are either specified elsewhere or are not significant. The date
@@ -680,14 +656,19 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
         attr_accessor :date
       
+        # The set of filtering reasons for this date.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Reason>]
+        attr_accessor :reasons
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @reasons = args[:reasons] if args.key?(:reasons)
           @date = args[:date] if args.key?(:date)
+          @reasons = args[:reasons] if args.key?(:reasons)
         end
       end
       
@@ -695,10 +676,81 @@ module Google
       class Creative
         include Google::Apis::Core::Hashable
       
-        # Video content for a creative.
-        # Corresponds to the JSON property `video`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::VideoContent]
-        attr_accessor :video
+        # @OutputOnly The top-level open auction status of this creative.
+        # If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
+        # serving_restrictions will also exist. Note
+        # that this may be nuanced with other contextual restrictions, in which case,
+        # it may be preferable to read from serving_restrictions directly.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `openAuctionStatus`
+        # @return [String]
+        attr_accessor :open_auction_status
+      
+        # The name of the company being advertised in the creative.
+        # Corresponds to the JSON property `advertiserName`
+        # @return [String]
+        attr_accessor :advertiser_name
+      
+        # @OutputOnly Detected advertiser IDs, if any.
+        # Corresponds to the JSON property `detectedAdvertiserIds`
+        # @return [Array<String>]
+        attr_accessor :detected_advertiser_ids
+      
+        # @OutputOnly
+        # The detected domains for this creative.
+        # Corresponds to the JSON property `detectedDomains`
+        # @return [Array<String>]
+        attr_accessor :detected_domains
+      
+        # @OutputOnly Filtering reasons for this creative during a period of a single
+        # day (from midnight to midnight Pacific).
+        # Corresponds to the JSON property `filteringStats`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::FilteringStats]
+        attr_accessor :filtering_stats
+      
+        # All attributes for the ads that may be shown from this creative.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<String>]
+        attr_accessor :attributes
+      
+        # @OutputOnly The last update timestamp of the creative via API.
+        # Corresponds to the JSON property `apiUpdateTime`
+        # @return [String]
+        attr_accessor :api_update_time
+      
+        # @OutputOnly
+        # The detected languages for this creative. The order is arbitrary. The codes
+        # are 2 or 5 characters and are documented at
+        # https://developers.google.com/adwords/api/docs/appendix/languagecodes.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<String>]
+        attr_accessor :detected_languages
+      
+        # The buyer-defined creative ID of this creative.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `creativeId`
+        # @return [String]
+        attr_accessor :creative_id
+      
+        # The account that this creative belongs to.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Native content for a creative.
+        # Corresponds to the JSON property `native`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::NativeContent]
+        attr_accessor :native
       
         # @OutputOnly The granular status of this ad in specific contexts.
         # A context here relates to where something ultimately serves (for example,
@@ -707,6 +759,11 @@ module Google
         # Corresponds to the JSON property `servingRestrictions`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingRestriction>]
         attr_accessor :serving_restrictions
+      
+        # Video content for a creative.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::VideoContent]
+        attr_accessor :video
       
         # The agency ID for this creative.
         # Corresponds to the JSON property `agencyId`
@@ -782,90 +839,25 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :detected_product_categories
       
-        # @OutputOnly The top-level open auction status of this creative.
-        # If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
-        # serving_restrictions will also exist. Note
-        # that this may be nuanced with other contextual restrictions, in which case,
-        # it may be preferable to read from serving_restrictions directly.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `openAuctionStatus`
-        # @return [String]
-        attr_accessor :open_auction_status
-      
-        # The name of the company being advertised in the creative.
-        # Corresponds to the JSON property `advertiserName`
-        # @return [String]
-        attr_accessor :advertiser_name
-      
-        # @OutputOnly
-        # The detected domains for this creative.
-        # Corresponds to the JSON property `detectedDomains`
-        # @return [Array<String>]
-        attr_accessor :detected_domains
-      
-        # @OutputOnly Detected advertiser IDs, if any.
-        # Corresponds to the JSON property `detectedAdvertiserIds`
-        # @return [Array<String>]
-        attr_accessor :detected_advertiser_ids
-      
-        # @OutputOnly Filtering reasons for this creative during a period of a single
-        # day (from midnight to midnight Pacific).
-        # Corresponds to the JSON property `filteringStats`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::FilteringStats]
-        attr_accessor :filtering_stats
-      
-        # All attributes for the ads that may be shown from this creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<String>]
-        attr_accessor :attributes
-      
-        # @OutputOnly The last update timestamp of the creative via API.
-        # Corresponds to the JSON property `apiUpdateTime`
-        # @return [String]
-        attr_accessor :api_update_time
-      
-        # @OutputOnly
-        # The detected languages for this creative. The order is arbitrary. The codes
-        # are 2 or 5 characters and are documented at
-        # https://developers.google.com/adwords/api/docs/appendix/languagecodes.
-        # Corresponds to the JSON property `detectedLanguages`
-        # @return [Array<String>]
-        attr_accessor :detected_languages
-      
-        # The buyer-defined creative ID of this creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `creativeId`
-        # @return [String]
-        attr_accessor :creative_id
-      
-        # The account that this creative belongs to.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        # Native content for a creative.
-        # Corresponds to the JSON property `native`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::NativeContent]
-        attr_accessor :native
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @video = args[:video] if args.key?(:video)
+          @open_auction_status = args[:open_auction_status] if args.key?(:open_auction_status)
+          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
+          @detected_advertiser_ids = args[:detected_advertiser_ids] if args.key?(:detected_advertiser_ids)
+          @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
+          @filtering_stats = args[:filtering_stats] if args.key?(:filtering_stats)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @api_update_time = args[:api_update_time] if args.key?(:api_update_time)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @native = args[:native] if args.key?(:native)
           @serving_restrictions = args[:serving_restrictions] if args.key?(:serving_restrictions)
+          @video = args[:video] if args.key?(:video)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
           @click_through_urls = args[:click_through_urls] if args.key?(:click_through_urls)
           @ad_choices_destination_url = args[:ad_choices_destination_url] if args.key?(:ad_choices_destination_url)
@@ -878,17 +870,6 @@ module Google
           @html = args[:html] if args.key?(:html)
           @deals_status = args[:deals_status] if args.key?(:deals_status)
           @detected_product_categories = args[:detected_product_categories] if args.key?(:detected_product_categories)
-          @open_auction_status = args[:open_auction_status] if args.key?(:open_auction_status)
-          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
-          @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
-          @detected_advertiser_ids = args[:detected_advertiser_ids] if args.key?(:detected_advertiser_ids)
-          @filtering_stats = args[:filtering_stats] if args.key?(:filtering_stats)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @api_update_time = args[:api_update_time] if args.key?(:api_update_time)
-          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
-          @creative_id = args[:creative_id] if args.key?(:creative_id)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @native = args[:native] if args.key?(:native)
         end
       end
       
@@ -920,6 +901,23 @@ module Google
       # All fields are required unless otherwise specified.
       class Client
         include Google::Apis::Core::Hashable
+      
+        # The name of the entity. This field is automatically fetched based on
+        # the type and ID.
+        # The value of this field is ignored in create and update operations.
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
+      
+        # The status of the client buyer.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
       
         # Name used to represent this client to publishers.
         # You may have multiple clients that map to the same entity,
@@ -967,43 +965,31 @@ module Google
         # @return [String]
         attr_accessor :client_account_id
       
-        # The name of the entity. This field is automatically fetched based on
-        # the type and ID.
-        # The value of this field is ignored in create and update operations.
-        # Corresponds to the JSON property `entityName`
-        # @return [String]
-        attr_accessor :entity_name
-      
-        # The status of the client buyer.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.
-        # Corresponds to the JSON property `entityType`
-        # @return [String]
-        attr_accessor :entity_type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
+          @status = args[:status] if args.key?(:status)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
           @client_name = args[:client_name] if args.key?(:client_name)
           @role = args[:role] if args.key?(:role)
           @visible_to_seller = args[:visible_to_seller] if args.key?(:visible_to_seller)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-          @entity_name = args[:entity_name] if args.key?(:entity_name)
-          @status = args[:status] if args.key?(:status)
-          @entity_type = args[:entity_type] if args.key?(:entity_type)
         end
       end
       
       # @OutputOnly Shows any corrections that were applied to this creative.
       class Correction
         include Google::Apis::Core::Hashable
+      
+        # Additional details about what was corrected.
+        # Corresponds to the JSON property `details`
+        # @return [Array<String>]
+        attr_accessor :details
       
         # The type of correction that was applied to the creative.
         # Corresponds to the JSON property `type`
@@ -1015,39 +1001,15 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingContext>]
         attr_accessor :contexts
       
-        # Additional details about what was corrected.
-        # Corresponds to the JSON property `details`
-        # @return [Array<String>]
-        attr_accessor :details
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @type = args[:type] if args.key?(:type)
           @contexts = args[:contexts] if args.key?(:contexts)
-          @details = args[:details] if args.key?(:details)
-        end
-      end
-      
-      # A request for associating a deal and a creative.
-      class AddDealAssociationRequest
-        include Google::Apis::Core::Hashable
-      
-        # The association between a creative and a deal.
-        # Corresponds to the JSON property `association`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation]
-        attr_accessor :association
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @association = args[:association] if args.key?(:association)
         end
       end
       
@@ -1080,6 +1042,38 @@ module Google
         end
       end
       
+      # A request for associating a deal and a creative.
+      class AddDealAssociationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The association between a creative and a deal.
+        # Corresponds to the JSON property `association`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation]
+        attr_accessor :association
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @association = args[:association] if args.key?(:association)
+        end
+      end
+      
+      # A request for stopping notifications for changes to creative Status.
+      class StopWatchingCreativeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # @OutputOnly The reason and details for a disapproval.
       class Disapproval
         include Google::Apis::Core::Hashable
@@ -1105,34 +1099,12 @@ module Google
         end
       end
       
-      # A request for stopping notifications for changes to creative Status.
-      class StopWatchingCreativeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # @OutputOnly A representation of the status of an ad in a
       # specific context. A context here relates to where something ultimately serves
       # (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,
       # or the type of auction).
       class ServingRestriction
         include Google::Apis::Core::Hashable
-      
-        # Any disapprovals bound to this restriction.
-        # Only present if status=DISAPPROVED.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `disapprovalReasons`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Disapproval>]
-        attr_accessor :disapproval_reasons
       
         # The contexts for the restriction.
         # Corresponds to the JSON property `contexts`
@@ -1145,15 +1117,24 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Any disapprovals bound to this restriction.
+        # Only present if status=DISAPPROVED.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `disapprovalReasons`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Disapproval>]
+        attr_accessor :disapproval_reasons
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
           @contexts = args[:contexts] if args.key?(:contexts)
           @status = args[:status] if args.key?(:status)
+          @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
         end
       end
       
@@ -1193,6 +1174,25 @@ module Google
           @year = args[:year] if args.key?(:year)
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

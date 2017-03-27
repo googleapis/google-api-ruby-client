@@ -55,13 +55,13 @@ module Google
       class TraceSpan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
           property :span_id, as: 'spanId'
           property :parent_span_id, as: 'parentSpanId'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
         end
       end
       

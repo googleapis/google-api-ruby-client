@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fusiontables
     module FusiontablesV2
       VERSION = 'V2'
-      REVISION = '20160526'
+      REVISION = '20170321'
 
       # Manage your Fusion Tables
       AUTH_FUSIONTABLES = 'https://www.googleapis.com/auth/fusiontables'

@@ -46,8 +46,10 @@ module Google
           property :etags, as: 'etags'
           property :kind, as: 'kind'
           property :product_id, as: 'productId'
+          property :product_name, as: 'productName'
           property :self_link, as: 'selfLink'
           property :sku_id, as: 'skuId'
+          property :sku_name, as: 'skuName'
           property :user_id, as: 'userId'
         end
       end

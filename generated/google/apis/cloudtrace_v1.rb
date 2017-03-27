@@ -28,7 +28,7 @@ module Google
     # @see https://cloud.google.com/trace
     module CloudtraceV1
       VERSION = 'V1'
-      REVISION = '20170225'
+      REVISION = '20170320'
 
       # Read Trace data for a project or application
       AUTH_TRACE_READONLY = 'https://www.googleapis.com/auth/trace.readonly'

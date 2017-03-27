@@ -22,6 +22,18 @@ module Google
   module Apis
     module PubsubV1
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTopicsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,12 +41,6 @@ module Google
       end
       
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListTopicsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,13 +112,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Topic
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
+      class Topic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,9 +149,20 @@ module Google
       end
       
       class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class ListTopicsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :topics, as: 'topics', class: Google::Apis::PubsubV1::Topic, decorator: Google::Apis::PubsubV1::Topic::Representation
+      
+        end
       end
       
       class AcknowledgeRequest
@@ -158,15 +175,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ListTopicsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :topics, as: 'topics', class: Google::Apis::PubsubV1::Topic, decorator: Google::Apis::PubsubV1::Topic::Representation
-      
         end
       end
       
@@ -221,9 +229,9 @@ module Google
       class ListSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :subscriptions, as: 'subscriptions', class: Google::Apis::PubsubV1::Subscription, decorator: Google::Apis::PubsubV1::Subscription::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -245,11 +253,11 @@ module Google
       class Subscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
+      
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
           property :name, as: 'name'
           property :topic, as: 'topic'
-          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
-      
         end
       end
       
@@ -260,6 +268,16 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+          collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1::Binding, decorator: Google::Apis::PubsubV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+        end
+      end
+      
       class Topic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -267,21 +285,11 @@ module Google
         end
       end
       
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-          collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1::Binding, decorator: Google::Apis::PubsubV1::Binding::Representation
-      
-        end
-      end
-      
       class ModifyAckDeadlineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ack_ids, as: 'ackIds'
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          collection :ack_ids, as: 'ackIds'
         end
       end
       
@@ -296,10 +304,10 @@ module Google
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_time, as: 'publishTime'
           property :data, :base64 => true, as: 'data'
           hash :attributes, as: 'attributes'
           property :message_id, as: 'messageId'
-          property :publish_time, as: 'publishTime'
         end
       end
       
@@ -308,14 +316,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
       
-        end
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :members, as: 'members'
-          property :role, as: 'role'
         end
       end
     end

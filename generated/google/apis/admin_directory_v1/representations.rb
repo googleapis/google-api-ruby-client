@@ -346,7 +346,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserPosixAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserSshPublicKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -985,8 +997,10 @@ module Google
           property :organizations, as: 'organizations'
           property :password, as: 'password'
           property :phones, as: 'phones'
+          property :posix_accounts, as: 'posixAccounts'
           property :primary_email, as: 'primaryEmail'
           property :relations, as: 'relations'
+          property :ssh_public_keys, as: 'sshPublicKeys'
           property :suspended, as: 'suspended'
           property :suspension_reason, as: 'suspensionReason'
           property :thumbnail_photo_etag, as: 'thumbnailPhotoEtag'
@@ -1110,12 +1124,35 @@ module Google
         end
       end
       
+      class UserPosixAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gecos, as: 'gecos'
+          property :gid, as: 'gid'
+          property :home_directory, as: 'homeDirectory'
+          property :primary, as: 'primary'
+          property :shell, as: 'shell'
+          property :system_id, as: 'systemId'
+          property :uid, as: 'uid'
+          property :username, as: 'username'
+        end
+      end
+      
       class UserRelation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_type, as: 'customType'
           property :type, as: 'type'
           property :value, as: 'value'
+        end
+      end
+      
+      class UserSshPublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_time_usec, as: 'expirationTimeUsec'
+          property :fingerprint, as: 'fingerprint'
+          property :key, as: 'key'
         end
       end
       

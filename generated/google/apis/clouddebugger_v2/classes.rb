@@ -22,22 +22,70 @@ module Google
   module Apis
     module ClouddebuggerV2
       
-      # A CloudRepoSourceContext denotes a particular revision in a cloud
-      # repo (a repo hosted by the Google Cloud Platform).
-      class CloudRepoSourceContext
+      # A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
+      class CloudWorkspaceSourceContext
         include Google::Apis::Core::Hashable
       
-        # A unique identifier for a cloud repo.
-        # Corresponds to the JSON property `repoId`
-        # @return [Google::Apis::ClouddebuggerV2::RepoId]
-        attr_accessor :repo_id
+        # The ID of the snapshot.
+        # An empty snapshot_id refers to the most recent snapshot.
+        # Corresponds to the JSON property `snapshotId`
+        # @return [String]
+        attr_accessor :snapshot_id
+      
+        # A CloudWorkspaceId is a unique identifier for a cloud workspace.
+        # A cloud workspace is a place associated with a repo where modified files
+        # can be stored before they are committed.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceId]
+        attr_accessor :workspace_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_id = args[:snapshot_id] if args.key?(:snapshot_id)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
+      # Response for updating an active breakpoint.
+      # The message is defined to allow future extensions.
+      class UpdateActiveBreakpointResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A SourceContext referring to a Gerrit project.
+      class GerritSourceContext
+        include Google::Apis::Core::Hashable
+      
+        # The full project name within the host. Projects may be nested, so
+        # "project/subproject" is a valid project name.
+        # The "repo name" is hostURI/project.
+        # Corresponds to the JSON property `gerritProject`
+        # @return [String]
+        attr_accessor :gerrit_project
       
         # An alias to a repo revision.
         # Corresponds to the JSON property `aliasContext`
         # @return [Google::Apis::ClouddebuggerV2::AliasContext]
         attr_accessor :alias_context
       
-        # A revision ID.
+        # The URI of a running Gerrit instance.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # A revision (commit) ID.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -53,10 +101,329 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @gerrit_project = args[:gerrit_project] if args.key?(:gerrit_project)
           @alias_context = args[:alias_context] if args.key?(:alias_context)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @alias_name = args[:alias_name] if args.key?(:alias_name)
+        end
+      end
+      
+      # A CloudWorkspaceId is a unique identifier for a cloud workspace.
+      # A cloud workspace is a place associated with a repo where modified files
+      # can be stored before they are committed.
+      class CloudWorkspaceId
+        include Google::Apis::Core::Hashable
+      
+        # The unique name of the workspace within the repo.  This is the name
+        # chosen by the client in the Source API's CreateWorkspace method.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A unique identifier for a cloud repo.
+        # Corresponds to the JSON property `repoId`
+        # @return [Google::Apis::ClouddebuggerV2::RepoId]
+        attr_accessor :repo_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @repo_id = args[:repo_id] if args.key?(:repo_id)
+        end
+      end
+      
+      # Response for listing breakpoints.
+      class ListBreakpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of breakpoints matching the request.
+        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
+        # The fields: `stack_frames`, `evaluated_expressions` and `variable_table`
+        # are cleared on each breakpoint regardless of it's status.
+        # Corresponds to the JSON property `breakpoints`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
+        attr_accessor :breakpoints
+      
+        # A wait token that can be used in the next call to `list` (REST) or
+        # `ListBreakpoints` (RPC) to block until the list of breakpoints has changes.
+        # Corresponds to the JSON property `nextWaitToken`
+        # @return [String]
+        attr_accessor :next_wait_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
+          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
+        end
+      end
+      
+      # Represents the breakpoint specification, status and results.
+      class Breakpoint
+        include Google::Apis::Core::Hashable
+      
+        # List of read-only expressions to evaluate at the breakpoint location.
+        # The expressions are composed using expressions in the programming language
+        # at the source location. If the breakpoint action is `LOG`, the evaluated
+        # expressions are included in log statements.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<String>]
+        attr_accessor :expressions
+      
+        # Values of evaluated expressions at breakpoint time.
+        # The evaluated expressions appear in exactly the same order they
+        # are listed in the `expressions` field.
+        # The `name` field holds the original expression text, the `value` or
+        # `members` field holds the result of the evaluated expression.
+        # If the expression cannot be evaluated, the `status` inside the `Variable`
+        # will indicate an error and contain the error text.
+        # Corresponds to the JSON property `evaluatedExpressions`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
+        attr_accessor :evaluated_expressions
+      
+        # When true, indicates that this is a final result and the
+        # breakpoint state will not change from here on.
+        # Corresponds to the JSON property `isFinalState`
+        # @return [Boolean]
+        attr_accessor :is_final_state
+        alias_method :is_final_state?, :is_final_state
+      
+        # The stack at breakpoint time.
+        # Corresponds to the JSON property `stackFrames`
+        # @return [Array<Google::Apis::ClouddebuggerV2::StackFrame>]
+        attr_accessor :stack_frames
+      
+        # Condition that triggers the breakpoint.
+        # The condition is a compound boolean expression composed using expressions
+        # in a programming language at the source location.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Represents a contextual status message.
+        # The message can indicate an error or informational status, and refer to
+        # specific parts of the containing object.
+        # For example, the `Breakpoint.status` field can indicate an error referring
+        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
+        attr_accessor :status
+      
+        # E-mail address of the user that created this breakpoint
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # Action that the agent should perform when the code at the
+        # breakpoint location is hit.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Indicates the severity of the log. Only relevant when action is `LOG`.
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
+        # Breakpoint identifier, unique in the scope of the debuggee.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Represents a location in the source code.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
+        attr_accessor :location
+      
+        # Time this breakpoint was finalized as seen by the server in seconds
+        # resolution.
+        # Corresponds to the JSON property `finalTime`
+        # @return [String]
+        attr_accessor :final_time
+      
+        # The `variable_table` exists to aid with computation, memory and network
+        # traffic optimization.  It enables storing a variable once and reference
+        # it from multiple variables, including variables stored in the
+        # `variable_table` itself.
+        # For example, the same `this` object, which may appear at many levels of
+        # the stack, can have all of its data stored once in this table.  The
+        # stack frame variables then would hold only a reference to it.
+        # The variable `var_table_index` field is an index into this repeated field.
+        # The stored objects are nameless and get their name from the referencing
+        # variable. The effective variable is a merge of the referencing variable
+        # and the referenced variable.
+        # Corresponds to the JSON property `variableTable`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
+        attr_accessor :variable_table
+      
+        # Time this breakpoint was created by the server in seconds resolution.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Only relevant when action is `LOG`. Defines the message to log when
+        # the breakpoint hits. The message may include parameter placeholders `$0`,
+        # `$1`, etc. These placeholders are replaced with the evaluated value
+        # of the appropriate expression. Expressions not referenced in
+        # `log_message_format` are not logged.
+        # Example: `Message received, id = $0, count = $1` with
+        # `expressions` = `[ message.id, message.count ]`.
+        # Corresponds to the JSON property `logMessageFormat`
+        # @return [String]
+        attr_accessor :log_message_format
+      
+        # A set of custom breakpoint properties, populated by the agent, to be
+        # displayed to the user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+          @evaluated_expressions = args[:evaluated_expressions] if args.key?(:evaluated_expressions)
+          @is_final_state = args[:is_final_state] if args.key?(:is_final_state)
+          @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
+          @condition = args[:condition] if args.key?(:condition)
+          @status = args[:status] if args.key?(:status)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @action = args[:action] if args.key?(:action)
+          @log_level = args[:log_level] if args.key?(:log_level)
+          @id = args[:id] if args.key?(:id)
+          @location = args[:location] if args.key?(:location)
+          @final_time = args[:final_time] if args.key?(:final_time)
+          @variable_table = args[:variable_table] if args.key?(:variable_table)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @log_message_format = args[:log_message_format] if args.key?(:log_message_format)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Request to update an active breakpoint.
+      class UpdateActiveBreakpointRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the breakpoint specification, status and results.
+        # Corresponds to the JSON property `breakpoint`
+        # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
+        attr_accessor :breakpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
+        end
+      end
+      
+      # Response for setting a breakpoint.
+      class SetBreakpointResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents the breakpoint specification, status and results.
+        # Corresponds to the JSON property `breakpoint`
+        # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
+        attr_accessor :breakpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
+        end
+      end
+      
+      # A SourceContext is a reference to a tree of files. A SourceContext together
+      # with a path point to a unique revision of a single file or directory.
+      class SourceContext
+        include Google::Apis::Core::Hashable
+      
+        # A GitSourceContext denotes a particular revision in a third party Git
+        # repository (e.g. GitHub).
+        # Corresponds to the JSON property `git`
+        # @return [Google::Apis::ClouddebuggerV2::GitSourceContext]
+        attr_accessor :git
+      
+        # A SourceContext referring to a Gerrit project.
+        # Corresponds to the JSON property `gerrit`
+        # @return [Google::Apis::ClouddebuggerV2::GerritSourceContext]
+        attr_accessor :gerrit
+      
+        # A CloudRepoSourceContext denotes a particular revision in a cloud
+        # repo (a repo hosted by the Google Cloud Platform).
+        # Corresponds to the JSON property `cloudRepo`
+        # @return [Google::Apis::ClouddebuggerV2::CloudRepoSourceContext]
+        attr_accessor :cloud_repo
+      
+        # A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
+        # Corresponds to the JSON property `cloudWorkspace`
+        # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceSourceContext]
+        attr_accessor :cloud_workspace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @git = args[:git] if args.key?(:git)
+          @gerrit = args[:gerrit] if args.key?(:gerrit)
+          @cloud_repo = args[:cloud_repo] if args.key?(:cloud_repo)
+          @cloud_workspace = args[:cloud_workspace] if args.key?(:cloud_workspace)
+        end
+      end
+      
+      # A CloudRepoSourceContext denotes a particular revision in a cloud
+      # repo (a repo hosted by the Google Cloud Platform).
+      class CloudRepoSourceContext
+        include Google::Apis::Core::Hashable
+      
+        # A revision ID.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # The name of an alias (branch, tag, etc.).
+        # Corresponds to the JSON property `aliasName`
+        # @return [String]
+        attr_accessor :alias_name
+      
+        # A unique identifier for a cloud repo.
+        # Corresponds to the JSON property `repoId`
+        # @return [Google::Apis::ClouddebuggerV2::RepoId]
+        attr_accessor :repo_id
+      
+        # An alias to a repo revision.
+        # Corresponds to the JSON property `aliasContext`
+        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
+        attr_accessor :alias_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @alias_name = args[:alias_name] if args.key?(:alias_name)
+          @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @alias_context = args[:alias_context] if args.key?(:alias_context)
         end
       end
       
@@ -273,25 +640,17 @@ module Google
       class Variable
         include Google::Apis::Core::Hashable
       
-        # Variable type (e.g. `MyClass`). If the variable is split with
-        # `var_table_index`, `type` goes next to `value`. The interpretation of
-        # a type is agent specific. It is recommended to include the dynamic type
-        # rather than a static type of an object.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Simple value of the variable.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
         # Reference to a variable in the shared variable table. More than
         # one variable can reference the same variable in the table. The
         # `var_table_index` field is an index into `variable_table` in Breakpoint.
         # Corresponds to the JSON property `varTableIndex`
         # @return [Fixnum]
         attr_accessor :var_table_index
+      
+        # Simple value of the variable.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
       
         # Members contained or pointed to by the variable.
         # Corresponds to the JSON property `members`
@@ -312,35 +671,32 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Variable type (e.g. `MyClass`). If the variable is split with
+        # `var_table_index`, `type` goes next to `value`. The interpretation of
+        # a type is agent specific. It is recommended to include the dynamic type
+        # rather than a static type of an object.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] if args.key?(:type)
-          @value = args[:value] if args.key?(:value)
           @var_table_index = args[:var_table_index] if args.key?(:var_table_index)
+          @value = args[:value] if args.key?(:value)
           @members = args[:members] if args.key?(:members)
           @status = args[:status] if args.key?(:status)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
       # Represents a stack frame context.
       class StackFrame
         include Google::Apis::Core::Hashable
-      
-        # Set of local variables at the stack frame location.
-        # Note that this might not be populated for all stack frames.
-        # Corresponds to the JSON property `locals`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
-        attr_accessor :locals
-      
-        # Represents a location in the source code.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
-        attr_accessor :location
       
         # Demangled function name at the call site.
         # Corresponds to the JSON property `function`
@@ -353,16 +709,27 @@ module Google
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :arguments
       
+        # Set of local variables at the stack frame location.
+        # Note that this might not be populated for all stack frames.
+        # Corresponds to the JSON property `locals`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
+        attr_accessor :locals
+      
+        # Represents a location in the source code.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @locals = args[:locals] if args.key?(:locals)
-          @location = args[:location] if args.key?(:location)
           @function = args[:function] if args.key?(:function)
           @arguments = args[:arguments] if args.key?(:arguments)
+          @locals = args[:locals] if args.key?(:locals)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -370,16 +737,16 @@ module Google
       class RepoId
         include Google::Apis::Core::Hashable
       
+        # A server-assigned, globally unique identifier.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Selects a repo using a Google Cloud Platform project ID
         # (e.g. winged-cargo-31) and a repo name within that project.
         # Corresponds to the JSON property `projectRepoId`
         # @return [Google::Apis::ClouddebuggerV2::ProjectRepoId]
         attr_accessor :project_repo_id
-      
-        # A server-assigned, globally unique identifier.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
       
         def initialize(**args)
            update!(**args)
@@ -387,8 +754,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @project_repo_id = args[:project_repo_id] if args.key?(:project_repo_id)
           @uid = args[:uid] if args.key?(:uid)
+          @project_repo_id = args[:project_repo_id] if args.key?(:project_repo_id)
         end
       end
       
@@ -450,6 +817,29 @@ module Google
         end
       end
       
+      # Response for listing debuggees.
+      class ListDebuggeesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of debuggees accessible to the calling user.
+        # Note that the `description` field is the only human readable field
+        # that should be displayed to the user.
+        # The fields `debuggee.id` and  `description` fields are guaranteed to be
+        # set on each debuggee.
+        # Corresponds to the JSON property `debuggees`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Debuggee>]
+        attr_accessor :debuggees
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debuggees = args[:debuggees] if args.key?(:debuggees)
+        end
+      end
+      
       # An alias to a repo revision.
       class AliasContext
         include Google::Apis::Core::Hashable
@@ -472,29 +862,6 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # Response for listing debuggees.
-      class ListDebuggeesResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of debuggees accessible to the calling user.
-        # Note that the `description` field is the only human readable field
-        # that should be displayed to the user.
-        # The fields `debuggee.id` and  `description` fields are guaranteed to be
-        # set on each debuggee.
-        # Corresponds to the JSON property `debuggees`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Debuggee>]
-        attr_accessor :debuggees
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @debuggees = args[:debuggees] if args.key?(:debuggees)
         end
       end
       
@@ -521,15 +888,15 @@ module Google
       class SourceLocation
         include Google::Apis::Core::Hashable
       
-        # Line inside the file. The first line in the file has the value `1`.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
-      
         # Path to the source file within the source context of the target binary.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
+      
+        # Line inside the file. The first line in the file has the value `1`.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
       
         def initialize(**args)
            update!(**args)
@@ -537,8 +904,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @line = args[:line] if args.key?(:line)
           @path = args[:path] if args.key?(:path)
+          @line = args[:line] if args.key?(:line)
         end
       end
       
@@ -550,23 +917,10 @@ module Google
       class Debuggee
         include Google::Apis::Core::Hashable
       
-        # Project the debuggee is associated with.
-        # Use the project number when registering a Google Cloud Platform project.
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
         # Unique identifier for the debuggee generated by the controller service.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
-        # If set to `true`, indicates that the agent should disable itself and
-        # detach from the debuggee.
-        # Corresponds to the JSON property `isDisabled`
-        # @return [Boolean]
-        attr_accessor :is_disabled
-        alias_method :is_disabled?, :is_disabled
       
         # Version ID of the agent release. The version ID is structured as
         # following: `domain/type/vmajor.minor` (for example
@@ -574,6 +928,13 @@ module Google
         # Corresponds to the JSON property `agentVersion`
         # @return [String]
         attr_accessor :agent_version
+      
+        # If set to `true`, indicates that the agent should disable itself and
+        # detach from the debuggee.
+        # Corresponds to the JSON property `isDisabled`
+        # @return [Boolean]
+        attr_accessor :is_disabled
+        alias_method :is_disabled?, :is_disabled
       
         # Debuggee uniquifier within the project.
         # Any string that identifies the application within the project can be used.
@@ -629,16 +990,21 @@ module Google
         attr_accessor :is_inactive
         alias_method :is_inactive?, :is_inactive
       
+        # Project the debuggee is associated with.
+        # Use the project number when registering a Google Cloud Platform project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @project = args[:project] if args.key?(:project)
           @id = args[:id] if args.key?(:id)
-          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
           @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
           @uniquifier = args[:uniquifier] if args.key?(:uniquifier)
           @description = args[:description] if args.key?(:description)
           @source_contexts = args[:source_contexts] if args.key?(:source_contexts)
@@ -646,41 +1012,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @status = args[:status] if args.key?(:status)
           @is_inactive = args[:is_inactive] if args.key?(:is_inactive)
-        end
-      end
-      
-      # Response for listing active breakpoints.
-      class ListActiveBreakpointsResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of all active breakpoints.
-        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
-        # Corresponds to the JSON property `breakpoints`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
-        attr_accessor :breakpoints
-      
-        # The `wait_expired` field is set to true by the server when the
-        # request times out and the field `success_on_timeout` is set to true.
-        # Corresponds to the JSON property `waitExpired`
-        # @return [Boolean]
-        attr_accessor :wait_expired
-        alias_method :wait_expired?, :wait_expired
-      
-        # A wait token that can be used in the next method call to block until
-        # the list of breakpoints changes.
-        # Corresponds to the JSON property `nextWaitToken`
-        # @return [String]
-        attr_accessor :next_wait_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
-          @wait_expired = args[:wait_expired] if args.key?(:wait_expired)
-          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
@@ -710,269 +1042,28 @@ module Google
         end
       end
       
-      # A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
-      class CloudWorkspaceSourceContext
+      # Response for listing active breakpoints.
+      class ListActiveBreakpointsResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the snapshot.
-        # An empty snapshot_id refers to the most recent snapshot.
-        # Corresponds to the JSON property `snapshotId`
-        # @return [String]
-        attr_accessor :snapshot_id
-      
-        # A CloudWorkspaceId is a unique identifier for a cloud workspace.
-        # A cloud workspace is a place associated with a repo where modified files
-        # can be stored before they are committed.
-        # Corresponds to the JSON property `workspaceId`
-        # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceId]
-        attr_accessor :workspace_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snapshot_id = args[:snapshot_id] if args.key?(:snapshot_id)
-          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
-        end
-      end
-      
-      # A SourceContext referring to a Gerrit project.
-      class GerritSourceContext
-        include Google::Apis::Core::Hashable
-      
-        # The full project name within the host. Projects may be nested, so
-        # "project/subproject" is a valid project name.
-        # The "repo name" is hostURI/project.
-        # Corresponds to the JSON property `gerritProject`
-        # @return [String]
-        attr_accessor :gerrit_project
-      
-        # An alias to a repo revision.
-        # Corresponds to the JSON property `aliasContext`
-        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
-        attr_accessor :alias_context
-      
-        # The URI of a running Gerrit instance.
-        # Corresponds to the JSON property `hostUri`
-        # @return [String]
-        attr_accessor :host_uri
-      
-        # A revision (commit) ID.
-        # Corresponds to the JSON property `revisionId`
-        # @return [String]
-        attr_accessor :revision_id
-      
-        # The name of an alias (branch, tag, etc.).
-        # Corresponds to the JSON property `aliasName`
-        # @return [String]
-        attr_accessor :alias_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gerrit_project = args[:gerrit_project] if args.key?(:gerrit_project)
-          @alias_context = args[:alias_context] if args.key?(:alias_context)
-          @host_uri = args[:host_uri] if args.key?(:host_uri)
-          @revision_id = args[:revision_id] if args.key?(:revision_id)
-          @alias_name = args[:alias_name] if args.key?(:alias_name)
-        end
-      end
-      
-      # Response for updating an active breakpoint.
-      # The message is defined to allow future extensions.
-      class UpdateActiveBreakpointResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A CloudWorkspaceId is a unique identifier for a cloud workspace.
-      # A cloud workspace is a place associated with a repo where modified files
-      # can be stored before they are committed.
-      class CloudWorkspaceId
-        include Google::Apis::Core::Hashable
-      
-        # A unique identifier for a cloud repo.
-        # Corresponds to the JSON property `repoId`
-        # @return [Google::Apis::ClouddebuggerV2::RepoId]
-        attr_accessor :repo_id
-      
-        # The unique name of the workspace within the repo.  This is the name
-        # chosen by the client in the Source API's CreateWorkspace method.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @repo_id = args[:repo_id] if args.key?(:repo_id)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Response for listing breakpoints.
-      class ListBreakpointsResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of breakpoints matching the request.
-        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
-        # The fields: `stack_frames`, `evaluated_expressions` and `variable_table`
-        # are cleared on each breakpoint regardless of it's status.
-        # Corresponds to the JSON property `breakpoints`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
-        attr_accessor :breakpoints
-      
-        # A wait token that can be used in the next call to `list` (REST) or
-        # `ListBreakpoints` (RPC) to block until the list of breakpoints has changes.
+        # A wait token that can be used in the next method call to block until
+        # the list of breakpoints changes.
         # Corresponds to the JSON property `nextWaitToken`
         # @return [String]
         attr_accessor :next_wait_token
       
-        def initialize(**args)
-           update!(**args)
-        end
+        # List of all active breakpoints.
+        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
+        # Corresponds to the JSON property `breakpoints`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
+        attr_accessor :breakpoints
       
-        # Update properties of this object
-        def update!(**args)
-          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
-          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
-        end
-      end
-      
-      # Represents the breakpoint specification, status and results.
-      class Breakpoint
-        include Google::Apis::Core::Hashable
-      
-        # List of read-only expressions to evaluate at the breakpoint location.
-        # The expressions are composed using expressions in the programming language
-        # at the source location. If the breakpoint action is `LOG`, the evaluated
-        # expressions are included in log statements.
-        # Corresponds to the JSON property `expressions`
-        # @return [Array<String>]
-        attr_accessor :expressions
-      
-        # Values of evaluated expressions at breakpoint time.
-        # The evaluated expressions appear in exactly the same order they
-        # are listed in the `expressions` field.
-        # The `name` field holds the original expression text, the `value` or
-        # `members` field holds the result of the evaluated expression.
-        # If the expression cannot be evaluated, the `status` inside the `Variable`
-        # will indicate an error and contain the error text.
-        # Corresponds to the JSON property `evaluatedExpressions`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
-        attr_accessor :evaluated_expressions
-      
-        # When true, indicates that this is a final result and the
-        # breakpoint state will not change from here on.
-        # Corresponds to the JSON property `isFinalState`
+        # The `wait_expired` field is set to true by the server when the
+        # request times out and the field `success_on_timeout` is set to true.
+        # Corresponds to the JSON property `waitExpired`
         # @return [Boolean]
-        attr_accessor :is_final_state
-        alias_method :is_final_state?, :is_final_state
-      
-        # The stack at breakpoint time.
-        # Corresponds to the JSON property `stackFrames`
-        # @return [Array<Google::Apis::ClouddebuggerV2::StackFrame>]
-        attr_accessor :stack_frames
-      
-        # Condition that triggers the breakpoint.
-        # The condition is a compound boolean expression composed using expressions
-        # in a programming language at the source location.
-        # Corresponds to the JSON property `condition`
-        # @return [String]
-        attr_accessor :condition
-      
-        # Represents a contextual status message.
-        # The message can indicate an error or informational status, and refer to
-        # specific parts of the containing object.
-        # For example, the `Breakpoint.status` field can indicate an error referring
-        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
-        attr_accessor :status
-      
-        # E-mail address of the user that created this breakpoint
-        # Corresponds to the JSON property `userEmail`
-        # @return [String]
-        attr_accessor :user_email
-      
-        # Action that the agent should perform when the code at the
-        # breakpoint location is hit.
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Indicates the severity of the log. Only relevant when action is `LOG`.
-        # Corresponds to the JSON property `logLevel`
-        # @return [String]
-        attr_accessor :log_level
-      
-        # Breakpoint identifier, unique in the scope of the debuggee.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Represents a location in the source code.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
-        attr_accessor :location
-      
-        # Time this breakpoint was finalized as seen by the server in seconds
-        # resolution.
-        # Corresponds to the JSON property `finalTime`
-        # @return [String]
-        attr_accessor :final_time
-      
-        # The `variable_table` exists to aid with computation, memory and network
-        # traffic optimization.  It enables storing a variable once and reference
-        # it from multiple variables, including variables stored in the
-        # `variable_table` itself.
-        # For example, the same `this` object, which may appear at many levels of
-        # the stack, can have all of its data stored once in this table.  The
-        # stack frame variables then would hold only a reference to it.
-        # The variable `var_table_index` field is an index into this repeated field.
-        # The stored objects are nameless and get their name from the referencing
-        # variable. The effective variable is a merge of the referencing variable
-        # and the referenced variable.
-        # Corresponds to the JSON property `variableTable`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
-        attr_accessor :variable_table
-      
-        # A set of custom breakpoint properties, populated by the agent, to be
-        # displayed to the user.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Only relevant when action is `LOG`. Defines the message to log when
-        # the breakpoint hits. The message may include parameter placeholders `$0`,
-        # `$1`, etc. These placeholders are replaced with the evaluated value
-        # of the appropriate expression. Expressions not referenced in
-        # `log_message_format` are not logged.
-        # Example: `Message received, id = $0, count = $1` with
-        # `expressions` = `[ message.id, message.count ]`.
-        # Corresponds to the JSON property `logMessageFormat`
-        # @return [String]
-        attr_accessor :log_message_format
-      
-        # Time this breakpoint was created by the server in seconds resolution.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
+        attr_accessor :wait_expired
+        alias_method :wait_expired?, :wait_expired
       
         def initialize(**args)
            update!(**args)
@@ -980,100 +1071,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @expressions = args[:expressions] if args.key?(:expressions)
-          @evaluated_expressions = args[:evaluated_expressions] if args.key?(:evaluated_expressions)
-          @is_final_state = args[:is_final_state] if args.key?(:is_final_state)
-          @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
-          @condition = args[:condition] if args.key?(:condition)
-          @status = args[:status] if args.key?(:status)
-          @user_email = args[:user_email] if args.key?(:user_email)
-          @action = args[:action] if args.key?(:action)
-          @log_level = args[:log_level] if args.key?(:log_level)
-          @id = args[:id] if args.key?(:id)
-          @location = args[:location] if args.key?(:location)
-          @final_time = args[:final_time] if args.key?(:final_time)
-          @variable_table = args[:variable_table] if args.key?(:variable_table)
-          @labels = args[:labels] if args.key?(:labels)
-          @log_message_format = args[:log_message_format] if args.key?(:log_message_format)
-          @create_time = args[:create_time] if args.key?(:create_time)
-        end
-      end
-      
-      # Request to update an active breakpoint.
-      class UpdateActiveBreakpointRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents the breakpoint specification, status and results.
-        # Corresponds to the JSON property `breakpoint`
-        # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
-        attr_accessor :breakpoint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
-        end
-      end
-      
-      # Response for setting a breakpoint.
-      class SetBreakpointResponse
-        include Google::Apis::Core::Hashable
-      
-        # Represents the breakpoint specification, status and results.
-        # Corresponds to the JSON property `breakpoint`
-        # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
-        attr_accessor :breakpoint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @breakpoint = args[:breakpoint] if args.key?(:breakpoint)
-        end
-      end
-      
-      # A SourceContext is a reference to a tree of files. A SourceContext together
-      # with a path point to a unique revision of a single file or directory.
-      class SourceContext
-        include Google::Apis::Core::Hashable
-      
-        # A GitSourceContext denotes a particular revision in a third party Git
-        # repository (e.g. GitHub).
-        # Corresponds to the JSON property `git`
-        # @return [Google::Apis::ClouddebuggerV2::GitSourceContext]
-        attr_accessor :git
-      
-        # A SourceContext referring to a Gerrit project.
-        # Corresponds to the JSON property `gerrit`
-        # @return [Google::Apis::ClouddebuggerV2::GerritSourceContext]
-        attr_accessor :gerrit
-      
-        # A CloudRepoSourceContext denotes a particular revision in a cloud
-        # repo (a repo hosted by the Google Cloud Platform).
-        # Corresponds to the JSON property `cloudRepo`
-        # @return [Google::Apis::ClouddebuggerV2::CloudRepoSourceContext]
-        attr_accessor :cloud_repo
-      
-        # A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
-        # Corresponds to the JSON property `cloudWorkspace`
-        # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceSourceContext]
-        attr_accessor :cloud_workspace
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @git = args[:git] if args.key?(:git)
-          @gerrit = args[:gerrit] if args.key?(:gerrit)
-          @cloud_repo = args[:cloud_repo] if args.key?(:cloud_repo)
-          @cloud_workspace = args[:cloud_workspace] if args.key?(:cloud_workspace)
+          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
+          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
+          @wait_expired = args[:wait_expired] if args.key?(:wait_expired)
         end
       end
     end

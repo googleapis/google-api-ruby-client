@@ -498,6 +498,7 @@ module Google
       class VerifyAssertionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create, as: 'autoCreate'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
@@ -551,9 +552,16 @@ module Google
       class Relyingparty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_install_app, as: 'androidInstallApp'
+          property :android_minimum_version, as: 'androidMinimumVersion'
+          property :android_package_name, as: 'androidPackageName'
+          property :can_handle_code_in_app, as: 'canHandleCodeInApp'
           property :captcha_resp, as: 'captchaResp'
           property :challenge, as: 'challenge'
+          property :continue_url, as: 'continueUrl'
           property :email, as: 'email'
+          property :i_os_app_store_id, as: 'iOSAppStoreId'
+          property :i_os_bundle_id, as: 'iOSBundleId'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :new_email, as: 'newEmail'

@@ -618,7 +618,9 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_time
       
-        # The name of the file. This is not necessarily unique within a folder.
+        # The name of the file. This is not necessarily unique within a folder. Note
+        # that for immutable items such as the top level folders of Team Drives, My
+        # Drive root folder, and Application Data folder the name is constant.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

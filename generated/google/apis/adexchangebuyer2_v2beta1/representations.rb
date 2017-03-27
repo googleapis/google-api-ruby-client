@@ -22,12 +22,6 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class WatchCreativeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NativeContent
+      class ListClientsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListClientsResponse
+      class NativeContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,13 +52,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCreativesResponse
+      class HtmlContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HtmlContent
+      class ListCreativesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,25 +166,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddDealAssociationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListDealAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Disapproval
+      class AddDealAssociationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class StopWatchingCreativeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Disapproval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,9 +203,9 @@ module Google
       end
       
       class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class WatchCreativeRequest
@@ -225,6 +219,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app_types, as: 'appTypes'
+        end
+      end
+      
+      class ListClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -250,19 +253,19 @@ module Google
         end
       end
       
-      class ListClientsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :clients, as: 'clients', class: Google::Apis::Adexchangebuyer2V2beta1::Client, decorator: Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class SecurityContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :securities, as: 'securities'
+        end
+      end
+      
+      class HtmlContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :width, as: 'width'
+          property :snippet, as: 'snippet'
+          property :height, as: 'height'
         end
       end
       
@@ -272,15 +275,6 @@ module Google
           collection :creatives, as: 'creatives', class: Google::Apis::Adexchangebuyer2V2beta1::Creative, decorator: Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class HtmlContent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :height, as: 'height'
-          property :width, as: 'width'
-          property :snippet, as: 'snippet'
         end
       end
       
@@ -328,9 +322,9 @@ module Google
       class ClientUserInvitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
           property :client_account_id, as: 'clientAccountId'
           property :invitation_id, as: 'invitationId'
-          property :email, as: 'email'
         end
       end
       
@@ -386,18 +380,18 @@ module Google
       class CreativeDealAssociation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
           property :creative_id, as: 'creativeId'
           property :deals_id, as: 'dealsId'
+          property :account_id, as: 'accountId'
         end
       end
       
       class FilteringStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :reasons, as: 'reasons', class: Google::Apis::Adexchangebuyer2V2beta1::Reason, decorator: Google::Apis::Adexchangebuyer2V2beta1::Reason::Representation
-      
           property :date, as: 'date', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
+      
+          collection :reasons, as: 'reasons', class: Google::Apis::Adexchangebuyer2V2beta1::Reason, decorator: Google::Apis::Adexchangebuyer2V2beta1::Reason::Representation
       
         end
       end
@@ -405,9 +399,22 @@ module Google
       class Creative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :video, as: 'video', class: Google::Apis::Adexchangebuyer2V2beta1::VideoContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::VideoContent::Representation
+          property :open_auction_status, as: 'openAuctionStatus'
+          property :advertiser_name, as: 'advertiserName'
+          collection :detected_advertiser_ids, as: 'detectedAdvertiserIds'
+          collection :detected_domains, as: 'detectedDomains'
+          property :filtering_stats, as: 'filteringStats', class: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats::Representation
+      
+          collection :attributes, as: 'attributes'
+          property :api_update_time, as: 'apiUpdateTime'
+          collection :detected_languages, as: 'detectedLanguages'
+          property :creative_id, as: 'creativeId'
+          property :account_id, as: 'accountId'
+          property :native, as: 'native', class: Google::Apis::Adexchangebuyer2V2beta1::NativeContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::NativeContent::Representation
       
           collection :serving_restrictions, as: 'servingRestrictions', class: Google::Apis::Adexchangebuyer2V2beta1::ServingRestriction, decorator: Google::Apis::Adexchangebuyer2V2beta1::ServingRestriction::Representation
+      
+          property :video, as: 'video', class: Google::Apis::Adexchangebuyer2V2beta1::VideoContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::VideoContent::Representation
       
           property :agency_id, as: 'agencyId'
           collection :click_through_urls, as: 'clickThroughUrls'
@@ -423,19 +430,6 @@ module Google
       
           property :deals_status, as: 'dealsStatus'
           collection :detected_product_categories, as: 'detectedProductCategories'
-          property :open_auction_status, as: 'openAuctionStatus'
-          property :advertiser_name, as: 'advertiserName'
-          collection :detected_domains, as: 'detectedDomains'
-          collection :detected_advertiser_ids, as: 'detectedAdvertiserIds'
-          property :filtering_stats, as: 'filteringStats', class: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats::Representation
-      
-          collection :attributes, as: 'attributes'
-          property :api_update_time, as: 'apiUpdateTime'
-          collection :detected_languages, as: 'detectedLanguages'
-          property :creative_id, as: 'creativeId'
-          property :account_id, as: 'accountId'
-          property :native, as: 'native', class: Google::Apis::Adexchangebuyer2V2beta1::NativeContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::NativeContent::Representation
-      
         end
       end
       
@@ -450,31 +444,23 @@ module Google
       class Client
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_name, as: 'entityName'
+          property :status, as: 'status'
+          property :entity_type, as: 'entityType'
           property :client_name, as: 'clientName'
           property :role, as: 'role'
           property :visible_to_seller, as: 'visibleToSeller'
           property :entity_id, as: 'entityId'
           property :client_account_id, as: 'clientAccountId'
-          property :entity_name, as: 'entityName'
-          property :status, as: 'status'
-          property :entity_type, as: 'entityType'
         end
       end
       
       class Correction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
           property :type, as: 'type'
           collection :contexts, as: 'contexts', class: Google::Apis::Adexchangebuyer2V2beta1::ServingContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::ServingContext::Representation
-      
-          collection :details, as: 'details'
-        end
-      end
-      
-      class AddDealAssociationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :association, as: 'association', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation::Representation
       
         end
       end
@@ -488,11 +474,11 @@ module Google
         end
       end
       
-      class Disapproval
+      class AddDealAssociationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :details, as: 'details'
-          property :reason, as: 'reason'
+          property :association, as: 'association', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation::Representation
+      
         end
       end
       
@@ -502,14 +488,22 @@ module Google
         end
       end
       
+      class Disapproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class ServingRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disapproval_reasons, as: 'disapprovalReasons', class: Google::Apis::Adexchangebuyer2V2beta1::Disapproval, decorator: Google::Apis::Adexchangebuyer2V2beta1::Disapproval::Representation
-      
           collection :contexts, as: 'contexts', class: Google::Apis::Adexchangebuyer2V2beta1::ServingContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::ServingContext::Representation
       
           property :status, as: 'status'
+          collection :disapproval_reasons, as: 'disapprovalReasons', class: Google::Apis::Adexchangebuyer2V2beta1::Disapproval, decorator: Google::Apis::Adexchangebuyer2V2beta1::Disapproval::Representation
+      
         end
       end
       
@@ -519,6 +513,12 @@ module Google
           property :year, as: 'year'
           property :day, as: 'day'
           property :month, as: 'month'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

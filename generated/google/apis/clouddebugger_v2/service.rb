@@ -47,138 +47,6 @@ module Google
           super('https://clouddebugger.googleapis.com/', '')
         end
         
-        # Registers the debuggee with the controller service.
-        # All agents attached to the same application should call this method with
-        # the same request content to get back the same stable `debuggee_id`. Agents
-        # should call this method again whenever `google.rpc.Code.NOT_FOUND` is
-        # returned from any controller method.
-        # This allows the controller service to disable the agent or recover from any
-        # data loss. If the debuggee is disabled by the server, the response will
-        # have `is_disabled` set to `true`.
-        # @param [Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest] register_debuggee_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def register_debuggee(register_debuggee_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/controller/debuggees/register', options)
-          command.request_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest::Representation
-          command.request_object = register_debuggee_request_object
-          command.response_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse::Representation
-          command.response_class = Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns the list of all active breakpoints for the debuggee.
-        # The breakpoint specification (location, condition, and expression
-        # fields) is semantically immutable, although the field values may
-        # change. For example, an agent may update the location line number
-        # to reflect the actual line where the breakpoint was set, but this
-        # doesn't change the breakpoint semantics.
-        # This means that an agent does not need to check if a breakpoint has changed
-        # when it encounters the same breakpoint on a successive call.
-        # Moreover, an agent should remember the breakpoints that are completed
-        # until the controller removes them from the active list to avoid
-        # setting those breakpoints again.
-        # @param [String] debuggee_id
-        #   Identifies the debuggee.
-        # @param [Boolean] success_on_timeout
-        #   If set to `true`, returns `google.rpc.Code.OK` status and sets the
-        #   `wait_expired` response field to `true` when the server-selected timeout
-        #   has expired (recommended).
-        #   If set to `false`, returns `google.rpc.Code.ABORTED` status when the
-        #   server-selected timeout has expired (deprecated).
-        # @param [String] wait_token
-        #   A wait token that, if specified, blocks the method call until the list
-        #   of active breakpoints has changed, or a server selected timeout has
-        #   expired.  The value should be set from the last returned response.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_controller_debuggee_breakpoints(debuggee_id, success_on_timeout: nil, wait_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/controller/debuggees/{debuggeeId}/breakpoints', options)
-          command.response_representation = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse::Representation
-          command.response_class = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse
-          command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
-          command.query['successOnTimeout'] = success_on_timeout unless success_on_timeout.nil?
-          command.query['waitToken'] = wait_token unless wait_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the breakpoint state or mutable fields.
-        # The entire Breakpoint message must be sent back to the controller
-        # service.
-        # Updates to active breakpoint fields are only allowed if the new value
-        # does not change the breakpoint specification. Updates to the `location`,
-        # `condition` and `expression` fields should not alter the breakpoint
-        # semantics. These may only make changes such as canonicalizing a value
-        # or snapping the location to the correct line of code.
-        # @param [String] debuggee_id
-        #   Identifies the debuggee being debugged.
-        # @param [String] id
-        #   Breakpoint identifier, unique in the scope of the debuggee.
-        # @param [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest] update_active_breakpoint_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_active_breakpoint(debuggee_id, id, update_active_breakpoint_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/controller/debuggees/{debuggeeId}/breakpoints/{id}', options)
-          command.request_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest::Representation
-          command.request_object = update_active_breakpoint_request_object
-          command.response_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse::Representation
-          command.response_class = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse
-          command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
-          command.params['id'] = id unless id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists all the debuggees that the user can set breakpoints to.
         # @param [String] client_version
         #   The client version making the call.
@@ -379,6 +247,138 @@ module Google
           command.query['includeInactive'] = include_inactive unless include_inactive.nil?
           command.query['includeAllUsers'] = include_all_users unless include_all_users.nil?
           command.query['stripResults'] = strip_results unless strip_results.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Registers the debuggee with the controller service.
+        # All agents attached to the same application should call this method with
+        # the same request content to get back the same stable `debuggee_id`. Agents
+        # should call this method again whenever `google.rpc.Code.NOT_FOUND` is
+        # returned from any controller method.
+        # This allows the controller service to disable the agent or recover from any
+        # data loss. If the debuggee is disabled by the server, the response will
+        # have `is_disabled` set to `true`.
+        # @param [Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest] register_debuggee_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def register_debuggee(register_debuggee_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/controller/debuggees/register', options)
+          command.request_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest::Representation
+          command.request_object = register_debuggee_request_object
+          command.response_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse::Representation
+          command.response_class = Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the breakpoint state or mutable fields.
+        # The entire Breakpoint message must be sent back to the controller
+        # service.
+        # Updates to active breakpoint fields are only allowed if the new value
+        # does not change the breakpoint specification. Updates to the `location`,
+        # `condition` and `expression` fields should not alter the breakpoint
+        # semantics. These may only make changes such as canonicalizing a value
+        # or snapping the location to the correct line of code.
+        # @param [String] debuggee_id
+        #   Identifies the debuggee being debugged.
+        # @param [String] id
+        #   Breakpoint identifier, unique in the scope of the debuggee.
+        # @param [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest] update_active_breakpoint_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_active_breakpoint(debuggee_id, id, update_active_breakpoint_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2/controller/debuggees/{debuggeeId}/breakpoints/{id}', options)
+          command.request_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest::Representation
+          command.request_object = update_active_breakpoint_request_object
+          command.response_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse::Representation
+          command.response_class = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse
+          command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all active breakpoints for the debuggee.
+        # The breakpoint specification (location, condition, and expression
+        # fields) is semantically immutable, although the field values may
+        # change. For example, an agent may update the location line number
+        # to reflect the actual line where the breakpoint was set, but this
+        # doesn't change the breakpoint semantics.
+        # This means that an agent does not need to check if a breakpoint has changed
+        # when it encounters the same breakpoint on a successive call.
+        # Moreover, an agent should remember the breakpoints that are completed
+        # until the controller removes them from the active list to avoid
+        # setting those breakpoints again.
+        # @param [String] debuggee_id
+        #   Identifies the debuggee.
+        # @param [String] wait_token
+        #   A wait token that, if specified, blocks the method call until the list
+        #   of active breakpoints has changed, or a server selected timeout has
+        #   expired.  The value should be set from the last returned response.
+        # @param [Boolean] success_on_timeout
+        #   If set to `true`, returns `google.rpc.Code.OK` status and sets the
+        #   `wait_expired` response field to `true` when the server-selected timeout
+        #   has expired (recommended).
+        #   If set to `false`, returns `google.rpc.Code.ABORTED` status when the
+        #   server-selected timeout has expired (deprecated).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_controller_debuggee_breakpoints(debuggee_id, wait_token: nil, success_on_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/controller/debuggees/{debuggeeId}/breakpoints', options)
+          command.response_representation = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse::Representation
+          command.response_class = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse
+          command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
+          command.query['waitToken'] = wait_token unless wait_token.nil?
+          command.query['successOnTimeout'] = success_on_timeout unless success_on_timeout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

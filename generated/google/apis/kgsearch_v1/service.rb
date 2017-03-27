@@ -68,11 +68,11 @@ module Google
         #   returned entities will contain one or more of these types.
         # @param [Boolean] indent
         #   Enables indenting of json results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -85,7 +85,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_entities(languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, indent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_entities(languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, indent: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/entities:search', options)
           command.response_representation = Google::Apis::KgsearchV1::SearchResponse::Representation
           command.response_class = Google::Apis::KgsearchV1::SearchResponse
@@ -96,8 +96,8 @@ module Google
           command.query['query'] = query unless query.nil?
           command.query['types'] = types unless types.nil?
           command.query['indent'] = indent unless indent.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
 

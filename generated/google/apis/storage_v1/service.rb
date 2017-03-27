@@ -373,6 +373,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns an IAM policy for the specified bucket.
+        # @param [String] bucket
+        #   Name of a bucket.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bucket_iam_policy(bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'b/{bucket}/iam', options)
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new bucket.
         # @param [String] project
         #   A valid API project identifier.
@@ -521,6 +556,83 @@ module Google
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['predefinedDefaultObjectAcl'] = predefined_default_object_acl unless predefined_default_object_acl.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an IAM policy for the specified bucket.
+        # @param [String] bucket
+        #   Name of a bucket.
+        # @param [Google::Apis::StorageV1::Policy] policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_bucket_iam_policy(bucket, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'b/{bucket}/iam', options)
+          command.request_representation = Google::Apis::StorageV1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests a set of permissions on the given bucket to see which, if any, are held
+        # by the caller.
+        # @param [String] bucket
+        #   Name of a bucket.
+        # @param [Array<String>, String] permissions
+        #   Permissions to test.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_bucket_iam_permissions(bucket, permissions, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'b/{bucket}/iam/testPermissions', options)
+          command.response_representation = Google::Apis::StorageV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::StorageV1::TestIamPermissionsResponse
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['permissions'] = permissions unless permissions.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1431,6 +1543,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns an IAM policy for the specified object.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] object
+        #   Name of the object. For information about how to URL encode object names to be
+        #   path safe, see Encoding URI Path Parts.
+        # @param [String] generation
+        #   If present, selects a specific revision of this object (as opposed to the
+        #   latest version, the default).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_object_iam_policy(bucket, object, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'b/{bucket}/o/{object}/iam', options)
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['object'] = object unless object.nil?
+          command.query['generation'] = generation unless generation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Stores a new object and metadata.
         # @param [String] bucket
         #   Name of the bucket in which to store the new object. Overrides the provided
@@ -1750,6 +1905,99 @@ module Google
           command.query['projection'] = projection unless projection.nil?
           command.query['rewriteToken'] = rewrite_token unless rewrite_token.nil?
           command.query['sourceGeneration'] = source_generation unless source_generation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an IAM policy for the specified object.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] object
+        #   Name of the object. For information about how to URL encode object names to be
+        #   path safe, see Encoding URI Path Parts.
+        # @param [Google::Apis::StorageV1::Policy] policy_object
+        # @param [String] generation
+        #   If present, selects a specific revision of this object (as opposed to the
+        #   latest version, the default).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_object_iam_policy(bucket, object, policy_object = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'b/{bucket}/o/{object}/iam', options)
+          command.request_representation = Google::Apis::StorageV1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['object'] = object unless object.nil?
+          command.query['generation'] = generation unless generation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests a set of permissions on the given object to see which, if any, are held
+        # by the caller.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] object
+        #   Name of the object. For information about how to URL encode object names to be
+        #   path safe, see Encoding URI Path Parts.
+        # @param [Array<String>, String] permissions
+        #   Permissions to test.
+        # @param [String] generation
+        #   If present, selects a specific revision of this object (as opposed to the
+        #   latest version, the default).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_object_iam_permissions(bucket, object, permissions, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'b/{bucket}/o/{object}/iam/testPermissions', options)
+          command.response_representation = Google::Apis::StorageV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::StorageV1::TestIamPermissionsResponse
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['object'] = object unless object.nil?
+          command.query['generation'] = generation unless generation.nil?
+          command.query['permissions'] = permissions unless permissions.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

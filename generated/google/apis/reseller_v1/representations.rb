@@ -194,6 +194,7 @@ module Google
           property :seats, as: 'seats', class: Google::Apis::ResellerV1::Seats, decorator: Google::Apis::ResellerV1::Seats::Representation
       
           property :sku_id, as: 'skuId'
+          property :sku_name, as: 'skuName'
           property :status, as: 'status'
           property :subscription_id, as: 'subscriptionId'
           collection :suspension_reasons, as: 'suspensionReasons'

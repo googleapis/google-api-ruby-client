@@ -1571,7 +1571,9 @@ module Google
         # @return [String]
         attr_accessor :thumbnail_version
       
-        # The title of this file.
+        # The title of this file. Note that for immutable items such as the top level
+        # folders of Team Drives, My Drive root folder, and Application Data folder the
+        # title is constant.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

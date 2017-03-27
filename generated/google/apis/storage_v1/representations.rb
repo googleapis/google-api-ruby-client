@@ -172,7 +172,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Binding
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RewriteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +503,25 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::StorageV1::Policy::Binding, decorator: Google::Apis::StorageV1::Policy::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :kind, as: 'kind'
+          property :resource_id, as: 'resourceId'
+        end
+        
+        class Binding
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :members, as: 'members'
+            property :role, as: 'role'
+          end
+        end
+      end
+      
       class RewriteResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -495,6 +532,14 @@ module Google
       
           property :rewrite_token, as: 'rewriteToken'
           property :total_bytes_rewritten, as: 'totalBytesRewritten'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :permissions, as: 'permissions'
         end
       end
     end

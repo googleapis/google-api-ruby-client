@@ -450,6 +450,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class Denied
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -934,6 +940,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1404,6 +1416,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2591,11 +2609,16 @@ module Google
           collection :allowed, as: 'allowed', class: Google::Apis::ComputeBeta::Firewall::Allowed, decorator: Google::Apis::ComputeBeta::Firewall::Allowed::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :denied, as: 'denied', class: Google::Apis::ComputeBeta::Firewall::Denied, decorator: Google::Apis::ComputeBeta::Firewall::Denied::Representation
+      
           property :description, as: 'description'
+          collection :destination_ranges, as: 'destinationRanges'
+          property :direction, as: 'direction'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
           collection :source_ranges, as: 'sourceRanges'
           collection :source_tags, as: 'sourceTags'
@@ -2603,6 +2626,14 @@ module Google
         end
         
         class Allowed
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :ip_protocol, as: 'IPProtocol'
+            collection :ports, as: 'ports'
+          end
+        end
+        
+        class Denied
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :ip_protocol, as: 'IPProtocol'
@@ -3497,6 +3528,8 @@ module Google
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt::Representation
       
+          property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
+      
         end
       end
       
@@ -3522,6 +3555,14 @@ module Google
               property :message, as: 'message'
             end
           end
+        end
+      end
+      
+      class ManagedInstanceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+          property :name, as: 'name'
         end
       end
       
@@ -4399,6 +4440,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip_google_access, as: 'privateIpGoogleAccess'
         end
       end
       
