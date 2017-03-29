@@ -489,7 +489,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :advertiser_id
       
-        # The name of the company being advertised in the creative.
+        # The name of the company being advertised in the creative. The value provided
+        # must exist in the advertisers.txt file.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
         attr_accessor :advertiser_name
@@ -506,7 +507,9 @@ module Google
         # @return [DateTime]
         attr_accessor :api_upload_timestamp
       
-        # All attributes for the ads that may be shown from this snippet.
+        # List of buyer selectable attributes for the ads that may be shown from this
+        # snippet. Each attribute is represented by an integer as defined in  buyer-
+        # declarable-creative-attributes.txt.
         # Corresponds to the JSON property `attribute`
         # @return [Array<Fixnum>]
         attr_accessor :attribute
@@ -584,19 +587,23 @@ module Google
         # @return [String]
         attr_accessor :open_auction_status
       
-        # Detected product categories, if any. Read-only. This field should not be set
-        # in requests.
+        # Detected product categories, if any. Each category is represented by an
+        # integer as defined in  ad-product-categories.txt. Read-only. This field should
+        # not be set in requests.
         # Corresponds to the JSON property `productCategories`
         # @return [Array<Fixnum>]
         attr_accessor :product_categories
       
         # All restricted categories for the ads that may be shown from this snippet.
+        # Each category is represented by an integer as defined in the  ad-restricted-
+        # categories.txt.
         # Corresponds to the JSON property `restrictedCategories`
         # @return [Array<Fixnum>]
         attr_accessor :restricted_categories
       
-        # Detected sensitive categories, if any. Read-only. This field should not be set
-        # in requests.
+        # Detected sensitive categories, if any. Each category is represented by an
+        # integer as defined in  ad-sensitive-categories.txt. Read-only. This field
+        # should not be set in requests.
         # Corresponds to the JSON property `sensitiveCategories`
         # @return [Array<Fixnum>]
         attr_accessor :sensitive_categories
@@ -609,7 +616,8 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::ServingRestriction>]
         attr_accessor :serving_restrictions
       
-        # All vendor types for the ads that may be shown from this snippet.
+        # List of vendor types for the ads that may be shown from this snippet. Each
+        # vendor type is represented by an integer as defined in vendors.txt.
         # Corresponds to the JSON property `vendorType`
         # @return [Array<Fixnum>]
         attr_accessor :vendor_type
@@ -774,8 +782,7 @@ module Google
             # @return [String]
             attr_accessor :filtering_count
           
-            # The filtering status code. Please refer to the creative-status-codes.txt file
-            # for different statuses.
+            # The filtering status code as defined in  creative-status-codes.txt.
             # Corresponds to the JSON property `filteringStatus`
             # @return [Fixnum]
             attr_accessor :filtering_status
@@ -1035,7 +1042,8 @@ module Google
             attr_accessor :context_type
           
             # Only set when contextType=LOCATION. Represents the geo criterias this
-            # restriction applies to.
+            # restriction applies to. Impressions are considered to match a context if
+            # either the user location or publisher location matches a given geoCriteriaId.
             # Corresponds to the JSON property `geoCriteriaId`
             # @return [Array<Fixnum>]
             attr_accessor :geo_criteria_id
@@ -1180,6 +1188,14 @@ module Google
       class DealServingMetadata
         include Google::Apis::Core::Hashable
       
+        # True if alcohol ads are allowed for this deal (read-only). This field is only
+        # populated when querying for finalized orders using the method
+        # GetFinalizedOrderDeals
+        # Corresponds to the JSON property `alcoholAdsAllowed`
+        # @return [Boolean]
+        attr_accessor :alcohol_ads_allowed
+        alias_method :alcohol_ads_allowed?, :alcohol_ads_allowed
+      
         # Tracks which parties (if any) have paused a deal. The deal is considered
         # paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused
         # or the has_seller_paused bits can be set independently.
@@ -1193,6 +1209,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alcohol_ads_allowed = args[:alcohol_ads_allowed] if args.key?(:alcohol_ads_allowed)
           @deal_pause_status = args[:deal_pause_status] if args.key?(:deal_pause_status)
         end
       end

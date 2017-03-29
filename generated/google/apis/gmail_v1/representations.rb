@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSmimeInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListThreadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class SendAs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SmimeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -459,6 +471,14 @@ module Google
         end
       end
       
+      class ListSmimeInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :smime_info, as: 'smimeInfo', class: Google::Apis::GmailV1::SmimeInfo, decorator: Google::Apis::GmailV1::SmimeInfo::Representation
+      
+        end
+      end
+      
       class ListThreadsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -564,6 +584,19 @@ module Google
       
           property :treat_as_alias, as: 'treatAsAlias'
           property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class SmimeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_key_password, as: 'encryptedKeyPassword'
+          property :expiration, as: 'expiration'
+          property :id, as: 'id'
+          property :is_default, as: 'isDefault'
+          property :issuer_cn, as: 'issuerCn'
+          property :pem, as: 'pem'
+          property :pkcs12, :base64 => true, as: 'pkcs12'
         end
       end
       

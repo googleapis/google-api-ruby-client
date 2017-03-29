@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/container-builder/docs/
     module CloudbuildV1
       VERSION = 'V1'
-      REVISION = '20170119'
+      REVISION = '20170327'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -46,11 +46,12 @@ module Google
           super('https://appengine.googleapis.com/', '')
         end
         
-        # Creates an App Engine application for a Google Cloud Platform project. This
-        # requires a project that excludes an App Engine application. For details about
-        # creating a project without an application, see the Google Cloud Resource
-        # Manager create project topic (https://cloud.google.com/resource-manager/docs/
-        # creating-project).
+        # Creates an App Engine application for a Google Cloud Platform project.
+        # Required fields: id - The ID of the target Cloud Platform project. location -
+        # The region (https://cloud.google.com/appengine/docs/locations) where you want
+        # the App Engine application located.For more information about App Engine
+        # applications, see Managing Projects, Applications, and Billing (https://cloud.
+        # google.com/appengine/docs/python/console/).
         # @param [Google::Apis::AppengineV1beta5::Application] application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -349,9 +350,9 @@ module Google
         # @param [String] mask
         #   Standard field mask for the set of fields to be updated.
         # @param [Boolean] migrate_traffic
-        #   Set to true to gradually shift traffic from one version to another single
-        #   version. By default, traffic is shifted immediately. For gradual traffic
-        #   migration, the target version must be located within instances that are
+        #   Set to true to gradually shift traffic to one or more versions that you
+        #   specify. By default, traffic is shifted immediately. For gradual traffic
+        #   migration, the target versions must be located within instances that are
         #   configured for both warmup requests (https://cloud.google.com/appengine/docs/
         #   admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype)
         #   and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/
@@ -689,7 +690,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the instances of a version.
+        # Lists the instances of a version.Tip: To aggregate details about instances
+        # over time, see the Stackdriver Monitoring API (https://cloud.google.com/
+        # monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
         #   default/versions/v1.

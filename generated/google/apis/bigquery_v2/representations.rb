@@ -315,6 +315,12 @@ module Google
         
         class Table
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class View
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -1035,6 +1041,15 @@ module Google
             property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
         
             property :type, as: 'type'
+            property :view, as: 'view', class: Google::Apis::BigqueryV2::TableList::Table::View, decorator: Google::Apis::BigqueryV2::TableList::Table::View::Representation
+        
+          end
+          
+          class View
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :use_legacy_sql, as: 'useLegacySql'
+            end
           end
         end
       end

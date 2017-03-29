@@ -1,3 +1,50 @@
+# 0.10.2
+* Regenerate APIs
+
+# 0.10.1
+* Regenerate APIs
+* Add `cloudkms:v1`
+
+# 0.10.0
+* Regenerate APIs
+* Some exceptions are more descriptive for specific errors
+* `representable` dependency bumped to `~> 3.0`
+  * Breaking change for `skip_undefined` option under `to_json`:
+
+    Should now pass `foo.to_json(user_options: { skip_undefined: true })`
+    instead of `foo.to_json(skip_undefined: true)`
+* `retriable` dependency bumped to `>= 2.0, < 4.0`
+
+# 0.9.28
+* Fix file permissions issue
+
+# 0.9.27
+* Allow abnormal page token cases for paging methods
+* Regenerate APIs
+
+# 0.9.26
+* Update gem to reflect changes in 0.9.25
+
+# 0.9.25
+* Regenerate APIs
+* Add `cloudkms:v1beta1`
+* Add `manufacturers:v1`
+
+# 0.9.24
+* Regenerate APIs
+* Add `dfareporting:v2.7`
+* Fix file permissions issue present in released gems for versions `0.9.21` through `0.9.23`
+
+# 0.9.23
+* Regenerate APIs
+* Add `dns:v2beta1`
+
+# 0.9.22
+* Regenerate APIs
+
+# 0.9.21
+* Regenerate APIs
+
 # 0.9.20
 * Regenerate APIs
 * Add Slides API

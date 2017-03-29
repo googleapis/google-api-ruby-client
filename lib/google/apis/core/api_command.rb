@@ -26,7 +26,11 @@ module Google
       class ApiCommand < HttpCommand
         JSON_CONTENT_TYPE = 'application/json'
         FIELDS_PARAM = 'fields'
-        RATE_LIMIT_ERRORS = %w(rateLimitExceeded userRateLimitExceeded)
+        ERROR_REASON_MAPPING = {
+          'rateLimitExceeded' => Google::Apis::RateLimitError,
+          'userRateLimitExceeded' => Google::Apis::RateLimitError,
+          'projectNotLinked' => Google::Apis::ProjectNotLinkedError
+        }
 
         # JSON serializer for request objects
         # @return [Google::Apis::Core::JsonRepresentation]
@@ -51,7 +55,7 @@ module Google
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
           if request_representation && request_object
             header[:content_type] ||= JSON_CONTENT_TYPE
-            self.body = request_representation.new(request_object).to_json(skip_undefined: true)
+            self.body = request_representation.new(request_object).to_json(user_options: { skip_undefined: true })
           end
           super
         end
@@ -94,10 +98,12 @@ module Google
             error = parse_error(body)
             if error
               message = sprintf('%s: %s', error['reason'], error['message'])
-              raise Google::Apis::RateLimitError.new(message,
-                                                     status_code: status,
-                                                     header: header,
-                                                     body: body) if RATE_LIMIT_ERRORS.include?(error['reason'])
+              raise ERROR_REASON_MAPPING[error['reason']].new(
+                message,
+                status_code: status,
+                header: header,
+                body: body
+              ) if ERROR_REASON_MAPPING.key?(error['reason'])
             end
             super(status, header, body, message)
           else

@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Package
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageInsertResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1198,6 +1210,28 @@ module Google
           collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::RightsOwnershipHistory, decorator: Google::Apis::YoutubePartnerV1::RightsOwnershipHistory::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class Package
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :locale, as: 'locale'
+          property :uploader_name, as: 'uploaderName'
+        end
+      end
+      
+      class PackageInsertResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::YoutubePartnerV1::ValidateError, decorator: Google::Apis::YoutubePartnerV1::ValidateError::Representation
+      
+          property :kind, as: 'kind'
+          property :resource, as: 'resource', class: Google::Apis::YoutubePartnerV1::Package, decorator: Google::Apis::YoutubePartnerV1::Package::Representation
+      
         end
       end
       

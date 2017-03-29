@@ -93,7 +93,7 @@ module Google
       
         # The IDs of the specified filter type. This is used to filter entities to fetch.
         # At least one ID must be specified. Only one ID is allowed for the
-        # ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types
+        # ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types,
         # all IDs must be from the same Advertiser.
         # Corresponds to the JSON property `filterIds`
         # @return [Array<String>]

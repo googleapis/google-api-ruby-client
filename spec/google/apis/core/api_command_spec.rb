@@ -159,6 +159,44 @@ EOF
     end
   end
 
+  context('with a project not linked response') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      json = <<EOF
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "projectNotLinked",
+    "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+   }
+  ],
+  "code": 403,
+  "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+ }
+}
+EOF
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [403, 'The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console.'], headers: {
+          'Content-Type' => 'application/json'
+        }, body: json)
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
+    end
+
+    it 'should raise project not linked error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::ProjectNotLinkedError)
+    end
+
+    it 'should raise an error with the reason and message' do
+      expect { command.execute(client) }.to raise_error(
+        /projectNotLinked: The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console./)
+    end
+  end
+
   context('with a client error response') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

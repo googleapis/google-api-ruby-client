@@ -2610,6 +2610,84 @@ module Google
       end
       
       # 
+      class Package
+        include Google::Apis::Core::Hashable
+      
+        # The package's metadata file contents.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # An ID that YouTube assigns and uses to uniquely identify the package.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of the API resource. For package resources, this value is
+        # youtubePartner#package.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The desired locale of the error messages as defined in BCP 47 (http://tools.
+        # ietf.org/html/bcp47). For example, "en-US" or "de". If not specified we will
+        # return the error messages in English ("en").
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # The uploader name.
+        # Corresponds to the JSON property `uploaderName`
+        # @return [String]
+        attr_accessor :uploader_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @locale = args[:locale] if args.key?(:locale)
+          @uploader_name = args[:uploader_name] if args.key?(:uploader_name)
+        end
+      end
+      
+      # 
+      class PackageInsertResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of errors and/or warnings.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::YoutubePartnerV1::ValidateError>]
+        attr_accessor :errors
+      
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # packageInsert.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The package resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::YoutubePartnerV1::Package]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
       class PageInfo
         include Google::Apis::Core::Hashable
       

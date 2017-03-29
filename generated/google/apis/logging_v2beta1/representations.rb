@@ -22,36 +22,6 @@ module Google
   module Apis
     module LoggingV2beta1
       
-      class ListLogMetricsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SourceLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListLogEntriesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RequestLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,13 +46,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogEntryOperation
+      class WriteLogEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WriteLogEntriesResponse
+      class LogEntryOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,13 +64,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogSink
+      class WriteLogEntriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WriteLogEntriesRequest
+      class LogSink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,76 +125,48 @@ module Google
       end
       
       class ListLogMetricsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :metrics, as: 'metrics', class: Google::Apis::LoggingV2beta1::LogMetric, decorator: Google::Apis::LoggingV2beta1::LogMetric::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class LogEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :timestamp, as: 'timestamp'
-          property :log_name, as: 'logName'
-          property :http_request, as: 'httpRequest', class: Google::Apis::LoggingV2beta1::HttpRequest, decorator: Google::Apis::LoggingV2beta1::HttpRequest::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :resource, as: 'resource', class: Google::Apis::LoggingV2beta1::MonitoredResource, decorator: Google::Apis::LoggingV2beta1::MonitoredResource::Representation
-      
-          hash :json_payload, as: 'jsonPayload'
-          property :insert_id, as: 'insertId'
-          property :operation, as: 'operation', class: Google::Apis::LoggingV2beta1::LogEntryOperation, decorator: Google::Apis::LoggingV2beta1::LogEntryOperation::Representation
-      
-          property :text_payload, as: 'textPayload'
-          hash :proto_payload, as: 'protoPayload'
-          property :trace, as: 'trace'
-          hash :labels, as: 'labels'
-          property :severity, as: 'severity'
-          property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2beta1::LogEntrySourceLocation, decorator: Google::Apis::LoggingV2beta1::LogEntrySourceLocation::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SourceLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :line, as: 'line'
-          property :file, as: 'file'
-          property :function_name, as: 'functionName'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListLogEntriesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :project_ids, as: 'projectIds'
-          property :filter, as: 'filter'
-          property :page_token, as: 'pageToken'
-          property :page_size, as: 'pageSize'
-          property :order_by, as: 'orderBy'
-          collection :resource_names, as: 'resourceNames'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class RequestLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
           property :nickname, as: 'nickname'
-          property :status, as: 'status'
-          property :resource, as: 'resource'
           property :pending_time, as: 'pendingTime'
+          property :resource, as: 'resource'
+          property :status, as: 'status'
           property :task_name, as: 'taskName'
           property :url_map_entry, as: 'urlMapEntry'
           property :instance_index, as: 'instanceIndex'
-          property :host, as: 'host'
           property :finished, as: 'finished'
+          property :host, as: 'host'
           property :http_version, as: 'httpVersion'
           property :start_time, as: 'startTime'
           property :latency, as: 'latency'
@@ -249,7 +191,6 @@ module Google
       
           property :task_queue_name, as: 'taskQueueName'
           property :referrer, as: 'referrer'
-          property :request_id, as: 'requestId'
         end
       end
       
@@ -265,8 +206,8 @@ module Google
       class SourceReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :repository, as: 'repository'
           property :revision_id, as: 'revisionId'
+          property :repository, as: 'repository'
         end
       end
       
@@ -280,19 +221,19 @@ module Google
         end
       end
       
-      class LogEntryOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :producer, as: 'producer'
-          property :first, as: 'first'
-          property :last, as: 'last'
-        end
-      end
-      
       class WriteLogEntriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LogEntryOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last, as: 'last'
+          property :id, as: 'id'
+          property :producer, as: 'producer'
+          property :first, as: 'first'
         end
       end
       
@@ -301,19 +242,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :type, as: 'type'
-        end
-      end
-      
-      class LogSink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :output_version_format, as: 'outputVersionFormat'
-          property :name, as: 'name'
-          property :destination, as: 'destination'
-          property :filter, as: 'filter'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          property :writer_identity, as: 'writerIdentity'
         end
       end
       
@@ -330,31 +258,39 @@ module Google
         end
       end
       
+      class LogSink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :filter, as: 'filter'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :writer_identity, as: 'writerIdentity'
+          property :output_version_format, as: 'outputVersionFormat'
+          property :name, as: 'name'
+        end
+      end
+      
       class ListLogsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :log_names, as: 'logNames'
           property :next_page_token, as: 'nextPageToken'
+          collection :log_names, as: 'logNames'
         end
       end
       
       class ListSinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :sinks, as: 'sinks', class: Google::Apis::LoggingV2beta1::LogSink, decorator: Google::Apis::LoggingV2beta1::LogSink::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class HttpRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_size, as: 'requestSize'
-          property :response_size, as: 'responseSize'
-          property :request_url, as: 'requestUrl'
-          property :remote_ip, as: 'remoteIp'
-          property :server_ip, as: 'serverIp'
           property :cache_lookup, as: 'cacheLookup'
           property :cache_hit, as: 'cacheHit'
           property :cache_validated_with_origin_server, as: 'cacheValidatedWithOriginServer'
@@ -364,45 +300,50 @@ module Google
           property :user_agent, as: 'userAgent'
           property :cache_fill_bytes, as: 'cacheFillBytes'
           property :request_method, as: 'requestMethod'
+          property :request_size, as: 'requestSize'
+          property :response_size, as: 'responseSize'
+          property :request_url, as: 'requestUrl'
+          property :remote_ip, as: 'remoteIp'
+          property :server_ip, as: 'serverIp'
         end
       end
       
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
           property :value_type, as: 'valueType'
           property :key, as: 'key'
+          property :description, as: 'description'
         end
       end
       
       class MonitoredResourceDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
           collection :labels, as: 'labels', class: Google::Apis::LoggingV2beta1::LabelDescriptor, decorator: Google::Apis::LoggingV2beta1::LabelDescriptor::Representation
       
           property :name, as: 'name'
           property :display_name, as: 'displayName'
           property :description, as: 'description'
+          property :type, as: 'type'
         end
       end
       
       class LogEntrySourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :file, as: 'file'
           property :function, as: 'function'
           property :line, as: 'line'
+          property :file, as: 'file'
         end
       end
       
       class ListLogEntriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :entries, as: 'entries', class: Google::Apis::LoggingV2beta1::LogEntry, decorator: Google::Apis::LoggingV2beta1::LogEntry::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -414,6 +355,65 @@ module Google
           property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2beta1::SourceLocation, decorator: Google::Apis::LoggingV2beta1::SourceLocation::Representation
       
           property :time, as: 'time'
+        end
+      end
+      
+      class ListLogMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :metrics, as: 'metrics', class: Google::Apis::LoggingV2beta1::LogMetric, decorator: Google::Apis::LoggingV2beta1::LogMetric::Representation
+      
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_name, as: 'logName'
+          property :http_request, as: 'httpRequest', class: Google::Apis::LoggingV2beta1::HttpRequest, decorator: Google::Apis::LoggingV2beta1::HttpRequest::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::LoggingV2beta1::MonitoredResource, decorator: Google::Apis::LoggingV2beta1::MonitoredResource::Representation
+      
+          hash :json_payload, as: 'jsonPayload'
+          property :operation, as: 'operation', class: Google::Apis::LoggingV2beta1::LogEntryOperation, decorator: Google::Apis::LoggingV2beta1::LogEntryOperation::Representation
+      
+          property :insert_id, as: 'insertId'
+          property :text_payload, as: 'textPayload'
+          hash :proto_payload, as: 'protoPayload'
+          property :trace, as: 'trace'
+          hash :labels, as: 'labels'
+          property :severity, as: 'severity'
+          property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2beta1::LogEntrySourceLocation, decorator: Google::Apis::LoggingV2beta1::LogEntrySourceLocation::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class SourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function_name, as: 'functionName'
+          property :line, as: 'line'
+          property :file, as: 'file'
+        end
+      end
+      
+      class ListLogEntriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :order_by, as: 'orderBy'
+          collection :resource_names, as: 'resourceNames'
+          property :filter, as: 'filter'
+          collection :project_ids, as: 'projectIds'
+          property :page_token, as: 'pageToken'
+          property :page_size, as: 'pageSize'
         end
       end
     end

@@ -32,8 +32,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :_context, as: '@context'
-          property :_type, as: '@type'
           collection :item_list_element, as: 'itemListElement'
+          property :_type, as: '@type'
         end
       end
     end

@@ -61,6 +61,10 @@ module Google
     class RateLimitError < Error
     end
 
+    # A 403 HTTP error occurred.
+    class ProjectNotLinkedError < Error
+    end
+
     # A 401 HTTP error occurred.
     class AuthorizationError < Error
     end

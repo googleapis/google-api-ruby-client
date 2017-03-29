@@ -341,9 +341,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the binding between the EMM and enterprise. This is now deprecated;
-        # use this to unenroll customers that were previously enrolled with the 'insert'
-        # call, then enroll them again with the 'enroll' call.
+        # Deletes the binding between the EMM and enterprise. This is now deprecated.
+        # Use this method only to unenroll customers that were previously enrolled with
+        # the insert call, then enroll them again with the enroll call.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -539,7 +539,7 @@ module Google
         end
         
         # Returns the store layout for the enterprise. If the store layout has not been
-        # set, or if the store layout has no homepageId set, returns a NOT_FOUND error.
+        # set, returns "basic" as the store layout type and no homepage.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -656,8 +656,8 @@ module Google
         # service account authenticated for the request. The notification set may be
         # empty if no notification are pending.
         # A notification set returned needs to be acknowledged within 20 seconds by
-        # calling Enterprises​.AcknowledgeNotificationSet, unless the notification set
-        # is empty.
+        # calling Enterprises.AcknowledgeNotificationSet, unless the notification set is
+        # empty.
         # Notifications that are not acknowledged within the 20 seconds will eventually
         # be included again in the response to another PullNotificationSet request, and
         # those that are never acknowledged will ultimately be deleted according to the
@@ -743,7 +743,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Set the account that will be used to authenticate to the API as the enterprise.
+        # Sets the account that will be used to authenticate to the API as the
+        # enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::EnterpriseAccount] enterprise_account_object
@@ -786,8 +787,8 @@ module Google
         # contains apps approved by the admin, and that have been added to the available
         # product set for a user (using the  setAvailableProductSet call). Apps on the
         # page are sorted in order of their product ID value. If you create a custom
-        # store layout (by setting storeLayoutType = "custom"), the basic store layout
-        # is disabled.
+        # store layout (by setting storeLayoutType = "custom" and setting a homepage),
+        # the basic store layout is disabled.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object
@@ -858,7 +859,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes an entitlement to an app for a user and uninstalls it.
+        # Removes an entitlement to an app for a user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -938,7 +939,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List of all entitlements for the specified user. Only the ID is set.
+        # Lists all entitlements for the specified user. Only the ID is set.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1322,7 +1323,7 @@ module Google
         end
         
         # Requests to install the latest version of an app to a device. If the app is
-        # already installed then it is updated to the latest version if necessary. This
+        # already installed, then it is updated to the latest version if necessary. This
         # method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1372,7 +1373,7 @@ module Google
         end
         
         # Requests to install the latest version of an app to a device. If the app is
-        # already installed then it is updated to the latest version if necessary.
+        # already installed, then it is updated to the latest version if necessary.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2138,7 +2139,7 @@ module Google
         #   approved apps will be returned (using the pagination parameters), including
         #   apps that are not available in the store (e.g. unpublished apps).
         # @param [String] token
-        #   A pagination token is contained in a requests response when there are more
+        #   A pagination token is contained in a request''s response when there are more
         #   products. The token can be used in a subsequent request to obtain more
         #   products, and so forth. This parameter cannot be used in the initial request.
         # @param [String] fields
@@ -2206,52 +2207,6 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unapprove_product(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'enterprises/{enterpriseId}/products/{productId}/unapprove', options)
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['productId'] = product_id unless product_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # This method has been deprecated. To programmatically approve applications, you
-        # must use the iframe mechanism via the  generateApprovalUrl and  approve
-        # methods of the Products resource. For more information, see the  Play EMM API
-        # usage requirements.
-        # The updatePermissions method (deprecated) updates the set of Android app
-        # permissions for this app that have been accepted by the enterprise.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] product_id
-        #   The ID of the product.
-        # @param [Google::Apis::AndroidenterpriseV1::ProductPermissions] product_permissions_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ProductPermissions] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::ProductPermissions]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_product_permissions(enterprise_id, product_id, product_permissions_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/products/{productId}/permissions', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::ProductPermissions::Representation
-          command.request_object = product_permissions_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ProductPermissions::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ProductPermissions
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3214,7 +3169,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the set of products a user is entitled to access.
+        # Modifies the set of products that a user is entitled to access (referred to as
+        # whitelisted products). Only products that are approved or products that were
+        # previously approved (products with revoked approval) can be whitelisted.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id

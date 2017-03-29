@@ -22,25 +22,37 @@ module Google
   module Apis
     module DeploymentmanagerV2
       
-      # Provides the configuration for non-admin_activity logging for a service.
-      # Controls exemptions and specific log sub-types.
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConifg must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service, the
+      # union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditConfig are exempted. Example Policy with multiple AuditConfigs: ` "
+      # audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
+      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
+      # fooservice@googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
+      # ` "log_type": "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] ` ] `
+      # ] ` For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
+      # com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
-        # The configuration for each type of logging
+        # The configuration for logging of each type of permission.
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::DeploymentmanagerV2::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # Specifies the identities that are exempted from "data access" audit logging
-        # for the `service` specified above. Follows the same format of Binding.members.
+        # 
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
       
         # Specifies a service that will be enabled for audit logging. For example, `
-        # resourcemanager`, `storage`, `compute`. `allServices` is a special value that
-        # covers all services.
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -57,12 +69,16 @@ module Google
         end
       end
       
-      # Provides the configuration for a sub-type of logging.
+      # Provides the configuration for logging a type of permissions. Example:
+      # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
+      # user:foo@gmail.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.
+      # com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies the identities that are exempted from this type of logging Follows
-        # the same format of Binding.members.
+        # Specifies the identities that do not cause logging for this type of permission.
+        # Follows the same format of [Binding.members][].
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
@@ -317,6 +333,12 @@ module Google
       class DeploymentUpdate
         include Google::Apis::Core::Hashable
       
+        # [Output Only] An optional user-provided description of the deployment after
+        # the current update has been applied.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # [Output Only] Map of labels; provided by the client when the resource is
         # created or updated. Specifically: Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: [a-z]([-
@@ -338,6 +360,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @manifest = args[:manifest] if args.key?(:manifest)
         end
@@ -614,7 +637,7 @@ module Google
         # @return [String]
         attr_accessor :client_operation_id
       
-        # [Output Only] Creation timestamp in RFC3339 text format.
+        # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -936,11 +959,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Specifies audit logging configs for "data access". "data access": generally
-        # refers to data reads/writes and admin reads. "admin activity": generally
-        # refers to admin writes.
-        # Note: `AuditConfig` doesn't apply to "admin activity", which always enables
-        # audit logging.
+        # Specifies cloud audit logging configuration for this policy.
         # Corresponds to the JSON property `auditConfigs`
         # @return [Array<Google::Apis::DeploymentmanagerV2::AuditConfig>]
         attr_accessor :audit_configs

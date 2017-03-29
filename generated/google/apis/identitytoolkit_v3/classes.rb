@@ -105,7 +105,7 @@ module Google
         end
       end
       
-      # Respone of downloading accounts in batch.
+      # Response of downloading accounts in batch.
       class DownloadAccountResponse
         include Google::Apis::Core::Hashable
       
@@ -950,6 +950,11 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
+        # Privileged caller can create user with specified user id.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
         # The new password of the user.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -974,6 +979,7 @@ module Google
           @email_verified = args[:email_verified] if args.key?(:email_verified)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @local_id = args[:local_id] if args.key?(:local_id)
           @password = args[:password] if args.key?(:password)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
         end
@@ -1061,6 +1067,14 @@ module Google
       class VerifyAssertionRequest
         include Google::Apis::Core::Hashable
       
+        # When it's true, automatically creates a new account if the user doesn't exist.
+        # When it's false, allows existing user to sign in normally and throws exception
+        # if the user doesn't exist.
+        # Corresponds to the JSON property `autoCreate`
+        # @return [Boolean]
+        attr_accessor :auto_create
+        alias_method :auto_create?, :auto_create
+      
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
@@ -1123,6 +1137,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_create = args[:auto_create] if args.key?(:auto_create)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
@@ -1299,6 +1314,30 @@ module Google
       class Relyingparty
         include Google::Apis::Core::Hashable
       
+        # whether or not to install the android app on the device where the link is
+        # opened
+        # Corresponds to the JSON property `androidInstallApp`
+        # @return [Boolean]
+        attr_accessor :android_install_app
+        alias_method :android_install_app?, :android_install_app
+      
+        # minimum version of the app. if the version on the device is lower than this
+        # version then the user is taken to the play store to upgrade the app
+        # Corresponds to the JSON property `androidMinimumVersion`
+        # @return [String]
+        attr_accessor :android_minimum_version
+      
+        # android package name of the android app to handle the action code
+        # Corresponds to the JSON property `androidPackageName`
+        # @return [String]
+        attr_accessor :android_package_name
+      
+        # whether or not the app can handle the oob code without first going to web
+        # Corresponds to the JSON property `canHandleCodeInApp`
+        # @return [Boolean]
+        attr_accessor :can_handle_code_in_app
+        alias_method :can_handle_code_in_app?, :can_handle_code_in_app
+      
         # The recaptcha response from the user.
         # Corresponds to the JSON property `captchaResp`
         # @return [String]
@@ -1309,10 +1348,25 @@ module Google
         # @return [String]
         attr_accessor :challenge
       
+        # The url to continue to the Gitkit app
+        # Corresponds to the JSON property `continueUrl`
+        # @return [String]
+        attr_accessor :continue_url
+      
         # The email of the user.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
+      
+        # iOS app store id to download the app if it's not already installed
+        # Corresponds to the JSON property `iOSAppStoreId`
+        # @return [String]
+        attr_accessor :i_os_app_store_id
+      
+        # the iOS bundle id of iOS app to handle the action code
+        # Corresponds to the JSON property `iOSBundleId`
+        # @return [String]
+        attr_accessor :i_os_bundle_id
       
         # The user's Gitkit login token for email change.
         # Corresponds to the JSON property `idToken`
@@ -1345,9 +1399,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @android_install_app = args[:android_install_app] if args.key?(:android_install_app)
+          @android_minimum_version = args[:android_minimum_version] if args.key?(:android_minimum_version)
+          @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
+          @can_handle_code_in_app = args[:can_handle_code_in_app] if args.key?(:can_handle_code_in_app)
           @captcha_resp = args[:captcha_resp] if args.key?(:captcha_resp)
           @challenge = args[:challenge] if args.key?(:challenge)
+          @continue_url = args[:continue_url] if args.key?(:continue_url)
           @email = args[:email] if args.key?(:email)
+          @i_os_app_store_id = args[:i_os_app_store_id] if args.key?(:i_os_app_store_id)
+          @i_os_bundle_id = args[:i_os_bundle_id] if args.key?(:i_os_bundle_id)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
           @new_email = args[:new_email] if args.key?(:new_email)
@@ -1408,6 +1469,12 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # If email has been verified.
+        # Corresponds to the JSON property `emailVerified`
+        # @return [Boolean]
+        attr_accessor :email_verified
+        alias_method :email_verified?, :email_verified
+      
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
@@ -1462,6 +1529,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
           @kind = args[:kind] if args.key?(:kind)
@@ -1885,6 +1953,12 @@ module Google
         # @return [String]
         attr_accessor :input_email
       
+        # True if it's a new user sign-in, false if it's a returning user.
+        # Corresponds to the JSON property `isNewUser`
+        # @return [Boolean]
+        attr_accessor :is_new_user
+        alias_method :is_new_user?, :is_new_user
+      
         # The fixed string "identitytoolkit#VerifyAssertionResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2026,6 +2100,7 @@ module Google
           @full_name = args[:full_name] if args.key?(:full_name)
           @id_token = args[:id_token] if args.key?(:id_token)
           @input_email = args[:input_email] if args.key?(:input_email)
+          @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
           @kind = args[:kind] if args.key?(:kind)
           @language = args[:language] if args.key?(:language)
           @last_name = args[:last_name] if args.key?(:last_name)

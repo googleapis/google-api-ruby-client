@@ -20,13 +20,13 @@ module Google
   module Apis
     # Google Cloud Billing API
     #
-    # Retrieves Google Developers Console billing accounts and associates them with
-    # projects.
+    # Allows developers to manage billing for their Google Cloud Platform projects
+    # programmatically.
     #
     # @see https://cloud.google.com/billing/
     module CloudbillingV1
       VERSION = 'V1'
-      REVISION = '20151222'
+      REVISION = '20170210'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

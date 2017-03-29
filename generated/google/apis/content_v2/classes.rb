@@ -661,6 +661,11 @@ module Google
         # @return [String]
         attr_accessor :country
       
+        # A more detailed description of the issue.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
         # Actual value displayed on the landing page.
         # Corresponds to the JSON property `displayedValue`
         # @return [String]
@@ -680,6 +685,11 @@ module Google
         # Corresponds to the JSON property `lastChecked`
         # @return [String]
         attr_accessor :last_checked
+      
+        # The attribute name that is relevant for the issue.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Number of items in the account found to have the said issue.
         # Corresponds to the JSON property `numItems`
@@ -703,10 +713,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @detail = args[:detail] if args.key?(:detail)
           @displayed_value = args[:displayed_value] if args.key?(:displayed_value)
           @example_items = args[:example_items] if args.key?(:example_items)
           @id = args[:id] if args.key?(:id)
           @last_checked = args[:last_checked] if args.key?(:last_checked)
+          @location = args[:location] if args.key?(:location)
           @num_items = args[:num_items] if args.key?(:num_items)
           @severity = args[:severity] if args.key?(:severity)
           @submitted_value = args[:submitted_value] if args.key?(:submitted_value)
@@ -1617,7 +1629,8 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # The type of data feed.
+        # The type of data feed. For product inventory feeds, only feeds for local
+        # stores, not online stores, are supported.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type

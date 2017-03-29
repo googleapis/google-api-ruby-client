@@ -20,14 +20,14 @@ module Google
   module Apis
     # Enterprise License Manager API
     #
-    # Licensing API to view and manage license for your domain.
+    # Views and manages licenses for your domain.
     #
     # @see https://developers.google.com/google-apps/licensing/
     module LicensingV1
       VERSION = 'V1'
-      REVISION = '20150901'
+      REVISION = '20170213'
 
-      # View and manage Google Apps licenses for your domain
+      # View and manage G Suite licenses for your domain
       AUTH_APPS_LICENSING = 'https://www.googleapis.com/auth/apps.licensing'
     end
   end

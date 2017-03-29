@@ -2474,7 +2474,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of reviews.
+        # Returns a list of reviews. Only reviews from last week will be returned.
         # @param [String] package_name
         #   Unique identifier for the Android app for which we want reviews; for example, "
         #   com.spiffygame".

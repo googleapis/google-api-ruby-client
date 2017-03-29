@@ -726,6 +726,25 @@ module Google
       end
       
       # 
+      class ListSmimeInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of SmimeInfo.
+        # Corresponds to the JSON property `smimeInfo`
+        # @return [Array<Google::Apis::GmailV1::SmimeInfo>]
+        attr_accessor :smime_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @smime_info = args[:smime_info] if args.key?(:smime_info)
+        end
+      end
+      
+      # 
       class ListThreadsResponse
         include Google::Apis::Core::Hashable
       
@@ -1153,6 +1172,68 @@ module Google
         end
       end
       
+      # An S/MIME email config.
+      class SmimeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Encrypted key password, when key is encrypted.
+        # Corresponds to the JSON property `encryptedKeyPassword`
+        # @return [String]
+        attr_accessor :encrypted_key_password
+      
+        # When the certificate expires (in milliseconds since epoch).
+        # Corresponds to the JSON property `expiration`
+        # @return [String]
+        attr_accessor :expiration
+      
+        # The immutable ID for the SmimeInfo.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether this SmimeInfo is the default one for this user's send-as address.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # The S/MIME certificate issuer's common name.
+        # Corresponds to the JSON property `issuerCn`
+        # @return [String]
+        attr_accessor :issuer_cn
+      
+        # PEM formatted X509 concatenated certificate string (standard base64 encoding).
+        # Format used for returning key, which includes public key as well as
+        # certificate chain (not private key).
+        # Corresponds to the JSON property `pem`
+        # @return [String]
+        attr_accessor :pem
+      
+        # PKCS#12 format containing a single private/public key pair and certificate
+        # chain. This format is only accepted from client for creating a new SmimeInfo
+        # and is never returned, because the private key is not intended to be exported.
+        # PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
+        # appropriately.
+        # Corresponds to the JSON property `pkcs12`
+        # @return [String]
+        attr_accessor :pkcs12
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_key_password = args[:encrypted_key_password] if args.key?(:encrypted_key_password)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @issuer_cn = args[:issuer_cn] if args.key?(:issuer_cn)
+          @pem = args[:pem] if args.key?(:pem)
+          @pkcs12 = args[:pkcs12] if args.key?(:pkcs12)
+        end
+      end
+      
       # Configuration for communication with an SMTP service.
       class SmtpMsa
         include Google::Apis::Core::Hashable
@@ -1282,7 +1363,7 @@ module Google
         alias_method :restrict_to_contacts?, :restrict_to_contacts
       
         # Flag that determines whether responses are sent to recipients who are outside
-        # of the user's domain. This feature is only available for Google Apps users.
+        # of the user's domain. This feature is only available for G Suite users.
         # Corresponds to the JSON property `restrictToDomain`
         # @return [Boolean]
         attr_accessor :restrict_to_domain

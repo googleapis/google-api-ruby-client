@@ -52,6 +52,205 @@ module Google
           super('https://www.googleapis.com/', 'compute/beta/projects/')
         end
         
+        # Retrieves an aggregated list of accelerator types.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_accelerator_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified accelerator type. Get a list of available accelerator
+        # types by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] accelerator_type
+        #   Name of the accelerator type to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_accelerator_type(project, zone, accelerator_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes/{acceleratorType}', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorType::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorType
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorType'] = accelerator_type unless accelerator_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of accelerator types available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::AcceleratorTypeList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::AcceleratorTypeList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeBeta::AcceleratorTypeList::Representation
+          command.response_class = Google::Apis::ComputeBeta::AcceleratorTypeList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of addresses.
         # @param [String] project
         #   Project ID for this request.
@@ -80,7 +279,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -283,7 +482,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -405,7 +604,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -609,7 +808,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -938,7 +1137,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1100,7 +1299,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1336,7 +1535,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1514,6 +1713,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves an aggregated list of commitments.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::CommitmentAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::CommitmentAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_commitment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/commitments', options)
+          command.response_representation = Google::Apis::ComputeBeta::CommitmentAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeBeta::CommitmentAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of disk types.
         # @param [String] project
         #   Project ID for this request.
@@ -1542,7 +1818,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1663,7 +1939,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1741,7 +2017,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -1998,7 +2274,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2324,7 +2600,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2378,7 +2654,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
-        #   Name of the firewall rule to update.
+        #   Name of the firewall rule to patch.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2525,7 +2801,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -2729,7 +3005,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3012,7 +3288,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3247,7 +3523,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3407,7 +3683,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3559,7 +3835,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -3752,7 +4028,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4071,7 +4347,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4390,7 +4666,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -4793,7 +5069,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5004,7 +5280,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5265,7 +5541,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -5873,7 +6149,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6080,7 +6356,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6164,7 +6440,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6500,7 +6776,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6665,7 +6941,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -6943,9 +7219,10 @@ module Google
         # @param [Fixnum] port
         #   Specifies which COM or serial port to retrieve data from.
         # @param [String] start
-        #   For the initial request, leave this field unspecified. For subsequent calls,
-        #   this field should be set to the next value that was returned in the previous
-        #   call.
+        #   Returns output starting from a specific byte position. Use this to page
+        #   through output when the output is too large to return in a single request. For
+        #   the initial request, leave this field unspecified. For subsequent calls, this
+        #   field should be set to the next value returned in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7054,7 +7331,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7237,6 +7514,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Changes the number and/or type of accelerator for a stopped instance to the
+        # values specified in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest] instances_set_machine_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest::Representation
+          command.request_object = instances_set_machine_resources_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Changes the machine type for a stopped instance to the machine type specified
         # in the request.
         # @param [String] project
@@ -7370,7 +7692,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the service account on the instance.
+        # Sets the service account on the instance. For more information, read Changing
+        # the service account and access scopes for an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7702,7 +8025,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7823,7 +8146,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -7867,6 +8190,47 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a peering to the specified network.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource to add peering to.
+        # @param [Google::Apis::ComputeBeta::NetworksAddPeeringRequest] networks_add_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_network_peering(project, network, networks_add_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/networks/{network}/addPeering', options)
+          command.request_representation = Google::Apis::ComputeBeta::NetworksAddPeeringRequest::Representation
+          command.request_object = networks_add_peering_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8017,7 +8381,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8060,6 +8424,47 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a peering from the specified network.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource to remove peering from.
+        # @param [Google::Apis::ComputeBeta::NetworksRemovePeeringRequest] networks_remove_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_network_peering(project, network, networks_remove_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/networks/{network}/removePeering', options)
+          command.request_representation = Google::Apis::ComputeBeta::NetworksRemovePeeringRequest::Representation
+          command.request_object = networks_remove_peering_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8145,6 +8550,154 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Disable this project as an XPN host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/disableXpnHost', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disable an XPN resource associated with this host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::ProjectsDisableXpnResourceRequest] projects_disable_xpn_resource_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_xpn_resource(project, projects_disable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/disableXpnResource', options)
+          command.request_representation = Google::Apis::ComputeBeta::ProjectsDisableXpnResourceRequest::Representation
+          command.request_object = projects_disable_xpn_resource_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enable this project as an XPN host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/enableXpnHost', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enable XPN resource (a.k.a service project or service folder in the future)
+        # for a host project, so that subnetworks in the host project can be used by
+        # instances in the service project or folder.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::ProjectsEnableXpnResourceRequest] projects_enable_xpn_resource_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_xpn_resource(project, projects_enable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/enableXpnResource', options)
+          command.request_representation = Google::Apis::ComputeBeta::ProjectsEnableXpnResourceRequest::Representation
+          command.request_object = projects_enable_xpn_resource_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
@@ -8216,10 +8769,57 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get XPN resources associated with this host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        # @param [Fixnum] max_results
+        # @param [String] order_by
+        # @param [String] page_token
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::ProjectsGetXpnResources] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::ProjectsGetXpnResources]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_xpn_resources(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/getXpnResources', options)
+          command.response_representation = Google::Apis::ComputeBeta::ProjectsGetXpnResources::Representation
+          command.response_class = Google::Apis::ComputeBeta::ProjectsGetXpnResources
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all XPN host projects visible to the user in an organization.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
+        # @param [String] filter
+        # @param [Fixnum] max_results
+        # @param [String] order_by
+        # @param [String] page_token
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8241,13 +8841,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/listXpnHosts', options)
           command.request_representation = Google::Apis::ComputeBeta::ProjectsListXpnHostsRequest::Representation
           command.request_object = projects_list_xpn_hosts_request_object
           command.response_representation = Google::Apis::ComputeBeta::XpnHostList::Representation
           command.response_class = Google::Apis::ComputeBeta::XpnHostList
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8563,7 +9167,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -8947,7 +9551,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9129,6 +9733,170 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified commitment resource. Get a list of available commitments
+        # by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] commitment
+        #   Name of the commitment to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Commitment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Commitment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_commitment(project, region, commitment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/commitments/{commitment}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Commitment::Representation
+          command.response_class = Google::Apis::ComputeBeta::Commitment
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['commitment'] = commitment unless commitment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an commitment in the specified project using the data included in the
+        # request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeBeta::Commitment] commitment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_region_commitment(project, region, commitment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/commitments', options)
+          command.request_representation = Google::Apis::ComputeBeta::Commitment::Representation
+          command.request_object = commitment_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of commitments contained within the specified region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::CommitmentList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::CommitmentList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_commitments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/commitments', options)
+          command.response_representation = Google::Apis::ComputeBeta::CommitmentList::Representation
+          command.response_class = Google::Apis::ComputeBeta::CommitmentList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9396,7 +10164,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -9943,7 +10711,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10028,7 +10796,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10279,7 +11047,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10396,7 +11164,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10473,7 +11241,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -10718,7 +11486,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -11090,7 +11858,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -11290,7 +12058,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -11567,7 +12335,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -11685,7 +12453,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -11975,7 +12743,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -12064,6 +12832,51 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set whether VMs in this subnet can access Google services without assigning
+        # external IP addresses through Cloudpath.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] subnetwork
+        #   Name of the Subnetwork resource.
+        # @param [Google::Apis::ComputeBeta::SubnetworksSetPrivateIpGoogleAccessRequest] subnetworks_set_private_ip_google_access_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_subnetwork_private_ip_google_access(project, region, subnetwork, subnetworks_set_private_ip_google_access_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess', options)
+          command.request_representation = Google::Apis::ComputeBeta::SubnetworksSetPrivateIpGoogleAccessRequest::Representation
+          command.request_object = subnetworks_set_private_ip_google_access_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['subnetwork'] = subnetwork unless subnetwork.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12259,7 +13072,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -12535,7 +13348,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -12735,7 +13548,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -12940,7 +13753,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -13150,7 +13963,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -13399,7 +14212,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -13773,7 +14586,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -13986,6 +14799,282 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the specified TargetTcpProxy resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified TargetTcpProxy resource. Get a list of available target
+        # TCP proxies by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TargetTcpProxy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TargetTcpProxy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command.response_representation = Google::Apis::ComputeBeta::TargetTcpProxy::Representation
+          command.response_class = Google::Apis::ComputeBeta::TargetTcpProxy
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a TargetTcpProxy resource in the specified project using the data
+        # included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeBeta::TargetTcpProxy] target_tcp_proxy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_target_tcp_proxy(project, target_tcp_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies', options)
+          command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxy::Representation
+          command.request_object = target_tcp_proxy_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of TargetTcpProxy resources available to the specified
+        # project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::TargetTcpProxyList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::TargetTcpProxyList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_target_tcp_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/targetTcpProxies', options)
+          command.response_representation = Google::Apis::ComputeBeta::TargetTcpProxyList::Representation
+          command.response_class = Google::Apis::ComputeBeta::TargetTcpProxyList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the BackendService for TargetTcpProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource whose BackendService resource is to be set.
+        # @param [Google::Apis::ComputeBeta::TargetTcpProxiesSetBackendServiceRequest] target_tcp_proxies_set_backend_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_tcp_proxy_backend_service(project, target_tcp_proxy, target_tcp_proxies_set_backend_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService', options)
+          command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxiesSetBackendServiceRequest::Representation
+          command.request_object = target_tcp_proxies_set_backend_service_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the ProxyHeaderType for TargetTcpProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource whose ProxyHeader is to be set.
+        # @param [Google::Apis::ComputeBeta::TargetTcpProxiesSetProxyHeaderRequest] target_tcp_proxies_set_proxy_header_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_tcp_proxy_proxy_header(project, target_tcp_proxy, target_tcp_proxies_set_proxy_header_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader', options)
+          command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxiesSetProxyHeaderRequest::Representation
+          command.request_object = target_tcp_proxies_set_proxy_header_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of target VPN gateways.
         # @param [String] project
         #   Project ID for this request.
@@ -14014,7 +15103,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -14219,7 +15308,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -14499,7 +15588,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -14742,7 +15831,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -14947,7 +16036,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -15151,7 +16240,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -15268,7 +16357,7 @@ module Google
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests.
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.

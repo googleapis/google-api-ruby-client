@@ -447,6 +447,8 @@ module Google
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Array<String>, String] history_types
+        #   History types to be returned by the function
         # @param [String] label_id
         #   Only return messages with a label matching the ID.
         # @param [Fixnum] max_results
@@ -485,11 +487,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_histories(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_histories(user_id, history_types: nil, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{userId}/history', options)
           command.response_representation = Google::Apis::GmailV1::ListHistoryResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListHistoryResponse
           command.params['userId'] = user_id unless user_id.nil?
+          command.query['historyTypes'] = history_types unless history_types.nil?
           command.query['labelId'] = label_id unless label_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -903,8 +906,7 @@ module Google
         # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
-        #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
-        #   accounts.
+        #   Vault to a Vault administrator. Only used for G Suite accounts.
         # @param [String] internal_date_source
         #   Source for Gmail's internal date of the message.
         # @param [Boolean] never_mark_spam
@@ -969,8 +971,7 @@ module Google
         # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
-        #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
-        #   accounts.
+        #   Vault to a Vault administrator. Only used for G Suite accounts.
         # @param [String] internal_date_source
         #   Source for Gmail's internal date of the message.
         # @param [String] fields
@@ -1430,6 +1431,8 @@ module Google
         
         # Updates the auto-forwarding setting for the specified account. A verified
         # forwarding address must be specified when auto-forwarding is enabled.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1740,6 +1743,8 @@ module Google
         # will be sent to the recipient and the resource's verification status will be
         # set to pending; otherwise, the resource will be created with verification
         # status set to accepted.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1780,6 +1785,8 @@ module Google
         
         # Deletes the specified forwarding address and revokes any verification that may
         # have been required.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1898,6 +1905,8 @@ module Google
         # status will be set to pending; otherwise, the resource will be created with
         # verification status set to accepted. If a signature is provided, Gmail will
         # sanitize the HTML before saving it with the alias.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1938,6 +1947,8 @@ module Google
         
         # Deletes the specified send-as alias. Revokes any verification that may have
         # been required for using it.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2053,7 +2064,10 @@ module Google
         end
         
         # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
-        # HTML before saving it with the alias. This method supports patch semantics.
+        # HTML before saving it with the alias.
+        # Addresses other than the primary address for the account can only be updated
+        # by service account clients that have been delegated domain-wide authority.
+        # This method supports patch semantics.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2097,6 +2111,8 @@ module Google
         
         # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
         # HTML before saving it with the alias.
+        # Addresses other than the primary address for the account can only be updated
+        # by service account clients that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2140,6 +2156,8 @@ module Google
         
         # Sends a verification email to the specified send-as alias address. The
         # verification status must be pending.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2170,6 +2188,215 @@ module Google
           command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/verify', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified S/MIME config for the specified send-as alias.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
+        # @param [String] id
+        #   The immutable ID for the SmimeInfo.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_setting_send_a_smime_info(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified S/MIME config for the specified send-as alias.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
+        # @param [String] id
+        #   The immutable ID for the SmimeInfo.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SmimeInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SmimeInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_send_a_smime_info(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', options)
+          command.response_representation = Google::Apis::GmailV1::SmimeInfo::Representation
+          command.response_class = Google::Apis::GmailV1::SmimeInfo
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Insert (upload) the given S/MIME config for the specified send-as alias. Note
+        # that pkcs12 format is required for the key.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
+        # @param [Google::Apis::GmailV1::SmimeInfo] smime_info_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::SmimeInfo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::SmimeInfo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_user_setting_send_a_smime_info(user_id, send_as_email, smime_info_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
+          command.request_representation = Google::Apis::GmailV1::SmimeInfo::Representation
+          command.request_object = smime_info_object
+          command.response_representation = Google::Apis::GmailV1::SmimeInfo::Representation
+          command.response_class = Google::Apis::GmailV1::SmimeInfo
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists S/MIME configs for the specified send-as alias.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ListSmimeInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ListSmimeInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_setting_send_a_smime_infos(user_id, send_as_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', options)
+          command.response_representation = Google::Apis::GmailV1::ListSmimeInfoResponse::Representation
+          command.response_class = Google::Apis::GmailV1::ListSmimeInfoResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the default S/MIME config for the specified send-as alias.
+        # @param [String] user_id
+        #   The user's email address. The special value me can be used to indicate the
+        #   authenticated user.
+        # @param [String] send_as_email
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
+        # @param [String] id
+        #   The immutable ID for the SmimeInfo.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_user_setting_send_a_smime_info_default(user_id, send_as_email, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['sendAsEmail'] = send_as_email unless send_as_email.nil?
+          command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

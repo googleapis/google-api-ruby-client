@@ -259,6 +259,11 @@ module Google
         # @return [String]
         attr_accessor :default_bucket
       
+        # Identity-Aware Proxy
+        # Corresponds to the JSON property `iap`
+        # @return [Google::Apis::AppengineV1beta5::IdentityAwareProxy]
+        attr_accessor :iap
+      
         def initialize(**args)
            update!(**args)
         end
@@ -274,6 +279,7 @@ module Google
           @default_cookie_expiration = args[:default_cookie_expiration] if args.key?(:default_cookie_expiration)
           @default_hostname = args[:default_hostname] if args.key?(:default_hostname)
           @default_bucket = args[:default_bucket] if args.key?(:default_bucket)
+          @iap = args[:iap] if args.key?(:iap)
         end
       end
       
@@ -309,6 +315,48 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @path = args[:path] if args.key?(:path)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Identity-Aware Proxy
+      class IdentityAwareProxy
+        include Google::Apis::Core::Hashable
+      
+        # Whether the serving infrastructure will authenticate and authorize all
+        # incoming requests.If true, the oauth2_client_id and oauth2_client_secret
+        # fields must be non-empty.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # OAuth2 client ID to use for the authentication flow.
+        # Corresponds to the JSON property `oauth2ClientId`
+        # @return [String]
+        attr_accessor :oauth2_client_id
+      
+        # For security reasons, this value cannot be retrieved via the API. Instead, the
+        # SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.
+        # @InputOnly
+        # Corresponds to the JSON property `oauth2ClientSecret`
+        # @return [String]
+        attr_accessor :oauth2_client_secret
+      
+        # Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+        # Corresponds to the JSON property `oauth2ClientSecretSha256`
+        # @return [String]
+        attr_accessor :oauth2_client_secret_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @oauth2_client_id = args[:oauth2_client_id] if args.key?(:oauth2_client_id)
+          @oauth2_client_secret = args[:oauth2_client_secret] if args.key?(:oauth2_client_secret)
+          @oauth2_client_secret_sha256 = args[:oauth2_client_secret_sha256] if args.key?(:oauth2_client_secret_sha256)
         end
       end
       
@@ -1260,7 +1308,9 @@ module Google
         # @return [Hash<String,Google::Apis::AppengineV1beta5::FileInfo>]
         attr_accessor :files
       
-        # Docker image that is used to start a VM container for the version you deploy.
+        # Docker image that is used to create a container and start a VM instance for
+        # the version that you deploy. Only applicable for instances running in the App
+        # Engine flexible environment.
         # Corresponds to the JSON property `container`
         # @return [Google::Apis::AppengineV1beta5::ContainerInfo]
         attr_accessor :container
@@ -1317,12 +1367,14 @@ module Google
         end
       end
       
-      # Docker image that is used to start a VM container for the version you deploy.
+      # Docker image that is used to create a container and start a VM instance for
+      # the version that you deploy. Only applicable for instances running in the App
+      # Engine flexible environment.
       class ContainerInfo
         include Google::Apis::Core::Hashable
       
-        # URI to the hosted container image in a Docker repository. The URI must be
-        # fully qualified and include a tag or digest. Examples: "gcr.io/my-project/
+        # URI to the hosted container image in Google Container Registry. The URI must
+        # be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/
         # image:tag" or "gcr.io/my-project/image@digest"
         # Corresponds to the JSON property `image`
         # @return [String]
@@ -1688,7 +1740,7 @@ module Google
         end
       end
       
-      # The response message for LocationService.ListLocations.
+      # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
       
@@ -1892,6 +1944,64 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @user = args[:user] if args.key?(:user)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation.
+      class OperationMetadataV1Beta
+        include Google::Apis::Core::Hashable
+      
+        # API method that initiated this operation. Example: google.appengine.v1beta.
+        # Versions.CreateVersion.@OutputOnly
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Time that this operation was created.@OutputOnly
+        # Corresponds to the JSON property `insertTime`
+        # @return [String]
+        attr_accessor :insert_time
+      
+        # Time that this operation completed.@OutputOnly
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # User who requested this operation.@OutputOnly
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Name of the resource that this operation is acting on. Example: apps/myapp/
+        # services/default.@OutputOnly
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Ephemeral message that may change every time the operation is polled. @
+        # OutputOnly
+        # Corresponds to the JSON property `ephemeralMessage`
+        # @return [String]
+        attr_accessor :ephemeral_message
+      
+        # Durable messages that persist on every operation poll. @OutputOnly
+        # Corresponds to the JSON property `warning`
+        # @return [Array<String>]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @user = args[:user] if args.key?(:user)
+          @target = args[:target] if args.key?(:target)
+          @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
+          @warning = args[:warning] if args.key?(:warning)
         end
       end
       

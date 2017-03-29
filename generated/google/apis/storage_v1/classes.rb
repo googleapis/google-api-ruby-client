@@ -46,7 +46,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The ID of the bucket.
+        # The ID of the bucket. For buckets, the id and name properities are the same.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -835,7 +835,8 @@ module Google
         # @return [String]
         attr_accessor :generation
       
-        # The ID of the object.
+        # The ID of the object, including the bucket name, object name, and generation
+        # number.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -869,7 +870,7 @@ module Google
         # @return [String]
         attr_accessor :metageneration
       
-        # The name of this object. Required if not specified by URL parameter.
+        # The name of the object. Required if not specified by URL parameter.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1197,6 +1198,116 @@ module Google
         end
       end
       
+      # A bucket/object IAM policy.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # An association between a role, which comes with a set of permissions, and
+        # members who may assume that role.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::StorageV1::Policy::Binding>]
+        attr_accessor :bindings
+      
+        # HTTP 1.1  Entity tag for the policy.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The kind of item this is. For policies, this is always storage#policy. This
+        # field is ignored on input.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the resource to which this policy belongs. Will be of the form
+        # buckets/bucket for buckets, and buckets/bucket/objects/object for objects. A
+        # specific generation may be specified by appending #generationNumber to the end
+        # of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The current
+        # generation can be denoted with #0. This field is ignored on input.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+        
+        # 
+        class Binding
+          include Google::Apis::Core::Hashable
+        
+          # A collection of identifiers for members who may assume the provided role.
+          # Recognized identifiers are as follows:
+          # - allUsers — A special identifier that represents anyone on the internet; with
+          # or without a Google account.
+          # - allAuthenticatedUsers — A special identifier that represents anyone who is
+          # authenticated with a Google account or a service account.
+          # - user:emailid — An email address that represents a specific account. For
+          # example, user:alice@gmail.com or user:joe@example.com.
+          # - serviceAccount:emailid — An email address that represents a service account.
+          # For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+          # - group:emailid — An email address that represents a Google group. For example,
+          # group:admins@example.com.
+          # - domain:domain — A Google Apps domain name that represents all the users of
+          # that domain. For example, domain:google.com or domain:example.com.
+          # - projectOwner:projectid — Owners of the given project. For example,
+          # projectOwner:my-example-project
+          # - projectEditor:projectid — Editors of the given project. For example,
+          # projectEditor:my-example-project
+          # - projectViewer:projectid — Viewers of the given project. For example,
+          # projectViewer:my-example-project
+          # Corresponds to the JSON property `members`
+          # @return [Array<String>]
+          attr_accessor :members
+        
+          # The role to which members belong. Two types of roles are supported: new IAM
+          # roles, which grant permissions that do not map directly to those provided by
+          # ACLs, and legacy IAM roles, which do map directly to ACL permissions. All
+          # roles are of the format roles/storage.specificRole.
+          # The new IAM roles are:
+          # - roles/storage.admin — Full control of Google Cloud Storage resources.
+          # - roles/storage.objectViewer — Read-Only access to Google Cloud Storage
+          # objects.
+          # - roles/storage.objectCreator — Access to create objects in Google Cloud
+          # Storage.
+          # - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.
+          # The legacy IAM roles are:
+          # - roles/storage.legacyObjectReader — Read-only access to objects without
+          # listing. Equivalent to an ACL entry on an object with the READER role.
+          # - roles/storage.legacyObjectOwner — Read/write access to existing objects
+          # without listing. Equivalent to an ACL entry on an object with the OWNER role.
+          # - roles/storage.legacyBucketReader — Read access to buckets with object
+          # listing. Equivalent to an ACL entry on a bucket with the READER role.
+          # - roles/storage.legacyBucketWriter — Read access to buckets with object
+          # listing/creation/deletion. Equivalent to an ACL entry on a bucket with the
+          # WRITER role.
+          # - roles/storage.legacyBucketOwner — Read and write access to existing buckets
+          # with object listing/creation/deletion. Equivalent to an ACL entry on a bucket
+          # with the OWNER role.
+          # Corresponds to the JSON property `role`
+          # @return [String]
+          attr_accessor :role
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @members = args[:members] if args.key?(:members)
+            @role = args[:role] if args.key?(:role)
+          end
+        end
+      end
+      
       # A rewrite response.
       class RewriteResponse
         include Google::Apis::Core::Hashable
@@ -1248,6 +1359,47 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @rewrite_token = args[:rewrite_token] if args.key?(:rewrite_token)
           @total_bytes_rewritten = args[:total_bytes_rewritten] if args.key?(:total_bytes_rewritten)
+        end
+      end
+      
+      # A storage.(buckets|objects).testIamPermissions response.
+      class TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The kind of item this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The permissions held by the caller. Permissions are always of the format
+        # storage.resource.capability, where resource is one of buckets or objects. The
+        # supported permissions are as follows:
+        # - storage.buckets.delete — Delete bucket.
+        # - storage.buckets.get — Read bucket metadata.
+        # - storage.buckets.getIamPolicy — Read bucket IAM policy.
+        # - storage.buckets.create — Create bucket.
+        # - storage.buckets.list — List buckets.
+        # - storage.buckets.setIamPolicy — Update bucket IAM policy.
+        # - storage.buckets.update — Update bucket metadata.
+        # - storage.objects.delete — Delete object.
+        # - storage.objects.get — Read object data and metadata.
+        # - storage.objects.getIamPolicy — Read object IAM policy.
+        # - storage.objects.create — Create object.
+        # - storage.objects.list — List objects.
+        # - storage.objects.setIamPolicy — Update object IAM policy.
+        # - storage.objects.update — Update object metadata.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
     end
