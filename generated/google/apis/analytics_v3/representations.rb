@@ -1201,6 +1201,7 @@ module Google
           collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::GaData::ColumnHeader, decorator: Google::Apis::AnalyticsV3::GaData::ColumnHeader::Representation
       
           property :contains_sampled_data, as: 'containsSampledData'
+          property :data_last_refreshed, as: 'dataLastRefreshed'
           property :data_table, as: 'dataTable', class: Google::Apis::AnalyticsV3::GaData::DataTable, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Representation
       
           property :id, as: 'id'

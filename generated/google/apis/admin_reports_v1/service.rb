@@ -22,8 +22,8 @@ module Google
     module AdminReportsV1
       # Admin Reports API
       #
-      # Fetches reports for the administrators of Google Apps customers about the
-      #  usage, collaboration, security, and risk for their users.
+      # Fetches reports for the administrators of G Suite customers about the usage,
+      #  collaboration, security, and risk for their users.
       #
       # @example
       #    require 'google/apis/admin_reports_v1'
@@ -66,7 +66,7 @@ module Google
         # @param [String] customer_id
         #   Represents the customer for which the data is to be fetched.
         # @param [String] end_time
-        #   Return events which occured at or before this time.
+        #   Return events which occurred at or before this time.
         # @param [String] event_name
         #   Name of the event being queried.
         # @param [String] filters
@@ -77,7 +77,7 @@ module Google
         # @param [String] page_token
         #   Token to specify next page.
         # @param [String] start_time
-        #   Return events which occured at or after this time.
+        #   Return events which occurred at or after this time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,7 +133,7 @@ module Google
         # @param [String] customer_id
         #   Represents the customer for which the data is to be fetched.
         # @param [String] end_time
-        #   Return events which occured at or before this time.
+        #   Return events which occurred at or before this time.
         # @param [String] event_name
         #   Name of the event being queried.
         # @param [String] filters
@@ -144,7 +144,7 @@ module Google
         # @param [String] page_token
         #   Token to specify next page.
         # @param [String] start_time
-        #   Return events which occured at or after this time.
+        #   Return events which occurred at or after this time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

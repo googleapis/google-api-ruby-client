@@ -22,6 +22,12 @@ module Google
   module Apis
     module AppengineV1beta5
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +47,12 @@ module Google
       end
       
       class UrlDispatchRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityAwareProxy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +113,12 @@ module Google
       end
       
       class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointsApiService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataExperimental
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +269,12 @@ module Google
       end
       
       class OperationMetadataV1Beta5
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadataV1Beta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -260,6 +290,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::AppengineV1beta5::Operation, decorator: Google::Apis::AppengineV1beta5::Operation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
       class Operation
@@ -283,15 +322,6 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::AppengineV1beta5::Operation, decorator: Google::Apis::AppengineV1beta5::Operation::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -305,6 +335,8 @@ module Google
           property :default_cookie_expiration, as: 'defaultCookieExpiration'
           property :default_hostname, as: 'defaultHostname'
           property :default_bucket, as: 'defaultBucket'
+          property :iap, as: 'iap', class: Google::Apis::AppengineV1beta5::IdentityAwareProxy, decorator: Google::Apis::AppengineV1beta5::IdentityAwareProxy::Representation
+      
         end
       end
       
@@ -314,6 +346,16 @@ module Google
           property :domain, as: 'domain'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class IdentityAwareProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_secret, as: 'oauth2ClientSecret'
+          property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
         end
       end
       
@@ -357,6 +399,8 @@ module Google
       
           property :nobuild_files_regex, as: 'nobuildFilesRegex'
           property :deployment, as: 'deployment', class: Google::Apis::AppengineV1beta5::Deployment, decorator: Google::Apis::AppengineV1beta5::Deployment::Representation
+      
+          property :endpoints_api_service, as: 'endpointsApiService', class: Google::Apis::AppengineV1beta5::EndpointsApiService, decorator: Google::Apis::AppengineV1beta5::EndpointsApiService::Representation
       
         end
       end
@@ -440,6 +484,7 @@ module Google
           collection :forwarded_ports, as: 'forwardedPorts'
           property :instance_tag, as: 'instanceTag'
           property :name, as: 'name'
+          property :subnetwork_name, as: 'subnetworkName'
         end
       end
       
@@ -449,6 +494,17 @@ module Google
           property :cpu, as: 'cpu'
           property :disk_gb, as: 'diskGb'
           property :memory_gb, as: 'memoryGb'
+          collection :volumes, as: 'volumes', class: Google::Apis::AppengineV1beta5::Volume, decorator: Google::Apis::AppengineV1beta5::Volume::Representation
+      
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :volume_type, as: 'volumeType'
+          property :size_gb, as: 'sizeGb'
         end
       end
       
@@ -573,6 +629,14 @@ module Google
         end
       end
       
+      class EndpointsApiService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :config_id, as: 'configId'
+        end
+      end
+      
       class ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -627,6 +691,7 @@ module Google
           property :memory_usage, as: 'memoryUsage'
           property :vm_status, as: 'vmStatus'
           property :vm_unlocked, as: 'vmUnlocked'
+          property :vm_ip, as: 'vmIp'
         end
       end
       
@@ -642,6 +707,7 @@ module Google
       class DebugInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssh_key, as: 'sshKey'
         end
       end
       
@@ -661,6 +727,17 @@ module Google
           property :location_id, as: 'locationId'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class OperationMetadataExperimental
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
         end
       end
       
@@ -687,6 +764,19 @@ module Google
         end
       end
       
+      class OperationMetadataV1Beta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :insert_time, as: 'insertTime'
+          property :end_time, as: 'endTime'
+          property :user, as: 'user'
+          property :target, as: 'target'
+          property :ephemeral_message, as: 'ephemeralMessage'
+          collection :warning, as: 'warning'
+        end
+      end
+      
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +785,8 @@ module Google
           property :end_time, as: 'endTime'
           property :user, as: 'user'
           property :target, as: 'target'
+          property :ephemeral_message, as: 'ephemeralMessage'
+          collection :warning, as: 'warning'
         end
       end
       

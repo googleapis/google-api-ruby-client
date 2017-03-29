@@ -326,6 +326,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted_session, as: 'deletedSession', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
       
+          property :has_more_data, as: 'hasMoreData'
           property :next_page_token, as: 'nextPageToken'
           collection :session, as: 'session', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
       

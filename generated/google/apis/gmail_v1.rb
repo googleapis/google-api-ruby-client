@@ -25,9 +25,9 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20160711'
+      REVISION = '20170222'
 
-      # View and manage your mail
+      # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'
 
       # Manage drafts and send emails
@@ -38,6 +38,9 @@ module Google
 
       # Manage mailbox labels
       AUTH_GMAIL_LABELS = 'https://www.googleapis.com/auth/gmail.labels'
+
+      # View your email message metadata such as labels and headers, but not the email body
+      AUTH_GMAIL_METADATA = 'https://www.googleapis.com/auth/gmail.metadata'
 
       # View and modify but not delete your email
       AUTH_GMAIL_MODIFY = 'https://www.googleapis.com/auth/gmail.modify'

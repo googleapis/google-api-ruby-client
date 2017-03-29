@@ -32,10 +32,11 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
-        # List of linked AdWords accounts, active or pending approval. To create a new
-        # link request, add a new link with status active to the list. It will remain is
-        # state pending until approved or rejected in the AdWords interface. To delete
-        # an active link or to cancel a link request, remove it from the list.
+        # List of linked AdWords accounts that are active or pending approval. To create
+        # a new link request, add a new link with status active to the list. It will
+        # remain in a pending state until approved or rejected either in the AdWords
+        # interface or through the  AdWords API. To delete an active link, or to cancel
+        # a link request, remove it from the list.
         # Corresponds to the JSON property `adwordsLinks`
         # @return [Array<Google::Apis::ContentV2::AccountAdwordsLink>]
         attr_accessor :adwords_links
@@ -660,6 +661,11 @@ module Google
         # @return [String]
         attr_accessor :country
       
+        # A more detailed description of the issue.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
         # Actual value displayed on the landing page.
         # Corresponds to the JSON property `displayedValue`
         # @return [String]
@@ -679,6 +685,11 @@ module Google
         # Corresponds to the JSON property `lastChecked`
         # @return [String]
         attr_accessor :last_checked
+      
+        # The attribute name that is relevant for the issue.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Number of items in the account found to have the said issue.
         # Corresponds to the JSON property `numItems`
@@ -702,10 +713,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @detail = args[:detail] if args.key?(:detail)
           @displayed_value = args[:displayed_value] if args.key?(:displayed_value)
           @example_items = args[:example_items] if args.key?(:example_items)
           @id = args[:id] if args.key?(:id)
           @last_checked = args[:last_checked] if args.key?(:last_checked)
+          @location = args[:location] if args.key?(:location)
           @num_items = args[:num_items] if args.key?(:num_items)
           @severity = args[:severity] if args.key?(:severity)
           @submitted_value = args[:submitted_value] if args.key?(:submitted_value)
@@ -1616,7 +1629,8 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # The type of data feed.
+        # The type of data feed. For product inventory feeds, only feeds for local
+        # stores, not online stores, are supported.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -2414,6 +2428,14 @@ module Google
         # @return [Google::Apis::ContentV2::LoyaltyPoints]
         attr_accessor :loyalty_points
       
+        # Store pickup information. Only supported for local inventory. Not setting
+        # pickup means "don't update" while setting it to the empty value (`` in JSON)
+        # means "delete". Otherwise, pickupMethod and pickupSla must be set together,
+        # unless pickupMethod is "not supported".
+        # Corresponds to the JSON property `pickup`
+        # @return [Google::Apis::ContentV2::InventoryPickup]
+        attr_accessor :pickup
+      
         # The price of the product.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2::Price]
@@ -2453,6 +2475,7 @@ module Google
           @installment = args[:installment] if args.key?(:installment)
           @kind = args[:kind] if args.key?(:kind)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @pickup = args[:pickup] if args.key?(:pickup)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @sale_price = args[:sale_price] if args.key?(:sale_price)
@@ -2583,6 +2606,36 @@ module Google
       end
       
       # 
+      class InventoryPickup
+        include Google::Apis::Core::Hashable
+      
+        # Whether store pickup is available for this offer and whether the pickup option
+        # should be shown as buy, reserve, or not supported. Only supported for local
+        # inventory. Unless the value is "not supported", must be submitted together
+        # with pickupSla.
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # The expected date that an order will be ready for pickup, relative to when the
+        # order is placed. Only supported for local inventory. Must be submitted
+        # together with pickupMethod.
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
+        end
+      end
+      
+      # 
       class SetInventoryRequest
         include Google::Apis::Core::Hashable
       
@@ -2600,6 +2653,14 @@ module Google
         # Corresponds to the JSON property `loyaltyPoints`
         # @return [Google::Apis::ContentV2::LoyaltyPoints]
         attr_accessor :loyalty_points
+      
+        # Store pickup information. Only supported for local inventory. Not setting
+        # pickup means "don't update" while setting it to the empty value (`` in JSON)
+        # means "delete". Otherwise, pickupMethod and pickupSla must be set together,
+        # unless pickupMethod is "not supported".
+        # Corresponds to the JSON property `pickup`
+        # @return [Google::Apis::ContentV2::InventoryPickup]
+        attr_accessor :pickup
       
         # The price of the product.
         # Corresponds to the JSON property `price`
@@ -2639,6 +2700,7 @@ module Google
           @availability = args[:availability] if args.key?(:availability)
           @installment = args[:installment] if args.key?(:installment)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @pickup = args[:pickup] if args.key?(:pickup)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @sale_price = args[:sale_price] if args.key?(:sale_price)
@@ -2729,6 +2791,11 @@ module Google
         # @return [Boolean]
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
+      
+        # The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+        # Corresponds to the JSON property `channelType`
+        # @return [String]
+        attr_accessor :channel_type
       
         # The details of the customer who placed the order.
         # Corresponds to the JSON property `customer`
@@ -2831,6 +2898,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
+          @channel_type = args[:channel_type] if args.key?(:channel_type)
           @customer = args[:customer] if args.key?(:customer)
           @delivery_details = args[:delivery_details] if args.key?(:delivery_details)
           @id = args[:id] if args.key?(:id)
@@ -2977,8 +3045,7 @@ module Google
         # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the Purchases on Google checkout
-        # flow.
+        # marketing right opt in/out checkbox during the checkout flow.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference
@@ -6553,8 +6620,7 @@ module Google
         # If set, this indicates the user explicitly chose to opt in or out of providing
         # marketing rights to the merchant. If unset, this indicates the user has
         # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the Purchases on Google checkout
-        # flow. Optional.
+        # marketing right opt in/out checkbox during the checkout flow. Optional.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference

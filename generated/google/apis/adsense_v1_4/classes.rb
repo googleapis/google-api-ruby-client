@@ -236,7 +236,7 @@ module Google
         # @return [Google::Apis::AdsenseV1_4::AdStyle::Colors]
         attr_accessor :colors
       
-        # The style of the corners in the ad.
+        # The style of the corners in the ad (deprecated: never populated, ignored).
         # Corresponds to the JSON property `corners`
         # @return [String]
         attr_accessor :corners

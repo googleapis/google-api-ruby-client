@@ -1212,6 +1212,7 @@ module Google
           property :dont_show_notification, as: 'dont_show_notification'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
+          property :notification_group, as: 'notificationGroup'
           property :notification_type, as: 'notification_type'
           property :pcampaign_id, as: 'pcampaign_id'
           property :reason, as: 'reason'

@@ -20,18 +20,18 @@ module Google
   module Apis
     # Admin Reports API
     #
-    # Fetches reports for the administrators of Google Apps customers about the
-    # usage, collaboration, security, and risk for their users.
+    # Fetches reports for the administrators of G Suite customers about the usage,
+    # collaboration, security, and risk for their users.
     #
     # @see https://developers.google.com/admin-sdk/reports/
     module AdminReportsV1
       VERSION = 'ReportsV1'
-      REVISION = '20160704'
+      REVISION = '20170315'
 
-      # View audit reports of Google Apps for your domain
+      # View audit reports for your G Suite domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'
 
-      # View usage reports of Google Apps for your domain
+      # View usage reports for your G Suite domain
       AUTH_ADMIN_REPORTS_USAGE_READONLY = 'https://www.googleapis.com/auth/admin.reports.usage.readonly'
     end
   end

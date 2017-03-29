@@ -82,7 +82,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeobfuscationFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeobfuscationFilesUploadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeveloperComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VoidedPurchase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoidedPurchasesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Apk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,12 +468,44 @@ module Google
         end
       end
       
+      class DeobfuscationFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :symbol_type, as: 'symbolType'
+        end
+      end
+      
+      class DeobfuscationFilesUploadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deobfuscation_file, as: 'deobfuscationFile', class: Google::Apis::AndroidpublisherV2::DeobfuscationFile, decorator: Google::Apis::AndroidpublisherV2::DeobfuscationFile::Representation
+      
+        end
+      end
+      
       class DeveloperComment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_modified, as: 'lastModified', class: Google::Apis::AndroidpublisherV2::Timestamp, decorator: Google::Apis::AndroidpublisherV2::Timestamp::Representation
       
           property :text, as: 'text'
+        end
+      end
+      
+      class DeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_make, as: 'cpuMake'
+          property :cpu_model, as: 'cpuModel'
+          property :device_class, as: 'deviceClass'
+          property :gl_es_version, as: 'glEsVersion'
+          property :manufacturer, as: 'manufacturer'
+          property :native_platform, as: 'nativePlatform'
+          property :product_name, as: 'productName'
+          property :ram_mb, as: 'ramMb'
+          property :screen_density_dpi, as: 'screenDensityDpi'
+          property :screen_height_px, as: 'screenHeightPx'
+          property :screen_width_px, as: 'screenWidthPx'
         end
       end
       
@@ -807,6 +869,7 @@ module Google
           property :price_amount_micros, as: 'priceAmountMicros'
           property :price_currency_code, as: 'priceCurrencyCode'
           property :start_time_millis, as: 'startTimeMillis'
+          property :user_cancellation_time_millis, as: 'userCancellationTimeMillis'
         end
       end
       
@@ -874,11 +937,38 @@ module Google
           property :app_version_code, as: 'appVersionCode'
           property :app_version_name, as: 'appVersionName'
           property :device, as: 'device'
+          property :device_metadata, as: 'deviceMetadata', class: Google::Apis::AndroidpublisherV2::DeviceMetadata, decorator: Google::Apis::AndroidpublisherV2::DeviceMetadata::Representation
+      
           property :last_modified, as: 'lastModified', class: Google::Apis::AndroidpublisherV2::Timestamp, decorator: Google::Apis::AndroidpublisherV2::Timestamp::Representation
       
+          property :original_text, as: 'originalText'
           property :reviewer_language, as: 'reviewerLanguage'
           property :star_rating, as: 'starRating'
           property :text, as: 'text'
+          property :thumbs_down_count, as: 'thumbsDownCount'
+          property :thumbs_up_count, as: 'thumbsUpCount'
+        end
+      end
+      
+      class VoidedPurchase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :purchase_time_millis, as: 'purchaseTimeMillis'
+          property :purchase_token, as: 'purchaseToken'
+          property :voided_time_millis, as: 'voidedTimeMillis'
+        end
+      end
+      
+      class VoidedPurchasesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_info, as: 'pageInfo', class: Google::Apis::AndroidpublisherV2::PageInfo, decorator: Google::Apis::AndroidpublisherV2::PageInfo::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV2::TokenPagination, decorator: Google::Apis::AndroidpublisherV2::TokenPagination::Representation
+      
+          collection :voided_purchases, as: 'voidedPurchases', class: Google::Apis::AndroidpublisherV2::VoidedPurchase, decorator: Google::Apis::AndroidpublisherV2::VoidedPurchase::Representation
+      
         end
       end
     end

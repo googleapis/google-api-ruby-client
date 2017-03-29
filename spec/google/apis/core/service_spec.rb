@@ -286,9 +286,12 @@ EOF
     context 'with fetch_all' do
       let(:responses) do
         data = {}
-        data[nil] = OpenStruct.new(next_page_token: 'p1', items: ['a', 'b', 'c'], alt_items: [1, 2 , 3])
-        data['p1'] = OpenStruct.new(next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6])
-        data['p2'] = OpenStruct.new(next_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7,8, 9])
+        data[nil] = OpenStruct.new(
+          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo')
+        data['p1'] = OpenStruct.new(
+          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar')
+        data['p2'] = OpenStruct.new(
+          next_page_token: nil, alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz')
         data
       end
 
@@ -303,6 +306,11 @@ EOF
         expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
       end
 
+      it 'should allow selecting another field for response page token' do
+        expect(service.fetch_all(response_page_token: :alt_page_token) { |token| responses[token] }
+              ).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
+      end
+
       it 'should ignore nil collections' do
         responses['p1'].items = nil
         expect(items).to contain_exactly('a', 'b', 'c', 'g', 'h', 'i')
@@ -310,6 +318,10 @@ EOF
 
       it 'should allow selecting another field for items' do
         expect(service.fetch_all(items: :alt_items) { |token| responses[token] } ).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8, 9)
+      end
+
+      it 'should allow iterating over singular items' do
+        expect(service.fetch_all(items: :singular) { |token| responses[token] } ).to contain_exactly('foo', 'bar', 'baz')
       end
 
       it 'should allow limiting the number of items to fetch' do

@@ -54,6 +54,7 @@ module Google
         end
         
         # Searches for political divisions by their natural name or OCD ID.
+        # @param [Google::Apis::CivicinfoV2::DivisionSearchRequest] division_search_request_object
         # @param [String] query
         #   The search query. Queries can cover any parts of a OCD ID or a human readable
         #   division name. All words given in the query are treated as required patterns.
@@ -80,8 +81,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_divisions(query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_divisions(division_search_request_object = nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'divisions', options)
+          command.request_representation = Google::Apis::CivicinfoV2::DivisionSearchRequest::Representation
+          command.request_object = division_search_request_object
           command.response_representation = Google::Apis::CivicinfoV2::DivisionSearchResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::DivisionSearchResponse
           command.query['query'] = query unless query.nil?
@@ -92,6 +95,7 @@ module Google
         end
         
         # List of available elections to query.
+        # @param [Google::Apis::CivicinfoV2::ElectionsQueryRequest] elections_query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -113,8 +117,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_election(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_election(elections_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'elections', options)
+          command.request_representation = Google::Apis::CivicinfoV2::ElectionsQueryRequest::Representation
+          command.request_object = elections_query_request_object
           command.response_representation = Google::Apis::CivicinfoV2::QueryElectionsResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::QueryElectionsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -127,11 +133,16 @@ module Google
         # address.
         # @param [String] address
         #   The registered address of the voter to look up.
+        # @param [Google::Apis::CivicinfoV2::VoterInfoRequest] voter_info_request_object
         # @param [String] election_id
         #   The unique ID of the election to look up. A list of election IDs can be
         #   obtained at https://www.googleapis.com/civicinfo/`version`/elections
         # @param [Boolean] official_only
         #   If set to true, only data from official state sources will be returned.
+        # @param [Boolean] return_all_available_data
+        #   If set to true, the query will return the success codeand include any partial
+        #   information when it is unable to determine a matching address or unable to
+        #   determine the election for electionId=0 queries.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,13 +164,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_voter_info(address, election_id: nil, official_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_voter_info(address, voter_info_request_object = nil, election_id: nil, official_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'voterinfo', options)
+          command.request_representation = Google::Apis::CivicinfoV2::VoterInfoRequest::Representation
+          command.request_object = voter_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::VoterInfoResponse
           command.query['address'] = address unless address.nil?
           command.query['electionId'] = election_id unless election_id.nil?
           command.query['officialOnly'] = official_only unless official_only.nil?
+          command.query['returnAllAvailableData'] = return_all_available_data unless return_all_available_data.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -168,6 +182,7 @@ module Google
         
         # Looks up political geography and representative information for a single
         # address.
+        # @param [Google::Apis::CivicinfoV2::RepresentativeInfoRequest] representative_info_request_object
         # @param [String] address
         #   The address to look up. May only be specified if the field ocdId is not given
         #   in the URL.
@@ -203,8 +218,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def representative_info_by_address(address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def representative_info_by_address(representative_info_request_object = nil, address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'representatives', options)
+          command.request_representation = Google::Apis::CivicinfoV2::RepresentativeInfoRequest::Representation
+          command.request_object = representative_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::RepresentativeInfoResponse
           command.query['address'] = address unless address.nil?
@@ -220,6 +237,7 @@ module Google
         # Looks up representative information for a single geographic division.
         # @param [String] ocd_id
         #   The Open Civic Data division identifier of the division to look up.
+        # @param [Google::Apis::CivicinfoV2::DivisionRepresentativeInfoRequest] division_representative_info_request_object
         # @param [Array<String>, String] levels
         #   A list of office levels to filter by. Only offices that serve at least one of
         #   these levels will be returned. Divisions that don't contain a matching office
@@ -253,8 +271,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def representative_info_by_division(ocd_id, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def representative_info_by_division(ocd_id, division_representative_info_request_object = nil, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'representatives/{ocdId}', options)
+          command.request_representation = Google::Apis::CivicinfoV2::DivisionRepresentativeInfoRequest::Representation
+          command.request_object = division_representative_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoData::Representation
           command.response_class = Google::Apis::CivicinfoV2::RepresentativeInfoData
           command.params['ocdId'] = ocd_id unless ocd_id.nil?

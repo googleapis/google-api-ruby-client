@@ -16,7 +16,7 @@ require 'spec_helper'
 require 'google/apis/core/api_command'
 require 'google/apis/core/json_representation'
 
-RSpec.describe Google::Apis::Core::HttpCommand do
+RSpec.describe Google::Apis::Core::ApiCommand do
   include TestHelpers
   include_context 'HTTP client'
 
@@ -39,19 +39,27 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command = Google::Apis::Core::ApiCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
       command.request_representation = representer_class
       command.request_object = request
+      command.query['a'] = 'b'
       command
     end
 
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=b')
         .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should serialize the request object' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req|
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?a=b').with do |req|
         be_json_eql(%({"value":"hello"})).matches?(req.body)
       end).to have_been_made
+    end
+
+    it 'should not form encode query parameters when body expected but nil' do
+      command.query['a'] = 'b'
+      command.request_object = nil
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?a=b').with(body: nil)).to have_been_made
     end
   end
 
@@ -147,6 +155,44 @@ EOF
     it 'should retry' do
       command.execute(client)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')).to have_been_made.times(2)
+    end
+  end
+
+  context('with a project not linked response') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      json = <<EOF
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "projectNotLinked",
+    "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+   }
+  ],
+  "code": 403,
+  "message": "The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console."
+ }
+}
+EOF
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [403, 'The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console.'], headers: {
+          'Content-Type' => 'application/json'
+        }, body: json)
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
+    end
+
+    it 'should raise project not linked error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::ProjectNotLinkedError)
+    end
+
+    it 'should raise an error with the reason and message' do
+      expect { command.execute(client) }.to raise_error(
+        /projectNotLinked: The project id used to call the Google Play Developer API has not been linked in the Google Play Developer Console./)
     end
   end
 

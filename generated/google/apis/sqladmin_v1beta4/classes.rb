@@ -389,6 +389,11 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Connection name of the Cloud SQL instance used in connection strings.
+        # Corresponds to the JSON property `connectionName`
+        # @return [String]
+        attr_accessor :connection_name
+      
         # The current disk usage of the instance in bytes. This property has been
         # deprecated. Users should use the "cloudsql.googleapis.com/database/disk/
         # bytes_used" metric in Cloud Monitoring API instead. Please see https://groups.
@@ -530,6 +535,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @connection_name = args[:connection_name] if args.key?(:connection_name)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
           @database_version = args[:database_version] if args.key?(:database_version)
           @etag = args[:etag] if args.key?(:etag)
@@ -1035,6 +1041,25 @@ module Google
         end
       end
       
+      # Instance truncate log request.
+      class InstancesTruncateLogRequest
+        include Google::Apis::Core::Hashable
+      
+        # Database Instance truncate log context.
+        # Corresponds to the JSON property `truncateLogContext`
+        # @return [Google::Apis::SqladminV1beta4::TruncateLogContext]
+        attr_accessor :truncate_log_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @truncate_log_context = args[:truncate_log_context] if args.key?(:truncate_log_context)
+        end
+      end
+      
       # IP Management configuration.
       class IpConfiguration
         include Google::Apis::Core::Hashable
@@ -1087,6 +1112,13 @@ module Google
         # @return [DateTime]
         attr_accessor :time_to_retire
       
+        # The type of this IP address. A PRIMARY address is an address that can accept
+        # incoming connections. An OUTGOING address is the source address of connections
+        # originating from the instance, if supported.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1095,6 +1127,32 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @time_to_retire = args[:time_to_retire] if args.key?(:time_to_retire)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # User defined labels for Cloud SQL instances.
+      class Labels
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1576,6 +1634,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
+        # Reserved for future use.
+        # Corresponds to the JSON property `availabilityType`
+        # @return [String]
+        attr_accessor :availability_type
+      
         # Database instance backup configuration.
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::SqladminV1beta4::BackupConfiguration]
@@ -1623,6 +1686,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # User defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::SqladminV1beta4::Labels>]
+        attr_accessor :labels
+      
         # Preferred location. This specifies where a Cloud SQL instance should
         # preferably be located, either in a specific Compute Engine zone, or co-located
         # with an App Engine application. Note that if the preferred location is not
@@ -1665,6 +1733,13 @@ module Google
         attr_accessor :storage_auto_resize
         alias_method :storage_auto_resize?, :storage_auto_resize
       
+        # The maximum size to which storage capacity can be automatically increased. The
+        # default value is 0, which specifies that there is no limit. Applies only to
+        # Second Generation instances.
+        # Corresponds to the JSON property `storageAutoResizeLimit`
+        # @return [String]
+        attr_accessor :storage_auto_resize_limit
+      
         # The tier of service for this instance, for example D1, D2. For more
         # information, see pricing.
         # Corresponds to the JSON property `tier`
@@ -1679,6 +1754,7 @@ module Google
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @authorized_gae_applications = args[:authorized_gae_applications] if args.key?(:authorized_gae_applications)
+          @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
@@ -1687,12 +1763,14 @@ module Google
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
+          @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -1915,8 +1993,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The applicable regions for this tier. Can be us-east1, europe-west1 or asia-
-        # east1.
+        # The applicable regions for this tier.
         # Corresponds to the JSON property `region`
         # @return [Array<String>]
         attr_accessor :region
@@ -1963,6 +2040,32 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Database Instance truncate log context.
+      class TruncateLogContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#truncateLogContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and
+        # MYSQL_SLOW_TABLE.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
       

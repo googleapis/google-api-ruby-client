@@ -22,12 +22,12 @@ module Google
   module Apis
     module AndroidenterpriseV1
       
-      # This represents an enterprise administrator who can manage the enterprise in
-      # the Google Play for Work Store.
+      # This represents an enterprise admin who can manage the enterprise in the
+      # managed Google Play store.
       class Administrator
         include Google::Apis::Core::Hashable
       
-        # The administrator's email address.
+        # The admin's email address.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -39,6 +39,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # A token authorizing an admin to access an iframe.
+      class AdministratorWebToken
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#administratorWebToken".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # An opaque token to be passed to the Play front-end to generate an iframe.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Specification for a token used to generate iframes. The token specifies what
+      # data the admin is allowed to modify and the URI the iframe is allowed to
+      # communiate with.
+      class AdministratorWebTokenSpec
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#administratorWebTokenSpec".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may
+        # not be hosted at other URIs. This URI must be https.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The list of permissions the admin is granted within the iframe. The admin will
+        # only be allowed to view an iframe if they have all of the permissions
+        # associated with it. The only valid value is "approveApps" that will allow the
+        # admin to access the iframe in "approve" mode.
+        # Corresponds to the JSON property `permission`
+        # @return [Array<String>]
+        attr_accessor :permission
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @parent = args[:parent] if args.key?(:parent)
+          @permission = args[:permission] if args.key?(:permission)
         end
       end
       
@@ -113,7 +177,9 @@ module Google
         attr_accessor :entry
       
         # For choice or multiselect restrictions, the list of possible entries' machine-
-        # readable values.
+        # readable values. These values should be used in the configuration, either as a
+        # single string value for a choice restriction or in a stringArray for a
+        # multiselect restriction.
         # Corresponds to the JSON property `entryValue`
         # @return [Array<String>]
         attr_accessor :entry_value
@@ -124,7 +190,9 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # For bundle or bundleArray restrictions, the list of nested restrictions.
+        # For bundle or bundleArray restrictions, the list of nested restrictions. A
+        # bundle restriction is always nested within a bundleArray restriction, and a
+        # bundleArray restriction is at most two levels deep.
         # Corresponds to the JSON property `nestedRestriction`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
         attr_accessor :nested_restriction
@@ -232,7 +300,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :version_code
       
-        # The string used in the Play Store by the app developer to identify the version.
+        # The string used in the Play store by the app developer to identify the version.
         # The string is not necessarily unique or localized (for example, the string
         # could be "1.4").
         # Corresponds to the JSON property `versionString`
@@ -306,129 +374,15 @@ module Google
         end
       end
       
-      # A collection resource defines a named set of apps that is visible to a set of
-      # users in the Google Play Store app running on those users' managed devices.
-      # Those users can then install any of those apps if they wish (which will
-      # trigger creation of install and entitlement resources). A user cannot install
-      # an app on a managed device unless the app is listed in at least one collection
-      # that is visible to that user.
-      # Note that the API can be used to directly install an app regardless of whether
-      # it is in any collection - so an enterprise has a choice of either directly
-      # pushing apps to users, or allowing users to install apps if they want. Which
-      # is appropriate will depend on the enterprise's policies and the purpose of the
-      # apps concerned.
-      class Collection
-        include Google::Apis::Core::Hashable
-      
-        # Arbitrary unique ID, allocated by the API on creation.
-        # Corresponds to the JSON property `collectionId`
-        # @return [String]
-        attr_accessor :collection_id
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#collection".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # A user-friendly name for the collection (should be unique), e.g. "Accounting
-        # apps".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The IDs of the products in the collection, in the order in which they should
-        # be displayed.
-        # Corresponds to the JSON property `productId`
-        # @return [Array<String>]
-        attr_accessor :product_id
-      
-        # Whether this collection is visible to all users, or only to the users that
-        # have been granted access through the "Collectionviewers" API. With the launch
-        # of the "setAvailableProductSet" API, this property should always be set to "
-        # viewersOnly", as the "allUsers" option will bypass the "availableProductSet"
-        # for all users within a domain.
-        # The "allUsers" setting is deprecated, and will be removed.
-        # Corresponds to the JSON property `visibility`
-        # @return [String]
-        attr_accessor :visibility
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @collection_id = args[:collection_id] if args.key?(:collection_id)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
-          @product_id = args[:product_id] if args.key?(:product_id)
-          @visibility = args[:visibility] if args.key?(:visibility)
-        end
-      end
-      
-      # The user resources for the collection.
-      class ListCollectionViewersResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#collectionViewersListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # A user of an enterprise.
-        # Corresponds to the JSON property `user`
-        # @return [Array<Google::Apis::AndroidenterpriseV1::User>]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @user = args[:user] if args.key?(:user)
-        end
-      end
-      
-      # The collection resources for the enterprise.
-      class ListCollectionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # An ordered collection of products which can be made visible on the Google Play
-        # Store to a selected group of users.
-        # Corresponds to the JSON property `collection`
-        # @return [Array<Google::Apis::AndroidenterpriseV1::Collection>]
-        attr_accessor :collection
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#collectionsListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @collection = args[:collection] if args.key?(:collection)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # A device resource represents a mobile device managed by the EMM and belonging
+      # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
-      # This collection cannot be modified via the API; it is automatically populated
+      # This collection cannot be modified via the API. It is automatically populated
       # as devices are set up to be managed.
       class Device
         include Google::Apis::Core::Hashable
       
         # The Google Play Services Android ID for the device encoded as a lowercase hex
-        # string, e.g. "123456789abcdef0".
+        # string. For example, "123456789abcdef0".
         # Corresponds to the JSON property `androidId`
         # @return [String]
         attr_accessor :android_id
@@ -439,11 +393,19 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The mechanism by which this device is managed by the EMM. "managedDevice"
-        # means that the EMM's app is a device owner. "managedProfile" means that the
-        # EMM's app is the profile owner (and there is a separate personal profile which
-        # is not managed). "containerApp" means that the EMM's app is managing the
-        # Android for Work container app on the device.
+        # Identifies the extent to which the device is controlled by a managed Google
+        # Play EMM in various deployment configurations.
+        # Possible values include:
+        # - "managedDevice", a device that has the EMM's device policy controller (DPC)
+        # as the device owner,
+        # - "managedProfile", a device that has a profile managed by the DPC (DPC is
+        # profile owner) in addition to a separate, personal profile that is unavailable
+        # to the DPC,
+        # - "containerApp", a device running the container App. The container App is
+        # managed by the DPC,
+        # - "unmanagedProfile", a device that has been allowed (by the domain's admin,
+        # using the Admin Console to enable the privilege) to use managed Google Play,
+        # but the profile is itself not owned by a DPC.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -523,16 +485,16 @@ module Google
       # enroll and Enterprises.setAccount (in conjunction with artifacts obtained from
       # the Admin console and the Google API Console) and submitted to the EMM through
       # a more-or-less manual process.
-      # - For Android for Work Accounts customers, the process involves using
+      # - For managed Google Play Accounts customers, the process involves using
       # Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
-      # with the Android for Work Sign-up UI (Google-provided mechanism) to create the
-      # binding without manual steps. As an EMM, you can support either or both
+      # with the managed Google Play sign-up UI (Google-provided mechanism) to create
+      # the binding without manual steps. As an EMM, you can support either or both
       # approaches in your EMM console. See Create an Enterprise for details.
       class Enterprise
         include Google::Apis::Core::Hashable
       
-        # Administrators of the enterprise. This is only supported for enterprises
-        # created via the EMM-initiated flow.
+        # Admins of the enterprise. This is only supported for enterprises created via
+        # the EMM-initiated flow.
         # Corresponds to the JSON property `administrator`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Administrator>]
         attr_accessor :administrator
@@ -651,30 +613,26 @@ module Google
         end
       end
       
-      # The existence of an entitlement resource means that a user has the right to
-      # use a particular app on any of their devices. This might be because the app is
-      # free or because they have been allocated a license to the app from a group
-      # license purchased by the enterprise.
-      # It should always be true that a user has an app installed on one of their
-      # devices only if they have an entitlement to it. So if an entitlement is
-      # deleted, the app will be uninstalled from all devices. Similarly if the user
-      # installs an app (and is permitted to do so), or the EMM triggers an install of
-      # the app, an entitlement to that app is automatically created. If this is
-      # impossible - e.g. the enterprise has not purchased sufficient licenses - then
-      # installation fails.
-      # Note that entitlements are always user specific, not device specific; a user
-      # may have an entitlement even though they have not installed the app anywhere.
-      # Once they have an entitlement they can install the app on multiple devices.
-      # The API can be used to create an entitlement. If the app is a free app, a
-      # group license for that app is created. If it's a paid app, creating the
-      # entitlement consumes one license; it remains consumed until the entitlement is
-      # removed. Optionally an installation of the app on all the user's managed
-      # devices can be triggered at the time the entitlement is created. An
-      # entitlement cannot be created for an app if the app requires permissions that
-      # the enterprise has not yet accepted.
-      # Entitlements for paid apps that are due to purchases by the user on a non-
-      # managed profile will have "userPurchase" as entitlement reason; those
-      # entitlements cannot be removed via the API.
+      # The presence of an Entitlements resource indicates that a user has the right
+      # to use a particular app. Entitlements are user specific, not device specific.
+      # This allows a user with an entitlement to an app to install the app on all
+      # their devices. It's also possible for a user to hold an entitlement to an app
+      # without installing the app on any device.
+      # The API can be used to create an entitlement. As an option, you can also use
+      # the API to trigger the installation of an app on all a user's managed devices
+      # at the same time the entitlement is created.
+      # If the app is free, creating the entitlement also creates a group license for
+      # that app. For paid apps, creating the entitlement consumes one license, and
+      # that license remains consumed until the entitlement is removed. If the
+      # enterprise hasn't purchased enough licenses, then no entitlement is created
+      # and the installation fails. An entitlement is also not created for an app if
+      # the app requires permissions that the enterprise hasn't accepted.
+      # If an entitlement is deleted, the app may be uninstalled from a user's device.
+      # As a best practice, uninstall the app by calling  Installs.delete() before
+      # deleting the entitlement.
+      # Entitlements for apps that a user pays for on an unmanaged profile have "
+      # userPurchase" as the entitlement reason. These entitlements cannot be removed
+      # via the API.
       class Entitlement
         include Google::Apis::Core::Hashable
       
@@ -684,14 +642,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The ID of the product that the entitlement is for, e.g. "app:com.google.
-        # android.gm".
+        # The ID of the product that the entitlement is for. For example, "app:com.
+        # google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The reason for the entitlement, e.g. "free" for free apps. This is temporary,
-        # it will be replaced by the acquisition kind field of group licenses.
+        # The reason for the entitlement. For example, "free" for free apps. This
+        # property is temporary: it will be replaced by the acquisition kind field of
+        # group licenses.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -755,19 +714,18 @@ module Google
       class GroupLicense
         include Google::Apis::Core::Hashable
       
-        # How this group license was acquired. "bulkPurchase" means that this group
-        # license object was created because the enterprise purchased licenses for this
-        # product; this is "free" otherwise (for free products).
+        # How this group license was acquired. "bulkPurchase" means that this
+        # Grouplicenses resource was created because the enterprise purchased licenses
+        # for this product; otherwise, the value is "free" (for free products).
         # Corresponds to the JSON property `acquisitionKind`
         # @return [String]
         attr_accessor :acquisition_kind
       
         # Whether the product to which this group license relates is currently approved
-        # by the enterprise, as either "approved" or "unapproved". Products are approved
-        # when a group license is first created, but this approval may be revoked by an
-        # enterprise admin via Google Play. Unapproved products will not be visible to
-        # end users in collections and new entitlements to them should not normally be
-        # created.
+        # by the enterprise. Products are approved when a group license is first created,
+        # but this approval may be revoked by an enterprise admin via Google Play.
+        # Unapproved products will not be visible to end users in collections, and new
+        # entitlements to them should not normally be created.
         # Corresponds to the JSON property `approval`
         # @return [String]
         attr_accessor :approval
@@ -785,14 +743,14 @@ module Google
         attr_accessor :num_provisioned
       
         # The number of purchased licenses (possibly in multiple purchases). If this
-        # field is omitted then there is no limit on the number of licenses that can be
-        # provisioned (e.g. if the acquisition kind is "free").
+        # field is omitted, then there is no limit on the number of licenses that can be
+        # provisioned (for example, if the acquisition kind is "free").
         # Corresponds to the JSON property `numPurchased`
         # @return [Fixnum]
         attr_accessor :num_purchased
       
-        # The ID of the product that the license is for, e.g. "app:com.google.android.gm"
-        # .
+        # The ID of the product that the license is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -864,18 +822,18 @@ module Google
         end
       end
       
-      # The existence of an install resource indicates that an app is installed on a
+      # The existence of an Installs resource indicates that an app is installed on a
       # particular device (or that an install is pending).
       # The API can be used to create an install resource using the update method.
       # This triggers the actual install of the app on the device. If the user does
-      # not already have an entitlement for the app then an attempt is made to create
-      # one. If this fails (e.g. because the app is not free and there is no available
-      # license) then the creation of the install fails.
-      # The API can also be used to update an installed app. If the update method is
-      # used on an existing install then the app will be updated to the latest
+      # not already have an entitlement for the app, then an attempt is made to create
+      # one. If this fails (for example, because the app is not free and there is no
+      # available license), then the creation of the install fails.
+      # The API can also be used to update an installed app. If the update method is
+      # used on an existing install, then the app will be updated to the latest
       # available version.
       # Note that it is not possible to force the installation of a specific version
-      # of an app; the version code is read-only.
+      # of an app: the version code is read-only.
       # If a user installs an app themselves (as permitted by the enterprise), then
       # again an install resource and possibly an entitlement resource are
       # automatically created.
@@ -900,8 +858,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The ID of the product that the install is for, e.g. "app:com.google.android.gm"
-        # .
+        # The ID of the product that the install is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1190,6 +1148,41 @@ module Google
         end
       end
       
+      # An event generated when a new device is ready to be managed.
+      class NewDeviceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The Android ID of the device. This field will always be present.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Identifies the extent to which the device is controlled by an Android EMM in
+        # various deployment configurations.
+        # Possible values include:
+        # - "managedDevice", a device where the DPC is set as device owner,
+        # - "managedProfile", a device where the DPC is set as profile owner.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
+        # The ID of the user. This field will always be present.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @management_type = args[:management_type] if args.key?(:management_type)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # An event generated when new permissions are added to an app.
       class NewPermissionsEvent
         include Google::Apis::Core::Hashable
@@ -1255,6 +1248,11 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::InstallFailureEvent]
         attr_accessor :install_failure_event
       
+        # An event generated when a new device is ready to be managed.
+        # Corresponds to the JSON property `newDeviceEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::NewDeviceEvent]
+        attr_accessor :new_device_event
+      
         # An event generated when new permissions are added to an app.
         # Corresponds to the JSON property `newPermissionsEvent`
         # @return [Google::Apis::AndroidenterpriseV1::NewPermissionsEvent]
@@ -1286,6 +1284,7 @@ module Google
           @app_update_event = args[:app_update_event] if args.key?(:app_update_event)
           @enterprise_id = args[:enterprise_id] if args.key?(:enterprise_id)
           @install_failure_event = args[:install_failure_event] if args.key?(:install_failure_event)
+          @new_device_event = args[:new_device_event] if args.key?(:new_device_event)
           @new_permissions_event = args[:new_permissions_event] if args.key?(:new_permissions_event)
           @product_approval_event = args[:product_approval_event] if args.key?(:product_approval_event)
           @product_availability_change_event = args[:product_availability_change_event] if args.key?(:product_availability_change_event)
@@ -1360,17 +1359,18 @@ module Google
         end
       end
       
-      # A permission represents some extra capability, to be granted to an Android app,
-      # which requires explicit consent. An enterprise admin must consent to these
-      # permissions on behalf of their users before an entitlement for the app can be
-      # created.
+      # A Permissions resource represents some extra capability, to be granted to an
+      # Android app, which requires explicit consent. An enterprise admin must consent
+      # to these permissions on behalf of their users before an entitlement for the
+      # app can be created.
       # The permissions collection is read-only. The information provided for each
-      # permission (localized name and description) is intended to be used in the EMM
+      # permission (localized name and description) is intended to be used in the MDM
       # user interface when obtaining consent from the enterprise.
       class Permission
         include Google::Apis::Core::Hashable
       
-        # A longer description of the permissions giving more details of what it affects.
+        # A longer description of the Permissions resource, giving more details of what
+        # it affects.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1404,7 +1404,7 @@ module Google
         end
       end
       
-      # A Products resource represents an app in the Google Play Store that is
+      # A Products resource represents an app in the Google Play store that is
       # available to at least some users in the enterprise. (Some apps are restricted
       # to a single enterprise, and no information about them is made available
       # outside that enterprise.)
@@ -1420,7 +1420,7 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppVersion>]
         attr_accessor :app_version
       
-        # The name of the author of the product (e.g. the app developer).
+        # The name of the author of the product (for example, the app developer).
         # Corresponds to the JSON property `authorName`
         # @return [String]
         attr_accessor :author_name
@@ -1431,7 +1431,7 @@ module Google
         attr_accessor :details_url
       
         # How and to whom the package is made available. The value publicGoogleHosted
-        # means that the package is available through the Play Store and not restricted
+        # means that the package is available through the Play store and not restricted
         # to a specific enterprise. The value privateGoogleHosted means that the package
         # is a private app (restricted to an enterprise) but hosted by Google. The value
         # privateSelfHosted means that the package is a private app (restricted to an
@@ -1465,8 +1465,8 @@ module Google
         # @return [String]
         attr_accessor :product_pricing
       
-        # Whether this app can only be installed on devices using the Android for Work
-        # container app.
+        # Whether this app can only be installed on devices using the Android container
+        # app.
         # Corresponds to the JSON property `requiresContainerApp`
         # @return [Boolean]
         attr_accessor :requires_container_app
@@ -1483,8 +1483,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # A link to the Google Play for Work details page for the product, for use by an
-        # Enterprise administrator.
+        # A link to the managed Google Play details page for the product, for use by an
+        # Enterprise admin.
         # Corresponds to the JSON property `workDetailsUrl`
         # @return [String]
         attr_accessor :work_details_url
@@ -1640,6 +1640,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :product_id
       
+        # The interpretation of this product set. "unknown" should never be sent and is
+        # ignored if received. "whitelist" means that this product set constitutes a
+        # whitelist. "includeAll" means that all products are accessible, including
+        # products that are approved, products with revoked approval, and products that
+        # have never been approved. If the value is "includeAll", the value of the
+        # productId field is therefore ignored. If a value is not supplied, it is
+        # interpreted to be "whitelist" for backwards compatibility.
+        # Corresponds to the JSON property `productSetBehavior`
+        # @return [String]
+        attr_accessor :product_set_behavior
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1648,6 +1659,7 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @product_set_behavior = args[:product_set_behavior] if args.key?(:product_set_behavior)
         end
       end
       
@@ -1711,7 +1723,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::PageInfo]
         attr_accessor :page_info
       
-        # Information about a product (e.g. an app) in the Google Play Store, for
+        # Information about a product (e.g. an app) in the Google Play store, for
         # display to an enterprise admin.
         # Corresponds to the JSON property `product`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Product>]
@@ -1791,6 +1803,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Public key data for the credentials file. This is an X.509 cert. If you are
+        # using the googleCredentials key type, this is identical to the cert that can
+        # be retrieved by using the X.509 cert url inside of the credentials file.
+        # Corresponds to the JSON property `publicData`
+        # @return [String]
+        attr_accessor :public_data
+      
         # The file format of the generated key data.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1805,6 +1824,7 @@ module Google
           @data = args[:data] if args.key?(:data)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @public_data = args[:public_data] if args.key?(:public_data)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -1863,7 +1883,7 @@ module Google
         end
       end
       
-      # Definition of a Google Play for Work store cluster, a list of products
+      # Definition of a managed Google Play store cluster, a list of products
       # displayed as part of a store page.
       class StoreCluster
         include Google::Apis::Core::Hashable
@@ -1916,17 +1936,15 @@ module Google
         end
       end
       
-      # General setting for the Google Play for Work store layout, currently only
+      # General setting for the managed Google Play store layout, currently only
       # specifying the page to display the first time the store is opened.
       class StoreLayout
         include Google::Apis::Core::Hashable
       
-        # The ID of the store page to be used as the homepage. The homepage will be used
-        # as the first page shown in the Google Play for Work store.
-        # If a homepage has not been set, the Play store shown on devices will be empty.
-        # Not specifying a homepage on a store layout effectively empties the store.
-        # If there exists at least one page, this field must be set to the ID of a valid
-        # page.
+        # The ID of the store page to be used as the homepage. The homepage is the first
+        # page shown in the managed Google Play Store.
+        # Not specifying a homepage is equivalent to setting the store layout type to "
+        # basic".
         # Corresponds to the JSON property `homepageId`
         # @return [String]
         attr_accessor :homepage_id
@@ -1937,6 +1955,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The store layout type. By default, this value is set to "basic" if the
+        # homepageId field is not set, and to "custom" otherwise. If set to "basic", the
+        # layout will consist of all approved apps that have been whitelisted for the
+        # user.
+        # Corresponds to the JSON property `storeLayoutType`
+        # @return [String]
+        attr_accessor :store_layout_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1945,6 +1971,7 @@ module Google
         def update!(**args)
           @homepage_id = args[:homepage_id] if args.key?(:homepage_id)
           @kind = args[:kind] if args.key?(:kind)
+          @store_layout_type = args[:store_layout_type] if args.key?(:store_layout_type)
         end
       end
       
@@ -2000,7 +2027,7 @@ module Google
         end
       end
       
-      # Definition of a Google Play for Work store page, made of a localized name and
+      # Definition of a managed Google Play store page, made of a localized name and
       # links to other pages. A page also contains clusters defined as a subcollection.
       class StorePage
         include Google::Apis::Core::Hashable
@@ -2072,14 +2099,14 @@ module Google
       
       # A Users resource represents an account associated with an enterprise. The
       # account may be specific to a device or to an individual user (who can then use
-      # the account across multiple devices). The account may provide access to Google
-      # Play for Work only, or to other Google services, depending on the identity
-      # model:
-      # - Google managed domain identity model requires synchronization to Google
+      # the account across multiple devices). The account may provide access to
+      # managed Google Play only, or to other Google services, depending on the
+      # identity model:
+      # - The Google managed domain identity model requires synchronization to Google
       # account sources (via primaryEmail).
-      # - Android for Work Accounts identity model provides a dynamic means for
+      # - The managed Google Play Accounts identity model provides a dynamic means for
       # enterprises to create user or device accounts as needed. These accounts
-      # provide access to Google Play for Work only.
+      # provide access to managed Google Play.
       class User
         include Google::Apis::Core::Hashable
       
@@ -2147,9 +2174,9 @@ module Google
       end
       
       # A UserToken is used by a user when setting up a managed device or profile with
-      # their work account on a device. When the user enters their email address and
-      # token (activation code) the appropriate EMM app can be automatically
-      # downloaded.
+      # their managed Google Play account on a device. When the user enters their
+      # email address and token (activation code) the appropriate EMM app can be
+      # automatically downloaded.
       class UserToken
         include Google::Apis::Core::Hashable
       

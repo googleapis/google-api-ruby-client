@@ -40,11 +40,12 @@ module Google
         #  True (default) if results should be cached so multiple iterations can be used.
         # @param [Symbol] items
         #   Name of the field in the result containing the items. Defaults to :items
-        def initialize(service, max: nil, items: :items, cache: true, &block)
+        def initialize(service, max: nil, items: :items, cache: true, response_page_token: :next_page_token, &block)
           @service = service
           @block = block
           @max = max
           @items_field = items
+          @response_page_token_field = response_page_token
           if cache
             @result_cache = Hash.new do |h, k|
               h[k] = @block.call(k, @service)
@@ -62,14 +63,20 @@ module Google
           loop do
             @last_result = @fetch_proc.call(page_token)
             items = @last_result.send(@items_field)
-            for item in items
-              item_count = item_count + 1
-              break if @max && item_count > @max
-              yield item
-            end unless items.nil?
+            if items.kind_of?(Array)
+              for item in items
+                item_count = item_count + 1
+                break if @max && item_count > @max
+                yield item
+              end
+            elsif items
+              # yield singular non-nil items (for genomics API)
+              yield items
+            end
             break if @max && item_count >= @max
-            break if @last_result.next_page_token.nil? || @last_result.next_page_token == page_token
-            page_token = @last_result.next_page_token
+            next_page_token = @last_result.send(@response_page_token_field)
+            break if next_page_token.nil? || next_page_token == page_token
+            page_token = next_page_token
           end
         end
       end
@@ -263,9 +270,9 @@ module Google
         # @example Retrieve all files,
         #   file_list = service.fetch_all { |token, s| s.list_files(page_token: token) }
         #   file_list.each { |f| ... }
-        def fetch_all(max: nil, items: :items, cache: true,  &block)
+        def fetch_all(max: nil, items: :items, cache: true, response_page_token: :next_page_token, &block)
           fail "fetch_all may not be used inside a batch" if batch?
-          return PagedResults.new(self, max: max, items: items, cache: cache, &block)
+          return PagedResults.new(self, max: max, items: items, cache: cache, response_page_token: response_page_token, &block)
         end
 
         protected

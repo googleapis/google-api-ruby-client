@@ -52,9 +52,12 @@ module Google
           super('https://www.googleapis.com/', 'apps/reseller/v1/')
         end
         
-        # Gets a customer resource if one exists and is owned by the reseller.
+        # Get a customer account.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -87,11 +90,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a customer resource if one does not already exist.
+        # Order a new customer's account.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
-        #   An auth token needed for inserting a customer for which domain already exists.
-        #   Can be generated at https://admin.google.com/TransferToken. Optional.
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
+        #   authentication token needed to complete the subscription transfer. For more
+        #   information, see the administrator help center.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -126,10 +132,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a customer resource if one it exists and is owned by the reseller. This
-        # method supports patch semantics.
+        # Update a customer account's settings. This method supports patch semantics.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -165,9 +173,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a customer resource if one it exists and is owned by the reseller.
+        # Update a customer account's settings.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -203,11 +214,120 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all the details of the watch corresponding to the reseller.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def getwatchdetails_resellernotify(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'resellernotify/getwatchdetails', options)
+          command.response_representation = Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse::Representation
+          command.response_class = Google::Apis::ResellerV1::ResellernotifyGetwatchdetailsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Registers a Reseller for receiving notifications.
+        # @param [String] service_account_email_address
+        #   The service account which will own the created Cloud-PubSub topic.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ResellerV1::ResellernotifyResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ResellerV1::ResellernotifyResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def register_resellernotify(service_account_email_address: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'resellernotify/register', options)
+          command.response_representation = Google::Apis::ResellerV1::ResellernotifyResource::Representation
+          command.response_class = Google::Apis::ResellerV1::ResellernotifyResource
+          command.query['serviceAccountEmailAddress'] = service_account_email_address unless service_account_email_address.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unregisters a Reseller for receiving notifications.
+        # @param [String] service_account_email_address
+        #   The service account which owns the Cloud-PubSub topic.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ResellerV1::ResellernotifyResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ResellerV1::ResellernotifyResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unregister_resellernotify(service_account_email_address: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'resellernotify/unregister', options)
+          command.response_representation = Google::Apis::ResellerV1::ResellernotifyResource::Representation
+          command.response_class = Google::Apis::ResellerV1::ResellernotifyResource
+          command.query['serviceAccountEmailAddress'] = service_account_email_address unless service_account_email_address.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Activates a subscription previously suspended by the reseller
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,11 +361,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the plan of a subscription
+        # Update a subscription plan. Use this method to update a plan for a 30-day
+        # trial or a flexible plan subscription to an annual commitment plan with
+        # monthly or yearly payments.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -282,11 +411,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the renewal settings of a subscription
+        # Update a user license's renewal settings. This is applicable for accounts with
+        # annual commitment plans only.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -323,11 +460,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the seats configuration of a subscription
+        # Update a subscription's user license settings.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::Seats] seats_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -364,13 +508,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels/Downgrades a subscription.
+        # Cancel, suspend or transfer a subscription to direct.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] deletion_type
-        #   Whether the subscription is to be fully cancelled or downgraded
+        #   The deletionType query string enables the cancellation, downgrade, or
+        #   suspension of a subscription.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -403,11 +555,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a subscription of the customer.
+        # Get a specific subscription.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -441,13 +600,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates/Transfers a subscription for the customer.
+        # Create or transfer a subscription.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Subscription] subscription_object
         # @param [String] customer_auth_token
-        #   An auth token needed for transferring a subscription. Can be generated at
-        #   https://www.google.com/a/cpanel/customer-domain/TransferToken. Optional.
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
+        #   authentication token needed to complete the subscription transfer. For more
+        #   information, see the administrator help center.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -483,19 +648,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists subscriptions of a reseller, optionally filtered by a customer name
-        # prefix.
+        # List of subscriptions managed by the reseller. The list can be all
+        # subscriptions, all of a customer's subscriptions, or all of a customer's
+        # transferable subscriptions.
         # @param [String] customer_auth_token
-        #   An auth token needed if the customer is not a resold customer of this reseller.
-        #   Can be generated at https://www.google.com/a/cpanel/customer-domain/
-        #   TransferToken.Optional.
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
+        #   authentication token needed to complete the subscription transfer. For more
+        #   information, see the administrator help center.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] customer_name_prefix
-        #   Prefix of the customer's domain name by which the subscriptions should be
-        #   filtered. Optional
+        #   When retrieving all of your subscriptions and filtering for specific customers,
+        #   you can enter a prefix for a customer name. Using an example customer group
+        #   that includes exam.com, example20.com and example.com:
+        #   - exa -- Returns all customer names that start with 'exa' which could include
+        #   exam.com, example20.com, and example.com. A name prefix is similar to using a
+        #   regular expression's asterisk, exa*.
+        #   - example -- Returns example20.com and example.com.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return
+        #   When retrieving a large list, the maxResults is the maximum number of results
+        #   per page. The nextPageToken value takes you to the next page. The default is
+        #   20.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] fields
@@ -534,11 +712,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts paid service of a trial subscription
+        # Immediately move a 30-day free trial subscription to a paid service
+        # subscription.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -572,11 +758,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Suspends an active subscription
+        # Suspends an active subscription.
         # @param [String] customer_id
-        #   Id of the Customer
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   Id of the subscription, which is unique for a customer
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

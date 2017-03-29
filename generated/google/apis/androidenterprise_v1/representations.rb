@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdministratorWebToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdministratorWebTokenSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppRestrictionsSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,24 +83,6 @@ module Google
       end
       
       class AuthenticationToken
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Collection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCollectionViewersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +209,12 @@ module Google
       end
       
       class ManagedPropertyBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NewDeviceEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,6 +389,23 @@ module Google
         end
       end
       
+      class AdministratorWebToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :token, as: 'token'
+        end
+      end
+      
+      class AdministratorWebTokenSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :parent, as: 'parent'
+          collection :permission, as: 'permission'
+        end
+      end
+      
       class AppRestrictionsSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -460,35 +477,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :token, as: 'token'
-        end
-      end
-      
-      class Collection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :collection_id, as: 'collectionId'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-          collection :product_id, as: 'productId'
-          property :visibility, as: 'visibility'
-        end
-      end
-      
-      class ListCollectionViewersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
-      
-        end
-      end
-      
-      class ListCollectionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :collection, as: 'collection', class: Google::Apis::AndroidenterpriseV1::Collection, decorator: Google::Apis::AndroidenterpriseV1::Collection::Representation
-      
-          property :kind, as: 'kind'
         end
       end
       
@@ -692,6 +680,15 @@ module Google
         end
       end
       
+      class NewDeviceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :management_type, as: 'managementType'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class NewPermissionsEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -710,6 +707,8 @@ module Google
       
           property :enterprise_id, as: 'enterpriseId'
           property :install_failure_event, as: 'installFailureEvent', class: Google::Apis::AndroidenterpriseV1::InstallFailureEvent, decorator: Google::Apis::AndroidenterpriseV1::InstallFailureEvent::Representation
+      
+          property :new_device_event, as: 'newDeviceEvent', class: Google::Apis::AndroidenterpriseV1::NewDeviceEvent, decorator: Google::Apis::AndroidenterpriseV1::NewDeviceEvent::Representation
       
           property :new_permissions_event, as: 'newPermissionsEvent', class: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent, decorator: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent::Representation
       
@@ -808,6 +807,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :product_id, as: 'productId'
+          property :product_set_behavior, as: 'productSetBehavior'
         end
       end
       
@@ -855,6 +855,7 @@ module Google
           property :data, as: 'data'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :public_data, as: 'publicData'
           property :type, as: 'type'
         end
       end
@@ -893,6 +894,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :homepage_id, as: 'homepageId'
           property :kind, as: 'kind'
+          property :store_layout_type, as: 'storeLayoutType'
         end
       end
       

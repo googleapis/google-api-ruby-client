@@ -20,27 +20,27 @@ module Google
   module Apis
     # Genomics API
     #
-    # Stores, processes, explores and shares genomic data.
+    # Upload, process, query, and search Genomics data in the cloud.
     #
-    # @see https://cloud.google.com/genomics/
+    # @see https://cloud.google.com/genomics
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20160809'
-
-      # View and manage your data in Google BigQuery
-      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+      REVISION = '20170322'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # Manage your data in Google Cloud Storage
-      AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
+      # View Genomics data
+      AUTH_GENOMICS_READONLY = 'https://www.googleapis.com/auth/genomics.readonly'
 
       # View and manage Genomics data
       AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
 
-      # View Genomics data
-      AUTH_GENOMICS_READONLY = 'https://www.googleapis.com/auth/genomics.readonly'
+      # View and manage your data in Google BigQuery
+      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+
+      # Manage your data in Google Cloud Storage
+      AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
     end
   end
 end

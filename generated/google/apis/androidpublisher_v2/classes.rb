@@ -277,6 +277,44 @@ module Google
         end
       end
       
+      # Represents a deobfuscation file.
+      class DeobfuscationFile
+        include Google::Apis::Core::Hashable
+      
+        # The type of the deobfuscation file.
+        # Corresponds to the JSON property `symbolType`
+        # @return [String]
+        attr_accessor :symbol_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @symbol_type = args[:symbol_type] if args.key?(:symbol_type)
+        end
+      end
+      
+      # 
+      class DeobfuscationFilesUploadResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a deobfuscation file.
+        # Corresponds to the JSON property `deobfuscationFile`
+        # @return [Google::Apis::AndroidpublisherV2::DeobfuscationFile]
+        attr_accessor :deobfuscation_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deobfuscation_file = args[:deobfuscation_file] if args.key?(:deobfuscation_file)
+        end
+      end
+      
       # 
       class DeveloperComment
         include Google::Apis::Core::Hashable
@@ -299,6 +337,85 @@ module Google
         def update!(**args)
           @last_modified = args[:last_modified] if args.key?(:last_modified)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class DeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Device CPU make e.g. "Qualcomm"
+        # Corresponds to the JSON property `cpuMake`
+        # @return [String]
+        attr_accessor :cpu_make
+      
+        # Device CPU model e.g. "MSM8974"
+        # Corresponds to the JSON property `cpuModel`
+        # @return [String]
+        attr_accessor :cpu_model
+      
+        # Device class (e.g. tablet)
+        # Corresponds to the JSON property `deviceClass`
+        # @return [String]
+        attr_accessor :device_class
+      
+        # OpenGL version
+        # Corresponds to the JSON property `glEsVersion`
+        # @return [Fixnum]
+        attr_accessor :gl_es_version
+      
+        # Device manufacturer (e.g. Motorola)
+        # Corresponds to the JSON property `manufacturer`
+        # @return [String]
+        attr_accessor :manufacturer
+      
+        # Comma separated list of native platforms (e.g. "arm", "arm7")
+        # Corresponds to the JSON property `nativePlatform`
+        # @return [String]
+        attr_accessor :native_platform
+      
+        # Device model name (e.g. Droid)
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
+      
+        # Device RAM in Megabytes e.g. "2048"
+        # Corresponds to the JSON property `ramMb`
+        # @return [Fixnum]
+        attr_accessor :ram_mb
+      
+        # Screen density in DPI
+        # Corresponds to the JSON property `screenDensityDpi`
+        # @return [Fixnum]
+        attr_accessor :screen_density_dpi
+      
+        # Screen height in pixels
+        # Corresponds to the JSON property `screenHeightPx`
+        # @return [Fixnum]
+        attr_accessor :screen_height_px
+      
+        # Screen width in pixels
+        # Corresponds to the JSON property `screenWidthPx`
+        # @return [Fixnum]
+        attr_accessor :screen_width_px
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_make = args[:cpu_make] if args.key?(:cpu_make)
+          @cpu_model = args[:cpu_model] if args.key?(:cpu_model)
+          @device_class = args[:device_class] if args.key?(:device_class)
+          @gl_es_version = args[:gl_es_version] if args.key?(:gl_es_version)
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
+          @native_platform = args[:native_platform] if args.key?(:native_platform)
+          @product_name = args[:product_name] if args.key?(:product_name)
+          @ram_mb = args[:ram_mb] if args.key?(:ram_mb)
+          @screen_density_dpi = args[:screen_density_dpi] if args.key?(:screen_density_dpi)
+          @screen_height_px = args[:screen_height_px] if args.key?(:screen_height_px)
+          @screen_width_px = args[:screen_width_px] if args.key?(:screen_width_px)
         end
       end
       
@@ -1466,6 +1583,12 @@ module Google
         # @return [String]
         attr_accessor :start_time_millis
       
+        # The time at which the subscription was canceled by the user, in milliseconds
+        # since the epoch. Only present if cancelReason is 0.
+        # Corresponds to the JSON property `userCancellationTimeMillis`
+        # @return [String]
+        attr_accessor :user_cancellation_time_millis
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1482,6 +1605,7 @@ module Google
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
+          @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)
         end
       end
       
@@ -1683,10 +1807,21 @@ module Google
         # @return [String]
         attr_accessor :device
       
+        # Some information about the characteristics of the user's device
+        # Corresponds to the JSON property `deviceMetadata`
+        # @return [Google::Apis::AndroidpublisherV2::DeviceMetadata]
+        attr_accessor :device_metadata
+      
         # The last time at which this comment was updated.
         # Corresponds to the JSON property `lastModified`
         # @return [Google::Apis::AndroidpublisherV2::Timestamp]
         attr_accessor :last_modified
+      
+        # Untranslated text of the review, in the case where the review has been
+        # translated. If the review has not been translated this is left blank.
+        # Corresponds to the JSON property `originalText`
+        # @return [String]
+        attr_accessor :original_text
       
         # Language code for the reviewer. This is taken from the device settings so is
         # not guaranteed to match the language the review is written in. May be absent.
@@ -1706,6 +1841,16 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Number of users who have given this review a thumbs down
+        # Corresponds to the JSON property `thumbsDownCount`
+        # @return [Fixnum]
+        attr_accessor :thumbs_down_count
+      
+        # Number of users who have given this review a thumbs up
+        # Corresponds to the JSON property `thumbsUpCount`
+        # @return [Fixnum]
+        attr_accessor :thumbs_up_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1716,10 +1861,86 @@ module Google
           @app_version_code = args[:app_version_code] if args.key?(:app_version_code)
           @app_version_name = args[:app_version_name] if args.key?(:app_version_name)
           @device = args[:device] if args.key?(:device)
+          @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @last_modified = args[:last_modified] if args.key?(:last_modified)
+          @original_text = args[:original_text] if args.key?(:original_text)
           @reviewer_language = args[:reviewer_language] if args.key?(:reviewer_language)
           @star_rating = args[:star_rating] if args.key?(:star_rating)
           @text = args[:text] if args.key?(:text)
+          @thumbs_down_count = args[:thumbs_down_count] if args.key?(:thumbs_down_count)
+          @thumbs_up_count = args[:thumbs_up_count] if args.key?(:thumbs_up_count)
+        end
+      end
+      
+      # A VoidedPurchase resource indicates a purchase that was either cancelled/
+      # refunded/charged-back.
+      class VoidedPurchase
+        include Google::Apis::Core::Hashable
+      
+        # This kind represents a voided purchase object in the androidpublisher service.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The time at which the purchase was made, in milliseconds since the epoch (Jan
+        # 1, 1970).
+        # Corresponds to the JSON property `purchaseTimeMillis`
+        # @return [String]
+        attr_accessor :purchase_time_millis
+      
+        # The token that was generated when a purchase was made. This uniquely
+        # identifies a purchase.
+        # Corresponds to the JSON property `purchaseToken`
+        # @return [String]
+        attr_accessor :purchase_token
+      
+        # The time at which the purchase was cancelled/refunded/charged-back, in
+        # milliseconds since the epoch (Jan 1, 1970).
+        # Corresponds to the JSON property `voidedTimeMillis`
+        # @return [String]
+        attr_accessor :voided_time_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
+          @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @voided_time_millis = args[:voided_time_millis] if args.key?(:voided_time_millis)
+        end
+      end
+      
+      # 
+      class VoidedPurchasesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::AndroidpublisherV2::PageInfo]
+        attr_accessor :page_info
+      
+        # 
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::AndroidpublisherV2::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # 
+        # Corresponds to the JSON property `voidedPurchases`
+        # @return [Array<Google::Apis::AndroidpublisherV2::VoidedPurchase>]
+        attr_accessor :voided_purchases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @voided_purchases = args[:voided_purchases] if args.key?(:voided_purchases)
         end
       end
     end

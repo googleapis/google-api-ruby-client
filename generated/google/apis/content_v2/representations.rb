@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InventoryPickup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetInventoryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1196,11 +1202,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :detail, as: 'detail'
           property :displayed_value, as: 'displayedValue'
           collection :example_items, as: 'exampleItems', class: Google::Apis::ContentV2::AccountStatusExampleItem, decorator: Google::Apis::ContentV2::AccountStatusExampleItem::Representation
       
           property :id, as: 'id'
           property :last_checked, as: 'lastChecked'
+          property :location, as: 'location'
           property :num_items, as: 'numItems'
           property :severity, as: 'severity'
           property :submitted_value, as: 'submittedValue'
@@ -1714,6 +1722,8 @@ module Google
           property :kind, as: 'kind'
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
       
+          property :pickup, as: 'pickup', class: Google::Apis::ContentV2::InventoryPickup, decorator: Google::Apis::ContentV2::InventoryPickup::Representation
+      
           property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :quantity, as: 'quantity'
@@ -1763,6 +1773,14 @@ module Google
         end
       end
       
+      class InventoryPickup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pickup_method, as: 'pickupMethod'
+          property :pickup_sla, as: 'pickupSla'
+        end
+      end
+      
       class SetInventoryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1770,6 +1788,8 @@ module Google
           property :installment, as: 'installment', class: Google::Apis::ContentV2::Installment, decorator: Google::Apis::ContentV2::Installment::Representation
       
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
+      
+          property :pickup, as: 'pickup', class: Google::Apis::ContentV2::InventoryPickup, decorator: Google::Apis::ContentV2::InventoryPickup::Representation
       
           property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
@@ -1808,6 +1828,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged, as: 'acknowledged'
+          property :channel_type, as: 'channelType'
           property :customer, as: 'customer', class: Google::Apis::ContentV2::OrderCustomer, decorator: Google::Apis::ContentV2::OrderCustomer::Representation
       
           property :delivery_details, as: 'deliveryDetails', class: Google::Apis::ContentV2::OrderDeliveryDetails, decorator: Google::Apis::ContentV2::OrderDeliveryDetails::Representation

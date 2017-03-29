@@ -151,6 +151,12 @@ module Google
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Capabilities
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class ImageMediaMetadata
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -216,6 +222,12 @@ module Google
       
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class TeamDrivePermissionDetail
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -251,6 +263,30 @@ module Google
       end
       
       class RevisionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartPageToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TeamDrive
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Capabilities
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TeamDriveList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -426,6 +462,10 @@ module Google
           property :modification_date, as: 'modificationDate', type: DateTime
       
           property :self_link, as: 'selfLink'
+          property :team_drive, as: 'teamDrive', class: Google::Apis::DriveV2::TeamDrive, decorator: Google::Apis::DriveV2::TeamDrive::Representation
+      
+          property :team_drive_id, as: 'teamDriveId'
+          property :type, as: 'type'
         end
       end
       
@@ -437,6 +477,7 @@ module Google
       
           property :kind, as: 'kind'
           property :largest_change_id, as: 'largestChangeId'
+          property :new_start_page_token, as: 'newStartPageToken'
           property :next_link, as: 'nextLink'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
@@ -565,6 +606,8 @@ module Google
           property :app_data_contents, as: 'appDataContents'
           property :can_comment, as: 'canComment'
           property :can_read_revisions, as: 'canReadRevisions'
+          property :capabilities, as: 'capabilities', class: Google::Apis::DriveV2::File::Capabilities, decorator: Google::Apis::DriveV2::File::Capabilities::Representation
+      
           property :copyable, as: 'copyable'
           property :created_date, as: 'createdDate', type: DateTime
       
@@ -580,6 +623,8 @@ module Google
           property :file_size, as: 'fileSize'
           property :folder_color_rgb, as: 'folderColorRgb'
           property :full_file_extension, as: 'fullFileExtension'
+          property :has_augmented_permissions, as: 'hasAugmentedPermissions'
+          property :has_thumbnail, as: 'hasThumbnail'
           property :head_revision_id, as: 'headRevisionId'
           property :icon_link, as: 'iconLink'
           property :id, as: 'id'
@@ -625,10 +670,16 @@ module Google
           property :sharing_user, as: 'sharingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
       
           collection :spaces, as: 'spaces'
+          property :team_drive_id, as: 'teamDriveId'
           property :thumbnail, as: 'thumbnail', class: Google::Apis::DriveV2::File::Thumbnail, decorator: Google::Apis::DriveV2::File::Thumbnail::Representation
       
           property :thumbnail_link, as: 'thumbnailLink'
+          property :thumbnail_version, as: 'thumbnailVersion'
           property :title, as: 'title'
+          property :trashed_date, as: 'trashedDate', type: DateTime
+      
+          property :trashing_user, as: 'trashingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
+      
           property :user_permission, as: 'userPermission', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::Permission::Representation
       
           property :version, as: 'version'
@@ -637,6 +688,28 @@ module Google
           property :web_content_link, as: 'webContentLink'
           property :web_view_link, as: 'webViewLink'
           property :writers_can_share, as: 'writersCanShare'
+        end
+        
+        class Capabilities
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :can_add_children, as: 'canAddChildren'
+            property :can_comment, as: 'canComment'
+            property :can_copy, as: 'canCopy'
+            property :can_delete, as: 'canDelete'
+            property :can_download, as: 'canDownload'
+            property :can_edit, as: 'canEdit'
+            property :can_list_children, as: 'canListChildren'
+            property :can_move_item_into_team_drive, as: 'canMoveItemIntoTeamDrive'
+            property :can_move_team_drive_item, as: 'canMoveTeamDriveItem'
+            property :can_read_revisions, as: 'canReadRevisions'
+            property :can_read_team_drive, as: 'canReadTeamDrive'
+            property :can_remove_children, as: 'canRemoveChildren'
+            property :can_rename, as: 'canRename'
+            property :can_share, as: 'canShare'
+            property :can_trash, as: 'canTrash'
+            property :can_untrash, as: 'canUntrash'
+          end
         end
         
         class ImageMediaMetadata
@@ -687,6 +760,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :hidden, as: 'hidden'
+            property :modified, as: 'modified'
             property :restricted, as: 'restricted'
             property :starred, as: 'starred'
             property :trashed, as: 'trashed'
@@ -716,6 +790,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
+          property :incomplete_search, as: 'incompleteSearch'
           collection :items, as: 'items', class: Google::Apis::DriveV2::File, decorator: Google::Apis::DriveV2::File::Representation
       
           property :kind, as: 'kind'
@@ -772,9 +847,22 @@ module Google
           property :photo_link, as: 'photoLink'
           property :role, as: 'role'
           property :self_link, as: 'selfLink'
+          collection :team_drive_permission_details, as: 'teamDrivePermissionDetails', class: Google::Apis::DriveV2::Permission::TeamDrivePermissionDetail, decorator: Google::Apis::DriveV2::Permission::TeamDrivePermissionDetail::Representation
+      
           property :type, as: 'type'
           property :value, as: 'value'
           property :with_link, as: 'withLink'
+        end
+        
+        class TeamDrivePermissionDetail
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :additional_roles, as: 'additionalRoles'
+            property :inherited, as: 'inherited'
+            property :inherited_from, as: 'inheritedFrom'
+            property :role, as: 'role'
+            property :team_drive_permission_type, as: 'teamDrivePermissionType'
+          end
         end
       end
       
@@ -793,6 +881,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::Permission::Representation
       
           property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
         end
       end
@@ -853,7 +942,56 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DriveV2::Revision, decorator: Google::Apis::DriveV2::Revision::Representation
       
           property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class StartPageToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :start_page_token, as: 'startPageToken'
+        end
+      end
+      
+      class TeamDrive
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capabilities, as: 'capabilities', class: Google::Apis::DriveV2::TeamDrive::Capabilities, decorator: Google::Apis::DriveV2::TeamDrive::Capabilities::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+        
+        class Capabilities
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :can_add_children, as: 'canAddChildren'
+            property :can_comment, as: 'canComment'
+            property :can_copy, as: 'canCopy'
+            property :can_delete_team_drive, as: 'canDeleteTeamDrive'
+            property :can_download, as: 'canDownload'
+            property :can_edit, as: 'canEdit'
+            property :can_list_children, as: 'canListChildren'
+            property :can_manage_members, as: 'canManageMembers'
+            property :can_read_revisions, as: 'canReadRevisions'
+            property :can_remove_children, as: 'canRemoveChildren'
+            property :can_rename, as: 'canRename'
+            property :can_rename_team_drive, as: 'canRenameTeamDrive'
+            property :can_share, as: 'canShare'
+          end
+        end
+      end
+      
+      class TeamDriveList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::DriveV2::TeamDrive, decorator: Google::Apis::DriveV2::TeamDrive::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

@@ -316,6 +316,7 @@ module Google
           property :client_id, as: 'clientId'
           property :context, as: 'context'
           property :continue_uri, as: 'continueUri'
+          hash :custom_parameter, as: 'customParameter'
           property :hosted_domain, as: 'hostedDomain'
           property :identifier, as: 'identifier'
           property :oauth_consumer_key, as: 'oauthConsumerKey'
@@ -342,6 +343,7 @@ module Google
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
+          property :target_project_id, as: 'targetProjectId'
         end
       end
       
@@ -363,6 +365,7 @@ module Google
           collection :authorized_domains, as: 'authorizedDomains'
           property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
+          property :dynamic_links_domain, as: 'dynamicLinksDomain'
           property :enable_anonymous_user, as: 'enableAnonymousUser'
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
       
@@ -463,23 +466,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
+          property :local_id, as: 'localId'
           property :password, as: 'password'
+          property :photo_url, as: 'photoUrl'
         end
       end
       
       class UploadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_overwrite, as: 'allowOverwrite'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
           property :rounds, as: 'rounds'
           property :salt_separator, :base64 => true, as: 'saltSeparator'
+          property :sanity_check, as: 'sanityCheck'
           property :signer_key, :base64 => true, as: 'signerKey'
+          property :target_project_id, as: 'targetProjectId'
           collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::Representation
       
         end
@@ -488,12 +498,14 @@ module Google
       class VerifyAssertionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create, as: 'autoCreate'
           property :delegated_project_number, as: 'delegatedProjectNumber'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'
           property :request_uri, as: 'requestUri'
+          property :return_idp_credential, as: 'returnIdpCredential'
           property :return_refresh_token, as: 'returnRefreshToken'
           property :return_secure_token, as: 'returnSecureToken'
           property :session_id, as: 'sessionId'
@@ -540,9 +552,16 @@ module Google
       class Relyingparty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_install_app, as: 'androidInstallApp'
+          property :android_minimum_version, as: 'androidMinimumVersion'
+          property :android_package_name, as: 'androidPackageName'
+          property :can_handle_code_in_app, as: 'canHandleCodeInApp'
           property :captcha_resp, as: 'captchaResp'
           property :challenge, as: 'challenge'
+          property :continue_url, as: 'continueUrl'
           property :email, as: 'email'
+          property :i_os_app_store_id, as: 'iOSAppStoreId'
+          property :i_os_bundle_id, as: 'iOSBundleId'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :new_email, as: 'newEmail'
@@ -556,6 +575,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :kind, as: 'kind'
+          property :new_email, as: 'newEmail'
+          property :request_type, as: 'requestType'
         end
       end
       
@@ -564,6 +585,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :email_verified, as: 'emailVerified'
           property :expires_in, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
@@ -621,6 +643,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_at, as: 'createdAt'
+          property :custom_auth, as: 'customAuth'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
@@ -632,6 +655,7 @@ module Google
           property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo::Representation
       
+          property :raw_password, as: 'rawPassword'
           property :salt, :base64 => true, as: 'salt'
           property :screen_name, as: 'screenName'
           property :valid_since, as: 'validSince'
@@ -664,12 +688,14 @@ module Google
           property :email, as: 'email'
           property :email_recycled, as: 'emailRecycled'
           property :email_verified, as: 'emailVerified'
+          property :error_message, as: 'errorMessage'
           property :expires_in, as: 'expiresIn'
           property :federated_id, as: 'federatedId'
           property :first_name, as: 'firstName'
           property :full_name, as: 'fullName'
           property :id_token, as: 'idToken'
           property :input_email, as: 'inputEmail'
+          property :is_new_user, as: 'isNewUser'
           property :kind, as: 'kind'
           property :language, as: 'language'
           property :last_name, as: 'lastName'
@@ -687,6 +713,7 @@ module Google
           property :original_email, as: 'originalEmail'
           property :photo_url, as: 'photoUrl'
           property :provider_id, as: 'providerId'
+          property :raw_user_info, as: 'rawUserInfo'
           property :refresh_token, as: 'refreshToken'
           property :screen_name, as: 'screenName'
           property :time_zone, as: 'timeZone'

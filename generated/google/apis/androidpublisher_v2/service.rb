@@ -660,6 +660,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the deobfuscation file of the specified APK. If a deobfuscation file
+        # already exists, it will be replaced.
+        # @param [String] package_name
+        #   Unique identifier of the Android app for which the deobfuscatiuon files are
+        #   being uploaded; for example, "com.spiffygame".
+        # @param [String] edit_id
+        #   Unique identifier for this edit.
+        # @param [Fixnum] apk_version_code
+        #   The version code of the APK whose deobfuscation file is being uploaded.
+        # @param [String] deobfuscation_file_type
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_edit_deobfuscationfile(package_name, edit_id, apk_version_code, deobfuscation_file_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}', options)
+          else
+            command = make_upload_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.response_representation = Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::DeobfuscationFilesUploadResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['editId'] = edit_id unless edit_id.nil?
+          command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
+          command.params['deobfuscationFileType'] = deobfuscation_file_type unless deobfuscation_file_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches app details for this edit. This includes the default language and
         # developer support contact information.
         # @param [String] package_name
@@ -2325,11 +2380,66 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the purchases that were cancelled, refunded or charged-back.
+        # @param [String] package_name
+        #   The package name of the application for which voided purchases need to be
+        #   returned (for example, 'com.some.thing').
+        # @param [String] end_time
+        #   The time, in milliseconds since the Epoch, of the newest voided in-app product
+        #   purchase that you want to see in the response. The value of this parameter
+        #   cannot be greater than the current time and is ignored if a pagination token
+        #   is set. Default value is current time.
+        # @param [Fixnum] max_results
+        # @param [Fixnum] start_index
+        # @param [String] start_time
+        #   The time, in milliseconds since the Epoch, of the oldest voided in-app product
+        #   purchase that you want to see in the response. The value of this parameter
+        #   cannot be older than 30 days and is ignored if a pagination token is set.
+        #   Default value is current time minus 30 days.
+        # @param [String] token
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::VoidedPurchasesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV2::VoidedPurchasesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_purchase_voidedpurchases(package_name, end_time: nil, max_results: nil, start_index: nil, start_time: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{packageName}/purchases/voidedpurchases', options)
+          command.response_representation = Google::Apis::AndroidpublisherV2::VoidedPurchasesListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::VoidedPurchasesListResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['startIndex'] = start_index unless start_index.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['token'] = token unless token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a single review.
         # @param [String] package_name
         #   Unique identifier for the Android app for which we want reviews; for example, "
         #   com.spiffygame".
         # @param [String] review_id
+        # @param [String] translation_language
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2351,25 +2461,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_review(package_name, review_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_review(package_name, review_id, translation_language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/reviews/{reviewId}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Review::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Review
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['reviewId'] = review_id unless review_id.nil?
+          command.query['translationLanguage'] = translation_language unless translation_language.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of reviews.
+        # Returns a list of reviews. Only reviews from last week will be returned.
         # @param [String] package_name
         #   Unique identifier for the Android app for which we want reviews; for example, "
         #   com.spiffygame".
         # @param [Fixnum] max_results
         # @param [Fixnum] start_index
         # @param [String] token
+        # @param [String] translation_language
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2391,7 +2503,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reviews(package_name, max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reviews(package_name, max_results: nil, start_index: nil, token: nil, translation_language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/reviews', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ReviewsListResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ReviewsListResponse
@@ -2399,6 +2511,7 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['token'] = token unless token.nil?
+          command.query['translationLanguage'] = translation_language unless translation_language.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

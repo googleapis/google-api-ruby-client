@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/site-verification/
     module SiteVerificationV1
       VERSION = 'V1'
-      REVISION = '20160228'
+      REVISION = '20161114'
 
       # Manage the list of sites and domains you control
       AUTH_SITEVERIFICATION = 'https://www.googleapis.com/auth/siteverification'

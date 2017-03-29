@@ -374,6 +374,12 @@ module Google
         attr_accessor :is_deleted
         alias_method :is_deleted?, :is_deleted
       
+        # Whether the user is the authenticated user.
+        # Corresponds to the JSON property `isMe`
+        # @return [Boolean]
+        attr_accessor :is_me
+        alias_method :is_me?, :is_me
+      
         # The displayable name of the user.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -398,6 +404,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_deleted = args[:is_deleted] if args.key?(:is_deleted)
+          @is_me = args[:is_me] if args.key?(:is_me)
           @name = args[:name] if args.key?(:name)
           @permission_id = args[:permission_id] if args.key?(:permission_id)
           @photo = args[:photo] if args.key?(:photo)

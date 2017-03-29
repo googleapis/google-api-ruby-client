@@ -36,20 +36,30 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the product.
+        # Id of the product.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
+      
+        # Display Name of the product.
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
       
         # Link to this page.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # Name of the sku of the product.
+        # Id of the sku of the product.
         # Corresponds to the JSON property `skuId`
         # @return [String]
         attr_accessor :sku_id
+      
+        # Display Name of the sku of the product.
+        # Corresponds to the JSON property `skuName`
+        # @return [String]
+        attr_accessor :sku_name
       
         # Email id of the user.
         # Corresponds to the JSON property `userId`
@@ -65,8 +75,10 @@ module Google
           @etags = args[:etags] if args.key?(:etags)
           @kind = args[:kind] if args.key?(:kind)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @product_name = args[:product_name] if args.key?(:product_name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @sku_id = args[:sku_id] if args.key?(:sku_id)
+          @sku_name = args[:sku_name] if args.key?(:sku_name)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
       end

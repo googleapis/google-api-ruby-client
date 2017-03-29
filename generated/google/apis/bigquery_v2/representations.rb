@@ -220,6 +220,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryParameterType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class StructType
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryParameterValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -291,6 +315,12 @@ module Google
         
         class Table
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class View
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -466,6 +496,7 @@ module Google
           property :read_ratio_max, as: 'readRatioMax'
           property :records_read, as: 'recordsRead'
           property :records_written, as: 'recordsWritten'
+          property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
       
           property :wait_ratio_avg, as: 'waitRatioAvg'
@@ -568,6 +599,7 @@ module Google
           property :dry_run, as: 'dryRun'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobConfigurationExtract, decorator: Google::Apis::BigqueryV2::JobConfigurationExtract::Representation
       
+          hash :labels, as: 'labels'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobConfigurationLoad, decorator: Google::Apis::BigqueryV2::JobConfigurationLoad::Representation
       
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobConfigurationQuery, decorator: Google::Apis::BigqueryV2::JobConfigurationQuery::Representation
@@ -602,12 +634,14 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
+          property :null_marker, as: 'nullMarker'
           collection :projection_fields, as: 'projectionFields'
           property :quote, as: 'quote'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :schema_inline, as: 'schemaInline'
           property :schema_inline_format, as: 'schemaInlineFormat'
+          collection :schema_update_options, as: 'schemaUpdateOptions'
           property :skip_leading_rows, as: 'skipLeadingRows'
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
@@ -627,9 +661,13 @@ module Google
           property :flatten_results, as: 'flattenResults'
           property :maximum_billing_tier, as: 'maximumBillingTier'
           property :maximum_bytes_billed, as: 'maximumBytesBilled'
+          property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
           property :priority, as: 'priority'
           property :query, as: 'query'
+          collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
+      
+          collection :schema_update_options, as: 'schemaUpdateOptions'
           hash :table_definitions, as: 'tableDefinitions', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
       
           property :use_legacy_sql, as: 'useLegacySql'
@@ -721,8 +759,11 @@ module Google
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
+          property :statement_type, as: 'statementType'
           property :total_bytes_billed, as: 'totalBytesBilled'
           property :total_bytes_processed, as: 'totalBytesProcessed'
+          collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
+      
         end
       end
       
@@ -785,6 +826,49 @@ module Google
         end
       end
       
+      class QueryParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :parameter_type, as: 'parameterType', class: Google::Apis::BigqueryV2::QueryParameterType, decorator: Google::Apis::BigqueryV2::QueryParameterType::Representation
+      
+          property :parameter_value, as: 'parameterValue', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+      
+        end
+      end
+      
+      class QueryParameterType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :array_type, as: 'arrayType', class: Google::Apis::BigqueryV2::QueryParameterType, decorator: Google::Apis::BigqueryV2::QueryParameterType::Representation
+      
+          collection :struct_types, as: 'structTypes', class: Google::Apis::BigqueryV2::QueryParameterType::StructType, decorator: Google::Apis::BigqueryV2::QueryParameterType::StructType::Representation
+      
+          property :type, as: 'type'
+        end
+        
+        class StructType
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :description, as: 'description'
+            property :name, as: 'name'
+            property :type, as: 'type', class: Google::Apis::BigqueryV2::QueryParameterType, decorator: Google::Apis::BigqueryV2::QueryParameterType::Representation
+        
+          end
+        end
+      end
+      
+      class QueryParameterValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :array_values, as: 'arrayValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+      
+          hash :struct_values, as: 'structValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -793,8 +877,11 @@ module Google
           property :dry_run, as: 'dryRun'
           property :kind, as: 'kind'
           property :max_results, as: 'maxResults'
+          property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
           property :query, as: 'query'
+          collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
+      
           property :timeout_ms, as: 'timeoutMs'
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'
@@ -843,6 +930,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :last_modified_time, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :num_bytes, as: 'numBytes'
@@ -949,9 +1037,19 @@ module Google
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'
+            hash :labels, as: 'labels'
             property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
         
             property :type, as: 'type'
+            property :view, as: 'view', class: Google::Apis::BigqueryV2::TableList::Table::View, decorator: Google::Apis::BigqueryV2::TableList::Table::View::Representation
+        
+          end
+          
+          class View
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :use_legacy_sql, as: 'useLegacySql'
+            end
           end
         end
       end

@@ -499,6 +499,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # This method either retrieves a list of asset shares the partner owns and that
+        # map to a specified asset view ID or it retrieves a list of asset views
+        # associated with a specified asset share ID owned by the partner.
+        # @param [String] asset_id
+        #   The assetId parameter specifies the asset ID for which you are retrieving data.
+        #   The parameter can be an asset view ID or an asset share ID.
+        #   - If the value is an asset view ID, the API response identifies any asset
+        #   share ids mapped to the asset view.
+        #   - If the value is an asset share ID, the API response identifies any asset
+        #   view ids that maps to that asset share.
+        # @param [String] on_behalf_of_content_owner
+        #   The onBehalfOfContentOwner parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
+        # @param [String] page_token
+        #   The pageToken parameter specifies a token that identifies a particular page of
+        #   results to return. Set this parameter to the value of the nextPageToken value
+        #   from the previous API response to retrieve the next page of search results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubePartnerV1::AssetShareListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubePartnerV1::AssetShareListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_asset_shares(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'assetShares', options)
+          command.response_representation = Google::Apis::YoutubePartnerV1::AssetShareListResponse::Representation
+          command.response_class = Google::Apis::YoutubePartnerV1::AssetShareListResponse
+          command.query['assetId'] = asset_id unless asset_id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the metadata for the specified asset. Note that if the request
         # identifies an asset that has been merged with another asset, meaning that
         # YouTube identified the requested asset as a duplicate, then the request
@@ -2160,6 +2212,46 @@ module Google
           command.response_representation = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a metadata-only package.
+        # @param [Google::Apis::YoutubePartnerV1::Package] package_object
+        # @param [String] on_behalf_of_content_owner
+        #   The onBehalfOfContentOwner parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubePartnerV1::PackageInsertResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubePartnerV1::PackageInsertResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_package(package_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'package', options)
+          command.request_representation = Google::Apis::YoutubePartnerV1::Package::Representation
+          command.request_object = package_object
+          command.response_representation = Google::Apis::YoutubePartnerV1::PackageInsertResponse::Representation
+          command.response_class = Google::Apis::YoutubePartnerV1::PackageInsertResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

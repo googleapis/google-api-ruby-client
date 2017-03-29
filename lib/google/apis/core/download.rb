@@ -22,6 +22,7 @@ module Google
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
         RANGE_HEADER = 'Range'
+        OK_STATUS = [200, 201, 206]
 
         # File or IO to write content to
         # @return [String, File, #write]
@@ -79,7 +80,7 @@ module Google
                      header: request_header,
                      follow_redirect: true) do |res, chunk|
             status = res.http_header.status_code.to_i
-            if [200, 201, 206].include?(status)
+            if OK_STATUS.include?(status)
               if check_if_rewind_needed && status != 206
                 # Oh no! Requested a chunk, but received the entire content
                 # Attempt to rewind the stream

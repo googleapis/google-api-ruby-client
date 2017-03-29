@@ -25,7 +25,7 @@ end
 
 platforms :jruby do
   group :development do
-  	gem 'jruby-openssl'
+    gem 'jruby-openssl'
   end
 end
 

@@ -1,16 +1,83 @@
-# 0.10.0
+# 0.11.0
 * *Breaking Change* - Fix handling of large numbers during code generation. Previously the
   uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
-* Remove Hurley as dependency. May cause inor breaking changes if directly accessing the underlying
+* Remove Hurley as dependency. May cause minor breaking changes if directly accessing the underlying
   client connection.
 * Drop compatibility with Rails 3.x since that is no longer supported by the Rails community.
-* Upgrade representable to 3.0
 * Upgrade mime-types to 3.0
-* Move Thor & ActiveSupport to development depenencies. Using the code gengerator
+* Move Thor & ActiveSupport to development dependencies. Using the code gengerator
   now requires using the Bundle file or install the gem with dev dependencies.
 * Treat 429 status codes as rate limit errors
 * Fix a potential download corruption if download interrupted and retried against a URL
   that does not return partial content.
+
+# 0.10.2
+* Regenerate APIs
+
+# 0.10.1
+* Regenerate APIs
+* Add `cloudkms:v1`
+
+# 0.10.0
+* Regenerate APIs
+* Some exceptions are more descriptive for specific errors
+* `representable` dependency bumped to `~> 3.0`
+  * Breaking change for `skip_undefined` option under `to_json`:
+
+    Should now pass `foo.to_json(user_options: { skip_undefined: true })`
+    instead of `foo.to_json(skip_undefined: true)`
+* `retriable` dependency bumped to `>= 2.0, < 4.0`
+
+# 0.9.28
+* Fix file permissions issue
+
+# 0.9.27
+* Allow abnormal page token cases for paging methods
+* Regenerate APIs
+
+# 0.9.26
+* Update gem to reflect changes in 0.9.25
+
+# 0.9.25
+* Regenerate APIs
+* Add `cloudkms:v1beta1`
+* Add `manufacturers:v1`
+
+# 0.9.24
+* Regenerate APIs
+* Add `dfareporting:v2.7`
+* Fix file permissions issue present in released gems for versions `0.9.21` through `0.9.23`
+
+# 0.9.23
+* Regenerate APIs
+* Add `dns:v2beta1`
+
+# 0.9.22
+* Regenerate APIs
+
+# 0.9.21
+* Regenerate APIs
+
+# 0.9.20
+* Regenerate APIs
+* Add Slides API
+
+# 0.9.19
+* Regenerate APIs
+* Add Adexchangebuyer2 API
+
+# 0.9.15
+* Add datastore v1
+* Regenerate APIs
+
+# 0.9.14
+* Fix error handling with downloads, no longer fails silently
+* Prevent form-encoding query parameters for APIs that don't expect it
+* Regenerate APIs
+
+# 0.9.13
+* Fix fetch_all to work correctly with the genomics API
+* Add speech & language APIs, regenerate APIs
 
 # 0.9.12
 * Regenerated APIs

@@ -25,7 +25,13 @@ module Google
     # @see https://developers.google.com/identity-toolkit/v3/
     module IdentitytoolkitV3
       VERSION = 'V3'
-      REVISION = '20160810'
+      REVISION = '20170308'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and administer all your Firebase data and settings
+      AUTH_FIREBASE = 'https://www.googleapis.com/auth/firebase'
     end
   end
 end

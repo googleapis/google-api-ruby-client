@@ -124,7 +124,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Merchant Center sub-account.
+        # Deletes a Merchant Center sub-account. This method can only be called for
+        # multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -163,7 +164,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a Merchant Center account.
+        # Retrieves a Merchant Center account. This method can only be called for
+        # accounts to which the managing account has access: either the managing account
+        # itself or sub-accounts if the managing account is a multi-client account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -201,7 +204,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Merchant Center sub-account.
+        # Creates a Merchant Center sub-account. This method can only be called for
+        # multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Google::Apis::ContentV2::Account] account_object
@@ -242,7 +246,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the sub-accounts in your Merchant Center account.
+        # Lists the sub-accounts in your Merchant Center account. This method can only
+        # be called for multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -283,7 +288,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Merchant Center account. This method supports patch semantics.
+        # Updates a Merchant Center account. This method can only be called for accounts
+        # to which the managing account has access: either the managing account itself
+        # or sub-accounts if the managing account is a multi-client account. This method
+        # supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -327,7 +335,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Merchant Center account.
+        # Updates a Merchant Center account. This method can only be called for accounts
+        # to which the managing account has access: either the managing account itself
+        # or sub-accounts if the managing account is a multi-client account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -410,7 +420,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the shipping settings of the account.
+        # Retrieves the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -449,7 +462,7 @@ module Google
         end
         
         # Lists the shipping settings of the sub-accounts in your Merchant Center
-        # account.
+        # account. This method can only be called for multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -491,8 +504,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the shipping settings of the account. This method supports patch
-        # semantics.
+        # Updates the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account. This method supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -536,7 +551,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the shipping settings of the account.
+        # Updates the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -615,7 +633,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the status of a Merchant Center account.
+        # Retrieves the status of a Merchant Center account. This method can only be
+        # called for accounts to which the managing account has access: either the
+        # managing account itself or sub-accounts if the managing account is a multi-
+        # client account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -653,7 +674,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the statuses of the sub-accounts in your Merchant Center account.
+        # Lists the statuses of the sub-accounts in your Merchant Center account. This
+        # method can only be called for multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -733,7 +755,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the tax settings of the account.
+        # Retrieves the tax settings of the account. This method can only be called for
+        # accounts to which the managing account has access: either the managing account
+        # itself or sub-accounts if the managing account is a multi-client account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -772,6 +796,7 @@ module Google
         end
         
         # Lists the tax settings of the sub-accounts in your Merchant Center account.
+        # This method can only be called for multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -812,7 +837,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the tax settings of the account. This method supports patch semantics.
+        # Updates the tax settings of the account. This method can only be called for
+        # accounts to which the managing account has access: either the managing account
+        # itself or sub-accounts if the managing account is a multi-client account. This
+        # method supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -856,7 +884,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the tax settings of the account.
+        # Updates the tax settings of the account. This method can only be called for
+        # accounts to which the managing account has access: either the managing account
+        # itself or sub-accounts if the managing account is a multi-client account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -938,7 +968,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a datafeed from your Merchant Center account.
+        # Deletes a datafeed from your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         # @param [String] datafeed_id
         # @param [Boolean] dry_run
@@ -975,7 +1006,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a datafeed from your Merchant Center account.
+        # Retrieves a datafeed from your Merchant Center account. This method can only
+        # be called for non-multi-client accounts.
         # @param [String] merchant_id
         # @param [String] datafeed_id
         # @param [String] fields
@@ -1011,7 +1043,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Registers a datafeed with your Merchant Center account.
+        # Registers a datafeed with your Merchant Center account. This method can only
+        # be called for non-multi-client accounts.
         # @param [String] merchant_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
@@ -1051,7 +1084,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the datafeeds in your Merchant Center account.
+        # Lists the datafeeds in your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -1092,8 +1126,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account. This method supports patch
-        # semantics.
+        # Updates a datafeed of your Merchant Center account. This method can only be
+        # called for non-multi-client accounts. This method supports patch semantics.
         # @param [String] merchant_id
         # @param [String] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -1135,7 +1169,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account.
+        # Updates a datafeed of your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         # @param [String] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -1212,7 +1247,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the status of a datafeed from your Merchant Center account.
+        # Retrieves the status of a datafeed from your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         # @param [String] datafeed_id
         # @param [String] fields
@@ -1248,7 +1284,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the statuses of the datafeeds in your Merchant Center account.
+        # Lists the statuses of the datafeeds in your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -1291,6 +1328,7 @@ module Google
         
         # Updates price and availability for multiple products or stores in a single
         # request. This operation does not update the expiration date of the products.
+        # This method can only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchInventoryRequest] batch_inventory_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -1329,7 +1367,8 @@ module Google
         end
         
         # Updates price and availability of a product in your Merchant Center account.
-        # This operation does not update the expiration date of the product.
+        # This operation does not update the expiration date of the product. This method
+        # can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] store_code
@@ -1377,7 +1416,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks an order as acknowledged.
+        # Marks an order as acknowledged. This method can only be called for non-multi-
+        # client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1419,7 +1459,7 @@ module Google
         end
         
         # Sandbox only. Moves a test order from state "inProgress" to state "
-        # pendingShipment".
+        # pendingShipment". This method can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1457,7 +1497,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels all line items in an order.
+        # Cancels all line items in an order. This method can only be called for non-
+        # multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1498,7 +1539,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a line item.
+        # Cancels a line item. This method can only be called for non-multi-client
+        # accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1539,7 +1581,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sandbox only. Creates a test order.
+        # Sandbox only. Creates a test order. This method can only be called for non-
+        # multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Google::Apis::ContentV2::OrdersCreateTestOrderRequest] orders_create_test_order_request_object
@@ -1577,7 +1620,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves or modifies multiple orders in a single request.
+        # Retrieves or modifies multiple orders in a single request. This method can
+        # only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::OrdersCustomBatchRequest] orders_custom_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1612,7 +1656,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order from your Merchant Center account.
+        # Retrieves an order from your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1650,7 +1695,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order using merchant order id.
+        # Retrieves an order using merchant order id. This method can only be called for
+        # non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] merchant_order_id
@@ -1689,7 +1735,8 @@ module Google
         end
         
         # Sandbox only. Retrieves an order template that can be used to quickly create a
-        # new order in sandbox.
+        # new order in sandbox. This method can only be called for non-multi-client
+        # accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] template_name
@@ -1727,7 +1774,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the orders in your Merchant Center account.
+        # Lists the orders in your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Boolean] acknowledged
@@ -1800,7 +1848,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refund a portion of the order, up to the full amount paid.
+        # Refund a portion of the order, up to the full amount paid. This method can
+        # only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1841,7 +1890,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a line item.
+        # Returns a line item. This method can only be called for non-multi-client
+        # accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1882,7 +1932,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks line item(s) as shipped.
+        # Marks line item(s) as shipped. This method can only be called for non-multi-
+        # client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1923,7 +1974,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the merchant order ID for a given order.
+        # Updates the merchant order ID for a given order. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1964,7 +2016,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a shipment's status, carrier, and/or tracking ID.
+        # Updates a shipment's status, carrier, and/or tracking ID. This method can only
+        # be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -2005,7 +2058,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves, inserts, and deletes multiple products in a single request.
+        # Retrieves, inserts, and deletes multiple products in a single request. This
+        # method can only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -2043,7 +2097,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a product from your Merchant Center account.
+        # Deletes a product from your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] product_id
@@ -2082,7 +2137,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a product from your Merchant Center account.
+        # Retrieves a product from your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] product_id
@@ -2120,7 +2176,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a product to your Merchant Center account.
+        # Uploads a product to your Merchant Center account. If an item with the same
+        # channel, contentLanguage, offerId, and targetCountry already exists, this
+        # method updates that entry. This method can only be called for non-multi-client
+        # accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Google::Apis::ContentV2::Product] product_object
@@ -2161,7 +2220,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the products in your Merchant Center account.
+        # Lists the products in your Merchant Center account. This method can only be
+        # called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Boolean] include_invalid_inserted_items
@@ -2206,7 +2266,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the statuses of multiple products in a single request.
+        # Gets the statuses of multiple products in a single request. This method can
+        # only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchProductStatusesRequest] batch_product_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2241,7 +2302,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the status of a product from your Merchant Center account.
+        # Gets the status of a product from your Merchant Center account. This method
+        # can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] product_id
@@ -2279,7 +2341,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the statuses of the products in your Merchant Center account.
+        # Lists the statuses of the products in your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Boolean] include_invalid_inserted_items
@@ -2364,7 +2427,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the shipping settings of the account.
+        # Retrieves the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -2438,7 +2504,7 @@ module Google
         end
         
         # Lists the shipping settings of the sub-accounts in your Merchant Center
-        # account.
+        # account. This method can only be called for multi-client accounts.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] max_results
@@ -2480,8 +2546,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the shipping settings of the account. This method supports patch
-        # semantics.
+        # Updates the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account. This method supports patch semantics.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id
@@ -2525,7 +2593,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the shipping settings of the account.
+        # Updates the shipping settings of the account. This method can only be called
+        # for accounts to which the managing account has access: either the managing
+        # account itself or sub-accounts if the managing account is a multi-client
+        # account.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] account_id

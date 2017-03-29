@@ -25,16 +25,28 @@ module Google
     # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20160801'
+      REVISION = '20170321'
 
-      # View and manage your mail
-      AUTH_SCOPE = 'https://mail.google.com/'
+      # View your email address
+      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
       # Manage your calendars
       CALENDAR_FEEDS = 'https://www.google.com/calendar/feeds'
 
-      # Manage your contacts
-      M8_FEEDS = 'https://www.google.com/m8/feeds'
+      # View and manage your Google Groups
+      AUTH_GROUPS = 'https://www.googleapis.com/auth/groups'
+
+      # View and manage forms that this application has been installed in
+      AUTH_FORMS_CURRENTONLY = 'https://www.googleapis.com/auth/forms.currentonly'
+
+      # View and manage the files in your Google Drive
+      AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+
+      # Read, send, delete, and manage your email
+      AUTH_SCOPE = 'https://mail.google.com/'
+
+      # View and manage your spreadsheets in Google Drive
+      AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
 
       # View and manage the provisioning of groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP = 'https://www.googleapis.com/auth/admin.directory.group'
@@ -42,23 +54,11 @@ module Google
       # View and manage the provisioning of users on your domain
       AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
 
-      # View and manage the files in your Google Drive
-      AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
-
       # View and manage your forms in Google Drive
       AUTH_FORMS = 'https://www.googleapis.com/auth/forms'
 
-      # View and manage forms that this application has been installed in
-      AUTH_FORMS_CURRENTONLY = 'https://www.googleapis.com/auth/forms.currentonly'
-
-      # View and manage your Google Groups
-      AUTH_GROUPS = 'https://www.googleapis.com/auth/groups'
-
-      # View and manage your spreadsheets in Google Drive
-      AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+      # Manage your contacts
+      M8_FEEDS = 'https://www.google.com/m8/feeds'
     end
   end
 end

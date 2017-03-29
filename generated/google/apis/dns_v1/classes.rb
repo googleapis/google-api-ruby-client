@@ -146,7 +146,7 @@ module Google
         attr_accessor :kind
       
         # User assigned name for this resource. Must be unique within the project. The
-        # name must be 1-32 characters long, must begin with a letter, end with a letter
+        # name must be 1-63 characters long, must begin with a letter, end with a letter
         # or digit, and only contain lowercase letters, digits or dashes.
         # Corresponds to the JSON property `name`
         # @return [String]

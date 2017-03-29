@@ -74,6 +74,37 @@ module Google
         end
       end
       
+      # 
+      class BatchModifyMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of label IDs to add to messages.
+        # Corresponds to the JSON property `addLabelIds`
+        # @return [Array<String>]
+        attr_accessor :add_label_ids
+      
+        # The IDs of the messages to modify. There is a limit of 1000 ids per request.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        # A list of label IDs to remove from messages.
+        # Corresponds to the JSON property `removeLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_label_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @ids = args[:ids] if args.key?(:ids)
+          @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
+        end
+      end
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable
@@ -695,6 +726,25 @@ module Google
       end
       
       # 
+      class ListSmimeInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of SmimeInfo.
+        # Corresponds to the JSON property `smimeInfo`
+        # @return [Array<Google::Apis::GmailV1::SmimeInfo>]
+        attr_accessor :smime_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @smime_info = args[:smime_info] if args.key?(:smime_info)
+        end
+      end
+      
+      # 
       class ListThreadsResponse
         include Google::Apis::Core::Hashable
       
@@ -870,15 +920,15 @@ module Google
         # @return [String]
         attr_accessor :attachment_id
       
-        # The body data of a MIME message part. May be empty for MIME container types
-        # that have no message body or when the body data is sent as a separate
-        # attachment. An attachment ID is present if the body data is contained in a
-        # separate attachment.
+        # The body data of a MIME message part as a base64url encoded string. May be
+        # empty for MIME container types that have no message body or when the body data
+        # is sent as a separate attachment. An attachment ID is present if the body data
+        # is contained in a separate attachment.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
       
-        # Total number of bytes in the body of the message part.
+        # Number of bytes for the message part data (encoding notwithstanding).
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
@@ -1036,8 +1086,7 @@ module Google
       
       # Settings associated with a send-as alias, which can be either the primary
       # login address associated with the account or a custom "from" address. Send-as
-      # aliases correspond to the "Send Mail As" feature in the web interface. See
-      # for more details.
+      # aliases correspond to the "Send Mail As" feature in the web interface.
       class SendAs
         include Google::Apis::Core::Hashable
       
@@ -1092,9 +1141,8 @@ module Google
         # @return [Google::Apis::GmailV1::SmtpMsa]
         attr_accessor :smtp_msa
       
-        # Whether Gmail should treat this address as an alias for the user's primary
-        # email address. See  for more details. This setting only applies to custom "
-        # from" aliases.
+        # Whether Gmail should  treat this address as an alias for the user's primary
+        # email address. This setting only applies to custom "from" aliases.
         # Corresponds to the JSON property `treatAsAlias`
         # @return [Boolean]
         attr_accessor :treat_as_alias
@@ -1121,6 +1169,68 @@ module Google
           @smtp_msa = args[:smtp_msa] if args.key?(:smtp_msa)
           @treat_as_alias = args[:treat_as_alias] if args.key?(:treat_as_alias)
           @verification_status = args[:verification_status] if args.key?(:verification_status)
+        end
+      end
+      
+      # An S/MIME email config.
+      class SmimeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Encrypted key password, when key is encrypted.
+        # Corresponds to the JSON property `encryptedKeyPassword`
+        # @return [String]
+        attr_accessor :encrypted_key_password
+      
+        # When the certificate expires (in milliseconds since epoch).
+        # Corresponds to the JSON property `expiration`
+        # @return [String]
+        attr_accessor :expiration
+      
+        # The immutable ID for the SmimeInfo.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether this SmimeInfo is the default one for this user's send-as address.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # The S/MIME certificate issuer's common name.
+        # Corresponds to the JSON property `issuerCn`
+        # @return [String]
+        attr_accessor :issuer_cn
+      
+        # PEM formatted X509 concatenated certificate string (standard base64 encoding).
+        # Format used for returning key, which includes public key as well as
+        # certificate chain (not private key).
+        # Corresponds to the JSON property `pem`
+        # @return [String]
+        attr_accessor :pem
+      
+        # PKCS#12 format containing a single private/public key pair and certificate
+        # chain. This format is only accepted from client for creating a new SmimeInfo
+        # and is never returned, because the private key is not intended to be exported.
+        # PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
+        # appropriately.
+        # Corresponds to the JSON property `pkcs12`
+        # @return [String]
+        attr_accessor :pkcs12
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_key_password = args[:encrypted_key_password] if args.key?(:encrypted_key_password)
+          @expiration = args[:expiration] if args.key?(:expiration)
+          @id = args[:id] if args.key?(:id)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @issuer_cn = args[:issuer_cn] if args.key?(:issuer_cn)
+          @pem = args[:pem] if args.key?(:pem)
+          @pkcs12 = args[:pkcs12] if args.key?(:pkcs12)
         end
       end
       
@@ -1210,7 +1320,7 @@ module Google
       end
       
       # Vacation auto-reply settings for an account. These settings correspond to the "
-      # Vacation responder" feature in the web interface. See  for more details.
+      # Vacation responder" feature in the web interface.
       class VacationSettings
         include Google::Apis::Core::Hashable
       
@@ -1253,7 +1363,7 @@ module Google
         alias_method :restrict_to_contacts?, :restrict_to_contacts
       
         # Flag that determines whether responses are sent to recipients who are outside
-        # of the user's domain. This feature is only available for Google Apps users.
+        # of the user's domain. This feature is only available for G Suite users.
         # Corresponds to the JSON property `restrictToDomain`
         # @return [Boolean]
         attr_accessor :restrict_to_domain

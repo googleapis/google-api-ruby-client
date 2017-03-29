@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatSuperChatDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatTextMessageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -839,6 +845,24 @@ module Google
       end
       
       class SubscriptionSubscriberSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuperChatEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuperChatEventListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuperChatEventSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1375,7 +1399,6 @@ module Google
       class ChannelContentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :google_plus_user_id, as: 'googlePlusUserId'
           property :related_playlists, as: 'relatedPlaylists', class: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists, decorator: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists::Representation
       
         end
@@ -1580,6 +1603,7 @@ module Google
       class ChannelTopicDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :topic_categories, as: 'topicCategories'
           collection :topic_ids, as: 'topicIds'
         end
       end
@@ -1618,7 +1642,6 @@ module Google
           property :author_channel_id, as: 'authorChannelId'
           property :author_channel_url, as: 'authorChannelUrl'
           property :author_display_name, as: 'authorDisplayName'
-          property :author_googleplus_profile_url, as: 'authorGoogleplusProfileUrl'
           property :author_profile_image_url, as: 'authorProfileImageUrl'
           property :can_rate, as: 'canRate'
           property :channel_id, as: 'channelId'
@@ -1732,6 +1755,7 @@ module Google
           property :lsf_rating, as: 'lsfRating'
           property :mccaa_rating, as: 'mccaaRating'
           property :mccyp_rating, as: 'mccypRating'
+          property :mcst_rating, as: 'mcstRating'
           property :mda_rating, as: 'mdaRating'
           property :medietilsynet_rating, as: 'medietilsynetRating'
           property :meku_rating, as: 'mekuRating'
@@ -2243,6 +2267,8 @@ module Google
       
           property :published_at, as: 'publishedAt', type: DateTime
       
+          property :super_chat_details, as: 'superChatDetails', class: Google::Apis::YoutubeV3::LiveChatSuperChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperChatDetails::Representation
+      
           property :text_message_details, as: 'textMessageDetails', class: Google::Apis::YoutubeV3::LiveChatTextMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatTextMessageDetails::Representation
       
           property :type, as: 'type'
@@ -2329,6 +2355,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :item_id, as: 'itemId'
           property :poll_id, as: 'pollId'
+        end
+      end
+      
+      class LiveChatSuperChatDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_display_string, as: 'amountDisplayString'
+          property :amount_micros, as: 'amountMicros'
+          property :currency, as: 'currency'
+          property :tier, as: 'tier'
+          property :user_comment, as: 'userComment'
         end
       end
       
@@ -2517,6 +2554,8 @@ module Google
           property :note, as: 'note'
           property :start_at, as: 'startAt'
           property :video_id, as: 'videoId'
+          property :video_published_at, as: 'videoPublishedAt', type: DateTime
+      
         end
       end
       
@@ -2815,6 +2854,50 @@ module Google
         end
       end
       
+      class SuperChatEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::SuperChatEventSnippet, decorator: Google::Apis::YoutubeV3::SuperChatEventSnippet::Representation
+      
+        end
+      end
+      
+      class SuperChatEventListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::SuperChatEvent, decorator: Google::Apis::YoutubeV3::SuperChatEvent::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class SuperChatEventSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_micros, as: 'amountMicros'
+          property :channel_id, as: 'channelId'
+          property :comment_text, as: 'commentText'
+          property :created_at, as: 'createdAt', type: DateTime
+      
+          property :currency, as: 'currency'
+          property :display_string, as: 'displayString'
+          property :message_type, as: 'messageType'
+          property :supporter_details, as: 'supporterDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+        end
+      end
+      
       class Thumbnail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3006,6 +3089,7 @@ module Google
           property :definition, as: 'definition'
           property :dimension, as: 'dimension'
           property :duration, as: 'duration'
+          property :has_custom_thumbnail, as: 'hasCustomThumbnail'
           property :licensed_content, as: 'licensedContent'
           property :projection, as: 'projection'
           property :region_restriction, as: 'regionRestriction', class: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction, decorator: Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction::Representation
@@ -3033,8 +3117,6 @@ module Google
           property :file_name, as: 'fileName'
           property :file_size, as: 'fileSize'
           property :file_type, as: 'fileType'
-          property :recording_location, as: 'recordingLocation', class: Google::Apis::YoutubeV3::GeoPoint, decorator: Google::Apis::YoutubeV3::GeoPoint::Representation
-      
           collection :video_streams, as: 'videoStreams', class: Google::Apis::YoutubeV3::VideoFileDetailsVideoStream, decorator: Google::Apis::YoutubeV3::VideoFileDetailsVideoStream::Representation
       
         end
@@ -3129,7 +3211,9 @@ module Google
       class VideoPlayer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :embed_height, as: 'embedHeight'
           property :embed_html, as: 'embedHtml'
+          property :embed_width, as: 'embedWidth'
         end
       end
       
@@ -3254,6 +3338,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :relevant_topic_ids, as: 'relevantTopicIds'
+          collection :topic_categories, as: 'topicCategories'
           collection :topic_ids, as: 'topicIds'
         end
       end

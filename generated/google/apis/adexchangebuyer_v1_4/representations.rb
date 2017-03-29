@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreativeDealIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class DealStatus
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreativesList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -687,6 +699,7 @@ module Google
         
             property :body, as: 'body'
             property :call_to_action, as: 'callToAction'
+            property :click_link_url, as: 'clickLinkUrl'
             property :click_tracking_url, as: 'clickTrackingUrl'
             property :headline, as: 'headline'
             property :image, as: 'image', class: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Image, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd::Image::Representation
@@ -697,6 +710,7 @@ module Google
             property :price, as: 'price'
             property :star_rating, as: 'starRating'
             property :store, as: 'store'
+            property :video_url, as: 'videoURL'
           end
           
           class AppIcon
@@ -757,6 +771,24 @@ module Google
         end
       end
       
+      class CreativeDealIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deal_statuses, as: 'dealStatuses', class: Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::DealStatus, decorator: Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::DealStatus::Representation
+      
+          property :kind, as: 'kind'
+        end
+        
+        class DealStatus
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :arc_status, as: 'arcStatus'
+            property :deal_id, as: 'dealId'
+            property :web_property_id, as: 'webPropertyId'
+          end
+        end
+      end
+      
       class CreativesList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -770,6 +802,7 @@ module Google
       class DealServingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alcohol_ads_allowed, as: 'alcoholAdsAllowed'
           property :deal_pause_status, as: 'dealPauseStatus', class: Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus, decorator: Google::Apis::AdexchangebuyerV1_4::DealServingMetadataDealPauseStatus::Representation
       
         end
@@ -790,6 +823,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branding_type, as: 'brandingType'
+          property :cross_listed_external_deal_id_type, as: 'crossListedExternalDealIdType'
           property :description, as: 'description'
           property :estimated_gross_spend, as: 'estimatedGrossSpend', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
       
@@ -990,6 +1024,7 @@ module Google
           property :flight_end_time_ms, as: 'flightEndTimeMs'
           property :flight_start_time_ms, as: 'flightStartTimeMs'
           property :inventory_description, as: 'inventoryDescription'
+          property :is_rfp_template, as: 'isRfpTemplate'
           property :kind, as: 'kind'
           property :last_update_time_ms, as: 'lastUpdateTimeMs'
           property :name, as: 'name'
@@ -1099,6 +1134,7 @@ module Google
           property :is_active, as: 'isActive'
           property :kind, as: 'kind'
           collection :languages, as: 'languages'
+          property :minimum_viewability_decile, as: 'minimumViewabilityDecile'
           collection :mobile_carriers, as: 'mobileCarriers'
           collection :mobile_devices, as: 'mobileDevices'
           collection :mobile_operating_system_versions, as: 'mobileOperatingSystemVersions'
@@ -1106,6 +1142,7 @@ module Google
       
           collection :platforms, as: 'platforms'
           collection :supported_creative_attributes, as: 'supportedCreativeAttributes'
+          collection :user_identifier_data_required, as: 'userIdentifierDataRequired'
           collection :user_lists, as: 'userLists'
           collection :vendor_types, as: 'vendorTypes'
           collection :verticals, as: 'verticals'
@@ -1202,6 +1239,7 @@ module Google
       
           property :last_update_time_ms, as: 'lastUpdateTimeMs'
           property :legacy_offer_id, as: 'legacyOfferId'
+          property :marketplace_publisher_profile_id, as: 'marketplacePublisherProfileId'
           property :name, as: 'name'
           property :private_auction_id, as: 'privateAuctionId'
           property :product_id, as: 'productId'
@@ -1232,6 +1270,7 @@ module Google
       
           property :buyer_private_data, as: 'buyerPrivateData', class: Google::Apis::AdexchangebuyerV1_4::PrivateData, decorator: Google::Apis::AdexchangebuyerV1_4::PrivateData::Representation
       
+          collection :dbm_advertiser_ids, as: 'dbmAdvertiserIds'
           property :has_buyer_signed_off, as: 'hasBuyerSignedOff'
           property :has_seller_signed_off, as: 'hasSellerSignedOff'
           property :inventory_source, as: 'inventorySource'

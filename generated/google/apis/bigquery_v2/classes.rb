@@ -334,13 +334,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Experimental] The labels associated with this dataset. You can use these to
-        # organize and group your datasets. You can set this property when inserting or
-        # updating a dataset. Label keys and values can be no longer than 63 characters,
-        # can only contain letters, numeric characters, underscores and dashes.
-        # International characters are allowed. Label values are optional. Label keys
-        # must start with a letter and must be unique within a dataset. Both keys and
-        # values are additionally constrained to be <= 128 bytes in size.
+        # The labels associated with this dataset. You can use these to organize and
+        # group your datasets. You can set this property when inserting or updating a
+        # dataset. See Labeling Datasets for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -351,8 +347,8 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
-        # [Experimental] The geographic location where the dataset should reside.
-        # Possible values include EU and US. The default value is US.
+        # The geographic location where the dataset should reside. Possible values
+        # include EU and US. The default value is US.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -511,8 +507,8 @@ module Google
           # @return [String]
           attr_accessor :kind
         
-          # [Experimental] The labels associated with this dataset. You can use these to
-          # organize and group your datasets.
+          # The labels associated with this dataset. You can use these to organize and
+          # group your datasets.
           # Corresponds to the JSON property `labels`
           # @return [Hash<String,String>]
           attr_accessor :labels
@@ -641,6 +637,11 @@ module Google
         # @return [String]
         attr_accessor :records_written
       
+        # Current status for the stage.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # List of operations within the stage in dependency order (approximately
         # chronological).
         # Corresponds to the JSON property `steps`
@@ -681,6 +682,7 @@ module Google
           @read_ratio_max = args[:read_ratio_max] if args.key?(:read_ratio_max)
           @records_read = args[:records_read] if args.key?(:records_read)
           @records_written = args[:records_written] if args.key?(:records_written)
+          @status = args[:status] if args.key?(:status)
           @steps = args[:steps] if args.key?(:steps)
           @wait_ratio_avg = args[:wait_ratio_avg] if args.key?(:wait_ratio_avg)
           @wait_ratio_max = args[:wait_ratio_max] if args.key?(:wait_ratio_max)
@@ -718,8 +720,8 @@ module Google
       class ExternalDataConfiguration
         include Google::Apis::Core::Hashable
       
-        # [Experimental] Try to detect schema and format options automatically. Any
-        # option specified explicitly will be honored.
+        # Try to detect schema and format options automatically. Any option specified
+        # explicitly will be honored.
         # Corresponds to the JSON property `autodetect`
         # @return [Boolean]
         attr_accessor :autodetect
@@ -780,10 +782,8 @@ module Google
         # [Required] The data format. For CSV files, specify "CSV". For Google sheets,
         # specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "
         # NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
-        # Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google Cloud
-        # Bigtable, specify "BIGTABLE". Please note that reading from Google Cloud
-        # Bigtable is experimental and has to be enabled for your project. Please
-        # contact Google Cloud Support to enable this for your project.
+        # Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud
+        # Bigtable, specify "BIGTABLE".
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -862,8 +862,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
@@ -1065,6 +1065,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
+        # [Experimental] The labels associated with this job. You can use these to
+        # organize and group your jobs. Label keys and values can be no longer than 63
+        # characters, can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International characters are allowed. Label values are
+        # optional. Label keys must start with a letter and each label in the list must
+        # have a different key.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Pick one] Configures a load job.
         # Corresponds to the JSON property `load`
         # @return [Google::Apis::BigqueryV2::JobConfigurationLoad]
@@ -1084,6 +1094,7 @@ module Google
           @copy = args[:copy] if args.key?(:copy)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @extract = args[:extract] if args.key?(:extract)
+          @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
         end
@@ -1172,8 +1183,8 @@ module Google
         attr_accessor :allow_quoted_newlines
         alias_method :allow_quoted_newlines?, :allow_quoted_newlines
       
-        # [Experimental] Indicates if we should automatically infer the options and
-        # schema for CSV and JSON sources.
+        # Indicates if we should automatically infer the options and schema for CSV and
+        # JSON sources.
         # Corresponds to the JSON property `autodetect`
         # @return [Boolean]
         attr_accessor :autodetect
@@ -1232,12 +1243,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
-        # [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which
-        # entity properties to load into BigQuery from a Cloud Datastore backup.
-        # Property names are case sensitive and must be top-level properties. If no
-        # properties are specified, BigQuery loads all properties. If any named property
-        # isn't found in the Cloud Datastore backup, an invalid error is returned in the
-        # job result.
+        # [Optional] Specifies a string that represents a null value in a CSV file. For
+        # example, if you specify "\N", BigQuery interprets "\N" as a null value when
+        # loading a CSV file. The default value is the empty string. If you set this
+        # property to a custom value, BigQuery still interprets the empty string as a
+        # null value for all data types except for STRING and BYTE. For STRING and BYTE
+        # columns, BigQuery interprets the empty string as an empty value.
+        # Corresponds to the JSON property `nullMarker`
+        # @return [String]
+        attr_accessor :null_marker
+      
+        # If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
+        # properties to load into BigQuery from a Cloud Datastore backup. Property names
+        # are case sensitive and must be top-level properties. If no properties are
+        # specified, BigQuery loads all properties. If any named property isn't found in
+        # the Cloud Datastore backup, an invalid error is returned in the job result.
         # Corresponds to the JSON property `projectionFields`
         # @return [Array<String>]
         attr_accessor :projection_fields
@@ -1270,6 +1290,18 @@ module Google
         # Corresponds to the JSON property `schemaInlineFormat`
         # @return [String]
         attr_accessor :schema_inline_format
+      
+        # [Experimental] Allows the schema of the desitination table to be updated as a
+        # side effect of the load job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
+        # and the destination table is a partition of a table, specified by partition
+        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
+        # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+        # relaxing a required field in the original schema to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
       
         # [Optional] The number of rows at the top of a CSV file that BigQuery will skip
         # when loading the data. The default value is 0. This property is useful if you
@@ -1320,11 +1352,13 @@ module Google
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
+          @null_marker = args[:null_marker] if args.key?(:null_marker)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
           @schema = args[:schema] if args.key?(:schema)
           @schema_inline = args[:schema_inline] if args.key?(:schema_inline)
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
@@ -1386,6 +1420,12 @@ module Google
         # @return [String]
         attr_accessor :maximum_bytes_billed
       
+        # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
+        # to NAMED to use named (@myparam) query parameters in this query.
+        # Corresponds to the JSON property `parameterMode`
+        # @return [String]
+        attr_accessor :parameter_mode
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -1403,6 +1443,24 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Query parameters for standard SQL queries.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :query_parameters
+      
+        # [Experimental] Allows the schema of the destination table to be updated as a
+        # side effect of the query job. Schema update options are supported in two cases:
+        # when writeDisposition is WRITE_APPEND; when writeDisposition is
+        # WRITE_TRUNCATE and the destination table is a partition of a table, specified
+        # by partition decorators. For normal tables, WRITE_TRUNCATE will always
+        # overwrite the schema. One or more of the following values are specified:
+        # ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        # ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema
+        # to nullable.
+        # Corresponds to the JSON property `schemaUpdateOptions`
+        # @return [Array<String>]
+        attr_accessor :schema_update_options
+      
         # [Optional] If querying an external data source outside of BigQuery, describes
         # the data format, location and other properties of the data source. By defining
         # these properties, the data source can then be queried as if it were a standard
@@ -1411,12 +1469,11 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
-        # query. The default value is true. If set to false, the query will use BigQuery'
-        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-        # useLegacySql is set to false, the values of allowLargeResults and
-        # flattenResults are ignored; query will be run as if allowLargeResults is true
-        # and flattenResults is false.
+        # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+        # default value is true. If set to false, the query will use BigQuery's standard
+        # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
+        # to false, the values of allowLargeResults and flattenResults are ignored;
+        # query will be run as if allowLargeResults is true and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -1431,7 +1488,7 @@ module Google
         attr_accessor :use_query_cache
         alias_method :use_query_cache?, :use_query_cache
       
-        # [Experimental] Describes user-defined function resources used in the query.
+        # Describes user-defined function resources used in the query.
         # Corresponds to the JSON property `userDefinedFunctionResources`
         # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
         attr_accessor :user_defined_function_resources
@@ -1461,9 +1518,12 @@ module Google
           @flatten_results = args[:flatten_results] if args.key?(:flatten_results)
           @maximum_billing_tier = args[:maximum_billing_tier] if args.key?(:maximum_billing_tier)
           @maximum_bytes_billed = args[:maximum_bytes_billed] if args.key?(:maximum_bytes_billed)
+          @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
@@ -1735,13 +1795,13 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
       
-        # [Output-only, Experimental] Describes execution plan for the query.
+        # [Output-only] Describes execution plan for the query.
         # Corresponds to the JSON property `queryPlan`
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
@@ -1758,6 +1818,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
+        # [Output-only, Experimental] The type of query statement, if valid.
+        # Corresponds to the JSON property `statementType`
+        # @return [String]
+        attr_accessor :statement_type
+      
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [String]
@@ -1767,6 +1832,12 @@ module Google
         # Corresponds to the JSON property `totalBytesProcessed`
         # @return [String]
         attr_accessor :total_bytes_processed
+      
+        # [Output-only, Experimental] Standard SQL only: list of undeclared query
+        # parameters detected during a dry run validation.
+        # Corresponds to the JSON property `undeclaredQueryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :undeclared_query_parameters
       
         def initialize(**args)
            update!(**args)
@@ -1780,8 +1851,10 @@ module Google
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @schema = args[:schema] if args.key?(:schema)
+          @statement_type = args[:statement_type] if args.key?(:statement_type)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
         end
       end
       
@@ -1985,6 +2058,132 @@ module Google
       end
       
       # 
+      class QueryParameter
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] If unset, this is a positional parameter. Otherwise, should be
+        # unique within a query.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Required] The type of this parameter.
+        # Corresponds to the JSON property `parameterType`
+        # @return [Google::Apis::BigqueryV2::QueryParameterType]
+        attr_accessor :parameter_type
+      
+        # [Required] The value of this parameter.
+        # Corresponds to the JSON property `parameterValue`
+        # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+        attr_accessor :parameter_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parameter_type = args[:parameter_type] if args.key?(:parameter_type)
+          @parameter_value = args[:parameter_value] if args.key?(:parameter_value)
+        end
+      end
+      
+      # 
+      class QueryParameterType
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The type of the array's elements, if this is an array.
+        # Corresponds to the JSON property `arrayType`
+        # @return [Google::Apis::BigqueryV2::QueryParameterType]
+        attr_accessor :array_type
+      
+        # [Optional] The types of the fields of this struct, in order, if this is a
+        # struct.
+        # Corresponds to the JSON property `structTypes`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameterType::StructType>]
+        attr_accessor :struct_types
+      
+        # [Required] The top level type of this field.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_type = args[:array_type] if args.key?(:array_type)
+          @struct_types = args[:struct_types] if args.key?(:struct_types)
+          @type = args[:type] if args.key?(:type)
+        end
+        
+        # 
+        class StructType
+          include Google::Apis::Core::Hashable
+        
+          # [Optional] Human-oriented description of the field.
+          # Corresponds to the JSON property `description`
+          # @return [String]
+          attr_accessor :description
+        
+          # [Optional] The name of this field.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # [Required] The type of this field.
+          # Corresponds to the JSON property `type`
+          # @return [Google::Apis::BigqueryV2::QueryParameterType]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @description = args[:description] if args.key?(:description)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
+          end
+        end
+      end
+      
+      # 
+      class QueryParameterValue
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The array values, if this is an array type.
+        # Corresponds to the JSON property `arrayValues`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameterValue>]
+        attr_accessor :array_values
+      
+        # [Optional] The struct field values, in order of the struct type's declaration.
+        # Corresponds to the JSON property `structValues`
+        # @return [Hash<String,Google::Apis::BigqueryV2::QueryParameterValue>]
+        attr_accessor :struct_values
+      
+        # [Optional] The value of this value, if a simple scalar type.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_values = args[:array_values] if args.key?(:array_values)
+          @struct_values = args[:struct_values] if args.key?(:struct_values)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
       class QueryRequest
         include Google::Apis::Core::Hashable
       
@@ -2018,6 +2217,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
+        # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
+        # to NAMED to use named (@myparam) query parameters in this query.
+        # Corresponds to the JSON property `parameterMode`
+        # @return [String]
+        attr_accessor :parameter_mode
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -2031,6 +2236,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Query parameters for Standard SQL queries.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
+        attr_accessor :query_parameters
+      
         # [Optional] How long to wait for the query to complete, in milliseconds, before
         # the request times out and returns. Note that this is only a timeout for the
         # request, not the query. If the query takes longer to run than the timeout
@@ -2041,12 +2251,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_ms
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this
-        # query. The default value is true. If set to false, the query will use BigQuery'
-        # s standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-        # useLegacySql is set to false, the values of allowLargeResults and
-        # flattenResults are ignored; query will be run as if allowLargeResults is true
-        # and flattenResults is false.
+        # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+        # default value is true. If set to false, the query will use BigQuery's standard
+        # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
+        # to false, the values of allowLargeResults and flattenResults are ignored;
+        # query will be run as if allowLargeResults is true and flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -2070,8 +2279,10 @@ module Google
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
           @max_results = args[:max_results] if args.key?(:max_results)
+          @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
@@ -2116,8 +2327,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output-only, Experimental] The number of rows affected by a DML statement.
-        # Present only for DML statements INSERT, UPDATE or DELETE.
+        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [String]
         attr_accessor :num_dml_affected_rows
@@ -2254,6 +2465,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Experimental] The labels associated with this table. You can use these to
+        # organize and group your tables. Label keys and values can be no longer than 63
+        # characters, can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International characters are allowed. Label values are
+        # optional. Label keys must start with a letter and each label in the list must
+        # have a different key.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output-only] The time when this table was last modified, in milliseconds
         # since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -2338,6 +2559,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
@@ -2576,8 +2798,9 @@ module Google
         attr_accessor :name
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
-        # FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field
-        # contains a nested schema).
+        # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same
+        # as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates
+        # that the field contains a nested schema) or STRUCT (same as RECORD).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2657,6 +2880,12 @@ module Google
           # @return [String]
           attr_accessor :kind
         
+          # [Experimental] The labels associated with this table. You can use these to
+          # organize and group your tables.
+          # Corresponds to the JSON property `labels`
+          # @return [Hash<String,String>]
+          attr_accessor :labels
+        
           # A reference uniquely identifying the table.
           # Corresponds to the JSON property `tableReference`
           # @return [Google::Apis::BigqueryV2::TableReference]
@@ -2667,6 +2896,11 @@ module Google
           # @return [String]
           attr_accessor :type
         
+          # Additional details for a view.
+          # Corresponds to the JSON property `view`
+          # @return [Google::Apis::BigqueryV2::TableList::Table::View]
+          attr_accessor :view
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2676,8 +2910,30 @@ module Google
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
+            @labels = args[:labels] if args.key?(:labels)
             @table_reference = args[:table_reference] if args.key?(:table_reference)
             @type = args[:type] if args.key?(:type)
+            @view = args[:view] if args.key?(:view)
+          end
+          
+          # Additional details for a view.
+          class View
+            include Google::Apis::Core::Hashable
+          
+            # True if view is defined in legacy SQL dialect, false if in standard SQL.
+            # Corresponds to the JSON property `useLegacySql`
+            # @return [Boolean]
+            attr_accessor :use_legacy_sql
+            alias_method :use_legacy_sql?, :use_legacy_sql
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
+            end
           end
         end
       end
@@ -2816,16 +3072,16 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # [Experimental] Specifies whether to use BigQuery's legacy SQL for this view.
-        # The default value is true. If set to false, the view will use BigQuery's
-        # standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
-        # views that reference this view must use the same flag value.
+        # Specifies whether to use BigQuery's legacy SQL for this view. The default
+        # value is true. If set to false, the view will use BigQuery's standard SQL:
+        # https://cloud.google.com/bigquery/sql-reference/ Queries and views that
+        # reference this view must use the same flag value.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
         alias_method :use_legacy_sql?, :use_legacy_sql
       
-        # [Experimental] Describes user-defined function resources used in the query.
+        # Describes user-defined function resources used in the query.
         # Corresponds to the JSON property `userDefinedFunctionResources`
         # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
         attr_accessor :user_defined_function_resources

@@ -18,7 +18,7 @@ require 'google/apis/iam_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Identity and Access Management API
+    # Google Identity and Access Management (IAM) API
     #
     # Manages identity and access control for Google Cloud Platform resources,
     # including the creation of service accounts, which you can use to authenticate
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/iam/
     module IamV1
       VERSION = 'V1'
-      REVISION = '20160129'
+      REVISION = '20170317'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -2,18 +2,25 @@ language: ruby
 rvm:
   - 2.3.0
   - 2.2
-  - 2.0.0
   - 2.1
+  - 2.0.0
   - jruby-9000
 env:
-  - RAILS_VERSION="~>4.0.0"
-  - RAILS_VERSION="~>4.1.0"
-  - RAILS_VERSION="~>4.2.0"
+  global:
+    - JRUBY_OPTS='-X-C -J-Xmx1024m -J-XX:+UseConcMarkSweepGC'
+  matrix:
+    - RAILS_VERSION="~>4.0.0"
+    - RAILS_VERSION="~>4.1.0"
+    - RAILS_VERSION="~>4.2.0"
+matrix:
+  exclude:
+    - rvm: 2.0.0
+      env: RAILS_VERSION="~>4.2.0"
 script: "bundle exec rake spec:all"
 before_install:
- - sudo apt-get update
- - sudo apt-get install idn
- - gem update bundler
+  - sudo apt-get update
+  - sudo apt-get install idn
+  - gem update bundler
 notifications:
   email:
     recipients:

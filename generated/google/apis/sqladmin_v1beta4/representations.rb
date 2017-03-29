@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesTruncateLogRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class IpMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Labels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TruncateLogContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -409,6 +427,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
+          property :connection_name, as: 'connectionName'
           property :current_disk_size, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
           property :etag, as: 'etag'
@@ -587,6 +606,14 @@ module Google
         end
       end
       
+      class InstancesTruncateLogRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :truncate_log_context, as: 'truncateLogContext', class: Google::Apis::SqladminV1beta4::TruncateLogContext, decorator: Google::Apis::SqladminV1beta4::TruncateLogContext::Representation
+      
+        end
+      end
+      
       class IpConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -603,6 +630,15 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :time_to_retire, as: 'timeToRetire', type: DateTime
       
+          property :type, as: 'type'
+        end
+      end
+      
+      class Labels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -729,6 +765,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
+          property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
@@ -740,6 +777,8 @@ module Google
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
           property :kind, as: 'kind'
+          collection :labels, as: 'labels', class: Google::Apis::SqladminV1beta4::Labels, decorator: Google::Apis::SqladminV1beta4::Labels::Representation
+      
           property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1beta4::LocationPreference, decorator: Google::Apis::SqladminV1beta4::LocationPreference::Representation
       
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1beta4::MaintenanceWindow, decorator: Google::Apis::SqladminV1beta4::MaintenanceWindow::Representation
@@ -748,6 +787,7 @@ module Google
           property :replication_type, as: 'replicationType'
           property :settings_version, as: 'settingsVersion'
           property :storage_auto_resize, as: 'storageAutoResize'
+          property :storage_auto_resize_limit, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
         end
       end
@@ -831,6 +871,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Tier, decorator: Google::Apis::SqladminV1beta4::Tier::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class TruncateLogContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :log_type, as: 'logType'
         end
       end
       

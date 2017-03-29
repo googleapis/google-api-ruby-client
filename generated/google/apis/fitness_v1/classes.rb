@@ -103,7 +103,7 @@ module Google
         end
       end
       
-      # 
+      # Next id: 10
       class AggregateRequest
         include Google::Apis::Core::Hashable
       
@@ -746,6 +746,12 @@ module Google
         # @return [Array<Google::Apis::FitnessV1::Session>]
         attr_accessor :deleted_session
       
+        # Flag to indicate server has more data to transfer
+        # Corresponds to the JSON property `hasMoreData`
+        # @return [Boolean]
+        attr_accessor :has_more_data
+        alias_method :has_more_data?, :has_more_data
+      
         # The continuation token, which is used to page through large result sets.
         # Provide this value in a subsequent request to return the next page of results.
         # Corresponds to the JSON property `nextPageToken`
@@ -764,6 +770,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deleted_session = args[:deleted_session] if args.key?(:deleted_session)
+          @has_more_data = args[:has_more_data] if args.key?(:has_more_data)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @session = args[:session] if args.key?(:session)
         end
@@ -864,7 +871,7 @@ module Google
       
       # Holder object for the value of a single field in a data point.
       # A field value has a particular format and is only ever set to one of an
-      # integer or a floating point value.
+      # integer or a floating point value. LINT.IfChange
       class Value
         include Google::Apis::Core::Hashable
       
