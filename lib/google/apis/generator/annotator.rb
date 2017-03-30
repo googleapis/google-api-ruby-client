@@ -288,12 +288,12 @@ module Google
         def check_duplicate_method(m)
           if @all_methods.include?(m.generated_name)
             logger.error do
-              sprintf('Duplicate method %s generated, path %s',
-                m.generated_name, @names.key)
+              sprintf('Duplicate method %s generated, conflicting paths %s and %s',
+                m.generated_name, @names.key, @all_methods[m.generated_name])
             end
             fail 'Duplicate name generated'
           end
-          @all_methods[m.generated_name] = m
+          @all_methods[m.generated_name] = @names.key
         end
       end
     end
