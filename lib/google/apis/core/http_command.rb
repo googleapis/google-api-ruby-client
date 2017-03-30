@@ -143,7 +143,7 @@ module Google
         # @return [void]
         def prepare!
           header.update(options.header) if options && options.header
-          self.url = url.expand(params) if url.is_a?(Addressable::Template)
+          self.url = url.expand(params, nil, false) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
           if allow_form_encoding?
