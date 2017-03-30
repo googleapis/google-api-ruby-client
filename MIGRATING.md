@@ -1,3 +1,16 @@
+# Migrating from version `0.9.x` to `0.10`
+
+Only one minor breaking change was introduced in the `to_json` method due to a version bump for the `representable` gem from `2.3` to `3.0`. If you used the `skip_undefined` in `to_json`, you should replace that with `user_options: { skip_undefined: true }`.
+
+ex:
+```ruby
+foo.to_json(skip_undefined: true)
+```
+to
+```ruby
+foo.to_json(user_options: { skip_undefined: true })
+```
+
 # Migrating from version `0.8.x` to `0.9`
 
 Many changes and improvements have been made to the `google-api-ruby-client`
