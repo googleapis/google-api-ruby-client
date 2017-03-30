@@ -1,6 +1,9 @@
 # 0.11.0
 * *Breaking Change* - Fix handling of large numbers during code generation. Previously the
   uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
+* *Breaking Change* - No longer normalize unicode strings in URI templates. Mostly affects
+  Cloud Storage, but other APIs with unicode strings in paths may be affected. Old behavior
+  can be restored using the `normalize_unicode` request option.
 * Remove Hurley as dependency. May cause minor breaking changes if directly accessing the underlying
   client connection.
 * Drop compatibility with Rails 3.x since that is no longer supported by the Rails community.

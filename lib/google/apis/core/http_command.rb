@@ -139,8 +139,12 @@ module Google
         # @private
         # @return [void]
         def prepare!
-          header.update(options.header) if options && options.header
-          self.url = url.expand(params) if url.is_a?(Addressable::Template)
+          normalize_unicode = true
+          if options
+            header.update(options.header) if options.header
+            normalize_unicode = options.normalize_unicode
+          end
+          self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
           if allow_form_encoding?
