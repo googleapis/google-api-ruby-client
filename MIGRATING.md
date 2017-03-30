@@ -125,15 +125,15 @@ client.execute(batch)
 In `0.9`, the equivalent code is:
 
 ```ruby
-require 'google/apis/urlshortner_v1'
+require 'google/apis/urlshortener_v1'
 
 urlshortener = Google::Apis::UrlshortenerV1::UrlshortenerService.new
 
 urlshortener.batch do |urlshortener|
-  urlshortner.insert_url({long_url: 'http://example.com/foo'}) do |res, err|
+  urlshortener.insert_url({long_url: 'http://example.com/foo'}) do |res, err|
     puts res
   end
-  urlshortner.insert_url({long_url: 'http://example.com/bar'}) do |res, err|
+  urlshortener.insert_url({long_url: 'http://example.com/bar'}) do |res, err|
     puts res
   end
 end
@@ -142,14 +142,14 @@ end
 Or if sharing the same block:
 
 ```ruby
-require 'google/apis/urlshortner_v1'
+require 'google/apis/urlshortener_v1'
 
 urlshortener = Google::Apis::UrlshortenerV1::UrlshortenerService.new
 
 callback = lambda { |res, err| puts res }
 urlshortener.batch do |urlshortener|
-  urlshortner.insert_url({long_url: 'http://example.com/foo'}, &callback)
-  urlshortner.insert_url({long_url: 'http://example.com/bar'}, &callback)
+  urlshortener.insert_url({long_url: 'http://example.com/foo'}, &callback)
+  urlshortener.insert_url({long_url: 'http://example.com/bar'}, &callback)
 end
 ```
 
