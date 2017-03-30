@@ -22,261 +22,6 @@ module Google
   module Apis
     module DataprocV1
       
-      # Metadata describing the operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output-only Short description of operation.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The status of the operation.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DataprocV1::OperationStatus]
-        attr_accessor :status
-      
-        # A message containing any operation metadata details.
-        # Corresponds to the JSON property `details`
-        # @return [String]
-        attr_accessor :details
-      
-        # A message containing the operation state.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Name of the cluster for the operation.
-        # Corresponds to the JSON property `clusterName`
-        # @return [String]
-        attr_accessor :cluster_name
-      
-        # Cluster UUId for the operation.
-        # Corresponds to the JSON property `clusterUuid`
-        # @return [String]
-        attr_accessor :cluster_uuid
-      
-        # A message containing the detailed operation state.
-        # Corresponds to the JSON property `innerState`
-        # @return [String]
-        attr_accessor :inner_state
-      
-        # The time that the operation completed.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The time that the operation was started by the server.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Output-only Errors encountered during operation execution.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<String>]
-        attr_accessor :warnings
-      
-        # The time that the operation was requested.
-        # Corresponds to the JSON property `insertTime`
-        # @return [String]
-        attr_accessor :insert_time
-      
-        # Output-only Previous operation status.
-        # Corresponds to the JSON property `statusHistory`
-        # @return [Array<Google::Apis::DataprocV1::OperationStatus>]
-        attr_accessor :status_history
-      
-        # Output-only The operation type.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @status = args[:status] if args.key?(:status)
-          @details = args[:details] if args.key?(:details)
-          @state = args[:state] if args.key?(:state)
-          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
-          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
-          @inner_state = args[:inner_state] if args.key?(:inner_state)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @warnings = args[:warnings] if args.key?(:warnings)
-          @insert_time = args[:insert_time] if args.key?(:insert_time)
-          @status_history = args[:status_history] if args.key?(:status_history)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-        end
-      end
-      
-      # Specifies the selection and config of software inside the cluster.
-      class SoftwareConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional The version of software inside the cluster. It must match the regular
-        # expression [0-9]+\.[0-9]+. If unspecified, it defaults to the latest version (
-        # see Cloud Dataproc Versioning).
-        # Corresponds to the JSON property `imageVersion`
-        # @return [String]
-        attr_accessor :image_version
-      
-        # Optional The properties to set on daemon config files.Property keys are
-        # specified in prefix:property format, such as core:fs.defaultFS. The following
-        # are supported prefixes and their mappings:
-        # core: core-site.xml
-        # hdfs: hdfs-site.xml
-        # mapred: mapred-site.xml
-        # yarn: yarn-site.xml
-        # hive: hive-site.xml
-        # pig: pig.properties
-        # spark: spark-defaults.conf
-        # Corresponds to the JSON property `properties`
-        # @return [Hash<String,String>]
-        attr_accessor :properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_version = args[:image_version] if args.key?(:image_version)
-          @properties = args[:properties] if args.key?(:properties)
-        end
-      end
-      
-      # Cloud Dataproc job config.
-      class JobPlacement
-        include Google::Apis::Core::Hashable
-      
-        # Required The name of the cluster where the job will be submitted.
-        # Corresponds to the JSON property `clusterName`
-        # @return [String]
-        attr_accessor :cluster_name
-      
-        # Output-only A cluster UUID generated by the Cloud Dataproc service when the
-        # job is submitted.
-        # Corresponds to the JSON property `clusterUuid`
-        # @return [String]
-        attr_accessor :cluster_uuid
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
-          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
-        end
-      end
-      
-      # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
-      # on YARN.
-      class PigJob
-        include Google::Apis::Core::Hashable
-      
-        # Optional Whether to continue executing queries if a query fails. The default
-        # value is false. Setting to true can be useful when executing independent
-        # parallel queries.
-        # Corresponds to the JSON property `continueOnFailure`
-        # @return [Boolean]
-        attr_accessor :continue_on_failure
-        alias_method :continue_on_failure?, :continue_on_failure
-      
-        # The HCFS URI of the script that contains the Pig queries.
-        # Corresponds to the JSON property `queryFileUri`
-        # @return [String]
-        attr_accessor :query_file_uri
-      
-        # A list of queries to run on a cluster.
-        # Corresponds to the JSON property `queryList`
-        # @return [Google::Apis::DataprocV1::QueryList]
-        attr_accessor :query_list
-      
-        # Optional HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and
-        # Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-        # Corresponds to the JSON property `jarFileUris`
-        # @return [Array<String>]
-        attr_accessor :jar_file_uris
-      
-        # Optional Mapping of query variable names to values (equivalent to the Pig
-        # command: name=[value]).
-        # Corresponds to the JSON property `scriptVariables`
-        # @return [Hash<String,String>]
-        attr_accessor :script_variables
-      
-        # The runtime logging config of the job.
-        # Corresponds to the JSON property `loggingConfig`
-        # @return [Google::Apis::DataprocV1::LoggingConfig]
-        attr_accessor :logging_config
-      
-        # Optional A mapping of property names to values, used to configure Pig.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
-        # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
-        # pig/conf/pig.properties, and classes in user code.
-        # Corresponds to the JSON property `properties`
-        # @return [Hash<String,String>]
-        attr_accessor :properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
-          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
-          @query_list = args[:query_list] if args.key?(:query_list)
-          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
-          @script_variables = args[:script_variables] if args.key?(:script_variables)
-          @logging_config = args[:logging_config] if args.key?(:logging_config)
-          @properties = args[:properties] if args.key?(:properties)
-        end
-      end
-      
-      # The status of a cluster and its instances.
-      class ClusterStatus
-        include Google::Apis::Core::Hashable
-      
-        # Output-only Optional details of cluster's state.
-        # Corresponds to the JSON property `detail`
-        # @return [String]
-        attr_accessor :detail
-      
-        # Output-only The cluster's state.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output-only Time when this state was entered.
-        # Corresponds to the JSON property `stateStartTime`
-        # @return [String]
-        attr_accessor :state_start_time
-      
-        # Output-only Additional state information that includes status reported by the
-        # agent.
-        # Corresponds to the JSON property `substate`
-        # @return [String]
-        attr_accessor :substate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @detail = args[:detail] if args.key?(:detail)
-          @state = args[:state] if args.key?(:state)
-          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
-          @substate = args[:substate] if args.key?(:substate)
-        end
-      end
-      
       # The list of all clusters in a project.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -307,41 +52,6 @@ module Google
       # A Cloud Dataproc job resource.
       class Job
         include Google::Apis::Core::Hashable
-      
-        # Cloud Dataproc job status.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DataprocV1::JobStatus]
-        attr_accessor :status
-      
-        # Cloud Dataproc job config.
-        # Corresponds to the JSON property `placement`
-        # @return [Google::Apis::DataprocV1::JobPlacement]
-        attr_accessor :placement
-      
-        # Output-only If present, the location of miscellaneous control files which may
-        # be used as part of job setup and handling. If not present, control files may
-        # be placed in the same location as driver_output_uri.
-        # Corresponds to the JSON property `driverControlFilesUri`
-        # @return [String]
-        attr_accessor :driver_control_files_uri
-      
-        # Job scheduling options.Beta Feature: These options are available for testing
-        # purposes only. They may be changed before final release.
-        # Corresponds to the JSON property `scheduling`
-        # @return [Google::Apis::DataprocV1::JobScheduling]
-        attr_accessor :scheduling
-      
-        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
-        # on YARN.
-        # Corresponds to the JSON property `pigJob`
-        # @return [Google::Apis::DataprocV1::PigJob]
-        attr_accessor :pig_job
-      
-        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
-        # queries on YARN.
-        # Corresponds to the JSON property `hiveJob`
-        # @return [Google::Apis::DataprocV1::HiveJob]
-        attr_accessor :hive_job
       
         # Optional The labels to associate with this job. Label keys must contain 1 to
         # 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.
@@ -401,18 +111,47 @@ module Google
         # @return [Google::Apis::DataprocV1::HadoopJob]
         attr_accessor :hadoop_job
       
+        # Cloud Dataproc job status.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1::JobStatus]
+        attr_accessor :status
+      
+        # Cloud Dataproc job config.
+        # Corresponds to the JSON property `placement`
+        # @return [Google::Apis::DataprocV1::JobPlacement]
+        attr_accessor :placement
+      
+        # Output-only If present, the location of miscellaneous control files which may
+        # be used as part of job setup and handling. If not present, control files may
+        # be placed in the same location as driver_output_uri.
+        # Corresponds to the JSON property `driverControlFilesUri`
+        # @return [String]
+        attr_accessor :driver_control_files_uri
+      
+        # Job scheduling options.Beta Feature: These options are available for testing
+        # purposes only. They may be changed before final release.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::DataprocV1::JobScheduling]
+        attr_accessor :scheduling
+      
+        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
+        # on YARN.
+        # Corresponds to the JSON property `pigJob`
+        # @return [Google::Apis::DataprocV1::PigJob]
+        attr_accessor :pig_job
+      
+        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
+        # queries on YARN.
+        # Corresponds to the JSON property `hiveJob`
+        # @return [Google::Apis::DataprocV1::HiveJob]
+        attr_accessor :hive_job
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @status = args[:status] if args.key?(:status)
-          @placement = args[:placement] if args.key?(:placement)
-          @driver_control_files_uri = args[:driver_control_files_uri] if args.key?(:driver_control_files_uri)
-          @scheduling = args[:scheduling] if args.key?(:scheduling)
-          @pig_job = args[:pig_job] if args.key?(:pig_job)
-          @hive_job = args[:hive_job] if args.key?(:hive_job)
           @labels = args[:labels] if args.key?(:labels)
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
           @spark_job = args[:spark_job] if args.key?(:spark_job)
@@ -422,6 +161,12 @@ module Google
           @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
           @reference = args[:reference] if args.key?(:reference)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
+          @status = args[:status] if args.key?(:status)
+          @placement = args[:placement] if args.key?(:placement)
+          @driver_control_files_uri = args[:driver_control_files_uri] if args.key?(:driver_control_files_uri)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @pig_job = args[:pig_job] if args.key?(:pig_job)
+          @hive_job = args[:hive_job] if args.key?(:hive_job)
         end
       end
       
@@ -501,17 +246,6 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # Output-only A state message specifying the overall job state.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output-only Optional job state details, such as an error description if the
-        # state is <code>ERROR</code>.
-        # Corresponds to the JSON property `details`
-        # @return [String]
-        attr_accessor :details
-      
         # Output-only The time when this state was entered.
         # Corresponds to the JSON property `stateStartTime`
         # @return [String]
@@ -523,16 +257,27 @@ module Google
         # @return [String]
         attr_accessor :substate
       
+        # Output-only A state message specifying the overall job state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output-only Optional job state details, such as an error description if the
+        # state is <code>ERROR</code>.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @state = args[:state] if args.key?(:state)
-          @details = args[:details] if args.key?(:details)
           @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
           @substate = args[:substate] if args.key?(:substate)
+          @state = args[:state] if args.key?(:state)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -566,16 +311,6 @@ module Google
       class ClusterOperationStatus
         include Google::Apis::Core::Hashable
       
-        # Output-only A message containing the detailed operation state.
-        # Corresponds to the JSON property `innerState`
-        # @return [String]
-        attr_accessor :inner_state
-      
-        # Output-only The time this state was entered.
-        # Corresponds to the JSON property `stateStartTime`
-        # @return [String]
-        attr_accessor :state_start_time
-      
         # Output-only A message containing the operation state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -586,16 +321,100 @@ module Google
         # @return [String]
         attr_accessor :details
       
+        # Output-only A message containing the detailed operation state.
+        # Corresponds to the JSON property `innerState`
+        # @return [String]
+        attr_accessor :inner_state
+      
+        # Output-only The time this state was entered.
+        # Corresponds to the JSON property `stateStartTime`
+        # @return [String]
+        attr_accessor :state_start_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @inner_state = args[:inner_state] if args.key?(:inner_state)
-          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
           @state = args[:state] if args.key?(:state)
           @details = args[:details] if args.key?(:details)
+          @inner_state = args[:inner_state] if args.key?(:inner_state)
+          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
+        end
+      end
+      
+      # A YARN application created by a job. Application information is a subset of <
+      # code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto</code>.
+      # Beta Feature: This report is available for testing purposes only. It may be
+      # changed before final release.
+      class YarnApplication
+        include Google::Apis::Core::Hashable
+      
+        # Required The application state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required The application name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional The HTTP URL of the ApplicationMaster, HistoryServer, or
+        # TimelineServer that provides application-specific information. The URL uses
+        # the internal hostname, and requires a proxy server for resolution and,
+        # possibly, access.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Required The numerical progress of the application, from 1 to 100.
+        # Corresponds to the JSON property `progress`
+        # @return [Float]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @name = args[:name] if args.key?(:name)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @progress = args[:progress] if args.key?(:progress)
+        end
+      end
+      
+      # A list of queries to run on a cluster.
+      class QueryList
+        include Google::Apis::Core::Hashable
+      
+        # Required The queries to execute. You do not need to terminate a query with a
+        # semicolon. Multiple queries can be specified in one string by separating each
+        # with a semicolon. Here is an example of an Cloud Dataproc API snippet that
+        # uses a QueryList to specify a HiveJob:
+        # "hiveJob": `
+        # "queryList": `
+        # "queries": [
+        # "query1",
+        # "query2",
+        # "query3;query4",
+        # ]
+        # `
+        # `
+        # Corresponds to the JSON property `queries`
+        # @return [Array<String>]
+        attr_accessor :queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @queries = args[:queries] if args.key?(:queries)
         end
       end
       
@@ -676,80 +495,6 @@ module Google
         end
       end
       
-      # A list of queries to run on a cluster.
-      class QueryList
-        include Google::Apis::Core::Hashable
-      
-        # Required The queries to execute. You do not need to terminate a query with a
-        # semicolon. Multiple queries can be specified in one string by separating each
-        # with a semicolon. Here is an example of an Cloud Dataproc API snippet that
-        # uses a QueryList to specify a HiveJob:
-        # "hiveJob": `
-        # "queryList": `
-        # "queries": [
-        # "query1",
-        # "query2",
-        # "query3;query4",
-        # ]
-        # `
-        # `
-        # Corresponds to the JSON property `queries`
-        # @return [Array<String>]
-        attr_accessor :queries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @queries = args[:queries] if args.key?(:queries)
-        end
-      end
-      
-      # A YARN application created by a job. Application information is a subset of <
-      # code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto</code>.
-      # Beta Feature: This report is available for testing purposes only. It may be
-      # changed before final release.
-      class YarnApplication
-        include Google::Apis::Core::Hashable
-      
-        # Optional The HTTP URL of the ApplicationMaster, HistoryServer, or
-        # TimelineServer that provides application-specific information. The URL uses
-        # the internal hostname, and requires a proxy server for resolution and,
-        # possibly, access.
-        # Corresponds to the JSON property `trackingUrl`
-        # @return [String]
-        attr_accessor :tracking_url
-      
-        # Required The numerical progress of the application, from 1 to 100.
-        # Corresponds to the JSON property `progress`
-        # @return [Float]
-        attr_accessor :progress
-      
-        # Required The application state.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Required The application name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
-          @progress = args[:progress] if args.key?(:progress)
-          @state = args[:state] if args.key?(:state)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # A request to collect cluster diagnostic information.
       class DiagnoseClusterRequest
         include Google::Apis::Core::Hashable
@@ -767,11 +512,6 @@ module Google
       class DiskConfig
         include Google::Apis::Core::Hashable
       
-        # Optional Size in GB of the boot disk (default is 500GB).
-        # Corresponds to the JSON property `bootDiskSizeGb`
-        # @return [Fixnum]
-        attr_accessor :boot_disk_size_gb
-      
         # Optional Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
         # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
         # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
@@ -781,14 +521,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_local_ssds
       
+        # Optional Size in GB of the boot disk (default is 500GB).
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @num_local_ssds = args[:num_local_ssds] if args.key?(:num_local_ssds)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
         end
       end
       
@@ -877,6 +622,24 @@ module Google
       class HiveJob
         include Google::Apis::Core::Hashable
       
+        # Optional Whether to continue executing queries if a query fails. The default
+        # value is false. Setting to true can be useful when executing independent
+        # parallel queries.
+        # Corresponds to the JSON property `continueOnFailure`
+        # @return [Boolean]
+        attr_accessor :continue_on_failure
+        alias_method :continue_on_failure?, :continue_on_failure
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1::QueryList]
+        attr_accessor :query_list
+      
+        # The HCFS URI of the script that contains Hive queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
         # Optional HCFS URIs of jar files to add to the CLASSPATH of the Hive server and
         # Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         # Corresponds to the JSON property `jarFileUris`
@@ -897,36 +660,18 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
-        # Optional Whether to continue executing queries if a query fails. The default
-        # value is false. Setting to true can be useful when executing independent
-        # parallel queries.
-        # Corresponds to the JSON property `continueOnFailure`
-        # @return [Boolean]
-        attr_accessor :continue_on_failure
-        alias_method :continue_on_failure?, :continue_on_failure
-      
-        # The HCFS URI of the script that contains Hive queries.
-        # Corresponds to the JSON property `queryFileUri`
-        # @return [String]
-        attr_accessor :query_file_uri
-      
-        # A list of queries to run on a cluster.
-        # Corresponds to the JSON property `queryList`
-        # @return [Google::Apis::DataprocV1::QueryList]
-        attr_accessor :query_list
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
+          @query_list = args[:query_list] if args.key?(:query_list)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
           @script_variables = args[:script_variables] if args.key?(:script_variables)
           @properties = args[:properties] if args.key?(:properties)
-          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
-          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
-          @query_list = args[:query_list] if args.key?(:query_list)
         end
       end
       
@@ -953,18 +698,6 @@ module Google
       # The cluster config.
       class ClusterConfig
         include Google::Apis::Core::Hashable
-      
-        # Optional The config settings for Google Compute Engine resources in an
-        # instance group, such as a master or worker group.
-        # Corresponds to the JSON property `masterConfig`
-        # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
-        attr_accessor :master_config
-      
-        # Optional The config settings for Google Compute Engine resources in an
-        # instance group, such as a master or worker group.
-        # Corresponds to the JSON property `secondaryWorkerConfig`
-        # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
-        attr_accessor :secondary_worker_config
       
         # Optional Commands to execute on each node after config is completed. By
         # default, executables are run on master and all worker nodes. You can test a
@@ -1008,19 +741,31 @@ module Google
         # @return [Google::Apis::DataprocV1::SoftwareConfig]
         attr_accessor :software_config
       
+        # Optional The config settings for Google Compute Engine resources in an
+        # instance group, such as a master or worker group.
+        # Corresponds to the JSON property `masterConfig`
+        # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
+        attr_accessor :master_config
+      
+        # Optional The config settings for Google Compute Engine resources in an
+        # instance group, such as a master or worker group.
+        # Corresponds to the JSON property `secondaryWorkerConfig`
+        # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
+        attr_accessor :secondary_worker_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @master_config = args[:master_config] if args.key?(:master_config)
-          @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @master_config = args[:master_config] if args.key?(:master_config)
+          @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
         end
       end
       
@@ -1028,6 +773,12 @@ module Google
       # 0.9.0/python-programming-guide.html) applications on YARN.
       class PySparkJob
         include Google::Apis::Core::Hashable
+      
+        # Optional HCFS URIs of archives to be extracted in the working directory of .
+        # jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
       
         # Optional HCFS URIs of jar files to add to the CLASSPATHs of the Python driver
         # and tasks.
@@ -1073,18 +824,13 @@ module Google
         # @return [String]
         attr_accessor :main_python_file_uri
       
-        # Optional HCFS URIs of archives to be extracted in the working directory of .
-        # jar, .tar, .tar.gz, .tgz, and .zip.
-        # Corresponds to the JSON property `archiveUris`
-        # @return [Array<String>]
-        attr_accessor :archive_uris
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
           @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @properties = args[:properties] if args.key?(:properties)
@@ -1092,7 +838,6 @@ module Google
           @file_uris = args[:file_uris] if args.key?(:file_uris)
           @python_file_uris = args[:python_file_uris] if args.key?(:python_file_uris)
           @main_python_file_uri = args[:main_python_file_uri] if args.key?(:main_python_file_uri)
-          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
         end
       end
       
@@ -1100,13 +845,6 @@ module Google
       # instances, applicable to all instances in the cluster.
       class GceClusterConfig
         include Google::Apis::Core::Hashable
-      
-        # The Google Compute Engine metadata entries to add to all instances (see
-        # Project and instance metadata (https://cloud.google.com/compute/docs/storing-
-        # retrieving-metadata#project_and_instance_metadata)).
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
       
         # Optional If true, all instances in the cluster will only have internal IP
         # addresses. By default, clusters are not restricted to internal IP addresses,
@@ -1118,6 +856,13 @@ module Google
         # @return [Boolean]
         attr_accessor :internal_ip_only
         alias_method :internal_ip_only?, :internal_ip_only
+      
+        # The Google Compute Engine metadata entries to add to all instances (see
+        # Project and instance metadata (https://cloud.google.com/compute/docs/storing-
+        # retrieving-metadata#project_and_instance_metadata)).
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
       
         # Optional The URIs of service account scopes to be included in Google Compute
         # Engine instances. The following base set of scopes is always included:
@@ -1179,8 +924,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @tags = args[:tags] if args.key?(:tags)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1224,15 +969,15 @@ module Google
       class ClusterMetrics
         include Google::Apis::Core::Hashable
       
-        # The YARN metrics.
-        # Corresponds to the JSON property `yarnMetrics`
-        # @return [Hash<String,String>]
-        attr_accessor :yarn_metrics
-      
         # The HDFS metrics.
         # Corresponds to the JSON property `hdfsMetrics`
         # @return [Hash<String,String>]
         attr_accessor :hdfs_metrics
+      
+        # The YARN metrics.
+        # Corresponds to the JSON property `yarnMetrics`
+        # @return [Hash<String,String>]
+        attr_accessor :yarn_metrics
       
         def initialize(**args)
            update!(**args)
@@ -1240,8 +985,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @yarn_metrics = args[:yarn_metrics] if args.key?(:yarn_metrics)
           @hdfs_metrics = args[:hdfs_metrics] if args.key?(:hdfs_metrics)
+          @yarn_metrics = args[:yarn_metrics] if args.key?(:yarn_metrics)
         end
       end
       
@@ -1498,6 +1243,12 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A list of messages that carry the error details. There will be a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
@@ -1510,21 +1261,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A list of messages that carry the error details. There will be a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -1532,6 +1277,24 @@ module Google
       # instance group, such as a master or worker group.
       class InstanceGroupConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional The Google Compute Engine accelerator configuration for these
+        # instances.Beta Feature: This feature is still under development. It may be
+        # changed before final release.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::DataprocV1::AcceleratorConfig>]
+        attr_accessor :accelerators
+      
+        # Required The number of VM instances in the instance group. For master instance
+        # groups, must be set to 1.
+        # Corresponds to the JSON property `numInstances`
+        # @return [Fixnum]
+        attr_accessor :num_instances
+      
+        # Specifies the config of disk options for a group of VM instances.
+        # Corresponds to the JSON property `diskConfig`
+        # @return [Google::Apis::DataprocV1::DiskConfig]
+        attr_accessor :disk_config
       
         # Specifies the resources used to actively manage an instance group.
         # Corresponds to the JSON property `managedGroupConfig`
@@ -1564,38 +1327,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_names
       
-        # Optional The Google Compute Engine accelerator configuration for these
-        # instances.Beta Feature: This feature is still under development. It may be
-        # changed before final release.
-        # Corresponds to the JSON property `accelerators`
-        # @return [Array<Google::Apis::DataprocV1::AcceleratorConfig>]
-        attr_accessor :accelerators
-      
-        # Required The number of VM instances in the instance group. For master instance
-        # groups, must be set to 1.
-        # Corresponds to the JSON property `numInstances`
-        # @return [Fixnum]
-        attr_accessor :num_instances
-      
-        # Specifies the config of disk options for a group of VM instances.
-        # Corresponds to the JSON property `diskConfig`
-        # @return [Google::Apis::DataprocV1::DiskConfig]
-        attr_accessor :disk_config
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @num_instances = args[:num_instances] if args.key?(:num_instances)
+          @disk_config = args[:disk_config] if args.key?(:disk_config)
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
           @is_preemptible = args[:is_preemptible] if args.key?(:is_preemptible)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @machine_type_uri = args[:machine_type_uri] if args.key?(:machine_type_uri)
           @instance_names = args[:instance_names] if args.key?(:instance_names)
-          @accelerators = args[:accelerators] if args.key?(:accelerators)
-          @num_instances = args[:num_instances] if args.key?(:num_instances)
-          @disk_config = args[:disk_config] if args.key?(:disk_config)
         end
       end
       
@@ -1619,33 +1364,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_failures_per_hour = args[:max_failures_per_hour] if args.key?(:max_failures_per_hour)
-        end
-      end
-      
-      # A list of jobs in a project.
-      class ListJobsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Output-only Jobs list.
-        # Corresponds to the JSON property `jobs`
-        # @return [Array<Google::Apis::DataprocV1::Job>]
-        attr_accessor :jobs
-      
-        # Optional This token is included in the response if there are more results to
-        # fetch. To fetch additional results, provide this value as the page_token in a
-        # subsequent <code>ListJobsRequest</code>.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @jobs = args[:jobs] if args.key?(:jobs)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1678,6 +1396,33 @@ module Google
         end
       end
       
+      # A list of jobs in a project.
+      class ListJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output-only Jobs list.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::DataprocV1::Job>]
+        attr_accessor :jobs
+      
+        # Optional This token is included in the response if there are more results to
+        # fetch. To fetch additional results, provide this value as the page_token in a
+        # subsequent <code>ListJobsRequest</code>.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A request to cancel a job.
       class CancelJobRequest
         include Google::Apis::Core::Hashable
@@ -1695,6 +1440,16 @@ module Google
       # ) queries.
       class SparkSqlJob
         include Google::Apis::Core::Hashable
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1::QueryList]
+        attr_accessor :query_list
+      
+        # The HCFS URI of the script that contains SQL queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
       
         # Optional Mapping of query variable names to values (equivalent to the Spark
         # SQL command: SET name="value";).
@@ -1719,28 +1474,18 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
-        # The HCFS URI of the script that contains SQL queries.
-        # Corresponds to the JSON property `queryFileUri`
-        # @return [String]
-        attr_accessor :query_file_uri
-      
-        # A list of queries to run on a cluster.
-        # Corresponds to the JSON property `queryList`
-        # @return [Google::Apis::DataprocV1::QueryList]
-        attr_accessor :query_list
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @query_list = args[:query_list] if args.key?(:query_list)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @script_variables = args[:script_variables] if args.key?(:script_variables)
           @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @properties = args[:properties] if args.key?(:properties)
-          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
-          @query_list = args[:query_list] if args.key?(:query_list)
         end
       end
       
@@ -1763,17 +1508,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The status of a cluster and its instances.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DataprocV1::ClusterStatus]
-        attr_accessor :status
-      
         # Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature:
         # This report is available for testing purposes only. It may be changed before
         # final release.
         # Corresponds to the JSON property `metrics`
         # @return [Google::Apis::DataprocV1::ClusterMetrics]
         attr_accessor :metrics
+      
+        # The status of a cluster and its instances.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1::ClusterStatus]
+        attr_accessor :status
       
         # Output-only The previous cluster status.
         # Corresponds to the JSON property `statusHistory`
@@ -1785,17 +1530,17 @@ module Google
         # @return [Google::Apis::DataprocV1::ClusterConfig]
         attr_accessor :config
       
-        # Output-only A cluster UUID (Unique Universal Identifier). Cloud Dataproc
-        # generates this value when it creates the cluster.
-        # Corresponds to the JSON property `clusterUuid`
-        # @return [String]
-        attr_accessor :cluster_uuid
-      
         # Required The cluster name. Cluster names within a project must be unique.
         # Names of deleted clusters can be reused.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
+      
+        # Output-only A cluster UUID (Unique Universal Identifier). Cloud Dataproc
+        # generates this value when it creates the cluster.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
       
         def initialize(**args)
            update!(**args)
@@ -1805,12 +1550,12 @@ module Google
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
           @labels = args[:labels] if args.key?(:labels)
-          @status = args[:status] if args.key?(:status)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @status = args[:status] if args.key?(:status)
           @status_history = args[:status_history] if args.key?(:status_history)
           @config = args[:config] if args.key?(:config)
-          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
         end
       end
       
@@ -1818,15 +1563,15 @@ module Google
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
         # A list of operations that matches the specified filter in the request.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::DataprocV1::Operation>]
         attr_accessor :operations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -1834,8 +1579,263 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Metadata describing the operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time that the operation completed.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The time that the operation was started by the server.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output-only Errors encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        # The time that the operation was requested.
+        # Corresponds to the JSON property `insertTime`
+        # @return [String]
+        attr_accessor :insert_time
+      
+        # Output-only Previous operation status.
+        # Corresponds to the JSON property `statusHistory`
+        # @return [Array<Google::Apis::DataprocV1::OperationStatus>]
+        attr_accessor :status_history
+      
+        # Output-only The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Output-only Short description of operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1::OperationStatus]
+        attr_accessor :status
+      
+        # A message containing any operation metadata details.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # A message containing the operation state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Name of the cluster for the operation.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # Cluster UUId for the operation.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # A message containing the detailed operation state.
+        # Corresponds to the JSON property `innerState`
+        # @return [String]
+        attr_accessor :inner_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @warnings = args[:warnings] if args.key?(:warnings)
+          @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @status_history = args[:status_history] if args.key?(:status_history)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @description = args[:description] if args.key?(:description)
+          @status = args[:status] if args.key?(:status)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @inner_state = args[:inner_state] if args.key?(:inner_state)
+        end
+      end
+      
+      # Cloud Dataproc job config.
+      class JobPlacement
+        include Google::Apis::Core::Hashable
+      
+        # Required The name of the cluster where the job will be submitted.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # Output-only A cluster UUID generated by the Cloud Dataproc service when the
+        # job is submitted.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+        end
+      end
+      
+      # Specifies the selection and config of software inside the cluster.
+      class SoftwareConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional The version of software inside the cluster. It must match the regular
+        # expression [0-9]+\.[0-9]+. If unspecified, it defaults to the latest version (
+        # see Cloud Dataproc Versioning).
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
+      
+        # Optional The properties to set on daemon config files.Property keys are
+        # specified in prefix:property format, such as core:fs.defaultFS. The following
+        # are supported prefixes and their mappings:
+        # core: core-site.xml
+        # hdfs: hdfs-site.xml
+        # mapred: mapred-site.xml
+        # yarn: yarn-site.xml
+        # hive: hive-site.xml
+        # pig: pig.properties
+        # spark: spark-defaults.conf
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_version = args[:image_version] if args.key?(:image_version)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
+      # on YARN.
+      class PigJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and
+        # Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # Optional Mapping of query variable names to values (equivalent to the Pig
+        # command: name=[value]).
+        # Corresponds to the JSON property `scriptVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :script_variables
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional A mapping of property names to values, used to configure Pig.
+        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
+        # pig/conf/pig.properties, and classes in user code.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # Optional Whether to continue executing queries if a query fails. The default
+        # value is false. Setting to true can be useful when executing independent
+        # parallel queries.
+        # Corresponds to the JSON property `continueOnFailure`
+        # @return [Boolean]
+        attr_accessor :continue_on_failure
+        alias_method :continue_on_failure?, :continue_on_failure
+      
+        # The HCFS URI of the script that contains the Pig queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1::QueryList]
+        attr_accessor :query_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @script_variables = args[:script_variables] if args.key?(:script_variables)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @properties = args[:properties] if args.key?(:properties)
+          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
+          @query_list = args[:query_list] if args.key?(:query_list)
+        end
+      end
+      
+      # The status of a cluster and its instances.
+      class ClusterStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output-only Optional details of cluster's state.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Output-only The cluster's state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output-only Time when this state was entered.
+        # Corresponds to the JSON property `stateStartTime`
+        # @return [String]
+        attr_accessor :state_start_time
+      
+        # Output-only Additional state information that includes status reported by the
+        # agent.
+        # Corresponds to the JSON property `substate`
+        # @return [String]
+        attr_accessor :substate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @state = args[:state] if args.key?(:state)
+          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
+          @substate = args[:substate] if args.key?(:substate)
         end
       end
     end

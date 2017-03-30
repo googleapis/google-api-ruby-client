@@ -136,9 +136,6 @@ module Google
         # linked profiles.
         # @param [String] resource_name
         #   The resource name to return connections for. Only `people/me` is valid.
-        # @param [String] sync_token
-        #   A sync token, returned by a previous call to `people.connections.list`.
-        #   Only resources changed since the sync token was created will be returned.
         # @param [String] sort_order
         #   The order in which the connections should be sorted. Defaults to
         #   `LAST_MODIFIED_ASCENDING`.
@@ -157,6 +154,9 @@ module Google
         #   photo, and profile url.
         #   Each path should start with `person.`: for example, `person.names` or
         #   `person.photos`.
+        # @param [String] sync_token
+        #   A sync token, returned by a previous call to `people.connections.list`.
+        #   Only resources changed since the sync token was created will be returned.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -174,17 +174,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_person_connections(resource_name, sync_token: nil, sort_order: nil, request_sync_token: nil, page_token: nil, page_size: nil, request_mask_include_field: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_person_connections(resource_name, sort_order: nil, request_sync_token: nil, page_token: nil, page_size: nil, request_mask_include_field: nil, sync_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+resourceName}/connections', options)
           command.response_representation = Google::Apis::PeopleV1::ListConnectionsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListConnectionsResponse
           command.params['resourceName'] = resource_name unless resource_name.nil?
-          command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['sortOrder'] = sort_order unless sort_order.nil?
           command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['requestMask.includeField'] = request_mask_include_field unless request_mask_include_field.nil?
+          command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

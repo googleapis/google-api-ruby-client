@@ -1182,6 +1182,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Backend>]
         attr_accessor :backends
       
+        # Message containing Cloud CDN configuration for a backend service.
+        # Corresponds to the JSON property `cdnPolicy`
+        # @return [Google::Apis::ComputeV1::BackendServiceCdnPolicy]
+        attr_accessor :cdn_policy
+      
         # Message containing connection draining configuration.
         # Corresponds to the JSON property `connectionDraining`
         # @return [Google::Apis::ComputeV1::ConnectionDraining]
@@ -1307,6 +1312,7 @@ module Google
         def update!(**args)
           @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
           @backends = args[:backends] if args.key?(:backends)
+          @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -1367,6 +1373,26 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Message containing Cloud CDN configuration for a backend service.
+      class BackendServiceCdnPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Message containing what to include in the cache key for a request for Cloud
+        # CDN.
+        # Corresponds to the JSON property `cacheKeyPolicy`
+        # @return [Google::Apis::ComputeV1::CacheKeyPolicy]
+        attr_accessor :cache_key_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
         end
       end
       
@@ -1558,6 +1584,62 @@ module Google
         def update!(**args)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Message containing what to include in the cache key for a request for Cloud
+      # CDN.
+      class CacheKeyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # If true, requests to different hosts will be cached separately.
+        # Corresponds to the JSON property `includeHost`
+        # @return [Boolean]
+        attr_accessor :include_host
+        alias_method :include_host?, :include_host
+      
+        # If true, http and https requests will be cached separately.
+        # Corresponds to the JSON property `includeProtocol`
+        # @return [Boolean]
+        attr_accessor :include_protocol
+        alias_method :include_protocol?, :include_protocol
+      
+        # If true, include query string parameters in the cache key according to
+        # query_string_whitelist and query_string_blacklist. If neither is set, the
+        # entire query string will be included. If false, the query string will be
+        # excluded from the cache key entirely.
+        # Corresponds to the JSON property `includeQueryString`
+        # @return [Boolean]
+        attr_accessor :include_query_string
+        alias_method :include_query_string?, :include_query_string
+      
+        # Names of query string parameters to exclude in cache keys. All other
+        # parameters will be included. Either specify query_string_whitelist or
+        # query_string_blacklist, not both. '&' and '=' will be percent encoded and not
+        # treated as delimiters.
+        # Corresponds to the JSON property `queryStringBlacklist`
+        # @return [Array<String>]
+        attr_accessor :query_string_blacklist
+      
+        # Names of query string parameters to include in cache keys. All other
+        # parameters will be excluded. Either specify query_string_whitelist or
+        # query_string_blacklist, not both. '&' and '=' will be percent encoded and not
+        # treated as delimiters.
+        # Corresponds to the JSON property `queryStringWhitelist`
+        # @return [Array<String>]
+        attr_accessor :query_string_whitelist
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_host = args[:include_host] if args.key?(:include_host)
+          @include_protocol = args[:include_protocol] if args.key?(:include_protocol)
+          @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
+          @query_string_blacklist = args[:query_string_blacklist] if args.key?(:query_string_blacklist)
+          @query_string_whitelist = args[:query_string_whitelist] if args.key?(:query_string_whitelist)
         end
       end
       
@@ -7944,8 +8026,9 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
-        # URI of linked VPN tunnel. It must be in the same region as the router. Each
-        # interface can have at most one linked resource.
+        # URI of the linked VPN tunnel. It must be in the same region as the router.
+        # Each interface can have at most one linked resource and it could either be a
+        # VPN Tunnel or an interconnect attachment.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel

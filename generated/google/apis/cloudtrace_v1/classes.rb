@@ -30,6 +30,23 @@ module Google
       class TraceSpan
         include Google::Apis::Core::Hashable
       
+        # Collection of labels associated with the span. Label keys must be less than
+        # 128 bytes. Label values must be less than 16 kilobytes.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the span. Must be less than 128 bytes. The span name is sanitized
+        # and displayed in the Stackdriver Trace tool in the
+        # `% dynamic print site_values.console_name %`.
+        # The name may be a method name or some other per-call site name.
+        # For the same executable and the same call point, a best practice is
+        # to use a consistent name, which makes it easier to correlate
+        # cross-trace spans.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Identifier for the span. Must be a 64-bit integer other than 0 and
         # unique within a trace.
         # Corresponds to the JSON property `spanId`
@@ -58,36 +75,19 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Collection of labels associated with the span. Label keys must be less than
-        # 128 bytes. Label values must be less than 16 kilobytes.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Name of the span. Must be less than 128 bytes. The span name is sanitized
-        # and displayed in the Stackdriver Trace tool in the
-        # `% dynamic print site_values.console_name %`.
-        # The name may be a method name or some other per-call site name.
-        # For the same executable and the same call point, a best practice is
-        # to use a consistent name, which makes it easier to correlate
-        # cross-trace spans.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
           @span_id = args[:span_id] if args.key?(:span_id)
           @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @kind = args[:kind] if args.key?(:kind)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

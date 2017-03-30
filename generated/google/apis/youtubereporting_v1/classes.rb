@@ -22,69 +22,15 @@ module Google
   module Apis
     module YoutubereportingV1
       
-      # Media resource.
-      class Media
-        include Google::Apis::Core::Hashable
-      
-        # Name of the media resource.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-        end
-      end
-      
-      # A report type.
-      class ReportType
-        include Google::Apis::Core::Hashable
-      
-        # The date/time when this report type was/will be deprecated.
-        # Corresponds to the JSON property `deprecateTime`
-        # @return [String]
-        attr_accessor :deprecate_time
-      
-        # The name of the report type (max. 100 characters).
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The ID of the report type (max. 100 characters).
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # True if this a system-managed report type; otherwise false. Reporting jobs
-        # for system-managed report types are created automatically and can thus not
-        # be used in the `CreateJob` method.
-        # Corresponds to the JSON property `systemManaged`
-        # @return [Boolean]
-        attr_accessor :system_managed
-        alias_method :system_managed?, :system_managed
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
-          @name = args[:name] if args.key?(:name)
-          @id = args[:id] if args.key?(:id)
-          @system_managed = args[:system_managed] if args.key?(:system_managed)
-        end
-      end
-      
       # A report's metadata including the URL from which the report itself can be
       # downloaded.
       class Report
         include Google::Apis::Core::Hashable
+      
+        # The date/time when this report was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
         # The ID of the job that created this report.
         # Corresponds to the JSON property `jobId`
@@ -96,16 +42,16 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The date/time when the job this report belongs to will expire/expired.
+        # Corresponds to the JSON property `jobExpireTime`
+        # @return [String]
+        attr_accessor :job_expire_time
+      
         # The end of the time period that the report instance covers. The value is
         # exclusive.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
-      
-        # The date/time when the job this report belongs to will expire/expired.
-        # Corresponds to the JSON property `jobExpireTime`
-        # @return [String]
-        attr_accessor :job_expire_time
       
         # The URL from which the report can be downloaded (max. 1000 characters).
         # Corresponds to the JSON property `downloadUrl`
@@ -118,24 +64,19 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The date/time when this report was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @job_id = args[:job_id] if args.key?(:job_id)
           @id = args[:id] if args.key?(:id)
-          @end_time = args[:end_time] if args.key?(:end_time)
           @job_expire_time = args[:job_expire_time] if args.key?(:job_expire_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @download_url = args[:download_url] if args.key?(:download_url)
           @start_time = args[:start_time] if args.key?(:start_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -187,9 +128,54 @@ module Google
         end
       end
       
+      # A report type.
+      class ReportType
+        include Google::Apis::Core::Hashable
+      
+        # The date/time when this report type was/will be deprecated.
+        # Corresponds to the JSON property `deprecateTime`
+        # @return [String]
+        attr_accessor :deprecate_time
+      
+        # The name of the report type (max. 100 characters).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the report type (max. 100 characters).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # True if this a system-managed report type; otherwise false. Reporting jobs
+        # for system-managed report types are created automatically and can thus not
+        # be used in the `CreateJob` method.
+        # Corresponds to the JSON property `systemManaged`
+        # @return [Boolean]
+        attr_accessor :system_managed
+        alias_method :system_managed?, :system_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
+          @name = args[:name] if args.key?(:name)
+          @id = args[:id] if args.key?(:id)
+          @system_managed = args[:system_managed] if args.key?(:system_managed)
+        end
+      end
+      
       # Response message for ReportingService.ListJobs.
       class ListJobsResponse
         include Google::Apis::Core::Hashable
+      
+        # The list of jobs.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::YoutubereportingV1::Job>]
+        attr_accessor :jobs
       
         # A token to retrieve next page of results.
         # Pass this value in the
@@ -200,19 +186,14 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of jobs.
-        # Corresponds to the JSON property `jobs`
-        # @return [Array<Google::Apis::YoutubereportingV1::Job>]
-        attr_accessor :jobs
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @jobs = args[:jobs] if args.key?(:jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -220,27 +201,10 @@ module Google
       class Job
         include Google::Apis::Core::Hashable
       
-        # The creation date/time of the job.
-        # Corresponds to the JSON property `createTime`
+        # The server-generated ID of the job (max. 40 characters).
+        # Corresponds to the JSON property `id`
         # @return [String]
-        attr_accessor :create_time
-      
-        # The type of reports this job creates. Corresponds to the ID of a
-        # ReportType.
-        # Corresponds to the JSON property `reportTypeId`
-        # @return [String]
-        attr_accessor :report_type_id
-      
-        # The date/time when this job will expire/expired. After a job expired, no
-        # new reports are generated.
-        # Corresponds to the JSON property `expireTime`
-        # @return [String]
-        attr_accessor :expire_time
-      
-        # The name of the job (max. 100 characters).
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
+        attr_accessor :id
       
         # True if this a system-managed job that cannot be modified by the user;
         # otherwise false.
@@ -249,10 +213,27 @@ module Google
         attr_accessor :system_managed
         alias_method :system_managed?, :system_managed
       
-        # The server-generated ID of the job (max. 40 characters).
-        # Corresponds to the JSON property `id`
+        # The creation date/time of the job.
+        # Corresponds to the JSON property `createTime`
         # @return [String]
-        attr_accessor :id
+        attr_accessor :create_time
+      
+        # The date/time when this job will expire/expired. After a job expired, no
+        # new reports are generated.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The type of reports this job creates. Corresponds to the ID of a
+        # ReportType.
+        # Corresponds to the JSON property `reportTypeId`
+        # @return [String]
+        attr_accessor :report_type_id
+      
+        # The name of the job (max. 100 characters).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         def initialize(**args)
            update!(**args)
@@ -260,18 +241,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
-          @expire_time = args[:expire_time] if args.key?(:expire_time)
-          @name = args[:name] if args.key?(:name)
-          @system_managed = args[:system_managed] if args.key?(:system_managed)
           @id = args[:id] if args.key?(:id)
+          @system_managed = args[:system_managed] if args.key?(:system_managed)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
       # Response message for ReportingService.ListReports.
       class ListReportsResponse
         include Google::Apis::Core::Hashable
+      
+        # The list of report types.
+        # Corresponds to the JSON property `reports`
+        # @return [Array<Google::Apis::YoutubereportingV1::Report>]
+        attr_accessor :reports
       
         # A token to retrieve next page of results.
         # Pass this value in the
@@ -282,10 +268,25 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of report types.
-        # Corresponds to the JSON property `reports`
-        # @return [Array<Google::Apis::YoutubereportingV1::Report>]
-        attr_accessor :reports
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reports = args[:reports] if args.key?(:reports)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Media resource.
+      class Media
+        include Google::Apis::Core::Hashable
+      
+        # Name of the media resource.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
       
         def initialize(**args)
            update!(**args)
@@ -293,8 +294,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @reports = args[:reports] if args.key?(:reports)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
     end

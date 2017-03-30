@@ -22,6 +22,86 @@ module Google
   module Apis
     module AnalyticsreportingV4
       
+      # Dynamic segment definition for defining the segment within the request.
+      # A segment can select users, sessions or both.
+      class DynamicSegment
+        include Google::Apis::Core::Hashable
+      
+        # SegmentDefinition defines the segment to be a set of SegmentFilters which
+        # are combined together with a logical `AND` operation.
+        # Corresponds to the JSON property `sessionSegment`
+        # @return [Google::Apis::AnalyticsreportingV4::SegmentDefinition]
+        attr_accessor :session_segment
+      
+        # The name of the dynamic segment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # SegmentDefinition defines the segment to be a set of SegmentFilters which
+        # are combined together with a logical `AND` operation.
+        # Corresponds to the JSON property `userSegment`
+        # @return [Google::Apis::AnalyticsreportingV4::SegmentDefinition]
+        attr_accessor :user_segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_segment = args[:session_segment] if args.key?(:session_segment)
+          @name = args[:name] if args.key?(:name)
+          @user_segment = args[:user_segment] if args.key?(:user_segment)
+        end
+      end
+      
+      # A Simple segment conditions consist of one or more dimension/metric
+      # conditions that can be combined.
+      class SimpleSegment
+        include Google::Apis::Core::Hashable
+      
+        # A list of segment filters groups which are combined with logical `AND`
+        # operator.
+        # Corresponds to the JSON property `orFiltersForSegment`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::OrFiltersForSegment>]
+        attr_accessor :or_filters_for_segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @or_filters_for_segment = args[:or_filters_for_segment] if args.key?(:or_filters_for_segment)
+        end
+      end
+      
+      # Column headers.
+      class ColumnHeader
+        include Google::Apis::Core::Hashable
+      
+        # The headers for the metrics.
+        # Corresponds to the JSON property `metricHeader`
+        # @return [Google::Apis::AnalyticsreportingV4::MetricHeader]
+        attr_accessor :metric_header
+      
+        # The dimension names in the response.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_header = args[:metric_header] if args.key?(:metric_header)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+        end
+      end
+      
       # Filter Clause to be used in a segment definition, can be wither a metric or
       # a dimension filter.
       class SegmentFilterClause
@@ -55,22 +135,19 @@ module Google
         end
       end
       
-      # Represents a group of metric filters.
-      # Set the operator value to specify how the filters are logically combined.
-      class MetricFilterClause
+      # A row in the report.
+      class ReportRow
         include Google::Apis::Core::Hashable
       
-        # The operator for combining multiple metric filters. If unspecified, it is
-        # treated as an `OR`.
-        # Corresponds to the JSON property `operator`
-        # @return [String]
-        attr_accessor :operator
+        # List of metrics for each requested DateRange.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
+        attr_accessor :metrics
       
-        # The repeated set of filters. They are logically combined based on the
-        # operator specified.
-        # Corresponds to the JSON property `filters`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::MetricFilter>]
-        attr_accessor :filters
+        # List of requested dimensions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
       
         def initialize(**args)
            update!(**args)
@@ -78,8 +155,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @operator = args[:operator] if args.key?(:operator)
-          @filters = args[:filters] if args.key?(:filters)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
         end
       end
       
@@ -121,19 +198,22 @@ module Google
         end
       end
       
-      # A row in the report.
-      class ReportRow
+      # Represents a group of metric filters.
+      # Set the operator value to specify how the filters are logically combined.
+      class MetricFilterClause
         include Google::Apis::Core::Hashable
       
-        # List of metrics for each requested DateRange.
-        # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
-        attr_accessor :metrics
+        # The operator for combining multiple metric filters. If unspecified, it is
+        # treated as an `OR`.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
       
-        # List of requested dimensions.
-        # Corresponds to the JSON property `dimensions`
-        # @return [Array<String>]
-        attr_accessor :dimensions
+        # The repeated set of filters. They are logically combined based on the
+        # operator specified.
+        # Corresponds to the JSON property `filters`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::MetricFilter>]
+        attr_accessor :filters
       
         def initialize(**args)
            update!(**args)
@@ -141,8 +221,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @metrics = args[:metrics] if args.key?(:metrics)
-          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @operator = args[:operator] if args.key?(:operator)
+          @filters = args[:filters] if args.key?(:filters)
         end
       end
       
@@ -272,20 +352,6 @@ module Google
       class SegmentMetricFilter
         include Google::Apis::Core::Hashable
       
-        # The metric that will be filtered on. A `metricFilter` must contain a
-        # metric name.
-        # Corresponds to the JSON property `metricName`
-        # @return [String]
-        attr_accessor :metric_name
-      
-        # Scope for a metric defines the level at which that metric is defined.  The
-        # specified metric scope must be equal to or greater than its primary scope
-        # as defined in the data model. The primary scope is defined by if the
-        # segment is selecting users or sessions.
-        # Corresponds to the JSON property `scope`
-        # @return [String]
-        attr_accessor :scope
-      
         # Max comparison value is only used for `BETWEEN` operator.
         # Corresponds to the JSON property `maxComparisonValue`
         # @return [String]
@@ -303,17 +369,31 @@ module Google
         # @return [String]
         attr_accessor :operator
       
+        # The metric that will be filtered on. A `metricFilter` must contain a
+        # metric name.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # Scope for a metric defines the level at which that metric is defined.  The
+        # specified metric scope must be equal to or greater than its primary scope
+        # as defined in the data model. The primary scope is defined by if the
+        # segment is selecting users or sessions.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metric_name = args[:metric_name] if args.key?(:metric_name)
-          @scope = args[:scope] if args.key?(:scope)
           @max_comparison_value = args[:max_comparison_value] if args.key?(:max_comparison_value)
           @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
           @operator = args[:operator] if args.key?(:operator)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -434,28 +514,6 @@ module Google
       class Pivot
         include Google::Apis::Core::Hashable
       
-        # Specifies the maximum number of groups to return.
-        # The default value is 10, also the maximum value is 1,000.
-        # Corresponds to the JSON property `maxGroupCount`
-        # @return [Fixnum]
-        attr_accessor :max_group_count
-      
-        # If k metrics were requested, then the response will contain some
-        # data-dependent multiple of k columns in the report.  E.g., if you pivoted
-        # on the dimension `ga:browser` then you'd get k columns for "Firefox", k
-        # columns for "IE", k columns for "Chrome", etc. The ordering of the groups
-        # of columns is determined by descending order of "total" for the first of
-        # the k values.  Ties are broken by lexicographic ordering of the first
-        # pivot dimension, then lexicographic ordering of the second pivot
-        # dimension, and so on.  E.g., if the totals for the first value for
-        # Firefox, IE, and Chrome were 8, 2, 8, respectively, the order of columns
-        # would be Chrome, Firefox, IE.
-        # The following let you choose which of the groups of k columns are
-        # included in the response.
-        # Corresponds to the JSON property `startGroup`
-        # @return [Fixnum]
-        attr_accessor :start_group
-      
         # The pivot metrics. Pivot metrics are part of the
         # restriction on total number of metrics allowed in the request.
         # Corresponds to the JSON property `metrics`
@@ -480,17 +538,39 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::DimensionFilterClause>]
         attr_accessor :dimension_filter_clauses
       
+        # Specifies the maximum number of groups to return.
+        # The default value is 10, also the maximum value is 1,000.
+        # Corresponds to the JSON property `maxGroupCount`
+        # @return [Fixnum]
+        attr_accessor :max_group_count
+      
+        # If k metrics were requested, then the response will contain some
+        # data-dependent multiple of k columns in the report.  E.g., if you pivoted
+        # on the dimension `ga:browser` then you'd get k columns for "Firefox", k
+        # columns for "IE", k columns for "Chrome", etc. The ordering of the groups
+        # of columns is determined by descending order of "total" for the first of
+        # the k values.  Ties are broken by lexicographic ordering of the first
+        # pivot dimension, then lexicographic ordering of the second pivot
+        # dimension, and so on.  E.g., if the totals for the first value for
+        # Firefox, IE, and Chrome were 8, 2, 8, respectively, the order of columns
+        # would be Chrome, Firefox, IE.
+        # The following let you choose which of the groups of k columns are
+        # included in the response.
+        # Corresponds to the JSON property `startGroup`
+        # @return [Fixnum]
+        attr_accessor :start_group
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @max_group_count = args[:max_group_count] if args.key?(:max_group_count)
-          @start_group = args[:start_group] if args.key?(:start_group)
           @metrics = args[:metrics] if args.key?(:metrics)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @dimension_filter_clauses = args[:dimension_filter_clauses] if args.key?(:dimension_filter_clauses)
+          @max_group_count = args[:max_group_count] if args.key?(:max_group_count)
+          @start_group = args[:start_group] if args.key?(:start_group)
         end
       end
       
@@ -631,13 +711,6 @@ module Google
       class ReportData
         include Google::Apis::Core::Hashable
       
-        # Minimum and maximum values seen over all matching rows. These are both
-        # empty when `hideValueRanges` in the request is false, or when
-        # rowCount is zero.
-        # Corresponds to the JSON property `minimums`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
-        attr_accessor :minimums
-      
         # If the results are
         # [sampled](https://support.google.com/analytics/answer/2637192),
         # this returns the total number of
@@ -648,6 +721,13 @@ module Google
         # Corresponds to the JSON property `samplingSpaceSizes`
         # @return [Array<String>]
         attr_accessor :sampling_space_sizes
+      
+        # Minimum and maximum values seen over all matching rows. These are both
+        # empty when `hideValueRanges` in the request is false, or when
+        # rowCount is zero.
+        # Corresponds to the JSON property `minimums`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::DateRangeValues>]
+        attr_accessor :minimums
       
         # For each requested date range, for the set of all rows that match
         # the query, every requested value format gets a total. The total
@@ -671,6 +751,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :samples_read_counts
       
+        # Total number of matching rows for this query.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # There's one ReportRow for every unique combination of dimensions.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::ReportRow>]
+        attr_accessor :rows
+      
         # Indicates if response to this request is golden or not. Data is
         # golden when the exact same request will not produce any new results if
         # asked at a later point in time.
@@ -678,16 +768,6 @@ module Google
         # @return [Boolean]
         attr_accessor :is_data_golden
         alias_method :is_data_golden?, :is_data_golden
-      
-        # There's one ReportRow for every unique combination of dimensions.
-        # Corresponds to the JSON property `rows`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::ReportRow>]
-        attr_accessor :rows
-      
-        # Total number of matching rows for this query.
-        # Corresponds to the JSON property `rowCount`
-        # @return [Fixnum]
-        attr_accessor :row_count
       
         # The last time the data in the report was refreshed. All the hits received
         # before this timestamp are included in the calculation of the report.
@@ -708,13 +788,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @minimums = args[:minimums] if args.key?(:minimums)
           @sampling_space_sizes = args[:sampling_space_sizes] if args.key?(:sampling_space_sizes)
+          @minimums = args[:minimums] if args.key?(:minimums)
           @totals = args[:totals] if args.key?(:totals)
           @samples_read_counts = args[:samples_read_counts] if args.key?(:samples_read_counts)
-          @is_data_golden = args[:is_data_golden] if args.key?(:is_data_golden)
-          @rows = args[:rows] if args.key?(:rows)
           @row_count = args[:row_count] if args.key?(:row_count)
+          @rows = args[:rows] if args.key?(:rows)
+          @is_data_golden = args[:is_data_golden] if args.key?(:is_data_golden)
           @data_last_refreshed = args[:data_last_refreshed] if args.key?(:data_last_refreshed)
           @maximums = args[:maximums] if args.key?(:maximums)
         end
@@ -769,6 +849,68 @@ module Google
         end
       end
       
+      # The segment definition, if the report needs to be segmented.
+      # A Segment is a subset of the Analytics data. For example, of the entire
+      # set of users, one Segment might be users from a particular country or city.
+      class Segment
+        include Google::Apis::Core::Hashable
+      
+        # Dynamic segment definition for defining the segment within the request.
+        # A segment can select users, sessions or both.
+        # Corresponds to the JSON property `dynamicSegment`
+        # @return [Google::Apis::AnalyticsreportingV4::DynamicSegment]
+        attr_accessor :dynamic_segment
+      
+        # The segment ID of a built-in or custom segment, for example `gaid::-3`.
+        # Corresponds to the JSON property `segmentId`
+        # @return [String]
+        attr_accessor :segment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_segment = args[:dynamic_segment] if args.key?(:dynamic_segment)
+          @segment_id = args[:segment_id] if args.key?(:segment_id)
+        end
+      end
+      
+      # Specifies the sorting options.
+      class OrderBy
+        include Google::Apis::Core::Hashable
+      
+        # The field which to sort by. The default sort order is ascending. Example:
+        # `ga:browser`.
+        # Note, that you can only specify one field for sort here. For example,
+        # `ga:browser, ga:city` is not valid.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # The order type. The default orderType is `VALUE`.
+        # Corresponds to the JSON property `orderType`
+        # @return [String]
+        attr_accessor :order_type
+      
+        # The sorting order for the field.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [String]
+        attr_accessor :sort_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @order_type = args[:order_type] if args.key?(:order_type)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+        end
+      end
+      
       # Dimension filter specifies the filtering options on a dimension.
       class SegmentDimensionFilter
         include Google::Apis::Core::Hashable
@@ -819,68 +961,6 @@ module Google
         end
       end
       
-      # Specifies the sorting options.
-      class OrderBy
-        include Google::Apis::Core::Hashable
-      
-        # The field which to sort by. The default sort order is ascending. Example:
-        # `ga:browser`.
-        # Note, that you can only specify one field for sort here. For example,
-        # `ga:browser, ga:city` is not valid.
-        # Corresponds to the JSON property `fieldName`
-        # @return [String]
-        attr_accessor :field_name
-      
-        # The order type. The default orderType is `VALUE`.
-        # Corresponds to the JSON property `orderType`
-        # @return [String]
-        attr_accessor :order_type
-      
-        # The sorting order for the field.
-        # Corresponds to the JSON property `sortOrder`
-        # @return [String]
-        attr_accessor :sort_order
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field_name = args[:field_name] if args.key?(:field_name)
-          @order_type = args[:order_type] if args.key?(:order_type)
-          @sort_order = args[:sort_order] if args.key?(:sort_order)
-        end
-      end
-      
-      # The segment definition, if the report needs to be segmented.
-      # A Segment is a subset of the Analytics data. For example, of the entire
-      # set of users, one Segment might be users from a particular country or city.
-      class Segment
-        include Google::Apis::Core::Hashable
-      
-        # Dynamic segment definition for defining the segment within the request.
-        # A segment can select users, sessions or both.
-        # Corresponds to the JSON property `dynamicSegment`
-        # @return [Google::Apis::AnalyticsreportingV4::DynamicSegment]
-        attr_accessor :dynamic_segment
-      
-        # The segment ID of a built-in or custom segment, for example `gaid::-3`.
-        # Corresponds to the JSON property `segmentId`
-        # @return [String]
-        attr_accessor :segment_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dynamic_segment = args[:dynamic_segment] if args.key?(:dynamic_segment)
-          @segment_id = args[:segment_id] if args.key?(:segment_id)
-        end
-      end
-      
       # A segment sequence definition.
       class SegmentSequenceStep
         include Google::Apis::Core::Hashable
@@ -914,18 +994,6 @@ module Google
       class Metric
         include Google::Apis::Core::Hashable
       
-        # A metric expression in the request. An expression is constructed from one
-        # or more metrics and numbers. Accepted operators include: Plus (+), Minus
-        # (-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,
-        # Positive cardinal numbers (0-9), can include decimals and is limited to
-        # 1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the
-        # metric expression is just a single metric name like `ga:users`.
-        # Adding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics
-        # will result in unexpected results.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
-      
         # Specifies how the metric expression should be formatted, for example
         # `INTEGER`.
         # Corresponds to the JSON property `formattingType`
@@ -941,15 +1009,27 @@ module Google
         # @return [String]
         attr_accessor :alias
       
+        # A metric expression in the request. An expression is constructed from one
+        # or more metrics and numbers. Accepted operators include: Plus (+), Minus
+        # (-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,
+        # Positive cardinal numbers (0-9), can include decimals and is limited to
+        # 1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the
+        # metric expression is just a single metric name like `ga:users`.
+        # Adding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics
+        # will result in unexpected results.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @expression = args[:expression] if args.key?(:expression)
           @formatting_type = args[:formatting_type] if args.key?(:formatting_type)
           @alias = args[:alias] if args.key?(:alias)
+          @expression = args[:expression] if args.key?(:expression)
         end
       end
       
@@ -976,6 +1056,11 @@ module Google
       class Report
         include Google::Apis::Core::Hashable
       
+        # Column headers.
+        # Corresponds to the JSON property `columnHeader`
+        # @return [Google::Apis::AnalyticsreportingV4::ColumnHeader]
+        attr_accessor :column_header
+      
         # The data part of the report.
         # Corresponds to the JSON property `data`
         # @return [Google::Apis::AnalyticsreportingV4::ReportData]
@@ -986,20 +1071,15 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Column headers.
-        # Corresponds to the JSON property `columnHeader`
-        # @return [Google::Apis::AnalyticsreportingV4::ColumnHeader]
-        attr_accessor :column_header
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @column_header = args[:column_header] if args.key?(:column_header)
           @data = args[:data] if args.key?(:data)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @column_header = args[:column_header] if args.key?(:column_header)
         end
       end
       
@@ -1034,15 +1114,15 @@ module Google
       class DateRange
         include Google::Apis::Core::Hashable
       
-        # The start date for the query in the format `YYYY-MM-DD`.
-        # Corresponds to the JSON property `startDate`
-        # @return [String]
-        attr_accessor :start_date
-      
         # The end date for the query in the format `YYYY-MM-DD`.
         # Corresponds to the JSON property `endDate`
         # @return [String]
         attr_accessor :end_date
+      
+        # The start date for the query in the format `YYYY-MM-DD`.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
       
         def initialize(**args)
            update!(**args)
@@ -1050,21 +1130,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @start_date = args[:start_date] if args.key?(:start_date)
           @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
         end
       end
       
       # MetricFilter specifies the filter on a metric.
       class MetricFilter
         include Google::Apis::Core::Hashable
-      
-        # The metric that will be filtered on. A metricFilter must contain a metric
-        # name. A metric name can be an alias earlier defined as a metric or it can
-        # also be a metric expression.
-        # Corresponds to the JSON property `metricName`
-        # @return [String]
-        attr_accessor :metric_name
       
         # The value to compare against.
         # Corresponds to the JSON property `comparisonValue`
@@ -1086,22 +1159,42 @@ module Google
         attr_accessor :not
         alias_method :not?, :not
       
+        # The metric that will be filtered on. A metricFilter must contain a metric
+        # name. A metric name can be an alias earlier defined as a metric or it can
+        # also be a metric expression.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metric_name = args[:metric_name] if args.key?(:metric_name)
           @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
           @operator = args[:operator] if args.key?(:operator)
           @not = args[:not] if args.key?(:not)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
         end
       end
       
       # The main request class which specifies the Reporting API request.
       class ReportRequest
         include Google::Apis::Core::Hashable
+      
+        # The pivot definitions. Requests can have a maximum of 2 pivots.
+        # Corresponds to the JSON property `pivots`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::Pivot>]
+        attr_accessor :pivots
+      
+        # If set to false, the response does not include rows if all the retrieved
+        # metrics are equal to zero. The default is false which will exclude these
+        # rows.
+        # Corresponds to the JSON property `includeEmptyRows`
+        # @return [Boolean]
+        attr_accessor :include_empty_rows
+        alias_method :include_empty_rows?, :include_empty_rows
       
         # The metric filter clauses. They are logically combined with the `AND`
         # operator.  Metric filters look at only the first date range and not the
@@ -1123,19 +1216,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # If set to true, hides the total of all metrics for all the matching rows,
-        # for every date range. The default false and will return the totals.
-        # Corresponds to the JSON property `hideTotals`
-        # @return [Boolean]
-        attr_accessor :hide_totals
-        alias_method :hide_totals?, :hide_totals
-      
         # If set to true, hides the minimum and maximum across all matching rows.
         # The default is false and the value ranges are returned.
         # Corresponds to the JSON property `hideValueRanges`
         # @return [Boolean]
         attr_accessor :hide_value_ranges
         alias_method :hide_value_ranges?, :hide_value_ranges
+      
+        # If set to true, hides the total of all metrics for all the matching rows,
+        # for every date range. The default false and will return the totals.
+        # Corresponds to the JSON property `hideTotals`
+        # @return [Boolean]
+        attr_accessor :hide_totals
+        alias_method :hide_totals?, :hide_totals
       
         # Dimension or metric filters that restrict the data returned for your
         # request. To use the `filtersExpression`, supply a dimension or metric on
@@ -1245,29 +1338,18 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::DateRange>]
         attr_accessor :date_ranges
       
-        # The pivot definitions. Requests can have a maximum of 2 pivots.
-        # Corresponds to the JSON property `pivots`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::Pivot>]
-        attr_accessor :pivots
-      
-        # If set to false, the response does not include rows if all the retrieved
-        # metrics are equal to zero. The default is false which will exclude these
-        # rows.
-        # Corresponds to the JSON property `includeEmptyRows`
-        # @return [Boolean]
-        attr_accessor :include_empty_rows
-        alias_method :include_empty_rows?, :include_empty_rows
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @pivots = args[:pivots] if args.key?(:pivots)
+          @include_empty_rows = args[:include_empty_rows] if args.key?(:include_empty_rows)
           @metric_filter_clauses = args[:metric_filter_clauses] if args.key?(:metric_filter_clauses)
           @page_size = args[:page_size] if args.key?(:page_size)
-          @hide_totals = args[:hide_totals] if args.key?(:hide_totals)
           @hide_value_ranges = args[:hide_value_ranges] if args.key?(:hide_value_ranges)
+          @hide_totals = args[:hide_totals] if args.key?(:hide_totals)
           @filters_expression = args[:filters_expression] if args.key?(:filters_expression)
           @cohort_group = args[:cohort_group] if args.key?(:cohort_group)
           @view_id = args[:view_id] if args.key?(:view_id)
@@ -1279,8 +1361,6 @@ module Google
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @page_token = args[:page_token] if args.key?(:page_token)
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
-          @pivots = args[:pivots] if args.key?(:pivots)
-          @include_empty_rows = args[:include_empty_rows] if args.key?(:include_empty_rows)
         end
       end
       
@@ -1333,86 +1413,6 @@ module Google
         def update!(**args)
           @histogram_buckets = args[:histogram_buckets] if args.key?(:histogram_buckets)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Dynamic segment definition for defining the segment within the request.
-      # A segment can select users, sessions or both.
-      class DynamicSegment
-        include Google::Apis::Core::Hashable
-      
-        # SegmentDefinition defines the segment to be a set of SegmentFilters which
-        # are combined together with a logical `AND` operation.
-        # Corresponds to the JSON property `sessionSegment`
-        # @return [Google::Apis::AnalyticsreportingV4::SegmentDefinition]
-        attr_accessor :session_segment
-      
-        # The name of the dynamic segment.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # SegmentDefinition defines the segment to be a set of SegmentFilters which
-        # are combined together with a logical `AND` operation.
-        # Corresponds to the JSON property `userSegment`
-        # @return [Google::Apis::AnalyticsreportingV4::SegmentDefinition]
-        attr_accessor :user_segment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @session_segment = args[:session_segment] if args.key?(:session_segment)
-          @name = args[:name] if args.key?(:name)
-          @user_segment = args[:user_segment] if args.key?(:user_segment)
-        end
-      end
-      
-      # A Simple segment conditions consist of one or more dimension/metric
-      # conditions that can be combined.
-      class SimpleSegment
-        include Google::Apis::Core::Hashable
-      
-        # A list of segment filters groups which are combined with logical `AND`
-        # operator.
-        # Corresponds to the JSON property `orFiltersForSegment`
-        # @return [Array<Google::Apis::AnalyticsreportingV4::OrFiltersForSegment>]
-        attr_accessor :or_filters_for_segment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @or_filters_for_segment = args[:or_filters_for_segment] if args.key?(:or_filters_for_segment)
-        end
-      end
-      
-      # Column headers.
-      class ColumnHeader
-        include Google::Apis::Core::Hashable
-      
-        # The headers for the metrics.
-        # Corresponds to the JSON property `metricHeader`
-        # @return [Google::Apis::AnalyticsreportingV4::MetricHeader]
-        attr_accessor :metric_header
-      
-        # The dimension names in the response.
-        # Corresponds to the JSON property `dimensions`
-        # @return [Array<String>]
-        attr_accessor :dimensions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric_header = args[:metric_header] if args.key?(:metric_header)
-          @dimensions = args[:dimensions] if args.key?(:dimensions)
         end
       end
     end

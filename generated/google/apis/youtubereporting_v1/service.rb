@@ -48,12 +48,6 @@ module Google
         end
         
         # Lists report types.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer report types than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of
@@ -63,6 +57,12 @@ module Google
         #   If set to true, also system-managed report types will be returned;
         #   otherwise only the report types that can be used to create new reporting
         #   jobs will be returned.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer report types than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] on_behalf_of_content_owner
+        #   The content owner's external ID on which behalf the user is acting on. If
+        #   not set, the user is acting for himself (his own channel).
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -80,14 +80,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_report_types(page_size: nil, on_behalf_of_content_owner: nil, page_token: nil, include_system_managed: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_report_types(page_token: nil, include_system_managed: nil, page_size: nil, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/reportTypes', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -132,47 +132,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job.
-        # @param [String] job_id
-        #   The ID of the job to delete.
-        # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubereportingV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubereportingV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_job(job_id, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/jobs/{jobId}', options)
-          command.response_representation = Google::Apis::YoutubereportingV1::Empty::Representation
-          command.response_class = Google::Apis::YoutubereportingV1::Empty
-          command.params['jobId'] = job_id unless job_id.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists jobs.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer jobs than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of
@@ -182,6 +142,12 @@ module Google
         #   If set to true, also system-managed jobs will be returned; otherwise only
         #   user-created jobs will be returned. System-managed jobs can neither be
         #   modified nor deleted.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer jobs than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] on_behalf_of_content_owner
+        #   The content owner's external ID on which behalf the user is acting on. If
+        #   not set, the user is acting for himself (his own channel).
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -199,14 +165,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(page_size: nil, on_behalf_of_content_owner: nil, page_token: nil, include_system_managed: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_jobs(page_token: nil, include_system_managed: nil, page_size: nil, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/jobs', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListJobsResponse
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -274,6 +240,40 @@ module Google
           command.request_object = job_object
           command.response_representation = Google::Apis::YoutubereportingV1::Job::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Job
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a job.
+        # @param [String] job_id
+        #   The ID of the job to delete.
+        # @param [String] on_behalf_of_content_owner
+        #   The content owner's external ID on which behalf the user is acting on. If
+        #   not set, the user is acting for himself (his own channel).
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubereportingV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubereportingV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_job(job_id, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/jobs/{jobId}', options)
+          command.response_representation = Google::Apis::YoutubereportingV1::Empty::Representation
+          command.response_class = Google::Apis::YoutubereportingV1::Empty
+          command.params['jobId'] = job_id unless job_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?

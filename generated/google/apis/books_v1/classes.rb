@@ -2579,6 +2579,11 @@ module Google
           # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries]
           attr_accessor :more_from_series
         
+          # 
+          # Corresponds to the JSON property `rewardExpirations`
+          # @return [Google::Apis::BooksV1::UserSettings::Notification::RewardExpirations]
+          attr_accessor :reward_expirations
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2587,6 +2592,7 @@ module Google
           def update!(**args)
             @more_from_authors = args[:more_from_authors] if args.key?(:more_from_authors)
             @more_from_series = args[:more_from_series] if args.key?(:more_from_series)
+            @reward_expirations = args[:reward_expirations] if args.key?(:reward_expirations)
           end
           
           # 
@@ -2610,6 +2616,25 @@ module Google
           
           # 
           class MoreFromSeries
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `opted_state`
+            # @return [String]
+            attr_accessor :opted_state
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @opted_state = args[:opted_state] if args.key?(:opted_state)
+            end
+          end
+          
+          # 
+          class RewardExpirations
             include Google::Apis::Core::Hashable
           
             # 

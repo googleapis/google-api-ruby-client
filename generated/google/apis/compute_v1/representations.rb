@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceGroupHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class CacheInvalidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheKeyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1744,6 +1756,8 @@ module Google
           property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
           collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::Backend::Representation
       
+          property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeV1::BackendServiceCdnPolicy, decorator: Google::Apis::ComputeV1::BackendServiceCdnPolicy::Representation
+      
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeV1::ConnectionDraining, decorator: Google::Apis::ComputeV1::ConnectionDraining::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -1774,6 +1788,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class BackendServiceCdnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeV1::CacheKeyPolicy, decorator: Google::Apis::ComputeV1::CacheKeyPolicy::Representation
+      
         end
       end
       
@@ -1831,6 +1853,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
           property :path, as: 'path'
+        end
+      end
+      
+      class CacheKeyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_host, as: 'includeHost'
+          property :include_protocol, as: 'includeProtocol'
+          property :include_query_string, as: 'includeQueryString'
+          collection :query_string_blacklist, as: 'queryStringBlacklist'
+          collection :query_string_whitelist, as: 'queryStringWhitelist'
         end
       end
       

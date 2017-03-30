@@ -845,9 +845,9 @@ module Google
         end
       end
       
-      # Specifies the audit configuration for a service. It consists of which
-      # permission types are logged, and what identities, if any, are exempted from
-      # logging. An AuditConifg must have one or more AuditLogConfigs.
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConifg must have one or more AuditLogConfigs.
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
@@ -874,8 +874,8 @@ module Google
         attr_accessor :exempted_members
       
         # Specifies a service that will be enabled for audit logging. For example, `
-        # resourcemanager`, `storage`, `compute`. `allServices` is a special value that
-        # covers all services.
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -9639,8 +9639,9 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
-        # URI of linked VPN tunnel. It must be in the same region as the router. Each
-        # interface can have at most one linked resource.
+        # URI of the linked VPN tunnel. It must be in the same region as the router.
+        # Each interface can have at most one linked resource and it could either be a
+        # VPN Tunnel or an interconnect attachment.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
@@ -9720,6 +9721,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :best_routes
       
+        # Best routes learned by this router.
+        # Corresponds to the JSON property `bestRoutesForRouter`
+        # @return [Array<Google::Apis::ComputeBeta::Route>]
+        attr_accessor :best_routes_for_router
+      
         # 
         # Corresponds to the JSON property `bgpPeerStatus`
         # @return [Array<Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus>]
@@ -9737,6 +9743,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @best_routes = args[:best_routes] if args.key?(:best_routes)
+          @best_routes_for_router = args[:best_routes_for_router] if args.key?(:best_routes_for_router)
           @bgp_peer_status = args[:bgp_peer_status] if args.key?(:bgp_peer_status)
           @network = args[:network] if args.key?(:network)
         end

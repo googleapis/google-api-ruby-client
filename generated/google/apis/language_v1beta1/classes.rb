@@ -22,6 +22,147 @@ module Google
   module Apis
     module LanguageV1beta1
       
+      # The request message for the text annotation API, which can perform multiple
+      # analysis types (sentiment, entities, and syntax) in one call.
+      class AnnotateTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # The encoding type used by the API to calculate offsets.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
+        # ################################################################ #
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1beta1::Document]
+        attr_accessor :document
+      
+        # All available features for sentiment, syntax, and semantic analysis.
+        # Setting each one to true will enable that specific analysis for the input.
+        # Corresponds to the JSON property `features`
+        # @return [Google::Apis::LanguageV1beta1::Features]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
+          @document = args[:document] if args.key?(:document)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # The text annotations response message.
+      class AnnotateTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Sentences in the input document. Populated if the user enables
+        # AnnotateTextRequest.Features.extract_syntax.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
+        # Tokens, along with their syntactic information, in the input document.
+        # Populated if the user enables
+        # AnnotateTextRequest.Features.extract_syntax.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
+        attr_accessor :tokens
+      
+        # Entities, along with their semantic information, in the input document.
+        # Populated if the user enables
+        # AnnotateTextRequest.Features.extract_entities.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::LanguageV1beta1::Entity>]
+        attr_accessor :entities
+      
+        # Represents the feeling associated with the entire text or entities in
+        # the text.
+        # Corresponds to the JSON property `documentSentiment`
+        # @return [Google::Apis::LanguageV1beta1::Sentiment]
+        attr_accessor :document_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @sentences = args[:sentences] if args.key?(:sentences)
+          @tokens = args[:tokens] if args.key?(:tokens)
+          @entities = args[:entities] if args.key?(:entities)
+          @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
+        end
+      end
+      
+      # The sentiment analysis request message.
+      class AnalyzeSentimentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The encoding type used by the API to calculate sentence offsets for the
+        # sentence sentiment.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
+        # ################################################################ #
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1beta1::Document]
+        attr_accessor :document
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
+          @document = args[:document] if args.key?(:document)
+        end
+      end
+      
+      # Represents dependency parse tree information for a token.
+      class DependencyEdge
+        include Google::Apis::Core::Hashable
+      
+        # Represents the head of this token in the dependency tree.
+        # This is the index of the token which has an arc going to this token.
+        # The index is the position of the token in the array of tokens returned
+        # by the API method. If this token is a root token, then the
+        # `head_token_index` is its own index.
+        # Corresponds to the JSON property `headTokenIndex`
+        # @return [Fixnum]
+        attr_accessor :head_token_index
+      
+        # The parse label for the token.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @head_token_index = args[:head_token_index] if args.key?(:head_token_index)
+          @label = args[:label] if args.key?(:label)
+        end
+      end
+      
       # Represents the smallest syntactic building block of the text.
       class Token
         include Google::Apis::Core::Hashable
@@ -63,16 +204,16 @@ module Google
       class TextSpan
         include Google::Apis::Core::Hashable
       
-        # The content of the output text.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
         # The API calculates the beginning offset of the content in the original
         # document according to the EncodingType specified in the API request.
         # Corresponds to the JSON property `beginOffset`
         # @return [Fixnum]
         attr_accessor :begin_offset
+      
+        # The content of the output text.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
       
         def initialize(**args)
            update!(**args)
@@ -80,8 +221,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content = args[:content] if args.key?(:content)
           @begin_offset = args[:begin_offset] if args.key?(:begin_offset)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -127,12 +268,6 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
@@ -145,15 +280,56 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # All available features for sentiment, syntax, and semantic analysis.
+      # Setting each one to true will enable that specific analysis for the input.
+      class Features
+        include Google::Apis::Core::Hashable
+      
+        # Extract entities.
+        # Corresponds to the JSON property `extractEntities`
+        # @return [Boolean]
+        attr_accessor :extract_entities
+        alias_method :extract_entities?, :extract_entities
+      
+        # Extract syntax information.
+        # Corresponds to the JSON property `extractSyntax`
+        # @return [Boolean]
+        attr_accessor :extract_syntax
+        alias_method :extract_syntax?, :extract_syntax
+      
+        # Extract document-level sentiment.
+        # Corresponds to the JSON property `extractDocumentSentiment`
+        # @return [Boolean]
+        attr_accessor :extract_document_sentiment
+        alias_method :extract_document_sentiment?, :extract_document_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
+          @extract_syntax = args[:extract_syntax] if args.key?(:extract_syntax)
+          @extract_document_sentiment = args[:extract_document_sentiment] if args.key?(:extract_document_sentiment)
         end
       end
       
@@ -183,28 +359,41 @@ module Google
         end
       end
       
-      # All available features for sentiment, syntax, and semantic analysis.
-      # Setting each one to true will enable that specific analysis for the input.
-      class Features
+      # ################################################################ #
+      # Represents the input to API methods.
+      class Document
         include Google::Apis::Core::Hashable
       
-        # Extract syntax information.
-        # Corresponds to the JSON property `extractSyntax`
-        # @return [Boolean]
-        attr_accessor :extract_syntax
-        alias_method :extract_syntax?, :extract_syntax
+        # Required. If the type is not set or is `TYPE_UNSPECIFIED`,
+        # returns an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
-        # Extract document-level sentiment.
-        # Corresponds to the JSON property `extractDocumentSentiment`
-        # @return [Boolean]
-        attr_accessor :extract_document_sentiment
-        alias_method :extract_document_sentiment?, :extract_document_sentiment
+        # The content of the input in string format.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
       
-        # Extract entities.
-        # Corresponds to the JSON property `extractEntities`
-        # @return [Boolean]
-        attr_accessor :extract_entities
-        alias_method :extract_entities?, :extract_entities
+        # The Google Cloud Storage URI where the file content is located.
+        # This URI must be of the form: gs://bucket_name/object_name. For more
+        # details, see https://cloud.google.com/storage/docs/reference-uris.
+        # NOTE: Cloud Storage object versioning is not supported.
+        # Corresponds to the JSON property `gcsContentUri`
+        # @return [String]
+        attr_accessor :gcs_content_uri
+      
+        # The language of the document (if not specified, the language is
+        # automatically detected). Both ISO and BCP-47 language codes are
+        # accepted.<br>
+        # **Current Language Restrictions:**
+        # * Only English, Spanish, and Japanese textual content are supported.
+        # If the language (either specified by the caller or automatically detected)
+        # is not supported by the called API method, an `INVALID_ARGUMENT` error
+        # is returned.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
       
         def initialize(**args)
            update!(**args)
@@ -212,9 +401,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @extract_syntax = args[:extract_syntax] if args.key?(:extract_syntax)
-          @extract_document_sentiment = args[:extract_document_sentiment] if args.key?(:extract_document_sentiment)
-          @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
+          @type = args[:type] if args.key?(:type)
+          @content = args[:content] if args.key?(:content)
+          @gcs_content_uri = args[:gcs_content_uri] if args.key?(:gcs_content_uri)
+          @language = args[:language] if args.key?(:language)
         end
       end
       
@@ -241,55 +431,6 @@ module Google
         def update!(**args)
           @text = args[:text] if args.key?(:text)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
-        end
-      end
-      
-      # ################################################################ #
-      # Represents the input to API methods.
-      class Document
-        include Google::Apis::Core::Hashable
-      
-        # The language of the document (if not specified, the language is
-        # automatically detected). Both ISO and BCP-47 language codes are
-        # accepted.<br>
-        # **Current Language Restrictions:**
-        # * Only English, Spanish, and Japanese textual content are supported.
-        # If the language (either specified by the caller or automatically detected)
-        # is not supported by the called API method, an `INVALID_ARGUMENT` error
-        # is returned.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        # Required. If the type is not set or is `TYPE_UNSPECIFIED`,
-        # returns an `INVALID_ARGUMENT` error.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The content of the input in string format.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        # The Google Cloud Storage URI where the file content is located.
-        # This URI must be of the form: gs://bucket_name/object_name. For more
-        # details, see https://cloud.google.com/storage/docs/reference-uris.
-        # NOTE: Cloud Storage object versioning is not supported.
-        # Corresponds to the JSON property `gcsContentUri`
-        # @return [String]
-        attr_accessor :gcs_content_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language = args[:language] if args.key?(:language)
-          @type = args[:type] if args.key?(:type)
-          @content = args[:content] if args.key?(:content)
-          @gcs_content_uri = args[:gcs_content_uri] if args.key?(:gcs_content_uri)
         end
       end
       
@@ -334,16 +475,16 @@ module Google
       class AnalyzeEntitiesRequest
         include Google::Apis::Core::Hashable
       
+        # The encoding type used by the API to calculate offsets.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
         # ################################################################ #
         # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
-      
-        # The encoding type used by the API to calculate offsets.
-        # Corresponds to the JSON property `encodingType`
-        # @return [String]
-        attr_accessor :encoding_type
       
         def initialize(**args)
            update!(**args)
@@ -351,8 +492,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @document = args[:document] if args.key?(:document)
           @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
+          @document = args[:document] if args.key?(:document)
         end
       end
       
@@ -471,6 +612,12 @@ module Google
       class AnalyzeSentimentResponse
         include Google::Apis::Core::Hashable
       
+        # Represents the feeling associated with the entire text or entities in
+        # the text.
+        # Corresponds to the JSON property `documentSentiment`
+        # @return [Google::Apis::LanguageV1beta1::Sentiment]
+        attr_accessor :document_sentiment
+      
         # The language of the text, which will be the same as the language specified
         # in the request or, if not specified, the automatically-detected language.
         # Corresponds to the JSON property `language`
@@ -482,11 +629,65 @@ module Google
         # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
         attr_accessor :sentences
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
-        # Corresponds to the JSON property `documentSentiment`
-        # @return [Google::Apis::LanguageV1beta1::Sentiment]
-        attr_accessor :document_sentiment
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
+          @language = args[:language] if args.key?(:language)
+          @sentences = args[:sentences] if args.key?(:sentences)
+        end
+      end
+      
+      # The entity analysis response message.
+      class AnalyzeEntitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # The recognized entities in the input document.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::LanguageV1beta1::Entity>]
+        attr_accessor :entities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @entities = args[:entities] if args.key?(:entities)
+        end
+      end
+      
+      # The syntax analysis response message.
+      class AnalyzeSyntaxResponse
+        include Google::Apis::Core::Hashable
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Sentences in the input document.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
+        # Tokens, along with their syntactic information, in the input document.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
+        attr_accessor :tokens
       
         def initialize(**args)
            update!(**args)
@@ -496,34 +697,7 @@ module Google
         def update!(**args)
           @language = args[:language] if args.key?(:language)
           @sentences = args[:sentences] if args.key?(:sentences)
-          @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
-        end
-      end
-      
-      # The entity analysis response message.
-      class AnalyzeEntitiesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The recognized entities in the input document.
-        # Corresponds to the JSON property `entities`
-        # @return [Array<Google::Apis::LanguageV1beta1::Entity>]
-        attr_accessor :entities
-      
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entities = args[:entities] if args.key?(:entities)
-          @language = args[:language] if args.key?(:language)
+          @tokens = args[:tokens] if args.key?(:tokens)
         end
       end
       
@@ -532,17 +706,6 @@ module Google
       # as salience and mentions, with entities.
       class Entity
         include Google::Apis::Core::Hashable
-      
-        # The mentions of this entity in the input document. The API currently
-        # supports proper noun mentions.
-        # Corresponds to the JSON property `mentions`
-        # @return [Array<Google::Apis::LanguageV1beta1::EntityMention>]
-        attr_accessor :mentions
-      
-        # The representative name for the entity.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
       
         # The entity type.
         # Corresponds to the JSON property `type`
@@ -565,191 +728,28 @@ module Google
         # @return [Float]
         attr_accessor :salience
       
+        # The mentions of this entity in the input document. The API currently
+        # supports proper noun mentions.
+        # Corresponds to the JSON property `mentions`
+        # @return [Array<Google::Apis::LanguageV1beta1::EntityMention>]
+        attr_accessor :mentions
+      
+        # The representative name for the entity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @mentions = args[:mentions] if args.key?(:mentions)
-          @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @salience = args[:salience] if args.key?(:salience)
-        end
-      end
-      
-      # The syntax analysis response message.
-      class AnalyzeSyntaxResponse
-        include Google::Apis::Core::Hashable
-      
-        # Sentences in the input document.
-        # Corresponds to the JSON property `sentences`
-        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
-        attr_accessor :sentences
-      
-        # Tokens, along with their syntactic information, in the input document.
-        # Corresponds to the JSON property `tokens`
-        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
-        attr_accessor :tokens
-      
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @sentences = args[:sentences] if args.key?(:sentences)
-          @tokens = args[:tokens] if args.key?(:tokens)
-          @language = args[:language] if args.key?(:language)
-        end
-      end
-      
-      # The request message for the text annotation API, which can perform multiple
-      # analysis types (sentiment, entities, and syntax) in one call.
-      class AnnotateTextRequest
-        include Google::Apis::Core::Hashable
-      
-        # The encoding type used by the API to calculate offsets.
-        # Corresponds to the JSON property `encodingType`
-        # @return [String]
-        attr_accessor :encoding_type
-      
-        # ################################################################ #
-        # Represents the input to API methods.
-        # Corresponds to the JSON property `document`
-        # @return [Google::Apis::LanguageV1beta1::Document]
-        attr_accessor :document
-      
-        # All available features for sentiment, syntax, and semantic analysis.
-        # Setting each one to true will enable that specific analysis for the input.
-        # Corresponds to the JSON property `features`
-        # @return [Google::Apis::LanguageV1beta1::Features]
-        attr_accessor :features
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
-          @document = args[:document] if args.key?(:document)
-          @features = args[:features] if args.key?(:features)
-        end
-      end
-      
-      # The sentiment analysis request message.
-      class AnalyzeSentimentRequest
-        include Google::Apis::Core::Hashable
-      
-        # The encoding type used by the API to calculate sentence offsets for the
-        # sentence sentiment.
-        # Corresponds to the JSON property `encodingType`
-        # @return [String]
-        attr_accessor :encoding_type
-      
-        # ################################################################ #
-        # Represents the input to API methods.
-        # Corresponds to the JSON property `document`
-        # @return [Google::Apis::LanguageV1beta1::Document]
-        attr_accessor :document
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
-          @document = args[:document] if args.key?(:document)
-        end
-      end
-      
-      # The text annotations response message.
-      class AnnotateTextResponse
-        include Google::Apis::Core::Hashable
-      
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        # Sentences in the input document. Populated if the user enables
-        # AnnotateTextRequest.Features.extract_syntax.
-        # Corresponds to the JSON property `sentences`
-        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
-        attr_accessor :sentences
-      
-        # Tokens, along with their syntactic information, in the input document.
-        # Populated if the user enables
-        # AnnotateTextRequest.Features.extract_syntax.
-        # Corresponds to the JSON property `tokens`
-        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
-        attr_accessor :tokens
-      
-        # Entities, along with their semantic information, in the input document.
-        # Populated if the user enables
-        # AnnotateTextRequest.Features.extract_entities.
-        # Corresponds to the JSON property `entities`
-        # @return [Array<Google::Apis::LanguageV1beta1::Entity>]
-        attr_accessor :entities
-      
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
-        # Corresponds to the JSON property `documentSentiment`
-        # @return [Google::Apis::LanguageV1beta1::Sentiment]
-        attr_accessor :document_sentiment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language = args[:language] if args.key?(:language)
-          @sentences = args[:sentences] if args.key?(:sentences)
-          @tokens = args[:tokens] if args.key?(:tokens)
-          @entities = args[:entities] if args.key?(:entities)
-          @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
-        end
-      end
-      
-      # Represents dependency parse tree information for a token.
-      class DependencyEdge
-        include Google::Apis::Core::Hashable
-      
-        # Represents the head of this token in the dependency tree.
-        # This is the index of the token which has an arc going to this token.
-        # The index is the position of the token in the array of tokens returned
-        # by the API method. If this token is a root token, then the
-        # `head_token_index` is its own index.
-        # Corresponds to the JSON property `headTokenIndex`
-        # @return [Fixnum]
-        attr_accessor :head_token_index
-      
-        # The parse label for the token.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @head_token_index = args[:head_token_index] if args.key?(:head_token_index)
-          @label = args[:label] if args.key?(:label)
+          @mentions = args[:mentions] if args.key?(:mentions)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end

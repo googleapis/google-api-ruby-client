@@ -22,18 +22,6 @@ module Google
   module Apis
     module YoutubereportingV1
       
-      class Media
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Report
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +35,12 @@ module Google
       end
       
       class ListReportTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,32 +65,21 @@ module Google
       end
       
       class Media
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_name, as: 'resourceName'
-        end
-      end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-      class ReportType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :deprecate_time, as: 'deprecateTime'
-          property :name, as: 'name'
-          property :id, as: 'id'
-          property :system_managed, as: 'systemManaged'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :job_id, as: 'jobId'
           property :id, as: 'id'
-          property :end_time, as: 'endTime'
           property :job_expire_time, as: 'jobExpireTime'
+          property :end_time, as: 'endTime'
           property :download_url, as: 'downloadUrl'
           property :start_time, as: 'startTime'
-          property :create_time, as: 'createTime'
         end
       end
       
@@ -115,33 +98,50 @@ module Google
         end
       end
       
+      class ReportType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprecate_time, as: 'deprecateTime'
+          property :name, as: 'name'
+          property :id, as: 'id'
+          property :system_managed, as: 'systemManaged'
+        end
+      end
+      
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :jobs, as: 'jobs', class: Google::Apis::YoutubereportingV1::Job, decorator: Google::Apis::YoutubereportingV1::Job::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :report_type_id, as: 'reportTypeId'
-          property :expire_time, as: 'expireTime'
-          property :name, as: 'name'
-          property :system_managed, as: 'systemManaged'
           property :id, as: 'id'
+          property :system_managed, as: 'systemManaged'
+          property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
+          property :report_type_id, as: 'reportTypeId'
+          property :name, as: 'name'
         end
       end
       
       class ListReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :reports, as: 'reports', class: Google::Apis::YoutubereportingV1::Report, decorator: Google::Apis::YoutubereportingV1::Report::Representation
       
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Media
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
         end
       end
     end

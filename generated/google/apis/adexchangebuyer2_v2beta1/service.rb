@@ -192,44 +192,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates and sends out an email invitation to access
-        # an Ad Exchange client buyer account.
-        # @param [String] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [String] client_account_id
-        #   Numerical account ID of the client buyer that the user
-        #   should be associated with. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] client_user_invitation_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_client_invitation(account_id, client_account_id, client_user_invitation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
-          command.request_object = client_user_invitation_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieves an existing client user invitation.
         # @param [String] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
@@ -318,16 +280,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing client user.
-        # Only the user status can be changed on update.
+        # Creates and sends out an email invitation to access
+        # an Ad Exchange client buyer account.
         # @param [String] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [String] client_account_id
-        #   Numerical account ID of the client buyer that the user to be retrieved
-        #   is associated with. (required)
-        # @param [String] user_id
-        #   Numerical identifier of the user to retrieve. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] client_user_object
+        #   Numerical account ID of the client buyer that the user
+        #   should be associated with. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] client_user_invitation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -337,23 +297,22 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_client_user(account_id, client_account_id, user_id, client_user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-          command.request_object = client_user_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
+        def create_account_client_invitation(account_id, client_account_id, client_user_invitation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
+          command.request_object = client_user_invitation_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -436,6 +395,47 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_client_user(account_id, client_account_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing client user.
+        # Only the user status can be changed on update.
+        # @param [String] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [String] client_account_id
+        #   Numerical account ID of the client buyer that the user to be retrieved
+        #   is associated with. (required)
+        # @param [String] user_id
+        #   Numerical identifier of the user to retrieve. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] client_user_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_client_user(account_id, client_account_id, user_id, client_user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+          command.request_object = client_user_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
           command.params['accountId'] = account_id unless account_id.nil?
@@ -700,66 +700,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all creative-deal associations.
-        # @param [String] account_id
-        #   The account to list the associations from.
-        #   Specify "-" to list all creatives the current user has access to.
-        # @param [String] creative_id
-        #   The creative ID to list the associations from.
-        #   Specify "-" to list all creatives under the above account.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListDealAssociationsResponse.next_page_token
-        #   returned from the previous call to 'ListDealAssociations' method.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer associations than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] query
-        #   An optional query string to filter deal associations. If no filter is
-        #   specified, all associations will be returned.
-        #   Supported queries are:
-        #   <ul>
-        #   <li>accountId=<i>account_id_string</i>
-        #   <li>creativeId=<i>creative_id_string</i>
-        #   <li>dealsId=<i>deals_id_string</i>
-        #   <li>dealsStatus:`approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>openAuctionStatus:`approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   </ul>
-        #   Example: 'dealsId=12345 AND dealsStatus:disapproved'
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_creative_deal_associations(account_id, creative_id, page_token: nil, page_size: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['creativeId'] = creative_id unless creative_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['query'] = query unless query.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Associate an existing deal with a creative.
         # @param [String] account_id
         #   The account the creative belongs to.
@@ -827,6 +767,66 @@ module Google
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all creative-deal associations.
+        # @param [String] account_id
+        #   The account to list the associations from.
+        #   Specify "-" to list all creatives the current user has access to.
+        # @param [String] creative_id
+        #   The creative ID to list the associations from.
+        #   Specify "-" to list all creatives under the above account.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListDealAssociationsResponse.next_page_token
+        #   returned from the previous call to 'ListDealAssociations' method.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer associations than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] query
+        #   An optional query string to filter deal associations. If no filter is
+        #   specified, all associations will be returned.
+        #   Supported queries are:
+        #   <ul>
+        #   <li>accountId=<i>account_id_string</i>
+        #   <li>creativeId=<i>creative_id_string</i>
+        #   <li>dealsId=<i>deals_id_string</i>
+        #   <li>dealsStatus:`approved, conditionally_approved, disapproved,
+        #   not_checked`
+        #   <li>openAuctionStatus:`approved, conditionally_approved, disapproved,
+        #   not_checked`
+        #   </ul>
+        #   Example: 'dealsId=12345 AND dealsStatus:disapproved'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_creative_deal_associations(account_id, creative_id, page_token: nil, page_size: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListDealAssociationsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

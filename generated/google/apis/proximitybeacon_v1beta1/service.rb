@@ -191,157 +191,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches the beacon registry for beacons that match the given search
-        # criteria. Only those beacons that the client has permission to list
-        # will be returned.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
-        # @param [String] q
-        #   Filter query string that supports the following field filters:
-        #   * **description:`"<string>"`**
-        #   For example: **description:"Room 3"**
-        #   Returns beacons whose description matches tokens in the string "Room 3"
-        #   (not necessarily that exact string).
-        #   The string must be double-quoted.
-        #   * **status:`<enum>`**
-        #   For example: **status:active**
-        #   Returns beacons whose status matches the given value. Values must be
-        #   one of the Beacon.Status enum values (case insensitive). Accepts
-        #   multiple filters which will be combined with OR logic.
-        #   * **stability:`<enum>`**
-        #   For example: **stability:mobile**
-        #   Returns beacons whose expected stability matches the given value.
-        #   Values must be one of the Beacon.Stability enum values (case
-        #   insensitive). Accepts multiple filters which will be combined with
-        #   OR logic.
-        #   * **place\_id:`"<string>"`**
-        #   For example: **place\_id:"ChIJVSZzVR8FdkgRXGmmm6SslKw="**
-        #   Returns beacons explicitly registered at the given place, expressed as
-        #   a Place ID obtained from [Google Places API](/places/place-id). Does not
-        #   match places inside the given place. Does not consider the beacon's
-        #   actual location (which may be different from its registered place).
-        #   Accepts multiple filters that will be combined with OR logic. The place
-        #   ID must be double-quoted.
-        #   * **registration\_time`[<|>|<=|>=]<integer>`**
-        #   For example: **registration\_time>=1433116800**
-        #   Returns beacons whose registration time matches the given filter.
-        #   Supports the operators: <, >, <=, and >=. Timestamp must be expressed as
-        #   an integer number of seconds since midnight January 1, 1970 UTC. Accepts
-        #   at most two filters that will be combined with AND logic, to support
-        #   "between" semantics. If more than two are supplied, the latter ones are
-        #   ignored.
-        #   * **lat:`<double> lng:<double> radius:<integer>`**
-        #   For example: **lat:51.1232343 lng:-1.093852 radius:1000**
-        #   Returns beacons whose registered location is within the given circle.
-        #   When any of these fields are given, all are required. Latitude and
-        #   longitude must be decimal degrees between -90.0 and 90.0 and between
-        #   -180.0 and 180.0 respectively. Radius must be an integer number of
-        #   meters between 10 and 1,000,000 (1000 km).
-        #   * **property:`"<string>=<string>"`**
-        #   For example: **property:"battery-type=CR2032"**
-        #   Returns beacons which have a property of the given name and value.
-        #   Supports multiple filters which will be combined with OR logic.
-        #   The entire name=value string must be double-quoted as one string.
-        #   * **attachment\_type:`"<string>"`**
-        #   For example: **attachment_type:"my-namespace/my-type"**
-        #   Returns beacons having at least one attachment of the given namespaced
-        #   type. Supports "any within this namespace" via the partial wildcard
-        #   syntax: "my-namespace/*". Supports multiple filters which will be
-        #   combined with OR logic. The string must be double-quoted.
-        #   * **indoor\_level:`"<string>"`**
-        #   For example: **indoor\_level:"1"**
-        #   Returns beacons which are located on the given indoor level. Accepts
-        #   multiple filters that will be combined with OR logic.
-        #   Multiple filters on the same field are combined with OR logic (except
-        #   registration_time which is combined with AND logic).
-        #   Multiple filters on different fields are combined with AND logic.
-        #   Filters should be separated by spaces.
-        #   As with any HTTP query string parameter, the whole filter expression must
-        #   be URL-encoded.
-        #   Example REST request:
-        #   `GET /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
-        # @param [Fixnum] page_size
-        #   The maximum number of records to return for this request, up to a
-        #   server-defined upper limit.
-        # @param [String] project_id
-        #   The project id to list beacons under. If not present then the project
-        #   credential that made the request is used as the project.
-        #   Optional.
-        # @param [String] page_token
-        #   A pagination token obtained from a previous request to list beacons.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_beacons(q: nil, page_size: nil, project_id: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/beacons', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse
-          command.query['q'] = q unless q.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['projectId'] = project_id unless project_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Registers a previously unregistered beacon given its `advertisedId`.
-        # These IDs are unique within the system. An ID can be registered only once.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
-        # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
-        # @param [String] project_id
-        #   The project id of the project the beacon will be registered to. If
-        #   the project id is not specified then the project making the request
-        #   is used.
-        #   Optional.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Beacon] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::Beacon]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def register_beacon(beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/beacons:register', options)
-          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
-          command.request_object = beacon_object
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::Beacon
-          command.query['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Activates a beacon. A beacon that is active will return information
         # and attachment data when queried via `beaconinfo.getforobserved`.
         # Calling this method on an already active beacon will do nothing (but
@@ -641,6 +490,157 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Registers a previously unregistered beacon given its `advertisedId`.
+        # These IDs are unique within the system. An ID can be registered only once.
+        # Authenticate using an [OAuth access token](https://developers.google.com/
+        # identity/protocols/OAuth2)
+        # from a signed-in user with **Is owner** or **Can edit** permissions in the
+        # Google Developers Console project.
+        # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
+        # @param [String] project_id
+        #   The project id of the project the beacon will be registered to. If
+        #   the project id is not specified then the project making the request
+        #   is used.
+        #   Optional.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Beacon] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::Beacon]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def register_beacon(beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/beacons:register', options)
+          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+          command.request_object = beacon_object
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::Beacon
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches the beacon registry for beacons that match the given search
+        # criteria. Only those beacons that the client has permission to list
+        # will be returned.
+        # Authenticate using an [OAuth access token](https://developers.google.com/
+        # identity/protocols/OAuth2)
+        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
+        # permissions in the Google Developers Console project.
+        # @param [String] q
+        #   Filter query string that supports the following field filters:
+        #   * **description:`"<string>"`**
+        #   For example: **description:"Room 3"**
+        #   Returns beacons whose description matches tokens in the string "Room 3"
+        #   (not necessarily that exact string).
+        #   The string must be double-quoted.
+        #   * **status:`<enum>`**
+        #   For example: **status:active**
+        #   Returns beacons whose status matches the given value. Values must be
+        #   one of the Beacon.Status enum values (case insensitive). Accepts
+        #   multiple filters which will be combined with OR logic.
+        #   * **stability:`<enum>`**
+        #   For example: **stability:mobile**
+        #   Returns beacons whose expected stability matches the given value.
+        #   Values must be one of the Beacon.Stability enum values (case
+        #   insensitive). Accepts multiple filters which will be combined with
+        #   OR logic.
+        #   * **place\_id:`"<string>"`**
+        #   For example: **place\_id:"ChIJVSZzVR8FdkgRXGmmm6SslKw="**
+        #   Returns beacons explicitly registered at the given place, expressed as
+        #   a Place ID obtained from [Google Places API](/places/place-id). Does not
+        #   match places inside the given place. Does not consider the beacon's
+        #   actual location (which may be different from its registered place).
+        #   Accepts multiple filters that will be combined with OR logic. The place
+        #   ID must be double-quoted.
+        #   * **registration\_time`[<|>|<=|>=]<integer>`**
+        #   For example: **registration\_time>=1433116800**
+        #   Returns beacons whose registration time matches the given filter.
+        #   Supports the operators: <, >, <=, and >=. Timestamp must be expressed as
+        #   an integer number of seconds since midnight January 1, 1970 UTC. Accepts
+        #   at most two filters that will be combined with AND logic, to support
+        #   "between" semantics. If more than two are supplied, the latter ones are
+        #   ignored.
+        #   * **lat:`<double> lng:<double> radius:<integer>`**
+        #   For example: **lat:51.1232343 lng:-1.093852 radius:1000**
+        #   Returns beacons whose registered location is within the given circle.
+        #   When any of these fields are given, all are required. Latitude and
+        #   longitude must be decimal degrees between -90.0 and 90.0 and between
+        #   -180.0 and 180.0 respectively. Radius must be an integer number of
+        #   meters between 10 and 1,000,000 (1000 km).
+        #   * **property:`"<string>=<string>"`**
+        #   For example: **property:"battery-type=CR2032"**
+        #   Returns beacons which have a property of the given name and value.
+        #   Supports multiple filters which will be combined with OR logic.
+        #   The entire name=value string must be double-quoted as one string.
+        #   * **attachment\_type:`"<string>"`**
+        #   For example: **attachment_type:"my-namespace/my-type"**
+        #   Returns beacons having at least one attachment of the given namespaced
+        #   type. Supports "any within this namespace" via the partial wildcard
+        #   syntax: "my-namespace/*". Supports multiple filters which will be
+        #   combined with OR logic. The string must be double-quoted.
+        #   * **indoor\_level:`"<string>"`**
+        #   For example: **indoor\_level:"1"**
+        #   Returns beacons which are located on the given indoor level. Accepts
+        #   multiple filters that will be combined with OR logic.
+        #   Multiple filters on the same field are combined with OR logic (except
+        #   registration_time which is combined with AND logic).
+        #   Multiple filters on different fields are combined with AND logic.
+        #   Filters should be separated by spaces.
+        #   As with any HTTP query string parameter, the whole filter expression must
+        #   be URL-encoded.
+        #   Example REST request:
+        #   `GET /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
+        # @param [Fixnum] page_size
+        #   The maximum number of records to return for this request, up to a
+        #   server-defined upper limit.
+        # @param [String] project_id
+        #   The project id to list beacons under. If not present then the project
+        #   credential that made the request is used as the project.
+        #   Optional.
+        # @param [String] page_token
+        #   A pagination token obtained from a previous request to list beacons.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_beacons(q: nil, page_size: nil, project_id: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/beacons', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse
+          command.query['q'] = q unless q.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List the diagnostics for a single beacon. You can also list diagnostics for
         # all the beacons owned by your Google Developers Console project by using
         # the beacon name `beacons/-`.
@@ -712,10 +712,6 @@ module Google
         #   for AltBeacon. For Eddystone-EID beacons, you may use either the
         #   current EID or the beacon's "stable" UID.
         #   Required.
-        # @param [String] namespaced_type
-        #   Specifies the namespace and type of attachment to include in response in
-        #   <var>namespace/type</var> format. Accepts `*/*` to specify
-        #   "all types in all namespaces".
         # @param [String] project_id
         #   The project id to list beacon attachments under. This field can be
         #   used when "*" is specified to mean all attachment namespaces. Projects
@@ -723,6 +719,10 @@ module Google
         #   specified and the projectId string is empty, then the project
         #   making the request is used.
         #   Optional.
+        # @param [String] namespaced_type
+        #   Specifies the namespace and type of attachment to include in response in
+        #   <var>namespace/type</var> format. Accepts `*/*` to specify
+        #   "all types in all namespaces".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -740,13 +740,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_beacon_attachments(beacon_name, namespaced_type: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_beacon_attachments(beacon_name, project_id: nil, namespaced_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+beaconName}/attachments', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
-          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['projectId'] = project_id unless project_id.nil?
+          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -829,17 +829,17 @@ module Google
         #   for AltBeacon. For Eddystone-EID beacons, you may use either the
         #   current EID or the beacon's "stable" UID.
         #   Required.
-        # @param [String] namespaced_type
-        #   Specifies the namespace and type of attachments to delete in
-        #   `namespace/type` format. Accepts `*/*` to specify
-        #   "all types in all namespaces".
-        #   Optional.
         # @param [String] project_id
         #   The project id to delete beacon attachments under. This field can be
         #   used when "*" is specified to mean all attachment namespaces. Projects
         #   may have multiple attachments with multiple namespaces. If "*" is
         #   specified and the projectId string is empty, then the project
         #   making the request is used.
+        #   Optional.
+        # @param [String] namespaced_type
+        #   Specifies the namespace and type of attachments to delete in
+        #   `namespace/type` format. Accepts `*/*` to specify
+        #   "all types in all namespaces".
         #   Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -858,13 +858,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_beacon_attachment_delete(beacon_name, namespaced_type: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_beacon_attachment_delete(beacon_name, project_id: nil, namespaced_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/{+beaconName}/attachments:batchDelete', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::DeleteAttachmentsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::DeleteAttachmentsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
-          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['projectId'] = project_id unless project_id.nil?
+          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

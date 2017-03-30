@@ -946,6 +946,8 @@ module Google
         
         # Inserts a new annotation.
         # @param [Google::Apis::BooksV1::Annotation] annotation_object
+        # @param [String] annotation_id
+        #   The ID for the annotation to insert.
         # @param [String] country
         #   ISO-3166-1 code to override the IP-based location.
         # @param [Boolean] show_only_summary_in_response
@@ -974,12 +976,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_my_library_annotation(annotation_object = nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_my_library_annotation(annotation_object = nil, annotation_id: nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'mylibrary/annotations', options)
           command.request_representation = Google::Apis::BooksV1::Annotation::Representation
           command.request_object = annotation_object
           command.response_representation = Google::Apis::BooksV1::Annotation::Representation
           command.response_class = Google::Apis::BooksV1::Annotation
+          command.query['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['country'] = country unless country.nil?
           command.query['showOnlySummaryInResponse'] = show_only_summary_in_response unless show_only_summary_in_response.nil?
           command.query['source'] = source unless source.nil?

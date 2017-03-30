@@ -182,6 +182,13 @@ module Google
         #   The ID of the spreadsheet to retrieve data from.
         # @param [String] range
         #   The A1 notation of the values to retrieve.
+        # @param [String] major_dimension
+        #   The major dimension that results should use.
+        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
+        #   `[[1,2],[3,4]]`,
+        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        #   `[[1,3],[2,4]]`.
         # @param [String] value_render_option
         #   How values should be represented in the output.
         #   The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -190,13 +197,6 @@ module Google
         #   This is ignored if value_render_option is
         #   FORMATTED_VALUE.
         #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        # @param [String] major_dimension
-        #   The major dimension that results should use.
-        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
-        #   `[[1,2],[3,4]]`,
-        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-        #   `[[1,3],[2,4]]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -214,15 +214,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_spreadsheet_values(spreadsheet_id, range, value_render_option: nil, date_time_render_option: nil, major_dimension: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_spreadsheet_values(spreadsheet_id, range, major_dimension: nil, value_render_option: nil, date_time_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.response_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.response_class = Google::Apis::SheetsV4::ValueRange
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
+          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['valueRenderOption'] = value_render_option unless value_render_option.nil?
           command.query['dateTimeRenderOption'] = date_time_render_option unless date_time_render_option.nil?
-          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -236,9 +236,6 @@ module Google
         # @param [String] range
         #   The A1 notation of the values to update.
         # @param [Google::Apis::SheetsV4::ValueRange] value_range_object
-        # @param [String] response_value_render_option
-        #   Determines how values in the response should be rendered.
-        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] value_input_option
         #   How the input data should be interpreted.
         # @param [String] response_date_time_render_option
@@ -253,6 +250,9 @@ module Google
         #   If the range to write was larger than than the range actually written,
         #   the response will include all values in the requested range (excluding
         #   trailing empty rows and columns).
+        # @param [String] response_value_render_option
+        #   Determines how values in the response should be rendered.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -270,7 +270,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, response_value_render_option: nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, value_input_option: nil, response_date_time_render_option: nil, include_values_in_response: nil, response_value_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
@@ -278,10 +278,10 @@ module Google
           command.response_class = Google::Apis::SheetsV4::UpdateValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
-          command.query['responseValueRenderOption'] = response_value_render_option unless response_value_render_option.nil?
           command.query['valueInputOption'] = value_input_option unless value_input_option.nil?
           command.query['responseDateTimeRenderOption'] = response_date_time_render_option unless response_date_time_render_option.nil?
           command.query['includeValuesInResponse'] = include_values_in_response unless include_values_in_response.nil?
+          command.query['responseValueRenderOption'] = response_value_render_option unless response_value_render_option.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -323,58 +323,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns one or more ranges of values from a spreadsheet.
-        # The caller must specify the spreadsheet ID and one or more ranges.
-        # @param [String] spreadsheet_id
-        #   The ID of the spreadsheet to retrieve data from.
-        # @param [Array<String>, String] ranges
-        #   The A1 notation of the values to retrieve.
-        # @param [String] major_dimension
-        #   The major dimension that results should use.
-        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
-        #   `[[1,2],[3,4]]`,
-        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-        #   `[[1,3],[2,4]]`.
-        # @param [String] value_render_option
-        #   How values should be represented in the output.
-        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
-        # @param [String] date_time_render_option
-        #   How dates, times, and durations should be represented in the output.
-        #   This is ignored if value_render_option is
-        #   FORMATTED_VALUE.
-        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SheetsV4::BatchGetValuesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SheetsV4::BatchGetValuesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_get_spreadsheet_values(spreadsheet_id, ranges: nil, major_dimension: nil, value_render_option: nil, date_time_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
-          command.response_representation = Google::Apis::SheetsV4::BatchGetValuesResponse::Representation
-          command.response_class = Google::Apis::SheetsV4::BatchGetValuesResponse
-          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
-          command.query['ranges'] = ranges unless ranges.nil?
-          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
-          command.query['valueRenderOption'] = value_render_option unless value_render_option.nil?
-          command.query['dateTimeRenderOption'] = date_time_render_option unless date_time_render_option.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Clears values from a spreadsheet.
         # The caller must specify the spreadsheet ID and range.
         # Only values are cleared -- all other properties of the cell (such as
@@ -409,6 +357,58 @@ module Google
           command.response_class = Google::Apis::SheetsV4::ClearValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns one or more ranges of values from a spreadsheet.
+        # The caller must specify the spreadsheet ID and one or more ranges.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to retrieve data from.
+        # @param [String] value_render_option
+        #   How values should be represented in the output.
+        #   The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # @param [String] date_time_render_option
+        #   How dates, times, and durations should be represented in the output.
+        #   This is ignored if value_render_option is
+        #   FORMATTED_VALUE.
+        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # @param [Array<String>, String] ranges
+        #   The A1 notation of the values to retrieve.
+        # @param [String] major_dimension
+        #   The major dimension that results should use.
+        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
+        #   `[[1,2],[3,4]]`,
+        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        #   `[[1,3],[2,4]]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::BatchGetValuesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::BatchGetValuesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_get_spreadsheet_values(spreadsheet_id, value_render_option: nil, date_time_render_option: nil, ranges: nil, major_dimension: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
+          command.response_representation = Google::Apis::SheetsV4::BatchGetValuesResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::BatchGetValuesResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['valueRenderOption'] = value_render_option unless value_render_option.nil?
+          command.query['dateTimeRenderOption'] = date_time_render_option unless date_time_render_option.nil?
+          command.query['ranges'] = ranges unless ranges.nil?
+          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -22,13 +22,31 @@ module Google
   module Apis
     module AnalyticsreportingV4
       
+      class DynamicSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimpleSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ColumnHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SegmentFilterClause
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MetricFilterClause
+      class ReportRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReportRow
+      class MetricFilterClause
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,7 +160,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SegmentDimensionFilter
+      class Segment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,7 +172,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Segment
+      class SegmentDimensionFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,21 +233,31 @@ module Google
       end
       
       class DynamicSegment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_segment, as: 'sessionSegment', class: Google::Apis::AnalyticsreportingV4::SegmentDefinition, decorator: Google::Apis::AnalyticsreportingV4::SegmentDefinition::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :name, as: 'name'
+          property :user_segment, as: 'userSegment', class: Google::Apis::AnalyticsreportingV4::SegmentDefinition, decorator: Google::Apis::AnalyticsreportingV4::SegmentDefinition::Representation
+      
+        end
       end
       
       class SimpleSegment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :or_filters_for_segment, as: 'orFiltersForSegment', class: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment, decorator: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class ColumnHeader
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_header, as: 'metricHeader', class: Google::Apis::AnalyticsreportingV4::MetricHeader, decorator: Google::Apis::AnalyticsreportingV4::MetricHeader::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :dimensions, as: 'dimensions'
+        end
       end
       
       class SegmentFilterClause
@@ -243,12 +271,12 @@ module Google
         end
       end
       
-      class MetricFilterClause
+      class ReportRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :operator, as: 'operator'
-          collection :filters, as: 'filters', class: Google::Apis::AnalyticsreportingV4::MetricFilter, decorator: Google::Apis::AnalyticsreportingV4::MetricFilter::Representation
+          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
+          collection :dimensions, as: 'dimensions'
         end
       end
       
@@ -262,12 +290,12 @@ module Google
         end
       end
       
-      class ReportRow
+      class MetricFilterClause
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
+          property :operator, as: 'operator'
+          collection :filters, as: 'filters', class: Google::Apis::AnalyticsreportingV4::MetricFilter, decorator: Google::Apis::AnalyticsreportingV4::MetricFilter::Representation
       
-          collection :dimensions, as: 'dimensions'
         end
       end
       
@@ -318,11 +346,11 @@ module Google
       class SegmentMetricFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_name, as: 'metricName'
-          property :scope, as: 'scope'
           property :max_comparison_value, as: 'maxComparisonValue'
           property :comparison_value, as: 'comparisonValue'
           property :operator, as: 'operator'
+          property :metric_name, as: 'metricName'
+          property :scope, as: 'scope'
         end
       end
       
@@ -355,14 +383,14 @@ module Google
       class Pivot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_group_count, as: 'maxGroupCount'
-          property :start_group, as: 'startGroup'
           collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsreportingV4::Metric, decorator: Google::Apis::AnalyticsreportingV4::Metric::Representation
       
           collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsreportingV4::Dimension, decorator: Google::Apis::AnalyticsreportingV4::Dimension::Representation
       
           collection :dimension_filter_clauses, as: 'dimensionFilterClauses', class: Google::Apis::AnalyticsreportingV4::DimensionFilterClause, decorator: Google::Apis::AnalyticsreportingV4::DimensionFilterClause::Representation
       
+          property :max_group_count, as: 'maxGroupCount'
+          property :start_group, as: 'startGroup'
         end
       end
       
@@ -406,16 +434,16 @@ module Google
       class ReportData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sampling_space_sizes, as: 'samplingSpaceSizes'
           collection :minimums, as: 'minimums', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
-          collection :sampling_space_sizes, as: 'samplingSpaceSizes'
           collection :totals, as: 'totals', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
           collection :samples_read_counts, as: 'samplesReadCounts'
-          property :is_data_golden, as: 'isDataGolden'
+          property :row_count, as: 'rowCount'
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsreportingV4::ReportRow, decorator: Google::Apis::AnalyticsreportingV4::ReportRow::Representation
       
-          property :row_count, as: 'rowCount'
+          property :is_data_golden, as: 'isDataGolden'
           property :data_last_refreshed, as: 'dataLastRefreshed'
           collection :maximums, as: 'maximums', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
@@ -433,15 +461,12 @@ module Google
         end
       end
       
-      class SegmentDimensionFilter
+      class Segment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :min_comparison_value, as: 'minComparisonValue'
-          property :max_comparison_value, as: 'maxComparisonValue'
-          property :dimension_name, as: 'dimensionName'
-          property :operator, as: 'operator'
-          collection :expressions, as: 'expressions'
-          property :case_sensitive, as: 'caseSensitive'
+          property :dynamic_segment, as: 'dynamicSegment', class: Google::Apis::AnalyticsreportingV4::DynamicSegment, decorator: Google::Apis::AnalyticsreportingV4::DynamicSegment::Representation
+      
+          property :segment_id, as: 'segmentId'
         end
       end
       
@@ -454,12 +479,15 @@ module Google
         end
       end
       
-      class Segment
+      class SegmentDimensionFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dynamic_segment, as: 'dynamicSegment', class: Google::Apis::AnalyticsreportingV4::DynamicSegment, decorator: Google::Apis::AnalyticsreportingV4::DynamicSegment::Representation
-      
-          property :segment_id, as: 'segmentId'
+          property :min_comparison_value, as: 'minComparisonValue'
+          property :max_comparison_value, as: 'maxComparisonValue'
+          property :dimension_name, as: 'dimensionName'
+          property :operator, as: 'operator'
+          collection :expressions, as: 'expressions'
+          property :case_sensitive, as: 'caseSensitive'
         end
       end
       
@@ -475,9 +503,9 @@ module Google
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expression, as: 'expression'
           property :formatting_type, as: 'formattingType'
           property :alias, as: 'alias'
+          property :expression, as: 'expression'
         end
       end
       
@@ -491,11 +519,11 @@ module Google
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_header, as: 'columnHeader', class: Google::Apis::AnalyticsreportingV4::ColumnHeader, decorator: Google::Apis::AnalyticsreportingV4::ColumnHeader::Representation
+      
           property :data, as: 'data', class: Google::Apis::AnalyticsreportingV4::ReportData, decorator: Google::Apis::AnalyticsreportingV4::ReportData::Representation
       
           property :next_page_token, as: 'nextPageToken'
-          property :column_header, as: 'columnHeader', class: Google::Apis::AnalyticsreportingV4::ColumnHeader, decorator: Google::Apis::AnalyticsreportingV4::ColumnHeader::Representation
-      
         end
       end
       
@@ -511,29 +539,32 @@ module Google
       class DateRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_date, as: 'startDate'
           property :end_date, as: 'endDate'
+          property :start_date, as: 'startDate'
         end
       end
       
       class MetricFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_name, as: 'metricName'
           property :comparison_value, as: 'comparisonValue'
           property :operator, as: 'operator'
           property :not, as: 'not'
+          property :metric_name, as: 'metricName'
         end
       end
       
       class ReportRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pivots, as: 'pivots', class: Google::Apis::AnalyticsreportingV4::Pivot, decorator: Google::Apis::AnalyticsreportingV4::Pivot::Representation
+      
+          property :include_empty_rows, as: 'includeEmptyRows'
           collection :metric_filter_clauses, as: 'metricFilterClauses', class: Google::Apis::AnalyticsreportingV4::MetricFilterClause, decorator: Google::Apis::AnalyticsreportingV4::MetricFilterClause::Representation
       
           property :page_size, as: 'pageSize'
-          property :hide_totals, as: 'hideTotals'
           property :hide_value_ranges, as: 'hideValueRanges'
+          property :hide_totals, as: 'hideTotals'
           property :filters_expression, as: 'filtersExpression'
           property :cohort_group, as: 'cohortGroup', class: Google::Apis::AnalyticsreportingV4::CohortGroup, decorator: Google::Apis::AnalyticsreportingV4::CohortGroup::Representation
       
@@ -552,9 +583,6 @@ module Google
           property :page_token, as: 'pageToken'
           collection :date_ranges, as: 'dateRanges', class: Google::Apis::AnalyticsreportingV4::DateRange, decorator: Google::Apis::AnalyticsreportingV4::DateRange::Representation
       
-          collection :pivots, as: 'pivots', class: Google::Apis::AnalyticsreportingV4::Pivot, decorator: Google::Apis::AnalyticsreportingV4::Pivot::Representation
-      
-          property :include_empty_rows, as: 'includeEmptyRows'
         end
       end
       
@@ -563,34 +591,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :histogram_buckets, as: 'histogramBuckets'
           property :name, as: 'name'
-        end
-      end
-      
-      class DynamicSegment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :session_segment, as: 'sessionSegment', class: Google::Apis::AnalyticsreportingV4::SegmentDefinition, decorator: Google::Apis::AnalyticsreportingV4::SegmentDefinition::Representation
-      
-          property :name, as: 'name'
-          property :user_segment, as: 'userSegment', class: Google::Apis::AnalyticsreportingV4::SegmentDefinition, decorator: Google::Apis::AnalyticsreportingV4::SegmentDefinition::Representation
-      
-        end
-      end
-      
-      class SimpleSegment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :or_filters_for_segment, as: 'orFiltersForSegment', class: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment, decorator: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment::Representation
-      
-        end
-      end
-      
-      class ColumnHeader
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_header, as: 'metricHeader', class: Google::Apis::AnalyticsreportingV4::MetricHeader, decorator: Google::Apis::AnalyticsreportingV4::MetricHeader::Representation
-      
-          collection :dimensions, as: 'dimensions'
         end
       end
     end

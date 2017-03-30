@@ -22,31 +22,6 @@ module Google
   module Apis
     module ScriptV1
       
-      # A stack trace through the script that shows where the execution failed.
-      class ScriptStackTraceElement
-        include Google::Apis::Core::Hashable
-      
-        # The name of the function that failed.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        # The line number where the script failed.
-        # Corresponds to the JSON property `lineNumber`
-        # @return [Fixnum]
-        attr_accessor :line_number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @function = args[:function] if args.key?(:function)
-          @line_number = args[:line_number] if args.key?(:line_number)
-        end
-      end
-      
       # An object that provides information about the nature of an error in the Apps
       # Script Execution API. If an
       # `run` call succeeds but the
@@ -93,12 +68,6 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # An array that contains a single `ExecutionError` object that provides
-        # information about the nature of the error.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         # The status code. For this API, this value will always be 3, corresponding to
         # an INVALID_ARGUMENT error.
         # Corresponds to the JSON property `code`
@@ -112,15 +81,21 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # An array that contains a single `ExecutionError` object that provides
+        # information about the nature of the error.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -129,6 +104,20 @@ module Google
       # based on the implementation of the script.
       class ExecutionRequest
         include Google::Apis::Core::Hashable
+      
+        # For Android add-ons only. An ID that represents the user's current session
+        # in the Android app for Google Docs or Sheets, included as extra data in the
+        # [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
+        # that launches the add-on. When an Android add-on is run with a session
+        # state, it gains the privileges of a
+        # [bound](https://developers.google.com/apps-script/guides/bound) script &mdash;
+        # that is, it can access information like the user's current cursor position
+        # (in Docs) or selected cell (in Sheets). To retrieve the state, call
+        # `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
+        # Optional.
+        # Corresponds to the JSON property `sessionState`
+        # @return [String]
+        attr_accessor :session_state
       
         # The name of the function to execute in the given script. The name does not
         # include parentheses or parameters.
@@ -153,30 +142,16 @@ module Google
         # @return [Array<Object>]
         attr_accessor :parameters
       
-        # For Android add-ons only. An ID that represents the user's current session
-        # in the Android app for Google Docs or Sheets, included as extra data in the
-        # [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
-        # that launches the add-on. When an Android add-on is run with a session
-        # state, it gains the privileges of a
-        # [bound](https://developers.google.com/apps-script/guides/bound) script &mdash;
-        # that is, it can access information like the user's current cursor position
-        # (in Docs) or selected cell (in Sheets). To retrieve the state, call
-        # `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
-        # Optional.
-        # Corresponds to the JSON property `sessionState`
-        # @return [String]
-        attr_accessor :session_state
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @session_state = args[:session_state] if args.key?(:session_state)
           @function = args[:function] if args.key?(:function)
           @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
           @parameters = args[:parameters] if args.key?(:parameters)
-          @session_state = args[:session_state] if args.key?(:session_state)
         end
       end
       
@@ -266,6 +241,31 @@ module Google
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # A stack trace through the script that shows where the execution failed.
+      class ScriptStackTraceElement
+        include Google::Apis::Core::Hashable
+      
+        # The line number where the script failed.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        # The name of the function that failed.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_number = args[:line_number] if args.key?(:line_number)
+          @function = args[:function] if args.key?(:function)
         end
       end
     end

@@ -22,6 +22,313 @@ module Google
   module Apis
     module SpeechV1beta1
       
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should have the format of `operations/some/unique/name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` which can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting purpose.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::SpeechV1beta1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+          @name = args[:name] if args.key?(:name)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+        end
+      end
+      
+      # Provides information to the recognizer that specifies how to process the
+      # request.
+      class RecognitionConfig
+        include Google::Apis::Core::Hashable
+      
+        # *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # *Optional* If set to `true`, the server will attempt to filter out
+        # profanities, replacing all but the initial character in each filtered word
+        # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
+        # won't be filtered out.
+        # Corresponds to the JSON property `profanityFilter`
+        # @return [Boolean]
+        attr_accessor :profanity_filter
+        alias_method :profanity_filter?, :profanity_filter
+      
+        # Provides "hints" to the speech recognizer to favor specific words and phrases
+        # in the results.
+        # Corresponds to the JSON property `speechContext`
+        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
+        attr_accessor :speech_context
+      
+        # *Optional* Maximum number of recognition hypotheses to be returned.
+        # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
+        # within each `SpeechRecognitionResult`.
+        # The server may return fewer than `max_alternatives`.
+        # Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
+        # one. If omitted, will return a maximum of one.
+        # Corresponds to the JSON property `maxAlternatives`
+        # @return [Fixnum]
+        attr_accessor :max_alternatives
+      
+        # *Required* Sample rate in Hertz of the audio data sent in all
+        # `RecognitionAudio` messages. Valid values are: 8000-48000.
+        # 16000 is optimal. For best results, set the sampling rate of the audio
+        # source to 16000 Hz. If that's not possible, use the native sample rate of
+        # the audio source (instead of re-sampling).
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Fixnum]
+        attr_accessor :sample_rate
+      
+        # *Optional* The language of the supplied audio as a BCP-47 language tag.
+        # Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
+        # If omitted, defaults to "en-US". See
+        # [Language Support](https://cloud.google.com/speech/docs/languages)
+        # for a list of the currently supported language codes.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
+          @speech_context = args[:speech_context] if args.key?(:speech_context)
+          @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # The top-level message sent by the client for the `SyncRecognize` method.
+      class SyncRecognizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Provides information to the recognizer that specifies how to process the
+        # request.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
+        attr_accessor :config
+      
+        # Contains audio data in the encoding specified in the `RecognitionConfig`.
+        # Either `content` or `uri` must be supplied. Supplying both or neither
+        # returns google.rpc.Code.INVALID_ARGUMENT. See
+        # [audio limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `audio`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
+        attr_accessor :audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @audio = args[:audio] if args.key?(:audio)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by
+      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # - Simple to use and understand for most users
+      # - Flexible enough to meet unexpected needs
+      # # Overview
+      # The `Status` message contains three pieces of data: error code, error message,
+      # and error details. The error code should be an enum value of
+      # google.rpc.Code, but it may accept additional error codes if needed.  The
+      # error message should be a developer-facing English message that helps
+      # developers *understand* and *resolve* the error. If a localized user-facing
+      # error message is needed, put the localized message in the error details or
+      # localize it in the client. The optional error details may contain arbitrary
+      # information about the error. There is a predefined set of error detail types
+      # in the package `google.rpc` which can be used for common error conditions.
+      # # Language mapping
+      # The `Status` message is the logical representation of the error model, but it
+      # is not necessarily the actual wire format. When the `Status` message is
+      # exposed in different client libraries and different wire protocols, it can be
+      # mapped differently. For example, it will likely be mapped to some exceptions
+      # in Java, but more likely mapped to some error codes in C.
+      # # Other uses
+      # The error model and the `Status` message can be used in a variety of
+      # environments, either with or without APIs, to provide a
+      # consistent developer experience across different environments.
+      # Example uses of this error model include:
+      # - Partial errors. If a service needs to return partial errors to the client,
+      # it may embed the `Status` in the normal response to indicate the partial
+      # errors.
+      # - Workflow errors. A typical workflow has multiple steps. Each step may
+      # have a `Status` message for error reporting purpose.
+      # - Batch operations. If a client uses batch request and batch response, the
+      # `Status` message should be used directly inside batch response, one for
+      # each error sub-response.
+      # - Asynchronous operations. If an API call embeds asynchronous operation
+      # results in its response, the status of those operations should be
+      # represented directly using the `Status` message.
+      # - Logging. If some API errors are stored in logs, the message `Status` could
+      # be used directly after any stripping needed for security/privacy reasons.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # The only message returned to the client by `SyncRecognize`. method. It
+      # contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages.
+      class SyncRecognizeResponse
+        include Google::Apis::Core::Hashable
+      
+        # *Output-only* Sequential list of transcription results corresponding to
+        # sequential portions of audio.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Alternative hypotheses (a.k.a. n-best list).
       class SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
@@ -184,313 +491,6 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::SpeechV1beta1::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @response = args[:response] if args.key?(:response)
-          @name = args[:name] if args.key?(:name)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # Provides information to the recognizer that specifies how to process the
-      # request.
-      class RecognitionConfig
-        include Google::Apis::Core::Hashable
-      
-        # *Optional* Maximum number of recognition hypotheses to be returned.
-        # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
-        # within each `SpeechRecognitionResult`.
-        # The server may return fewer than `max_alternatives`.
-        # Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
-        # one. If omitted, will return a maximum of one.
-        # Corresponds to the JSON property `maxAlternatives`
-        # @return [Fixnum]
-        attr_accessor :max_alternatives
-      
-        # *Required* Sample rate in Hertz of the audio data sent in all
-        # `RecognitionAudio` messages. Valid values are: 8000-48000.
-        # 16000 is optimal. For best results, set the sampling rate of the audio
-        # source to 16000 Hz. If that's not possible, use the native sample rate of
-        # the audio source (instead of re-sampling).
-        # Corresponds to the JSON property `sampleRate`
-        # @return [Fixnum]
-        attr_accessor :sample_rate
-      
-        # *Optional* The language of the supplied audio as a BCP-47 language tag.
-        # Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
-        # If omitted, defaults to "en-US". See
-        # [Language Support](https://cloud.google.com/speech/docs/languages)
-        # for a list of the currently supported language codes.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # Provides "hints" to the speech recognizer to favor specific words and phrases
-        # in the results.
-        # Corresponds to the JSON property `speechContext`
-        # @return [Google::Apis::SpeechV1beta1::SpeechContext]
-        attr_accessor :speech_context
-      
-        # *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
-        # Corresponds to the JSON property `encoding`
-        # @return [String]
-        attr_accessor :encoding
-      
-        # *Optional* If set to `true`, the server will attempt to filter out
-        # profanities, replacing all but the initial character in each filtered word
-        # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
-        # won't be filtered out.
-        # Corresponds to the JSON property `profanityFilter`
-        # @return [Boolean]
-        attr_accessor :profanity_filter
-        alias_method :profanity_filter?, :profanity_filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
-          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @speech_context = args[:speech_context] if args.key?(:speech_context)
-          @encoding = args[:encoding] if args.key?(:encoding)
-          @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
-        end
-      end
-      
-      # The top-level message sent by the client for the `SyncRecognize` method.
-      class SyncRecognizeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Provides information to the recognizer that specifies how to process the
-        # request.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
-        attr_accessor :config
-      
-        # Contains audio data in the encoding specified in the `RecognitionConfig`.
-        # Either `content` or `uri` must be supplied. Supplying both or neither
-        # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [audio limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `audio`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
-        attr_accessor :audio
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @audio = args[:audio] if args.key?(:audio)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
-          @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # The only message returned to the client by `SyncRecognize`. method. It
-      # contains the result as zero or more sequential `SpeechRecognitionResult`
-      # messages.
-      class SyncRecognizeResponse
-        include Google::Apis::Core::Hashable
-      
-        # *Output-only* Sequential list of transcription results corresponding to
-        # sequential portions of audio.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
     end

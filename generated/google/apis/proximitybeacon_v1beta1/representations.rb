@@ -22,36 +22,6 @@ module Google
   module Apis
     module ProximitybeaconV1beta1
       
-      class ListBeaconsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Diagnostics
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetInfoForObservedBeaconsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BeaconAttachment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EphemeralIdRegistration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,13 +58,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EphemeralIdRegistrationParams
+      class DeleteAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteAttachmentsResponse
+      class EphemeralIdRegistrationParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,48 +119,33 @@ module Google
       end
       
       class ListBeaconsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :beacons, as: 'beacons', class: Google::Apis::ProximitybeaconV1beta1::Beacon, decorator: Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :total_count, as: 'totalCount'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Diagnostics
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alerts, as: 'alerts'
-          property :estimated_low_battery_date, as: 'estimatedLowBatteryDate', class: Google::Apis::ProximitybeaconV1beta1::Date, decorator: Google::Apis::ProximitybeaconV1beta1::Date::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :beacon_name, as: 'beaconName'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetInfoForObservedBeaconsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :observations, as: 'observations', class: Google::Apis::ProximitybeaconV1beta1::Observation, decorator: Google::Apis::ProximitybeaconV1beta1::Observation::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :namespaced_types, as: 'namespacedTypes'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class BeaconAttachment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attachment_name, as: 'attachmentName'
-          property :namespaced_type, as: 'namespacedType'
-          property :data, :base64 => true, as: 'data'
-          property :creation_time_ms, as: 'creationTimeMs'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class EphemeralIdRegistration
@@ -248,6 +203,13 @@ module Google
         end
       end
       
+      class DeleteAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_deleted, as: 'numDeleted'
+        end
+      end
+      
       class EphemeralIdRegistrationParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -257,20 +219,13 @@ module Google
         end
       end
       
-      class DeleteAttachmentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :num_deleted, as: 'numDeleted'
-        end
-      end
-      
       class Observation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :telemetry, :base64 => true, as: 'telemetry'
-          property :timestamp_ms, as: 'timestampMs'
           property :advertised_id, as: 'advertisedId', class: Google::Apis::ProximitybeaconV1beta1::AdvertisedId, decorator: Google::Apis::ProximitybeaconV1beta1::AdvertisedId::Representation
       
+          property :telemetry, :base64 => true, as: 'telemetry'
+          property :timestamp_ms, as: 'timestampMs'
         end
       end
       
@@ -294,21 +249,21 @@ module Google
       class Beacon
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :advertised_id, as: 'advertisedId', class: Google::Apis::ProximitybeaconV1beta1::AdvertisedId, decorator: Google::Apis::ProximitybeaconV1beta1::AdvertisedId::Representation
-      
-          property :ephemeral_id_registration, as: 'ephemeralIdRegistration', class: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration, decorator: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration::Representation
-      
-          property :provisioning_key, :base64 => true, as: 'provisioningKey'
           property :description, as: 'description'
+          property :place_id, as: 'placeId'
           property :lat_lng, as: 'latLng', class: Google::Apis::ProximitybeaconV1beta1::LatLng, decorator: Google::Apis::ProximitybeaconV1beta1::LatLng::Representation
       
-          property :place_id, as: 'placeId'
           hash :properties, as: 'properties'
           property :status, as: 'status'
           property :indoor_level, as: 'indoorLevel', class: Google::Apis::ProximitybeaconV1beta1::IndoorLevel, decorator: Google::Apis::ProximitybeaconV1beta1::IndoorLevel::Representation
       
           property :beacon_name, as: 'beaconName'
           property :expected_stability, as: 'expectedStability'
+          property :advertised_id, as: 'advertisedId', class: Google::Apis::ProximitybeaconV1beta1::AdvertisedId, decorator: Google::Apis::ProximitybeaconV1beta1::AdvertisedId::Representation
+      
+          property :ephemeral_id_registration, as: 'ephemeralIdRegistration', class: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration, decorator: Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration::Representation
+      
+          property :provisioning_key, :base64 => true, as: 'provisioningKey'
         end
       end
       
@@ -341,6 +296,51 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :namespaces, as: 'namespaces', class: Google::Apis::ProximitybeaconV1beta1::Namespace, decorator: Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
       
+        end
+      end
+      
+      class ListBeaconsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :beacons, as: 'beacons', class: Google::Apis::ProximitybeaconV1beta1::Beacon, decorator: Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+      
+          property :total_count, as: 'totalCount'
+        end
+      end
+      
+      class Diagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :beacon_name, as: 'beaconName'
+          collection :alerts, as: 'alerts'
+          property :estimated_low_battery_date, as: 'estimatedLowBatteryDate', class: Google::Apis::ProximitybeaconV1beta1::Date, decorator: Google::Apis::ProximitybeaconV1beta1::Date::Representation
+      
+        end
+      end
+      
+      class GetInfoForObservedBeaconsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :observations, as: 'observations', class: Google::Apis::ProximitybeaconV1beta1::Observation, decorator: Google::Apis::ProximitybeaconV1beta1::Observation::Representation
+      
+          collection :namespaced_types, as: 'namespacedTypes'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class BeaconAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_name, as: 'attachmentName'
+          property :namespaced_type, as: 'namespacedType'
+          property :data, :base64 => true, as: 'data'
+          property :creation_time_ms, as: 'creationTimeMs'
         end
       end
     end

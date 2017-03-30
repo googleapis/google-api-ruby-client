@@ -25,13 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20170326'
-
-      # Know the list of people in your circles, your age range, and language
-      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
-
-      # View your basic profile info
-      AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
+      REVISION = '20170329'
 
       # View your street addresses
       AUTH_USER_ADDRESSES_READ = 'https://www.googleapis.com/auth/user.addresses.read'
@@ -53,6 +47,12 @@ module Google
 
       # View your complete date of birth
       AUTH_USER_BIRTHDAY_READ = 'https://www.googleapis.com/auth/user.birthday.read'
+
+      # Know the list of people in your circles, your age range, and language
+      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
+
+      # View your basic profile info
+      AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
     end
   end
 end

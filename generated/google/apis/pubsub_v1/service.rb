@@ -456,41 +456,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PubsubV1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_snapshot_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::PubsubV1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
-          command.response_class = Google::Apis::PubsubV1::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
@@ -557,6 +522,80 @@ module Google
           command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::PubsubV1::Policy::Representation
           command.response_class = Google::Apis::PubsubV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_snapshot_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::PubsubV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
+          command.response_class = Google::Apis::PubsubV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # If the resource does not exist, this will return an empty set of
+        # permissions, not a NOT_FOUND error.
+        # Note: This operation is designed to be used for building permission-aware
+        # UIs and command-line tools, not for authorization checking. This operation
+        # may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::PubsubV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_topic_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::PubsubV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::PubsubV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -637,41 +676,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PubsubV1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_topic_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::PubsubV1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
-          command.response_class = Google::Apis::PubsubV1::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates the given topic with the given name.
         # @param [String] name
         #   The name of the topic. It must have the format
@@ -705,6 +709,41 @@ module Google
           command.response_representation = Google::Apis::PubsubV1::Topic::Representation
           command.response_class = Google::Apis::PubsubV1::Topic
           command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::PubsubV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_topic_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::PubsubV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::PubsubV1::Policy::Representation
+          command.response_class = Google::Apis::PubsubV1::Policy
+          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -805,45 +844,6 @@ module Google
           command.response_representation = Google::Apis::PubsubV1::PublishResponse::Representation
           command.response_class = Google::Apis::PubsubV1::PublishResponse
           command.params['topic'] = topic unless topic.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::PubsubV1::TestIamPermissionsRequest] test_iam_permissions_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PubsubV1::TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PubsubV1::TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_topic_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::PubsubV1::TestIamPermissionsRequest::Representation
-          command.request_object = test_iam_permissions_request_object
-          command.response_representation = Google::Apis::PubsubV1::TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::PubsubV1::TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
