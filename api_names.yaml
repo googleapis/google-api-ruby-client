@@ -343,7 +343,7 @@
 "/calendar:v3/EventReminder/method": reminder_method
 "/calendar:v3/calendar.events.instances": list_event_instances
 "/calendar:v3/calendar.events.quickAdd": quick_add_event
-/civicinfo:v2/DivisionSearchResponse": search_division_response
+"/civicinfo:v2/DivisionSearchResponse": search_division_response
 "/civicinfo:v2/ElectionsQueryResponse": query_elections_response
 "/civicinfo:v2/civicinfo.divisions.search": search_divisions
 "/civicinfo:v2/civicinfo.elections.electionQuery": query_election
