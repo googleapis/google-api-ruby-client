@@ -11,7 +11,7 @@ to
 foo.to_json(user_options: { skip_undefined: true })
 ```
 
-# Migrating from version `0.8.x` to `0.9`
+# Migrating from version `0.8.x` to `0.9` or above
 
 Many changes and improvements have been made to the `google-api-ruby-client`
 library to bring it to `0.9`. If you are starting a new project or haven't used

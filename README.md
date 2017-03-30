@@ -7,8 +7,7 @@ changes when necessary.
 
 ## Migrating from 0.8.x
 
-Version 0.9 is not compatible with previous versions. See [MIGRATING](MIGRATING.md) for additional details on how to
-migrate to the latest version.
+See [MIGRATING](MIGRATING.md) for additional details on how to migrate to the latest version.
 
 ## Installation
 
@@ -284,13 +283,10 @@ The second is to set the environment variable `GOOGLE_API_USE_RAILS_LOGGER` to a
 
 ## Samples
 
-Samples for versions 0.9 and onward can be found in the `samples` directory.
+See the [samples](samples) for examples on how to use the client library for various
+services.
+
 Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
-
-Samples for previous versions can be found in the
-[samples](samples)
-folder.
-
 
 ## Generating APIs
 
