@@ -22,6 +22,7 @@
   * `toolresults:v1beta3`
   * `tracing:v1`
   * `webfonts:v1`
+* Fix `teamdrives` inflection
 
 # 0.10.2
 * Regenerate APIs
