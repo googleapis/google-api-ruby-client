@@ -34,7 +34,8 @@ module Google
       # where algorithmic approaches produce poor APIs.
       class Names
         ActiveSupport::Inflector.inflections do |inflections|
-          u = inflections.uncountable('send_as', 'as')
+          inflections.uncountable('send_as', 'as')
+          inflections.irregular('teamdrive', 'teamdrives')
         end
 
         include Google::Apis::Core::Logging
