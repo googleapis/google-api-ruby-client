@@ -110,6 +110,21 @@ RSpec.describe Google::Apis::Core::BaseService do
     include_examples 'with options'
   end
 
+  context 'when making simple commands with parameters' do
+    let(:command) { service.send(:make_simple_command, :get, 'zoo/{animals}', authorization: 'foo') }
+
+    it 'should return the correct command type' do
+      expect(command).to be_an_instance_of(Google::Apis::Core::ApiCommand)
+    end
+
+    it 'should build a correct URL' do # see. https://github.com/google/google-api-ruby-client/issues/557
+      url = command.url.expand({animals: '（multi byte）'}, nil, false).to_s
+      expect(url).to eql 'https://www.googleapis.com/zoo/%EF%BC%88multi%20byte%EF%BC%89'
+    end
+
+    include_examples 'with options'
+  end
+
   context 'when making download commands' do
     let(:command) { service.send(:make_download_command, :get, 'zoo/animals', authorization: 'foo') }
 
