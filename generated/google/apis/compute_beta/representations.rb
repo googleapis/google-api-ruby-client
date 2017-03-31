@@ -4172,6 +4172,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :best_routes, as: 'bestRoutes', class: Google::Apis::ComputeBeta::Route, decorator: Google::Apis::ComputeBeta::Route::Representation
       
+          collection :best_routes_for_router, as: 'bestRoutesForRouter', class: Google::Apis::ComputeBeta::Route, decorator: Google::Apis::ComputeBeta::Route::Representation
+      
           collection :bgp_peer_status, as: 'bgpPeerStatus', class: Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus, decorator: Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus::Representation
       
           property :network, as: 'network'

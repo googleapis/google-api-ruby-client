@@ -49,6 +49,8 @@ module Google
         # Searches Knowledge Graph for entities that match the constraints.
         # A list of matched entities will be returned in response, which will be in
         # JSON-LD format and compatible with http://schema.org
+        # @param [Boolean] indent
+        #   Enables indenting of json results.
         # @param [Array<String>, String] languages
         #   The list of language codes (defined in ISO 693) to run the query with,
         #   e.g. 'en'.
@@ -66,8 +68,6 @@ module Google
         #   Restricts returned entities with these types, e.g. Person
         #   (as defined in http://schema.org/Person). If multiple types are specified,
         #   returned entities will contain one or more of these types.
-        # @param [Boolean] indent
-        #   Enables indenting of json results.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -85,17 +85,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_entities(languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, indent: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def search_entities(indent: nil, languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/entities:search', options)
           command.response_representation = Google::Apis::KgsearchV1::SearchResponse::Representation
           command.response_class = Google::Apis::KgsearchV1::SearchResponse
+          command.query['indent'] = indent unless indent.nil?
           command.query['languages'] = languages unless languages.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['limit'] = limit unless limit.nil?
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['query'] = query unless query.nil?
           command.query['types'] = types unless types.nil?
-          command.query['indent'] = indent unless indent.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

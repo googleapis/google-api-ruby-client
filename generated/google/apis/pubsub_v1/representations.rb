@@ -22,6 +22,30 @@ module Google
   module Apis
     module PubsubV1
       
+      class ModifyAckDeadlineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyPushConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,13 +58,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AcknowledgeRequest
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class AcknowledgeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,27 +149,37 @@ module Google
       end
       
       class ModifyAckDeadlineRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          collection :ack_ids, as: 'ackIds'
+        end
       end
       
       class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::PubsubV1::Policy, decorator: Google::Apis::PubsubV1::Policy::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Message
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class ModifyPushConfigRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
+      end
+      
+      class Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          hash :attributes, as: 'attributes'
+          property :message_id, as: 'messageId'
+          property :publish_time, as: 'publishTime'
+        end
       end
       
       class Binding
@@ -165,16 +199,16 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ack_ids, as: 'ackIds'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -229,9 +263,9 @@ module Google
       class ListSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :subscriptions, as: 'subscriptions', class: Google::Apis::PubsubV1::Subscription, decorator: Google::Apis::PubsubV1::Subscription::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -271,10 +305,10 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1::Binding, decorator: Google::Apis::PubsubV1::Binding::Representation
       
-          property :etag, :base64 => true, as: 'etag'
         end
       end
       
@@ -282,40 +316,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-        end
-      end
-      
-      class ModifyAckDeadlineRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
-          collection :ack_ids, as: 'ackIds'
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::PubsubV1::Policy, decorator: Google::Apis::PubsubV1::Policy::Representation
-      
-        end
-      end
-      
-      class Message
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :publish_time, as: 'publishTime'
-          property :data, :base64 => true, as: 'data'
-          hash :attributes, as: 'attributes'
-          property :message_id, as: 'messageId'
-        end
-      end
-      
-      class ModifyPushConfigRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
-      
         end
       end
     end

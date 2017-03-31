@@ -1191,7 +1191,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
-        #   Name of the BackendBucket resource to update.
+        #   Name of the BackendBucket resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendBucket] backend_bucket_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1584,14 +1584,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified BackendService resource with the data included in the
+        # Patches the specified BackendService resource with the data included in the
         # request. There are several restrictions and guidelines to keep in mind when
         # updating a backend service. Read  Restrictions and Guidelines for more
         # information. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
-        #   Name of the BackendService resource to update.
+        #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4082,7 +4082,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
-        #   Name of the HealthCheck resource to update.
+        #   Name of the HealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HealthCheck] health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4401,7 +4401,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
-        #   Name of the HttpHealthCheck resource to update.
+        #   Name of the HttpHealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HttpHealthCheck] http_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4720,7 +4720,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
-        #   Name of the HttpsHealthCheck resource to update.
+        #   Name of the HttpsHealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HttpsHealthCheck] https_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9610,7 +9610,7 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] backend_service
-        #   Name of the BackendService resource to update.
+        #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -11536,14 +11536,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified Router resource with the data included in the request.
+        # Patches the specified Router resource with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] router
-        #   Name of the Router resource to update.
+        #   Name of the Router resource to patch.
         # @param [Google::Apis::ComputeBeta::Router] router_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -15637,12 +15637,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified UrlMap resource with the data included in the request.
+        # Patches the specified UrlMap resource with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
-        #   Name of the UrlMap resource to update.
+        #   Name of the UrlMap resource to patch.
         # @param [Google::Apis::ComputeBeta::UrlMap] url_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

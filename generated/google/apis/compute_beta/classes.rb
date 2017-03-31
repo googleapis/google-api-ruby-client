@@ -845,9 +845,9 @@ module Google
         end
       end
       
-      # Specifies the audit configuration for a service. It consists of which
-      # permission types are logged, and what identities, if any, are exempted from
-      # logging. An AuditConifg must have one or more AuditLogConfigs.
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConifg must have one or more AuditLogConfigs.
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
@@ -874,8 +874,8 @@ module Google
         attr_accessor :exempted_members
       
         # Specifies a service that will be enabled for audit logging. For example, `
-        # resourcemanager`, `storage`, `compute`. `allServices` is a special value that
-        # covers all services.
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -1649,6 +1649,7 @@ module Google
         # inserting a BackendService. An up-to-date fingerprint must be provided in
         # order to update the BackendService.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -2684,6 +2685,7 @@ module Google
         # hash in order to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve a disk.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -3970,6 +3972,7 @@ module Google
         # provide an up-to-date fingerprint hash when updating or changing labels. Make
         # a get() request to the resource to get the latest fingerprint.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -4762,6 +4765,7 @@ module Google
         # to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve an image.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -5003,6 +5007,7 @@ module Google
         # order to update or change metadata.
         # To see the latest fingerprint, make get() request to the instance.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -5191,6 +5196,7 @@ module Google
         # fingerprint to detect conflicts when multiple users change the named ports
         # concurrently.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -5418,6 +5424,7 @@ module Google
         # [Output Only] The fingerprint of the resource data. You can use this optional
         # field for optimistic locking when you update the resource.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -5995,6 +6002,7 @@ module Google
         # Then, include the fingerprint in your request to ensure that you do not
         # overwrite changes that were applied from another concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -6230,6 +6238,7 @@ module Google
         # ensure that you do not overwrite changes that were applied from another
         # concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -6678,6 +6687,7 @@ module Google
         # conflicts. Provide the latest fingerprint value when making a request to add
         # or change labels.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -7334,6 +7344,7 @@ module Google
         # modify or update metadata. You must always provide an up-to-date fingerprint
         # hash in order to update or change metadata.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -8346,6 +8357,7 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -8919,6 +8931,7 @@ module Google
         # This field is used for optimistic locking when you update the target pool
         # entries. This field is optional.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -9046,6 +9059,7 @@ module Google
         # ensure that you do not overwrite changes that were applied from another
         # concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -9639,8 +9653,9 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
-        # URI of linked VPN tunnel. It must be in the same region as the router. Each
-        # interface can have at most one linked resource.
+        # URI of the linked VPN tunnel. It must be in the same region as the router.
+        # Each interface can have at most one linked resource and it could either be a
+        # VPN Tunnel or an interconnect attachment.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
@@ -9720,6 +9735,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :best_routes
       
+        # Best routes learned by this router.
+        # Corresponds to the JSON property `bestRoutesForRouter`
+        # @return [Array<Google::Apis::ComputeBeta::Route>]
+        attr_accessor :best_routes_for_router
+      
         # 
         # Corresponds to the JSON property `bgpPeerStatus`
         # @return [Array<Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus>]
@@ -9737,6 +9757,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @best_routes = args[:best_routes] if args.key?(:best_routes)
+          @best_routes_for_router = args[:best_routes_for_router] if args.key?(:best_routes_for_router)
           @bgp_peer_status = args[:bgp_peer_status] if args.key?(:bgp_peer_status)
           @network = args[:network] if args.key?(:network)
         end
@@ -10213,6 +10234,7 @@ module Google
         # fingerprint hash in order to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve a snapshot.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -10907,6 +10929,7 @@ module Google
         # hash in order to update or change metadata.
         # To see the latest fingerprint, make get() request to the instance.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -12661,6 +12684,7 @@ module Google
         # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
         # update the UrlMap.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -13460,6 +13484,7 @@ module Google
         # provide an up-to-date fingerprint hash in order to update or change labels.
         # Make a get() request to the resource to get the latest fingerprint.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       

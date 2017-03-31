@@ -26,15 +26,15 @@ module Google
       class ScriptStackTraceElement
         include Google::Apis::Core::Hashable
       
-        # The name of the function that failed.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
         # The line number where the script failed.
         # Corresponds to the JSON property `lineNumber`
         # @return [Fixnum]
         attr_accessor :line_number
+      
+        # The name of the function that failed.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
       
         def initialize(**args)
            update!(**args)
@@ -42,8 +42,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] if args.key?(:function)
           @line_number = args[:line_number] if args.key?(:line_number)
+          @function = args[:function] if args.key?(:function)
         end
       end
       

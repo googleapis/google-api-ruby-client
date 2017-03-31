@@ -48,68 +48,6 @@ module Google
           super('https://language.googleapis.com/', '')
         end
         
-        # Analyzes the syntax of the text and provides sentence boundaries and
-        # tokenization along with part of speech tags, dependency trees, and other
-        # properties.
-        # @param [Google::Apis::LanguageV1beta1::AnalyzeSyntaxRequest] analyze_syntax_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def analyze_document_syntax(analyze_syntax_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSyntax', options)
-          command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxRequest::Representation
-          command.request_object = analyze_syntax_request_object
-          command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse::Representation
-          command.response_class = Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Analyzes the sentiment of the provided text.
-        # @param [Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest] analyze_sentiment_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def analyze_document_sentiment(analyze_sentiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSentiment', options)
-          command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest::Representation
-          command.request_object = analyze_sentiment_request_object
-          command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse::Representation
-          command.response_class = Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # A convenience method that provides all the features that analyzeSentiment,
         # analyzeEntities, and analyzeSyntax provide in one call.
         # @param [Google::Apis::LanguageV1beta1::AnnotateTextRequest] annotate_text_request_object
@@ -168,6 +106,68 @@ module Google
           command.request_object = analyze_entities_request_object
           command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeEntitiesResponse::Representation
           command.response_class = Google::Apis::LanguageV1beta1::AnalyzeEntitiesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes the syntax of the text and provides sentence boundaries and
+        # tokenization along with part of speech tags, dependency trees, and other
+        # properties.
+        # @param [Google::Apis::LanguageV1beta1::AnalyzeSyntaxRequest] analyze_syntax_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_document_syntax(analyze_syntax_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSyntax', options)
+          command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxRequest::Representation
+          command.request_object = analyze_syntax_request_object
+          command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse::Representation
+          command.response_class = Google::Apis::LanguageV1beta1::AnalyzeSyntaxResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes the sentiment of the provided text.
+        # @param [Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest] analyze_sentiment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_document_sentiment(analyze_sentiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/documents:analyzeSentiment', options)
+          command.request_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentRequest::Representation
+          command.request_object = analyze_sentiment_request_object
+          command.response_representation = Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse::Representation
+          command.response_class = Google::Apis::LanguageV1beta1::AnalyzeSentimentResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

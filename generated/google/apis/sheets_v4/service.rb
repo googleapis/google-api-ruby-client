@@ -182,6 +182,13 @@ module Google
         #   The ID of the spreadsheet to retrieve data from.
         # @param [String] range
         #   The A1 notation of the values to retrieve.
+        # @param [String] major_dimension
+        #   The major dimension that results should use.
+        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
+        #   `[[1,2],[3,4]]`,
+        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        #   `[[1,3],[2,4]]`.
         # @param [String] value_render_option
         #   How values should be represented in the output.
         #   The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -190,13 +197,6 @@ module Google
         #   This is ignored if value_render_option is
         #   FORMATTED_VALUE.
         #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        # @param [String] major_dimension
-        #   The major dimension that results should use.
-        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
-        #   `[[1,2],[3,4]]`,
-        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-        #   `[[1,3],[2,4]]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -214,15 +214,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_spreadsheet_values(spreadsheet_id, range, value_render_option: nil, date_time_render_option: nil, major_dimension: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_spreadsheet_values(spreadsheet_id, range, major_dimension: nil, value_render_option: nil, date_time_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.response_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.response_class = Google::Apis::SheetsV4::ValueRange
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.params['range'] = range unless range.nil?
+          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['valueRenderOption'] = value_render_option unless value_render_option.nil?
           command.query['dateTimeRenderOption'] = date_time_render_option unless date_time_render_option.nil?
-          command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -323,6 +323,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Clears values from a spreadsheet.
+        # The caller must specify the spreadsheet ID and range.
+        # Only values are cleared -- all other properties of the cell (such as
+        # formatting, data validation, etc..) are kept.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to update.
+        # @param [String] range
+        #   The A1 notation of the values to clear.
+        # @param [Google::Apis::SheetsV4::ClearValuesRequest] clear_values_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::ClearValuesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::ClearValuesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clear_values(spreadsheet_id, range, clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
+          command.request_representation = Google::Apis::SheetsV4::ClearValuesRequest::Representation
+          command.request_object = clear_values_request_object
+          command.response_representation = Google::Apis::SheetsV4::ClearValuesResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::ClearValuesResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.params['range'] = range unless range.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns one or more ranges of values from a spreadsheet.
         # The caller must specify the spreadsheet ID and one or more ranges.
         # @param [String] spreadsheet_id
@@ -370,45 +409,6 @@ module Google
           command.query['majorDimension'] = major_dimension unless major_dimension.nil?
           command.query['valueRenderOption'] = value_render_option unless value_render_option.nil?
           command.query['dateTimeRenderOption'] = date_time_render_option unless date_time_render_option.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Clears values from a spreadsheet.
-        # The caller must specify the spreadsheet ID and range.
-        # Only values are cleared -- all other properties of the cell (such as
-        # formatting, data validation, etc..) are kept.
-        # @param [String] spreadsheet_id
-        #   The ID of the spreadsheet to update.
-        # @param [String] range
-        #   The A1 notation of the values to clear.
-        # @param [Google::Apis::SheetsV4::ClearValuesRequest] clear_values_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SheetsV4::ClearValuesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SheetsV4::ClearValuesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clear_values(spreadsheet_id, range, clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
-          command.request_representation = Google::Apis::SheetsV4::ClearValuesRequest::Representation
-          command.request_object = clear_values_request_object
-          command.response_representation = Google::Apis::SheetsV4::ClearValuesResponse::Representation
-          command.response_class = Google::Apis::SheetsV4::ClearValuesResponse
-          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
-          command.params['range'] = range unless range.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

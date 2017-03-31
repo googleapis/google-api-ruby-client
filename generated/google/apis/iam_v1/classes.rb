@@ -22,74 +22,6 @@ module Google
   module Apis
     module IamV1
       
-      # The service account create request.
-      class CreateServiceAccountRequest
-        include Google::Apis::Core::Hashable
-      
-        # A service account in the Identity and Access Management API.
-        # To create a service account, specify the `project_id` and the `account_id`
-        # for the account.  The `account_id` is unique within the project, and is used
-        # to generate the service account email address and a stable
-        # `unique_id`.
-        # If the account already exists, the account's resource name is returned
-        # in util::Status's ResourceInfo.resource_name in the format of
-        # projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL`. The caller can
-        # use the name in other methods to access the account.
-        # All other methods can identify the service account using the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        # Using `-` as a wildcard for the project will infer the project from
-        # the account. The `account` value can be the `email` address or the
-        # `unique_id` of the service account.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [Google::Apis::IamV1::ServiceAccount]
-        attr_accessor :service_account
-      
-        # Required. The account id that is used to generate the service account
-        # email address and a stable unique id. It is unique within a project,
-        # must be 6-30 characters long, and match the regular expression
-        # `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service_account = args[:service_account] if args.key?(:service_account)
-          @account_id = args[:account_id] if args.key?(:account_id)
-        end
-      end
-      
-      # The service account list response.
-      class ListServiceAccountsResponse
-        include Google::Apis::Core::Hashable
-      
-        # To retrieve the next page of results, set
-        # ListServiceAccountsRequest.page_token
-        # to this value.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of matching service accounts.
-        # Corresponds to the JSON property `accounts`
-        # @return [Array<Google::Apis::IamV1::ServiceAccount>]
-        attr_accessor :accounts
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @accounts = args[:accounts] if args.key?(:accounts)
-        end
-      end
-      
       # The grantable role query response.
       class QueryGrantableRolesResponse
         include Google::Apis::Core::Hashable
@@ -115,6 +47,7 @@ module Google
       
         # The bytes to sign.
         # Corresponds to the JSON property `bytesToSign`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :bytes_to_sign
       
@@ -306,22 +239,6 @@ module Google
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # @OutputOnly The email address of the service account.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # The resource name of the service account in the following format:
-        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        # Requests using `-` as a wildcard for the project will infer the project
-        # from the `account` and the `account` value can be the `email` address or
-        # the `unique_id` of the service account.
-        # In responses the resource name will always be in the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # @OutputOnly The id of the project that owns the service account.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -347,8 +264,25 @@ module Google
       
         # Used to perform a consistent read-modify-write.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
+      
+        # @OutputOnly The email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The resource name of the service account in the following format:
+        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        # Requests using `-` as a wildcard for the project will infer the project
+        # from the `account` and the `account` value can be the `email` address or
+        # the `unique_id` of the service account.
+        # In responses the resource name will always be in the format
+        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         def initialize(**args)
            update!(**args)
@@ -356,13 +290,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @oauth2_client_id = args[:oauth2_client_id] if args.key?(:oauth2_client_id)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The service account keys list response.
+      class ListServiceAccountKeysResponse
+        include Google::Apis::Core::Hashable
+      
+        # The public keys for the service account.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::IamV1::ServiceAccountKey>]
+        attr_accessor :keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys = args[:keys] if args.key?(:keys)
         end
       end
       
@@ -386,25 +339,6 @@ module Google
         end
       end
       
-      # The service account keys list response.
-      class ListServiceAccountKeysResponse
-        include Google::Apis::Core::Hashable
-      
-        # The public keys for the service account.
-        # Corresponds to the JSON property `keys`
-        # @return [Array<Google::Apis::IamV1::ServiceAccountKey>]
-        attr_accessor :keys
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @keys = args[:keys] if args.key?(:keys)
-        end
-      end
-      
       # Represents a service account key.
       # A service account has two sets of key-pairs: user-managed, and
       # system-managed.
@@ -420,28 +354,16 @@ module Google
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
-        # The key can be used after this timestamp.
-        # Corresponds to the JSON property `validAfterTime`
-        # @return [String]
-        attr_accessor :valid_after_time
-      
-        # The output format for the private key.
-        # Only provided in `CreateServiceAccountKey` responses, not
-        # in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
-        # Google never exposes system-managed private keys, and never retains
-        # user-managed private keys.
-        # Corresponds to the JSON property `privateKeyType`
-        # @return [String]
-        attr_accessor :private_key_type
-      
         # The private key data. Only provided in `CreateServiceAccountKey`
         # responses.
         # Corresponds to the JSON property `privateKeyData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :private_key_data
       
         # The public key data. Only provided in `GetServiceAccountKey` responses.
         # Corresponds to the JSON property `publicKeyData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :public_key_data
       
@@ -461,19 +383,33 @@ module Google
         # @return [String]
         attr_accessor :key_algorithm
       
+        # The key can be used after this timestamp.
+        # Corresponds to the JSON property `validAfterTime`
+        # @return [String]
+        attr_accessor :valid_after_time
+      
+        # The output format for the private key.
+        # Only provided in `CreateServiceAccountKey` responses, not
+        # in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
+        # Google never exposes system-managed private keys, and never retains
+        # user-managed private keys.
+        # Corresponds to the JSON property `privateKeyType`
+        # @return [String]
+        attr_accessor :private_key_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
-          @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
           @private_key_data = args[:private_key_data] if args.key?(:private_key_data)
           @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
           @name = args[:name] if args.key?(:name)
           @valid_before_time = args[:valid_before_time] if args.key?(:valid_before_time)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
+          @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
+          @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
         end
       end
       
@@ -533,6 +469,7 @@ module Google
       
         # The signed blob.
         # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :signature
       
@@ -623,6 +560,7 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -736,6 +674,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
+        end
+      end
+      
+      # The service account create request.
+      class CreateServiceAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        # A service account in the Identity and Access Management API.
+        # To create a service account, specify the `project_id` and the `account_id`
+        # for the account.  The `account_id` is unique within the project, and is used
+        # to generate the service account email address and a stable
+        # `unique_id`.
+        # If the account already exists, the account's resource name is returned
+        # in util::Status's ResourceInfo.resource_name in the format of
+        # projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL`. The caller can
+        # use the name in other methods to access the account.
+        # All other methods can identify the service account using the format
+        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        # Using `-` as a wildcard for the project will infer the project from
+        # the account. The `account` value can be the `email` address or the
+        # `unique_id` of the service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::IamV1::ServiceAccount]
+        attr_accessor :service_account
+      
+        # Required. The account id that is used to generate the service account
+        # email address and a stable unique id. It is unique within a project,
+        # must be 6-30 characters long, and match the regular expression
+        # `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @account_id = args[:account_id] if args.key?(:account_id)
+        end
+      end
+      
+      # The service account list response.
+      class ListServiceAccountsResponse
+        include Google::Apis::Core::Hashable
+      
+        # To retrieve the next page of results, set
+        # ListServiceAccountsRequest.page_token
+        # to this value.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching service accounts.
+        # Corresponds to the JSON property `accounts`
+        # @return [Array<Google::Apis::IamV1::ServiceAccount>]
+        attr_accessor :accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @accounts = args[:accounts] if args.key?(:accounts)
         end
       end
     end

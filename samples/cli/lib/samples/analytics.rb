@@ -58,5 +58,23 @@ module Samples
       print_table(data)
     end
 
+    desc 'show_realtime_visits PROFILE_ID', 'Show realtime visists for the given analytics profile ID'
+    def show_realtime_visits(profile_id)
+      analytics = Analytics::AnalyticsService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      dimensions = %w(rt:medium rt:pagePath)
+      metrics = %w(rt:activeUsers)
+      sort = %w(rt:medium rt:pagePath)
+      result = analytics.get_realtime_data("ga:#{profile_id}",
+                                           metrics.join(','),
+                                           dimensions: dimensions.join(','),
+                                           sort: sort.join(','))
+
+      data = []
+      data.push(result.column_headers.map { |h| h.name })
+      data.push(*result.rows)
+      print_table(data)
+    end
   end
 end

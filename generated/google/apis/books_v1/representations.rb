@@ -423,6 +423,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class RewardExpirations
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -1368,6 +1374,8 @@ module Google
         
             property :more_from_series, as: 'moreFromSeries', class: Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries, decorator: Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries::Representation
         
+            property :reward_expirations, as: 'rewardExpirations', class: Google::Apis::BooksV1::UserSettings::Notification::RewardExpirations, decorator: Google::Apis::BooksV1::UserSettings::Notification::RewardExpirations::Representation
+        
           end
           
           class MoreFromAuthors
@@ -1378,6 +1386,13 @@ module Google
           end
           
           class MoreFromSeries
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :opted_state, as: 'opted_state'
+            end
+          end
+          
+          class RewardExpirations
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :opted_state, as: 'opted_state'

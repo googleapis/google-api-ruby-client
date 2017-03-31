@@ -30,6 +30,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class TeamDriveTheme
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -175,6 +181,12 @@ module Google
       class TeamDrive
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class BackgroundImageFile
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Capabilities
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -216,6 +228,8 @@ module Google
           property :max_upload_size, as: 'maxUploadSize'
           property :storage_quota, as: 'storageQuota', class: Google::Apis::DriveV3::About::StorageQuota, decorator: Google::Apis::DriveV3::About::StorageQuota::Representation
       
+          collection :team_drive_themes, as: 'teamDriveThemes', class: Google::Apis::DriveV3::About::TeamDriveTheme, decorator: Google::Apis::DriveV3::About::TeamDriveTheme::Representation
+      
           property :user, as: 'user', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
         end
@@ -227,6 +241,15 @@ module Google
             property :usage, as: 'usage'
             property :usage_in_drive, as: 'usageInDrive'
             property :usage_in_drive_trash, as: 'usageInDriveTrash'
+          end
+        end
+        
+        class TeamDriveTheme
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :background_image_link, as: 'backgroundImageLink'
+            property :color_rgb, as: 'colorRgb'
+            property :id, as: 'id'
           end
         end
       end
@@ -601,17 +624,33 @@ module Google
       class TeamDrive
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_image_file, as: 'backgroundImageFile', class: Google::Apis::DriveV3::TeamDrive::BackgroundImageFile, decorator: Google::Apis::DriveV3::TeamDrive::BackgroundImageFile::Representation
+      
+          property :background_image_link, as: 'backgroundImageLink'
           property :capabilities, as: 'capabilities', class: Google::Apis::DriveV3::TeamDrive::Capabilities, decorator: Google::Apis::DriveV3::TeamDrive::Capabilities::Representation
       
+          property :color_rgb, as: 'colorRgb'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :theme_id, as: 'themeId'
+        end
+        
+        class BackgroundImageFile
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :id, as: 'id'
+            property :width, as: 'width'
+            property :x_coordinate, as: 'xCoordinate'
+            property :y_coordinate, as: 'yCoordinate'
+          end
         end
         
         class Capabilities
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_change_team_drive_background, as: 'canChangeTeamDriveBackground'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete_team_drive, as: 'canDeleteTeamDrive'

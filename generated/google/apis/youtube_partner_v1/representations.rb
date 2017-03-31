@@ -1217,9 +1217,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          collection :custom_id, as: 'custom_id'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :locale, as: 'locale'
+          property :name, as: 'name'
+          property :status, as: 'status'
+          property :time_created, as: 'timeCreated', type: DateTime
+      
+          property :type, as: 'type'
           property :uploader_name, as: 'uploaderName'
         end
       end

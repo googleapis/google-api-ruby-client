@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Notification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Notifications
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -190,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +226,7 @@ module Google
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Representation
       
           property :location, as: 'location'
@@ -399,6 +418,30 @@ module Google
         end
       end
       
+      class Notification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_attributes, as: 'custom_attributes'
+          property :etag, as: 'etag'
+          collection :event_types, as: 'event_types'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :object_name_prefix, as: 'object_name_prefix'
+          property :payload_format, as: 'payload_format'
+          property :self_link, as: 'selfLink'
+          property :topic, as: 'topic'
+        end
+      end
+      
+      class Notifications
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::Notification, decorator: Google::Apis::StorageV1::Notification::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -532,6 +575,14 @@ module Google
       
           property :rewrite_token, as: 'rewriteToken'
           property :total_bytes_rewritten, as: 'totalBytesRewritten'
+        end
+      end
+      
+      class ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'email_address'
+          property :kind, as: 'kind'
         end
       end
       

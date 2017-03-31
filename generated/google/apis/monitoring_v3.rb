@@ -27,7 +27,10 @@ module Google
     # @see https://cloud.google.com/monitoring/api/
     module MonitoringV3
       VERSION = 'V3'
-      REVISION = '20170320'
+      REVISION = '20170328'
+
+      # Publish metric data to your Google Cloud projects
+      AUTH_MONITORING_WRITE = 'https://www.googleapis.com/auth/monitoring.write'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
@@ -37,9 +40,6 @@ module Google
 
       # View and write monitoring data for all of your Google and third-party Cloud and API projects
       AUTH_MONITORING = 'https://www.googleapis.com/auth/monitoring'
-
-      # Publish metric data to your Google Cloud projects
-      AUTH_MONITORING_WRITE = 'https://www.googleapis.com/auth/monitoring.write'
     end
   end
 end

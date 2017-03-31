@@ -62,6 +62,7 @@ module Google
         # for optimistic locking. An up-to-date fingerprint must be provided in order to
         # modify the Instance Group Manager resource.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -267,6 +268,7 @@ module Google
         # not match the server-side fingerprint of the resource, then the request will
         # be rejected.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       

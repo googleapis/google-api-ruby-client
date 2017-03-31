@@ -22,328 +22,6 @@ module Google
   module Apis
     module MonitoringV3
       
-      # BucketOptions describes the bucket boundaries used to create a histogram for
-      # the distribution. The buckets can be in a linear sequence, an exponential
-      # sequence, or each bucket can be specified explicitly. BucketOptions does not
-      # include the number of values in each bucket.A bucket has an inclusive lower
-      # bound and exclusive upper bound for the values that are counted for that
-      # bucket. The upper bound of a bucket must be strictly greater than the lower
-      # bound. The sequence of N buckets for a distribution consists of an underflow
-      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
-      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
-      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
-      # span the whole range of finite values: lower bound of the underflow bucket is -
-      # infinity and the upper bound of the overflow bucket is +infinity. The finite
-      # buckets are so-called because both bounds are finite.
-      class BucketOptions
-        include Google::Apis::Core::Hashable
-      
-        # Specifies an exponential sequence of buckets that have a width that is
-        # proportional to the value of the lower bound. Each bucket represents a
-        # constant relative uncertainty on a specific value in the bucket.There are
-        # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
-        # N): scale * (growth_factor ^ (i - 1)).
-        # Corresponds to the JSON property `exponentialBuckets`
-        # @return [Google::Apis::MonitoringV3::Exponential]
-        attr_accessor :exponential_buckets
-      
-        # Specifies a linear sequence of buckets that all have the same width (except
-        # overflow and underflow). Each bucket represents a constant absolute
-        # uncertainty on the specific value in the bucket.There are num_finite_buckets +
-        # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-        # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
-        # .
-        # Corresponds to the JSON property `linearBuckets`
-        # @return [Google::Apis::MonitoringV3::Linear]
-        attr_accessor :linear_buckets
-      
-        # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
-        # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-        # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
-        # least one element. If bounds has only one element, then there are no finite
-        # buckets, and that single element is the common boundary of the overflow and
-        # underflow buckets.
-        # Corresponds to the JSON property `explicitBuckets`
-        # @return [Google::Apis::MonitoringV3::Explicit]
-        attr_accessor :explicit_buckets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
-          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
-          @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
-        end
-      end
-      
-      # A single data point from a collectd-based plugin.
-      class CollectdValue
-        include Google::Apis::Core::Hashable
-      
-        # The data source for the collectd value. For example there are two data sources
-        # for network measurements: "rx" and "tx".
-        # Corresponds to the JSON property `dataSourceName`
-        # @return [String]
-        attr_accessor :data_source_name
-      
-        # A single strongly-typed value.
-        # Corresponds to the JSON property `value`
-        # @return [Google::Apis::MonitoringV3::TypedValue]
-        attr_accessor :value
-      
-        # The type of measurement.
-        # Corresponds to the JSON property `dataSourceType`
-        # @return [String]
-        attr_accessor :data_source_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_source_name = args[:data_source_name] if args.key?(:data_source_name)
-          @value = args[:value] if args.key?(:value)
-          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
-        end
-      end
-      
-      # SourceContext represents information about the source of a protobuf element,
-      # like the file in which it is defined.
-      class SourceContext
-        include Google::Apis::Core::Hashable
-      
-        # The path-qualified name of the .proto file that contained the associated
-        # protobuf element. For example: "google/protobuf/source_context.proto".
-        # Corresponds to the JSON property `fileName`
-        # @return [String]
-        attr_accessor :file_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @file_name = args[:file_name] if args.key?(:file_name)
-        end
-      end
-      
-      # Defines a metric type and its schema. Once a metric descriptor is created,
-      # deleting or altering it stops data collection and makes the metric type's
-      # existing data unusable.
-      class MetricDescriptor
-        include Google::Apis::Core::Hashable
-      
-        # Whether the measurement is an integer, a floating-point number, etc. Some
-        # combinations of metric_kind and value_type might not be supported.
-        # Corresponds to the JSON property `valueType`
-        # @return [String]
-        attr_accessor :value_type
-      
-        # Whether the metric records instantaneous values, changes to a value, etc. Some
-        # combinations of metric_kind and value_type might not be supported.
-        # Corresponds to the JSON property `metricKind`
-        # @return [String]
-        attr_accessor :metric_kind
-      
-        # A concise name for the metric, which can be displayed in user interfaces. Use
-        # sentence case without an ending period, for example "Request count".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # A detailed description of the metric, which can be used in documentation.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The unit in which the metric value is reported. It is only applicable if the
-        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
-        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
-        # standard:Basic units (UNIT)
-        # bit bit
-        # By byte
-        # s second
-        # min minute
-        # h hour
-        # d dayPrefixes (PREFIX)
-        # k kilo (10**3)
-        # M mega (10**6)
-        # G giga (10**9)
-        # T tera (10**12)
-        # P peta (10**15)
-        # E exa (10**18)
-        # Z zetta (10**21)
-        # Y yotta (10**24)
-        # m milli (10**-3)
-        # u micro (10**-6)
-        # n nano (10**-9)
-        # p pico (10**-12)
-        # f femto (10**-15)
-        # a atto (10**-18)
-        # z zepto (10**-21)
-        # y yocto (10**-24)
-        # Ki kibi (2**10)
-        # Mi mebi (2**20)
-        # Gi gibi (2**30)
-        # Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/
-        # s.The grammar also includes these connectors:
-        # / division (as an infix operator, e.g. 1/s).
-        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
-        # as follows:
-        # Expression = Component ` "." Component ` ` "/" Component ` ;
-        # Component = [ PREFIX ] UNIT [ Annotation ]
-        # | Annotation
-        # | "1"
-        # ;
-        # Annotation = "`" NAME "`" ;
-        # Notes:
-        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
-        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
-        # s.
-        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
-        # or '`'.
-        # Corresponds to the JSON property `unit`
-        # @return [String]
-        attr_accessor :unit
-      
-        # The set of labels that can be used to describe a specific instance of this
-        # metric type. For example, the appengine.googleapis.com/http/server/
-        # response_latencies metric type has a label for the HTTP response code,
-        # response_code, so you can look at latencies for successful responses or just
-        # for responses that failed.
-        # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
-        attr_accessor :labels
-      
-        # The resource name of the metric descriptor. Depending on the implementation,
-        # the name typically includes: (1) the parent resource name that defines the
-        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
-        # which also appears in the type field of this descriptor. For example,
-        # following is the resource name of a custom metric within the GCP project my-
-        # project-id:
-        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
-        # 2Fpaid%2Famount"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All user-defined custom metric types have the DNS name custom.googleapis.com.
-        # Metric types should use a natural hierarchical grouping. For example:
-        # "custom.googleapis.com/invoice/paid/amount"
-        # "appengine.googleapis.com/http/server/response_latencies"
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value_type = args[:value_type] if args.key?(:value_type)
-          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @description = args[:description] if args.key?(:description)
-          @unit = args[:unit] if args.key?(:unit)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # The range of the population values.
-      class Range
-        include Google::Apis::Core::Hashable
-      
-        # The minimum of the population values.
-        # Corresponds to the JSON property `min`
-        # @return [Float]
-        attr_accessor :min
-      
-        # The maximum of the population values.
-        # Corresponds to the JSON property `max`
-        # @return [Float]
-        attr_accessor :max
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @min = args[:min] if args.key?(:min)
-          @max = args[:max] if args.key?(:max)
-        end
-      end
-      
-      # The ListGroups response.
-      class ListGroupsResponse
-        include Google::Apis::Core::Hashable
-      
-        # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The groups that match the specified filters.
-        # Corresponds to the JSON property `group`
-        # @return [Array<Google::Apis::MonitoringV3::Group>]
-        attr_accessor :group
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @group = args[:group] if args.key?(:group)
-        end
-      end
-      
-      # The ListGroupMembers response.
-      class ListGroupMembersResponse
-        include Google::Apis::Core::Hashable
-      
-        # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The total number of elements matching this request.
-        # Corresponds to the JSON property `totalSize`
-        # @return [Fixnum]
-        attr_accessor :total_size
-      
-        # A set of monitored resources in the group.
-        # Corresponds to the JSON property `members`
-        # @return [Array<Google::Apis::MonitoringV3::MonitoredResource>]
-        attr_accessor :members
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @total_size = args[:total_size] if args.key?(:total_size)
-          @members = args[:members] if args.key?(:members)
-        end
-      end
-      
       # The CreateCollectdTimeSeries request.
       class CreateCollectdTimeSeriesRequest
         include Google::Apis::Core::Hashable
@@ -389,6 +67,39 @@ module Google
         end
       end
       
+      # The ListGroupMembers response.
+      class ListGroupMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A set of monitored resources in the group.
+        # Corresponds to the JSON property `members`
+        # @return [Array<Google::Apis::MonitoringV3::MonitoredResource>]
+        attr_accessor :members
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The total number of elements matching this request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # The ListMonitoredResourcDescriptors response.
       class ListMonitoredResourceDescriptorsResponse
         include Google::Apis::Core::Hashable
@@ -423,15 +134,6 @@ module Google
       # creating time series.
       class TimeSeries
         include Google::Apis::Core::Hashable
-      
-        # The value type of the time series. When listing time series, this value type
-        # might be different from the value type of the associated metric if this time
-        # series is an alignment or reduction of other time series.When creating a time
-        # series, this field is optional. If present, it must be the same as the type of
-        # the data in the points field.
-        # Corresponds to the JSON property `valueType`
-        # @return [String]
-        attr_accessor :value_type
       
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
@@ -476,17 +178,26 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Point>]
         attr_accessor :points
       
+        # The value type of the time series. When listing time series, this value type
+        # might be different from the value type of the associated metric if this time
+        # series is an alignment or reduction of other time series.When creating a time
+        # series, this field is optional. If present, it must be the same as the type of
+        # the data in the points field.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @value_type = args[:value_type] if args.key?(:value_type)
           @resource = args[:resource] if args.key?(:resource)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @metric = args[:metric] if args.key?(:metric)
           @points = args[:points] if args.key?(:points)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -526,6 +237,21 @@ module Google
       # meaningless.
       class Distribution
         include Google::Apis::Core::Hashable
+      
+        # The sum of squared deviations from the mean of the values in the population.
+        # For values x_i this is:
+        # Sum[i=1..n]((x_i - mean)^2)
+        # Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
+        # describes Welford's method for accumulating this sum in one pass.If count is
+        # zero then this field must be zero.
+        # Corresponds to the JSON property `sumOfSquaredDeviation`
+        # @return [Float]
+        attr_accessor :sum_of_squared_deviation
+      
+        # The range of the population values.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::MonitoringV3::Range]
+        attr_accessor :range
       
         # The number of values in the population. Must be non-negative. This value must
         # equal the sum of the values in bucket_counts if a histogram is provided.
@@ -568,33 +294,18 @@ module Google
         # @return [Google::Apis::MonitoringV3::BucketOptions]
         attr_accessor :bucket_options
       
-        # The sum of squared deviations from the mean of the values in the population.
-        # For values x_i this is:
-        # Sum[i=1..n]((x_i - mean)^2)
-        # Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
-        # describes Welford's method for accumulating this sum in one pass.If count is
-        # zero then this field must be zero.
-        # Corresponds to the JSON property `sumOfSquaredDeviation`
-        # @return [Float]
-        attr_accessor :sum_of_squared_deviation
-      
-        # The range of the population values.
-        # Corresponds to the JSON property `range`
-        # @return [Google::Apis::MonitoringV3::Range]
-        attr_accessor :range
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+          @range = args[:range] if args.key?(:range)
           @count = args[:count] if args.key?(:count)
           @mean = args[:mean] if args.key?(:mean)
           @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
           @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
-          @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
-          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -731,6 +442,24 @@ module Google
       class TypedValue
         include Google::Apis::Core::Hashable
       
+        # A Boolean value: true or false.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A variable-length string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # A 64-bit double-precision floating-point number. Its magnitude is
+        # approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant
+        # digits of precision.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
         # A 64-bit integer. Its range is approximately &plusmn;9.2x10<sup>18</sup>.
         # Corresponds to the JSON property `int64Value`
         # @return [String]
@@ -751,35 +480,17 @@ module Google
         # @return [Google::Apis::MonitoringV3::Distribution]
         attr_accessor :distribution_value
       
-        # A Boolean value: true or false.
-        # Corresponds to the JSON property `boolValue`
-        # @return [Boolean]
-        attr_accessor :bool_value
-        alias_method :bool_value?, :bool_value
-      
-        # A variable-length string value.
-        # Corresponds to the JSON property `stringValue`
-        # @return [String]
-        attr_accessor :string_value
-      
-        # A 64-bit double-precision floating-point number. Its magnitude is
-        # approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant
-        # digits of precision.
-        # Corresponds to the JSON property `doubleValue`
-        # @return [Float]
-        attr_accessor :double_value
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @int64_value = args[:int64_value] if args.key?(:int64_value)
-          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
         end
       end
       
@@ -787,6 +498,21 @@ module Google
       # collectd documentation for more information.
       class CollectdPayload
         include Google::Apis::Core::Hashable
+      
+        # The measurement type instance. Example: "used".
+        # Corresponds to the JSON property `typeInstance`
+        # @return [String]
+        attr_accessor :type_instance
+      
+        # The measurement type. Example: "memory".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The measurement metadata. Example: "process_id" -> 12345
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
+        attr_accessor :metadata
       
         # The name of the plugin. Example: "disk".
         # Corresponds to the JSON property `plugin`
@@ -814,35 +540,20 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
         attr_accessor :values
       
-        # The measurement type instance. Example: "used".
-        # Corresponds to the JSON property `typeInstance`
-        # @return [String]
-        attr_accessor :type_instance
-      
-        # The measurement metadata. Example: "process_id" -> 12345
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Google::Apis::MonitoringV3::TypedValue>]
-        attr_accessor :metadata
-      
-        # The measurement type. Example: "memory".
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @type_instance = args[:type_instance] if args.key?(:type_instance)
+          @type = args[:type] if args.key?(:type)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @plugin = args[:plugin] if args.key?(:plugin)
           @plugin_instance = args[:plugin_instance] if args.key?(:plugin_instance)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @values = args[:values] if args.key?(:values)
-          @type_instance = args[:type_instance] if args.key?(:type_instance)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -855,11 +566,6 @@ module Google
       class Linear
         include Google::Apis::Core::Hashable
       
-        # Must be greater than 0.
-        # Corresponds to the JSON property `width`
-        # @return [Float]
-        attr_accessor :width
-      
         # Lower bound of the first bucket.
         # Corresponds to the JSON property `offset`
         # @return [Float]
@@ -870,47 +576,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_finite_buckets
       
+        # Must be greater than 0.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @width = args[:width] if args.key?(:width)
           @offset = args[:offset] if args.key?(:offset)
           @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
-        end
-      end
-      
-      # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
-      class Option
-        include Google::Apis::Core::Hashable
-      
-        # The option's value packed in an Any message. If the value is a primitive, the
-        # corresponding wrapper type defined in google/protobuf/wrappers.proto should be
-        # used. If the value is an enum, it should be stored as an int32 value using the
-        # google.protobuf.Int32Value type.
-        # Corresponds to the JSON property `value`
-        # @return [Hash<String,Object>]
-        attr_accessor :value
-      
-        # The option's name. For protobuf built-in options (options defined in
-        # descriptor.proto), this is the short name. For example, "map_entry". For
-        # custom options, it should be the fully-qualified name. For example, "google.
-        # api.http".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-          @name = args[:name] if args.key?(:name)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -930,6 +609,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A protocol buffer option, which can be attached to a message, field,
+      # enumeration, etc.
+      class Option
+        include Google::Apis::Core::Hashable
+      
+        # The option's name. For protobuf built-in options (options defined in
+        # descriptor.proto), this is the short name. For example, "map_entry". For
+        # custom options, it should be the fully-qualified name. For example, "google.
+        # api.http".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The option's value packed in an Any message. If the value is a primitive, the
+        # corresponding wrapper type defined in google/protobuf/wrappers.proto should be
+        # used. If the value is an enum, it should be stored as an int32 value using the
+        # google.protobuf.Int32Value type.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
+      # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
+      # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+      # least one element. If bounds has only one element, then there are no finite
+      # buckets, and that single element is the common boundary of the overflow and
+      # underflow buckets.
+      class Explicit
+        include Google::Apis::Core::Hashable
+      
+        # The values must be monotonically increasing.
+        # Corresponds to the JSON property `bounds`
+        # @return [Array<Float>]
+        attr_accessor :bounds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounds = args[:bounds] if args.key?(:bounds)
         end
       end
       
@@ -961,30 +696,6 @@ module Google
         end
       end
       
-      # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
-      # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-      # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
-      # least one element. If bounds has only one element, then there are no finite
-      # buckets, and that single element is the common boundary of the overflow and
-      # underflow buckets.
-      class Explicit
-        include Google::Apis::Core::Hashable
-      
-        # The values must be monotonically increasing.
-        # Corresponds to the JSON property `bounds`
-        # @return [Array<Float>]
-        attr_accessor :bounds
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bounds = args[:bounds] if args.key?(:bounds)
-        end
-      end
-      
       # Specifies an exponential sequence of buckets that have a width that is
       # proportional to the value of the lower bound. Each bucket represents a
       # constant relative uncertainty on a specific value in the bucket.There are
@@ -993,11 +704,6 @@ module Google
       # N): scale * (growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
-      
-        # Must be greater than 0.
-        # Corresponds to the JSON property `scale`
-        # @return [Float]
-        attr_accessor :scale
       
         # Must be greater than 0.
         # Corresponds to the JSON property `numFiniteBuckets`
@@ -1009,21 +715,31 @@ module Google
         # @return [Float]
         attr_accessor :growth_factor
       
+        # Must be greater than 0.
+        # Corresponds to the JSON property `scale`
+        # @return [Float]
+        attr_accessor :scale
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @scale = args[:scale] if args.key?(:scale)
           @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
           @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
+          @scale = args[:scale] if args.key?(:scale)
         end
       end
       
       # A single data point in a time series.
       class Point
         include Google::Apis::Core::Hashable
+      
+        # A single strongly-typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::MonitoringV3::TypedValue]
+        attr_accessor :value
       
         # A time interval extending just after a start time through an end time. If the
         # start time is the same as the end time, then the interval represents a single
@@ -1032,70 +748,20 @@ module Google
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
       
-        # A single strongly-typed value.
-        # Corresponds to the JSON property `value`
-        # @return [Google::Apis::MonitoringV3::TypedValue]
-        attr_accessor :value
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @interval = args[:interval] if args.key?(:interval)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A specific metric, identified by specifying values for all of the labels of a
-      # MetricDescriptor.
-      class Metric
-        include Google::Apis::Core::Hashable
-      
-        # The set of label values that uniquely identify this metric. All labels listed
-        # in the MetricDescriptor must be assigned values.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # An existing metric type, see google.api.MetricDescriptor. For example, custom.
-        # googleapis.com/invoice/paid/amount.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @type = args[:type] if args.key?(:type)
+          @interval = args[:interval] if args.key?(:interval)
         end
       end
       
       # A single field of a message type.
       class Field
         include Google::Apis::Core::Hashable
-      
-        # The index of the field type in Type.oneofs, for message or enumeration types.
-        # The first type has index 1; zero means the type is not in the list.
-        # Corresponds to the JSON property `oneofIndex`
-        # @return [Fixnum]
-        attr_accessor :oneof_index
-      
-        # The field cardinality.
-        # Corresponds to the JSON property `cardinality`
-        # @return [String]
-        attr_accessor :cardinality
-      
-        # Whether to use alternative packed wire representation.
-        # Corresponds to the JSON property `packed`
-        # @return [Boolean]
-        attr_accessor :packed
-        alias_method :packed?, :packed
       
         # The string value of the default value of this field. Proto2 syntax only.
         # Corresponds to the JSON property `defaultValue`
@@ -1133,15 +799,29 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Option>]
         attr_accessor :options
       
+        # The index of the field type in Type.oneofs, for message or enumeration types.
+        # The first type has index 1; zero means the type is not in the list.
+        # Corresponds to the JSON property `oneofIndex`
+        # @return [Fixnum]
+        attr_accessor :oneof_index
+      
+        # The field cardinality.
+        # Corresponds to the JSON property `cardinality`
+        # @return [String]
+        attr_accessor :cardinality
+      
+        # Whether to use alternative packed wire representation.
+        # Corresponds to the JSON property `packed`
+        # @return [Boolean]
+        attr_accessor :packed
+        alias_method :packed?, :packed
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @oneof_index = args[:oneof_index] if args.key?(:oneof_index)
-          @cardinality = args[:cardinality] if args.key?(:cardinality)
-          @packed = args[:packed] if args.key?(:packed)
           @default_value = args[:default_value] if args.key?(:default_value)
           @name = args[:name] if args.key?(:name)
           @type_url = args[:type_url] if args.key?(:type_url)
@@ -1149,24 +829,28 @@ module Google
           @json_name = args[:json_name] if args.key?(:json_name)
           @kind = args[:kind] if args.key?(:kind)
           @options = args[:options] if args.key?(:options)
+          @oneof_index = args[:oneof_index] if args.key?(:oneof_index)
+          @cardinality = args[:cardinality] if args.key?(:cardinality)
+          @packed = args[:packed] if args.key?(:packed)
         end
       end
       
-      # The ListTimeSeries response.
-      class ListTimeSeriesResponse
+      # A specific metric, identified by specifying values for all of the labels of a
+      # MetricDescriptor.
+      class Metric
         include Google::Apis::Core::Hashable
       
-        # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
-        # Corresponds to the JSON property `nextPageToken`
+        # An existing metric type, see google.api.MetricDescriptor. For example, custom.
+        # googleapis.com/invoice/paid/amount.
+        # Corresponds to the JSON property `type`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :type
       
-        # One or more time series that match the filter included in the request.
-        # Corresponds to the JSON property `timeSeries`
-        # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
-        attr_accessor :time_series
+        # The set of label values that uniquely identify this metric. All labels listed
+        # in the MetricDescriptor must be assigned values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         def initialize(**args)
            update!(**args)
@@ -1174,8 +858,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @time_series = args[:time_series] if args.key?(:time_series)
+          @type = args[:type] if args.key?(:type)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -1207,6 +891,33 @@ module Google
           @key = args[:key] if args.key?(:key)
           @description = args[:description] if args.key?(:description)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # The ListTimeSeries response.
+      class ListTimeSeriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # One or more time series that match the filter included in the request.
+        # Corresponds to the JSON property `timeSeries`
+        # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
+        attr_accessor :time_series
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_series = args[:time_series] if args.key?(:time_series)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1283,16 +994,6 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
-        # The list of fields.
-        # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::MonitoringV3::Field>]
-        attr_accessor :fields
-      
-        # The fully qualified message name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The list of types appearing in oneof definitions in this type.
         # Corresponds to the JSON property `oneofs`
         # @return [Array<String>]
@@ -1314,18 +1015,317 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Option>]
         attr_accessor :options
       
+        # The list of fields.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::MonitoringV3::Field>]
+        attr_accessor :fields
+      
+        # The fully qualified message name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
-          @name = args[:name] if args.key?(:name)
           @oneofs = args[:oneofs] if args.key?(:oneofs)
           @syntax = args[:syntax] if args.key?(:syntax)
           @source_context = args[:source_context] if args.key?(:source_context)
           @options = args[:options] if args.key?(:options)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # BucketOptions describes the bucket boundaries used to create a histogram for
+      # the distribution. The buckets can be in a linear sequence, an exponential
+      # sequence, or each bucket can be specified explicitly. BucketOptions does not
+      # include the number of values in each bucket.A bucket has an inclusive lower
+      # bound and exclusive upper bound for the values that are counted for that
+      # bucket. The upper bound of a bucket must be strictly greater than the lower
+      # bound. The sequence of N buckets for a distribution consists of an underflow
+      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+      # span the whole range of finite values: lower bound of the underflow bucket is -
+      # infinity and the upper bound of the overflow bucket is +infinity. The finite
+      # buckets are so-called because both bounds are finite.
+      class BucketOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a linear sequence of buckets that all have the same width (except
+        # overflow and underflow). Each bucket represents a constant absolute
+        # uncertainty on the specific value in the bucket.There are num_finite_buckets +
+        # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
+        # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
+        # .
+        # Corresponds to the JSON property `linearBuckets`
+        # @return [Google::Apis::MonitoringV3::Linear]
+        attr_accessor :linear_buckets
+      
+        # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
+        # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
+        # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+        # least one element. If bounds has only one element, then there are no finite
+        # buckets, and that single element is the common boundary of the overflow and
+        # underflow buckets.
+        # Corresponds to the JSON property `explicitBuckets`
+        # @return [Google::Apis::MonitoringV3::Explicit]
+        attr_accessor :explicit_buckets
+      
+        # Specifies an exponential sequence of buckets that have a width that is
+        # proportional to the value of the lower bound. Each bucket represents a
+        # constant relative uncertainty on a specific value in the bucket.There are
+        # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+        # N): scale * (growth_factor ^ (i - 1)).
+        # Corresponds to the JSON property `exponentialBuckets`
+        # @return [Google::Apis::MonitoringV3::Exponential]
+        attr_accessor :exponential_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+          @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
+          @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
+        end
+      end
+      
+      # A single data point from a collectd-based plugin.
+      class CollectdValue
+        include Google::Apis::Core::Hashable
+      
+        # A single strongly-typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::MonitoringV3::TypedValue]
+        attr_accessor :value
+      
+        # The type of measurement.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [String]
+        attr_accessor :data_source_type
+      
+        # The data source for the collectd value. For example there are two data sources
+        # for network measurements: "rx" and "tx".
+        # Corresponds to the JSON property `dataSourceName`
+        # @return [String]
+        attr_accessor :data_source_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+          @data_source_name = args[:data_source_name] if args.key?(:data_source_name)
+        end
+      end
+      
+      # SourceContext represents information about the source of a protobuf element,
+      # like the file in which it is defined.
+      class SourceContext
+        include Google::Apis::Core::Hashable
+      
+        # The path-qualified name of the .proto file that contained the associated
+        # protobuf element. For example: "google/protobuf/source_context.proto".
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_name = args[:file_name] if args.key?(:file_name)
+        end
+      end
+      
+      # Defines a metric type and its schema. Once a metric descriptor is created,
+      # deleting or altering it stops data collection and makes the metric type's
+      # existing data unusable.
+      class MetricDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # The metric type, including its DNS name prefix. The type is not URL-encoded.
+        # All user-defined custom metric types have the DNS name custom.googleapis.com.
+        # Metric types should use a natural hierarchical grouping. For example:
+        # "custom.googleapis.com/invoice/paid/amount"
+        # "appengine.googleapis.com/http/server/response_latencies"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Whether the measurement is an integer, a floating-point number, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        # Whether the metric records instantaneous values, changes to a value, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
+        # Corresponds to the JSON property `metricKind`
+        # @return [String]
+        attr_accessor :metric_kind
+      
+        # A concise name for the metric, which can be displayed in user interfaces. Use
+        # sentence case without an ending period, for example "Request count".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A detailed description of the metric, which can be used in documentation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The unit in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
+        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
+        # standard:Basic units (UNIT)
+        # bit bit
+        # By byte
+        # s second
+        # min minute
+        # h hour
+        # d dayPrefixes (PREFIX)
+        # k kilo (10**3)
+        # M mega (10**6)
+        # G giga (10**9)
+        # T tera (10**12)
+        # P peta (10**15)
+        # E exa (10**18)
+        # Z zetta (10**21)
+        # Y yotta (10**24)
+        # m milli (10**-3)
+        # u micro (10**-6)
+        # n nano (10**-9)
+        # p pico (10**-12)
+        # f femto (10**-15)
+        # a atto (10**-18)
+        # z zepto (10**-21)
+        # y yocto (10**-24)
+        # Ki kibi (2**10)
+        # Mi mebi (2**20)
+        # Gi gibi (2**30)
+        # Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/
+        # s.The grammar also includes these connectors:
+        # / division (as an infix operator, e.g. 1/s).
+        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
+        # as follows:
+        # Expression = Component ` "." Component ` ` "/" Component ` ;
+        # Component = [ PREFIX ] UNIT [ Annotation ]
+        # | Annotation
+        # | "1"
+        # ;
+        # Annotation = "`" NAME "`" ;
+        # Notes:
+        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
+        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
+        # s.
+        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
+        # or '`'.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The set of labels that can be used to describe a specific instance of this
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
+        attr_accessor :labels
+      
+        # The resource name of the metric descriptor. Depending on the implementation,
+        # the name typically includes: (1) the parent resource name that defines the
+        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
+        # which also appears in the type field of this descriptor. For example,
+        # following is the resource name of a custom metric within the GCP project my-
+        # project-id:
+        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
+        # 2Fpaid%2Famount"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value_type = args[:value_type] if args.key?(:value_type)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @description = args[:description] if args.key?(:description)
+          @unit = args[:unit] if args.key?(:unit)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The range of the population values.
+      class Range
+        include Google::Apis::Core::Hashable
+      
+        # The minimum of the population values.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        # The maximum of the population values.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min = args[:min] if args.key?(:min)
+          @max = args[:max] if args.key?(:max)
+        end
+      end
+      
+      # The ListGroups response.
+      class ListGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The groups that match the specified filters.
+        # Corresponds to the JSON property `group`
+        # @return [Array<Google::Apis::MonitoringV3::Group>]
+        attr_accessor :group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @group = args[:group] if args.key?(:group)
         end
       end
     end

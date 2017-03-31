@@ -4,7 +4,8 @@
 
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
-API_IDS=(adexchangebuyer:v1.4 \
+API_IDS=(acceleratedmobilepageurl:v1 \
+  adexchangebuyer:v1.4 \
   adexchangebuyer2:v2beta1 \
   adexchangeseller:v2.0 \
   admin:directory_v1 \
@@ -16,7 +17,7 @@ API_IDS=(adexchangebuyer:v1.4 \
   analyticsreporting:v4 \
   androidenterprise:v1 \
   androidpublisher:v2 \
-  appengine:v1beta5 \
+  appengine:v1 \
   appsactivity:v1 \
   appstate:v1 \
   autoscaler:v1beta2 \
@@ -29,6 +30,8 @@ API_IDS=(adexchangebuyer:v1.4 \
   cloudbilling:v1 \
   cloudbuild:v1 \
   clouddebugger:v2 \
+  clouderrorreporting:v1beta1 \
+  cloudfunctions:v1 \
   cloudkms:v1 \
   cloudkms:v1beta1 \
   cloudlatencytest:v2 \
@@ -56,6 +59,8 @@ API_IDS=(adexchangebuyer:v1.4 \
   doubleclicksearch:v2 \
   drive:v2 \
   drive:v3 \
+  firebasedynamiclinks:v1 \
+  firebaserules:v1 \
   fitness:v1 \
   fusiontables:v2 \
   games:v1 \
@@ -70,12 +75,15 @@ API_IDS=(adexchangebuyer:v1.4 \
   identitytoolkit:v3 \
   kgsearch:v1 \
   language:v1beta1 \
+  language:v1 \
   licensing:v1 \
   logging:v2beta1 \
+  logging:v2 \
   manager:v1beta2 \
   manufacturers:v1 \
   mapsengine:v1 \
   mirror:v1 \
+  ml:v1 \
   oauth2:v2 \
   pagespeedonline:v2 \
   partners:v2 \
@@ -90,20 +98,32 @@ API_IDS=(adexchangebuyer:v1.4 \
   replicapoolupdater:v1beta1 \
   reseller:v1 \
   resourceviews:v1beta2 \
+  runtimeconfig:v1 \
   script:v1 \
+  searchconsole:v1 \
+  servicecontrol:v1 \
+  servicemanagement:v1 \
+  serviceuser:v1 \
   sheets:v4 \
   siteVerification:v1 \
   slides:v1 \
+  sourcerepo:v1 \
+  spanner:v1 \
   speech:v1beta1 \
   sqladmin:v1beta4 \
   storage:v1 \
   storagetransfer:v1 \
+  surveys:v2 \
   tagmanager:v1 \
+  tagmanager:v2 \
   taskqueue:v1beta2 \
   tasks:v1 \
+  toolresults:v1beta3 \
+  tracing:v1 \
   translate:v2 \
   urlshortener:v1 \
   vision:v1 \
+  webfonts:v1 \
   webmasters:v3 \
   youtube:v3 \
   youtubeAnalytics:v1 \

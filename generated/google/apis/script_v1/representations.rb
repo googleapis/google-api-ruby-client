@@ -61,8 +61,8 @@ module Google
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :function, as: 'function'
           property :line_number, as: 'lineNumber'
+          property :function, as: 'function'
         end
       end
       

@@ -3491,6 +3491,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `imageBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :image_bytes
       

@@ -812,6 +812,7 @@ module Google
         # Returned in messages.get and drafts.get responses when the format=RAW
         # parameter is supplied.
         # Corresponds to the JSON property `raw`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :raw
       
@@ -925,6 +926,7 @@ module Google
         # is sent as a separate attachment. An attachment ID is present if the body data
         # is contained in a separate attachment.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       
@@ -1215,6 +1217,7 @@ module Google
         # PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
         # appropriately.
         # Corresponds to the JSON property `pkcs12`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :pkcs12
       

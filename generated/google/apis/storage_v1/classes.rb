@@ -56,6 +56,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # User-provided labels, in key/value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The bucket's lifecycle configuration. See lifecycle management for more
         # information.
         # Corresponds to the JSON property `lifecycle`
@@ -144,6 +149,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @lifecycle = args[:lifecycle] if args.key?(:lifecycle)
           @location = args[:location] if args.key?(:location)
           @logging = args[:logging] if args.key?(:logging)
@@ -765,6 +771,104 @@ module Google
         end
       end
       
+      # A subscription to receive Google PubSub notifications.
+      class Notification
+        include Google::Apis::Core::Hashable
+      
+        # An optional list of additional attributes to attach to each Cloud PubSub
+        # message published for this notification subscription.
+        # Corresponds to the JSON property `custom_attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_attributes
+      
+        # HTTP 1.1 Entity tag for this subscription notification.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If present, only send notifications about listed event types. If empty, sent
+        # notifications for all event types.
+        # Corresponds to the JSON property `event_types`
+        # @return [Array<String>]
+        attr_accessor :event_types
+      
+        # The ID of the notification.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The kind of item this is. For notifications, this is always storage#
+        # notification.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # If present, only apply this notification configuration to object names that
+        # begin with this prefix.
+        # Corresponds to the JSON property `object_name_prefix`
+        # @return [String]
+        attr_accessor :object_name_prefix
+      
+        # The desired content of the Payload.
+        # Corresponds to the JSON property `payload_format`
+        # @return [String]
+        attr_accessor :payload_format
+      
+        # The canonical URL of this notification.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The Cloud PubSub topic to which this subscription publishes. Formatted as: '//
+        # pubsub.googleapis.com/projects/`project-identifier`/topics/`my-topic`'
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
+          @etag = args[:etag] if args.key?(:etag)
+          @event_types = args[:event_types] if args.key?(:event_types)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @object_name_prefix = args[:object_name_prefix] if args.key?(:object_name_prefix)
+          @payload_format = args[:payload_format] if args.key?(:payload_format)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # A list of notification subscriptions.
+      class Notifications
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::Notification>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of notifications, this is always storage#
+        # notifications.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # An object.
       class Object
         include Google::Apis::Core::Hashable
@@ -1210,6 +1314,7 @@ module Google
       
         # HTTP 1.1  Entity tag for the policy.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -1359,6 +1464,32 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @rewrite_token = args[:rewrite_token] if args.key?(:rewrite_token)
           @total_bytes_rewritten = args[:total_bytes_rewritten] if args.key?(:total_bytes_rewritten)
+        end
+      end
+      
+      # A subscription to receive Google PubSub notifications.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the notification.
+        # Corresponds to the JSON property `email_address`
+        # @return [String]
+        attr_accessor :email_address
+      
+        # The kind of item this is. For notifications, this is always storage#
+        # notification.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       

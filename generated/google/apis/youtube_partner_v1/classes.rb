@@ -2618,6 +2618,11 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # The list of customer IDs.
+        # Corresponds to the JSON property `custom_id`
+        # @return [Array<String>]
+        attr_accessor :custom_id
+      
         # An ID that YouTube assigns and uses to uniquely identify the package.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -2636,6 +2641,27 @@ module Google
         # @return [String]
         attr_accessor :locale
       
+        # The package name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The package status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The package creation time. The value is specified in RFC 3339 (YYYY-MM-DDThh:
+        # mm:ss.000Z) format.
+        # Corresponds to the JSON property `timeCreated`
+        # @return [DateTime]
+        attr_accessor :time_created
+      
+        # The package type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # The uploader name.
         # Corresponds to the JSON property `uploaderName`
         # @return [String]
@@ -2648,9 +2674,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @custom_id = args[:custom_id] if args.key?(:custom_id)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @locale = args[:locale] if args.key?(:locale)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @time_created = args[:time_created] if args.key?(:time_created)
+          @type = args[:type] if args.key?(:type)
           @uploader_name = args[:uploader_name] if args.key?(:uploader_name)
         end
       end

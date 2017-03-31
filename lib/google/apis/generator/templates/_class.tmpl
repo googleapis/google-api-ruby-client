@@ -7,6 +7,9 @@ class <%= cls.generated_class_name %><% if cls.base_ref %> < <%= cls.base_ref.ge
 
   # <%= block_comment(property.description, 2, 1) %>
   # Corresponds to the JSON property `<%= property.name %>`
+<% if property.format == 'byte' -%>
+  # NOTE: Values are automatically base64 encoded/decoded in the client library.
+<% end -%>
   # @return [<%= property.generated_type %>]
   attr_accessor :<%= property.generated_name %>
 <%     if property.type == 'boolean' -%>
