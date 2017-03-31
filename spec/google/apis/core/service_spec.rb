@@ -93,6 +93,14 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
   end
 
+  context 'with proxy' do
+
+    it 'should allow proxy URLs as strings' do
+      Google::Apis::ClientOptions.default.proxy_url = 'http://gateway.example.com:1234'
+      service.client
+    end
+  end
+
   context 'when making simple commands' do
     let(:command) { service.send(:make_simple_command, :get, 'zoo/animals', authorization: 'foo') }
 
