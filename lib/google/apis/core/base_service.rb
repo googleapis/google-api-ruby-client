@@ -84,6 +84,8 @@ module Google
       # Base service for all APIs. Not to be used directly.
       #
       class BaseService
+        include Logging
+
         # Root URL (host/port) for the API
         # @return [Addressable::URI]
         attr_accessor :root_url
@@ -393,6 +395,8 @@ module Google
           end
           client.follow_redirect_count = 5
           client.default_header = { 'User-Agent' => user_agent }
+
+          client.debug_dev = logger if logger.level == Logger::DEBUG
           client
         end
 

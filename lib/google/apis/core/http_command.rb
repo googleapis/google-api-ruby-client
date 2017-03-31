@@ -155,6 +155,12 @@ module Google
           else
             @form_encoded = false
           end
+
+          unless body
+            self.header['Content-Type'] = 'application/json'
+            self.header['Content-Length'] = 0
+          end
+
         end
 
         # Release any resources used by this command
