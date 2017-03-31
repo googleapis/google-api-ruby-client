@@ -27,7 +27,9 @@ module Google
       :header,
       :timeout_sec,
       :open_timeout_sec,
-      :normalize_unicode)
+      :normalize_unicode,
+      :skip_serialization,
+      :skip_deserialization)
 
     # General client options
     class ClientOptions
@@ -59,6 +61,10 @@ module Google
       #   @return [Hash<String,String] Additional HTTP headers to include in requests
       # @!attribute [rw] normalize_unicode
       #   @return [Boolean] True if unicode strings should be normalized in path parameters
+      # @!attribute [rw] skip_serialization
+      #   @return [Boolean] True if body object should be treated as raw text instead of an object.
+      # @!attribute [rw] skip_deserialization
+      #   @return [Boolean] True if response should be returned in raw form instead of deserialized.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -84,5 +90,7 @@ module Google
     RequestOptions.default.retries = 0
     RequestOptions.default.open_timeout_sec = 20
     RequestOptions.default.normalize_unicode = false
+    RequestOptions.default.skip_serialization = false
+    RequestOptions.default.skip_deserialization = false
   end
 end

@@ -55,7 +55,11 @@ module Google
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
           if request_representation && request_object
             header['Content-Type'] ||= JSON_CONTENT_TYPE
-            self.body = request_representation.new(request_object).to_json(user_options: { skip_undefined: true })
+            if options && options.skip_serialization
+              self.body = request_object
+            else
+              self.body = request_representation.new(request_object).to_json(user_options: { skip_undefined: true })
+            end
           end
           super
         end
@@ -71,6 +75,7 @@ module Google
         # noinspection RubyUnusedLocalVariable
         def decode_response_body(content_type, body)
           return super unless response_representation
+          return super if options && options.skip_deserialization
           return super if content_type.nil?
           return nil unless content_type.start_with?(JSON_CONTENT_TYPE)
           instance = response_class.new

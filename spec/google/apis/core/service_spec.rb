@@ -95,6 +95,10 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   context 'with proxy' do
 
+    after(:example) do
+      Google::Apis::ClientOptions.default.proxy_url = nil
+    end
+
     it 'should allow proxy URLs as strings' do
       Google::Apis::ClientOptions.default.proxy_url = 'http://gateway.example.com:1234'
       service.client

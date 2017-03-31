@@ -63,6 +63,29 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
   end
 
+  context('with a raw request body') do
+    let(:command) do
+      request = model_class.new
+      command = Google::Apis::Core::ApiCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
+      command.request_representation = representer_class
+      command.request_object = %({"value": "hello"})
+      command.options.skip_serialization = true
+      command
+    end
+
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+          .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
+    end
+
+    it 'should allow raw JSON if skip_serialization = true' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req|
+        be_json_eql(%({"value":"hello"})).matches?(req.body)
+      end).to have_been_made
+    end
+  end
+
   context('with a JSON response') do
     let(:command) do
       command = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -84,6 +107,12 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     it 'should return a populated object' do
       result = command.execute(client)
       expect(result.value).to eql 'hello'
+    end
+
+    it 'should return a raw JSON if skip_deserialization true' do
+      command.options.skip_deserialization = true
+      result = command.execute(client)
+      expect(result).to eql %({"value" : "hello"})
     end
   end
 

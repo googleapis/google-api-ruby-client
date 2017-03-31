@@ -156,10 +156,7 @@ module Google
             @form_encoded = false
           end
 
-          unless body
-            self.header['Content-Type'] = 'application/json'
-            self.header['Content-Length'] = 0
-          end
+          self.body = '' unless self.body
 
         end
 
