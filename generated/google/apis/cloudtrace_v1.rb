@@ -30,14 +30,14 @@ module Google
       VERSION = 'V1'
       REVISION = '20170320'
 
+      # Read Trace data for a project or application
+      AUTH_TRACE_READONLY = 'https://www.googleapis.com/auth/trace.readonly'
+
       # Write Trace data for a project or application
       AUTH_TRACE_APPEND = 'https://www.googleapis.com/auth/trace.append'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Read Trace data for a project or application
-      AUTH_TRACE_READONLY = 'https://www.googleapis.com/auth/trace.readonly'
     end
   end
 end

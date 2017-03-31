@@ -2754,6 +2754,7 @@ module Google
           # Device token supplied by an iOS system call to register for remote
           # notifications. Encode this field as web-safe base64.
           # Corresponds to the JSON property `apns_device_token`
+          # NOTE: Values are automatically base64 encoded/decoded in the client library.
           # @return [String]
           attr_accessor :apns_device_token
         
@@ -3022,6 +3023,7 @@ module Google
         # string. This is a developer-specified binary blob with size between 0 and 2 KB
         # before encoding.
         # Corresponds to the JSON property `completionRewardData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :completion_reward_data
       
@@ -4318,6 +4320,7 @@ module Google
         # The byte representation of the data (limited to 128 kB), as a Base64-encoded
         # string with the URL_SAFE encoding option.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       
@@ -4353,6 +4356,7 @@ module Google
         # The byte representation of the data (limited to 128 kB), as a Base64-encoded
         # string with the URL_SAFE encoding option.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       

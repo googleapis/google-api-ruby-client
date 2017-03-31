@@ -22,25 +22,19 @@ module Google
   module Apis
     module FirebasedynamiclinksV1
       
-      class ITunesConnectAnalytics
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SocialMetaTagInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AndroidInfo
+      class DynamicLinkWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DynamicLinkWarning
+      class AndroidInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,39 +89,35 @@ module Google
       end
       
       class ITunesConnectAnalytics
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :at, as: 'at'
-          property :ct, as: 'ct'
-          property :mt, as: 'mt'
-          property :pt, as: 'pt'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SocialMetaTagInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :social_description, as: 'socialDescription'
           property :social_title, as: 'socialTitle'
           property :social_image_link, as: 'socialImageLink'
-          property :social_description, as: 'socialDescription'
-        end
-      end
-      
-      class AndroidInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :android_link, as: 'androidLink'
-          property :android_fallback_link, as: 'androidFallbackLink'
-          property :android_package_name, as: 'androidPackageName'
-          property :android_min_package_version_code, as: 'androidMinPackageVersionCode'
         end
       end
       
       class DynamicLinkWarning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :warning_message, as: 'warningMessage'
           property :warning_code, as: 'warningCode'
+          property :warning_message, as: 'warningMessage'
+        end
+      end
+      
+      class AndroidInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_package_name, as: 'androidPackageName'
+          property :android_min_package_version_code, as: 'androidMinPackageVersionCode'
+          property :android_link, as: 'androidLink'
+          property :android_fallback_link, as: 'androidFallbackLink'
         end
       end
       
@@ -141,21 +131,21 @@ module Google
       class IosInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ios_fallback_link, as: 'iosFallbackLink'
-          property :ios_app_store_id, as: 'iosAppStoreId'
           property :ios_ipad_fallback_link, as: 'iosIpadFallbackLink'
           property :ios_ipad_bundle_id, as: 'iosIpadBundleId'
           property :ios_custom_scheme, as: 'iosCustomScheme'
           property :ios_bundle_id, as: 'iosBundleId'
+          property :ios_fallback_link, as: 'iosFallbackLink'
+          property :ios_app_store_id, as: 'iosAppStoreId'
         end
       end
       
       class AnalyticsInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :itunes_connect_analytics, as: 'itunesConnectAnalytics', class: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics, decorator: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics::Representation
-      
           property :google_play_analytics, as: 'googlePlayAnalytics', class: Google::Apis::FirebasedynamiclinksV1::GooglePlayAnalytics, decorator: Google::Apis::FirebasedynamiclinksV1::GooglePlayAnalytics::Representation
+      
+          property :itunes_connect_analytics, as: 'itunesConnectAnalytics', class: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics, decorator: Google::Apis::FirebasedynamiclinksV1::ITunesConnectAnalytics::Representation
       
         end
       end
@@ -191,30 +181,40 @@ module Google
       class GooglePlayAnalytics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :utm_content, as: 'utmContent'
           property :utm_medium, as: 'utmMedium'
           property :utm_term, as: 'utmTerm'
           property :utm_source, as: 'utmSource'
           property :utm_campaign, as: 'utmCampaign'
           property :gclid, as: 'gclid'
-          property :utm_content, as: 'utmContent'
         end
       end
       
       class DynamicLinkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dynamic_link_domain, as: 'dynamicLinkDomain'
-          property :link, as: 'link'
-          property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
-      
-          property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
-      
           property :android_info, as: 'androidInfo', class: Google::Apis::FirebasedynamiclinksV1::AndroidInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AndroidInfo::Representation
       
           property :navigation_info, as: 'navigationInfo', class: Google::Apis::FirebasedynamiclinksV1::NavigationInfo, decorator: Google::Apis::FirebasedynamiclinksV1::NavigationInfo::Representation
       
           property :analytics_info, as: 'analyticsInfo', class: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo::Representation
       
+          property :dynamic_link_domain, as: 'dynamicLinkDomain'
+          property :link, as: 'link'
+          property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
+      
+          property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
+      
+        end
+      end
+      
+      class ITunesConnectAnalytics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :at, as: 'at'
+          property :ct, as: 'ct'
+          property :mt, as: 'mt'
+          property :pt, as: 'pt'
         end
       end
     end

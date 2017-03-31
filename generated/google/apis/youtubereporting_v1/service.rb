@@ -34,63 +34,17 @@ module Google
       # @see https://developers.google.com/youtube/reporting/v1/reports/
       class YouTubeReportingService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
 
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
+
         def initialize
           super('https://youtubereporting.googleapis.com/', '')
-        end
-        
-        # Lists report types.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of
-        #   ListReportTypesResponse.next_page_token
-        #   returned in response to the previous call to the `ListReportTypes` method.
-        # @param [Boolean] include_system_managed
-        #   If set to true, also system-managed report types will be returned;
-        #   otherwise only the report types that can be used to create new reporting
-        #   jobs will be returned.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer report types than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubereportingV1::ListReportTypesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubereportingV1::ListReportTypesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_report_types(page_token: nil, include_system_managed: nil, page_size: nil, on_behalf_of_content_owner: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/reportTypes', options)
-          command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
-          command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
         end
         
         # Method for media download. Download is supported
@@ -372,12 +326,58 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Lists report types.
+        # @param [String] on_behalf_of_content_owner
+        #   The content owner's external ID on which behalf the user is acting on. If
+        #   not set, the user is acting for himself (his own channel).
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of
+        #   ListReportTypesResponse.next_page_token
+        #   returned in response to the previous call to the `ListReportTypes` method.
+        # @param [Boolean] include_system_managed
+        #   If set to true, also system-managed report types will be returned;
+        #   otherwise only the report types that can be used to create new reporting
+        #   jobs will be returned.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer report types than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubereportingV1::ListReportTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubereportingV1::ListReportTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_report_types(on_behalf_of_content_owner: nil, page_token: nil, include_system_managed: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/reportTypes', options)
+          command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
+          command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

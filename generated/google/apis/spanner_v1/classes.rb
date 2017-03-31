@@ -22,26 +22,21 @@ module Google
   module Apis
     module SpannerV1
       
-      # `Type` indicates the type of a Cloud Spanner value, as might be stored in a
-      # table cell or returned from an SQL query.
-      class Type
+      # The response for ListInstanceConfigs.
+      class ListInstanceConfigsResponse
         include Google::Apis::Core::Hashable
       
-        # `StructType` defines the fields of a STRUCT type.
-        # Corresponds to the JSON property `structType`
-        # @return [Google::Apis::SpannerV1::StructType]
-        attr_accessor :struct_type
-      
-        # `Type` indicates the type of a Cloud Spanner value, as might be stored in a
-        # table cell or returned from an SQL query.
-        # Corresponds to the JSON property `arrayElementType`
-        # @return [Google::Apis::SpannerV1::Type]
-        attr_accessor :array_element_type
-      
-        # Required. The TypeCode for this type.
-        # Corresponds to the JSON property `code`
+        # `next_page_token` can be sent in a subsequent
+        # ListInstanceConfigs call to
+        # fetch more of the matching instance configurations.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :code
+        attr_accessor :next_page_token
+      
+        # The list of requested instance configurations.
+        # Corresponds to the JSON property `instanceConfigs`
+        # @return [Array<Google::Apis::SpannerV1::InstanceConfig>]
+        attr_accessor :instance_configs
       
         def initialize(**args)
            update!(**args)
@@ -49,445 +44,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @struct_type = args[:struct_type] if args.key?(:struct_type)
-          @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
-          @code = args[:code] if args.key?(:code)
-        end
-      end
-      
-      # Node information for nodes appearing in a QueryPlan.plan_nodes.
-      class PlanNode
-        include Google::Apis::Core::Hashable
-      
-        # Attributes relevant to the node contained in a group of key-value pairs.
-        # For example, a Parameter Reference node could have the following
-        # information in its metadata:
-        # `
-        # "parameter_reference": "param1",
-        # "parameter_type": "array"
-        # `
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The execution statistics associated with the node, contained in a group of
-        # key-value pairs. Only present if the plan was returned as a result of a
-        # profile query. For example, number of executions, number of rows/time per
-        # execution etc.
-        # Corresponds to the JSON property `executionStats`
-        # @return [Hash<String,Object>]
-        attr_accessor :execution_stats
-      
-        # Condensed representation of a node and its subtree. Only present for
-        # `SCALAR` PlanNode(s).
-        # Corresponds to the JSON property `shortRepresentation`
-        # @return [Google::Apis::SpannerV1::ShortRepresentation]
-        attr_accessor :short_representation
-      
-        # The `PlanNode`'s index in node list.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        # The display name for the node.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Used to determine the type of node. May be needed for visualizing
-        # different kinds of nodes differently. For example, If the node is a
-        # SCALAR node, it will have a condensed representation
-        # which can be used to directly embed a description of the node in its
-        # parent.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # List of child node `index`es and their relationship to this parent.
-        # Corresponds to the JSON property `childLinks`
-        # @return [Array<Google::Apis::SpannerV1::ChildLink>]
-        attr_accessor :child_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @execution_stats = args[:execution_stats] if args.key?(:execution_stats)
-          @short_representation = args[:short_representation] if args.key?(:short_representation)
-          @index = args[:index] if args.key?(:index)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @kind = args[:kind] if args.key?(:kind)
-          @child_links = args[:child_links] if args.key?(:child_links)
-        end
-      end
-      
-      # Specifies the audit configuration for a service.
-      # It consists of which permission types are logged, and what identities, if
-      # any, are exempted from logging.
-      # An AuditConifg must have one or more AuditLogConfigs.
-      class AuditConfig
-        include Google::Apis::Core::Hashable
-      
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `resourcemanager`, `storage`, `compute`.
-        # `allServices` is a special value that covers all services.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
-        # The configuration for logging of each type of permission.
-        # Next ID: 4
-        # Corresponds to the JSON property `auditLogConfigs`
-        # @return [Array<Google::Apis::SpannerV1::AuditLogConfig>]
-        attr_accessor :audit_log_configs
-      
-        # Specifies the identities that are exempted from "data access" audit
-        # logging for the `service` specified above.
-        # Follows the same format of Binding.members.
-        # This field is deprecated in favor of per-permission-type exemptions.
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service = args[:service] if args.key?(:service)
-          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-        end
-      end
-      
-      # Metadata type for the operation returned by
-      # CreateInstance.
-      class CreateInstanceMetadata
-        include Google::Apis::Core::Hashable
-      
-        # An isolated set of Cloud Spanner resources on which databases can be hosted.
-        # Corresponds to the JSON property `instance`
-        # @return [Google::Apis::SpannerV1::Instance]
-        attr_accessor :instance
-      
-        # The time at which the
-        # CreateInstance request was
-        # received.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # The time at which this operation was cancelled. If set, this operation is
-        # in the process of undoing itself (which is guaranteed to succeed) and
-        # cannot be cancelled again.
-        # Corresponds to the JSON property `cancelTime`
-        # @return [String]
-        attr_accessor :cancel_time
-      
-        # The time at which this operation failed or was completed successfully.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @instance = args[:instance] if args.key?(:instance)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-        end
-      end
-      
-      # Metadata associated with a parent-child relationship appearing in a
-      # PlanNode.
-      class ChildLink
-        include Google::Apis::Core::Hashable
-      
-        # The node to which the link points.
-        # Corresponds to the JSON property `childIndex`
-        # @return [Fixnum]
-        attr_accessor :child_index
-      
-        # Only present if the child node is SCALAR and corresponds
-        # to an output variable of the parent node. The field carries the name of
-        # the output variable.
-        # For example, a `TableScan` operator that reads rows from a table will
-        # have child links to the `SCALAR` nodes representing the output variables
-        # created for each column that is read by the operator. The corresponding
-        # `variable` fields will be set to the variable names assigned to the
-        # columns.
-        # Corresponds to the JSON property `variable`
-        # @return [String]
-        attr_accessor :variable
-      
-        # The type of the link. For example, in Hash Joins this could be used to
-        # distinguish between the build child and the probe child, or in the case
-        # of the child being an output variable, to represent the tag associated
-        # with the output variable.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @child_index = args[:child_index] if args.key?(:child_index)
-          @variable = args[:variable] if args.key?(:variable)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Arguments to delete operations.
-      class Delete
-        include Google::Apis::Core::Hashable
-      
-        # `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All
-        # the keys are expected to be in the same table or index. The keys need
-        # not be sorted in any particular way.
-        # If the same key is specified multiple times in the set (for example
-        # if two ranges, two keys, or a key and a range overlap), Cloud Spanner
-        # behaves as if the key were only specified once.
-        # Corresponds to the JSON property `keySet`
-        # @return [Google::Apis::SpannerV1::KeySet]
-        attr_accessor :key_set
-      
-        # Required. The table whose rows will be deleted.
-        # Corresponds to the JSON property `table`
-        # @return [String]
-        attr_accessor :table
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key_set = args[:key_set] if args.key?(:key_set)
-          @table = args[:table] if args.key?(:table)
-        end
-      end
-      
-      # The request for Commit.
-      class CommitRequest
-        include Google::Apis::Core::Hashable
-      
-        # # Transactions
-        # Each session can have at most one active transaction at a time. After the
-        # active transaction is completed, the session can immediately be
-        # re-used for the next transaction. It is not necessary to create a
-        # new session for each transaction.
-        # # Transaction Modes
-        # Cloud Spanner supports two transaction modes:
-        # 1. Locking read-write. This type of transaction is the only way
-        # to write data into Cloud Spanner. These transactions rely on
-        # pessimistic locking and, if necessary, two-phase commit.
-        # Locking read-write transactions may abort, requiring the
-        # application to retry.
-        # 2. Snapshot read-only. This transaction type provides guaranteed
-        # consistency across several reads, but does not allow
-        # writes. Snapshot read-only transactions can be configured to
-        # read at timestamps in the past. Snapshot read-only
-        # transactions do not need to be committed.
-        # For transactions that only read, snapshot read-only transactions
-        # provide simpler semantics and are almost always faster. In
-        # particular, read-only transactions do not take locks, so they do
-        # not conflict with read-write transactions. As a consequence of not
-        # taking locks, they also do not abort, so retry loops are not needed.
-        # Transactions may only read/write data in a single database. They
-        # may, however, read/write data in different tables within that
-        # database.
-        # ## Locking Read-Write Transactions
-        # Locking transactions may be used to atomically read-modify-write
-        # data anywhere in a database. This type of transaction is externally
-        # consistent.
-        # Clients should attempt to minimize the amount of time a transaction
-        # is active. Faster transactions commit with higher probability
-        # and cause less contention. Cloud Spanner attempts to keep read locks
-        # active as long as the transaction continues to do reads, and the
-        # transaction has not been terminated by
-        # Commit or
-        # Rollback.  Long periods of
-        # inactivity at the client may cause Cloud Spanner to release a
-        # transaction's locks and abort it.
-        # Reads performed within a transaction acquire locks on the data
-        # being read. Writes can only be done at commit time, after all reads
-        # have been completed.
-        # Conceptually, a read-write transaction consists of zero or more
-        # reads or SQL queries followed by
-        # Commit. At any time before
-        # Commit, the client can send a
-        # Rollback request to abort the
-        # transaction.
-        # ### Semantics
-        # Cloud Spanner can commit the transaction if all read locks it acquired
-        # are still valid at commit time, and it is able to acquire write
-        # locks for all writes. Cloud Spanner can abort the transaction for any
-        # reason. If a commit attempt returns `ABORTED`, Cloud Spanner guarantees
-        # that the transaction has not modified any user data in Cloud Spanner.
-        # Unless the transaction commits, Cloud Spanner makes no guarantees about
-        # how long the transaction's locks were held for. It is an error to
-        # use Cloud Spanner locks for any sort of mutual exclusion other than
-        # between Cloud Spanner transactions themselves.
-        # ### Retrying Aborted Transactions
-        # When a transaction aborts, the application can choose to retry the
-        # whole transaction again. To maximize the chances of successfully
-        # committing the retry, the client should execute the retry in the
-        # same session as the original attempt. The original session's lock
-        # priority increases with each consecutive abort, meaning that each
-        # attempt has a slightly better chance of success than the previous.
-        # Under some circumstances (e.g., many transactions attempting to
-        # modify the same row(s)), a transaction can abort many times in a
-        # short period before successfully committing. Thus, it is not a good
-        # idea to cap the number of retries a transaction can attempt;
-        # instead, it is better to limit the total amount of wall time spent
-        # retrying.
-        # ### Idle Transactions
-        # A transaction is considered idle if it has no outstanding reads or
-        # SQL queries and has not started a read or SQL query within the last 10
-        # seconds. Idle transactions can be aborted by Cloud Spanner so that they
-        # don't hold on to locks indefinitely. In that case, the commit will
-        # fail with error `ABORTED`.
-        # If this behavior is undesirable, periodically executing a simple
-        # SQL query in the transaction (e.g., `SELECT 1`) prevents the
-        # transaction from becoming idle.
-        # ## Snapshot Read-Only Transactions
-        # Snapshot read-only transactions provides a simpler method than
-        # locking read-write transactions for doing several consistent
-        # reads. However, this type of transaction does not support writes.
-        # Snapshot transactions do not take locks. Instead, they work by
-        # choosing a Cloud Spanner timestamp, then executing all reads at that
-        # timestamp. Since they do not acquire locks, they do not block
-        # concurrent read-write transactions.
-        # Unlike locking read-write transactions, snapshot read-only
-        # transactions never abort. They can fail if the chosen read
-        # timestamp is garbage collected; however, the default garbage
-        # collection policy is generous enough that most applications do not
-        # need to worry about this in practice.
-        # Snapshot read-only transactions do not need to call
-        # Commit or
-        # Rollback (and in fact are not
-        # permitted to do so).
-        # To execute a snapshot transaction, the client specifies a timestamp
-        # bound, which tells Cloud Spanner how to choose a read timestamp.
-        # The types of timestamp bound are:
-        # - Strong (the default).
-        # - Bounded staleness.
-        # - Exact staleness.
-        # If the Cloud Spanner database to be read is geographically distributed,
-        # stale read-only transactions can execute more quickly than strong
-        # or read-write transaction, because they are able to execute far
-        # from the leader replica.
-        # Each type of timestamp bound is discussed in detail below.
-        # ### Strong
-        # Strong reads are guaranteed to see the effects of all transactions
-        # that have committed before the start of the read. Furthermore, all
-        # rows yielded by a single read are consistent with each other -- if
-        # any part of the read observes a transaction, all parts of the read
-        # see the transaction.
-        # Strong reads are not repeatable: two consecutive strong read-only
-        # transactions might return inconsistent results if there are
-        # concurrent writes. If consistency across reads is required, the
-        # reads should be executed within a transaction or at an exact read
-        # timestamp.
-        # See TransactionOptions.ReadOnly.strong.
-        # ### Exact Staleness
-        # These timestamp bounds execute reads at a user-specified
-        # timestamp. Reads at a timestamp are guaranteed to see a consistent
-        # prefix of the global transaction history: they observe
-        # modifications done by all transactions with a commit timestamp <=
-        # the read timestamp, and observe none of the modifications done by
-        # transactions with a larger commit timestamp. They will block until
-        # all conflicting transactions that may be assigned commit timestamps
-        # <= the read timestamp have finished.
-        # The timestamp can either be expressed as an absolute Cloud Spanner commit
-        # timestamp or a staleness relative to the current time.
-        # These modes do not require a "negotiation phase" to pick a
-        # timestamp. As a result, they execute slightly faster than the
-        # equivalent boundedly stale concurrency modes. On the other hand,
-        # boundedly stale reads usually return fresher results.
-        # See TransactionOptions.ReadOnly.read_timestamp and
-        # TransactionOptions.ReadOnly.exact_staleness.
-        # ### Bounded Staleness
-        # Bounded staleness modes allow Cloud Spanner to pick the read timestamp,
-        # subject to a user-provided staleness bound. Cloud Spanner chooses the
-        # newest timestamp within the staleness bound that allows execution
-        # of the reads at the closest available replica without blocking.
-        # All rows yielded are consistent with each other -- if any part of
-        # the read observes a transaction, all parts of the read see the
-        # transaction. Boundedly stale reads are not repeatable: two stale
-        # reads, even if they use the same staleness bound, can execute at
-        # different timestamps and thus return inconsistent results.
-        # Boundedly stale reads execute in two phases: the first phase
-        # negotiates a timestamp among all replicas needed to serve the
-        # read. In the second phase, reads are executed at the negotiated
-        # timestamp.
-        # As a result of the two phase execution, bounded staleness reads are
-        # usually a little slower than comparable exact staleness
-        # reads. However, they are typically able to return fresher
-        # results, and are more likely to execute at the closest replica.
-        # Because the timestamp negotiation requires up-front knowledge of
-        # which rows will be read, it can only be used with single-use
-        # read-only transactions.
-        # See TransactionOptions.ReadOnly.max_staleness and
-        # TransactionOptions.ReadOnly.min_read_timestamp.
-        # ### Old Read Timestamps and Garbage Collection
-        # Cloud Spanner continuously garbage collects deleted and overwritten data
-        # in the background to reclaim storage space. This process is known
-        # as "version GC". By default, version GC reclaims versions after they
-        # are one hour old. Because of this, Cloud Spanner cannot perform reads
-        # at read timestamps more than one hour in the past. This
-        # restriction also applies to in-progress reads and/or SQL queries whose
-        # timestamp become too old while executing. Reads and SQL queries with
-        # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
-        # Corresponds to the JSON property `singleUseTransaction`
-        # @return [Google::Apis::SpannerV1::TransactionOptions]
-        attr_accessor :single_use_transaction
-      
-        # The mutations to be executed when this transaction commits. All
-        # mutations are applied atomically, in the order they appear in
-        # this list.
-        # Corresponds to the JSON property `mutations`
-        # @return [Array<Google::Apis::SpannerV1::Mutation>]
-        attr_accessor :mutations
-      
-        # Commit a previously-started transaction.
-        # Corresponds to the JSON property `transactionId`
-        # @return [String]
-        attr_accessor :transaction_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
-          @mutations = args[:mutations] if args.key?(:mutations)
-          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @instance_configs = args[:instance_configs] if args.key?(:instance_configs)
         end
       end
       
@@ -677,21 +235,194 @@ module Google
         end
       end
       
-      # The response for ListInstanceConfigs.
-      class ListInstanceConfigsResponse
+      # The request for Commit.
+      class CommitRequest
         include Google::Apis::Core::Hashable
       
-        # `next_page_token` can be sent in a subsequent
-        # ListInstanceConfigs call to
-        # fetch more of the matching instance configurations.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
+        # # Transactions
+        # Each session can have at most one active transaction at a time. After the
+        # active transaction is completed, the session can immediately be
+        # re-used for the next transaction. It is not necessary to create a
+        # new session for each transaction.
+        # # Transaction Modes
+        # Cloud Spanner supports two transaction modes:
+        # 1. Locking read-write. This type of transaction is the only way
+        # to write data into Cloud Spanner. These transactions rely on
+        # pessimistic locking and, if necessary, two-phase commit.
+        # Locking read-write transactions may abort, requiring the
+        # application to retry.
+        # 2. Snapshot read-only. This transaction type provides guaranteed
+        # consistency across several reads, but does not allow
+        # writes. Snapshot read-only transactions can be configured to
+        # read at timestamps in the past. Snapshot read-only
+        # transactions do not need to be committed.
+        # For transactions that only read, snapshot read-only transactions
+        # provide simpler semantics and are almost always faster. In
+        # particular, read-only transactions do not take locks, so they do
+        # not conflict with read-write transactions. As a consequence of not
+        # taking locks, they also do not abort, so retry loops are not needed.
+        # Transactions may only read/write data in a single database. They
+        # may, however, read/write data in different tables within that
+        # database.
+        # ## Locking Read-Write Transactions
+        # Locking transactions may be used to atomically read-modify-write
+        # data anywhere in a database. This type of transaction is externally
+        # consistent.
+        # Clients should attempt to minimize the amount of time a transaction
+        # is active. Faster transactions commit with higher probability
+        # and cause less contention. Cloud Spanner attempts to keep read locks
+        # active as long as the transaction continues to do reads, and the
+        # transaction has not been terminated by
+        # Commit or
+        # Rollback.  Long periods of
+        # inactivity at the client may cause Cloud Spanner to release a
+        # transaction's locks and abort it.
+        # Reads performed within a transaction acquire locks on the data
+        # being read. Writes can only be done at commit time, after all reads
+        # have been completed.
+        # Conceptually, a read-write transaction consists of zero or more
+        # reads or SQL queries followed by
+        # Commit. At any time before
+        # Commit, the client can send a
+        # Rollback request to abort the
+        # transaction.
+        # ### Semantics
+        # Cloud Spanner can commit the transaction if all read locks it acquired
+        # are still valid at commit time, and it is able to acquire write
+        # locks for all writes. Cloud Spanner can abort the transaction for any
+        # reason. If a commit attempt returns `ABORTED`, Cloud Spanner guarantees
+        # that the transaction has not modified any user data in Cloud Spanner.
+        # Unless the transaction commits, Cloud Spanner makes no guarantees about
+        # how long the transaction's locks were held for. It is an error to
+        # use Cloud Spanner locks for any sort of mutual exclusion other than
+        # between Cloud Spanner transactions themselves.
+        # ### Retrying Aborted Transactions
+        # When a transaction aborts, the application can choose to retry the
+        # whole transaction again. To maximize the chances of successfully
+        # committing the retry, the client should execute the retry in the
+        # same session as the original attempt. The original session's lock
+        # priority increases with each consecutive abort, meaning that each
+        # attempt has a slightly better chance of success than the previous.
+        # Under some circumstances (e.g., many transactions attempting to
+        # modify the same row(s)), a transaction can abort many times in a
+        # short period before successfully committing. Thus, it is not a good
+        # idea to cap the number of retries a transaction can attempt;
+        # instead, it is better to limit the total amount of wall time spent
+        # retrying.
+        # ### Idle Transactions
+        # A transaction is considered idle if it has no outstanding reads or
+        # SQL queries and has not started a read or SQL query within the last 10
+        # seconds. Idle transactions can be aborted by Cloud Spanner so that they
+        # don't hold on to locks indefinitely. In that case, the commit will
+        # fail with error `ABORTED`.
+        # If this behavior is undesirable, periodically executing a simple
+        # SQL query in the transaction (e.g., `SELECT 1`) prevents the
+        # transaction from becoming idle.
+        # ## Snapshot Read-Only Transactions
+        # Snapshot read-only transactions provides a simpler method than
+        # locking read-write transactions for doing several consistent
+        # reads. However, this type of transaction does not support writes.
+        # Snapshot transactions do not take locks. Instead, they work by
+        # choosing a Cloud Spanner timestamp, then executing all reads at that
+        # timestamp. Since they do not acquire locks, they do not block
+        # concurrent read-write transactions.
+        # Unlike locking read-write transactions, snapshot read-only
+        # transactions never abort. They can fail if the chosen read
+        # timestamp is garbage collected; however, the default garbage
+        # collection policy is generous enough that most applications do not
+        # need to worry about this in practice.
+        # Snapshot read-only transactions do not need to call
+        # Commit or
+        # Rollback (and in fact are not
+        # permitted to do so).
+        # To execute a snapshot transaction, the client specifies a timestamp
+        # bound, which tells Cloud Spanner how to choose a read timestamp.
+        # The types of timestamp bound are:
+        # - Strong (the default).
+        # - Bounded staleness.
+        # - Exact staleness.
+        # If the Cloud Spanner database to be read is geographically distributed,
+        # stale read-only transactions can execute more quickly than strong
+        # or read-write transaction, because they are able to execute far
+        # from the leader replica.
+        # Each type of timestamp bound is discussed in detail below.
+        # ### Strong
+        # Strong reads are guaranteed to see the effects of all transactions
+        # that have committed before the start of the read. Furthermore, all
+        # rows yielded by a single read are consistent with each other -- if
+        # any part of the read observes a transaction, all parts of the read
+        # see the transaction.
+        # Strong reads are not repeatable: two consecutive strong read-only
+        # transactions might return inconsistent results if there are
+        # concurrent writes. If consistency across reads is required, the
+        # reads should be executed within a transaction or at an exact read
+        # timestamp.
+        # See TransactionOptions.ReadOnly.strong.
+        # ### Exact Staleness
+        # These timestamp bounds execute reads at a user-specified
+        # timestamp. Reads at a timestamp are guaranteed to see a consistent
+        # prefix of the global transaction history: they observe
+        # modifications done by all transactions with a commit timestamp <=
+        # the read timestamp, and observe none of the modifications done by
+        # transactions with a larger commit timestamp. They will block until
+        # all conflicting transactions that may be assigned commit timestamps
+        # <= the read timestamp have finished.
+        # The timestamp can either be expressed as an absolute Cloud Spanner commit
+        # timestamp or a staleness relative to the current time.
+        # These modes do not require a "negotiation phase" to pick a
+        # timestamp. As a result, they execute slightly faster than the
+        # equivalent boundedly stale concurrency modes. On the other hand,
+        # boundedly stale reads usually return fresher results.
+        # See TransactionOptions.ReadOnly.read_timestamp and
+        # TransactionOptions.ReadOnly.exact_staleness.
+        # ### Bounded Staleness
+        # Bounded staleness modes allow Cloud Spanner to pick the read timestamp,
+        # subject to a user-provided staleness bound. Cloud Spanner chooses the
+        # newest timestamp within the staleness bound that allows execution
+        # of the reads at the closest available replica without blocking.
+        # All rows yielded are consistent with each other -- if any part of
+        # the read observes a transaction, all parts of the read see the
+        # transaction. Boundedly stale reads are not repeatable: two stale
+        # reads, even if they use the same staleness bound, can execute at
+        # different timestamps and thus return inconsistent results.
+        # Boundedly stale reads execute in two phases: the first phase
+        # negotiates a timestamp among all replicas needed to serve the
+        # read. In the second phase, reads are executed at the negotiated
+        # timestamp.
+        # As a result of the two phase execution, bounded staleness reads are
+        # usually a little slower than comparable exact staleness
+        # reads. However, they are typically able to return fresher
+        # results, and are more likely to execute at the closest replica.
+        # Because the timestamp negotiation requires up-front knowledge of
+        # which rows will be read, it can only be used with single-use
+        # read-only transactions.
+        # See TransactionOptions.ReadOnly.max_staleness and
+        # TransactionOptions.ReadOnly.min_read_timestamp.
+        # ### Old Read Timestamps and Garbage Collection
+        # Cloud Spanner continuously garbage collects deleted and overwritten data
+        # in the background to reclaim storage space. This process is known
+        # as "version GC". By default, version GC reclaims versions after they
+        # are one hour old. Because of this, Cloud Spanner cannot perform reads
+        # at read timestamps more than one hour in the past. This
+        # restriction also applies to in-progress reads and/or SQL queries whose
+        # timestamp become too old while executing. Reads and SQL queries with
+        # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+        # Corresponds to the JSON property `singleUseTransaction`
+        # @return [Google::Apis::SpannerV1::TransactionOptions]
+        attr_accessor :single_use_transaction
       
-        # The list of requested instance configurations.
-        # Corresponds to the JSON property `instanceConfigs`
-        # @return [Array<Google::Apis::SpannerV1::InstanceConfig>]
-        attr_accessor :instance_configs
+        # The mutations to be executed when this transaction commits. All
+        # mutations are applied atomically, in the order they appear in
+        # this list.
+        # Corresponds to the JSON property `mutations`
+        # @return [Array<Google::Apis::SpannerV1::Mutation>]
+        attr_accessor :mutations
+      
+        # Commit a previously-started transaction.
+        # Corresponds to the JSON property `transactionId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction_id
       
         def initialize(**args)
            update!(**args)
@@ -699,8 +430,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @instance_configs = args[:instance_configs] if args.key?(:instance_configs)
+          @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
+          @mutations = args[:mutations] if args.key?(:mutations)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+        end
+      end
+      
+      # Request message for `GetIamPolicy` method.
+      class GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -721,19 +466,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Request message for `GetIamPolicy` method.
-      class GetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -760,14 +492,6 @@ module Google
       # A rule to be applied in a Policy.
       class Rule
         include Google::Apis::Core::Hashable
-      
-        # If one or more 'not_in' clauses are specified, the rule matches
-        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # The format for in and not_in entries is the same as for members in a
-        # Binding (see google/iam/v1/policy.proto).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
       
         # Human-readable description of the rule.
         # Corresponds to the JSON property `description`
@@ -803,19 +527,27 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # If one or more 'not_in' clauses are specified, the rule matches
+        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        # The format for in and not_in entries is the same as for members in a
+        # Binding (see google/iam/v1/policy.proto).
+        # Corresponds to the JSON property `notIn`
+        # @return [Array<String>]
+        attr_accessor :not_in
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @not_in = args[:not_in] if args.key?(:not_in)
           @description = args[:description] if args.key?(:description)
           @conditions = args[:conditions] if args.key?(:conditions)
           @log_config = args[:log_config] if args.key?(:log_config)
           @in = args[:in] if args.key?(:in)
           @permissions = args[:permissions] if args.key?(:permissions)
           @action = args[:action] if args.key?(:action)
+          @not_in = args[:not_in] if args.key?(:not_in)
         end
       end
       
@@ -840,11 +572,6 @@ module Google
       class LogConfig
         include Google::Apis::Core::Hashable
       
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::SpannerV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
         # Options for counters
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::SpannerV1::CounterOptions]
@@ -855,15 +582,20 @@ module Google
         # @return [Google::Apis::SpannerV1::DataAccessOptions]
         attr_accessor :data_access
       
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::SpannerV1::CloudAuditOptions]
+        attr_accessor :cloud_audit
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
           @counter = args[:counter] if args.key?(:counter)
           @data_access = args[:data_access] if args.key?(:data_access)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
         end
       end
       
@@ -975,6 +707,12 @@ module Google
       class KeyRange
         include Google::Apis::Core::Hashable
       
+        # If the end is closed, then the range includes all rows whose
+        # first `len(end_closed)` key columns exactly match `end_closed`.
+        # Corresponds to the JSON property `endClosed`
+        # @return [Array<Object>]
+        attr_accessor :end_closed
+      
         # If the start is closed, then the range includes all rows whose
         # first `len(start_closed)` key columns exactly match `start_closed`.
         # Corresponds to the JSON property `startClosed`
@@ -993,22 +731,16 @@ module Google
         # @return [Array<Object>]
         attr_accessor :end_open
       
-        # If the end is closed, then the range includes all rows whose
-        # first `len(end_closed)` key columns exactly match `end_closed`.
-        # Corresponds to the JSON property `endClosed`
-        # @return [Array<Object>]
-        attr_accessor :end_closed
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @end_closed = args[:end_closed] if args.key?(:end_closed)
           @start_closed = args[:start_closed] if args.key?(:start_closed)
           @start_open = args[:start_open] if args.key?(:start_open)
           @end_open = args[:end_open] if args.key?(:end_open)
-          @end_closed = args[:end_closed] if args.key?(:end_closed)
         end
       end
       
@@ -1315,13 +1047,6 @@ module Google
       class CreateDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Required. A `CREATE DATABASE` statement, which specifies the ID of the
-        # new database.  The database ID must conform to the regular expression
-        # `a-z*[a-z0-9]` and be between 2 and 30 characters in length.
-        # Corresponds to the JSON property `createStatement`
-        # @return [String]
-        attr_accessor :create_statement
-      
         # An optional list of DDL statements to run inside the newly created
         # database. Statements can create tables, indexes, etc. These
         # statements execute atomically with the creation of the database:
@@ -1330,20 +1055,32 @@ module Google
         # @return [Array<String>]
         attr_accessor :extra_statements
       
+        # Required. A `CREATE DATABASE` statement, which specifies the ID of the
+        # new database.  The database ID must conform to the regular expression
+        # `a-z*[a-z0-9]` and be between 2 and 30 characters in length.
+        # Corresponds to the JSON property `createStatement`
+        # @return [String]
+        attr_accessor :create_statement
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @create_statement = args[:create_statement] if args.key?(:create_statement)
           @extra_statements = args[:extra_statements] if args.key?(:extra_statements)
+          @create_statement = args[:create_statement] if args.key?(:create_statement)
         end
       end
       
       # The request for CreateInstance.
       class CreateInstanceRequest
         include Google::Apis::Core::Hashable
+      
+        # An isolated set of Cloud Spanner resources on which databases can be hosted.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::SpannerV1::Instance]
+        attr_accessor :instance
       
         # Required. The ID of the instance to create.  Valid identifiers are of the
         # form `a-z*[a-z0-9]` and must be between 6 and 30 characters in
@@ -1352,30 +1089,20 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # An isolated set of Cloud Spanner resources on which databases can be hosted.
-        # Corresponds to the JSON property `instance`
-        # @return [Google::Apis::SpannerV1::Instance]
-        attr_accessor :instance
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @instance_id = args[:instance_id] if args.key?(:instance_id)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
         end
       end
       
       # A condition to be met.
       class Condition
         include Google::Apis::Core::Hashable
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
       
         # Trusted attributes discharged by the service.
         # Corresponds to the JSON property `svc`
@@ -1403,18 +1130,23 @@ module Google
         # @return [String]
         attr_accessor :iam
       
+        # An operator to apply the subject with.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @op = args[:op] if args.key?(:op)
           @svc = args[:svc] if args.key?(:svc)
           @value = args[:value] if args.key?(:value)
           @sys = args[:sys] if args.key?(:sys)
           @values = args[:values] if args.key?(:values)
           @iam = args[:iam] if args.key?(:iam)
+          @op = args[:op] if args.key?(:op)
         end
       end
       
@@ -1464,6 +1196,15 @@ module Google
       # Options for read-only transactions.
       class ReadOnly
         include Google::Apis::Core::Hashable
+      
+        # Executes all reads at a timestamp >= `min_read_timestamp`.
+        # This is useful for requesting fresher data than some previous
+        # read, or data that is fresh enough to observe the effects of some
+        # previously committed transaction whose timestamp is known.
+        # Note that this option can only be used in single-use transactions.
+        # Corresponds to the JSON property `minReadTimestamp`
+        # @return [String]
+        attr_accessor :min_read_timestamp
       
         # Read data at a timestamp >= `NOW - max_staleness`
         # seconds. Guarantees that all writes that have committed more
@@ -1519,27 +1260,18 @@ module Google
         attr_accessor :strong
         alias_method :strong?, :strong
       
-        # Executes all reads at a timestamp >= `min_read_timestamp`.
-        # This is useful for requesting fresher data than some previous
-        # read, or data that is fresh enough to observe the effects of some
-        # previously committed transaction whose timestamp is known.
-        # Note that this option can only be used in single-use transactions.
-        # Corresponds to the JSON property `minReadTimestamp`
-        # @return [String]
-        attr_accessor :min_read_timestamp
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @min_read_timestamp = args[:min_read_timestamp] if args.key?(:min_read_timestamp)
           @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
           @read_timestamp = args[:read_timestamp] if args.key?(:read_timestamp)
           @return_read_timestamp = args[:return_read_timestamp] if args.key?(:return_read_timestamp)
           @exact_staleness = args[:exact_staleness] if args.key?(:exact_staleness)
           @strong = args[:strong] if args.key?(:strong)
-          @min_read_timestamp = args[:min_read_timestamp] if args.key?(:min_read_timestamp)
         end
       end
       
@@ -1569,6 +1301,7 @@ module Google
         # off. The rest of the request parameters must exactly match the
         # request that yielded this token.
         # Corresponds to the JSON property `resumeToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :resume_token
       
@@ -1647,25 +1380,6 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `iamOwned`
-        # @return [Boolean]
-        attr_accessor :iam_owned
-        alias_method :iam_owned?, :iam_owned
-      
-        # If more than one rule is specified, the rules are applied in the following
-        # manner:
-        # - All matching LOG rules are always applied.
-        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-        # granted.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if no rule applies, permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::SpannerV1::Rule>]
-        attr_accessor :rules
-      
         # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -1693,8 +1407,28 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `iamOwned`
+        # @return [Boolean]
+        attr_accessor :iam_owned
+        alias_method :iam_owned?, :iam_owned
+      
+        # If more than one rule is specified, the rules are applied in the following
+        # manner:
+        # - All matching LOG rules are always applied.
+        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
+        # Logging will be applied if one or more matching rule requires logging.
+        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
+        # granted.
+        # Logging will be applied if one or more matching rule requires logging.
+        # - Otherwise, if no rule applies, permission is denied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::SpannerV1::Rule>]
+        attr_accessor :rules
       
         def initialize(**args)
            update!(**args)
@@ -1702,12 +1436,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
           @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
+          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
+          @rules = args[:rules] if args.key?(:rules)
         end
       end
       
@@ -1715,6 +1449,30 @@ module Google
       # StreamingRead.
       class ReadRequest
         include Google::Apis::Core::Hashable
+      
+        # This message is used to select the transaction in which a
+        # Read or
+        # ExecuteSql call runs.
+        # See TransactionOptions for more information about transactions.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::SpannerV1::TransactionSelector]
+        attr_accessor :transaction
+      
+        # If this request is resuming a previously interrupted read,
+        # `resume_token` should be copied from the last
+        # PartialResultSet yielded before the interruption. Doing this
+        # enables the new read to resume where the last read left off. The
+        # rest of the request parameters must exactly match the request
+        # that yielded this token.
+        # Corresponds to the JSON property `resumeToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :resume_token
+      
+        # Required. The name of the table in the database to be read.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
       
         # If greater than zero, only the first `limit` rows are yielded. If `limit`
         # is zero, the default is no limit.
@@ -1745,42 +1503,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :columns
       
-        # This message is used to select the transaction in which a
-        # Read or
-        # ExecuteSql call runs.
-        # See TransactionOptions for more information about transactions.
-        # Corresponds to the JSON property `transaction`
-        # @return [Google::Apis::SpannerV1::TransactionSelector]
-        attr_accessor :transaction
-      
-        # If this request is resuming a previously interrupted read,
-        # `resume_token` should be copied from the last
-        # PartialResultSet yielded before the interruption. Doing this
-        # enables the new read to resume where the last read left off. The
-        # rest of the request parameters must exactly match the request
-        # that yielded this token.
-        # Corresponds to the JSON property `resumeToken`
-        # @return [String]
-        attr_accessor :resume_token
-      
-        # Required. The name of the table in the database to be read.
-        # Corresponds to the JSON property `table`
-        # @return [String]
-        attr_accessor :table
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @transaction = args[:transaction] if args.key?(:transaction)
+          @resume_token = args[:resume_token] if args.key?(:resume_token)
+          @table = args[:table] if args.key?(:table)
           @limit = args[:limit] if args.key?(:limit)
           @index = args[:index] if args.key?(:index)
           @key_set = args[:key_set] if args.key?(:key_set)
           @columns = args[:columns] if args.key?(:columns)
-          @transaction = args[:transaction] if args.key?(:transaction)
-          @resume_token = args[:resume_token] if args.key?(:resume_token)
-          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -1788,6 +1523,11 @@ module Google
       # replace operations.
       class Write
         include Google::Apis::Core::Hashable
+      
+        # Required. The table whose rows will be written.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
       
         # The names of the columns in table to be written.
         # The list of columns must contain enough columns to allow
@@ -1809,20 +1549,15 @@ module Google
         # @return [Array<Array<Object>>]
         attr_accessor :values
       
-        # Required. The table whose rows will be written.
-        # Corresponds to the JSON property `table`
-        # @return [String]
-        attr_accessor :table
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @table = args[:table] if args.key?(:table)
           @columns = args[:columns] if args.key?(:columns)
           @values = args[:values] if args.key?(:values)
-          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -1856,14 +1591,6 @@ module Google
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
       
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
@@ -1935,17 +1662,25 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
         end
       end
       
@@ -1953,11 +1688,6 @@ module Google
       # ExecuteSql.
       class ResultSet
         include Google::Apis::Core::Hashable
-      
-        # Additional statistics about a ResultSet or PartialResultSet.
-        # Corresponds to the JSON property `stats`
-        # @return [Google::Apis::SpannerV1::ResultSetStats]
-        attr_accessor :stats
       
         # Each element in `rows` is a row whose format is defined by
         # metadata.row_type. The ith element
@@ -1974,15 +1704,20 @@ module Google
         # @return [Google::Apis::SpannerV1::ResultSetMetadata]
         attr_accessor :metadata
       
+        # Additional statistics about a ResultSet or PartialResultSet.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::SpannerV1::ResultSetStats]
+        attr_accessor :stats
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @stats = args[:stats] if args.key?(:stats)
           @rows = args[:rows] if args.key?(:rows)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @stats = args[:stats] if args.key?(:stats)
         end
       end
       
@@ -2028,13 +1763,6 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
         # Corresponds to the JSON property `details`
@@ -2046,15 +1774,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -2165,6 +1900,7 @@ module Google
         # `resume_token`. Note that executing any other transaction in the
         # same session invalidates the token.
         # Corresponds to the JSON property `resumeToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :resume_token
       
@@ -2263,31 +1999,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SpannerV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
       # Metadata type for the operation returned by
       # UpdateInstance.
       class UpdateInstanceMetadata
@@ -2329,6 +2040,31 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpannerV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # Metadata about a ResultSet or PartialResultSet.
       class ResultSetMetadata
         include Google::Apis::Core::Hashable
@@ -2360,6 +2096,12 @@ module Google
       # See TransactionOptions for more information about transactions.
       class TransactionSelector
         include Google::Apis::Core::Hashable
+      
+        # Execute the read or SQL query in a previously-started transaction.
+        # Corresponds to the JSON property `id`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :id
       
         # # Transactions
         # Each session can have at most one active transaction at a time. After the
@@ -2705,20 +2447,15 @@ module Google
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :begin
       
-        # Execute the read or SQL query in a previously-started transaction.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @single_use = args[:single_use] if args.key?(:single_use)
           @begin = args[:begin] if args.key?(:begin)
-          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -2780,6 +2517,12 @@ module Google
       class KeySet
         include Google::Apis::Core::Hashable
       
+        # A list of key ranges. See KeyRange for more information about
+        # key range specifications.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<Google::Apis::SpannerV1::KeyRange>]
+        attr_accessor :ranges
+      
         # A list of specific keys. Entries in `keys` should have exactly as
         # many elements as there are columns in the primary or index key
         # with which this `KeySet` is used.  Individual key values are
@@ -2796,21 +2539,15 @@ module Google
         attr_accessor :all
         alias_method :all?, :all
       
-        # A list of key ranges. See KeyRange for more information about
-        # key range specifications.
-        # Corresponds to the JSON property `ranges`
-        # @return [Array<Google::Apis::SpannerV1::KeyRange>]
-        attr_accessor :ranges
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @ranges = args[:ranges] if args.key?(:ranges)
           @keys = args[:keys] if args.key?(:keys)
           @all = args[:all] if args.key?(:all)
-          @ranges = args[:ranges] if args.key?(:ranges)
         end
       end
       
@@ -2863,9 +2600,117 @@ module Google
         end
       end
       
+      # The response for ListDatabases.
+      class ListDatabasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent
+        # ListDatabases call to fetch more
+        # of the matching databases.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Databases that matched the request.
+        # Corresponds to the JSON property `databases`
+        # @return [Array<Google::Apis::SpannerV1::Database>]
+        attr_accessor :databases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @databases = args[:databases] if args.key?(:databases)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::SpannerV1::Policy]
+        attr_accessor :policy
+      
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, a default
+        # mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # An isolated set of Cloud Spanner resources on which databases can be hosted.
       class Instance
         include Google::Apis::Core::Hashable
+      
+        # Required. The number of nodes allocated to this instance.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Cloud Labels are a flexible and lightweight mechanism for organizing cloud
+        # resources into groups that reflect a customer's organizational needs and
+        # deployment strategies. Cloud Labels can be used to filter collections of
+        # resources. They can be used to control how resource metrics are aggregated.
+        # And they can be used as arguments to policy management rules (e.g. route,
+        # firewall, load balancing, etc.).
+        # * Label keys must be between 1 and 63 characters long and must conform to
+        # the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+        # * Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        # * No more than 64 labels can be associated with a given resource.
+        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # If you plan to use labels in your own code, please note that additional
+        # characters may be allowed in the future. And so you are advised to use an
+        # internal label representation, such as JSON, which doesn't rely upon
+        # specific characters being disallowed.  For example, representing labels
+        # as the string:  name + "_" + value  would prove problematic if we were to
+        # allow "_" in a future release.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Required. The name of the instance's configuration. Values are of the form
         # `projects/<project>/instanceConfigs/<configuration>`. See
@@ -2898,126 +2743,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. The number of nodes allocated to this instance.
-        # Corresponds to the JSON property `nodeCount`
-        # @return [Fixnum]
-        attr_accessor :node_count
-      
-        # Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-        # resources into groups that reflect a customer's organizational needs and
-        # deployment strategies. Cloud Labels can be used to filter collections of
-        # resources. They can be used to control how resource metrics are aggregated.
-        # And they can be used as arguments to policy management rules (e.g. route,
-        # firewall, load balancing, etc.).
-        # * Label keys must be between 1 and 63 characters long and must conform to
-        # the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        # * Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        # * No more than 64 labels can be associated with a given resource.
-        # See https://goo.gl/xmQnxf for more information on and examples of labels.
-        # If you plan to use labels in your own code, please note that additional
-        # characters may be allowed in the future. And so you are advised to use an
-        # internal label representation, such as JSON, which doesn't rely upon
-        # specific characters being disallowed.  For example, representing labels
-        # as the string:  name + "_" + value  would prove problematic if we were to
-        # allow "_" in a future release.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @labels = args[:labels] if args.key?(:labels)
           @config = args[:config] if args.key?(:config)
           @state = args[:state] if args.key?(:state)
           @name = args[:name] if args.key?(:name)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @node_count = args[:node_count] if args.key?(:node_count)
-          @labels = args[:labels] if args.key?(:labels)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, a default
-        # mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **Example**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/owner",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-        # ]
-        # `,
-        # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
-        # `
-        # ]
-        # `
-        # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::SpannerV1::Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # The response for ListDatabases.
-      class ListDatabasesResponse
-        include Google::Apis::Core::Hashable
-      
-        # `next_page_token` can be sent in a subsequent
-        # ListDatabases call to fetch more
-        # of the matching databases.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Databases that matched the request.
-        # Corresponds to the JSON property `databases`
-        # @return [Array<Google::Apis::SpannerV1::Database>]
-        attr_accessor :databases
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @databases = args[:databases] if args.key?(:databases)
         end
       end
       
@@ -3027,6 +2764,7 @@ module Google
       
         # Required. The transaction to roll back.
         # Corresponds to the JSON property `transactionId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :transaction_id
       
@@ -3059,6 +2797,7 @@ module Google
         # Single-use read-only transactions do not have IDs, because
         # single-use transactions do not support multiple requests.
         # Corresponds to the JSON property `id`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :id
       
@@ -3210,6 +2949,27 @@ module Google
         end
       end
       
+      # Request message for `TestIamPermissions` method.
+      class TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # REQUIRED: The set of permissions to check for 'resource'.
+        # Permissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*')
+        # are not allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
       # Additional statistics about a ResultSet or PartialResultSet.
       class ResultSetStats
         include Google::Apis::Core::Hashable
@@ -3242,27 +3002,6 @@ module Google
         end
       end
       
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # REQUIRED: The set of permissions to check for 'resource'.
-        # Permissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*')
-        # are not allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
       # The response for Commit.
       class CommitResponse
         include Google::Apis::Core::Hashable
@@ -3279,6 +3018,275 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
+        end
+      end
+      
+      # `Type` indicates the type of a Cloud Spanner value, as might be stored in a
+      # table cell or returned from an SQL query.
+      class Type
+        include Google::Apis::Core::Hashable
+      
+        # `StructType` defines the fields of a STRUCT type.
+        # Corresponds to the JSON property `structType`
+        # @return [Google::Apis::SpannerV1::StructType]
+        attr_accessor :struct_type
+      
+        # `Type` indicates the type of a Cloud Spanner value, as might be stored in a
+        # table cell or returned from an SQL query.
+        # Corresponds to the JSON property `arrayElementType`
+        # @return [Google::Apis::SpannerV1::Type]
+        attr_accessor :array_element_type
+      
+        # Required. The TypeCode for this type.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @struct_type = args[:struct_type] if args.key?(:struct_type)
+          @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # Node information for nodes appearing in a QueryPlan.plan_nodes.
+      class PlanNode
+        include Google::Apis::Core::Hashable
+      
+        # Attributes relevant to the node contained in a group of key-value pairs.
+        # For example, a Parameter Reference node could have the following
+        # information in its metadata:
+        # `
+        # "parameter_reference": "param1",
+        # "parameter_type": "array"
+        # `
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The execution statistics associated with the node, contained in a group of
+        # key-value pairs. Only present if the plan was returned as a result of a
+        # profile query. For example, number of executions, number of rows/time per
+        # execution etc.
+        # Corresponds to the JSON property `executionStats`
+        # @return [Hash<String,Object>]
+        attr_accessor :execution_stats
+      
+        # Condensed representation of a node and its subtree. Only present for
+        # `SCALAR` PlanNode(s).
+        # Corresponds to the JSON property `shortRepresentation`
+        # @return [Google::Apis::SpannerV1::ShortRepresentation]
+        attr_accessor :short_representation
+      
+        # The `PlanNode`'s index in node list.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The display name for the node.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Used to determine the type of node. May be needed for visualizing
+        # different kinds of nodes differently. For example, If the node is a
+        # SCALAR node, it will have a condensed representation
+        # which can be used to directly embed a description of the node in its
+        # parent.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of child node `index`es and their relationship to this parent.
+        # Corresponds to the JSON property `childLinks`
+        # @return [Array<Google::Apis::SpannerV1::ChildLink>]
+        attr_accessor :child_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @execution_stats = args[:execution_stats] if args.key?(:execution_stats)
+          @short_representation = args[:short_representation] if args.key?(:short_representation)
+          @index = args[:index] if args.key?(:index)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kind = args[:kind] if args.key?(:kind)
+          @child_links = args[:child_links] if args.key?(:child_links)
+        end
+      end
+      
+      # Specifies the audit configuration for a service.
+      # It consists of which permission types are logged, and what identities, if
+      # any, are exempted from logging.
+      # An AuditConifg must have one or more AuditLogConfigs.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that are exempted from "data access" audit
+        # logging for the `service` specified above.
+        # Follows the same format of Binding.members.
+        # This field is deprecated in favor of per-permission-type exemptions.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `resourcemanager`, `storage`, `compute`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The configuration for logging of each type of permission.
+        # Next ID: 4
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::SpannerV1::AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @service = args[:service] if args.key?(:service)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+        end
+      end
+      
+      # Metadata type for the operation returned by
+      # CreateInstance.
+      class CreateInstanceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled. If set, this operation is
+        # in the process of undoing itself (which is guaranteed to succeed) and
+        # cannot be cancelled again.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # The time at which this operation failed or was completed successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # An isolated set of Cloud Spanner resources on which databases can be hosted.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::SpannerV1::Instance]
+        attr_accessor :instance
+      
+        # The time at which the
+        # CreateInstance request was
+        # received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @instance = args[:instance] if args.key?(:instance)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata associated with a parent-child relationship appearing in a
+      # PlanNode.
+      class ChildLink
+        include Google::Apis::Core::Hashable
+      
+        # The node to which the link points.
+        # Corresponds to the JSON property `childIndex`
+        # @return [Fixnum]
+        attr_accessor :child_index
+      
+        # Only present if the child node is SCALAR and corresponds
+        # to an output variable of the parent node. The field carries the name of
+        # the output variable.
+        # For example, a `TableScan` operator that reads rows from a table will
+        # have child links to the `SCALAR` nodes representing the output variables
+        # created for each column that is read by the operator. The corresponding
+        # `variable` fields will be set to the variable names assigned to the
+        # columns.
+        # Corresponds to the JSON property `variable`
+        # @return [String]
+        attr_accessor :variable
+      
+        # The type of the link. For example, in Hash Joins this could be used to
+        # distinguish between the build child and the probe child, or in the case
+        # of the child being an output variable, to represent the tag associated
+        # with the output variable.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_index = args[:child_index] if args.key?(:child_index)
+          @variable = args[:variable] if args.key?(:variable)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Write a Cloud Audit log
+      class CloudAuditOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Arguments to delete operations.
+      class Delete
+        include Google::Apis::Core::Hashable
+      
+        # Required. The table whose rows will be deleted.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All
+        # the keys are expected to be in the same table or index. The keys need
+        # not be sorted in any particular way.
+        # If the same key is specified multiple times in the set (for example
+        # if two ranges, two keys, or a key and a range overlap), Cloud Spanner
+        # behaves as if the key were only specified once.
+        # Corresponds to the JSON property `keySet`
+        # @return [Google::Apis::SpannerV1::KeySet]
+        attr_accessor :key_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+          @key_set = args[:key_set] if args.key?(:key_set)
         end
       end
     end

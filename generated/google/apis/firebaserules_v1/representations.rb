@@ -22,42 +22,6 @@ module Google
   module Apis
     module FirebaserulesV1
       
-      class Source
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SourcePosition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Issue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestRulesetRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Ruleset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListReleasesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FunctionCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +29,12 @@ module Google
       end
       
       class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReleasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,47 +71,49 @@ module Google
       end
       
       class Source
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :files, as: 'files', class: Google::Apis::FirebaserulesV1::File, decorator: Google::Apis::FirebaserulesV1::File::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SourcePosition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :line, as: 'line'
-          property :column, as: 'column'
-          property :file_name, as: 'fileName'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Issue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :severity, as: 'severity'
-          property :description, as: 'description'
-          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TestRulesetRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Ruleset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FunctionCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
+          property :function, as: 'function'
+          collection :args, as: 'args'
+        end
+      end
       
-          property :create_time, as: 'createTime'
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :name, as: 'name'
+          property :content, as: 'content'
         end
       end
       
@@ -154,30 +126,13 @@ module Google
         end
       end
       
-      class FunctionCall
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args'
-          property :function, as: 'function'
-        end
-      end
-      
-      class File
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :content, as: 'content'
-          property :fingerprint, :base64 => true, as: 'fingerprint'
-        end
-      end
-      
       class Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :update_time, as: 'updateTime'
           property :name, as: 'name'
           property :ruleset_name, as: 'rulesetName'
+          property :create_time, as: 'createTime'
         end
       end
       
@@ -215,6 +170,51 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Source
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :files, as: 'files', class: Google::Apis::FirebaserulesV1::File, decorator: Google::Apis::FirebaserulesV1::File::Representation
+      
+        end
+      end
+      
+      class SourcePosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :file_name, as: 'fileName'
+          property :line, as: 'line'
+        end
+      end
+      
+      class Issue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
+      
+          property :severity, as: 'severity'
+          property :description, as: 'description'
+        end
+      end
+      
+      class TestRulesetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
+      
+        end
+      end
+      
+      class Ruleset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
+      
+          property :create_time, as: 'createTime'
         end
       end
     end

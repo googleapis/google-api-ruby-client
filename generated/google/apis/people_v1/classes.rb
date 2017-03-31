@@ -22,191 +22,9 @@ module Google
   module Apis
     module PeopleV1
       
-      # A person's past or current organization. Overlapping date ranges are
-      # permitted.
-      class Organization
-        include Google::Apis::Core::Hashable
-      
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
-        # Corresponds to the JSON property `endDate`
-        # @return [Google::Apis::PeopleV1::Date]
-        attr_accessor :end_date
-      
-        # The symbol associated with the organization; for example, a stock ticker
-        # symbol, abbreviation, or acronym.
-        # Corresponds to the JSON property `symbol`
-        # @return [String]
-        attr_accessor :symbol
-      
-        # The name of the organization.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        # The location of the organization office the person works at.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # The person's job title at the organization.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # True if the organization is the person's current organization;
-        # false if the organization is a past organization.
-        # Corresponds to the JSON property `current`
-        # @return [Boolean]
-        attr_accessor :current
-        alias_method :current?, :current
-      
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
-        # Corresponds to the JSON property `startDate`
-        # @return [Google::Apis::PeopleV1::Date]
-        attr_accessor :start_date
-      
-        # The read-only type of the organization translated and formatted in the
-        # viewer's account locale or the `Accept-Language` HTTP header locale.
-        # Corresponds to the JSON property `formattedType`
-        # @return [String]
-        attr_accessor :formatted_type
-      
-        # The domain name associated with the organization; for example, `google.com`.
-        # Corresponds to the JSON property `domain`
-        # @return [String]
-        attr_accessor :domain
-      
-        # The person's department at the organization.
-        # Corresponds to the JSON property `department`
-        # @return [String]
-        attr_accessor :department
-      
-        # The phonetic name of the organization.
-        # Corresponds to the JSON property `phoneticName`
-        # @return [String]
-        attr_accessor :phonetic_name
-      
-        # The type of the organization. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
-        # * `work`
-        # * `school`
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The person's job description at the organization.
-        # Corresponds to the JSON property `jobDescription`
-        # @return [String]
-        attr_accessor :job_description
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_date = args[:end_date] if args.key?(:end_date)
-          @symbol = args[:symbol] if args.key?(:symbol)
-          @name = args[:name] if args.key?(:name)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
-          @current = args[:current] if args.key?(:current)
-          @start_date = args[:start_date] if args.key?(:start_date)
-          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
-          @domain = args[:domain] if args.key?(:domain)
-          @department = args[:department] if args.key?(:department)
-          @phonetic_name = args[:phonetic_name] if args.key?(:phonetic_name)
-          @type = args[:type] if args.key?(:type)
-          @job_description = args[:job_description] if args.key?(:job_description)
-        end
-      end
-      
-      # A person's short biography.
-      class Biography
-        include Google::Apis::Core::Hashable
-      
-        # The short biography.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The content type of the biography.
-        # Corresponds to the JSON property `contentType`
-        # @return [String]
-        attr_accessor :content_type
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-          @content_type = args[:content_type] if args.key?(:content_type)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # A person's age range.
-      class AgeRangeType
-        include Google::Apis::Core::Hashable
-      
-        # The age range.
-        # Corresponds to the JSON property `ageRange`
-        # @return [String]
-        attr_accessor :age_range
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @age_range = args[:age_range] if args.key?(:age_range)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # Metadata about a field.
       class FieldMetadata
         include Google::Apis::Core::Hashable
-      
-        # True if the field is the primary field; false if the field is a secondary
-        # field.
-        # Corresponds to the JSON property `primary`
-        # @return [Boolean]
-        attr_accessor :primary
-        alias_method :primary?, :primary
       
         # The source of a field.
         # Corresponds to the JSON property `source`
@@ -221,15 +39,61 @@ module Google
         attr_accessor :verified
         alias_method :verified?, :verified
       
+        # True if the field is the primary field; false if the field is a secondary
+        # field.
+        # Corresponds to the JSON property `primary`
+        # @return [Boolean]
+        attr_accessor :primary
+        alias_method :primary?, :primary
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @primary = args[:primary] if args.key?(:primary)
           @source = args[:source] if args.key?(:source)
           @verified = args[:verified] if args.key?(:verified)
+          @primary = args[:primary] if args.key?(:primary)
+        end
+      end
+      
+      # The source of a field.
+      class Source
+        include Google::Apis::Core::Hashable
+      
+        # The read-only metadata about a profile.
+        # Corresponds to the JSON property `profileMetadata`
+        # @return [Google::Apis::PeopleV1::ProfileMetadata]
+        attr_accessor :profile_metadata
+      
+        # The source type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
+        # source. Used for web cache validation. Only populated in
+        # person.metadata.sources.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The unique identifier within the source type generated by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile_metadata = args[:profile_metadata] if args.key?(:profile_metadata)
+          @type = args[:type] if args.key?(:type)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -278,6 +142,11 @@ module Google
       class RelationshipInterest
         include Google::Apis::Core::Hashable
       
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
         # The kind of relationship the person is looking for. The value can be custom
         # or predefined. Possible values include, but are not limited to, the
         # following values:
@@ -296,76 +165,21 @@ module Google
         # @return [String]
         attr_accessor :formatted_value
       
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @value = args[:value] if args.key?(:value)
           @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # The source of a field.
-      class Source
-        include Google::Apis::Core::Hashable
-      
-        # The source type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-        # source. Used for web cache validation. Only populated in
-        # person.metadata.sources.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # The unique identifier within the source type generated by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The read-only metadata about a profile.
-        # Corresponds to the JSON property `profileMetadata`
-        # @return [Google::Apis::PeopleV1::ProfileMetadata]
-        attr_accessor :profile_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-          @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
-          @profile_metadata = args[:profile_metadata] if args.key?(:profile_metadata)
         end
       end
       
       # A person's relation to another person.
       class Relation
         include Google::Apis::Core::Hashable
-      
-        # The name of the other person this relation refers to.
-        # Corresponds to the JSON property `person`
-        # @return [String]
-        attr_accessor :person
-      
-        # The type of the relation translated and formatted in the viewer's account
-        # locale or the locale specified in the Accept-Language HTTP header.
-        # Corresponds to the JSON property `formattedType`
-        # @return [String]
-        attr_accessor :formatted_type
       
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
@@ -393,16 +207,27 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The name of the other person this relation refers to.
+        # Corresponds to the JSON property `person`
+        # @return [String]
+        attr_accessor :person
+      
+        # The type of the relation translated and formatted in the viewer's account
+        # locale or the locale specified in the Accept-Language HTTP header.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @person = args[:person] if args.key?(:person)
-          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @type = args[:type] if args.key?(:type)
+          @person = args[:person] if args.key?(:person)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
         end
       end
       
@@ -440,82 +265,6 @@ module Google
       # NEXT_ID: 31
       class Person
         include Google::Apis::Core::Hashable
-      
-        # The person's residences.
-        # Corresponds to the JSON property `residences`
-        # @return [Array<Google::Apis::PeopleV1::Residence>]
-        attr_accessor :residences
-      
-        # The person's genders.
-        # Corresponds to the JSON property `genders`
-        # @return [Array<Google::Apis::PeopleV1::Gender>]
-        attr_accessor :genders
-      
-        # The resource name for the person, assigned by the server. An ASCII string
-        # with a max length of 27 characters. Always starts with `people/`.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        # The person's interests.
-        # Corresponds to the JSON property `interests`
-        # @return [Array<Google::Apis::PeopleV1::Interest>]
-        attr_accessor :interests
-      
-        # The person's biographies.
-        # Corresponds to the JSON property `biographies`
-        # @return [Array<Google::Apis::PeopleV1::Biography>]
-        attr_accessor :biographies
-      
-        # The person's skills.
-        # Corresponds to the JSON property `skills`
-        # @return [Array<Google::Apis::PeopleV1::Skill>]
-        attr_accessor :skills
-      
-        # The person's relationship statuses.
-        # Corresponds to the JSON property `relationshipStatuses`
-        # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
-        attr_accessor :relationship_statuses
-      
-        # The person's photos.
-        # Corresponds to the JSON property `photos`
-        # @return [Array<Google::Apis::PeopleV1::Photo>]
-        attr_accessor :photos
-      
-        # DEPRECATED(Please read person.age_ranges instead). The person's age range.
-        # Corresponds to the JSON property `ageRange`
-        # @return [String]
-        attr_accessor :age_range
-      
-        # The person's taglines.
-        # Corresponds to the JSON property `taglines`
-        # @return [Array<Google::Apis::PeopleV1::Tagline>]
-        attr_accessor :taglines
-      
-        # The person's age ranges.
-        # Corresponds to the JSON property `ageRanges`
-        # @return [Array<Google::Apis::PeopleV1::AgeRangeType>]
-        attr_accessor :age_ranges
-      
-        # The person's street addresses.
-        # Corresponds to the JSON property `addresses`
-        # @return [Array<Google::Apis::PeopleV1::Address>]
-        attr_accessor :addresses
-      
-        # The person's events.
-        # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::PeopleV1::Event>]
-        attr_accessor :events
-      
-        # The person's group memberships.
-        # Corresponds to the JSON property `memberships`
-        # @return [Array<Google::Apis::PeopleV1::Membership>]
-        attr_accessor :memberships
-      
-        # The person's phone numbers.
-        # Corresponds to the JSON property `phoneNumbers`
-        # @return [Array<Google::Apis::PeopleV1::PhoneNumber>]
-        attr_accessor :phone_numbers
       
         # The person's cover photos.
         # Corresponds to the JSON property `coverPhotos`
@@ -593,27 +342,88 @@ module Google
         # @return [Google::Apis::PeopleV1::PersonMetadata]
         attr_accessor :metadata
       
+        # The person's residences.
+        # Corresponds to the JSON property `residences`
+        # @return [Array<Google::Apis::PeopleV1::Residence>]
+        attr_accessor :residences
+      
+        # The person's genders.
+        # Corresponds to the JSON property `genders`
+        # @return [Array<Google::Apis::PeopleV1::Gender>]
+        attr_accessor :genders
+      
+        # The resource name for the person, assigned by the server. An ASCII string
+        # with a max length of 27 characters. Always starts with `people/`.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The person's interests.
+        # Corresponds to the JSON property `interests`
+        # @return [Array<Google::Apis::PeopleV1::Interest>]
+        attr_accessor :interests
+      
+        # The person's biographies.
+        # Corresponds to the JSON property `biographies`
+        # @return [Array<Google::Apis::PeopleV1::Biography>]
+        attr_accessor :biographies
+      
+        # The person's skills.
+        # Corresponds to the JSON property `skills`
+        # @return [Array<Google::Apis::PeopleV1::Skill>]
+        attr_accessor :skills
+      
+        # The person's relationship statuses.
+        # Corresponds to the JSON property `relationshipStatuses`
+        # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
+        attr_accessor :relationship_statuses
+      
+        # The person's photos.
+        # Corresponds to the JSON property `photos`
+        # @return [Array<Google::Apis::PeopleV1::Photo>]
+        attr_accessor :photos
+      
+        # DEPRECATED(Please read person.age_ranges instead). The person's age range.
+        # Corresponds to the JSON property `ageRange`
+        # @return [String]
+        attr_accessor :age_range
+      
+        # The person's taglines.
+        # Corresponds to the JSON property `taglines`
+        # @return [Array<Google::Apis::PeopleV1::Tagline>]
+        attr_accessor :taglines
+      
+        # The person's age ranges.
+        # Corresponds to the JSON property `ageRanges`
+        # @return [Array<Google::Apis::PeopleV1::AgeRangeType>]
+        attr_accessor :age_ranges
+      
+        # The person's street addresses.
+        # Corresponds to the JSON property `addresses`
+        # @return [Array<Google::Apis::PeopleV1::Address>]
+        attr_accessor :addresses
+      
+        # The person's events.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::PeopleV1::Event>]
+        attr_accessor :events
+      
+        # The person's group memberships.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::PeopleV1::Membership>]
+        attr_accessor :memberships
+      
+        # The person's phone numbers.
+        # Corresponds to the JSON property `phoneNumbers`
+        # @return [Array<Google::Apis::PeopleV1::PhoneNumber>]
+        attr_accessor :phone_numbers
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @residences = args[:residences] if args.key?(:residences)
-          @genders = args[:genders] if args.key?(:genders)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @interests = args[:interests] if args.key?(:interests)
-          @biographies = args[:biographies] if args.key?(:biographies)
-          @skills = args[:skills] if args.key?(:skills)
-          @relationship_statuses = args[:relationship_statuses] if args.key?(:relationship_statuses)
-          @photos = args[:photos] if args.key?(:photos)
-          @age_range = args[:age_range] if args.key?(:age_range)
-          @taglines = args[:taglines] if args.key?(:taglines)
-          @age_ranges = args[:age_ranges] if args.key?(:age_ranges)
-          @addresses = args[:addresses] if args.key?(:addresses)
-          @events = args[:events] if args.key?(:events)
-          @memberships = args[:memberships] if args.key?(:memberships)
-          @phone_numbers = args[:phone_numbers] if args.key?(:phone_numbers)
           @cover_photos = args[:cover_photos] if args.key?(:cover_photos)
           @im_clients = args[:im_clients] if args.key?(:im_clients)
           @birthdays = args[:birthdays] if args.key?(:birthdays)
@@ -629,6 +439,21 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @bragging_rights = args[:bragging_rights] if args.key?(:bragging_rights)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @residences = args[:residences] if args.key?(:residences)
+          @genders = args[:genders] if args.key?(:genders)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @interests = args[:interests] if args.key?(:interests)
+          @biographies = args[:biographies] if args.key?(:biographies)
+          @skills = args[:skills] if args.key?(:skills)
+          @relationship_statuses = args[:relationship_statuses] if args.key?(:relationship_statuses)
+          @photos = args[:photos] if args.key?(:photos)
+          @age_range = args[:age_range] if args.key?(:age_range)
+          @taglines = args[:taglines] if args.key?(:taglines)
+          @age_ranges = args[:age_ranges] if args.key?(:age_ranges)
+          @addresses = args[:addresses] if args.key?(:addresses)
+          @events = args[:events] if args.key?(:events)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @phone_numbers = args[:phone_numbers] if args.key?(:phone_numbers)
         end
       end
       
@@ -648,6 +473,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # A person's read-only photo. A picture shown next to the person's name to
+      # help others recognize the person.
+      class Photo
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the photo.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -710,32 +561,6 @@ module Google
         end
       end
       
-      # A person's read-only photo. A picture shown next to the person's name to
-      # help others recognize the person.
-      class Photo
-        include Google::Apis::Core::Hashable
-      
-        # The URL of the photo.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @url = args[:url] if args.key?(:url)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # 
       class ListConnectionsResponse
         include Google::Apis::Core::Hashable
@@ -779,6 +604,16 @@ module Google
       class Birthday
         include Google::Apis::Core::Hashable
       
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # A free-form string representing the user's birthday.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
         # Represents a whole calendar date, for example a date of birth. The time
         # of day and time zone are either specified elsewhere or are not
         # significant. The date is relative to the
@@ -791,25 +626,15 @@ module Google
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
       
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        # A free-form string representing the user's birthday.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @date = args[:date] if args.key?(:date)
           @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
+          @date = args[:date] if args.key?(:date)
         end
       end
       
@@ -817,6 +642,26 @@ module Google
       # are optional.
       class Address
         include Google::Apis::Core::Hashable
+      
+        # The unstructured value of the address. If this is not set by the user it
+        # will be automatically constructed from structured values.
+        # Corresponds to the JSON property `formattedValue`
+        # @return [String]
+        attr_accessor :formatted_value
+      
+        # The country of the address.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The type of the address. The type can be custom or predefined.
+        # Possible values include, but are not limited to, the following:
+        # * `home`
+        # * `work`
+        # * `other`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         # The extended address of the address; for example, the apartment number.
         # Corresponds to the JSON property `extendedAddress`
@@ -865,32 +710,15 @@ module Google
         # @return [String]
         attr_accessor :city
       
-        # The unstructured value of the address. If this is not set by the user it
-        # will be automatically constructed from structured values.
-        # Corresponds to the JSON property `formattedValue`
-        # @return [String]
-        attr_accessor :formatted_value
-      
-        # The country of the address.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # The type of the address. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
-        # * `home`
-        # * `work`
-        # * `other`
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
+          @country = args[:country] if args.key?(:country)
+          @type = args[:type] if args.key?(:type)
           @extended_address = args[:extended_address] if args.key?(:extended_address)
           @po_box = args[:po_box] if args.key?(:po_box)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
@@ -900,15 +728,17 @@ module Google
           @country_code = args[:country_code] if args.key?(:country_code)
           @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
           @city = args[:city] if args.key?(:city)
-          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
-          @country = args[:country] if args.key?(:country)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
       # A person's past or current residence.
       class Residence
         include Google::Apis::Core::Hashable
+      
+        # The address of the residence.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
       
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
@@ -922,20 +752,15 @@ module Google
         attr_accessor :current
         alias_method :current?, :current
       
-        # The address of the residence.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @value = args[:value] if args.key?(:value)
           @metadata = args[:metadata] if args.key?(:metadata)
           @current = args[:current] if args.key?(:current)
-          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -960,54 +785,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contact_group_id = args[:contact_group_id] if args.key?(:contact_group_id)
-        end
-      end
-      
-      # An event related to the person.
-      class Event
-        include Google::Apis::Core::Hashable
-      
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
-        # Corresponds to the JSON property `date`
-        # @return [Google::Apis::PeopleV1::Date]
-        attr_accessor :date
-      
-        # The read-only type of the event translated and formatted in the
-        # viewer's account locale or the `Accept-Language` HTTP header locale.
-        # Corresponds to the JSON property `formattedType`
-        # @return [String]
-        attr_accessor :formatted_type
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        # The type of the event. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
-        # * `anniversary`
-        # * `other`
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @date = args[:date] if args.key?(:date)
-          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1063,6 +840,54 @@ module Google
         end
       end
       
+      # An event related to the person.
+      class Event
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the event. The type can be custom or predefined.
+        # Possible values include, but are not limited to, the following:
+        # * `anniversary`
+        # * `other`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Represents a whole calendar date, for example a date of birth. The time
+        # of day and time zone are either specified elsewhere or are not
+        # significant. The date is relative to the
+        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
+        # Proleptic_Gregorian_calendar).
+        # The day may be 0 to represent a year and month where the day is not
+        # significant. The year may be 0 to represent a month and day independent
+        # of year; for example, anniversary date.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::PeopleV1::Date]
+        attr_accessor :date
+      
+        # The read-only type of the event translated and formatted in the
+        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @date = args[:date] if args.key?(:date)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+        end
+      end
+      
       # The read-only metadata about a profile.
       class ProfileMetadata
         include Google::Apis::Core::Hashable
@@ -1079,44 +904,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @object_type = args[:object_type] if args.key?(:object_type)
-        end
-      end
-      
-      # A person's gender.
-      class Gender
-        include Google::Apis::Core::Hashable
-      
-        # The read-only value of the gender translated and formatted in the viewer's
-        # account locale or the `Accept-Language` HTTP header locale.
-        # Corresponds to the JSON property `formattedValue`
-        # @return [String]
-        attr_accessor :formatted_value
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        # The gender for the person. The gender can be custom or predefined.
-        # Possible values include, but are not limited to, the
-        # following:
-        # * `male`
-        # * `female`
-        # * `other`
-        # * `unknown`
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1168,10 +955,53 @@ module Google
         end
       end
       
+      # A person's gender.
+      class Gender
+        include Google::Apis::Core::Hashable
+      
+        # The read-only value of the gender translated and formatted in the viewer's
+        # account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedValue`
+        # @return [String]
+        attr_accessor :formatted_value
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The gender for the person. The gender can be custom or predefined.
+        # Possible values include, but are not limited to, the
+        # following:
+        # * `male`
+        # * `female`
+        # * `other`
+        # * `unknown`
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A person's read-only cover photo. A large image shown on the person's
       # profile page that represents who they are or what they care about.
       class CoverPhoto
         include Google::Apis::Core::Hashable
+      
+        # The URL of the cover photo.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
       
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
@@ -1185,20 +1015,15 @@ module Google
         attr_accessor :default
         alias_method :default?, :default
       
-        # The URL of the cover photo.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @url = args[:url] if args.key?(:url)
           @metadata = args[:metadata] if args.key?(:metadata)
           @default = args[:default] if args.key?(:default)
-          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1243,6 +1068,20 @@ module Google
         # @return [String]
         attr_accessor :formatted_type
       
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the IM client. The type can be custom or predefined.
+        # Possible values include, but are not limited to, the following:
+        # * `home`
+        # * `work`
+        # * `other`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # The protocol of the IM client. The protocol can be custom or predefined.
         # Possible values include, but are not limited to, the following:
         # * `aim`
@@ -1258,20 +1097,6 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
-        # The type of the IM client. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
-        # * `home`
-        # * `work`
-        # * `other`
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
         # The user name used in the IM client.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -1285,9 +1110,9 @@ module Google
         def update!(**args)
           @formatted_protocol = args[:formatted_protocol] if args.key?(:formatted_protocol)
           @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
-          @protocol = args[:protocol] if args.key?(:protocol)
           @metadata = args[:metadata] if args.key?(:metadata)
           @type = args[:type] if args.key?(:type)
+          @protocol = args[:protocol] if args.key?(:protocol)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -1344,11 +1169,6 @@ module Google
       class Nickname
         include Google::Apis::Core::Hashable
       
-        # The nickname.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::PeopleV1::FieldMetadata]
@@ -1359,15 +1179,20 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The nickname.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @value = args[:value] if args.key?(:value)
           @metadata = args[:metadata] if args.key?(:metadata)
           @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1489,6 +1314,31 @@ module Google
         end
       end
       
+      # A read-only brief one-line description of the person.
+      class Tagline
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The tagline.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Represents a whole calendar date, for example a date of birth. The time
       # of day and time zone are either specified elsewhere or are not
       # significant. The date is relative to the
@@ -1529,34 +1379,29 @@ module Google
         end
       end
       
-      # A read-only brief one-line description of the person.
-      class Tagline
+      # A person's name. If the name is a mononym, the family name is empty.
+      class Name
         include Google::Apis::Core::Hashable
+      
+        # The family name spelled as it sounds.
+        # Corresponds to the JSON property `phoneticFamilyName`
+        # @return [String]
+        attr_accessor :phonetic_family_name
+      
+        # The family name.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # The middle name(s) spelled as they sound.
+        # Corresponds to the JSON property `phoneticMiddleName`
+        # @return [String]
+        attr_accessor :phonetic_middle_name
       
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
-      
-        # The tagline.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A person's name. If the name is a mononym, the family name is empty.
-      class Name
-        include Google::Apis::Core::Hashable
       
         # The full name spelled as it sounds.
         # Corresponds to the JSON property `phoneticFullName`
@@ -1591,15 +1436,15 @@ module Google
         # @return [String]
         attr_accessor :phonetic_honorific_suffix
       
-        # The middle name(s).
-        # Corresponds to the JSON property `middleName`
-        # @return [String]
-        attr_accessor :middle_name
-      
         # The given name.
         # Corresponds to the JSON property `givenName`
         # @return [String]
         attr_accessor :given_name
+      
+        # The middle name(s).
+        # Corresponds to the JSON property `middleName`
+        # @return [String]
+        attr_accessor :middle_name
       
         # The honorific prefixes spelled as they sound.
         # Corresponds to the JSON property `phoneticHonorificPrefix`
@@ -1611,46 +1456,26 @@ module Google
         # @return [String]
         attr_accessor :phonetic_given_name
       
-        # The family name spelled as it sounds.
-        # Corresponds to the JSON property `phoneticFamilyName`
-        # @return [String]
-        attr_accessor :phonetic_family_name
-      
-        # The family name.
-        # Corresponds to the JSON property `familyName`
-        # @return [String]
-        attr_accessor :family_name
-      
-        # The middle name(s) spelled as they sound.
-        # Corresponds to the JSON property `phoneticMiddleName`
-        # @return [String]
-        attr_accessor :phonetic_middle_name
-      
-        # Metadata about a field.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::PeopleV1::FieldMetadata]
-        attr_accessor :metadata
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @phonetic_family_name = args[:phonetic_family_name] if args.key?(:phonetic_family_name)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @phonetic_middle_name = args[:phonetic_middle_name] if args.key?(:phonetic_middle_name)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @phonetic_full_name = args[:phonetic_full_name] if args.key?(:phonetic_full_name)
           @display_name_last_first = args[:display_name_last_first] if args.key?(:display_name_last_first)
           @display_name = args[:display_name] if args.key?(:display_name)
           @honorific_suffix = args[:honorific_suffix] if args.key?(:honorific_suffix)
           @honorific_prefix = args[:honorific_prefix] if args.key?(:honorific_prefix)
           @phonetic_honorific_suffix = args[:phonetic_honorific_suffix] if args.key?(:phonetic_honorific_suffix)
-          @middle_name = args[:middle_name] if args.key?(:middle_name)
           @given_name = args[:given_name] if args.key?(:given_name)
+          @middle_name = args[:middle_name] if args.key?(:middle_name)
           @phonetic_honorific_prefix = args[:phonetic_honorific_prefix] if args.key?(:phonetic_honorific_prefix)
           @phonetic_given_name = args[:phonetic_given_name] if args.key?(:phonetic_given_name)
-          @phonetic_family_name = args[:phonetic_family_name] if args.key?(:phonetic_family_name)
-          @family_name = args[:family_name] if args.key?(:family_name)
-          @phonetic_middle_name = args[:phonetic_middle_name] if args.key?(:phonetic_middle_name)
-          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -1702,6 +1527,181 @@ module Google
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A person's past or current organization. Overlapping date ranges are
+      # permitted.
+      class Organization
+        include Google::Apis::Core::Hashable
+      
+        # True if the organization is the person's current organization;
+        # false if the organization is a past organization.
+        # Corresponds to the JSON property `current`
+        # @return [Boolean]
+        attr_accessor :current
+        alias_method :current?, :current
+      
+        # The read-only type of the organization translated and formatted in the
+        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        # Represents a whole calendar date, for example a date of birth. The time
+        # of day and time zone are either specified elsewhere or are not
+        # significant. The date is relative to the
+        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
+        # Proleptic_Gregorian_calendar).
+        # The day may be 0 to represent a year and month where the day is not
+        # significant. The year may be 0 to represent a month and day independent
+        # of year; for example, anniversary date.
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::PeopleV1::Date]
+        attr_accessor :start_date
+      
+        # The domain name associated with the organization; for example, `google.com`.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The person's department at the organization.
+        # Corresponds to the JSON property `department`
+        # @return [String]
+        attr_accessor :department
+      
+        # The phonetic name of the organization.
+        # Corresponds to the JSON property `phoneticName`
+        # @return [String]
+        attr_accessor :phonetic_name
+      
+        # The type of the organization. The type can be custom or predefined.
+        # Possible values include, but are not limited to, the following:
+        # * `work`
+        # * `school`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The person's job description at the organization.
+        # Corresponds to the JSON property `jobDescription`
+        # @return [String]
+        attr_accessor :job_description
+      
+        # Represents a whole calendar date, for example a date of birth. The time
+        # of day and time zone are either specified elsewhere or are not
+        # significant. The date is relative to the
+        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
+        # Proleptic_Gregorian_calendar).
+        # The day may be 0 to represent a year and month where the day is not
+        # significant. The year may be 0 to represent a month and day independent
+        # of year; for example, anniversary date.
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::PeopleV1::Date]
+        attr_accessor :end_date
+      
+        # The symbol associated with the organization; for example, a stock ticker
+        # symbol, abbreviation, or acronym.
+        # Corresponds to the JSON property `symbol`
+        # @return [String]
+        attr_accessor :symbol
+      
+        # The name of the organization.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The location of the organization office the person works at.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The person's job title at the organization.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current = args[:current] if args.key?(:current)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @domain = args[:domain] if args.key?(:domain)
+          @department = args[:department] if args.key?(:department)
+          @phonetic_name = args[:phonetic_name] if args.key?(:phonetic_name)
+          @type = args[:type] if args.key?(:type)
+          @job_description = args[:job_description] if args.key?(:job_description)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @symbol = args[:symbol] if args.key?(:symbol)
+          @name = args[:name] if args.key?(:name)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A person's short biography.
+      class Biography
+        include Google::Apis::Core::Hashable
+      
+        # The content type of the biography.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The short biography.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A person's age range.
+      class AgeRangeType
+        include Google::Apis::Core::Hashable
+      
+        # The age range.
+        # Corresponds to the JSON property `ageRange`
+        # @return [String]
+        attr_accessor :age_range
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_range = args[:age_range] if args.key?(:age_range)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
     end

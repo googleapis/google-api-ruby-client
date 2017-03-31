@@ -1018,6 +1018,7 @@ module Google
       
         # The salt separator.
         # Corresponds to the JSON property `saltSeparator`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :salt_separator
       
@@ -1030,6 +1031,7 @@ module Google
       
         # The key for to hash the password.
         # Corresponds to the JSON property `signerKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :signer_key
       
@@ -1503,6 +1505,7 @@ module Google
       
         # The user's hashed password.
         # Corresponds to the JSON property `passwordHash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :password_hash
       
@@ -1736,6 +1739,7 @@ module Google
       
         # The user's hashed password.
         # Corresponds to the JSON property `passwordHash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :password_hash
       
@@ -1761,6 +1765,7 @@ module Google
       
         # The user's password salt.
         # Corresponds to the JSON property `salt`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :salt
       

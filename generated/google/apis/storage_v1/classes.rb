@@ -1314,6 +1314,7 @@ module Google
       
         # HTTP 1.1  Entity tag for the policy.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       

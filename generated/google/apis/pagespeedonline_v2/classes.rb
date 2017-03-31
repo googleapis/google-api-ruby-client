@@ -178,6 +178,7 @@ module Google
       
         # Image data base64 encoded.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       

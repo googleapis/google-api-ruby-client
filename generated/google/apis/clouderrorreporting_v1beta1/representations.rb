@@ -109,9 +109,12 @@ module Google
       class ErrorGroupStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group', class: Google::Apis::ClouderrorreportingV1beta1::ErrorGroup, decorator: Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
+      
+          property :first_seen_time, as: 'firstSeenTime'
           property :count, as: 'count'
-          property :last_seen_time, as: 'lastSeenTime'
           property :affected_users_count, as: 'affectedUsersCount'
+          property :last_seen_time, as: 'lastSeenTime'
           property :num_affected_services, as: 'numAffectedServices'
           collection :affected_services, as: 'affectedServices', class: Google::Apis::ClouderrorreportingV1beta1::ServiceContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ServiceContext::Representation
       
@@ -119,9 +122,6 @@ module Google
       
           collection :timed_counts, as: 'timedCounts', class: Google::Apis::ClouderrorreportingV1beta1::TimedCount, decorator: Google::Apis::ClouderrorreportingV1beta1::TimedCount::Representation
       
-          property :group, as: 'group', class: Google::Apis::ClouderrorreportingV1beta1::ErrorGroup, decorator: Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
-      
-          property :first_seen_time, as: 'firstSeenTime'
         end
       end
       
@@ -147,10 +147,10 @@ module Google
       class ErrorGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :group_id, as: 'groupId'
           collection :tracking_issues, as: 'trackingIssues', class: Google::Apis::ClouderrorreportingV1beta1::TrackingIssue, decorator: Google::Apis::ClouderrorreportingV1beta1::TrackingIssue::Representation
       
-          property :name, as: 'name'
         end
       end
       
@@ -181,12 +181,12 @@ module Google
       class HttpRequestContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :response_status_code, as: 'responseStatusCode'
-          property :method_prop, as: 'method'
-          property :remote_ip, as: 'remoteIp'
           property :referrer, as: 'referrer'
           property :user_agent, as: 'userAgent'
           property :url, as: 'url'
+          property :response_status_code, as: 'responseStatusCode'
+          property :method_prop, as: 'method'
+          property :remote_ip, as: 'remoteIp'
         end
       end
       
@@ -209,34 +209,34 @@ module Google
       class ErrorEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :service_context, as: 'serviceContext', class: Google::Apis::ClouderrorreportingV1beta1::ServiceContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ServiceContext::Representation
-      
-          property :event_time, as: 'eventTime'
           property :context, as: 'context', class: Google::Apis::ClouderrorreportingV1beta1::ErrorContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ErrorContext::Representation
       
           property :message, as: 'message'
+          property :service_context, as: 'serviceContext', class: Google::Apis::ClouderrorreportingV1beta1::ServiceContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ServiceContext::Representation
+      
+          property :event_time, as: 'eventTime'
         end
       end
       
       class ReportedErrorEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :event_time, as: 'eventTime'
           property :context, as: 'context', class: Google::Apis::ClouderrorreportingV1beta1::ErrorContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ErrorContext::Representation
       
           property :message, as: 'message'
           property :service_context, as: 'serviceContext', class: Google::Apis::ClouderrorreportingV1beta1::ServiceContext, decorator: Google::Apis::ClouderrorreportingV1beta1::ServiceContext::Representation
       
+          property :event_time, as: 'eventTime'
         end
       end
       
       class ErrorContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_request, as: 'httpRequest', class: Google::Apis::ClouderrorreportingV1beta1::HttpRequestContext, decorator: Google::Apis::ClouderrorreportingV1beta1::HttpRequestContext::Representation
+      
           property :user, as: 'user'
           property :report_location, as: 'reportLocation', class: Google::Apis::ClouderrorreportingV1beta1::SourceLocation, decorator: Google::Apis::ClouderrorreportingV1beta1::SourceLocation::Representation
-      
-          property :http_request, as: 'httpRequest', class: Google::Apis::ClouderrorreportingV1beta1::HttpRequestContext, decorator: Google::Apis::ClouderrorreportingV1beta1::HttpRequestContext::Representation
       
         end
       end

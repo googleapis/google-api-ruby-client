@@ -22,6 +22,153 @@ module Google
   module Apis
     module ManufacturersV1
       
+      # The number of products in a single package. For more information, see
+      # https://support.google.com/manufacturers/answer/6124116#count.
+      class Count
+        include Google::Apis::Core::Hashable
+      
+        # The numeric value of the number of products in a package.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The unit in which these products are counted.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Product data.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # Names of the attributes of the product deleted manually via the
+        # Manufacturer Center UI.
+        # @OutputOnly
+        # Corresponds to the JSON property `manuallyDeletedAttributes`
+        # @return [Array<String>]
+        attr_accessor :manually_deleted_attributes
+      
+        # A server-generated list of issues associated with the product.
+        # @OutputOnly
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::ManufacturersV1::Issue>]
+        attr_accessor :issues
+      
+        # Attributes of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116.
+        # Corresponds to the JSON property `finalAttributes`
+        # @return [Google::Apis::ManufacturersV1::Attributes]
+        attr_accessor :final_attributes
+      
+        # The ID of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#id.
+        # @OutputOnly
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Attributes of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116.
+        # Corresponds to the JSON property `uploadedAttributes`
+        # @return [Google::Apis::ManufacturersV1::Attributes]
+        attr_accessor :uploaded_attributes
+      
+        # Parent ID in the format `accounts/`account_id``.
+        # `account_id` - The ID of the Manufacturer Center account.
+        # @OutputOnly
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Attributes of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116.
+        # Corresponds to the JSON property `manuallyProvidedAttributes`
+        # @return [Google::Apis::ManufacturersV1::Attributes]
+        attr_accessor :manually_provided_attributes
+      
+        # The content language of the product as a two-letter ISO 639-1 language code
+        # (for example, en).
+        # @OutputOnly
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # The target country of the product as a CLDR territory code (for example,
+        # US).
+        # @OutputOnly
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # Name in the format ``target_country`:`content_language`:`product_id``.
+        # `target_country`   - The target country of the product as a CLDR territory
+        # code (for example, US).
+        # `content_language` - The content language of the product as a two-letter
+        # ISO 639-1 language code (for example, en).
+        # `product_id`     -   The ID of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#
+        # id.
+        # @OutputOnly
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manually_deleted_attributes = args[:manually_deleted_attributes] if args.key?(:manually_deleted_attributes)
+          @issues = args[:issues] if args.key?(:issues)
+          @final_attributes = args[:final_attributes] if args.key?(:final_attributes)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @uploaded_attributes = args[:uploaded_attributes] if args.key?(:uploaded_attributes)
+          @parent = args[:parent] if args.key?(:parent)
+          @manually_provided_attributes = args[:manually_provided_attributes] if args.key?(:manually_provided_attributes)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The capacity of a product. For more information, see
+      # https://support.google.com/manufacturers/answer/6124116#capacity.
+      class Capacity
+        include Google::Apis::Core::Hashable
+      
+        # The numeric value of the capacity.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The unit of the capacity, i.e., MB, GB, or TB.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
       # 
       class ListProductsResponse
         include Google::Apis::Core::Hashable
@@ -79,41 +226,14 @@ module Google
         end
       end
       
-      # A feature description of the product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#featuredesc.
-      class FeatureDescription
-        include Google::Apis::Core::Hashable
-      
-        # An image.
-        # Corresponds to the JSON property `image`
-        # @return [Google::Apis::ManufacturersV1::Image]
-        attr_accessor :image
-      
-        # A short description of the feature.
-        # Corresponds to the JSON property `headline`
-        # @return [String]
-        attr_accessor :headline
-      
-        # A detailed description of the feature.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image = args[:image] if args.key?(:image)
-          @headline = args[:headline] if args.key?(:headline)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
       # Product issue.
       class Issue
         include Google::Apis::Core::Hashable
+      
+        # The timestamp when this issue appeared.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
       
         # The severity of the issue.
         # Corresponds to the JSON property `severity`
@@ -138,10 +258,39 @@ module Google
         # @return [String]
         attr_accessor :attribute
       
-        # The timestamp when this issue appeared.
-        # Corresponds to the JSON property `timestamp`
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @severity = args[:severity] if args.key?(:severity)
+          @description = args[:description] if args.key?(:description)
+          @type = args[:type] if args.key?(:type)
+          @attribute = args[:attribute] if args.key?(:attribute)
+        end
+      end
+      
+      # A feature description of the product. For more information, see
+      # https://support.google.com/manufacturers/answer/6124116#featuredesc.
+      class FeatureDescription
+        include Google::Apis::Core::Hashable
+      
+        # A short description of the feature.
+        # Corresponds to the JSON property `headline`
         # @return [String]
-        attr_accessor :timestamp
+        attr_accessor :headline
+      
+        # A detailed description of the feature.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # An image.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ManufacturersV1::Image]
+        attr_accessor :image
       
         def initialize(**args)
            update!(**args)
@@ -149,11 +298,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @severity = args[:severity] if args.key?(:severity)
-          @description = args[:description] if args.key?(:description)
-          @type = args[:type] if args.key?(:type)
-          @attribute = args[:attribute] if args.key?(:attribute)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @headline = args[:headline] if args.key?(:headline)
+          @text = args[:text] if args.key?(:text)
+          @image = args[:image] if args.key?(:image)
         end
       end
       
@@ -186,12 +333,6 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # The status of the image.
-        # @OutputOnly
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
         # The type of the image, i.e., crawled or uploaded.
         # @OutputOnly
         # Corresponds to the JSON property `type`
@@ -205,15 +346,21 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
+        # The status of the image.
+        # @OutputOnly
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
           @image_url = args[:image_url] if args.key?(:image_url)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -222,82 +369,17 @@ module Google
       class Attributes
         include Google::Apis::Core::Hashable
       
-        # The canonical name of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productname.
-        # Corresponds to the JSON property `productName`
+        # The flavor of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#flavor.
+        # Corresponds to the JSON property `flavor`
         # @return [String]
-        attr_accessor :product_name
-      
-        # The size type of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#sizetype.
-        # Corresponds to the JSON property `sizeType`
-        # @return [String]
-        attr_accessor :size_type
-      
-        # A price.
-        # Corresponds to the JSON property `suggestedRetailPrice`
-        # @return [Google::Apis::ManufacturersV1::Price]
-        attr_accessor :suggested_retail_price
-      
-        # The rich format description of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#featuredesc.
-        # Corresponds to the JSON property `featureDescription`
-        # @return [Array<Google::Apis::ManufacturersV1::FeatureDescription>]
-        attr_accessor :feature_description
-      
-        # The size of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#size.
-        # Corresponds to the JSON property `size`
-        # @return [String]
-        attr_accessor :size
-      
-        # The title of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#title.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # The number of products in a single package. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#count.
-        # Corresponds to the JSON property `count`
-        # @return [Google::Apis::ManufacturersV1::Count]
-        attr_accessor :count
-      
-        # The brand name of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#brand.
-        # Corresponds to the JSON property `brand`
-        # @return [String]
-        attr_accessor :brand
-      
-        # The material of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#material.
-        # Corresponds to the JSON property `material`
-        # @return [String]
-        attr_accessor :material
-      
-        # The disclosure date of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#disclosure.
-        # Corresponds to the JSON property `disclosureDate`
-        # @return [String]
-        attr_accessor :disclosure_date
-      
-        # The scent of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#scent.
-        # Corresponds to the JSON property `scent`
-        # @return [String]
-        attr_accessor :scent
+        attr_accessor :flavor
       
         # The details of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#productdetail.
         # Corresponds to the JSON property `productDetail`
         # @return [Array<Google::Apis::ManufacturersV1::ProductDetail>]
         attr_accessor :product_detail
-      
-        # The flavor of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#flavor.
-        # Corresponds to the JSON property `flavor`
-        # @return [String]
-        attr_accessor :flavor
       
         # The target age group of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#agegroup.
@@ -413,25 +495,79 @@ module Google
         # @return [String]
         attr_accessor :color
       
+        # The canonical name of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#productname.
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
+      
+        # The size type of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#sizetype.
+        # Corresponds to the JSON property `sizeType`
+        # @return [String]
+        attr_accessor :size_type
+      
+        # A price.
+        # Corresponds to the JSON property `suggestedRetailPrice`
+        # @return [Google::Apis::ManufacturersV1::Price]
+        attr_accessor :suggested_retail_price
+      
+        # The rich format description of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#featuredesc.
+        # Corresponds to the JSON property `featureDescription`
+        # @return [Array<Google::Apis::ManufacturersV1::FeatureDescription>]
+        attr_accessor :feature_description
+      
+        # The size of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#size.
+        # Corresponds to the JSON property `size`
+        # @return [String]
+        attr_accessor :size
+      
+        # The title of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The number of products in a single package. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#count.
+        # Corresponds to the JSON property `count`
+        # @return [Google::Apis::ManufacturersV1::Count]
+        attr_accessor :count
+      
+        # The brand name of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#brand.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # The disclosure date of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#disclosure.
+        # Corresponds to the JSON property `disclosureDate`
+        # @return [String]
+        attr_accessor :disclosure_date
+      
+        # The material of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#material.
+        # Corresponds to the JSON property `material`
+        # @return [String]
+        attr_accessor :material
+      
+        # The scent of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#scent.
+        # Corresponds to the JSON property `scent`
+        # @return [String]
+        attr_accessor :scent
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @product_name = args[:product_name] if args.key?(:product_name)
-          @size_type = args[:size_type] if args.key?(:size_type)
-          @suggested_retail_price = args[:suggested_retail_price] if args.key?(:suggested_retail_price)
-          @feature_description = args[:feature_description] if args.key?(:feature_description)
-          @size = args[:size] if args.key?(:size)
-          @title = args[:title] if args.key?(:title)
-          @count = args[:count] if args.key?(:count)
-          @brand = args[:brand] if args.key?(:brand)
-          @material = args[:material] if args.key?(:material)
-          @disclosure_date = args[:disclosure_date] if args.key?(:disclosure_date)
-          @scent = args[:scent] if args.key?(:scent)
-          @product_detail = args[:product_detail] if args.key?(:product_detail)
           @flavor = args[:flavor] if args.key?(:flavor)
+          @product_detail = args[:product_detail] if args.key?(:product_detail)
           @age_group = args[:age_group] if args.key?(:age_group)
           @mpn = args[:mpn] if args.key?(:mpn)
           @product_page_url = args[:product_page_url] if args.key?(:product_page_url)
@@ -451,153 +587,17 @@ module Google
           @additional_image_link = args[:additional_image_link] if args.key?(:additional_image_link)
           @video_link = args[:video_link] if args.key?(:video_link)
           @color = args[:color] if args.key?(:color)
-        end
-      end
-      
-      # The number of products in a single package. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#count.
-      class Count
-        include Google::Apis::Core::Hashable
-      
-        # The numeric value of the number of products in a package.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The unit in which these products are counted.
-        # Corresponds to the JSON property `unit`
-        # @return [String]
-        attr_accessor :unit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-          @unit = args[:unit] if args.key?(:unit)
-        end
-      end
-      
-      # Product data.
-      class Product
-        include Google::Apis::Core::Hashable
-      
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `manuallyProvidedAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :manually_provided_attributes
-      
-        # The target country of the product as a CLDR territory code (for example,
-        # US).
-        # @OutputOnly
-        # Corresponds to the JSON property `targetCountry`
-        # @return [String]
-        attr_accessor :target_country
-      
-        # The content language of the product as a two-letter ISO 639-1 language code
-        # (for example, en).
-        # @OutputOnly
-        # Corresponds to the JSON property `contentLanguage`
-        # @return [String]
-        attr_accessor :content_language
-      
-        # Name in the format ``target_country`:`content_language`:`product_id``.
-        # `target_country`   - The target country of the product as a CLDR territory
-        # code (for example, US).
-        # `content_language` - The content language of the product as a two-letter
-        # ISO 639-1 language code (for example, en).
-        # `product_id`     -   The ID of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#
-        # id.
-        # @OutputOnly
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Names of the attributes of the product deleted manually via the
-        # Manufacturer Center UI.
-        # @OutputOnly
-        # Corresponds to the JSON property `manuallyDeletedAttributes`
-        # @return [Array<String>]
-        attr_accessor :manually_deleted_attributes
-      
-        # A server-generated list of issues associated with the product.
-        # @OutputOnly
-        # Corresponds to the JSON property `issues`
-        # @return [Array<Google::Apis::ManufacturersV1::Issue>]
-        attr_accessor :issues
-      
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `finalAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :final_attributes
-      
-        # The ID of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#id.
-        # @OutputOnly
-        # Corresponds to the JSON property `productId`
-        # @return [String]
-        attr_accessor :product_id
-      
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `uploadedAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :uploaded_attributes
-      
-        # Parent ID in the format `accounts/`account_id``.
-        # `account_id` - The ID of the Manufacturer Center account.
-        # @OutputOnly
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @manually_provided_attributes = args[:manually_provided_attributes] if args.key?(:manually_provided_attributes)
-          @target_country = args[:target_country] if args.key?(:target_country)
-          @content_language = args[:content_language] if args.key?(:content_language)
-          @name = args[:name] if args.key?(:name)
-          @manually_deleted_attributes = args[:manually_deleted_attributes] if args.key?(:manually_deleted_attributes)
-          @issues = args[:issues] if args.key?(:issues)
-          @final_attributes = args[:final_attributes] if args.key?(:final_attributes)
-          @product_id = args[:product_id] if args.key?(:product_id)
-          @uploaded_attributes = args[:uploaded_attributes] if args.key?(:uploaded_attributes)
-          @parent = args[:parent] if args.key?(:parent)
-        end
-      end
-      
-      # The capacity of a product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#capacity.
-      class Capacity
-        include Google::Apis::Core::Hashable
-      
-        # The numeric value of the capacity.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The unit of the capacity, i.e., MB, GB, or TB.
-        # Corresponds to the JSON property `unit`
-        # @return [String]
-        attr_accessor :unit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @value = args[:value] if args.key?(:value)
-          @unit = args[:unit] if args.key?(:unit)
+          @product_name = args[:product_name] if args.key?(:product_name)
+          @size_type = args[:size_type] if args.key?(:size_type)
+          @suggested_retail_price = args[:suggested_retail_price] if args.key?(:suggested_retail_price)
+          @feature_description = args[:feature_description] if args.key?(:feature_description)
+          @size = args[:size] if args.key?(:size)
+          @title = args[:title] if args.key?(:title)
+          @count = args[:count] if args.key?(:count)
+          @brand = args[:brand] if args.key?(:brand)
+          @disclosure_date = args[:disclosure_date] if args.key?(:disclosure_date)
+          @material = args[:material] if args.key?(:material)
+          @scent = args[:scent] if args.key?(:scent)
         end
       end
     end

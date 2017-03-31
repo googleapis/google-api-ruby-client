@@ -26,11 +26,6 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The canonical id for this location. For example: `"us-east1"`.
-        # Corresponds to the JSON property `locationId`
-        # @return [String]
-        attr_accessor :location_id
-      
         # Service-specific metadata. For example the available capacity at the given
         # location.
         # Corresponds to the JSON property `metadata`
@@ -49,16 +44,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @location_id = args[:location_id] if args.key?(:location_id)
         end
       end
       

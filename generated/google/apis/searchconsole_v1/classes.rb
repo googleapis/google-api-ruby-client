@@ -148,6 +148,33 @@ module Google
         end
       end
       
+      # Describe image data.
+      class Image
+        include Google::Apis::Core::Hashable
+      
+        # The mime-type of the image data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Image data in format determined by the mime type. Currently, the format
+        # will always be "image/png", but this might change in the future.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
       # Mobile-friendly test request.
       class RunMobileFriendlyTestRequest
         include Google::Apis::Core::Hashable
@@ -171,32 +198,6 @@ module Google
         def update!(**args)
           @url = args[:url] if args.key?(:url)
           @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
-        end
-      end
-      
-      # Describe image data.
-      class Image
-        include Google::Apis::Core::Hashable
-      
-        # The mime-type of the image data.
-        # Corresponds to the JSON property `mimeType`
-        # @return [String]
-        attr_accessor :mime_type
-      
-        # Image data in format determined by the mime type. Currently, the format
-        # will always be "image/png", but this might change in the future.
-        # Corresponds to the JSON property `data`
-        # @return [String]
-        attr_accessor :data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mime_type = args[:mime_type] if args.key?(:mime_type)
-          @data = args[:data] if args.key?(:data)
         end
       end
     end

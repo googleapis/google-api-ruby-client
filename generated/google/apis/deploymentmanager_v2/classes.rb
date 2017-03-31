@@ -225,6 +225,7 @@ module Google
         # every request to modify data. To get the latest fingerprint value, perform a
         # get() request to a deployment.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -405,6 +406,7 @@ module Google
         # every request to modify a deployment. To get the latest fingerprint value,
         # perform a get() request on the deployment.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -458,6 +460,7 @@ module Google
         # every request to modify a deployment. To get the latest fingerprint value,
         # perform a get() request on the deployment.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -981,6 +984,7 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       

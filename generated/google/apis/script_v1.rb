@@ -27,6 +27,12 @@ module Google
       VERSION = 'V1'
       REVISION = '20170328'
 
+      # View your email address
+      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+
+      # Manage your calendars
+      CALENDAR_FEEDS = 'https://www.google.com/calendar/feeds'
+
       # View and manage your Google Groups
       AUTH_GROUPS = 'https://www.googleapis.com/auth/groups'
 
@@ -36,29 +42,23 @@ module Google
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
+      # Read, send, delete, and manage your email
+      AUTH_SCOPE = 'https://mail.google.com/'
+
       # View and manage your spreadsheets in Google Drive
       AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
-
-      # View and manage the provisioning of users on your domain
-      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
 
       # View and manage the provisioning of groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP = 'https://www.googleapis.com/auth/admin.directory.group'
 
-      # Read, send, delete, and manage your email
-      AUTH_SCOPE = 'https://mail.google.com/'
+      # View and manage the provisioning of users on your domain
+      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
 
       # View and manage your forms in Google Drive
       AUTH_FORMS = 'https://www.googleapis.com/auth/forms'
 
       # Manage your contacts
       M8_FEEDS = 'https://www.google.com/m8/feeds'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
-
-      # Manage your calendars
-      CALENDAR_FEEDS = 'https://www.google.com/calendar/feeds'
     end
   end
 end

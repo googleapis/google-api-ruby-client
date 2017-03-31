@@ -46,6 +46,83 @@ module Google
           super('https://genomics.googleapis.com/', '')
         end
         
+        # Deletes a read group set.
+        # For the definitions of read group sets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # @param [String] read_group_set_id
+        #   The ID of the read group set to be deleted. The caller must have WRITE
+        #   permissions to the dataset associated with this read group set.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/readgroupsets/{readGroupSetId}', options)
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates read group sets by asynchronously importing the provided
+        # information.
+        # For the definitions of read group sets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # The caller must have WRITE permissions to the dataset.
+        # ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import
+        # - Tags will be converted to strings - tag types are not preserved
+        # - Comments (`@CO`) in the input file header will not be preserved
+        # - Original header order of references (`@SQ`) will not be preserved
+        # - Any reverse stranded unmapped reads will be reverse complemented, and
+        # their qualities (also the "BQ" and "OQ" tags, if any) will be reversed
+        # - Unmapped reads will be stripped of positional information (reference name
+        # and position)
+        # @param [Google::Apis::GenomicsV1::ImportReadGroupSetsRequest] import_read_group_sets_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_read_group_sets(import_read_group_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/readgroupsets:import', options)
+          command.request_representation = Google::Apis::GenomicsV1::ImportReadGroupSetsRequest::Representation
+          command.request_object = import_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
+          command.response_class = Google::Apis::GenomicsV1::Operation
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Exports a read group set to a BAM file in Google Cloud Storage.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -123,39 +200,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a read group set by ID.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] read_group_set_id
-        #   The ID of the read group set.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::ReadGroupSet] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::ReadGroupSet]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}', options)
-          command.response_representation = Google::Apis::GenomicsV1::ReadGroupSet::Representation
-          command.response_class = Google::Apis::GenomicsV1::ReadGroupSet
-          command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a read group set.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
@@ -201,13 +245,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a read group set.
+        # Gets a read group set by ID.
         # For the definitions of read group sets and other genomics resources, see
         # [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] read_group_set_id
-        #   The ID of the read group set to be deleted. The caller must have WRITE
-        #   permissions to the dataset associated with this read group set.
+        #   The ID of the read group set.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -217,62 +260,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::ReadGroupSet] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::Empty]
+        # @return [Google::Apis::GenomicsV1::ReadGroupSet]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/readgroupsets/{readGroupSetId}', options)
-          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
-          command.response_class = Google::Apis::GenomicsV1::Empty
+        def get_read_group_set(read_group_set_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/readgroupsets/{readGroupSetId}', options)
+          command.response_representation = Google::Apis::GenomicsV1::ReadGroupSet::Representation
+          command.response_class = Google::Apis::GenomicsV1::ReadGroupSet
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates read group sets by asynchronously importing the provided
-        # information.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # The caller must have WRITE permissions to the dataset.
-        # ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import
-        # - Tags will be converted to strings - tag types are not preserved
-        # - Comments (`@CO`) in the input file header will not be preserved
-        # - Original header order of references (`@SQ`) will not be preserved
-        # - Any reverse stranded unmapped reads will be reverse complemented, and
-        # their qualities (also the "BQ" and "OQ" tags, if any) will be reversed
-        # - Unmapped reads will be stripped of positional information (reference name
-        # and position)
-        # @param [Google::Apis::GenomicsV1::ImportReadGroupSetsRequest] import_read_group_sets_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_read_group_sets(import_read_group_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/readgroupsets:import', options)
-          command.request_representation = Google::Apis::GenomicsV1::ImportReadGroupSetsRequest::Representation
-          command.request_object = import_read_group_sets_request_object
-          command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
-          command.response_class = Google::Apis::GenomicsV1::Operation
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -398,6 +398,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a call set.
+        # For the definitions of call sets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # @param [String] call_set_id
+        #   The ID of the call set to be deleted.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_call_set(call_set_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/callsets/{callSetId}', options)
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.params['callSetId'] = call_set_id unless call_set_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of call sets matching the criteria.
+        # For the definitions of call sets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # Implements
+        # [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.
+        # 1/src/main/resources/avro/variantmethods.avdl#L178).
+        # @param [Google::Apis::GenomicsV1::SearchCallSetsRequest] search_call_sets_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::SearchCallSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::SearchCallSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_call_sets(search_call_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/callsets/search', options)
+          command.request_representation = Google::Apis::GenomicsV1::SearchCallSetsRequest::Representation
+          command.request_object = search_call_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1::SearchCallSetsResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1::SearchCallSetsResponse
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a call set.
         # For the definitions of call sets and other genomics resources, see
         # [Fundamentals of Google
@@ -507,12 +576,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a call set.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] call_set_id
-        #   The ID of the call set to be deleted.
+        # Creates a new annotation set. Caller must have WRITE permission for the
+        # associated dataset.
+        # The following fields are required:
+        # * datasetId
+        # * referenceSetId
+        # All other fields may be optionally specified, unless documented as being
+        # server-generated (for example, the `id` field).
+        # @param [Google::Apis::GenomicsV1::AnnotationSet] annotation_set_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -522,55 +593,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::AnnotationSet] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::Empty]
+        # @return [Google::Apis::GenomicsV1::AnnotationSet]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_call_set(call_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/callsets/{callSetId}', options)
-          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
-          command.response_class = Google::Apis::GenomicsV1::Empty
-          command.params['callSetId'] = call_set_id unless call_set_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a list of call sets matching the criteria.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # Implements
-        # [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.
-        # 1/src/main/resources/avro/variantmethods.avdl#L178).
-        # @param [Google::Apis::GenomicsV1::SearchCallSetsRequest] search_call_sets_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::SearchCallSetsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::SearchCallSetsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_call_sets(search_call_sets_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/callsets/search', options)
-          command.request_representation = Google::Apis::GenomicsV1::SearchCallSetsRequest::Representation
-          command.request_object = search_call_sets_request_object
-          command.response_representation = Google::Apis::GenomicsV1::SearchCallSetsResponse::Representation
-          command.response_class = Google::Apis::GenomicsV1::SearchCallSetsResponse
+        def create_annotation_set(annotation_set_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/annotationsets', options)
+          command.request_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
+          command.request_object = annotation_set_object
+          command.response_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
+          command.response_class = Google::Apis::GenomicsV1::AnnotationSet
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -714,14 +750,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new annotation set. Caller must have WRITE permission for the
-        # associated dataset.
-        # The following fields are required:
-        # * datasetId
-        # * referenceSetId
-        # All other fields may be optionally specified, unless documented as being
-        # server-generated (for example, the `id` field).
-        # @param [Google::Apis::GenomicsV1::AnnotationSet] annotation_set_object
+        # Deletes a variant.
+        # For the definitions of variants and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # @param [String] variant_id
+        #   The ID of the variant to be deleted.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -731,20 +765,63 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::AnnotationSet] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::AnnotationSet]
+        # @return [Google::Apis::GenomicsV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_annotation_set(annotation_set_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotationsets', options)
-          command.request_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
-          command.request_object = annotation_set_object
-          command.response_representation = Google::Apis::GenomicsV1::AnnotationSet::Representation
-          command.response_class = Google::Apis::GenomicsV1::AnnotationSet
+        def delete_variant(variant_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/variants/{variantId}', options)
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.params['variantId'] = variant_id unless variant_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates variant data by asynchronously importing the provided information.
+        # For the definitions of variant sets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # The variants for import will be merged with any existing variant that
+        # matches its reference sequence, start, end, reference bases, and
+        # alternative bases. If no such variant exists, a new one will be created.
+        # When variants are merged, the call information from the new variant
+        # is added to the existing variant, and Variant info fields are merged
+        # as specified in
+        # infoMergeConfig.
+        # As a special case, for single-sample VCF files, QUAL and FILTER fields will
+        # be moved to the call level; these are sometimes interpreted in a
+        # call-specific context.
+        # Imported VCF headers are appended to the metadata already in a variant set.
+        # @param [Google::Apis::GenomicsV1::ImportVariantsRequest] import_variants_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_variants(import_variants_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/variants:import', options)
+          command.request_representation = Google::Apis::GenomicsV1::ImportVariantsRequest::Representation
+          command.request_object = import_variants_request_object
+          command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
+          command.response_class = Google::Apis::GenomicsV1::Operation
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -856,83 +933,6 @@ module Google
           command.request_object = merge_variants_request_object
           command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1::Empty
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a variant.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] variant_id
-        #   The ID of the variant to be deleted.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_variant(variant_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/variants/{variantId}', options)
-          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
-          command.response_class = Google::Apis::GenomicsV1::Empty
-          command.params['variantId'] = variant_id unless variant_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates variant data by asynchronously importing the provided information.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # The variants for import will be merged with any existing variant that
-        # matches its reference sequence, start, end, reference bases, and
-        # alternative bases. If no such variant exists, a new one will be created.
-        # When variants are merged, the call information from the new variant
-        # is added to the existing variant, and Variant info fields are merged
-        # as specified in
-        # infoMergeConfig.
-        # As a special case, for single-sample VCF files, QUAL and FILTER fields will
-        # be moved to the call level; these are sometimes interpreted in a
-        # call-specific context.
-        # Imported VCF headers are appended to the metadata already in a variant set.
-        # @param [Google::Apis::GenomicsV1::ImportVariantsRequest] import_variants_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_variants(import_variants_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/variants:import', options)
-          command.request_representation = Google::Apis::GenomicsV1::ImportVariantsRequest::Representation
-          command.request_object = import_variants_request_object
-          command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
-          command.response_class = Google::Apis::GenomicsV1::Operation
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1165,8 +1165,6 @@ module Google
         # 5.1/src/main/resources/avro/referencemethods.avdl#L221).
         # @param [String] reference_id
         #   The ID of the reference.
-        # @param [String] start_position
-        #   The start position (0-based) of this query. Defaults to 0.
         # @param [String] end_position
         #   The end position (0-based, exclusive) of this query. Defaults to the length
         #   of this reference.
@@ -1178,6 +1176,8 @@ module Google
         #   The maximum number of bases to return in a single page. If unspecified,
         #   defaults to 200Kbp (kilo base pairs). The maximum value is 10Mbp (mega base
         #   pairs).
+        # @param [String] start_position
+        #   The start position (0-based) of this query. Defaults to 0.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1195,15 +1195,55 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reference_bases(reference_id, start_position: nil, end_position: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_reference_bases(reference_id, end_position: nil, page_token: nil, page_size: nil, start_position: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/references/{referenceId}/bases', options)
           command.response_representation = Google::Apis::GenomicsV1::ListBasesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListBasesResponse
           command.params['referenceId'] = reference_id unless reference_id.nil?
-          command.query['start'] = start_position unless start_position.nil?
           command.query['end'] = end_position unless end_position.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['start'] = start_position unless start_position.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for the dataset. This is empty if the
+        # policy or resource does not exist.
+        # See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
+        # Policy</a> for more information.
+        # For the definitions of datasets and other genomics resources, see
+        # [Fundamentals of Google
+        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+        # @param [String] resource
+        #   REQUIRED: The resource for which policy is being specified. Format is
+        #   `datasets/<dataset ID>`.
+        # @param [Google::Apis::GenomicsV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dataset_iam_policy(resource, get_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::GenomicsV1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::GenomicsV1::Policy::Representation
+          command.response_class = Google::Apis::GenomicsV1::Policy
+          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1403,15 +1443,15 @@ module Google
         # For the definitions of datasets and other genomics resources, see
         # [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] page_token
-        #   The continuation token, which is used to page through large result sets.
-        #   To get the next page of results, set this parameter to the value of
-        #   `nextPageToken` from the previous response.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single page. If unspecified,
         #   defaults to 50. The maximum value is 1024.
         # @param [String] project_id
         #   Required. The Google Cloud project ID to list datasets for.
+        # @param [String] page_token
+        #   The continuation token, which is used to page through large result sets.
+        #   To get the next page of results, set this parameter to the value of
+        #   `nextPageToken` from the previous response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1429,13 +1469,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_datasets(page_token: nil, page_size: nil, project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_datasets(page_size: nil, project_id: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/datasets', options)
           command.response_representation = Google::Apis::GenomicsV1::ListDatasetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListDatasetsResponse
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['projectId'] = project_id unless project_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1514,17 +1554,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for the dataset. This is empty if the
-        # policy or resource does not exist.
-        # See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
-        # Policy</a> for more information.
-        # For the definitions of datasets and other genomics resources, see
+        # Deletes a variant set including all variants, call sets, and calls within.
+        # This is not reversible.
+        # For the definitions of variant sets and other genomics resources, see
         # [Fundamentals of Google
         # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. Format is
-        #   `datasets/<dataset ID>`.
-        # @param [Google::Apis::GenomicsV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] variant_set_id
+        #   The ID of the variant set to be deleted.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1534,21 +1570,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Policy] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::Policy]
+        # @return [Google::Apis::GenomicsV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_dataset_iam_policy(resource, get_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
-          command.request_representation = Google::Apis::GenomicsV1::GetIamPolicyRequest::Representation
-          command.request_object = get_iam_policy_request_object
-          command.response_representation = Google::Apis::GenomicsV1::Policy::Representation
-          command.response_class = Google::Apis::GenomicsV1::Policy
-          command.params['resource'] = resource unless resource.nil?
+        def delete_variantset(variant_set_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/variantsets/{variantSetId}', options)
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1740,13 +1774,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a variant set including all variants, call sets, and calls within.
-        # This is not reversible.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        # @param [String] variant_set_id
-        #   The ID of the variant set to be deleted.
+        # Creates a new annotation. Caller must have WRITE permission
+        # for the associated annotation set.
+        # The following fields are required:
+        # * annotationSetId
+        # * referenceName or
+        # referenceId
+        # ### Transcripts
+        # For annotations of type TRANSCRIPT, the following fields of
+        # transcript must be provided:
+        # * exons.start
+        # * exons.end
+        # All other fields may be optionally specified, unless documented as being
+        # server-generated (for example, the `id` field). The annotated
+        # range must be no longer than 100Mbp (mega base pairs). See the
+        # Annotation resource
+        # for additional restrictions on each field.
+        # @param [Google::Apis::GenomicsV1::Annotation] annotation_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1756,19 +1800,61 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::Annotation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::Empty]
+        # @return [Google::Apis::GenomicsV1::Annotation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_variantset(variant_set_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/variantsets/{variantSetId}', options)
-          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
-          command.response_class = Google::Apis::GenomicsV1::Empty
-          command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
+        def create_annotation(annotation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/annotations', options)
+          command.request_representation = Google::Apis::GenomicsV1::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::GenomicsV1::Annotation::Representation
+          command.response_class = Google::Apis::GenomicsV1::Annotation
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates one or more new annotations atomically. All annotations must
+        # belong to the same annotation set. Caller must have WRITE
+        # permission for this annotation set. For optimal performance, batch
+        # positionally adjacent annotations together.
+        # If the request has a systemic issue, such as an attempt to write to
+        # an inaccessible annotation set, the entire RPC will fail accordingly. For
+        # lesser data issues, when possible an error will be isolated to the
+        # corresponding batch entry in the response; the remaining well formed
+        # annotations will be created normally.
+        # For details on the requirements for each individual annotation resource,
+        # see
+        # CreateAnnotation.
+        # @param [Google::Apis::GenomicsV1::BatchCreateAnnotationsRequest] batch_create_annotations_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_create_annotations(batch_create_annotations_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/annotations:batchCreate', options)
+          command.request_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsRequest::Representation
+          command.request_object = batch_create_annotations_request_object
+          command.response_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1914,23 +2000,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new annotation. Caller must have WRITE permission
-        # for the associated annotation set.
-        # The following fields are required:
-        # * annotationSetId
-        # * referenceName or
-        # referenceId
-        # ### Transcripts
-        # For annotations of type TRANSCRIPT, the following fields of
-        # transcript must be provided:
-        # * exons.start
-        # * exons.end
-        # All other fields may be optionally specified, unless documented as being
-        # server-generated (for example, the `id` field). The annotated
-        # range must be no longer than 100Mbp (mega base pairs). See the
-        # Annotation resource
-        # for additional restrictions on each field.
-        # @param [Google::Apis::GenomicsV1::Annotation] annotation_object
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. Clients
+        # may use Operations.GetOperation or Operations.ListOperations to check whether
+        # the cancellation succeeded or the operation completed despite cancellation.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::GenomicsV1::CancelOperationRequest] cancel_operation_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1940,61 +2016,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Annotation] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1::Annotation]
+        # @return [Google::Apis::GenomicsV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_annotation(annotation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotations', options)
-          command.request_representation = Google::Apis::GenomicsV1::Annotation::Representation
-          command.request_object = annotation_object
-          command.response_representation = Google::Apis::GenomicsV1::Annotation::Representation
-          command.response_class = Google::Apis::GenomicsV1::Annotation
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates one or more new annotations atomically. All annotations must
-        # belong to the same annotation set. Caller must have WRITE
-        # permission for this annotation set. For optimal performance, batch
-        # positionally adjacent annotations together.
-        # If the request has a systemic issue, such as an attempt to write to
-        # an inaccessible annotation set, the entire RPC will fail accordingly. For
-        # lesser data issues, when possible an error will be isolated to the
-        # corresponding batch entry in the response; the remaining well formed
-        # annotations will be created normally.
-        # For details on the requirements for each individual annotation resource,
-        # see
-        # CreateAnnotation.
-        # @param [Google::Apis::GenomicsV1::BatchCreateAnnotationsRequest] batch_create_annotations_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_create_annotations(batch_create_annotations_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/annotations:batchCreate', options)
-          command.request_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsRequest::Representation
-          command.request_object = batch_create_annotations_request_object
-          command.response_representation = Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse::Representation
-          command.response_class = Google::Apis::GenomicsV1::BatchCreateAnnotationsResponse
+        def cancel_operation(name, cancel_operation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::GenomicsV1::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
+          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
+          command.response_class = Google::Apis::GenomicsV1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -2003,6 +2039,9 @@ module Google
         # Lists operations that match the specified filter in the request.
         # @param [String] name
         #   The name of the operation collection.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If unspecified, defaults to
+        #   256. The maximum value is 2048.
         # @param [String] filter
         #   A string for filtering Operations.
         #   The following filter fields are supported&#58;
@@ -2022,9 +2061,6 @@ module Google
         #   * `projectId = my-project AND labels.color = red`
         # @param [String] page_token
         #   The standard list page token.
-        # @param [Fixnum] page_size
-        #   The maximum number of results to return. If unspecified, defaults to
-        #   256. The maximum value is 2048.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -2042,14 +2078,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_operations(name, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -2081,42 +2117,6 @@ module Google
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1::Operation::Representation
           command.response_class = Google::Apis::GenomicsV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. Clients
-        # may use Operations.GetOperation or Operations.ListOperations to check whether
-        # the cancellation succeeded or the operation completed despite cancellation.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [Google::Apis::GenomicsV1::CancelOperationRequest] cancel_operation_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, cancel_operation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::GenomicsV1::CancelOperationRequest::Representation
-          command.request_object = cancel_operation_request_object
-          command.response_representation = Google::Apis::GenomicsV1::Empty::Representation
-          command.response_class = Google::Apis::GenomicsV1::Empty
           command.params['name'] = name unless name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?

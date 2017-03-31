@@ -68,6 +68,11 @@ module Google
         # @return [Google::Apis::DriveV3::About::StorageQuota]
         attr_accessor :storage_quota
       
+        # A list of themes that are supported for Team Drives.
+        # Corresponds to the JSON property `teamDriveThemes`
+        # @return [Array<Google::Apis::DriveV3::About::TeamDriveTheme>]
+        attr_accessor :team_drive_themes
+      
         # Information about a Drive user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::DriveV3::User]
@@ -87,6 +92,7 @@ module Google
           @max_import_sizes = args[:max_import_sizes] if args.key?(:max_import_sizes)
           @max_upload_size = args[:max_upload_size] if args.key?(:max_upload_size)
           @storage_quota = args[:storage_quota] if args.key?(:storage_quota)
+          @team_drive_themes = args[:team_drive_themes] if args.key?(:team_drive_themes)
           @user = args[:user] if args.key?(:user)
         end
         
@@ -125,6 +131,37 @@ module Google
             @usage = args[:usage] if args.key?(:usage)
             @usage_in_drive = args[:usage_in_drive] if args.key?(:usage_in_drive)
             @usage_in_drive_trash = args[:usage_in_drive_trash] if args.key?(:usage_in_drive_trash)
+          end
+        end
+        
+        # 
+        class TeamDriveTheme
+          include Google::Apis::Core::Hashable
+        
+          # A link to this Team Drive theme's background image.
+          # Corresponds to the JSON property `backgroundImageLink`
+          # @return [String]
+          attr_accessor :background_image_link
+        
+          # The color of this Team Drive theme as an RGB hex string.
+          # Corresponds to the JSON property `colorRgb`
+          # @return [String]
+          attr_accessor :color_rgb
+        
+          # The ID of the theme.
+          # Corresponds to the JSON property `id`
+          # @return [String]
+          attr_accessor :id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @background_image_link = args[:background_image_link] if args.key?(:background_image_link)
+            @color_rgb = args[:color_rgb] if args.key?(:color_rgb)
+            @id = args[:id] if args.key?(:id)
           end
         end
       end
@@ -482,7 +519,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :app_properties
       
-        # Capabilities the current user has on the file. Each capability corresponds to
+        # Capabilities the current user has on this file. Each capability corresponds to
         # a fine-grained action that a user may take.
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV3::File::Capabilities]
@@ -848,52 +885,52 @@ module Google
           @writers_can_share = args[:writers_can_share] if args.key?(:writers_can_share)
         end
         
-        # Capabilities the current user has on the file. Each capability corresponds to
+        # Capabilities the current user has on this file. Each capability corresponds to
         # a fine-grained action that a user may take.
         class Capabilities
           include Google::Apis::Core::Hashable
         
-          # Whether the user can add children to this folder. This is always false when
-          # the item is not a folder.
+          # Whether the current user can add children to this folder. This is always false
+          # when the item is not a folder.
           # Corresponds to the JSON property `canAddChildren`
           # @return [Boolean]
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
-          # Whether the user can comment on the file.
+          # Whether the current user can comment on this file.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
           attr_accessor :can_comment
           alias_method :can_comment?, :can_comment
         
-          # Whether the user can copy the file. For a Team Drive item, whether non-folder
-          # descendants of this item, or this item itself if it is not a folder, can be
-          # copied.
+          # Whether the current user can copy this file. For a Team Drive item, whether
+          # the current user can copy non-folder descendants of this item, or this item
+          # itself if it is not a folder.
           # Corresponds to the JSON property `canCopy`
           # @return [Boolean]
           attr_accessor :can_copy
           alias_method :can_copy?, :can_copy
         
-          # Whether the file can be deleted by the user.
+          # Whether the current user can delete this file.
           # Corresponds to the JSON property `canDelete`
           # @return [Boolean]
           attr_accessor :can_delete
           alias_method :can_delete?, :can_delete
         
-          # Whether the file can be downloaded by the user.
+          # Whether the current user can download this file.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
           attr_accessor :can_download
           alias_method :can_download?, :can_download
         
-          # Whether the user can edit the file's content.
+          # Whether the current user can edit this file.
           # Corresponds to the JSON property `canEdit`
           # @return [Boolean]
           attr_accessor :can_edit
           alias_method :can_edit?, :can_edit
         
-          # Whether the user can list the children of this folder. This is always false
-          # when the item is not a folder.
+          # Whether the current user can list the children of this folder. This is always
+          # false when the item is not a folder.
           # Corresponds to the JSON property `canListChildren`
           # @return [Boolean]
           attr_accessor :can_list_children
@@ -906,15 +943,16 @@ module Google
           attr_accessor :can_move_item_into_team_drive
           alias_method :can_move_item_into_team_drive?, :can_move_item_into_team_drive
         
-          # Whether the user can move this Team Drive item by changing its parent. Note
-          # that a request to change the parent for this item may still fail depending on
-          # the new parent that is being added. Only populated for Team Drive files.
+          # Whether the current user can move this Team Drive item by changing its parent.
+          # Note that a request to change the parent for this item may still fail
+          # depending on the new parent that is being added. Only populated for Team Drive
+          # files.
           # Corresponds to the JSON property `canMoveTeamDriveItem`
           # @return [Boolean]
           attr_accessor :can_move_team_drive_item
           alias_method :can_move_team_drive_item?, :can_move_team_drive_item
         
-          # Whether the user has read access to the Revisions resource of the file. For a
+          # Whether the current user can read the revisions resource of this file. For a
           # Team Drive item, whether revisions of non-folder descendants of this item, or
           # this item itself if it is not a folder, can be read.
           # Corresponds to the JSON property `canReadRevisions`
@@ -922,39 +960,39 @@ module Google
           attr_accessor :can_read_revisions
           alias_method :can_read_revisions?, :can_read_revisions
         
-          # Whether the user has read access to the Team Drive to which this file belongs.
+          # Whether the current user can read the Team Drive to which this file belongs.
           # Only populated for Team Drive files.
           # Corresponds to the JSON property `canReadTeamDrive`
           # @return [Boolean]
           attr_accessor :can_read_team_drive
           alias_method :can_read_team_drive?, :can_read_team_drive
         
-          # Whether the user can remove children from this folder. This is always false
-          # when the item is not a folder.
+          # Whether the current user can remove children from this folder. This is always
+          # false when the item is not a folder.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
-          # Whether the file can be renamed by the user.
+          # Whether the current user can rename this file.
           # Corresponds to the JSON property `canRename`
           # @return [Boolean]
           attr_accessor :can_rename
           alias_method :can_rename?, :can_rename
         
-          # Whether the user can modify the file's permissions and sharing settings.
+          # Whether the current user can modify the sharing settings for this file.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
           attr_accessor :can_share
           alias_method :can_share?, :can_share
         
-          # Whether the file can be trashed by the user.
+          # Whether the current user can move this file to trash.
           # Corresponds to the JSON property `canTrash`
           # @return [Boolean]
           attr_accessor :can_trash
           alias_method :can_trash?, :can_trash
         
-          # Whether the file can be restored from the trash by the current user.
+          # Whether the current user can restore this file from trash.
           # Corresponds to the JSON property `canUntrash`
           # @return [Boolean]
           attr_accessor :can_untrash
@@ -1019,6 +1057,7 @@ module Google
           
             # The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
             # Corresponds to the JSON property `image`
+            # NOTE: Values are automatically base64 encoded/decoded in the client library.
             # @return [String]
             attr_accessor :image
           
@@ -1388,7 +1427,7 @@ module Google
         # @return [String]
         attr_accessor :role
       
-        # Details of whether the Permissions on this Team Drive item are inherited or
+        # Details of whether the permissions on this Team Drive item are inherited or
         # directly on this item. This is an output-only field which is present only for
         # Team Drive items.
         # Corresponds to the JSON property `teamDrivePermissionDetails`
@@ -1783,10 +1822,29 @@ module Google
       class TeamDrive
         include Google::Apis::Core::Hashable
       
+        # An image file and cropping parameters from which a background image for this
+        # Team Drive is set. This is a write only field that can only be set on a drive.
+        # teamdrives.update request that does not set themeId. When specified, all
+        # fields of the backgroundImageFile must be set.
+        # Corresponds to the JSON property `backgroundImageFile`
+        # @return [Google::Apis::DriveV3::TeamDrive::BackgroundImageFile]
+        attr_accessor :background_image_file
+      
+        # A short-lived link to this Team Drive's background image.
+        # Corresponds to the JSON property `backgroundImageLink`
+        # @return [String]
+        attr_accessor :background_image_link
+      
         # Capabilities the current user has on this Team Drive.
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV3::TeamDrive::Capabilities]
         attr_accessor :capabilities
+      
+        # The color of this Team Drive as an RGB hex string. It can only be set on a
+        # drive.teamdrives.update request that does not set themeId.
+        # Corresponds to the JSON property `colorRgb`
+        # @return [String]
+        attr_accessor :color_rgb
       
         # The ID of this Team Drive which is also the ID of the top level folder for
         # this Team Drive.
@@ -1805,16 +1863,79 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The ID of the theme from which the background image and color will be set. The
+        # set of possible teamDriveThemes can be retrieved from a drive.about.get
+        # response. When not specified on a drive.teamdrives.create request, a random
+        # theme is chosen from which the background image and color are set. This is a
+        # write only field that can only be set on a request that does not set colorRgb
+        # or backgroundImageFile.
+        # Corresponds to the JSON property `themeId`
+        # @return [String]
+        attr_accessor :theme_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @background_image_file = args[:background_image_file] if args.key?(:background_image_file)
+          @background_image_link = args[:background_image_link] if args.key?(:background_image_link)
           @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @color_rgb = args[:color_rgb] if args.key?(:color_rgb)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @theme_id = args[:theme_id] if args.key?(:theme_id)
+        end
+        
+        # An image file and cropping parameters from which a background image for this
+        # Team Drive is set. This is a write only field that can only be set on a drive.
+        # teamdrives.update request that does not set themeId. When specified, all
+        # fields of the backgroundImageFile must be set.
+        class BackgroundImageFile
+          include Google::Apis::Core::Hashable
+        
+          # The ID of an image file in Drive to use for the background image.
+          # Corresponds to the JSON property `id`
+          # @return [String]
+          attr_accessor :id
+        
+          # The width of the cropped image in the closed range of 0 to 1, which is the
+          # width of the cropped image divided by the width of the entire image. The
+          # height is computed by applying a width to height aspect ratio of 80 to 9. The
+          # resulting image must be at least 1280 pixels wide and 144 pixels high.
+          # Corresponds to the JSON property `width`
+          # @return [Float]
+          attr_accessor :width
+        
+          # The X coordinate of the upper left corner of the cropping area in the
+          # background image. This is a value in the closed range of 0 to 1 which is the
+          # horizontal distance from the left side of the entire image to the left side of
+          # the cropping area divided by the width of the entire image.
+          # Corresponds to the JSON property `xCoordinate`
+          # @return [Float]
+          attr_accessor :x_coordinate
+        
+          # The Y coordinate of the upper left corner of the cropping area in the
+          # background image. This is a value in the closed range of 0 to 1 which is the
+          # vertical distance from the top side of the entire image to the top side of the
+          # cropping area divided by the height of the entire image.
+          # Corresponds to the JSON property `yCoordinate`
+          # @return [Float]
+          attr_accessor :y_coordinate
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @id = args[:id] if args.key?(:id)
+            @width = args[:width] if args.key?(:width)
+            @x_coordinate = args[:x_coordinate] if args.key?(:x_coordinate)
+            @y_coordinate = args[:y_coordinate] if args.key?(:y_coordinate)
+          end
         end
         
         # Capabilities the current user has on this Team Drive.
@@ -1827,31 +1948,38 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
+          # Whether the current user can change the background of this Team Drive.
+          # Corresponds to the JSON property `canChangeTeamDriveBackground`
+          # @return [Boolean]
+          attr_accessor :can_change_team_drive_background
+          alias_method :can_change_team_drive_background?, :can_change_team_drive_background
+        
           # Whether the current user can comment on files in this Team Drive.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
           attr_accessor :can_comment
           alias_method :can_comment?, :can_comment
         
-          # Whether files in this Team Drive can be copied by the current user.
+          # Whether the current user can copy files in this Team Drive.
           # Corresponds to the JSON property `canCopy`
           # @return [Boolean]
           attr_accessor :can_copy
           alias_method :can_copy?, :can_copy
         
-          # Whether this Team Drive can be deleted by the current user.
+          # Whether the current user can delete this Team Drive. Attempting to delete the
+          # Team Drive may still fail if there are untrashed items inside the Team Drive.
           # Corresponds to the JSON property `canDeleteTeamDrive`
           # @return [Boolean]
           attr_accessor :can_delete_team_drive
           alias_method :can_delete_team_drive?, :can_delete_team_drive
         
-          # Whether files in this Team Drive can be downloaded by the current user.
+          # Whether the current user can download files in this Team Drive.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
           attr_accessor :can_download
           alias_method :can_download?, :can_download
         
-          # Whether files in this Team Drive can be edited by the current user.
+          # Whether the current user can edit files in this Team Drive
           # Corresponds to the JSON property `canEdit`
           # @return [Boolean]
           attr_accessor :can_edit
@@ -1870,8 +1998,8 @@ module Google
           attr_accessor :can_manage_members
           alias_method :can_manage_members?, :can_manage_members
         
-          # Whether the current user has read access to the Revisions resource of files in
-          # this Team Drive.
+          # Whether the current user can read the revisions resource of files in this Team
+          # Drive.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
@@ -1883,13 +2011,13 @@ module Google
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
-          # Whether files or folders in this Team Drive can be renamed by the current user.
+          # Whether the current user can rename files or folders in this Team Drive.
           # Corresponds to the JSON property `canRename`
           # @return [Boolean]
           attr_accessor :can_rename
           alias_method :can_rename?, :can_rename
         
-          # Whether this Team Drive can be renamed by the current user.
+          # Whether the current user can rename this Team Drive.
           # Corresponds to the JSON property `canRenameTeamDrive`
           # @return [Boolean]
           attr_accessor :can_rename_team_drive
@@ -1908,6 +2036,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_change_team_drive_background = args[:can_change_team_drive_background] if args.key?(:can_change_team_drive_background)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete_team_drive = args[:can_delete_team_drive] if args.key?(:can_delete_team_drive)

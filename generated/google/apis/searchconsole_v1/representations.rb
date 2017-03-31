@@ -52,13 +52,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RunMobileFriendlyTestRequest
+      class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Image
+      class RunMobileFriendlyTestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -109,19 +109,19 @@ module Google
         end
       end
       
-      class RunMobileFriendlyTestRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
-          property :request_screenshot, as: 'requestScreenshot'
-        end
-      end
-      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mime_type, as: 'mimeType'
           property :data, :base64 => true, as: 'data'
+        end
+      end
+      
+      class RunMobileFriendlyTestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+          property :request_screenshot, as: 'requestScreenshot'
         end
       end
     end

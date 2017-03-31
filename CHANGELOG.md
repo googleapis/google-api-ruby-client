@@ -1,3 +1,28 @@
+# 0.10.3
+* Regenerate APIs
+* Enable additional API:
+  * `acceleratedmobilepageurl:v1``
+  * `appengine:v1`
+  * `clouderrorreporting:v1beta1`
+  * `cloudfunctions:v1`
+  * `firebasedynamiclinks:v1`
+  * `firebaserules:v1`
+  * `language:v1`
+  * `logging:v2`
+  * `ml:v1`
+  * `runtimeconfig:v1`
+  * `searchconsole:v1`
+  * `servicecontrol:v1`
+  * `servicemanagement:v1`
+  * `serviceuser:v1`
+  * `sourcerepo:v1`
+  * `spanner:v1`
+  * `surveys:v2`
+  * `tagmanager:v2`
+  * `toolresults:v1beta3`
+  * `tracing:v1`
+  * `webfonts:v1`
+
 # 0.10.2
 * Regenerate APIs
 

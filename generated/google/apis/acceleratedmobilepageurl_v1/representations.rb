@@ -22,6 +22,18 @@ module Google
   module Apis
     module AcceleratedmobilepageurlV1
       
+      class BatchGetAmpUrlsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AmpUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AmpUrlError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,15 +47,22 @@ module Google
       end
       
       class BatchGetAmpUrlsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :amp_urls, as: 'ampUrls', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :url_errors, as: 'urlErrors', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError::Representation
+      
+        end
       end
       
       class AmpUrl
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cdn_amp_url, as: 'cdnAmpUrl'
+          property :original_url, as: 'originalUrl'
+          property :amp_url, as: 'ampUrl'
+        end
       end
       
       class AmpUrlError
@@ -60,25 +79,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :urls, as: 'urls'
           property :lookup_strategy, as: 'lookupStrategy'
-        end
-      end
-      
-      class BatchGetAmpUrlsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :amp_urls, as: 'ampUrls', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrl::Representation
-      
-          collection :url_errors, as: 'urlErrors', class: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError, decorator: Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError::Representation
-      
-        end
-      end
-      
-      class AmpUrl
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :original_url, as: 'originalUrl'
-          property :amp_url, as: 'ampUrl'
-          property :cdn_amp_url, as: 'cdnAmpUrl'
         end
       end
     end

@@ -22,9 +22,278 @@ module Google
   module Apis
     module LoggingV2beta1
       
+      # Application log line emitted while processing a request.
+      class LogLine
+        include Google::Apis::Core::Hashable
+      
+        # Severity of this log entry.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # App-provided log message.
+        # Corresponds to the JSON property `logMessage`
+        # @return [String]
+        attr_accessor :log_message
+      
+        # Specifies a location in a source code file.
+        # Corresponds to the JSON property `sourceLocation`
+        # @return [Google::Apis::LoggingV2beta1::SourceLocation]
+        attr_accessor :source_location
+      
+        # Approximate time when this log entry was made.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity = args[:severity] if args.key?(:severity)
+          @log_message = args[:log_message] if args.key?(:log_message)
+          @source_location = args[:source_location] if args.key?(:source_location)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # Result returned from ListLogMetrics.
+      class ListLogMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of logs-based metrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::LoggingV2beta1::LogMetric>]
+        attr_accessor :metrics
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call this method
+        # again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # An individual entry in a log.
+      class LogEntry
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the log to which this log entry belongs:
+        # "projects/[PROJECT_ID]/logs/[LOG_ID]"
+        # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+        # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+        # "folders/[FOLDER_ID]/logs/[LOG_ID]"
+        # [LOG_ID] must be URL-encoded within log_name. Example: "organizations/
+        # 1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must
+        # be less than 512 characters long and can only include the following characters:
+        # upper and lower case alphanumeric characters, forward-slash, underscore,
+        # hyphen, and period.For backward compatibility, if log_name begins with a
+        # forward-slash, such as /projects/..., then the log entry is ingested as usual
+        # but the forward-slash is removed. Listing the log entry will not show the
+        # leading slash and filtering for a log name with a leading slash will never
+        # return any results.
+        # Corresponds to the JSON property `logName`
+        # @return [String]
+        attr_accessor :log_name
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+        # zone":
+        # ` "type": "gce_instance",
+        # "labels": ` "instance_id": "12345678901234",
+        # "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::LoggingV2beta1::MonitoredResource]
+        attr_accessor :resource
+      
+        # A common proto for logging HTTP requests. Only contains semantics defined by
+        # the HTTP specification. Product-specific logging information MUST be defined
+        # in a separate message.
+        # Corresponds to the JSON property `httpRequest`
+        # @return [Google::Apis::LoggingV2beta1::HttpRequest]
+        attr_accessor :http_request
+      
+        # The log entry payload, represented as a structure that is expressed as a JSON
+        # object.
+        # Corresponds to the JSON property `jsonPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :json_payload
+      
+        # Additional information about a potentially long-running operation with which a
+        # log entry is associated.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::LoggingV2beta1::LogEntryOperation]
+        attr_accessor :operation
+      
+        # Optional. A unique identifier for the log entry. If you provide a value, then
+        # Stackdriver Logging considers other log entries in the same project, with the
+        # same timestamp, and with the same insert_id to be duplicates which can be
+        # removed. If omitted in new log entries, then Stackdriver Logging will insert
+        # its own unique identifier. The insert_id is used to order log entries that
+        # have the same timestamp value.
+        # Corresponds to the JSON property `insertId`
+        # @return [String]
+        attr_accessor :insert_id
+      
+        # The log entry payload, represented as a Unicode string (UTF-8).
+        # Corresponds to the JSON property `textPayload`
+        # @return [String]
+        attr_accessor :text_payload
+      
+        # The log entry payload, represented as a protocol buffer. Some Google Cloud
+        # Platform services use this field for their log entry payloads.
+        # Corresponds to the JSON property `protoPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :proto_payload
+      
+        # Optional. A set of user-defined (key, value) data that provides additional
+        # information about the log entry.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Resource name of the trace associated with the log entry, if any. If
+        # it contains a relative resource name, the name is assumed to be relative to //
+        # tracing.googleapis.com. Example: projects/my-projectid/traces/
+        # 06796866738c859f2f19b7cfb3214824
+        # Corresponds to the JSON property `trace`
+        # @return [String]
+        attr_accessor :trace
+      
+        # Optional. The severity of the log entry. The default value is LogSeverity.
+        # DEFAULT.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Additional information about the source code location that produced the log
+        # entry.
+        # Corresponds to the JSON property `sourceLocation`
+        # @return [Google::Apis::LoggingV2beta1::LogEntrySourceLocation]
+        attr_accessor :source_location
+      
+        # Optional. The time the event described by the log entry occurred. If omitted
+        # in a new log entry, Stackdriver Logging will insert the time the log entry is
+        # received. Stackdriver Logging might reject log entries whose time stamps are
+        # more than a couple of hours in the future. Log entries with time stamps in the
+        # past are accepted.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_name = args[:log_name] if args.key?(:log_name)
+          @resource = args[:resource] if args.key?(:resource)
+          @http_request = args[:http_request] if args.key?(:http_request)
+          @json_payload = args[:json_payload] if args.key?(:json_payload)
+          @operation = args[:operation] if args.key?(:operation)
+          @insert_id = args[:insert_id] if args.key?(:insert_id)
+          @text_payload = args[:text_payload] if args.key?(:text_payload)
+          @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
+          @labels = args[:labels] if args.key?(:labels)
+          @trace = args[:trace] if args.key?(:trace)
+          @severity = args[:severity] if args.key?(:severity)
+          @source_location = args[:source_location] if args.key?(:source_location)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for Empty is empty JSON object ``.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Specifies a location in a source code file.
+      class SourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # Line within the source file.
+        # Corresponds to the JSON property `line`
+        # @return [String]
+        attr_accessor :line
+      
+        # Source file name. Depending on the runtime environment, this might be a simple
+        # name or a fully-qualified name.
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Human-readable name of the function or method being invoked, with optional
+        # context such as the class or package name. This information is used in
+        # contexts such as the logs viewer, where a file and line number are less
+        # meaningful. The format can vary by language. For example: qual.if.ied.Class.
+        # method (Java), dir/package.func (Go), function (Python).
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line = args[:line] if args.key?(:line)
+          @file = args[:file] if args.key?(:file)
+          @function_name = args[:function_name] if args.key?(:function_name)
+        end
+      end
+      
       # The parameters to ListLogEntries.
       class ListLogEntriesRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. If present, then retrieve the next batch of results from the
+        # preceding call to this method. page_token must be the value of next_page_token
+        # from the previous response. The values of other method parameters should be
+        # identical to those in the previous call.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. The maximum number of results to return from this request. Non-
+        # positive values are ignored. The presence of next_page_token in the response
+        # indicates that more results might be available.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
       
         # Optional. How the results should be sorted. Presently, the only permitted
         # values are "timestamp asc" (default) and "timestamp desc". The first option
@@ -47,14 +316,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_names
       
-        # Deprecated. Use resource_names instead. One or more project identifiers or
-        # project numbers from which to retrieve log entries. Example: "my-project-1A".
-        # If present, these project identifiers are converted to resource name format
-        # and added to the list of resources in resource_names.
-        # Corresponds to the JSON property `projectIds`
-        # @return [Array<String>]
-        attr_accessor :project_ids
-      
         # Optional. A filter that chooses which log entries to return. See Advanced Logs
         # Filters. Only log entries that match the filter are returned. An empty filter
         # matches all log entries in the resources listed in resource_names. Referencing
@@ -64,20 +325,13 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Optional. If present, then retrieve the next batch of results from the
-        # preceding call to this method. page_token must be the value of next_page_token
-        # from the previous response. The values of other method parameters should be
-        # identical to those in the previous call.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # Optional. The maximum number of results to return from this request. Non-
-        # positive values are ignored. The presence of next_page_token in the response
-        # indicates that more results might be available.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
+        # Deprecated. Use resource_names instead. One or more project identifiers or
+        # project numbers from which to retrieve log entries. Example: "my-project-1A".
+        # If present, these project identifiers are converted to resource name format
+        # and added to the list of resources in resource_names.
+        # Corresponds to the JSON property `projectIds`
+        # @return [Array<String>]
+        attr_accessor :project_ids
       
         def initialize(**args)
            update!(**args)
@@ -85,12 +339,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @order_by = args[:order_by] if args.key?(:order_by)
-          @resource_names = args[:resource_names] if args.key?(:resource_names)
-          @project_ids = args[:project_ids] if args.key?(:project_ids)
-          @filter = args[:filter] if args.key?(:filter)
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+          @filter = args[:filter] if args.key?(:filter)
+          @project_ids = args[:project_ids] if args.key?(:project_ids)
         end
       end
       
@@ -98,49 +352,6 @@ module Google
       # application.
       class RequestLog
         include Google::Apis::Core::Hashable
-      
-        # Version of the application that handled this request.
-        # Corresponds to the JSON property `versionId`
-        # @return [String]
-        attr_accessor :version_id
-      
-        # Module of the application that handled this request.
-        # Corresponds to the JSON property `moduleId`
-        # @return [String]
-        attr_accessor :module_id
-      
-        # Time when the request finished.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # User agent that made the request.
-        # Corresponds to the JSON property `userAgent`
-        # @return [String]
-        attr_accessor :user_agent
-      
-        # Whether this was a loading request for the instance.
-        # Corresponds to the JSON property `wasLoadingRequest`
-        # @return [Boolean]
-        attr_accessor :was_loading_request
-        alias_method :was_loading_request?, :was_loading_request
-      
-        # Source code for the application that handled this request. There can be more
-        # than one source reference per deployed application if source code is
-        # distributed among multiple repositories.
-        # Corresponds to the JSON property `sourceReference`
-        # @return [Array<Google::Apis::LoggingV2beta1::SourceReference>]
-        attr_accessor :source_reference
-      
-        # Size in bytes sent back to client by request.
-        # Corresponds to the JSON property `responseSize`
-        # @return [String]
-        attr_accessor :response_size
-      
-        # Stackdriver Trace identifier for this request.
-        # Corresponds to the JSON property `traceId`
-        # @return [String]
-        attr_accessor :trace_id
       
         # A list of log lines emitted by the application while serving this request.
         # Corresponds to the JSON property `line`
@@ -178,6 +389,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :status
       
+        # Time this request spent in the pending request queue.
+        # Corresponds to the JSON property `pendingTime`
+        # @return [String]
+        attr_accessor :pending_time
+      
         # Contains the path and query portion of the URL that was requested. For example,
         # if the URL was "http://example.com/app?name=val", the resource would be "/app?
         # name=val". The fragment identifier, which is identified by the # character, is
@@ -185,11 +401,6 @@ module Google
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
-      
-        # Time this request spent in the pending request queue.
-        # Corresponds to the JSON property `pendingTime`
-        # @return [String]
-        attr_accessor :pending_time
       
         # Task name of the request, in the case of an offline request.
         # Corresponds to the JSON property `taskName`
@@ -207,16 +418,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :instance_index
       
+        # Internet host and port number of the resource being requested.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
         # Whether this request is finished or active.
         # Corresponds to the JSON property `finished`
         # @return [Boolean]
         attr_accessor :finished
         alias_method :finished?, :finished
-      
-        # Internet host and port number of the resource being requested.
-        # Corresponds to the JSON property `host`
-        # @return [String]
-        attr_accessor :host
       
         # HTTP version of request. Example: "HTTP/1.1".
         # Corresponds to the JSON property `httpVersion`
@@ -276,33 +487,68 @@ module Google
         attr_accessor :first
         alias_method :first?, :first
       
+        # Version of the application that handled this request.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
+        # Module of the application that handled this request.
+        # Corresponds to the JSON property `moduleId`
+        # @return [String]
+        attr_accessor :module_id
+      
+        # Time when the request finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # User agent that made the request.
+        # Corresponds to the JSON property `userAgent`
+        # @return [String]
+        attr_accessor :user_agent
+      
+        # Whether this was a loading request for the instance.
+        # Corresponds to the JSON property `wasLoadingRequest`
+        # @return [Boolean]
+        attr_accessor :was_loading_request
+        alias_method :was_loading_request?, :was_loading_request
+      
+        # Source code for the application that handled this request. There can be more
+        # than one source reference per deployed application if source code is
+        # distributed among multiple repositories.
+        # Corresponds to the JSON property `sourceReference`
+        # @return [Array<Google::Apis::LoggingV2beta1::SourceReference>]
+        attr_accessor :source_reference
+      
+        # Size in bytes sent back to client by request.
+        # Corresponds to the JSON property `responseSize`
+        # @return [String]
+        attr_accessor :response_size
+      
+        # Stackdriver Trace identifier for this request.
+        # Corresponds to the JSON property `traceId`
+        # @return [String]
+        attr_accessor :trace_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @version_id = args[:version_id] if args.key?(:version_id)
-          @module_id = args[:module_id] if args.key?(:module_id)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @user_agent = args[:user_agent] if args.key?(:user_agent)
-          @was_loading_request = args[:was_loading_request] if args.key?(:was_loading_request)
-          @source_reference = args[:source_reference] if args.key?(:source_reference)
-          @response_size = args[:response_size] if args.key?(:response_size)
-          @trace_id = args[:trace_id] if args.key?(:trace_id)
           @line = args[:line] if args.key?(:line)
           @referrer = args[:referrer] if args.key?(:referrer)
           @task_queue_name = args[:task_queue_name] if args.key?(:task_queue_name)
           @request_id = args[:request_id] if args.key?(:request_id)
           @nickname = args[:nickname] if args.key?(:nickname)
           @status = args[:status] if args.key?(:status)
-          @resource = args[:resource] if args.key?(:resource)
           @pending_time = args[:pending_time] if args.key?(:pending_time)
+          @resource = args[:resource] if args.key?(:resource)
           @task_name = args[:task_name] if args.key?(:task_name)
           @url_map_entry = args[:url_map_entry] if args.key?(:url_map_entry)
           @instance_index = args[:instance_index] if args.key?(:instance_index)
-          @finished = args[:finished] if args.key?(:finished)
           @host = args[:host] if args.key?(:host)
+          @finished = args[:finished] if args.key?(:finished)
           @http_version = args[:http_version] if args.key?(:http_version)
           @start_time = args[:start_time] if args.key?(:start_time)
           @latency = args[:latency] if args.key?(:latency)
@@ -314,6 +560,14 @@ module Google
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @mega_cycles = args[:mega_cycles] if args.key?(:mega_cycles)
           @first = args[:first] if args.key?(:first)
+          @version_id = args[:version_id] if args.key?(:version_id)
+          @module_id = args[:module_id] if args.key?(:module_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @user_agent = args[:user_agent] if args.key?(:user_agent)
+          @was_loading_request = args[:was_loading_request] if args.key?(:was_loading_request)
+          @source_reference = args[:source_reference] if args.key?(:source_reference)
+          @response_size = args[:response_size] if args.key?(:response_size)
+          @trace_id = args[:trace_id] if args.key?(:trace_id)
         end
       end
       
@@ -372,35 +626,10 @@ module Google
         end
       end
       
-      # Result returned from WriteLogEntries. empty
-      class WriteLogEntriesResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Additional information about a potentially long-running operation with which a
       # log entry is associated.
       class LogEntryOperation
         include Google::Apis::Core::Hashable
-      
-        # Optional. Set this to True if this is the last log entry in the operation.
-        # Corresponds to the JSON property `last`
-        # @return [Boolean]
-        attr_accessor :last
-        alias_method :last?, :last
-      
-        # Optional. An arbitrary operation identifier. Log entries with the same
-        # identifier are assumed to be part of the same operation.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
       
         # Optional. An arbitrary producer identifier. The combination of id and producer
         # must be globally unique. Examples for producer: "MyDivision.MyBigCompany.com",
@@ -415,16 +644,28 @@ module Google
         attr_accessor :first
         alias_method :first?, :first
       
+        # Optional. Set this to True if this is the last log entry in the operation.
+        # Corresponds to the JSON property `last`
+        # @return [Boolean]
+        attr_accessor :last
+        alias_method :last?, :last
+      
+        # Optional. An arbitrary operation identifier. Log entries with the same
+        # identifier are assumed to be part of the same operation.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @last = args[:last] if args.key?(:last)
-          @id = args[:id] if args.key?(:id)
           @producer = args[:producer] if args.key?(:producer)
           @first = args[:first] if args.key?(:first)
+          @last = args[:last] if args.key?(:last)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -478,6 +719,19 @@ module Google
         end
       end
       
+      # Result returned from WriteLogEntries. empty
+      class WriteLogEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An object representing a resource that can be used for monitoring, logging,
       # billing, or other purposes. Examples include virtual machine instances,
       # databases, and storage devices such as disks. The type field identifies a
@@ -515,93 +769,6 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Describes a sink used to export log entries to one of the following
-      # destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a
-      # Cloud Pub/Sub topic. A logs filter controls which log entries are exported.
-      # The sink must be created within a project, organization, billing account, or
-      # folder.
-      class LogSink
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The time at which this sink will begin exporting log entries. Log
-        # entries are exported only if their timestamp is not earlier than the start
-        # time. The default value of this field is the time the sink is created or
-        # updated.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Output only. An IAM identity&mdash;a service account or group&mdash;under
-        # which Stackdriver Logging writes the exported log entries to the sink's
-        # destination. This field is set by sinks.create and sinks.update, based on the
-        # setting of unique_writer_identity in those methods.Until you grant this
-        # identity write-access to the destination, log entry exports from this sink
-        # will fail. For more information, see Granting access for a resource. Consult
-        # the destination service's documentation to determine the appropriate IAM roles
-        # to assign to the identity.
-        # Corresponds to the JSON property `writerIdentity`
-        # @return [String]
-        attr_accessor :writer_identity
-      
-        # Optional. The log entry format to use for this sink's exported log entries.
-        # The v2 format is used by default. The v1 format is deprecated and should be
-        # used only as part of a migration effort to v2. See Migration to the v2 API.
-        # Corresponds to the JSON property `outputVersionFormat`
-        # @return [String]
-        attr_accessor :output_version_format
-      
-        # Required. The client-assigned sink identifier, unique within the project.
-        # Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
-        # characters and can include only the following characters: upper and lower-case
-        # alphanumeric characters, underscores, hyphens, and periods.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Optional. An advanced logs filter. The only exported log entries are those
-        # that are in the resource owning the sink and that match the filter. The filter
-        # must use the log entry format specified by the output_version_format parameter.
-        # For example, in the v2 format:
-        # logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        # Required. The export destination:
-        # "storage.googleapis.com/[GCS_BUCKET]"
-        # "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-        # "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-        # The sink's writer_identity, set when the sink is created, must have permission
-        # to write to the destination or else the log entries are not exported. For more
-        # information, see Exporting Logs With Sinks.
-        # Corresponds to the JSON property `destination`
-        # @return [String]
-        attr_accessor :destination
-      
-        # Optional. The time at which this sink will stop exporting log entries. Log
-        # entries are exported only if their timestamp is earlier than the end time. If
-        # this field is not supplied, there is no end time. If both a start time and an
-        # end time are provided, then the end time must be later than the start time.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
-          @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
-          @name = args[:name] if args.key?(:name)
-          @filter = args[:filter] if args.key?(:filter)
-          @destination = args[:destination] if args.key?(:destination)
-          @end_time = args[:end_time] if args.key?(:end_time)
         end
       end
       
@@ -683,6 +850,93 @@ module Google
         end
       end
       
+      # Describes a sink used to export log entries to one of the following
+      # destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a
+      # Cloud Pub/Sub topic. A logs filter controls which log entries are exported.
+      # The sink must be created within a project, organization, billing account, or
+      # folder.
+      class LogSink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An IAM identity&mdash;a service account or group&mdash;under
+        # which Stackdriver Logging writes the exported log entries to the sink's
+        # destination. This field is set by sinks.create and sinks.update, based on the
+        # setting of unique_writer_identity in those methods.Until you grant this
+        # identity write-access to the destination, log entry exports from this sink
+        # will fail. For more information, see Granting access for a resource. Consult
+        # the destination service's documentation to determine the appropriate IAM roles
+        # to assign to the identity.
+        # Corresponds to the JSON property `writerIdentity`
+        # @return [String]
+        attr_accessor :writer_identity
+      
+        # Optional. The time at which this sink will begin exporting log entries. Log
+        # entries are exported only if their timestamp is not earlier than the start
+        # time. The default value of this field is the time the sink is created or
+        # updated.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. The log entry format to use for this sink's exported log entries.
+        # The v2 format is used by default. The v1 format is deprecated and should be
+        # used only as part of a migration effort to v2. See Migration to the v2 API.
+        # Corresponds to the JSON property `outputVersionFormat`
+        # @return [String]
+        attr_accessor :output_version_format
+      
+        # Required. The client-assigned sink identifier, unique within the project.
+        # Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
+        # characters and can include only the following characters: upper and lower-case
+        # alphanumeric characters, underscores, hyphens, and periods.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. An advanced logs filter. The only exported log entries are those
+        # that are in the resource owning the sink and that match the filter. The filter
+        # must use the log entry format specified by the output_version_format parameter.
+        # For example, in the v2 format:
+        # logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. The export destination:
+        # "storage.googleapis.com/[GCS_BUCKET]"
+        # "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        # "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+        # The sink's writer_identity, set when the sink is created, must have permission
+        # to write to the destination or else the log entries are not exported. For more
+        # information, see Exporting Logs With Sinks.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Optional. The time at which this sink will stop exporting log entries. Log
+        # entries are exported only if their timestamp is earlier than the end time. If
+        # this field is not supplied, there is no end time. If both a start time and an
+        # end time are provided, then the end time must be later than the start time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @name = args[:name] if args.key?(:name)
+          @filter = args[:filter] if args.key?(:filter)
+          @destination = args[:destination] if args.key?(:destination)
+          @end_time = args[:end_time] if args.key?(:end_time)
+        end
+      end
+      
       # Result returned from ListLogs.
       class ListLogsResponse
         include Google::Apis::Core::Hashable
@@ -711,44 +965,11 @@ module Google
         end
       end
       
-      # Result returned from ListSinks.
-      class ListSinksResponse
-        include Google::Apis::Core::Hashable
-      
-        # If there might be more results than appear in this response, then
-        # nextPageToken is included. To get the next set of results, call the same
-        # method again using the value of nextPageToken as pageToken.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of sinks.
-        # Corresponds to the JSON property `sinks`
-        # @return [Array<Google::Apis::LoggingV2beta1::LogSink>]
-        attr_accessor :sinks
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @sinks = args[:sinks] if args.key?(:sinks)
-        end
-      end
-      
       # A common proto for logging HTTP requests. Only contains semantics defined by
       # the HTTP specification. Product-specific logging information MUST be defined
       # in a separate message.
       class HttpRequest
         include Google::Apis::Core::Hashable
-      
-        # Whether or not a cache lookup was attempted.
-        # Corresponds to the JSON property `cacheLookup`
-        # @return [Boolean]
-        attr_accessor :cache_lookup
-        alias_method :cache_lookup?, :cache_lookup
       
         # Whether or not an entity was served from cache (with or without validation).
         # Corresponds to the JSON property `cacheHit`
@@ -827,13 +1048,18 @@ module Google
         # @return [String]
         attr_accessor :server_ip
       
+        # Whether or not a cache lookup was attempted.
+        # Corresponds to the JSON property `cacheLookup`
+        # @return [Boolean]
+        attr_accessor :cache_lookup
+        alias_method :cache_lookup?, :cache_lookup
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @cache_lookup = args[:cache_lookup] if args.key?(:cache_lookup)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @cache_validated_with_origin_server = args[:cache_validated_with_origin_server] if args.key?(:cache_validated_with_origin_server)
           @status = args[:status] if args.key?(:status)
@@ -847,17 +1073,40 @@ module Google
           @request_url = args[:request_url] if args.key?(:request_url)
           @remote_ip = args[:remote_ip] if args.key?(:remote_ip)
           @server_ip = args[:server_ip] if args.key?(:server_ip)
+          @cache_lookup = args[:cache_lookup] if args.key?(:cache_lookup)
+        end
+      end
+      
+      # Result returned from ListSinks.
+      class ListSinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of sinks.
+        # Corresponds to the JSON property `sinks`
+        # @return [Array<Google::Apis::LoggingV2beta1::LogSink>]
+        attr_accessor :sinks
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sinks = args[:sinks] if args.key?(:sinks)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
-      
-        # The label key.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
       
         # A human-readable description for the label.
         # Corresponds to the JSON property `description`
@@ -869,15 +1118,20 @@ module Google
         # @return [String]
         attr_accessor :value_type
       
+        # The label key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] if args.key?(:key)
           @description = args[:description] if args.key?(:description)
           @value_type = args[:value_type] if args.key?(:value_type)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -890,16 +1144,6 @@ module Google
       # descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
-      
-        # Optional. The resource name of the monitored resource descriptor: "projects/`
-        # project_id`/monitoredResourceDescriptors/`type`" where `type` is the value of
-        # the type field in this object and `project_id` is a project ID that provides
-        # API-specific context for accessing the type. APIs that do not use project
-        # information can use the resource name format "monitoredResourceDescriptors/`
-        # type`".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
       
         # Optional. A concise name for the monitored resource type that might be
         # displayed in user interfaces. It should be a Title Cased Noun Phrase, without
@@ -928,17 +1172,27 @@ module Google
         # @return [Array<Google::Apis::LoggingV2beta1::LabelDescriptor>]
         attr_accessor :labels
       
+        # Optional. The resource name of the monitored resource descriptor: "projects/`
+        # project_id`/monitoredResourceDescriptors/`type`" where `type` is the value of
+        # the type field in this object and `project_id` is a project ID that provides
+        # API-specific context for accessing the type. APIs that do not use project
+        # information can use the resource name format "monitoredResourceDescriptors/`
+        # type`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @description = args[:description] if args.key?(:description)
           @type = args[:type] if args.key?(:type)
           @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -946,12 +1200,6 @@ module Google
       # entry.
       class LogEntrySourceLocation
         include Google::Apis::Core::Hashable
-      
-        # Optional. Line within the source file. 1-based; 0 indicates no line number
-        # available.
-        # Corresponds to the JSON property `line`
-        # @return [String]
-        attr_accessor :line
       
         # Optional. Source file name. Depending on the runtime environment, this might
         # be a simple name or a fully-qualified name.
@@ -968,21 +1216,32 @@ module Google
         # @return [String]
         attr_accessor :function
       
+        # Optional. Line within the source file. 1-based; 0 indicates no line number
+        # available.
+        # Corresponds to the JSON property `line`
+        # @return [String]
+        attr_accessor :line
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @line = args[:line] if args.key?(:line)
           @file = args[:file] if args.key?(:file)
           @function = args[:function] if args.key?(:function)
+          @line = args[:line] if args.key?(:line)
         end
       end
       
       # Result returned from ListLogEntries.
       class ListLogEntriesResponse
         include Google::Apis::Core::Hashable
+      
+        # A list of log entries.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
+        attr_accessor :entries
       
         # If there might be more results than those appearing in this response, then
         # nextPageToken is included. To get the next set of results, call this method
@@ -997,273 +1256,14 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of log entries.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
-        attr_accessor :entries
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
-      # Application log line emitted while processing a request.
-      class LogLine
-        include Google::Apis::Core::Hashable
-      
-        # Severity of this log entry.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # App-provided log message.
-        # Corresponds to the JSON property `logMessage`
-        # @return [String]
-        attr_accessor :log_message
-      
-        # Specifies a location in a source code file.
-        # Corresponds to the JSON property `sourceLocation`
-        # @return [Google::Apis::LoggingV2beta1::SourceLocation]
-        attr_accessor :source_location
-      
-        # Approximate time when this log entry was made.
-        # Corresponds to the JSON property `time`
-        # @return [String]
-        attr_accessor :time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @severity = args[:severity] if args.key?(:severity)
-          @log_message = args[:log_message] if args.key?(:log_message)
-          @source_location = args[:source_location] if args.key?(:source_location)
-          @time = args[:time] if args.key?(:time)
-        end
-      end
-      
-      # Result returned from ListLogMetrics.
-      class ListLogMetricsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of logs-based metrics.
-        # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::LoggingV2beta1::LogMetric>]
-        attr_accessor :metrics
-      
-        # If there might be more results than appear in this response, then
-        # nextPageToken is included. To get the next set of results, call this method
-        # again using the value of nextPageToken as pageToken.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metrics = args[:metrics] if args.key?(:metrics)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # An individual entry in a log.
-      class LogEntry
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The time the event described by the log entry occurred. If omitted
-        # in a new log entry, Stackdriver Logging will insert the time the log entry is
-        # received. Stackdriver Logging might reject log entries whose time stamps are
-        # more than a couple of hours in the future. Log entries with time stamps in the
-        # past are accepted.
-        # Corresponds to the JSON property `timestamp`
-        # @return [String]
-        attr_accessor :timestamp
-      
-        # Required. The resource name of the log to which this log entry belongs:
-        # "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-        # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-        # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # [LOG_ID] must be URL-encoded within log_name. Example: "organizations/
-        # 1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must
-        # be less than 512 characters long and can only include the following characters:
-        # upper and lower case alphanumeric characters, forward-slash, underscore,
-        # hyphen, and period.For backward compatibility, if log_name begins with a
-        # forward-slash, such as /projects/..., then the log entry is ingested as usual
-        # but the forward-slash is removed. Listing the log entry will not show the
-        # leading slash and filtering for a log name with a leading slash will never
-        # return any results.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        # A common proto for logging HTTP requests. Only contains semantics defined by
-        # the HTTP specification. Product-specific logging information MUST be defined
-        # in a separate message.
-        # Corresponds to the JSON property `httpRequest`
-        # @return [Google::Apis::LoggingV2beta1::HttpRequest]
-        attr_accessor :http_request
-      
-        # An object representing a resource that can be used for monitoring, logging,
-        # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The type field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's schema.
-        # Information in the labels field identifies the actual resource and its
-        # attributes according to the schema. For example, a particular Compute Engine
-        # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
-        # Corresponds to the JSON property `resource`
-        # @return [Google::Apis::LoggingV2beta1::MonitoredResource]
-        attr_accessor :resource
-      
-        # The log entry payload, represented as a structure that is expressed as a JSON
-        # object.
-        # Corresponds to the JSON property `jsonPayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :json_payload
-      
-        # Additional information about a potentially long-running operation with which a
-        # log entry is associated.
-        # Corresponds to the JSON property `operation`
-        # @return [Google::Apis::LoggingV2beta1::LogEntryOperation]
-        attr_accessor :operation
-      
-        # Optional. A unique identifier for the log entry. If you provide a value, then
-        # Stackdriver Logging considers other log entries in the same project, with the
-        # same timestamp, and with the same insert_id to be duplicates which can be
-        # removed. If omitted in new log entries, then Stackdriver Logging will insert
-        # its own unique identifier. The insert_id is used to order log entries that
-        # have the same timestamp value.
-        # Corresponds to the JSON property `insertId`
-        # @return [String]
-        attr_accessor :insert_id
-      
-        # The log entry payload, represented as a Unicode string (UTF-8).
-        # Corresponds to the JSON property `textPayload`
-        # @return [String]
-        attr_accessor :text_payload
-      
-        # The log entry payload, represented as a protocol buffer. Some Google Cloud
-        # Platform services use this field for their log entry payloads.
-        # Corresponds to the JSON property `protoPayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :proto_payload
-      
-        # Optional. Resource name of the trace associated with the log entry, if any. If
-        # it contains a relative resource name, the name is assumed to be relative to //
-        # tracing.googleapis.com. Example: projects/my-projectid/traces/
-        # 06796866738c859f2f19b7cfb3214824
-        # Corresponds to the JSON property `trace`
-        # @return [String]
-        attr_accessor :trace
-      
-        # Optional. A set of user-defined (key, value) data that provides additional
-        # information about the log entry.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Optional. The severity of the log entry. The default value is LogSeverity.
-        # DEFAULT.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # Additional information about the source code location that produced the log
-        # entry.
-        # Corresponds to the JSON property `sourceLocation`
-        # @return [Google::Apis::LoggingV2beta1::LogEntrySourceLocation]
-        attr_accessor :source_location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
-          @log_name = args[:log_name] if args.key?(:log_name)
-          @http_request = args[:http_request] if args.key?(:http_request)
-          @resource = args[:resource] if args.key?(:resource)
-          @json_payload = args[:json_payload] if args.key?(:json_payload)
-          @operation = args[:operation] if args.key?(:operation)
-          @insert_id = args[:insert_id] if args.key?(:insert_id)
-          @text_payload = args[:text_payload] if args.key?(:text_payload)
-          @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
-          @trace = args[:trace] if args.key?(:trace)
-          @labels = args[:labels] if args.key?(:labels)
-          @severity = args[:severity] if args.key?(:severity)
-          @source_location = args[:source_location] if args.key?(:source_location)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Specifies a location in a source code file.
-      class SourceLocation
-        include Google::Apis::Core::Hashable
-      
-        # Source file name. Depending on the runtime environment, this might be a simple
-        # name or a fully-qualified name.
-        # Corresponds to the JSON property `file`
-        # @return [String]
-        attr_accessor :file
-      
-        # Human-readable name of the function or method being invoked, with optional
-        # context such as the class or package name. This information is used in
-        # contexts such as the logs viewer, where a file and line number are less
-        # meaningful. The format can vary by language. For example: qual.if.ied.Class.
-        # method (Java), dir/package.func (Go), function (Python).
-        # Corresponds to the JSON property `functionName`
-        # @return [String]
-        attr_accessor :function_name
-      
-        # Line within the source file.
-        # Corresponds to the JSON property `line`
-        # @return [String]
-        attr_accessor :line
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @file = args[:file] if args.key?(:file)
-          @function_name = args[:function_name] if args.key?(:function_name)
-          @line = args[:line] if args.key?(:line)
         end
       end
     end

@@ -27,6 +27,12 @@ module Google
       VERSION = 'V1'
       REVISION = '20170330'
 
+      # View and manage your data in Google BigQuery
+      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+
+      # Manage your data in Google Cloud Storage
+      AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
+
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
@@ -35,12 +41,6 @@ module Google
 
       # View and manage Genomics data
       AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
-
-      # View and manage your data in Google BigQuery
-      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
-
-      # Manage your data in Google Cloud Storage
-      AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
     end
   end
 end

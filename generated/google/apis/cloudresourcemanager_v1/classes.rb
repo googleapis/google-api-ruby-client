@@ -69,103 +69,6 @@ module Google
         end
       end
       
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::CloudresourcemanagerV1::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @response = args[:response] if args.key?(:response)
-          @name = args[:name] if args.key?(:name)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -237,6 +140,204 @@ module Google
         def update!(**args)
           @service = args[:service] if args.key?(:service)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should have the format of `operations/some/unique/name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` which can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting purpose.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CloudresourcemanagerV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+          @name = args[:name] if args.key?(:name)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+        end
+      end
+      
+      # A `Constraint` describes a way in which a resource's configuration can be
+      # restricted. For example, it controls which cloud services can be activated
+      # across an organization, or whether a Compute Engine instance can have
+      # serial port connections established. `Constraints` can be configured by the
+      # organization's policy adminstrator to fit the needs of the organzation by
+      # setting Policies for `Constraints` at different locations in the
+      # organization's resource hierarchy. Policies are inherited down the resource
+      # hierarchy from higher levels, but can also be overridden. For details about
+      # the inheritance rules please read about
+      # Policies.
+      # `Constraints` have a default behavior determined by the `constraint_default`
+      # field, which is the enforcement behavior that is used in the absence of a
+      # `Policy` being defined or inherited for the resource in question.
+      class Constraint
+        include Google::Apis::Core::Hashable
+      
+        # Version of the `Constraint`. Default version is 0;
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # A `Constraint` that allows or disallows a list of string values, which are
+        # configured by an Organization's policy administrator with a `Policy`.
+        # Corresponds to the JSON property `listConstraint`
+        # @return [Google::Apis::CloudresourcemanagerV1::ListConstraint]
+        attr_accessor :list_constraint
+      
+        # The human readable name.
+        # Mutable.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Detailed description of what this `Constraint` controls as well as how and
+        # where it is enforced.
+        # Mutable.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A `Constraint` that is either enforced or not.
+        # For example a constraint `constraints/compute.disableSerialPortAccess`.
+        # If it is enforced on a VM instance, serial port connections will not be
+        # opened to that instance.
+        # Corresponds to the JSON property `booleanConstraint`
+        # @return [Google::Apis::CloudresourcemanagerV1::BooleanConstraint]
+        attr_accessor :boolean_constraint
+      
+        # The evaluation behavior of this constraint in the absense of 'Policy'.
+        # Corresponds to the JSON property `constraintDefault`
+        # @return [String]
+        attr_accessor :constraint_default
+      
+        # Immutable value, required to globally be unique. For example,
+        # `constraints/serviceuser.services`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+          @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @description = args[:description] if args.key?(:description)
+          @boolean_constraint = args[:boolean_constraint] if args.key?(:boolean_constraint)
+          @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The response message for Liens.ListLiens.
+      class ListLiensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Liens.
+        # Corresponds to the JSON property `liens`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
+        attr_accessor :liens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @liens = args[:liens] if args.key?(:liens)
         end
       end
       
@@ -312,107 +413,6 @@ module Google
         end
       end
       
-      # The response message for Liens.ListLiens.
-      class ListLiensResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of Liens.
-        # Corresponds to the JSON property `liens`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
-        attr_accessor :liens
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @liens = args[:liens] if args.key?(:liens)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # A `Constraint` describes a way in which a resource's configuration can be
-      # restricted. For example, it controls which cloud services can be activated
-      # across an organization, or whether a Compute Engine instance can have
-      # serial port connections established. `Constraints` can be configured by the
-      # organization's policy adminstrator to fit the needs of the organzation by
-      # setting Policies for `Constraints` at different locations in the
-      # organization's resource hierarchy. Policies are inherited down the resource
-      # hierarchy from higher levels, but can also be overridden. For details about
-      # the inheritance rules please read about
-      # Policies.
-      # `Constraints` have a default behavior determined by the `constraint_default`
-      # field, which is the enforcement behavior that is used in the absence of a
-      # `Policy` being defined or inherited for the resource in question.
-      class Constraint
-        include Google::Apis::Core::Hashable
-      
-        # The evaluation behavior of this constraint in the absense of 'Policy'.
-        # Corresponds to the JSON property `constraintDefault`
-        # @return [String]
-        attr_accessor :constraint_default
-      
-        # Immutable value, required to globally be unique. For example,
-        # `constraints/serviceuser.services`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # A `Constraint` that allows or disallows a list of string values, which are
-        # configured by an Organization's policy administrator with a `Policy`.
-        # Corresponds to the JSON property `listConstraint`
-        # @return [Google::Apis::CloudresourcemanagerV1::ListConstraint]
-        attr_accessor :list_constraint
-      
-        # Version of the `Constraint`. Default version is 0;
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        # The human readable name.
-        # Mutable.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Detailed description of what this `Constraint` controls as well as how and
-        # where it is enforced.
-        # Mutable.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A `Constraint` that is either enforced or not.
-        # For example a constraint `constraints/compute.disableSerialPortAccess`.
-        # If it is enforced on a VM instance, serial port connections will not be
-        # opened to that instance.
-        # Corresponds to the JSON property `booleanConstraint`
-        # @return [Google::Apis::CloudresourcemanagerV1::BooleanConstraint]
-        attr_accessor :boolean_constraint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
-          @name = args[:name] if args.key?(:name)
-          @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
-          @version = args[:version] if args.key?(:version)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @description = args[:description] if args.key?(:description)
-          @boolean_constraint = args[:boolean_constraint] if args.key?(:boolean_constraint)
-        end
-      end
-      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -453,25 +453,6 @@ module Google
         end
       end
       
-      # The request sent to the GetOrgPolicy method.
-      class GetOrgPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Name of the `Constraint` to get the `Policy`.
-        # Corresponds to the JSON property `constraint`
-        # @return [String]
-        attr_accessor :constraint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraint = args[:constraint] if args.key?(:constraint)
-        end
-      end
-      
       # Ignores policies set above this resource and restores the
       # `constraint_default` enforcement behavior of the specific `Constraint` at
       # this resource.
@@ -492,6 +473,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The request sent to the GetOrgPolicy method.
+      class GetOrgPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Name of the `Constraint` to get the `Policy`.
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint = args[:constraint] if args.key?(:constraint)
         end
       end
       
@@ -516,6 +516,7 @@ module Google
         # The current version, for concurrency control. Not sending an `etag`
         # will cause the `Policy` to be cleared blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -687,26 +688,6 @@ module Google
       class Project
         include Google::Apis::Core::Hashable
       
-        # The labels associated with this Project.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
-        # No more than 256 labels can be associated with a given resource.
-        # Clients should store labels in a representation such as JSON that does not
-        # depend on specific characters being disallowed.
-        # Example: <code>"environment" : "dev"</code>
-        # Read-write.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Creation time.
-        # Read-only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # The user-assigned display name of the Project.
         # It must be 4 to 30 characters.
         # Allowed characters are: lowercase and uppercase letters, numbers,
@@ -748,19 +729,39 @@ module Google
         # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
         attr_accessor :parent
       
+        # The labels associated with this Project.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 256 labels can be associated with a given resource.
+        # Clients should store labels in a representation such as JSON that does not
+        # depend on specific characters being disallowed.
+        # Example: <code>"environment" : "dev"</code>
+        # Read-write.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Creation time.
+        # Read-only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @project_number = args[:project_number] if args.key?(:project_number)
           @parent = args[:parent] if args.key?(:parent)
+          @labels = args[:labels] if args.key?(:labels)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -799,17 +800,17 @@ module Google
       class ListOrgPoliciesResponse
         include Google::Apis::Core::Hashable
       
-        # The `Policies` that are set on the resource. It will be empty if no
-        # `Policies` are set.
-        # Corresponds to the JSON property `policies`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::OrgPolicy>]
-        attr_accessor :policies
-      
         # Page token used to retrieve the next page. This is currently not used, but
         # the server may at any point start supplying a valid token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # The `Policies` that are set on the resource. It will be empty if no
+        # `Policies` are set.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::OrgPolicy>]
+        attr_accessor :policies
       
         def initialize(**args)
            update!(**args)
@@ -817,8 +818,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @policies = args[:policies] if args.key?(:policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
         end
       end
       
@@ -838,97 +839,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
-        end
-      end
-      
-      # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
-      # for configurations of Cloud Platform resources.
-      class OrgPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Version of the `Policy`. Default version is 0;
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        # Ignores policies set above this resource and restores the
-        # `constraint_default` enforcement behavior of the specific `Constraint` at
-        # this resource.
-        # Suppose that `constraint_default` is set to `ALLOW` for the
-        # `Constraint` `constraints/serviceuser.services`. Suppose that organization
-        # foo.com sets a `Policy` at their Organization resource node that restricts
-        # the allowed service activations to deny all service activations. They
-        # could then set a `Policy` with the `policy_type` `restore_default` on
-        # several experimental projects, restoring the `constraint_default`
-        # enforcement of the `Constraint` for only those projects, allowing those
-        # projects to have all services activated.
-        # Corresponds to the JSON property `restoreDefault`
-        # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
-        attr_accessor :restore_default
-      
-        # Used in `policy_type` to specify how `list_policy` behaves at this
-        # resource.
-        # A `ListPolicy` can define specific values that are allowed or denied by
-        # setting either the `allowed_values` or `denied_values` fields. It can also
-        # be used to allow or deny all values, by setting the `all_values` field. If
-        # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-        # or `denied_values` must be set (attempting to set both or neither will
-        # result in a failed request). If `all_values` is set to either `ALLOW` or
-        # `DENY`, `allowed_values` and `denied_values` must be unset.
-        # Corresponds to the JSON property `listPolicy`
-        # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
-        attr_accessor :list_policy
-      
-        # An opaque tag indicating the current version of the `Policy`, used for
-        # concurrency control.
-        # When the `Policy` is returned from either a `GetPolicy` or a
-        # `ListOrgPolicy` request, this `etag` indicates the version of the current
-        # `Policy` to use when executing a read-modify-write loop.
-        # When the `Policy` is returned from a `GetEffectivePolicy` request, the
-        # `etag` will be unset.
-        # When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
-        # that was returned from a `GetOrgPolicy` request as part of a
-        # read-modify-write loop for concurrency control. Not setting the `etag`in a
-        # `SetOrgPolicy` request will result in an unconditional write of the
-        # `Policy`.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # The name of the `Constraint` the `Policy` is configuring, for example,
-        # `constraints/serviceuser.services`.
-        # Immutable after creation.
-        # Corresponds to the JSON property `constraint`
-        # @return [String]
-        attr_accessor :constraint
-      
-        # Used in `policy_type` to specify how `boolean_policy` will behave at this
-        # resource.
-        # Corresponds to the JSON property `booleanPolicy`
-        # @return [Google::Apis::CloudresourcemanagerV1::BooleanPolicy]
-        attr_accessor :boolean_policy
-      
-        # The time stamp the `Policy` was previously updated. This is set by the
-        # server, not specified by the caller, and represents the last time a call to
-        # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
-        # be ignored.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
-          @restore_default = args[:restore_default] if args.key?(:restore_default)
-          @list_policy = args[:list_policy] if args.key?(:list_policy)
-          @etag = args[:etag] if args.key?(:etag)
-          @constraint = args[:constraint] if args.key?(:constraint)
-          @boolean_policy = args[:boolean_policy] if args.key?(:boolean_policy)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -990,30 +900,102 @@ module Google
         end
       end
       
+      # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
+      # for configurations of Cloud Platform resources.
+      class OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The time stamp the `Policy` was previously updated. This is set by the
+        # server, not specified by the caller, and represents the last time a call to
+        # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
+        # be ignored.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Version of the `Policy`. Default version is 0;
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # Ignores policies set above this resource and restores the
+        # `constraint_default` enforcement behavior of the specific `Constraint` at
+        # this resource.
+        # Suppose that `constraint_default` is set to `ALLOW` for the
+        # `Constraint` `constraints/serviceuser.services`. Suppose that organization
+        # foo.com sets a `Policy` at their Organization resource node that restricts
+        # the allowed service activations to deny all service activations. They
+        # could then set a `Policy` with the `policy_type` `restore_default` on
+        # several experimental projects, restoring the `constraint_default`
+        # enforcement of the `Constraint` for only those projects, allowing those
+        # projects to have all services activated.
+        # Corresponds to the JSON property `restoreDefault`
+        # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
+        attr_accessor :restore_default
+      
+        # Used in `policy_type` to specify how `list_policy` behaves at this
+        # resource.
+        # A `ListPolicy` can define specific values that are allowed or denied by
+        # setting either the `allowed_values` or `denied_values` fields. It can also
+        # be used to allow or deny all values, by setting the `all_values` field. If
+        # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
+        # or `denied_values` must be set (attempting to set both or neither will
+        # result in a failed request). If `all_values` is set to either `ALLOW` or
+        # `DENY`, `allowed_values` and `denied_values` must be unset.
+        # Corresponds to the JSON property `listPolicy`
+        # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
+        attr_accessor :list_policy
+      
+        # An opaque tag indicating the current version of the `Policy`, used for
+        # concurrency control.
+        # When the `Policy` is returned from either a `GetPolicy` or a
+        # `ListOrgPolicy` request, this `etag` indicates the version of the current
+        # `Policy` to use when executing a read-modify-write loop.
+        # When the `Policy` is returned from a `GetEffectivePolicy` request, the
+        # `etag` will be unset.
+        # When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
+        # that was returned from a `GetOrgPolicy` request as part of a
+        # read-modify-write loop for concurrency control. Not setting the `etag`in a
+        # `SetOrgPolicy` request will result in an unconditional write of the
+        # `Policy`.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Used in `policy_type` to specify how `boolean_policy` will behave at this
+        # resource.
+        # Corresponds to the JSON property `booleanPolicy`
+        # @return [Google::Apis::CloudresourcemanagerV1::BooleanPolicy]
+        attr_accessor :boolean_policy
+      
+        # The name of the `Constraint` the `Policy` is configuring, for example,
+        # `constraints/serviceuser.services`.
+        # Immutable after creation.
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+          @restore_default = args[:restore_default] if args.key?(:restore_default)
+          @list_policy = args[:list_policy] if args.key?(:list_policy)
+          @etag = args[:etag] if args.key?(:etag)
+          @boolean_policy = args[:boolean_policy] if args.key?(:boolean_policy)
+          @constraint = args[:constraint] if args.key?(:constraint)
+        end
+      end
+      
       # A Lien represents an encumbrance on the actions that can be performed on a
       # resource.
       class Lien
         include Google::Apis::Core::Hashable
-      
-        # A reference to the resource this Lien is attached to. The server will
-        # validate the parent against those for which Liens are supported.
-        # Example: `projects/1234`
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        # The creation time of this Lien.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # A stable, user-visible/meaningful string identifying the origin of the
-        # Lien, intended to be inspected programmatically. Maximum length of 200
-        # characters.
-        # Example: 'compute.googleapis.com'
-        # Corresponds to the JSON property `origin`
-        # @return [String]
-        attr_accessor :origin
       
         # A system-generated unique identifier for this Lien.
         # Example: `liens/1234abcd`
@@ -1028,6 +1010,14 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # A stable, user-visible/meaningful string identifying the origin of the
+        # Lien, intended to be inspected programmatically. Maximum length of 200
+        # characters.
+        # Example: 'compute.googleapis.com'
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
         # The types of operations which should be blocked as a result of this Lien.
         # Each value should correspond to an IAM permission. The server will
         # validate the permissions against those for which Liens are supported.
@@ -1037,18 +1027,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :restrictions
       
+        # A reference to the resource this Lien is attached to. The server will
+        # validate the parent against those for which Liens are supported.
+        # Example: `projects/1234`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The creation time of this Lien.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @parent = args[:parent] if args.key?(:parent)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @origin = args[:origin] if args.key?(:origin)
           @name = args[:name] if args.key?(:name)
           @reason = args[:reason] if args.key?(:reason)
+          @origin = args[:origin] if args.key?(:origin)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
+          @parent = args[:parent] if args.key?(:parent)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -1543,6 +1545,108 @@ module Google
         end
       end
       
+      # The request sent to the [ListAvailableOrgPolicyConstraints]
+      # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
+      class ListAvailableOrgPolicyConstraintsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Page token used to retrieve the next page. This is currently unsupported
+        # and will be ignored. The server may at any point start using this field.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Size of the pages to be returned. This is currently unsupported and will
+        # be ignored. The server may at any point start using this field to limit
+        # page size.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+        end
+      end
+      
+      # Defines an Identity and Access Management (IAM) policy. It is used to
+      # specify access control policies for Cloud Platform resources.
+      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+      # `members` to a `role`, where the members can be user accounts, Google groups,
+      # Google domains, and service accounts. A `role` is a named list of permissions
+      # defined by IAM.
+      # **Example**
+      # `
+      # "bindings": [
+      # `
+      # "role": "roles/owner",
+      # "members": [
+      # "user:mike@example.com",
+      # "group:admins@example.com",
+      # "domain:google.com",
+      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+      # ]
+      # `,
+      # `
+      # "role": "roles/viewer",
+      # "members": ["user:sean@example.com"]
+      # `
+      # ]
+      # `
+      # For a description of IAM and its features, see the
+      # [IAM developer's guide](https://cloud.google.com/iam).
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a policy from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform policy updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
+        # systems are expected to put that etag in the request to `setIamPolicy` to
+        # ensure that their change will be applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Version of the `Policy`. The default version is 0.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`.
+        # Multiple `bindings` must not be specified for the same `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Binding>]
+        attr_accessor :bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @version = args[:version] if args.key?(:version)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+        end
+      end
+      
       # Metadata describing a long running folder operation
       class FolderOperation
         include Google::Apis::Core::Hashable
@@ -1582,107 +1686,6 @@ module Google
         end
       end
       
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-      # `members` to a `role`, where the members can be user accounts, Google groups,
-      # Google domains, and service accounts. A `role` is a named list of permissions
-      # defined by IAM.
-      # **Example**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/owner",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-      # ]
-      # `,
-      # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
-      # `
-      # ]
-      # `
-      # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam).
-      class Policy
-        include Google::Apis::Core::Hashable
-      
-        # Version of the `Policy`. The default version is 0.
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        # Specifies cloud audit logging configuration for this policy.
-        # Corresponds to the JSON property `auditConfigs`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditConfig>]
-        attr_accessor :audit_configs
-      
-        # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-        end
-      end
-      
-      # The request sent to the [ListAvailableOrgPolicyConstraints]
-      # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
-      class ListAvailableOrgPolicyConstraintsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Page token used to retrieve the next page. This is currently unsupported
-        # and will be ignored. The server may at any point start using this field.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # Size of the pages to be returned. This is currently unsupported and will
-        # be ignored. The server may at any point start using this field to limit
-        # page size.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_token = args[:page_token] if args.key?(:page_token)
-          @page_size = args[:page_size] if args.key?(:page_size)
-        end
-      end
-      
       # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
       # interact with through one of our API's. Some examples are an App Engine app,
@@ -1690,17 +1693,17 @@ module Google
       class ResourceId
         include Google::Apis::Core::Hashable
       
-        # Required field representing the resource type this id is for.
-        # At present, the valid types are: "organization"
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
         # Required field for the type-specific id. This should correspond to the id
         # used in the type-specific API's.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Required field representing the resource type this id is for.
+        # At present, the valid types are: "organization"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -1708,8 +1711,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] if args.key?(:type)
           @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
         end
       end
     end

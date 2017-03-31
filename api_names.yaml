@@ -1429,7 +1429,7 @@
 "/resourceviews:v1beta2/ZoneViewsRemoveResourcesRequest": remove_resources_request
 "/resourceviews:v1beta2/ZoneViewsSetServiceRequest": set_service_request
 "/script:v1/ExecutionResponse/status": status
-"/servicemanagement:v1/servicemanagement.services.getConfig": get_service_configuration"
+"/servicemanagement:v1/servicemanagement.services.getConfig": get_service_configuration
 "/sheets:v4/sheets.spreadsheets.sheets.copyTo": copy_spreadsheet
 "/sheets:v4/sheets.spreadsheets.values.batchGet": batch_get_spreadsheet_values
 "/sheets:v4/sheets.spreadsheets.values.get": get_spreadsheet_values

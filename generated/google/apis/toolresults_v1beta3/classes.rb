@@ -73,6 +73,7 @@ module Google
       
         # Must be a valid serialized protocol buffer of the above specified type.
         # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :value
       
@@ -1874,6 +1875,7 @@ module Google
         # file; they can be served as an image as-is (with the appropriate content type.)
         # Always set.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       

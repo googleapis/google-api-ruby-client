@@ -1649,6 +1649,7 @@ module Google
         # inserting a BackendService. An up-to-date fingerprint must be provided in
         # order to update the BackendService.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -2684,6 +2685,7 @@ module Google
         # hash in order to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve a disk.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -3970,6 +3972,7 @@ module Google
         # provide an up-to-date fingerprint hash when updating or changing labels. Make
         # a get() request to the resource to get the latest fingerprint.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -4762,6 +4765,7 @@ module Google
         # to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve an image.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -5003,6 +5007,7 @@ module Google
         # order to update or change metadata.
         # To see the latest fingerprint, make get() request to the instance.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -5191,6 +5196,7 @@ module Google
         # fingerprint to detect conflicts when multiple users change the named ports
         # concurrently.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -5418,6 +5424,7 @@ module Google
         # [Output Only] The fingerprint of the resource data. You can use this optional
         # field for optimistic locking when you update the resource.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -5995,6 +6002,7 @@ module Google
         # Then, include the fingerprint in your request to ensure that you do not
         # overwrite changes that were applied from another concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -6230,6 +6238,7 @@ module Google
         # ensure that you do not overwrite changes that were applied from another
         # concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -6678,6 +6687,7 @@ module Google
         # conflicts. Provide the latest fingerprint value when making a request to add
         # or change labels.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -7334,6 +7344,7 @@ module Google
         # modify or update metadata. You must always provide an up-to-date fingerprint
         # hash in order to update or change metadata.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -8346,6 +8357,7 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -8919,6 +8931,7 @@ module Google
         # This field is used for optimistic locking when you update the target pool
         # entries. This field is optional.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -9046,6 +9059,7 @@ module Google
         # ensure that you do not overwrite changes that were applied from another
         # concurrent request.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -10220,6 +10234,7 @@ module Google
         # fingerprint hash in order to update or change labels.
         # To see the latest fingerprint, make a get() request to retrieve a snapshot.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       
@@ -10914,6 +10929,7 @@ module Google
         # hash in order to update or change metadata.
         # To see the latest fingerprint, make get() request to the instance.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -12668,6 +12684,7 @@ module Google
         # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
         # update the UrlMap.
         # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
@@ -13467,6 +13484,7 @@ module Google
         # provide an up-to-date fingerprint hash in order to update or change labels.
         # Make a get() request to the resource to get the latest fingerprint.
         # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :label_fingerprint
       

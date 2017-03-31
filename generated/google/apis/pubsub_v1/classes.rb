@@ -97,6 +97,25 @@ module Google
         end
       end
       
+      # Request for the ModifyPushConfig method.
+      class ModifyPushConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a push delivery endpoint.
+        # Corresponds to the JSON property `pushConfig`
+        # @return [Google::Apis::PubsubV1::PushConfig]
+        attr_accessor :push_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @push_config = args[:push_config] if args.key?(:push_config)
+        end
+      end
+      
       # A message data and its attributes. The message payload must not be empty;
       # it must contain either a non-empty data field, or at least one attribute.
       class Message
@@ -104,6 +123,7 @@ module Google
       
         # The message payload.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       
@@ -137,25 +157,6 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @message_id = args[:message_id] if args.key?(:message_id)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
-        end
-      end
-      
-      # Request for the ModifyPushConfig method.
-      class ModifyPushConfigRequest
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for a push delivery endpoint.
-        # Corresponds to the JSON property `pushConfig`
-        # @return [Google::Apis::PubsubV1::PushConfig]
-        attr_accessor :push_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @push_config = args[:push_config] if args.key?(:push_config)
         end
       end
       
@@ -199,15 +200,20 @@ module Google
         end
       end
       
-      # Request for the Acknowledge method.
-      class AcknowledgeRequest
+      # Response for the `ListTopics` method.
+      class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID for the messages being acknowledged that was returned
-        # by the Pub/Sub system in the `Pull` response. Must not be empty.
-        # Corresponds to the JSON property `ackIds`
-        # @return [Array<String>]
-        attr_accessor :ack_ids
+        # If not empty, indicates that there may be more topics that match the
+        # request; this value should be passed in a new `ListTopicsRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting topics.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::PubsubV1::Topic>]
+        attr_accessor :topics
       
         def initialize(**args)
            update!(**args)
@@ -215,7 +221,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @topics = args[:topics] if args.key?(:topics)
         end
       end
       
@@ -238,20 +245,15 @@ module Google
         end
       end
       
-      # Response for the `ListTopics` method.
-      class ListTopicsResponse
+      # Request for the Acknowledge method.
+      class AcknowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # The resulting topics.
-        # Corresponds to the JSON property `topics`
-        # @return [Array<Google::Apis::PubsubV1::Topic>]
-        attr_accessor :topics
-      
-        # If not empty, indicates that there may be more topics that match the
-        # request; this value should be passed in a new `ListTopicsRequest`.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
+        # The acknowledgment ID for the messages being acknowledged that was returned
+        # by the Pub/Sub system in the `Pull` response. Must not be empty.
+        # Corresponds to the JSON property `ackIds`
+        # @return [Array<String>]
+        attr_accessor :ack_ids
       
         def initialize(**args)
            update!(**args)
@@ -259,19 +261,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @topics = args[:topics] if args.key?(:topics)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
         end
       end
       
       # Response for the `ListTopicSubscriptions` method.
       class ListTopicSubscriptionsResponse
         include Google::Apis::Core::Hashable
-      
-        # The names of the subscriptions that match the request.
-        # Corresponds to the JSON property `subscriptions`
-        # @return [Array<String>]
-        attr_accessor :subscriptions
       
         # If not empty, indicates that there may be more subscriptions that match
         # the request; this value should be passed in a new
@@ -280,14 +276,19 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The names of the subscriptions that match the request.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<String>]
+        attr_accessor :subscriptions
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
         end
       end
       
@@ -317,16 +318,16 @@ module Google
       class ReceivedMessage
         include Google::Apis::Core::Hashable
       
-        # This ID can be used to acknowledge the received message.
-        # Corresponds to the JSON property `ackId`
-        # @return [String]
-        attr_accessor :ack_id
-      
         # A message data and its attributes. The message payload must not be empty;
         # it must contain either a non-empty data field, or at least one attribute.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]
         attr_accessor :message
+      
+        # This ID can be used to acknowledge the received message.
+        # Corresponds to the JSON property `ackId`
+        # @return [String]
+        attr_accessor :ack_id
       
         def initialize(**args)
            update!(**args)
@@ -334,8 +335,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_id = args[:ack_id] if args.key?(:ack_id)
           @message = args[:message] if args.key?(:message)
+          @ack_id = args[:ack_id] if args.key?(:ack_id)
         end
       end
       
@@ -404,12 +405,6 @@ module Google
       class PullRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of messages returned for this request. The Pub/Sub
-        # system may return fewer than the number specified.
-        # Corresponds to the JSON property `maxMessages`
-        # @return [Fixnum]
-        attr_accessor :max_messages
-      
         # If this field set to true, the system will respond immediately even if
         # it there are no messages available to return in the `Pull` response.
         # Otherwise, the system may wait (for a bounded amount of time) until at
@@ -421,14 +416,20 @@ module Google
         attr_accessor :return_immediately
         alias_method :return_immediately?, :return_immediately
       
+        # The maximum number of messages returned for this request. The Pub/Sub
+        # system may return fewer than the number specified.
+        # Corresponds to the JSON property `maxMessages`
+        # @return [Fixnum]
+        attr_accessor :max_messages
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @max_messages = args[:max_messages] if args.key?(:max_messages)
           @return_immediately = args[:return_immediately] if args.key?(:return_immediately)
+          @max_messages = args[:max_messages] if args.key?(:max_messages)
         end
       end
       
@@ -503,24 +504,6 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
-        # The name of the subscription. It must have the format
-        # `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
-        # start with a letter, and contain only letters (`[A-Za-z]`), numbers
-        # (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-        # plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-        # in length, and it must not start with `"goog"`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The name of the topic from which this subscription is receiving messages.
-        # Format is `projects/`project`/topics/`topic``.
-        # The value of this field will be `_deleted-topic_` if the topic has been
-        # deleted.
-        # Corresponds to the JSON property `topic`
-        # @return [String]
-        attr_accessor :topic
-      
         # Configuration for a push delivery endpoint.
         # Corresponds to the JSON property `pushConfig`
         # @return [Google::Apis::PubsubV1::PushConfig]
@@ -546,16 +529,34 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
+        # The name of the subscription. It must have the format
+        # `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
+        # start with a letter, and contain only letters (`[A-Za-z]`), numbers
+        # (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+        # plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+        # in length, and it must not start with `"goog"`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the topic from which this subscription is receiving messages.
+        # Format is `projects/`project`/topics/`topic``.
+        # The value of this field will be `_deleted-topic_` if the topic has been
+        # deleted.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @topic = args[:topic] if args.key?(:topic)
           @push_config = args[:push_config] if args.key?(:push_config)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @name = args[:name] if args.key?(:name)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -578,30 +579,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # A topic resource.
-      class Topic
-        include Google::Apis::Core::Hashable
-      
-        # The name of the topic. It must have the format
-        # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
-        # and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
-        # signs (`%`). It must be between 3 and 255 characters in length, and it
-        # must not start with `"goog"`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -644,6 +621,7 @@ module Google
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
@@ -668,6 +646,30 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
+        end
+      end
+      
+      # A topic resource.
+      class Topic
+        include Google::Apis::Core::Hashable
+      
+        # The name of the topic. It must have the format
+        # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
+        # and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+        # signs (`%`). It must be between 3 and 255 characters in length, and it
+        # must not start with `"goog"`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end

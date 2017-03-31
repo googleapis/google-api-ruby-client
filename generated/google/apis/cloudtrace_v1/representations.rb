@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudtraceV1
       
+      class Traces
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TraceSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,21 +53,23 @@ module Google
       end
       
       class Traces
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :traces, as: 'traces', class: Google::Apis::CloudtraceV1::Trace, decorator: Google::Apis::CloudtraceV1::Trace::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class TraceSpan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+          property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :span_id, as: 'spanId'
           property :parent_span_id, as: 'parentSpanId'
           property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          property :kind, as: 'kind'
         end
       end
       
@@ -87,14 +95,6 @@ module Google
           collection :spans, as: 'spans', class: Google::Apis::CloudtraceV1::TraceSpan, decorator: Google::Apis::CloudtraceV1::TraceSpan::Representation
       
           property :trace_id, as: 'traceId'
-        end
-      end
-      
-      class Traces
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :traces, as: 'traces', class: Google::Apis::CloudtraceV1::Trace, decorator: Google::Apis::CloudtraceV1::Trace::Representation
-      
         end
       end
     end

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTracesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,12 +53,6 @@ module Google
       end
       
       class Span
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,13 +88,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpanUpdates
+      class ListSpansResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSpansResponse
+      class SpanUpdates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -128,17 +128,23 @@ module Google
       class Module
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :module, as: 'module'
           property :build_id, as: 'buildId'
+          property :module, as: 'module'
         end
       end
       
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
           property :message, as: 'message'
           collection :details, as: 'details'
-          property :code, as: 'code'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -154,7 +160,6 @@ module Google
       class Span
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :has_remote_parent, as: 'hasRemoteParent'
           property :local_end_time, as: 'localEndTime'
           property :parent_id, as: 'parentId'
           collection :time_events, as: 'timeEvents', class: Google::Apis::TracingV1::TimeEvent, decorator: Google::Apis::TracingV1::TimeEvent::Representation
@@ -170,21 +175,16 @@ module Google
       
           property :id, as: 'id'
           property :local_start_time, as: 'localStartTime'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_remote_parent, as: 'hasRemoteParent'
         end
       end
       
       class AttributeValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :int_value, as: 'intValue'
           property :string_value, as: 'stringValue'
           property :bool_value, as: 'boolValue'
+          property :int_value, as: 'intValue'
         end
       end
       
@@ -208,21 +208,30 @@ module Google
       class TimeEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :local_time, as: 'localTime'
           property :network_event, as: 'networkEvent', class: Google::Apis::TracingV1::NetworkEvent, decorator: Google::Apis::TracingV1::NetworkEvent::Representation
       
           property :annotation, as: 'annotation', class: Google::Apis::TracingV1::Annotation, decorator: Google::Apis::TracingV1::Annotation::Representation
       
+          property :local_time, as: 'localTime'
         end
       end
       
       class NetworkEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_size, as: 'messageSize'
           property :kernel_time, as: 'kernelTime'
           property :type, as: 'type'
           property :message_id, as: 'messageId'
-          property :message_size, as: 'messageSize'
+        end
+      end
+      
+      class ListSpansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :spans, as: 'spans', class: Google::Apis::TracingV1::Span, decorator: Google::Apis::TracingV1::Span::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -234,26 +243,17 @@ module Google
         end
       end
       
-      class ListSpansResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :spans, as: 'spans', class: Google::Apis::TracingV1::Span, decorator: Google::Apis::TracingV1::Span::Representation
-      
-        end
-      end
-      
       class StackFrame
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_name, as: 'fileName'
+          property :source_version, as: 'sourceVersion'
+          property :original_function_name, as: 'originalFunctionName'
           property :function_name, as: 'functionName'
           property :line_number, as: 'lineNumber'
           property :load_module, as: 'loadModule', class: Google::Apis::TracingV1::Module, decorator: Google::Apis::TracingV1::Module::Representation
       
           property :column_number, as: 'columnNumber'
-          property :file_name, as: 'fileName'
-          property :source_version, as: 'sourceVersion'
-          property :original_function_name, as: 'originalFunctionName'
         end
       end
       
@@ -269,9 +269,9 @@ module Google
       class Annotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           hash :attributes, as: 'attributes', class: Google::Apis::TracingV1::AttributeValue, decorator: Google::Apis::TracingV1::AttributeValue::Representation
       
-          property :description, as: 'description'
         end
       end
     end

@@ -115,10 +115,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels a running job.
+        # @param [String] name
+        #   Required. The name of the job to cancel.
+        #   Authorization: requires `Editor` role on the parent project.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1CancelJobRequest] google_cloud_ml_v1__cancel_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_job(name, google_cloud_ml_v1__cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1CancelJobRequest::Representation
+          command.request_object = google_cloud_ml_v1__cancel_job_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the jobs in the project.
         # @param [String] parent
         #   Required. The name of the project for which to list jobs.
         #   Authorization: requires `Viewer` role on the specified project.
+        # @param [String] page_token
+        #   Optional. A page token to request the next page of results.
+        #   You get the token from the `next_page_token` field of the response from
+        #   the previous call.
         # @param [Fixnum] page_size
         #   Optional. The number of jobs to retrieve per "page" of results. If there
         #   are more remaining results than this number, the response message will
@@ -126,10 +164,6 @@ module Google
         #   The default value is 20, and the maximum page size is 100.
         # @param [String] filter
         #   Optional. Specifies the subset of jobs to retrieve.
-        # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -147,14 +181,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_jobs(parent, page_size: nil, filter: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_jobs(parent, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListJobsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -220,40 +254,6 @@ module Google
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Job
           command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Cancels a running job.
-        # @param [String] name
-        #   Required. The name of the job to cancel.
-        #   Authorization: requires `Editor` role on the parent project.
-        # @param [Google::Apis::MlV1::GoogleCloudMlV1CancelJobRequest] google_cloud_ml_v1__cancel_job_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_project_job(name, google_cloud_ml_v1__cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1CancelJobRequest::Representation
-          command.request_object = google_cloud_ml_v1__cancel_job_request_object
-          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -446,15 +446,15 @@ module Google
         # @param [String] parent
         #   Required. The name of the project whose models are to be listed.
         #   Authorization: requires `Viewer` role on the specified project.
+        # @param [String] page_token
+        #   Optional. A page token to request the next page of results.
+        #   You get the token from the `next_page_token` field of the response from
+        #   the previous call.
         # @param [Fixnum] page_size
         #   Optional. The number of models to retrieve per "page" of results. If there
         #   are more remaining results than this number, the response message will
         #   contain a valid value in the `next_page_token` field.
         #   The default value is 20, and the maximum page size is 100.
-        # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -472,13 +472,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_models(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_models(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/models', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

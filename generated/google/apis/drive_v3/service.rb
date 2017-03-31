@@ -1669,7 +1669,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_teamdrife(request_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_teamdrive(request_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'teamdrives', options)
           command.request_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.request_object = team_drive_object
@@ -1707,7 +1707,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_teamdrife(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'teamdrives/{teamDriveId}', options)
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1740,7 +1740,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_teamdrife(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'teamdrives/{teamDriveId}', options)
           command.response_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.response_class = Google::Apis::DriveV3::TeamDrive
@@ -1814,7 +1814,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_teamdrife(team_drive_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_teamdrive(team_drive_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'teamdrives/{teamDriveId}', options)
           command.request_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.request_object = team_drive_object

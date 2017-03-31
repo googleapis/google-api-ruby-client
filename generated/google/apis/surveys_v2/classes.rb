@@ -237,6 +237,7 @@ module Google
         # with this question. This binary blob is treated as opaque. This field is
         # limited to 64K bytes.
         # Corresponds to the JSON property `customerData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :customer_data
       
@@ -574,6 +575,7 @@ module Google
         # Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question
         # types.
         # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       

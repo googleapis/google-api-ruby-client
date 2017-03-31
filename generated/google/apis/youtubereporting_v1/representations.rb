@@ -34,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListReportTypesResponse
+      class ReportType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReportType
+      class ListReportTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -73,28 +73,19 @@ module Google
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :job_id, as: 'jobId'
           property :id, as: 'id'
-          property :job_expire_time, as: 'jobExpireTime'
           property :end_time, as: 'endTime'
+          property :job_expire_time, as: 'jobExpireTime'
           property :download_url, as: 'downloadUrl'
           property :start_time, as: 'startTime'
+          property :create_time, as: 'createTime'
         end
       end
       
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ListReportTypesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :report_types, as: 'reportTypes', class: Google::Apis::YoutubereportingV1::ReportType, decorator: Google::Apis::YoutubereportingV1::ReportType::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -108,33 +99,42 @@ module Google
         end
       end
       
+      class ListReportTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :report_types, as: 'reportTypes', class: Google::Apis::YoutubereportingV1::ReportType, decorator: Google::Apis::YoutubereportingV1::ReportType::Representation
+      
+        end
+      end
+      
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :jobs, as: 'jobs', class: Google::Apis::YoutubereportingV1::Job, decorator: Google::Apis::YoutubereportingV1::Job::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :system_managed, as: 'systemManaged'
-          property :create_time, as: 'createTime'
           property :expire_time, as: 'expireTime'
           property :report_type_id, as: 'reportTypeId'
           property :name, as: 'name'
+          property :system_managed, as: 'systemManaged'
+          property :id, as: 'id'
+          property :create_time, as: 'createTime'
         end
       end
       
       class ListReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :reports, as: 'reports', class: Google::Apis::YoutubereportingV1::Report, decorator: Google::Apis::YoutubereportingV1::Report::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       

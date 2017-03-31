@@ -22,14 +22,20 @@ module Google
   module Apis
     module FirebaserulesV1
       
-      # `Source` is one or more `File` messages comprising a logical set of rules.
-      class Source
+      # Represents a service-defined function call that was invoked during test
+      # execution.
+      class FunctionCall
         include Google::Apis::Core::Hashable
       
-        # `File` set constituting the `Source` bundle.
-        # Corresponds to the JSON property `files`
-        # @return [Array<Google::Apis::FirebaserulesV1::File>]
-        attr_accessor :files
+        # Name of the function invoked.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # The arguments that were provided to the function.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Object>]
+        attr_accessor :args
       
         def initialize(**args)
            update!(**args)
@@ -37,125 +43,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @files = args[:files] if args.key?(:files)
+          @function = args[:function] if args.key?(:function)
+          @args = args[:args] if args.key?(:args)
         end
       end
       
-      # Position in the `Source` content including its line, column number, and an
-      # index of the `File` in the `Source` message. Used for debug purposes.
-      class SourcePosition
+      # `File` containing source content.
+      class File
         include Google::Apis::Core::Hashable
       
-        # Line number of the source fragment. 1-based.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
-      
-        # First column on the source line associated with the source fragment.
-        # Corresponds to the JSON property `column`
-        # @return [Fixnum]
-        attr_accessor :column
-      
-        # Name of the `File`.
-        # Corresponds to the JSON property `fileName`
+        # Fingerprint (e.g. github sha) associated with the `File`.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :file_name
+        attr_accessor :fingerprint
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @line = args[:line] if args.key?(:line)
-          @column = args[:column] if args.key?(:column)
-          @file_name = args[:file_name] if args.key?(:file_name)
-        end
-      end
-      
-      # Issues include warnings, errors, and deprecation notices.
-      class Issue
-        include Google::Apis::Core::Hashable
-      
-        # The severity of the issue.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # Short error description.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Position in the `Source` content including its line, column number, and an
-        # index of the `File` in the `Source` message. Used for debug purposes.
-        # Corresponds to the JSON property `sourcePosition`
-        # @return [Google::Apis::FirebaserulesV1::SourcePosition]
-        attr_accessor :source_position
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @severity = args[:severity] if args.key?(:severity)
-          @description = args[:description] if args.key?(:description)
-          @source_position = args[:source_position] if args.key?(:source_position)
-        end
-      end
-      
-      # The request for FirebaseRulesService.TestRuleset.
-      class TestRulesetRequest
-        include Google::Apis::Core::Hashable
-      
-        # `Source` is one or more `File` messages comprising a logical set of rules.
-        # Corresponds to the JSON property `source`
-        # @return [Google::Apis::FirebaserulesV1::Source]
-        attr_accessor :source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source = args[:source] if args.key?(:source)
-        end
-      end
-      
-      # `Ruleset` is an immutable copy of `Source` with a globally unique identifier
-      # and a creation time.
-      class Ruleset
-        include Google::Apis::Core::Hashable
-      
-        # `Source` is one or more `File` messages comprising a logical set of rules.
-        # Corresponds to the JSON property `source`
-        # @return [Google::Apis::FirebaserulesV1::Source]
-        attr_accessor :source
-      
-        # Time the `Ruleset` was created.
-        # Output only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Name of the `Ruleset`. The ruleset_id is auto generated by the service.
-        # Format: `projects/`project_id`/rulesets/`ruleset_id``
-        # Output only.
+        # File name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
+        # Textual Content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @source = args[:source] if args.key?(:source)
-          @create_time = args[:create_time] if args.key?(:create_time)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -185,73 +106,10 @@ module Google
         end
       end
       
-      # Represents a service-defined function call that was invoked during test
-      # execution.
-      class FunctionCall
-        include Google::Apis::Core::Hashable
-      
-        # The arguments that were provided to the function.
-        # Corresponds to the JSON property `args`
-        # @return [Array<Object>]
-        attr_accessor :args
-      
-        # Name of the function invoked.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @args = args[:args] if args.key?(:args)
-          @function = args[:function] if args.key?(:function)
-        end
-      end
-      
-      # `File` containing source content.
-      class File
-        include Google::Apis::Core::Hashable
-      
-        # File name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Textual Content.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        # Fingerprint (e.g. github sha) associated with the `File`.
-        # Corresponds to the JSON property `fingerprint`
-        # @return [String]
-        attr_accessor :fingerprint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @content = args[:content] if args.key?(:content)
-          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-        end
-      end
-      
       # `Release` is a named reference to a `Ruleset`. Once a `Release` refers to a
       # `Ruleset`, rules-enabled services will be able to enforce the `Ruleset`.
       class Release
         include Google::Apis::Core::Hashable
-      
-        # Time the release was created.
-        # Output only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
       
         # Time the release was updated.
         # Output only.
@@ -288,16 +146,22 @@ module Google
         # @return [String]
         attr_accessor :ruleset_name
       
+        # Time the release was created.
+        # Output only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @name = args[:name] if args.key?(:name)
           @ruleset_name = args[:ruleset_name] if args.key?(:ruleset_name)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -417,6 +281,143 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # `Source` is one or more `File` messages comprising a logical set of rules.
+      class Source
+        include Google::Apis::Core::Hashable
+      
+        # `File` set constituting the `Source` bundle.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::FirebaserulesV1::File>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
+      # Position in the `Source` content including its line, column number, and an
+      # index of the `File` in the `Source` message. Used for debug purposes.
+      class SourcePosition
+        include Google::Apis::Core::Hashable
+      
+        # First column on the source line associated with the source fragment.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # Name of the `File`.
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        # Line number of the source fragment. 1-based.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @line = args[:line] if args.key?(:line)
+        end
+      end
+      
+      # Issues include warnings, errors, and deprecation notices.
+      class Issue
+        include Google::Apis::Core::Hashable
+      
+        # Position in the `Source` content including its line, column number, and an
+        # index of the `File` in the `Source` message. Used for debug purposes.
+        # Corresponds to the JSON property `sourcePosition`
+        # @return [Google::Apis::FirebaserulesV1::SourcePosition]
+        attr_accessor :source_position
+      
+        # The severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Short error description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_position = args[:source_position] if args.key?(:source_position)
+          @severity = args[:severity] if args.key?(:severity)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # The request for FirebaseRulesService.TestRuleset.
+      class TestRulesetRequest
+        include Google::Apis::Core::Hashable
+      
+        # `Source` is one or more `File` messages comprising a logical set of rules.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::FirebaserulesV1::Source]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # `Ruleset` is an immutable copy of `Source` with a globally unique identifier
+      # and a creation time.
+      class Ruleset
+        include Google::Apis::Core::Hashable
+      
+        # Name of the `Ruleset`. The ruleset_id is auto generated by the service.
+        # Format: `projects/`project_id`/rulesets/`ruleset_id``
+        # Output only.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # `Source` is one or more `File` messages comprising a logical set of rules.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::FirebaserulesV1::Source]
+        attr_accessor :source
+      
+        # Time the `Ruleset` was created.
+        # Output only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
     end

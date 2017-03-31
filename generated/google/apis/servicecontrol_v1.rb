@@ -26,13 +26,13 @@ module Google
     # @see https://cloud.google.com/service-control/
     module ServicecontrolV1
       VERSION = 'V1'
-      REVISION = '20170319'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      REVISION = '20170326'
 
       # Manage your Google Service Control data
       AUTH_SERVICECONTROL = 'https://www.googleapis.com/auth/servicecontrol'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

@@ -22,6 +22,24 @@ module Google
   module Apis
     module ManufacturersV1
       
+      class Count
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Capacity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,13 +52,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureDescription
+      class Issue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Issue
+      class FeatureDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -65,21 +83,39 @@ module Google
       end
       
       class Count
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+          property :unit, as: 'unit'
+        end
       end
       
       class Product
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :manually_deleted_attributes, as: 'manuallyDeletedAttributes'
+          collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :final_attributes, as: 'finalAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
+      
+          property :product_id, as: 'productId'
+          property :uploaded_attributes, as: 'uploadedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
+      
+          property :parent, as: 'parent'
+          property :manually_provided_attributes, as: 'manuallyProvidedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
+      
+          property :content_language, as: 'contentLanguage'
+          property :target_country, as: 'targetCountry'
+          property :name, as: 'name'
+        end
       end
       
       class Capacity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+          property :unit, as: 'unit'
+        end
       end
       
       class ListProductsResponse
@@ -100,24 +136,24 @@ module Google
         end
       end
       
-      class FeatureDescription
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
-      
-          property :headline, as: 'headline'
-          property :text, as: 'text'
-        end
-      end
-      
       class Issue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp, as: 'timestamp'
           property :severity, as: 'severity'
           property :description, as: 'description'
           property :type, as: 'type'
           property :attribute, as: 'attribute'
-          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class FeatureDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :headline, as: 'headline'
+          property :text, as: 'text'
+          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
         end
       end
       
@@ -132,32 +168,18 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status'
           property :type, as: 'type'
           property :image_url, as: 'imageUrl'
+          property :status, as: 'status'
         end
       end
       
       class Attributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :product_name, as: 'productName'
-          property :size_type, as: 'sizeType'
-          property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
-      
-          collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
-      
-          property :size, as: 'size'
-          property :title, as: 'title'
-          property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
-      
-          property :brand, as: 'brand'
-          property :material, as: 'material'
-          property :disclosure_date, as: 'disclosureDate'
-          property :scent, as: 'scent'
+          property :flavor, as: 'flavor'
           collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
       
-          property :flavor, as: 'flavor'
           property :age_group, as: 'ageGroup'
           property :mpn, as: 'mpn'
           property :product_page_url, as: 'productPageUrl'
@@ -180,42 +202,20 @@ module Google
       
           collection :video_link, as: 'videoLink'
           property :color, as: 'color'
-        end
-      end
+          property :product_name, as: 'productName'
+          property :size_type, as: 'sizeType'
+          property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
       
-      class Count
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :unit, as: 'unit'
-        end
-      end
+          collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
       
-      class Product
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :manually_provided_attributes, as: 'manuallyProvidedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
+          property :size, as: 'size'
+          property :title, as: 'title'
+          property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
       
-          property :target_country, as: 'targetCountry'
-          property :content_language, as: 'contentLanguage'
-          property :name, as: 'name'
-          collection :manually_deleted_attributes, as: 'manuallyDeletedAttributes'
-          collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
-      
-          property :final_attributes, as: 'finalAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
-      
-          property :product_id, as: 'productId'
-          property :uploaded_attributes, as: 'uploadedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
-      
-          property :parent, as: 'parent'
-        end
-      end
-      
-      class Capacity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :unit, as: 'unit'
+          property :brand, as: 'brand'
+          property :disclosure_date, as: 'disclosureDate'
+          property :material, as: 'material'
+          property :scent, as: 'scent'
         end
       end
     end

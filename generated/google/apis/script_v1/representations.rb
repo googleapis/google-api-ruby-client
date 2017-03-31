@@ -22,6 +22,12 @@ module Google
   module Apis
     module ScriptV1
       
+      class ScriptStackTraceElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecutionError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,9 +59,11 @@ module Google
       end
       
       class ScriptStackTraceElement
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_number, as: 'lineNumber'
+          property :function, as: 'function'
+        end
       end
       
       class ExecutionError
@@ -71,19 +79,19 @@ module Google
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
           property :code, as: 'code'
           property :message, as: 'message'
-          collection :details, as: 'details'
         end
       end
       
       class ExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :session_state, as: 'sessionState'
           property :function, as: 'function'
           property :dev_mode, as: 'devMode'
           collection :parameters, as: 'parameters'
+          property :session_state, as: 'sessionState'
         end
       end
       
@@ -103,14 +111,6 @@ module Google
           property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
       
           hash :metadata, as: 'metadata'
-        end
-      end
-      
-      class ScriptStackTraceElement
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_number, as: 'lineNumber'
-          property :function, as: 'function'
         end
       end
     end

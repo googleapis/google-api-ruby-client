@@ -37,10 +37,10 @@ module Google
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :location_id, as: 'locationId'
         end
       end
       

@@ -49,17 +49,17 @@ module Google
       class Module
         include Google::Apis::Core::Hashable
       
-        # E.g. main binary, kernel modules, and dynamic libraries
-        # such as libc.so, sharedlib.so
-        # Corresponds to the JSON property `module`
-        # @return [String]
-        attr_accessor :module
-      
         # Build_id is a unique identifier for the module,
         # usually a hash of its contents
         # Corresponds to the JSON property `buildId`
         # @return [String]
         attr_accessor :build_id
+      
+        # E.g. main binary, kernel modules, and dynamic libraries
+        # such as libc.so, sharedlib.so
+        # Corresponds to the JSON property `module`
+        # @return [String]
+        attr_accessor :module
       
         def initialize(**args)
            update!(**args)
@@ -67,8 +67,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @module = args[:module] if args.key?(:module)
           @build_id = args[:build_id] if args.key?(:build_id)
+          @module = args[:module] if args.key?(:module)
         end
       end
       
@@ -114,6 +114,11 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
         # A developer-facing error message, which should be in English. Any
         # user-facing error message should be localized and sent in the
         # google.rpc.Status.details field, or localized by the client.
@@ -127,10 +132,27 @@ module Google
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
       
         def initialize(**args)
            update!(**args)
@@ -138,9 +160,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
-          @code = args[:code] if args.key?(:code)
         end
       end
       
@@ -179,12 +198,6 @@ module Google
       # and/or overlaps between spans in a trace.
       class Span
         include Google::Apis::Core::Hashable
-      
-        # True if this span has a remote parent (is an RPC server span).
-        # Corresponds to the JSON property `hasRemoteParent`
-        # @return [Boolean]
-        attr_accessor :has_remote_parent
-        alias_method :has_remote_parent?, :has_remote_parent
       
         # End time of the span.
         # On the client side, this is the local machine clock time at which the span
@@ -304,13 +317,18 @@ module Google
         # @return [String]
         attr_accessor :local_start_time
       
+        # True if this span has a remote parent (is an RPC server span).
+        # Corresponds to the JSON property `hasRemoteParent`
+        # @return [Boolean]
+        attr_accessor :has_remote_parent
+        alias_method :has_remote_parent?, :has_remote_parent
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @has_remote_parent = args[:has_remote_parent] if args.key?(:has_remote_parent)
           @local_end_time = args[:local_end_time] if args.key?(:local_end_time)
           @parent_id = args[:parent_id] if args.key?(:parent_id)
           @time_events = args[:time_events] if args.key?(:time_events)
@@ -321,36 +339,13 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @id = args[:id] if args.key?(:id)
           @local_start_time = args[:local_start_time] if args.key?(:local_start_time)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
+          @has_remote_parent = args[:has_remote_parent] if args.key?(:has_remote_parent)
         end
       end
       
       # The allowed types for the value side of an attribute key:value pair.
       class AttributeValue
         include Google::Apis::Core::Hashable
-      
-        # An integer value.
-        # Corresponds to the JSON property `intValue`
-        # @return [String]
-        attr_accessor :int_value
       
         # A string value.
         # Corresponds to the JSON property `stringValue`
@@ -363,15 +358,20 @@ module Google
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
+        # An integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [String]
+        attr_accessor :int_value
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @int_value = args[:int_value] if args.key?(:int_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
         end
       end
       
@@ -429,11 +429,6 @@ module Google
       class TimeEvent
         include Google::Apis::Core::Hashable
       
-        # The timestamp indicating the time the event occurred.
-        # Corresponds to the JSON property `localTime`
-        # @return [String]
-        attr_accessor :local_time
-      
         # An event describing an RPC message sent/received on the network.
         # Corresponds to the JSON property `networkEvent`
         # @return [Google::Apis::TracingV1::NetworkEvent]
@@ -444,21 +439,31 @@ module Google
         # @return [Google::Apis::TracingV1::Annotation]
         attr_accessor :annotation
       
+        # The timestamp indicating the time the event occurred.
+        # Corresponds to the JSON property `localTime`
+        # @return [String]
+        attr_accessor :local_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @local_time = args[:local_time] if args.key?(:local_time)
           @network_event = args[:network_event] if args.key?(:network_event)
           @annotation = args[:annotation] if args.key?(:annotation)
+          @local_time = args[:local_time] if args.key?(:local_time)
         end
       end
       
       # An event describing an RPC message sent/received on the network.
       class NetworkEvent
         include Google::Apis::Core::Hashable
+      
+        # The number of bytes sent or received.
+        # Corresponds to the JSON property `messageSize`
+        # @return [String]
+        attr_accessor :message_size
       
         # If available, this is the kernel time:
         # *  For sent messages, this is the time at which the first bit was sent.
@@ -479,10 +484,34 @@ module Google
         # @return [String]
         attr_accessor :message_id
       
-        # The number of bytes sent or received.
-        # Corresponds to the JSON property `messageSize`
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_size = args[:message_size] if args.key?(:message_size)
+          @kernel_time = args[:kernel_time] if args.key?(:kernel_time)
+          @type = args[:type] if args.key?(:type)
+          @message_id = args[:message_id] if args.key?(:message_id)
+        end
+      end
+      
+      # The response message for the `ListSpans` method.
+      class ListSpansResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested spans if there are any in the specified trace.
+        # Corresponds to the JSON property `spans`
+        # @return [Array<Google::Apis::TracingV1::Span>]
+        attr_accessor :spans
+      
+        # If defined, indicates that there are more spans that match the request.
+        # Pass this as the value of `pageToken` in a subsequent request to retrieve
+        # additional spans.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :message_size
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -490,10 +519,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @kernel_time = args[:kernel_time] if args.key?(:kernel_time)
-          @type = args[:type] if args.key?(:type)
-          @message_id = args[:message_id] if args.key?(:message_id)
-          @message_size = args[:message_size] if args.key?(:message_size)
+          @spans = args[:spans] if args.key?(:spans)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -516,36 +543,26 @@ module Google
         end
       end
       
-      # The response message for the `ListSpans` method.
-      class ListSpansResponse
-        include Google::Apis::Core::Hashable
-      
-        # If defined, indicates that there are more spans that match the request.
-        # Pass this as the value of `pageToken` in a subsequent request to retrieve
-        # additional spans.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The requested spans if there are any in the specified trace.
-        # Corresponds to the JSON property `spans`
-        # @return [Array<Google::Apis::TracingV1::Span>]
-        attr_accessor :spans
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @spans = args[:spans] if args.key?(:spans)
-        end
-      end
-      
       # Represents a single stack frame in a stack trace.
       class StackFrame
         include Google::Apis::Core::Hashable
+      
+        # The filename of the file containing this frame.
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        # The version of the deployed source code.
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        # Used when the function name is
+        # [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
+        # fully-qualified.
+        # Corresponds to the JSON property `originalFunctionName`
+        # @return [String]
+        attr_accessor :original_function_name
       
         # The fully-qualified name that uniquely identifies this function or
         # method.
@@ -569,36 +586,19 @@ module Google
         # @return [String]
         attr_accessor :column_number
       
-        # The filename of the file containing this frame.
-        # Corresponds to the JSON property `fileName`
-        # @return [String]
-        attr_accessor :file_name
-      
-        # The version of the deployed source code.
-        # Corresponds to the JSON property `sourceVersion`
-        # @return [String]
-        attr_accessor :source_version
-      
-        # Used when the function name is
-        # [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
-        # fully-qualified.
-        # Corresponds to the JSON property `originalFunctionName`
-        # @return [String]
-        attr_accessor :original_function_name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @source_version = args[:source_version] if args.key?(:source_version)
+          @original_function_name = args[:original_function_name] if args.key?(:original_function_name)
           @function_name = args[:function_name] if args.key?(:function_name)
           @line_number = args[:line_number] if args.key?(:line_number)
           @load_module = args[:load_module] if args.key?(:load_module)
           @column_number = args[:column_number] if args.key?(:column_number)
-          @file_name = args[:file_name] if args.key?(:file_name)
-          @source_version = args[:source_version] if args.key?(:source_version)
-          @original_function_name = args[:original_function_name] if args.key?(:original_function_name)
         end
       end
       
@@ -639,15 +639,15 @@ module Google
       class Annotation
         include Google::Apis::Core::Hashable
       
-        # A set of attributes on the annotation.
-        # Corresponds to the JSON property `attributes`
-        # @return [Hash<String,Google::Apis::TracingV1::AttributeValue>]
-        attr_accessor :attributes
-      
         # A user-supplied message describing the event.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # A set of attributes on the annotation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Google::Apis::TracingV1::AttributeValue>]
+        attr_accessor :attributes
       
         def initialize(**args)
            update!(**args)
@@ -655,8 +655,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
           @description = args[:description] if args.key?(:description)
+          @attributes = args[:attributes] if args.key?(:attributes)
         end
       end
     end

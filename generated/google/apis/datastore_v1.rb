@@ -28,11 +28,11 @@ module Google
       VERSION = 'V1'
       REVISION = '20170314'
 
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
       # View and manage your Google Cloud Datastore data
       AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

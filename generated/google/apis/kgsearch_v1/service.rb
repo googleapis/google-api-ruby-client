@@ -33,14 +33,14 @@ module Google
       # @see https://developers.google.com/knowledge-graph/
       class KgsearchService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
 
         def initialize
           super('https://kgsearch.googleapis.com/', '')
@@ -49,14 +49,6 @@ module Google
         # Searches Knowledge Graph for entities that match the constraints.
         # A list of matched entities will be returned in response, which will be in
         # JSON-LD format and compatible with http://schema.org
-        # @param [Boolean] prefix
-        #   Enables prefix match against names and aliases of entities
-        # @param [String] query
-        #   The literal query string for search.
-        # @param [Array<String>, String] types
-        #   Restricts returned entities with these types, e.g. Person
-        #   (as defined in http://schema.org/Person). If multiple types are specified,
-        #   returned entities will contain one or more of these types.
         # @param [Boolean] indent
         #   Enables indenting of json results.
         # @param [Array<String>, String] languages
@@ -68,6 +60,14 @@ module Google
         #   URL as in ...?ids=A&ids=B
         # @param [Fixnum] limit
         #   Limits the number of entities to be returned.
+        # @param [Boolean] prefix
+        #   Enables prefix match against names and aliases of entities
+        # @param [String] query
+        #   The literal query string for search.
+        # @param [Array<String>, String] types
+        #   Restricts returned entities with these types, e.g. Person
+        #   (as defined in http://schema.org/Person). If multiple types are specified,
+        #   returned entities will contain one or more of these types.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -85,17 +85,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_entities(prefix: nil, query: nil, types: nil, indent: nil, languages: nil, ids: nil, limit: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def search_entities(indent: nil, languages: nil, ids: nil, limit: nil, prefix: nil, query: nil, types: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/entities:search', options)
           command.response_representation = Google::Apis::KgsearchV1::SearchResponse::Representation
           command.response_class = Google::Apis::KgsearchV1::SearchResponse
-          command.query['prefix'] = prefix unless prefix.nil?
-          command.query['query'] = query unless query.nil?
-          command.query['types'] = types unless types.nil?
           command.query['indent'] = indent unless indent.nil?
           command.query['languages'] = languages unless languages.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['limit'] = limit unless limit.nil?
+          command.query['prefix'] = prefix unless prefix.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['types'] = types unless types.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -104,8 +104,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

@@ -28,11 +28,11 @@ module Google
       VERSION = 'V1'
       REVISION = '20170329'
 
-      # View YouTube Analytics reports for your YouTube content
-      AUTH_YT_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/yt-analytics.readonly'
-
       # View monetary and non-monetary YouTube Analytics reports for your YouTube content
       AUTH_YT_ANALYTICS_MONETARY_READONLY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'
+
+      # View YouTube Analytics reports for your YouTube content
+      AUTH_YT_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/yt-analytics.readonly'
     end
   end
 end

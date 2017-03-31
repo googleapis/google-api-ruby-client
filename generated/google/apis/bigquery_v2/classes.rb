@@ -59,6 +59,7 @@ module Google
         # BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid
         # identifier must be provided as field_name.
         # Corresponds to the JSON property `qualifierEncoded`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :qualifier_encoded
       
@@ -1246,8 +1247,8 @@ module Google
         # [Optional] Specifies a string that represents a null value in a CSV file. For
         # example, if you specify "\N", BigQuery interprets "\N" as a null value when
         # loading a CSV file. The default value is the empty string. If you set this
-        # property to a custom value, BigQuery still interprets the empty string as a
-        # null value for all data types except for STRING and BYTE. For STRING and BYTE
+        # property to a custom value, BigQuery throws an error if an empty string is
+        # present for all data types except for STRING and BYTE. For STRING and BYTE
         # columns, BigQuery interprets the empty string as an empty value.
         # Corresponds to the JSON property `nullMarker`
         # @return [String]
@@ -1370,8 +1371,10 @@ module Google
       class JobConfigurationQuery
         include Google::Apis::Core::Hashable
       
-        # If true, allows the query to produce arbitrarily large result tables at a
-        # slight cost in performance. Requires destinationTable to be set.
+        # [Optional] If true and query uses legacy SQL dialect, allows the query to
+        # produce arbitrarily large result tables at a slight cost in performance.
+        # Requires destinationTable to be set. For standard SQL queries, this flag is
+        # ignored and large results are always allowed.
         # Corresponds to the JSON property `allowLargeResults`
         # @return [Boolean]
         attr_accessor :allow_large_results
@@ -1399,8 +1402,10 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table
       
-        # [Optional] Flattens all nested and repeated fields in the query results. The
-        # default value is true. allowLargeResults must be true if this is set to false.
+        # [Optional] If true and query uses legacy SQL dialect, flattens all nested and
+        # repeated fields in the query results. allowLargeResults must be true if this
+        # is set to false. For standard SQL queries, this flag is ignored and results
+        # are never flattened.
         # Corresponds to the JSON property `flattenResults`
         # @return [Boolean]
         attr_accessor :flatten_results
