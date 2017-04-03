@@ -191,6 +191,14 @@ file = drive.create_file(file) # Raises ArgumentError: unknown keywords: id, tit
 file = drive.create_file(file, {}) # Returns a Drive::File instance
 ```
 
+### Using raw JSON
+
+To handle JSON serialization or deserialization in the application, set `skip_serialization` or
+or `skip_deserializaton` options respectively. When setting `skip_serialization` in a request,
+the body object must be a string representing the serialized JSON.
+
+When setting `skip_deserialization` to true, the response from the API will likewise
+be a string containing the raw JSON from the server.
 
 ## Authorization
 
@@ -283,7 +291,7 @@ The second is to set the environment variable `GOOGLE_API_USE_RAILS_LOGGER` to a
 
 ## Samples
 
-See the [samples](samples) for examples on how to use the client library for various
+See the [samples](https://github.com/google/google-api-ruby-client/tree/master/samples) for examples on how to use the client library for various
 services.
 
 Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
