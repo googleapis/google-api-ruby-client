@@ -164,10 +164,10 @@ module Google
           batch_command.options = request_options.merge(options)
           apply_command_defaults(batch_command)
           begin
-            Thread.current[:google_api_batch] = batch_command
+            start_batch(batch_command)
             yield self
           ensure
-            Thread.current[:google_api_batch] = nil
+            end_batch
           end
           batch_command.execute(client)
         end
@@ -196,10 +196,10 @@ module Google
           batch_command.options = request_options.merge(options)
           apply_command_defaults(batch_command)
           begin
-            Thread.current[:google_api_batch] = batch_command
+            start_batch(batch_command)
             yield self
           ensure
-            Thread.current[:google_api_batch] = nil
+            end_batch
           end
           batch_command.execute(client)
         end
@@ -347,6 +347,7 @@ module Google
         def execute_or_queue_command(command, &callback)
           batch_command = current_batch
           if batch_command
+            fail "Can not combine services in a batch" if Thread.current[:google_api_batch_service] != self
             batch_command.add(command, &callback)
             nil
           else
@@ -372,6 +373,20 @@ module Google
         # @return [Boolean]
         def batch?
           !current_batch.nil?
+        end
+
+        # Start a new thread-local batch context
+        # @param [Google::Apis::Core::BatchCommand] cmd
+        def start_batch(cmd)
+          fail "Batch already in progress" if batch?
+          Thread.current[:google_api_batch] = cmd
+          Thread.current[:google_api_batch_service] = self
+        end
+
+        # Clear thread-local batch context
+        def end_batch
+          Thread.current[:google_api_batch] = nil
+          Thread.current[:google_api_batch_service] = nil
         end
 
         # Create a new HTTP client

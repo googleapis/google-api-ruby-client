@@ -30,6 +30,7 @@ RSpec.describe Google::Apis::Generator do
       puts generator.dump_api_names
       tempdir = Dir.mktmpdir
       generated_files.each do |key, content|
+        puts content
         path = File.join(tempdir, key)
         FileUtils.mkdir_p(File.dirname(path))
         File.open(path, 'w') do |f|
@@ -45,6 +46,10 @@ RSpec.describe Google::Apis::Generator do
     context 'with the generated service' do
       it 'should set the base URL' do
         expect(service.root_url.to_s).to eql('https://www.googleapis.com/')
+      end
+
+      it 'should set the batch path' do
+        expect(service.batch_path).to eql('batch/test/v1')
       end
 
       it 'should define global methods from discovery' do

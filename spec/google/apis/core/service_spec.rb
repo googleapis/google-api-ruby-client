@@ -196,6 +196,20 @@ EOF
         end
       end.to raise_error(Google::Apis::ClientError)
     end
+
+    it 'should prevent mixing services in batch' do
+      expect do |b|
+        service.batch do |service|
+          command = service.send(:make_simple_command, :get, 'zoo/animals', {})
+          service.send(:execute_or_queue_command, command, &b)
+
+          service2 = service.dup
+          command2 = service.send(:make_simple_command, :get, 'zoo/animals', {})
+          service2.send(:execute_or_queue_command, command2, &b)
+        end
+      end.to raise_error
+
+    end
   end
 
   context 'with batch uploads' do

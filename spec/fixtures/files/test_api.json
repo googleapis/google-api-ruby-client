@@ -7,6 +7,7 @@
   "basePath": "/test/",
   "rootUrl": "https://www.googleapis.com/",
   "servicePath": "test/v1/",
+  "batchPath": "batch/test/v1",
   "rpcPath": "/rpc",
   "auth": {
     "oauth2": {
