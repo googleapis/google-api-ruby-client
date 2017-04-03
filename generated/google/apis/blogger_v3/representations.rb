@@ -461,7 +461,7 @@ module Google
         class Count
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :count, as: 'count'
+            property :count, :numeric_string => true, as: 'count'
             property :time_range, as: 'timeRange'
           end
         end
@@ -546,7 +546,7 @@ module Google
             collection :items, as: 'items', class: Google::Apis::BloggerV3::Comment, decorator: Google::Apis::BloggerV3::Comment::Representation
         
             property :self_link, as: 'selfLink'
-            property :total_items, as: 'totalItems'
+            property :total_items, :numeric_string => true, as: 'totalItems'
           end
         end
       end

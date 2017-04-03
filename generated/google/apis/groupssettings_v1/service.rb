@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
+          @batch_path = 'batch'
         end
         
         # Gets one resource by id.

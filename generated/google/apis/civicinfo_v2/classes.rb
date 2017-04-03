@@ -200,7 +200,7 @@ module Google
       
         # The order the candidate appears on the ballot for this contest.
         # Corresponds to the JSON property `orderOnBallot`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :order_on_ballot
       
         # The full name of the party the candidate is a member of.
@@ -268,7 +268,7 @@ module Google
       
         # A number specifying the position of this contest on the voter's ballot.
         # Corresponds to the JSON property `ballotPlacement`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ballot_placement
       
         # The candidate choices for this contest.
@@ -305,12 +305,12 @@ module Google
       
         # The number of candidates that will be elected to office in this contest.
         # Corresponds to the JSON property `numberElected`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :number_elected
       
         # The number of candidates that a voter may vote for in this contest.
         # Corresponds to the JSON property `numberVotingFor`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :number_voting_for
       
         # The name of the office for this contest.
@@ -572,7 +572,7 @@ module Google
       
         # The unique ID of this election.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # A displayable name for the election.
@@ -1464,7 +1464,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `generatedMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :generated_millis
       
         # 

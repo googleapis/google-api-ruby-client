@@ -225,7 +225,7 @@ module Google
       
           property :kind, as: 'kind'
           hash :max_import_sizes, as: 'maxImportSizes'
-          property :max_upload_size, as: 'maxUploadSize'
+          property :max_upload_size, :numeric_string => true, as: 'maxUploadSize'
           property :storage_quota, as: 'storageQuota', class: Google::Apis::DriveV3::About::StorageQuota, decorator: Google::Apis::DriveV3::About::StorageQuota::Representation
       
           collection :team_drive_themes, as: 'teamDriveThemes', class: Google::Apis::DriveV3::About::TeamDriveTheme, decorator: Google::Apis::DriveV3::About::TeamDriveTheme::Representation
@@ -237,10 +237,10 @@ module Google
         class StorageQuota
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :limit, as: 'limit'
-            property :usage, as: 'usage'
-            property :usage_in_drive, as: 'usageInDrive'
-            property :usage_in_drive_trash, as: 'usageInDriveTrash'
+            property :limit, :numeric_string => true, as: 'limit'
+            property :usage, :numeric_string => true, as: 'usage'
+            property :usage_in_drive, :numeric_string => true, as: 'usageInDrive'
+            property :usage_in_drive_trash, :numeric_string => true, as: 'usageInDriveTrash'
           end
         end
         
@@ -286,7 +286,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -381,24 +381,24 @@ module Google
           collection :permissions, as: 'permissions', class: Google::Apis::DriveV3::Permission, decorator: Google::Apis::DriveV3::Permission::Representation
       
           hash :properties, as: 'properties'
-          property :quota_bytes_used, as: 'quotaBytesUsed'
+          property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
           property :shared, as: 'shared'
           property :shared_with_me_time, as: 'sharedWithMeTime', type: DateTime
       
           property :sharing_user, as: 'sharingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
-          property :size, as: 'size'
+          property :size, :numeric_string => true, as: 'size'
           collection :spaces, as: 'spaces'
           property :starred, as: 'starred'
           property :team_drive_id, as: 'teamDriveId'
           property :thumbnail_link, as: 'thumbnailLink'
-          property :thumbnail_version, as: 'thumbnailVersion'
+          property :thumbnail_version, :numeric_string => true, as: 'thumbnailVersion'
           property :trashed, as: 'trashed'
           property :trashed_time, as: 'trashedTime', type: DateTime
       
           property :trashing_user, as: 'trashingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
-          property :version, as: 'version'
+          property :version, :numeric_string => true, as: 'version'
           property :video_media_metadata, as: 'videoMediaMetadata', class: Google::Apis::DriveV3::File::VideoMediaMetadata, decorator: Google::Apis::DriveV3::File::VideoMediaMetadata::Representation
       
           property :viewed_by_me, as: 'viewedByMe'
@@ -489,7 +489,7 @@ module Google
         class VideoMediaMetadata
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :duration_millis, as: 'durationMillis'
+            property :duration_millis, :numeric_string => true, as: 'durationMillis'
             property :height, as: 'height'
             property :width, as: 'width'
           end
@@ -599,7 +599,7 @@ module Google
           property :publish_auto, as: 'publishAuto'
           property :published, as: 'published'
           property :published_outside_domain, as: 'publishedOutsideDomain'
-          property :size, as: 'size'
+          property :size, :numeric_string => true, as: 'size'
         end
       end
       

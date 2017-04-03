@@ -698,7 +698,7 @@ module Google
         # returned in the response due to being limited by the row count requested or
         # the report row limit.
         # Corresponds to the JSON property `totalMatchedRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_matched_rows
       
         # The totals of the report. This is the same length as any other row in the

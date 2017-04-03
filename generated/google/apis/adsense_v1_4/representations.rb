@@ -211,7 +211,7 @@ module Google
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creation_time'
+          property :creation_time, :numeric_string => true, as: 'creation_time'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -378,7 +378,7 @@ module Google
       end
       
           property :start_date, as: 'startDate'
-          property :total_matched_rows, as: 'totalMatchedRows'
+          property :total_matched_rows, :numeric_string => true, as: 'totalMatchedRows'
           collection :totals, as: 'totals'
           collection :warnings, as: 'warnings'
         end

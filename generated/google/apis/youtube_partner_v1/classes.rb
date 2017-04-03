@@ -943,17 +943,17 @@ module Google
           
             # The duration of the longest match between the reference and the user video.
             # Corresponds to the JSON property `durationSecs`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :duration_secs
           
             # The offset in seconds into the reference at which the longest match began.
             # Corresponds to the JSON property `referenceOffset`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :reference_offset
           
             # The offset in seconds into the user video at which the longest match began.
             # Corresponds to the JSON property `userVideoOffset`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :user_video_offset
           
             def initialize(**args)
@@ -977,13 +977,13 @@ module Google
             # The total amount of content in the reference which matched the user video in
             # seconds.
             # Corresponds to the JSON property `referenceDurationSecs`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :reference_duration_secs
           
             # The total amount of content in the user video which matched the reference in
             # seconds.
             # Corresponds to the JSON property `userVideoDurationSecs`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :user_video_duration_secs
           
             def initialize(**args)
@@ -1338,7 +1338,7 @@ module Google
       
         # Number of views for the claimed video.
         # Corresponds to the JSON property `videoViews`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :video_views
       
         def initialize(**args)
@@ -1691,7 +1691,7 @@ module Google
         # Note: If your broadcast had a testing phase, the offset is measured from the
         # time that the testing phase began.
         # Corresponds to the JSON property `offsetTimeMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :offset_time_ms
       
         # This value specifies the wall clock time at which the cuepoint should be
@@ -3233,17 +3233,17 @@ module Google
       
         # Conflicting reference offset in milliseconds.
         # Corresponds to the JSON property `conflicting_reference_offset_ms`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :conflicting_reference_offset_ms
       
         # Match length in milliseconds.
         # Corresponds to the JSON property `length_ms`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :length_ms
       
         # Original reference offset in milliseconds.
         # Corresponds to the JSON property `original_reference_offset_ms`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :original_reference_offset_ms
       
         # The referenceConflictMatch's type.
@@ -3455,7 +3455,7 @@ module Google
       
         # The duration of the segment in milliseconds.
         # Corresponds to the JSON property `duration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration
       
         # The type of the API resource. For segment resources, the value is
@@ -3466,7 +3466,7 @@ module Google
       
         # The start time of the segment, measured in milliseconds from the beginning.
         # Corresponds to the JSON property `start`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start
       
         def initialize(**args)
@@ -3529,7 +3529,7 @@ module Google
       
         # The time that the state transition occurred.
         # Corresponds to the JSON property `timeCompleted`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :time_completed
       
         def initialize(**args)

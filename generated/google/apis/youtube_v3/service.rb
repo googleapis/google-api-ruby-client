@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'youtube/v3/')
+          @batch_path = 'batch'
         end
         
         # Posts a bulletin for a specific channel. (The user submitting the request must
@@ -1680,7 +1681,7 @@ module Google
         # @param [Boolean] display_slate
         #   The displaySlate parameter specifies whether the slate is being enabled or
         #   disabled.
-        # @param [String] offset_time_ms
+        # @param [Fixnum] offset_time_ms
         #   The offsetTimeMs parameter specifies a positive time offset when the specified
         #   slate change will occur. The value is measured in milliseconds from the
         #   beginning of the broadcast's monitor stream, which is the time that the

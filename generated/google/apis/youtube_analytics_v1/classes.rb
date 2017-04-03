@@ -70,7 +70,7 @@ module Google
         
           # 
           # Corresponds to the JSON property `itemCount`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :item_count
         
           # 

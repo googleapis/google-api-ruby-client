@@ -312,7 +312,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           collection :labels, as: 'labels', class: Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry, decorator: Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry::Representation
       
@@ -407,7 +407,7 @@ module Google
           property :config, as: 'config', class: Google::Apis::DeploymentmanagerV2::ConfigFile, decorator: Google::Apis::DeploymentmanagerV2::ConfigFile::Representation
       
           property :expanded_config, as: 'expandedConfig'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           collection :imports, as: 'imports', class: Google::Apis::DeploymentmanagerV2::ImportFile, decorator: Google::Apis::DeploymentmanagerV2::ImportFile::Representation
       
           property :insert_time, as: 'insertTime'
@@ -437,7 +437,7 @@ module Google
       
           property :http_error_message, as: 'httpErrorMessage'
           property :http_error_status_code, as: 'httpErrorStatusCode'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -448,7 +448,7 @@ module Google
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
-          property :target_id, as: 'targetId'
+          property :target_id, :numeric_string => true, as: 'targetId'
           property :target_link, as: 'targetLink'
           property :user, as: 'user'
           collection :warnings, as: 'warnings', class: Google::Apis::DeploymentmanagerV2::Operation::Warning, decorator: Google::Apis::DeploymentmanagerV2::Operation::Warning::Representation
@@ -522,7 +522,7 @@ module Google
           property :access_control, as: 'accessControl', class: Google::Apis::DeploymentmanagerV2::ResourceAccessControl, decorator: Google::Apis::DeploymentmanagerV2::ResourceAccessControl::Representation
       
           property :final_properties, as: 'finalProperties'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :manifest, as: 'manifest'
           property :name, as: 'name'
@@ -665,7 +665,7 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :name, as: 'name'
           property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerV2::Operation, decorator: Google::Apis::DeploymentmanagerV2::Operation::Representation

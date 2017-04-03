@@ -44,6 +44,7 @@ module Google
 
         def initialize
           super('https://appengine.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Gets information about an application.

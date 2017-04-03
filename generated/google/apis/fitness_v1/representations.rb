@@ -154,10 +154,10 @@ module Google
           property :activity, as: 'activity'
           collection :dataset, as: 'dataset', class: Google::Apis::FitnessV1::Dataset, decorator: Google::Apis::FitnessV1::Dataset::Representation
       
-          property :end_time_millis, as: 'endTimeMillis'
+          property :end_time_millis, :numeric_string => true, as: 'endTimeMillis'
           property :session, as: 'session', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
       
-          property :start_time_millis, as: 'startTimeMillis'
+          property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
           property :type, as: 'type'
         end
       end
@@ -183,9 +183,9 @@ module Google
       
           property :bucket_by_time, as: 'bucketByTime', class: Google::Apis::FitnessV1::BucketByTime, decorator: Google::Apis::FitnessV1::BucketByTime::Representation
       
-          property :end_time_millis, as: 'endTimeMillis'
+          property :end_time_millis, :numeric_string => true, as: 'endTimeMillis'
           collection :filtered_data_quality_standard, as: 'filteredDataQualityStandard'
-          property :start_time_millis, as: 'startTimeMillis'
+          property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
         end
       end
       
@@ -211,21 +211,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity_data_source_id, as: 'activityDataSourceId'
-          property :min_duration_millis, as: 'minDurationMillis'
+          property :min_duration_millis, :numeric_string => true, as: 'minDurationMillis'
         end
       end
       
       class BucketBySession
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :min_duration_millis, as: 'minDurationMillis'
+          property :min_duration_millis, :numeric_string => true, as: 'minDurationMillis'
         end
       end
       
       class BucketByTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration_millis, as: 'durationMillis'
+          property :duration_millis, :numeric_string => true, as: 'durationMillis'
           property :period, as: 'period', class: Google::Apis::FitnessV1::BucketByTimePeriod, decorator: Google::Apis::FitnessV1::BucketByTimePeriod::Representation
       
         end
@@ -243,13 +243,13 @@ module Google
       class DataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :computation_time_millis, as: 'computationTimeMillis'
+          property :computation_time_millis, :numeric_string => true, as: 'computationTimeMillis'
           property :data_type_name, as: 'dataTypeName'
-          property :end_time_nanos, as: 'endTimeNanos'
-          property :modified_time_millis, as: 'modifiedTimeMillis'
+          property :end_time_nanos, :numeric_string => true, as: 'endTimeNanos'
+          property :modified_time_millis, :numeric_string => true, as: 'modifiedTimeMillis'
           property :origin_data_source_id, as: 'originDataSourceId'
-          property :raw_timestamp_nanos, as: 'rawTimestampNanos'
-          property :start_time_nanos, as: 'startTimeNanos'
+          property :raw_timestamp_nanos, :numeric_string => true, as: 'rawTimestampNanos'
+          property :start_time_nanos, :numeric_string => true, as: 'startTimeNanos'
           collection :value, as: 'value', class: Google::Apis::FitnessV1::Value, decorator: Google::Apis::FitnessV1::Value::Representation
       
         end
@@ -294,8 +294,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
-          property :max_end_time_ns, as: 'maxEndTimeNs'
-          property :min_start_time_ns, as: 'minStartTimeNs'
+          property :max_end_time_ns, :numeric_string => true, as: 'maxEndTimeNs'
+          property :min_start_time_ns, :numeric_string => true, as: 'minStartTimeNs'
           property :next_page_token, as: 'nextPageToken'
           collection :point, as: 'point', class: Google::Apis::FitnessV1::DataPoint, decorator: Google::Apis::FitnessV1::DataPoint::Representation
       
@@ -343,16 +343,16 @@ module Google
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active_time_millis, as: 'activeTimeMillis'
+          property :active_time_millis, :numeric_string => true, as: 'activeTimeMillis'
           property :activity_type, as: 'activityType'
           property :application, as: 'application', class: Google::Apis::FitnessV1::Application, decorator: Google::Apis::FitnessV1::Application::Representation
       
           property :description, as: 'description'
-          property :end_time_millis, as: 'endTimeMillis'
+          property :end_time_millis, :numeric_string => true, as: 'endTimeMillis'
           property :id, as: 'id'
-          property :modified_time_millis, as: 'modifiedTimeMillis'
+          property :modified_time_millis, :numeric_string => true, as: 'modifiedTimeMillis'
           property :name, as: 'name'
-          property :start_time_millis, as: 'startTimeMillis'
+          property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
         end
       end
       

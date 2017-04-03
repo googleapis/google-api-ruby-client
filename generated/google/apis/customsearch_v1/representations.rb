@@ -194,7 +194,7 @@ module Google
           property :start_index, as: 'startIndex'
           property :start_page, as: 'startPage'
           property :title, as: 'title'
-          property :total_results, as: 'totalResults'
+          property :total_results, :numeric_string => true, as: 'totalResults'
         end
       end
       
@@ -277,7 +277,7 @@ module Google
             property :formatted_search_time, as: 'formattedSearchTime'
             property :formatted_total_results, as: 'formattedTotalResults'
             property :search_time, as: 'searchTime'
-            property :total_results, as: 'totalResults'
+            property :total_results, :numeric_string => true, as: 'totalResults'
           end
         end
         

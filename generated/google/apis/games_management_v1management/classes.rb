@@ -158,7 +158,7 @@ module Google
         # The last time the player played the game in milliseconds since the epoch in
         # UTC.
         # Corresponds to the JSON property `timeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :time_millis
       
         def initialize(**args)
@@ -178,7 +178,7 @@ module Google
       
         # The current number of experience points for the player.
         # Corresponds to the JSON property `currentExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :current_experience_points
       
         # This is a JSON template for 1P/3P metadata about a user's level.
@@ -188,7 +188,7 @@ module Google
       
         # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
       
         # This is a JSON template for 1P/3P metadata about a user's level.
@@ -220,12 +220,12 @@ module Google
       
         # The maximum experience points for this level.
         # Corresponds to the JSON property `maxExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_experience_points
       
         # The minimum experience points for this level.
         # Corresponds to the JSON property `minExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_experience_points
       
         def initialize(**args)
@@ -246,7 +246,7 @@ module Google
       
         # The time this player was hidden.
         # Corresponds to the JSON property `hiddenTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :hidden_time_millis
       
         # Uniquely identifies the type of this resource. Value is always the fixed

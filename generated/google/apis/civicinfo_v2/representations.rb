@@ -235,7 +235,7 @@ module Google
       
           property :email, as: 'email'
           property :name, as: 'name'
-          property :order_on_ballot, as: 'orderOnBallot'
+          property :order_on_ballot, :numeric_string => true, as: 'orderOnBallot'
           property :party, as: 'party'
           property :phone, as: 'phone'
           property :photo_url, as: 'photoUrl'
@@ -253,7 +253,7 @@ module Google
       class Contest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ballot_placement, as: 'ballotPlacement'
+          property :ballot_placement, :numeric_string => true, as: 'ballotPlacement'
           collection :candidates, as: 'candidates', class: Google::Apis::CivicinfoV2::Candidate, decorator: Google::Apis::CivicinfoV2::Candidate::Representation
       
           property :district, as: 'district', class: Google::Apis::CivicinfoV2::ElectoralDistrict, decorator: Google::Apis::CivicinfoV2::ElectoralDistrict::Representation
@@ -261,8 +261,8 @@ module Google
           property :electorate_specifications, as: 'electorateSpecifications'
           property :id, as: 'id'
           collection :level, as: 'level'
-          property :number_elected, as: 'numberElected'
-          property :number_voting_for, as: 'numberVotingFor'
+          property :number_elected, :numeric_string => true, as: 'numberElected'
+          property :number_voting_for, :numeric_string => true, as: 'numberVotingFor'
           property :office, as: 'office'
           property :primary_party, as: 'primaryParty'
           collection :referendum_ballot_responses, as: 'referendumBallotResponses'
@@ -328,7 +328,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :election_day, as: 'electionDay'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :ocd_division_id, as: 'ocdDivisionId'
         end
@@ -558,7 +558,7 @@ module Google
       class VoterInfoSegmentResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :generated_millis, as: 'generatedMillis'
+          property :generated_millis, :numeric_string => true, as: 'generatedMillis'
           property :postal_address, as: 'postalAddress', class: Google::Apis::CivicinfoV2::PostalAddress, decorator: Google::Apis::CivicinfoV2::PostalAddress::Representation
       
           property :request, as: 'request', class: Google::Apis::CivicinfoV2::VoterInfoRequest, decorator: Google::Apis::CivicinfoV2::VoterInfoRequest::Representation

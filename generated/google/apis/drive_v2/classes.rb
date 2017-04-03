@@ -86,7 +86,7 @@ module Google
       
         # The largest change id.
         # Corresponds to the JSON property `largestChangeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :largest_change_id
       
         # List of max upload sizes for each file type. The most specific type takes
@@ -112,22 +112,22 @@ module Google
       
         # The total number of quota bytes.
         # Corresponds to the JSON property `quotaBytesTotal`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_total
       
         # The number of quota bytes used by Google Drive.
         # Corresponds to the JSON property `quotaBytesUsed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_used
       
         # The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
         # Corresponds to the JSON property `quotaBytesUsedAggregate`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_used_aggregate
       
         # The number of quota bytes used by trashed items.
         # Corresponds to the JSON property `quotaBytesUsedInTrash`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_used_in_trash
       
         # The type of the user's storage quota. Possible values are:
@@ -139,7 +139,7 @@ module Google
       
         # The number of remaining change ids, limited to no more than 2500.
         # Corresponds to the JSON property `remainingChangeIds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :remaining_change_ids
       
         # The id of the root folder.
@@ -326,7 +326,7 @@ module Google
         
           # The max upload size for this type.
           # Corresponds to the JSON property `size`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :size
         
           # The file type.
@@ -351,7 +351,7 @@ module Google
         
           # The storage quota bytes used by the service.
           # Corresponds to the JSON property `bytesUsed`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :bytes_used
         
           # The service's name, e.g. DRIVE, GMAIL, or PHOTOS.
@@ -677,7 +677,7 @@ module Google
       
         # The ID of the change.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # This is always drive#change.
@@ -751,7 +751,7 @@ module Google
       
         # The current largest change ID.
         # Corresponds to the JSON property `largestChangeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :largest_change_id
       
         # The starting page token for future changes. This will be present only if the
@@ -807,7 +807,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.
@@ -1369,7 +1369,7 @@ module Google
         # The size of the file in bytes. This field is only populated for files with
         # content stored in Drive; it is not populated for Google Docs or shortcut files.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # Folder color as an RGB hex string if the file is a folder. The list of
@@ -1544,7 +1544,7 @@ module Google
       
         # The number of quota bytes used by this file.
         # Corresponds to the JSON property `quotaBytesUsed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_used
       
         # A link back to this file.
@@ -1600,7 +1600,7 @@ module Google
       
         # The thumbnail version for use in thumbnail cache invalidation.
         # Corresponds to the JSON property `thumbnailVersion`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :thumbnail_version
       
         # The title of this file. Note that for immutable items such as the top level
@@ -1630,7 +1630,7 @@ module Google
         # change made to the file on the server, even those not visible to the
         # requesting user.
         # Corresponds to the JSON property `version`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :version
       
         # Metadata about video media. This will only be present for video types.
@@ -2152,7 +2152,7 @@ module Google
         
           # The duration of the video in milliseconds.
           # Corresponds to the JSON property `durationMillis`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :duration_millis
         
           # The height of the video in pixels.
@@ -2732,7 +2732,7 @@ module Google
         # The size of the revision in bytes. This will only be populated on files with
         # content stored in Drive.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # The ID of the revision.

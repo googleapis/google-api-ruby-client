@@ -22,6 +22,60 @@ module Google
   module Apis
     module ServicemanagementV1
       
+      class LogDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonitoredResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomErrorRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediaDownload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChangeReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisableServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubmitConfigSourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediaUpload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Advice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,25 +130,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BackendRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuthenticationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteServiceResponse
+      class BackendRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,13 +226,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadata
+      class CustomHttpPattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CustomHttpPattern
+      class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,13 +346,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ConfigRef
+      class ListServiceRolloutsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListServiceRolloutsResponse
+      class ConfigRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,13 +406,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Monitoring
+      class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Field
+      class Monitoring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,13 +430,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Diagnostic
+      class EnableServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnableServiceRequest
+      class Diagnostic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,13 +460,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Experimental
+      class ListServiceConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListServiceConfigsResponse
+      class Experimental
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -490,7 +544,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Usage
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,7 +556,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsResponse
+      class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,57 +581,82 @@ module Google
       end
       
       class LogDescriptor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :name, as: 'name'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+        end
       end
       
       class ConfigFile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_type, as: 'fileType'
+          property :file_contents, :base64 => true, as: 'fileContents'
+          property :file_path, as: 'filePath'
+        end
       end
       
       class MonitoredResourceDescriptor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :description, as: 'description'
+          property :type, as: 'type'
+          collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :name, as: 'name'
+        end
       end
       
       class CustomErrorRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selector, as: 'selector'
+          property :is_error_type, as: 'isErrorType'
+        end
       end
       
       class MediaDownload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :download_service, as: 'downloadService'
+        end
       end
       
       class ChangeReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :config_changes, as: 'configChanges', class: Google::Apis::ServicemanagementV1::ConfigChange, decorator: Google::Apis::ServicemanagementV1::ConfigChange::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class DisableServiceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_id, as: 'consumerId'
+        end
       end
       
       class SubmitConfigSourceResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_config, as: 'serviceConfig', class: Google::Apis::ServicemanagementV1::Service, decorator: Google::Apis::ServicemanagementV1::Service::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class MediaUpload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upload_service, as: 'uploadService'
+          property :enabled, as: 'enabled'
+        end
       end
       
       class Advice
@@ -590,16 +669,16 @@ module Google
       class ManagedService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :service_name, as: 'serviceName'
           property :producer_project_id, as: 'producerProjectId'
+          property :service_name, as: 'serviceName'
         end
       end
       
       class UsageRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :selector, as: 'selector'
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
+          property :selector, as: 'selector'
         end
       end
       
@@ -634,12 +713,12 @@ module Google
       class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :sys, as: 'sys'
-          property :value, as: 'value'
-          property :iam, as: 'iam'
           collection :values, as: 'values'
+          property :iam, as: 'iam'
           property :op, as: 'op'
           property :svc, as: 'svc'
+          property :sys, as: 'sys'
+          property :value, as: 'value'
         end
       end
       
@@ -660,6 +739,18 @@ module Google
         end
       end
       
+      class AuthenticationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth, as: 'oauth', class: Google::Apis::ServicemanagementV1::OAuthRequirements, decorator: Google::Apis::ServicemanagementV1::OAuthRequirements::Representation
+      
+          collection :requirements, as: 'requirements', class: Google::Apis::ServicemanagementV1::AuthRequirement, decorator: Google::Apis::ServicemanagementV1::AuthRequirement::Representation
+      
+          property :selector, as: 'selector'
+          property :allow_without_credential, as: 'allowWithoutCredential'
+        end
+      end
+      
       class BackendRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -669,15 +760,18 @@ module Google
         end
       end
       
-      class AuthenticationRule
+      class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requirements, as: 'requirements', class: Google::Apis::ServicemanagementV1::AuthRequirement, decorator: Google::Apis::ServicemanagementV1::AuthRequirement::Representation
+          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::Rule, decorator: Google::Apis::ServicemanagementV1::Rule::Representation
       
-          property :selector, as: 'selector'
-          property :allow_without_credential, as: 'allowWithoutCredential'
-          property :oauth, as: 'oauth', class: Google::Apis::ServicemanagementV1::OAuthRequirements, decorator: Google::Apis::ServicemanagementV1::OAuthRequirements::Representation
+          property :version, as: 'version'
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ServicemanagementV1::AuditConfig, decorator: Google::Apis::ServicemanagementV1::AuditConfig::Representation
       
+          collection :bindings, as: 'bindings', class: Google::Apis::ServicemanagementV1::Binding, decorator: Google::Apis::ServicemanagementV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :iam_owned, as: 'iamOwned'
         end
       end
       
@@ -685,21 +779,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service', class: Google::Apis::ServicemanagementV1::ManagedService, decorator: Google::Apis::ServicemanagementV1::ManagedService::Representation
-      
-        end
-      end
-      
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::Rule, decorator: Google::Apis::ServicemanagementV1::Rule::Representation
-      
-          property :version, as: 'version'
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ServicemanagementV1::AuditConfig, decorator: Google::Apis::ServicemanagementV1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::ServicemanagementV1::Binding, decorator: Google::Apis::ServicemanagementV1::Binding::Representation
       
         end
       end
@@ -738,9 +817,9 @@ module Google
       class Authentication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::AuthenticationRule, decorator: Google::Apis::ServicemanagementV1::AuthenticationRule::Representation
-      
           collection :providers, as: 'providers', class: Google::Apis::ServicemanagementV1::AuthProvider, decorator: Google::Apis::ServicemanagementV1::AuthProvider::Representation
+      
+          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::AuthenticationRule, decorator: Google::Apis::ServicemanagementV1::AuthenticationRule::Representation
       
         end
       end
@@ -770,9 +849,9 @@ module Google
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
           collection :details, as: 'details'
           property :code, as: 'code'
-          property :message, as: 'message'
         end
       end
       
@@ -787,16 +866,43 @@ module Google
       class AuthProvider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audiences, as: 'audiences'
           property :id, as: 'id'
           property :issuer, as: 'issuer'
           property :jwks_uri, as: 'jwksUri'
-          property :audiences, as: 'audiences'
         end
       end
       
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :documentation, as: 'documentation', class: Google::Apis::ServicemanagementV1::Documentation, decorator: Google::Apis::ServicemanagementV1::Documentation::Representation
+      
+          property :logging, as: 'logging', class: Google::Apis::ServicemanagementV1::Logging, decorator: Google::Apis::ServicemanagementV1::Logging::Representation
+      
+          collection :monitored_resources, as: 'monitoredResources', class: Google::Apis::ServicemanagementV1::MonitoredResourceDescriptor, decorator: Google::Apis::ServicemanagementV1::MonitoredResourceDescriptor::Representation
+      
+          collection :enums, as: 'enums', class: Google::Apis::ServicemanagementV1::Enum, decorator: Google::Apis::ServicemanagementV1::Enum::Representation
+      
+          property :context, as: 'context', class: Google::Apis::ServicemanagementV1::Context, decorator: Google::Apis::ServicemanagementV1::Context::Representation
+      
+          property :id, as: 'id'
+          property :usage, as: 'usage', class: Google::Apis::ServicemanagementV1::Usage, decorator: Google::Apis::ServicemanagementV1::Usage::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::ServicemanagementV1::MetricDescriptor, decorator: Google::Apis::ServicemanagementV1::MetricDescriptor::Representation
+      
+          property :authentication, as: 'authentication', class: Google::Apis::ServicemanagementV1::Authentication, decorator: Google::Apis::ServicemanagementV1::Authentication::Representation
+      
+          property :experimental, as: 'experimental', class: Google::Apis::ServicemanagementV1::Experimental, decorator: Google::Apis::ServicemanagementV1::Experimental::Representation
+      
+          property :control, as: 'control', class: Google::Apis::ServicemanagementV1::Control, decorator: Google::Apis::ServicemanagementV1::Control::Representation
+      
+          property :config_version, as: 'configVersion'
+          property :monitoring, as: 'monitoring', class: Google::Apis::ServicemanagementV1::Monitoring, decorator: Google::Apis::ServicemanagementV1::Monitoring::Representation
+      
+          collection :system_types, as: 'systemTypes', class: Google::Apis::ServicemanagementV1::Type, decorator: Google::Apis::ServicemanagementV1::Type::Representation
+      
+          property :producer_project_id, as: 'producerProjectId'
           property :visibility, as: 'visibility', class: Google::Apis::ServicemanagementV1::Visibility, decorator: Google::Apis::ServicemanagementV1::Visibility::Representation
       
           property :quota, as: 'quota', class: Google::Apis::ServicemanagementV1::Quota, decorator: Google::Apis::ServicemanagementV1::Quota::Representation
@@ -817,36 +923,9 @@ module Google
       
           property :http, as: 'http', class: Google::Apis::ServicemanagementV1::Http, decorator: Google::Apis::ServicemanagementV1::Http::Representation
       
-          property :backend, as: 'backend', class: Google::Apis::ServicemanagementV1::Backend, decorator: Google::Apis::ServicemanagementV1::Backend::Representation
-      
           property :system_parameters, as: 'systemParameters', class: Google::Apis::ServicemanagementV1::SystemParameters, decorator: Google::Apis::ServicemanagementV1::SystemParameters::Representation
       
-          property :documentation, as: 'documentation', class: Google::Apis::ServicemanagementV1::Documentation, decorator: Google::Apis::ServicemanagementV1::Documentation::Representation
-      
-          collection :monitored_resources, as: 'monitoredResources', class: Google::Apis::ServicemanagementV1::MonitoredResourceDescriptor, decorator: Google::Apis::ServicemanagementV1::MonitoredResourceDescriptor::Representation
-      
-          property :logging, as: 'logging', class: Google::Apis::ServicemanagementV1::Logging, decorator: Google::Apis::ServicemanagementV1::Logging::Representation
-      
-          collection :enums, as: 'enums', class: Google::Apis::ServicemanagementV1::Enum, decorator: Google::Apis::ServicemanagementV1::Enum::Representation
-      
-          property :context, as: 'context', class: Google::Apis::ServicemanagementV1::Context, decorator: Google::Apis::ServicemanagementV1::Context::Representation
-      
-          property :id, as: 'id'
-          property :usage, as: 'usage', class: Google::Apis::ServicemanagementV1::Usage, decorator: Google::Apis::ServicemanagementV1::Usage::Representation
-      
-          collection :metrics, as: 'metrics', class: Google::Apis::ServicemanagementV1::MetricDescriptor, decorator: Google::Apis::ServicemanagementV1::MetricDescriptor::Representation
-      
-          property :authentication, as: 'authentication', class: Google::Apis::ServicemanagementV1::Authentication, decorator: Google::Apis::ServicemanagementV1::Authentication::Representation
-      
-          property :experimental, as: 'experimental', class: Google::Apis::ServicemanagementV1::Experimental, decorator: Google::Apis::ServicemanagementV1::Experimental::Representation
-      
-          property :control, as: 'control', class: Google::Apis::ServicemanagementV1::Control, decorator: Google::Apis::ServicemanagementV1::Control::Representation
-      
-          property :config_version, as: 'configVersion'
-          property :monitoring, as: 'monitoring', class: Google::Apis::ServicemanagementV1::Monitoring, decorator: Google::Apis::ServicemanagementV1::Monitoring::Representation
-      
-          property :producer_project_id, as: 'producerProjectId'
-          collection :system_types, as: 'systemTypes', class: Google::Apis::ServicemanagementV1::Type, decorator: Google::Apis::ServicemanagementV1::Type::Representation
+          property :backend, as: 'backend', class: Google::Apis::ServicemanagementV1::Backend, decorator: Google::Apis::ServicemanagementV1::Backend::Representation
       
         end
       end
@@ -864,20 +943,9 @@ module Google
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServicemanagementV1::Operation, decorator: Google::Apis::ServicemanagementV1::Operation::Representation
       
-        end
-      end
-      
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_time, as: 'startTime'
-          collection :resource_names, as: 'resourceNames'
-          collection :steps, as: 'steps', class: Google::Apis::ServicemanagementV1::Step, decorator: Google::Apis::ServicemanagementV1::Step::Representation
-      
-          property :progress_percentage, as: 'progressPercentage'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -889,12 +957,23 @@ module Google
         end
       end
       
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
+          collection :steps, as: 'steps', class: Google::Apis::ServicemanagementV1::Step, decorator: Google::Apis::ServicemanagementV1::Step::Representation
+      
+          property :progress_percentage, as: 'progressPercentage'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class SystemParameterRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :selector, as: 'selector'
           collection :parameters, as: 'parameters', class: Google::Apis::ServicemanagementV1::SystemParameter, decorator: Google::Apis::ServicemanagementV1::SystemParameter::Representation
       
+          property :selector, as: 'selector'
         end
       end
       
@@ -904,8 +983,8 @@ module Google
           property :selector, as: 'selector'
           property :custom, as: 'custom', class: Google::Apis::ServicemanagementV1::CustomHttpPattern, decorator: Google::Apis::ServicemanagementV1::CustomHttpPattern::Representation
       
-          property :get, as: 'get'
           property :patch, as: 'patch'
+          property :get, as: 'get'
           property :put, as: 'put'
           property :delete, as: 'delete'
           property :body, as: 'body'
@@ -977,9 +1056,9 @@ module Google
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :created_by, as: 'createdBy'
           property :traffic_percent_strategy, as: 'trafficPercentStrategy', class: Google::Apis::ServicemanagementV1::TrafficPercentStrategy, decorator: Google::Apis::ServicemanagementV1::TrafficPercentStrategy::Representation
       
+          property :created_by, as: 'createdBy'
           property :rollout_id, as: 'rolloutId'
           property :delete_service_strategy, as: 'deleteServiceStrategy', class: Google::Apis::ServicemanagementV1::DeleteServiceStrategy, decorator: Google::Apis::ServicemanagementV1::DeleteServiceStrategy::Representation
       
@@ -1049,36 +1128,29 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_streaming, as: 'requestStreaming'
-          property :syntax, as: 'syntax'
           property :response_type_url, as: 'responseTypeUrl'
           collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
       
           property :response_streaming, as: 'responseStreaming'
           property :name, as: 'name'
           property :request_type_url, as: 'requestTypeUrl'
+          property :request_streaming, as: 'requestStreaming'
+          property :syntax, as: 'syntax'
         end
       end
       
       class QuotaLimit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :unit, as: 'unit'
-          property :max_limit, as: 'maxLimit'
-          property :name, as: 'name'
-          property :free_tier, as: 'freeTier'
           property :duration, as: 'duration'
-          property :default_limit, as: 'defaultLimit'
-          property :display_name, as: 'displayName'
-          property :description, as: 'description'
+          property :free_tier, :numeric_string => true, as: 'freeTier'
+          property :default_limit, :numeric_string => true, as: 'defaultLimit'
           property :metric, as: 'metric'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           hash :values, as: 'values'
-        end
-      end
-      
-      class ConfigRef
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit, as: 'unit'
+          property :max_limit, :numeric_string => true, as: 'maxLimit'
           property :name, as: 'name'
         end
       end
@@ -1089,6 +1161,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :rollouts, as: 'rollouts', class: Google::Apis::ServicemanagementV1::Rollout, decorator: Google::Apis::ServicemanagementV1::Rollout::Representation
       
+        end
+      end
+      
+      class ConfigRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -1103,20 +1182,20 @@ module Google
       class FlowOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :flow_name, as: 'flowName'
-          collection :resource_names, as: 'resourceNames'
           property :cancel_state, as: 'cancelState'
           property :deadline, as: 'deadline'
           property :start_time, as: 'startTime'
+          property :flow_name, as: 'flowName'
+          collection :resource_names, as: 'resourceNames'
         end
       end
       
       class CustomError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :types, as: 'types'
           collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::CustomErrorRule, decorator: Google::Apis::ServicemanagementV1::CustomErrorRule::Representation
       
-          collection :types, as: 'types'
         end
       end
       
@@ -1160,6 +1239,23 @@ module Google
         end
       end
       
+      class Field
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type_url, as: 'typeUrl'
+          property :number, as: 'number'
+          property :json_name, as: 'jsonName'
+          property :kind, as: 'kind'
+          collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
+      
+          property :oneof_index, as: 'oneofIndex'
+          property :cardinality, as: 'cardinality'
+          property :packed, as: 'packed'
+          property :default_value, as: 'defaultValue'
+        end
+      end
+      
       class Monitoring
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1167,23 +1263,6 @@ module Google
       
           collection :producer_destinations, as: 'producerDestinations', class: Google::Apis::ServicemanagementV1::MonitoringDestination, decorator: Google::Apis::ServicemanagementV1::MonitoringDestination::Representation
       
-        end
-      end
-      
-      class Field
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :json_name, as: 'jsonName'
-          collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
-      
-          property :oneof_index, as: 'oneofIndex'
-          property :packed, as: 'packed'
-          property :cardinality, as: 'cardinality'
-          property :default_value, as: 'defaultValue'
-          property :name, as: 'name'
-          property :type_url, as: 'typeUrl'
-          property :number, as: 'number'
         end
       end
       
@@ -1197,23 +1276,14 @@ module Google
       class Enum
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :enumvalue, as: 'enumvalue', class: Google::Apis::ServicemanagementV1::EnumValue, decorator: Google::Apis::ServicemanagementV1::EnumValue::Representation
+      
           collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
       
           property :source_context, as: 'sourceContext', class: Google::Apis::ServicemanagementV1::SourceContext, decorator: Google::Apis::ServicemanagementV1::SourceContext::Representation
       
           property :syntax, as: 'syntax'
-          property :name, as: 'name'
-          collection :enumvalue, as: 'enumvalue', class: Google::Apis::ServicemanagementV1::EnumValue, decorator: Google::Apis::ServicemanagementV1::EnumValue::Representation
-      
-        end
-      end
-      
-      class Diagnostic
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location'
-          property :kind, as: 'kind'
-          property :message, as: 'message'
         end
       end
       
@@ -1221,6 +1291,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_id, as: 'consumerId'
+        end
+      end
+      
+      class Diagnostic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :location, as: 'location'
+          property :kind, as: 'kind'
         end
       end
       
@@ -1236,11 +1315,11 @@ module Google
       class GenerateConfigReportResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :service_name, as: 'serviceName'
-          collection :change_reports, as: 'changeReports', class: Google::Apis::ServicemanagementV1::ChangeReport, decorator: Google::Apis::ServicemanagementV1::ChangeReport::Representation
-      
           property :id, as: 'id'
           collection :diagnostics, as: 'diagnostics', class: Google::Apis::ServicemanagementV1::Diagnostic, decorator: Google::Apis::ServicemanagementV1::Diagnostic::Representation
+      
+          property :service_name, as: 'serviceName'
+          collection :change_reports, as: 'changeReports', class: Google::Apis::ServicemanagementV1::ChangeReport, decorator: Google::Apis::ServicemanagementV1::ChangeReport::Representation
       
         end
       end
@@ -1248,22 +1327,14 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :oneofs, as: 'oneofs'
-          property :source_context, as: 'sourceContext', class: Google::Apis::ServicemanagementV1::SourceContext, decorator: Google::Apis::ServicemanagementV1::SourceContext::Representation
-      
-          property :syntax, as: 'syntax'
-          collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
-      
           collection :fields, as: 'fields', class: Google::Apis::ServicemanagementV1::Field, decorator: Google::Apis::ServicemanagementV1::Field::Representation
       
           property :name, as: 'name'
-        end
-      end
+          collection :oneofs, as: 'oneofs'
+          property :syntax, as: 'syntax'
+          property :source_context, as: 'sourceContext', class: Google::Apis::ServicemanagementV1::SourceContext, decorator: Google::Apis::ServicemanagementV1::SourceContext::Representation
       
-      class Experimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization, as: 'authorization', class: Google::Apis::ServicemanagementV1::AuthorizationConfig, decorator: Google::Apis::ServicemanagementV1::AuthorizationConfig::Representation
+          collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
       
         end
       end
@@ -1271,8 +1342,16 @@ module Google
       class ListServiceConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :service_configs, as: 'serviceConfigs', class: Google::Apis::ServicemanagementV1::Service, decorator: Google::Apis::ServicemanagementV1::Service::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Experimental
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization, as: 'authorization', class: Google::Apis::ServicemanagementV1::AuthorizationConfig, decorator: Google::Apis::ServicemanagementV1::AuthorizationConfig::Representation
       
         end
       end
@@ -1298,18 +1377,18 @@ module Google
       class SubmitConfigSourceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :validate_only, as: 'validateOnly'
           property :config_source, as: 'configSource', class: Google::Apis::ServicemanagementV1::ConfigSource, decorator: Google::Apis::ServicemanagementV1::ConfigSource::Representation
       
-          property :validate_only, as: 'validateOnly'
         end
       end
       
       class DocumentationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :selector, as: 'selector'
           property :description, as: 'description'
           property :deprecation_description, as: 'deprecationDescription'
-          property :selector, as: 'selector'
         end
       end
       
@@ -1323,9 +1402,9 @@ module Google
       class ContextRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requested, as: 'requested'
           property :selector, as: 'selector'
           collection :provided, as: 'provided'
+          collection :requested, as: 'requested'
         end
       end
       
@@ -1338,15 +1417,15 @@ module Google
       class MetricDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :value_type, as: 'valueType'
           property :metric_kind, as: 'metricKind'
-          property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :description, as: 'description'
           property :unit, as: 'unit'
           collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
       
           property :name, as: 'name'
-          property :type, as: 'type'
-          property :value_type, as: 'valueType'
         end
       end
       
@@ -1369,12 +1448,12 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :apis, as: 'apis'
           collection :aliases, as: 'aliases'
           property :allow_cors, as: 'allowCors'
-          property :target, as: 'target'
           property :name, as: 'name'
+          property :target, as: 'target'
           collection :features, as: 'features'
+          collection :apis, as: 'apis'
         end
       end
       
@@ -1385,13 +1464,10 @@ module Google
         end
       end
       
-      class Usage
+      class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :producer_notification_channel, as: 'producerNotificationChannel'
-          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::UsageRule, decorator: Google::Apis::ServicemanagementV1::UsageRule::Representation
-      
-          collection :requirements, as: 'requirements'
+          collection :permissions, as: 'permissions'
         end
       end
       
@@ -1401,10 +1477,13 @@ module Google
         end
       end
       
-      class TestIamPermissionsResponse
+      class Usage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
+          property :producer_notification_channel, as: 'producerNotificationChannel'
+          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::UsageRule, decorator: Google::Apis::ServicemanagementV1::UsageRule::Representation
+      
+          collection :requirements, as: 'requirements'
         end
       end
       
@@ -1419,8 +1498,6 @@ module Google
       class Rule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-          property :action, as: 'action'
           collection :not_in, as: 'notIn'
           property :description, as: 'description'
           collection :conditions, as: 'conditions', class: Google::Apis::ServicemanagementV1::Condition, decorator: Google::Apis::ServicemanagementV1::Condition::Representation
@@ -1428,97 +1505,20 @@ module Google
           collection :log_config, as: 'logConfig', class: Google::Apis::ServicemanagementV1::LogConfig, decorator: Google::Apis::ServicemanagementV1::LogConfig::Representation
       
           collection :in, as: 'in'
+          collection :permissions, as: 'permissions'
+          property :action, as: 'action'
         end
       end
       
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :counter, as: 'counter', class: Google::Apis::ServicemanagementV1::CounterOptions, decorator: Google::Apis::ServicemanagementV1::CounterOptions::Representation
-      
           property :data_access, as: 'dataAccess', class: Google::Apis::ServicemanagementV1::DataAccessOptions, decorator: Google::Apis::ServicemanagementV1::DataAccessOptions::Representation
       
           property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ServicemanagementV1::CloudAuditOptions, decorator: Google::Apis::ServicemanagementV1::CloudAuditOptions::Representation
       
-        end
-      end
+          property :counter, as: 'counter', class: Google::Apis::ServicemanagementV1::CounterOptions, decorator: Google::Apis::ServicemanagementV1::CounterOptions::Representation
       
-      class LogDescriptor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
-      
-        end
-      end
-      
-      class ConfigFile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_type, as: 'fileType'
-          property :file_contents, :base64 => true, as: 'fileContents'
-          property :file_path, as: 'filePath'
-        end
-      end
-      
-      class MonitoredResourceDescriptor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :description, as: 'description'
-          property :type, as: 'type'
-          collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
-      
-          property :name, as: 'name'
-        end
-      end
-      
-      class CustomErrorRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_error_type, as: 'isErrorType'
-          property :selector, as: 'selector'
-        end
-      end
-      
-      class MediaDownload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
-          property :download_service, as: 'downloadService'
-        end
-      end
-      
-      class ChangeReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :config_changes, as: 'configChanges', class: Google::Apis::ServicemanagementV1::ConfigChange, decorator: Google::Apis::ServicemanagementV1::ConfigChange::Representation
-      
-        end
-      end
-      
-      class DisableServiceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consumer_id, as: 'consumerId'
-        end
-      end
-      
-      class SubmitConfigSourceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :service_config, as: 'serviceConfig', class: Google::Apis::ServicemanagementV1::Service, decorator: Google::Apis::ServicemanagementV1::Service::Representation
-      
-        end
-      end
-      
-      class MediaUpload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :upload_service, as: 'uploadService'
-          property :enabled, as: 'enabled'
         end
       end
     end

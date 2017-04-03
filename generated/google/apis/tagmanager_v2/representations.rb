@@ -787,8 +787,8 @@ module Google
           property :path, as: 'path'
           property :priority, as: 'priority', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
-          property :schedule_end_ms, as: 'scheduleEndMs'
-          property :schedule_start_ms, as: 'scheduleStartMs'
+          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
+          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
           collection :setup_tag, as: 'setupTag', class: Google::Apis::TagmanagerV2::SetupTag, decorator: Google::Apis::TagmanagerV2::SetupTag::Representation
       
           property :tag_firing_option, as: 'tagFiringOption'
@@ -813,7 +813,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       
@@ -913,8 +913,8 @@ module Google
       
           property :parent_folder_id, as: 'parentFolderId'
           property :path, as: 'path'
-          property :schedule_end_ms, as: 'scheduleEndMs'
-          property :schedule_start_ms, as: 'scheduleStartMs'
+          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
+          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
           property :tag_manager_url, as: 'tagManagerUrl'
           property :type, as: 'type'
           property :variable_id, as: 'variableId'
@@ -984,7 +984,7 @@ module Google
       class WorkspaceProposalUser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gaia_id, as: 'gaiaId'
+          property :gaia_id, :numeric_string => true, as: 'gaiaId'
           property :type, as: 'type'
         end
       end

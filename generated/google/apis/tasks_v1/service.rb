@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'tasks/v1/')
+          @batch_path = 'batch'
         end
         
         # Deletes the authenticated user's specified task list.
@@ -156,7 +157,7 @@ module Google
         end
         
         # Returns all the authenticated user's task lists.
-        # @param [String] max_results
+        # @param [Fixnum] max_results
         #   Maximum number of task lists returned on one page. Optional. The default is
         #   100.
         # @param [String] page_token
@@ -441,7 +442,7 @@ module Google
         # @param [String] due_min
         #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
-        # @param [String] max_results
+        # @param [Fixnum] max_results
         #   Maximum number of task lists returned on one page. Optional. The default is
         #   100.
         # @param [String] page_token

@@ -22,6 +22,91 @@ module Google
   module Apis
     module StoragetransferV1
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::StoragetransferV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Google service account
+      class GoogleServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Required.
+        # Corresponds to the JSON property `accountEmail`
+        # @return [String]
+        attr_accessor :account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_email = args[:account_email] if args.key?(:account_email)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant
+      # or are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @hours = args[:hours] if args.key?(:hours)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
       # An entry describing an error that has occurred.
       class ErrorLogEntry
         include Google::Apis::Core::Hashable
@@ -53,6 +138,16 @@ module Google
       # periodically.
       class TransferJob
         include Google::Apis::Core::Hashable
+      
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Configuration for running a transfer.
+        # Corresponds to the JSON property `transferSpec`
+        # @return [Google::Apis::StoragetransferV1::TransferSpec]
+        attr_accessor :transfer_spec
       
         # Status of the job. This value MUST be specified for
         # `CreateTransferJobRequests`.
@@ -99,22 +194,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        # Configuration for running a transfer.
-        # Corresponds to the JSON property `transferSpec`
-        # @return [Google::Apis::StoragetransferV1::TransferSpec]
-        attr_accessor :transfer_spec
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
           @status = args[:status] if args.key?(:status)
           @schedule = args[:schedule] if args.key?(:schedule)
           @name = args[:name] if args.key?(:name)
@@ -122,8 +209,6 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
           @description = args[:description] if args.key?(:description)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
         end
       end
       
@@ -215,6 +300,11 @@ module Google
       class TransferOperation
         include Google::Apis::Core::Hashable
       
+        # Start time of this transfer execution.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # The name of the transfer job that triggers this transfer operation.
         # Corresponds to the JSON property `transferJobName`
         # @return [String]
@@ -225,15 +315,15 @@ module Google
         # @return [Google::Apis::StoragetransferV1::TransferSpec]
         attr_accessor :transfer_spec
       
-        # Status of the transfer operation.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
         # A collection of counters that report the progress of a transfer operation.
         # Corresponds to the JSON property `counters`
         # @return [Google::Apis::StoragetransferV1::TransferCounters]
         attr_accessor :counters
+      
+        # Status of the transfer operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
       
         # Summarizes errors encountered with sample error log entries.
         # Corresponds to the JSON property `errorBreakdowns`
@@ -256,26 +346,21 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Start time of this transfer execution.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @transfer_job_name = args[:transfer_job_name] if args.key?(:transfer_job_name)
           @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
-          @status = args[:status] if args.key?(:status)
           @counters = args[:counters] if args.key?(:counters)
+          @status = args[:status] if args.key?(:status)
           @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -283,13 +368,6 @@ module Google
       # In an AwsS3Data, an object's name is the S3 object's key name.
       class AwsS3Data
         include Google::Apis::Core::Hashable
-      
-        # AWS access key (see
-        # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
-        # security-credentials.html)).
-        # Corresponds to the JSON property `awsAccessKey`
-        # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
-        attr_accessor :aws_access_key
       
         # S3 Bucket name (see
         # [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-
@@ -299,14 +377,40 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # AWS access key (see
+        # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
+        # security-credentials.html)).
+        # Corresponds to the JSON property `awsAccessKey`
+        # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
+        attr_accessor :aws_access_key
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -339,25 +443,6 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request passed to PauseTransferOperation.
       class PauseTransferOperationRequest
         include Google::Apis::Core::Hashable
@@ -375,91 +460,91 @@ module Google
       class TransferCounters
         include Google::Apis::Core::Hashable
       
-        # Bytes that are deleted from the data source.
-        # Corresponds to the JSON property `bytesDeletedFromSource`
-        # @return [String]
-        attr_accessor :bytes_deleted_from_source
-      
-        # Objects found in the data source that are scheduled to be transferred,
-        # which will be copied, excluded based on conditions, or skipped due to
-        # failures.
-        # Corresponds to the JSON property `objectsFoundFromSource`
-        # @return [String]
-        attr_accessor :objects_found_from_source
-      
-        # Objects that failed to be deleted from the data sink.
-        # Corresponds to the JSON property `objectsFailedToDeleteFromSink`
-        # @return [String]
-        attr_accessor :objects_failed_to_delete_from_sink
-      
-        # Objects that are deleted from the data sink.
-        # Corresponds to the JSON property `objectsDeletedFromSink`
-        # @return [String]
-        attr_accessor :objects_deleted_from_sink
-      
-        # Objects found only in the data sink that are scheduled to be deleted.
-        # Corresponds to the JSON property `objectsFoundOnlyFromSink`
-        # @return [String]
-        attr_accessor :objects_found_only_from_sink
-      
-        # Bytes in the data source that are not transferred because they already
+        # Objects in the data source that are not transferred because they already
         # exist in the data sink.
-        # Corresponds to the JSON property `bytesFromSourceSkippedBySync`
-        # @return [String]
-        attr_accessor :bytes_from_source_skipped_by_sync
-      
-        # Bytes that are deleted from the data sink.
-        # Corresponds to the JSON property `bytesDeletedFromSink`
-        # @return [String]
-        attr_accessor :bytes_deleted_from_sink
-      
-        # Bytes that failed to be deleted from the data sink.
-        # Corresponds to the JSON property `bytesFailedToDeleteFromSink`
-        # @return [String]
-        attr_accessor :bytes_failed_to_delete_from_sink
-      
-        # Bytes in the data source that failed during the transfer.
-        # Corresponds to the JSON property `bytesFromSourceFailed`
-        # @return [String]
-        attr_accessor :bytes_from_source_failed
-      
-        # Objects in the data source that failed during the transfer.
-        # Corresponds to the JSON property `objectsFromSourceFailed`
-        # @return [String]
-        attr_accessor :objects_from_source_failed
-      
-        # Objects that are copied to the data sink.
-        # Corresponds to the JSON property `objectsCopiedToSink`
-        # @return [String]
-        attr_accessor :objects_copied_to_sink
-      
-        # Bytes found only in the data sink that are scheduled to be deleted.
-        # Corresponds to the JSON property `bytesFoundOnlyFromSink`
-        # @return [String]
-        attr_accessor :bytes_found_only_from_sink
-      
-        # Objects that are deleted from the data source.
-        # Corresponds to the JSON property `objectsDeletedFromSource`
-        # @return [String]
-        attr_accessor :objects_deleted_from_source
-      
-        # Bytes that are copied to the data sink.
-        # Corresponds to the JSON property `bytesCopiedToSink`
-        # @return [String]
-        attr_accessor :bytes_copied_to_sink
+        # Corresponds to the JSON property `objectsFromSourceSkippedBySync`
+        # @return [Fixnum]
+        attr_accessor :objects_from_source_skipped_by_sync
       
         # Bytes found in the data source that are scheduled to be transferred,
         # which will be copied, excluded based on conditions, or skipped due to
         # failures.
         # Corresponds to the JSON property `bytesFoundFromSource`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :bytes_found_from_source
       
-        # Objects in the data source that are not transferred because they already
+        # Objects found in the data source that are scheduled to be transferred,
+        # which will be copied, excluded based on conditions, or skipped due to
+        # failures.
+        # Corresponds to the JSON property `objectsFoundFromSource`
+        # @return [Fixnum]
+        attr_accessor :objects_found_from_source
+      
+        # Bytes that are deleted from the data source.
+        # Corresponds to the JSON property `bytesDeletedFromSource`
+        # @return [Fixnum]
+        attr_accessor :bytes_deleted_from_source
+      
+        # Objects that failed to be deleted from the data sink.
+        # Corresponds to the JSON property `objectsFailedToDeleteFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_failed_to_delete_from_sink
+      
+        # Objects found only in the data sink that are scheduled to be deleted.
+        # Corresponds to the JSON property `objectsFoundOnlyFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_found_only_from_sink
+      
+        # Objects that are deleted from the data sink.
+        # Corresponds to the JSON property `objectsDeletedFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_deleted_from_sink
+      
+        # Bytes in the data source that are not transferred because they already
         # exist in the data sink.
-        # Corresponds to the JSON property `objectsFromSourceSkippedBySync`
-        # @return [String]
-        attr_accessor :objects_from_source_skipped_by_sync
+        # Corresponds to the JSON property `bytesFromSourceSkippedBySync`
+        # @return [Fixnum]
+        attr_accessor :bytes_from_source_skipped_by_sync
+      
+        # Bytes that are deleted from the data sink.
+        # Corresponds to the JSON property `bytesDeletedFromSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_deleted_from_sink
+      
+        # Bytes that failed to be deleted from the data sink.
+        # Corresponds to the JSON property `bytesFailedToDeleteFromSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_failed_to_delete_from_sink
+      
+        # Bytes in the data source that failed during the transfer.
+        # Corresponds to the JSON property `bytesFromSourceFailed`
+        # @return [Fixnum]
+        attr_accessor :bytes_from_source_failed
+      
+        # Objects in the data source that failed during the transfer.
+        # Corresponds to the JSON property `objectsFromSourceFailed`
+        # @return [Fixnum]
+        attr_accessor :objects_from_source_failed
+      
+        # Objects that are copied to the data sink.
+        # Corresponds to the JSON property `objectsCopiedToSink`
+        # @return [Fixnum]
+        attr_accessor :objects_copied_to_sink
+      
+        # Bytes found only in the data sink that are scheduled to be deleted.
+        # Corresponds to the JSON property `bytesFoundOnlyFromSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_found_only_from_sink
+      
+        # Objects that are deleted from the data source.
+        # Corresponds to the JSON property `objectsDeletedFromSource`
+        # @return [Fixnum]
+        attr_accessor :objects_deleted_from_source
+      
+        # Bytes that are copied to the data sink.
+        # Corresponds to the JSON property `bytesCopiedToSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_copied_to_sink
       
         def initialize(**args)
            update!(**args)
@@ -467,11 +552,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
+          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
+          @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
           @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
+          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
           @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
-          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
           @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
+          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
           @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
           @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] if args.key?(:bytes_deleted_from_sink)
           @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] if args.key?(:bytes_failed_to_delete_from_sink)
@@ -481,8 +568,6 @@ module Google
           @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
           @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
           @bytes_copied_to_sink = args[:bytes_copied_to_sink] if args.key?(:bytes_copied_to_sink)
-          @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
-          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
         end
       end
       
@@ -499,7 +584,7 @@ module Google
         # Count of this type of error.
         # Required.
         # Corresponds to the JSON property `errorCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :error_count
       
         # Error samples.
@@ -662,12 +747,6 @@ module Google
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
-        # `maxTimeElapsedSinceLastModification` is the complement to
-        # `minTimeElapsedSinceLastModification`.
-        # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
-        # @return [String]
-        attr_accessor :max_time_elapsed_since_last_modification
-      
         # If `includePrefixes` is specified, objects that satisfy the object
         # conditions must have names that start with one of the `includePrefixes`
         # and that do not start with any of the `excludePrefixes`. If `includePrefixes`
@@ -715,16 +794,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :exclude_prefixes
       
+        # `maxTimeElapsedSinceLastModification` is the complement to
+        # `minTimeElapsedSinceLastModification`.
+        # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
+        # @return [String]
+        attr_accessor :max_time_elapsed_since_last_modification
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
           @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
           @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
+          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
         end
       end
       
@@ -732,14 +817,6 @@ module Google
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
       
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
@@ -808,72 +885,31 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # TransferOptions uses three boolean parameters to define the actions
-      # to be performed on objects in a transfer.
-      class TransferOptions
-        include Google::Apis::Core::Hashable
-      
-        # Whether overwriting objects that already exist in the sink is allowed.
-        # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
-        # @return [Boolean]
-        attr_accessor :overwrite_objects_already_existing_in_sink
-        alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
-      
-        # Whether objects should be deleted from the source after they are
-        # transferred to the sink.
-        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
-        # @return [Boolean]
-        attr_accessor :delete_objects_from_source_after_transfer
-        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
-      
-        # Whether objects that exist only in the sink should be deleted.
-        # Corresponds to the JSON property `deleteObjectsUniqueInSink`
-        # @return [Boolean]
-        attr_accessor :delete_objects_unique_in_sink
-        alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
-          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
-          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
+          @done = args[:done] if args.key?(:done)
         end
       end
       
       # Configuration for running a transfer.
       class TransferSpec
         include Google::Apis::Core::Hashable
-      
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
-        # Corresponds to the JSON property `gcsDataSource`
-        # @return [Google::Apis::StoragetransferV1::GcsData]
-        attr_accessor :gcs_data_source
-      
-        # TransferOptions uses three boolean parameters to define the actions
-        # to be performed on objects in a transfer.
-        # Corresponds to the JSON property `transferOptions`
-        # @return [Google::Apis::StoragetransferV1::TransferOptions]
-        attr_accessor :transfer_options
       
         # An AwsS3Data can be a data source, but not a data sink.
         # In an AwsS3Data, an object's name is the S3 object's key name.
@@ -928,24 +964,57 @@ module Google
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_sink
       
+        # In a GcsData, an object's name is the Google Cloud Storage object's name and
+        # its `lastModificationTime` refers to the object's updated time, which changes
+        # when the content or the metadata of the object is updated.
+        # Corresponds to the JSON property `gcsDataSource`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_source
+      
+        # TransferOptions uses three boolean parameters to define the actions
+        # to be performed on objects in a transfer.
+        # Corresponds to the JSON property `transferOptions`
+        # @return [Google::Apis::StoragetransferV1::TransferOptions]
+        attr_accessor :transfer_options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
-          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
           @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
           @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
+          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
       
-      # Request passed to ResumeTransferOperation.
-      class ResumeTransferOperationRequest
+      # TransferOptions uses three boolean parameters to define the actions
+      # to be performed on objects in a transfer.
+      class TransferOptions
         include Google::Apis::Core::Hashable
+      
+        # Whether objects that exist only in the sink should be deleted.
+        # Corresponds to the JSON property `deleteObjectsUniqueInSink`
+        # @return [Boolean]
+        attr_accessor :delete_objects_unique_in_sink
+        alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
+      
+        # Whether overwriting objects that already exist in the sink is allowed.
+        # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
+        # @return [Boolean]
+        attr_accessor :overwrite_objects_already_existing_in_sink
+        alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
+      
+        # Whether objects should be deleted from the source after they are
+        # transferred to the sink.
+        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
+        # @return [Boolean]
+        attr_accessor :delete_objects_from_source_after_transfer
+        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
       
         def initialize(**args)
            update!(**args)
@@ -953,6 +1022,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
+          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
+          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
         end
       end
       
@@ -998,11 +1070,6 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
         # A developer-facing error message, which should be in English. Any
         # user-facing error message should be localized and sent in the
         # google.rpc.Status.details field, or localized by the client.
@@ -1016,31 +1083,26 @@ module Google
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
+          @code = args[:code] if args.key?(:code)
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
+      # Request passed to ResumeTransferOperation.
+      class ResumeTransferOperationRequest
         include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::StoragetransferV1::Operation>]
-        attr_accessor :operations
       
         def initialize(**args)
            update!(**args)
@@ -1048,68 +1110,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Google service account
-      class GoogleServiceAccount
-        include Google::Apis::Core::Hashable
-      
-        # Required.
-        # Corresponds to the JSON property `accountEmail`
-        # @return [String]
-        attr_accessor :account_email
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_email = args[:account_email] if args.key?(:account_email)
-        end
-      end
-      
-      # Represents a time of day. The date and time zone are either not significant
-      # or are specified elsewhere. An API may choose to allow leap seconds. Related
-      # types are google.type.Date and `google.protobuf.Timestamp`.
-      class TimeOfDay
-        include Google::Apis::Core::Hashable
-      
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
-        # Corresponds to the JSON property `hours`
-        # @return [Fixnum]
-        attr_accessor :hours
-      
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
-        # Corresponds to the JSON property `seconds`
-        # @return [Fixnum]
-        attr_accessor :seconds
-      
-        # Minutes of hour of day. Must be from 0 to 59.
-        # Corresponds to the JSON property `minutes`
-        # @return [Fixnum]
-        attr_accessor :minutes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @hours = args[:hours] if args.key?(:hours)
-          @nanos = args[:nanos] if args.key?(:nanos)
-          @seconds = args[:seconds] if args.key?(:seconds)
-          @minutes = args[:minutes] if args.key?(:minutes)
         end
       end
     end

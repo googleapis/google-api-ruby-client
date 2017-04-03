@@ -19,6 +19,7 @@ API_IDS=(acceleratedmobilepageurl:v1 \
   androidpublisher:v2 \
   appengine:v1 \
   appsactivity:v1 \
+  appsmarket:v2 \
   appstate:v1 \
   autoscaler:v1beta2 \
   bigquery:v2 \
@@ -130,7 +131,8 @@ API_IDS=(acceleratedmobilepageurl:v1 \
   youtubereporting:v1 \
 )
 
-URLS=(https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
+URLS=(https://content.googleapis.com/discovery/v1/apis/appsmarket/v2/rest \
+      https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
       https://content.googleapis.com/discovery/v1/apis/compute/beta/rest \
       https://developers.google.com/my-business/samples/mybusiness_google_rest_v3.json \
       https://monitoring.googleapis.com/\$discovery/rest?version=v3 \

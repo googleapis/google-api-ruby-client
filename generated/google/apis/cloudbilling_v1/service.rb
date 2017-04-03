@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://cloudbilling.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Sets or updates the billing account associated with a project. You specify

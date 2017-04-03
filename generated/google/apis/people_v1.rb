@@ -25,10 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20170330'
-
-      # View your basic profile info
-      AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
+      REVISION = '20170402'
 
       # View your email addresses
       AUTH_USER_EMAILS_READ = 'https://www.googleapis.com/auth/user.emails.read'
@@ -53,6 +50,9 @@ module Google
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
+
+      # View your basic profile info
+      AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
     end
   end
 end

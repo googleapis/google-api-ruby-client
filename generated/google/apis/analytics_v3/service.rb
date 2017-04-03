@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'analytics/v3/')
+          @batch_path = 'batch'
         end
         
         # Returns Analytics data for a view (profile).

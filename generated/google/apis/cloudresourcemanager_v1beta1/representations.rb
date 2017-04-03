@@ -22,6 +22,30 @@ module Google
   module Apis
     module CloudresourcemanagerV1beta1
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Ancestor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOrganizationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,13 +88,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrganizationOwner
+      class GetAncestryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetAncestryResponse
+      class OrganizationOwner
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,7 +130,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
+      class FolderOperationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +142,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FolderOperationError
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,27 +155,38 @@ module Google
       end
       
       class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV1beta1::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV1beta1::AuditLogConfig::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :service, as: 'service'
+        end
       end
       
       class Ancestor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_id, as: 'resourceId', class: Google::Apis::CloudresourcemanagerV1beta1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1beta1::ResourceId::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV1beta1::Policy, decorator: Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :update_mask, as: 'updateMask'
+        end
       end
       
       class ListOrganizationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1beta1::Organization, decorator: Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
       class Binding
@@ -177,13 +212,13 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :lifecycle_state, as: 'lifecycleState'
+          property :display_name, as: 'displayName'
           property :creation_time, as: 'creationTime'
           property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
       
           property :name, as: 'name'
           property :organization_id, as: 'organizationId'
-          property :lifecycle_state, as: 'lifecycleState'
-          property :display_name, as: 'displayName'
         end
       end
       
@@ -209,13 +244,6 @@ module Google
         end
       end
       
-      class OrganizationOwner
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :directory_customer_id, as: 'directoryCustomerId'
-        end
-      end
-      
       class GetAncestryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -224,20 +252,27 @@ module Google
         end
       end
       
+      class OrganizationOwner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :directory_customer_id, as: 'directoryCustomerId'
+        end
+      end
+      
       class AuditLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+          collection :exempted_members, as: 'exemptedMembers'
         end
       end
       
       class ListProjectsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1beta1::Project, decorator: Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -250,14 +285,14 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :lifecycle_state, as: 'lifecycleState'
-          property :project_number, as: 'projectNumber'
-          property :parent, as: 'parent', class: Google::Apis::CloudresourcemanagerV1beta1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1beta1::ResourceId::Representation
-      
-          hash :labels, as: 'labels'
           property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
+          property :parent, as: 'parent', class: Google::Apis::CloudresourcemanagerV1beta1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1beta1::ResourceId::Representation
+      
         end
       end
       
@@ -268,32 +303,32 @@ module Google
         end
       end
       
-      class Policy
+      class FolderOperationError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudresourcemanagerV1beta1::AuditConfig, decorator: Google::Apis::CloudresourcemanagerV1beta1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1beta1::Binding, decorator: Google::Apis::CloudresourcemanagerV1beta1::Binding::Representation
-      
+          property :error_message_id, as: 'errorMessageId'
         end
       end
       
       class FolderOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_type, as: 'operationType'
           property :display_name, as: 'displayName'
           property :source_parent, as: 'sourceParent'
           property :destination_parent, as: 'destinationParent'
+          property :operation_type, as: 'operationType'
         end
       end
       
-      class FolderOperationError
+      class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message_id, as: 'errorMessageId'
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudresourcemanagerV1beta1::AuditConfig, decorator: Google::Apis::CloudresourcemanagerV1beta1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1beta1::Binding, decorator: Google::Apis::CloudresourcemanagerV1beta1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
         end
       end
       
@@ -302,41 +337,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :id, as: 'id'
-        end
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :service, as: 'service'
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV1beta1::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV1beta1::AuditLogConfig::Representation
-      
-        end
-      end
-      
-      class Ancestor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_id, as: 'resourceId', class: Google::Apis::CloudresourcemanagerV1beta1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1beta1::ResourceId::Representation
-      
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :update_mask, as: 'updateMask'
-          property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV1beta1::Policy, decorator: Google::Apis::CloudresourcemanagerV1beta1::Policy::Representation
-      
-        end
-      end
-      
-      class ListOrganizationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1beta1::Organization, decorator: Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
-      
         end
       end
     end

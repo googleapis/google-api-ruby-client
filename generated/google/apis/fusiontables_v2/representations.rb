@@ -229,7 +229,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :num_rows_received, as: 'numRowsReceived'
+          property :num_rows_received, :numeric_string => true, as: 'numRowsReceived'
         end
       end
       
@@ -414,7 +414,7 @@ module Google
           property :kind, as: 'kind'
           property :progress, as: 'progress'
           property :started, as: 'started'
-          property :task_id, as: 'taskId'
+          property :task_id, :numeric_string => true, as: 'taskId'
           property :type, as: 'type'
         end
       end

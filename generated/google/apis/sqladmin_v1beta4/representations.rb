@@ -359,7 +359,7 @@ module Google
       
           property :error, as: 'error', class: Google::Apis::SqladminV1beta4::OperationError, decorator: Google::Apis::SqladminV1beta4::OperationError::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :self_link, as: 'selfLink'
@@ -386,7 +386,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bin_log_file_name, as: 'binLogFileName'
-          property :bin_log_position, as: 'binLogPosition'
+          property :bin_log_position, :numeric_string => true, as: 'binLogPosition'
           property :kind, as: 'kind'
         end
       end
@@ -428,7 +428,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
           property :connection_name, as: 'connectionName'
-          property :current_disk_size, as: 'currentDiskSize'
+          property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
           property :etag, as: 'etag'
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica::Representation
@@ -439,7 +439,7 @@ module Google
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :master_instance_name, as: 'masterInstanceName'
-          property :max_disk_size, as: 'maxDiskSize'
+          property :max_disk_size, :numeric_string => true, as: 'maxDiskSize'
           property :name, as: 'name'
           property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqladminV1beta4::OnPremisesConfiguration, decorator: Google::Apis::SqladminV1beta4::OnPremisesConfiguration::Representation
       
@@ -509,7 +509,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :settings_version, as: 'settingsVersion'
+          property :settings_version, :numeric_string => true, as: 'settingsVersion'
         end
       end
       
@@ -519,8 +519,8 @@ module Google
           collection :allowed_string_values, as: 'allowedStringValues'
           collection :applies_to, as: 'appliesTo'
           property :kind, as: 'kind'
-          property :max_value, as: 'maxValue'
-          property :min_value, as: 'minValue'
+          property :max_value, :numeric_string => true, as: 'maxValue'
+          property :min_value, :numeric_string => true, as: 'minValue'
           property :name, as: 'name'
           property :requires_restart, as: 'requiresRestart'
           property :type, as: 'type'
@@ -670,7 +670,7 @@ module Google
           property :connect_retry_interval, as: 'connectRetryInterval'
           property :dump_file_path, as: 'dumpFilePath'
           property :kind, as: 'kind'
-          property :master_heartbeat_period, as: 'masterHeartbeatPeriod'
+          property :master_heartbeat_period, :numeric_string => true, as: 'masterHeartbeatPeriod'
           property :password, as: 'password'
           property :ssl_cipher, as: 'sslCipher'
           property :username, as: 'username'
@@ -754,7 +754,7 @@ module Google
       class RestoreBackupContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_run_id, as: 'backupRunId'
+          property :backup_run_id, :numeric_string => true, as: 'backupRunId'
           property :instance_id, as: 'instanceId'
           property :kind, as: 'kind'
         end
@@ -769,7 +769,7 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
-          property :data_disk_size_gb, as: 'dataDiskSizeGb'
+          property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
           collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1beta4::DatabaseFlags, decorator: Google::Apis::SqladminV1beta4::DatabaseFlags::Representation
       
@@ -785,9 +785,9 @@ module Google
       
           property :pricing_plan, as: 'pricingPlan'
           property :replication_type, as: 'replicationType'
-          property :settings_version, as: 'settingsVersion'
+          property :settings_version, :numeric_string => true, as: 'settingsVersion'
           property :storage_auto_resize, as: 'storageAutoResize'
-          property :storage_auto_resize_limit, as: 'storageAutoResizeLimit'
+          property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
         end
       end
@@ -857,8 +857,8 @@ module Google
       class Tier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :disk_quota, as: 'DiskQuota'
-          property :ram, as: 'RAM'
+          property :disk_quota, :numeric_string => true, as: 'DiskQuota'
+          property :ram, :numeric_string => true, as: 'RAM'
           property :kind, as: 'kind'
           collection :region, as: 'region'
           property :tier, as: 'tier'

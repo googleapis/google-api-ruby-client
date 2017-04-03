@@ -44,6 +44,7 @@ module Google
 
         def initialize
           super('https://classroom.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Creates an invitation. Only one invitation for a user and course may exist

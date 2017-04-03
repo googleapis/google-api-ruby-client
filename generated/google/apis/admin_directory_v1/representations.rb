@@ -418,10 +418,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_id, as: 'codeId'
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
-          property :last_time_used, as: 'lastTimeUsed'
+          property :last_time_used, :numeric_string => true, as: 'lastTimeUsed'
           property :name, as: 'name'
           property :user_key, as: 'userKey'
         end
@@ -465,7 +465,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -584,7 +584,7 @@ module Google
       class DomainAlias
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :domain_alias_name, as: 'domainAliasName'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -606,7 +606,7 @@ module Google
       class Domains
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           collection :domain_aliases, as: 'domainAliases', class: Google::Apis::AdminDirectoryV1::DomainAlias, decorator: Google::Apis::AdminDirectoryV1::DomainAlias::Representation
       
           property :domain_name, as: 'domainName'
@@ -633,7 +633,7 @@ module Google
           property :admin_created, as: 'adminCreated'
           collection :aliases, as: 'aliases'
           property :description, as: 'description'
-          property :direct_members_count, as: 'directMembersCount'
+          property :direct_members_count, :numeric_string => true, as: 'directMembersCount'
           property :email, as: 'email'
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -716,7 +716,7 @@ module Google
           property :privilege, as: 'privilege'
           property :release_version, as: 'releaseVersion'
           property :resource_id, as: 'resourceId'
-          property :security_patch_level, as: 'securityPatchLevel'
+          property :security_patch_level, :numeric_string => true, as: 'securityPatchLevel'
           property :serial_number, as: 'serialNumber'
           property :status, as: 'status'
           property :supports_work_profile, as: 'supportsWorkProfile'
@@ -840,7 +840,7 @@ module Google
           property :is_system_role, as: 'isSystemRole'
           property :kind, as: 'kind'
           property :role_description, as: 'roleDescription'
-          property :role_id, as: 'roleId'
+          property :role_id, :numeric_string => true, as: 'roleId'
           property :role_name, as: 'roleName'
           collection :role_privileges, as: 'rolePrivileges', class: Google::Apis::AdminDirectoryV1::Role::RolePrivilege, decorator: Google::Apis::AdminDirectoryV1::Role::RolePrivilege::Representation
       
@@ -862,8 +862,8 @@ module Google
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           property :org_unit_id, as: 'orgUnitId'
-          property :role_assignment_id, as: 'roleAssignmentId'
-          property :role_id, as: 'roleId'
+          property :role_assignment_id, :numeric_string => true, as: 'roleAssignmentId'
+          property :role_id, :numeric_string => true, as: 'roleId'
           property :scope_type, as: 'scopeType'
         end
       end
@@ -1150,7 +1150,7 @@ module Google
       class UserSshPublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expiration_time_usec, as: 'expirationTimeUsec'
+          property :expiration_time_usec, :numeric_string => true, as: 'expirationTimeUsec'
           property :fingerprint, as: 'fingerprint'
           property :key, as: 'key'
         end

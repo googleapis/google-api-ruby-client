@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://firebasedynamiclinks.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Creates a short Dynamic Link given either a valid long Dynamic Link or

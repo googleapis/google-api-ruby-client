@@ -1327,30 +1327,30 @@ module Google
           property :active_ads_limit_tier, as: 'activeAdsLimitTier'
           property :active_view_opt_out, as: 'activeViewOptOut'
           collection :available_permission_ids, as: 'availablePermissionIds'
-          property :country_id, as: 'countryId'
-          property :currency_id, as: 'currencyId'
-          property :default_creative_size_id, as: 'defaultCreativeSizeId'
+          property :country_id, :numeric_string => true, as: 'countryId'
+          property :currency_id, :numeric_string => true, as: 'currencyId'
+          property :default_creative_size_id, :numeric_string => true, as: 'defaultCreativeSizeId'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :locale, as: 'locale'
-          property :maximum_image_size, as: 'maximumImageSize'
+          property :maximum_image_size, :numeric_string => true, as: 'maximumImageSize'
           property :name, as: 'name'
           property :nielsen_ocr_enabled, as: 'nielsenOcrEnabled'
           property :reports_configuration, as: 'reportsConfiguration', class: Google::Apis::DfareportingV2_7::ReportsConfiguration, decorator: Google::Apis::DfareportingV2_7::ReportsConfiguration::Representation
       
           property :share_reports_with_twitter, as: 'shareReportsWithTwitter'
-          property :teaser_size_limit, as: 'teaserSizeLimit'
+          property :teaser_size_limit, :numeric_string => true, as: 'teaserSizeLimit'
         end
       end
       
       class AccountActiveAdSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :active_ads, as: 'activeAds'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :active_ads, :numeric_string => true, as: 'activeAds'
           property :active_ads_limit_tier, as: 'activeAdsLimitTier'
-          property :available_ads, as: 'availableAds'
+          property :available_ads, :numeric_string => true, as: 'availableAds'
           property :kind, as: 'kind'
         end
       end
@@ -1359,18 +1359,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_profiles, as: 'accountProfiles'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :level, as: 'level'
           property :name, as: 'name'
-          property :permission_group_id, as: 'permissionGroupId'
+          property :permission_group_id, :numeric_string => true, as: 'permissionGroupId'
         end
       end
       
       class AccountPermissionGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -1397,7 +1397,7 @@ module Google
       class AccountUserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :active, as: 'active'
           property :advertiser_filter, as: 'advertiserFilter', class: Google::Apis::DfareportingV2_7::ObjectFilter, decorator: Google::Apis::DfareportingV2_7::ObjectFilter::Representation
       
@@ -1405,18 +1405,18 @@ module Google
       
           property :comments, as: 'comments'
           property :email, as: 'email'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :locale, as: 'locale'
           property :name, as: 'name'
           property :site_filter, as: 'siteFilter', class: Google::Apis::DfareportingV2_7::ObjectFilter, decorator: Google::Apis::DfareportingV2_7::ObjectFilter::Representation
       
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :trafficker_type, as: 'traffickerType'
           property :user_access_type, as: 'userAccessType'
           property :user_role_filter, as: 'userRoleFilter', class: Google::Apis::DfareportingV2_7::ObjectFilter, decorator: Google::Apis::DfareportingV2_7::ObjectFilter::Representation
       
-          property :user_role_id, as: 'userRoleId'
+          property :user_role_id, :numeric_string => true, as: 'userRoleId'
         end
       end
       
@@ -1453,14 +1453,14 @@ module Google
       class Ad
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :active, as: 'active'
-          property :advertiser_id, as: 'advertiserId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :archived, as: 'archived'
-          property :audience_segment_id, as: 'audienceSegmentId'
-          property :campaign_id, as: 'campaignId'
+          property :audience_segment_id, :numeric_string => true, as: 'audienceSegmentId'
+          property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :campaign_id_dimension_value, as: 'campaignIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :click_through_url, as: 'clickThroughUrl', class: Google::Apis::DfareportingV2_7::ClickThroughUrl, decorator: Google::Apis::DfareportingV2_7::ClickThroughUrl::Representation
@@ -1488,7 +1488,7 @@ module Google
       
           property :geo_targeting, as: 'geoTargeting', class: Google::Apis::DfareportingV2_7::GeoTargeting, decorator: Google::Apis::DfareportingV2_7::GeoTargeting::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :key_value_targeting_expression, as: 'keyValueTargetingExpression', class: Google::Apis::DfareportingV2_7::KeyValueTargetingExpression, decorator: Google::Apis::DfareportingV2_7::KeyValueTargetingExpression::Representation
@@ -1509,8 +1509,8 @@ module Google
           property :ssl_required, as: 'sslRequired'
           property :start_time, as: 'startTime', type: DateTime
       
-          property :subaccount_id, as: 'subaccountId'
-          property :targeting_template_id, as: 'targetingTemplateId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
+          property :targeting_template_id, :numeric_string => true, as: 'targetingTemplateId'
           property :technology_targeting, as: 'technologyTargeting', class: Google::Apis::DfareportingV2_7::TechnologyTargeting, decorator: Google::Apis::DfareportingV2_7::TechnologyTargeting::Representation
       
           property :type, as: 'type'
@@ -1522,12 +1522,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment, as: 'comment'
           property :compatibility, as: 'compatibility'
-          property :height, as: 'height'
-          property :linked_placement_id, as: 'linkedPlacementId'
+          property :height, :numeric_string => true, as: 'height'
+          property :linked_placement_id, :numeric_string => true, as: 'linkedPlacementId'
           property :name, as: 'name'
           property :payment_source_type, as: 'paymentSourceType'
           property :primary, as: 'primary'
-          property :width, as: 'width'
+          property :width, :numeric_string => true, as: 'width'
         end
       end
       
@@ -1544,22 +1544,22 @@ module Google
       class Advertiser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_group_id, as: 'advertiserGroupId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_group_id, :numeric_string => true, as: 'advertiserGroupId'
           property :click_through_url_suffix, as: 'clickThroughUrlSuffix'
-          property :default_click_through_event_tag_id, as: 'defaultClickThroughEventTagId'
+          property :default_click_through_event_tag_id, :numeric_string => true, as: 'defaultClickThroughEventTagId'
           property :default_email, as: 'defaultEmail'
-          property :floodlight_configuration_id, as: 'floodlightConfigurationId'
+          property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
           property :floodlight_configuration_id_dimension_value, as: 'floodlightConfigurationIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :original_floodlight_configuration_id, as: 'originalFloodlightConfigurationId'
+          property :original_floodlight_configuration_id, :numeric_string => true, as: 'originalFloodlightConfigurationId'
           property :status, as: 'status'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :suspended, as: 'suspended'
         end
       end
@@ -1567,8 +1567,8 @@ module Google
       class AdvertiserGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :id, as: 'id'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -1598,7 +1598,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allocation, as: 'allocation'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
         end
       end
@@ -1608,7 +1608,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audience_segments, as: 'audienceSegments', class: Google::Apis::DfareportingV2_7::AudienceSegment, decorator: Google::Apis::DfareportingV2_7::AudienceSegment::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
         end
       end
@@ -1616,8 +1616,8 @@ module Google
       class Browser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :browser_version_id, as: 'browserVersionId'
-          property :dart_id, as: 'dartId'
+          property :browser_version_id, :numeric_string => true, as: 'browserVersionId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
           property :kind, as: 'kind'
           property :major_version, as: 'majorVersion'
           property :minor_version, as: 'minorVersion'
@@ -1637,11 +1637,11 @@ module Google
       class Campaign
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           collection :additional_creative_optimization_configurations, as: 'additionalCreativeOptimizationConfigurations', class: Google::Apis::DfareportingV2_7::CreativeOptimizationConfiguration, decorator: Google::Apis::DfareportingV2_7::CreativeOptimizationConfiguration::Representation
       
-          property :advertiser_group_id, as: 'advertiserGroupId'
-          property :advertiser_id, as: 'advertiserId'
+          property :advertiser_group_id, :numeric_string => true, as: 'advertiserGroupId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :archived, as: 'archived'
@@ -1663,7 +1663,7 @@ module Google
           collection :event_tag_overrides, as: 'eventTagOverrides', class: Google::Apis::DfareportingV2_7::EventTagOverride, decorator: Google::Apis::DfareportingV2_7::EventTagOverride::Representation
       
           property :external_id, as: 'externalId'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
@@ -1675,7 +1675,7 @@ module Google
           property :nielsen_ocr_enabled, as: 'nielsenOcrEnabled'
           property :start_date, as: 'startDate', type: Date
       
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           collection :trafficker_emails, as: 'traffickerEmails'
         end
       end
@@ -1683,7 +1683,7 @@ module Google
       class CampaignCreativeAssociation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creative_id, as: 'creativeId'
+          property :creative_id, :numeric_string => true, as: 'creativeId'
           property :kind, as: 'kind'
         end
       end
@@ -1711,20 +1711,20 @@ module Google
       class ChangeLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :action, as: 'action'
           property :change_time, as: 'changeTime', type: DateTime
       
           property :field_name, as: 'fieldName'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :new_value, as: 'newValue'
-          property :object_id_prop, as: 'objectId'
+          property :object_id_prop, :numeric_string => true, as: 'objectId'
           property :object_type, as: 'objectType'
           property :old_value, as: 'oldValue'
-          property :subaccount_id, as: 'subaccountId'
-          property :transaction_id, as: 'transactionId'
-          property :user_profile_id, as: 'userProfileId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
+          property :transaction_id, :numeric_string => true, as: 'transactionId'
+          property :user_profile_id, :numeric_string => true, as: 'userProfileId'
           property :user_profile_name, as: 'userProfileName'
         end
       end
@@ -1752,14 +1752,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
-          property :country_dart_id, as: 'countryDartId'
-          property :dart_id, as: 'dartId'
+          property :country_dart_id, :numeric_string => true, as: 'countryDartId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
           property :kind, as: 'kind'
           property :metro_code, as: 'metroCode'
-          property :metro_dma_id, as: 'metroDmaId'
+          property :metro_dma_id, :numeric_string => true, as: 'metroDmaId'
           property :name, as: 'name'
           property :region_code, as: 'regionCode'
-          property :region_dart_id, as: 'regionDartId'
+          property :region_dart_id, :numeric_string => true, as: 'regionDartId'
         end
       end
       
@@ -1778,7 +1778,7 @@ module Google
           property :computed_click_through_url, as: 'computedClickThroughUrl'
           property :custom_click_through_url, as: 'customClickThroughUrl'
           property :default_landing_page, as: 'defaultLandingPage'
-          property :landing_page_id, as: 'landingPageId'
+          property :landing_page_id, :numeric_string => true, as: 'landingPageId'
         end
       end
       
@@ -1795,7 +1795,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_through_url, as: 'clickThroughUrl', class: Google::Apis::DfareportingV2_7::ClickThroughUrl, decorator: Google::Apis::DfareportingV2_7::ClickThroughUrl::Representation
       
-          property :creative_id, as: 'creativeId'
+          property :creative_id, :numeric_string => true, as: 'creativeId'
         end
       end
       
@@ -1830,7 +1830,7 @@ module Google
       class ConnectionType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -1858,8 +1858,8 @@ module Google
       class ContentCategory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :id, as: 'id'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -1873,14 +1873,14 @@ module Google
       
           property :encrypted_user_id, as: 'encryptedUserId'
           collection :encrypted_user_id_candidates, as: 'encryptedUserIdCandidates'
-          property :floodlight_activity_id, as: 'floodlightActivityId'
-          property :floodlight_configuration_id, as: 'floodlightConfigurationId'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
+          property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
           property :kind, as: 'kind'
           property :limit_ad_tracking, as: 'limitAdTracking'
           property :mobile_device_id, as: 'mobileDeviceId'
           property :ordinal, as: 'ordinal'
-          property :quantity, as: 'quantity'
-          property :timestamp_micros, as: 'timestampMicros'
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
           property :value, as: 'value'
         end
       end
@@ -1939,7 +1939,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
-          property :dart_id, as: 'dartId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :ssl_enabled, as: 'sslEnabled'
@@ -1949,11 +1949,11 @@ module Google
       class Creative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :active, as: 'active'
           property :ad_parameters, as: 'adParameters'
           collection :ad_tag_keys, as: 'adTagKeys'
-          property :advertiser_id, as: 'advertiserId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :allow_script_access, as: 'allowScriptAccess'
           property :archived, as: 'archived'
           property :artwork_type, as: 'artworkType'
@@ -1988,19 +1988,19 @@ module Google
       
           property :html_code, as: 'htmlCode'
           property :html_code_locked, as: 'htmlCodeLocked'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
           property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
-          property :latest_trafficked_creative_id, as: 'latestTraffickedCreativeId'
+          property :latest_trafficked_creative_id, :numeric_string => true, as: 'latestTraffickedCreativeId'
           property :name, as: 'name'
           property :override_css, as: 'overrideCss'
           property :progress_offset, as: 'progressOffset', class: Google::Apis::DfareportingV2_7::VideoOffset, decorator: Google::Apis::DfareportingV2_7::VideoOffset::Representation
       
           property :redirect_url, as: 'redirectUrl'
-          property :rendering_id, as: 'renderingId'
+          property :rendering_id, :numeric_string => true, as: 'renderingId'
           property :rendering_id_dimension_value, as: 'renderingIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :required_flash_plugin_version, as: 'requiredFlashPluginVersion'
@@ -2012,17 +2012,17 @@ module Google
           property :skippable, as: 'skippable'
           property :ssl_compliant, as: 'sslCompliant'
           property :ssl_override, as: 'sslOverride'
-          property :studio_advertiser_id, as: 'studioAdvertiserId'
-          property :studio_creative_id, as: 'studioCreativeId'
-          property :studio_trafficked_creative_id, as: 'studioTraffickedCreativeId'
-          property :subaccount_id, as: 'subaccountId'
+          property :studio_advertiser_id, :numeric_string => true, as: 'studioAdvertiserId'
+          property :studio_creative_id, :numeric_string => true, as: 'studioCreativeId'
+          property :studio_trafficked_creative_id, :numeric_string => true, as: 'studioTraffickedCreativeId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :third_party_backup_image_impressions_url, as: 'thirdPartyBackupImageImpressionsUrl'
           property :third_party_rich_media_impressions_url, as: 'thirdPartyRichMediaImpressionsUrl'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DfareportingV2_7::ThirdPartyTrackingUrl, decorator: Google::Apis::DfareportingV2_7::ThirdPartyTrackingUrl::Representation
       
           collection :timer_custom_events, as: 'timerCustomEvents', class: Google::Apis::DfareportingV2_7::CreativeCustomEvent, decorator: Google::Apis::DfareportingV2_7::CreativeCustomEvent::Representation
       
-          property :total_file_size, as: 'totalFileSize'
+          property :total_file_size, :numeric_string => true, as: 'totalFileSize'
           property :type, as: 'type'
           property :version, as: 'version'
           property :video_description, as: 'videoDescription'
@@ -2053,12 +2053,12 @@ module Google
           property :duration_type, as: 'durationType'
           property :expanded_dimension, as: 'expandedDimension', class: Google::Apis::DfareportingV2_7::Size, decorator: Google::Apis::DfareportingV2_7::Size::Representation
       
-          property :file_size, as: 'fileSize'
+          property :file_size, :numeric_string => true, as: 'fileSize'
           property :flash_version, as: 'flashVersion'
           property :hide_flash_objects, as: 'hideFlashObjects'
           property :hide_selection_boxes, as: 'hideSelectionBoxes'
           property :horizontally_locked, as: 'horizontallyLocked'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :mime_type, as: 'mimeType'
@@ -2104,7 +2104,7 @@ module Google
           collection :click_tags, as: 'clickTags', class: Google::Apis::DfareportingV2_7::ClickTag, decorator: Google::Apis::DfareportingV2_7::ClickTag::Representation
       
           collection :detected_features, as: 'detectedFeatures'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
@@ -2115,7 +2115,7 @@ module Google
       class CreativeAssetSelection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_asset_id, as: 'defaultAssetId'
+          property :default_asset_id, :numeric_string => true, as: 'defaultAssetId'
           collection :rules, as: 'rules', class: Google::Apis::DfareportingV2_7::Rule, decorator: Google::Apis::DfareportingV2_7::Rule::Representation
       
         end
@@ -2132,7 +2132,7 @@ module Google
       
           collection :creative_group_assignments, as: 'creativeGroupAssignments', class: Google::Apis::DfareportingV2_7::CreativeGroupAssignment, decorator: Google::Apis::DfareportingV2_7::CreativeGroupAssignment::Representation
       
-          property :creative_id, as: 'creativeId'
+          property :creative_id, :numeric_string => true, as: 'creativeId'
           property :creative_id_dimension_value, as: 'creativeIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :end_time, as: 'endTime', type: DateTime
@@ -2150,13 +2150,13 @@ module Google
       class CreativeCustomEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :advertiser_custom_event_id, as: 'advertiserCustomEventId'
+          property :advertiser_custom_event_id, :numeric_string => true, as: 'advertiserCustomEventId'
           property :advertiser_custom_event_name, as: 'advertiserCustomEventName'
           property :advertiser_custom_event_type, as: 'advertiserCustomEventType'
           property :artwork_label, as: 'artworkLabel'
           property :artwork_type, as: 'artworkType'
           property :exit_url, as: 'exitUrl'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :popup_window_properties, as: 'popupWindowProperties', class: Google::Apis::DfareportingV2_7::PopupWindowProperties, decorator: Google::Apis::DfareportingV2_7::PopupWindowProperties::Representation
       
           property :target_type, as: 'targetType'
@@ -2167,29 +2167,29 @@ module Google
       class CreativeField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
       class CreativeFieldAssignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creative_field_id, as: 'creativeFieldId'
-          property :creative_field_value_id, as: 'creativeFieldValueId'
+          property :creative_field_id, :numeric_string => true, as: 'creativeFieldId'
+          property :creative_field_value_id, :numeric_string => true, as: 'creativeFieldValueId'
         end
       end
       
       class CreativeFieldValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :value, as: 'value'
         end
@@ -2218,22 +2218,22 @@ module Google
       class CreativeGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :group_number, as: 'groupNumber'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
       class CreativeGroupAssignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creative_group_id, as: 'creativeGroupId'
+          property :creative_group_id, :numeric_string => true, as: 'creativeGroupId'
           property :creative_group_number, as: 'creativeGroupNumber'
         end
       end
@@ -2251,7 +2251,7 @@ module Google
       class CreativeOptimizationConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           collection :optimization_activitys, as: 'optimizationActivitys', class: Google::Apis::DfareportingV2_7::OptimizationActivity, decorator: Google::Apis::DfareportingV2_7::OptimizationActivity::Representation
       
@@ -2264,7 +2264,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_assignments, as: 'creativeAssignments', class: Google::Apis::DfareportingV2_7::CreativeAssignment, decorator: Google::Apis::DfareportingV2_7::CreativeAssignment::Representation
       
-          property :creative_optimization_configuration_id, as: 'creativeOptimizationConfigurationId'
+          property :creative_optimization_configuration_id, :numeric_string => true, as: 'creativeOptimizationConfigurationId'
           property :type, as: 'type'
           property :weight_calculation_strategy, as: 'weightCalculationStrategy'
         end
@@ -2345,7 +2345,7 @@ module Google
       class DefaultClickThroughEventTagProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_click_through_event_tag_id, as: 'defaultClickThroughEventTagId'
+          property :default_click_through_event_tag_id, :numeric_string => true, as: 'defaultClickThroughEventTagId'
           property :override_inherited_event_tag, as: 'overrideInheritedEventTag'
         end
       end
@@ -2356,7 +2356,7 @@ module Google
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DfareportingV2_7::FrequencyCap, decorator: Google::Apis::DfareportingV2_7::FrequencyCap::Representation
       
           property :hard_cutoff, as: 'hardCutoff'
-          property :impression_ratio, as: 'impressionRatio'
+          property :impression_ratio, :numeric_string => true, as: 'impressionRatio'
           property :priority, as: 'priority'
         end
       end
@@ -2432,17 +2432,17 @@ module Google
           property :active, as: 'active'
           collection :contact_assignments, as: 'contactAssignments', class: Google::Apis::DfareportingV2_7::DirectorySiteContactAssignment, decorator: Google::Apis::DfareportingV2_7::DirectorySiteContactAssignment::Representation
       
-          property :country_id, as: 'countryId'
-          property :currency_id, as: 'currencyId'
+          property :country_id, :numeric_string => true, as: 'countryId'
+          property :currency_id, :numeric_string => true, as: 'currencyId'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           collection :inpage_tag_formats, as: 'inpageTagFormats'
           collection :interstitial_tag_formats, as: 'interstitialTagFormats'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :parent_id, as: 'parentId'
+          property :parent_id, :numeric_string => true, as: 'parentId'
           property :settings, as: 'settings', class: Google::Apis::DfareportingV2_7::DirectorySiteSettings, decorator: Google::Apis::DfareportingV2_7::DirectorySiteSettings::Representation
       
           property :url, as: 'url'
@@ -2455,7 +2455,7 @@ module Google
           property :address, as: 'address'
           property :email, as: 'email'
           property :first_name, as: 'firstName'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :last_name, as: 'lastName'
           property :phone, as: 'phone'
@@ -2468,7 +2468,7 @@ module Google
       class DirectorySiteContactAssignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :contact_id, as: 'contactId'
+          property :contact_id, :numeric_string => true, as: 'contactId'
           property :visibility, as: 'visibility'
         end
       end
@@ -2512,7 +2512,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :object_id_prop, as: 'objectId'
+          property :object_id_prop, :numeric_string => true, as: 'objectId'
           property :object_type, as: 'objectType'
         end
       end
@@ -2529,7 +2529,7 @@ module Google
       class EncryptionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :encryption_entity_id, as: 'encryptionEntityId'
+          property :encryption_entity_id, :numeric_string => true, as: 'encryptionEntityId'
           property :encryption_entity_type, as: 'encryptionEntityType'
           property :encryption_source, as: 'encryptionSource'
           property :kind, as: 'kind'
@@ -2539,23 +2539,23 @@ module Google
       class EventTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :campaign_id, as: 'campaignId'
+          property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :campaign_id_dimension_value, as: 'campaignIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :enabled_by_default, as: 'enabledByDefault'
           property :exclude_from_adx_requests, as: 'excludeFromAdxRequests'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :site_filter_type, as: 'siteFilterType'
           collection :site_ids, as: 'siteIds'
           property :ssl_compliant, as: 'sslCompliant'
           property :status, as: 'status'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :type, as: 'type'
           property :url, as: 'url'
           property :url_escape_levels, as: 'urlEscapeLevels'
@@ -2566,7 +2566,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
         end
       end
       
@@ -2587,10 +2587,10 @@ module Google
           property :etag, as: 'etag'
           property :file_name, as: 'fileName'
           property :format, as: 'format'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :last_modified_time, as: 'lastModifiedTime'
-          property :report_id, as: 'reportId'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :report_id, :numeric_string => true, as: 'reportId'
           property :status, as: 'status'
           property :urls, as: 'urls', class: Google::Apis::DfareportingV2_7::File::Urls, decorator: Google::Apis::DfareportingV2_7::File::Urls::Representation
       
@@ -2621,10 +2621,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_date, as: 'endDate', type: Date
       
-          property :rate_or_cost, as: 'rateOrCost'
+          property :rate_or_cost, :numeric_string => true, as: 'rateOrCost'
           property :start_date, as: 'startDate', type: Date
       
-          property :units, as: 'units'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
@@ -2649,8 +2649,8 @@ module Google
       class FloodlightActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :cache_busting_type, as: 'cacheBustingType'
@@ -2658,15 +2658,15 @@ module Google
           collection :default_tags, as: 'defaultTags', class: Google::Apis::DfareportingV2_7::FloodlightActivityDynamicTag, decorator: Google::Apis::DfareportingV2_7::FloodlightActivityDynamicTag::Representation
       
           property :expected_url, as: 'expectedUrl'
-          property :floodlight_activity_group_id, as: 'floodlightActivityGroupId'
+          property :floodlight_activity_group_id, :numeric_string => true, as: 'floodlightActivityGroupId'
           property :floodlight_activity_group_name, as: 'floodlightActivityGroupName'
           property :floodlight_activity_group_tag_string, as: 'floodlightActivityGroupTagString'
           property :floodlight_activity_group_type, as: 'floodlightActivityGroupType'
-          property :floodlight_configuration_id, as: 'floodlightConfigurationId'
+          property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
           property :floodlight_configuration_id_dimension_value, as: 'floodlightConfigurationIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :hidden, as: 'hidden'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :image_tag_enabled, as: 'imageTagEnabled'
@@ -2678,7 +2678,7 @@ module Google
           property :secure, as: 'secure'
           property :ssl_compliant, as: 'sslCompliant'
           property :ssl_required, as: 'sslRequired'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :tag_format, as: 'tagFormat'
           property :tag_string, as: 'tagString'
           collection :user_defined_variable_types, as: 'userDefinedVariableTypes'
@@ -2688,7 +2688,7 @@ module Google
       class FloodlightActivityDynamicTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :tag, as: 'tag'
         end
@@ -2697,19 +2697,19 @@ module Google
       class FloodlightActivityGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :floodlight_configuration_id, as: 'floodlightConfigurationId'
+          property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
           property :floodlight_configuration_id_dimension_value, as: 'floodlightConfigurationIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :tag_string, as: 'tagString'
           property :type, as: 'type'
         end
@@ -2729,10 +2729,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_through, as: 'clickThrough'
-          property :directory_site_id, as: 'directorySiteId'
+          property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
           property :dynamic_tag, as: 'dynamicTag', class: Google::Apis::DfareportingV2_7::FloodlightActivityDynamicTag, decorator: Google::Apis::DfareportingV2_7::FloodlightActivityDynamicTag::Representation
       
-          property :site_id, as: 'siteId'
+          property :site_id, :numeric_string => true, as: 'siteId'
           property :site_id_dimension_value, as: 'siteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :view_through, as: 'viewThrough'
@@ -2742,14 +2742,14 @@ module Google
       class FloodlightConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :analytics_data_sharing_enabled, as: 'analyticsDataSharingEnabled'
           property :exposure_to_conversion_enabled, as: 'exposureToConversionEnabled'
           property :first_day_of_week, as: 'firstDayOfWeek'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :in_app_attribution_tracking_enabled, as: 'inAppAttributionTrackingEnabled'
@@ -2760,7 +2760,7 @@ module Google
           property :omniture_settings, as: 'omnitureSettings', class: Google::Apis::DfareportingV2_7::OmnitureSettings, decorator: Google::Apis::DfareportingV2_7::OmnitureSettings::Representation
       
           collection :standard_variable_types, as: 'standardVariableTypes'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :tag_settings, as: 'tagSettings', class: Google::Apis::DfareportingV2_7::TagSettings, decorator: Google::Apis::DfareportingV2_7::TagSettings::Representation
       
           collection :third_party_authentication_tokens, as: 'thirdPartyAuthenticationTokens', class: Google::Apis::DfareportingV2_7::ThirdPartyAuthenticationToken, decorator: Google::Apis::DfareportingV2_7::ThirdPartyAuthenticationToken::Representation
@@ -2795,8 +2795,8 @@ module Google
       class FrequencyCap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration, as: 'duration'
-          property :impressions, as: 'impressions'
+          property :duration, :numeric_string => true, as: 'duration'
+          property :impressions, :numeric_string => true, as: 'impressions'
         end
       end
       
@@ -2831,28 +2831,28 @@ module Google
       class InventoryItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           collection :ad_slots, as: 'adSlots', class: Google::Apis::DfareportingV2_7::AdSlot, decorator: Google::Apis::DfareportingV2_7::AdSlot::Representation
       
-          property :advertiser_id, as: 'advertiserId'
-          property :content_category_id, as: 'contentCategoryId'
-          property :estimated_click_through_rate, as: 'estimatedClickThroughRate'
-          property :estimated_conversion_rate, as: 'estimatedConversionRate'
-          property :id, as: 'id'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :content_category_id, :numeric_string => true, as: 'contentCategoryId'
+          property :estimated_click_through_rate, :numeric_string => true, as: 'estimatedClickThroughRate'
+          property :estimated_conversion_rate, :numeric_string => true, as: 'estimatedConversionRate'
+          property :id, :numeric_string => true, as: 'id'
           property :in_plan, as: 'inPlan'
           property :kind, as: 'kind'
           property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
           property :name, as: 'name'
-          property :negotiation_channel_id, as: 'negotiationChannelId'
-          property :order_id, as: 'orderId'
-          property :placement_strategy_id, as: 'placementStrategyId'
+          property :negotiation_channel_id, :numeric_string => true, as: 'negotiationChannelId'
+          property :order_id, :numeric_string => true, as: 'orderId'
+          property :placement_strategy_id, :numeric_string => true, as: 'placementStrategyId'
           property :pricing, as: 'pricing', class: Google::Apis::DfareportingV2_7::Pricing, decorator: Google::Apis::DfareportingV2_7::Pricing::Representation
       
-          property :project_id, as: 'projectId'
-          property :rfp_id, as: 'rfpId'
-          property :site_id, as: 'siteId'
-          property :subaccount_id, as: 'subaccountId'
+          property :project_id, :numeric_string => true, as: 'projectId'
+          property :rfp_id, :numeric_string => true, as: 'rfpId'
+          property :site_id, :numeric_string => true, as: 'siteId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :type, as: 'type'
         end
       end
@@ -2878,7 +2878,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :url, as: 'url'
@@ -2897,7 +2897,7 @@ module Google
       class Language
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
@@ -2924,7 +2924,7 @@ module Google
       class LastModifiedInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :time, as: 'time'
+          property :time, :numeric_string => true, as: 'time'
         end
       end
       
@@ -2939,7 +2939,7 @@ module Google
       class ListPopulationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :floodlight_activity_id, as: 'floodlightActivityId'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
           property :floodlight_activity_name, as: 'floodlightActivityName'
           collection :list_population_clauses, as: 'listPopulationClauses', class: Google::Apis::DfareportingV2_7::ListPopulationClause, decorator: Google::Apis::DfareportingV2_7::ListPopulationClause::Representation
       
@@ -2952,7 +2952,7 @@ module Google
           property :contains, as: 'contains'
           property :negation, as: 'negation'
           property :operator, as: 'operator'
-          property :remarketing_list_id, as: 'remarketingListId'
+          property :remarketing_list_id, :numeric_string => true, as: 'remarketingListId'
           property :type, as: 'type'
           property :value, as: 'value'
           property :variable_friendly_name, as: 'variableFriendlyName'
@@ -2987,9 +2987,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
-          property :country_dart_id, as: 'countryDartId'
-          property :dart_id, as: 'dartId'
-          property :dma_id, as: 'dmaId'
+          property :country_dart_id, :numeric_string => true, as: 'countryDartId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
+          property :dma_id, :numeric_string => true, as: 'dmaId'
           property :kind, as: 'kind'
           property :metro_code, as: 'metroCode'
           property :name, as: 'name'
@@ -3009,8 +3009,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
-          property :country_dart_id, as: 'countryDartId'
-          property :id, as: 'id'
+          property :country_dart_id, :numeric_string => true, as: 'countryDartId'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -3053,7 +3053,7 @@ module Google
       class OperatingSystem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dart_id, as: 'dartId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
           property :desktop, as: 'desktop'
           property :kind, as: 'kind'
           property :mobile, as: 'mobile'
@@ -3064,7 +3064,7 @@ module Google
       class OperatingSystemVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :major_version, as: 'majorVersion'
           property :minor_version, as: 'minorVersion'
@@ -3095,7 +3095,7 @@ module Google
       class OptimizationActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :floodlight_activity_id, as: 'floodlightActivityId'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
           property :floodlight_activity_id_dimension_value, as: 'floodlightActivityIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :weight, as: 'weight'
@@ -3105,27 +3105,27 @@ module Google
       class Order
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           collection :approver_user_profile_ids, as: 'approverUserProfileIds'
           property :buyer_invoice_id, as: 'buyerInvoiceId'
           property :buyer_organization_name, as: 'buyerOrganizationName'
           property :comments, as: 'comments'
           collection :contacts, as: 'contacts', class: Google::Apis::DfareportingV2_7::OrderContact, decorator: Google::Apis::DfareportingV2_7::OrderContact::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
           property :name, as: 'name'
           property :notes, as: 'notes'
-          property :planning_term_id, as: 'planningTermId'
-          property :project_id, as: 'projectId'
+          property :planning_term_id, :numeric_string => true, as: 'planningTermId'
+          property :project_id, :numeric_string => true, as: 'projectId'
           property :seller_order_id, as: 'sellerOrderId'
           property :seller_organization_name, as: 'sellerOrganizationName'
           collection :site_id, as: 'siteId'
           collection :site_names, as: 'siteNames'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :terms_and_conditions, as: 'termsAndConditions'
         end
       end
@@ -3137,31 +3137,31 @@ module Google
           property :contact_name, as: 'contactName'
           property :contact_title, as: 'contactTitle'
           property :contact_type, as: 'contactType'
-          property :signature_user_profile_id, as: 'signatureUserProfileId'
+          property :signature_user_profile_id, :numeric_string => true, as: 'signatureUserProfileId'
         end
       end
       
       class OrderDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
-          property :amended_order_document_id, as: 'amendedOrderDocumentId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :amended_order_document_id, :numeric_string => true, as: 'amendedOrderDocumentId'
           collection :approved_by_user_profile_ids, as: 'approvedByUserProfileIds'
           property :cancelled, as: 'cancelled'
           property :created_info, as: 'createdInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
           property :effective_date, as: 'effectiveDate', type: Date
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           collection :last_sent_recipients, as: 'lastSentRecipients'
           property :last_sent_time, as: 'lastSentTime', type: DateTime
       
-          property :order_id, as: 'orderId'
-          property :project_id, as: 'projectId'
+          property :order_id, :numeric_string => true, as: 'orderId'
+          property :project_id, :numeric_string => true, as: 'projectId'
           property :signed, as: 'signed'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :title, as: 'title'
           property :type, as: 'type'
         end
@@ -3205,24 +3205,24 @@ module Google
       class Placement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :archived, as: 'archived'
-          property :campaign_id, as: 'campaignId'
+          property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :campaign_id_dimension_value, as: 'campaignIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :comment, as: 'comment'
           property :compatibility, as: 'compatibility'
-          property :content_category_id, as: 'contentCategoryId'
+          property :content_category_id, :numeric_string => true, as: 'contentCategoryId'
           property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
-          property :directory_site_id, as: 'directorySiteId'
+          property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
           property :directory_site_id_dimension_value, as: 'directorySiteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :external_id, as: 'externalId'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :key_name, as: 'keyName'
@@ -3234,23 +3234,23 @@ module Google
           property :name, as: 'name'
           property :payment_approved, as: 'paymentApproved'
           property :payment_source, as: 'paymentSource'
-          property :placement_group_id, as: 'placementGroupId'
+          property :placement_group_id, :numeric_string => true, as: 'placementGroupId'
           property :placement_group_id_dimension_value, as: 'placementGroupIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :placement_strategy_id, as: 'placementStrategyId'
+          property :placement_strategy_id, :numeric_string => true, as: 'placementStrategyId'
           property :pricing_schedule, as: 'pricingSchedule', class: Google::Apis::DfareportingV2_7::PricingSchedule, decorator: Google::Apis::DfareportingV2_7::PricingSchedule::Representation
       
           property :primary, as: 'primary'
           property :publisher_update_info, as: 'publisherUpdateInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
-          property :site_id, as: 'siteId'
+          property :site_id, :numeric_string => true, as: 'siteId'
           property :site_id_dimension_value, as: 'siteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :size, as: 'size', class: Google::Apis::DfareportingV2_7::Size, decorator: Google::Apis::DfareportingV2_7::Size::Representation
       
           property :ssl_required, as: 'sslRequired'
           property :status, as: 'status'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           collection :tag_formats, as: 'tagFormats'
           property :tag_setting, as: 'tagSetting', class: Google::Apis::DfareportingV2_7::TagSetting, decorator: Google::Apis::DfareportingV2_7::TagSetting::Representation
       
@@ -3265,7 +3265,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
-          property :placement_id, as: 'placementId'
+          property :placement_id, :numeric_string => true, as: 'placementId'
           property :placement_id_dimension_value, as: 'placementIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :ssl_required, as: 'sslRequired'
@@ -3275,24 +3275,24 @@ module Google
       class PlacementGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :archived, as: 'archived'
-          property :campaign_id, as: 'campaignId'
+          property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :campaign_id_dimension_value, as: 'campaignIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           collection :child_placement_ids, as: 'childPlacementIds'
           property :comment, as: 'comment'
-          property :content_category_id, as: 'contentCategoryId'
+          property :content_category_id, :numeric_string => true, as: 'contentCategoryId'
           property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
-          property :directory_site_id, as: 'directorySiteId'
+          property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
           property :directory_site_id_dimension_value, as: 'directorySiteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :external_id, as: 'externalId'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :kind, as: 'kind'
@@ -3300,16 +3300,16 @@ module Google
       
           property :name, as: 'name'
           property :placement_group_type, as: 'placementGroupType'
-          property :placement_strategy_id, as: 'placementStrategyId'
+          property :placement_strategy_id, :numeric_string => true, as: 'placementStrategyId'
           property :pricing_schedule, as: 'pricingSchedule', class: Google::Apis::DfareportingV2_7::PricingSchedule, decorator: Google::Apis::DfareportingV2_7::PricingSchedule::Representation
       
-          property :primary_placement_id, as: 'primaryPlacementId'
+          property :primary_placement_id, :numeric_string => true, as: 'primaryPlacementId'
           property :primary_placement_id_dimension_value, as: 'primaryPlacementIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :site_id, as: 'siteId'
+          property :site_id, :numeric_string => true, as: 'siteId'
           property :site_id_dimension_value, as: 'siteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
@@ -3336,8 +3336,8 @@ module Google
       class PlacementStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :id, as: 'id'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -3346,7 +3346,7 @@ module Google
       class PlacementTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :placement_id, as: 'placementId'
+          property :placement_id, :numeric_string => true, as: 'placementId'
           collection :tag_datas, as: 'tagDatas', class: Google::Apis::DfareportingV2_7::TagData, decorator: Google::Apis::DfareportingV2_7::TagData::Representation
       
         end
@@ -3374,7 +3374,7 @@ module Google
       class PlatformType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -3411,7 +3411,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :country_code, as: 'countryCode'
-          property :country_dart_id, as: 'countryDartId'
+          property :country_dart_id, :numeric_string => true, as: 'countryDartId'
           property :id, as: 'id'
           property :kind, as: 'kind'
         end
@@ -3449,7 +3449,7 @@ module Google
           property :end_date, as: 'endDate', type: Date
       
           property :flighted, as: 'flighted'
-          property :floodlight_activity_id, as: 'floodlightActivityId'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
           collection :pricing_periods, as: 'pricingPeriods', class: Google::Apis::DfareportingV2_7::PricingSchedulePricingPeriod, decorator: Google::Apis::DfareportingV2_7::PricingSchedulePricingPeriod::Representation
       
           property :pricing_type, as: 'pricingType'
@@ -3466,26 +3466,26 @@ module Google
           property :end_date, as: 'endDate', type: Date
       
           property :pricing_comment, as: 'pricingComment'
-          property :rate_or_cost_nanos, as: 'rateOrCostNanos'
+          property :rate_or_cost_nanos, :numeric_string => true, as: 'rateOrCostNanos'
           property :start_date, as: 'startDate', type: Date
       
-          property :units, as: 'units'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :audience_age_group, as: 'audienceAgeGroup'
           property :audience_gender, as: 'audienceGender'
-          property :budget, as: 'budget'
+          property :budget, :numeric_string => true, as: 'budget'
           property :client_billing_code, as: 'clientBillingCode'
           property :client_name, as: 'clientName'
           property :end_date, as: 'endDate', type: Date
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV2_7::LastModifiedInfo, decorator: Google::Apis::DfareportingV2_7::LastModifiedInfo::Representation
       
@@ -3493,14 +3493,14 @@ module Google
           property :overview, as: 'overview'
           property :start_date, as: 'startDate', type: Date
       
-          property :subaccount_id, as: 'subaccountId'
-          property :target_clicks, as: 'targetClicks'
-          property :target_conversions, as: 'targetConversions'
-          property :target_cpa_nanos, as: 'targetCpaNanos'
-          property :target_cpc_nanos, as: 'targetCpcNanos'
-          property :target_cpm_active_view_nanos, as: 'targetCpmActiveViewNanos'
-          property :target_cpm_nanos, as: 'targetCpmNanos'
-          property :target_impressions, as: 'targetImpressions'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
+          property :target_clicks, :numeric_string => true, as: 'targetClicks'
+          property :target_conversions, :numeric_string => true, as: 'targetConversions'
+          property :target_cpa_nanos, :numeric_string => true, as: 'targetCpaNanos'
+          property :target_cpc_nanos, :numeric_string => true, as: 'targetCpcNanos'
+          property :target_cpm_active_view_nanos, :numeric_string => true, as: 'targetCpmActiveViewNanos'
+          property :target_cpm_nanos, :numeric_string => true, as: 'targetCpmNanos'
+          property :target_impressions, :numeric_string => true, as: 'targetImpressions'
         end
       end
       
@@ -3544,8 +3544,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
-          property :country_dart_id, as: 'countryDartId'
-          property :dart_id, as: 'dartId'
+          property :country_dart_id, :numeric_string => true, as: 'countryDartId'
+          property :dart_id, :numeric_string => true, as: 'dartId'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region_code, as: 'regionCode'
@@ -3564,21 +3564,21 @@ module Google
       class RemarketingList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :active, as: 'active'
-          property :advertiser_id, as: 'advertiserId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :life_span, as: 'lifeSpan'
+          property :life_span, :numeric_string => true, as: 'lifeSpan'
           property :list_population_rule, as: 'listPopulationRule', class: Google::Apis::DfareportingV2_7::ListPopulationRule, decorator: Google::Apis::DfareportingV2_7::ListPopulationRule::Representation
       
-          property :list_size, as: 'listSize'
+          property :list_size, :numeric_string => true, as: 'listSize'
           property :list_source, as: 'listSource'
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
@@ -3586,7 +3586,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :remarketing_list_id, as: 'remarketingListId'
+          property :remarketing_list_id, :numeric_string => true, as: 'remarketingListId'
           collection :shared_account_ids, as: 'sharedAccountIds'
           collection :shared_advertiser_ids, as: 'sharedAdvertiserIds'
         end
@@ -3605,7 +3605,7 @@ module Google
       class Report
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :criteria, as: 'criteria', class: Google::Apis::DfareportingV2_7::Report::Criteria, decorator: Google::Apis::DfareportingV2_7::Report::Criteria::Representation
       
           property :cross_dimension_reach_criteria, as: 'crossDimensionReachCriteria', class: Google::Apis::DfareportingV2_7::Report::CrossDimensionReachCriteria, decorator: Google::Apis::DfareportingV2_7::Report::CrossDimensionReachCriteria::Representation
@@ -3617,18 +3617,18 @@ module Google
           property :floodlight_criteria, as: 'floodlightCriteria', class: Google::Apis::DfareportingV2_7::Report::FloodlightCriteria, decorator: Google::Apis::DfareportingV2_7::Report::FloodlightCriteria::Representation
       
           property :format, as: 'format'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :last_modified_time, as: 'lastModifiedTime'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :name, as: 'name'
-          property :owner_profile_id, as: 'ownerProfileId'
+          property :owner_profile_id, :numeric_string => true, as: 'ownerProfileId'
           property :path_to_conversion_criteria, as: 'pathToConversionCriteria', class: Google::Apis::DfareportingV2_7::Report::PathToConversionCriteria, decorator: Google::Apis::DfareportingV2_7::Report::PathToConversionCriteria::Representation
       
           property :reach_criteria, as: 'reachCriteria', class: Google::Apis::DfareportingV2_7::Report::ReachCriteria, decorator: Google::Apis::DfareportingV2_7::Report::ReachCriteria::Representation
       
           property :schedule, as: 'schedule', class: Google::Apis::DfareportingV2_7::Report::Schedule, decorator: Google::Apis::DfareportingV2_7::Report::Schedule::Representation
       
-          property :sub_account_id, as: 'subAccountId'
+          property :sub_account_id, :numeric_string => true, as: 'subAccountId'
           property :type, as: 'type'
         end
         
@@ -3809,7 +3809,7 @@ module Google
           property :exposure_to_conversion_enabled, as: 'exposureToConversionEnabled'
           property :lookback_configuration, as: 'lookbackConfiguration', class: Google::Apis::DfareportingV2_7::LookbackConfiguration, decorator: Google::Apis::DfareportingV2_7::LookbackConfiguration::Representation
       
-          property :report_generation_time_zone_id, as: 'reportGenerationTimeZoneId'
+          property :report_generation_time_zone_id, :numeric_string => true, as: 'reportGenerationTimeZoneId'
         end
       end
       
@@ -3819,28 +3819,28 @@ module Google
           property :click_through_url, as: 'clickThroughUrl', class: Google::Apis::DfareportingV2_7::ClickThroughUrl, decorator: Google::Apis::DfareportingV2_7::ClickThroughUrl::Representation
       
           property :enabled, as: 'enabled'
-          property :exit_id, as: 'exitId'
+          property :exit_id, :numeric_string => true, as: 'exitId'
         end
       end
       
       class Rule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :asset_id, as: 'assetId'
+          property :asset_id, :numeric_string => true, as: 'assetId'
           property :name, as: 'name'
-          property :targeting_template_id, as: 'targetingTemplateId'
+          property :targeting_template_id, :numeric_string => true, as: 'targetingTemplateId'
         end
       end
       
       class Site
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :approved, as: 'approved'
-          property :directory_site_id, as: 'directorySiteId'
+          property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
           property :directory_site_id_dimension_value, as: 'directorySiteIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :key_name, as: 'keyName'
@@ -3850,7 +3850,7 @@ module Google
       
           property :site_settings, as: 'siteSettings', class: Google::Apis::DfareportingV2_7::SiteSettings, decorator: Google::Apis::DfareportingV2_7::SiteSettings::Representation
       
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
@@ -3861,7 +3861,7 @@ module Google
           property :contact_type, as: 'contactType'
           property :email, as: 'email'
           property :first_name, as: 'firstName'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :last_name, as: 'lastName'
           property :phone, as: 'phone'
           property :title, as: 'title'
@@ -3900,7 +3900,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :iab, as: 'iab'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :width, as: 'width'
         end
@@ -3939,9 +3939,9 @@ module Google
       class Subaccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           collection :available_permission_ids, as: 'availablePermissionIds'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
@@ -3960,9 +3960,9 @@ module Google
       class TagData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_id, as: 'adId'
+          property :ad_id, :numeric_string => true, as: 'adId'
           property :click_tag, as: 'clickTag'
-          property :creative_id, as: 'creativeId'
+          property :creative_id, :numeric_string => true, as: 'creativeId'
           property :format, as: 'format'
           property :impression_tag, as: 'impressionTag'
         end
@@ -3997,19 +3997,19 @@ module Google
       class TargetableRemarketingList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :active, as: 'active'
-          property :advertiser_id, as: 'advertiserId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :life_span, as: 'lifeSpan'
-          property :list_size, as: 'listSize'
+          property :life_span, :numeric_string => true, as: 'lifeSpan'
+          property :list_size, :numeric_string => true, as: 'listSize'
           property :list_source, as: 'listSource'
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
@@ -4026,15 +4026,15 @@ module Google
       class TargetingTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :advertiser_id, as: 'advertiserId'
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV2_7::DimensionValue, decorator: Google::Apis::DfareportingV2_7::DimensionValue::Representation
       
           property :day_part_targeting, as: 'dayPartTargeting', class: Google::Apis::DfareportingV2_7::DayPartTargeting, decorator: Google::Apis::DfareportingV2_7::DayPartTargeting::Representation
       
           property :geo_targeting, as: 'geoTargeting', class: Google::Apis::DfareportingV2_7::GeoTargeting, decorator: Google::Apis::DfareportingV2_7::GeoTargeting::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :key_value_targeting_expression, as: 'keyValueTargetingExpression', class: Google::Apis::DfareportingV2_7::KeyValueTargetingExpression, decorator: Google::Apis::DfareportingV2_7::KeyValueTargetingExpression::Representation
       
           property :kind, as: 'kind'
@@ -4043,7 +4043,7 @@ module Google
           property :list_targeting_expression, as: 'listTargetingExpression', class: Google::Apis::DfareportingV2_7::ListTargetingExpression, decorator: Google::Apis::DfareportingV2_7::ListTargetingExpression::Representation
       
           property :name, as: 'name'
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
           property :technology_targeting, as: 'technologyTargeting', class: Google::Apis::DfareportingV2_7::TechnologyTargeting, decorator: Google::Apis::DfareportingV2_7::TechnologyTargeting::Representation
       
         end
@@ -4113,12 +4113,12 @@ module Google
       class UserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :account_name, as: 'accountName'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
-          property :profile_id, as: 'profileId'
-          property :sub_account_id, as: 'subAccountId'
+          property :profile_id, :numeric_string => true, as: 'profileId'
+          property :sub_account_id, :numeric_string => true, as: 'subAccountId'
           property :sub_account_name, as: 'subAccountName'
           property :user_name, as: 'userName'
         end
@@ -4137,15 +4137,15 @@ module Google
       class UserRole
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
+          property :account_id, :numeric_string => true, as: 'accountId'
           property :default_user_role, as: 'defaultUserRole'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :parent_user_role_id, as: 'parentUserRoleId'
+          property :parent_user_role_id, :numeric_string => true, as: 'parentUserRoleId'
           collection :permissions, as: 'permissions', class: Google::Apis::DfareportingV2_7::UserRolePermission, decorator: Google::Apis::DfareportingV2_7::UserRolePermission::Representation
       
-          property :subaccount_id, as: 'subaccountId'
+          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
         end
       end
       
@@ -4153,17 +4153,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability, as: 'availability'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :permission_group_id, as: 'permissionGroupId'
+          property :permission_group_id, :numeric_string => true, as: 'permissionGroupId'
         end
       end
       
       class UserRolePermissionGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
         end

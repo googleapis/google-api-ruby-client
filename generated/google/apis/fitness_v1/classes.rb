@@ -38,7 +38,7 @@ module Google
       
         # The end time for the aggregated data, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `endTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time_millis
       
         # Sessions contain metadata, such as a user-friendly name and time interval
@@ -49,7 +49,7 @@ module Google
       
         # The start time for the aggregated data, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time_millis
       
         # The type of a bucket signifies how the data aggregation is performed in the
@@ -148,7 +148,7 @@ module Google
         # The end of a window of time. Data that intersects with this time window will
         # be aggregated. The time is in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `endTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time_millis
       
         # A list of acceptable data quality standards. Only data points which conform to
@@ -161,7 +161,7 @@ module Google
         # The start of a window of time. Data that intersects with this time window will
         # be aggregated. The time is in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time_millis
       
         def initialize(**args)
@@ -257,7 +257,7 @@ module Google
         # Specifies that only activity segments of duration longer than
         # minDurationMillis are considered and used as a container for aggregated data.
         # Corresponds to the JSON property `minDurationMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_duration_millis
       
         def initialize(**args)
@@ -278,7 +278,7 @@ module Google
         # Specifies that only sessions of duration longer than minDurationMillis are
         # considered and used as a container for aggregated data.
         # Corresponds to the JSON property `minDurationMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_duration_millis
       
         def initialize(**args)
@@ -299,7 +299,7 @@ module Google
         # frames. Time frames that contain no data will be included in the response with
         # an empty dataset.
         # Corresponds to the JSON property `durationMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration_millis
       
         # 
@@ -364,7 +364,7 @@ module Google
         # Used for version checking during transformation; that is, a datapoint can only
         # replace another datapoint that has an older computation time stamp.
         # Corresponds to the JSON property `computationTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :computation_time_millis
       
         # The data type defining the format of the values in this data point.
@@ -375,14 +375,14 @@ module Google
         # The end time of the interval represented by this data point, in nanoseconds
         # since epoch.
         # Corresponds to the JSON property `endTimeNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time_nanos
       
         # Indicates the last time this data point was modified. Useful only in contexts
         # where we are listing the data changes, rather than representing the current
         # state of the data.
         # Corresponds to the JSON property `modifiedTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :modified_time_millis
       
         # If the data point is contained in a dataset for a derived data source, this
@@ -394,13 +394,13 @@ module Google
       
         # The raw timestamp from the original SensorEvent.
         # Corresponds to the JSON property `rawTimestampNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :raw_timestamp_nanos
       
         # The start time of the interval represented by this data point, in nanoseconds
         # since epoch.
         # Corresponds to the JSON property `startTimeNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time_nanos
       
         # Values of each data type field for the data point. It is expected that each
@@ -620,14 +620,14 @@ module Google
         # representation of the dataset. Time is in nanoseconds from epoch. This should
         # also match the first part of the dataset identifier.
         # Corresponds to the JSON property `maxEndTimeNs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_end_time_ns
       
         # The smallest start time of all data points in this possibly partial
         # representation of the dataset. Time is in nanoseconds from epoch. This should
         # also match the first part of the dataset identifier.
         # Corresponds to the JSON property `minStartTimeNs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_start_time_ns
       
         # This token will be set when a dataset is received in response to a GET request
@@ -807,7 +807,7 @@ module Google
         # should also be inserted via a com.google.activity.segment data point with a
         # STILL activity value
         # Corresponds to the JSON property `activeTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :active_time_millis
       
         # The type of activity this session represents.
@@ -827,7 +827,7 @@ module Google
       
         # An end time, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `endTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time_millis
       
         # A client-generated identifier that is unique across all sessions owned by this
@@ -838,7 +838,7 @@ module Google
       
         # A timestamp that indicates when the session was last modified.
         # Corresponds to the JSON property `modifiedTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :modified_time_millis
       
         # A human readable name of the session.
@@ -848,7 +848,7 @@ module Google
       
         # A start time, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time_millis
       
         def initialize(**args)

@@ -231,9 +231,9 @@ module Google
       
           property :params, as: 'params', class: Google::Apis::DoubleclickbidmanagerV1::Parameters, decorator: Google::Apis::DoubleclickbidmanagerV1::Parameters::Representation
       
-          property :query_id, as: 'queryId'
-          property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
-          property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
+          property :query_id, :numeric_string => true, as: 'queryId'
+          property :report_data_end_time_ms, :numeric_string => true, as: 'reportDataEndTimeMs'
+          property :report_data_start_time_ms, :numeric_string => true, as: 'reportDataStartTimeMs'
           property :schedule, as: 'schedule', class: Google::Apis::DoubleclickbidmanagerV1::QuerySchedule, decorator: Google::Apis::DoubleclickbidmanagerV1::QuerySchedule::Representation
       
           property :timezone_code, as: 'timezoneCode'
@@ -247,7 +247,7 @@ module Google
           property :format, as: 'format'
           property :google_cloud_storage_path_for_latest_report, as: 'googleCloudStoragePathForLatestReport'
           property :google_drive_path_for_latest_report, as: 'googleDrivePathForLatestReport'
-          property :latest_report_run_time_ms, as: 'latestReportRunTimeMs'
+          property :latest_report_run_time_ms, :numeric_string => true, as: 'latestReportRunTimeMs'
           property :locale, as: 'locale'
           property :report_count, as: 'reportCount'
           property :running, as: 'running'
@@ -260,7 +260,7 @@ module Google
       class QuerySchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time_ms, as: 'endTimeMs'
+          property :end_time_ms, :numeric_string => true, as: 'endTimeMs'
           property :frequency, as: 'frequency'
           property :next_run_minute_of_day, as: 'nextRunMinuteOfDay'
           property :next_run_timezone_code, as: 'nextRunTimezoneCode'
@@ -289,8 +289,8 @@ module Google
       class ReportKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_id, as: 'queryId'
-          property :report_id, as: 'reportId'
+          property :query_id, :numeric_string => true, as: 'queryId'
+          property :report_id, :numeric_string => true, as: 'reportId'
         end
       end
       
@@ -298,8 +298,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_cloud_storage_path, as: 'googleCloudStoragePath'
-          property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
-          property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
+          property :report_data_end_time_ms, :numeric_string => true, as: 'reportDataEndTimeMs'
+          property :report_data_start_time_ms, :numeric_string => true, as: 'reportDataStartTimeMs'
           property :status, as: 'status', class: Google::Apis::DoubleclickbidmanagerV1::ReportStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportStatus::Representation
       
         end
@@ -310,7 +310,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure, as: 'failure', class: Google::Apis::DoubleclickbidmanagerV1::ReportFailure, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportFailure::Representation
       
-          property :finish_time_ms, as: 'finishTimeMs'
+          property :finish_time_ms, :numeric_string => true, as: 'finishTimeMs'
           property :format, as: 'format'
           property :state, as: 'state'
         end
@@ -320,7 +320,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :changed, as: 'changed'
-          property :entity_id, as: 'entityId'
+          property :entity_id, :numeric_string => true, as: 'entityId'
           property :entity_name, as: 'entityName'
           collection :errors, as: 'errors'
           property :persisted, as: 'persisted'
@@ -332,8 +332,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_range, as: 'dataRange'
-          property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
-          property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
+          property :report_data_end_time_ms, :numeric_string => true, as: 'reportDataEndTimeMs'
+          property :report_data_start_time_ms, :numeric_string => true, as: 'reportDataStartTimeMs'
           property :timezone_code, as: 'timezoneCode'
         end
       end

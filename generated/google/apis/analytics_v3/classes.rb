@@ -2415,7 +2415,7 @@ module Google
       
         # The last refreshed time in seconds for Analytics data.
         # Corresponds to the JSON property `dataLastRefreshed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :data_last_refreshed
       
         # 
@@ -2469,12 +2469,12 @@ module Google
       
         # The number of samples used to calculate the result.
         # Corresponds to the JSON property `sampleSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sample_size
       
         # Total size of the sample space from which the samples were selected.
         # Corresponds to the JSON property `sampleSpace`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sample_space
       
         # Link to this page.
@@ -2936,7 +2936,7 @@ module Google
           
             # Value used for this comparison.
             # Corresponds to the JSON property `comparisonValue`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :comparison_value
           
             # Expression used for this match.
@@ -3085,7 +3085,7 @@ module Google
         
           # Value used for this comparison.
           # Corresponds to the JSON property `comparisonValue`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :comparison_value
         
           def initialize(**args)
@@ -3110,7 +3110,7 @@ module Google
         
           # Value used for this comparison.
           # Corresponds to the JSON property `comparisonValue`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :comparison_value
         
           def initialize(**args)
@@ -3380,12 +3380,12 @@ module Google
       
         # The number of samples used to calculate the result.
         # Corresponds to the JSON property `sampleSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sample_size
       
         # Total size of the sample space from which the samples were selected.
         # Corresponds to the JSON property `sampleSpace`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sample_space
       
         # Link to this page.
@@ -5025,7 +5025,7 @@ module Google
       
         # Account Id to which this upload belongs.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Custom data source Id to which this data import belongs.
@@ -5363,7 +5363,7 @@ module Google
       
         # Default view (profile) ID.
         # Corresponds to the JSON property `defaultProfileId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_profile_id
       
         # Web property ID of the form UA-XXXXX-YY.

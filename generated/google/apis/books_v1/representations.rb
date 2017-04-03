@@ -1202,8 +1202,8 @@ module Google
             property :download_url, as: 'download_url'
             property :encrypted_key, as: 'encrypted_key'
             property :language, as: 'language'
-            property :size, as: 'size'
-            property :version, as: 'version'
+            property :size, :numeric_string => true, as: 'size'
+            property :version, :numeric_string => true, as: 'version'
           end
         end
       end
@@ -1622,8 +1622,8 @@ module Google
           class RentalPeriod
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :end_utc_sec, as: 'endUtcSec'
-              property :start_utc_sec, as: 'startUtcSec'
+              property :end_utc_sec, :numeric_string => true, as: 'endUtcSec'
+              property :start_utc_sec, :numeric_string => true, as: 'startUtcSec'
             end
           end
           

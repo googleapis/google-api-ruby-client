@@ -235,7 +235,7 @@ module Google
         # 000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/
         # hr * 24 hr/day * 365.25 days/year * 10000 years
         # Corresponds to the JSON property `seconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :seconds
       
         def initialize(**args)
@@ -805,12 +805,12 @@ module Google
       
         # Maximum memory that can be allocated to the process in KiB
         # Corresponds to the JSON property `memoryCapInKibibyte`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :memory_cap_in_kibibyte
       
         # Total memory available on the device in KiB
         # Corresponds to the JSON property `memoryTotalInKibibyte`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :memory_total_in_kibibyte
       
         def initialize(**args)
@@ -1967,7 +1967,7 @@ module Google
         # Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be
         # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
         # Corresponds to the JSON property `seconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :seconds
       
         def initialize(**args)

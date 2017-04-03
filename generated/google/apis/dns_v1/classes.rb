@@ -136,7 +136,7 @@ module Google
       
         # Unique identifier for the resource; defined by the server (output only)
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "dns#
@@ -241,7 +241,7 @@ module Google
         # Unique numeric identifier for the resource; defined by the server (output only)
         # .
         # Corresponds to the JSON property `number`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :number
       
         # Limits associated with a Project.

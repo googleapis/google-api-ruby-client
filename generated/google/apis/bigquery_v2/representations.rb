@@ -406,7 +406,7 @@ module Google
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
           property :quote, as: 'quote'
-          property :skip_leading_rows, as: 'skipLeadingRows'
+          property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
         end
       end
       
@@ -415,17 +415,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access, as: 'access', class: Google::Apis::BigqueryV2::Dataset::Access, decorator: Google::Apis::BigqueryV2::Dataset::Access::Representation
       
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
-          property :default_table_expiration_ms, as: 'defaultTableExpirationMs'
+          property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
-          property :last_modified_time, as: 'lastModifiedTime'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :self_link, as: 'selfLink'
         end
@@ -490,12 +490,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compute_ratio_avg, as: 'computeRatioAvg'
           property :compute_ratio_max, as: 'computeRatioMax'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :read_ratio_avg, as: 'readRatioAvg'
           property :read_ratio_max, as: 'readRatioMax'
-          property :records_read, as: 'recordsRead'
-          property :records_written, as: 'recordsWritten'
+          property :records_read, :numeric_string => true, as: 'recordsRead'
+          property :records_written, :numeric_string => true, as: 'recordsWritten'
           property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
       
@@ -545,21 +545,21 @@ module Google
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
-          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
+          property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
-          property :total_bytes_processed, as: 'totalBytesProcessed'
-          property :total_rows, as: 'totalRows'
+          property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
+          property :total_rows, :numeric_string => true, as: 'totalRows'
         end
       end
       
       class GoogleSheetsOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :skip_leading_rows, as: 'skipLeadingRows'
+          property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
         end
       end
       
@@ -660,7 +660,7 @@ module Google
       
           property :flatten_results, as: 'flattenResults'
           property :maximum_billing_tier, as: 'maximumBillingTier'
-          property :maximum_bytes_billed, as: 'maximumBytesBilled'
+          property :maximum_bytes_billed, :numeric_string => true, as: 'maximumBytesBilled'
           property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
           property :priority, as: 'priority'
@@ -734,16 +734,16 @@ module Google
       class JobStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
-          property :end_time, as: 'endTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
+          property :end_time, :numeric_string => true, as: 'endTime'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
       
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobStatistics3, decorator: Google::Apis::BigqueryV2::JobStatistics3::Representation
       
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
-          property :start_time, as: 'startTime'
-          property :total_bytes_processed, as: 'totalBytesProcessed'
+          property :start_time, :numeric_string => true, as: 'startTime'
+          property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
         end
       end
       
@@ -752,7 +752,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
-          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
+          property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
@@ -760,8 +760,8 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :statement_type, as: 'statementType'
-          property :total_bytes_billed, as: 'totalBytesBilled'
-          property :total_bytes_processed, as: 'totalBytesProcessed'
+          property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
+          property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
         end
@@ -770,10 +770,10 @@ module Google
       class JobStatistics3
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :input_file_bytes, as: 'inputFileBytes'
-          property :input_files, as: 'inputFiles'
-          property :output_bytes, as: 'outputBytes'
-          property :output_rows, as: 'outputRows'
+          property :input_file_bytes, :numeric_string => true, as: 'inputFileBytes'
+          property :input_files, :numeric_string => true, as: 'inputFiles'
+          property :output_bytes, :numeric_string => true, as: 'outputBytes'
+          property :output_rows, :numeric_string => true, as: 'outputRows'
         end
       end
       
@@ -812,7 +812,7 @@ module Google
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'
-            property :numeric_id, as: 'numericId'
+            property :numeric_id, :numeric_string => true, as: 'numericId'
             property :project_reference, as: 'projectReference', class: Google::Apis::BigqueryV2::ProjectReference, decorator: Google::Apis::BigqueryV2::ProjectReference::Representation
         
           end
@@ -898,44 +898,44 @@ module Google
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
-          property :num_dml_affected_rows, as: 'numDmlAffectedRows'
+          property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
-          property :total_bytes_processed, as: 'totalBytesProcessed'
-          property :total_rows, as: 'totalRows'
+          property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
+          property :total_rows, :numeric_string => true, as: 'totalRows'
         end
       end
       
       class Streamingbuffer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :estimated_bytes, as: 'estimatedBytes'
-          property :estimated_rows, as: 'estimatedRows'
-          property :oldest_entry_time, as: 'oldestEntryTime'
+          property :estimated_bytes, :numeric_string => true, as: 'estimatedBytes'
+          property :estimated_rows, :numeric_string => true, as: 'estimatedRows'
+          property :oldest_entry_time, :numeric_string => true, as: 'oldestEntryTime'
         end
       end
       
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
-          property :expiration_time, as: 'expirationTime'
+          property :expiration_time, :numeric_string => true, as: 'expirationTime'
           property :external_data_configuration, as: 'externalDataConfiguration', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
       
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
-          property :last_modified_time, as: 'lastModifiedTime'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
-          property :num_bytes, as: 'numBytes'
-          property :num_long_term_bytes, as: 'numLongTermBytes'
-          property :num_rows, as: 'numRows'
+          property :num_bytes, :numeric_string => true, as: 'numBytes'
+          property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
+          property :num_rows, :numeric_string => true, as: 'numRows'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
@@ -1004,7 +1004,7 @@ module Google
           property :page_token, as: 'pageToken'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       
-          property :total_rows, as: 'totalRows'
+          property :total_rows, :numeric_string => true, as: 'totalRows'
         end
       end
       
@@ -1082,7 +1082,7 @@ module Google
       class TimePartitioning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expiration_ms, as: 'expirationMs'
+          property :expiration_ms, :numeric_string => true, as: 'expirationMs'
           property :type, as: 'type'
         end
       end

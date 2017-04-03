@@ -304,7 +304,7 @@ module Google
       
         # The mailbox sequence ID.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Labels added to messages in this history record.
@@ -636,7 +636,7 @@ module Google
       
         # The ID of the mailbox's current history record.
         # Corresponds to the JSON property `historyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :history_id
       
         # Page token to retrieve the next page of results in the list.
@@ -781,7 +781,7 @@ module Google
       
         # The ID of the last history record that modified this message.
         # Corresponds to the JSON property `historyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :history_id
       
         # The immutable ID of the message.
@@ -795,7 +795,7 @@ module Google
         # Date header. However, for API-migrated mail, it can be configured by client to
         # be based on the Date header.
         # Corresponds to the JSON property `internalDate`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :internal_date
       
         # List of IDs of labels applied to this message.
@@ -1060,7 +1060,7 @@ module Google
       
         # The ID of the mailbox's current history record.
         # Corresponds to the JSON property `historyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :history_id
       
         # The total number of messages in the mailbox.
@@ -1185,7 +1185,7 @@ module Google
       
         # When the certificate expires (in milliseconds since epoch).
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # The immutable ID for the SmimeInfo.
@@ -1291,7 +1291,7 @@ module Google
       
         # The ID of the last history record that modified this thread.
         # Corresponds to the JSON property `historyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :history_id
       
         # The unique ID of the thread.
@@ -1338,7 +1338,7 @@ module Google
         # before the end time. If both startTime and endTime are specified, startTime
         # must precede endTime.
         # Corresponds to the JSON property `endTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time
       
         # Response body in HTML format. Gmail will sanitize the HTML before storing it.
@@ -1377,7 +1377,7 @@ module Google
         # after the start time. If both startTime and endTime are specified, startTime
         # must precede endTime.
         # Corresponds to the JSON property `startTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time
       
         def initialize(**args)
@@ -1443,12 +1443,12 @@ module Google
         # When Gmail will stop sending notifications for mailbox updates (epoch millis).
         # Call watch again before this time to renew the watch.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # The ID of the mailbox's current history record.
         # Corresponds to the JSON property `historyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :history_id
       
         def initialize(**args)

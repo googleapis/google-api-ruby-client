@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'taskqueue/v1beta2/projects/')
+          @batch_path = 'batch'
         end
         
         # Get detailed information about a TaskQueue.

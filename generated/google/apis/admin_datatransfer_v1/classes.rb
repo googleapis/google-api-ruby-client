@@ -33,7 +33,7 @@ module Google
       
         # The application's ID.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies the resource as a DataTransfer Application Resource.
@@ -73,7 +73,7 @@ module Google
       
         # The application's ID.
         # Corresponds to the JSON property `applicationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :application_id
       
         # The transfer parameters for the application. These parameters are used to

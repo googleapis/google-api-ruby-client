@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'youtube/analytics/v1/')
+          @batch_path = 'batch'
         end
         
         # Removes an item from a group.

@@ -534,7 +534,7 @@ module Google
       class ExpansionFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_size, as: 'fileSize'
+          property :file_size, :numeric_string => true, as: 'fileSize'
           property :references_version, as: 'referencesVersion'
         end
       end
@@ -555,7 +555,7 @@ module Google
           property :externally_hosted_url, as: 'externallyHostedUrl'
           property :file_sha1_base64, as: 'fileSha1Base64'
           property :file_sha256_base64, as: 'fileSha256Base64'
-          property :file_size, as: 'fileSize'
+          property :file_size, :numeric_string => true, as: 'fileSize'
           property :icon_base64, as: 'iconBase64'
           property :maximum_sdk, as: 'maximumSdk'
           property :minimum_sdk, as: 'minimumSdk'
@@ -776,7 +776,7 @@ module Google
           property :developer_payload, as: 'developerPayload'
           property :kind, as: 'kind'
           property :purchase_state, as: 'purchaseState'
-          property :purchase_time_millis, as: 'purchaseTimeMillis'
+          property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
         end
       end
       
@@ -851,8 +851,8 @@ module Google
       class SubscriptionDeferralInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :desired_expiry_time_millis, as: 'desiredExpiryTimeMillis'
-          property :expected_expiry_time_millis, as: 'expectedExpiryTimeMillis'
+          property :desired_expiry_time_millis, :numeric_string => true, as: 'desiredExpiryTimeMillis'
+          property :expected_expiry_time_millis, :numeric_string => true, as: 'expectedExpiryTimeMillis'
         end
       end
       
@@ -863,13 +863,13 @@ module Google
           property :cancel_reason, as: 'cancelReason'
           property :country_code, as: 'countryCode'
           property :developer_payload, as: 'developerPayload'
-          property :expiry_time_millis, as: 'expiryTimeMillis'
+          property :expiry_time_millis, :numeric_string => true, as: 'expiryTimeMillis'
           property :kind, as: 'kind'
           property :payment_state, as: 'paymentState'
-          property :price_amount_micros, as: 'priceAmountMicros'
+          property :price_amount_micros, :numeric_string => true, as: 'priceAmountMicros'
           property :price_currency_code, as: 'priceCurrencyCode'
-          property :start_time_millis, as: 'startTimeMillis'
-          property :user_cancellation_time_millis, as: 'userCancellationTimeMillis'
+          property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
+          property :user_cancellation_time_millis, :numeric_string => true, as: 'userCancellationTimeMillis'
         end
       end
       
@@ -884,7 +884,7 @@ module Google
       class DeferSubscriptionPurchasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_expiry_time_millis, as: 'newExpiryTimeMillis'
+          property :new_expiry_time_millis, :numeric_string => true, as: 'newExpiryTimeMillis'
         end
       end
       
@@ -900,7 +900,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       
@@ -954,9 +954,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :purchase_time_millis, as: 'purchaseTimeMillis'
+          property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_token, as: 'purchaseToken'
-          property :voided_time_millis, as: 'voidedTimeMillis'
+          property :voided_time_millis, :numeric_string => true, as: 'voidedTimeMillis'
         end
       end
       

@@ -130,7 +130,7 @@ module Google
         # A unique identifier for this backup run. Note that this is unique only within
         # the scope of a particular Cloud SQL instance.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Name of the database instance.
@@ -234,7 +234,7 @@ module Google
       
         # Position (offset) within the binary log file.
         # Corresponds to the JSON property `binLogPosition`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :bin_log_position
       
         # This is always sql#binLogCoordinates.
@@ -400,7 +400,7 @@ module Google
         # google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for
         # details.
         # Corresponds to the JSON property `currentDiskSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :current_disk_size
       
         # The database engine type and version. The databaseVersion can not be changed
@@ -452,7 +452,7 @@ module Google
       
         # The maximum disk size of the instance in bytes.
         # Corresponds to the JSON property `maxDiskSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_disk_size
       
         # Name of the Cloud SQL instance. This does not include the project ID.
@@ -733,7 +733,7 @@ module Google
         # The current settings version of this instance. Request will be rejected if
         # this version doesn't match the current settings version.
         # Corresponds to the JSON property `settingsVersion`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :settings_version
       
         def initialize(**args)
@@ -769,12 +769,12 @@ module Google
       
         # For INTEGER flags, the maximum allowed value.
         # Corresponds to the JSON property `maxValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_value
       
         # For INTEGER flags, the minimum allowed value.
         # Corresponds to the JSON property `minValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_value
       
         # This is the name of the flag. Flag names always use underscores, not hyphens,
@@ -1271,7 +1271,7 @@ module Google
       
         # Interval in milliseconds between replication heartbeats.
         # Corresponds to the JSON property `masterHeartbeatPeriod`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :master_heartbeat_period
       
         # The password for the replication connection.
@@ -1584,7 +1584,7 @@ module Google
       
         # The ID of the backup run to restore from.
         # Corresponds to the JSON property `backupRunId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :backup_run_id
       
         # The ID of the instance that the backup was taken from.
@@ -1655,7 +1655,7 @@ module Google
         # The size of data disk, in GB. The data disk size minimum is 10GB. Applies only
         # to Second Generation instances.
         # Corresponds to the JSON property `dataDiskSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :data_disk_size_gb
       
         # The type of data disk. Only supported for Second Generation instances. The
@@ -1723,7 +1723,7 @@ module Google
         # most recent settingsVersion value for this instance and do not try to update
         # this value.
         # Corresponds to the JSON property `settingsVersion`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :settings_version
       
         # Configuration to increase storage size automatically. The default value is
@@ -1737,7 +1737,7 @@ module Google
         # default value is 0, which specifies that there is no limit. Applies only to
         # Second Generation instances.
         # Corresponds to the JSON property `storageAutoResizeLimit`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :storage_auto_resize_limit
       
         # The tier of service for this instance, for example D1, D2. For more
@@ -1980,12 +1980,12 @@ module Google
       
         # The maximum disk size of this tier in bytes.
         # Corresponds to the JSON property `DiskQuota`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :disk_quota
       
         # The maximum RAM usage of this tier in bytes.
         # Corresponds to the JSON property `RAM`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ram
       
         # This is always sql#tier.

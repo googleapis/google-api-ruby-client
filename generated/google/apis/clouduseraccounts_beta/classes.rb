@@ -66,7 +66,7 @@ module Google
       
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always clouduseraccounts#group for groups.
@@ -392,7 +392,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The time that this operation was requested. This value is in
@@ -458,7 +458,7 @@ module Google
         # [Output Only] The unique target ID, which identifies a specific incarnation of
         # the target resource.
         # Corresponds to the JSON property `targetId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_id
       
         # [Output Only] The URL of the resource that the operation modifies.
@@ -749,7 +749,7 @@ module Google
       
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always clouduseraccounts#user for users.

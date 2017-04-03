@@ -47,6 +47,7 @@ module Google
 
         def initialize
           super('https://cloudtrace.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Sends new traces to Stackdriver Trace or updates existing traces. If the ID
@@ -89,17 +90,6 @@ module Google
         # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
-        # @param [String] order_by
-        #   Field used to sort the returned traces. Optional.
-        #   Can be one of the following:
-        #   *   `trace_id`
-        #   *   `name` (`name` field of root span in the trace)
-        #   *   `duration` (difference between `end_time` and `start_time` fields of
-        #   the root span)
-        #   *   `start` (`start_time` field of the root span)
-        #   Descending order can be specified by appending `desc` to the sort field
-        #   (for example, `name desc`).
-        #   Only one sort field is permitted.
         # @param [String] filter
         #   An optional filter for the request.
         # @param [String] end_time
@@ -118,6 +108,17 @@ module Google
         # @param [String] view
         #   Type of data returned for traces in the list. Optional. Default is
         #   `MINIMAL`.
+        # @param [String] order_by
+        #   Field used to sort the returned traces. Optional.
+        #   Can be one of the following:
+        #   *   `trace_id`
+        #   *   `name` (`name` field of root span in the trace)
+        #   *   `duration` (difference between `end_time` and `start_time` fields of
+        #   the root span)
+        #   *   `start` (`start_time` field of the root span)
+        #   Descending order can be specified by appending `desc` to the sort field
+        #   (for example, `name desc`).
+        #   Only one sort field is permitted.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -135,18 +136,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_traces(project_id, order_by: nil, filter: nil, end_time: nil, page_token: nil, start_time: nil, page_size: nil, view: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_traces(project_id, filter: nil, end_time: nil, page_token: nil, start_time: nil, page_size: nil, view: nil, order_by: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
           command.response_representation = Google::Apis::CloudtraceV1::ListTracesResponse::Representation
           command.response_class = Google::Apis::CloudtraceV1::ListTracesResponse
           command.params['projectId'] = project_id unless project_id.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['view'] = view unless view.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

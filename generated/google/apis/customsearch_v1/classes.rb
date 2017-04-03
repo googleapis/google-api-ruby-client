@@ -381,7 +381,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `totalResults`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_results
       
         def initialize(**args)
@@ -700,7 +700,7 @@ module Google
         
           # 
           # Corresponds to the JSON property `totalResults`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :total_results
         
           def initialize(**args)

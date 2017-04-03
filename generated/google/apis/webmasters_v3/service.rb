@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'webmasters/v3/')
+          @batch_path = 'batch'
         end
         
         # Query your data with filters and parameters that you define. Returns zero or

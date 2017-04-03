@@ -1819,7 +1819,7 @@ module Google
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
           property :name, as: 'name'
@@ -1896,7 +1896,7 @@ module Google
           property :address, as: 'address'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -1990,7 +1990,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_name, as: 'diskName'
-          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_storage_type, as: 'diskStorageType'
           property :disk_type, as: 'diskType'
           property :source_image, as: 'sourceImage'
@@ -2024,7 +2024,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -2157,7 +2157,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -2193,7 +2193,7 @@ module Google
           collection :health_checks, as: 'healthChecks'
           property :iap, as: 'iap', class: Google::Apis::ComputeBeta::BackendServiceIap, decorator: Google::Apis::ComputeBeta::BackendServiceIap::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
@@ -2319,7 +2319,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :plan, as: 'plan'
@@ -2440,7 +2440,7 @@ module Google
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -2450,7 +2450,7 @@ module Google
           property :name, as: 'name'
           property :options, as: 'options'
           property :self_link, as: 'selfLink'
-          property :size_gb, as: 'sizeGb'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -2503,11 +2503,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
-          property :default_disk_size_gb, as: 'defaultDiskSizeGb'
+          property :default_disk_size_gb, :numeric_string => true, as: 'defaultDiskSizeGb'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -2571,7 +2571,7 @@ module Google
       class DisksResizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :size_gb, as: 'sizeGb'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
         end
       end
       
@@ -2614,7 +2614,7 @@ module Google
           property :description, as: 'description'
           collection :destination_ranges, as: 'destinationRanges'
           property :direction, as: 'direction'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -2662,7 +2662,7 @@ module Google
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
@@ -2776,7 +2776,7 @@ module Google
       
           property :https_health_check, as: 'httpsHealthCheck', class: Google::Apis::ComputeBeta::HttpsHealthCheck, decorator: Google::Apis::ComputeBeta::HttpsHealthCheck::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -2838,7 +2838,7 @@ module Google
           property :description, as: 'description'
           property :healthy_threshold, as: 'healthyThreshold'
           property :host, as: 'host'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :port, as: 'port'
@@ -2869,7 +2869,7 @@ module Google
           property :description, as: 'description'
           property :healthy_threshold, as: 'healthyThreshold'
           property :host, as: 'host'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :port, as: 'port'
@@ -2895,16 +2895,16 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :archive_size_bytes, as: 'archiveSizeBytes'
+          property :archive_size_bytes, :numeric_string => true, as: 'archiveSizeBytes'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
           property :description, as: 'description'
-          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :family, as: 'family'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :kind, as: 'kind'
@@ -2956,7 +2956,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -2997,7 +2997,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
@@ -3047,7 +3047,7 @@ module Google
           property :description, as: 'description'
           property :failover_action, as: 'failoverAction'
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :instance_group, as: 'instanceGroup'
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
@@ -3323,7 +3323,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :properties, as: 'properties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
@@ -3455,11 +3455,11 @@ module Google
       
           property :description, as: 'description'
           property :guest_cpus, as: 'guestCpus'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :is_shared_cpu, as: 'isSharedCpu'
           property :kind, as: 'kind'
           property :maximum_persistent_disks, as: 'maximumPersistentDisks'
-          property :maximum_persistent_disks_size_gb, as: 'maximumPersistentDisksSizeGb'
+          property :maximum_persistent_disks_size_gb, :numeric_string => true, as: 'maximumPersistentDisksSizeGb'
           property :memory_mb, as: 'memoryMb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -3523,7 +3523,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_action, as: 'currentAction'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt::Representation
@@ -3600,7 +3600,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :gateway_i_pv4, as: 'gatewayIPv4'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeBeta::NetworkPeering, decorator: Google::Apis::ComputeBeta::NetworkPeering::Representation
@@ -3675,7 +3675,7 @@ module Google
       
           property :http_error_message, as: 'httpErrorMessage'
           property :http_error_status_code, as: 'httpErrorStatusCode'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -3686,7 +3686,7 @@ module Google
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
-          property :target_id, as: 'targetId'
+          property :target_id, :numeric_string => true, as: 'targetId'
           property :target_link, as: 'targetLink'
           property :user, as: 'user'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeBeta::Operation::Warning, decorator: Google::Apis::ComputeBeta::Operation::Warning::Representation
@@ -3825,7 +3825,7 @@ module Google
           property :default_service_account, as: 'defaultServiceAccount'
           property :description, as: 'description'
           collection :enabled_features, as: 'enabledFeatures'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeBeta::Quota, decorator: Google::Apis::ComputeBeta::Quota::Representation
@@ -3886,7 +3886,7 @@ module Google
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeBeta::Quota, decorator: Google::Apis::ComputeBeta::Quota::Representation
@@ -4029,7 +4029,7 @@ module Google
       class ResourceCommitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :amount, as: 'amount'
+          property :amount, :numeric_string => true, as: 'amount'
           property :type, as: 'type'
         end
       end
@@ -4047,7 +4047,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dest_range, as: 'destRange'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -4104,7 +4104,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeBeta::RouterInterface, decorator: Google::Apis::ComputeBeta::RouterInterface::Representation
       
           property :kind, as: 'kind'
@@ -4282,9 +4282,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contents, as: 'contents'
           property :kind, as: 'kind'
-          property :next, as: 'next'
+          property :next, :numeric_string => true, as: 'next'
           property :self_link, as: 'selfLink'
-          property :start, as: 'start'
+          property :start, :numeric_string => true, as: 'start'
         end
       end
       
@@ -4301,8 +4301,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :disk_size_gb, as: 'diskSizeGb'
-          property :id, as: 'id'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -4316,7 +4316,7 @@ module Google
       
           property :source_disk_id, as: 'sourceDiskId'
           property :status, as: 'status'
-          property :storage_bytes, as: 'storageBytes'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
         end
       end
@@ -4339,7 +4339,7 @@ module Google
           property :certificate, as: 'certificate'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
@@ -4365,7 +4365,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :gateway_address, as: 'gatewayAddress'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -4476,7 +4476,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -4508,7 +4508,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -4534,7 +4534,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -4604,7 +4604,7 @@ module Google
           property :description, as: 'description'
           property :failover_ratio, as: 'failoverRatio'
           collection :health_checks, as: 'healthChecks'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           collection :instances, as: 'instances'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -4740,7 +4740,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :proxy_header, as: 'proxyHeader'
@@ -4781,7 +4781,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :proxy_header, as: 'proxyHeader'
@@ -4808,7 +4808,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           collection :forwarding_rules, as: 'forwardingRules'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -4914,7 +4914,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :host_rules, as: 'hostRules', class: Google::Apis::ComputeBeta::HostRule, decorator: Google::Apis::ComputeBeta::HostRule::Representation
       
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :path_matchers, as: 'pathMatchers', class: Google::Apis::ComputeBeta::PathMatcher, decorator: Google::Apis::ComputeBeta::PathMatcher::Representation
@@ -4995,7 +4995,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :detailed_status, as: 'detailedStatus'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :ike_version, as: 'ikeVersion'
           property :kind, as: 'kind'
           collection :local_traffic_selector, as: 'localTrafficSelector'
@@ -5091,7 +5091,7 @@ module Google
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
           property :description, as: 'description'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'

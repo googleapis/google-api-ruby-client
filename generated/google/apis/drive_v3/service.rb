@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'drive/v3/')
+          @batch_path = 'batch'
         end
         
         # Gets information about the user, the user's Drive, and system capabilities.

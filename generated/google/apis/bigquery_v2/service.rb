@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'bigquery/v2/')
+          @batch_path = 'batch'
         end
         
         # Deletes the dataset specified by the datasetId value. Before you can delete a
@@ -398,7 +399,7 @@ module Google
         #   Maximum number of results to read
         # @param [String] page_token
         #   Page token, returned by a previous call, to request the next page of results
-        # @param [String] start_index
+        # @param [Fixnum] start_index
         #   Zero-based index of the starting row
         # @param [Fixnum] timeout_ms
         #   How long to wait for the query to complete, in milliseconds, before returning.
@@ -679,7 +680,7 @@ module Google
         # @param [String] selected_fields
         #   List of fields to return (comma-separated). If unspecified, all fields are
         #   returned
-        # @param [String] start_index
+        # @param [Fixnum] start_index
         #   Zero-based index of the starting row to read
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

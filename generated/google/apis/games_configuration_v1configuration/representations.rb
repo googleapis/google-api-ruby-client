@@ -176,8 +176,8 @@ module Google
           property :kind, as: 'kind'
           property :published, as: 'published', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail::Representation
       
-          property :score_max, as: 'scoreMax'
-          property :score_min, as: 'scoreMin'
+          property :score_max, :numeric_string => true, as: 'scoreMax'
+          property :score_min, :numeric_string => true, as: 'scoreMin'
           property :score_order, as: 'scoreOrder'
           property :token, as: 'token'
         end

@@ -59,12 +59,12 @@ module Google
       
           collection :countries, as: 'countries', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
       
-          property :long_url_clicks, as: 'longUrlClicks'
+          property :long_url_clicks, :numeric_string => true, as: 'longUrlClicks'
           collection :platforms, as: 'platforms', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
       
           collection :referrers, as: 'referrers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
       
-          property :short_url_clicks, as: 'shortUrlClicks'
+          property :short_url_clicks, :numeric_string => true, as: 'shortUrlClicks'
         end
       end
       
@@ -87,7 +87,7 @@ module Google
       class StringCount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :id, as: 'id'
         end
       end

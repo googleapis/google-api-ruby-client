@@ -192,12 +192,12 @@ module Google
           
             # Integral value of the parameter.
             # Corresponds to the JSON property `intValue`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :int_value
           
             # Multi-int value of the parameter.
             # Corresponds to the JSON property `multiIntValue`
-            # @return [Array<String>]
+            # @return [Array<Fixnum>]
             attr_accessor :multi_int_value
           
             # Multi-string value of the parameter.
@@ -252,7 +252,7 @@ module Google
         
           # Unique qualifier if multiple events have the same time.
           # Corresponds to the JSON property `uniqueQualifier`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :unique_qualifier
         
           def initialize(**args)
@@ -281,7 +281,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.
@@ -443,7 +443,7 @@ module Google
         
           # Integral value of the parameter.
           # Corresponds to the JSON property `intValue`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :int_value
         
           # Nested message value of the parameter.

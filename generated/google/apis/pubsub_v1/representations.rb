@@ -22,6 +22,18 @@ module Google
   module Apis
     module PubsubV1
       
+      class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModifyAckDeadlineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,16 +148,21 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class Topic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
       end
       
-      class Topic
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+          collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1::Binding, decorator: Google::Apis::PubsubV1::Binding::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :etag, :base64 => true, as: 'etag'
+        end
       end
       
       class ModifyAckDeadlineRequest
@@ -175,10 +192,10 @@ module Google
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_time, as: 'publishTime'
           property :data, :base64 => true, as: 'data'
           hash :attributes, as: 'attributes'
           property :message_id, as: 'messageId'
-          property :publish_time, as: 'publishTime'
         end
       end
       
@@ -299,23 +316,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-          collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1::Binding, decorator: Google::Apis::PubsubV1::Binding::Representation
-      
-        end
-      end
-      
-      class Topic
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
         end
       end
     end

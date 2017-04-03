@@ -333,19 +333,19 @@ module Google
           property :is_current_app_installed, as: 'isCurrentAppInstalled'
           property :kind, as: 'kind'
           property :language_code, as: 'languageCode'
-          property :largest_change_id, as: 'largestChangeId'
+          property :largest_change_id, :numeric_string => true, as: 'largestChangeId'
           collection :max_upload_sizes, as: 'maxUploadSizes', class: Google::Apis::DriveV2::About::MaxUploadSize, decorator: Google::Apis::DriveV2::About::MaxUploadSize::Representation
       
           property :name, as: 'name'
           property :permission_id, as: 'permissionId'
           collection :quota_bytes_by_service, as: 'quotaBytesByService', class: Google::Apis::DriveV2::About::QuotaBytesByService, decorator: Google::Apis::DriveV2::About::QuotaBytesByService::Representation
       
-          property :quota_bytes_total, as: 'quotaBytesTotal'
-          property :quota_bytes_used, as: 'quotaBytesUsed'
-          property :quota_bytes_used_aggregate, as: 'quotaBytesUsedAggregate'
-          property :quota_bytes_used_in_trash, as: 'quotaBytesUsedInTrash'
+          property :quota_bytes_total, :numeric_string => true, as: 'quotaBytesTotal'
+          property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
+          property :quota_bytes_used_aggregate, :numeric_string => true, as: 'quotaBytesUsedAggregate'
+          property :quota_bytes_used_in_trash, :numeric_string => true, as: 'quotaBytesUsedInTrash'
           property :quota_type, as: 'quotaType'
-          property :remaining_change_ids, as: 'remainingChangeIds'
+          property :remaining_change_ids, :numeric_string => true, as: 'remainingChangeIds'
           property :root_folder_id, as: 'rootFolderId'
           property :self_link, as: 'selfLink'
           collection :team_drive_themes, as: 'teamDriveThemes', class: Google::Apis::DriveV2::About::TeamDriveTheme, decorator: Google::Apis::DriveV2::About::TeamDriveTheme::Representation
@@ -398,7 +398,7 @@ module Google
         class MaxUploadSize
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :size, as: 'size'
+            property :size, :numeric_string => true, as: 'size'
             property :type, as: 'type'
           end
         end
@@ -406,7 +406,7 @@ module Google
         class QuotaBytesByService
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :bytes_used, as: 'bytesUsed'
+            property :bytes_used, :numeric_string => true, as: 'bytesUsed'
             property :service_name, as: 'serviceName'
           end
         end
@@ -480,7 +480,7 @@ module Google
           property :file, as: 'file', class: Google::Apis::DriveV2::File, decorator: Google::Apis::DriveV2::File::Representation
       
           property :file_id, as: 'fileId'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :modification_date, as: 'modificationDate', type: DateTime
       
@@ -499,7 +499,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DriveV2::Change, decorator: Google::Apis::DriveV2::Change::Representation
       
           property :kind, as: 'kind'
-          property :largest_change_id, as: 'largestChangeId'
+          property :largest_change_id, :numeric_string => true, as: 'largestChangeId'
           property :new_start_page_token, as: 'newStartPageToken'
           property :next_link, as: 'nextLink'
           property :next_page_token, as: 'nextPageToken'
@@ -511,7 +511,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -643,7 +643,7 @@ module Google
           property :explicitly_trashed, as: 'explicitlyTrashed'
           hash :export_links, as: 'exportLinks'
           property :file_extension, as: 'fileExtension'
-          property :file_size, as: 'fileSize'
+          property :file_size, :numeric_string => true, as: 'fileSize'
           property :folder_color_rgb, as: 'folderColorRgb'
           property :full_file_extension, as: 'fullFileExtension'
           property :has_augmented_permissions, as: 'hasAugmentedPermissions'
@@ -684,7 +684,7 @@ module Google
       
           collection :properties, as: 'properties', class: Google::Apis::DriveV2::Property, decorator: Google::Apis::DriveV2::Property::Representation
       
-          property :quota_bytes_used, as: 'quotaBytesUsed'
+          property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
           property :self_link, as: 'selfLink'
           property :shareable, as: 'shareable'
           property :shared, as: 'shared'
@@ -697,7 +697,7 @@ module Google
           property :thumbnail, as: 'thumbnail', class: Google::Apis::DriveV2::File::Thumbnail, decorator: Google::Apis::DriveV2::File::Thumbnail::Representation
       
           property :thumbnail_link, as: 'thumbnailLink'
-          property :thumbnail_version, as: 'thumbnailVersion'
+          property :thumbnail_version, :numeric_string => true, as: 'thumbnailVersion'
           property :title, as: 'title'
           property :trashed_date, as: 'trashedDate', type: DateTime
       
@@ -705,7 +705,7 @@ module Google
       
           property :user_permission, as: 'userPermission', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::Permission::Representation
       
-          property :version, as: 'version'
+          property :version, :numeric_string => true, as: 'version'
           property :video_media_metadata, as: 'videoMediaMetadata', class: Google::Apis::DriveV2::File::VideoMediaMetadata, decorator: Google::Apis::DriveV2::File::VideoMediaMetadata::Representation
       
           property :web_content_link, as: 'webContentLink'
@@ -802,7 +802,7 @@ module Google
         class VideoMediaMetadata
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :duration_millis, as: 'durationMillis'
+            property :duration_millis, :numeric_string => true, as: 'durationMillis'
             property :height, as: 'height'
             property :width, as: 'width'
           end
@@ -938,7 +938,7 @@ module Google
           property :download_url, as: 'downloadUrl'
           property :etag, as: 'etag'
           hash :export_links, as: 'exportLinks'
-          property :file_size, as: 'fileSize'
+          property :file_size, :numeric_string => true, as: 'fileSize'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :last_modifying_user, as: 'lastModifyingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation

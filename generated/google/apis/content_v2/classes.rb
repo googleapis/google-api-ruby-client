@@ -43,7 +43,7 @@ module Google
       
         # Merchant Center account ID.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -102,7 +102,7 @@ module Google
       
         # Customer ID of the AdWords account.
         # Corresponds to the JSON property `adwordsId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :adwords_id
       
         # Status of the link between this Merchant Center account and the AdWords
@@ -136,12 +136,12 @@ module Google
         # The aggregator ID, set for aggregators and subaccounts (in that case, it
         # represents the aggregator of the subaccount).
         # Corresponds to the JSON property `aggregatorId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :aggregator_id
       
         # The merchant account ID, set for individual accounts and subaccounts.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         def initialize(**args)
@@ -152,470 +152,6 @@ module Google
         def update!(**args)
           @aggregator_id = args[:aggregator_id] if args.key?(:aggregator_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-        end
-      end
-      
-      # The shipping settings of a merchant account.
-      class AccountShipping
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the account to which these account shipping settings belong.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        # Carrier-based shipping calculations.
-        # Corresponds to the JSON property `carrierRates`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingCarrierRate>]
-        attr_accessor :carrier_rates
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountShipping".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Location groups for shipping.
-        # Corresponds to the JSON property `locationGroups`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingLocationGroup>]
-        attr_accessor :location_groups
-      
-        # Rate tables definitions.
-        # Corresponds to the JSON property `rateTables`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingRateTable>]
-        attr_accessor :rate_tables
-      
-        # Shipping services describing shipping fees calculation.
-        # Corresponds to the JSON property `services`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingShippingService>]
-        attr_accessor :services
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @carrier_rates = args[:carrier_rates] if args.key?(:carrier_rates)
-          @kind = args[:kind] if args.key?(:kind)
-          @location_groups = args[:location_groups] if args.key?(:location_groups)
-          @rate_tables = args[:rate_tables] if args.key?(:rate_tables)
-          @services = args[:services] if args.key?(:services)
-        end
-      end
-      
-      # A carrier-calculated shipping rate.
-      class AccountShippingCarrierRate
-        include Google::Apis::Core::Hashable
-      
-        # The carrier that is responsible for the shipping, such as "UPS", "FedEx", or "
-        # USPS".
-        # Corresponds to the JSON property `carrier`
-        # @return [String]
-        attr_accessor :carrier
-      
-        # The carrier service, such as "Ground" or "2Day".
-        # Corresponds to the JSON property `carrierService`
-        # @return [String]
-        attr_accessor :carrier_service
-      
-        # Additive shipping rate modifier.
-        # Corresponds to the JSON property `modifierFlatRate`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :modifier_flat_rate
-      
-        # Multiplicative shipping rate modifier in percent. Represented as a floating
-        # point number without the percentage character.
-        # Corresponds to the JSON property `modifierPercent`
-        # @return [String]
-        attr_accessor :modifier_percent
-      
-        # The name of the carrier rate.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The sale country for which this carrier rate is valid, represented as a CLDR
-        # territory code.
-        # Corresponds to the JSON property `saleCountry`
-        # @return [String]
-        attr_accessor :sale_country
-      
-        # Shipping origin represented as a postal code.
-        # Corresponds to the JSON property `shippingOrigin`
-        # @return [String]
-        attr_accessor :shipping_origin
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @carrier = args[:carrier] if args.key?(:carrier)
-          @carrier_service = args[:carrier_service] if args.key?(:carrier_service)
-          @modifier_flat_rate = args[:modifier_flat_rate] if args.key?(:modifier_flat_rate)
-          @modifier_percent = args[:modifier_percent] if args.key?(:modifier_percent)
-          @name = args[:name] if args.key?(:name)
-          @sale_country = args[:sale_country] if args.key?(:sale_country)
-          @shipping_origin = args[:shipping_origin] if args.key?(:shipping_origin)
-        end
-      end
-      
-      # 
-      class AccountShippingCondition
-        include Google::Apis::Core::Hashable
-      
-        # Delivery location in terms of a location group name. A location group with
-        # this name must be specified among location groups.
-        # Corresponds to the JSON property `deliveryLocationGroup`
-        # @return [String]
-        attr_accessor :delivery_location_group
-      
-        # Delivery location in terms of a location ID. Can be used to represent
-        # administrative areas, smaller country subdivisions, or cities.
-        # Corresponds to the JSON property `deliveryLocationId`
-        # @return [String]
-        attr_accessor :delivery_location_id
-      
-        # Delivery location in terms of a postal code.
-        # Corresponds to the JSON property `deliveryPostalCode`
-        # @return [String]
-        attr_accessor :delivery_postal_code
-      
-        # A postal code range, that can be either:
-        # - A range of postal codes (e.g., start=12340, end=12359)
-        # - A range of postal codes prefixes (e.g., start=1234* end=1235*). Prefixes
-        # must be of the same length (e.g., start=12* end=2* is invalid).
-        # Corresponds to the JSON property `deliveryPostalCodeRange`
-        # @return [Google::Apis::ContentV2::AccountShippingPostalCodeRange]
-        attr_accessor :delivery_postal_code_range
-      
-        # Maximum shipping price. Forms an interval between the maximum of smaller
-        # prices (exclusive) and this price (inclusive).
-        # Corresponds to the JSON property `priceMax`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :price_max
-      
-        # Shipping label of the product. The products with the label are matched.
-        # Corresponds to the JSON property `shippingLabel`
-        # @return [String]
-        attr_accessor :shipping_label
-      
-        # Maximum shipping weight. Forms an interval between the maximum of smaller
-        # weight (exclusive) and this weight (inclusive).
-        # Corresponds to the JSON property `weightMax`
-        # @return [Google::Apis::ContentV2::Weight]
-        attr_accessor :weight_max
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delivery_location_group = args[:delivery_location_group] if args.key?(:delivery_location_group)
-          @delivery_location_id = args[:delivery_location_id] if args.key?(:delivery_location_id)
-          @delivery_postal_code = args[:delivery_postal_code] if args.key?(:delivery_postal_code)
-          @delivery_postal_code_range = args[:delivery_postal_code_range] if args.key?(:delivery_postal_code_range)
-          @price_max = args[:price_max] if args.key?(:price_max)
-          @shipping_label = args[:shipping_label] if args.key?(:shipping_label)
-          @weight_max = args[:weight_max] if args.key?(:weight_max)
-        end
-      end
-      
-      # A user-defined locations group in a given country. All the locations of the
-      # group must be of the same type.
-      class AccountShippingLocationGroup
-        include Google::Apis::Core::Hashable
-      
-        # The CLDR territory code of the country in which this location group is.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # A location ID (also called criteria ID) representing administrative areas,
-        # smaller country subdivisions (counties), or cities.
-        # Corresponds to the JSON property `locationIds`
-        # @return [Array<String>]
-        attr_accessor :location_ids
-      
-        # The name of the location group.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # A postal code range representing a city or a set of cities.
-        # Corresponds to the JSON property `postalCodeRanges`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingPostalCodeRange>]
-        attr_accessor :postal_code_ranges
-      
-        # A postal code representing a city or a set of cities.
-        # - A single postal code (e.g., 12345)
-        # - A postal code prefix followed by a star (e.g., 1234*)
-        # Corresponds to the JSON property `postalCodes`
-        # @return [Array<String>]
-        attr_accessor :postal_codes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country = args[:country] if args.key?(:country)
-          @location_ids = args[:location_ids] if args.key?(:location_ids)
-          @name = args[:name] if args.key?(:name)
-          @postal_code_ranges = args[:postal_code_ranges] if args.key?(:postal_code_ranges)
-          @postal_codes = args[:postal_codes] if args.key?(:postal_codes)
-        end
-      end
-      
-      # A postal code range, that can be either:
-      # - A range of postal codes (e.g., start=12340, end=12359)
-      # - A range of postal codes prefixes (e.g., start=1234* end=1235*). Prefixes
-      # must be of the same length (e.g., start=12* end=2* is invalid).
-      class AccountShippingPostalCodeRange
-        include Google::Apis::Core::Hashable
-      
-        # The last (inclusive) postal code or prefix of the range.
-        # Corresponds to the JSON property `end`
-        # @return [String]
-        attr_accessor :end
-      
-        # The first (inclusive) postal code or prefix of the range.
-        # Corresponds to the JSON property `start`
-        # @return [String]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @start = args[:start] if args.key?(:start)
-        end
-      end
-      
-      # A single or bi-dimensional table of shipping rates. Each dimension is defined
-      # in terms of consecutive price/weight ranges, delivery locations, or shipping
-      # labels.
-      class AccountShippingRateTable
-        include Google::Apis::Core::Hashable
-      
-        # One-dimensional table cells define one condition along the same dimension. Bi-
-        # dimensional table cells use two dimensions with respectively M and N distinct
-        # values and must contain exactly M * N cells with distinct conditions (for each
-        # possible value pairs).
-        # Corresponds to the JSON property `content`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingRateTableCell>]
-        attr_accessor :content
-      
-        # The name of the rate table.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The sale country for which this table is valid, represented as a CLDR
-        # territory code.
-        # Corresponds to the JSON property `saleCountry`
-        # @return [String]
-        attr_accessor :sale_country
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-          @name = args[:name] if args.key?(:name)
-          @sale_country = args[:sale_country] if args.key?(:sale_country)
-        end
-      end
-      
-      # 
-      class AccountShippingRateTableCell
-        include Google::Apis::Core::Hashable
-      
-        # Conditions for which the cell is valid. All cells in a table must use the same
-        # dimension or pair of dimensions among price, weight, shipping label or
-        # delivery location. If no condition is specified, the cell acts as a catch-all
-        # and matches all the elements that are not matched by other cells in this
-        # dimension.
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::ContentV2::AccountShippingCondition]
-        attr_accessor :condition
-      
-        # The rate applicable if the cell conditions are matched.
-        # Corresponds to the JSON property `rate`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
-          @rate = args[:rate] if args.key?(:rate)
-        end
-      end
-      
-      # Shipping services provided in a country.
-      class AccountShippingShippingService
-        include Google::Apis::Core::Hashable
-      
-        # Whether the shipping service is available.
-        # Corresponds to the JSON property `active`
-        # @return [Boolean]
-        attr_accessor :active
-        alias_method :active?, :active
-      
-        # Shipping cost calculation method. Exactly one of the field is set.
-        # Corresponds to the JSON property `calculationMethod`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod]
-        attr_accessor :calculation_method
-      
-        # Building block of the cost calculation decision tree.
-        # - The tree root should have no condition and no calculation method.
-        # - All the children must have a condition on the same dimension. The first
-        # child matching a condition is entered, therefore, price and weight conditions
-        # form contiguous intervals.
-        # - The last child of an element must have no condition and matches all elements
-        # not previously matched.
-        # - Children and calculation method are mutually exclusive, and exactly one of
-        # them must be defined; the root must only have children.
-        # Corresponds to the JSON property `costRuleTree`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCostRule]
-        attr_accessor :cost_rule_tree
-      
-        # The maximum number of days in transit. Must be a value between 0 and 250
-        # included. A value of 0 means same day delivery.
-        # Corresponds to the JSON property `maxDaysInTransit`
-        # @return [String]
-        attr_accessor :max_days_in_transit
-      
-        # The minimum number of days in transit. Must be a value between 0 and
-        # maxDaysIntransit included. A value of 0 means same day delivery.
-        # Corresponds to the JSON property `minDaysInTransit`
-        # @return [String]
-        attr_accessor :min_days_in_transit
-      
-        # The name of this shipping service.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The CLDR territory code of the sale country for which this service can be used.
-        # Corresponds to the JSON property `saleCountry`
-        # @return [String]
-        attr_accessor :sale_country
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @active = args[:active] if args.key?(:active)
-          @calculation_method = args[:calculation_method] if args.key?(:calculation_method)
-          @cost_rule_tree = args[:cost_rule_tree] if args.key?(:cost_rule_tree)
-          @max_days_in_transit = args[:max_days_in_transit] if args.key?(:max_days_in_transit)
-          @min_days_in_transit = args[:min_days_in_transit] if args.key?(:min_days_in_transit)
-          @name = args[:name] if args.key?(:name)
-          @sale_country = args[:sale_country] if args.key?(:sale_country)
-        end
-      end
-      
-      # Shipping cost calculation method. Exactly one of the field is set.
-      class AccountShippingShippingServiceCalculationMethod
-        include Google::Apis::Core::Hashable
-      
-        # Name of the carrier rate to use for the calculation.
-        # Corresponds to the JSON property `carrierRate`
-        # @return [String]
-        attr_accessor :carrier_rate
-      
-        # Delivery is excluded. Valid only within cost rules tree.
-        # Corresponds to the JSON property `excluded`
-        # @return [Boolean]
-        attr_accessor :excluded
-        alias_method :excluded?, :excluded
-      
-        # Fixed price shipping, represented as a floating point number associated with a
-        # currency.
-        # Corresponds to the JSON property `flatRate`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :flat_rate
-      
-        # Percentage of the price, represented as a floating point number without the
-        # percentage character.
-        # Corresponds to the JSON property `percentageRate`
-        # @return [String]
-        attr_accessor :percentage_rate
-      
-        # Name of the rate table to use for the calculation.
-        # Corresponds to the JSON property `rateTable`
-        # @return [String]
-        attr_accessor :rate_table
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @carrier_rate = args[:carrier_rate] if args.key?(:carrier_rate)
-          @excluded = args[:excluded] if args.key?(:excluded)
-          @flat_rate = args[:flat_rate] if args.key?(:flat_rate)
-          @percentage_rate = args[:percentage_rate] if args.key?(:percentage_rate)
-          @rate_table = args[:rate_table] if args.key?(:rate_table)
-        end
-      end
-      
-      # Building block of the cost calculation decision tree.
-      # - The tree root should have no condition and no calculation method.
-      # - All the children must have a condition on the same dimension. The first
-      # child matching a condition is entered, therefore, price and weight conditions
-      # form contiguous intervals.
-      # - The last child of an element must have no condition and matches all elements
-      # not previously matched.
-      # - Children and calculation method are mutually exclusive, and exactly one of
-      # them must be defined; the root must only have children.
-      class AccountShippingShippingServiceCostRule
-        include Google::Apis::Core::Hashable
-      
-        # Shipping cost calculation method. Exactly one of the field is set.
-        # Corresponds to the JSON property `calculationMethod`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod]
-        attr_accessor :calculation_method
-      
-        # Subsequent rules to be applied, only for inner nodes. The last child must not
-        # specify a condition and acts as a catch-all.
-        # Corresponds to the JSON property `children`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingShippingServiceCostRule>]
-        attr_accessor :children
-      
-        # Condition for this rule to be applicable. If no condition is specified, the
-        # rule acts as a catch-all.
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::ContentV2::AccountShippingCondition]
-        attr_accessor :condition
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @calculation_method = args[:calculation_method] if args.key?(:calculation_method)
-          @children = args[:children] if args.key?(:children)
-          @condition = args[:condition] if args.key?(:condition)
         end
       end
       
@@ -775,7 +311,7 @@ module Google
       
         # The ID of the account to which these account tax settings belong.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -814,7 +350,7 @@ module Google
         # State (or province) is which the tax is applicable, described by its location
         # id (also called criteria id).
         # Corresponds to the JSON property `locationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :location_id
       
         # Explicit tax rate in percent, represented as a floating point number without
@@ -936,7 +472,7 @@ module Google
         # The ID of the account to get or delete. Only defined if the method is get or
         # delete.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # An entry ID, unique within the batch request.
@@ -946,7 +482,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -1065,164 +601,6 @@ module Google
       end
       
       # 
-      class BatchAccountShippingRequest
-        include Google::Apis::Core::Hashable
-      
-        # The request entries to be processed in the batch.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingBatchRequestEntry>]
-        attr_accessor :entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
-      # A batch entry encoding a single non-batch accountshipping request.
-      class AccountShippingBatchRequestEntry
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the account for which to get/update account shipping settings.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
-        # The shipping settings of a merchant account.
-        # Corresponds to the JSON property `accountShipping`
-        # @return [Google::Apis::ContentV2::AccountShipping]
-        attr_accessor :account_shipping
-      
-        # An entry ID, unique within the batch request.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # The ID of the managing account.
-        # Corresponds to the JSON property `merchantId`
-        # @return [String]
-        attr_accessor :merchant_id
-      
-        # 
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :request_method
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @account_shipping = args[:account_shipping] if args.key?(:account_shipping)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
-        end
-      end
-      
-      # 
-      class BatchAccountShippingResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of the execution of the batch requests.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingBatchResponseEntry>]
-        attr_accessor :entries
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountshippingCustomBatchResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # A batch entry encoding a single non-batch accountshipping response.
-      class AccountShippingBatchResponseEntry
-        include Google::Apis::Core::Hashable
-      
-        # The shipping settings of a merchant account.
-        # Corresponds to the JSON property `accountShipping`
-        # @return [Google::Apis::ContentV2::AccountShipping]
-        attr_accessor :account_shipping
-      
-        # The ID of the request entry this entry responds to.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # A list of errors returned by a failed batch entry.
-        # Corresponds to the JSON property `errors`
-        # @return [Google::Apis::ContentV2::Errors]
-        attr_accessor :errors
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountshippingCustomBatchResponseEntry".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_shipping = args[:account_shipping] if args.key?(:account_shipping)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @errors = args[:errors] if args.key?(:errors)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class ListAccountShippingResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountshippingListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The token for the retrieval of the next page of account shipping settings.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # 
-        # Corresponds to the JSON property `resources`
-        # @return [Array<Google::Apis::ContentV2::AccountShipping>]
-        attr_accessor :resources
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @resources = args[:resources] if args.key?(:resources)
-        end
-      end
-      
-      # 
       class BatchAccountStatusesRequest
         include Google::Apis::Core::Hashable
       
@@ -1247,7 +625,7 @@ module Google
       
         # The ID of the (sub-)account whose status to get.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # An entry ID, unique within the batch request.
@@ -1257,7 +635,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # The method (get).
@@ -1393,7 +771,7 @@ module Google
       
         # The ID of the account for which to get/update account tax settings.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # The tax settings of a merchant account.
@@ -1408,7 +786,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -1655,7 +1033,7 @@ module Google
       
         # The ID of the data feed.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # The list of intended destinations (corresponds to checked check boxes in
@@ -1810,7 +1188,7 @@ module Google
       
         # The ID of the feed for which the status is reported.
         # Corresponds to the JSON property `datafeedId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :datafeed_id
       
         # The list of errors occurring in the feed.
@@ -1820,12 +1198,12 @@ module Google
       
         # The number of items in the feed that were processed.
         # Corresponds to the JSON property `itemsTotal`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :items_total
       
         # The number of items in the feed that were valid.
         # Corresponds to the JSON property `itemsValid`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :items_valid
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1877,7 +1255,7 @@ module Google
       
         # The number of occurrences of the error in the feed.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # A list of example occurrences of the error, grouped by product.
@@ -1914,7 +1292,7 @@ module Google
       
         # Line number in the data feed where the example is found.
         # Corresponds to the JSON property `lineNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :line_number
       
         # The problematic value.
@@ -1969,12 +1347,12 @@ module Google
       
         # The ID of the data feed to get or delete.
         # Corresponds to the JSON property `datafeedId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :datafeed_id
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -2115,12 +1493,12 @@ module Google
       
         # The ID of the data feed to get or delete.
         # Corresponds to the JSON property `datafeedId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :datafeed_id
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -2389,7 +1767,7 @@ module Google
       
         # The number of installments the buyer has to pay.
         # Corresponds to the JSON property `months`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :months
       
         def initialize(**args)
@@ -2519,7 +1897,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # The ID of the product for which to update price and availability.
@@ -2761,7 +2139,7 @@ module Google
       
         # The retailer's loyalty points in absolute value.
         # Corresponds to the JSON property `pointsValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :points_value
       
         # The ratio of a point when converted to currency. Google assumes currency based
@@ -2825,7 +2203,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # Merchant-provided id of the order.
@@ -4038,7 +3416,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # The merchant order id. Required for updateMerchantOrderId and
@@ -5135,7 +4513,7 @@ module Google
       
         # The number of identical products in a merchant-defined multipack.
         # Corresponds to the JSON property `multipack`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :multipack
       
         # An identifier of the item. Leading and trailing whitespaces are stripped and
@@ -5184,7 +4562,7 @@ module Google
       
         # The quantity of the product that is reserved for sell-on-google ads.
         # Corresponds to the JSON property `sellOnGoogleQuantity`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sell_on_google_quantity
       
         # Shipping rules.
@@ -5487,7 +4865,7 @@ module Google
         # The numeric id of a location that the shipping rate applies to as defined in
         # the AdWords API.
         # Corresponds to the JSON property `locationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :location_id
       
         # The postal code range that the shipping rate applies to, represented by a
@@ -5755,7 +5133,7 @@ module Google
         # The numeric id of a location that the tax rate applies to as defined in the
         # AdWords API.
         # Corresponds to the JSON property `locationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :location_id
       
         # The postal code range that the tax rate applies to, represented by a ZIP code,
@@ -5807,7 +5185,7 @@ module Google
       
         # The denominator of the unit price.
         # Corresponds to the JSON property `value`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :value
       
         def initialize(**args)
@@ -5876,7 +5254,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -6035,7 +5413,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 
@@ -6290,7 +5668,7 @@ module Google
         # The ID of the account to which these account shipping settings belong. Ignored
         # upon update, always present in get request responses.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # A list of postal code groups that can be referred to in services. Optional.
@@ -6334,13 +5712,13 @@ module Google
         end
       end
       
-      # A batch entry encoding a single non-batch accountshipping request.
+      # A batch entry encoding a single non-batch shippingsettings request.
       class ShippingsettingsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the account for which to get/update account shipping settings.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # An entry ID, unique within the batch request.
@@ -6350,7 +5728,7 @@ module Google
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :merchant_id
       
         # 

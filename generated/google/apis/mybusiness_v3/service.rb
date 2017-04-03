@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://mybusiness.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Lists all of the accounts for the authenticated user. This includes all

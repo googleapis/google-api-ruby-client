@@ -40,7 +40,7 @@ module Google
       
         # Number of clicks on all goo.gl short URLs pointing to this long URL.
         # Corresponds to the JSON property `longUrlClicks`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :long_url_clicks
       
         # Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts.
@@ -57,7 +57,7 @@ module Google
       
         # Number of clicks on this short URL.
         # Corresponds to the JSON property `shortUrlClicks`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :short_url_clicks
       
         def initialize(**args)
@@ -125,7 +125,7 @@ module Google
         # Number of clicks for this top entry, e.g. for this particular country or
         # browser.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # Label assigned to this top entry, e.g. "US" or "Chrome".

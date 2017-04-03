@@ -248,7 +248,7 @@ module Google
         # when reading the data. The default value is 0. This property is useful if you
         # have header rows in the file that should be skipped.
         # Corresponds to the JSON property `skipLeadingRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :skip_leading_rows
       
         def initialize(**args)
@@ -285,7 +285,7 @@ module Google
         # [Output-only] The time when this dataset was created, in milliseconds since
         # the epoch.
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # [Required] A reference that identifies the dataset.
@@ -304,7 +304,7 @@ module Google
         # table, that value takes precedence over the default expiration time indicated
         # by this property.
         # Corresponds to the JSON property `defaultTableExpirationMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_table_expiration_ms
       
         # [Optional] A user-friendly description of the dataset.
@@ -345,7 +345,7 @@ module Google
         # [Output-only] The date when this dataset or any of its tables was last
         # modified, in milliseconds since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_modified_time
       
         # The geographic location where the dataset should reside. Possible values
@@ -610,7 +610,7 @@ module Google
       
         # Unique ID for stage within plan.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Human-readable name for stage.
@@ -630,12 +630,12 @@ module Google
       
         # Number of records read into the stage.
         # Corresponds to the JSON property `recordsRead`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :records_read
       
         # Number of records written by the stage.
         # Corresponds to the JSON property `recordsWritten`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :records_written
       
         # Current status for the stage.
@@ -866,7 +866,7 @@ module Google
         # [Output-only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
         # A token used for paging results.
@@ -889,14 +889,14 @@ module Google
       
         # The total number of bytes processed for this query.
         # Corresponds to the JSON property `totalBytesProcessed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
         # The total number of rows in the complete query result set, which can be more
         # than the number of rows in this single page of results. Present only when the
         # query completes successfully.
         # Corresponds to the JSON property `totalRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_rows
       
         def initialize(**args)
@@ -936,7 +936,7 @@ module Google
         # is just skipped. Otherwise row N is used to extract column names for the
         # detected schema.
         # Corresponds to the JSON property `skipLeadingRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :skip_leading_rows
       
         def initialize(**args)
@@ -1422,7 +1422,7 @@ module Google
         # billed beyond this limit will fail (without incurring a charge). If
         # unspecified, this will be set to your project default.
         # Corresponds to the JSON property `maximumBytesBilled`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :maximum_bytes_billed
       
         # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
@@ -1732,13 +1732,13 @@ module Google
         # [Output-only] Creation time of this job, in milliseconds since the epoch. This
         # field will be present on all jobs.
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # [Output-only] End time of this job, in milliseconds since the epoch. This
         # field will be present whenever a job is in the DONE state.
         # Corresponds to the JSON property `endTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_time
       
         # [Output-only] Statistics for an extract job.
@@ -1760,13 +1760,13 @@ module Google
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
         # Corresponds to the JSON property `startTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time
       
         # [Output-only] [Deprecated] Use the bytes processed in the query statistics
         # instead.
         # Corresponds to the JSON property `totalBytesProcessed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
         def initialize(**args)
@@ -1803,7 +1803,7 @@ module Google
         # [Output-only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
         # [Output-only] Describes execution plan for the query.
@@ -1830,12 +1830,12 @@ module Google
       
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_billed
       
         # [Output-only] Total bytes processed for the job.
         # Corresponds to the JSON property `totalBytesProcessed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
         # [Output-only, Experimental] Standard SQL only: list of undeclared query
@@ -1869,24 +1869,24 @@ module Google
       
         # [Output-only] Number of bytes of source data in a load job.
         # Corresponds to the JSON property `inputFileBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :input_file_bytes
       
         # [Output-only] Number of source files in a load job.
         # Corresponds to the JSON property `inputFiles`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :input_files
       
         # [Output-only] Size of the loaded data in bytes. Note that while a load job is
         # in the running state, this value may change.
         # Corresponds to the JSON property `outputBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :output_bytes
       
         # [Output-only] Number of rows imported in a load job. Note that while an import
         # job is in the running state, this value may change.
         # Corresponds to the JSON property `outputRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :output_rows
       
         def initialize(**args)
@@ -1910,7 +1910,7 @@ module Google
         # the extract configuration. These values will be in the same order as the URIs
         # specified in the 'destinationUris' field.
         # Corresponds to the JSON property `destinationUriFileCounts`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :destination_uri_file_counts
       
         def initialize(**args)
@@ -2019,7 +2019,7 @@ module Google
         
           # The numeric ID of this project.
           # Corresponds to the JSON property `numericId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :numeric_id
         
           # A unique reference to this project.
@@ -2335,7 +2335,7 @@ module Google
         # [Output-only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
         # A token used for paging results.
@@ -2358,13 +2358,13 @@ module Google
         # The total number of bytes processed for this query. If this query was a dry
         # run, this is the number of bytes that would be processed if the query were run.
         # Corresponds to the JSON property `totalBytesProcessed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
         # The total number of rows in the complete query result set, which can be more
         # than the number of rows in this single page of results.
         # Corresponds to the JSON property `totalRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_rows
       
         def initialize(**args)
@@ -2394,19 +2394,19 @@ module Google
         # [Output-only] A lower-bound estimate of the number of bytes currently in the
         # streaming buffer.
         # Corresponds to the JSON property `estimatedBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :estimated_bytes
       
         # [Output-only] A lower-bound estimate of the number of rows currently in the
         # streaming buffer.
         # Corresponds to the JSON property `estimatedRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :estimated_rows
       
         # [Output-only] Contains the timestamp of the oldest entry in the streaming
         # buffer, in milliseconds since the epoch, if the streaming buffer is available.
         # Corresponds to the JSON property `oldestEntryTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :oldest_entry_time
       
         def initialize(**args)
@@ -2428,7 +2428,7 @@ module Google
         # [Output-only] The time when this table was created, in milliseconds since the
         # epoch.
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # [Optional] A user-friendly description of this table.
@@ -2445,7 +2445,7 @@ module Google
         # If not present, the table will persist indefinitely. Expired tables will be
         # deleted and their storage reclaimed.
         # Corresponds to the JSON property `expirationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration_time
       
         # [Optional] Describes the data format, location, and other properties of a
@@ -2483,7 +2483,7 @@ module Google
         # [Output-only] The time when this table was last modified, in milliseconds
         # since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_modified_time
       
         # [Output-only] The geographic location where the table resides. This value is
@@ -2495,19 +2495,19 @@ module Google
         # [Output-only] The size of this table in bytes, excluding any data in the
         # streaming buffer.
         # Corresponds to the JSON property `numBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_bytes
       
         # [Output-only] The number of bytes in the table that are considered "long-term
         # storage".
         # Corresponds to the JSON property `numLongTermBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_long_term_bytes
       
         # [Output-only] The number of rows of data in this table, excluding any data in
         # the streaming buffer.
         # Corresponds to the JSON property `numRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_rows
       
         # [Optional] Describes the schema of this table.
@@ -2757,7 +2757,7 @@ module Google
       
         # The total number of rows in the complete table.
         # Corresponds to the JSON property `totalRows`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_rows
       
         def initialize(**args)
@@ -3020,7 +3020,7 @@ module Google
         # [Optional] Number of milliseconds for which to keep the storage for a
         # partition.
         # Corresponds to the JSON property `expirationMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration_ms
       
         # [Required] The only type supported is DAY, which will generate one partition

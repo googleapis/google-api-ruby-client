@@ -68,9 +68,9 @@ module Google
       class AmpUrlError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message, as: 'errorMessage'
           property :error_code, as: 'errorCode'
           property :original_url, as: 'originalUrl'
+          property :error_message, as: 'errorMessage'
         end
       end
       

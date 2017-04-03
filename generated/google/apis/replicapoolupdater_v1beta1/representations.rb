@@ -160,7 +160,7 @@ module Google
       
           property :http_error_message, as: 'httpErrorMessage'
           property :http_error_status_code, as: 'httpErrorStatusCode'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -171,7 +171,7 @@ module Google
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
-          property :target_id, as: 'targetId'
+          property :target_id, :numeric_string => true, as: 'targetId'
           property :target_link, as: 'targetLink'
           property :user, as: 'user'
           collection :warnings, as: 'warnings', class: Google::Apis::ReplicapoolupdaterV1beta1::Operation::Warning, decorator: Google::Apis::ReplicapoolupdaterV1beta1::Operation::Warning::Representation

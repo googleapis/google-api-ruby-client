@@ -91,7 +91,7 @@ module Google
         class ContentDetails
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :item_count, as: 'itemCount'
+            property :item_count, :numeric_string => true, as: 'itemCount'
             property :item_type, as: 'itemType'
           end
         end

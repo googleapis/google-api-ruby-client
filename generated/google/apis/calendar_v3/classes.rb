@@ -465,7 +465,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.

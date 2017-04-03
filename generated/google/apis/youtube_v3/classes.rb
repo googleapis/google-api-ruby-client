@@ -1786,7 +1786,7 @@ module Google
       
         # The number of comments for the channel.
         # Corresponds to the JSON property `commentCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :comment_count
       
         # Whether or not the number of subscribers is shown for this user.
@@ -1797,17 +1797,17 @@ module Google
       
         # The number of subscribers that the channel has.
         # Corresponds to the JSON property `subscriberCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subscriber_count
       
         # The number of videos uploaded to the channel.
         # Corresponds to the JSON property `videoCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :video_count
       
         # The number of times the channel has been viewed.
         # Corresponds to the JSON property `viewCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :view_count
       
         def initialize(**args)
@@ -2851,7 +2851,7 @@ module Google
       
         # The amount of funding in micros of fund_currency. e.g., 1 is represented
         # Corresponds to the JSON property `amountMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amount_micros
       
         # Channel id where the funding event occurred.
@@ -3606,14 +3606,14 @@ module Google
         # Defines the duration in milliseconds for which the promotion should be
         # displayed. If missing, the client should use the default.
         # Corresponds to the JSON property `durationMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration_ms
       
         # Defines the time at which the promotion will appear. Depending on the value of
         # type the value of the offsetMs field will represent a time offset from the
         # start or from the end of the video, expressed in milliseconds.
         # Corresponds to the JSON property `offsetMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :offset_ms
       
         # Describes a timing type. If the value is offsetFromStart, then the offsetMs
@@ -4011,7 +4011,7 @@ module Google
         # ends. So, this property would not identify the number of viewers watching an
         # archived video of a live broadcast that already ended.
         # Corresponds to the JSON property `concurrentViewers`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :concurrent_viewers
       
         # The total number of live chat messages currently on the broadcast. The
@@ -4021,7 +4021,7 @@ module Google
         # identify the number of chat messages for an archived video of a completed live
         # broadcast.
         # Corresponds to the JSON property `totalChatCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_chat_count
       
         def initialize(**args)
@@ -4198,7 +4198,7 @@ module Google
       
         # The duration of a ban, only filled if the ban has type TEMPORARY.
         # Corresponds to the JSON property `banDurationSeconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ban_duration_seconds
       
         # 
@@ -4240,7 +4240,7 @@ module Google
       
         # The amount of the fund.
         # Corresponds to the JSON property `amountMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amount_micros
       
         # The currency in which the fund was made.
@@ -4892,7 +4892,7 @@ module Google
       
         # The amount purchased by the user, in micros (1,750,000 micros = 1.75).
         # Corresponds to the JSON property `amountMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amount_micros
       
         # The currency in which the purchase was made.
@@ -4951,7 +4951,7 @@ module Google
         # The duration of the ban. This property is only present if the banType is
         # temporary.
         # Corresponds to the JSON property `banDurationSeconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ban_duration_seconds
       
         # The type of ban.
@@ -5119,7 +5119,7 @@ module Google
       
         # The last time this status was updated (in seconds)
         # Corresponds to the JSON property `lastUpdateTimeSeconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_update_time_seconds
       
         # The status code of this stream
@@ -6817,7 +6817,7 @@ module Google
         # The purchase amount, in micros of the purchase currency. e.g., 1 is
         # represented as 1000000.
         # Corresponds to the JSON property `amountMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amount_micros
       
         # Channel id where the event occurred.
@@ -7627,7 +7627,7 @@ module Google
         # The uploaded video file's combined (video and audio) bitrate in bits per
         # second.
         # Corresponds to the JSON property `bitrateBps`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :bitrate_bps
       
         # The uploaded video file's container format.
@@ -7647,7 +7647,7 @@ module Google
       
         # The length of the uploaded video in milliseconds.
         # Corresponds to the JSON property `durationMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration_ms
       
         # The uploaded file's name. This field is present whether a video file or
@@ -7659,7 +7659,7 @@ module Google
         # The uploaded file's size in bytes. This field is present whether a video file
         # or another type of file was uploaded.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # The uploaded file's type as detected by YouTube's video processing engine.
@@ -7699,7 +7699,7 @@ module Google
       
         # The audio stream's bitrate, in bits per second.
         # Corresponds to the JSON property `bitrateBps`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :bitrate_bps
       
         # The number of audio channels that the stream contains.
@@ -7743,7 +7743,7 @@ module Google
       
         # The video stream's bitrate, in bits per second.
         # Corresponds to the JSON property `bitrateBps`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :bitrate_bps
       
         # The video codec that the stream uses.
@@ -7946,7 +7946,7 @@ module Google
         # ends. So, this property would not identify the number of viewers watching an
         # archived video of a live broadcast that already ended.
         # Corresponds to the JSON property `concurrentViewers`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :concurrent_viewers
       
         # The time that the broadcast is scheduled to end. The value is specified in ISO
@@ -8027,7 +8027,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `embedHeight`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :embed_height
       
         # An <iframe> tag that embeds a player that will play the video.
@@ -8037,7 +8037,7 @@ module Google
       
         # The embed width
         # Corresponds to the JSON property `embedWidth`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :embed_width
       
         def initialize(**args)
@@ -8142,20 +8142,20 @@ module Google
         # it is possible that the calculated progress could periodically decrease while
         # YouTube processes a video.
         # Corresponds to the JSON property `partsProcessed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :parts_processed
       
         # An estimate of the total number of parts that need to be processed for the
         # video. The number may be updated with more precise estimates while YouTube
         # processes the video.
         # Corresponds to the JSON property `partsTotal`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :parts_total
       
         # An estimate of the amount of time, in millseconds, that YouTube needs to
         # finish processing the video.
         # Corresponds to the JSON property `timeLeftMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :time_left_ms
       
         def initialize(**args)
@@ -8343,29 +8343,29 @@ module Google
       
         # The number of comments for the video.
         # Corresponds to the JSON property `commentCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :comment_count
       
         # The number of users who have indicated that they disliked the video by giving
         # it a negative rating.
         # Corresponds to the JSON property `dislikeCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dislike_count
       
         # The number of users who currently have the video marked as a favorite video.
         # Corresponds to the JSON property `favoriteCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :favorite_count
       
         # The number of users who have indicated that they liked the video by giving it
         # a positive rating.
         # Corresponds to the JSON property `likeCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :like_count
       
         # The number of times the video has been viewed.
         # Corresponds to the JSON property `viewCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :view_count
       
         def initialize(**args)

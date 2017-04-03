@@ -385,7 +385,7 @@ module Google
         # The creationTime property is the date when subscription was created. It is in
         # milliseconds using the Epoch format. See an example Epoch converter.
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # Primary domain name of the customer
@@ -582,13 +582,13 @@ module Google
             # An annual commitment plan's interval's endTime in milliseconds using the UNIX
             # Epoch format. See an example Epoch converter.
             # Corresponds to the JSON property `endTime`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :end_time
           
             # An annual commitment plan's interval's startTime in milliseconds using UNIX
             # Epoch format. See an example Epoch converter.
             # Corresponds to the JSON property `startTime`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :start_time
           
             def initialize(**args)
@@ -619,7 +619,7 @@ module Google
           # The time when transfer token or intent to transfer will expire. The time is in
           # milliseconds using UNIX Epoch format.
           # Corresponds to the JSON property `transferabilityExpirationTime`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :transferability_expiration_time
         
           def initialize(**args)
@@ -649,7 +649,7 @@ module Google
           # Date when the trial ends. The value is in milliseconds using the UNIX Epoch
           # format. See an example Epoch converter.
           # Corresponds to the JSON property `trialEndTime`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :trial_end_time
         
           def initialize(**args)

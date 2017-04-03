@@ -330,12 +330,12 @@ module Google
       
         # Maximum score that can be posted to this leaderboard.
         # Corresponds to the JSON property `scoreMax`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score_max
       
         # Minimum score that can be posted to this leaderboard.
         # Corresponds to the JSON property `scoreMin`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score_min
       
         # The type of the leaderboard.

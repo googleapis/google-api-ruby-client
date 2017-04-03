@@ -1693,7 +1693,7 @@ module Google
       
         # The size in bytes of this video.
         # Corresponds to the JSON property `sizeBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size_bytes
       
         # The list of video streams for this video. There might be several different
@@ -1720,7 +1720,7 @@ module Google
       
         # The duration in milliseconds of this video.
         # Corresponds to the JSON property `videoDuration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :video_duration
       
         # The encoding status of this video. Possible values are:

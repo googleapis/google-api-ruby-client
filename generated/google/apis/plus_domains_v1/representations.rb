@@ -878,14 +878,14 @@ module Google
           property :media_url, as: 'mediaUrl'
           property :published, as: 'published', type: DateTime
       
-          property :size_bytes, as: 'sizeBytes'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           collection :streams, as: 'streams', class: Google::Apis::PlusDomainsV1::Videostream, decorator: Google::Apis::PlusDomainsV1::Videostream::Representation
       
           property :summary, as: 'summary'
           property :updated, as: 'updated', type: DateTime
       
           property :url, as: 'url'
-          property :video_duration, as: 'videoDuration'
+          property :video_duration, :numeric_string => true, as: 'videoDuration'
           property :video_status, as: 'videoStatus'
           property :width, as: 'width'
         end

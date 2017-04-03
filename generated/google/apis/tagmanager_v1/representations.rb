@@ -325,7 +325,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :authorization_code, as: 'authorizationCode'
-          property :authorization_timestamp_ms, as: 'authorizationTimestampMs'
+          property :authorization_timestamp_ms, :numeric_string => true, as: 'authorizationTimestampMs'
           property :container_id, as: 'containerId'
           property :container_version_id, as: 'containerVersionId'
           property :description, as: 'description'
@@ -449,8 +449,8 @@ module Google
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
           property :parent_folder_id, as: 'parentFolderId'
-          property :schedule_end_ms, as: 'scheduleEndMs'
-          property :schedule_start_ms, as: 'scheduleStartMs'
+          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
+          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
           property :type, as: 'type'
         end
       end
@@ -517,8 +517,8 @@ module Google
           property :parent_folder_id, as: 'parentFolderId'
           property :priority, as: 'priority', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
-          property :schedule_end_ms, as: 'scheduleEndMs'
-          property :schedule_start_ms, as: 'scheduleStartMs'
+          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
+          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
           collection :setup_tag, as: 'setupTag', class: Google::Apis::TagmanagerV1::SetupTag, decorator: Google::Apis::TagmanagerV1::SetupTag::Representation
       
           property :tag_firing_option, as: 'tagFiringOption'
@@ -600,8 +600,8 @@ module Google
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
           property :parent_folder_id, as: 'parentFolderId'
-          property :schedule_end_ms, as: 'scheduleEndMs'
-          property :schedule_start_ms, as: 'scheduleStartMs'
+          property :schedule_end_ms, :numeric_string => true, as: 'scheduleEndMs'
+          property :schedule_start_ms, :numeric_string => true, as: 'scheduleStartMs'
           property :type, as: 'type'
           property :variable_id, as: 'variableId'
         end

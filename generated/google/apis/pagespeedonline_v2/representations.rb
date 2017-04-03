@@ -236,19 +236,19 @@ module Google
         class PageStats
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :css_response_bytes, as: 'cssResponseBytes'
-            property :flash_response_bytes, as: 'flashResponseBytes'
-            property :html_response_bytes, as: 'htmlResponseBytes'
-            property :image_response_bytes, as: 'imageResponseBytes'
-            property :javascript_response_bytes, as: 'javascriptResponseBytes'
+            property :css_response_bytes, :numeric_string => true, as: 'cssResponseBytes'
+            property :flash_response_bytes, :numeric_string => true, as: 'flashResponseBytes'
+            property :html_response_bytes, :numeric_string => true, as: 'htmlResponseBytes'
+            property :image_response_bytes, :numeric_string => true, as: 'imageResponseBytes'
+            property :javascript_response_bytes, :numeric_string => true, as: 'javascriptResponseBytes'
             property :number_css_resources, as: 'numberCssResources'
             property :number_hosts, as: 'numberHosts'
             property :number_js_resources, as: 'numberJsResources'
             property :number_resources, as: 'numberResources'
             property :number_static_resources, as: 'numberStaticResources'
-            property :other_response_bytes, as: 'otherResponseBytes'
-            property :text_response_bytes, as: 'textResponseBytes'
-            property :total_request_bytes, as: 'totalRequestBytes'
+            property :other_response_bytes, :numeric_string => true, as: 'otherResponseBytes'
+            property :text_response_bytes, :numeric_string => true, as: 'textResponseBytes'
+            property :total_request_bytes, :numeric_string => true, as: 'totalRequestBytes'
           end
         end
         

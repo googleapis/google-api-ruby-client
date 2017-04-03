@@ -149,7 +149,7 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :bool_value, as: 'boolValue'
-              property :int_value, as: 'intValue'
+              property :int_value, :numeric_string => true, as: 'intValue'
               collection :multi_int_value, as: 'multiIntValue'
               collection :multi_value, as: 'multiValue'
               property :name, as: 'name'
@@ -165,7 +165,7 @@ module Google
             property :customer_id, as: 'customerId'
             property :time, as: 'time', type: DateTime
         
-            property :unique_qualifier, as: 'uniqueQualifier'
+            property :unique_qualifier, :numeric_string => true, as: 'uniqueQualifier'
           end
         end
       end
@@ -174,7 +174,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -214,7 +214,7 @@ module Google
             property :bool_value, as: 'boolValue'
             property :datetime_value, as: 'datetimeValue', type: DateTime
         
-            property :int_value, as: 'intValue'
+            property :int_value, :numeric_string => true, as: 'intValue'
             collection :msg_value, as: 'msgValue'
             property :name, as: 'name'
             property :string_value, as: 'stringValue'

@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'urlshortener/v1/')
+          @batch_path = 'batch'
         end
         
         # Expands a short URL or gets creation time and analytics.

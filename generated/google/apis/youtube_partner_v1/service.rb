@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'youtube/partner/v1/')
+          @batch_path = 'batch'
         end
         
         # Insert an asset label for an owner.

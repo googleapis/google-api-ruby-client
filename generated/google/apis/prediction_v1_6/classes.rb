@@ -105,7 +105,7 @@ module Google
           
             # The feature index.
             # Corresponds to the JSON property `index`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :index
           
             # Description of the numeric values of this feature.
@@ -136,7 +136,7 @@ module Google
             
               # Number of categorical values for this feature in the data.
               # Corresponds to the JSON property `count`
-              # @return [String]
+              # @return [Fixnum]
               attr_accessor :count
             
               # List of all the categories for this feature in the data set.
@@ -160,7 +160,7 @@ module Google
               
                 # Number of times this feature had this value.
                 # Corresponds to the JSON property `count`
-                # @return [String]
+                # @return [Fixnum]
                 attr_accessor :count
               
                 # The category name.
@@ -186,7 +186,7 @@ module Google
             
               # Number of numeric values for this feature in the data set.
               # Corresponds to the JSON property `count`
-              # @return [String]
+              # @return [Fixnum]
               attr_accessor :count
             
               # Mean of the numeric values of this feature in the data set.
@@ -217,7 +217,7 @@ module Google
             
               # Number of multiple-word text values for this feature.
               # Corresponds to the JSON property `count`
-              # @return [String]
+              # @return [Fixnum]
               attr_accessor :count
             
               def initialize(**args)
@@ -261,7 +261,7 @@ module Google
             
               # Number of numeric output values in the data set.
               # Corresponds to the JSON property `count`
-              # @return [String]
+              # @return [Fixnum]
               attr_accessor :count
             
               # Mean of the output values in the data set.
@@ -292,7 +292,7 @@ module Google
             
               # Number of times the output label occurred in the data set.
               # Corresponds to the JSON property `count`
-              # @return [String]
+              # @return [Fixnum]
               attr_accessor :count
             
               # The output label.
@@ -586,12 +586,12 @@ module Google
         
           # Number of valid data instances used in the trained model.
           # Corresponds to the JSON property `numberInstances`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :number_instances
         
           # Number of class labels in the trained model (Categorical models only).
           # Corresponds to the JSON property `numberLabels`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :number_labels
         
           def initialize(**args)

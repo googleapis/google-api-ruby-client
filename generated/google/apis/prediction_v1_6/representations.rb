@@ -175,7 +175,7 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :categorical, as: 'categorical', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Representation
           
-              property :index, as: 'index'
+              property :index, :numeric_string => true, as: 'index'
               property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric::Representation
           
               property :text, as: 'text', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text::Representation
@@ -185,7 +185,7 @@ module Google
             class Categorical
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :count, as: 'count'
+                property :count, :numeric_string => true, as: 'count'
                 collection :values, as: 'values', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value::Representation
             
               end
@@ -193,7 +193,7 @@ module Google
               class Value
                 # @private
                 class Representation < Google::Apis::Core::JsonRepresentation
-                  property :count, as: 'count'
+                  property :count, :numeric_string => true, as: 'count'
                   property :value, as: 'value'
                 end
               end
@@ -202,7 +202,7 @@ module Google
             class Numeric
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :count, as: 'count'
+                property :count, :numeric_string => true, as: 'count'
                 property :mean, as: 'mean'
                 property :variance, as: 'variance'
               end
@@ -211,7 +211,7 @@ module Google
             class Text
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :count, as: 'count'
+                property :count, :numeric_string => true, as: 'count'
               end
             end
           end
@@ -228,7 +228,7 @@ module Google
             class Numeric
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :count, as: 'count'
+                property :count, :numeric_string => true, as: 'count'
                 property :mean, as: 'mean'
                 property :variance, as: 'variance'
               end
@@ -237,7 +237,7 @@ module Google
             class Text
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :count, as: 'count'
+                property :count, :numeric_string => true, as: 'count'
                 property :value, as: 'value'
               end
             end
@@ -319,8 +319,8 @@ module Google
             property :classification_accuracy, as: 'classificationAccuracy'
             property :mean_squared_error, as: 'meanSquaredError'
             property :model_type, as: 'modelType'
-            property :number_instances, as: 'numberInstances'
-            property :number_labels, as: 'numberLabels'
+            property :number_instances, :numeric_string => true, as: 'numberInstances'
+            property :number_labels, :numeric_string => true, as: 'numberLabels'
           end
         end
       end

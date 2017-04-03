@@ -41,7 +41,7 @@ module Google
       
         # Experience points which will be earned when unlocking this achievement.
         # Corresponds to the JSON property `experiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :experience_points
       
         # The total steps for an incremental achievement as a string.
@@ -448,7 +448,7 @@ module Google
       
         # The number of messages sent between a pair of peers.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -459,17 +459,17 @@ module Google
       
         # The maximum amount.
         # Corresponds to the JSON property `max`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max
       
         # The minimum amount.
         # Corresponds to the JSON property `min`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min
       
         # The total number of bytes sent for messages between a pair of peers.
         # Corresponds to the JSON property `sum`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sum
       
         def initialize(**args)
@@ -572,7 +572,7 @@ module Google
       
         # The last updated timestamp of the application.
         # Corresponds to the JSON property `lastUpdatedTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_updated_timestamp
       
         # The number of leaderboards visible to the currently authenticated player.
@@ -690,7 +690,7 @@ module Google
       
         # Experience points earned in this category.
         # Corresponds to the JSON property `experiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :experience_points
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -924,13 +924,13 @@ module Google
       
         # The time when this update period ends, in millis, since 1970 UTC (Unix Epoch).
         # Corresponds to the JSON property `periodEndMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :period_end_millis
       
         # The time when this update period begins, in millis, since 1970 UTC (Unix Epoch)
         # .
         # Corresponds to the JSON property `periodStartMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :period_start_millis
       
         def initialize(**args)
@@ -1020,7 +1020,7 @@ module Google
         # The current time when this update was sent, in milliseconds, since 1970 UTC (
         # Unix Epoch).
         # Corresponds to the JSON property `currentTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :current_time_millis
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -1031,7 +1031,7 @@ module Google
       
         # The request ID used to identify this attempt to record events.
         # Corresponds to the JSON property `requestId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :request_id
       
         # A list of the time period updates being made in this request.
@@ -1069,7 +1069,7 @@ module Google
       
         # The number of times this event occurred in this time period.
         # Corresponds to the JSON property `updateCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :update_count
       
         def initialize(**args)
@@ -1134,7 +1134,7 @@ module Google
       
         # The requestId associated with an increment to an achievement.
         # Corresponds to the JSON property `requestId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :request_id
       
         # The number of steps to be incremented.
@@ -1517,7 +1517,7 @@ module Google
       
         # The rank of this score for this leaderboard.
         # Corresponds to the JSON property `scoreRank`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score_rank
       
         # Additional information about the score. Values must contain no more than 64
@@ -1528,7 +1528,7 @@ module Google
       
         # The numerical value of this score.
         # Corresponds to the JSON property `scoreValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score_value
       
         # The time span of this high score.
@@ -1543,7 +1543,7 @@ module Google
         # The timestamp at which this score was recorded, in milliseconds since the
         # epoch in UTC.
         # Corresponds to the JSON property `writeTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :write_timestamp_millis
       
         def initialize(**args)
@@ -1618,12 +1618,12 @@ module Google
       
         # The number of scores in the leaderboard.
         # Corresponds to the JSON property `numScores`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_scores
       
         # The rank in the leaderboard.
         # Corresponds to the JSON property `rank`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :rank
       
         def initialize(**args)
@@ -1662,7 +1662,7 @@ module Google
       
         # The total number of scores in the leaderboard.
         # Corresponds to the JSON property `numScores`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_scores
       
         # This is a JSON template for the Leaderboard Entry resource.
@@ -1905,7 +1905,7 @@ module Google
       
         # Connected time in milliseconds.
         # Corresponds to the JSON property `connectedTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :connected_timestamp_millis
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -1963,7 +1963,7 @@ module Google
         # The last time the player played the game in milliseconds since the epoch in
         # UTC.
         # Corresponds to the JSON property `timeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :time_millis
       
         def initialize(**args)
@@ -2117,7 +2117,7 @@ module Google
         # achievements that have not yet been unlocked and 0 for achievements that have
         # been unlocked by testers but that are unpublished.
         # Corresponds to the JSON property `experiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :experience_points
       
         # The current steps for an incremental achievement as a string.
@@ -2138,7 +2138,7 @@ module Google
       
         # The timestamp of the last modification to this achievement's state.
         # Corresponds to the JSON property `lastUpdatedTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_updated_timestamp
       
         def initialize(**args)
@@ -2213,7 +2213,7 @@ module Google
       
         # The current number of times this event has occurred.
         # Corresponds to the JSON property `numEvents`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_events
       
         # The ID of the player.
@@ -2273,7 +2273,7 @@ module Google
       
         # The current number of experience points for the player.
         # Corresponds to the JSON property `currentExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :current_experience_points
       
         # This is a JSON template for 1P/3P metadata about a user's level.
@@ -2289,7 +2289,7 @@ module Google
       
         # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
       
         # This is a JSON template for 1P/3P metadata about a user's level.
@@ -2344,7 +2344,7 @@ module Google
       
         # The numerical value of this score.
         # Corresponds to the JSON property `scoreValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score_value
       
         # This is a JSON template for a score rank in a leaderboard.
@@ -2364,7 +2364,7 @@ module Google
         # The timestamp at which this score was recorded, in milliseconds since the
         # epoch in UTC.
         # Corresponds to the JSON property `writeTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :write_timestamp
       
         def initialize(**args)
@@ -2440,12 +2440,12 @@ module Google
       
         # The maximum experience points for this level.
         # Corresponds to the JSON property `maxExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_experience_points
       
         # The minimum experience points for this level.
         # Corresponds to the JSON property `minExperiencePoints`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :min_experience_points
       
         def initialize(**args)
@@ -2510,7 +2510,7 @@ module Google
       
         # The numerical value for this player score.
         # Corresponds to the JSON property `score`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score
       
         # Additional information about this score. Values will contain no more than 64
@@ -2783,7 +2783,7 @@ module Google
         # The timestamp at which the user accepted the quest in milliseconds since the
         # epoch in UTC. Only present if the player has accepted the quest.
         # Corresponds to the JSON property `acceptedTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :accepted_timestamp_millis
       
         # The ID of the application this quest is part of.
@@ -2804,7 +2804,7 @@ module Google
         # The timestamp at which the quest ceases to be active in milliseconds since the
         # epoch in UTC.
         # Corresponds to the JSON property `endTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :end_timestamp_millis
       
         # The icon image URL for the quest.
@@ -2840,7 +2840,7 @@ module Google
         # The timestamp at which the quest was last updated by the user in milliseconds
         # since the epoch in UTC. Only present if the player has accepted the quest.
         # Corresponds to the JSON property `lastUpdatedTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_updated_timestamp_millis
       
         # The quest milestones.
@@ -2856,13 +2856,13 @@ module Google
         # The timestamp at which the user should be notified that the quest will end
         # soon in milliseconds since the epoch in UTC.
         # Corresponds to the JSON property `notifyTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :notify_timestamp_millis
       
         # The timestamp at which the quest becomes active in milliseconds since the
         # epoch in UTC.
         # Corresponds to the JSON property `startTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_timestamp_millis
       
         # The state of the quest.
@@ -2924,7 +2924,7 @@ module Google
       
         # The value of the contribution.
         # Corresponds to the JSON property `value`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :value
       
         def initialize(**args)
@@ -3248,7 +3248,7 @@ module Google
         # exclusive bitmasks, the result must be zero. Can be used to support exclusive
         # roles within a game.
         # Corresponds to the JSON property `exclusiveBitmask`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :exclusive_bitmask
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -3346,7 +3346,7 @@ module Google
         # A randomly generated numeric ID. This number is used at the server to ensure
         # that the request is handled correctly across retries.
         # Corresponds to the JSON property `requestId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :request_id
       
         # The variant / mode of the application to be played. This can be any integer
@@ -3581,7 +3581,7 @@ module Google
         # The timestamp at which they modified the room, in milliseconds since the epoch
         # in UTC.
         # Corresponds to the JSON property `modifiedTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :modified_timestamp_millis
       
         # The ID of the participant that modified the room.
@@ -3871,7 +3871,7 @@ module Google
       
         # The new score being submitted.
         # Corresponds to the JSON property `score`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :score
       
         # Additional information about this score. Values will contain no more than 64
@@ -3922,7 +3922,7 @@ module Google
       
         # The duration associated with this snapshot, in millis.
         # Corresponds to the JSON property `durationMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration_millis
       
         # The ID of the snapshot.
@@ -3939,13 +3939,13 @@ module Google
         # The timestamp (in millis since Unix epoch) of the last modification to this
         # snapshot.
         # Corresponds to the JSON property `lastModifiedMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_modified_millis
       
         # The progress value (64-bit integer set by developer) associated with this
         # snapshot.
         # Corresponds to the JSON property `progressValue`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :progress_value
       
         # The title of this snapshot.
@@ -4071,7 +4071,7 @@ module Google
         # exclusive bitmasks, the result must be zero. Can be used to support exclusive
         # roles within a game.
         # Corresponds to the JSON property `exclusiveBitmask`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :exclusive_bitmask
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -4289,7 +4289,7 @@ module Google
         # A randomly generated numeric ID. This number is used at the server to ensure
         # that the request is handled correctly across retries.
         # Corresponds to the JSON property `requestId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :request_id
       
         # The variant / mode of the application to be played. This can be any integer
@@ -4422,7 +4422,7 @@ module Google
         # The timestamp at which they modified the match, in milliseconds since the
         # epoch in UTC.
         # Corresponds to the JSON property `modifiedTimestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :modified_timestamp_millis
       
         # The ID of the participant that modified the match.

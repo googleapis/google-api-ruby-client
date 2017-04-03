@@ -46,6 +46,7 @@ module Google
 
         def initialize
           super('https://language.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # A convenience method that provides all the features that analyzeSentiment,

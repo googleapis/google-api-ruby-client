@@ -233,10 +233,10 @@ module Google
       class SurveyCost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cost_per_response_nanos, as: 'costPerResponseNanos'
+          property :cost_per_response_nanos, :numeric_string => true, as: 'costPerResponseNanos'
           property :currency_code, as: 'currencyCode'
-          property :max_cost_per_response_nanos, as: 'maxCostPerResponseNanos'
-          property :nanos, as: 'nanos'
+          property :max_cost_per_response_nanos, :numeric_string => true, as: 'maxCostPerResponseNanos'
+          property :nanos, :numeric_string => true, as: 'nanos'
         end
       end
       
@@ -313,7 +313,7 @@ module Google
       class SurveysStartRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_cost_per_response_nanos, as: 'maxCostPerResponseNanos'
+          property :max_cost_per_response_nanos, :numeric_string => true, as: 'maxCostPerResponseNanos'
         end
       end
       

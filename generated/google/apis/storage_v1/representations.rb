@@ -232,11 +232,11 @@ module Google
           property :location, as: 'location'
           property :logging, as: 'logging', class: Google::Apis::StorageV1::Bucket::Logging, decorator: Google::Apis::StorageV1::Bucket::Logging::Representation
       
-          property :metageneration, as: 'metageneration'
+          property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::Bucket::Owner::Representation
       
-          property :project_number, as: 'projectNumber'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
           property :self_link, as: 'selfLink'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
@@ -378,7 +378,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :params, as: 'params'
@@ -403,7 +403,7 @@ module Google
         class SourceObject
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :generation, as: 'generation'
+            property :generation, :numeric_string => true, as: 'generation'
             property :name, as: 'name'
             property :object_preconditions, as: 'objectPreconditions', class: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions, decorator: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions::Representation
         
@@ -412,7 +412,7 @@ module Google
           class ObjectPreconditions
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :if_generation_match, as: 'ifGenerationMatch'
+              property :if_generation_match, :numeric_string => true, as: 'ifGenerationMatch'
             end
           end
         end
@@ -458,18 +458,18 @@ module Google
           property :customer_encryption, as: 'customerEncryption', class: Google::Apis::StorageV1::Object::CustomerEncryption, decorator: Google::Apis::StorageV1::Object::CustomerEncryption::Representation
       
           property :etag, as: 'etag'
-          property :generation, as: 'generation'
+          property :generation, :numeric_string => true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :md5_hash, as: 'md5Hash'
           property :media_link, as: 'mediaLink'
           hash :metadata, as: 'metadata'
-          property :metageneration, as: 'metageneration'
+          property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
       
           property :self_link, as: 'selfLink'
-          property :size, as: 'size'
+          property :size, :numeric_string => true, as: 'size'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
       
@@ -507,7 +507,7 @@ module Google
           property :entity, as: 'entity'
           property :entity_id, as: 'entityId'
           property :etag, as: 'etag'
-          property :generation, as: 'generation'
+          property :generation, :numeric_string => true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :object, as: 'object'
@@ -570,11 +570,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :done, as: 'done'
           property :kind, as: 'kind'
-          property :object_size, as: 'objectSize'
+          property :object_size, :numeric_string => true, as: 'objectSize'
           property :resource, as: 'resource', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
       
           property :rewrite_token, as: 'rewriteToken'
-          property :total_bytes_rewritten, as: 'totalBytesRewritten'
+          property :total_bytes_rewritten, :numeric_string => true, as: 'totalBytesRewritten'
         end
       end
       

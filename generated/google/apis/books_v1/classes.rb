@@ -1964,12 +1964,12 @@ module Google
         
           # 
           # Corresponds to the JSON property `size`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :size
         
           # 
           # Corresponds to the JSON property `version`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :version
         
           def initialize(**args)
@@ -1998,7 +1998,7 @@ module Google
       
         # The list of crm experiment ids.
         # Corresponds to the JSON property `crmExperimentIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :crm_experiment_ids
       
         # 
@@ -3467,12 +3467,12 @@ module Google
           
             # 
             # Corresponds to the JSON property `endUtcSec`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :end_utc_sec
           
             # 
             # Corresponds to the JSON property `startUtcSec`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :start_utc_sec
           
             def initialize(**args)

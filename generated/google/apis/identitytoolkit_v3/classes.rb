@@ -387,7 +387,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The GITKit token or STS id token of the authenticated user.
@@ -419,7 +419,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The max number of results to return in the response.
@@ -458,7 +458,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The list of emails of the users to inquiry.
@@ -630,13 +630,13 @@ module Google
       
         # The timestamp when the account is created.
         # Corresponds to the JSON property `createdAt`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :created_at
       
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The attributes users request to delete.
@@ -683,7 +683,7 @@ module Google
       
         # Last login timestamp.
         # Corresponds to the JSON property `lastLoginAt`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_login_at
       
         # The local ID of the user.
@@ -725,7 +725,7 @@ module Google
       
         # Timestamp in seconds for valid login token.
         # Corresponds to the JSON property `validSince`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :valid_since
       
         def initialize(**args)
@@ -786,7 +786,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # Whether to enable anonymous user.
@@ -998,7 +998,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The password hash algorithm.
@@ -1080,7 +1080,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The GITKit token of the authenticated user.
@@ -1160,7 +1160,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # Instance id token of the app.
@@ -1209,7 +1209,7 @@ module Google
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :delegated_project_number
       
         # The email of the user.
@@ -1480,7 +1480,7 @@ module Google
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expires_in
       
         # The Gitkit id token to login the newly sign up user.
@@ -1601,7 +1601,7 @@ module Google
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expires_in
       
         # The Gitkit id token to login the newly sign up user.
@@ -1696,7 +1696,7 @@ module Google
       
         # User creation timestamp.
         # Corresponds to the JSON property `createdAt`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :created_at
       
         # Whether the user is authenticated by the developer.
@@ -1729,7 +1729,7 @@ module Google
       
         # last login timestamp.
         # Corresponds to the JSON property `lastLoginAt`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_login_at
       
         # The local ID of the user.
@@ -1776,7 +1776,7 @@ module Google
       
         # Timestamp in seconds for valid login token.
         # Corresponds to the JSON property `validSince`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :valid_since
       
         # Version of the user's password.
@@ -1928,7 +1928,7 @@ module Google
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expires_in
       
         # The unique ID identifies the IdP account.
@@ -2138,7 +2138,7 @@ module Google
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expires_in
       
         # The GITKit token for authenticated user.
@@ -2187,7 +2187,7 @@ module Google
         # If idToken is STS id token, then this field will be expiration time of STS id
         # token in seconds.
         # Corresponds to the JSON property `expiresIn`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expires_in
       
         # The GITKit token for authenticated user.

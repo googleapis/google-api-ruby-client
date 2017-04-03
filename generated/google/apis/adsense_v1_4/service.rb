@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'adsense/v1.4/')
+          @batch_path = 'batch'
         end
         
         # Get information about the selected AdSense account.

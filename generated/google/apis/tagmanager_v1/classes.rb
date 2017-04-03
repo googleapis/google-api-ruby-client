@@ -475,7 +475,7 @@ module Google
       
         # The last update time-stamp for the authorization code.
         # Corresponds to the JSON property `authorizationTimestampMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :authorization_timestamp_ms
       
         # GTM Container ID.
@@ -861,12 +861,12 @@ module Google
       
         # The end timestamp in milliseconds to schedule a macro.
         # Corresponds to the JSON property `scheduleEndMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a macro.
         # Corresponds to the JSON property `scheduleStartMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_start_ms
       
         # GTM Macro Type.
@@ -1134,12 +1134,12 @@ module Google
       
         # The end timestamp in milliseconds to schedule a tag.
         # Corresponds to the JSON property `scheduleEndMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a tag.
         # Corresponds to the JSON property `scheduleStartMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_start_ms
       
         # The list of setup tags. Currently we only allow one.
@@ -1450,12 +1450,12 @@ module Google
       
         # The end timestamp in milliseconds to schedule a variable.
         # Corresponds to the JSON property `scheduleEndMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a variable.
         # Corresponds to the JSON property `scheduleStartMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_start_ms
       
         # GTM Variable Type.

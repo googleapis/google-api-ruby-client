@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'prediction/v1.6/projects/')
+          @batch_path = 'batch'
         end
         
         # Submit input and request an output against a hosted model.

@@ -82,7 +82,7 @@ module Google
       
         # The metadata generation of this bucket.
         # Corresponds to the JSON property `metageneration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :metageneration
       
         # The name of the bucket.
@@ -97,7 +97,7 @@ module Google
       
         # The project number of the project the bucket belongs to.
         # Corresponds to the JSON property `projectNumber`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :project_number
       
         # The URI of this bucket.
@@ -621,7 +621,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.
@@ -723,7 +723,7 @@ module Google
         
           # The generation of this object to use as the source.
           # Corresponds to the JSON property `generation`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :generation
         
           # The source object's name. The source object's bucket is implicitly the
@@ -756,7 +756,7 @@ module Google
             # be used matches this value. If this value and a generation are both specified,
             # they must be the same value or the call will fail.
             # Corresponds to the JSON property `ifGenerationMatch`
-            # @return [String]
+            # @return [Fixnum]
             attr_accessor :if_generation_match
           
             def initialize(**args)
@@ -936,7 +936,7 @@ module Google
       
         # The content generation of this object. Used for object versioning.
         # Corresponds to the JSON property `generation`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :generation
       
         # The ID of the object, including the bucket name, object name, and generation
@@ -971,7 +971,7 @@ module Google
         # is only meaningful in the context of a particular generation of a particular
         # object.
         # Corresponds to the JSON property `metageneration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :metageneration
       
         # The name of the object. Required if not specified by URL parameter.
@@ -991,7 +991,7 @@ module Google
       
         # Content-Length of the data in bytes.
         # Corresponds to the JSON property `size`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size
       
         # Storage class of the object.
@@ -1156,7 +1156,7 @@ module Google
       
         # The content generation of the object, if applied to an object.
         # Corresponds to the JSON property `generation`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :generation
       
         # The ID of the access-control entry.
@@ -1432,7 +1432,7 @@ module Google
         # The total size of the object being copied in bytes. This property is always
         # present in the response.
         # Corresponds to the JSON property `objectSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :object_size
       
         # An object.
@@ -1449,7 +1449,7 @@ module Google
         # The total bytes written so far, which can be used to provide a waiting user
         # with a progress indicator. This property is always present in the response.
         # Corresponds to the JSON property `totalBytesRewritten`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_bytes_rewritten
       
         def initialize(**args)

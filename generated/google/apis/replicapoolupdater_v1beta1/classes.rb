@@ -188,7 +188,7 @@ module Google
       
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The time that this operation was requested. This is in RFC 3339
@@ -249,7 +249,7 @@ module Google
         # [Output Only] Unique target id which identifies a particular incarnation of
         # the target.
         # Corresponds to the JSON property `targetId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_id
       
         # [Output Only] URL of the resource the operation is mutating.

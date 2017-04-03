@@ -498,7 +498,7 @@ module Google
         # this APK does not reference another APK's Expansion File. The field's value
         # is the size of the uploaded Expansion File in bytes.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # If set this APK's Expansion File references another APK's Expansion File. The
@@ -572,7 +572,7 @@ module Google
       
         # The file size in bytes of this APK.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # The icon image from the APK, as a base64 encoded byte array.
@@ -1281,7 +1281,7 @@ module Google
         # The time the product was purchased, in milliseconds since the epoch (Jan 1,
         # 1970).
         # Corresponds to the JSON property `purchaseTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
         def initialize(**args)
@@ -1494,13 +1494,13 @@ module Google
         # since the Epoch. The given time must be later/greater than the current expiry
         # time for the subscription.
         # Corresponds to the JSON property `desiredExpiryTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :desired_expiry_time_millis
       
         # The expected expiry time for the subscription. If the current expiry time for
         # the subscription is not the value specified here, the deferral will not occur.
         # Corresponds to the JSON property `expectedExpiryTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expected_expiry_time_millis
       
         def initialize(**args)
@@ -1549,7 +1549,7 @@ module Google
       
         # Time at which the subscription will expire, in milliseconds since the Epoch.
         # Corresponds to the JSON property `expiryTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiry_time_millis
       
         # This kind represents a subscriptionPurchase object in the androidpublisher
@@ -1569,7 +1569,7 @@ module Google
         # units, where 1,000,000 micro-units represents one unit of the currency. For
         # example, if the subscription price is €1.99, price_amount_micros is 1990000.
         # Corresponds to the JSON property `priceAmountMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :price_amount_micros
       
         # ISO 4217 currency code for the subscription price. For example, if the price
@@ -1580,13 +1580,13 @@ module Google
       
         # Time at which the subscription was granted, in milliseconds since the Epoch.
         # Corresponds to the JSON property `startTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start_time_millis
       
         # The time at which the subscription was canceled by the user, in milliseconds
         # since the epoch. Only present if cancelReason is 0.
         # Corresponds to the JSON property `userCancellationTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :user_cancellation_time_millis
       
         def initialize(**args)
@@ -1635,7 +1635,7 @@ module Google
       
         # The new expiry time for the subscription in milliseconds since the Epoch.
         # Corresponds to the JSON property `newExpiryTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :new_expiry_time_millis
       
         def initialize(**args)
@@ -1684,7 +1684,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `seconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :seconds
       
         def initialize(**args)
@@ -1885,7 +1885,7 @@ module Google
         # The time at which the purchase was made, in milliseconds since the epoch (Jan
         # 1, 1970).
         # Corresponds to the JSON property `purchaseTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
         # The token that was generated when a purchase was made. This uniquely
@@ -1897,7 +1897,7 @@ module Google
         # The time at which the purchase was cancelled/refunded/charged-back, in
         # milliseconds since the epoch (Jan 1, 1970).
         # Corresponds to the JSON property `voidedTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :voided_time_millis
       
         def initialize(**args)

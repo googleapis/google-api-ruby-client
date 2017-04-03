@@ -50,12 +50,13 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'dfareporting/v2.7/')
+          @batch_path = 'batch'
         end
         
         # Gets the account's active ad summary by account ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] summary_account_id
+        # @param [Fixnum] summary_account_id
         #   Account ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -91,9 +92,9 @@ module Google
         end
         
         # Gets one account permission group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Account permission group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -129,7 +130,7 @@ module Google
         end
         
         # Retrieves the list of account permission groups.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -164,9 +165,9 @@ module Google
         end
         
         # Gets one account permission by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Account permission ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -202,7 +203,7 @@ module Google
         end
         
         # Retrieves the list of account permissions.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -237,9 +238,9 @@ module Google
         end
         
         # Gets one account user profile by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User profile ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -275,7 +276,7 @@ module Google
         end
         
         # Inserts a new account user profile.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::AccountUserProfile] account_user_profile_object
         # @param [String] fields
@@ -314,11 +315,11 @@ module Google
         
         # Retrieves a list of account user profiles, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
         #   Select only active user profiles.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only user profiles with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -336,9 +337,9 @@ module Google
         #   Field by which to sort the list.
         # @param [String] sort_order
         #   Order of sorted results, default is ASCENDING.
-        # @param [String] subaccount_id
+        # @param [Fixnum] subaccount_id
         #   Select only user profiles with the specified subaccount ID.
-        # @param [String] user_role_id
+        # @param [Fixnum] user_role_id
         #   Select only user profiles with the specified user role ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -382,9 +383,9 @@ module Google
         end
         
         # Updates an existing account user profile. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User profile ID.
         # @param [Google::Apis::DfareportingV2_7::AccountUserProfile] account_user_profile_object
         # @param [String] fields
@@ -423,7 +424,7 @@ module Google
         end
         
         # Updates an existing account user profile.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::AccountUserProfile] account_user_profile_object
         # @param [String] fields
@@ -461,9 +462,9 @@ module Google
         end
         
         # Gets one account by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Account ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -499,12 +500,12 @@ module Google
         end
         
         # Retrieves the list of accounts, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
         #   Select only active accounts. Don't set this field to select both active and
         #   non-active accounts.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only accounts with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -561,9 +562,9 @@ module Google
         end
         
         # Updates an existing account. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Account ID.
         # @param [Google::Apis::DfareportingV2_7::Account] account_object
         # @param [String] fields
@@ -602,7 +603,7 @@ module Google
         end
         
         # Updates an existing account.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Account] account_object
         # @param [String] fields
@@ -640,9 +641,9 @@ module Google
         end
         
         # Gets one ad by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Ad ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -678,7 +679,7 @@ module Google
         end
         
         # Inserts a new ad.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Ad] ad_object
         # @param [String] fields
@@ -716,17 +717,17 @@ module Google
         end
         
         # Retrieves a list of ads, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
         #   Select only active ads.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only ads with this advertiser ID.
         # @param [Boolean] archived
         #   Select only archived ads.
-        # @param [Array<String>, String] audience_segment_ids
+        # @param [Array<Fixnum>, Fixnum] audience_segment_ids
         #   Select only ads with these audience segment IDs.
-        # @param [Array<String>, String] campaign_ids
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
         #   Select only ads with these campaign IDs.
         # @param [String] compatibility
         #   Select default ads with the specified compatibility. Applicable when type is
@@ -735,27 +736,27 @@ module Google
         #   respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
         #   IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the
         #   VAST standard.
-        # @param [Array<String>, String] creative_ids
+        # @param [Array<Fixnum>, Fixnum] creative_ids
         #   Select only ads with these creative IDs assigned.
-        # @param [Array<String>, String] creative_optimization_configuration_ids
+        # @param [Array<Fixnum>, Fixnum] creative_optimization_configuration_ids
         #   Select only ads with these creative optimization configuration IDs.
         # @param [Boolean] dynamic_click_tracker
         #   Select only dynamic click trackers. Applicable when type is
         #   AD_SERVING_CLICK_TRACKER. If true, select dynamic click trackers. If false,
         #   select static click trackers. Leave unset to select both.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only ads with these IDs.
-        # @param [Array<String>, String] landing_page_ids
+        # @param [Array<Fixnum>, Fixnum] landing_page_ids
         #   Select only ads with these landing page IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
-        # @param [String] overridden_event_tag_id
+        # @param [Fixnum] overridden_event_tag_id
         #   Select only ads with this event tag override ID.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
-        # @param [Array<String>, String] placement_ids
+        # @param [Array<Fixnum>, Fixnum] placement_ids
         #   Select only ads with these placement IDs assigned.
-        # @param [Array<String>, String] remarketing_list_ids
+        # @param [Array<Fixnum>, Fixnum] remarketing_list_ids
         #   Select only ads whose list targeting expression use these remarketing list IDs.
         # @param [String] search_string
         #   Allows searching for objects by name or ID. Wildcards (*) are allowed. For
@@ -764,7 +765,7 @@ module Google
         #   implicitly at the start and the end of the search string. For example, a
         #   search string of "ad" will match objects with name "my ad", "ad 2015", or
         #   simply "ad".
-        # @param [Array<String>, String] size_ids
+        # @param [Array<Fixnum>, Fixnum] size_ids
         #   Select only ads with these size IDs.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -832,9 +833,9 @@ module Google
         end
         
         # Updates an existing ad. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Ad ID.
         # @param [Google::Apis::DfareportingV2_7::Ad] ad_object
         # @param [String] fields
@@ -873,7 +874,7 @@ module Google
         end
         
         # Updates an existing ad.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Ad] ad_object
         # @param [String] fields
@@ -911,9 +912,9 @@ module Google
         end
         
         # Deletes an existing advertiser group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Advertiser group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -947,9 +948,9 @@ module Google
         end
         
         # Gets one advertiser group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Advertiser group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -985,7 +986,7 @@ module Google
         end
         
         # Inserts a new advertiser group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::AdvertiserGroup] advertiser_group_object
         # @param [String] fields
@@ -1024,9 +1025,9 @@ module Google
         
         # Retrieves a list of advertiser groups, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only advertiser groups with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -1083,9 +1084,9 @@ module Google
         end
         
         # Updates an existing advertiser group. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Advertiser group ID.
         # @param [Google::Apis::DfareportingV2_7::AdvertiserGroup] advertiser_group_object
         # @param [String] fields
@@ -1124,7 +1125,7 @@ module Google
         end
         
         # Updates an existing advertiser group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::AdvertiserGroup] advertiser_group_object
         # @param [String] fields
@@ -1162,9 +1163,9 @@ module Google
         end
         
         # Gets one advertiser by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Advertiser ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1200,7 +1201,7 @@ module Google
         end
         
         # Inserts a new advertiser.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Advertiser] advertiser_object
         # @param [String] fields
@@ -1239,13 +1240,13 @@ module Google
         
         # Retrieves a list of advertisers, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_group_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_group_ids
         #   Select only advertisers with these advertiser group IDs.
-        # @param [Array<String>, String] floodlight_configuration_ids
+        # @param [Array<Fixnum>, Fixnum] floodlight_configuration_ids
         #   Select only advertisers with these floodlight configuration IDs.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only advertisers with these IDs.
         # @param [Boolean] include_advertisers_without_groups_only
         #   Select only advertisers which do not belong to any advertiser group.
@@ -1269,7 +1270,7 @@ module Google
         #   Order of sorted results, default is ASCENDING.
         # @param [String] status
         #   Select only advertisers with the specified status.
-        # @param [String] subaccount_id
+        # @param [Fixnum] subaccount_id
         #   Select only advertisers with these subaccount IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1316,9 +1317,9 @@ module Google
         end
         
         # Updates an existing advertiser. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Advertiser ID.
         # @param [Google::Apis::DfareportingV2_7::Advertiser] advertiser_object
         # @param [String] fields
@@ -1357,7 +1358,7 @@ module Google
         end
         
         # Updates an existing advertiser.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Advertiser] advertiser_object
         # @param [String] fields
@@ -1395,7 +1396,7 @@ module Google
         end
         
         # Retrieves a list of browsers.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1432,9 +1433,9 @@ module Google
         # Associates a creative with the specified campaign. This method creates a
         # default ad with dimensions matching the creative in the campaign if such a
         # default ad does not exist already.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Campaign ID in this association.
         # @param [Google::Apis::DfareportingV2_7::CampaignCreativeAssociation] campaign_creative_association_object
         # @param [String] fields
@@ -1474,9 +1475,9 @@ module Google
         
         # Retrieves the list of creative IDs associated with the specified campaign.
         # This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Campaign ID in this association.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -1521,9 +1522,9 @@ module Google
         end
         
         # Gets one campaign by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Campaign ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1559,7 +1560,7 @@ module Google
         end
         
         # Inserts a new campaign.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] default_landing_page_name
         #   Default landing page name for this new campaign. Must be less than 256
@@ -1604,24 +1605,24 @@ module Google
         end
         
         # Retrieves a list of campaigns, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_group_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_group_ids
         #   Select only campaigns whose advertisers belong to these advertiser groups.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only campaigns that belong to these advertisers.
         # @param [Boolean] archived
         #   Select only archived campaigns. Don't set this field to select both archived
         #   and non-archived campaigns.
         # @param [Boolean] at_least_one_optimization_activity
         #   Select only campaigns that have at least one optimization activity.
-        # @param [Array<String>, String] excluded_ids
+        # @param [Array<Fixnum>, Fixnum] excluded_ids
         #   Exclude campaigns with these IDs.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only campaigns with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
-        # @param [String] overridden_event_tag_id
+        # @param [Fixnum] overridden_event_tag_id
         #   Select only campaigns that have overridden this event tag ID.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
@@ -1636,7 +1637,7 @@ module Google
         #   Field by which to sort the list.
         # @param [String] sort_order
         #   Order of sorted results, default is ASCENDING.
-        # @param [String] subaccount_id
+        # @param [Fixnum] subaccount_id
         #   Select only campaigns that belong to this subaccount.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1684,9 +1685,9 @@ module Google
         end
         
         # Updates an existing campaign. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Campaign ID.
         # @param [Google::Apis::DfareportingV2_7::Campaign] campaign_object
         # @param [String] fields
@@ -1725,7 +1726,7 @@ module Google
         end
         
         # Updates an existing campaign.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Campaign] campaign_object
         # @param [String] fields
@@ -1763,9 +1764,9 @@ module Google
         end
         
         # Gets one change log by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Change log ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1801,11 +1802,11 @@ module Google
         end
         
         # Retrieves a list of change logs. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] action
         #   Select only change logs with the specified action.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only change logs with these IDs.
         # @param [String] max_change_time
         #   Select only change logs whose change time is before the specified
@@ -1823,7 +1824,7 @@ module Google
         #   the format is "2015-07-18T22:54:00-04:00". In other words, the year, month,
         #   day, the letter T, the hour (24-hour clock system), minute, second, and then
         #   the time zone offset.
-        # @param [Array<String>, String] object_ids
+        # @param [Array<Fixnum>, Fixnum] object_ids
         #   Select only change logs with these object IDs.
         # @param [String] object_type
         #   Select only change logs with the specified object type.
@@ -1832,7 +1833,7 @@ module Google
         # @param [String] search_string
         #   Select only change logs whose object ID, user name, old or new values match
         #   the search string.
-        # @param [Array<String>, String] user_profile_ids
+        # @param [Array<Fixnum>, Fixnum] user_profile_ids
         #   Select only change logs with these user profile IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1877,15 +1878,15 @@ module Google
         end
         
         # Retrieves a list of cities, possibly filtered.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] country_dart_ids
+        # @param [Array<Fixnum>, Fixnum] country_dart_ids
         #   Select only cities from these countries.
-        # @param [Array<String>, String] dart_ids
+        # @param [Array<Fixnum>, Fixnum] dart_ids
         #   Select only cities with these DART IDs.
         # @param [String] name_prefix
         #   Select only cities with names starting with this prefix.
-        # @param [Array<String>, String] region_dart_ids
+        # @param [Array<Fixnum>, Fixnum] region_dart_ids
         #   Select only cities from these regions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1924,9 +1925,9 @@ module Google
         end
         
         # Gets one connection type by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Connection type ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1962,7 +1963,7 @@ module Google
         end
         
         # Retrieves a list of connection types.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1997,9 +1998,9 @@ module Google
         end
         
         # Deletes an existing content category.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Content category ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2033,9 +2034,9 @@ module Google
         end
         
         # Gets one content category by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Content category ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2071,7 +2072,7 @@ module Google
         end
         
         # Inserts a new content category.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::ContentCategory] content_category_object
         # @param [String] fields
@@ -2110,9 +2111,9 @@ module Google
         
         # Retrieves a list of content categories, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only content categories with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -2169,9 +2170,9 @@ module Google
         end
         
         # Updates an existing content category. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Content category ID.
         # @param [Google::Apis::DfareportingV2_7::ContentCategory] content_category_object
         # @param [String] fields
@@ -2210,7 +2211,7 @@ module Google
         end
         
         # Updates an existing content category.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::ContentCategory] content_category_object
         # @param [String] fields
@@ -2248,7 +2249,7 @@ module Google
         end
         
         # Inserts conversions.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::ConversionsBatchInsertRequest] conversions_batch_insert_request_object
         # @param [String] fields
@@ -2286,9 +2287,9 @@ module Google
         end
         
         # Gets one country by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] dart_id
+        # @param [Fixnum] dart_id
         #   Country DART ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2324,7 +2325,7 @@ module Google
         end
         
         # Retrieves a list of countries.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2359,9 +2360,9 @@ module Google
         end
         
         # Inserts a new creative asset.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Advertiser ID of this creative. This is a required field.
         # @param [Google::Apis::DfareportingV2_7::CreativeAssetMetadata] creative_asset_metadata_object
         # @param [String] fields
@@ -2410,11 +2411,11 @@ module Google
         end
         
         # Deletes an existing creative field value.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field Value ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2449,11 +2450,11 @@ module Google
         end
         
         # Gets one creative field value by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field Value ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2490,9 +2491,9 @@ module Google
         end
         
         # Inserts a new creative field value.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
         # @param [Google::Apis::DfareportingV2_7::CreativeFieldValue] creative_field_value_object
         # @param [String] fields
@@ -2532,11 +2533,11 @@ module Google
         
         # Retrieves a list of creative field values, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only creative field values with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -2589,11 +2590,11 @@ module Google
         end
         
         # Updates an existing creative field value. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field Value ID
         # @param [Google::Apis::DfareportingV2_7::CreativeFieldValue] creative_field_value_object
         # @param [String] fields
@@ -2633,9 +2634,9 @@ module Google
         end
         
         # Updates an existing creative field value.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] creative_field_id
+        # @param [Fixnum] creative_field_id
         #   Creative field ID for this creative field value.
         # @param [Google::Apis::DfareportingV2_7::CreativeFieldValue] creative_field_value_object
         # @param [String] fields
@@ -2674,9 +2675,9 @@ module Google
         end
         
         # Deletes an existing creative field.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2710,9 +2711,9 @@ module Google
         end
         
         # Gets one creative field by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2748,7 +2749,7 @@ module Google
         end
         
         # Inserts a new creative field.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::CreativeField] creative_field_object
         # @param [String] fields
@@ -2787,11 +2788,11 @@ module Google
         
         # Retrieves a list of creative fields, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only creative fields that belong to these advertisers.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only creative fields with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -2849,9 +2850,9 @@ module Google
         end
         
         # Updates an existing creative field. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative Field ID
         # @param [Google::Apis::DfareportingV2_7::CreativeField] creative_field_object
         # @param [String] fields
@@ -2890,7 +2891,7 @@ module Google
         end
         
         # Updates an existing creative field.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::CreativeField] creative_field_object
         # @param [String] fields
@@ -2928,9 +2929,9 @@ module Google
         end
         
         # Gets one creative group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2966,7 +2967,7 @@ module Google
         end
         
         # Inserts a new creative group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::CreativeGroup] creative_group_object
         # @param [String] fields
@@ -3005,13 +3006,13 @@ module Google
         
         # Retrieves a list of creative groups, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only creative groups that belong to these advertisers.
         # @param [Fixnum] group_number
         #   Select only creative groups that belong to this subgroup.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only creative groups with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -3070,9 +3071,9 @@ module Google
         end
         
         # Updates an existing creative group. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative group ID.
         # @param [Google::Apis::DfareportingV2_7::CreativeGroup] creative_group_object
         # @param [String] fields
@@ -3111,7 +3112,7 @@ module Google
         end
         
         # Updates an existing creative group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::CreativeGroup] creative_group_object
         # @param [String] fields
@@ -3149,9 +3150,9 @@ module Google
         end
         
         # Gets one creative by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3187,7 +3188,7 @@ module Google
         end
         
         # Inserts a new creative.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Creative] creative_object
         # @param [String] fields
@@ -3225,29 +3226,29 @@ module Google
         end
         
         # Retrieves a list of creatives, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] active
         #   Select only active creatives. Leave blank to select active and inactive
         #   creatives.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only creatives with this advertiser ID.
         # @param [Boolean] archived
         #   Select only archived creatives. Leave blank to select archived and unarchived
         #   creatives.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Select only creatives with this campaign ID.
-        # @param [Array<String>, String] companion_creative_ids
+        # @param [Array<Fixnum>, Fixnum] companion_creative_ids
         #   Select only in-stream video creatives with these companion IDs.
-        # @param [Array<String>, String] creative_field_ids
+        # @param [Array<Fixnum>, Fixnum] creative_field_ids
         #   Select only creatives with these creative field IDs.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only creatives with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
-        # @param [Array<String>, String] rendering_ids
+        # @param [Array<Fixnum>, Fixnum] rendering_ids
         #   Select only creatives with these rendering IDs.
         # @param [String] search_string
         #   Allows searching for objects by name or ID. Wildcards (*) are allowed. For
@@ -3256,13 +3257,13 @@ module Google
         #   also add wildcards implicitly at the start and the end of the search string.
         #   For example, a search string of "creative" will match objects with name "my
         #   creative", "creative 2015", or simply "creative".
-        # @param [Array<String>, String] size_ids
+        # @param [Array<Fixnum>, Fixnum] size_ids
         #   Select only creatives with these size IDs.
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
         #   Order of sorted results, default is ASCENDING.
-        # @param [String] studio_creative_id
+        # @param [Fixnum] studio_creative_id
         #   Select only creatives corresponding to this Studio creative ID.
         # @param [Array<String>, String] types
         #   Select only creatives with these creative types.
@@ -3315,9 +3316,9 @@ module Google
         end
         
         # Updates an existing creative. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Creative ID.
         # @param [Google::Apis::DfareportingV2_7::Creative] creative_object
         # @param [String] fields
@@ -3356,7 +3357,7 @@ module Google
         end
         
         # Updates an existing creative.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Creative] creative_object
         # @param [String] fields
@@ -3394,7 +3395,7 @@ module Google
         end
         
         # Retrieves list of report dimension values for a list of filters.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
         # @param [Google::Apis::DfareportingV2_7::DimensionValueRequest] dimension_value_request_object
         # @param [Fixnum] max_results
@@ -3438,9 +3439,9 @@ module Google
         end
         
         # Gets one directory site contact by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Directory site contact ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3477,12 +3478,12 @@ module Google
         
         # Retrieves a list of directory site contacts, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] directory_site_ids
+        # @param [Array<Fixnum>, Fixnum] directory_site_ids
         #   Select only directory site contacts with these directory site IDs. This is a
         #   required field.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only directory site contacts with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -3541,9 +3542,9 @@ module Google
         end
         
         # Gets one directory site by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Directory site ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3579,7 +3580,7 @@ module Google
         end
         
         # Inserts a new directory site.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::DirectorySite] directory_site_object
         # @param [String] fields
@@ -3618,7 +3619,7 @@ module Google
         
         # Retrieves a list of directory sites, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] accepts_in_stream_video_placements
         #   This search filter is no longer supported and will have no effect on the
@@ -3632,17 +3633,17 @@ module Google
         # @param [Boolean] active
         #   Select only active directory sites. Leave blank to retrieve both active and
         #   inactive directory sites.
-        # @param [String] country_id
+        # @param [Fixnum] country_id
         #   Select only directory sites with this country ID.
         # @param [String] dfp_network_code
         #   Select only directory sites with this DFP network code.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only directory sites with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
-        # @param [String] parent_id
+        # @param [Fixnum] parent_id
         #   Select only directory sites with this parent ID.
         # @param [String] search_string
         #   Allows searching for objects by name, ID or URL. Wildcards (*) are allowed.
@@ -3702,9 +3703,9 @@ module Google
         end
         
         # Deletes an existing dynamic targeting key.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] object_id_
+        # @param [Fixnum] object_id_
         #   ID of the object of this dynamic targeting key. This is a required field.
         # @param [String] name
         #   Name of this dynamic targeting key. This is a required field. Must be less
@@ -3749,7 +3750,7 @@ module Google
         # level before being assigned to the advertiser's ads, creatives, or placements.
         # There is a maximum of 1000 keys per advertiser, out of which a maximum of 20
         # keys can be assigned per ad, creative, or placement.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::DynamicTargetingKey] dynamic_targeting_key_object
         # @param [String] fields
@@ -3787,13 +3788,13 @@ module Google
         end
         
         # Retrieves a list of dynamic targeting keys.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only dynamic targeting keys whose object has this advertiser ID.
         # @param [Array<String>, String] names
         #   Select only dynamic targeting keys exactly matching these names.
-        # @param [String] object_id_
+        # @param [Fixnum] object_id_
         #   Select only dynamic targeting keys with this object ID.
         # @param [String] object_type
         #   Select only dynamic targeting keys with this object type.
@@ -3834,9 +3835,9 @@ module Google
         end
         
         # Deletes an existing event tag.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Event tag ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3870,9 +3871,9 @@ module Google
         end
         
         # Gets one event tag by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Event tag ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3908,7 +3909,7 @@ module Google
         end
         
         # Inserts a new event tag.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::EventTag] event_tag_object
         # @param [String] fields
@@ -3946,13 +3947,13 @@ module Google
         end
         
         # Retrieves a list of event tags, possibly filtered.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] ad_id
+        # @param [Fixnum] ad_id
         #   Select only event tags that belong to this ad.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only event tags that belong to this advertiser.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Select only event tags that belong to this campaign.
         # @param [Boolean] definitions_only
         #   Examine only the specified campaign or advertiser's event tags for matching
@@ -3973,7 +3974,7 @@ module Google
         #   be used to specify whether to use a third-party pixel, a third-party
         #   JavaScript URL, or a third-party click-through URL for either impression or
         #   click tracking.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only event tags with these IDs.
         # @param [String] search_string
         #   Allows searching for objects by name or ID. Wildcards (*) are allowed. For
@@ -4029,9 +4030,9 @@ module Google
         end
         
         # Updates an existing event tag. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Event tag ID.
         # @param [Google::Apis::DfareportingV2_7::EventTag] event_tag_object
         # @param [String] fields
@@ -4070,7 +4071,7 @@ module Google
         end
         
         # Updates an existing event tag.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::EventTag] event_tag_object
         # @param [String] fields
@@ -4108,9 +4109,9 @@ module Google
         end
         
         # Retrieves a report file by its report ID and file ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
-        # @param [String] file_id
+        # @param [Fixnum] file_id
         #   The ID of the report file.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4153,7 +4154,7 @@ module Google
         end
         
         # Lists files for a user profile.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA profile ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -4203,9 +4204,9 @@ module Google
         end
         
         # Deletes an existing floodlight activity.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight activity ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4239,9 +4240,9 @@ module Google
         end
         
         # Generates a tag for a floodlight activity.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] floodlight_activity_id
+        # @param [Fixnum] floodlight_activity_id
         #   Floodlight activity ID for which we want to generate a tag.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4277,9 +4278,9 @@ module Google
         end
         
         # Gets one floodlight activity by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight activity ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4315,7 +4316,7 @@ module Google
         end
         
         # Inserts a new floodlight activity.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivity] floodlight_activity_object
         # @param [String] fields
@@ -4354,13 +4355,13 @@ module Google
         
         # Retrieves a list of floodlight activities, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only floodlight activities for the specified advertiser ID. Must
         #   specify either ids, advertiserId, or floodlightConfigurationId for a non-empty
         #   result.
-        # @param [Array<String>, String] floodlight_activity_group_ids
+        # @param [Array<Fixnum>, Fixnum] floodlight_activity_group_ids
         #   Select only floodlight activities with the specified floodlight activity group
         #   IDs.
         # @param [String] floodlight_activity_group_name
@@ -4372,11 +4373,11 @@ module Google
         # @param [String] floodlight_activity_group_type
         #   Select only floodlight activities with the specified floodlight activity group
         #   type.
-        # @param [String] floodlight_configuration_id
+        # @param [Fixnum] floodlight_configuration_id
         #   Select only floodlight activities for the specified floodlight configuration
         #   ID. Must specify either ids, advertiserId, or floodlightConfigurationId for a
         #   non-empty result.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only floodlight activities with the specified IDs. Must specify either
         #   ids, advertiserId, or floodlightConfigurationId for a non-empty result.
         # @param [Fixnum] max_results
@@ -4443,9 +4444,9 @@ module Google
         end
         
         # Updates an existing floodlight activity. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight activity ID.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivity] floodlight_activity_object
         # @param [String] fields
@@ -4484,7 +4485,7 @@ module Google
         end
         
         # Updates an existing floodlight activity.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivity] floodlight_activity_object
         # @param [String] fields
@@ -4522,9 +4523,9 @@ module Google
         end
         
         # Gets one floodlight activity group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight activity Group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4560,7 +4561,7 @@ module Google
         end
         
         # Inserts a new floodlight activity group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivityGroup] floodlight_activity_group_object
         # @param [String] fields
@@ -4599,17 +4600,17 @@ module Google
         
         # Retrieves a list of floodlight activity groups, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only floodlight activity groups with the specified advertiser ID. Must
         #   specify either advertiserId or floodlightConfigurationId for a non-empty
         #   result.
-        # @param [String] floodlight_configuration_id
+        # @param [Fixnum] floodlight_configuration_id
         #   Select only floodlight activity groups with the specified floodlight
         #   configuration ID. Must specify either advertiserId, or
         #   floodlightConfigurationId for a non-empty result.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only floodlight activity groups with the specified IDs. Must specify
         #   either advertiserId or floodlightConfigurationId for a non-empty result.
         # @param [Fixnum] max_results
@@ -4675,9 +4676,9 @@ module Google
         
         # Updates an existing floodlight activity group. This method supports patch
         # semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight activity Group ID.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivityGroup] floodlight_activity_group_object
         # @param [String] fields
@@ -4716,7 +4717,7 @@ module Google
         end
         
         # Updates an existing floodlight activity group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::FloodlightActivityGroup] floodlight_activity_group_object
         # @param [String] fields
@@ -4754,9 +4755,9 @@ module Google
         end
         
         # Gets one floodlight configuration by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight configuration ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4792,9 +4793,9 @@ module Google
         end
         
         # Retrieves a list of floodlight configurations, possibly filtered.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Set of IDs of floodlight configurations to retrieve. Required field; otherwise
         #   an empty list will be returned.
         # @param [String] fields
@@ -4832,9 +4833,9 @@ module Google
         
         # Updates an existing floodlight configuration. This method supports patch
         # semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Floodlight configuration ID.
         # @param [Google::Apis::DfareportingV2_7::FloodlightConfiguration] floodlight_configuration_object
         # @param [String] fields
@@ -4873,7 +4874,7 @@ module Google
         end
         
         # Updates an existing floodlight configuration.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::FloodlightConfiguration] floodlight_configuration_object
         # @param [String] fields
@@ -4911,11 +4912,11 @@ module Google
         end
         
         # Gets one inventory item by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for order documents.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Inventory item ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4953,21 +4954,21 @@ module Google
         
         # Retrieves a list of inventory items, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for order documents.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only inventory items with these IDs.
         # @param [Boolean] in_plan
         #   Select only inventory items that are in plan.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
-        # @param [Array<String>, String] order_id
+        # @param [Array<Fixnum>, Fixnum] order_id
         #   Select only inventory items that belong to specified orders.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
-        # @param [Array<String>, String] site_id
+        # @param [Array<Fixnum>, Fixnum] site_id
         #   Select only inventory items that are associated with these sites.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -5018,11 +5019,11 @@ module Google
         end
         
         # Deletes an existing campaign landing page.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Landing page ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5057,11 +5058,11 @@ module Google
         end
         
         # Gets one campaign landing page by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Landing page ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5098,9 +5099,9 @@ module Google
         end
         
         # Inserts a new landing page for the specified campaign.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
         # @param [Google::Apis::DfareportingV2_7::LandingPage] landing_page_object
         # @param [String] fields
@@ -5139,9 +5140,9 @@ module Google
         end
         
         # Retrieves the list of landing pages for the specified campaign.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5178,11 +5179,11 @@ module Google
         
         # Updates an existing campaign landing page. This method supports patch
         # semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Landing page ID.
         # @param [Google::Apis::DfareportingV2_7::LandingPage] landing_page_object
         # @param [String] fields
@@ -5222,9 +5223,9 @@ module Google
         end
         
         # Updates an existing campaign landing page.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Landing page campaign ID.
         # @param [Google::Apis::DfareportingV2_7::LandingPage] landing_page_object
         # @param [String] fields
@@ -5263,7 +5264,7 @@ module Google
         end
         
         # Retrieves a list of languages.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5298,7 +5299,7 @@ module Google
         end
         
         # Retrieves a list of metros.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5333,9 +5334,9 @@ module Google
         end
         
         # Gets one mobile carrier by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Mobile carrier ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5371,7 +5372,7 @@ module Google
         end
         
         # Retrieves a list of mobile carriers.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5406,9 +5407,9 @@ module Google
         end
         
         # Gets one operating system version by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Operating system version ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5444,7 +5445,7 @@ module Google
         end
         
         # Retrieves a list of operating system versions.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5479,9 +5480,9 @@ module Google
         end
         
         # Gets one operating system by DART ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] dart_id
+        # @param [Fixnum] dart_id
         #   Operating system DART ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5517,7 +5518,7 @@ module Google
         end
         
         # Retrieves a list of operating systems.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5552,11 +5553,11 @@ module Google
         end
         
         # Gets one order document by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for order documents.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Order document ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5594,17 +5595,17 @@ module Google
         
         # Retrieves a list of order documents, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for order documents.
         # @param [Boolean] approved
         #   Select only order documents that have been approved by at least one user.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only order documents with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
-        # @param [Array<String>, String] order_id
+        # @param [Array<Fixnum>, Fixnum] order_id
         #   Select only order documents for specified orders.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
@@ -5616,7 +5617,7 @@ module Google
         #   end of the search string. For example, a search string of "orderdocument" will
         #   match order documents with name "my orderdocument", "orderdocument 2015", or
         #   simply "orderdocument".
-        # @param [Array<String>, String] site_id
+        # @param [Array<Fixnum>, Fixnum] site_id
         #   Select only order documents that are associated with these sites.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -5665,11 +5666,11 @@ module Google
         end
         
         # Gets one order by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for orders.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Order ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5706,11 +5707,11 @@ module Google
         end
         
         # Retrieves a list of orders, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] project_id
+        # @param [Fixnum] project_id
         #   Project ID for orders.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only orders with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -5723,7 +5724,7 @@ module Google
         #   wildcards implicitly at the start and the end of the search string. For
         #   example, a search string of "order" will match orders with name "my order", "
         #   order 2015", or simply "order".
-        # @param [Array<String>, String] site_id
+        # @param [Array<Fixnum>, Fixnum] site_id
         #   Select only orders that are associated with these site IDs.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -5770,9 +5771,9 @@ module Google
         end
         
         # Gets one placement group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5808,7 +5809,7 @@ module Google
         end
         
         # Inserts a new placement group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::PlacementGroup] placement_group_object
         # @param [String] fields
@@ -5847,20 +5848,20 @@ module Google
         
         # Retrieves a list of placement groups, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only placement groups that belong to these advertisers.
         # @param [Boolean] archived
         #   Select only archived placements. Don't set this field to select both archived
         #   and non-archived placements.
-        # @param [Array<String>, String] campaign_ids
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
         #   Select only placement groups that belong to these campaigns.
-        # @param [Array<String>, String] content_category_ids
+        # @param [Array<Fixnum>, Fixnum] content_category_ids
         #   Select only placement groups that are associated with these content categories.
-        # @param [Array<String>, String] directory_site_ids
+        # @param [Array<Fixnum>, Fixnum] directory_site_ids
         #   Select only placement groups that are associated with these directory sites.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only placement groups with these IDs.
         # @param [String] max_end_date
         #   Select only placements or placement groups whose end date is on or before the
@@ -5885,7 +5886,7 @@ module Google
         #   pricing point but also assumes that all the tags in it will be served at the
         #   same time. A roadblock requires one of its assigned placements to be marked as
         #   primary for reporting.
-        # @param [Array<String>, String] placement_strategy_ids
+        # @param [Array<Fixnum>, Fixnum] placement_strategy_ids
         #   Select only placement groups that are associated with these placement
         #   strategies.
         # @param [Array<String>, String] pricing_types
@@ -5898,7 +5899,7 @@ module Google
         #   end of the search string. For example, a search string of "placementgroup"
         #   will match placement groups with name "my placementgroup", "placementgroup
         #   2015", or simply "placementgroup".
-        # @param [Array<String>, String] site_ids
+        # @param [Array<Fixnum>, Fixnum] site_ids
         #   Select only placement groups that are associated with these sites.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -5956,9 +5957,9 @@ module Google
         end
         
         # Updates an existing placement group. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement group ID.
         # @param [Google::Apis::DfareportingV2_7::PlacementGroup] placement_group_object
         # @param [String] fields
@@ -5997,7 +5998,7 @@ module Google
         end
         
         # Updates an existing placement group.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::PlacementGroup] placement_group_object
         # @param [String] fields
@@ -6035,9 +6036,9 @@ module Google
         end
         
         # Deletes an existing placement strategy.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement strategy ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6071,9 +6072,9 @@ module Google
         end
         
         # Gets one placement strategy by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement strategy ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6109,7 +6110,7 @@ module Google
         end
         
         # Inserts a new placement strategy.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::PlacementStrategy] placement_strategy_object
         # @param [String] fields
@@ -6148,9 +6149,9 @@ module Google
         
         # Retrieves a list of placement strategies, possibly filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only placement strategies with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -6207,9 +6208,9 @@ module Google
         end
         
         # Updates an existing placement strategy. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement strategy ID.
         # @param [Google::Apis::DfareportingV2_7::PlacementStrategy] placement_strategy_object
         # @param [String] fields
@@ -6248,7 +6249,7 @@ module Google
         end
         
         # Updates an existing placement strategy.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::PlacementStrategy] placement_strategy_object
         # @param [String] fields
@@ -6286,11 +6287,11 @@ module Google
         end
         
         # Generates tags for a placement.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Generate placements belonging to this campaign. This is a required field.
-        # @param [Array<String>, String] placement_ids
+        # @param [Array<Fixnum>, Fixnum] placement_ids
         #   Generate tags for these placements.
         # @param [Array<String>, String] tag_formats
         #   Tag formats to generate for these placements.
@@ -6330,9 +6331,9 @@ module Google
         end
         
         # Gets one placement by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6368,7 +6369,7 @@ module Google
         end
         
         # Inserts a new placement.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Placement] placement_object
         # @param [String] fields
@@ -6406,14 +6407,14 @@ module Google
         end
         
         # Retrieves a list of placements, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only placements that belong to these advertisers.
         # @param [Boolean] archived
         #   Select only archived placements. Don't set this field to select both archived
         #   and non-archived placements.
-        # @param [Array<String>, String] campaign_ids
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
         #   Select only placements that belong to these campaigns.
         # @param [Array<String>, String] compatibilities
         #   Select only placements that are associated with these compatibilities. DISPLAY
@@ -6421,13 +6422,13 @@ module Google
         #   devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL
         #   are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-
         #   stream video ads developed with the VAST standard.
-        # @param [Array<String>, String] content_category_ids
+        # @param [Array<Fixnum>, Fixnum] content_category_ids
         #   Select only placements that are associated with these content categories.
-        # @param [Array<String>, String] directory_site_ids
+        # @param [Array<Fixnum>, Fixnum] directory_site_ids
         #   Select only placements that are associated with these directory sites.
-        # @param [Array<String>, String] group_ids
+        # @param [Array<Fixnum>, Fixnum] group_ids
         #   Select only placements that belong to these placement groups.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only placements with these IDs.
         # @param [String] max_end_date
         #   Select only placements or placement groups whose end date is on or before the
@@ -6447,7 +6448,7 @@ module Google
         #   Value of the nextPageToken from the previous result page.
         # @param [String] payment_source
         #   Select only placements with this payment source.
-        # @param [Array<String>, String] placement_strategy_ids
+        # @param [Array<Fixnum>, Fixnum] placement_strategy_ids
         #   Select only placements that are associated with these placement strategies.
         # @param [Array<String>, String] pricing_types
         #   Select only placements with these pricing types.
@@ -6458,9 +6459,9 @@ module Google
         #   searches also add wildcards implicitly at the start and the end of the search
         #   string. For example, a search string of "placement" will match placements with
         #   name "my placement", "placement 2015", or simply "placement".
-        # @param [Array<String>, String] site_ids
+        # @param [Array<Fixnum>, Fixnum] site_ids
         #   Select only placements that are associated with these sites.
-        # @param [Array<String>, String] size_ids
+        # @param [Array<Fixnum>, Fixnum] size_ids
         #   Select only placements that are associated with these sizes.
         # @param [String] sort_field
         #   Field by which to sort the list.
@@ -6521,9 +6522,9 @@ module Google
         end
         
         # Updates an existing placement. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Placement ID.
         # @param [Google::Apis::DfareportingV2_7::Placement] placement_object
         # @param [String] fields
@@ -6562,7 +6563,7 @@ module Google
         end
         
         # Updates an existing placement.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Placement] placement_object
         # @param [String] fields
@@ -6600,9 +6601,9 @@ module Google
         end
         
         # Gets one platform type by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Platform type ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6638,7 +6639,7 @@ module Google
         end
         
         # Retrieves a list of platform types.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6673,7 +6674,7 @@ module Google
         end
         
         # Gets one postal code by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] code
         #   Postal code ID.
@@ -6711,7 +6712,7 @@ module Google
         end
         
         # Retrieves a list of postal codes.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6746,9 +6747,9 @@ module Google
         end
         
         # Gets one project by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6784,11 +6785,11 @@ module Google
         end
         
         # Retrieves a list of projects, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] advertiser_ids
+        # @param [Array<Fixnum>, Fixnum] advertiser_ids
         #   Select only projects with these advertiser IDs.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only projects with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -6845,7 +6846,7 @@ module Google
         end
         
         # Retrieves a list of regions.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6880,9 +6881,9 @@ module Google
         end
         
         # Gets one remarketing list share by remarketing list ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] remarketing_list_id
+        # @param [Fixnum] remarketing_list_id
         #   Remarketing list ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6919,9 +6920,9 @@ module Google
         
         # Updates an existing remarketing list share. This method supports patch
         # semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] remarketing_list_id
+        # @param [Fixnum] remarketing_list_id
         #   Remarketing list ID.
         # @param [Google::Apis::DfareportingV2_7::RemarketingListShare] remarketing_list_share_object
         # @param [String] fields
@@ -6960,7 +6961,7 @@ module Google
         end
         
         # Updates an existing remarketing list share.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::RemarketingListShare] remarketing_list_share_object
         # @param [String] fields
@@ -6998,9 +6999,9 @@ module Google
         end
         
         # Gets one remarketing list by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Remarketing list ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7036,7 +7037,7 @@ module Google
         end
         
         # Inserts a new remarketing list.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::RemarketingList] remarketing_list_object
         # @param [String] fields
@@ -7075,13 +7076,13 @@ module Google
         
         # Retrieves a list of remarketing lists, possibly filtered. This method supports
         # paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only remarketing lists owned by this advertiser.
         # @param [Boolean] active
         #   Select only active or only inactive remarketing lists.
-        # @param [String] floodlight_activity_id
+        # @param [Fixnum] floodlight_activity_id
         #   Select only remarketing lists that have this floodlight activity ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -7140,9 +7141,9 @@ module Google
         end
         
         # Updates an existing remarketing list. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Remarketing list ID.
         # @param [Google::Apis::DfareportingV2_7::RemarketingList] remarketing_list_object
         # @param [String] fields
@@ -7181,7 +7182,7 @@ module Google
         end
         
         # Updates an existing remarketing list.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::RemarketingList] remarketing_list_object
         # @param [String] fields
@@ -7219,9 +7220,9 @@ module Google
         end
         
         # Deletes a report by its ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7255,9 +7256,9 @@ module Google
         end
         
         # Retrieves a report by its ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7293,7 +7294,7 @@ module Google
         end
         
         # Creates a report.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
         # @param [Google::Apis::DfareportingV2_7::Report] report_object
         # @param [String] fields
@@ -7331,7 +7332,7 @@ module Google
         end
         
         # Retrieves list of reports.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -7381,9 +7382,9 @@ module Google
         end
         
         # Updates a report. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Google::Apis::DfareportingV2_7::Report] report_object
         # @param [String] fields
@@ -7422,9 +7423,9 @@ module Google
         end
         
         # Runs a report.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Boolean] synchronous
         #   If set and true, tries to run the report synchronously.
@@ -7463,9 +7464,9 @@ module Google
         end
         
         # Updates a report.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Google::Apis::DfareportingV2_7::Report] report_object
         # @param [String] fields
@@ -7506,7 +7507,7 @@ module Google
         # Returns the fields that are compatible to be selected in the respective
         # sections of a report criteria, given the fields already selected in the input
         # report and user permissions.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA user profile ID.
         # @param [Google::Apis::DfareportingV2_7::Report] report_object
         # @param [String] fields
@@ -7544,11 +7545,11 @@ module Google
         end
         
         # Retrieves a report file.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the report.
-        # @param [String] file_id
+        # @param [Fixnum] file_id
         #   The ID of the report file.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7592,9 +7593,9 @@ module Google
         end
         
         # Lists files for a report.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The DFA profile ID.
-        # @param [String] report_id
+        # @param [Fixnum] report_id
         #   The ID of the parent report.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -7642,9 +7643,9 @@ module Google
         end
         
         # Gets one site by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Site ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7680,7 +7681,7 @@ module Google
         end
         
         # Inserts a new site.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Site] site_object
         # @param [String] fields
@@ -7718,7 +7719,7 @@ module Google
         end
         
         # Retrieves a list of sites, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] accepts_in_stream_video_placements
         #   This search filter is no longer supported and will have no effect on the
@@ -7732,11 +7733,11 @@ module Google
         #   Select only AdWords sites.
         # @param [Boolean] approved
         #   Select only approved sites.
-        # @param [Array<String>, String] campaign_ids
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
         #   Select only sites with these campaign IDs.
-        # @param [Array<String>, String] directory_site_ids
+        # @param [Array<Fixnum>, Fixnum] directory_site_ids
         #   Select only sites with these directory site IDs.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only sites with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -7753,7 +7754,7 @@ module Google
         #   Field by which to sort the list.
         # @param [String] sort_order
         #   Order of sorted results, default is ASCENDING.
-        # @param [String] subaccount_id
+        # @param [Fixnum] subaccount_id
         #   Select only sites with this subaccount ID.
         # @param [Boolean] unmapped_site
         #   Select only sites that have not been mapped to a directory site.
@@ -7805,9 +7806,9 @@ module Google
         end
         
         # Updates an existing site. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Site ID.
         # @param [Google::Apis::DfareportingV2_7::Site] site_object
         # @param [String] fields
@@ -7846,7 +7847,7 @@ module Google
         end
         
         # Updates an existing site.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Site] site_object
         # @param [String] fields
@@ -7884,9 +7885,9 @@ module Google
         end
         
         # Gets one size by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Size ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7922,7 +7923,7 @@ module Google
         end
         
         # Inserts a new size.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Size] size_object
         # @param [String] fields
@@ -7960,13 +7961,13 @@ module Google
         end
         
         # Retrieves a list of sizes, possibly filtered.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] height
         #   Select only sizes with this height.
         # @param [Boolean] iab_standard
         #   Select only IAB standard sizes.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only sizes with these IDs.
         # @param [Fixnum] width
         #   Select only sizes with this width.
@@ -8007,9 +8008,9 @@ module Google
         end
         
         # Gets one subaccount by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Subaccount ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8045,7 +8046,7 @@ module Google
         end
         
         # Inserts a new subaccount.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Subaccount] subaccount_object
         # @param [String] fields
@@ -8083,9 +8084,9 @@ module Google
         end
         
         # Gets a list of subaccounts, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only subaccounts with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -8141,9 +8142,9 @@ module Google
         end
         
         # Updates an existing subaccount. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Subaccount ID.
         # @param [Google::Apis::DfareportingV2_7::Subaccount] subaccount_object
         # @param [String] fields
@@ -8182,7 +8183,7 @@ module Google
         end
         
         # Updates an existing subaccount.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::Subaccount] subaccount_object
         # @param [String] fields
@@ -8220,9 +8221,9 @@ module Google
         end
         
         # Gets one remarketing list by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Remarketing list ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8259,9 +8260,9 @@ module Google
         
         # Retrieves a list of targetable remarketing lists, possibly filtered. This
         # method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only targetable remarketing lists targetable by these advertisers.
         # @param [Boolean] active
         #   Select only active or only inactive targetable remarketing lists.
@@ -8321,9 +8322,9 @@ module Google
         end
         
         # Gets one targeting template by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Targeting template ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8359,7 +8360,7 @@ module Google
         end
         
         # Inserts a new targeting template.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::TargetingTemplate] targeting_template_object
         # @param [String] fields
@@ -8398,11 +8399,11 @@ module Google
         
         # Retrieves a list of targeting templates, optionally filtered. This method
         # supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Select only targeting templates with this advertiser ID.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only targeting templates with these IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -8459,9 +8460,9 @@ module Google
         end
         
         # Updates an existing targeting template. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   Targeting template ID.
         # @param [Google::Apis::DfareportingV2_7::TargetingTemplate] targeting_template_object
         # @param [String] fields
@@ -8500,7 +8501,7 @@ module Google
         end
         
         # Updates an existing targeting template.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::TargetingTemplate] targeting_template_object
         # @param [String] fields
@@ -8538,7 +8539,7 @@ module Google
         end
         
         # Gets one user profile by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   The user profile ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8605,9 +8606,9 @@ module Google
         end
         
         # Gets one user role permission group by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User role permission group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8643,7 +8644,7 @@ module Google
         end
         
         # Gets a list of all supported user role permission groups.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8678,9 +8679,9 @@ module Google
         end
         
         # Gets one user role permission by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User role permission ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8716,9 +8717,9 @@ module Google
         end
         
         # Gets a list of user role permissions, possibly filtered.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only user role permissions with these IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8754,9 +8755,9 @@ module Google
         end
         
         # Deletes an existing user role.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User role ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8790,9 +8791,9 @@ module Google
         end
         
         # Gets one user role by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User role ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8828,7 +8829,7 @@ module Google
         end
         
         # Inserts a new user role.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::UserRole] user_role_object
         # @param [String] fields
@@ -8866,12 +8867,12 @@ module Google
         end
         
         # Retrieves a list of user roles, possibly filtered. This method supports paging.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Boolean] account_user_role_only
         #   Select only account level user roles not associated with any specific
         #   subaccount.
-        # @param [Array<String>, String] ids
+        # @param [Array<Fixnum>, Fixnum] ids
         #   Select only user roles with the specified IDs.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -8888,7 +8889,7 @@ module Google
         #   Field by which to sort the list.
         # @param [String] sort_order
         #   Order of sorted results, default is ASCENDING.
-        # @param [String] subaccount_id
+        # @param [Fixnum] subaccount_id
         #   Select only user roles that belong to this subaccount.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8931,9 +8932,9 @@ module Google
         end
         
         # Updates an existing user role. This method supports patch semantics.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
-        # @param [String] id
+        # @param [Fixnum] id
         #   User role ID.
         # @param [Google::Apis::DfareportingV2_7::UserRole] user_role_object
         # @param [String] fields
@@ -8972,7 +8973,7 @@ module Google
         end
         
         # Updates an existing user role.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Google::Apis::DfareportingV2_7::UserRole] user_role_object
         # @param [String] fields
@@ -9010,7 +9011,7 @@ module Google
         end
         
         # Gets one video format by ID.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] id
         #   Video format ID.
@@ -9048,7 +9049,7 @@ module Google
         end
         
         # Lists available video formats.
-        # @param [String] profile_id
+        # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

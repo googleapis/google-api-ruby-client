@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://container.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Returns configuration info about the Container Engine service.

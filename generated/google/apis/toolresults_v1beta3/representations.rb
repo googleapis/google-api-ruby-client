@@ -332,7 +332,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       
@@ -455,8 +455,8 @@ module Google
       class MemoryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :memory_cap_in_kibibyte, as: 'memoryCapInKibibyte'
-          property :memory_total_in_kibibyte, as: 'memoryTotalInKibibyte'
+          property :memory_cap_in_kibibyte, :numeric_string => true, as: 'memoryCapInKibibyte'
+          property :memory_total_in_kibibyte, :numeric_string => true, as: 'memoryTotalInKibibyte'
         end
       end
       
@@ -681,7 +681,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       

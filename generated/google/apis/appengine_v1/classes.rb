@@ -620,7 +620,7 @@ module Google
         # Total size in bytes of all the files that are included in this version and
         # curerntly hosted on the App Engine disk.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :disk_usage_bytes
       
         # An ordered list of URL-matching patterns that should be applied to incoming
@@ -1827,7 +1827,7 @@ module Google
       
         # Total memory in use (bytes).@OutputOnly
         # Corresponds to the JSON property `memoryUsage`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :memory_usage
       
         # Status of the virtual machine where this instance lives. Only applicable for

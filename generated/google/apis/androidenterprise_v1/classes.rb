@@ -1271,7 +1271,7 @@ module Google
         # The time when the notification was published in milliseconds since 1970-01-
         # 01T00:00:00Z. This will always be present.
         # Corresponds to the JSON property `timestampMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :timestamp_millis
       
         def initialize(**args)

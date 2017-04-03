@@ -107,7 +107,7 @@ module Google
       
         # The time when the ASP was created. Expressed in Unix time format.
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # ETag of the ASP.
@@ -122,7 +122,7 @@ module Google
       
         # The time when the ASP was last used. Expressed in Unix time format.
         # Corresponds to the JSON property `lastTimeUsed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_time_used
       
         # The name of the application that the user, represented by their userId,
@@ -292,7 +292,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.
@@ -785,7 +785,7 @@ module Google
       
         # The creation time of the domain alias. (Read-only).
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # The domain alias name.
@@ -867,7 +867,7 @@ module Google
       
         # Creation time of the domain. (Read-only).
         # Corresponds to the JSON property `creationTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creation_time
       
         # List of domain alias objects. (Read-only)
@@ -971,7 +971,7 @@ module Google
       
         # Group direct members count
         # Corresponds to the JSON property `directMembersCount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :direct_members_count
       
         # Email of Group
@@ -1325,7 +1325,7 @@ module Google
       
         # Mobile Device Security patch level (Read-only)
         # Corresponds to the JSON property `securityPatchLevel`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :security_patch_level
       
         # Mobile Device SSN or Serial Number (Read-only)
@@ -1840,7 +1840,7 @@ module Google
       
         # ID of the role.
         # Corresponds to the JSON property `roleId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :role_id
       
         # Name of the role.
@@ -1922,12 +1922,12 @@ module Google
       
         # ID of this roleAssignment.
         # Corresponds to the JSON property `roleAssignmentId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :role_assignment_id
       
         # The ID of the role that is assigned.
         # Corresponds to the JSON property `roleId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :role_id
       
         # The scope in which this role is assigned. Possible values are:
@@ -3147,7 +3147,7 @@ module Google
       
         # An expiration time in microseconds since epoch.
         # Corresponds to the JSON property `expirationTimeUsec`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration_time_usec
       
         # A SHA-256 fingerprint of the SSH public key. (Read-only)

@@ -246,11 +246,11 @@ module Google
           property :advertiser_name, as: 'advertiserName'
           property :buyer_network_name, as: 'buyerNetworkName'
           property :currency_code, as: 'currencyCode'
-          property :end_time, as: 'endTime'
-          property :fixed_cpm, as: 'fixedCpm'
-          property :id, as: 'id'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :fixed_cpm, :numeric_string => true, as: 'fixedCpm'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :start_time, as: 'startTime'
+          property :start_time, :numeric_string => true, as: 'startTime'
         end
       end
       
@@ -275,7 +275,7 @@ module Google
         items
       end
       
-          property :total_matched_rows, as: 'totalMatchedRows'
+          property :total_matched_rows, :numeric_string => true, as: 'totalMatchedRows'
           collection :totals, as: 'totals'
           collection :warnings, as: 'warnings'
         end

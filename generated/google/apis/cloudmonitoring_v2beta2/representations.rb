@@ -252,7 +252,7 @@ module Google
           property :double_value, as: 'doubleValue'
           property :end, as: 'end', type: DateTime
       
-          property :int64_value, as: 'int64Value'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
           property :start, as: 'start', type: DateTime
       
           property :string_value, as: 'stringValue'
@@ -274,7 +274,7 @@ module Google
       class PointDistributionBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :lower_bound, as: 'lowerBound'
           property :upper_bound, as: 'upperBound'
         end
@@ -283,7 +283,7 @@ module Google
       class PointDistributionOverflowBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :lower_bound, as: 'lowerBound'
         end
       end
@@ -291,7 +291,7 @@ module Google
       class PointDistributionUnderflowBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :upper_bound, as: 'upperBound'
         end
       end

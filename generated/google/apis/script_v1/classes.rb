@@ -22,6 +22,67 @@ module Google
   module Apis
     module ScriptV1
       
+      # The response will not arrive until the function finishes executing. The
+      # maximum runtime is listed in the guide to [limitations in Apps Script](https://
+      # developers.google.com/apps-script/guides/services/quotas#current_limitations).
+      # <p>If the script function returns successfully, the `response` field will
+      # contain an `ExecutionResponse` object with the function's return value in the
+      # object's `result` field.</p>
+      # <p>If the script function (or Apps Script itself) throws an exception, the `
+      # error` field will contain a `Status` object. The `Status` object's `details`
+      # field will contain an array with a single `ExecutionError` object that
+      # provides information about the nature of the error.</p>
+      # <p>If the `run` call itself fails (for example, because of a malformed request
+      # or an authorization error), the method will return an HTTP response code in
+      # the 4XX range with a different format for the response body. Client libraries
+      # will automatically convert a 4XX response into an exception class.</p>
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the script function returns successfully, this field will contain an `
+        # ExecutionResponse` object with the function's return value as the object's `
+        # result` field.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # This field is not used.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If a `run` call succeeds but the script function (or Apps Script itself)
+        # throws an exception, the response body's `error` field will contain this `
+        # Status` object.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ScriptV1::Status]
+        attr_accessor :error
+      
+        # This field is not used.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # This field is not used.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+          @name = args[:name] if args.key?(:name)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
+        end
+      end
+      
       # A stack trace through the script that shows where the execution failed.
       class ScriptStackTraceElement
         include Google::Apis::Core::Hashable
@@ -57,6 +118,12 @@ module Google
       class ExecutionError
         include Google::Apis::Core::Hashable
       
+        # An array of objects that provide a stack trace through the script to show
+        # where the execution failed, with the deepest call first.
+        # Corresponds to the JSON property `scriptStackTraceElements`
+        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
+        attr_accessor :script_stack_trace_elements
+      
         # The error type, for example `TypeError` or `ReferenceError`. If the error
         # type is unavailable, this field is not included.
         # Corresponds to the JSON property `errorType`
@@ -69,21 +136,15 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # An array of objects that provide a stack trace through the script to show
-        # where the execution failed, with the deepest call first.
-        # Corresponds to the JSON property `scriptStackTraceElements`
-        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
-        attr_accessor :script_stack_trace_elements
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
           @error_type = args[:error_type] if args.key?(:error_type)
           @error_message = args[:error_message] if args.key?(:error_message)
-          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
         end
       end
       
@@ -130,20 +191,6 @@ module Google
       class ExecutionRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the function to execute in the given script. The name does not
-        # include parentheses or parameters.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        # If `true` and the user is an owner of the script, the script runs at the
-        # most recently saved version rather than the version deployed for use with
-        # the Execution API. Optional; default is `false`.
-        # Corresponds to the JSON property `devMode`
-        # @return [Boolean]
-        attr_accessor :dev_mode
-        alias_method :dev_mode?, :dev_mode
-      
         # The parameters to be passed to the function being executed. The object type
         # for each parameter should match the expected type in Apps Script.
         # Parameters cannot be Apps Script-specific object types (such as a
@@ -167,16 +214,30 @@ module Google
         # @return [String]
         attr_accessor :session_state
       
+        # The name of the function to execute in the given script. The name does not
+        # include parentheses or parameters.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # If `true` and the user is an owner of the script, the script runs at the
+        # most recently saved version rather than the version deployed for use with
+        # the Execution API. Optional; default is `false`.
+        # Corresponds to the JSON property `devMode`
+        # @return [Boolean]
+        attr_accessor :dev_mode
+        alias_method :dev_mode?, :dev_mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] if args.key?(:function)
-          @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
           @parameters = args[:parameters] if args.key?(:parameters)
           @session_state = args[:session_state] if args.key?(:session_state)
+          @function = args[:function] if args.key?(:function)
+          @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
         end
       end
       
@@ -205,67 +266,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
-        end
-      end
-      
-      # The response will not arrive until the function finishes executing. The
-      # maximum runtime is listed in the guide to [limitations in Apps Script](https://
-      # developers.google.com/apps-script/guides/services/quotas#current_limitations).
-      # <p>If the script function returns successfully, the `response` field will
-      # contain an `ExecutionResponse` object with the function's return value in the
-      # object's `result` field.</p>
-      # <p>If the script function (or Apps Script itself) throws an exception, the `
-      # error` field will contain a `Status` object. The `Status` object's `details`
-      # field will contain an array with a single `ExecutionError` object that
-      # provides information about the nature of the error.</p>
-      # <p>If the `run` call itself fails (for example, because of a malformed request
-      # or an authorization error), the method will return an HTTP response code in
-      # the 4XX range with a different format for the response body. Client libraries
-      # will automatically convert a 4XX response into an exception class.</p>
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # This field is not used.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # If the script function returns successfully, this field will contain an `
-        # ExecutionResponse` object with the function's return value as the object's `
-        # result` field.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        # This field is not used.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # If a `run` call succeeds but the script function (or Apps Script itself)
-        # throws an exception, the response body's `error` field will contain this `
-        # Status` object.
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::ScriptV1::Status]
-        attr_accessor :error
-      
-        # This field is not used.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @response = args[:response] if args.key?(:response)
-          @name = args[:name] if args.key?(:name)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
     end

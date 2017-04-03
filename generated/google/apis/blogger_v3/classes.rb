@@ -781,7 +781,7 @@ module Google
         
           # Count of page views for the given time range
           # Corresponds to the JSON property `count`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :count
         
           # Time range the given count applies to
@@ -1074,7 +1074,7 @@ module Google
         
           # The count of comments on this post.
           # Corresponds to the JSON property `totalItems`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :total_items
         
           def initialize(**args)

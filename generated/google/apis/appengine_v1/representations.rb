@@ -446,7 +446,7 @@ module Google
           property :serving_status, as: 'servingStatus'
           property :created_by, as: 'createdBy'
           property :create_time, as: 'createTime'
-          property :disk_usage_bytes, as: 'diskUsageBytes'
+          property :disk_usage_bytes, :numeric_string => true, as: 'diskUsageBytes'
           collection :handlers, as: 'handlers', class: Google::Apis::AppengineV1::UrlMap, decorator: Google::Apis::AppengineV1::UrlMap::Representation
       
           collection :error_handlers, as: 'errorHandlers', class: Google::Apis::AppengineV1::ErrorHandler, decorator: Google::Apis::AppengineV1::ErrorHandler::Representation
@@ -753,7 +753,7 @@ module Google
           property :errors, as: 'errors'
           property :qps, as: 'qps'
           property :average_latency, as: 'averageLatency'
-          property :memory_usage, as: 'memoryUsage'
+          property :memory_usage, :numeric_string => true, as: 'memoryUsage'
           property :vm_status, as: 'vmStatus'
           property :vm_debug_enabled, as: 'vmDebugEnabled'
           property :vm_ip, as: 'vmIp'

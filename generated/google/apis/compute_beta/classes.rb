@@ -71,7 +71,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The type of the resource. Always compute#acceleratorType for
@@ -370,7 +370,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#address for addresses.
@@ -781,7 +781,7 @@ module Google
       
         # Specifies the size of the disk in base-2 GB.
         # Corresponds to the JSON property `diskSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :disk_size_gb
       
         # [Deprecated] Storage type of the disk.
@@ -948,7 +948,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
@@ -1515,7 +1515,7 @@ module Google
       
         # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Type of the resource.
@@ -1670,7 +1670,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of resource. Always compute#backendService for backend
@@ -2187,7 +2187,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#commitment for commitments.
@@ -2670,7 +2670,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#disk for disks.
@@ -2737,7 +2737,7 @@ module Google
         # of sizeGb must not be less than the size of the sourceImage or the size of the
         # snapshot.
         # Corresponds to the JSON property `sizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size_gb
       
         # The source image used to create this disk. If the source image is deleted,
@@ -3000,7 +3000,7 @@ module Google
       
         # [Output Only] Server-defined default disk size in GB.
         # Corresponds to the JSON property `defaultDiskSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_disk_size_gb
       
         # Deprecation status for a public resource.
@@ -3016,7 +3016,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#diskType for disk types.
@@ -3257,7 +3257,7 @@ module Google
       
         # The new size of the persistent disk, which is specified in GB.
         # Corresponds to the JSON property `sizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size_gb
       
         def initialize(**args)
@@ -3405,7 +3405,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Ony] Type of the resource. Always compute#firewall for firewall rules.
@@ -3664,7 +3664,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#forwardingRule for
@@ -4157,7 +4157,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Type of the resource.
@@ -4422,7 +4422,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP
@@ -4575,7 +4575,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Type of the resource.
@@ -4697,7 +4697,7 @@ module Google
       
         # Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         # Corresponds to the JSON property `archiveSizeBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :archive_size_bytes
       
         # [Output Only] Creation timestamp in RFC3339 text format.
@@ -4718,7 +4718,7 @@ module Google
       
         # Size of the image when restored onto a persistent disk (in GB).
         # Corresponds to the JSON property `diskSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :disk_size_gb
       
         # The name of the image family to which this image belongs. You can create disks
@@ -4745,7 +4745,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a customer-supplied encryption key
@@ -4992,7 +4992,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#instance for instances.
@@ -5203,7 +5203,7 @@ module Google
         # [Output Only] A unique identifier for this instance group, generated by the
         # server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The resource type, which is always compute#instanceGroup for
@@ -5431,7 +5431,7 @@ module Google
         # [Output Only] A unique identifier for this resource type. The server generates
         # this identifier.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The URL of the Instance Group resource.
@@ -6462,7 +6462,7 @@ module Google
         # [Output Only] A unique identifier for this instance template. The server
         # defines this identifier.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The resource type, which is always compute#instanceTemplate for
@@ -6907,7 +6907,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Whether this machine type has a shared CPU. See Shared-core
@@ -6930,7 +6930,7 @@ module Google
       
         # [Output Only] Maximum total persistent disks size (GB) allowed.
         # Corresponds to the JSON property `maximumPersistentDisksSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :maximum_persistent_disks_size_gb
       
         # [Output Only] The amount of physical memory available to the instance, defined
@@ -7195,7 +7195,7 @@ module Google
         # [Output only] The unique identifier for this resource. This field is empty
         # when instance does not exist.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The URL of the instance. The URL can exist even if the instance
@@ -7470,7 +7470,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#network for networks.
@@ -7813,7 +7813,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] The time that this operation was requested. This value is in
@@ -7879,7 +7879,7 @@ module Google
         # [Output Only] The unique target ID, which identifies a specific incarnation of
         # the target resource.
         # Corresponds to the JSON property `targetId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_id
       
         # [Output Only] The URL of the resource that the operation modifies. For
@@ -8432,7 +8432,7 @@ module Google
         # defined by the server. This is not the project ID, and is just a unique ID
         # used by Compute Engine to identify resources.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#project for projects.
@@ -8637,7 +8637,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#region for regions.
@@ -9134,7 +9134,7 @@ module Google
       
         # The amount of the resource purchased (in a type-dependent unit, such as bytes).
         # Corresponds to the JSON property `amount`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amount
       
         # Type of resource for which this commitment applies.
@@ -9209,7 +9209,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of this resource. Always compute#routes for Route resources.
@@ -9459,7 +9459,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Router interfaces. Each interface requires either one linked resource (e.g.
@@ -10140,7 +10140,7 @@ module Google
         # [Output Only] The position of the next byte of content from the serial console
         # output. Use this value in the next request as the start parameter.
         # Corresponds to the JSON property `next`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :next
       
         # [Output Only] Server-defined URL for this resource.
@@ -10153,7 +10153,7 @@ module Google
         # exceeds the size of the buffer, older output will be overwritten by newer
         # content and the start values will be mismatched.
         # Corresponds to the JSON property `start`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :start
       
         def initialize(**args)
@@ -10212,13 +10212,13 @@ module Google
       
         # [Output Only] Size of the snapshot, specified in GB.
         # Corresponds to the JSON property `diskSizeGb`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :disk_size_gb
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#snapshot for Snapshot
@@ -10298,7 +10298,7 @@ module Google
         # share storage, this number is expected to change with snapshot creation/
         # deletion.
         # Corresponds to the JSON property `storageBytes`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :storage_bytes
       
         # [Output Only] An indicator whether storageBytes is in a stable state or it is
@@ -10410,7 +10410,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#sslCertificate for SSL
@@ -10528,7 +10528,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # The range of internal addresses that are owned by this subnetwork. Provide
@@ -10968,7 +10968,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of resource. Always compute#targetHttpProxy for target HTTP
@@ -11101,7 +11101,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of resource. Always compute#targetHttpsProxy for target
@@ -11227,7 +11227,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # A URL to the virtual machine instance that handles traffic for this target
@@ -11536,7 +11536,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # A list of resource URLs to the virtual machine instances serving this pool.
@@ -11996,7 +11996,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#targetSslProxy for target
@@ -12160,7 +12160,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#targetTcpProxy for target
@@ -12285,7 +12285,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN
@@ -12696,7 +12696,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#urlMaps for url maps.
@@ -12991,7 +12991,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # IKE protocol version to use when establishing the VPN tunnel with peer VPN
@@ -13381,7 +13381,7 @@ module Google
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # [Output Only] Type of the resource. Always compute#zone for zones.

@@ -377,7 +377,7 @@ module Google
         # Cost per survey response in nano units of the given currency. To get the total
         # cost for a survey, multiply this value by wanted_response_count.
         # Corresponds to the JSON property `costPerResponseNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :cost_per_response_nanos
       
         # Currency code that the cost is given in.
@@ -401,13 +401,13 @@ module Google
         # before attempting to start the survey again. This will immediately start the
         # survey as long the incidence test was run within the last 21 days.
         # Corresponds to the JSON property `maxCostPerResponseNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_cost_per_response_nanos
       
         # Cost of survey in nano units of the given currency. DEPRECATED in favor of
         # cost_per_response_nanos
         # Corresponds to the JSON property `nanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :nanos
       
         def initialize(**args)
@@ -712,7 +712,7 @@ module Google
         # Threshold to start a survey automically if the quoted prices is less than or
         # equal to this value. See Survey.Cost for more details.
         # Corresponds to the JSON property `maxCostPerResponseNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_cost_per_response_nanos
       
         def initialize(**args)

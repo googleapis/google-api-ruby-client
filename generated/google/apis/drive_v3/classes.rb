@@ -55,12 +55,12 @@ module Google
       
         # A map of maximum import sizes by MIME type, in bytes.
         # Corresponds to the JSON property `maxImportSizes`
-        # @return [Hash<String,String>]
+        # @return [Hash<String,Fixnum>]
         attr_accessor :max_import_sizes
       
         # The maximum upload size in bytes.
         # Corresponds to the JSON property `maxUploadSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :max_upload_size
       
         # The user's storage quota limits and usage. All fields are measured in bytes.
@@ -103,22 +103,22 @@ module Google
           # The usage limit, if applicable. This will not be present if the user has
           # unlimited storage.
           # Corresponds to the JSON property `limit`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :limit
         
           # The total usage across all services.
           # Corresponds to the JSON property `usage`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :usage
         
           # The usage by all files in Google Drive.
           # Corresponds to the JSON property `usageInDrive`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :usage_in_drive
         
           # The usage by trashed files in Google Drive.
           # Corresponds to the JSON property `usageInDriveTrash`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :usage_in_drive_trash
         
           def initialize(**args)
@@ -285,7 +285,7 @@ module Google
         # Date and time of notification channel expiration, expressed as a Unix
         # timestamp, in milliseconds. Optional.
         # Corresponds to the JSON property `expiration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :expiration
       
         # A UUID or similar unique string that identifies this channel.
@@ -704,7 +704,7 @@ module Google
         # The number of storage quota bytes used by the file. This includes the head
         # revision as well as previous revisions with keepForever enabled.
         # Corresponds to the JSON property `quotaBytesUsed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quota_bytes_used
       
         # Whether the file has been shared. Not populated for Team Drive files.
@@ -727,7 +727,7 @@ module Google
         # The size of the file's content in bytes. This is only applicable to files with
         # binary content in Drive.
         # Corresponds to the JSON property `size`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size
       
         # The list of spaces which contain the file. The currently supported values are '
@@ -756,7 +756,7 @@ module Google
       
         # The thumbnail version for use in thumbnail cache invalidation.
         # Corresponds to the JSON property `thumbnailVersion`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :thumbnail_version
       
         # Whether the file has been trashed, either explicitly or from a trashed parent
@@ -781,7 +781,7 @@ module Google
         # A monotonically increasing version number for the file. This reflects every
         # change made to the file on the server, even those not visible to the user.
         # Corresponds to the JSON property `version`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :version
       
         # Additional metadata about video media. This may not be available immediately
@@ -1257,7 +1257,7 @@ module Google
         
           # The duration of the video in milliseconds.
           # Corresponds to the JSON property `durationMillis`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :duration_millis
         
           # The height of the video in pixels.
@@ -1732,7 +1732,7 @@ module Google
         # The size of the revision's content in bytes. This is only applicable to files
         # with binary content in Drive.
         # Corresponds to the JSON property `size`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :size
       
         def initialize(**args)

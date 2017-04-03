@@ -51,14 +51,15 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
+          @batch_path = 'batch'
         end
         
         # Retrieves a list of conversions from a DoubleClick Search engine account.
-        # @param [String] agency_id
+        # @param [Fixnum] agency_id
         #   Numeric ID of the agency.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Numeric ID of the advertiser.
-        # @param [String] engine_account_id
+        # @param [Fixnum] engine_account_id
         #   Numeric ID of the engine account.
         # @param [Fixnum] end_date
         #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
@@ -68,13 +69,13 @@ module Google
         #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
         # @param [Fixnum] start_row
         #   The 0-based starting index for retrieving conversions results.
-        # @param [String] ad_group_id
+        # @param [Fixnum] ad_group_id
         #   Numeric ID of the ad group.
-        # @param [String] ad_id
+        # @param [Fixnum] ad_id
         #   Numeric ID of the ad.
-        # @param [String] campaign_id
+        # @param [Fixnum] campaign_id
         #   Numeric ID of the campaign.
-        # @param [String] criterion_id
+        # @param [Fixnum] criterion_id
         #   Numeric ID of the criterion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -155,13 +156,13 @@ module Google
         
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   Numeric ID of the advertiser.
-        # @param [String] agency_id
+        # @param [Fixnum] agency_id
         #   Numeric ID of the agency.
         # @param [Fixnum] end_date
         #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-        # @param [String] engine_account_id
+        # @param [Fixnum] engine_account_id
         #   Numeric ID of the engine account.
         # @param [Fixnum] row_count
         #   The number of conversions to return per call.
@@ -430,9 +431,9 @@ module Google
         end
         
         # Retrieve the list of saved columns for a specified advertiser.
-        # @param [String] agency_id
+        # @param [Fixnum] agency_id
         #   DS ID of the agency.
-        # @param [String] advertiser_id
+        # @param [Fixnum] advertiser_id
         #   DS ID of the advertiser.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

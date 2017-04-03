@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/error-reporting/
     module ClouderrorreportingV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170314'
+      REVISION = '20170328'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

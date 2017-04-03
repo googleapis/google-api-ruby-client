@@ -1582,12 +1582,12 @@ module Google
       
         # The end timestamp in milliseconds to schedule a tag.
         # Corresponds to the JSON property `scheduleEndMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a tag.
         # Corresponds to the JSON property `scheduleStartMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_start_ms
       
         # The list of setup tags. Currently we only allow one.
@@ -1748,7 +1748,7 @@ module Google
         # Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be
         # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
         # Corresponds to the JSON property `seconds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :seconds
       
         def initialize(**args)
@@ -2104,12 +2104,12 @@ module Google
       
         # The end timestamp in milliseconds to schedule a variable.
         # Corresponds to the JSON property `scheduleEndMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a variable.
         # Corresponds to the JSON property `scheduleStartMs`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :schedule_start_ms
       
         # Auto generated link to the tag manager UI
@@ -2412,7 +2412,7 @@ module Google
       
         # Gaia id associated with a user, absent for the Google Tag Manager system.
         # Corresponds to the JSON property `gaiaId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :gaia_id
       
         # User type distinguishes between a user and the Google Tag Manager system.

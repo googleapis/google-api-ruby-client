@@ -22,69 +22,6 @@ module Google
   module Apis
     module SearchconsoleV1
       
-      # Mobile-friendly issue.
-      class MobileFriendlyIssue
-        include Google::Apis::Core::Hashable
-      
-        # Rule violated.
-        # Corresponds to the JSON property `rule`
-        # @return [String]
-        attr_accessor :rule
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rule = args[:rule] if args.key?(:rule)
-        end
-      end
-      
-      # Mobile-friendly test response, including mobile-friendly issues and resource
-      # issues.
-      class RunMobileFriendlyTestResponse
-        include Google::Apis::Core::Hashable
-      
-        # Test verdict, whether the page is mobile friendly or not.
-        # Corresponds to the JSON property `mobileFriendliness`
-        # @return [String]
-        attr_accessor :mobile_friendliness
-      
-        # List of mobile-usability issues.
-        # Corresponds to the JSON property `mobileFriendlyIssues`
-        # @return [Array<Google::Apis::SearchconsoleV1::MobileFriendlyIssue>]
-        attr_accessor :mobile_friendly_issues
-      
-        # Describe image data.
-        # Corresponds to the JSON property `screenshot`
-        # @return [Google::Apis::SearchconsoleV1::Image]
-        attr_accessor :screenshot
-      
-        # Final state of the test, including error details if necessary.
-        # Corresponds to the JSON property `testStatus`
-        # @return [Google::Apis::SearchconsoleV1::TestStatus]
-        attr_accessor :test_status
-      
-        # Information about embedded resources issues.
-        # Corresponds to the JSON property `resourceIssues`
-        # @return [Array<Google::Apis::SearchconsoleV1::ResourceIssue>]
-        attr_accessor :resource_issues
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mobile_friendliness = args[:mobile_friendliness] if args.key?(:mobile_friendliness)
-          @mobile_friendly_issues = args[:mobile_friendly_issues] if args.key?(:mobile_friendly_issues)
-          @screenshot = args[:screenshot] if args.key?(:screenshot)
-          @test_status = args[:test_status] if args.key?(:test_status)
-          @resource_issues = args[:resource_issues] if args.key?(:resource_issues)
-        end
-      end
-      
       # Information about a resource with issue.
       class ResourceIssue
         include Google::Apis::Core::Hashable
@@ -148,6 +85,32 @@ module Google
         end
       end
       
+      # Mobile-friendly test request.
+      class RunMobileFriendlyTestRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL for inspection.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Whether or not screenshot is requested. Default is false.
+        # Corresponds to the JSON property `requestScreenshot`
+        # @return [Boolean]
+        attr_accessor :request_screenshot
+        alias_method :request_screenshot?, :request_screenshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+          @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
+        end
+      end
+      
       # Describe image data.
       class Image
         include Google::Apis::Core::Hashable
@@ -175,20 +138,14 @@ module Google
         end
       end
       
-      # Mobile-friendly test request.
-      class RunMobileFriendlyTestRequest
+      # Mobile-friendly issue.
+      class MobileFriendlyIssue
         include Google::Apis::Core::Hashable
       
-        # URL for inspection.
-        # Corresponds to the JSON property `url`
+        # Rule violated.
+        # Corresponds to the JSON property `rule`
         # @return [String]
-        attr_accessor :url
-      
-        # Whether or not screenshot is requested. Default is false.
-        # Corresponds to the JSON property `requestScreenshot`
-        # @return [Boolean]
-        attr_accessor :request_screenshot
-        alias_method :request_screenshot?, :request_screenshot
+        attr_accessor :rule
       
         def initialize(**args)
            update!(**args)
@@ -196,8 +153,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] if args.key?(:url)
-          @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
+          @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # Mobile-friendly test response, including mobile-friendly issues and resource
+      # issues.
+      class RunMobileFriendlyTestResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of mobile-usability issues.
+        # Corresponds to the JSON property `mobileFriendlyIssues`
+        # @return [Array<Google::Apis::SearchconsoleV1::MobileFriendlyIssue>]
+        attr_accessor :mobile_friendly_issues
+      
+        # Describe image data.
+        # Corresponds to the JSON property `screenshot`
+        # @return [Google::Apis::SearchconsoleV1::Image]
+        attr_accessor :screenshot
+      
+        # Final state of the test, including error details if necessary.
+        # Corresponds to the JSON property `testStatus`
+        # @return [Google::Apis::SearchconsoleV1::TestStatus]
+        attr_accessor :test_status
+      
+        # Information about embedded resources issues.
+        # Corresponds to the JSON property `resourceIssues`
+        # @return [Array<Google::Apis::SearchconsoleV1::ResourceIssue>]
+        attr_accessor :resource_issues
+      
+        # Test verdict, whether the page is mobile friendly or not.
+        # Corresponds to the JSON property `mobileFriendliness`
+        # @return [String]
+        attr_accessor :mobile_friendliness
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mobile_friendly_issues = args[:mobile_friendly_issues] if args.key?(:mobile_friendly_issues)
+          @screenshot = args[:screenshot] if args.key?(:screenshot)
+          @test_status = args[:test_status] if args.key?(:test_status)
+          @resource_issues = args[:resource_issues] if args.key?(:resource_issues)
+          @mobile_friendliness = args[:mobile_friendliness] if args.key?(:mobile_friendliness)
         end
       end
     end

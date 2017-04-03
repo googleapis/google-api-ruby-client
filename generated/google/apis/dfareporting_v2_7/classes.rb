@@ -28,7 +28,7 @@ module Google
       
         # Account permissions assigned to this account.
         # Corresponds to the JSON property `accountPermissionIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :account_permission_ids
       
         # Profile for this account. This is a read-only field that can be left blank.
@@ -56,12 +56,12 @@ module Google
       
         # User role permissions available to the user roles of this account.
         # Corresponds to the JSON property `availablePermissionIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :available_permission_ids
       
         # ID of the country associated with this account.
         # Corresponds to the JSON property `countryId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_id
       
         # ID of currency associated with this account. This is a required field.
@@ -114,12 +114,12 @@ module Google
         # - "47" for BGN
         # - "48" for HRK
         # Corresponds to the JSON property `currencyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :currency_id
       
         # Default placement dimensions for this account.
         # Corresponds to the JSON property `defaultCreativeSizeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_creative_size_id
       
         # Description of this account.
@@ -129,7 +129,7 @@ module Google
       
         # ID of this account. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -162,7 +162,7 @@ module Google
       
         # Maximum image size allowed for this account.
         # Corresponds to the JSON property `maximumImageSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :maximum_image_size
       
         # Name of this account. This is a required field, and must be less than 128
@@ -192,7 +192,7 @@ module Google
         # File size limit in kilobytes of Rich Media teaser creatives. Must be between 1
         # and 10240.
         # Corresponds to the JSON property `teaserSizeLimit`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :teaser_size_limit
       
         def initialize(**args)
@@ -229,12 +229,12 @@ module Google
       
         # ID of the account.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Ads that have been activated for the account
         # Corresponds to the JSON property `activeAds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :active_ads
       
         # Maximum number of active ads allowed for the account.
@@ -244,7 +244,7 @@ module Google
       
         # Ads that can be activated for the account.
         # Corresponds to the JSON property `availableAds`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :available_ads
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -283,7 +283,7 @@ module Google
       
         # ID of this account permission.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -304,7 +304,7 @@ module Google
       
         # Permission group of this account permission.
         # Corresponds to the JSON property `permissionGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :permission_group_id
       
         def initialize(**args)
@@ -329,7 +329,7 @@ module Google
       
         # ID of this account permission group.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -416,7 +416,7 @@ module Google
         # Account ID of the user profile. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this user profile is active. This defaults to false, and must be set
@@ -449,7 +449,7 @@ module Google
       
         # ID of the user profile. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -495,7 +495,7 @@ module Google
         # Subaccount ID of the user profile. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Trafficker type of this user profile.
@@ -516,7 +516,7 @@ module Google
       
         # User role ID of the user profile. This is a required field.
         # Corresponds to the JSON property `userRoleId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :user_role_id
       
         def initialize(**args)
@@ -646,7 +646,7 @@ module Google
       
         # Account ID of this ad. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this ad is active. When true, archived must be false.
@@ -657,7 +657,7 @@ module Google
       
         # Advertiser ID of this ad. This is a required field on insertion.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -674,12 +674,12 @@ module Google
         # Audience segment ID that is being targeted for this ad. Applicable when type
         # is AD_SERVING_STANDARD_AD.
         # Corresponds to the JSON property `audienceSegmentId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :audience_segment_id
       
         # Campaign ID of this ad. This is a required field on insertion.
         # Corresponds to the JSON property `campaignId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :campaign_id
       
         # Represents a DimensionValue resource.
@@ -774,7 +774,7 @@ module Google
       
         # ID of this ad. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -846,7 +846,7 @@ module Google
       
         # Subaccount ID of this ad. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Targeting template ID, used to apply preconfigured targeting information to
@@ -854,7 +854,7 @@ module Google
         # keyValueTargetingExpression, languageTargeting, remarketingListExpression, or
         # technologyTargeting are set. Applicable when type is AD_SERVING_STANDARD_AD.
         # Corresponds to the JSON property `targetingTemplateId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :targeting_template_id
       
         # Technology Targeting.
@@ -936,12 +936,12 @@ module Google
       
         # Height of this ad slot.
         # Corresponds to the JSON property `height`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :height
       
         # ID of the placement from an external platform that is linked to this ad slot.
         # Corresponds to the JSON property `linkedPlacementId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :linked_placement_id
       
         # Name of this ad slot.
@@ -962,7 +962,7 @@ module Google
       
         # Width of this ad slot.
         # Corresponds to the JSON property `width`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :width
       
         def initialize(**args)
@@ -1020,14 +1020,14 @@ module Google
       
         # Account ID of this advertiser.This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # ID of the advertiser group this advertiser belongs to. You can group
         # advertisers for reporting purposes, allowing you to see aggregated information
         # for all advertisers in each group.
         # Corresponds to the JSON property `advertiserGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_group_id
       
         # Suffix added to click-through URL of ad creative associations under this
@@ -1039,7 +1039,7 @@ module Google
         # ID of the click-through event tag to apply by default to the landing pages of
         # this advertiser's campaigns.
         # Corresponds to the JSON property `defaultClickThroughEventTagId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_click_through_event_tag_id
       
         # Default email address used in sender field for tag emails.
@@ -1057,7 +1057,7 @@ module Google
         # - This advertiser's original floodlight configuration is not already shared
         # with another advertiser.
         # Corresponds to the JSON property `floodlightConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
         # Represents a DimensionValue resource.
@@ -1067,7 +1067,7 @@ module Google
       
         # ID of this advertiser. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -1094,7 +1094,7 @@ module Google
         # configuration if the shared configuration has activities associated with any
         # campaign or placement.
         # Corresponds to the JSON property `originalFloodlightConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :original_floodlight_configuration_id
       
         # Status of this advertiser.
@@ -1105,7 +1105,7 @@ module Google
         # Subaccount ID of this advertiser.This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Suspension status of this advertiser.
@@ -1146,12 +1146,12 @@ module Google
         # Account ID of this advertiser group. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # ID of this advertiser group. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1256,7 +1256,7 @@ module Google
       
         # ID of this audience segment. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Name of this audience segment. This is a required field and must be less than
@@ -1289,7 +1289,7 @@ module Google
       
         # ID of this audience segment group. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Name of this audience segment group. This is a required field and must be less
@@ -1317,12 +1317,12 @@ module Google
         # ID referring to this grouping of browser and version numbers. This is the ID
         # used for targeting.
         # Corresponds to the JSON property `browserVersionId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :browser_version_id
       
         # DART ID of this browser. This is the ID used when generating reports.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1406,7 +1406,7 @@ module Google
       
         # Account ID of this campaign. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Additional creative optimization configurations for the campaign.
@@ -1416,12 +1416,12 @@ module Google
       
         # Advertiser group ID of the associated advertiser.
         # Corresponds to the JSON property `advertiserGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_group_id
       
         # Advertiser ID of this campaign. This is a required field.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -1464,7 +1464,7 @@ module Google
       
         # List of creative group IDs that are assigned to the campaign.
         # Corresponds to the JSON property `creativeGroupIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :creative_group_ids
       
         # Creative optimization settings.
@@ -1501,7 +1501,7 @@ module Google
       
         # ID of this campaign. This is a read-only auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -1547,7 +1547,7 @@ module Google
         # Subaccount ID of this campaign. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Campaign trafficker contact emails.
@@ -1597,7 +1597,7 @@ module Google
       
         # ID of the creative associated with the campaign. This is a required field.
         # Corresponds to the JSON property `creativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1687,7 +1687,7 @@ module Google
       
         # Account ID of the modified object.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Action which caused the change.
@@ -1707,7 +1707,7 @@ module Google
       
         # ID of this change log.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1724,7 +1724,7 @@ module Google
         # ID of the object of this change log. The object could be a campaign, placement,
         # ad, or other type.
         # Corresponds to the JSON property `objectId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :object_id_prop
       
         # Object type of the change log.
@@ -1739,19 +1739,19 @@ module Google
       
         # Subaccount ID of the modified object.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Transaction ID of this change log. When a single API call results in many
         # changes, each change will have a separate ID in the change log but will share
         # the same transactionId.
         # Corresponds to the JSON property `transactionId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :transaction_id
       
         # ID of the user who modified the object.
         # Corresponds to the JSON property `userProfileId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :user_profile_id
       
         # User profile name of the user who modified the object.
@@ -1851,12 +1851,12 @@ module Google
       
         # DART ID of the country to which this city belongs.
         # Corresponds to the JSON property `countryDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_dart_id
       
         # DART ID of this city. This is the ID used for targeting and generating reports.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1872,7 +1872,7 @@ module Google
       
         # ID of the metro region (DMA) to which this city belongs.
         # Corresponds to the JSON property `metroDmaId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :metro_dma_id
       
         # Name of this city.
@@ -1887,7 +1887,7 @@ module Google
       
         # DART ID of the region to which this city belongs.
         # Corresponds to the JSON property `regionDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :region_dart_id
       
         def initialize(**args)
@@ -1975,7 +1975,7 @@ module Google
         # ID of the landing page for the click-through URL. Applicable if the
         # defaultLandingPage field is set to false.
         # Corresponds to the JSON property `landingPageId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :landing_page_id
       
         def initialize(**args)
@@ -2030,7 +2030,7 @@ module Google
       
         # ID of the creative for this companion click-through override.
         # Corresponds to the JSON property `creativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_id
       
         def initialize(**args)
@@ -2146,7 +2146,7 @@ module Google
       
         # ID of this connection type.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2237,12 +2237,12 @@ module Google
         # Account ID of this content category. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # ID of this content category. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2307,12 +2307,12 @@ module Google
       
         # Floodlight Activity ID of this conversion. This is a required field.
         # Corresponds to the JSON property `floodlightActivityId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_activity_id
       
         # Floodlight Configuration ID of this conversion. This is a required field.
         # Corresponds to the JSON property `floodlightConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2343,12 +2343,12 @@ module Google
       
         # The quantity of the conversion.
         # Corresponds to the JSON property `quantity`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quantity
       
         # The timestamp of conversion, in Unix epoch micros. This is a required field.
         # Corresponds to the JSON property `timestampMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :timestamp_micros
       
         # The value of the conversion.
@@ -2549,7 +2549,7 @@ module Google
         # DART ID of this country. This is the ID used for targeting and generating
         # reports.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2590,7 +2590,7 @@ module Google
         # Account ID of this creative. This field, if left unset, will be auto-generated
         # for both insert and update operations. Applicable to all creative types.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether the creative is active. Applicable to all creative types.
@@ -2617,7 +2617,7 @@ module Google
         # Advertiser ID of this creative. This is a required field. Applicable to all
         # creative types.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Whether script access is allowed for this creative. This is a read-only and
@@ -2724,7 +2724,7 @@ module Google
         # following creative types: all VPAID and all INSTREAM_VIDEO with
         # dynamicAssetSelection set to false.
         # Corresponds to the JSON property `companionCreatives`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :companion_creatives
       
         # Compatibilities associated with this creative. This is a read-only field.
@@ -2833,7 +2833,7 @@ module Google
         # ID of this creative. This is a read-only, auto-generated field. Applicable to
         # all creative types.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -2856,7 +2856,7 @@ module Google
         # creatives. This is a read-only field. Applicable to the following creative
         # types: all RICH_MEDIA, and all VPAID.
         # Corresponds to the JSON property `latestTraffickedCreativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :latest_trafficked_creative_id
       
         # Name of the creative. This is a required field and must be less than 256
@@ -2889,7 +2889,7 @@ module Google
         # ID of current rendering version. This is a read-only field. Applicable to all
         # creative types.
         # Corresponds to the JSON property `renderingId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :rendering_id
       
         # Represents a DimensionValue resource.
@@ -2947,28 +2947,28 @@ module Google
         # read-only field. Applicable to the following creative types: all RICH_MEDIA,
         # and all VPAID.
         # Corresponds to the JSON property `studioAdvertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :studio_advertiser_id
       
         # Studio creative ID associated with rich media and VPAID creatives. This is a
         # read-only field. Applicable to the following creative types: all RICH_MEDIA,
         # and all VPAID.
         # Corresponds to the JSON property `studioCreativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :studio_creative_id
       
         # Studio trafficked creative ID associated with rich media and VPAID creatives.
         # This is a read-only field. Applicable to the following creative types: all
         # RICH_MEDIA, and all VPAID.
         # Corresponds to the JSON property `studioTraffickedCreativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :studio_trafficked_creative_id
       
         # Subaccount ID of this creative. This field, if left unset, will be auto-
         # generated for both insert and update operations. Applicable to all creative
         # types.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Third-party URL used to record backup image impressions. Applicable to the
@@ -3000,7 +3000,7 @@ module Google
         # Combined size of all creative assets. This is a read-only field. Applicable to
         # the following creative types: all RICH_MEDIA, and all VPAID.
         # Corresponds to the JSON property `totalFileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :total_file_size
       
         # Type of this creative. This is a required field. Applicable to all creative
@@ -3169,7 +3169,7 @@ module Google
         # Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to
         # true.
         # Corresponds to the JSON property `companionCreativeIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :companion_creative_ids
       
         # Custom start time in seconds for making the asset visible. Applicable to the
@@ -3214,7 +3214,7 @@ module Google
         # Applicable to all but the following creative types: all REDIRECT and
         # TRACKING_TEXT.
         # Corresponds to the JSON property `fileSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :file_size
       
         # Flash version of the asset. This is a read-only field. Applicable to the
@@ -3249,7 +3249,7 @@ module Google
         # modified. Applicable to all but the following creative types: all REDIRECT and
         # TRACKING_TEXT.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -3523,7 +3523,7 @@ module Google
       
         # Numeric ID of the asset. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -3593,7 +3593,7 @@ module Google
         # creative, and will be served if none of the rules match. This is a required
         # field.
         # Corresponds to the JSON property `defaultAssetId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_asset_id
       
         # Rules determine which asset will be served to a viewer. Rules will be
@@ -3653,7 +3653,7 @@ module Google
       
         # ID of the creative to be assigned. This is a required field.
         # Corresponds to the JSON property `creativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_id
       
         # Represents a DimensionValue resource.
@@ -3737,7 +3737,7 @@ module Google
         # Unique ID of this event used by DDM Reporting and Data Transfer. This is a
         # read-only field.
         # Corresponds to the JSON property `advertiserCustomEventId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_custom_event_id
       
         # User-entered name for the event.
@@ -3769,7 +3769,7 @@ module Google
         # ID of this event. This is a required field and should not be modified after
         # insertion.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Popup Window Properties.
@@ -3814,12 +3814,12 @@ module Google
         # Account ID of this creative field. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this creative field. This is a required field on insertion.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -3829,7 +3829,7 @@ module Google
       
         # ID of this creative field. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -3847,7 +3847,7 @@ module Google
         # Subaccount ID of this creative field. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -3872,12 +3872,12 @@ module Google
       
         # ID of the creative field.
         # Corresponds to the JSON property `creativeFieldId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_field_id
       
         # ID of the creative field value.
         # Corresponds to the JSON property `creativeFieldValueId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_field_value_id
       
         def initialize(**args)
@@ -3897,7 +3897,7 @@ module Google
       
         # ID of this creative field value. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -3995,12 +3995,12 @@ module Google
         # Account ID of this creative group. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this creative group. This is a required field on insertion.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -4020,7 +4020,7 @@ module Google
       
         # ID of this creative group. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4038,7 +4038,7 @@ module Google
         # Subaccount ID of this creative group. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -4064,7 +4064,7 @@ module Google
       
         # ID of the creative group to be assigned.
         # Corresponds to the JSON property `creativeGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_group_id
       
         # Creative group number of the creative group assignment.
@@ -4122,7 +4122,7 @@ module Google
         # ID of this creative optimization config. This field is auto-generated when the
         # campaign is inserted or updated. It can be null for existing campaigns.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Name of this creative optimization config. This is a required field and must
@@ -4168,7 +4168,7 @@ module Google
         # is unset or set to 0, then the campaign's default optimization configuration
         # will be used for this ad.
         # Corresponds to the JSON property `creativeOptimizationConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_optimization_configuration_id
       
         # Type of creative rotation. Can be used to specify whether to use sequential or
@@ -4456,7 +4456,7 @@ module Google
       
         # ID of the click-through event tag to apply to all ads in this entity's scope.
         # Corresponds to the JSON property `defaultClickThroughEventTagId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :default_click_through_event_tag_id
       
         # Whether this entity should override the inherited default click-through event
@@ -4499,7 +4499,7 @@ module Google
         # 1 and ad B has an impression ratio of 3, then DCM will serve ad B three times
         # as often as ad A. Must be between 1 and 10.
         # Corresponds to the JSON property `impressionRatio`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :impression_ratio
       
         # Serving priority of an ad, with respect to other ads. The lower the priority
@@ -4780,7 +4780,7 @@ module Google
       
         # Country ID of this directory site.
         # Corresponds to the JSON property `countryId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_id
       
         # Currency ID of this directory site.
@@ -4833,7 +4833,7 @@ module Google
         # - "47" for BGN
         # - "48" for HRK
         # Corresponds to the JSON property `currencyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :currency_id
       
         # Description of this directory site.
@@ -4843,7 +4843,7 @@ module Google
       
         # ID of this directory site. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -4883,7 +4883,7 @@ module Google
       
         # Parent directory site ID.
         # Corresponds to the JSON property `parentId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :parent_id
       
         # Directory Site Settings
@@ -4940,7 +4940,7 @@ module Google
       
         # ID of this directory site contact. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4999,7 +4999,7 @@ module Google
       
         # ID of this directory site contact. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `contactId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :contact_id
       
         # Visibility of this directory site contact assignment. When set to PUBLIC this
@@ -5170,7 +5170,7 @@ module Google
       
         # ID of the object of this dynamic targeting key. This is a required field.
         # Corresponds to the JSON property `objectId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :object_id_prop
       
         # Type of the object of this dynamic targeting key. This is a required field.
@@ -5224,7 +5224,7 @@ module Google
         # The encryption entity ID. This should match the encryption configuration for
         # ad serving or Data Transfer.
         # Corresponds to the JSON property `encryptionEntityId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :encryption_entity_id
       
         # The encryption entity type. This should match the encryption configuration for
@@ -5264,13 +5264,13 @@ module Google
       
         # Account ID of this event tag. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this event tag. This field or the campaignId field is
         # required on insertion.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -5281,7 +5281,7 @@ module Google
         # Campaign ID of this event tag. This field or the advertiserId field is
         # required on insertion.
         # Corresponds to the JSON property `campaignId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :campaign_id
       
         # Represents a DimensionValue resource.
@@ -5307,7 +5307,7 @@ module Google
       
         # ID of this event tag. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5331,7 +5331,7 @@ module Google
         # Filter list of site IDs associated with this event tag. The siteFilterType
         # determines whether this is a whitelist or blacklist filter.
         # Corresponds to the JSON property `siteIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :site_ids
       
         # Whether this tag is SSL-compliant or not. This is a read-only field.
@@ -5349,7 +5349,7 @@ module Google
         # Subaccount ID of this event tag. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Event tag type. Can be used to specify whether to use a third-party pixel, a
@@ -5412,7 +5412,7 @@ module Google
       
         # ID of this event tag override. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         def initialize(**args)
@@ -5480,7 +5480,7 @@ module Google
       
         # The unique ID of this report file.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # The kind of resource this is, in this case dfareporting#file.
@@ -5490,12 +5490,12 @@ module Google
       
         # The timestamp in milliseconds since epoch when this file was last modified.
         # Corresponds to the JSON property `lastModifiedTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_modified_time
       
         # The ID of the report this file was generated from.
         # Corresponds to the JSON property `reportId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :report_id
       
         # The status of the report file.
@@ -5603,7 +5603,7 @@ module Google
       
         # Rate or cost of this flight.
         # Corresponds to the JSON property `rateOrCost`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :rate_or_cost
       
         # Inventory item flight start date.
@@ -5613,7 +5613,7 @@ module Google
       
         # Units of this flight.
         # Corresponds to the JSON property `units`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :units
       
         def initialize(**args)
@@ -5694,14 +5694,14 @@ module Google
         # Account ID of this floodlight activity. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this floodlight activity. If this field is left blank, the
         # value will be copied over either from the activity group's advertiser or the
         # existing activity's advertiser.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -5734,7 +5734,7 @@ module Google
         # Floodlight activity group ID of this floodlight activity. This is a required
         # field.
         # Corresponds to the JSON property `floodlightActivityGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_activity_group_id
       
         # Name of the associated floodlight activity group. This is a read-only field.
@@ -5758,7 +5758,7 @@ module Google
         # floodlight configuration or from the existing activity's floodlight
         # configuration.
         # Corresponds to the JSON property `floodlightConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
         # Represents a DimensionValue resource.
@@ -5774,7 +5774,7 @@ module Google
       
         # ID of this floodlight activity. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -5832,7 +5832,7 @@ module Google
         # Subaccount ID of this floodlight activity. This is a read-only field that can
         # be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Tag format type for the floodlight activity. If left blank, the tag format
@@ -5921,7 +5921,7 @@ module Google
       
         # ID of this dynamic tag. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Name of this tag.
@@ -5953,14 +5953,14 @@ module Google
         # Account ID of this floodlight activity group. This is a read-only field that
         # can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this floodlight activity group. If this field is left blank,
         # the value will be copied over either from the floodlight configuration's
         # advertiser or from the existing activity group's advertiser.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -5971,7 +5971,7 @@ module Google
         # Floodlight configuration ID of this floodlight activity group. This is a
         # required field.
         # Corresponds to the JSON property `floodlightConfigurationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
         # Represents a DimensionValue resource.
@@ -5982,7 +5982,7 @@ module Google
         # ID of this floodlight activity group. This is a read-only, auto-generated
         # field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -6005,7 +6005,7 @@ module Google
         # Subaccount ID of this floodlight activity group. This is a read-only field
         # that can be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Value of the type= parameter in the floodlight tag, which the ad servers use
@@ -6091,7 +6091,7 @@ module Google
         # used as an alternative to the siteId field. When this resource is retrieved,
         # only the siteId field will be populated.
         # Corresponds to the JSON property `directorySiteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :directory_site_id
       
         # Dynamic Tag
@@ -6101,7 +6101,7 @@ module Google
       
         # Site ID of this dynamic tag.
         # Corresponds to the JSON property `siteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :site_id
       
         # Represents a DimensionValue resource.
@@ -6137,12 +6137,12 @@ module Google
         # Account ID of this floodlight configuration. This is a read-only field that
         # can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of the parent advertiser of this floodlight configuration.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -6172,7 +6172,7 @@ module Google
       
         # ID of this floodlight configuration. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -6218,7 +6218,7 @@ module Google
         # Subaccount ID of this floodlight configuration. This is a read-only field that
         # can be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Dynamic and Image Tag Settings.
@@ -6338,13 +6338,13 @@ module Google
         # Duration of time, in seconds, for this frequency cap. The maximum duration is
         # 90 days in seconds, or 7,776,000.
         # Corresponds to the JSON property `duration`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :duration
       
         # Number of times an individual user can be served the ad within the specified
         # duration. The maximum allowed is 15.
         # Corresponds to the JSON property `impressions`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :impressions
       
         def initialize(**args)
@@ -6475,7 +6475,7 @@ module Google
       
         # Account ID of this inventory item.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Ad slots of this inventory item. If this inventory item represents a
@@ -6488,27 +6488,27 @@ module Google
       
         # Advertiser ID of this inventory item.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Content category ID of this inventory item.
         # Corresponds to the JSON property `contentCategoryId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :content_category_id
       
         # Estimated click-through rate of this inventory item.
         # Corresponds to the JSON property `estimatedClickThroughRate`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :estimated_click_through_rate
       
         # Estimated conversion rate of this inventory item.
         # Corresponds to the JSON property `estimatedConversionRate`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :estimated_conversion_rate
       
         # ID of this inventory item.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Whether this inventory item is in plan.
@@ -6537,17 +6537,17 @@ module Google
       
         # Negotiation channel ID of this inventory item.
         # Corresponds to the JSON property `negotiationChannelId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :negotiation_channel_id
       
         # Order ID of this inventory item.
         # Corresponds to the JSON property `orderId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :order_id
       
         # Placement strategy ID of this inventory item.
         # Corresponds to the JSON property `placementStrategyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_strategy_id
       
         # Pricing Information
@@ -6557,22 +6557,22 @@ module Google
       
         # Project ID of this inventory item.
         # Corresponds to the JSON property `projectId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :project_id
       
         # RFP ID of this inventory item.
         # Corresponds to the JSON property `rfpId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :rfp_id
       
         # ID of the site this inventory item is associated with.
         # Corresponds to the JSON property `siteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :site_id
       
         # Subaccount ID of this inventory item.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Type of inventory item.
@@ -6675,7 +6675,7 @@ module Google
       
         # ID of this landing page. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6742,7 +6742,7 @@ module Google
         # Language ID of this language. This is the ID used for targeting and generating
         # reports.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6829,7 +6829,7 @@ module Google
       
         # Timestamp of the last change in milliseconds since epoch.
         # Corresponds to the JSON property `time`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :time
       
         def initialize(**args)
@@ -6869,7 +6869,7 @@ module Google
       
         # Floodlight activity ID associated with this rule. This field can be left blank.
         # Corresponds to the JSON property `floodlightActivityId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_activity_id
       
         # Name of floodlight activity associated with this rule. This is a read-only,
@@ -6926,7 +6926,7 @@ module Google
         # ID of the list in question. This field is only relevant when type is set to
         # LIST_MEMBERSHIP_TERM.
         # Corresponds to the JSON property `remarketingListId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :remarketing_list_id
       
         # List population term type determines the applicable fields in this object. If
@@ -7060,18 +7060,18 @@ module Google
       
         # DART ID of the country to which this metro region belongs.
         # Corresponds to the JSON property `countryDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_dart_id
       
         # DART ID of this metro region.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # DMA ID of this metro region. This is the ID used for targeting and generating
         # reports, and is equivalent to metro_code.
         # Corresponds to the JSON property `dmaId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dma_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7143,12 +7143,12 @@ module Google
       
         # DART ID of the country to which this mobile carrier belongs.
         # Corresponds to the JSON property `countryDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_dart_id
       
         # ID of this mobile carrier.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7215,7 +7215,7 @@ module Google
         # Applicable when status is ASSIGNED. The user has access to objects with these
         # object IDs.
         # Corresponds to the JSON property `objectIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :object_ids
       
         # Status of the filter. NONE means the user has access to none of the objects.
@@ -7297,7 +7297,7 @@ module Google
       
         # DART ID of this operating system. This is the ID used for targeting.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # Whether this operating system is for desktop.
@@ -7344,7 +7344,7 @@ module Google
       
         # ID of this operating system version.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7446,7 +7446,7 @@ module Google
       
         # Floodlight activity ID of this optimization activity. This is a required field.
         # Corresponds to the JSON property `floodlightActivityId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_activity_id
       
         # Represents a DimensionValue resource.
@@ -7479,17 +7479,17 @@ module Google
       
         # Account ID of this order.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this order.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # IDs for users that have to approve documents created for this order.
         # Corresponds to the JSON property `approverUserProfileIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :approver_user_profile_ids
       
         # Buyer invoice ID associated with this order.
@@ -7514,7 +7514,7 @@ module Google
       
         # ID of this order. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7540,12 +7540,12 @@ module Google
       
         # ID of the terms and conditions template used in this order.
         # Corresponds to the JSON property `planningTermId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :planning_term_id
       
         # Project ID of this order.
         # Corresponds to the JSON property `projectId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :project_id
       
         # Seller order ID associated with this order.
@@ -7560,7 +7560,7 @@ module Google
       
         # Site IDs this order is associated with.
         # Corresponds to the JSON property `siteId`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :site_id
       
         # Free-form site names this order is associated with.
@@ -7570,7 +7570,7 @@ module Google
       
         # Subaccount ID of this order.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Terms and conditions of this order.
@@ -7636,7 +7636,7 @@ module Google
         # ID of the user profile containing the signature that will be embedded into
         # order documents.
         # Corresponds to the JSON property `signatureUserProfileId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :signature_user_profile_id
       
         def initialize(**args)
@@ -7659,24 +7659,24 @@ module Google
       
         # Account ID of this order document.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this order document.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # The amended order document ID of this order document. An order document can be
         # created by optionally amending another order document so that the change
         # history can be preserved.
         # Corresponds to the JSON property `amendedOrderDocumentId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :amended_order_document_id
       
         # IDs of users who have approved this order document.
         # Corresponds to the JSON property `approvedByUserProfileIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :approved_by_user_profile_ids
       
         # Whether this order document is cancelled.
@@ -7697,7 +7697,7 @@ module Google
       
         # ID of this order document.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7718,12 +7718,12 @@ module Google
       
         # ID of the order from which this order document is created.
         # Corresponds to the JSON property `orderId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :order_id
       
         # Project ID of this order document.
         # Corresponds to the JSON property `projectId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :project_id
       
         # Whether this order document has been signed.
@@ -7734,7 +7734,7 @@ module Google
       
         # Subaccount ID of this order document.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Title of this order document.
@@ -7892,12 +7892,12 @@ module Google
       
         # Account ID of this placement. This field can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this placement. This field can be left blank.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -7913,7 +7913,7 @@ module Google
       
         # Campaign ID of this placement. This field is a required field on insertion.
         # Corresponds to the JSON property `campaignId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :campaign_id
       
         # Represents a DimensionValue resource.
@@ -7938,7 +7938,7 @@ module Google
       
         # ID of the content category assigned to this placement.
         # Corresponds to the JSON property `contentCategoryId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :content_category_id
       
         # Modification timestamp.
@@ -7950,7 +7950,7 @@ module Google
         # or the siteId field to specify the site associated with this placement. This
         # is a required field that is read-only after insertion.
         # Corresponds to the JSON property `directorySiteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :directory_site_id
       
         # Represents a DimensionValue resource.
@@ -7965,7 +7965,7 @@ module Google
       
         # ID of this placement. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -8015,7 +8015,7 @@ module Google
       
         # ID of this placement's group, if applicable.
         # Corresponds to the JSON property `placementGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_group_id
       
         # Represents a DimensionValue resource.
@@ -8025,7 +8025,7 @@ module Google
       
         # ID of the placement strategy assigned to this placement.
         # Corresponds to the JSON property `placementStrategyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_strategy_id
       
         # Pricing Schedule
@@ -8052,7 +8052,7 @@ module Google
         # field or the directorySiteId field to specify the site associated with this
         # placement. This is a required field that is read-only after insertion.
         # Corresponds to the JSON property `siteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :site_id
       
         # Represents a DimensionValue resource.
@@ -8078,7 +8078,7 @@ module Google
       
         # Subaccount ID of this placement. This field can be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Tag formats to generate for this placement. This field is required on
@@ -8191,7 +8191,7 @@ module Google
       
         # ID of the placement to be assigned. This is a required field.
         # Corresponds to the JSON property `placementId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_id
       
         # Represents a DimensionValue resource.
@@ -8226,12 +8226,12 @@ module Google
         # Account ID of this placement group. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this placement group. This is a required field on insertion.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -8247,7 +8247,7 @@ module Google
       
         # Campaign ID of this placement group. This field is required on insertion.
         # Corresponds to the JSON property `campaignId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :campaign_id
       
         # Represents a DimensionValue resource.
@@ -8258,7 +8258,7 @@ module Google
         # IDs of placements which are assigned to this placement group. This is a read-
         # only, auto-generated field.
         # Corresponds to the JSON property `childPlacementIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :child_placement_ids
       
         # Comments for this placement group.
@@ -8268,7 +8268,7 @@ module Google
       
         # ID of the content category assigned to this placement group.
         # Corresponds to the JSON property `contentCategoryId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :content_category_id
       
         # Modification timestamp.
@@ -8281,7 +8281,7 @@ module Google
         # this placement group. This is a required field that is read-only after
         # insertion.
         # Corresponds to the JSON property `directorySiteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :directory_site_id
       
         # Represents a DimensionValue resource.
@@ -8296,7 +8296,7 @@ module Google
       
         # ID of this placement group. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -8333,7 +8333,7 @@ module Google
       
         # ID of the placement strategy assigned to this placement group.
         # Corresponds to the JSON property `placementStrategyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_strategy_id
       
         # Pricing Schedule
@@ -8345,7 +8345,7 @@ module Google
         # placement group). Modifying this field will automatically modify the primary
         # field on all affected roadblock child placements.
         # Corresponds to the JSON property `primaryPlacementId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :primary_placement_id
       
         # Represents a DimensionValue resource.
@@ -8358,7 +8358,7 @@ module Google
         # this placement group. This is a required field that is read-only after
         # insertion.
         # Corresponds to the JSON property `siteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :site_id
       
         # Represents a DimensionValue resource.
@@ -8369,7 +8369,7 @@ module Google
         # Subaccount ID of this placement group. This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -8478,12 +8478,12 @@ module Google
         # Account ID of this placement strategy.This is a read-only field that can be
         # left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # ID of this placement strategy. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8518,7 +8518,7 @@ module Google
       
         # Placement ID
         # Corresponds to the JSON property `placementId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :placement_id
       
         # Tags generated for this placement.
@@ -8601,7 +8601,7 @@ module Google
       
         # ID of this platform type.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8741,7 +8741,7 @@ module Google
       
         # DART ID of the country to which this postal code belongs.
         # Corresponds to the JSON property `countryDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_dart_id
       
         # ID of this postal code.
@@ -8887,7 +8887,7 @@ module Google
         # Floodlight activity ID associated with this placement. This field should be
         # set when placement pricing type is set to PRICING_TYPE_CPA.
         # Corresponds to the JSON property `floodlightActivityId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :floodlight_activity_id
       
         # Pricing periods for this placement.
@@ -8953,7 +8953,7 @@ module Google
       
         # Rate or cost of this pricing period.
         # Corresponds to the JSON property `rateOrCostNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :rate_or_cost_nanos
       
         # Pricing period start date. This date must be later than, or the same day as,
@@ -8965,7 +8965,7 @@ module Google
       
         # Units of this pricing period.
         # Corresponds to the JSON property `units`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :units
       
         def initialize(**args)
@@ -8988,12 +8988,12 @@ module Google
       
         # Account ID of this project.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this project.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Audience age group of this project.
@@ -9011,7 +9011,7 @@ module Google
         # example, for USD, the smallest value that can be represented by this field is
         # 1 US dollar.
         # Corresponds to the JSON property `budget`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :budget
       
         # Client billing code of this project.
@@ -9031,7 +9031,7 @@ module Google
       
         # ID of this project. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -9062,42 +9062,42 @@ module Google
       
         # Subaccount ID of this project.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Number of clicks that the advertiser is targeting.
         # Corresponds to the JSON property `targetClicks`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_clicks
       
         # Number of conversions that the advertiser is targeting.
         # Corresponds to the JSON property `targetConversions`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_conversions
       
         # CPA that the advertiser is targeting.
         # Corresponds to the JSON property `targetCpaNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_cpa_nanos
       
         # CPC that the advertiser is targeting.
         # Corresponds to the JSON property `targetCpcNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_cpc_nanos
       
         # vCPM from Active View that the advertiser is targeting.
         # Corresponds to the JSON property `targetCpmActiveViewNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_cpm_active_view_nanos
       
         # CPM that the advertiser is targeting.
         # Corresponds to the JSON property `targetCpmNanos`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_cpm_nanos
       
         # Number of impressions that the advertiser is targeting.
         # Corresponds to the JSON property `targetImpressions`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :target_impressions
       
         def initialize(**args)
@@ -9261,12 +9261,12 @@ module Google
       
         # DART ID of the country to which this region belongs.
         # Corresponds to the JSON property `countryDartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :country_dart_id
       
         # DART ID of this region.
         # Corresponds to the JSON property `dartId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :dart_id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -9338,7 +9338,7 @@ module Google
         # Account ID of this remarketing list. This is a read-only, auto-generated field
         # that is only returned in GET requests.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this remarketing list is active.
@@ -9350,7 +9350,7 @@ module Google
         # Dimension value for the advertiser ID that owns this remarketing list. This is
         # a required field.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -9365,7 +9365,7 @@ module Google
       
         # Remarketing list ID. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -9377,7 +9377,7 @@ module Google
         # Number of days that a user should remain in the remarketing list without an
         # impression.
         # Corresponds to the JSON property `lifeSpan`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :life_span
       
         # Remarketing List Population Rule.
@@ -9387,7 +9387,7 @@ module Google
       
         # Number of users currently in the list. This is a read-only field.
         # Corresponds to the JSON property `listSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :list_size
       
         # Product from which this remarketing list was originated.
@@ -9404,7 +9404,7 @@ module Google
         # Subaccount ID of this remarketing list. This is a read-only, auto-generated
         # field that is only returned in GET requests.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -9444,17 +9444,17 @@ module Google
       
         # Remarketing list ID. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `remarketingListId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :remarketing_list_id
       
         # Accounts that the remarketing list is shared with.
         # Corresponds to the JSON property `sharedAccountIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :shared_account_ids
       
         # Advertisers that the remarketing list is shared with.
         # Corresponds to the JSON property `sharedAdvertiserIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :shared_advertiser_ids
       
         def initialize(**args)
@@ -9508,7 +9508,7 @@ module Google
       
         # The account ID to which this report belongs.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # The report criteria for a report of type "STANDARD".
@@ -9551,7 +9551,7 @@ module Google
       
         # The unique ID identifying this report resource.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # The kind of resource this is, in this case dfareporting#report.
@@ -9562,7 +9562,7 @@ module Google
         # The timestamp (in milliseconds since epoch) of when this report was last
         # modified.
         # Corresponds to the JSON property `lastModifiedTime`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :last_modified_time
       
         # The name of the report.
@@ -9572,7 +9572,7 @@ module Google
       
         # The user profile id of the owner of this report.
         # Corresponds to the JSON property `ownerProfileId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :owner_profile_id
       
         # The report criteria for a report of type "PATH_TO_CONVERSION".
@@ -9593,7 +9593,7 @@ module Google
       
         # The subaccount ID to which this report belongs if applicable.
         # Corresponds to the JSON property `subAccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sub_account_id
       
         # The type of the report.
@@ -10275,7 +10275,7 @@ module Google
         # - "12" for "Pacific/Auckland"
         # - "13" for "America/Sao_Paulo"
         # Corresponds to the JSON property `reportGenerationTimeZoneId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :report_generation_time_zone_id
       
         def initialize(**args)
@@ -10308,7 +10308,7 @@ module Google
       
         # ID for the override to refer to a specific exit in the creative.
         # Corresponds to the JSON property `exitId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :exit_id
       
         def initialize(**args)
@@ -10331,7 +10331,7 @@ module Google
         # A creativeAssets[].id. This should refer to one of the parent assets in this
         # creative. This is a required field.
         # Corresponds to the JSON property `assetId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :asset_id
       
         # A user-friendly name for this rule. This is a required field.
@@ -10343,7 +10343,7 @@ module Google
         # used to determine whether this asset should be served. This is a required
         # field.
         # Corresponds to the JSON property `targetingTemplateId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :targeting_template_id
       
         def initialize(**args)
@@ -10364,7 +10364,7 @@ module Google
       
         # Account ID of this site. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this site is approved.
@@ -10376,7 +10376,7 @@ module Google
         # Directory site associated with this site. This is a required field that is
         # read-only after insertion.
         # Corresponds to the JSON property `directorySiteId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :directory_site_id
       
         # Represents a DimensionValue resource.
@@ -10386,7 +10386,7 @@ module Google
       
         # ID of this site. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Represents a DimensionValue resource.
@@ -10425,7 +10425,7 @@ module Google
       
         # Subaccount ID of this site. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -10475,7 +10475,7 @@ module Google
       
         # ID of this site contact. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Last name of this site contact.
@@ -10634,7 +10634,7 @@ module Google
       
         # ID of this size. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10765,17 +10765,17 @@ module Google
         # ID of the account that contains this subaccount. This is a read-only field
         # that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # IDs of the available user role permissions for this subaccount.
         # Corresponds to the JSON property `availablePermissionIds`
-        # @return [Array<String>]
+        # @return [Array<Fixnum>]
         attr_accessor :available_permission_ids
       
         # ID of this subaccount. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10842,7 +10842,7 @@ module Google
       
         # Ad associated with this placement tag.
         # Corresponds to the JSON property `adId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ad_id
       
         # Tag string to record a click.
@@ -10852,7 +10852,7 @@ module Google
       
         # Creative associated with this placement tag.
         # Corresponds to the JSON property `creativeId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :creative_id
       
         # TagData tag format of this tag.
@@ -10991,7 +10991,7 @@ module Google
         # Account ID of this remarketing list. This is a read-only, auto-generated field
         # that is only returned in GET requests.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this targetable remarketing list is active.
@@ -11003,7 +11003,7 @@ module Google
         # Dimension value for the advertiser ID that owns this targetable remarketing
         # list.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -11018,7 +11018,7 @@ module Google
       
         # Targetable remarketing list ID.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -11030,12 +11030,12 @@ module Google
         # Number of days that a user should remain in the targetable remarketing list
         # without an impression.
         # Corresponds to the JSON property `lifeSpan`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :life_span
       
         # Number of users currently in the list. This is a read-only field.
         # Corresponds to the JSON property `listSize`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :list_size
       
         # Product from which this targetable remarketing list was originated.
@@ -11052,7 +11052,7 @@ module Google
         # Subaccount ID of this remarketing list. This is a read-only, auto-generated
         # field that is only returned in GET requests.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -11116,13 +11116,13 @@ module Google
         # Account ID of this targeting template. This field, if left unset, will be auto-
         # generated on insert and is read-only after insert.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Advertiser ID of this targeting template. This is a required field on insert
         # and is read-only after insert.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # Represents a DimensionValue resource.
@@ -11142,7 +11142,7 @@ module Google
       
         # ID of this targeting template. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Key Value Targeting Expression.
@@ -11175,7 +11175,7 @@ module Google
         # Subaccount ID of this targeting template. This field, if left unset, will be
         # auto-generated on insert and is read-only after insert.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         # Technology Targeting.
@@ -11421,7 +11421,7 @@ module Google
       
         # The account ID to which this profile belongs.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # The account name this profile belongs to.
@@ -11441,12 +11441,12 @@ module Google
       
         # The unique ID of the user profile.
         # Corresponds to the JSON property `profileId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :profile_id
       
         # The sub account ID this profile belongs to if applicable.
         # Corresponds to the JSON property `subAccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :sub_account_id
       
         # The sub account name this profile belongs to if applicable.
@@ -11513,7 +11513,7 @@ module Google
       
         # Account ID of this user role. This is a read-only field that can be left blank.
         # Corresponds to the JSON property `accountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :account_id
       
         # Whether this is a default user role. Default user roles are created by the
@@ -11526,7 +11526,7 @@ module Google
       
         # ID of this user role. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -11547,7 +11547,7 @@ module Google
         # ID of the user role that this user role is based on or copied from. This is a
         # required field.
         # Corresponds to the JSON property `parentUserRoleId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :parent_user_role_id
       
         # List of permissions associated with this user role.
@@ -11558,7 +11558,7 @@ module Google
         # Subaccount ID of this user role. This is a read-only field that can be left
         # blank.
         # Corresponds to the JSON property `subaccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :subaccount_id
       
         def initialize(**args)
@@ -11589,7 +11589,7 @@ module Google
       
         # ID of this user role permission.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -11605,7 +11605,7 @@ module Google
       
         # ID of the permission group that this user role permission belongs to.
         # Corresponds to the JSON property `permissionGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :permission_group_id
       
         def initialize(**args)
@@ -11628,7 +11628,7 @@ module Google
       
         # ID of this user role permission.
         # Corresponds to the JSON property `id`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "

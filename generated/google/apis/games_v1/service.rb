@@ -50,10 +50,11 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'games/v1/')
+          @batch_path = 'batch'
         end
         
         # Lists all the achievement definitions for your application.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -104,9 +105,9 @@ module Google
         #   The ID of the achievement used by this method.
         # @param [Fixnum] steps_to_increment
         #   The number of steps to increment.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
-        # @param [String] request_id
+        # @param [Fixnum] request_id
         #   A randomly generated numeric ID for each request specified by the caller. This
         #   number is used at the server to ensure that the request is handled correctly
         #   across retries.
@@ -150,7 +151,7 @@ module Google
         # @param [String] player_id
         #   A player ID. A value of me may be used in place of the authenticated player's
         #   ID.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -204,7 +205,7 @@ module Google
         # currently authenticated player.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -247,7 +248,7 @@ module Google
         #   The ID of the achievement used by this method.
         # @param [Fixnum] steps
         #   The minimum value to set the steps to.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -286,7 +287,7 @@ module Google
         # Unlocks this achievement for the currently authenticated player.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -323,7 +324,7 @@ module Google
         
         # Updates multiple achievements for the currently authenticated player.
         # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -364,7 +365,7 @@ module Google
         # response will not include any instance data.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -406,7 +407,7 @@ module Google
         end
         
         # Indicate that the the currently authenticated user is playing your application.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -442,7 +443,7 @@ module Google
         # the specified ID, and returns the ID of the player it was granted for.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -479,7 +480,7 @@ module Google
         
         # Returns a list showing the current progress on events in this application for
         # the currently authenticated user.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -525,7 +526,7 @@ module Google
         end
         
         # Returns a list of the event definitions in this application.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -573,7 +574,7 @@ module Google
         # Records a batch of changes to the number of times events have occurred for the
         # currently authenticated user of this application.
         # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -615,7 +616,7 @@ module Google
         # Retrieves the metadata of the leaderboard with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -654,7 +655,7 @@ module Google
         end
         
         # Lists all the leaderboard metadata for your application.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -700,7 +701,7 @@ module Google
         end
         
         # Return the metagame configuration data for the calling application.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -741,7 +742,7 @@ module Google
         #   ID.
         # @param [String] collection
         #   The collection of categories for which data will be returned.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -793,7 +794,7 @@ module Google
         # @param [String] player_id
         #   A player ID. A value of me may be used in place of the authenticated player's
         #   ID.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -834,7 +835,7 @@ module Google
         # Get the collection of players for the currently authenticated user.
         # @param [String] collection
         #   Collection of players being retrieved
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -883,7 +884,7 @@ module Google
         # Removes a push token for the current user and application. Removing a non-
         # existent push token will report success.
         # @param [Google::Apis::GamesV1::PushTokenId] push_token_id_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -919,7 +920,7 @@ module Google
         
         # Registers a push token for the current user and application.
         # @param [Google::Apis::GamesV1::PushToken] push_token_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -960,10 +961,10 @@ module Google
         #   The ID of the quest.
         # @param [String] milestone_id
         #   The ID of the milestone.
-        # @param [String] request_id
+        # @param [Fixnum] request_id
         #   A numeric ID to ensure that the request is handled correctly across retries.
         #   Your client application must generate this ID randomly.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1001,7 +1002,7 @@ module Google
         # Indicates that the currently authorized user will participate in the quest.
         # @param [String] quest_id
         #   The ID of the quest.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1044,7 +1045,7 @@ module Google
         # @param [String] player_id
         #   A player ID. A value of me may be used in place of the authenticated player's
         #   ID.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1099,7 +1100,7 @@ module Google
         #   - "ANDROID" - Client is running the Android SDK.
         #   - "IOS" - Client is running the iOS SDK.
         #   - "WEB_APP" - Client is running as a Web App.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1137,7 +1138,7 @@ module Google
         # Create a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [Google::Apis::GamesV1::CreateRoomRequest] create_room_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1180,7 +1181,7 @@ module Google
         # Calling this method directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1222,7 +1223,7 @@ module Google
         # Calling this method directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1258,7 +1259,7 @@ module Google
         # Get the data for a room.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1301,7 +1302,7 @@ module Google
         # @param [String] room_id
         #   The ID of the room.
         # @param [Google::Apis::GamesV1::JoinRoomRequest] join_room_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1346,7 +1347,7 @@ module Google
         # @param [String] room_id
         #   The ID of the room.
         # @param [Google::Apis::GamesV1::LeaveRoomRequest] leave_room_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1387,7 +1388,7 @@ module Google
         end
         
         # Returns invitations to join rooms.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1437,7 +1438,7 @@ module Google
         # @param [String] room_id
         #   The ID of the room.
         # @param [Google::Apis::GamesV1::RoomP2PStatuses] room_p2_p_statuses_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1490,7 +1491,7 @@ module Google
         #   leaderboards for this application.
         # @param [String] time_span
         #   The time span for the scores and ranks you're requesting.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] include_rank_type
         #   The types of ranks to return. If the parameter is omitted, no ranks will be
@@ -1549,7 +1550,7 @@ module Google
         #   The collection of scores you're requesting.
         # @param [String] time_span
         #   The time span for the scores and ranks you're requesting.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1604,7 +1605,7 @@ module Google
         #   The collection of scores you're requesting.
         # @param [String] time_span
         #   The time span for the scores and ranks you're requesting.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1665,14 +1666,14 @@ module Google
         # Submits a score to the specified leaderboard.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
-        # @param [String] score
+        # @param [Fixnum] score
         #   The score you're submitting. The submitted score is ignored if it is worse
         #   than a previously submitted score, where worse depends on the leaderboard sort
         #   order. The meaning of the score value depends on the leaderboard format type.
         #   For fixed-point, the score represents the raw value. For time, the score
         #   represents elapsed time in milliseconds. For currency, the score represents a
         #   value in micro units.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1717,7 +1718,7 @@ module Google
         
         # Submits multiple scores to leaderboards.
         # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1759,7 +1760,7 @@ module Google
         # Retrieves the metadata for a given snapshot ID.
         # @param [String] snapshot_id
         #   The ID of the snapshot.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1802,7 +1803,7 @@ module Google
         # @param [String] player_id
         #   A player ID. A value of me may be used in place of the authenticated player's
         #   ID.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1851,7 +1852,7 @@ module Google
         # Cancel a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1886,7 +1887,7 @@ module Google
         
         # Create a turn-based match.
         # @param [Google::Apis::GamesV1::CreateTurnBasedMatchRequest] create_turn_based_match_request_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1928,7 +1929,7 @@ module Google
         # Decline an invitation to play a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1970,7 +1971,7 @@ module Google
         # up in the list and will not generate notifications.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2009,7 +2010,7 @@ module Google
         # @param [String] match_id
         #   The ID of the match.
         # @param [Google::Apis::GamesV1::TurnBasedMatchResults] turn_based_match_results_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -2052,7 +2053,7 @@ module Google
         # Get the data for a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [Boolean] include_match_data
         #   Get match data along with metadata.
@@ -2096,7 +2097,7 @@ module Google
         # Join a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -2138,7 +2139,7 @@ module Google
         # canceling the match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -2182,7 +2183,7 @@ module Google
         #   The ID of the match.
         # @param [Fixnum] match_version
         #   The version of the match being updated.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -2228,7 +2229,7 @@ module Google
         end
         
         # Returns turn-based matches the player is or was involved in.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [Boolean] include_match_data
         #   True if match data should be returned in the response. Note that not all data
@@ -2290,11 +2291,11 @@ module Google
         # match; it will be the caller's turn.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
-        # @param [String] request_id
+        # @param [Fixnum] request_id
         #   A randomly generated numeric ID for each request specified by the caller. This
         #   number is used at the server to ensure that the request is handled correctly
         #   across retries.
@@ -2336,7 +2337,7 @@ module Google
         # Returns turn-based matches the player is or was involved in that changed since
         # the last sync call, with the least recent changes coming first. Matches that
         # should be removed from the local cache will have a status of MATCH_DELETED.
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [Boolean] include_match_data
         #   True if match data should be returned in the response. Note that not all data
@@ -2396,7 +2397,7 @@ module Google
         # @param [String] match_id
         #   The ID of the match.
         # @param [Google::Apis::GamesV1::TurnBasedMatchTurn] turn_based_match_turn_object
-        # @param [String] consistency_token
+        # @param [Fixnum] consistency_token
         #   The last-seen mutation timestamp.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.

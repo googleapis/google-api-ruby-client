@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'appsactivity/v1/')
+          @batch_path = 'batch'
         end
         
         # Returns a list of activities visible to the current logged in user. Visible

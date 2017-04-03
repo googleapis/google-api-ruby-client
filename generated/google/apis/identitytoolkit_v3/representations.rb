@@ -331,7 +331,7 @@ module Google
       class DeleteAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :id_token, as: 'idToken'
           property :local_id, as: 'localId'
         end
@@ -340,7 +340,7 @@ module Google
       class DownloadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
           property :target_project_id, as: 'targetProjectId'
@@ -350,7 +350,7 @@ module Google
       class GetAccountInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           collection :email, as: 'email'
           property :id_token, as: 'idToken'
           collection :local_id, as: 'localId'
@@ -395,8 +395,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
-          property :created_at, as: 'createdAt'
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           collection :delete_attribute, as: 'deleteAttribute'
           collection :delete_provider, as: 'deleteProvider'
           property :disable_user, as: 'disableUser'
@@ -405,7 +405,7 @@ module Google
           property :email_verified, as: 'emailVerified'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
-          property :last_login_at, as: 'lastLoginAt'
+          property :last_login_at, :numeric_string => true, as: 'lastLoginAt'
           property :local_id, as: 'localId'
           property :oob_code, as: 'oobCode'
           property :password, as: 'password'
@@ -413,7 +413,7 @@ module Google
           collection :provider, as: 'provider'
           property :return_secure_token, as: 'returnSecureToken'
           property :upgrade_to_federated_login, as: 'upgradeToFederatedLogin'
-          property :valid_since, as: 'validSince'
+          property :valid_since, :numeric_string => true, as: 'validSince'
         end
       end
       
@@ -425,7 +425,7 @@ module Google
           collection :authorized_domains, as: 'authorizedDomains'
           property :change_email_template, as: 'changeEmailTemplate', class: Google::Apis::IdentitytoolkitV3::EmailTemplate, decorator: Google::Apis::IdentitytoolkitV3::EmailTemplate::Representation
       
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :enable_anonymous_user, as: 'enableAnonymousUser'
           collection :idp_config, as: 'idpConfig', class: Google::Apis::IdentitytoolkitV3::IdpConfig, decorator: Google::Apis::IdentitytoolkitV3::IdpConfig::Representation
       
@@ -482,7 +482,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_overwrite, as: 'allowOverwrite'
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
           property :rounds, as: 'rounds'
@@ -499,7 +499,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create, as: 'autoCreate'
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :pending_id_token, as: 'pendingIdToken'
@@ -515,7 +515,7 @@ module Google
       class VerifyCustomTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :instance_id, as: 'instanceId'
           property :return_secure_token, as: 'returnSecureToken'
           property :token, as: 'token'
@@ -527,7 +527,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
-          property :delegated_project_number, as: 'delegatedProjectNumber'
+          property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :email, as: 'email'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
@@ -586,7 +586,7 @@ module Google
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
-          property :expires_in, as: 'expiresIn'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :local_id, as: 'localId'
@@ -614,7 +614,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
-          property :expires_in, as: 'expiresIn'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :local_id, as: 'localId'
@@ -642,13 +642,13 @@ module Google
       class UserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :created_at, as: 'createdAt'
+          property :created_at, :numeric_string => true, as: 'createdAt'
           property :custom_auth, as: 'customAuth'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
-          property :last_login_at, as: 'lastLoginAt'
+          property :last_login_at, :numeric_string => true, as: 'lastLoginAt'
           property :local_id, as: 'localId'
           property :password_hash, :base64 => true, as: 'passwordHash'
           property :password_updated_at, as: 'passwordUpdatedAt'
@@ -658,7 +658,7 @@ module Google
           property :raw_password, as: 'rawPassword'
           property :salt, :base64 => true, as: 'salt'
           property :screen_name, as: 'screenName'
-          property :valid_since, as: 'validSince'
+          property :valid_since, :numeric_string => true, as: 'validSince'
           property :version, as: 'version'
         end
         
@@ -689,7 +689,7 @@ module Google
           property :email_recycled, as: 'emailRecycled'
           property :email_verified, as: 'emailVerified'
           property :error_message, as: 'errorMessage'
-          property :expires_in, as: 'expiresIn'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :federated_id, as: 'federatedId'
           property :first_name, as: 'firstName'
           property :full_name, as: 'fullName'
@@ -724,7 +724,7 @@ module Google
       class VerifyCustomTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expires_in, as: 'expiresIn'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :refresh_token, as: 'refreshToken'
@@ -736,7 +736,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
-          property :expires_in, as: 'expiresIn'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :id_token, as: 'idToken'
           property :kind, as: 'kind'
           property :local_id, as: 'localId'

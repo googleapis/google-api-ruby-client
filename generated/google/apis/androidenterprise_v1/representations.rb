@@ -716,7 +716,7 @@ module Google
       
           property :product_availability_change_event, as: 'productAvailabilityChangeEvent', class: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent, decorator: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent::Representation
       
-          property :timestamp_millis, as: 'timestampMillis'
+          property :timestamp_millis, :numeric_string => true, as: 'timestampMillis'
         end
       end
       

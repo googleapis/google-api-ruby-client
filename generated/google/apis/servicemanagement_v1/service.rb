@@ -46,12 +46,70 @@ module Google
 
         def initialize
           super('https://servicemanagement.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
-        # Creates a new managed service.
-        # Please note one producer project can own no more than 20 services.
-        # Operation<response: ManagedService>
-        # @param [Google::Apis::ServicemanagementV1::ManagedService] managed_service_object
+        # Lists service operations that match the specified filter in the request.
+        # @param [String] filter
+        #   A string for filtering Operations.
+        #   The following filter fields are supported&#58;
+        #   * serviceName&#58; Required. Only `=` operator is allowed.
+        #   * startTime&#58; The time this job was started, in ISO 8601 format.
+        #   Allowed operators are `>=`,  `>`, `<=`, and `<`.
+        #   * status&#58; Can be `done`, `in_progress`, or `failed`. Allowed
+        #   operators are `=`, and `!=`.
+        #   Filter expression supports conjunction (AND) and disjunction (OR)
+        #   logical operators. However, the serviceName restriction must be at the
+        #   top-level and can only be combined with other restrictions via the AND
+        #   logical operator.
+        #   Examples&#58;
+        #   * `serviceName=`some-service`.googleapis.com`
+        #   * `serviceName=`some-service`.googleapis.com AND startTime>="2017-02-01"`
+        #   * `serviceName=`some-service`.googleapis.com AND status=done`
+        #   * `serviceName=`some-service`.googleapis.com AND (status=done OR startTime>="
+        #   2017-02-01")`
+        # @param [String] name
+        #   Not used.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [Fixnum] page_size
+        #   The maximum number of operations to return. If unspecified, defaults to
+        #   50. The maximum value is 100.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicemanagementV1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicemanagementV1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operations(filter: nil, name: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/operations', options)
+          command.response_representation = Google::Apis::ServicemanagementV1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::ServicemanagementV1::ListOperationsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.  Clients can use this
+        # method to poll the operation result at intervals as recommended by the API
+        # service.
+        # @param [String] name
+        #   The name of the operation resource.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -69,51 +127,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_service(managed_service_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services', options)
-          command.request_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
-          command.request_object = managed_service_object
+        def get_operation(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Generates and returns a report (errors, warnings and changes from
-        # existing configurations) associated with
-        # GenerateConfigReportRequest.new_value
-        # If GenerateConfigReportRequest.old_value is specified,
-        # GenerateConfigReportRequest will contain a single ChangeReport based on the
-        # comparison between GenerateConfigReportRequest.new_value and
-        # GenerateConfigReportRequest.old_value.
-        # If GenerateConfigReportRequest.old_value is not specified, this method
-        # will compare GenerateConfigReportRequest.new_value with the last pushed
-        # service configuration.
-        # @param [Google::Apis::ServicemanagementV1::GenerateConfigReportRequest] generate_config_report_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::GenerateConfigReportResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicemanagementV1::GenerateConfigReportResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_service_config_report(generate_config_report_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services:generateConfigReport', options)
-          command.request_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportRequest::Representation
-          command.request_object = generate_config_report_request_object
-          command.response_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse
+          command.params['name'] = name unless name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -493,18 +511,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new service configuration rollout. Based on rollout, the
-        # Google Service Management will roll out the service configurations to
-        # different backend services. For example, the logging configuration will be
-        # pushed to Google Cloud Logging.
-        # Please note that any previous pending and running Rollouts and associated
-        # Operations will be automatically cancelled so that the latest Rollout will
-        # not be blocked by previous Rollouts.
-        # Operation<response: Rollout>
-        # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
-        #   for naming requirements.  For example: `example.googleapis.com`.
-        # @param [Google::Apis::ServicemanagementV1::Rollout] rollout_object
+        # Creates a new managed service.
+        # Please note one producer project can own no more than 20 services.
+        # Operation<response: ManagedService>
+        # @param [Google::Apis::ServicemanagementV1::ManagedService] managed_service_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -522,27 +532,28 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_service_rollout(service_name, rollout_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
-          command.request_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
-          command.request_object = rollout_object
+        def create_service(managed_service_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services', options)
+          command.request_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
+          command.request_object = managed_service_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
-          command.params['serviceName'] = service_name unless service_name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the history of the service configuration rollouts for a managed
-        # service, from the newest to the oldest.
-        # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
-        #   for naming requirements.  For example: `example.googleapis.com`.
-        # @param [String] page_token
-        #   The token of the page to retrieve.
-        # @param [Fixnum] page_size
-        #   The max number of items to include in the response list.
+        # Generates and returns a report (errors, warnings and changes from
+        # existing configurations) associated with
+        # GenerateConfigReportRequest.new_value
+        # If GenerateConfigReportRequest.old_value is specified,
+        # GenerateConfigReportRequest will contain a single ChangeReport based on the
+        # comparison between GenerateConfigReportRequest.new_value and
+        # GenerateConfigReportRequest.old_value.
+        # If GenerateConfigReportRequest.old_value is not specified, this method
+        # will compare GenerateConfigReportRequest.new_value with the last pushed
+        # service configuration.
+        # @param [Google::Apis::ServicemanagementV1::GenerateConfigReportRequest] generate_config_report_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -552,96 +563,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse] parsed result object
+        # @yieldparam result [Google::Apis::ServicemanagementV1::GenerateConfigReportResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse]
+        # @return [Google::Apis::ServicemanagementV1::GenerateConfigReportResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_service_rollouts(service_name, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
-          command.response_representation = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a service configuration rollout.
-        # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
-        #   for naming requirements.  For example: `example.googleapis.com`.
-        # @param [String] rollout_id
-        #   The id of the rollout resource.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::Rollout] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicemanagementV1::Rollout]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_service_rollout(service_name, rollout_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
-          command.response_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::Rollout
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.params['rolloutId'] = rollout_id unless rollout_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new service configuration (version) for a managed service based
-        # on
-        # user-supplied configuration source files (for example: OpenAPI
-        # Specification). This method stores the source configurations as well as the
-        # generated service configuration. To rollout the service configuration to
-        # other services,
-        # please call CreateServiceRollout.
-        # Operation<response: SubmitConfigSourceResponse>
-        # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
-        #   for naming requirements.  For example: `example.googleapis.com`.
-        # @param [Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest] submit_config_source_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicemanagementV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_config_source(service_name, submit_config_source_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
-          command.request_representation = Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest::Representation
-          command.request_object = submit_config_source_request_object
-          command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::Operation
-          command.params['serviceName'] = service_name unless service_name.nil?
+        def generate_service_config_report(generate_config_report_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services:generateConfigReport', options)
+          command.request_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportRequest::Representation
+          command.request_object = generate_config_report_request_object
+          command.response_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse::Representation
+          command.response_class = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -760,67 +695,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists service operations that match the specified filter in the request.
-        # @param [String] name
-        #   Not used.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [Fixnum] page_size
-        #   The maximum number of operations to return. If unspecified, defaults to
-        #   50. The maximum value is 100.
-        # @param [String] filter
-        #   A string for filtering Operations.
-        #   The following filter fields are supported&#58;
-        #   * serviceName&#58; Required. Only `=` operator is allowed.
-        #   * startTime&#58; The time this job was started, in ISO 8601 format.
-        #   Allowed operators are `>=`,  `>`, `<=`, and `<`.
-        #   * status&#58; Can be `done`, `in_progress`, or `failed`. Allowed
-        #   operators are `=`, and `!=`.
-        #   Filter expression supports conjunction (AND) and disjunction (OR)
-        #   logical operators. However, the serviceName restriction must be at the
-        #   top-level and can only be combined with other restrictions via the AND
-        #   logical operator.
-        #   Examples&#58;
-        #   * `serviceName=`some-service`.googleapis.com`
-        #   * `serviceName=`some-service`.googleapis.com AND startTime>="2017-02-01"`
-        #   * `serviceName=`some-service`.googleapis.com AND status=done`
-        #   * `serviceName=`some-service`.googleapis.com AND (status=done OR startTime>="
-        #   2017-02-01")`
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicemanagementV1::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name: nil, page_token: nil, page_size: nil, filter: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
-          command.response_representation = Google::Apis::ServicemanagementV1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::ListOperationsResponse
-          command.query['name'] = name unless name.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
-        # @param [String] name
-        #   The name of the operation resource.
+        # Creates a new service configuration (version) for a managed service based
+        # on
+        # user-supplied configuration source files (for example: OpenAPI
+        # Specification). This method stores the source configurations as well as the
+        # generated service configuration. To rollout the service configuration to
+        # other services,
+        # please call CreateServiceRollout.
+        # Operation<response: SubmitConfigSourceResponse>
+        # @param [String] service_name
+        #   The name of the service.  See the [overview](/service-management/overview)
+        #   for naming requirements.  For example: `example.googleapis.com`.
+        # @param [Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest] submit_config_source_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -838,11 +724,126 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+        def submit_config_source(service_name, submit_config_source_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
+          command.request_representation = Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest::Representation
+          command.request_object = submit_config_source_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
-          command.params['name'] = name unless name.nil?
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the history of the service configuration rollouts for a managed
+        # service, from the newest to the oldest.
+        # @param [String] service_name
+        #   The name of the service.  See the [overview](/service-management/overview)
+        #   for naming requirements.  For example: `example.googleapis.com`.
+        # @param [String] page_token
+        #   The token of the page to retrieve.
+        # @param [Fixnum] page_size
+        #   The max number of items to include in the response list.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_rollouts(service_name, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
+          command.response_representation = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse::Representation
+          command.response_class = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a service configuration rollout.
+        # @param [String] service_name
+        #   The name of the service.  See the [overview](/service-management/overview)
+        #   for naming requirements.  For example: `example.googleapis.com`.
+        # @param [String] rollout_id
+        #   The id of the rollout resource.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicemanagementV1::Rollout] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicemanagementV1::Rollout]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_rollout(service_name, rollout_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
+          command.response_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
+          command.response_class = Google::Apis::ServicemanagementV1::Rollout
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.params['rolloutId'] = rollout_id unless rollout_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new service configuration rollout. Based on rollout, the
+        # Google Service Management will roll out the service configurations to
+        # different backend services. For example, the logging configuration will be
+        # pushed to Google Cloud Logging.
+        # Please note that any previous pending and running Rollouts and associated
+        # Operations will be automatically cancelled so that the latest Rollout will
+        # not be blocked by previous Rollouts.
+        # Operation<response: Rollout>
+        # @param [String] service_name
+        #   The name of the service.  See the [overview](/service-management/overview)
+        #   for naming requirements.  For example: `example.googleapis.com`.
+        # @param [Google::Apis::ServicemanagementV1::Rollout] rollout_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicemanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicemanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service_rollout(service_name, rollout_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
+          command.request_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
+          command.request_object = rollout_object
+          command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
+          command.response_class = Google::Apis::ServicemanagementV1::Operation
+          command.params['serviceName'] = service_name unless service_name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

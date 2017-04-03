@@ -22,6 +22,266 @@ module Google
   module Apis
     module ClouddebuggerV2
       
+      # Response for listing debuggees.
+      class ListDebuggeesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of debuggees accessible to the calling user.
+        # Note that the `description` field is the only human readable field
+        # that should be displayed to the user.
+        # The fields `debuggee.id` and  `description` fields are guaranteed to be
+        # set on each debuggee.
+        # Corresponds to the JSON property `debuggees`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Debuggee>]
+        attr_accessor :debuggees
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debuggees = args[:debuggees] if args.key?(:debuggees)
+        end
+      end
+      
+      # An alias to a repo revision.
+      class AliasContext
+        include Google::Apis::Core::Hashable
+      
+        # The alias name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The alias kind.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents a location in the source code.
+      class SourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # Line inside the file. The first line in the file has the value `1`.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        # Path to the source file within the source context of the target binary.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line = args[:line] if args.key?(:line)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Represents the application to debug. The application may include one or more
+      # replicated processes executing the same code. Each of these processes is
+      # attached with a debugger agent, carrying out the debugging commands.
+      # The agents attached to the same debuggee are identified by using exactly the
+      # same field values when registering.
+      class Debuggee
+        include Google::Apis::Core::Hashable
+      
+        # References to the locations and revisions of the source code used in the
+        # deployed application.
+        # Contexts describing a remote repo related to the source code
+        # have a `category` label of `remote_repo`. Source snapshot source
+        # contexts have a `category` of `snapshot`.
+        # Corresponds to the JSON property `extSourceContexts`
+        # @return [Array<Google::Apis::ClouddebuggerV2::ExtendedSourceContext>]
+        attr_accessor :ext_source_contexts
+      
+        # A set of custom debuggee properties, populated by the agent, to be
+        # displayed to the user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Represents a contextual status message.
+        # The message can indicate an error or informational status, and refer to
+        # specific parts of the containing object.
+        # For example, the `Breakpoint.status` field can indicate an error referring
+        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
+        attr_accessor :status
+      
+        # If set to `true`, indicates that the debuggee is considered as inactive by
+        # the Controller service.
+        # Corresponds to the JSON property `isInactive`
+        # @return [Boolean]
+        attr_accessor :is_inactive
+        alias_method :is_inactive?, :is_inactive
+      
+        # Project the debuggee is associated with.
+        # Use the project number when registering a Google Cloud Platform project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Unique identifier for the debuggee generated by the controller service.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Version ID of the agent release. The version ID is structured as
+        # following: `domain/type/vmajor.minor` (for example
+        # `google.com/gcp-java/v1.1`).
+        # Corresponds to the JSON property `agentVersion`
+        # @return [String]
+        attr_accessor :agent_version
+      
+        # If set to `true`, indicates that the agent should disable itself and
+        # detach from the debuggee.
+        # Corresponds to the JSON property `isDisabled`
+        # @return [Boolean]
+        attr_accessor :is_disabled
+        alias_method :is_disabled?, :is_disabled
+      
+        # Human readable description of the debuggee.
+        # Including a human-readable project name, environment name and version
+        # information is recommended.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Debuggee uniquifier within the project.
+        # Any string that identifies the application within the project can be used.
+        # Including environment and version or build IDs is recommended.
+        # Corresponds to the JSON property `uniquifier`
+        # @return [String]
+        attr_accessor :uniquifier
+      
+        # References to the locations and revisions of the source code used in the
+        # deployed application.
+        # NOTE: This field is deprecated. Consumers should use
+        # `ext_source_contexts` if it is not empty. Debug agents should populate
+        # both this field and `ext_source_contexts`.
+        # Corresponds to the JSON property `sourceContexts`
+        # @return [Array<Google::Apis::ClouddebuggerV2::SourceContext>]
+        attr_accessor :source_contexts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ext_source_contexts = args[:ext_source_contexts] if args.key?(:ext_source_contexts)
+          @labels = args[:labels] if args.key?(:labels)
+          @status = args[:status] if args.key?(:status)
+          @is_inactive = args[:is_inactive] if args.key?(:is_inactive)
+          @project = args[:project] if args.key?(:project)
+          @id = args[:id] if args.key?(:id)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
+          @description = args[:description] if args.key?(:description)
+          @uniquifier = args[:uniquifier] if args.key?(:uniquifier)
+          @source_contexts = args[:source_contexts] if args.key?(:source_contexts)
+        end
+      end
+      
+      # Selects a repo using a Google Cloud Platform project ID
+      # (e.g. winged-cargo-31) and a repo name within that project.
+      class ProjectRepoId
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the project.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The name of the repo. Leave empty for the default repo.
+        # Corresponds to the JSON property `repoName`
+        # @return [String]
+        attr_accessor :repo_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @repo_name = args[:repo_name] if args.key?(:repo_name)
+        end
+      end
+      
+      # Response for listing active breakpoints.
+      class ListActiveBreakpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all active breakpoints.
+        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
+        # Corresponds to the JSON property `breakpoints`
+        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
+        attr_accessor :breakpoints
+      
+        # The `wait_expired` field is set to true by the server when the
+        # request times out and the field `success_on_timeout` is set to true.
+        # Corresponds to the JSON property `waitExpired`
+        # @return [Boolean]
+        attr_accessor :wait_expired
+        alias_method :wait_expired?, :wait_expired
+      
+        # A wait token that can be used in the next method call to block until
+        # the list of breakpoints changes.
+        # Corresponds to the JSON property `nextWaitToken`
+        # @return [String]
+        attr_accessor :next_wait_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
+          @wait_expired = args[:wait_expired] if args.key?(:wait_expired)
+          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
+        end
+      end
+      
       # A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
       class CloudWorkspaceSourceContext
         include Google::Apis::Core::Hashable
@@ -68,18 +328,6 @@ module Google
       class GerritSourceContext
         include Google::Apis::Core::Hashable
       
-        # The full project name within the host. Projects may be nested, so
-        # "project/subproject" is a valid project name.
-        # The "repo name" is hostURI/project.
-        # Corresponds to the JSON property `gerritProject`
-        # @return [String]
-        attr_accessor :gerrit_project
-      
-        # An alias to a repo revision.
-        # Corresponds to the JSON property `aliasContext`
-        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
-        attr_accessor :alias_context
-      
         # The URI of a running Gerrit instance.
         # Corresponds to the JSON property `hostUri`
         # @return [String]
@@ -95,17 +343,29 @@ module Google
         # @return [String]
         attr_accessor :alias_name
       
+        # The full project name within the host. Projects may be nested, so
+        # "project/subproject" is a valid project name.
+        # The "repo name" is hostURI/project.
+        # Corresponds to the JSON property `gerritProject`
+        # @return [String]
+        attr_accessor :gerrit_project
+      
+        # An alias to a repo revision.
+        # Corresponds to the JSON property `aliasContext`
+        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
+        attr_accessor :alias_context
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @gerrit_project = args[:gerrit_project] if args.key?(:gerrit_project)
-          @alias_context = args[:alias_context] if args.key?(:alias_context)
           @host_uri = args[:host_uri] if args.key?(:host_uri)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @alias_name = args[:alias_name] if args.key?(:alias_name)
+          @gerrit_project = args[:gerrit_project] if args.key?(:gerrit_project)
+          @alias_context = args[:alias_context] if args.key?(:alias_context)
         end
       end
       
@@ -115,16 +375,16 @@ module Google
       class CloudWorkspaceId
         include Google::Apis::Core::Hashable
       
+        # A unique identifier for a cloud repo.
+        # Corresponds to the JSON property `repoId`
+        # @return [Google::Apis::ClouddebuggerV2::RepoId]
+        attr_accessor :repo_id
+      
         # The unique name of the workspace within the repo.  This is the name
         # chosen by the client in the Source API's CreateWorkspace method.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # A unique identifier for a cloud repo.
-        # Corresponds to the JSON property `repoId`
-        # @return [Google::Apis::ClouddebuggerV2::RepoId]
-        attr_accessor :repo_id
       
         def initialize(**args)
            update!(**args)
@@ -132,8 +392,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
           @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -169,22 +429,6 @@ module Google
       # Represents the breakpoint specification, status and results.
       class Breakpoint
         include Google::Apis::Core::Hashable
-      
-        # Breakpoint identifier, unique in the scope of the debuggee.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Represents a location in the source code.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
-        attr_accessor :location
-      
-        # Time this breakpoint was finalized as seen by the server in seconds
-        # resolution.
-        # Corresponds to the JSON property `finalTime`
-        # @return [String]
-        attr_accessor :final_time
       
         # The `variable_table` exists to aid with computation, memory and network
         # traffic optimization.  It enables storing a variable once and reference
@@ -286,15 +530,28 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
+        # Breakpoint identifier, unique in the scope of the debuggee.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Represents a location in the source code.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
+        attr_accessor :location
+      
+        # Time this breakpoint was finalized as seen by the server in seconds
+        # resolution.
+        # Corresponds to the JSON property `finalTime`
+        # @return [String]
+        attr_accessor :final_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @location = args[:location] if args.key?(:location)
-          @final_time = args[:final_time] if args.key?(:final_time)
           @variable_table = args[:variable_table] if args.key?(:variable_table)
           @create_time = args[:create_time] if args.key?(:create_time)
           @log_message_format = args[:log_message_format] if args.key?(:log_message_format)
@@ -308,6 +565,9 @@ module Google
           @user_email = args[:user_email] if args.key?(:user_email)
           @action = args[:action] if args.key?(:action)
           @log_level = args[:log_level] if args.key?(:log_level)
+          @id = args[:id] if args.key?(:id)
+          @location = args[:location] if args.key?(:location)
+          @final_time = args[:final_time] if args.key?(:final_time)
         end
       end
       
@@ -354,6 +614,12 @@ module Google
       class SourceContext
         include Google::Apis::Core::Hashable
       
+        # A GitSourceContext denotes a particular revision in a third party Git
+        # repository (e.g. GitHub).
+        # Corresponds to the JSON property `git`
+        # @return [Google::Apis::ClouddebuggerV2::GitSourceContext]
+        attr_accessor :git
+      
         # A SourceContext referring to a Gerrit project.
         # Corresponds to the JSON property `gerrit`
         # @return [Google::Apis::ClouddebuggerV2::GerritSourceContext]
@@ -370,22 +636,16 @@ module Google
         # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceSourceContext]
         attr_accessor :cloud_workspace
       
-        # A GitSourceContext denotes a particular revision in a third party Git
-        # repository (e.g. GitHub).
-        # Corresponds to the JSON property `git`
-        # @return [Google::Apis::ClouddebuggerV2::GitSourceContext]
-        attr_accessor :git
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @git = args[:git] if args.key?(:git)
           @gerrit = args[:gerrit] if args.key?(:gerrit)
           @cloud_repo = args[:cloud_repo] if args.key?(:cloud_repo)
           @cloud_workspace = args[:cloud_workspace] if args.key?(:cloud_workspace)
-          @git = args[:git] if args.key?(:git)
         end
       end
       
@@ -393,11 +653,6 @@ module Google
       # repo (a repo hosted by the Google Cloud Platform).
       class CloudRepoSourceContext
         include Google::Apis::Core::Hashable
-      
-        # An alias to a repo revision.
-        # Corresponds to the JSON property `aliasContext`
-        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
-        attr_accessor :alias_context
       
         # A revision ID.
         # Corresponds to the JSON property `revisionId`
@@ -414,16 +669,21 @@ module Google
         # @return [Google::Apis::ClouddebuggerV2::RepoId]
         attr_accessor :repo_id
       
+        # An alias to a repo revision.
+        # Corresponds to the JSON property `aliasContext`
+        # @return [Google::Apis::ClouddebuggerV2::AliasContext]
+        attr_accessor :alias_context
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @alias_context = args[:alias_context] if args.key?(:alias_context)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @alias_name = args[:alias_name] if args.key?(:alias_name)
           @repo_id = args[:repo_id] if args.key?(:repo_id)
+          @alias_context = args[:alias_context] if args.key?(:alias_context)
         end
       end
       
@@ -698,11 +958,6 @@ module Google
       class StackFrame
         include Google::Apis::Core::Hashable
       
-        # Demangled function name at the call site.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
         # Set of arguments passed to this function.
         # Note that this might not be populated for all stack frames.
         # Corresponds to the JSON property `arguments`
@@ -720,16 +975,21 @@ module Google
         # @return [Google::Apis::ClouddebuggerV2::SourceLocation]
         attr_accessor :location
       
+        # Demangled function name at the call site.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] if args.key?(:function)
           @arguments = args[:arguments] if args.key?(:arguments)
           @locals = args[:locals] if args.key?(:locals)
           @location = args[:location] if args.key?(:location)
+          @function = args[:function] if args.key?(:function)
         end
       end
       
@@ -814,266 +1074,6 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @labels = args[:labels] if args.key?(:labels)
-        end
-      end
-      
-      # Response for listing debuggees.
-      class ListDebuggeesResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of debuggees accessible to the calling user.
-        # Note that the `description` field is the only human readable field
-        # that should be displayed to the user.
-        # The fields `debuggee.id` and  `description` fields are guaranteed to be
-        # set on each debuggee.
-        # Corresponds to the JSON property `debuggees`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Debuggee>]
-        attr_accessor :debuggees
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @debuggees = args[:debuggees] if args.key?(:debuggees)
-        end
-      end
-      
-      # An alias to a repo revision.
-      class AliasContext
-        include Google::Apis::Core::Hashable
-      
-        # The alias name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The alias kind.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Represents a location in the source code.
-      class SourceLocation
-        include Google::Apis::Core::Hashable
-      
-        # Line inside the file. The first line in the file has the value `1`.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
-      
-        # Path to the source file within the source context of the target binary.
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @line = args[:line] if args.key?(:line)
-          @path = args[:path] if args.key?(:path)
-        end
-      end
-      
-      # Represents the application to debug. The application may include one or more
-      # replicated processes executing the same code. Each of these processes is
-      # attached with a debugger agent, carrying out the debugging commands.
-      # The agents attached to the same debuggee are identified by using exactly the
-      # same field values when registering.
-      class Debuggee
-        include Google::Apis::Core::Hashable
-      
-        # Human readable description of the debuggee.
-        # Including a human-readable project name, environment name and version
-        # information is recommended.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Debuggee uniquifier within the project.
-        # Any string that identifies the application within the project can be used.
-        # Including environment and version or build IDs is recommended.
-        # Corresponds to the JSON property `uniquifier`
-        # @return [String]
-        attr_accessor :uniquifier
-      
-        # References to the locations and revisions of the source code used in the
-        # deployed application.
-        # NOTE: This field is deprecated. Consumers should use
-        # `ext_source_contexts` if it is not empty. Debug agents should populate
-        # both this field and `ext_source_contexts`.
-        # Corresponds to the JSON property `sourceContexts`
-        # @return [Array<Google::Apis::ClouddebuggerV2::SourceContext>]
-        attr_accessor :source_contexts
-      
-        # References to the locations and revisions of the source code used in the
-        # deployed application.
-        # Contexts describing a remote repo related to the source code
-        # have a `category` label of `remote_repo`. Source snapshot source
-        # contexts have a `category` of `snapshot`.
-        # Corresponds to the JSON property `extSourceContexts`
-        # @return [Array<Google::Apis::ClouddebuggerV2::ExtendedSourceContext>]
-        attr_accessor :ext_source_contexts
-      
-        # A set of custom debuggee properties, populated by the agent, to be
-        # displayed to the user.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # If set to `true`, indicates that the debuggee is considered as inactive by
-        # the Controller service.
-        # Corresponds to the JSON property `isInactive`
-        # @return [Boolean]
-        attr_accessor :is_inactive
-        alias_method :is_inactive?, :is_inactive
-      
-        # Represents a contextual status message.
-        # The message can indicate an error or informational status, and refer to
-        # specific parts of the containing object.
-        # For example, the `Breakpoint.status` field can indicate an error referring
-        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
-        attr_accessor :status
-      
-        # Project the debuggee is associated with.
-        # Use the project number when registering a Google Cloud Platform project.
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
-        # If set to `true`, indicates that the agent should disable itself and
-        # detach from the debuggee.
-        # Corresponds to the JSON property `isDisabled`
-        # @return [Boolean]
-        attr_accessor :is_disabled
-        alias_method :is_disabled?, :is_disabled
-      
-        # Version ID of the agent release. The version ID is structured as
-        # following: `domain/type/vmajor.minor` (for example
-        # `google.com/gcp-java/v1.1`).
-        # Corresponds to the JSON property `agentVersion`
-        # @return [String]
-        attr_accessor :agent_version
-      
-        # Unique identifier for the debuggee generated by the controller service.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @uniquifier = args[:uniquifier] if args.key?(:uniquifier)
-          @source_contexts = args[:source_contexts] if args.key?(:source_contexts)
-          @ext_source_contexts = args[:ext_source_contexts] if args.key?(:ext_source_contexts)
-          @labels = args[:labels] if args.key?(:labels)
-          @is_inactive = args[:is_inactive] if args.key?(:is_inactive)
-          @status = args[:status] if args.key?(:status)
-          @project = args[:project] if args.key?(:project)
-          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
-          @agent_version = args[:agent_version] if args.key?(:agent_version)
-          @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # Selects a repo using a Google Cloud Platform project ID
-      # (e.g. winged-cargo-31) and a repo name within that project.
-      class ProjectRepoId
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the project.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # The name of the repo. Leave empty for the default repo.
-        # Corresponds to the JSON property `repoName`
-        # @return [String]
-        attr_accessor :repo_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @repo_name = args[:repo_name] if args.key?(:repo_name)
-        end
-      end
-      
-      # Response for listing active breakpoints.
-      class ListActiveBreakpointsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A wait token that can be used in the next method call to block until
-        # the list of breakpoints changes.
-        # Corresponds to the JSON property `nextWaitToken`
-        # @return [String]
-        attr_accessor :next_wait_token
-      
-        # List of all active breakpoints.
-        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
-        # Corresponds to the JSON property `breakpoints`
-        # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
-        attr_accessor :breakpoints
-      
-        # The `wait_expired` field is set to true by the server when the
-        # request times out and the field `success_on_timeout` is set to true.
-        # Corresponds to the JSON property `waitExpired`
-        # @return [Boolean]
-        attr_accessor :wait_expired
-        alias_method :wait_expired?, :wait_expired
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_wait_token = args[:next_wait_token] if args.key?(:next_wait_token)
-          @breakpoints = args[:breakpoints] if args.key?(:breakpoints)
-          @wait_expired = args[:wait_expired] if args.key?(:wait_expired)
         end
       end
     end

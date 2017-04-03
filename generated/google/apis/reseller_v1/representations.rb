@@ -180,7 +180,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_method, as: 'billingMethod'
-          property :creation_time, as: 'creationTime'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :customer_domain, as: 'customerDomain'
           property :customer_id, as: 'customerId'
           property :deal_code, as: 'dealCode'
@@ -216,8 +216,8 @@ module Google
           class CommitmentInterval
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :end_time, as: 'endTime'
-              property :start_time, as: 'startTime'
+              property :end_time, :numeric_string => true, as: 'endTime'
+              property :start_time, :numeric_string => true, as: 'startTime'
             end
           end
         end
@@ -226,7 +226,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :minimum_transferable_seats, as: 'minimumTransferableSeats'
-            property :transferability_expiration_time, as: 'transferabilityExpirationTime'
+            property :transferability_expiration_time, :numeric_string => true, as: 'transferabilityExpirationTime'
           end
         end
         
@@ -234,7 +234,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :is_in_trial, as: 'isInTrial'
-            property :trial_end_time, as: 'trialEndTime'
+            property :trial_end_time, :numeric_string => true, as: 'trialEndTime'
           end
         end
       end

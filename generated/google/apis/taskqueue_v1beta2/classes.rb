@@ -28,7 +28,7 @@ module Google
       
         # Time (in seconds since the epoch) at which the task was enqueued.
         # Corresponds to the JSON property `enqueueTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :enqueue_timestamp
       
         # Name of the task.
@@ -44,7 +44,7 @@ module Google
         # Time (in seconds since the epoch) at which the task lease will expire. This
         # value is 0 if the task isnt currently leased out to a worker.
         # Corresponds to the JSON property `leaseTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :lease_timestamp
       
         # A bag of bytes which is the task payload. The payload on the JSON side is
@@ -168,17 +168,17 @@ module Google
         
           # Number of tasks leased in the last hour.
           # Corresponds to the JSON property `leasedLastHour`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :leased_last_hour
         
           # Number of tasks leased in the last minute.
           # Corresponds to the JSON property `leasedLastMinute`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :leased_last_minute
         
           # The timestamp (in seconds since the epoch) of the oldest unfinished task.
           # Corresponds to the JSON property `oldestTask`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :oldest_task
         
           # Number of tasks in the queue.

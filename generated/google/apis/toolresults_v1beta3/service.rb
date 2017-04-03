@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'toolresults/v1beta3/projects/')
+          @batch_path = 'batch'
         end
         
         # Gets the Tool Results settings for a project.

@@ -336,7 +336,7 @@ module Google
       class History
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           collection :labels_added, as: 'labelsAdded', class: Google::Apis::GmailV1::HistoryLabelAdded, decorator: Google::Apis::GmailV1::HistoryLabelAdded::Representation
       
           collection :labels_removed, as: 'labelsRemoved', class: Google::Apis::GmailV1::HistoryLabelRemoved, decorator: Google::Apis::GmailV1::HistoryLabelRemoved::Representation
@@ -440,7 +440,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :history, as: 'history', class: Google::Apis::GmailV1::History, decorator: Google::Apis::GmailV1::History::Representation
       
-          property :history_id, as: 'historyId'
+          property :history_id, :numeric_string => true, as: 'historyId'
           property :next_page_token, as: 'nextPageToken'
         end
       end
@@ -492,9 +492,9 @@ module Google
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :history_id, as: 'historyId'
+          property :history_id, :numeric_string => true, as: 'historyId'
           property :id, as: 'id'
-          property :internal_date, as: 'internalDate'
+          property :internal_date, :numeric_string => true, as: 'internalDate'
           collection :label_ids, as: 'labelIds'
           property :payload, as: 'payload', class: Google::Apis::GmailV1::MessagePart, decorator: Google::Apis::GmailV1::MessagePart::Representation
       
@@ -565,7 +565,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_address, as: 'emailAddress'
-          property :history_id, as: 'historyId'
+          property :history_id, :numeric_string => true, as: 'historyId'
           property :messages_total, as: 'messagesTotal'
           property :threads_total, as: 'threadsTotal'
         end
@@ -591,7 +591,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encrypted_key_password, as: 'encryptedKeyPassword'
-          property :expiration, as: 'expiration'
+          property :expiration, :numeric_string => true, as: 'expiration'
           property :id, as: 'id'
           property :is_default, as: 'isDefault'
           property :issuer_cn, as: 'issuerCn'
@@ -614,7 +614,7 @@ module Google
       class Thread
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :history_id, as: 'historyId'
+          property :history_id, :numeric_string => true, as: 'historyId'
           property :id, as: 'id'
           collection :messages, as: 'messages', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
@@ -626,13 +626,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_auto_reply, as: 'enableAutoReply'
-          property :end_time, as: 'endTime'
+          property :end_time, :numeric_string => true, as: 'endTime'
           property :response_body_html, as: 'responseBodyHtml'
           property :response_body_plain_text, as: 'responseBodyPlainText'
           property :response_subject, as: 'responseSubject'
           property :restrict_to_contacts, as: 'restrictToContacts'
           property :restrict_to_domain, as: 'restrictToDomain'
-          property :start_time, as: 'startTime'
+          property :start_time, :numeric_string => true, as: 'startTime'
         end
       end
       
@@ -648,8 +648,8 @@ module Google
       class WatchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :expiration, as: 'expiration'
-          property :history_id, as: 'historyId'
+          property :expiration, :numeric_string => true, as: 'expiration'
+          property :history_id, :numeric_string => true, as: 'historyId'
         end
       end
     end

@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://acceleratedmobilepageurl.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Returns AMP URL(s) and equivalent

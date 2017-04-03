@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'drive/v2/')
+          @batch_path = 'batch'
         end
         
         # Gets the information about the current user along with Drive API settings
@@ -59,9 +60,9 @@ module Google
         #   files the user has opened and shared files. When set to false, this counts
         #   only change IDs for owned files and any shared or public files that the user
         #   has explicitly added to a folder they own.
-        # @param [String] max_change_id_count
+        # @param [Fixnum] max_change_id_count
         #   Maximum number of remaining change IDs to count
-        # @param [String] start_change_id
+        # @param [Fixnum] start_change_id
         #   Change ID to start counting from when calculating number of remaining change
         #   IDs
         # @param [String] fields
@@ -285,7 +286,7 @@ module Google
         # @param [String] spaces
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
-        # @param [String] start_change_id
+        # @param [Fixnum] start_change_id
         #   Change ID to start listing changes from.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
@@ -359,7 +360,7 @@ module Google
         # @param [String] spaces
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
-        # @param [String] start_change_id
+        # @param [Fixnum] start_change_id
         #   Change ID to start listing changes from.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.

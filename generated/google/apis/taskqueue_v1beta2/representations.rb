@@ -61,10 +61,10 @@ module Google
       class Task
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enqueue_timestamp, as: 'enqueueTimestamp'
+          property :enqueue_timestamp, :numeric_string => true, as: 'enqueueTimestamp'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          property :lease_timestamp, as: 'leaseTimestamp'
+          property :lease_timestamp, :numeric_string => true, as: 'leaseTimestamp'
           property :payload_base64, as: 'payloadBase64'
           property :queue_name, as: 'queueName'
           property :retry_count, as: 'retry_count'
@@ -96,9 +96,9 @@ module Google
         class Stats
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :leased_last_hour, as: 'leasedLastHour'
-            property :leased_last_minute, as: 'leasedLastMinute'
-            property :oldest_task, as: 'oldestTask'
+            property :leased_last_hour, :numeric_string => true, as: 'leasedLastHour'
+            property :leased_last_minute, :numeric_string => true, as: 'leasedLastMinute'
+            property :oldest_task, :numeric_string => true, as: 'oldestTask'
             property :total_tasks, as: 'totalTasks'
           end
         end

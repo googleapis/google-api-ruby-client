@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'language/translate/')
+          @batch_path = 'batch'
         end
         
         # Detect the language of text.

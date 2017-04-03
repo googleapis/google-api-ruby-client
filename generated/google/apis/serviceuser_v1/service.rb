@@ -35,54 +35,18 @@ module Google
       # @see https://cloud.google.com/service-management/
       class ServiceUserService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
 
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
+
         def initialize
           super('https://serviceuser.googleapis.com/', '')
-        end
-        
-        # Search available services.
-        # When no filter is specified, returns all accessible services. For
-        # authenticated users, also returns all services the calling user has
-        # "servicemanagement.services.bind" permission for.
-        # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
-        # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceuserV1::SearchServicesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServiceuserV1::SearchServicesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_services(page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services:search', options)
-          command.response_representation = Google::Apis::ServiceuserV1::SearchServicesResponse::Representation
-          command.response_class = Google::Apis::ServiceuserV1::SearchServicesResponse
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
+          @batch_path = 'batch'
         end
         
         # Disable a service so it can no longer be used with a
@@ -168,11 +132,11 @@ module Google
         #   List enabled services for the specified parent.
         #   An example valid parent would be:
         #   - projects/my-project
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
         # @param [String] page_token
         #   Token identifying which result to start with; returned by a previous list
         #   call.
-        # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -190,11 +154,48 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_services(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_services(parent, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/services', options)
           command.response_representation = Google::Apis::ServiceuserV1::ListEnabledServicesResponse::Representation
           command.response_class = Google::Apis::ServiceuserV1::ListEnabledServicesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search available services.
+        # When no filter is specified, returns all accessible services. For
+        # authenticated users, also returns all services the calling user has
+        # "servicemanagement.services.bind" permission for.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list
+        #   call.
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceuserV1::SearchServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceuserV1::SearchServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_services(page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/services:search', options)
+          command.response_representation = Google::Apis::ServiceuserV1::SearchServicesResponse::Representation
+          command.response_class = Google::Apis::ServiceuserV1::SearchServicesResponse
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -205,8 +206,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

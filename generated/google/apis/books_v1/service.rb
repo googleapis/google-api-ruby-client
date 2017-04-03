@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'books/v1/')
+          @batch_path = 'batch'
         end
         
         # Retrieves metadata for a specific bookshelf for the specified user.

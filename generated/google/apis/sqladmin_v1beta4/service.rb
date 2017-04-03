@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'sql/v1beta4/')
+          @batch_path = 'batch'
         end
         
         # Deletes the backup taken by a backup run.
@@ -58,7 +59,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [String] id
+        # @param [Fixnum] id
         #   The ID of the Backup Run to delete. To find a Backup Run ID, use the list
         #   method.
         # @param [String] fields
@@ -100,7 +101,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [String] id
+        # @param [Fixnum] id
         #   The ID of this Backup Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

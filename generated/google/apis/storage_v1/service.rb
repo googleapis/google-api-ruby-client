@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'storage/v1/')
+          @batch_path = 'batch'
         end
         
         # Permanently deletes the ACL entry for the specified entity on the specified
@@ -290,9 +291,9 @@ module Google
         # Permanently deletes an empty bucket.
         # @param [String] bucket
         #   Name of a bucket.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   If set, only deletes the bucket if its metageneration matches this value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   If set, only deletes the bucket if its metageneration does not match this
         #   value.
         # @param [String] fields
@@ -330,10 +331,10 @@ module Google
         # Returns metadata for the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration does not match the given value.
         # @param [String] projection
@@ -511,10 +512,10 @@ module Google
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration does not match the given value.
         # @param [String] predefined_acl
@@ -644,10 +645,10 @@ module Google
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration does not match the given value.
         # @param [String] predefined_acl
@@ -847,10 +848,10 @@ module Google
         # Retrieves default object ACL entries on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   If present, only return default ACL listing if the bucket's current
         #   metageneration matches this value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   If present, only return default ACL listing if the bucket's current
         #   metageneration does not match the given value.
         # @param [String] fields
@@ -1129,7 +1130,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1174,7 +1175,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1219,7 +1220,7 @@ module Google
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1264,7 +1265,7 @@ module Google
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1312,7 +1313,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1362,7 +1363,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1411,10 +1412,10 @@ module Google
         # @param [Google::Apis::StorageV1::ComposeRequest] compose_request_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
         # @param [String] fields
@@ -1478,34 +1479,34 @@ module Google
         # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the destination object's current
         #   generation matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the destination object's current
         #   generation does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration does not match the given value.
-        # @param [String] if_source_generation_match
+        # @param [Fixnum] if_source_generation_match
         #   Makes the operation conditional on whether the source object's generation
         #   matches the given value.
-        # @param [String] if_source_generation_not_match
+        # @param [Fixnum] if_source_generation_not_match
         #   Makes the operation conditional on whether the source object's generation does
         #   not match the given value.
-        # @param [String] if_source_metageneration_match
+        # @param [Fixnum] if_source_metageneration_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration matches the given value.
-        # @param [String] if_source_metageneration_not_match
+        # @param [Fixnum] if_source_metageneration_not_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration does not match the given value.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl, unless the object resource
         #   specifies the acl property, when it defaults to full.
-        # @param [String] source_generation
+        # @param [Fixnum] source_generation
         #   If present, selects a specific revision of the source object (as opposed to
         #   the latest version, the default).
         # @param [String] fields
@@ -1570,19 +1571,19 @@ module Google
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, permanently deletes a specific revision of this object (as opposed
         #   to the latest version, the default).
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
         #   does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] fields
@@ -1627,19 +1628,19 @@ module Google
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's generation matches the
         #   given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's generation does not
         #   match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] projection
@@ -1696,7 +1697,7 @@ module Google
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -1743,16 +1744,16 @@ module Google
         #   Setting this parameter is equivalent to setting the contentEncoding metadata
         #   property. This can be useful when uploading an object with uploadType=media to
         #   indicate the encoding of the content being uploaded.
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
         #   does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] name
@@ -1886,19 +1887,19 @@ module Google
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
         # @param [Google::Apis::StorageV1::Object] object_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
         #   does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] predefined_acl
@@ -1965,31 +1966,31 @@ module Google
         # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the destination object's current
         #   generation matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the destination object's current
         #   generation does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration does not match the given value.
-        # @param [String] if_source_generation_match
+        # @param [Fixnum] if_source_generation_match
         #   Makes the operation conditional on whether the source object's generation
         #   matches the given value.
-        # @param [String] if_source_generation_not_match
+        # @param [Fixnum] if_source_generation_not_match
         #   Makes the operation conditional on whether the source object's generation does
         #   not match the given value.
-        # @param [String] if_source_metageneration_match
+        # @param [Fixnum] if_source_metageneration_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration matches the given value.
-        # @param [String] if_source_metageneration_not_match
+        # @param [Fixnum] if_source_metageneration_not_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration does not match the given value.
-        # @param [String] max_bytes_rewritten_per_call
+        # @param [Fixnum] max_bytes_rewritten_per_call
         #   The maximum number of bytes that will be rewritten per rewrite request. Most
         #   callers shouldn't need to specify this parameter - it is primarily in place to
         #   support testing. If specified the value must be an integral multiple of 1 MiB (
@@ -2005,7 +2006,7 @@ module Google
         #   Calls that provide a rewriteToken can omit all other request fields, but if
         #   included those fields must match the values provided in the first rewrite
         #   request.
-        # @param [String] source_generation
+        # @param [Fixnum] source_generation
         #   If present, selects a specific revision of the source object (as opposed to
         #   the latest version, the default).
         # @param [String] fields
@@ -2065,7 +2066,7 @@ module Google
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
         # @param [Google::Apis::StorageV1::Policy] policy_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -2113,7 +2114,7 @@ module Google
         #   path safe, see Encoding URI Path Parts.
         # @param [Array<String>, String] permissions
         #   Permissions to test.
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] fields
@@ -2158,19 +2159,19 @@ module Google
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
         # @param [Google::Apis::StorageV1::Object] object_object
-        # @param [String] generation
+        # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
-        # @param [String] if_generation_match
+        # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value.
-        # @param [String] if_generation_not_match
+        # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
         #   does not match the given value.
-        # @param [String] if_metageneration_match
+        # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
-        # @param [String] if_metageneration_not_match
+        # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] predefined_acl

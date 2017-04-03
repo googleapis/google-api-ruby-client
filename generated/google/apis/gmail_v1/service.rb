@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'gmail/v1/users/')
+          @batch_path = 'batch'
         end
         
         # Gets the current user's Gmail profile.
@@ -455,7 +456,7 @@ module Google
         #   The maximum number of history records to return.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
-        # @param [String] start_history_id
+        # @param [Fixnum] start_history_id
         #   Required. Returns history records after the specified startHistoryId. The
         #   supplied startHistoryId should be obtained from the historyId of a message,
         #   thread, or previous list response. History IDs increase chronologically but

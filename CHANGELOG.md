@@ -1,6 +1,7 @@
 # 0.11.0
 * *Breaking change* - Fix handling of large numbers during code generation. Previously the
-  uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
+  uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types.
+  Affected APIs:
 * *Breaking change* - No longer normalize unicode strings in URI templates. Mostly affects
   Cloud Storage, but other APIs with unicode strings in paths may be affected. Old behavior
   can be restored using the `normalize_unicode` request option.
@@ -14,6 +15,8 @@
 * Treat 429 status codes as rate limit errors
 * Fix a potential download corruption if download interrupted and retried against a URL
   that does not return partial content.
+* Updated dependencies
+* Regen APIs, add appsmarketplace:v2
 
 # 0.10.3
 * Regenerate APIs

@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'compute/v1/projects/')
+          @batch_path = 'batch'
         end
         
         # Retrieves an aggregated list of addresses.
@@ -6030,7 +6031,7 @@ module Google
         #   Name of the instance scoping this request.
         # @param [Fixnum] port
         #   Specifies which COM or serial port to retrieve data from.
-        # @param [String] start
+        # @param [Fixnum] start
         #   Returns output starting from a specific byte position. Use this to page
         #   through output when the output is too large to return in a single request. For
         #   the initial request, leave this field unspecified. For subsequent calls, this

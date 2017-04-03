@@ -793,17 +793,17 @@ module Google
           class LongestMatch
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :duration_secs, as: 'durationSecs'
-              property :reference_offset, as: 'referenceOffset'
-              property :user_video_offset, as: 'userVideoOffset'
+              property :duration_secs, :numeric_string => true, as: 'durationSecs'
+              property :reference_offset, :numeric_string => true, as: 'referenceOffset'
+              property :user_video_offset, :numeric_string => true, as: 'userVideoOffset'
             end
           end
           
           class TotalMatch
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :reference_duration_secs, as: 'referenceDurationSecs'
-              property :user_video_duration_secs, as: 'userVideoDurationSecs'
+              property :reference_duration_secs, :numeric_string => true, as: 'referenceDurationSecs'
+              property :user_video_duration_secs, :numeric_string => true, as: 'userVideoDurationSecs'
             end
           end
         end
@@ -905,7 +905,7 @@ module Google
       
           property :video_id, as: 'videoId'
           property :video_title, as: 'videoTitle'
-          property :video_views, as: 'videoViews'
+          property :video_views, :numeric_string => true, as: 'videoViews'
         end
         
         class Origin
@@ -998,7 +998,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cue_type, as: 'cueType'
           property :duration_secs, as: 'durationSecs'
-          property :offset_time_ms, as: 'offsetTimeMs'
+          property :offset_time_ms, :numeric_string => true, as: 'offsetTimeMs'
           property :walltime, as: 'walltime', type: DateTime
       
         end
@@ -1377,9 +1377,9 @@ module Google
       class ReferenceConflictMatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :conflicting_reference_offset_ms, as: 'conflicting_reference_offset_ms'
-          property :length_ms, as: 'length_ms'
-          property :original_reference_offset_ms, as: 'original_reference_offset_ms'
+          property :conflicting_reference_offset_ms, :numeric_string => true, as: 'conflicting_reference_offset_ms'
+          property :length_ms, :numeric_string => true, as: 'length_ms'
+          property :original_reference_offset_ms, :numeric_string => true, as: 'original_reference_offset_ms'
           property :type, as: 'type'
         end
       end
@@ -1439,9 +1439,9 @@ module Google
       class Segment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration, as: 'duration'
+          property :duration, :numeric_string => true, as: 'duration'
           property :kind, as: 'kind'
-          property :start, as: 'start'
+          property :start, :numeric_string => true, as: 'start'
         end
       end
       
@@ -1459,7 +1459,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
-          property :time_completed, as: 'timeCompleted'
+          property :time_completed, :numeric_string => true, as: 'timeCompleted'
         end
       end
       

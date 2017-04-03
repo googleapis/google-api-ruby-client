@@ -45,13 +45,14 @@ module Google
 
         def initialize
           super('https://datastore.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
-        # Allocates IDs for the given keys, which is useful for referencing an entity
-        # before it is inserted.
+        # Commits a transaction, optionally creating, deleting or modifying some
+        # entities.
         # @param [String] project_id
         #   The ID of the project against which to make the request.
-        # @param [Google::Apis::DatastoreV1::AllocateIdsRequest] allocate_ids_request_object
+        # @param [Google::Apis::DatastoreV1::CommitRequest] commit_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -61,20 +62,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatastoreV1::AllocateIdsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DatastoreV1::CommitResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DatastoreV1::AllocateIdsResponse]
+        # @return [Google::Apis::DatastoreV1::CommitResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def allocate_project_ids(project_id, allocate_ids_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}:allocateIds', options)
-          command.request_representation = Google::Apis::DatastoreV1::AllocateIdsRequest::Representation
-          command.request_object = allocate_ids_request_object
-          command.response_representation = Google::Apis::DatastoreV1::AllocateIdsResponse::Representation
-          command.response_class = Google::Apis::DatastoreV1::AllocateIdsResponse
+        def commit_project(project_id, commit_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}:commit', options)
+          command.request_representation = Google::Apis::DatastoreV1::CommitRequest::Representation
+          command.request_object = commit_request_object
+          command.response_representation = Google::Apis::DatastoreV1::CommitResponse::Representation
+          command.response_class = Google::Apis::DatastoreV1::CommitResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -108,40 +109,6 @@ module Google
           command.request_object = begin_transaction_request_object
           command.response_representation = Google::Apis::DatastoreV1::BeginTransactionResponse::Representation
           command.response_class = Google::Apis::DatastoreV1::BeginTransactionResponse
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Commits a transaction, optionally creating, deleting or modifying some
-        # entities.
-        # @param [String] project_id
-        #   The ID of the project against which to make the request.
-        # @param [Google::Apis::DatastoreV1::CommitRequest] commit_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatastoreV1::CommitResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DatastoreV1::CommitResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_project(project_id, commit_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}:commit', options)
-          command.request_representation = Google::Apis::DatastoreV1::CommitRequest::Representation
-          command.request_object = commit_request_object
-          command.response_representation = Google::Apis::DatastoreV1::CommitResponse::Representation
-          command.response_class = Google::Apis::DatastoreV1::CommitResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -241,6 +208,40 @@ module Google
           command.request_object = lookup_request_object
           command.response_representation = Google::Apis::DatastoreV1::LookupResponse::Representation
           command.response_class = Google::Apis::DatastoreV1::LookupResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Allocates IDs for the given keys, which is useful for referencing an entity
+        # before it is inserted.
+        # @param [String] project_id
+        #   The ID of the project against which to make the request.
+        # @param [Google::Apis::DatastoreV1::AllocateIdsRequest] allocate_ids_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::AllocateIdsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::AllocateIdsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def allocate_project_ids(project_id, allocate_ids_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}:allocateIds', options)
+          command.request_representation = Google::Apis::DatastoreV1::AllocateIdsRequest::Representation
+          command.request_object = allocate_ids_request_object
+          command.response_representation = Google::Apis::DatastoreV1::AllocateIdsResponse::Representation
+          command.response_class = Google::Apis::DatastoreV1::AllocateIdsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?

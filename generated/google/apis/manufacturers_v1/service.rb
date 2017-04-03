@@ -44,6 +44,7 @@ module Google
 
         def initialize
           super('https://manufacturers.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Lists all the products in a Manufacturer Center account.

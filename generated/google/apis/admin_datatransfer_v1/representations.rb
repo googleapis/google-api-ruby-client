@@ -62,7 +62,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :transfer_params, as: 'transferParams', class: Google::Apis::AdminDatatransferV1::ApplicationTransferParam, decorator: Google::Apis::AdminDatatransferV1::ApplicationTransferParam::Representation
@@ -73,7 +73,7 @@ module Google
       class ApplicationDataTransfer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :application_id, as: 'applicationId'
+          property :application_id, :numeric_string => true, as: 'applicationId'
           collection :application_transfer_params, as: 'applicationTransferParams', class: Google::Apis::AdminDatatransferV1::ApplicationTransferParam, decorator: Google::Apis::AdminDatatransferV1::ApplicationTransferParam::Representation
       
           property :application_transfer_status, as: 'applicationTransferStatus'

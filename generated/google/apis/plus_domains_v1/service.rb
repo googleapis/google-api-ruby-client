@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'plusDomains/v1/')
+          @batch_path = 'batch'
         end
         
         # Get an activity.

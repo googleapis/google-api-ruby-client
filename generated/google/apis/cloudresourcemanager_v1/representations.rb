@@ -22,30 +22,6 @@ module Google
   module Apis
     module CloudresourcemanagerV1
       
-      class GetEffectiveOrgPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOrgPoliciesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Constraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,49 +251,37 @@ module Google
       end
       
       class GetEffectiveOrgPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :constraint, as: 'constraint'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListOrgPoliciesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_token, as: 'pageToken'
-          property :page_size, as: 'pageSize'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :service, as: 'service'
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV1::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV1::AuditLogConfig::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::CloudresourcemanagerV1::Status, decorator: Google::Apis::CloudresourcemanagerV1::Status::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Constraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :version, as: 'version'
           property :list_constraint, as: 'listConstraint', class: Google::Apis::CloudresourcemanagerV1::ListConstraint, decorator: Google::Apis::CloudresourcemanagerV1::ListConstraint::Representation
       
-          property :display_name, as: 'displayName'
+          property :version, as: 'version'
           property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :boolean_constraint, as: 'booleanConstraint', class: Google::Apis::CloudresourcemanagerV1::BooleanConstraint, decorator: Google::Apis::CloudresourcemanagerV1::BooleanConstraint::Representation
       
           property :constraint_default, as: 'constraintDefault'
@@ -425,14 +389,14 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :project_id, as: 'projectId'
           property :lifecycle_state, as: 'lifecycleState'
-          property :project_number, as: 'projectNumber'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
           property :parent, as: 'parent', class: Google::Apis::CloudresourcemanagerV1::ResourceId, decorator: Google::Apis::CloudresourcemanagerV1::ResourceId::Representation
       
-          hash :labels, as: 'labels'
           property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -448,9 +412,9 @@ module Google
       class ListOrgPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :policies, as: 'policies', class: Google::Apis::CloudresourcemanagerV1::OrgPolicy, decorator: Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -471,28 +435,28 @@ module Google
       class OrgPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :update_time, as: 'updateTime'
-          property :version, as: 'version'
-          property :restore_default, as: 'restoreDefault', class: Google::Apis::CloudresourcemanagerV1::RestoreDefault, decorator: Google::Apis::CloudresourcemanagerV1::RestoreDefault::Representation
-      
           property :list_policy, as: 'listPolicy', class: Google::Apis::CloudresourcemanagerV1::ListPolicy, decorator: Google::Apis::CloudresourcemanagerV1::ListPolicy::Representation
       
           property :etag, :base64 => true, as: 'etag'
           property :boolean_policy, as: 'booleanPolicy', class: Google::Apis::CloudresourcemanagerV1::BooleanPolicy, decorator: Google::Apis::CloudresourcemanagerV1::BooleanPolicy::Representation
       
           property :constraint, as: 'constraint'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+          property :restore_default, as: 'restoreDefault', class: Google::Apis::CloudresourcemanagerV1::RestoreDefault, decorator: Google::Apis::CloudresourcemanagerV1::RestoreDefault::Representation
+      
         end
       end
       
       class Lien
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :reason, as: 'reason'
           property :origin, as: 'origin'
           collection :restrictions, as: 'restrictions'
-          property :parent, as: 'parent'
-          property :create_time, as: 'createTime'
         end
       end
       
@@ -522,9 +486,9 @@ module Google
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_mask, as: 'updateMask'
           property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV1::Policy, decorator: Google::Apis::CloudresourcemanagerV1::Policy::Representation
       
-          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -537,12 +501,12 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
           property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1::OrganizationOwner::Representation
       
           property :lifecycle_state, as: 'lifecycleState'
           property :name, as: 'name'
           property :display_name, as: 'displayName'
-          property :creation_time, as: 'creationTime'
         end
       end
       
@@ -585,9 +549,9 @@ module Google
       class SearchOrganizationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
           property :page_token, as: 'pageToken'
           property :page_size, as: 'pageSize'
+          property :filter, as: 'filter'
         end
       end
       
@@ -639,6 +603,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :type, as: 'type'
+        end
+      end
+      
+      class GetEffectiveOrgPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint, as: 'constraint'
+        end
+      end
+      
+      class ListOrgPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_token, as: 'pageToken'
+          property :page_size, as: 'pageSize'
+        end
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV1::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV1::AuditLogConfig::Representation
+      
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          hash :response, as: 'response'
+          property :name, as: 'name'
+          property :error, as: 'error', class: Google::Apis::CloudresourcemanagerV1::Status, decorator: Google::Apis::CloudresourcemanagerV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
         end
       end
     end

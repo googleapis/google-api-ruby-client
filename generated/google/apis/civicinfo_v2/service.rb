@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'civicinfo/v2/')
+          @batch_path = 'batch'
         end
         
         # Searches for political divisions by their natural name or OCD ID.
@@ -134,7 +135,7 @@ module Google
         # @param [String] address
         #   The registered address of the voter to look up.
         # @param [Google::Apis::CivicinfoV2::VoterInfoRequest] voter_info_request_object
-        # @param [String] election_id
+        # @param [Fixnum] election_id
         #   The unique ID of the election to look up. A list of election IDs can be
         #   obtained at https://www.googleapis.com/civicinfo/`version`/elections
         # @param [Boolean] official_only

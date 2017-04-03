@@ -328,7 +328,7 @@ module Google
         items
       end
       
-          property :total_matched_rows, as: 'totalMatchedRows'
+          property :total_matched_rows, :numeric_string => true, as: 'totalMatchedRows'
           collection :totals, as: 'totals'
           collection :warnings, as: 'warnings'
         end

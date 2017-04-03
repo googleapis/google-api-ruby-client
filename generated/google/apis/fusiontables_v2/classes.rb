@@ -294,7 +294,7 @@ module Google
       
         # The number of rows received from the import request.
         # Corresponds to the JSON property `numRowsReceived`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :num_rows_received
       
         def initialize(**args)
@@ -894,7 +894,7 @@ module Google
       
         # Identifier for the task.
         # Corresponds to the JSON property `taskId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :task_id
       
         # Type of background task.

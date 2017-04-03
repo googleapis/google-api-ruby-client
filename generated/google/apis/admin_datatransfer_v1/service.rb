@@ -50,10 +50,11 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'admin/datatransfer/v1/')
+          @batch_path = 'batch'
         end
         
         # Retrieves information about an application for the given application ID.
-        # @param [String] application_id
+        # @param [Fixnum] application_id
         #   ID of the application resource to be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

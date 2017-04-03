@@ -276,7 +276,7 @@ module Google
       
         # The error count at the given timestamp.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # The date and time when the crawl attempt took place, in RFC 3339 format.
@@ -474,7 +474,7 @@ module Google
         # Number of errors in the sitemap. These are issues with the sitemap itself that
         # need to be fixed before it can be processed correctly.
         # Corresponds to the JSON property `errors`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :errors
       
         # If true, the sitemap has not been processed.
@@ -514,7 +514,7 @@ module Google
         # Number of warnings for the sitemap. These are generally non-critical issues
         # with URLs in the sitemaps.
         # Corresponds to the JSON property `warnings`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :warnings
       
         def initialize(**args)
@@ -541,12 +541,12 @@ module Google
       
         # The number of URLs from the sitemap that were indexed (of the content type).
         # Corresponds to the JSON property `indexed`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :indexed
       
         # The number of URLs in the sitemap (of the content type).
         # Corresponds to the JSON property `submitted`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :submitted
       
         # The specific type of content in this sitemap. For example: web.

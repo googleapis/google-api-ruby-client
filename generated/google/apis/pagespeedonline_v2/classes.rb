@@ -476,28 +476,28 @@ module Google
         
           # Number of uncompressed response bytes for CSS resources on the page.
           # Corresponds to the JSON property `cssResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :css_response_bytes
         
           # Number of response bytes for flash resources on the page.
           # Corresponds to the JSON property `flashResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :flash_response_bytes
         
           # Number of uncompressed response bytes for the main HTML document and all
           # iframes on the page.
           # Corresponds to the JSON property `htmlResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :html_response_bytes
         
           # Number of response bytes for image resources on the page.
           # Corresponds to the JSON property `imageResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :image_response_bytes
         
           # Number of uncompressed response bytes for JS resources on the page.
           # Corresponds to the JSON property `javascriptResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :javascript_response_bytes
         
           # Number of CSS resources referenced by the page.
@@ -527,18 +527,18 @@ module Google
         
           # Number of response bytes for other resources on the page.
           # Corresponds to the JSON property `otherResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :other_response_bytes
         
           # Number of uncompressed response bytes for text resources not covered by other
           # statistics (i.e non-HTML, non-script, non-CSS resources) on the page.
           # Corresponds to the JSON property `textResponseBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :text_response_bytes
         
           # Total size of all request bytes sent by the page.
           # Corresponds to the JSON property `totalRequestBytes`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :total_request_bytes
         
           def initialize(**args)

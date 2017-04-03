@@ -362,7 +362,7 @@ module Google
       
         # The value of this data point as a 64-bit integer.
         # Corresponds to the JSON property `int64Value`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :int64_value
       
         # The interval [start, end] is the time period to which the point's value
@@ -439,7 +439,7 @@ module Google
       
         # The number of events whose values are in the interval defined by this bucket.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # The lower bound of the value interval of this bucket (inclusive).
@@ -471,7 +471,7 @@ module Google
       
         # The number of events whose values are in the interval defined by this bucket.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # The lower bound of the value interval of this bucket (inclusive).
@@ -497,7 +497,7 @@ module Google
       
         # The number of events whose values are in the interval defined by this bucket.
         # Corresponds to the JSON property `count`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count
       
         # The upper bound of the value interval of this bucket (exclusive).

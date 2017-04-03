@@ -627,7 +627,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_type, as: 'achievementType'
           property :description, as: 'description'
-          property :experience_points, as: 'experiencePoints'
+          property :experience_points, :numeric_string => true, as: 'experiencePoints'
           property :formatted_total_steps, as: 'formattedTotalSteps'
           property :id, as: 'id'
           property :initial_state, as: 'initialState'
@@ -731,11 +731,11 @@ module Google
       class AggregateStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :kind, as: 'kind'
-          property :max, as: 'max'
-          property :min, as: 'min'
-          property :sum, as: 'sum'
+          property :max, :numeric_string => true, as: 'max'
+          property :min, :numeric_string => true, as: 'min'
+          property :sum, :numeric_string => true, as: 'sum'
         end
       end
       
@@ -763,7 +763,7 @@ module Google
           collection :instances, as: 'instances', class: Google::Apis::GamesV1::Instance, decorator: Google::Apis::GamesV1::Instance::Representation
       
           property :kind, as: 'kind'
-          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :last_updated_timestamp, :numeric_string => true, as: 'lastUpdatedTimestamp'
           property :leaderboard_count, as: 'leaderboard_count'
           property :name, as: 'name'
           property :theme_color, as: 'themeColor'
@@ -792,7 +792,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
-          property :experience_points, as: 'experiencePoints'
+          property :experience_points, :numeric_string => true, as: 'experiencePoints'
           property :kind, as: 'kind'
         end
       end
@@ -854,8 +854,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :period_end_millis, as: 'periodEndMillis'
-          property :period_start_millis, as: 'periodStartMillis'
+          property :period_end_millis, :numeric_string => true, as: 'periodEndMillis'
+          property :period_start_millis, :numeric_string => true, as: 'periodStartMillis'
         end
       end
       
@@ -882,9 +882,9 @@ module Google
       class EventRecordRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_time_millis, as: 'currentTimeMillis'
+          property :current_time_millis, :numeric_string => true, as: 'currentTimeMillis'
           property :kind, as: 'kind'
-          property :request_id, as: 'requestId'
+          property :request_id, :numeric_string => true, as: 'requestId'
           collection :time_periods, as: 'timePeriods', class: Google::Apis::GamesV1::EventPeriodUpdate, decorator: Google::Apis::GamesV1::EventPeriodUpdate::Representation
       
         end
@@ -895,7 +895,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :definition_id, as: 'definitionId'
           property :kind, as: 'kind'
-          property :update_count, as: 'updateCount'
+          property :update_count, :numeric_string => true, as: 'updateCount'
         end
       end
       
@@ -916,7 +916,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :request_id, as: 'requestId'
+          property :request_id, :numeric_string => true, as: 'requestId'
           property :steps, as: 'steps'
         end
       end
@@ -1010,11 +1010,11 @@ module Google
           property :kind, as: 'kind'
           property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
       
-          property :score_rank, as: 'scoreRank'
+          property :score_rank, :numeric_string => true, as: 'scoreRank'
           property :score_tag, as: 'scoreTag'
-          property :score_value, as: 'scoreValue'
+          property :score_value, :numeric_string => true, as: 'scoreValue'
           property :time_span, as: 'timeSpan'
-          property :write_timestamp_millis, as: 'writeTimestampMillis'
+          property :write_timestamp_millis, :numeric_string => true, as: 'writeTimestampMillis'
         end
       end
       
@@ -1034,8 +1034,8 @@ module Google
           property :formatted_num_scores, as: 'formattedNumScores'
           property :formatted_rank, as: 'formattedRank'
           property :kind, as: 'kind'
-          property :num_scores, as: 'numScores'
-          property :rank, as: 'rank'
+          property :num_scores, :numeric_string => true, as: 'numScores'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
@@ -1046,7 +1046,7 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          property :num_scores, as: 'numScores'
+          property :num_scores, :numeric_string => true, as: 'numScores'
           property :player_score, as: 'playerScore', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntry::Representation
       
           property :prev_page_token, as: 'prevPageToken'
@@ -1106,7 +1106,7 @@ module Google
       class PeerSessionDiagnostics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :connected_timestamp_millis, as: 'connectedTimestampMillis'
+          property :connected_timestamp_millis, :numeric_string => true, as: 'connectedTimestampMillis'
           property :kind, as: 'kind'
           property :participant_id, as: 'participantId'
           property :reliable_channel, as: 'reliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnostics::Representation
@@ -1121,7 +1121,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matched, as: 'autoMatched'
           property :kind, as: 'kind'
-          property :time_millis, as: 'timeMillis'
+          property :time_millis, :numeric_string => true, as: 'timeMillis'
         end
       end
       
@@ -1160,11 +1160,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_state, as: 'achievementState'
           property :current_steps, as: 'currentSteps'
-          property :experience_points, as: 'experiencePoints'
+          property :experience_points, :numeric_string => true, as: 'experiencePoints'
           property :formatted_current_steps_string, as: 'formattedCurrentStepsString'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :last_updated_timestamp, :numeric_string => true, as: 'lastUpdatedTimestamp'
         end
       end
       
@@ -1184,7 +1184,7 @@ module Google
           property :definition_id, as: 'definitionId'
           property :formatted_num_events, as: 'formattedNumEvents'
           property :kind, as: 'kind'
-          property :num_events, as: 'numEvents'
+          property :num_events, :numeric_string => true, as: 'numEvents'
           property :player_id, as: 'playerId'
         end
       end
@@ -1202,11 +1202,11 @@ module Google
       class PlayerExperienceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_experience_points, as: 'currentExperiencePoints'
+          property :current_experience_points, :numeric_string => true, as: 'currentExperiencePoints'
           property :current_level, as: 'currentLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
       
           property :kind, as: 'kind'
-          property :last_level_up_timestamp_millis, as: 'lastLevelUpTimestampMillis'
+          property :last_level_up_timestamp_millis, :numeric_string => true, as: 'lastLevelUpTimestampMillis'
           property :next_level, as: 'nextLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
       
         end
@@ -1221,11 +1221,11 @@ module Google
       
           property :score_string, as: 'scoreString'
           property :score_tag, as: 'scoreTag'
-          property :score_value, as: 'scoreValue'
+          property :score_value, :numeric_string => true, as: 'scoreValue'
           property :social_rank, as: 'socialRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRank::Representation
       
           property :time_span, as: 'timeSpan'
-          property :write_timestamp, as: 'writeTimestamp'
+          property :write_timestamp, :numeric_string => true, as: 'writeTimestamp'
         end
       end
       
@@ -1246,8 +1246,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :level, as: 'level'
-          property :max_experience_points, as: 'maxExperiencePoints'
-          property :min_experience_points, as: 'minExperiencePoints'
+          property :max_experience_points, :numeric_string => true, as: 'maxExperiencePoints'
+          property :min_experience_points, :numeric_string => true, as: 'minExperiencePoints'
         end
       end
       
@@ -1266,7 +1266,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_score, as: 'formattedScore'
           property :kind, as: 'kind'
-          property :score, as: 'score'
+          property :score, :numeric_string => true, as: 'score'
           property :score_tag, as: 'scoreTag'
           property :time_span, as: 'timeSpan'
         end
@@ -1342,22 +1342,22 @@ module Google
       class Quest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :accepted_timestamp_millis, as: 'acceptedTimestampMillis'
+          property :accepted_timestamp_millis, :numeric_string => true, as: 'acceptedTimestampMillis'
           property :application_id, as: 'applicationId'
           property :banner_url, as: 'bannerUrl'
           property :description, as: 'description'
-          property :end_timestamp_millis, as: 'endTimestampMillis'
+          property :end_timestamp_millis, :numeric_string => true, as: 'endTimestampMillis'
           property :icon_url, as: 'iconUrl'
           property :id, as: 'id'
           property :is_default_banner_url, as: 'isDefaultBannerUrl'
           property :is_default_icon_url, as: 'isDefaultIconUrl'
           property :kind, as: 'kind'
-          property :last_updated_timestamp_millis, as: 'lastUpdatedTimestampMillis'
+          property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
           collection :milestones, as: 'milestones', class: Google::Apis::GamesV1::QuestMilestone, decorator: Google::Apis::GamesV1::QuestMilestone::Representation
       
           property :name, as: 'name'
-          property :notify_timestamp_millis, as: 'notifyTimestampMillis'
-          property :start_timestamp_millis, as: 'startTimestampMillis'
+          property :notify_timestamp_millis, :numeric_string => true, as: 'notifyTimestampMillis'
+          property :start_timestamp_millis, :numeric_string => true, as: 'startTimestampMillis'
           property :state, as: 'state'
         end
       end
@@ -1367,7 +1367,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_value, as: 'formattedValue'
           property :kind, as: 'kind'
-          property :value, as: 'value'
+          property :value, :numeric_string => true, as: 'value'
         end
       end
       
@@ -1451,7 +1451,7 @@ module Google
       class RoomAutoMatchingCriteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :exclusive_bitmask, as: 'exclusiveBitmask'
+          property :exclusive_bitmask, :numeric_string => true, as: 'exclusiveBitmask'
           property :kind, as: 'kind'
           property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
           property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
@@ -1478,7 +1478,7 @@ module Google
           property :kind, as: 'kind'
           property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnostics::Representation
       
-          property :request_id, as: 'requestId'
+          property :request_id, :numeric_string => true, as: 'requestId'
           property :variant, as: 'variant'
         end
       end
@@ -1534,7 +1534,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
+          property :modified_timestamp_millis, :numeric_string => true, as: 'modifiedTimestampMillis'
           property :participant_id, as: 'participantId'
         end
       end
@@ -1599,7 +1599,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :leaderboard_id, as: 'leaderboardId'
-          property :score, as: 'score'
+          property :score, :numeric_string => true, as: 'score'
           property :score_tag, as: 'scoreTag'
           property :signature, as: 'signature'
         end
@@ -1612,11 +1612,11 @@ module Google
       
           property :description, as: 'description'
           property :drive_id, as: 'driveId'
-          property :duration_millis, as: 'durationMillis'
+          property :duration_millis, :numeric_string => true, as: 'durationMillis'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          property :last_modified_millis, as: 'lastModifiedMillis'
-          property :progress_value, as: 'progressValue'
+          property :last_modified_millis, :numeric_string => true, as: 'lastModifiedMillis'
+          property :progress_value, :numeric_string => true, as: 'progressValue'
           property :title, as: 'title'
           property :type, as: 'type'
           property :unique_name, as: 'uniqueName'
@@ -1647,7 +1647,7 @@ module Google
       class TurnBasedAutoMatchingCriteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :exclusive_bitmask, as: 'exclusiveBitmask'
+          property :exclusive_bitmask, :numeric_string => true, as: 'exclusiveBitmask'
           property :kind, as: 'kind'
           property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
           property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
@@ -1694,7 +1694,7 @@ module Google
       
           collection :invited_player_ids, as: 'invitedPlayerIds'
           property :kind, as: 'kind'
-          property :request_id, as: 'requestId'
+          property :request_id, :numeric_string => true, as: 'requestId'
           property :variant, as: 'variant'
         end
       end
@@ -1730,7 +1730,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
+          property :modified_timestamp_millis, :numeric_string => true, as: 'modifiedTimestampMillis'
           property :participant_id, as: 'participantId'
         end
       end

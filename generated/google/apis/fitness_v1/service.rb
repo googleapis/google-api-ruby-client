@@ -50,6 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'fitness/v1/users/')
+          @batch_path = 'batch'
         end
         
         # Creates a new data source that is unique across all data sources belonging to
@@ -326,9 +327,9 @@ module Google
         #   and maximum data point end time represented as nanoseconds from the epoch. The
         #   ID is formatted like: "startTime-endTime" where startTime and endTime are 64
         #   bit integers.
-        # @param [String] current_time_millis
+        # @param [Fixnum] current_time_millis
         #   The client's current time in milliseconds since epoch.
-        # @param [String] modified_time_millis
+        # @param [Fixnum] modified_time_millis
         #   When the operation was performed on the client.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -440,7 +441,7 @@ module Google
         #   ID is formatted like: "startTime-endTime" where startTime and endTime are 64
         #   bit integers.
         # @param [Google::Apis::FitnessV1::Dataset] dataset_object
-        # @param [String] current_time_millis
+        # @param [Fixnum] current_time_millis
         #   The client's current time in milliseconds since epoch. Note that the
         #   minStartTimeNs and maxEndTimeNs properties in the request body are in
         #   nanoseconds instead of milliseconds.
@@ -528,7 +529,7 @@ module Google
         #   authenticated user. Only me is supported at this time.
         # @param [String] session_id
         #   The ID of the session to be deleted.
-        # @param [String] current_time_millis
+        # @param [Fixnum] current_time_millis
         #   The client's current time in milliseconds since epoch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -623,7 +624,7 @@ module Google
         # @param [String] session_id
         #   The ID of the session to be created.
         # @param [Google::Apis::FitnessV1::Session] session_object
-        # @param [String] current_time_millis
+        # @param [Fixnum] current_time_millis
         #   The client's current time in milliseconds since epoch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

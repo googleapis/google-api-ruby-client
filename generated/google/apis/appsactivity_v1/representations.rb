@@ -102,7 +102,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_event_types, as: 'additionalEventTypes'
-          property :event_time_millis, as: 'eventTimeMillis'
+          property :event_time_millis, :numeric_string => true, as: 'eventTimeMillis'
           property :from_user_deletion, as: 'fromUserDeletion'
           property :move, as: 'move', class: Google::Apis::AppsactivityV1::Move, decorator: Google::Apis::AppsactivityV1::Move::Representation
       

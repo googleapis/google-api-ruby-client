@@ -127,10 +127,10 @@ module Google
       class Availability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :advertiser_id, as: 'advertiserId'
-          property :agency_id, as: 'agencyId'
-          property :availability_timestamp, as: 'availabilityTimestamp'
-          property :segmentation_id, as: 'segmentationId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :agency_id, :numeric_string => true, as: 'agencyId'
+          property :availability_timestamp, :numeric_string => true, as: 'availabilityTimestamp'
+          property :segmentation_id, :numeric_string => true, as: 'segmentationId'
           property :segmentation_name, as: 'segmentationName'
           property :segmentation_type, as: 'segmentationType'
         end
@@ -139,36 +139,36 @@ module Google
       class Conversion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_group_id, as: 'adGroupId'
-          property :ad_id, as: 'adId'
-          property :advertiser_id, as: 'advertiserId'
-          property :agency_id, as: 'agencyId'
+          property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          property :ad_id, :numeric_string => true, as: 'adId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :agency_id, :numeric_string => true, as: 'agencyId'
           property :attribution_model, as: 'attributionModel'
-          property :campaign_id, as: 'campaignId'
+          property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :channel, as: 'channel'
           property :click_id, as: 'clickId'
           property :conversion_id, as: 'conversionId'
-          property :conversion_modified_timestamp, as: 'conversionModifiedTimestamp'
-          property :conversion_timestamp, as: 'conversionTimestamp'
-          property :count_millis, as: 'countMillis'
-          property :criterion_id, as: 'criterionId'
+          property :conversion_modified_timestamp, :numeric_string => true, as: 'conversionModifiedTimestamp'
+          property :conversion_timestamp, :numeric_string => true, as: 'conversionTimestamp'
+          property :count_millis, :numeric_string => true, as: 'countMillis'
+          property :criterion_id, :numeric_string => true, as: 'criterionId'
           property :currency_code, as: 'currencyCode'
           collection :custom_dimension, as: 'customDimension', class: Google::Apis::DoubleclicksearchV2::CustomDimension, decorator: Google::Apis::DoubleclicksearchV2::CustomDimension::Representation
       
           collection :custom_metric, as: 'customMetric', class: Google::Apis::DoubleclicksearchV2::CustomMetric, decorator: Google::Apis::DoubleclicksearchV2::CustomMetric::Representation
       
           property :device_type, as: 'deviceType'
-          property :ds_conversion_id, as: 'dsConversionId'
-          property :engine_account_id, as: 'engineAccountId'
+          property :ds_conversion_id, :numeric_string => true, as: 'dsConversionId'
+          property :engine_account_id, :numeric_string => true, as: 'engineAccountId'
           property :floodlight_order_id, as: 'floodlightOrderId'
-          property :inventory_account_id, as: 'inventoryAccountId'
+          property :inventory_account_id, :numeric_string => true, as: 'inventoryAccountId'
           property :product_country, as: 'productCountry'
-          property :product_group_id, as: 'productGroupId'
+          property :product_group_id, :numeric_string => true, as: 'productGroupId'
           property :product_id, as: 'productId'
           property :product_language, as: 'productLanguage'
-          property :quantity_millis, as: 'quantityMillis'
-          property :revenue_micros, as: 'revenueMicros'
-          property :segmentation_id, as: 'segmentationId'
+          property :quantity_millis, :numeric_string => true, as: 'quantityMillis'
+          property :revenue_micros, :numeric_string => true, as: 'revenueMicros'
+          property :segmentation_id, :numeric_string => true, as: 'segmentationId'
           property :segmentation_name, as: 'segmentationName'
           property :segmentation_type, as: 'segmentationType'
           property :state, as: 'state'
@@ -221,7 +221,7 @@ module Google
         class File
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :byte_count, as: 'byteCount'
+            property :byte_count, :numeric_string => true, as: 'byteCount'
             property :url, as: 'url'
           end
         end
@@ -289,13 +289,13 @@ module Google
         class ReportScope
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :ad_group_id, as: 'adGroupId'
-            property :ad_id, as: 'adId'
-            property :advertiser_id, as: 'advertiserId'
-            property :agency_id, as: 'agencyId'
-            property :campaign_id, as: 'campaignId'
-            property :engine_account_id, as: 'engineAccountId'
-            property :keyword_id, as: 'keywordId'
+            property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+            property :ad_id, :numeric_string => true, as: 'adId'
+            property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+            property :agency_id, :numeric_string => true, as: 'agencyId'
+            property :campaign_id, :numeric_string => true, as: 'campaignId'
+            property :engine_account_id, :numeric_string => true, as: 'engineAccountId'
+            property :keyword_id, :numeric_string => true, as: 'keywordId'
           end
         end
         

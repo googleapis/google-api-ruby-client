@@ -45,6 +45,7 @@ module Google
 
         def initialize
           super('https://firebaserules.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Test `Source` for syntactic and semantic correctness. Issues present, if

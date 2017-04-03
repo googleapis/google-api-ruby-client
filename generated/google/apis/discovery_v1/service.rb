@@ -51,6 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'discovery/v1/')
+          @batch_path = 'batch'
         end
         
         # Retrieve the description of a particular version of an api.

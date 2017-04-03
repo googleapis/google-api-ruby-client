@@ -28,23 +28,23 @@ module Google
       
         # DS advertiser ID.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # DS agency ID.
         # Corresponds to the JSON property `agencyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :agency_id
       
         # The time by which all conversions have been uploaded, in epoch millis UTC.
         # Corresponds to the JSON property `availabilityTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :availability_timestamp
       
         # The numeric segmentation identifier (for example, DoubleClick Search
         # Floodlight activity ID).
         # Corresponds to the JSON property `segmentationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :segmentation_id
       
         # The friendly segmentation identifier (for example, DoubleClick Search
@@ -80,22 +80,22 @@ module Google
       
         # DS ad group ID.
         # Corresponds to the JSON property `adGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ad_group_id
       
         # DS ad ID.
         # Corresponds to the JSON property `adId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ad_id
       
         # DS advertiser ID.
         # Corresponds to the JSON property `advertiserId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :advertiser_id
       
         # DS agency ID.
         # Corresponds to the JSON property `agencyId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :agency_id
       
         # Available to advertisers only after contacting DoubleClick Search customer
@@ -106,7 +106,7 @@ module Google
       
         # DS campaign ID.
         # Corresponds to the JSON property `campaignId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :campaign_id
       
         # Sales channel for the product. Acceptable values are:
@@ -133,23 +133,23 @@ module Google
       
         # The time at which the conversion was last modified, in epoch millis UTC.
         # Corresponds to the JSON property `conversionModifiedTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :conversion_modified_timestamp
       
         # The time at which the conversion took place, in epoch millis UTC.
         # Corresponds to the JSON property `conversionTimestamp`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :conversion_timestamp
       
         # Available to advertisers only after contacting DoubleClick Search customer
         # support.
         # Corresponds to the JSON property `countMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :count_millis
       
         # DS criterion (keyword) ID.
         # Corresponds to the JSON property `criterionId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :criterion_id
       
         # The currency code for the conversion's revenue. Should be in ISO 4217
@@ -176,12 +176,12 @@ module Google
       
         # ID that DoubleClick Search generates for each conversion.
         # Corresponds to the JSON property `dsConversionId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :ds_conversion_id
       
         # DS engine account ID.
         # Corresponds to the JSON property `engineAccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :engine_account_id
       
         # The Floodlight order ID provided by the advertiser for the conversion.
@@ -192,7 +192,7 @@ module Google
         # ID that DS generates and uses to uniquely identify the inventory account that
         # contains the product.
         # Corresponds to the JSON property `inventoryAccountId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :inventory_account_id
       
         # The country registered for the Merchant Center feed that contains the product.
@@ -203,7 +203,7 @@ module Google
       
         # DS product group ID.
         # Corresponds to the JSON property `productGroupId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :product_group_id
       
         # The product ID (SKU).
@@ -219,20 +219,20 @@ module Google
       
         # The quantity of this conversion, in millis.
         # Corresponds to the JSON property `quantityMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :quantity_millis
       
         # The revenue amount of this TRANSACTION conversion, in micros (value multiplied
         # by 1000000, no decimal). For example, to specify a revenue value of "10" enter
         # "10000000" (10 million) in your request.
         # Corresponds to the JSON property `revenueMicros`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :revenue_micros
       
         # The numeric segmentation identifier (for example, DoubleClick Search
         # Floodlight activity ID).
         # Corresponds to the JSON property `segmentationId`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :segmentation_id
       
         # The friendly segmentation identifier (for example, DoubleClick Search
@@ -467,7 +467,7 @@ module Google
         
           # The size of this report file in bytes.
           # Corresponds to the JSON property `byteCount`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :byte_count
         
           # Use this url to download the report file.
@@ -769,37 +769,37 @@ module Google
         
           # DS ad group ID.
           # Corresponds to the JSON property `adGroupId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :ad_group_id
         
           # DS ad ID.
           # Corresponds to the JSON property `adId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :ad_id
         
           # DS advertiser ID.
           # Corresponds to the JSON property `advertiserId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :advertiser_id
         
           # DS agency ID.
           # Corresponds to the JSON property `agencyId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :agency_id
         
           # DS campaign ID.
           # Corresponds to the JSON property `campaignId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :campaign_id
         
           # DS engine account ID.
           # Corresponds to the JSON property `engineAccountId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :engine_account_id
         
           # DS keyword ID.
           # Corresponds to the JSON property `keywordId`
-          # @return [String]
+          # @return [Fixnum]
           attr_accessor :keyword_id
         
           def initialize(**args)

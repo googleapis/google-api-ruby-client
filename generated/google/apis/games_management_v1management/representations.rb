@@ -157,17 +157,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matched, as: 'autoMatched'
-          property :time_millis, as: 'timeMillis'
+          property :time_millis, :numeric_string => true, as: 'timeMillis'
         end
       end
       
       class GamesPlayerExperienceInfoResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_experience_points, as: 'currentExperiencePoints'
+          property :current_experience_points, :numeric_string => true, as: 'currentExperiencePoints'
           property :current_level, as: 'currentLevel', class: Google::Apis::GamesManagementV1management::GamesPlayerLevelResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayerLevelResource::Representation
       
-          property :last_level_up_timestamp_millis, as: 'lastLevelUpTimestampMillis'
+          property :last_level_up_timestamp_millis, :numeric_string => true, as: 'lastLevelUpTimestampMillis'
           property :next_level, as: 'nextLevel', class: Google::Apis::GamesManagementV1management::GamesPlayerLevelResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayerLevelResource::Representation
       
         end
@@ -177,15 +177,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :level, as: 'level'
-          property :max_experience_points, as: 'maxExperiencePoints'
-          property :min_experience_points, as: 'minExperiencePoints'
+          property :max_experience_points, :numeric_string => true, as: 'maxExperiencePoints'
+          property :min_experience_points, :numeric_string => true, as: 'minExperiencePoints'
         end
       end
       
       class HiddenPlayer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :hidden_time_millis, as: 'hiddenTimeMillis'
+          property :hidden_time_millis, :numeric_string => true, as: 'hiddenTimeMillis'
           property :kind, as: 'kind'
           property :player, as: 'player', class: Google::Apis::GamesManagementV1management::Player, decorator: Google::Apis::GamesManagementV1management::Player::Representation
       

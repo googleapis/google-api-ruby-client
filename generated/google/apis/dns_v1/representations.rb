@@ -100,7 +100,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :description, as: 'description'
           property :dns_name, as: 'dnsName'
-          property :id, as: 'id'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :name_server_set, as: 'nameServerSet'
@@ -123,7 +123,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
-          property :number, as: 'number'
+          property :number, :numeric_string => true, as: 'number'
           property :quota, as: 'quota', class: Google::Apis::DnsV1::Quota, decorator: Google::Apis::DnsV1::Quota::Representation
       
         end

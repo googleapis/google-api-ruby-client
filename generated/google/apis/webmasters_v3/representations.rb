@@ -190,7 +190,7 @@ module Google
       class UrlCrawlErrorCount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
+          property :count, :numeric_string => true, as: 'count'
           property :timestamp, as: 'timestamp', type: DateTime
       
         end
@@ -257,7 +257,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contents, as: 'contents', class: Google::Apis::WebmastersV3::WmxSitemapContent, decorator: Google::Apis::WebmastersV3::WmxSitemapContent::Representation
       
-          property :errors, as: 'errors'
+          property :errors, :numeric_string => true, as: 'errors'
           property :is_pending, as: 'isPending'
           property :is_sitemaps_index, as: 'isSitemapsIndex'
           property :last_downloaded, as: 'lastDownloaded', type: DateTime
@@ -266,15 +266,15 @@ module Google
       
           property :path, as: 'path'
           property :type, as: 'type'
-          property :warnings, as: 'warnings'
+          property :warnings, :numeric_string => true, as: 'warnings'
         end
       end
       
       class WmxSitemapContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :indexed, as: 'indexed'
-          property :submitted, as: 'submitted'
+          property :indexed, :numeric_string => true, as: 'indexed'
+          property :submitted, :numeric_string => true, as: 'submitted'
           property :type, as: 'type'
         end
       end

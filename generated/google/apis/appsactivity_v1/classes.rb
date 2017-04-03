@@ -62,7 +62,7 @@ module Google
       
         # The time at which the event occurred formatted as Unix time in milliseconds.
         # Corresponds to the JSON property `eventTimeMillis`
-        # @return [String]
+        # @return [Fixnum]
         attr_accessor :event_time_millis
       
         # Whether this event is caused by a user being deleted.
