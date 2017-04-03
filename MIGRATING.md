@@ -1,3 +1,36 @@
+# Migrating from version`0.10` to `0.11`
+
+## Unicode normalization
+
+The client no longer normalizes unicode strings in path parameters. This may affect
+some applications using multibyte strings that were previously normalized.:
+To restore the previous behavior, set the following option prior to creating a service.
+
+```ruby
+ClientOptions.default.normalize_unicode = true
+```
+
+## Type change for large numbers
+
+Previously, types declared as 64 bit numbers were mapped to strings. These are now mapped to
+`Fixednum`/`Bignum`.
+
+## Timeouts
+
+Timeout options have been moved from `RequestOptions` to `ClientOptions`.
+
+Old                               | New
+----------------------------------|-----------------
+`RequestOptions.open_timeout_sec` | `ClentOptions.open_timeout_sec`
+`RequestOptions.timeout_sec`      | `ClentOptions.read_timeout_sec`
+`RequestOptions.timeout_sec`      | `ClentOptions.send_timeout_sec`
+
+## Batch requests across services no longer supported
+
+It is no longer possible to combine multiple services (e.g. Gail & Drive)
+in a batch request. If batching requests that span services, group
+requests for each service in their own batch request.
+
 # Migrating from version `0.9.x` to `0.10`
 
 Only one minor breaking change was introduced in the `to_json` method due to a version bump for the `representable` gem from `2.3` to `3.0`. If you used the `skip_undefined` in `to_json`, you should replace that with `user_options: { skip_undefined: true }`.

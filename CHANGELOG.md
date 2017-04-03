@@ -1,9 +1,10 @@
 # 0.11.0
-* *Breaking Change* - Fix handling of large numbers during code generation. Previously the
+* *Breaking change* - Fix handling of large numbers during code generation. Previously the
   uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
-* *Breaking Change* - No longer normalize unicode strings in URI templates. Mostly affects
+* *Breaking change* - No longer normalize unicode strings in URI templates. Mostly affects
   Cloud Storage, but other APIs with unicode strings in paths may be affected. Old behavior
   can be restored using the `normalize_unicode` request option.
+* *Breaking change* -- Moved timeout options from `RequestOptions` to `ClientOptions`
 * Remove Hurley as dependency. May cause minor breaking changes if directly accessing the underlying
   client connection.
 * Drop compatibility with Rails 3.x since that is no longer supported by the Rails community.
@@ -17,7 +18,7 @@
 # 0.10.3
 * Regenerate APIs
 * Enable additional API:
-  * `acceleratedmobilepageurl:v1``
+  * `acceleratedmobilepageurl:v1`
   * `appengine:v1`
   * `clouderrorreporting:v1beta1`
   * `cloudfunctions:v1`

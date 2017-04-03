@@ -29,6 +29,7 @@ module Google
         UPLOAD_PROTOCOL_HEADER = 'X-Goog-Upload-Protocol'
         UPLOAD_CONTENT_TYPE_HEADER = 'X-Goog-Upload-Header-Content-Type'
         UPLOAD_CONTENT_LENGTH = 'X-Goog-Upload-Header-Content-Length'
+        CONTENT_TYPE_HEADER = 'Content-Type'
 
         # File name or IO containing the content to upload
         # @return [String, File, #read]
@@ -51,16 +52,20 @@ module Google
           if streamable?(upload_source)
             self.upload_io = upload_source
             @close_io_on_finish = false
-          elsif upload_source.is_a?(String)
+          elsif self.upload_source.is_a?(String)
             self.upload_io = File.new(upload_source, 'r')
-            if upload_content_type.nil?
+            if self.upload_content_type.nil?
               type = MIME::Types.of(upload_source)
-              upload_content_type = type.first.content_type unless type.nil? || type.empty?
+              self.upload_content_type = type.first.content_type unless type.nil? || type.empty?
             end
             @close_io_on_finish = true
           else
             fail Google::Apis::ClientError, 'Invalid upload source'
           end
+          if self.upload_content_type.nil? || self.upload_content_type.empty?
+            self.upload_content_type = 'application/octet-stream'
+          end
+          puts self.upload_content_type.inspect
         end
 
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
@@ -198,7 +203,7 @@ module Google
           apply_request_options(request_header)
           request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
 
-          client.post(@upload_url, header: request_header, follow_redirect: true)
+          client.post(@upload_url, body: '', header: request_header, follow_redirect: true)
         end
 
 
@@ -219,6 +224,7 @@ module Google
           request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
           request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
           request_header[UPLOAD_OFFSET_HEADER] = @offset.to_s
+          request_header[CONTENT_TYPE_HEADER] = upload_content_type
 
           client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
         end

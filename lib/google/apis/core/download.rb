@@ -87,12 +87,13 @@ module Google
                 @download_io.rewind
                 check_if_rewind_needed = false
               end
-              logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
-              @offset += chunk.length
+              # logger.debug { sprintf('Writing chunk (%d bytes, %d total)', chunk.length, bytes_read) }
               @download_io.write(chunk)
-              @download_io.flush
+              @offset += chunk.length
             end
           end
+
+          @download_io.flush
 
           if @close_io_on_finish
             result = nil
@@ -102,6 +103,7 @@ module Google
           check_status(http_res.status.to_i, http_res.header, http_res.body)
           success(result, &block)
         rescue => e
+          @download_io.flush
           error(e, rethrow: true, &block)
         end
       end
