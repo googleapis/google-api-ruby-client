@@ -14,7 +14,7 @@ See [MIGRATING](MIGRATING.md) for additional details on how to migrate to the la
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'google-api-client', '~> 0.10'
+gem 'google-api-client', '~> 0.11'
 
 ```
 
