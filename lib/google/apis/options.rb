@@ -15,18 +15,22 @@
 module Google
   module Apis
     # General options for API requests
-    ClientOptions =  Struct.new(
+    ClientOptions = Struct.new(
       :application_name,
       :application_version,
       :proxy_url,
-      :use_net_http)
+      :open_timeout_sec,
+      :read_timeout_sec,
+      :send_timeout_sec,
+      :log_http_requests)
 
     RequestOptions = Struct.new(
       :authorization,
       :retries,
       :header,
-      :timeout_sec,
-      :open_timeout_sec)
+      :normalize_unicode,
+      :skip_serialization,
+      :skip_deserialization)
 
     # General client options
     class ClientOptions
@@ -36,7 +40,12 @@ module Google
       #   @return [String] Version of the application, for identification in the User-Agent header
       # @!attribute [rw] proxy_url
       #   @return [String] URL of a proxy server
-
+      # @!attribute [rw] log_http_requests
+      #   @return [Boolean] True if raw HTTP requests should be logged
+      # @!attribute [rw] open_timeout_sec
+      #   @return [Fixnum] How long, in seconds, before failed connections time out
+      # @!attribute [rw] read_timeout_sec
+      #   @return [Fixnum] How long, in seconds, before requests time out
       # Get the default options
       # @return [Google::Apis::ClientOptions]
       def self.default
@@ -50,12 +59,14 @@ module Google
       #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials
       # @!attribute [rw] retries
       #   @return [Fixnum] Number of times to retry requests on server error
-      # @!attribute [rw] timeout_sec
-      #   @return [Fixnum] How long, in seconds, before requests time out
-      # @!attribute [rw] open_timeout_sec
-      #   @return [Fixnum] How long, in seconds, before failed connections time out
       # @!attribute [rw] header
       #   @return [Hash<String,String] Additional HTTP headers to include in requests
+      # @!attribute [rw] normalize_unicode
+      #   @return [Boolean] True if unicode strings should be normalized in path parameters
+      # @!attribute [rw] skip_serialization
+      #   @return [Boolean] True if body object should be treated as raw text instead of an object.
+      # @!attribute [rw] skip_deserialization
+      #   @return [Boolean] True if response should be returned in raw form instead of deserialized.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -75,11 +86,12 @@ module Google
       end
     end
     
-    ClientOptions.default.use_net_http = false
+    ClientOptions.default.log_http_requests = false
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'
-
     RequestOptions.default.retries = 0
-    RequestOptions.default.open_timeout_sec = 20
+    RequestOptions.default.normalize_unicode = false
+    RequestOptions.default.skip_serialization = false
+    RequestOptions.default.skip_deserialization = false
   end
 end

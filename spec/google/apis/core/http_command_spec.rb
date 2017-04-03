@@ -14,7 +14,6 @@
 
 require 'spec_helper'
 require 'google/apis/core/http_command'
-require 'hurley/test'
 
 RSpec.describe Google::Apis::Core::HttpCommand do
   include TestHelpers
@@ -300,4 +299,31 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.options.retries = 0
     expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
   end
+
+  it 'should raise rate limit error for 429 status codes' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [429, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::RateLimitError)
+  end
+
+  it 'should not normalize unicode values by default' do
+    stub_request(:get, 'https://www.googleapis.com/Cafe%CC%81').to_return(status: [200, ''])
+    template = Addressable::Template.new('https://www.googleapis.com/{path}')
+    command = Google::Apis::Core::HttpCommand.new(:get, template)
+    command.params[:path] = "Cafe\u0301"
+    command.options.retries = 0
+    command.execute(client)
+  end
+
+  it 'should normalize unicode values when requested' do
+    stub_request(:get, 'https://www.googleapis.com/Caf%C3%A9').to_return(status: [200, ''])
+    template = Addressable::Template.new('https://www.googleapis.com/{path}')
+    command = Google::Apis::Core::HttpCommand.new(:get, template)
+    command.params[:path] = "Cafe\u0301"
+    command.options.retries = 0
+    command.options.normalize_unicode = true
+    command.execute(client)
+  end
+
 end

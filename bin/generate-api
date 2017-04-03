@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
-require 'thor'
+begin
+  require 'thor'
+rescue LoadError => e
+  puts "Thor is required. Please install the gem with development dependencies."
+  exit 1
+end
+
 require 'open-uri'
 require 'google/apis/discovery_v1'
 require 'logger'

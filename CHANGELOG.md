@@ -1,7 +1,24 @@
+# 0.11.0
+* *Breaking change* - Fix handling of large numbers during code generation. Previously the
+  uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types
+* *Breaking change* - No longer normalize unicode strings in URI templates. Mostly affects
+  Cloud Storage, but other APIs with unicode strings in paths may be affected. Old behavior
+  can be restored using the `normalize_unicode` request option.
+* *Breaking change* -- Moved timeout options from `RequestOptions` to `ClientOptions`
+* Remove Hurley as dependency. May cause minor breaking changes if directly accessing the underlying
+  client connection.
+* Drop compatibility with Rails 3.x since that is no longer supported by the Rails community.
+* Upgrade mime-types to 3.0
+* Move Thor & ActiveSupport to development dependencies. Using the code gengerator
+  now requires using the Bundle file or install the gem with dev dependencies.
+* Treat 429 status codes as rate limit errors
+* Fix a potential download corruption if download interrupted and retried against a URL
+  that does not return partial content.
+
 # 0.10.3
 * Regenerate APIs
 * Enable additional API:
-  * `acceleratedmobilepageurl:v1``
+  * `acceleratedmobilepageurl:v1`
   * `appengine:v1`
   * `clouderrorreporting:v1beta1`
   * `cloudfunctions:v1`
@@ -102,7 +119,6 @@
 * Add datastore v1beta3, regenerate APIs
 * Reduce memory footprint used by mimetypes library
 * Fix bug with pagination when items collection is nil
-
 
 # 0.9.9
 * Add monitoring v3, regenerate APIs
