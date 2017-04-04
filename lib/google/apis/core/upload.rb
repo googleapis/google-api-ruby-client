@@ -65,7 +65,6 @@ module Google
           if self.upload_content_type.nil? || self.upload_content_type.empty?
             self.upload_content_type = 'application/octet-stream'
           end
-          puts self.upload_content_type.inspect
         end
 
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
