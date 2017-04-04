@@ -1,3 +1,6 @@
+# 0.11.1
+* Remove stray debug output
+
 # 0.11.0
 * *Breaking change* - Fix handling of large numbers during code generation. Previously the
   uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types.
