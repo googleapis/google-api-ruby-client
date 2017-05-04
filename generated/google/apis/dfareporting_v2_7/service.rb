@@ -336,7 +336,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Fixnum] subaccount_id
         #   Select only user profiles with the specified subaccount ID.
         # @param [Fixnum] user_role_id
@@ -521,7 +521,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -770,7 +770,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Boolean] ssl_compliant
         #   Select only ads that are SSL-compliant.
         # @param [Boolean] ssl_required
@@ -1044,7 +1044,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1267,7 +1267,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] status
         #   Select only advertisers with the specified status.
         # @param [Fixnum] subaccount_id
@@ -1484,7 +1484,7 @@ module Google
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1636,7 +1636,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Fixnum] subaccount_id
         #   Select only campaigns that belong to this subaccount.
         # @param [String] fields
@@ -2130,7 +2130,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2549,7 +2549,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2809,7 +2809,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3029,7 +3029,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3262,7 +3262,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Fixnum] studio_creative_id
         #   Select only creatives corresponding to this Studio creative ID.
         # @param [Array<String>, String] types
@@ -3501,7 +3501,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3656,7 +3656,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3986,7 +3986,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4108,7 +4108,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report file by its report ID and file ID.
+        # Retrieves a report file by its report ID and file ID. This method supports
+        # media download.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Fixnum] file_id
@@ -4161,11 +4162,11 @@ module Google
         # @param [String] page_token
         #   The value of the nextToken from the previous result page.
         # @param [String] scope
-        #   The scope that defines which results are returned, default is 'MINE'.
+        #   The scope that defines which results are returned.
         # @param [String] sort_field
         #   The field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is 'DESCENDING'.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4395,7 +4396,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] tag_string
         #   Select only floodlight activities with the specified tag string.
         # @param [String] fields
@@ -4629,7 +4630,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] type
         #   Select only floodlight activity groups with the specified floodlight activity
         #   group type.
@@ -4973,7 +4974,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] type
         #   Select only inventory items with this type.
         # @param [String] fields
@@ -5622,7 +5623,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5729,7 +5730,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5904,7 +5905,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6168,7 +6169,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6466,7 +6467,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6805,7 +6806,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7099,7 +7100,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7339,11 +7340,11 @@ module Google
         # @param [String] page_token
         #   The value of the nextToken from the previous result page.
         # @param [String] scope
-        #   The scope that defines which results are returned, default is 'MINE'.
+        #   The scope that defines which results are returned.
         # @param [String] sort_field
         #   The field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is 'DESCENDING'.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7544,7 +7545,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report file.
+        # Retrieves a report file. This method supports media download.
         # @param [Fixnum] profile_id
         #   The DFA profile ID.
         # @param [Fixnum] report_id
@@ -7604,7 +7605,7 @@ module Google
         # @param [String] sort_field
         #   The field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is 'DESCENDING'.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7753,7 +7754,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Fixnum] subaccount_id
         #   Select only sites with this subaccount ID.
         # @param [Boolean] unmapped_site
@@ -8102,7 +8103,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8281,7 +8282,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8419,7 +8420,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8888,7 +8889,7 @@ module Google
         # @param [String] sort_field
         #   Field by which to sort the list.
         # @param [String] sort_order
-        #   Order of sorted results, default is ASCENDING.
+        #   Order of sorted results.
         # @param [Fixnum] subaccount_id
         #   Select only user roles that belong to this subaccount.
         # @param [String] fields

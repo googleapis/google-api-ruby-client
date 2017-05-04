@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/youtube/reporting/v1/reports/
     module YoutubereportingV1
       VERSION = 'V1'
-      REVISION = '20170402'
+      REVISION = '20170502'
 
       # View YouTube Analytics reports for your YouTube content
       AUTH_YT_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/yt-analytics.readonly'

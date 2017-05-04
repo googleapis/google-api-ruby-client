@@ -418,7 +418,7 @@ module Google
         attr_accessor :last_enrollment_time
       
         # Date and time the device was last synchronized with the policy settings in the
-        # Google Apps administrator control panel (Read-only)
+        # G Suite administrator control panel (Read-only)
         # Corresponds to the JSON property `lastSync`
         # @return [DateTime]
         attr_accessor :last_sync
@@ -663,7 +663,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The unique ID for the customer's Google account. (Readonly)
+        # The unique ID for the customer's G Suite account. (Readonly)
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1230,7 +1230,7 @@ module Google
         attr_accessor :etag
       
         # Date and time the device was first synchronized with the policy settings in
-        # the Google Apps administrator control panel (Read-only)
+        # the G Suite administrator control panel (Read-only)
         # Corresponds to the JSON property `firstSync`
         # @return [DateTime]
         attr_accessor :first_sync
@@ -1261,7 +1261,7 @@ module Google
         attr_accessor :kind
       
         # Date and time the device was last synchronized with the policy settings in the
-        # Google Apps administrator control panel (Read-only)
+        # G Suite administrator control panel (Read-only)
         # Corresponds to the JSON property `lastSync`
         # @return [DateTime]
         attr_accessor :last_sync
@@ -2326,7 +2326,7 @@ module Google
         attr_accessor :change_password_at_next_login
         alias_method :change_password_at_next_login?, :change_password_at_next_login
       
-        # User's Google account creation time. (Read-only)
+        # User's G Suite account creation time. (Read-only)
         # Corresponds to the JSON property `creationTime`
         # @return [DateTime]
         attr_accessor :creation_time
@@ -2427,6 +2427,11 @@ module Google
         # Corresponds to the JSON property `lastLoginTime`
         # @return [DateTime]
         attr_accessor :last_login_time
+      
+        # 
+        # Corresponds to the JSON property `locations`
+        # @return [Object]
+        attr_accessor :locations
       
         # JSON template for name of a user in Directory API.
         # Corresponds to the JSON property `name`
@@ -2538,6 +2543,7 @@ module Google
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
           @kind = args[:kind] if args.key?(:kind)
           @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
+          @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @non_editable_aliases = args[:non_editable_aliases] if args.key?(:non_editable_aliases)
           @notes = args[:notes] if args.key?(:notes)
@@ -2808,6 +2814,68 @@ module Google
         end
       end
       
+      # JSON template for a location entry.
+      class UserLocation
+        include Google::Apis::Core::Hashable
+      
+        # Textual location. This is most useful for display purposes to concisely
+        # describe the location. E.g. "Mountain View, CA", "Near Seattle", "US-NYC-9TH
+        # 9A209A".
+        # Corresponds to the JSON property `area`
+        # @return [String]
+        attr_accessor :area
+      
+        # Building Identifier.
+        # Corresponds to the JSON property `buildingId`
+        # @return [String]
+        attr_accessor :building_id
+      
+        # Custom Type.
+        # Corresponds to the JSON property `customType`
+        # @return [String]
+        attr_accessor :custom_type
+      
+        # Most specific textual code of individual desk location.
+        # Corresponds to the JSON property `deskCode`
+        # @return [String]
+        attr_accessor :desk_code
+      
+        # Floor name/number.
+        # Corresponds to the JSON property `floorName`
+        # @return [String]
+        attr_accessor :floor_name
+      
+        # Floor Section. More specific location within the floor. E.g. if a floor is
+        # divided into sections "A", "B", and "C", this field would identify one of
+        # those values.
+        # Corresponds to the JSON property `floorSection`
+        # @return [String]
+        attr_accessor :floor_section
+      
+        # Each entry can have a type which indicates standard types of that entry. For
+        # example location could be of types default and desk. In addition to standard
+        # type, an entry can have a custom type and can give it any name. Such types
+        # should have "custom" as type and also have a customType value.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @area = args[:area] if args.key?(:area)
+          @building_id = args[:building_id] if args.key?(:building_id)
+          @custom_type = args[:custom_type] if args.key?(:custom_type)
+          @desk_code = args[:desk_code] if args.key?(:desk_code)
+          @floor_name = args[:floor_name] if args.key?(:floor_name)
+          @floor_section = args[:floor_section] if args.key?(:floor_section)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # JSON request template for setting/revoking admin status of a user in Directory
       # API.
       class UserMakeAdmin
@@ -3051,7 +3119,7 @@ module Google
       class UserPosixAccount
         include Google::Apis::Core::Hashable
       
-        # The GECOS (user information) entry for this account.
+        # The GECOS (user information) for this account.
         # Corresponds to the JSON property `gecos`
         # @return [String]
         attr_accessor :gecos
@@ -3082,7 +3150,7 @@ module Google
         # @return [String]
         attr_accessor :system_id
       
-        # The user ID.
+        # The POSIX compliant user ID.
         # Corresponds to the JSON property `uid`
         # @return [Fixnum]
         attr_accessor :uid

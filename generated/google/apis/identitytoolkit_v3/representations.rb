@@ -652,6 +652,7 @@ module Google
           property :local_id, as: 'localId'
           property :password_hash, :base64 => true, as: 'passwordHash'
           property :password_updated_at, as: 'passwordUpdatedAt'
+          property :phone_number, as: 'phoneNumber'
           property :photo_url, as: 'photoUrl'
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo::Representation
       
@@ -668,6 +669,7 @@ module Google
             property :display_name, as: 'displayName'
             property :email, as: 'email'
             property :federated_id, as: 'federatedId'
+            property :phone_number, as: 'phoneNumber'
             property :photo_url, as: 'photoUrl'
             property :provider_id, as: 'providerId'
             property :raw_id, as: 'rawId'

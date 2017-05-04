@@ -22,8 +22,8 @@ module Google
     module AcceleratedmobilepageurlV1
       # Accelerated Mobile Pages (AMP) URL API
       #
-      # This API contains a single method, batchGet. Call this method to retrieve the
-      #  AMP URL (and equivalent AMP Cache URL) for given public URL(s).
+      # Retrieves the list of AMP URL (and equivalent AMP Cache URL) for a given list
+      #  of public URL(s).
       #
       # @example
       #    require 'google/apis/acceleratedmobilepageurl_v1'

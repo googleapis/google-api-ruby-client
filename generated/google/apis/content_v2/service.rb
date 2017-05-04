@@ -1281,8 +1281,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels all line items in an order. This method can only be called for non-
-        # multi-client accounts.
+        # Cancels all line items in an order, making a full refund. This method can only
+        # be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id
@@ -1323,8 +1323,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a line item. This method can only be called for non-multi-client
-        # accounts.
+        # Cancels a line item, making a full refund. This method can only be called for
+        # non-multi-client accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [String] order_id

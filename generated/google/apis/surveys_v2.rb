@@ -25,7 +25,7 @@ module Google
     #
     module SurveysV2
       VERSION = 'V2'
-      REVISION = '20161103'
+      REVISION = '20170407'
 
       # View and manage your surveys and results
       AUTH_SURVEYS = 'https://www.googleapis.com/auth/surveys'

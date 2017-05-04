@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20170329'
+      REVISION = '20170502'
 
       # View your Google Classroom class rosters
       AUTH_CLASSROOM_ROSTERS_READONLY = 'https://www.googleapis.com/auth/classroom.rosters.readonly'

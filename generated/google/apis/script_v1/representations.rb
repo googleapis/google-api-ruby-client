@@ -22,7 +22,25 @@ module Google
   module Apis
     module ScriptV1
       
+      class JoinAsyncRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JoinAsyncResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,10 +70,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExecutionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+      class JoinAsyncRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :script_id, as: 'scriptId'
+          collection :names, as: 'names'
+          property :timeout, as: 'timeout'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class ExecutionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result'
+        end
       end
       
       class Operation
@@ -70,11 +98,19 @@ module Google
         end
       end
       
+      class JoinAsyncResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results', class: Google::Apis::ScriptV1::Operation, decorator: Google::Apis::ScriptV1::Operation::Representation
+      
+        end
+      end
+      
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_number, as: 'lineNumber'
           property :function, as: 'function'
+          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -91,26 +127,19 @@ module Google
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
           collection :details, as: 'details'
           property :code, as: 'code'
-          property :message, as: 'message'
         end
       end
       
       class ExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :parameters, as: 'parameters'
-          property :session_state, as: 'sessionState'
           property :function, as: 'function'
           property :dev_mode, as: 'devMode'
-        end
-      end
-      
-      class ExecutionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :result, as: 'result'
+          collection :parameters, as: 'parameters'
+          property :session_state, as: 'sessionState'
         end
       end
     end

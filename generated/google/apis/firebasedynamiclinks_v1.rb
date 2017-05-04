@@ -20,13 +20,12 @@ module Google
   module Apis
     # Firebase Dynamic Links API
     #
-    # Firebase Dynamic Links API enables third party developers to programmatically
-    # create and manage Dynamic Links.
+    # Programmatically creates and manages Firebase Dynamic Links.
     #
     # @see https://firebase.google.com/docs/dynamic-links/
     module FirebasedynamiclinksV1
       VERSION = 'V1'
-      REVISION = '20170323'
+      REVISION = '20170503'
 
       # View and administer all your Firebase data and settings
       AUTH_FIREBASE = 'https://www.googleapis.com/auth/firebase'

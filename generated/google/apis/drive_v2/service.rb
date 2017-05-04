@@ -1222,7 +1222,8 @@ module Google
         # @param [Boolean] include_team_drive_items
         #   Whether Team Drive items should be included in results.
         # @param [Fixnum] max_results
-        #   Maximum number of files to return.
+        #   The maximum number of files to return per page. Partial or empty result pages
+        #   are possible even before the end of the files list has been reached.
         # @param [String] order_by
         #   A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', '
         #   lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', '

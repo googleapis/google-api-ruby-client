@@ -80,15 +80,32 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
+      # A report type.
+      class ReportType
         include Google::Apis::Core::Hashable
+      
+        # The name of the report type (max. 100 characters).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the report type (max. 100 characters).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # True if this a system-managed report type; otherwise false. Reporting jobs
+        # for system-managed report types are created automatically and can thus not
+        # be used in the `CreateJob` method.
+        # Corresponds to the JSON property `systemManaged`
+        # @return [Boolean]
+        attr_accessor :system_managed
+        alias_method :system_managed?, :system_managed
+      
+        # The date/time when this report type was/will be deprecated.
+        # Corresponds to the JSON property `deprecateTime`
+        # @return [String]
+        attr_accessor :deprecate_time
       
         def initialize(**args)
            update!(**args)
@@ -96,6 +113,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @id = args[:id] if args.key?(:id)
+          @system_managed = args[:system_managed] if args.key?(:system_managed)
+          @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
         end
       end
       
@@ -128,32 +149,15 @@ module Google
         end
       end
       
-      # A report type.
-      class ReportType
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
         include Google::Apis::Core::Hashable
-      
-        # The date/time when this report type was/will be deprecated.
-        # Corresponds to the JSON property `deprecateTime`
-        # @return [String]
-        attr_accessor :deprecate_time
-      
-        # The name of the report type (max. 100 characters).
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The ID of the report type (max. 100 characters).
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # True if this a system-managed report type; otherwise false. Reporting jobs
-        # for system-managed report types are created automatically and can thus not
-        # be used in the `CreateJob` method.
-        # Corresponds to the JSON property `systemManaged`
-        # @return [Boolean]
-        attr_accessor :system_managed
-        alias_method :system_managed?, :system_managed
       
         def initialize(**args)
            update!(**args)
@@ -161,21 +165,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @deprecate_time = args[:deprecate_time] if args.key?(:deprecate_time)
-          @name = args[:name] if args.key?(:name)
-          @id = args[:id] if args.key?(:id)
-          @system_managed = args[:system_managed] if args.key?(:system_managed)
         end
       end
       
       # Response message for ReportingService.ListJobs.
       class ListJobsResponse
         include Google::Apis::Core::Hashable
-      
-        # The list of jobs.
-        # Corresponds to the JSON property `jobs`
-        # @return [Array<Google::Apis::YoutubereportingV1::Job>]
-        attr_accessor :jobs
       
         # A token to retrieve next page of results.
         # Pass this value in the
@@ -186,20 +181,47 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of jobs.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::YoutubereportingV1::Job>]
+        attr_accessor :jobs
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @jobs = args[:jobs] if args.key?(:jobs)
         end
       end
       
       # A job creating reports of a specific type.
       class Job
         include Google::Apis::Core::Hashable
+      
+        # The creation date/time of the job.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The date/time when this job will expire/expired. After a job expired, no
+        # new reports are generated.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The type of reports this job creates. Corresponds to the ID of a
+        # ReportType.
+        # Corresponds to the JSON property `reportTypeId`
+        # @return [String]
+        attr_accessor :report_type_id
+      
+        # The name of the job (max. 100 characters).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # True if this a system-managed job that cannot be modified by the user;
         # otherwise false.
@@ -213,40 +235,18 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The creation date/time of the job.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The type of reports this job creates. Corresponds to the ID of a
-        # ReportType.
-        # Corresponds to the JSON property `reportTypeId`
-        # @return [String]
-        attr_accessor :report_type_id
-      
-        # The date/time when this job will expire/expired. After a job expired, no
-        # new reports are generated.
-        # Corresponds to the JSON property `expireTime`
-        # @return [String]
-        attr_accessor :expire_time
-      
-        # The name of the job (max. 100 characters).
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
+          @name = args[:name] if args.key?(:name)
           @system_managed = args[:system_managed] if args.key?(:system_managed)
           @id = args[:id] if args.key?(:id)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @report_type_id = args[:report_type_id] if args.key?(:report_type_id)
-          @expire_time = args[:expire_time] if args.key?(:expire_time)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

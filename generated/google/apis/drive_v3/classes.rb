@@ -897,6 +897,13 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
+          # Whether the current user can change whether viewers can copy the contents of
+          # this file.
+          # Corresponds to the JSON property `canChangeViewersCanCopyContent`
+          # @return [Boolean]
+          attr_accessor :can_change_viewers_can_copy_content
+          alias_method :can_change_viewers_can_copy_content?, :can_change_viewers_can_copy_content
+        
           # Whether the current user can comment on this file.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
@@ -1005,6 +1012,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_change_viewers_can_copy_content = args[:can_change_viewers_can_copy_content] if args.key?(:can_change_viewers_can_copy_content)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete = args[:can_delete] if args.key?(:can_delete)
@@ -1375,6 +1383,13 @@ module Google
         attr_accessor :allow_file_discovery
         alias_method :allow_file_discovery?, :allow_file_discovery
       
+        # Whether the account of the permission has been deleted. This field only
+        # pertains to user and group permissions.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
         # A displayable name for users, groups or domains.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1450,6 +1465,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_file_discovery = args[:allow_file_discovery] if args.key?(:allow_file_discovery)
+          @deleted = args[:deleted] if args.key?(:deleted)
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain = args[:domain] if args.key?(:domain)
           @email_address = args[:email_address] if args.key?(:email_address)

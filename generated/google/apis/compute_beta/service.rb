@@ -865,9 +865,9 @@ module Google
         #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone for this request.
-        # @param [String] autoscaler
-        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler to patch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -889,7 +889,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -1708,83 +1708,6 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves an aggregated list of commitments.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
-        # @param [Fixnum] max_results
-        #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
-        # @param [String] order_by
-        #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
-        # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeBeta::CommitmentAggregatedList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeBeta::CommitmentAggregatedList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_commitment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/commitments', options)
-          command.response_representation = Google::Apis::ComputeBeta::CommitmentAggregatedList::Representation
-          command.response_class = Google::Apis::ComputeBeta::CommitmentAggregatedList
-          command.params['project'] = project unless project.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2734,6 +2657,8 @@ module Google
         end
         
         # Updates the specified firewall rule with the data included in the request.
+        # Using PUT method, can only update following fields of firewall rule: allowed,
+        # description, sourceRanges, sourceTags, targetTags.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -3379,7 +3304,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified ForwardingRule resource.
+        # Deletes the specified GlobalForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -3417,7 +3342,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified ForwardingRule resource. Get a list of available
+        # Returns the specified GlobalForwardingRule resource. Get a list of available
         # forwarding rules by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -3456,8 +3381,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a ForwardingRule resource in the specified project and region using
-        # the data included in the request.
+        # Creates a GlobalForwardingRule resource in the specified project using the
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ForwardingRule] forwarding_rule_object
@@ -3495,7 +3420,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of ForwardingRule resources available to the specified
+        # Retrieves a list of GlobalForwardingRule resources available to the specified
         # project.
         # @param [String] project
         #   Project ID for this request.
@@ -3573,8 +3498,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target URL for forwarding rule. The new target should be of the same
-        # type as the old target.
+        # Changes target URL for the GlobalForwardingRule resource. The new target
+        # should be of the same type as the old target.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -5210,6 +5135,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5380,6 +5306,7 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5471,6 +5398,7 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
+        # A managed instance group can have up to 1000 VM instances per group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5646,10 +5574,10 @@ module Google
         end
         
         # Updates a managed instance group using the information that you specify in the
-        # request. This operation is marked as DONE when the group is updated even if
-        # the instances in the group have not yet been updated. You must separately
-        # verify the status of the individual instances with the listmanagedinstances
-        # method. This method supports patch semantics.
+        # request. This operation is marked as DONE when the group is patched even if
+        # the instances in the group are still in the process of being patched. You must
+        # separately verify the status of the individual instances with the
+        # listManagedInstances method. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5699,6 +5627,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6031,7 +5960,7 @@ module Google
         # Updates a managed instance group using the information that you specify in the
         # request. This operation is marked as DONE when the group is updated even if
         # the instances in the group have not yet been updated. You must separately
-        # verify the status of the individual instances with the listmanagedinstances
+        # verify the status of the individual instances with the listManagedInstances
         # method.
         # @param [String] project
         #   Project ID for this request.
@@ -7382,7 +7311,93 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs a hard reset on the instance.
+        # Retrieves the list of referrers to instances contained within the specified
+        # zone.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the target instance scoping this request, or '-' if the request should
+        #   span over all instances in the container.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InstanceListReferrers] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InstanceListReferrers]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_referrers(project, zone, instance, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/referrers', options)
+          command.response_representation = Google::Apis::ComputeBeta::InstanceListReferrers::Representation
+          command.response_class = Google::Apis::ComputeBeta::InstanceListReferrers
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a reset on the instance. For more information, see Resetting an
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9224,9 +9239,9 @@ module Google
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
-        # @param [String] autoscaler
-        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler to patch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9248,7 +9263,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_autoscaler(project, region, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -9740,6 +9755,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves an aggregated list of commitments.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use filter=name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::CommitmentAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::CommitmentAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_region_commitment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/commitments', options)
+          command.response_representation = Google::Apis::ComputeBeta::CommitmentAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeBeta::CommitmentAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified commitment resource. Get a list of available commitments
         # by making a list() request.
         # @param [String] project
@@ -9912,6 +10004,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10004,6 +10097,7 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10094,6 +10188,7 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
+        # A regional managed instance group can contain up to 2000 instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10267,10 +10362,10 @@ module Google
         end
         
         # Updates a managed instance group using the information that you specify in the
-        # request. This operation is marked as DONE when the group is updated even if
-        # the instances in the group have not yet been updated. You must separately
-        # verify the status of the individual instances with the listmanagedinstances
-        # method. This method supports patch semantics.
+        # request. This operation is marked as DONE when the group is patched even if
+        # the instances in the group are still in the process of being patched. You must
+        # separately verify the status of the individual instances with the
+        # listmanagedinstances method. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10320,6 +10415,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

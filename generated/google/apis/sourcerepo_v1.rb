@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
     module SourcerepoV1
       VERSION = 'V1'
-      REVISION = '20170327'
+      REVISION = '20170410'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

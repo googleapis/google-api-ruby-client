@@ -18,15 +18,17 @@ require 'google/apis/runtimeconfig_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud RuntimeConfig API
+    # Google Cloud Runtime Configuration API
     #
-    # Provides capabilities for dynamic configuration and coordination for
-    # applications running on Google Cloud Platform.
+    # The Runtime Configurator allows you to dynamically configure and expose
+    # variables through Google Cloud Platform. In addition, you can also set
+    # Watchers and Waiters that will watch for changes to your data and return based
+    # on certain conditions.
     #
     # @see https://cloud.google.com/deployment-manager/runtime-configurator/
     module RuntimeconfigV1
       VERSION = 'V1'
-      REVISION = '20170327'
+      REVISION = '20170429'
 
       # Manage your Google Cloud Platform services' runtime configuration
       AUTH_CLOUDRUNTIMECONFIG = 'https://www.googleapis.com/auth/cloudruntimeconfig'

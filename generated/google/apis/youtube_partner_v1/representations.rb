@@ -1238,6 +1238,7 @@ module Google
           property :kind, as: 'kind'
           property :resource, as: 'resource', class: Google::Apis::YoutubePartnerV1::Package, decorator: Google::Apis::YoutubePartnerV1::Package::Representation
       
+          property :status, as: 'status'
         end
       end
       

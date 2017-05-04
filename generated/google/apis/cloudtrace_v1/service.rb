@@ -90,17 +90,6 @@ module Google
         # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
         #   ID of the Cloud project where the trace data is stored.
-        # @param [String] filter
-        #   An optional filter for the request.
-        # @param [String] end_time
-        #   Start of the time interval (inclusive) during which the trace data was
-        #   collected from the application.
-        # @param [String] page_token
-        #   Token identifying the page of results to return. If provided, use the
-        #   value of the `next_page_token` field from a previous request. Optional.
-        # @param [String] start_time
-        #   End of the time interval (inclusive) during which the trace data was
-        #   collected from the application.
         # @param [Fixnum] page_size
         #   Maximum number of traces to return. If not specified or <= 0, the
         #   implementation selects a reasonable value.  The implementation may
@@ -119,6 +108,44 @@ module Google
         #   Descending order can be specified by appending `desc` to the sort field
         #   (for example, `name desc`).
         #   Only one sort field is permitted.
+        # @param [String] filter
+        #   An optional filter against labels for the request.
+        #   By default, searches use prefix matching. To specify exact match, prepend
+        #   a plus symbol (`+`) to the search term.
+        #   Multiple terms are ANDed. Syntax:
+        #   *   `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root
+        #   span starts with `NAME_PREFIX`.
+        #   *   `+root:NAME` or `+NAME`: Return traces where any root span's name is
+        #   exactly `NAME`.
+        #   *   `span:NAME_PREFIX`: Return traces where any span starts with
+        #   `NAME_PREFIX`.
+        #   *   `+span:NAME`: Return traces where any span's name is exactly
+        #   `NAME`.
+        #   *   `latency:DURATION`: Return traces whose overall latency is
+        #   greater or equal to than `DURATION`. Accepted units are nanoseconds
+        #   (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For
+        #   example, `latency:24ms` returns traces whose overall latency
+        #   is greater than or equal to 24 milliseconds.
+        #   *   `label:LABEL_KEY`: Return all traces containing the specified
+        #   label key (exact match, case-sensitive) regardless of the key:value
+        #   pair's value (including empty values).
+        #   *   `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified
+        #   label key (exact match, case-sensitive) whose value starts with
+        #   `VALUE_PREFIX`. Both a key and a value must be specified.
+        #   *   `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair
+        #   exactly matching the specified text. Both a key and a value must be
+        #   specified.
+        #   *   `method:VALUE`: Equivalent to `/http/method:VALUE`.
+        #   *   `url:VALUE`: Equivalent to `/http/url:VALUE`.
+        # @param [String] end_time
+        #   End of the time interval (inclusive) during which the trace data was
+        #   collected from the application.
+        # @param [String] page_token
+        #   Token identifying the page of results to return. If provided, use the
+        #   value of the `next_page_token` field from a previous request. Optional.
+        # @param [String] start_time
+        #   Start of the time interval (inclusive) during which the trace data was
+        #   collected from the application.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -136,18 +163,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_traces(project_id, filter: nil, end_time: nil, page_token: nil, start_time: nil, page_size: nil, view: nil, order_by: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_traces(project_id, page_size: nil, view: nil, order_by: nil, filter: nil, end_time: nil, page_token: nil, start_time: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
           command.response_representation = Google::Apis::CloudtraceV1::ListTracesResponse::Representation
           command.response_class = Google::Apis::CloudtraceV1::ListTracesResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startTime'] = start_time unless start_time.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

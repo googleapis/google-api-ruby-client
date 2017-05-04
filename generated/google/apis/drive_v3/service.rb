@@ -847,7 +847,8 @@ module Google
         #   limitation for users with approximately one million files in which the
         #   requested sort order is ignored.
         # @param [Fixnum] page_size
-        #   The maximum number of files to return per page.
+        #   The maximum number of files to return per page. Partial or empty result pages
+        #   are possible even before the end of the files list has been reached.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response.

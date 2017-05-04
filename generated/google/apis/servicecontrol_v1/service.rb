@@ -48,98 +48,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Reports operation results to Google Service Control, such as logs and
-        # metrics. It should be called after an operation is completed.
-        # If feasible, the client should aggregate reporting data for up to 5
-        # seconds to reduce API traffic. Limiting aggregation to 5 seconds is to
-        # reduce data loss during client crashes. Clients should carefully choose
-        # the aggregation time window to avoid data loss risk more than 0.01%
-        # for business and compliance reasons.
-        # NOTE: the `ReportRequest` has the size limit of 1MB.
-        # This method requires the `servicemanagement.services.report` permission
-        # on the specified service. For more information, see
-        # [Google Cloud IAM](https://cloud.google.com/iam).
-        # @param [String] service_name
-        #   The service name as specified in its service configuration. For example,
-        #   `"pubsub.googleapis.com"`.
-        #   See google.api.Service for the definition of a service name.
-        # @param [Google::Apis::ServicecontrolV1::ReportRequest] report_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicecontrolV1::ReportResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicecontrolV1::ReportResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_service(service_name, report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:report', options)
-          command.request_representation = Google::Apis::ServicecontrolV1::ReportRequest::Representation
-          command.request_object = report_request_object
-          command.response_representation = Google::Apis::ServicecontrolV1::ReportResponse::Representation
-          command.response_class = Google::Apis::ServicecontrolV1::ReportResponse
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Attempts to allocate quota for the specified consumer. It should be called
-        # before the operation is executed.
-        # This method requires the `servicemanagement.services.quota`
-        # permission on the specified service. For more information, see
-        # [Google Cloud IAM](https://cloud.google.com/iam).
-        # **NOTE:** the client code **must** fail-open if the server returns one
-        # of the following quota errors:
-        # -   `PROJECT_STATUS_UNAVAILABLE`
-        # -   `SERVICE_STATUS_UNAVAILABLE`
-        # -   `BILLING_STATUS_UNAVAILABLE`
-        # -   `QUOTA_SYSTEM_UNAVAILABLE`
-        # The server may inject above errors to prohibit any hard dependency
-        # on the quota system.
-        # @param [String] service_name
-        #   Name of the service as specified in the service configuration. For example,
-        #   `"pubsub.googleapis.com"`.
-        #   See google.api.Service for the definition of a service name.
-        # @param [Google::Apis::ServicecontrolV1::AllocateQuotaRequest] allocate_quota_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicecontrolV1::AllocateQuotaResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicecontrolV1::AllocateQuotaResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def allocate_service_quota(service_name, allocate_quota_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
-          command.request_representation = Google::Apis::ServicecontrolV1::AllocateQuotaRequest::Representation
-          command.request_object = allocate_quota_request_object
-          command.response_representation = Google::Apis::ServicecontrolV1::AllocateQuotaResponse::Representation
-          command.response_class = Google::Apis::ServicecontrolV1::AllocateQuotaResponse
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Unlike rate quota, allocation quota does not get refilled periodically.
         # So, it is possible that the quota usage as seen by the service differs from
         # what the One Platform considers the usage is. This is expected to happen
@@ -320,6 +228,98 @@ module Google
           command.request_object = end_reconciliation_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::EndReconciliationResponse::Representation
           command.response_class = Google::Apis::ServicecontrolV1::EndReconciliationResponse
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reports operation results to Google Service Control, such as logs and
+        # metrics. It should be called after an operation is completed.
+        # If feasible, the client should aggregate reporting data for up to 5
+        # seconds to reduce API traffic. Limiting aggregation to 5 seconds is to
+        # reduce data loss during client crashes. Clients should carefully choose
+        # the aggregation time window to avoid data loss risk more than 0.01%
+        # for business and compliance reasons.
+        # NOTE: the `ReportRequest` has the size limit of 1MB.
+        # This method requires the `servicemanagement.services.report` permission
+        # on the specified service. For more information, see
+        # [Google Cloud IAM](https://cloud.google.com/iam).
+        # @param [String] service_name
+        #   The service name as specified in its service configuration. For example,
+        #   `"pubsub.googleapis.com"`.
+        #   See google.api.Service for the definition of a service name.
+        # @param [Google::Apis::ServicecontrolV1::ReportRequest] report_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicecontrolV1::ReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicecontrolV1::ReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_service(service_name, report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services/{serviceName}:report', options)
+          command.request_representation = Google::Apis::ServicecontrolV1::ReportRequest::Representation
+          command.request_object = report_request_object
+          command.response_representation = Google::Apis::ServicecontrolV1::ReportResponse::Representation
+          command.response_class = Google::Apis::ServicecontrolV1::ReportResponse
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Attempts to allocate quota for the specified consumer. It should be called
+        # before the operation is executed.
+        # This method requires the `servicemanagement.services.quota`
+        # permission on the specified service. For more information, see
+        # [Google Cloud IAM](https://cloud.google.com/iam).
+        # **NOTE:** the client code **must** fail-open if the server returns one
+        # of the following quota errors:
+        # -   `PROJECT_STATUS_UNAVAILABLE`
+        # -   `SERVICE_STATUS_UNAVAILABLE`
+        # -   `BILLING_STATUS_UNAVAILABLE`
+        # -   `QUOTA_SYSTEM_UNAVAILABLE`
+        # The server may inject above errors to prohibit any hard dependency
+        # on the quota system.
+        # @param [String] service_name
+        #   Name of the service as specified in the service configuration. For example,
+        #   `"pubsub.googleapis.com"`.
+        #   See google.api.Service for the definition of a service name.
+        # @param [Google::Apis::ServicecontrolV1::AllocateQuotaRequest] allocate_quota_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicecontrolV1::AllocateQuotaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicecontrolV1::AllocateQuotaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def allocate_service_quota(service_name, allocate_quota_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
+          command.request_representation = Google::Apis::ServicecontrolV1::AllocateQuotaRequest::Representation
+          command.request_object = allocate_quota_request_object
+          command.response_representation = Google::Apis::ServicecontrolV1::AllocateQuotaResponse::Representation
+          command.response_class = Google::Apis::ServicecontrolV1::AllocateQuotaResponse
           command.params['serviceName'] = service_name unless service_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

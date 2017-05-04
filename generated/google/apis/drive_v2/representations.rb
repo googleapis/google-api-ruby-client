@@ -717,6 +717,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_change_restricted_download, as: 'canChangeRestrictedDownload'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete, as: 'canDelete'
@@ -859,6 +860,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_roles, as: 'additionalRoles'
           property :auth_key, as: 'authKey'
+          property :deleted, as: 'deleted'
           property :domain, as: 'domain'
           property :email_address, as: 'emailAddress'
           property :etag, as: 'etag'

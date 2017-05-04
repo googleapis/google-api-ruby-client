@@ -201,9 +201,9 @@ module Google
         
         # Take action on Chrome OS Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] resource_id
-        #   Immutable id of Chrome OS Device
+        #   Immutable ID of Chrome OS Device
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDeviceAction] chrome_os_device_action_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -240,9 +240,9 @@ module Google
         
         # Retrieve Chrome OS Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] device_id
-        #   Immutable id of Chrome OS Device
+        #   Immutable ID of Chrome OS Device
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] fields
@@ -281,7 +281,7 @@ module Google
         
         # Retrieve all Chrome OS Devices of a customer (paginated)
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100
         # @param [String] order_by
@@ -336,9 +336,9 @@ module Google
         
         # Update Chrome OS Device. This method supports patch semantics.
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] device_id
-        #   Immutable id of Chrome OS Device
+        #   Immutable ID of Chrome OS Device
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
@@ -380,9 +380,9 @@ module Google
         
         # Update Chrome OS Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] device_id
-        #   Immutable id of Chrome OS Device
+        #   Immutable ID of Chrome OS Device
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
@@ -535,7 +535,7 @@ module Google
         
         # Deletes a Domain Alias of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -571,7 +571,7 @@ module Google
         
         # Retrieves a domain alias of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -609,7 +609,7 @@ module Google
         
         # Inserts a Domain alias of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Google::Apis::AdminDirectoryV1::DomainAlias] domain_alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -647,7 +647,7 @@ module Google
         
         # Lists the domain aliases of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] parent_domain_name
         #   Name of the parent domain for which domain aliases are to be fetched.
         # @param [String] fields
@@ -685,7 +685,7 @@ module Google
         
         # Deletes a domain of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] domain_name
         #   Name of domain to be deleted
         # @param [String] fields
@@ -721,7 +721,7 @@ module Google
         
         # Retrieves a domain of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] domain_name
         #   Name of domain to be retrieved
         # @param [String] fields
@@ -759,7 +759,7 @@ module Google
         
         # Inserts a domain of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Google::Apis::AdminDirectoryV1::Domains] domains_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -797,7 +797,7 @@ module Google
         
         # Lists the domains of the customer.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -935,7 +935,7 @@ module Google
         
         # Retrieve all groups in a domain (paginated)
         # @param [String] customer
-        #   Immutable id of the Google Apps account. In case of multi-domain, to fetch all
+        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
         #   groups for a customer, fill this field instead of domain.
         # @param [String] domain
         #   Name of the domain. Fill this field to get groups from only this domain. To
@@ -1415,9 +1415,9 @@ module Google
         
         # Take action on Mobile Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] resource_id
-        #   Immutable id of Mobile Device
+        #   Immutable ID of Mobile Device
         # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1454,9 +1454,9 @@ module Google
         
         # Delete Mobile Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] resource_id
-        #   Immutable id of Mobile Device
+        #   Immutable ID of Mobile Device
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1490,9 +1490,9 @@ module Google
         
         # Retrieve Mobile Device
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] resource_id
-        #   Immutable id of Mobile Device
+        #   Immutable ID of Mobile Device
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] fields
@@ -1531,7 +1531,7 @@ module Google
         
         # Retrieve all Mobile Devices of a customer (paginated)
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100
         # @param [String] order_by
@@ -1586,7 +1586,7 @@ module Google
         
         # Deletes a notification
         # @param [String] customer
-        #   The unique ID for the customer's Google account. The customerId is also
+        #   The unique ID for the customer's G Suite account. The customerId is also
         #   returned as part of the Users resource.
         # @param [String] notification_id
         #   The unique ID of the notification.
@@ -1623,7 +1623,7 @@ module Google
         
         # Retrieves a notification.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. The customerId is also
+        #   The unique ID for the customer's G Suite account. The customerId is also
         #   returned as part of the Users resource.
         # @param [String] notification_id
         #   The unique ID of the notification.
@@ -1662,7 +1662,7 @@ module Google
         
         # Retrieves a list of notifications.
         # @param [String] customer
-        #   The unique ID for the customer's Google account.
+        #   The unique ID for the customer's G Suite account.
         # @param [String] language
         #   The ISO 639-1 code of the language notifications are returned in. The default
         #   is English (en).
@@ -1707,7 +1707,7 @@ module Google
         
         # Updates a notification. This method supports patch semantics.
         # @param [String] customer
-        #   The unique ID for the customer's Google account.
+        #   The unique ID for the customer's G Suite account.
         # @param [String] notification_id
         #   The unique ID of the notification.
         # @param [Google::Apis::AdminDirectoryV1::Notification] notification_object
@@ -1748,7 +1748,7 @@ module Google
         
         # Updates a notification.
         # @param [String] customer
-        #   The unique ID for the customer's Google account.
+        #   The unique ID for the customer's G Suite account.
         # @param [String] notification_id
         #   The unique ID of the notification.
         # @param [Google::Apis::AdminDirectoryV1::Notification] notification_object
@@ -1789,7 +1789,7 @@ module Google
         
         # Remove Organization Unit
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
         # @param [String] fields
@@ -1825,7 +1825,7 @@ module Google
         
         # Retrieve Organization Unit
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
         # @param [String] fields
@@ -1863,7 +1863,7 @@ module Google
         
         # Add Organization Unit
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1901,7 +1901,7 @@ module Google
         
         # Retrieve all Organization Units
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] org_unit_path
         #   the URL-encoded organization unit's path or its Id
         # @param [String] type
@@ -1942,7 +1942,7 @@ module Google
         
         # Update Organization Unit. This method supports patch semantics.
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
@@ -1983,7 +1983,7 @@ module Google
         
         # Update Organization Unit
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
@@ -2024,7 +2024,7 @@ module Google
         
         # Retrieves a paginated list of all privileges for a customer.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2059,7 +2059,7 @@ module Google
         
         # Deletes a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to delete.
@@ -2096,7 +2096,7 @@ module Google
         
         # Retrieves a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to retrieve.
@@ -2135,7 +2135,7 @@ module Google
         
         # Inserts a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
         # @param [String] fields
@@ -2174,7 +2174,7 @@ module Google
         
         # Retrieves a list of calendar resources for an account.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -2216,7 +2216,7 @@ module Google
         
         # Updates a calendar resource. This method supports patch semantics.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
@@ -2258,7 +2258,7 @@ module Google
         
         # Updates a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's Google account. As an account administrator,
+        #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
@@ -2300,7 +2300,7 @@ module Google
         
         # Deletes a role assignment.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -2336,7 +2336,7 @@ module Google
         
         # Retrieve a role assignment.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -2374,7 +2374,7 @@ module Google
         
         # Creates a role assignment.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Google::Apis::AdminDirectoryV1::RoleAssignment] role_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2412,7 +2412,7 @@ module Google
         
         # Retrieves a paginated list of all roleAssignments.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2461,7 +2461,7 @@ module Google
         
         # Deletes a role.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -2497,7 +2497,7 @@ module Google
         
         # Retrieves a role.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -2535,7 +2535,7 @@ module Google
         
         # Creates a role.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2573,7 +2573,7 @@ module Google
         
         # Retrieves a paginated list of all the roles in a domain.
         # @param [String] customer
-        #   Immutable id of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2614,7 +2614,7 @@ module Google
         
         # Updates a role. This method supports patch semantics.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
@@ -2655,7 +2655,7 @@ module Google
         
         # Updates a role.
         # @param [String] customer
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the G Suite account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
@@ -2696,7 +2696,7 @@ module Google
         
         # Delete schema
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] schema_key
         #   Name or immutable Id of the schema
         # @param [String] fields
@@ -2732,7 +2732,7 @@ module Google
         
         # Retrieve schema
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] schema_key
         #   Name or immutable Id of the schema
         # @param [String] fields
@@ -2770,7 +2770,7 @@ module Google
         
         # Create schema.
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2808,7 +2808,7 @@ module Google
         
         # Retrieve all schemas for a customer
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2843,7 +2843,7 @@ module Google
         
         # Update schema. This method supports patch semantics.
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] schema_key
         #   Name or immutable Id of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -2884,7 +2884,7 @@ module Google
         
         # Update schema
         # @param [String] customer_id
-        #   Immutable id of the Google Apps account
+        #   Immutable ID of the G Suite account
         # @param [String] schema_key
         #   Name or immutable Id of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -3153,7 +3153,7 @@ module Google
         #   Comma-separated list of schema names. All fields from these schemas are
         #   fetched. This should only be set when projection=custom.
         # @param [String] customer
-        #   Immutable id of the Google Apps account. In case of multi-domain, to fetch all
+        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
         #   users for a customer, fill this field instead of domain.
         # @param [String] domain
         #   Name of the domain. Fill this field to get users from only this domain. To
@@ -3376,7 +3376,7 @@ module Google
         #   Comma-separated list of schema names. All fields from these schemas are
         #   fetched. This should only be set when projection=custom.
         # @param [String] customer
-        #   Immutable id of the Google Apps account. In case of multi-domain, to fetch all
+        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
         #   users for a customer, fill this field instead of domain.
         # @param [String] domain
         #   Name of the domain. Fill this field to get users from only this domain. To

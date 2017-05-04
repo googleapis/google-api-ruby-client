@@ -28,7 +28,7 @@ module Google
     # @see https://cloud.google.com/trace
     module CloudtraceV1
       VERSION = 'V1'
-      REVISION = '20170320'
+      REVISION = '20170425'
 
       # Write Trace data for a project or application
       AUTH_TRACE_APPEND = 'https://www.googleapis.com/auth/trace.append'

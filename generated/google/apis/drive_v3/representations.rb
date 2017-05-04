@@ -414,6 +414,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete, as: 'canDelete'
@@ -520,6 +521,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_file_discovery, as: 'allowFileDiscovery'
+          property :deleted, as: 'deleted'
           property :display_name, as: 'displayName'
           property :domain, as: 'domain'
           property :email_address, as: 'emailAddress'

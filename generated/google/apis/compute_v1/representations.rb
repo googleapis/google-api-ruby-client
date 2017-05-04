@@ -1174,6 +1174,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TcpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3451,6 +3457,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :best_routes, as: 'bestRoutes', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
       
+          collection :best_routes_for_router, as: 'bestRoutesForRouter', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
+      
           collection :bgp_peer_status, as: 'bgpPeerStatus', class: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus, decorator: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus::Representation
       
           property :network, as: 'network'
@@ -3630,6 +3638,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
         end
@@ -3691,6 +3700,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip_google_access, as: 'privateIpGoogleAccess'
         end
       end
       

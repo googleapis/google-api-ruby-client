@@ -113,6 +113,7 @@ module Google
         # - "46" for AED
         # - "47" for BGN
         # - "48" for HRK
+        # - "49" for MXN
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
@@ -160,7 +161,8 @@ module Google
         # @return [String]
         attr_accessor :locale
       
-        # Maximum image size allowed for this account.
+        # Maximum image size allowed for this account, in kilobytes. Value must be
+        # greater than or equal to 1.
         # Corresponds to the JSON property `maximumImageSize`
         # @return [Fixnum]
         attr_accessor :maximum_image_size
@@ -189,8 +191,8 @@ module Google
         attr_accessor :share_reports_with_twitter
         alias_method :share_reports_with_twitter?, :share_reports_with_twitter
       
-        # File size limit in kilobytes of Rich Media teaser creatives. Must be between 1
-        # and 10240.
+        # File size limit in kilobytes of Rich Media teaser creatives. Acceptable values
+        # are 1 to 10240, inclusive.
         # Corresponds to the JSON property `teaserSizeLimit`
         # @return [Fixnum]
         attr_accessor :teaser_size_limit
@@ -1247,9 +1249,9 @@ module Google
       class AudienceSegment
         include Google::Apis::Core::Hashable
       
-        # Weight allocated to this segment. Must be between 1 and 1000. The weight
-        # assigned will be understood in proportion to the weights assigned to other
-        # segments in the same segment group.
+        # Weight allocated to this segment. The weight assigned will be understood in
+        # proportion to the weights assigned to other segments in the same segment group.
+        # Acceptable values are 1 to 1000, inclusive.
         # Corresponds to the JSON property `allocation`
         # @return [Fixnum]
         attr_accessor :allocation
@@ -2452,8 +2454,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The status of each conversion's insertion status. The status is returned in
-        # the same order that conversions are inserted.
+        # The insert status of each conversion. Statuses are returned in the same order
+        # that conversions are inserted.
         # Corresponds to the JSON property `status`
         # @return [Array<Google::Apis::DfareportingV2_6::ConversionStatus>]
         attr_accessor :status
@@ -3120,7 +3122,8 @@ module Google
         attr_accessor :companion_creative_ids
       
         # Custom start time in seconds for making the asset visible. Applicable to the
-        # following creative types: all RICH_MEDIA.
+        # following creative types: all RICH_MEDIA. Value must be greater than or equal
+        # to 0.
         # Corresponds to the JSON property `customStartTimeValue`
         # @return [Fixnum]
         attr_accessor :custom_start_time_value
@@ -3141,7 +3144,8 @@ module Google
         attr_accessor :display_type
       
         # Duration in seconds for which an asset will be displayed. Applicable to the
-        # following creative types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO.
+        # following creative types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be
+        # greater than or equal to 1.
         # Corresponds to the JSON property `duration`
         # @return [Fixnum]
         attr_accessor :duration
@@ -3255,11 +3259,11 @@ module Google
         attr_accessor :pushdown
         alias_method :pushdown?, :pushdown
       
-        # Pushdown duration in seconds for an asset. Must be between 0 and 9.99.
-        # Applicable to the following creative types: all RICH_MEDIA.Additionally, only
-        # applicable when the asset pushdown field is true, the offsets are 0, the
-        # collapsedSize.width matches size.width, and the collapsedSize.height is less
-        # than size.height.
+        # Pushdown duration in seconds for an asset. Applicable to the following
+        # creative types: all RICH_MEDIA.Additionally, only applicable when the asset
+        # pushdown field is true, the offsets are 0, the collapsedSize.width matches
+        # size.width, and the collapsedSize.height is less than size.height. Acceptable
+        # values are 0 to 9.99, inclusive.
         # Corresponds to the JSON property `pushdownDuration`
         # @return [Float]
         attr_accessor :pushdown_duration
@@ -3341,10 +3345,11 @@ module Google
         # @return [String]
         attr_accessor :window_mode
       
-        # zIndex value of an asset. This is a read-only field. Applicable to the
-        # following creative types: all RICH_MEDIA.Additionally, only applicable to
-        # assets whose displayType is NOT one of the following types:
-        # ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY.
+        # zIndex value of an asset. Applicable to the following creative types: all
+        # RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT
+        # one of the following types: ASSET_DISPLAY_TYPE_INPAGE or
+        # ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999,
+        # inclusive.
         # Corresponds to the JSON property `zIndex`
         # @return [Fixnum]
         attr_accessor :z_index
@@ -3616,6 +3621,7 @@ module Google
       
         # Rich media exit overrides for this creative assignment.
         # Applicable when the creative type is any of the following:
+        # - DISPLAY
         # - RICH_MEDIA_INPAGE
         # - RICH_MEDIA_INPAGE_FLOATING
         # - RICH_MEDIA_IM_EXPAND
@@ -3624,7 +3630,6 @@ module Google
         # - RICH_MEDIA_MOBILE_IN_APP
         # - RICH_MEDIA_MULTI_FLOATING
         # - RICH_MEDIA_PEEL_DOWN
-        # - ADVANCED_BANNER
         # - VPAID_LINEAR
         # - VPAID_NON_LINEAR
         # Corresponds to the JSON property `richMediaExitOverrides`
@@ -3632,7 +3637,8 @@ module Google
         attr_accessor :rich_media_exit_overrides
       
         # Sequence number of the creative assignment, applicable when the rotation type
-        # is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
+        # is CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to 65535,
+        # inclusive.
         # Corresponds to the JSON property `sequence`
         # @return [Fixnum]
         attr_accessor :sequence
@@ -3650,7 +3656,7 @@ module Google
         attr_accessor :start_time
       
         # Weight of the creative assignment, applicable when the rotation type is
-        # CREATIVE_ROTATION_TYPE_RANDOM.
+        # CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -3955,12 +3961,10 @@ module Google
         # @return [Google::Apis::DfareportingV2_6::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
-        # Subgroup of the creative group. Assign your creative groups to one of the
-        # following subgroups in order to filter or manage them more easily. This field
-        # is required on insertion and is read-only after insertion.
-        # Acceptable values are:
-        # - 1
-        # - 2
+        # Subgroup of the creative group. Assign your creative groups to a subgroup in
+        # order to filter or manage them more easily. This field is required on
+        # insertion and is read-only after insertion. Acceptable values are 1 to 2,
+        # inclusive.
         # Corresponds to the JSON property `groupNumber`
         # @return [Fixnum]
         attr_accessor :group_number
@@ -4366,12 +4370,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :days_of_week
       
-        # Hours of the day when the ad will serve. Must be an integer between 0 and 23 (
-        # inclusive), where 0 is midnight to 1 AM, and 23 is 11 PM to midnight. Can be
-        # specified with days of week, in which case the ad would serve during these
-        # hours on the specified days. For example, if Monday, Wednesday, Friday are the
-        # days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified,
-        # the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm.
+        # Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is
+        # 11 PM to midnight. Can be specified with days of week, in which case the ad
+        # would serve during these hours on the specified days. For example if Monday,
+        # Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9,
+        # 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays
+        # at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
         # Corresponds to the JSON property `hoursOfDay`
         # @return [Array<Fixnum>]
         attr_accessor :hours_of_day
@@ -4444,7 +4448,7 @@ module Google
         # Impression ratio for this ad. This ratio determines how often each ad is
         # served relative to the others. For example, if ad A has an impression ratio of
         # 1 and ad B has an impression ratio of 3, then DCM will serve ad B three times
-        # as often as ad A. Must be between 1 and 10.
+        # as often as ad A. Acceptable values are 1 to 10, inclusive.
         # Corresponds to the JSON property `impressionRatio`
         # @return [Fixnum]
         attr_accessor :impression_ratio
@@ -4725,12 +4729,12 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_6::DirectorySiteContactAssignment>]
         attr_accessor :contact_assignments
       
-        # Country ID of this directory site.
+        # Country ID of this directory site. This is a read-only field.
         # Corresponds to the JSON property `countryId`
         # @return [Fixnum]
         attr_accessor :country_id
       
-        # Currency ID of this directory site.
+        # Currency ID of this directory site. This is a read-only field.
         # Possible values are:
         # - "1" for USD
         # - "2" for GBP
@@ -4779,11 +4783,12 @@ module Google
         # - "46" for AED
         # - "47" for BGN
         # - "48" for HRK
+        # - "49" for MXN
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
       
-        # Description of this directory site.
+        # Description of this directory site. This is a read-only field.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5656,7 +5661,9 @@ module Google
         # @return [Google::Apis::DfareportingV2_6::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
-        # Code type used for cache busting in the generated tag.
+        # Code type used for cache busting in the generated tag. Applicable only when
+        # floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING
+        # or UNIQUE_COUNTING.
         # Corresponds to the JSON property `cacheBustingType`
         # @return [String]
         attr_accessor :cache_busting_type
@@ -6283,13 +6290,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Duration of time, in seconds, for this frequency cap. The maximum duration is
-        # 90 days in seconds, or 7,776,000.
+        # 90 days. Acceptable values are 1 to 7776000, inclusive.
         # Corresponds to the JSON property `duration`
         # @return [Fixnum]
         attr_accessor :duration
       
         # Number of times an individual user can be served the ad within the specified
-        # duration. The maximum allowed is 15.
+        # duration. Acceptable values are 1 to 15, inclusive.
         # Corresponds to the JSON property `impressions`
         # @return [Fixnum]
         attr_accessor :impressions
@@ -6947,7 +6954,7 @@ module Google
         # Lookback window, in days, from the last time a given user clicked on one of
         # your ads. If you enter 0, clicks will not be considered as triggering events
         # for floodlight tracking. If you leave this field blank, the default value for
-        # your account will be used.
+        # your account will be used. Acceptable values are 0 to 90, inclusive.
         # Corresponds to the JSON property `clickDuration`
         # @return [Fixnum]
         attr_accessor :click_duration
@@ -6955,7 +6962,7 @@ module Google
         # Lookback window, in days, from the last time a given user viewed one of your
         # ads. If you enter 0, impressions will not be considered as triggering events
         # for floodlight tracking. If you leave this field blank, the default value for
-        # your account will be used.
+        # your account will be used. Acceptable values are 0 to 90, inclusive.
         # Corresponds to the JSON property `postImpressionActivitiesDuration`
         # @return [Fixnum]
         attr_accessor :post_impression_activities_duration
@@ -7401,9 +7408,9 @@ module Google
         # @return [Google::Apis::DfareportingV2_6::DimensionValue]
         attr_accessor :floodlight_activity_id_dimension_value
       
-        # Weight associated with this optimization. Must be greater than 1. The weight
-        # assigned will be understood in proportion to the weights assigned to the other
-        # optimization activities.
+        # Weight associated with this optimization. The weight assigned will be
+        # understood in proportion to the weights assigned to the other optimization
+        # activities. Value must be greater than or equal to 1.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -8041,6 +8048,8 @@ module Google
         # - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
         # - "PLACEMENT_TAG_CLICK_COMMANDS"
         # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+        # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+        # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
         # - "PLACEMENT_TAG_TRACKING"
         # - "PLACEMENT_TAG_TRACKING_IFRAME"
         # - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
@@ -8871,7 +8880,8 @@ module Google
         # @return [String]
         attr_accessor :pricing_comment
       
-        # Rate or cost of this pricing period.
+        # Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000).
+        # Acceptable values are 0 to 1000000000000000000, inclusive.
         # Corresponds to the JSON property `rateOrCostNanos`
         # @return [Fixnum]
         attr_accessor :rate_or_cost_nanos
@@ -8883,7 +8893,8 @@ module Google
         # @return [Date]
         attr_accessor :start_date
       
-        # Units of this pricing period.
+        # Units of this pricing period. Acceptable values are 0 to 10000000000,
+        # inclusive.
         # Corresponds to the JSON property `units`
         # @return [Fixnum]
         attr_accessor :units
@@ -9295,7 +9306,7 @@ module Google
         attr_accessor :kind
       
         # Number of days that a user should remain in the remarketing list without an
-        # impression.
+        # impression. Acceptable values are 1 to 540, inclusive.
         # Corresponds to the JSON property `lifeSpan`
         # @return [Fixnum]
         attr_accessor :life_span
@@ -10531,7 +10542,7 @@ module Google
       class Size
         include Google::Apis::Core::Hashable
       
-        # Height of this size.
+        # Height of this size. Acceptable values are 0 to 32767, inclusive.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -10553,7 +10564,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Width of this size.
+        # Width of this size. Acceptable values are 0 to 32767, inclusive.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -10711,7 +10722,8 @@ module Google
       class TagData
         include Google::Apis::Core::Hashable
       
-        # Ad associated with this placement tag.
+        # Ad associated with this placement tag. Applicable only when format is
+        # PLACEMENT_TAG_TRACKING.
         # Corresponds to the JSON property `adId`
         # @return [Fixnum]
         attr_accessor :ad_id
@@ -10721,7 +10733,8 @@ module Google
         # @return [String]
         attr_accessor :click_tag
       
-        # Creative associated with this placement tag.
+        # Creative associated with this placement tag. Applicable only when format is
+        # PLACEMENT_TAG_TRACKING.
         # Corresponds to the JSON property `creativeId`
         # @return [Fixnum]
         attr_accessor :creative_id

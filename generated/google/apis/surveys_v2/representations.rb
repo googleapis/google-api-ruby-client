@@ -321,8 +321,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
-          property :resource, as: 'resource', class: Google::Apis::SurveysV2::Survey, decorator: Google::Apis::SurveysV2::Survey::Representation
-      
         end
       end
       
@@ -330,8 +328,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
-          property :resource, as: 'resource', class: Google::Apis::SurveysV2::Survey, decorator: Google::Apis::SurveysV2::Survey::Representation
-      
         end
       end
       

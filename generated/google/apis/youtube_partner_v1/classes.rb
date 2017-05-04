@@ -2706,6 +2706,15 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Package]
         attr_accessor :resource
       
+        # The package insert status. Indicates whether the insert operation completed
+        # successfully or identifies the general cause of failure. For most cases where
+        # the insert operation failed, the errors are described in the API response's
+        # errors object. However, if the operation failed because the package contained
+        # non-metadata files, the errors object is not included in the response.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2715,6 +2724,7 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @kind = args[:kind] if args.key?(:kind)
           @resource = args[:resource] if args.key?(:resource)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

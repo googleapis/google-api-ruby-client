@@ -22,6 +22,30 @@ module Google
   module Apis
     module SourcerepoV1
       
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataAccessOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReposResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,12 +95,6 @@ module Google
       end
       
       class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,27 +125,41 @@ module Google
       end
       
       class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
       end
       
       class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, :base64 => true, as: 'etag'
+          property :iam_owned, as: 'iamOwned'
+          collection :rules, as: 'rules', class: Google::Apis::SourcerepoV1::Rule, decorator: Google::Apis::SourcerepoV1::Rule::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :version, as: 'version'
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SourcerepoV1::AuditConfig, decorator: Google::Apis::SourcerepoV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::SourcerepoV1::Binding, decorator: Google::Apis::SourcerepoV1::Binding::Representation
+      
+        end
       end
       
       class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::SourcerepoV1::AuditLogConfig, decorator: Google::Apis::SourcerepoV1::AuditLogConfig::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :exempted_members, as: 'exemptedMembers'
+          property :service, as: 'service'
+        end
       end
       
       class SetIamPolicyRequest
@@ -156,20 +194,27 @@ module Google
       class MirrorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :webhook_id, as: 'webhookId'
           property :deploy_key_id, as: 'deployKeyId'
           property :url, as: 'url'
+          property :webhook_id, as: 'webhookId'
         end
       end
       
       class Repo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :mirror_config, as: 'mirrorConfig', class: Google::Apis::SourcerepoV1::MirrorConfig, decorator: Google::Apis::SourcerepoV1::MirrorConfig::Representation
-      
           property :url, as: 'url'
           property :size, :numeric_string => true, as: 'size'
           property :name, as: 'name'
+          property :mirror_config, as: 'mirrorConfig', class: Google::Apis::SourcerepoV1::MirrorConfig, decorator: Google::Apis::SourcerepoV1::MirrorConfig::Representation
+      
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
@@ -184,19 +229,12 @@ module Google
       class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :values, as: 'values'
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
           property :value, as: 'value'
           property :sys, as: 'sys'
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
+          property :iam, as: 'iam'
+          collection :values, as: 'values'
+          property :op, as: 'op'
+          property :svc, as: 'svc'
         end
       end
       
@@ -211,8 +249,8 @@ module Google
       class AuditLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_type, as: 'logType'
           collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
       
@@ -234,50 +272,12 @@ module Google
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::SourcerepoV1::CloudAuditOptions, decorator: Google::Apis::SourcerepoV1::CloudAuditOptions::Representation
+      
           property :counter, as: 'counter', class: Google::Apis::SourcerepoV1::CounterOptions, decorator: Google::Apis::SourcerepoV1::CounterOptions::Representation
       
           property :data_access, as: 'dataAccess', class: Google::Apis::SourcerepoV1::DataAccessOptions, decorator: Google::Apis::SourcerepoV1::DataAccessOptions::Representation
       
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::SourcerepoV1::CloudAuditOptions, decorator: Google::Apis::SourcerepoV1::CloudAuditOptions::Representation
-      
-        end
-      end
-      
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::SourcerepoV1::Rule, decorator: Google::Apis::SourcerepoV1::Rule::Representation
-      
-          property :version, as: 'version'
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SourcerepoV1::AuditConfig, decorator: Google::Apis::SourcerepoV1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::SourcerepoV1::Binding, decorator: Google::Apis::SourcerepoV1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::SourcerepoV1::AuditLogConfig, decorator: Google::Apis::SourcerepoV1::AuditLogConfig::Representation
-      
-          collection :exempted_members, as: 'exemptedMembers'
-          property :service, as: 'service'
         end
       end
     end

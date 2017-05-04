@@ -79,12 +79,12 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          hash :response, as: 'response'
           property :name, as: 'name'
           property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
       
           hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-          hash :response, as: 'response'
         end
       end
       
