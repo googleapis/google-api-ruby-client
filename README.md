@@ -5,6 +5,10 @@
 This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible
 changes when necessary.
 
+## Google Cloud Platform APIs
+
+If you're working with Google Cloud Platform APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for Ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby) instead. These are the new and idiomatic Ruby libraries targeted specifically at Google Cloud Platform Services.
+
 ## Migrating from 0.8.x
 
 See [MIGRATING](MIGRATING.md) for additional details on how to migrate to the latest version.
