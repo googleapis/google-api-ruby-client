@@ -7,7 +7,9 @@ changes when necessary.
 
 ## Google Cloud Platform APIs
 
-If you're working with Google Cloud Platform APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for Ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby) instead. These are the new and idiomatic Ruby libraries targeted specifically at Google Cloud Platform Services.
+If you're working with Google Cloud Platform APIs such as Datastore, Cloud Storage or Pub/Sub, consider using [gcloud](https://github.com/GoogleCloudPlatform/google-cloud-ruby), an idiomatic Ruby client for Google Cloud Platform services.
+
+You can find the list of Google Cloud Platform APIs supported by gcloud in the [gcloud docs](https://googlecloudplatform.github.io/gcloud-ruby/#/docs/google-cloud).
 
 ## Migrating from 0.8.x
 
