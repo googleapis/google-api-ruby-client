@@ -622,9 +622,9 @@ module Google
         #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone for this request.
-        # @param [String] autoscaler
-        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler to patch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -646,7 +646,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeV1::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -905,7 +905,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
-        #   Name of the BackendBucket resource to update.
+        #   Name of the BackendBucket resource to patch.
         # @param [Google::Apis::ComputeV1::BackendBucket] backend_bucket_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1298,14 +1298,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified BackendService resource with the data included in the
+        # Patches the specified BackendService resource with the data included in the
         # request. There are several restrictions and guidelines to keep in mind when
         # updating a backend service. Read  Restrictions and Guidelines for more
         # information. This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
-        #   Name of the BackendService resource to update.
+        #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2157,7 +2157,9 @@ module Google
         end
         
         # Updates the specified firewall rule with the data included in the request.
-        # This method supports patch semantics.
+        # Using PUT method, can only update following fields of firewall rule: allowed,
+        # description, sourceRanges, sourceTags, targetTags. This method supports patch
+        # semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -2199,6 +2201,8 @@ module Google
         end
         
         # Updates the specified firewall rule with the data included in the request.
+        # Using PUT method, can only update following fields of firewall rule: allowed,
+        # description, sourceRanges, sourceTags, targetTags.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -2759,7 +2763,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified ForwardingRule resource.
+        # Deletes the specified GlobalForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -2797,7 +2801,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified ForwardingRule resource. Get a list of available
+        # Returns the specified GlobalForwardingRule resource. Get a list of available
         # forwarding rules by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -2836,8 +2840,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a ForwardingRule resource in the specified project and region using
-        # the data included in the request.
+        # Creates a GlobalForwardingRule resource in the specified project using the
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_object
@@ -2875,7 +2879,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of ForwardingRule resources available to the specified
+        # Retrieves a list of GlobalForwardingRule resources available to the specified
         # project.
         # @param [String] project
         #   Project ID for this request.
@@ -2953,8 +2957,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target URL for forwarding rule. The new target should be of the same
-        # type as the old target.
+        # Changes target URL for the GlobalForwardingRule resource. The new target
+        # should be of the same type as the old target.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -3422,7 +3426,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
-        #   Name of the HealthCheck resource to update.
+        #   Name of the HealthCheck resource to patch.
         # @param [Google::Apis::ComputeV1::HealthCheck] health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3700,7 +3704,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
-        #   Name of the HttpHealthCheck resource to update.
+        #   Name of the HttpHealthCheck resource to patch.
         # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3978,7 +3982,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
-        #   Name of the HttpsHealthCheck resource to update.
+        #   Name of the HttpsHealthCheck resource to patch.
         # @param [Google::Apis::ComputeV1::HttpsHealthCheck] https_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4343,6 +4347,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4513,6 +4518,7 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4604,6 +4610,7 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
+        # A managed instance group can have up to 1000 VM instances per group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4784,6 +4791,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6194,7 +6202,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs a hard reset on the instance.
+        # Performs a reset on the instance. For more information, see Resetting an
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7506,9 +7515,9 @@ module Google
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
-        # @param [String] autoscaler
-        #   Name of the autoscaler to update.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler to patch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7530,7 +7539,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_autoscaler(project, region, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeV1::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -7849,7 +7858,7 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] backend_service
-        #   Name of the BackendService resource to update.
+        #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7942,6 +7951,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8034,6 +8044,7 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8124,6 +8135,7 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
+        # A regional managed instance group can contain up to 2000 instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -8302,6 +8314,7 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9338,14 +9351,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified Router resource with the data included in the request.
+        # Patches the specified Router resource with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] router
-        #   Name of the Router resource to update.
+        #   Name of the Router resource to patch.
         # @param [Google::Apis::ComputeV1::Router] router_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10338,6 +10351,51 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set whether VMs in this subnet can access Google services without assigning
+        # external IP addresses through Cloudpath.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] subnetwork
+        #   Name of the Subnetwork resource.
+        # @param [Google::Apis::ComputeV1::SubnetworksSetPrivateIpGoogleAccessRequest] subnetworks_set_private_ip_google_access_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_subnetwork_private_ip_google_access(project, region, subnetwork, subnetworks_set_private_ip_google_access_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess', options)
+          command.request_representation = Google::Apis::ComputeV1::SubnetworksSetPrivateIpGoogleAccessRequest::Representation
+          command.request_object = subnetworks_set_private_ip_google_access_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['subnetwork'] = subnetwork unless subnetwork.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12523,12 +12581,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified UrlMap resource with the data included in the request.
+        # Patches the specified UrlMap resource with the data included in the request.
         # This method supports patch semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
-        #   Name of the UrlMap resource to update.
+        #   Name of the UrlMap resource to patch.
         # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -22,34 +22,6 @@ module Google
   module Apis
     module AcceleratedmobilepageurlV1
       
-      # Batch AMP URL response.
-      class BatchGetAmpUrlsResponse
-        include Google::Apis::Core::Hashable
-      
-        # For each URL in BatchAmpUrlsRequest, the URL response. The response might
-        # not be in the same order as URLs in the batch request.
-        # If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
-        # only once.
-        # Corresponds to the JSON property `ampUrls`
-        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrl>]
-        attr_accessor :amp_urls
-      
-        # The errors for requested URLs that have no AMP URL.
-        # Corresponds to the JSON property `urlErrors`
-        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError>]
-        attr_accessor :url_errors
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amp_urls = args[:amp_urls] if args.key?(:amp_urls)
-          @url_errors = args[:url_errors] if args.key?(:url_errors)
-        end
-      end
-      
       # AMP URL response for a requested URL.
       class AmpUrl
         include Google::Apis::Core::Hashable
@@ -137,6 +109,34 @@ module Google
         def update!(**args)
           @urls = args[:urls] if args.key?(:urls)
           @lookup_strategy = args[:lookup_strategy] if args.key?(:lookup_strategy)
+        end
+      end
+      
+      # Batch AMP URL response.
+      class BatchGetAmpUrlsResponse
+        include Google::Apis::Core::Hashable
+      
+        # For each URL in BatchAmpUrlsRequest, the URL response. The response might
+        # not be in the same order as URLs in the batch request.
+        # If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
+        # only once.
+        # Corresponds to the JSON property `ampUrls`
+        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrl>]
+        attr_accessor :amp_urls
+      
+        # The errors for requested URLs that have no AMP URL.
+        # Corresponds to the JSON property `urlErrors`
+        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError>]
+        attr_accessor :url_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amp_urls = args[:amp_urls] if args.key?(:amp_urls)
+          @url_errors = args[:url_errors] if args.key?(:url_errors)
         end
       end
     end

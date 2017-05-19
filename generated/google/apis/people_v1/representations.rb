@@ -22,13 +22,31 @@ module Google
   module Apis
     module PeopleV1
       
-      class ProfileMetadata
+      class ContactGroupMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Url
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersonMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProfileMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,19 +58,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Url
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoverPhoto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Interest
+      class ImClient
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImClient
+      class Interest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Tagline
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Date
+      class Tagline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RelationshipInterest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,12 +185,6 @@ module Google
       end
       
       class PersonResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RelationshipInterest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,13 +214,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Photo
+      class PhoneNumber
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PhoneNumber
+      class Photo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,40 +238,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Residence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Address
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContactGroupMembership
+      class Residence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactGroupMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_group_id, as: 'contactGroupId'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
       end
       
       class PersonMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_type, as: 'objectType'
+          collection :linked_people_resource_names, as: 'linkedPeopleResourceNames'
+          collection :sources, as: 'sources', class: Google::Apis::PeopleV1::Source, decorator: Google::Apis::PeopleV1::Source::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :previous_resource_names, as: 'previousResourceNames'
+          property :deleted, as: 'deleted'
+        end
       end
       
       class Event
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :type, as: 'type'
+          property :date, as: 'date', class: Google::Apis::PeopleV1::Date, decorator: Google::Apis::PeopleV1::Date::Representation
+      
+        end
       end
       
       class ProfileMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :object_type, as: 'objectType'
+        end
+      end
+      
+      class Gender
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_value, as: 'formattedValue'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :value, as: 'value'
         end
       end
       
@@ -262,16 +318,6 @@ module Google
         end
       end
       
-      class Gender
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :formatted_value, as: 'formattedValue'
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-        end
-      end
-      
       class CoverPhoto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -282,25 +328,25 @@ module Google
         end
       end
       
+      class ImClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protocol, as: 'protocol'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
+          property :username, as: 'username'
+          property :formatted_protocol, as: 'formattedProtocol'
+          property :formatted_type, as: 'formattedType'
+        end
+      end
+      
       class Interest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :value, as: 'value'
-        end
-      end
-      
-      class ImClient
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :formatted_protocol, as: 'formattedProtocol'
-          property :formatted_type, as: 'formattedType'
-          property :protocol, as: 'protocol'
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-          property :type, as: 'type'
-          property :username, as: 'username'
         end
       end
       
@@ -329,9 +375,9 @@ module Google
       class Skill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
+          property :value, as: 'value'
         end
       end
       
@@ -345,11 +391,11 @@ module Google
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
           property :contact_group_membership, as: 'contactGroupMembership', class: Google::Apis::PeopleV1::ContactGroupMembership, decorator: Google::Apis::PeopleV1::ContactGroupMembership::Representation
       
           property :domain_membership, as: 'domainMembership', class: Google::Apis::PeopleV1::DomainMembership, decorator: Google::Apis::PeopleV1::DomainMembership::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
         end
       end
@@ -364,15 +410,6 @@ module Google
         end
       end
       
-      class Tagline
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-        end
-      end
-      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -382,11 +419,18 @@ module Google
         end
       end
       
+      class Tagline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
       class Name
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :honorific_suffix, as: 'honorificSuffix'
           property :honorific_prefix, as: 'honorificPrefix'
           property :phonetic_honorific_suffix, as: 'phoneticHonorificSuffix'
           property :given_name, as: 'givenName'
@@ -395,36 +439,37 @@ module Google
           property :phonetic_given_name, as: 'phoneticGivenName'
           property :phonetic_family_name, as: 'phoneticFamilyName'
           property :family_name, as: 'familyName'
+          property :phonetic_middle_name, as: 'phoneticMiddleName'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :phonetic_middle_name, as: 'phoneticMiddleName'
           property :phonetic_full_name, as: 'phoneticFullName'
           property :display_name_last_first, as: 'displayNameLastFirst'
+          property :display_name, as: 'displayName'
+          property :honorific_suffix, as: 'honorificSuffix'
         end
       end
       
       class BraggingRights
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :value, as: 'value'
         end
       end
       
       class Locale
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :value, as: 'value'
         end
       end
       
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain, as: 'domain'
           property :department, as: 'department'
           property :phonetic_name, as: 'phoneticName'
           property :type, as: 'type'
@@ -435,22 +480,23 @@ module Google
           property :name, as: 'name'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :location, as: 'location'
           property :title, as: 'title'
+          property :location, as: 'location'
           property :current, as: 'current'
           property :start_date, as: 'startDate', class: Google::Apis::PeopleV1::Date, decorator: Google::Apis::PeopleV1::Date::Representation
       
           property :formatted_type, as: 'formattedType'
+          property :domain, as: 'domain'
         end
       end
       
       class Biography
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
           property :content_type, as: 'contentType'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :value, as: 'value'
         end
       end
       
@@ -466,9 +512,19 @@ module Google
       class FieldMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source', class: Google::Apis::PeopleV1::Source, decorator: Google::Apis::PeopleV1::Source::Representation
+      
           property :verified, as: 'verified'
           property :primary, as: 'primary'
-          property :source, as: 'source', class: Google::Apis::PeopleV1::Source, decorator: Google::Apis::PeopleV1::Source::Representation
+        end
+      end
+      
+      class RelationshipInterest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+          property :formatted_value, as: 'formattedValue'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
         end
       end
@@ -487,20 +543,12 @@ module Google
       class PersonResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_resource_name, as: 'requestedResourceName'
           property :person, as: 'person', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
+          property :status, as: 'status', class: Google::Apis::PeopleV1::Status, decorator: Google::Apis::PeopleV1::Status::Representation
+      
           property :http_status_code, as: 'httpStatusCode'
-          property :requested_resource_name, as: 'requestedResourceName'
-        end
-      end
-      
-      class RelationshipInterest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-          property :value, as: 'value'
-          property :formatted_value, as: 'formattedValue'
         end
       end
       
@@ -527,6 +575,8 @@ module Google
       class Person
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cover_photos, as: 'coverPhotos', class: Google::Apis::PeopleV1::CoverPhoto, decorator: Google::Apis::PeopleV1::CoverPhoto::Representation
+      
           collection :im_clients, as: 'imClients', class: Google::Apis::PeopleV1::ImClient, decorator: Google::Apis::PeopleV1::ImClient::Representation
       
           collection :birthdays, as: 'birthdays', class: Google::Apis::PeopleV1::Birthday, decorator: Google::Apis::PeopleV1::Birthday::Representation
@@ -558,9 +608,9 @@ module Google
       
           collection :genders, as: 'genders', class: Google::Apis::PeopleV1::Gender, decorator: Google::Apis::PeopleV1::Gender::Representation
       
+          property :resource_name, as: 'resourceName'
           collection :interests, as: 'interests', class: Google::Apis::PeopleV1::Interest, decorator: Google::Apis::PeopleV1::Interest::Representation
       
-          property :resource_name, as: 'resourceName'
           collection :biographies, as: 'biographies', class: Google::Apis::PeopleV1::Biography, decorator: Google::Apis::PeopleV1::Biography::Representation
       
           collection :skills, as: 'skills', class: Google::Apis::PeopleV1::Skill, decorator: Google::Apis::PeopleV1::Skill::Representation
@@ -582,8 +632,6 @@ module Google
       
           collection :phone_numbers, as: 'phoneNumbers', class: Google::Apis::PeopleV1::PhoneNumber, decorator: Google::Apis::PeopleV1::PhoneNumber::Representation
       
-          collection :cover_photos, as: 'coverPhotos', class: Google::Apis::PeopleV1::CoverPhoto, decorator: Google::Apis::PeopleV1::CoverPhoto::Representation
-      
         end
       end
       
@@ -595,24 +643,24 @@ module Google
         end
       end
       
-      class Photo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-          property :url, as: 'url'
-        end
-      end
-      
       class PhoneNumber
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :canonical_form, as: 'canonicalForm'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :type, as: 'type'
           property :value, as: 'value'
-          property :formatted_type, as: 'formattedType'
-          property :canonical_form, as: 'canonicalForm'
+        end
+      end
+      
+      class Photo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
         end
       end
       
@@ -623,6 +671,7 @@ module Google
           collection :connections, as: 'connections', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
           property :next_sync_token, as: 'nextSyncToken'
+          property :total_items, as: 'totalItems'
           property :total_people, as: 'totalPeople'
         end
       end
@@ -638,20 +687,9 @@ module Google
         end
       end
       
-      class Residence
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
-      
-          property :current, as: 'current'
-          property :value, as: 'value'
-        end
-      end
-      
       class Address
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :country_code, as: 'countryCode'
           property :formatted_type, as: 'formattedType'
           property :city, as: 'city'
           property :formatted_value, as: 'formattedValue'
@@ -664,37 +702,17 @@ module Google
           property :street_address, as: 'streetAddress'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
+          property :country_code, as: 'countryCode'
         end
       end
       
-      class ContactGroupMembership
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contact_group_id, as: 'contactGroupId'
-        end
-      end
-      
-      class PersonMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :deleted, as: 'deleted'
-          property :object_type, as: 'objectType'
-          collection :linked_people_resource_names, as: 'linkedPeopleResourceNames'
-          collection :sources, as: 'sources', class: Google::Apis::PeopleV1::Source, decorator: Google::Apis::PeopleV1::Source::Representation
-      
-          collection :previous_resource_names, as: 'previousResourceNames'
-        end
-      end
-      
-      class Event
+      class Residence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
-          property :type, as: 'type'
-          property :date, as: 'date', class: Google::Apis::PeopleV1::Date, decorator: Google::Apis::PeopleV1::Date::Representation
-      
-          property :formatted_type, as: 'formattedType'
+          property :current, as: 'current'
+          property :value, as: 'value'
         end
       end
     end

@@ -1748,6 +1748,11 @@ module Google
         # @return [Float]
         attr_accessor :password_updated_at
       
+        # User's phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
         # The URL of the user profile photo.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
@@ -1800,6 +1805,7 @@ module Google
           @local_id = args[:local_id] if args.key?(:local_id)
           @password_hash = args[:password_hash] if args.key?(:password_hash)
           @password_updated_at = args[:password_updated_at] if args.key?(:password_updated_at)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider_user_info = args[:provider_user_info] if args.key?(:provider_user_info)
           @raw_password = args[:raw_password] if args.key?(:raw_password)
@@ -1827,6 +1833,11 @@ module Google
           # Corresponds to the JSON property `federatedId`
           # @return [String]
           attr_accessor :federated_id
+        
+          # User's phone number.
+          # Corresponds to the JSON property `phoneNumber`
+          # @return [String]
+          attr_accessor :phone_number
         
           # The user's photo url at the IDP.
           # Corresponds to the JSON property `photoUrl`
@@ -1858,6 +1869,7 @@ module Google
             @display_name = args[:display_name] if args.key?(:display_name)
             @email = args[:email] if args.key?(:email)
             @federated_id = args[:federated_id] if args.key?(:federated_id)
+            @phone_number = args[:phone_number] if args.key?(:phone_number)
             @photo_url = args[:photo_url] if args.key?(:photo_url)
             @provider_id = args[:provider_id] if args.key?(:provider_id)
             @raw_id = args[:raw_id] if args.key?(:raw_id)

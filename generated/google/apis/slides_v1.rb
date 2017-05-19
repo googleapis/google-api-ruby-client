@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/slides/
     module SlidesV1
       VERSION = 'V1'
-      REVISION = '20170328'
+      REVISION = '20170427'
 
       # View and manage your Google Slides presentations
       AUTH_PRESENTATIONS = 'https://www.googleapis.com/auth/presentations'

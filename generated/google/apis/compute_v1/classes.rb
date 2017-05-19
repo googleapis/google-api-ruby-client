@@ -33,7 +33,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of this access configuration.
+        # The name of this access configuration. The default and recommended name is
+        # External NAT but you can use any arbitrary string you would like. For example,
+        # My external IP or Network Access.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -69,8 +71,7 @@ module Google
       class Address
         include Google::Apis::Core::Hashable
       
-        # The static external IP address represented by this resource. Only IPv4 is
-        # supported.
+        # The static external IP address represented by this resource.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -2654,7 +2655,7 @@ module Google
       
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, portRange] tuple.
+      # IPAddress, IPProtocol, ports] tuple.
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -2736,19 +2737,27 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # This field is used along with the target field for TargetHttpProxy,
+        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
+        # TargetInstance.
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
-        # This field is not used for internal load balancing.
+        # Some types of forwarding target have constraints on the acceptable ports:
+        # - TargetHttpProxy: 80, 8080
+        # - TargetHttpsProxy: 443
+        # - TargetSslProxy: 443
+        # - TargetVpnGateway: 500, 4500
+        # -
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # This field is not used for external load balancing.
+        # This field is used along with the backend_service field for internal load
+        # balancing.
         # When the load balancing scheme is INTERNAL, a single port or a comma separated
         # list of ports can be configured. Only packets addressed to these ports will be
-        # forwarded to the backends configured with this forwarding rule. If the port
-        # list is not provided then all ports are allowed to pass through.
+        # forwarded to the backends configured with this forwarding rule.
         # You may specify a maximum of up to 5 ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
@@ -2779,8 +2788,7 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For example, TargetHttpProxy requires HTTP traffic, and
-        # TargetHttpsProxy requires HTTPS traffic.
+        # object.
         # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -4641,7 +4649,8 @@ module Google
       class InstanceGroupManagersAbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to abandon from the managed instance group.
+        # The URLs of one or more instances to abandon. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -4660,8 +4669,8 @@ module Google
       class InstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The list of instances to delete from this managed instance group. Specify one
-        # or more instance URLs.
+        # The URLs of one or more instances to delete. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -4699,7 +4708,8 @@ module Google
       class InstanceGroupManagersRecreateInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to recreate.
+        # The URLs of one or more instances to recreate. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -7265,7 +7275,8 @@ module Google
       class RegionInstanceGroupManagersAbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The names of one or more instances to abandon.
+        # The URLs of one or more instances to abandon. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -7284,7 +7295,8 @@ module Google
       class RegionInstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The names of one or more instances to delete.
+        # The URLs of one or more instances to delete. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -7322,7 +7334,8 @@ module Google
       class RegionInstanceGroupManagersRecreateRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to recreate.
+        # The URLs of one or more instances to recreate. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -8116,6 +8129,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Route>]
         attr_accessor :best_routes
       
+        # Best routes learned by this router.
+        # Corresponds to the JSON property `bestRoutesForRouter`
+        # @return [Array<Google::Apis::ComputeV1::Route>]
+        attr_accessor :best_routes_for_router
+      
         # 
         # Corresponds to the JSON property `bgpPeerStatus`
         # @return [Array<Google::Apis::ComputeV1::RouterStatusBgpPeerStatus>]
@@ -8133,6 +8151,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @best_routes = args[:best_routes] if args.key?(:best_routes)
+          @best_routes_for_router = args[:best_routes_for_router] if args.key?(:best_routes_for_router)
           @bgp_peer_status = args[:bgp_peer_status] if args.key?(:bgp_peer_status)
           @network = args[:network] if args.key?(:network)
         end
@@ -8406,6 +8425,8 @@ module Google
         # terminated by Compute Engine (not terminated by a user). You can only set the
         # automatic restart option for standard instances. Preemptible instances cannot
         # be automatically restarted.
+        # By default, this is set to true so an instance is automatically restarted if
+        # it is terminated by Compute Engine.
         # Corresponds to the JSON property `automaticRestart`
         # @return [Boolean]
         attr_accessor :automatic_restart
@@ -8419,7 +8440,9 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
-        # Whether the instance is preemptible.
+        # Defines whether the instance is preemptible. This can only be set during
+        # instance creation, it cannot be set or changed after the instance has been
+        # created.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
@@ -8858,6 +8881,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Whether the VMs in this subnet can access Google services without assigned
+        # external IP addresses.
+        # Corresponds to the JSON property `privateIpGoogleAccess`
+        # @return [Boolean]
+        attr_accessor :private_ip_google_access
+        alias_method :private_ip_google_access?, :private_ip_google_access
+      
         # URL of the region where the Subnetwork resides.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -8882,6 +8912,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
@@ -9093,6 +9124,26 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SubnetworksSetPrivateIpGoogleAccessRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `privateIpGoogleAccess`
+        # @return [Boolean]
+        attr_accessor :private_ip_google_access
+        alias_method :private_ip_google_access?, :private_ip_google_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
         end
       end
       

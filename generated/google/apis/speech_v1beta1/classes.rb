@@ -27,6 +27,14 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
         # `google.protobuf.Empty`.  If the original method is standard
@@ -97,25 +105,17 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
-          @done = args[:done] if args.key?(:done)
         end
       end
       
@@ -216,28 +216,6 @@ module Google
         end
       end
       
-      # The only message returned to the client by `SyncRecognize`. method. It
-      # contains the result as zero or more sequential `SpeechRecognitionResult`
-      # messages.
-      class SyncRecognizeResponse
-        include Google::Apis::Core::Hashable
-      
-        # *Output-only* Sequential list of transcription results corresponding to
-        # sequential portions of audio.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @results = args[:results] if args.key?(:results)
-        end
-      end
-      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -310,6 +288,28 @@ module Google
         end
       end
       
+      # The only message returned to the client by `SyncRecognize`. method. It
+      # contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages.
+      class SyncRecognizeResponse
+        include Google::Apis::Core::Hashable
+      
+        # *Output-only* Sequential list of transcription results corresponding to
+        # sequential portions of audio.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -326,56 +326,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Provides "hints" to the speech recognizer to favor specific words and phrases
-      # in the results.
-      class SpeechContext
-        include Google::Apis::Core::Hashable
-      
-        # *Optional* A list of strings containing words and phrases "hints" so that
-        # the speech recognition is more likely to recognize them. This can be used
-        # to improve the accuracy for specific words and phrases, for example, if
-        # specific commands are typically spoken by the user. This can also be used
-        # to add additional words to the vocabulary of the recognizer. See
-        # [usage limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `phrases`
-        # @return [Array<String>]
-        attr_accessor :phrases
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
       
@@ -410,6 +360,56 @@ module Google
         end
       end
       
+      # Provides "hints" to the speech recognizer to favor specific words and phrases
+      # in the results.
+      class SpeechContext
+        include Google::Apis::Core::Hashable
+      
+        # *Optional* A list of strings containing words and phrases "hints" so that
+        # the speech recognition is more likely to recognize them. This can be used
+        # to improve the accuracy for specific words and phrases, for example, if
+        # specific commands are typically spoken by the user. This can also be used
+        # to add additional words to the vocabulary of the recognizer. See
+        # [usage limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `phrases`
+        # @return [Array<String>]
+        attr_accessor :phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phrases = args[:phrases] if args.key?(:phrases)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # A speech recognition result corresponding to a portion of the audio.
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
@@ -427,42 +427,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
-        end
-      end
-      
-      # Contains audio data in the encoding specified in the `RecognitionConfig`.
-      # Either `content` or `uri` must be supplied. Supplying both or neither
-      # returns google.rpc.Code.INVALID_ARGUMENT. See
-      # [audio limits](https://cloud.google.com/speech/limits#content).
-      class RecognitionAudio
-        include Google::Apis::Core::Hashable
-      
-        # URI that points to a file that contains audio data bytes as specified in
-        # `RecognitionConfig`. Currently, only Google Cloud Storage URIs are
-        # supported, which must be specified in the following format:
-        # `gs://bucket_name/object_name` (other URI formats return
-        # google.rpc.Code.INVALID_ARGUMENT). For more information, see
-        # [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        # The audio data bytes encoded as specified in
-        # `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
-        # pure binary representation, whereas JSON representations use base64.
-        # Corresponds to the JSON property `content`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
-          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -492,6 +456,42 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @audio = args[:audio] if args.key?(:audio)
+        end
+      end
+      
+      # Contains audio data in the encoding specified in the `RecognitionConfig`.
+      # Either `content` or `uri` must be supplied. Supplying both or neither
+      # returns google.rpc.Code.INVALID_ARGUMENT. See
+      # [audio limits](https://cloud.google.com/speech/limits#content).
+      class RecognitionAudio
+        include Google::Apis::Core::Hashable
+      
+        # The audio data bytes encoded as specified in
+        # `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+        # pure binary representation, whereas JSON representations use base64.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # URI that points to a file that contains audio data bytes as specified in
+        # `RecognitionConfig`. Currently, only Google Cloud Storage URIs are
+        # supported, which must be specified in the following format:
+        # `gs://bucket_name/object_name` (other URI formats return
+        # google.rpc.Code.INVALID_ARGUMENT). For more information, see
+        # [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
     end

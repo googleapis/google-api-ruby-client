@@ -22,75 +22,6 @@ module Google
   module Apis
     module CloudtraceV1
       
-      # A span represents a single timed event within a trace. Spans can be nested
-      # and form a trace tree. Often, a trace contains a root span that describes the
-      # end-to-end latency of an operation and, optionally, one or more subspans for
-      # its suboperations. Spans do not need to be contiguous. There may be gaps
-      # between spans in a trace.
-      class TraceSpan
-        include Google::Apis::Core::Hashable
-      
-        # Identifier for the span. Must be a 64-bit integer other than 0 and
-        # unique within a trace.
-        # Corresponds to the JSON property `spanId`
-        # @return [Fixnum]
-        attr_accessor :span_id
-      
-        # ID of the parent span, if any. Optional.
-        # Corresponds to the JSON property `parentSpanId`
-        # @return [Fixnum]
-        attr_accessor :parent_span_id
-      
-        # End time of the span in nanoseconds from the UNIX epoch.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Start time of the span in nanoseconds from the UNIX epoch.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Distinguishes between spans generated in a particular context. For example,
-        # two spans with the same name may be distinguished using `RPC_CLIENT`
-        # and `RPC_SERVER` to identify queueing latency associated with the span.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Collection of labels associated with the span. Label keys must be less than
-        # 128 bytes. Label values must be less than 16 kilobytes.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Name of the span. Must be less than 128 bytes. The span name is sanitized
-        # and displayed in the Stackdriver Trace tool in the
-        # `% dynamic print site_values.console_name %`.
-        # The name may be a method name or some other per-call site name.
-        # For the same executable and the same call point, a best practice is
-        # to use a consistent name, which makes it easier to correlate
-        # cross-trace spans.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @span_id = args[:span_id] if args.key?(:span_id)
-          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @kind = args[:kind] if args.key?(:kind)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # The response message for the `ListTraces` method.
       class ListTracesResponse
         include Google::Apis::Core::Hashable
@@ -187,6 +118,102 @@ module Google
         # Update properties of this object
         def update!(**args)
           @traces = args[:traces] if args.key?(:traces)
+        end
+      end
+      
+      # A span represents a single timed event within a trace. Spans can be nested
+      # and form a trace tree. Often, a trace contains a root span that describes the
+      # end-to-end latency of an operation and, optionally, one or more subspans for
+      # its suboperations. Spans do not need to be contiguous. There may be gaps
+      # between spans in a trace.
+      class TraceSpan
+        include Google::Apis::Core::Hashable
+      
+        # Collection of labels associated with the span. Label keys must be less than
+        # 128 bytes. Label values must be less than 16 kilobytes (10MB for
+        # `/stacktrace` values).
+        # Some predefined label keys exist, or you may create your own. When creating
+        # your own, we recommend the following formats:
+        # * `/category/product/key` for agents of well-known products (e.g.
+        # `/db/mongodb/read_size`).
+        # * `short_host/path/key` for domain-specific keys (e.g.
+        # `foo.com/myproduct/bar`)
+        # Predefined labels include:
+        # *   `/agent`
+        # *   `/component`
+        # *   `/error/message`
+        # *   `/error/name`
+        # *   `/http/client_city`
+        # *   `/http/client_country`
+        # *   `/http/client_protocol`
+        # *   `/http/client_region`
+        # *   `/http/host`
+        # *   `/http/method`
+        # *   `/http/redirected_url`
+        # *   `/http/request/size`
+        # *   `/http/response/size`
+        # *   `/http/status_code`
+        # *   `/http/url`
+        # *   `/http/user_agent`
+        # *   `/pid`
+        # *   `/stacktrace`
+        # *   `/tid`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the span. Must be less than 128 bytes. The span name is sanitized
+        # and displayed in the Stackdriver Trace tool in the
+        # `% dynamic print site_values.console_name %`.
+        # The name may be a method name or some other per-call site name.
+        # For the same executable and the same call point, a best practice is
+        # to use a consistent name, which makes it easier to correlate
+        # cross-trace spans.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Identifier for the span. Must be a 64-bit integer other than 0 and
+        # unique within a trace.
+        # Corresponds to the JSON property `spanId`
+        # @return [Fixnum]
+        attr_accessor :span_id
+      
+        # ID of the parent span, if any. Optional.
+        # Corresponds to the JSON property `parentSpanId`
+        # @return [Fixnum]
+        attr_accessor :parent_span_id
+      
+        # End time of the span in nanoseconds from the UNIX epoch.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start time of the span in nanoseconds from the UNIX epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Distinguishes between spans generated in a particular context. For example,
+        # two spans with the same name may be distinguished using `RPC_CLIENT`
+        # and `RPC_SERVER` to identify queueing latency associated with the span.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @span_id = args[:span_id] if args.key?(:span_id)
+          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
     end

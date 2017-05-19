@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class ReportType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReportType
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,9 +83,13 @@ module Google
         end
       end
       
-      class Empty
+      class ReportType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :id, as: 'id'
+          property :system_managed, as: 'systemManaged'
+          property :deprecate_time, as: 'deprecateTime'
         end
       end
       
@@ -98,34 +102,30 @@ module Google
         end
       end
       
-      class ReportType
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :deprecate_time, as: 'deprecateTime'
-          property :name, as: 'name'
-          property :id, as: 'id'
-          property :system_managed, as: 'systemManaged'
         end
       end
       
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :jobs, as: 'jobs', class: Google::Apis::YoutubereportingV1::Job, decorator: Google::Apis::YoutubereportingV1::Job::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
+          property :report_type_id, as: 'reportTypeId'
+          property :name, as: 'name'
           property :system_managed, as: 'systemManaged'
           property :id, as: 'id'
-          property :create_time, as: 'createTime'
-          property :report_type_id, as: 'reportTypeId'
-          property :expire_time, as: 'expireTime'
-          property :name, as: 'name'
         end
       end
       

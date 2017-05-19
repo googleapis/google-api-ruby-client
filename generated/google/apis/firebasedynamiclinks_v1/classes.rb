@@ -22,141 +22,6 @@ module Google
   module Apis
     module FirebasedynamiclinksV1
       
-      # Dynamic Links warning messages.
-      class DynamicLinkWarning
-        include Google::Apis::Core::Hashable
-      
-        # The warning code.
-        # Corresponds to the JSON property `warningCode`
-        # @return [String]
-        attr_accessor :warning_code
-      
-        # The warning message to help developers improve their requests.
-        # Corresponds to the JSON property `warningMessage`
-        # @return [String]
-        attr_accessor :warning_message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warning_code = args[:warning_code] if args.key?(:warning_code)
-          @warning_message = args[:warning_message] if args.key?(:warning_message)
-        end
-      end
-      
-      # Android related attributes to the Dynamic Link.
-      class AndroidInfo
-        include Google::Apis::Core::Hashable
-      
-        # If specified, this overrides the ‘link’ parameter on Android.
-        # Corresponds to the JSON property `androidLink`
-        # @return [String]
-        attr_accessor :android_link
-      
-        # Link to open on Android if the app is not installed.
-        # Corresponds to the JSON property `androidFallbackLink`
-        # @return [String]
-        attr_accessor :android_fallback_link
-      
-        # Android package name of the app.
-        # Corresponds to the JSON property `androidPackageName`
-        # @return [String]
-        attr_accessor :android_package_name
-      
-        # Minimum version code for the Android app. If the installed app’s version
-        # code is lower, then the user is taken to the Play Store.
-        # Corresponds to the JSON property `androidMinPackageVersionCode`
-        # @return [String]
-        attr_accessor :android_min_package_version_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @android_link = args[:android_link] if args.key?(:android_link)
-          @android_fallback_link = args[:android_fallback_link] if args.key?(:android_fallback_link)
-          @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
-          @android_min_package_version_code = args[:android_min_package_version_code] if args.key?(:android_min_package_version_code)
-        end
-      end
-      
-      # Information of navigation behavior.
-      class NavigationInfo
-        include Google::Apis::Core::Hashable
-      
-        # If this option is on, FDL click will be forced to redirect rather than
-        # show an interstitial page.
-        # Corresponds to the JSON property `enableForcedRedirect`
-        # @return [Boolean]
-        attr_accessor :enable_forced_redirect
-        alias_method :enable_forced_redirect?, :enable_forced_redirect
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable_forced_redirect = args[:enable_forced_redirect] if args.key?(:enable_forced_redirect)
-        end
-      end
-      
-      # iOS related attributes to the Dynamic Link..
-      class IosInfo
-        include Google::Apis::Core::Hashable
-      
-        # iOS App Store ID.
-        # Corresponds to the JSON property `iosAppStoreId`
-        # @return [String]
-        attr_accessor :ios_app_store_id
-      
-        # If specified, this overrides the ios_fallback_link value on iPads.
-        # Corresponds to the JSON property `iosIpadFallbackLink`
-        # @return [String]
-        attr_accessor :ios_ipad_fallback_link
-      
-        # iPad bundle ID of the app.
-        # Corresponds to the JSON property `iosIpadBundleId`
-        # @return [String]
-        attr_accessor :ios_ipad_bundle_id
-      
-        # Custom (destination) scheme to use for iOS. By default, we’ll use the
-        # bundle ID as the custom scheme. Developer can override this behavior using
-        # this param.
-        # Corresponds to the JSON property `iosCustomScheme`
-        # @return [String]
-        attr_accessor :ios_custom_scheme
-      
-        # iOS bundle ID of the app.
-        # Corresponds to the JSON property `iosBundleId`
-        # @return [String]
-        attr_accessor :ios_bundle_id
-      
-        # Link to open on iOS if the app is not installed.
-        # Corresponds to the JSON property `iosFallbackLink`
-        # @return [String]
-        attr_accessor :ios_fallback_link
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ios_app_store_id = args[:ios_app_store_id] if args.key?(:ios_app_store_id)
-          @ios_ipad_fallback_link = args[:ios_ipad_fallback_link] if args.key?(:ios_ipad_fallback_link)
-          @ios_ipad_bundle_id = args[:ios_ipad_bundle_id] if args.key?(:ios_ipad_bundle_id)
-          @ios_custom_scheme = args[:ios_custom_scheme] if args.key?(:ios_custom_scheme)
-          @ios_bundle_id = args[:ios_bundle_id] if args.key?(:ios_bundle_id)
-          @ios_fallback_link = args[:ios_fallback_link] if args.key?(:ios_fallback_link)
-        end
-      end
-      
       # Tracking parameters supported by Dynamic Link.
       class AnalyticsInfo
         include Google::Apis::Core::Hashable
@@ -188,6 +53,11 @@ module Google
       class CreateShortDynamicLinkRequest
         include Google::Apis::Core::Hashable
       
+        # Short Dynamic Link suffix.
+        # Corresponds to the JSON property `suffix`
+        # @return [Google::Apis::FirebasedynamiclinksV1::Suffix]
+        attr_accessor :suffix
+      
         # Information about a Dynamic Link.
         # Corresponds to the JSON property `dynamicLinkInfo`
         # @return [Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo]
@@ -202,20 +72,15 @@ module Google
         # @return [String]
         attr_accessor :long_dynamic_link
       
-        # Short Dynamic Link suffix.
-        # Corresponds to the JSON property `suffix`
-        # @return [Google::Apis::FirebasedynamiclinksV1::Suffix]
-        attr_accessor :suffix
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @suffix = args[:suffix] if args.key?(:suffix)
           @dynamic_link_info = args[:dynamic_link_info] if args.key?(:dynamic_link_info)
           @long_dynamic_link = args[:long_dynamic_link] if args.key?(:long_dynamic_link)
-          @suffix = args[:suffix] if args.key?(:suffix)
         end
       end
       
@@ -330,11 +195,6 @@ module Google
       class DynamicLinkInfo
         include Google::Apis::Core::Hashable
       
-        # Tracking parameters supported by Dynamic Link.
-        # Corresponds to the JSON property `analyticsInfo`
-        # @return [Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo]
-        attr_accessor :analytics_info
-      
         # Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
         # [Learn more](https://firebase.google.com/docs/dynamic-links/android#set-up-
         # firebase-and-the-dynamic-links-sdk)
@@ -375,30 +235,30 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::NavigationInfo]
         attr_accessor :navigation_info
       
+        # Tracking parameters supported by Dynamic Link.
+        # Corresponds to the JSON property `analyticsInfo`
+        # @return [Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo]
+        attr_accessor :analytics_info
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @analytics_info = args[:analytics_info] if args.key?(:analytics_info)
           @dynamic_link_domain = args[:dynamic_link_domain] if args.key?(:dynamic_link_domain)
           @link = args[:link] if args.key?(:link)
           @ios_info = args[:ios_info] if args.key?(:ios_info)
           @social_meta_tag_info = args[:social_meta_tag_info] if args.key?(:social_meta_tag_info)
           @android_info = args[:android_info] if args.key?(:android_info)
           @navigation_info = args[:navigation_info] if args.key?(:navigation_info)
+          @analytics_info = args[:analytics_info] if args.key?(:analytics_info)
         end
       end
       
       # Parameters for iTunes Connect App Analytics.
       class ITunesConnectAnalytics
         include Google::Apis::Core::Hashable
-      
-        # Affiliate token used to create affiliate-coded links.
-        # Corresponds to the JSON property `at`
-        # @return [String]
-        attr_accessor :at
       
         # Campaign text that developers can optionally add to any link in order to
         # track sales from a specific marketing campaign.
@@ -417,16 +277,21 @@ module Google
         # @return [String]
         attr_accessor :pt
       
+        # Affiliate token used to create affiliate-coded links.
+        # Corresponds to the JSON property `at`
+        # @return [String]
+        attr_accessor :at
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @at = args[:at] if args.key?(:at)
           @ct = args[:ct] if args.key?(:ct)
           @mt = args[:mt] if args.key?(:mt)
           @pt = args[:pt] if args.key?(:pt)
+          @at = args[:at] if args.key?(:at)
         end
       end
       
@@ -434,6 +299,11 @@ module Google
       # Used to set meta tag data for link previews on social sites.
       class SocialMetaTagInfo
         include Google::Apis::Core::Hashable
+      
+        # A short description of the link. Optional.
+        # Corresponds to the JSON property `socialDescription`
+        # @return [String]
+        attr_accessor :social_description
       
         # Title to be displayed. Optional.
         # Corresponds to the JSON property `socialTitle`
@@ -445,10 +315,42 @@ module Google
         # @return [String]
         attr_accessor :social_image_link
       
-        # A short description of the link. Optional.
-        # Corresponds to the JSON property `socialDescription`
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @social_description = args[:social_description] if args.key?(:social_description)
+          @social_title = args[:social_title] if args.key?(:social_title)
+          @social_image_link = args[:social_image_link] if args.key?(:social_image_link)
+        end
+      end
+      
+      # Android related attributes to the Dynamic Link.
+      class AndroidInfo
+        include Google::Apis::Core::Hashable
+      
+        # If specified, this overrides the ‘link’ parameter on Android.
+        # Corresponds to the JSON property `androidLink`
         # @return [String]
-        attr_accessor :social_description
+        attr_accessor :android_link
+      
+        # Link to open on Android if the app is not installed.
+        # Corresponds to the JSON property `androidFallbackLink`
+        # @return [String]
+        attr_accessor :android_fallback_link
+      
+        # Android package name of the app.
+        # Corresponds to the JSON property `androidPackageName`
+        # @return [String]
+        attr_accessor :android_package_name
+      
+        # Minimum version code for the Android app. If the installed app’s version
+        # code is lower, then the user is taken to the Play Store.
+        # Corresponds to the JSON property `androidMinPackageVersionCode`
+        # @return [String]
+        attr_accessor :android_min_package_version_code
       
         def initialize(**args)
            update!(**args)
@@ -456,9 +358,107 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @social_title = args[:social_title] if args.key?(:social_title)
-          @social_image_link = args[:social_image_link] if args.key?(:social_image_link)
-          @social_description = args[:social_description] if args.key?(:social_description)
+          @android_link = args[:android_link] if args.key?(:android_link)
+          @android_fallback_link = args[:android_fallback_link] if args.key?(:android_fallback_link)
+          @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
+          @android_min_package_version_code = args[:android_min_package_version_code] if args.key?(:android_min_package_version_code)
+        end
+      end
+      
+      # Dynamic Links warning messages.
+      class DynamicLinkWarning
+        include Google::Apis::Core::Hashable
+      
+        # The warning code.
+        # Corresponds to the JSON property `warningCode`
+        # @return [String]
+        attr_accessor :warning_code
+      
+        # The warning message to help developers improve their requests.
+        # Corresponds to the JSON property `warningMessage`
+        # @return [String]
+        attr_accessor :warning_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warning_code = args[:warning_code] if args.key?(:warning_code)
+          @warning_message = args[:warning_message] if args.key?(:warning_message)
+        end
+      end
+      
+      # Information of navigation behavior.
+      class NavigationInfo
+        include Google::Apis::Core::Hashable
+      
+        # If this option is on, FDL click will be forced to redirect rather than
+        # show an interstitial page.
+        # Corresponds to the JSON property `enableForcedRedirect`
+        # @return [Boolean]
+        attr_accessor :enable_forced_redirect
+        alias_method :enable_forced_redirect?, :enable_forced_redirect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_forced_redirect = args[:enable_forced_redirect] if args.key?(:enable_forced_redirect)
+        end
+      end
+      
+      # iOS related attributes to the Dynamic Link..
+      class IosInfo
+        include Google::Apis::Core::Hashable
+      
+        # If specified, this overrides the ios_fallback_link value on iPads.
+        # Corresponds to the JSON property `iosIpadFallbackLink`
+        # @return [String]
+        attr_accessor :ios_ipad_fallback_link
+      
+        # iPad bundle ID of the app.
+        # Corresponds to the JSON property `iosIpadBundleId`
+        # @return [String]
+        attr_accessor :ios_ipad_bundle_id
+      
+        # Custom (destination) scheme to use for iOS. By default, we’ll use the
+        # bundle ID as the custom scheme. Developer can override this behavior using
+        # this param.
+        # Corresponds to the JSON property `iosCustomScheme`
+        # @return [String]
+        attr_accessor :ios_custom_scheme
+      
+        # iOS bundle ID of the app.
+        # Corresponds to the JSON property `iosBundleId`
+        # @return [String]
+        attr_accessor :ios_bundle_id
+      
+        # Link to open on iOS if the app is not installed.
+        # Corresponds to the JSON property `iosFallbackLink`
+        # @return [String]
+        attr_accessor :ios_fallback_link
+      
+        # iOS App Store ID.
+        # Corresponds to the JSON property `iosAppStoreId`
+        # @return [String]
+        attr_accessor :ios_app_store_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_ipad_fallback_link = args[:ios_ipad_fallback_link] if args.key?(:ios_ipad_fallback_link)
+          @ios_ipad_bundle_id = args[:ios_ipad_bundle_id] if args.key?(:ios_ipad_bundle_id)
+          @ios_custom_scheme = args[:ios_custom_scheme] if args.key?(:ios_custom_scheme)
+          @ios_bundle_id = args[:ios_bundle_id] if args.key?(:ios_bundle_id)
+          @ios_fallback_link = args[:ios_fallback_link] if args.key?(:ios_fallback_link)
+          @ios_app_store_id = args[:ios_app_store_id] if args.key?(:ios_app_store_id)
         end
       end
     end

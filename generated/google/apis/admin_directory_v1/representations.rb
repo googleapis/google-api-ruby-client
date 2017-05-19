@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserMakeAdmin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -989,6 +995,7 @@ module Google
           property :kind, as: 'kind'
           property :last_login_time, as: 'lastLoginTime', type: DateTime
       
+          property :locations, as: 'locations'
           property :name, as: 'name', class: Google::Apis::AdminDirectoryV1::UserName, decorator: Google::Apis::AdminDirectoryV1::UserName::Representation
       
           collection :non_editable_aliases, as: 'nonEditableAliases'
@@ -1063,6 +1070,19 @@ module Google
           property :im, as: 'im'
           property :primary, as: 'primary'
           property :protocol, as: 'protocol'
+          property :type, as: 'type'
+        end
+      end
+      
+      class UserLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :area, as: 'area'
+          property :building_id, as: 'buildingId'
+          property :custom_type, as: 'customType'
+          property :desk_code, as: 'deskCode'
+          property :floor_name, as: 'floorName'
+          property :floor_section, as: 'floorSection'
           property :type, as: 'type'
         end
       end

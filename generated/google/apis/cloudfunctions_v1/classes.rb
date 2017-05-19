@@ -22,49 +22,15 @@ module Google
   module Apis
     module CloudfunctionsV1
       
-      # A resource that represents Google Cloud Platform location.
-      class Location
-        include Google::Apis::Core::Hashable
-      
-        # Service-specific metadata. For example the available capacity at the given
-        # location.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The canonical id for this location. For example: `"us-east1"`.
-        # Corresponds to the JSON property `locationId`
-        # @return [String]
-        attr_accessor :location_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @location_id = args[:location_id] if args.key?(:location_id)
-        end
-      end
-      
       # Metadata describing an Operation
       class OperationMetadataV1Beta2
         include Google::Apis::Core::Hashable
+      
+        # Target of the operation - for example
+        # projects/project-1/locations/region-1/functions/function-1
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
       
         # The original request that started the operation.
         # Corresponds to the JSON property `request`
@@ -76,21 +42,15 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Target of the operation - for example
-        # projects/project-1/locations/region-1/functions/function-1
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @target = args[:target] if args.key?(:target)
           @request = args[:request] if args.key?(:request)
           @type = args[:type] if args.key?(:type)
-          @target = args[:target] if args.key?(:target)
         end
       end
     end

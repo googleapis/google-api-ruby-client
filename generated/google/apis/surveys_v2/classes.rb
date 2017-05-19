@@ -735,11 +735,6 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Representation of an individual survey object.
-        # Corresponds to the JSON property `resource`
-        # @return [Google::Apis::SurveysV2::Survey]
-        attr_accessor :resource
-      
         def initialize(**args)
            update!(**args)
         end
@@ -747,7 +742,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
-          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -761,11 +755,6 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Representation of an individual survey object.
-        # Corresponds to the JSON property `resource`
-        # @return [Google::Apis::SurveysV2::Survey]
-        attr_accessor :resource
-      
         def initialize(**args)
            update!(**args)
         end
@@ -773,7 +762,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
-          @resource = args[:resource] if args.key?(:resource)
         end
       end
       

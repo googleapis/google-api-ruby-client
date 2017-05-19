@@ -22,6 +22,68 @@ module Google
   module Apis
     module ScriptV1
       
+      # A request to retrieve the results from a collection of requests,
+      # specified by the operation resource names.
+      class JoinAsyncRequest
+        include Google::Apis::Core::Hashable
+      
+        # The script id which specifies the script which all processes in the names
+        # field must be from.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
+        # List of operation resource names that we want to join,
+        # as returned from a call to RunAsync.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # Timeout for information retrieval in milliseconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @script_id = args[:script_id] if args.key?(:script_id)
+          @names = args[:names] if args.key?(:names)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # An object that provides the return value of a function executed through the
+      # Apps Script Execution API. If a
+      # `run` call succeeds and the
+      # script function returns successfully, the response body's
+      # `response` field contains this
+      # `ExecutionResponse` object.
+      class ExecutionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The return value of the script function. The type matches the object type
+        # returned in Apps Script. Functions called through the Execution API cannot
+        # return Apps Script-specific objects (such as a `Document` or a `Calendar`);
+        # they can only return primitive types such as a `string`, `number`, `array`,
+        # `object`, or `boolean`.
+        # Corresponds to the JSON property `result`
+        # @return [Object]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
       # The response will not arrive until the function finishes executing. The
       # maximum runtime is listed in the guide to [limitations in Apps Script](https://
       # developers.google.com/apps-script/guides/services/quotas#current_limitations).
@@ -83,19 +145,16 @@ module Google
         end
       end
       
-      # A stack trace through the script that shows where the execution failed.
-      class ScriptStackTraceElement
+      # An object that provides the return value for the JoinAsync method.
+      class JoinAsyncResponse
         include Google::Apis::Core::Hashable
       
-        # The line number where the script failed.
-        # Corresponds to the JSON property `lineNumber`
-        # @return [Fixnum]
-        attr_accessor :line_number
-      
-        # The name of the function that failed.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
+        # The return values for each script function, in a map of operation resource
+        # names to the Operation containing the result of the process. The response
+        # will contain either an error or the result of the script function.
+        # Corresponds to the JSON property `results`
+        # @return [Hash<String,Google::Apis::ScriptV1::Operation>]
+        attr_accessor :results
       
         def initialize(**args)
            update!(**args)
@@ -103,8 +162,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @line_number = args[:line_number] if args.key?(:line_number)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A stack trace through the script that shows where the execution failed.
+      class ScriptStackTraceElement
+        include Google::Apis::Core::Hashable
+      
+        # The name of the function that failed.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # The line number where the script failed.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @function = args[:function] if args.key?(:function)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -154,6 +237,13 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A developer-facing error message, which is in English. Any user-facing error
+        # message is localized and sent in the [`google.rpc.Status.details`](google.rpc.
+        # Status.details) field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         # An array that contains a single `ExecutionError` object that provides
         # information about the nature of the error.
         # Corresponds to the JSON property `details`
@@ -166,22 +256,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A developer-facing error message, which is in English. Any user-facing error
-        # message is localized and sent in the [`google.rpc.Status.details`](google.rpc.
-        # Status.details) field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -190,6 +273,20 @@ module Google
       # based on the implementation of the script.
       class ExecutionRequest
         include Google::Apis::Core::Hashable
+      
+        # The name of the function to execute in the given script. The name does not
+        # include parentheses or parameters.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # If `true` and the user is an owner of the script, the script runs at the
+        # most recently saved version rather than the version deployed for use with
+        # the Execution API. Optional; default is `false`.
+        # Corresponds to the JSON property `devMode`
+        # @return [Boolean]
+        attr_accessor :dev_mode
+        alias_method :dev_mode?, :dev_mode
       
         # The parameters to be passed to the function being executed. The object type
         # for each parameter should match the expected type in Apps Script.
@@ -214,58 +311,16 @@ module Google
         # @return [String]
         attr_accessor :session_state
       
-        # The name of the function to execute in the given script. The name does not
-        # include parentheses or parameters.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        # If `true` and the user is an owner of the script, the script runs at the
-        # most recently saved version rather than the version deployed for use with
-        # the Execution API. Optional; default is `false`.
-        # Corresponds to the JSON property `devMode`
-        # @return [Boolean]
-        attr_accessor :dev_mode
-        alias_method :dev_mode?, :dev_mode
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @parameters = args[:parameters] if args.key?(:parameters)
-          @session_state = args[:session_state] if args.key?(:session_state)
           @function = args[:function] if args.key?(:function)
           @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
-        end
-      end
-      
-      # An object that provides the return value of a function executed through the
-      # Apps Script Execution API. If a
-      # `run` call succeeds and the
-      # script function returns successfully, the response body's
-      # `response` field contains this
-      # `ExecutionResponse` object.
-      class ExecutionResponse
-        include Google::Apis::Core::Hashable
-      
-        # The return value of the script function. The type matches the object type
-        # returned in Apps Script. Functions called through the Execution API cannot
-        # return Apps Script-specific objects (such as a `Document` or a `Calendar`);
-        # they can only return primitive types such as a `string`, `number`, `array`,
-        # `object`, or `boolean`.
-        # Corresponds to the JSON property `result`
-        # @return [Object]
-        attr_accessor :result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @result = args[:result] if args.key?(:result)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @session_state = args[:session_state] if args.key?(:session_state)
         end
       end
     end

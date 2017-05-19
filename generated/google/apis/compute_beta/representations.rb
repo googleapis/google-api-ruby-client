@@ -778,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceListReferrers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1115,12 @@ module Google
       end
       
       class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1897,6 +1909,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -2663,6 +2676,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
@@ -2671,6 +2685,8 @@ module Google
           collection :ports, as: 'ports'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_label, as: 'serviceLabel'
+          property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
         end
@@ -3128,6 +3144,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeBeta::ManagedInstance, decorator: Google::Apis::ComputeBeta::ManagedInstance::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -3281,6 +3298,18 @@ module Google
         end
       end
       
+      class InstanceListReferrers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Reference, decorator: Google::Apis::ComputeBeta::Reference::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
       class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3295,6 +3324,8 @@ module Google
           property :can_ip_forward, as: 'canIpForward'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
@@ -3879,6 +3910,16 @@ module Google
         end
       end
       
+      class Reference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :reference_type, as: 'referenceType'
+          property :referrer, as: 'referrer'
+          property :target, as: 'target'
+        end
+      end
+      
       class Region
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3952,6 +3993,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeBeta::ManagedInstance, decorator: Google::Apis::ComputeBeta::ManagedInstance::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

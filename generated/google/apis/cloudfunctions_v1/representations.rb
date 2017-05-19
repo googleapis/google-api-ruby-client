@@ -22,34 +22,18 @@ module Google
   module Apis
     module CloudfunctionsV1
       
-      class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OperationMetadataV1Beta2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :metadata, as: 'metadata'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :location_id, as: 'locationId'
-        end
-      end
-      
       class OperationMetadataV1Beta2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target, as: 'target'
           hash :request, as: 'request'
           property :type, as: 'type'
-          property :target, as: 'target'
         end
       end
     end

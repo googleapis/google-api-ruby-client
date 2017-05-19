@@ -22,6 +22,12 @@ module Google
   module Apis
     module FirebaserulesV1
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Ruleset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestRulesetRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,12 +53,6 @@ module Google
       end
       
       class Issue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Ruleset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,9 +101,9 @@ module Google
       end
       
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Source
@@ -111,9 +117,19 @@ module Google
       class SourcePosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :column, as: 'column'
           property :file_name, as: 'fileName'
           property :line, as: 'line'
+          property :column, as: 'column'
+        end
+      end
+      
+      class Ruleset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
+      
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
         end
       end
       
@@ -132,16 +148,6 @@ module Google
       
           property :severity, as: 'severity'
           property :description, as: 'description'
-        end
-      end
-      
-      class Ruleset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
-      
-          property :create_time, as: 'createTime'
         end
       end
       
@@ -166,8 +172,8 @@ module Google
       class FunctionCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :function, as: 'function'
           collection :args, as: 'args'
+          property :function, as: 'function'
         end
       end
       
@@ -203,18 +209,12 @@ module Google
       class TestResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_position, as: 'errorPosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
+      
           collection :function_calls, as: 'functionCalls', class: Google::Apis::FirebaserulesV1::FunctionCall, decorator: Google::Apis::FirebaserulesV1::FunctionCall::Representation
       
           property :state, as: 'state'
           collection :debug_messages, as: 'debugMessages'
-          property :error_position, as: 'errorPosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
-      
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

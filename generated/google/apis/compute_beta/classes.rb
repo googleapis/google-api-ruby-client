@@ -314,7 +314,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of this access configuration.
+        # The name of this access configuration. The default and recommended name is
+        # External NAT but you can use any arbitrary string you would like. For example,
+        # My external IP or Network Access.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -350,8 +352,7 @@ module Google
       class Address
         include Google::Apis::Core::Hashable
       
-        # The static external IP address represented by this resource. Only IPv4 is
-        # supported.
+        # The static external IP address represented by this resource.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -372,6 +373,12 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
+      
+        # The IP Version that will be used by this address. Valid options are IPV4 or
+        # IPV6. This can only be specified for a global address.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
       
         # [Output Only] Type of the resource. Always compute#address for addresses.
         # Corresponds to the JSON property `kind`
@@ -422,6 +429,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
@@ -847,17 +855,19 @@ module Google
       
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
-      # from logging. An AuditConifg must have one or more AuditLogConfigs.
+      # from logging. An AuditConfig must have one or more AuditLogConfigs.
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditConfig are exempted. Example Policy with multiple AuditConfigs: ` "
-      # audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # AuditConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
       # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # fooservice@googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
+      # fooservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
       # ` "log_type": "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] ` ] `
-      # ] ` For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # ] `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
       # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
       # com from DATA_WRITE logging.
       class AuditConfig
@@ -3618,7 +3628,7 @@ module Google
       
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, portRange] tuple.
+      # IPAddress, IPProtocol, ports] tuple.
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -3667,6 +3677,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The IP Version that will be used by this forwarding rule. Valid options are
+        # IPV4 or IPV6. This can only be specified for a global forwarding rule.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # [Output Only] Type of the resource. Always compute#forwardingRule for
         # Forwarding Rule resources.
         # Corresponds to the JSON property `kind`
@@ -3700,19 +3716,27 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # This field is used along with the target field for TargetHttpProxy,
+        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
+        # TargetInstance.
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
-        # This field is not used for internal load balancing.
+        # Some types of forwarding target have constraints on the acceptable ports:
+        # - TargetHttpProxy: 80, 8080
+        # - TargetHttpsProxy: 443
+        # - TargetSslProxy: 443
+        # - TargetVpnGateway: 500, 4500
+        # -
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # This field is not used for external load balancing.
+        # This field is used along with the backend_service field for internal load
+        # balancing.
         # When the load balancing scheme is INTERNAL, a single port or a comma separated
         # list of ports can be configured. Only packets addressed to these ports will be
-        # forwarded to the backends configured with this forwarding rule. If the port
-        # list is not provided then all ports are allowed to pass through.
+        # forwarded to the backends configured with this forwarding rule.
         # You may specify a maximum of up to 5 ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
@@ -3729,6 +3753,25 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # An optional prefix to the service name for this Forwarding Rule. If specified,
+        # will be the first label of the fully qualified service name.
+        # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
+        # the label must be 1-63 characters long and match the regular expression [a-z]([
+        # -a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # This field is only used for internal load balancing.
+        # Corresponds to the JSON property `serviceLabel`
+        # @return [String]
+        attr_accessor :service_label
+      
+        # [Output Only] The internal fully qualified service name for this Forwarding
+        # Rule.
+        # This field is only used for internal load balancing.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
         # This field is not used for external load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
@@ -3743,8 +3786,7 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For example, TargetHttpProxy requires HTTP traffic, and
-        # TargetHttpsProxy requires HTTPS traffic.
+        # object.
         # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -3762,6 +3804,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
@@ -3770,6 +3813,8 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_label = args[:service_label] if args.key?(:service_label)
+          @service_name = args[:service_name] if args.key?(:service_name)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @target = args[:target] if args.key?(:target)
         end
@@ -4984,7 +5029,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
         attr_accessor :disks
       
-        # 
+        # List of the type and count of accelerator cards attached to the instance.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
@@ -5744,7 +5789,8 @@ module Google
       class InstanceGroupManagersAbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to abandon from the managed instance group.
+        # The URLs of one or more instances to abandon. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -5763,8 +5809,8 @@ module Google
       class InstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The list of instances to delete from this managed instance group. Specify one
-        # or more instance URLs.
+        # The URLs of one or more instances to delete. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -5788,6 +5834,15 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ManagedInstance>]
         attr_accessor :managed_instances
       
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5795,6 +5850,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @managed_instances = args[:managed_instances] if args.key?(:managed_instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -5802,7 +5858,8 @@ module Google
       class InstanceGroupManagersRecreateInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to recreate.
+        # The URLs of one or more instances to recreate. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -6307,6 +6364,55 @@ module Google
         end
       end
       
+      # Contains a list of instance referrers.
+      class InstanceListReferrers
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of referrers.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::Reference>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#instanceListReferrers for lists
+        # of Instance referrers.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
       # 
       class MoveInstanceRequest
         include Google::Apis::Core::Hashable
@@ -6368,6 +6474,12 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
         attr_accessor :disks
       
+        # A list of guest accelerator cards' type and count to use for instances created
+        # from the instance template.
+        # Corresponds to the JSON property `guestAccelerators`
+        # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
+        attr_accessor :guest_accelerators
+      
         # Labels to apply to instances that are created from this template.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -6414,6 +6526,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
+          @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -6711,7 +6824,7 @@ module Google
       class InstancesSetMachineResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # List of the type and count of accelerator cards attached to the instance.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
@@ -8615,6 +8728,45 @@ module Google
         end
       end
       
+      # Represents a reference to a resource.
+      class Reference
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Type of the resource. Always compute#reference for references.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A description of the reference type with no implied semantics. Possible values
+        # include:
+        # - MEMBER_OF
+        # Corresponds to the JSON property `referenceType`
+        # @return [String]
+        attr_accessor :reference_type
+      
+        # URL of the resource which refers to the target.
+        # Corresponds to the JSON property `referrer`
+        # @return [String]
+        attr_accessor :referrer
+      
+        # URL of the resource to which this reference points.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @reference_type = args[:reference_type] if args.key?(:reference_type)
+          @referrer = args[:referrer] if args.key?(:referrer)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # Region resource.
       class Region
         include Google::Apis::Core::Hashable
@@ -8832,7 +8984,8 @@ module Google
       class RegionInstanceGroupManagersAbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The names of one or more instances to abandon.
+        # The URLs of one or more instances to abandon. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -8851,7 +9004,8 @@ module Google
       class RegionInstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # The names of one or more instances to delete.
+        # The URLs of one or more instances to delete. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -8875,6 +9029,15 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ManagedInstance>]
         attr_accessor :managed_instances
       
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8882,6 +9045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @managed_instances = args[:managed_instances] if args.key?(:managed_instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -8889,7 +9053,8 @@ module Google
       class RegionInstanceGroupManagersRecreateRequest
         include Google::Apis::Core::Hashable
       
-        # The URL for one or more instances to recreate.
+        # The URLs of one or more instances to recreate. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -10091,6 +10256,8 @@ module Google
         # terminated by Compute Engine (not terminated by a user). You can only set the
         # automatic restart option for standard instances. Preemptible instances cannot
         # be automatically restarted.
+        # By default, this is set to true so an instance is automatically restarted if
+        # it is terminated by Compute Engine.
         # Corresponds to the JSON property `automaticRestart`
         # @return [Boolean]
         attr_accessor :automatic_restart
@@ -10104,7 +10271,9 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
-        # Whether the instance is preemptible.
+        # Defines whether the instance is preemptible. This can only be set during
+        # instance creation, it cannot be set or changed after the instance has been
+        # created.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible

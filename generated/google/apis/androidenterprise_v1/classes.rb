@@ -397,12 +397,11 @@ module Google
         # Play EMM in various deployment configurations.
         # Possible values include:
         # - "managedDevice", a device that has the EMM's device policy controller (DPC)
-        # as the device owner,
+        # as the device owner.
         # - "managedProfile", a device that has a profile managed by the DPC (DPC is
         # profile owner) in addition to a separate, personal profile that is unavailable
-        # to the DPC,
-        # - "containerApp", a device running the container App. The container App is
-        # managed by the DPC,
+        # to the DPC.
+        # - "containerApp", no longer used (deprecated).
         # - "unmanagedProfile", a device that has been allowed (by the domain's admin,
         # using the Admin Console to enable the privilege) to use managed Google Play,
         # but the profile is itself not owned by a DPC.
@@ -749,6 +748,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_purchased
       
+        # The state of permission acceptance with this product. This field is only set
+        # if the product is approved. Possible states are:
+        # - "currentApproved", the current set of permissions is approved, but
+        # additional permissions will require the administrator to reapprove the product
+        # (if the product was approved without specifying what to when the required
+        # permissions change, this is the default),
+        # - "needsReapproval", there are permissions which need to be accepted (
+        # currently the product is not assignable),
+        # - "allCurrentAndFutureApproved", the current permissions are approved and any
+        # future permission updates will be automatically approved without administrator
+        # review.
+        # Corresponds to the JSON property `permissions`
+        # @return [String]
+        attr_accessor :permissions
+      
         # The ID of the product that the license is for. For example, "app:com.google.
         # android.gm".
         # Corresponds to the JSON property `productId`
@@ -766,6 +780,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @num_provisioned = args[:num_provisioned] if args.key?(:num_provisioned)
           @num_purchased = args[:num_purchased] if args.key?(:num_purchased)
+          @permissions = args[:permissions] if args.key?(:permissions)
           @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
@@ -1465,8 +1480,7 @@ module Google
         # @return [String]
         attr_accessor :product_pricing
       
-        # Whether this app can only be installed on devices using the Android container
-        # app.
+        # Deprecated.
         # Corresponds to the JSON property `requiresContainerApp`
         # @return [Boolean]
         attr_accessor :requires_container_app
@@ -1641,12 +1655,13 @@ module Google
         attr_accessor :product_id
       
         # The interpretation of this product set. "unknown" should never be sent and is
-        # ignored if received. "whitelist" means that this product set constitutes a
-        # whitelist. "includeAll" means that all products are accessible, including
+        # ignored if received. "whitelist" means that the user is entitled to access the
+        # product set. "includeAll" means that all products are accessible, including
         # products that are approved, products with revoked approval, and products that
-        # have never been approved. If the value is "includeAll", the value of the
-        # productId field is therefore ignored. If a value is not supplied, it is
-        # interpreted to be "whitelist" for backwards compatibility.
+        # have never been approved. "allApproved" means that the user is entitled to
+        # access all products that are approved for the enterprise. If the value is "
+        # allApproved" or "includeAll", the productId field is ignored. If no value is
+        # provided, it is interpreted as "whitelist" for backwards compatibility.
         # Corresponds to the JSON property `productSetBehavior`
         # @return [String]
         attr_accessor :product_set_behavior
@@ -1672,6 +1687,15 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo]
         attr_accessor :approval_url_info
       
+        # The permissions being approved with this app. This can either be the current
+        # set of permissions only (additional permissions added to the app through
+        # updates will require review by the administrator) or all current and future
+        # permissions for the app. If not specified, only the current set of permissions
+        # will be approved.
+        # Corresponds to the JSON property `approvedPermissions`
+        # @return [String]
+        attr_accessor :approved_permissions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1679,6 +1703,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approval_url_info = args[:approval_url_info] if args.key?(:approval_url_info)
+          @approved_permissions = args[:approved_permissions] if args.key?(:approved_permissions)
         end
       end
       

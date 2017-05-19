@@ -22,12 +22,6 @@ module Google
   module Apis
     module CloudtraceV1
       
-      class TraceSpan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListTracesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,16 +47,9 @@ module Google
       end
       
       class TraceSpan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :span_id, :numeric_string => true, as: 'spanId'
-          property :parent_span_id, :numeric_string => true, as: 'parentSpanId'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          property :kind, as: 'kind'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListTracesResponse
@@ -95,6 +82,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :traces, as: 'traces', class: Google::Apis::CloudtraceV1::Trace, decorator: Google::Apis::CloudtraceV1::Trace::Representation
       
+        end
+      end
+      
+      class TraceSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :span_id, :numeric_string => true, as: 'spanId'
+          property :parent_span_id, :numeric_string => true, as: 'parentSpanId'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :kind, as: 'kind'
         end
       end
     end

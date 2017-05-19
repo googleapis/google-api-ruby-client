@@ -47,6 +47,84 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Updates the information about the specified namespace. Only the namespace
+        # visibility can be updated.
+        # @param [String] namespace_name
+        #   Resource name of this namespace. Namespaces names have the format:
+        #   <code>namespaces/<var>namespace</var></code>.
+        # @param [Google::Apis::ProximitybeaconV1beta1::Namespace] namespace_object
+        # @param [String] project_id
+        #   The project id of the namespace to update. If the project id is not
+        #   specified then the project making the request is used. The project id
+        #   must match the project that owns the beacon.
+        #   Optional.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_namespace(namespace_name, namespace_object = nil, project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1beta1/{+namespaceName}', options)
+          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
+          command.request_object = namespace_object
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::Namespace
+          command.params['namespaceName'] = namespace_name unless namespace_name.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all attachment namespaces owned by your Google Developers Console
+        # project. Attachment data associated with a beacon must include a
+        # namespaced type, and the namespace must be owned by your project.
+        # Authenticate using an [OAuth access token](https://developers.google.com/
+        # identity/protocols/OAuth2)
+        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
+        # permissions in the Google Developers Console project.
+        # @param [String] project_id
+        #   The project id to list namespaces under.
+        #   Optional.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_namespaces(project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/namespaces', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the Proximity Beacon API's current public key and associated
         # parameters used to initiate the Diffie-Hellman key exchange required to
         # register a beacon that broadcasts the Eddystone-EID format. This key
@@ -809,8 +887,8 @@ module Google
         
         # Given one or more beacon observations, returns any beacon information
         # and attachments accessible to your application. Authorize by using the
-        # [API key](https://developers.google.com/beacons/proximity/how-tos/authorizing#
-        # APIKey)
+        # [API key](https://developers.google.com/beacons/proximity/get-started#
+        # request_a_browser_api_key)
         # for the application.
         # @param [Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsRequest] get_info_for_observed_beacons_request_object
         # @param [String] quota_user
@@ -836,84 +914,6 @@ module Google
           command.request_object = get_info_for_observed_beacons_request_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsResponse
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the information about the specified namespace. Only the namespace
-        # visibility can be updated.
-        # @param [String] namespace_name
-        #   Resource name of this namespace. Namespaces names have the format:
-        #   <code>namespaces/<var>namespace</var></code>.
-        # @param [Google::Apis::ProximitybeaconV1beta1::Namespace] namespace_object
-        # @param [String] project_id
-        #   The project id of the namespace to update. If the project id is not
-        #   specified then the project making the request is used. The project id
-        #   must match the project that owns the beacon.
-        #   Optional.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Namespace] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::Namespace]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_namespace(namespace_name, namespace_object = nil, project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+namespaceName}', options)
-          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
-          command.request_object = namespace_object
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::Namespace
-          command.params['namespaceName'] = namespace_name unless namespace_name.nil?
-          command.query['projectId'] = project_id unless project_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all attachment namespaces owned by your Google Developers Console
-        # project. Attachment data associated with a beacon must include a
-        # namespaced type, and the namespace must be owned by your project.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
-        # @param [String] project_id
-        #   The project id to list namespaces under.
-        #   Optional.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_namespaces(project_id: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/namespaces', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse
-          command.query['projectId'] = project_id unless project_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

@@ -134,14 +134,12 @@ module Google
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
         #   Example: `projects/my-project-123`.
-        # @param [String] group_id
-        #   [Required] The group for which events shall be returned.
+        # @param [String] page_token
+        #   [Optional] A `next_page_token` provided by a previous response.
         # @param [String] service_filter_service
         #   [Optional] The exact value to match against
         #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.service).
-        # @param [String] page_token
-        #   [Optional] A `next_page_token` provided by a previous response.
         # @param [Fixnum] page_size
         #   [Optional] The maximum number of results to return per response.
         # @param [String] service_filter_version
@@ -154,6 +152,8 @@ module Google
         #   ServiceContext#FIELDS.resource_type).
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
+        # @param [String] group_id
+        #   [Required] The group for which events shall be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -171,18 +171,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_events(project_name, group_id: nil, service_filter_service: nil, page_token: nil, page_size: nil, service_filter_version: nil, service_filter_resource_type: nil, time_range_period: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_events(project_name, page_token: nil, service_filter_service: nil, page_size: nil, service_filter_version: nil, service_filter_resource_type: nil, time_range_period: nil, group_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse
           command.params['projectName'] = project_name unless project_name.nil?
-          command.query['groupId'] = group_id unless group_id.nil?
-          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
           command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
           command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
+          command.query['groupId'] = group_id unless group_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -266,10 +266,6 @@ module Google
         #   <a href="https://support.google.com/cloud/answer/6158840">Google Cloud
         #   Platform project ID</a>.
         #   Example: <code>projects/my-project-123</code>.
-        # @param [String] page_token
-        #   [Optional] A `next_page_token` provided by a previous response. To view
-        #   additional results, pass this token along with the identical query
-        #   parameters as the first request.
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
         # @param [String] alignment
@@ -291,16 +287,20 @@ module Google
         #   [Optional] The exact value to match against
         #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.version).
-        # @param [String] alignment_time
-        #   [Optional] Time where the timed counts shall be aligned if rounded
-        #   alignment is chosen. Default is 00:00 UTC.
         # @param [String] service_filter_resource_type
         #   [Optional] The exact value to match against
         #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.resource_type).
+        # @param [String] alignment_time
+        #   [Optional] Time where the timed counts shall be aligned if rounded
+        #   alignment is chosen. Default is 00:00 UTC.
         # @param [String] timed_count_duration
         #   [Optional] The preferred duration for a single returned `TimedCount`.
         #   If not set, no timed counts are returned.
+        # @param [String] page_token
+        #   [Optional] A `next_page_token` provided by a previous response. To view
+        #   additional results, pass this token along with the identical query
+        #   parameters as the first request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -318,12 +318,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_group_stats(project_name, page_token: nil, time_range_period: nil, alignment: nil, group_id: nil, service_filter_service: nil, page_size: nil, order: nil, service_filter_version: nil, alignment_time: nil, service_filter_resource_type: nil, timed_count_duration: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_group_stats(project_name, time_range_period: nil, alignment: nil, group_id: nil, service_filter_service: nil, page_size: nil, order: nil, service_filter_version: nil, service_filter_resource_type: nil, alignment_time: nil, timed_count_duration: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+projectName}/groupStats', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse
           command.params['projectName'] = project_name unless project_name.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
           command.query['alignment'] = alignment unless alignment.nil?
           command.query['groupId'] = group_id unless group_id.nil?
@@ -331,9 +330,10 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['order'] = order unless order.nil?
           command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
-          command.query['alignmentTime'] = alignment_time unless alignment_time.nil?
           command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
+          command.query['alignmentTime'] = alignment_time unless alignment_time.nil?
           command.query['timedCountDuration'] = timed_count_duration unless timed_count_duration.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

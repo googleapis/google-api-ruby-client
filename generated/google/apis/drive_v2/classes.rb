@@ -1743,6 +1743,12 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
+          # Whether the current user can change the restricted download label of this file.
+          # Corresponds to the JSON property `canChangeRestrictedDownload`
+          # @return [Boolean]
+          attr_accessor :can_change_restricted_download
+          alias_method :can_change_restricted_download?, :can_change_restricted_download
+        
           # Whether the current user can comment on this file.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
@@ -1851,6 +1857,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_change_restricted_download = args[:can_change_restricted_download] if args.key?(:can_change_restricted_download)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete = args[:can_delete] if args.key?(:can_delete)
@@ -2370,6 +2377,13 @@ module Google
         # @return [String]
         attr_accessor :auth_key
       
+        # Whether the account of the permission has been deleted. This field only
+        # pertains to user and group permissions.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
         # The domain name of the entity this permission refers to. This is an output-
         # only field which is present when the permission type is user, group or domain.
         # Corresponds to the JSON property `domain`
@@ -2473,6 +2487,7 @@ module Google
         def update!(**args)
           @additional_roles = args[:additional_roles] if args.key?(:additional_roles)
           @auth_key = args[:auth_key] if args.key?(:auth_key)
+          @deleted = args[:deleted] if args.key?(:deleted)
           @domain = args[:domain] if args.key?(:domain)
           @email_address = args[:email_address] if args.key?(:email_address)
           @etag = args[:etag] if args.key?(:etag)

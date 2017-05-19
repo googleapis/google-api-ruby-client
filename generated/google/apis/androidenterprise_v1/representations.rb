@@ -569,6 +569,7 @@ module Google
           property :kind, as: 'kind'
           property :num_provisioned, as: 'numProvisioned'
           property :num_purchased, as: 'numPurchased'
+          property :permissions, as: 'permissions'
           property :product_id, as: 'productId'
         end
       end
@@ -816,6 +817,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approval_url_info, as: 'approvalUrlInfo', class: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo, decorator: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo::Representation
       
+          property :approved_permissions, as: 'approvedPermissions'
         end
       end
       

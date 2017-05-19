@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/service-management/
     module ServicemanagementV1
       VERSION = 'V1'
-      REVISION = '20170327'
+      REVISION = '20170428'
 
       # Manage your Google API service configuration
       AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'

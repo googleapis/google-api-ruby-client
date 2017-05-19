@@ -22,6 +22,102 @@ module Google
   module Apis
     module ServicecontrolV1
       
+      class CheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndReconciliationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndReconciliationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Money
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplicitBuckets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Distribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExponentialBuckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,13 +166,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QuotaError
+      class RequestMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RequestMetadata
+      class QuotaError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,13 +208,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StartReconciliationRequest
+      class CheckError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CheckError
+      class StartReconciliationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,107 +227,215 @@ module Google
       end
       
       class CheckRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_activation_check, as: 'skipActivationCheck'
+          property :operation, as: 'operation', class: Google::Apis::ServicecontrolV1::Operation, decorator: Google::Apis::ServicecontrolV1::Operation::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :request_project_settings, as: 'requestProjectSettings'
+          property :service_config_id, as: 'serviceConfigId'
+        end
       end
       
       class QuotaOperation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quota_mode, as: 'quotaMode'
+          property :method_name, as: 'methodName'
+          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          hash :labels, as: 'labels'
+          property :consumer_id, as: 'consumerId'
+          property :operation_id, as: 'operationId'
+        end
       end
       
       class EndReconciliationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reconciliation_operation, as: 'reconciliationOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :service_config_id, as: 'serviceConfigId'
+        end
       end
       
       class ReportInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+          property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class ReportResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :report_infos, as: 'reportInfos', class: Google::Apis::ServicecontrolV1::ReportInfo, decorator: Google::Apis::ServicecontrolV1::ReportInfo::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :service_config_id, as: 'serviceConfigId'
+          collection :report_errors, as: 'reportErrors', class: Google::Apis::ServicecontrolV1::ReportError, decorator: Google::Apis::ServicecontrolV1::ReportError::Representation
+      
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_id, as: 'consumerId'
+          property :operation_id, as: 'operationId'
+          property :operation_name, as: 'operationName'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :importance, as: 'importance'
+          property :resource_container, as: 'resourceContainer'
+          hash :labels, as: 'labels'
+          collection :log_entries, as: 'logEntries', class: Google::Apis::ServicecontrolV1::LogEntry, decorator: Google::Apis::ServicecontrolV1::LogEntry::Representation
+      
+          hash :user_labels, as: 'userLabels'
+          collection :metric_value_sets, as: 'metricValueSets', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
+      
+          property :quota_properties, as: 'quotaProperties', class: Google::Apis::ServicecontrolV1::QuotaProperties, decorator: Google::Apis::ServicecontrolV1::QuotaProperties::Representation
+      
+        end
       end
       
       class CheckResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+          collection :check_errors, as: 'checkErrors', class: Google::Apis::ServicecontrolV1::CheckError, decorator: Google::Apis::ServicecontrolV1::CheckError::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :check_info, as: 'checkInfo', class: Google::Apis::ServicecontrolV1::CheckInfo, decorator: Google::Apis::ServicecontrolV1::CheckInfo::Representation
+      
+          property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
+      
+          property :service_config_id, as: 'serviceConfigId'
+        end
       end
       
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          collection :details, as: 'details'
+          property :code, as: 'code'
+        end
       end
       
       class ReportRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::ServicecontrolV1::Operation, decorator: Google::Apis::ServicecontrolV1::Operation::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLog
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+          property :service_config_id, as: 'serviceConfigId'
+        end
       end
       
       class LogEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :severity, as: 'severity'
+          property :insert_id, as: 'insertId'
+          property :name, as: 'name'
+          hash :struct_payload, as: 'structPayload'
+          property :text_payload, as: 'textPayload'
+          hash :proto_payload, as: 'protoPayload'
+          property :timestamp, as: 'timestamp'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class AuditLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          hash :response, as: 'response'
+          property :method_name, as: 'methodName'
+          collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV1::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV1::AuthorizationInfo::Representation
+      
+          property :resource_name, as: 'resourceName'
+          hash :request, as: 'request'
+          property :request_metadata, as: 'requestMetadata', class: Google::Apis::ServicecontrolV1::RequestMetadata, decorator: Google::Apis::ServicecontrolV1::RequestMetadata::Representation
+      
+          hash :service_data, as: 'serviceData'
+          property :num_response_items, :numeric_string => true, as: 'numResponseItems'
+          property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
+      
+          property :authentication_info, as: 'authenticationInfo', class: Google::Apis::ServicecontrolV1::AuthenticationInfo, decorator: Google::Apis::ServicecontrolV1::AuthenticationInfo::Representation
+      
+        end
       end
       
       class MetricValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+          property :money_value, as: 'moneyValue', class: Google::Apis::ServicecontrolV1::Money, decorator: Google::Apis::ServicecontrolV1::Money::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
+          hash :labels, as: 'labels'
+          property :string_value, as: 'stringValue'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :distribution_value, as: 'distributionValue', class: Google::Apis::ServicecontrolV1::Distribution, decorator: Google::Apis::ServicecontrolV1::Distribution::Representation
       
-      class Money
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+          property :bool_value, as: 'boolValue'
+          property :end_time, as: 'endTime'
+        end
       end
       
       class EndReconciliationResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+          collection :reconciliation_errors, as: 'reconciliationErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :service_config_id, as: 'serviceConfigId'
+          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
+      
+        end
       end
       
-      class Distribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
+        end
       end
       
       class ExplicitBuckets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounds, as: 'bounds'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class Distribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :mean, as: 'mean'
+          collection :bucket_counts, as: 'bucketCounts'
+          property :explicit_buckets, as: 'explicitBuckets', class: Google::Apis::ServicecontrolV1::ExplicitBuckets, decorator: Google::Apis::ServicecontrolV1::ExplicitBuckets::Representation
+      
+          property :maximum, as: 'maximum'
+          property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
+          property :exponential_buckets, as: 'exponentialBuckets', class: Google::Apis::ServicecontrolV1::ExponentialBuckets, decorator: Google::Apis::ServicecontrolV1::ExponentialBuckets::Representation
+      
+          property :linear_buckets, as: 'linearBuckets', class: Google::Apis::ServicecontrolV1::LinearBuckets, decorator: Google::Apis::ServicecontrolV1::LinearBuckets::Representation
+      
+          property :minimum, as: 'minimum'
+        end
       end
       
       class ExponentialBuckets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :growth_factor, as: 'growthFactor'
           property :scale, as: 'scale'
           property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :growth_factor, as: 'growthFactor'
         end
       end
       
@@ -247,12 +451,12 @@ module Google
       class StartReconciliationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
           property :operation_id, as: 'operationId'
           collection :reconciliation_errors, as: 'reconciliationErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
       
           property :service_config_id, as: 'serviceConfigId'
+          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
+      
         end
       end
       
@@ -276,8 +480,8 @@ module Google
       class AuthenticationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :principal_email, as: 'principalEmail'
           property :authority_selector, as: 'authoritySelector'
+          property :principal_email, as: 'principalEmail'
         end
       end
       
@@ -302,20 +506,20 @@ module Google
         end
       end
       
+      class RequestMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
+          property :caller_ip, as: 'callerIp'
+        end
+      end
+      
       class QuotaError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subject, as: 'subject'
           property :description, as: 'description'
           property :code, as: 'code'
-        end
-      end
-      
-      class RequestMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :caller_ip, as: 'callerIp'
-          property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
         end
       end
       
@@ -329,22 +533,22 @@ module Google
       class ReleaseQuotaResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          property :service_config_id, as: 'serviceConfigId'
           collection :release_errors, as: 'releaseErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
       
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
+          property :operation_id, as: 'operationId'
+          property :service_config_id, as: 'serviceConfigId'
         end
       end
       
       class AllocateQuotaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocation_mode, as: 'allocationMode'
-          property :service_config_id, as: 'serviceConfigId'
           property :allocate_operation, as: 'allocateOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
       
+          property :allocation_mode, as: 'allocationMode'
+          property :service_config_id, as: 'serviceConfigId'
         end
       end
       
@@ -360,9 +564,17 @@ module Google
       class ReportError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
           property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
       
-          property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class CheckError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :detail, as: 'detail'
         end
       end
       
@@ -375,225 +587,13 @@ module Google
         end
       end
       
-      class CheckError
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :detail, as: 'detail'
-        end
-      end
-      
       class QuotaInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :limit_exceeded, as: 'limitExceeded'
           hash :quota_consumed, as: 'quotaConsumed'
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
-          collection :limit_exceeded, as: 'limitExceeded'
-        end
-      end
-      
-      class CheckRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :skip_activation_check, as: 'skipActivationCheck'
-          property :operation, as: 'operation', class: Google::Apis::ServicecontrolV1::Operation, decorator: Google::Apis::ServicecontrolV1::Operation::Representation
-      
-          property :request_project_settings, as: 'requestProjectSettings'
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class QuotaOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
-          property :consumer_id, as: 'consumerId'
-          property :operation_id, as: 'operationId'
-          property :quota_mode, as: 'quotaMode'
-          property :method_name, as: 'methodName'
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-        end
-      end
-      
-      class EndReconciliationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :reconciliation_operation, as: 'reconciliationOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class ReportInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
-      
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :quota_properties, as: 'quotaProperties', class: Google::Apis::ServicecontrolV1::QuotaProperties, decorator: Google::Apis::ServicecontrolV1::QuotaProperties::Representation
-      
-          property :consumer_id, as: 'consumerId'
-          property :operation_id, as: 'operationId'
-          property :end_time, as: 'endTime'
-          property :operation_name, as: 'operationName'
-          property :start_time, as: 'startTime'
-          property :importance, as: 'importance'
-          property :resource_container, as: 'resourceContainer'
-          hash :labels, as: 'labels'
-          collection :log_entries, as: 'logEntries', class: Google::Apis::ServicecontrolV1::LogEntry, decorator: Google::Apis::ServicecontrolV1::LogEntry::Representation
-      
-          hash :user_labels, as: 'userLabels'
-          collection :metric_value_sets, as: 'metricValueSets', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-        end
-      end
-      
-      class ReportResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :report_errors, as: 'reportErrors', class: Google::Apis::ServicecontrolV1::ReportError, decorator: Google::Apis::ServicecontrolV1::ReportError::Representation
-      
-          collection :report_infos, as: 'reportInfos', class: Google::Apis::ServicecontrolV1::ReportInfo, decorator: Google::Apis::ServicecontrolV1::ReportInfo::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class CheckResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          collection :check_errors, as: 'checkErrors', class: Google::Apis::ServicecontrolV1::CheckError, decorator: Google::Apis::ServicecontrolV1::CheckError::Representation
-      
-          property :check_info, as: 'checkInfo', class: Google::Apis::ServicecontrolV1::CheckInfo, decorator: Google::Apis::ServicecontrolV1::CheckInfo::Representation
-      
-          property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :details, as: 'details'
-          property :code, as: 'code'
-          property :message, as: 'message'
-        end
-      end
-      
-      class ReportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::ServicecontrolV1::Operation, decorator: Google::Apis::ServicecontrolV1::Operation::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class AuditLog
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :num_response_items, :numeric_string => true, as: 'numResponseItems'
-          property :authentication_info, as: 'authenticationInfo', class: Google::Apis::ServicecontrolV1::AuthenticationInfo, decorator: Google::Apis::ServicecontrolV1::AuthenticationInfo::Representation
-      
-          property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
-      
-          property :service_name, as: 'serviceName'
-          hash :response, as: 'response'
-          property :method_name, as: 'methodName'
-          property :resource_name, as: 'resourceName'
-          collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV1::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV1::AuthorizationInfo::Representation
-      
-          hash :request, as: 'request'
-          hash :service_data, as: 'serviceData'
-          property :request_metadata, as: 'requestMetadata', class: Google::Apis::ServicecontrolV1::RequestMetadata, decorator: Google::Apis::ServicecontrolV1::RequestMetadata::Representation
-      
-        end
-      end
-      
-      class LogEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :severity, as: 'severity'
-          property :name, as: 'name'
-          property :insert_id, as: 'insertId'
-          hash :struct_payload, as: 'structPayload'
-          property :text_payload, as: 'textPayload'
-          hash :proto_payload, as: 'protoPayload'
-          property :timestamp, as: 'timestamp'
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class MetricValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          property :money_value, as: 'moneyValue', class: Google::Apis::ServicecontrolV1::Money, decorator: Google::Apis::ServicecontrolV1::Money::Representation
-      
-          property :string_value, as: 'stringValue'
-          hash :labels, as: 'labels'
-          property :double_value, as: 'doubleValue'
-          property :int64_value, :numeric_string => true, as: 'int64Value'
-          property :distribution_value, as: 'distributionValue', class: Google::Apis::ServicecontrolV1::Distribution, decorator: Google::Apis::ServicecontrolV1::Distribution::Representation
-      
-          property :bool_value, as: 'boolValue'
-        end
-      end
-      
-      class Money
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :nanos, as: 'nanos'
-          property :units, :numeric_string => true, as: 'units'
-          property :currency_code, as: 'currencyCode'
-        end
-      end
-      
-      class EndReconciliationResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          collection :reconciliation_errors, as: 'reconciliationErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-        end
-      end
-      
-      class Distribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :maximum, as: 'maximum'
-          property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
-          property :exponential_buckets, as: 'exponentialBuckets', class: Google::Apis::ServicecontrolV1::ExponentialBuckets, decorator: Google::Apis::ServicecontrolV1::ExponentialBuckets::Representation
-      
-          property :minimum, as: 'minimum'
-          property :linear_buckets, as: 'linearBuckets', class: Google::Apis::ServicecontrolV1::LinearBuckets, decorator: Google::Apis::ServicecontrolV1::LinearBuckets::Representation
-      
-          property :count, :numeric_string => true, as: 'count'
-          property :mean, as: 'mean'
-          collection :bucket_counts, as: 'bucketCounts'
-          property :explicit_buckets, as: 'explicitBuckets', class: Google::Apis::ServicecontrolV1::ExplicitBuckets, decorator: Google::Apis::ServicecontrolV1::ExplicitBuckets::Representation
-      
-        end
-      end
-      
-      class ExplicitBuckets
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bounds, as: 'bounds'
         end
       end
     end
