@@ -280,4 +280,52 @@ EOF
       expect { command.execute(client) }.to raise_error(/Invalid request/)
     end
   end
+
+  context('with v2 error messages') do
+    let(:command) do
+      cmd = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      cmd.options.api_format_version = 2
+      cmd
+    end
+
+    before(:example) do
+      json = <<EOF
+{
+  "error": {
+    "code": 400,
+    "message": "Illegal character ':' in log name",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.logging.v2.WriteLogEntriesPartialErrors",
+        "logEntryErrors": {
+          "0": {
+            "code": 3,
+            "message": "Illegal character ':' in log name"
+          },
+          "1": {
+            "code": 7,
+            "message": "User not authorized."
+          }
+        }
+      }
+    ]
+  }
+}
+EOF
+
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with(headers: {'X-Goog-Api-Format-Version' => '2'})
+        .to_return(status: [400, 'Invalid Argument'], headers: { 'Content-Type' => 'application/json' }, body: json)
+    end
+
+    it 'should raise client error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+    end
+
+    it 'should raise an error with the reason and message' do
+      expect { command.execute(client) }.to raise_error(
+        /INVALID_ARGUMENT: Illegal character ':' in log name/)
+    end
+  end
 end

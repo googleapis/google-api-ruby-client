@@ -139,7 +139,7 @@ module Google
           end
         end
 
-        def to_json
+        def to_json(*a)
           representation = self.class.const_get(:Representation)
           representation.new(self).to_json(user_options: { skip_undefined: true })
         end

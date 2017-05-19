@@ -30,7 +30,8 @@ module Google
       :header,
       :normalize_unicode,
       :skip_serialization,
-      :skip_deserialization)
+      :skip_deserialization,
+      :api_format_version)
 
     # General client options
     class ClientOptions
@@ -67,6 +68,8 @@ module Google
       #   @return [Boolean] True if body object should be treated as raw text instead of an object.
       # @!attribute [rw] skip_deserialization
       #   @return [Boolean] True if response should be returned in raw form instead of deserialized.
+      # @!attribute [rw] api_format_version
+      #   @return [Fixnum] Version of the error format to request/expect.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -85,7 +88,7 @@ module Google
         new_options
       end
     end
-    
+
     ClientOptions.default.log_http_requests = false
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'
@@ -93,5 +96,6 @@ module Google
     RequestOptions.default.normalize_unicode = false
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false
+    RequestOptions.default.api_format_version = nil
   end
 end

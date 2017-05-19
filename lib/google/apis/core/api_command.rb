@@ -52,6 +52,9 @@ module Google
         #
         # @return [void]
         def prepare!
+          if options && options.api_format_version
+            header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
+          end
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
           if request_representation && request_object
             header['Content-Type'] ||= JSON_CONTENT_TYPE
@@ -100,15 +103,15 @@ module Google
         def check_status(status, header = nil, body = nil, message = nil)
           case status
           when 400, 402...500
-            error = parse_error(body)
-            if error
-              message = sprintf('%s: %s', error['reason'], error['message'])
-              raise ERROR_REASON_MAPPING[error['reason']].new(
+            reason, message = parse_error(body)
+            if reason
+              message = sprintf('%s: %s', reason, message)
+              raise ERROR_REASON_MAPPING[reason].new(
                 message,
                 status_code: status,
                 header: header,
                 body: body
-              ) if ERROR_REASON_MAPPING.key?(error['reason'])
+              ) if ERROR_REASON_MAPPING.key?(reason)
             end
             super(status, header, body, message)
           else
@@ -122,15 +125,45 @@ module Google
 
         private
 
-        # Attempt to parse a JSON error message, returning the first found error
+        # Attempt to parse a JSON error message
         # @param [String] body
         #  HTTP response body
-        # @return [Hash]
+        # @return [Array<(String, String)>]
+        #   Error reason and message
         def parse_error(body)
-          hash = JSON.load(body)
-          hash['error']['errors'].first
+          obj = JSON.load(body)
+          error = obj['error']
+          if error['details']
+            return extract_v2_error_details(error)
+          elsif error['errors']
+            return extract_v1_error_details(error)
+          else
+            fail 'Can not parse error message. No "details" or "errors" detected'
+          end
         rescue
-          nil
+          return [nil, nil]
+        end
+
+        # Extracts details from a v1 error message
+        # @param [Hash] error
+        #  Parsed JSON
+        # @return [Array<(String, String)>]
+        #   Error reason and message
+        def extract_v1_error_details(error)
+          reason = error['errors'].first['reason']
+          message = error['message']
+          return [reason, message]
+        end
+
+        # Extracts details from a v2error message
+        # @param [Hash] error
+        #  Parsed JSON
+        # @return [Array<(String, String)>]
+        #   Error reason and message
+        def extract_v2_error_details(error)
+          reason = error['status']
+          message = error['message']
+          return [reason, message]
         end
 
         # Convert field names from ruby conventions to original names in JSON
